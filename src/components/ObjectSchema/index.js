@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Input, message, Tooltip } from 'antd';
 import MappingRender from '$components/MappingRender';
 import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
+import './index.scss';
 
 class ObjectSchema extends React.PureComponent {
   static propTypes = {
@@ -68,7 +69,7 @@ class ObjectSchema extends React.PureComponent {
         {!isFirstSchema && !targetJsonData.description && (
           <div className="element-title">{targetJsonData.title}</div>
         )}
-        <div className="content-item">
+        <div className={isFirstSchema ? 'content-item' : 'content-item object-content'}>
           {targetJsonData.propertyOrder &&
             targetJsonData.propertyOrder.map((key, index) => {
               /** 1. 获取当前元素的路径值 */

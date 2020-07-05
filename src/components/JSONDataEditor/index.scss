@@ -72,9 +72,14 @@
   }
   // 折叠面板头部边框
   .ant-collapse-content-active {
-    border-top: 1px solid #d9d9d9 !important;
+    border-top: 1px solid #f0f0f0 !important;
   }
   .ant-collapse-content {
     padding: 10px 0 20px;
+  }
+
+  // Title
+  .ant-collapse-header {
+    // background-color: #f7f7f7;
   }
 }

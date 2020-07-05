@@ -58,7 +58,7 @@ class SelectSchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Radio元素内容[开发中]</div>
+        <div className="content-item">Select元素内容[开发中]</div>
       </div>
     );
   }
