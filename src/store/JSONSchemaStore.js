@@ -18,6 +18,10 @@ export default class JSONSchemaStore {
    */
   @observable triggerChange = false;
   /**
+   * 宽屏（wideScreen） or 小屏（mobileScreen）
+   */
+  @observable pageScreen = 'mobileScreen'; // 默认宽屏: wideScreen，小屏：mobileScreen
+  /**
    * jsonSchema: JSONSchema数据对象
    */
   @observable jsonSchema = {};
@@ -28,6 +32,18 @@ export default class JSONSchemaStore {
   @action.bound
   triggerChangeAction() {
     this.triggerChange = !this.triggerChange;
+  }
+
+  /**
+   * 设置当前屏幕模式：大屏 or 小屏
+   */
+  @action.bound
+  setPageScreen(pageScreen) {
+    if (pageScreen === 'mobileScreen') {
+      this.pageScreen = 'mobileScreen';
+    } else {
+      this.pageScreen = 'wideScreen'; // 默认宽屏
+    }
   }
 
   /** 根据索引路径获取对应的json数据[非联动式数据获取]  */

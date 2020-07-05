@@ -27,7 +27,7 @@ class IndexDemo extends React.PureComponent {
                 format: 'input',
                 isRequired: false,
                 default: '',
-                description: '',
+                description: '测试一下',
                 placeholder: '',
                 readOnly: false,
               },
@@ -313,7 +313,7 @@ class IndexDemo extends React.PureComponent {
                 format: 'quantity',
                 isRequired: false,
                 default: '',
-                description: '',
+                description: '单位计量输入',
                 placeholder: '',
                 readOnly: false,
                 properties: {

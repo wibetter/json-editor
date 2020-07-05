@@ -67,6 +67,7 @@ class JSONDataEditor extends React.PureComponent {
           <Collapse
             defaultActiveKey={jsonSchema.propertyOrder}
             expandIconPosition="right"
+            bordered={false}
           >
             {jsonSchema.propertyOrder.map((key, index) => {
               /** 1. 获取当前元素的路径值 */

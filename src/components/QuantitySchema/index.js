@@ -1,26 +1,71 @@
-import React from 'react';
-import { Tooltip } from 'antd';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import * as React from 'react';
+import { inject, observer } from 'mobx-react';
+import PropTypes from 'prop-types';
+import { Input, message, Tooltip } from 'antd';
 
-/** Quantity类型渲染组件 */
-const QuantitySchema = (props) => {
-  const { parentType, jsonKey, indexRoute, keyRoute, nodeKey, targetJsonData } = props;
-  const currentFormat = getCurrentFormat(targetJsonData);
+class QuantitySchema extends React.PureComponent {
+  static propTypes = {
+    parentType: PropTypes.string,
+    jsonKey: PropTypes.string,
+    indexRoute: PropTypes.string,
+    keyRoute: PropTypes.string,
+    nodeKey: PropTypes.string,
+    targetJsonData: PropTypes.any,
+  };
 
-  /** 获取quantity中的数值对象（默认第一个就是数值对象）*/
-  const unitJsonKey = targetJsonData.propertyOrder[0];
-  const unitJsonData = targetJsonData.properties[unitJsonKey];
+  constructor(props) {
+    super(props);
+    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+    this.handleValueChange = this.handleValueChange.bind(this);
+  }
 
-  return (
-    <div className="element-wrap" key={nodeKey}>
-      <Tooltip title={targetJsonData.description} placement="topLeft">
-        <span className="element-name-span">{targetJsonData.title}</span>
-      </Tooltip>
-      <div className="content-item">
-        Quantity元素内容[开发中]
+  /** 数值变动事件处理器 */
+  handleValueChange = (event) => {
+    const { value } = event.target;
+    const {
+      indexRoute,
+      jsonKey,
+      updateFormValueData,
+      targetJsonData,
+    } = this.props;
+    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
+    updateFormValueData(indexRoute, jsonKey, {
+      title: value,
+    });*/
+  };
+
+  render() {
+    const {
+      indexRoute,
+      nodeKey,
+      keyRoute,
+      targetJsonData,
+      pageScreen,
+    } = this.props;
+
+    return (
+      <div
+        className={
+          pageScreen === 'wideScreen'
+            ? 'wide-screen-element-warp'
+            : 'mobile-screen-element-warp'
+        }
+        key={nodeKey}
+      >
+        <Tooltip
+          title={targetJsonData.description}
+          placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
+        >
+          <div className="element-title">{targetJsonData.title}</div>
+        </Tooltip>
+        <div className="content-item">Event元素内容[开发中]</div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default QuantitySchema;
+export default inject((stores) => ({
+  pageScreen: stores.JSONSchemaStore.pageScreen,
+  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
+  editJsonData: stores.JSONEditorStore.updateFormValueData,
+}))(observer(QuantitySchema));
