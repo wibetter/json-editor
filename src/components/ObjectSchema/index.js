@@ -11,7 +11,7 @@ const ObjectSchema = (props) => {
   const { indexRoute, nodeKey, keyRoute, targetJsonData } = props;
 
   return (
-    <div className="element-wrap" key={nodeKey} indexRoute={indexRoute} keyRoute={keyRoute}>
+    <div className="element-wrap" key={nodeKey}>
       {
         targetJsonData.description && (
           <Tooltip title={targetJsonData.description} placement="topLeft">

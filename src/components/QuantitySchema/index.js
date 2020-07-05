@@ -12,7 +12,7 @@ const QuantitySchema = (props) => {
   const unitJsonData = targetJsonData.properties[unitJsonKey];
 
   return (
-    <div className="element-wrap" key={nodeKey} indexRoute={indexRoute} keyRoute={keyRoute}>
+    <div className="element-wrap" key={nodeKey}>
       <Tooltip title={targetJsonData.description} placement="topLeft">
         <span className="element-name-span">{targetJsonData.title}</span>
       </Tooltip>
