@@ -9,6 +9,7 @@ import QuantitySchema from '$components/QuantitySchema/index';
 import RadioSchema from '$components/RadioSchema/index';
 import SelectSchema from '$components/SelectSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
+import TextAreaFormSchema from '$components/TextAreaFormSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -39,6 +40,12 @@ const MappingRender = (props) => {
       break;
     case 'select':
       return <SelectSchema {...props} key={nodeKey} />;
+      break;
+    case 'input':
+      return <InputFormSchema {...props} key={nodeKey} />;
+      break;
+    case 'textarea':
+      return <TextAreaFormSchema {...props} key={nodeKey} />;
       break;
     default:
       return <InputFormSchema {...props} key={nodeKey} />;
