@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+.base-schema-box {
+  position: relative;
+  min-height: 35px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .key-input-item {
+    flex: 1 1 200px;
+    padding-right: 8px;
+  }
+
+  .type-select-item {
+    flex: 0 1 120px;
+    padding-right: 8px;
+  }
+
+  .title-input-item {
+    flex: 0 1 200px;
+  }
+}

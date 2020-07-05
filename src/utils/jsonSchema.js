@@ -19,7 +19,7 @@ export function isJSONSchemaFormat(targetJsonObj) {
       targetJsonObj.title &&
       targetJsonObj.properties &&
       targetJsonObj.required &&
-      targetJsonObj['propertyOrder']
+      targetJsonObj.propertyOrder
     ) {
       isFormat = true;
     } else if (
@@ -27,7 +27,7 @@ export function isJSONSchemaFormat(targetJsonObj) {
       targetJsonObj.format &&
       targetJsonObj.title &&
       targetJsonObj.properties &&
-      targetJsonObj['propertyOrder']
+      targetJsonObj.propertyOrder
     ) {
       isFormat = true;
     } else if (targetJsonObj.format && targetJsonObj.title) {
@@ -47,13 +47,35 @@ export function isEmptySchema(targetJsonObj) {
     const curType = getCurrentFormat(targetJsonObj);
     if (
       curType === 'object' &&
-      targetJsonObj['propertyOrder'] &&
-      targetJsonObj['propertyOrder'].length > 0
+      targetJsonObj.properties &&
+      targetJsonObj.propertyOrder &&
+      targetJsonObj.propertyOrder.length > 0
     ) {
       isEmpty = false;
     }
   }
   return isEmpty;
+}
+
+/** 判断是否为用于区块配置的jsonSchema数据（
+ * 备注：一级字段必须为object（用于规避非法的jsonSchema数据，以及结构单一的jsonSchema数据）
+ * 且具备固定的三个子属性（func、style、data）
+ * */
+export function isUsedToJDWconfig(targetJsonObj) {
+  let isUsed = false;
+  if (targetJsonObj) {
+    const curType = getCurrentFormat(targetJsonObj);
+    if (
+      curType === 'object' &&
+      targetJsonObj.properties &&
+      targetJsonObj.func &&
+      targetJsonObj.style &&
+      targetJsonObj.data
+    ) {
+      isUsed = true;
+    }
+  }
+  return isUsed;
 }
 
 /** 根据索引路径获取对应的json数据  */
@@ -82,49 +104,13 @@ export function getJSONDataByIndex(
         curJsonSchemaObj = curJsonSchemaObj.items;
       } else {
         // 1、先根据路径值获取key值
-        const curKeyTemp = curJsonSchemaObj['propertyOrder'][curIndex];
+        const curKeyTemp = curJsonSchemaObj.propertyOrder[curIndex];
         // 2、根据key值获取对应的json数据对象
         curJsonSchemaObj = curJsonSchemaObj.properties[curKeyTemp];
       }
     }
   }
   return curJsonSchemaObj;
-}
-
-/**
- * 判断是否是同一个父元素
- * 备注：用于判断两个元素是否在同一个父级容器中
- */
-export function isSameParent(curIndex, targetIndex) {
-  const curIndexArr = curIndex.split('-');
-  const targetIndexArr = targetIndex.split('-');
-  curIndexArr.pop();
-  targetIndexArr.pop();
-  if (curIndexArr.join('-') === targetIndexArr.join('-')) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-/**
- * 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
- */
-export function getCurPosition(curIndex, targetIndex) {
-  const curIndexArr = curIndex.split('-');
-  const targetIndexArr = targetIndex.split('-');
-  let curPosition = 'before'; // 默认在目标元素的前面
-  // 使用短的路径进行遍历（避免空指针）
-  const forEachArr =
-    curIndexArr.length > targetIndexArr.length ? targetIndexArr : curIndexArr;
-  for (let index = 0, size = forEachArr.length; index < size; index += 1) {
-    const curIndexItem = Number(curIndexArr[index]);
-    const targetIndexItem = Number(targetIndexArr[index]);
-    if (curIndexItem > targetIndexItem) {
-      curPosition = 'after'; // 表示当前元素在目标元素的后面
-    }
-  }
-  return curPosition;
 }
 
 /** 获取当前字段的类型（format）
@@ -143,55 +129,6 @@ export function getCurrentFormat(targetJsonData) {
     }
   }
   return currentType;
-}
-
-/**
- * 获取父元素的路径值
- */
-export function getParentIndexRoute(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  curIndexArr.pop();
-  return curIndexArr.join('-');
-}
-
-/**
- * 获取下一个兄弟元素的路径值
- */
-export function getNextIndexRoute(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  const lastIndex = curIndexArr.pop();
-  const endIndex = Number(lastIndex) + 1;
-  curIndexArr.push(endIndex + '');
-  return curIndexArr.join('-');
-}
-
-/**
- * 获取父元素的路径值和当前index
- */
-export function getParentIndexRoute_CurIndex(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  const curIndex = curIndexArr.pop();
-  return [curIndexArr.join('-'), curIndex];
-}
-
-/**
- * 将当前路径值向前移动一位
- */
-export function moveForward(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  const curIndex = curIndexArr.pop();
-  curIndexArr.push(Number(curIndex) - 1);
-  return curIndexArr.join('-');
-}
-
-/**
- * 将当前路径值向后移动一位
- */
-export function moveBackward(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  const curIndex = curIndexArr.pop();
-  curIndexArr.push(Number(curIndex) + 1);
-  return curIndexArr.join('-');
 }
 
 /** 根据format判断是否是容器类型字段

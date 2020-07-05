@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.json-schema-container {
+.json-editor-container {
   position: relative;
   padding: 8px 10px;
 
@@ -14,7 +14,7 @@
   }
 }
 // 当jsonSchema数据对象为空时的占位样式
-.json-schema-empty {
+.json-editor-empty {
   position: relative;
   height: 50px;
   line-height: 50px;

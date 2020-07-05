@@ -1,14 +1,8 @@
 import React from 'react';
-import { Tree } from 'antd';
+import { Input, Tooltip, Tree } from 'antd';
 const { TreeNode } = Tree;
-import BaseFormSchema from '$components/BaseFormSchema/index';
 import MappingRender from '$components/MappingRender';
 import { getCurrentFormat } from '$utils/jsonSchema';
-
-/** 渲染当前字段的表单项（Tree的单项内容） */
-const getTreeNodeTitleCont = (params) => {
-  return <BaseFormSchema {...params} />;
-};
 
 /** 渲染properties中的元素
  *  通过遍历propertyOrder有序的获取key值，
@@ -51,66 +45,19 @@ const propertiesRender = (params) => {
   });
 };
 
-/** 渲染items中的元素 */
-const itemsRender = (props) => {
-  const { parentType, jsonKey, indexRoute, nodeKey, targetJsonData } = props;
-
-  return (
-    <TreeNode
-      className={'array-item-schema schema-item-form'}
-      id={nodeKey}
-      key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
-      disabled={true}
-      title={getTreeNodeTitleCont({
-        indexRoute,
-        jsonKey,
-        targetJsonData,
-        parentType,
-        nodeKey,
-        isFixed: true,
-      })}
-    >
-      {propertiesRender({
-        propertyOrder: targetJsonData.propertyOrder,
-        properties: targetJsonData.properties,
-        parentIndexRoute: indexRoute,
-        parentNodeKey: nodeKey,
-        parentType: 'array-object',
-      })}
-    </TreeNode>
-  );
-};
-
 /** Array类型渲染组件 */
 const ArraySchema = (props) => {
-  const { parentType, jsonKey, indexRoute, nodeKey, targetJsonData } = props;
-  const currentFormat = getCurrentFormat(targetJsonData);
+  const { indexRoute, nodeKey, keyRoute, targetJsonData } = props;
 
   return (
-    <TreeNode
-      className={`${currentFormat}-schema schema-item-form`}
-      id={nodeKey}
-      key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
-      title={getTreeNodeTitleCont({
-        indexRoute,
-        jsonKey,
-        targetJsonData,
-        parentType,
-        nodeKey,
-      })}
-    >
-      {itemsRender({
-        parentType: currentFormat,
-        jsonKey: `items`,
-        indexRoute: `${indexRoute}-0`,
-        nodeKey: `${nodeKey}-items`,
-        targetJsonData: targetJsonData.items,
-      })}
-    </TreeNode>
+    <div className="element-wrap" key={nodeKey} indexRoute={indexRoute} keyRoute={keyRoute}>
+      <Tooltip title={targetJsonData.description} placement="topLeft">
+        <span className="element-name-span">{targetJsonData.title}</span>
+      </Tooltip>
+      <div className="content-item">
+        数组元素内容[开发中]
+      </div>
+    </div>
   );
 };
 

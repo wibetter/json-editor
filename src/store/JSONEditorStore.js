@@ -49,4 +49,10 @@ export default class JSONEditorStore {
   getJSONDataByIndex(indexRoute) {
     return getJSONDataByIndex(indexRoute, this.jsonData, true); // useObjClone: true 避免后续产生数据联动
   }
+
+  /** 根据key路径更新对应的json数据  */
+  @action.bound
+  updateFormValueData() {
+    /** 待开发 */
+  }
 }

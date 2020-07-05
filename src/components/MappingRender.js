@@ -8,11 +8,11 @@ import EventSchema from '$components/EventSchema/index';
 import QuantitySchema from '$components/QuantitySchema/index';
 import RadioSchema from '$components/RadioSchema/index';
 import SelectSchema from '$components/SelectSchema/index';
-import GeneralSchema from '$components/GeneralSchema/index';
+import InputFormSchema from '$components/InputFormSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
-  const { targetJsonData } = props;
+  const { nodeKey, targetJsonData } = props;
   const curType = getCurrentFormat(targetJsonData); // 获取当前元素类型（format）
 
   switch (curType) {
@@ -20,28 +20,28 @@ const MappingRender = (props) => {
     case 'style':
     case 'data':
     case 'object':
-      return ObjectSchema(props);
+      return <ObjectSchema {...props} key={nodeKey} />;
       break;
     case 'array':
-      return ArraySchema(props);
+      return <ArraySchema {...props} key={nodeKey} />;
       break;
     case 'datasource':
-      return DataSourceSchema(props);
+      return <DataSourceSchema {...props} key={nodeKey} />;
       break;
     case 'event':
-      return EventSchema(props);
+      return <EventSchema {...props} key={nodeKey} />;
       break;
     case 'quantity':
-      return QuantitySchema(props);
+      return <QuantitySchema {...props} key={nodeKey} />;
       break;
     case 'radio':
-      return RadioSchema(props);
+      return <RadioSchema {...props} key={nodeKey} />;
       break;
     case 'select':
-      return SelectSchema(props);
+      return <SelectSchema {...props} key={nodeKey} />;
       break;
     default:
-      return GeneralSchema(props);
+      return <InputFormSchema {...props} key={nodeKey} />;
   }
 };
 

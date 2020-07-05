@@ -4,7 +4,7 @@ import { Provider } from 'mobx-react';
 import PropTypes from 'prop-types';
 
 import JSONStore from '$store/index';
-import JSONEditor from '$components/JSONEditor/index';
+import JSONDataEditor from '$components/JSONDataEditor/index';
 
 /**
  * JSONEditor功能组件
@@ -27,7 +27,7 @@ export default class JSONEditor extends React.PureComponent {
         JSONSchemaStore={JSONStore.JSONSchemaStore}
         JSONEditorStore={JSONStore.JSONEditorStore}
       >
-        <JSONEditor
+        <JSONDataEditor
           schemaData={schemaData}
           jsonData={jsonData}
           onChange={onChange}
