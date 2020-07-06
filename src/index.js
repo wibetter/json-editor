@@ -511,6 +511,7 @@ class IndexDemo extends React.PureComponent {
     const { jsonSchema, jsonData } = this.state;
     return (
       <JSONEditor
+        wideScreen={false}
         schemaData={jsonSchema}
         jsonData={jsonData}
         onChange={(e) => {

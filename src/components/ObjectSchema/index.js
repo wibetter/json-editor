@@ -18,24 +18,7 @@ class ObjectSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-    this.handleValueChange = this.handleValueChange.bind(this);
   }
-
-  /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
-  };
 
   render() {
     const {
