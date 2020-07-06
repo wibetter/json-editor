@@ -1,6 +1,9 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
-import { getJSONDataByKeyRoute, getParentKeyRoute_CurKey } from '$utils/jsonData';
+import {
+  getJSONDataByKeyRoute,
+  getParentKeyRoute_CurKey,
+} from '$utils/jsonData';
 import { objClone } from '$utils/index';
 
 /**
@@ -61,7 +64,10 @@ export default class JSONEditorStore {
     const parentKeyRoute = parentKeyRoute_CurKey[0];
     const curKey = parentKeyRoute_CurKey[1];
     // 2. 获取父级数据对象
-    const parentJsonDataObj = getJSONDataByKeyRoute(parentKeyRoute, this.jsonData);
+    const parentJsonDataObj = getJSONDataByKeyRoute(
+      parentKeyRoute,
+      this.jsonData,
+    );
     // 3. 数值更新
     parentJsonDataObj[curKey] = newVal;
     console.log(this.JSONSchemaObj);

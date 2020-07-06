@@ -22,26 +22,20 @@ class ColorFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     return (
       <div
@@ -64,7 +58,7 @@ class ColorFormSchema extends React.PureComponent {
             style={{ display: 'inline-block' }}
             className="color-item-form"
             type={'color'}
-            defaultValue={targetJsonData.default}
+            defaultValue={curJsonData || targetJsonData.default}
             onChange={this.handleValueChange}
           />
         </div>

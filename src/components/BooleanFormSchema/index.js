@@ -21,21 +21,20 @@ class BooleanFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (checked, event) => {
-    const {
-      keyRoute,
-      updateFormValueData,
-    } = this.props;
+    const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, checked); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     return (
       <div
@@ -56,7 +55,7 @@ class BooleanFormSchema extends React.PureComponent {
         <div className="content-item">
           <Switch
             style={{ display: 'inline-block' }}
-            defaultChecked={targetJsonData.default}
+            defaultChecked={curJsonData || targetJsonData.default}
             checkedChildren="true"
             unCheckedChildren="false"
             onChange={this.handleValueChange}

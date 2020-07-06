@@ -22,26 +22,20 @@ class RadioSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
       nodeKey,
       keyRoute,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     // 获取枚举值
     const enumKeys = targetJsonData.items.enum;
@@ -67,19 +61,21 @@ class RadioSchema extends React.PureComponent {
           <Radio.Group
             style={{ display: 'inline-block' }}
             onChange={this.handleValueChange}
-            defaultValue={targetJsonData.default}
+            defaultValue={curJsonData || targetJsonData.default}
           >
             {enumKeys &&
-            enumKeys.length > 0 &&
-            enumKeys.map((enumKey, enumIndex) => {
-              /** 1. 获取当前enum的title */
-              const enumText = enumTexts[enumIndex];
-              /** 2. 获取当前元素的id，用于做唯一标识 */
-              const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
-              return (
-                <Radio value={enumKey} key={enumNodeKey}>{enumText}</Radio>
-              );
-            })}
+              enumKeys.length > 0 &&
+              enumKeys.map((enumKey, enumIndex) => {
+                /** 1. 获取当前enum的title */
+                const enumText = enumTexts[enumIndex];
+                /** 2. 获取当前元素的id，用于做唯一标识 */
+                const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+                return (
+                  <Radio value={enumKey} key={enumNodeKey}>
+                    {enumText}
+                  </Radio>
+                );
+              })}
           </Radio.Group>
         </div>
       </div>

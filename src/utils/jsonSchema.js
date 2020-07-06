@@ -118,11 +118,7 @@ export function getJSONDataByIndex(
 export function getCurrentFormat(targetJsonData) {
   let currentType = targetJsonData.format;
   if (!currentType) {
-    if (
-      targetJsonData.type === 'object' ||
-      targetJsonData.type === 'array' ||
-      targetJsonData.type === 'string'
-    ) {
+    if (targetJsonData.type) {
       currentType = targetJsonData.type;
     } else {
       currentType = 'input';

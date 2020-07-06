@@ -22,10 +22,7 @@ class InputFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const {
-      keyRoute,
-      updateFormValueData,
-    } = this.props;
+    const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, value); // 更新数值
   };
 
@@ -37,7 +34,7 @@ class InputFormSchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
-
+    // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     return (
@@ -62,7 +59,7 @@ class InputFormSchema extends React.PureComponent {
             placeholder={
               targetJsonData.placeholder || `请输入${targetJsonData.title}`
             }
-            defaultValue={ curJsonData || targetJsonData.default }
+            defaultValue={curJsonData || targetJsonData.default}
             onPressEnter={this.handleValueChange}
             onBlur={this.handleValueChange}
           />
