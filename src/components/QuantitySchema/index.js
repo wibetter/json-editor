@@ -3,8 +3,6 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, message, Tooltip } from 'antd';
 
-let currentUint = ''; // 记录当前最新的单位
-
 class QuantitySchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
@@ -41,10 +39,9 @@ class QuantitySchema extends React.PureComponent {
     // const quantityJsonSchema = targetJsonData.properties && targetJsonData.properties.quantity;
     const unitJsonSchema = targetJsonData.properties && targetJsonData.properties.unit;
     const unitText = curJsonData.quantity;
-    currentUint = unitText === 'percent' ? '%' : unitText;
 
     const unitAfter = (
-      <span>{currentUint}</span>
+      <span>{unitText === 'percent' ? '%' : unitText}</span>
     );
 
     return (
