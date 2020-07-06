@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Checkbox, message, Radio, Tooltip } from 'antd';
 
 class SelectSchema extends React.PureComponent {
   static propTypes = {
@@ -42,6 +42,9 @@ class SelectSchema extends React.PureComponent {
       targetJsonData,
       pageScreen,
     } = this.props;
+    // 获取枚举值
+    const enumKeys = targetJsonData.items.enum;
+    const enumTexts = targetJsonData.items.enumextra;
 
     return (
       <div
@@ -58,7 +61,25 @@ class SelectSchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Select元素内容[开发中]</div>
+        <div className="content-item">
+          <Checkbox.Group
+            style={{ display: 'inline-block' }}
+            onChange={this.handleValueChange}
+            defaultValue={targetJsonData.default}
+          >
+            {enumKeys &&
+            enumKeys.length > 0 &&
+            enumKeys.map((enumKey, enumIndex) => {
+              /** 1. 获取当前enum的title */
+              const enumText = enumTexts[enumIndex];
+              /** 2. 获取当前元素的id，用于做唯一标识 */
+              const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+              return (
+                <Checkbox value={enumKey} key={enumNodeKey}>{enumText}</Checkbox>
+              );
+            })}
+          </Checkbox.Group>
+        </div>
       </div>
     );
   }

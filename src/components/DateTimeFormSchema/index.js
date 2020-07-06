@@ -6,8 +6,8 @@ import { getCurrentFormat } from '$utils/jsonSchema';
 
 const DateTypeList = {
   'date-time': 'YYYY-MM-DD HH:mm',
-  'date': 'YYYY-MM-DD',
-  'time': 'HH:mm',
+  date: 'YYYY-MM-DD',
+  time: 'HH:mm',
 };
 
 class DateTimeFormSchema extends React.PureComponent {
