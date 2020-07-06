@@ -20,28 +20,21 @@ class NumberFormSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+  handleValueChange = (newVal) => {
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, newVal); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     return (
       <div
@@ -51,6 +44,7 @@ class NumberFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -66,7 +60,7 @@ class NumberFormSchema extends React.PureComponent {
             }
             min={targetJsonData.minimum || 0}
             max={targetJsonData.maximum || 1000}
-            defaultValue={targetJsonData.default}
+            defaultValue={curJsonData || targetJsonData.default}
             onChange={this.handleValueChange}
           />
         </div>
@@ -77,6 +71,6 @@ class NumberFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(NumberFormSchema));

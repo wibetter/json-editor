@@ -20,28 +20,21 @@ class BooleanFormSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+  handleValueChange = (checked, event) => {
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, checked); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     return (
       <div
@@ -51,6 +44,7 @@ class BooleanFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -61,7 +55,7 @@ class BooleanFormSchema extends React.PureComponent {
         <div className="content-item">
           <Switch
             style={{ display: 'inline-block' }}
-            defaultChecked={targetJsonData.default}
+            defaultChecked={curJsonData || targetJsonData.default}
             checkedChildren="true"
             unCheckedChildren="false"
             onChange={this.handleValueChange}
@@ -74,6 +68,6 @@ class BooleanFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(BooleanFormSchema));

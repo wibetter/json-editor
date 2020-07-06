@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { DatePicker, message, Tooltip } from 'antd';
 import { getCurrentFormat } from '$utils/jsonSchema';
 
@@ -27,30 +28,24 @@ class DateTimeFormSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (time, timeString) => {
-    console.log(timeString);
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+  handleValueChange = (event, dateString) => {
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, dateString); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
     const curFormat = getCurrentFormat(targetJsonData);
     const timeFormat = DateTypeList[curFormat] || DateTypeList[0];
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const defaultTime = curJsonData || targetJsonData.default;
 
     return (
       <div
@@ -60,6 +55,7 @@ class DateTimeFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -70,12 +66,12 @@ class DateTimeFormSchema extends React.PureComponent {
         <div className="content-item">
           <DatePicker
             style={{ display: 'inline-block' }}
-            showTime
+            showTime={curFormat === 'date-time' ?  true : false}
             format={timeFormat}
             placeholder={
               targetJsonData.placeholder || `请输入${targetJsonData.title}`
             }
-            defaultValue={targetJsonData.default}
+            defaultValue={defaultTime && moment(defaultTime, timeFormat)}
             onChange={this.handleValueChange}
           />
         </div>
@@ -86,6 +82,6 @@ class DateTimeFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(DateTimeFormSchema));

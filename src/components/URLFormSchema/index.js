@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, Select, message, Tooltip } from 'antd';
-const { Option } = Select;
+import { Input, message, Tooltip } from 'antd';
 
 class URLFormSchema extends React.PureComponent {
   static propTypes = {
@@ -23,34 +22,28 @@ class URLFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
-
-    const selectBefore = (
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    /*const selectBefore = (
       <Select defaultValue="http://" className="select-before">
         <Option value="http://">http://</Option>
         <Option value="https://">https://</Option>
         <Option value="#">#(routeHash)</Option>
       </Select>
-    );
+    );*/
+    /*addonBefore={selectBefore}*/
 
     return (
       <div
@@ -60,6 +53,7 @@ class URLFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -70,12 +64,12 @@ class URLFormSchema extends React.PureComponent {
         <div className="content-item">
           <Input
             style={{ display: 'inline-block' }}
-            addonBefore={selectBefore}
             placeholder={
               targetJsonData.placeholder || `请输入${targetJsonData.title}`
             }
-            defaultValue={targetJsonData.default}
-            onChange={this.handleValueChange}
+            defaultValue={curJsonData || targetJsonData.default}
+            onPressEnter={this.handleValueChange}
+            onBlur={this.handleValueChange}
           />
         </div>
       </div>
@@ -85,6 +79,6 @@ class URLFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(URLFormSchema));

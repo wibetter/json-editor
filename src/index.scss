@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+body {
+  padding: 8px 12px;
+}
+
 /* 设置滚动条的样式 */
 ::-webkit-scrollbar {
   width: 6px;

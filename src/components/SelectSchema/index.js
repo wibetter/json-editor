@@ -20,28 +20,21 @@ class SelectSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+  handleValueChange = (checkedValue) => {
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, checkedValue); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
       nodeKey,
       keyRoute,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 获取枚举值
     const enumKeys = targetJsonData.items.enum;
     const enumTexts = targetJsonData.items.enumextra;
@@ -54,6 +47,7 @@ class SelectSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -65,19 +59,21 @@ class SelectSchema extends React.PureComponent {
           <Checkbox.Group
             style={{ display: 'inline-block' }}
             onChange={this.handleValueChange}
-            defaultValue={targetJsonData.default}
+            defaultValue={curJsonData || targetJsonData.default}
           >
             {enumKeys &&
-            enumKeys.length > 0 &&
-            enumKeys.map((enumKey, enumIndex) => {
-              /** 1. 获取当前enum的title */
-              const enumText = enumTexts[enumIndex];
-              /** 2. 获取当前元素的id，用于做唯一标识 */
-              const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
-              return (
-                <Checkbox value={enumKey} key={enumNodeKey}>{enumText}</Checkbox>
-              );
-            })}
+              enumKeys.length > 0 &&
+              enumKeys.map((enumKey, enumIndex) => {
+                /** 1. 获取当前enum的title */
+                const enumText = enumTexts[enumIndex];
+                /** 2. 获取当前元素的id，用于做唯一标识 */
+                const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+                return (
+                  <Checkbox value={enumKey} key={enumNodeKey}>
+                    {enumText}
+                  </Checkbox>
+                );
+              })}
           </Checkbox.Group>
         </div>
       </div>
@@ -87,6 +83,6 @@ class SelectSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(SelectSchema));

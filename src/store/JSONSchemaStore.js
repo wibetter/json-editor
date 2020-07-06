@@ -20,7 +20,7 @@ export default class JSONSchemaStore {
   /**
    * 宽屏（wideScreen） or 小屏（mobileScreen）
    */
-  @observable pageScreen = 'mobileScreen'; // 默认宽屏: wideScreen，小屏：mobileScreen
+  @observable pageScreen = 'wideScreen'; // 默认宽屏: wideScreen，小屏：mobileScreen
   /**
    * jsonSchema: JSONSchema数据对象
    */
