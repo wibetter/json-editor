@@ -12,7 +12,7 @@ export const initColorData = {
   type: 'string',
   title: '颜色值',
   format: 'color',
-  default: '#fff', // 默认值
+  default: '#ffffff', // 默认值
   description: '', // 字段项的说明和描述
   isRequired: false,
   readOnly: false,

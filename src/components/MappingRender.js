@@ -15,6 +15,7 @@ import BooleanFormSchema from '$components/BooleanFormSchema/index';
 import DateTimeFormSchema from '$components/DateTimeFormSchema/index';
 import TimeFormSchema from '$components/TimeFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
+import ColorFormSchema from '$components/ColorFormSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -67,6 +68,9 @@ const MappingRender = (props) => {
       break;
     case 'url':
       return <URLFormSchema {...props} key={nodeKey} />;
+      break;
+    case 'color':
+      return <ColorFormSchema {...props} key={nodeKey} />;
       break;
     default:
       return <InputFormSchema {...props} key={nodeKey} />;

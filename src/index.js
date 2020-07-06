@@ -250,9 +250,8 @@ class IndexDemo extends React.PureComponent {
                 title: '颜色值',
                 format: 'color',
                 isRequired: false,
-                default: '#fff',
-                description: '',
-                placeholder: '',
+                default: '#ffffff',
+                description: '点击选择对应的颜色值',
                 readOnly: false,
               },
               field_19: {
