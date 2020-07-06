@@ -206,7 +206,7 @@
           "properties": {
             "unit": {
               "type": "number",
-              "description": "数量"
+              "description": "单位数值"
             },
             "quantity": {
               "type": "string",

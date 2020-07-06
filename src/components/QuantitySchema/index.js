@@ -3,6 +3,8 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, message, Tooltip } from 'antd';
 
+let currentUint = ''; // 记录当前最新的单位
+
 class QuantitySchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
@@ -22,26 +24,28 @@ class QuantitySchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(`${keyRoute}-unit`, value); // 更新单位数值
   };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+    // 从jsonData中获取对应的数值
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    // const quantityJsonSchema = targetJsonData.properties && targetJsonData.properties.quantity;
+    const unitJsonSchema = targetJsonData.properties && targetJsonData.properties.unit;
+    const unitText = curJsonData.quantity;
+    currentUint = unitText === 'percent' ? '%' : unitText;
+
+    const unitAfter = (
+      <span>{currentUint}</span>
+    );
 
     return (
       <div
@@ -59,7 +63,20 @@ class QuantitySchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Quantity元素内容[开发中]</div>
+        <div className="content-item">
+          <Input
+            style={{ display: 'inline-block' }}
+            addonAfter={unitAfter}
+            placeholder={
+              unitJsonSchema.placeholder || targetJsonData.placeholder
+              || `请输入${unitJsonSchema.title}`
+              || `请输入${targetJsonData.title}`
+            }
+            defaultValue={curJsonData.unit || unitJsonSchema.default}
+            onPressEnter={this.handleValueChange}
+            onBlur={this.handleValueChange}
+          />
+        </div>
       </div>
     );
   }

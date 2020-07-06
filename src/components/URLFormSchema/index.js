@@ -36,14 +36,6 @@ class URLFormSchema extends React.PureComponent {
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    /*const selectBefore = (
-      <Select defaultValue="http://" className="select-before">
-        <Option value="http://">http://</Option>
-        <Option value="https://">https://</Option>
-        <Option value="#">#(routeHash)</Option>
-      </Select>
-    );*/
-    /*addonBefore={selectBefore}*/
 
     return (
       <div
