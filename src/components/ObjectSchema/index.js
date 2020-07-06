@@ -69,7 +69,11 @@ class ObjectSchema extends React.PureComponent {
         {!isFirstSchema && !targetJsonData.description && (
           <div className="element-title">{targetJsonData.title}</div>
         )}
-        <div className={isFirstSchema ? 'content-item' : 'content-item object-content'}>
+        <div
+          className={
+            isFirstSchema ? 'content-item' : 'content-item object-content'
+          }
+        >
           {targetJsonData.propertyOrder &&
             targetJsonData.propertyOrder.map((key, index) => {
               /** 1. 获取当前元素的路径值 */

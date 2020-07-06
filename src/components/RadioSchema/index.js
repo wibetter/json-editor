@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Radio, message, Tooltip, Input } from 'antd';
 
 class RadioSchema extends React.PureComponent {
   static propTypes = {
@@ -43,6 +43,10 @@ class RadioSchema extends React.PureComponent {
       pageScreen,
     } = this.props;
 
+    // 获取枚举值
+    const enumKeys = targetJsonData.items.enum;
+    const enumTexts = targetJsonData.items.enumextra;
+
     return (
       <div
         className={
@@ -58,7 +62,25 @@ class RadioSchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Radio元素内容[开发中]</div>
+        <div className="content-item">
+          <Radio.Group
+            style={{ display: 'inline-block' }}
+            onChange={this.handleValueChange}
+            defaultValue={targetJsonData.default}
+          >
+            {enumKeys &&
+            enumKeys.length > 0 &&
+            enumKeys.map((enumKey, enumIndex) => {
+              /** 1. 获取当前enum的title */
+              const enumText = enumTexts[enumIndex];
+              /** 2. 获取当前元素的id，用于做唯一标识 */
+              const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+              return (
+                <Radio value={enumKey} key={enumNodeKey}>{enumText}</Radio>
+              );
+            })}
+          </Radio.Group>
+        </div>
       </div>
     );
   }
