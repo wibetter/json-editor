@@ -23,25 +23,22 @@ class InputFormSchema extends React.PureComponent {
   handleValueChange = (event) => {
     const { value } = event.target;
     const {
-      indexRoute,
-      jsonKey,
+      keyRoute,
       updateFormValueData,
-      targetJsonData,
     } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+    updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
     const {
-      indexRoute,
       nodeKey,
       keyRoute,
       targetJsonData,
       pageScreen,
+      getJSONDataByKeyRoute,
     } = this.props;
+
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     return (
       <div
@@ -51,6 +48,7 @@ class InputFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -64,8 +62,9 @@ class InputFormSchema extends React.PureComponent {
             placeholder={
               targetJsonData.placeholder || `请输入${targetJsonData.title}`
             }
-            defaultValue={targetJsonData.default}
-            onChange={this.handleValueChange}
+            defaultValue={ curJsonData || targetJsonData.default }
+            onPressEnter={this.handleValueChange}
+            onBlur={this.handleValueChange}
           />
         </div>
       </div>
@@ -75,6 +74,6 @@ class InputFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(InputFormSchema));

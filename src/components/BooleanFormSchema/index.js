@@ -20,18 +20,12 @@ class BooleanFormSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
+  handleValueChange = (checked, event) => {
     const {
-      indexRoute,
-      jsonKey,
+      keyRoute,
       updateFormValueData,
-      targetJsonData,
     } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
+    updateFormValueData(keyRoute, checked); // 更新数值
   };
 
   render() {
@@ -51,6 +45,7 @@ class BooleanFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -74,6 +69,6 @@ class BooleanFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(BooleanFormSchema));

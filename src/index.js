@@ -12,709 +12,498 @@ class IndexDemo extends React.PureComponent {
 
     this.state = {
       jsonSchema: {
-        type: 'object',
-        title: 'jsonSchemaObject',
-        properties: {
-          func: {
-            type: 'object',
-            format: 'func',
-            title: '功能设置',
-            readOnly: true,
-            properties: {
-              field_1: {
-                type: 'string',
-                title: '单文本框',
-                format: 'input',
-                isRequired: false,
-                default: '',
-                description: '测试一下',
-                placeholder: '',
-                readOnly: false,
+        "type": "object",
+        "title": "empty object",
+        "properties": {
+          "func": {
+            "type": "object",
+            "format": "func",
+            "description": "功能设置",
+            "readOnly": true,
+            "properties": {
+              "message": {
+                "type": "string",
+                "format": "input",
+                "description": "设置提示内容"
               },
-              field_2: {
-                type: 'boolean',
-                title: '布尔值',
-                format: 'boolean',
-                isRequired: false,
-                default: true,
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "linkText": {
+                "type": "string",
+                "format": "input",
+                "description": "设置跳转链接文字"
               },
-              field_3: {
-                type: 'string',
-                title: '日期',
-                format: 'date',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "msgType": {
+                "type": "string",
+                "format": "radio",
+                "enum": [
+                  "succ",
+                  "warn",
+                  "error"
+                ],
+                "enumextra": [
+                  "成功",
+                  "提醒",
+                  "错误"
+                ],
+                "description": "提示类型"
               },
-              field_4: {
-                type: 'string',
-                title: '日期',
-                format: 'date-time',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "field_1": {
+                "type": "string",
+                "description": "单文本框",
+                "format": "input"
               },
-              field_5: {
-                type: 'string',
-                title: '时间',
-                format: 'time',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "field_2": {
+                "type": "string",
+                "format": "date",
+                "description": "Date"
               },
-              field_6: {
-                type: 'string',
-                title: 'URL',
-                format: 'url',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "field_3": {
+                "type": "boolean",
+                "description": "布尔值",
+                "format": "boolean"
               },
-              field_7: {
-                type: 'string',
-                title: '多行文本框',
-                format: 'textarea',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "field_4": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Datetime"
               },
-              field_8: {
-                type: 'number',
-                title: '数值',
-                format: 'number',
-                isRequired: false,
-                default: 50,
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                minimum: 0,
-                maximum: 100,
+              "field_5": {
+                "type": "string",
+                "format": "time",
+                "description": "Time"
               },
-              field_9: {
-                type: 'string',
-                title: '单选',
-                format: 'radio',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'string',
-                  enum: ['a', 'b', 'c'],
-                  enumextra: ['选项a', '选项b', '选项c'],
+              "field_6": {
+                "type": "string",
+                "format": "url",
+                "description": "Url"
+              },
+              "field_7": {
+                "type": "string",
+                "format": "textarea",
+                "description": "多行文本框"
+              },
+              "field_8": {
+                "type": "number",
+                "default": "50",
+                "minimum": 0,
+                "maximum": 100,
+                "description": "Number"
+              },
+              "field_9": {
+                "type": "string",
+                "format": "radio",
+                "enum": [
+                  "a",
+                  "b"
+                ],
+                "enumextra": [
+                  "选项a",
+                  "选项b"
+                ],
+                "description": "单选"
+              },
+              "field_10": {
+                "type": "array",
+                "format": "select",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "a",
+                    "b",
+                    "c"
+                  ],
+                  "enumextra": [
+                    "选项a",
+                    "选项b",
+                    "选项c"
+                  ]
                 },
+                "uniqueItems": true,
+                "description": "多选"
               },
-              field_10: {
-                type: 'array',
-                title: '多选',
-                format: 'select',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'string',
-                  enum: ['a', 'b', 'c'],
-                  enumextra: ['选项a', '选项b', '选项c'],
-                },
-              },
-              field_11: {
-                type: 'array',
-                title: '数组',
-                format: 'array',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'object',
-                  format: 'object',
-                  title: '数组项',
-                  readOnly: false,
-                  isRequired: false,
-                  description: '',
-                  properties: {
-                    name: {
-                      type: 'string',
-                      format: 'input',
-                      title: '名字',
-                      isRequired: false,
-                      default: '',
-                      description: '',
-                      placeholder: '',
-                      readOnly: false,
+              "field_11": {
+                "type": "array",
+                "format": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "format": "input",
+                      "description": "名字"
                     },
+                    "field_12": {
+                      "type": "string",
+                      "description": "单文本框",
+                      "format": "input"
+                    }
                   },
-                  required: ['name'],
-                  propertyOrder: ['name'],
+                  "description": "数组项",
+                  "required": [
+                    "field_12"
+                  ]
                 },
+                "description": "数组",
+                "required": [
+                  "type"
+                ]
               },
-              field_12: {
-                type: 'object',
-                title: '对象类型',
-                format: 'object',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                properties: {
-                  a: {
-                    type: 'string',
-                    title: '单文本框',
-                    format: 'input',
-                    isRequired: false,
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    readOnly: false,
+              "field_13": {
+                "type": "object",
+                "format": "object",
+                "properties": {
+                  "a": {
+                    "type": "string",
+                    "description": "单文本框",
+                    "format": "input"
                   },
+                  "field_14": {
+                    "type": "string",
+                    "description": "单文本框",
+                    "format": "input"
+                  }
                 },
-                required: ['a'],
-                propertyOrder: ['a'],
-              },
+                "description": "普通对象",
+                "required": [
+                  "a",
+                  "field_14"
+                ]
+              }
             },
-            required: [
-              'field_1',
-              'field_2',
-              'field_3',
-              'field_4',
-              'field_5',
-              'field_6',
-              'field_7',
-              'field_8',
-              'field_9',
-              'field_10',
-              'field_11',
-              'field_12',
-            ],
-            propertyOrder: [
-              'field_1',
-              'field_2',
-              'field_3',
-              'field_4',
-              'field_5',
-              'field_6',
-              'field_7',
-              'field_8',
-              'field_9',
-              'field_10',
-              'field_11',
-              'field_12',
-            ],
+            "required": [
+              "message",
+              "linkText",
+              "msgType",
+              "field_1",
+              "field_2",
+              "field_3",
+              "field_4",
+              "field_5",
+              "field_6",
+              "field_7",
+              "field_8",
+              "field_9",
+              "field_10",
+              "field_11",
+              "field_13"
+            ]
           },
-          style: {
-            type: 'object',
-            format: 'style',
-            title: '样式设置',
-            readOnly: true,
-            properties: {
-              field_16: {
-                type: 'string',
-                title: '单文本框',
-                format: 'input',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+          "style": {
+            "type": "object",
+            "format": "style",
+            "description": "样式设置",
+            "readOnly": true,
+            "properties": {
+              "isShowLink": {
+                "type": "boolean",
+                "description": "是否显示跳转链接",
+                "format": "boolean"
               },
-              field_17: {
-                type: 'boolean',
-                title: '布尔值',
-                format: 'boolean',
-                isRequired: false,
-                default: true,
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "backColor": {
+                "type": "string",
+                "format": "color",
+                "description": "背景色"
               },
-              field_18: {
-                type: 'string',
-                title: '颜色值',
-                format: 'color',
-                isRequired: false,
-                default: '#ffffff',
-                description: '点击选择对应的颜色值',
-                readOnly: false,
+              "field_15": {
+                "type": "string",
+                "description": "单文本框",
+                "format": "input"
               },
-              field_19: {
-                type: 'string',
-                title: 'URL',
-                format: 'url',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+              "field_16": {
+                "type": "boolean",
+                "description": "布尔值",
+                "format": "boolean"
               },
-              field_20: {
-                type: 'number',
-                title: '数值',
-                format: 'number',
-                isRequired: false,
-                default: 50,
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                minimum: 0,
-                maximum: 100,
-              },
-              field_21: {
-                type: 'string',
-                title: '单选',
-                format: 'radio',
-                isRequired: false,
-                default: 'b',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'string',
-                  enum: ['a', 'b', 'c'],
-                  enumextra: ['选项a', '选项b', '选项c'],
-                },
-              },
-              field_22: {
-                type: 'array',
-                title: '多选',
-                format: 'select',
-                isRequired: false,
-                default: ['a', 'b'],
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'string',
-                  enum: ['a', 'b', 'c'],
-                  enumextra: ['选项a', '选项b', '选项c'],
-                },
-              },
-              field_23: {
-                type: 'object',
-                title: '单位计量输入',
-                format: 'quantity',
-                isRequired: false,
-                default: '',
-                description: '单位计量输入',
-                placeholder: '',
-                readOnly: false,
-                properties: {
-                  unit: {
-                    type: 'number',
-                    title: '数值',
+              "field_17": {
+                "type": "object",
+                "format": "quantity",
+                "properties": {
+                  "unit": {
+                    "type": "number",
+                    "description": "数量"
                   },
-                  quantity: {
-                    type: 'string',
-                    default: 'px',
-                    format: 'quantitySelect',
-                    enum: ['px', 'rem', 'em', '%'],
-                    enumextra: ['px', 'rem', 'em', '%'],
-                    title: '单位',
-                  },
+                  "quantity": {
+                    "type": "string",
+                    "default": "px",
+                    "format": "quantitySelect",
+                    "enum": [
+                      "px",
+                      "rem",
+                      "em",
+                      "percent"
+                    ],
+                    "enumextra": [
+                      "px",
+                      "rem",
+                      "em",
+                      "percent"
+                    ],
+                    "description": "单位"
+                  }
                 },
-                required: ['unit', 'quantity'],
-                propertyOrder: ['unit', 'quantity'],
+                "description": "单位计量输入",
+                "required": [
+                  "unit",
+                  "quantity"
+                ]
               },
-              field_24: {
-                type: 'array',
-                title: '数组',
-                format: 'array',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'object',
-                  format: 'object',
-                  title: '数组项',
-                  readOnly: false,
-                  isRequired: false,
-                  description: '',
-                  properties: {
-                    name: {
-                      type: 'string',
-                      format: 'input',
-                      title: '名字',
-                      isRequired: false,
-                      default: '',
-                      description: '',
-                      placeholder: '',
-                      readOnly: false,
+              "field_18": {
+                "type": "array",
+                "format": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "format": "input",
+                      "description": "名字"
                     },
+                    "field_19": {
+                      "type": "string",
+                      "description": "单文本框",
+                      "format": "input"
+                    }
                   },
-                  required: ['name'],
-                  propertyOrder: ['name'],
+                  "description": "数组项",
+                  "required": [
+                    "field_19"
+                  ]
                 },
+                "description": "数组",
+                "required": [
+                  "type"
+                ]
               },
-              field_25: {
-                type: 'object',
-                title: '对象类型',
-                format: 'object',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                properties: {
-                  a: {
-                    type: 'string',
-                    title: '单文本框',
-                    format: 'input',
-                    isRequired: false,
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    readOnly: false,
+              "field_22": {
+                "type": "string",
+                "format": "color",
+                "description": "Color"
+              },
+              "field_20": {
+                "type": "object",
+                "format": "object",
+                "properties": {
+                  "a": {
+                    "type": "string",
+                    "description": "单文本框",
+                    "format": "input"
                   },
+                  "field_21": {
+                    "type": "string",
+                    "description": "单文本框",
+                    "format": "input"
+                  }
                 },
-                required: ['a'],
-                propertyOrder: ['a'],
-              },
+                "description": "普通对象",
+                "required": [
+                  "a",
+                  "field_21"
+                ]
+              }
             },
-            required: [
-              'field_16',
-              'field_17',
-              'field_18',
-              'field_19',
-              'field_20',
-              'field_21',
-              'field_22',
-              'field_23',
-              'field_24',
-              'field_25',
-            ],
-            propertyOrder: [
-              'field_16',
-              'field_17',
-              'field_18',
-              'field_19',
-              'field_20',
-              'field_21',
-              'field_22',
-              'field_23',
-              'field_24',
-              'field_25',
-            ],
+            "required": [
+              "backColor",
+              "isShowLink",
+              "field_15",
+              "field_16",
+              "field_17",
+              "field_18",
+              "field_20",
+              "field_22"
+            ]
           },
-          data: {
-            type: 'object',
-            format: 'data',
-            title: '数据设置',
-            readOnly: true,
-            properties: {
-              field_26: {
-                type: 'string',
-                title: '单文本框',
-                format: 'input',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
+          "data": {
+            "type": "object",
+            "format": "data",
+            "description": "数据设置",
+            "readOnly": true,
+            "properties": {
+              "linkHref": {
+                "type": "string",
+                "description": "设置跳转链接地址",
+                "format": "input"
               },
-              field_27: {
-                type: 'number',
-                title: '数值',
-                format: 'number',
-                isRequired: false,
-                default: 50,
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                minimum: 0,
-                maximum: 100,
+              "field_23": {
+                "type": "string",
+                "format": "json",
+                "description": "JSON"
               },
-              field_28: {
-                type: 'string',
-                title: 'json数据项',
-                format: 'json',
-                isRequired: false,
-                default: '{}',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-              },
-              field_29: {
-                type: 'object',
-                title: '数据源',
-                format: 'datasource',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                properties: {
-                  type: {
-                    type: 'string',
-                    default: 'local',
-                    format: 'typeSelect',
-                    enum: ['local', 'remote'],
-                    enumextra: ['local', 'remote'],
-                    title: '类型',
+              "field_24": {
+                "type": "object",
+                "format": "datasource",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "default": "local",
+                    "format": "typeSelect",
+                    "enum": [
+                      "local",
+                      "remote"
+                    ],
+                    "enumextra": [
+                      "local",
+                      "remote"
+                    ],
+                    "description": "类型"
                   },
-                  data: {
-                    type: 'string',
-                    format: 'typeSelectData',
-                    default: 'local',
-                    readOnlyInJson: false,
+                  "data": {
+                    "type": "string",
+                    "format": "typeSelectData",
+                    "default": "local",
+                    "readOnlyInJson": false
                   },
-                  filter: {
-                    type: 'string',
-                    format: 'textarea',
-                    default: 'return data;',
-                    title: '过滤器',
-                  },
+                  "filter": {
+                    "type": "string",
+                    "format": "textarea",
+                    "default": "return data;",
+                    "description": "过滤器"
+                  }
                 },
-                required: ['type', 'data', 'filter'],
-                propertyOrder: ['type', 'data', 'filter'],
+                "description": "数据源",
+                "required": [
+                  "name",
+                  "filter",
+                  "type"
+                ]
               },
-              field_30: {
-                type: 'object',
-                title: '事件',
-                format: 'event',
-                isRequired: false,
-                readOnly: false,
-                properties: {
-                  type: {
-                    type: 'string',
-                    default: 'out',
-                    format: 'typeSelect',
-                    enum: ['in', 'out'],
-                    enumextra: ['in', 'out'],
-                    title: '类型',
-                    readOnlyInJson: false,
+              "field_25": {
+                "type": "object",
+                "format": "event",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "default": "out",
+                    "format": "typeSelect",
+                    "enum": [
+                      "in",
+                      "out"
+                    ],
+                    "enumextra": [
+                      "in",
+                      "out"
+                    ],
+                    "description": "类型",
+                    "readOnlyInJson": false
                   },
-                  filter: {
-                    type: 'string',
-                    format: 'textarea',
-                    default: 'return data;',
-                    title: '过滤器',
-                  },
+                  "filter": {
+                    "type": "string",
+                    "format": "textarea",
+                    "default": "return data;",
+                    "description": "过滤器"
+                  }
                 },
-                required: ['type', 'data', 'filter'],
-                propertyOrder: ['type', 'data', 'filter'],
+                "description": "事件",
+                "required": [
+                  "name",
+                  "filter",
+                  "type"
+                ]
               },
-              field_31: {
-                type: 'object',
-                title: '对象类型',
-                format: 'object',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                properties: {
-                  a: {
-                    type: 'string',
-                    title: '单文本框',
-                    format: 'input',
-                    isRequired: false,
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    readOnly: false,
+              "field_26": {
+                "type": "object",
+                "format": "object",
+                "properties": {
+                  "a": {
+                    "type": "string",
+                    "description": "单文本框",
+                    "format": "input"
                   },
+                  "field_27": {
+                    "type": "string",
+                    "description": "单文本框",
+                    "format": "input"
+                  }
                 },
-                required: ['a'],
-                propertyOrder: ['a'],
-              },
-              field_33: {
-                type: 'array',
-                title: '数组',
-                format: 'array',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                items: {
-                  type: 'object',
-                  format: 'object',
-                  title: '数组项',
-                  readOnly: false,
-                  isRequired: false,
-                  description: '',
-                  properties: {
-                    name: {
-                      type: 'string',
-                      format: 'input',
-                      title: '名字',
-                      isRequired: false,
-                      default: '',
-                      description: '',
-                      placeholder: '',
-                      readOnly: false,
-                    },
-                    field_2: {
-                      type: 'array',
-                      title: '数组',
-                      format: 'array',
-                      isRequired: false,
-                      default: '',
-                      description: '',
-                      placeholder: '',
-                      readOnly: false,
-                      items: {
-                        type: 'object',
-                        format: 'object',
-                        title: '数组项',
-                        readOnly: false,
-                        isRequired: false,
-                        description: '',
-                        properties: {
-                          name: {
-                            type: 'string',
-                            format: 'input',
-                            title: '名字',
-                            isRequired: false,
-                            default: '',
-                            description: '',
-                            placeholder: '',
-                            readOnly: false,
-                          },
-                          field_3: {
-                            type: 'string',
-                            title: '单文本框',
-                            format: 'input',
-                            isRequired: false,
-                            default: '',
-                            description: '',
-                            placeholder: '',
-                            readOnly: false,
-                          },
-                          field_5: {
-                            type: 'string',
-                            title: '单文本框',
-                            format: 'input',
-                            isRequired: false,
-                            default: '',
-                            description: '',
-                            placeholder: '',
-                            readOnly: false,
-                          },
-                        },
-                        required: ['name', 'field_3', 'field_5'],
-                        propertyOrder: ['name', 'field_3', 'field_5'],
-                      },
-                    },
-                  },
-                  required: ['name', 'field_2'],
-                  propertyOrder: ['name', 'field_2'],
-                },
-                properties: {
-                  a: {
-                    type: 'string',
-                    title: '单文本框',
-                    format: 'input',
-                    isRequired: false,
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    readOnly: false,
-                  },
-                },
-                required: ['a'],
-                propertyOrder: ['a'],
-              },
-              field_34: {
-                type: 'object',
-                title: '对象类型',
-                format: 'object',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
-                readOnly: false,
-                properties: {
-                  obj: {
-                    type: 'object',
-                    title: '对象类型',
-                    format: 'object',
-                    isRequired: false,
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    readOnly: false,
-                    properties: {
-                      a: {
-                        type: 'string',
-                        title: '单文本框',
-                        format: 'input',
-                        isRequired: false,
-                        default: '',
-                        description: '',
-                        placeholder: '',
-                        readOnly: false,
-                      },
-                      field_1: {
-                        type: 'array',
-                        title: '多选',
-                        format: 'select',
-                        isRequired: false,
-                        default: '',
-                        description: '',
-                        placeholder: '',
-                        readOnly: false,
-                        items: {
-                          type: 'string',
-                          enum: ['a', 'b', 'c'],
-                          enumextra: ['选项a', '选项b', '选项c'],
-                        },
-                      },
-                    },
-                    required: ['a', 'field_1'],
-                    propertyOrder: ['a', 'field_1'],
-                  },
-                },
-                required: ['obj'],
-                propertyOrder: ['obj'],
-              },
+                "description": "普通对象",
+                "required": [
+                  "a",
+                  "field_27"
+                ]
+              }
             },
-            required: [
-              'field_26',
-              'field_27',
-              'field_28',
-              'field_29',
-              'field_30',
-              'field_31',
-              'field_33',
-              'field_34',
-            ],
-            propertyOrder: [
-              'field_26',
-              'field_27',
-              'field_28',
-              'field_29',
-              'field_30',
-              'field_31',
-              'field_34',
-              'field_33',
-            ],
-          },
+            "required": [
+              "a a",
+              "jsonItem",
+              "linkHref",
+              "field_23",
+              "field_24",
+              "field_25",
+              "field_26"
+            ]
+          }
         },
-        required: ['func', 'style', 'data'],
-        format: 'object',
-        propertyOrder: ['func', 'style', 'data'],
+        "required": [
+          "func",
+          "style",
+          "data"
+        ],
+        "propertyOrder": ["func", "style", "data"]
       },
-      jsonData: {},
+      jsonData: {
+        "func": {
+          "message": "提交成功，查看",
+          "linkText": "需求详情",
+          "msgType": "succ",
+          "field_1": "",
+          "field_2": "2020-07-03",
+          "field_3": false,
+          "field_4": "2020-07-03 17:10",
+          "field_5": "17:10:50",
+          "field_6": "https://",
+          "field_7": "",
+          "field_8": "50",
+          "field_9": "",
+          "field_10": [],
+          "field_11": [
+            {
+              "name": "",
+              "field_12": ""
+            }
+          ],
+          "field_13": {
+            "a": "",
+            "field_14": ""
+          }
+        },
+        "style": {
+          "isShowLink": true,
+          "backColor": "#fcfcfc",
+          "field_15": "",
+          "field_16": false,
+          "field_17": {
+            "quantity": "px",
+            "unit": 0
+          },
+          "field_18": [
+            {
+              "name": "",
+              "field_19": ""
+            }
+          ],
+          "field_22": "#3460fa",
+          "field_20": {
+            "a": "",
+            "field_21": ""
+          }
+        },
+        "data": {
+          "linkHref": "#applyInfo",
+          "field_23": "",
+          "field_24": {
+            "filter": "() => {}",
+            "type": "local",
+            "data": {}
+          },
+          "field_25": {
+            "name": "type",
+            "filter": "() => {}",
+            "type": "out"
+          },
+          "field_26": {
+            "a": "",
+            "field_27": ""
+          }
+        }
+      },
     };
   }
 

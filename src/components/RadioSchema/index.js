@@ -55,6 +55,7 @@ class RadioSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -88,6 +89,6 @@ class RadioSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(RadioSchema));

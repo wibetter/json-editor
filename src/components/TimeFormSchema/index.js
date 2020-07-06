@@ -51,6 +51,7 @@ class TimeFormSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         <Tooltip
           title={targetJsonData.description}
@@ -75,6 +76,6 @@ class TimeFormSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(TimeFormSchema));

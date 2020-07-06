@@ -57,6 +57,7 @@ class ObjectSchema extends React.PureComponent {
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
+        id={nodeKey}
       >
         {!isFirstSchema && targetJsonData.description && (
           <Tooltip
@@ -87,14 +88,14 @@ class ObjectSchema extends React.PureComponent {
               /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
               const currentFormat = getCurrentFormat(currentSchemaData);
               /** 5. 获取当前元素的id，用于做唯一标识 */
-              const nodeKey = `${currentFormat}-${currentJsonKey}`;
+              const childNodeKey = `${nodeKey}-${currentFormat}-${currentJsonKey}`;
 
               return MappingRender({
                 parentType: currentFormat,
                 jsonKey: currentJsonKey,
                 indexRoute: currentIndexRoute,
                 keyRoute: currentKeyRoute,
-                nodeKey,
+                nodeKey: childNodeKey,
                 targetJsonData: currentSchemaData,
               });
             })}
@@ -106,6 +107,6 @@ class ObjectSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  editJsonData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(ObjectSchema));

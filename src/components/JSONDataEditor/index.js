@@ -109,9 +109,4 @@ export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
   initJSONData: stores.JSONEditorStore.initJSONData,
-  getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
-  insertJsonData: stores.JSONSchemaStore.insertJsonData,
-  deleteJsonByIndex: stores.JSONSchemaStore.deleteJsonByIndex,
-  isExitJsonKey: stores.JSONSchemaStore.isExitJsonKey,
-  isSupportCurType: stores.JSONSchemaStore.isSupportCurType,
 }))(observer(JSONDataEditor));

@@ -1,6 +1,6 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
-import { getJSONDataByIndex } from '$utils/jsonSchema';
+import { getJSONDataByKeyRoute, getParentKeyRoute_CurKey } from '$utils/jsonData';
 import { objClone } from '$utils/index';
 
 /**
@@ -44,15 +44,26 @@ export default class JSONEditorStore {
     return toJS(this.jsonData);
   }
 
-  /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
+  /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
-  getJSONDataByIndex(indexRoute) {
-    return getJSONDataByIndex(indexRoute, this.jsonData, true); // useObjClone: true 避免后续产生数据联动
+  getJSONDataByKeyRoute(keyRoute) {
+    return getJSONDataByKeyRoute(keyRoute, this.jsonData, true); // useObjClone: true 避免后续产生数据联动
   }
 
-  /** 根据key路径更新对应的json数据  */
+  /** 根据key路径更新对应的json数据
+   * 备注：从jsonData中获取数据，需要先获取父级对象（以便产生数据联动），
+   * 再根据最近的key值对当前数据进行编辑
+   * */
   @action.bound
-  updateFormValueData() {
-    /** 待开发 */
+  updateFormValueData(keyRoute, newVal) {
+    // 1. 获取父级key路径和最近的有一个key
+    const parentKeyRoute_CurKey = getParentKeyRoute_CurKey(keyRoute);
+    const parentKeyRoute = parentKeyRoute_CurKey[0];
+    const curKey = parentKeyRoute_CurKey[1];
+    // 2. 获取父级数据对象
+    const parentJsonDataObj = getJSONDataByKeyRoute(parentKeyRoute, this.jsonData);
+    // 3. 数值更新
+    parentJsonDataObj[curKey] = newVal;
+    console.log(this.JSONSchemaObj);
   }
 }
