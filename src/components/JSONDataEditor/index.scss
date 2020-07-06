@@ -4,35 +4,88 @@
   position: relative;
   padding: 8px 10px;
 
-  .schema-item-form {
+  // 移动端的展示样式
+  .small-screen-element-warp,
+  .mobile-screen-element-warp {
     position: relative;
-    min-height: 35px;
+    margin-bottom: 12px;
+    line-height: 38px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-// 当jsonSchema数据对象为空时的占位样式
-.json-editor-empty {
-  position: relative;
-  height: 50px;
-  line-height: 50px;
-}
+    min-width: 350px;
+    margin-right: 15px;
 
-/* 重置antd的样式 */
-.ant-tree-list-holder-inner {
-  align-items: stretch; // 弹性填充展示
-}
-.ant-tree-switcher {
-  flex: 0 0 auto;
-}
-.ant-tree-node-content-wrapper {
-  flex: 1 1 auto;
-}
-// 重置折叠小箭头的样式
-.ant-tree .ant-tree-switcher {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    .element-title {
+      display: block;
+      word-break: keep-all;
+      max-width: 100px;
+      margin-right: 12px;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .content-item {
+      position: relative;
+      display: block;
+
+      .color-item-form {
+        width: 60px;
+      }
+    }
+  }
+
+  // 默认为宽屏的展示样式
+  .wide-screen-element-warp {
+    position: relative;
+    line-height: 38px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    min-width: 350px;
+    margin-right: 15px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .element-title {
+      flex: 0 1 100px;
+      word-break: keep-all;
+      max-width: 100px;
+      margin-right: 12px;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .content-item {
+      flex: 1 1 200px;
+    }
+  }
+
+  // 当jsonSchema数据对象为空时的占位样式
+  .json-editor-empty {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  // 重置antd的组件默认样式
+  // 背景颜色
+  .ant-collapse-borderless {
+    background-color: #fff;
+    border: 0;
+  }
+  // 折叠面板头部边框
+  .ant-collapse-content-active {
+    border-top: 1px solid #f0f0f0 !important;
+  }
+  .ant-collapse-content {
+    padding: 10px 0 20px;
+  }
+
+  // Title
+  .ant-collapse-header {
+    // background-color: #f7f7f7;
+  }
 }

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, message, Tooltip } from 'antd';
-import './index.scss';
 
 class InputFormSchema extends React.PureComponent {
   static propTypes = {
@@ -23,7 +22,12 @@ class InputFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const { indexRoute, jsonKey, updateFormValueData, targetJsonData } = this.props;
+    const {
+      indexRoute,
+      jsonKey,
+      updateFormValueData,
+      targetJsonData,
+    } = this.props;
     /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
     updateFormValueData(indexRoute, jsonKey, {
       title: value,
@@ -31,17 +35,35 @@ class InputFormSchema extends React.PureComponent {
   };
 
   render() {
-    const { indexRoute, nodeKey, keyRoute, targetJsonData } = this.props;
+    const {
+      indexRoute,
+      nodeKey,
+      keyRoute,
+      targetJsonData,
+      pageScreen,
+    } = this.props;
 
     return (
-      <div className="element-wrap" key={nodeKey}>
-        <Tooltip title={targetJsonData.description} placement="topLeft">
-          <span className="element-name-span">{targetJsonData.title}</span>
+      <div
+        className={
+          pageScreen === 'wideScreen'
+            ? 'wide-screen-element-warp'
+            : 'mobile-screen-element-warp'
+        }
+        key={nodeKey}
+      >
+        <Tooltip
+          title={targetJsonData.description}
+          placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
+        >
+          <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
           <Input
-            style={{ display: "inline-block" }}
-            placeholder={targetJsonData.placeholder || `请输入${targetJsonData.title}`}
+            style={{ display: 'inline-block' }}
+            placeholder={
+              targetJsonData.placeholder || `请输入${targetJsonData.title}`
+            }
             defaultValue={targetJsonData.default}
             onChange={this.handleValueChange}
           />
@@ -52,6 +74,7 @@ class InputFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
+  pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
   editJsonData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(InputFormSchema));

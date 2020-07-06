@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { DatePicker, message, Tooltip } from 'antd';
+import { getCurrentFormat } from '$utils/jsonSchema';
 
-class QuantitySchema extends React.PureComponent {
+const DateTypeList = {
+  'date-time': 'YYYY-MM-DD HH:mm',
+  'date': 'YYYY-MM-DD',
+  'time': 'HH:mm',
+};
+
+class DateTimeFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -20,8 +27,8 @@ class QuantitySchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
+  handleValueChange = (time, timeString) => {
+    console.log(timeString);
     const {
       indexRoute,
       jsonKey,
@@ -42,6 +49,8 @@ class QuantitySchema extends React.PureComponent {
       targetJsonData,
       pageScreen,
     } = this.props;
+    const curFormat = getCurrentFormat(targetJsonData);
+    const timeFormat = DateTypeList[curFormat] || DateTypeList[0];
 
     return (
       <div
@@ -58,7 +67,18 @@ class QuantitySchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Quantity元素内容[开发中]</div>
+        <div className="content-item">
+          <DatePicker
+            style={{ display: 'inline-block' }}
+            showTime
+            format={timeFormat}
+            placeholder={
+              targetJsonData.placeholder || `请输入${targetJsonData.title}`
+            }
+            defaultValue={targetJsonData.default}
+            onChange={this.handleValueChange}
+          />
+        </div>
       </div>
     );
   }
@@ -68,4 +88,4 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
   editJsonData: stores.JSONEditorStore.updateFormValueData,
-}))(observer(QuantitySchema));
+}))(observer(DateTimeFormSchema));

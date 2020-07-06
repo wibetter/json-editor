@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Input, Select, message, Tooltip } from 'antd';
+const { Option } = Select;
 
-class QuantitySchema extends React.PureComponent {
+class URLFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -43,6 +44,14 @@ class QuantitySchema extends React.PureComponent {
       pageScreen,
     } = this.props;
 
+    const selectBefore = (
+      <Select defaultValue="http://" className="select-before">
+        <Option value="http://">http://</Option>
+        <Option value="https://">https://</Option>
+        <Option value="#">#(routeHash)</Option>
+      </Select>
+    );
+
     return (
       <div
         className={
@@ -58,7 +67,17 @@ class QuantitySchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Quantity元素内容[开发中]</div>
+        <div className="content-item">
+          <Input
+            style={{ display: 'inline-block' }}
+            addonBefore={selectBefore}
+            placeholder={
+              targetJsonData.placeholder || `请输入${targetJsonData.title}`
+            }
+            defaultValue={targetJsonData.default}
+            onChange={this.handleValueChange}
+          />
+        </div>
       </div>
     );
   }
@@ -68,4 +87,4 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
   editJsonData: stores.JSONEditorStore.updateFormValueData,
-}))(observer(QuantitySchema));
+}))(observer(URLFormSchema));

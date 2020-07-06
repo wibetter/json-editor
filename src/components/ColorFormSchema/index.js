@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, message, Tooltip } from 'antd';
 
-class QuantitySchema extends React.PureComponent {
+class ColorFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -58,7 +58,15 @@ class QuantitySchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Quantity元素内容[开发中]</div>
+        <div className="content-item">
+          <Input
+            style={{ display: 'inline-block' }}
+            className="color-item-form"
+            type={'color'}
+            defaultValue={targetJsonData.default}
+            onChange={this.handleValueChange}
+          />
+        </div>
       </div>
     );
   }
@@ -68,4 +76,4 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
   editJsonData: stores.JSONEditorStore.updateFormValueData,
-}))(observer(QuantitySchema));
+}))(observer(ColorFormSchema));

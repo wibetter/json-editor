@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Switch, message, Tooltip } from 'antd';
 
-class QuantitySchema extends React.PureComponent {
+class BooleanFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -58,7 +58,15 @@ class QuantitySchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Quantity元素内容[开发中]</div>
+        <div className="content-item">
+          <Switch
+            style={{ display: 'inline-block' }}
+            defaultChecked={targetJsonData.default}
+            checkedChildren="true"
+            unCheckedChildren="false"
+            onChange={this.handleValueChange}
+          />
+        </div>
       </div>
     );
   }
@@ -68,4 +76,4 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByIndex: stores.JSONSchemaStore.getJSONDataByIndex,
   editJsonData: stores.JSONEditorStore.updateFormValueData,
-}))(observer(QuantitySchema));
+}))(observer(BooleanFormSchema));
