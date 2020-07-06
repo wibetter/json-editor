@@ -13,6 +13,7 @@ import JSONDataEditor from '$components/JSONDataEditor/index';
  */
 export default class JSONEditor extends React.PureComponent {
   static propTypes = {
+    wideScreen: PropTypes.any,
     onChange: PropTypes.func,
     schemaData: PropTypes.any,
     jsonData: PropTypes.any,
@@ -20,7 +21,7 @@ export default class JSONEditor extends React.PureComponent {
   };
 
   render() {
-    const { schemaData, jsonData, onChange, element } = this.props;
+    const { wideScreen, schemaData, jsonData, onChange, element } = this.props;
 
     const renderContent = (
       <Provider
@@ -28,6 +29,7 @@ export default class JSONEditor extends React.PureComponent {
         JSONEditorStore={JSONStore.JSONEditorStore}
       >
         <JSONDataEditor
+          wideScreen={wideScreen}
           schemaData={schemaData}
           jsonData={jsonData}
           onChange={onChange}

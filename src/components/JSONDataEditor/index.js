@@ -25,6 +25,10 @@ class JSONDataEditor extends React.PureComponent {
     if (props.jsonData) {
       this.props.initJSONData(props.jsonData);
     }
+    // 根据props.jsonData对jsonData进行初始化
+    if (props.wideScreen) {
+      this.props.setPageScreen(props.wideScreen);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,6 +37,9 @@ class JSONDataEditor extends React.PureComponent {
     }
     if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
       this.props.initJSONData(nextProps.jsonData);
+    }
+    if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
+      this.props.setPageScreen(nextProps.wideScreen);
     }
   }
 
@@ -109,4 +116,5 @@ export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
   initJSONData: stores.JSONEditorStore.initJSONData,
+  setPageScreen: stores.JSONSchemaStore.setPageScreen,
 }))(observer(JSONDataEditor));

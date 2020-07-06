@@ -20,7 +20,7 @@ export default class JSONSchemaStore {
   /**
    * 宽屏（wideScreen） or 小屏（mobileScreen）
    */
-  @observable pageScreen = 'wideScreen'; // 默认宽屏: wideScreen，小屏：mobileScreen
+  @observable pageScreen = 'mobileScreen'; // 默认小屏，宽屏: wideScreen，小屏：mobileScreen
   /**
    * jsonSchema: JSONSchema数据对象
    */
@@ -39,10 +39,10 @@ export default class JSONSchemaStore {
    */
   @action.bound
   setPageScreen(pageScreen) {
-    if (pageScreen === 'mobileScreen') {
-      this.pageScreen = 'mobileScreen';
+    if (pageScreen === 'wideScreen' || pageScreen) {
+      this.pageScreen = 'wideScreen';
     } else {
-      this.pageScreen = 'wideScreen'; // 默认宽屏
+      this.pageScreen = 'mobileScreen'; // 默认宽屏
     }
   }
 
