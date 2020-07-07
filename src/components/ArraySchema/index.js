@@ -21,13 +21,13 @@ class ArraySchema extends React.PureComponent {
   constructor(props) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-    this.addArrItem = this.addArrItem.bind(this);
+    this.addArrayItem = this.addArrayItem.bind(this);
     this.deleteArrItem = this.deleteArrItem.bind(this);
   }
 
   /** 添加数组项 */
-  addArrItem = (keyRoute, arrIndex) => {
-    // this.props.deleteArrayIndex(keyRoute, arrIndex);
+  addArrayItem = (keyRoute) => {
+    this.props.addArrayItem(keyRoute);
   };
 
   /** 删除数组项 */
@@ -67,7 +67,9 @@ class ArraySchema extends React.PureComponent {
             <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
           <Tooltip title="添加数据项">
-            <PlusCircleOutlined className="add-operate-btn operate-btn" />
+            <PlusCircleOutlined className="add-operate-btn operate-btn" onClick={() => {
+              this.addArrayItem(keyRoute);
+            }} />
           </Tooltip>
         </div>
         <div className="content-item array-content">
@@ -105,9 +107,10 @@ class ArraySchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
+  triggerChange: stores.JSONEditorStore.triggerChange,
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
-  triggerChange: stores.JSONEditorStore.triggerChange,
+  addArrayItem: stores.JSONEditorStore.addArrayItem,
 }))(observer(ArraySchema));
