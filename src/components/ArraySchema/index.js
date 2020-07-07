@@ -75,9 +75,9 @@ class ArraySchema extends React.PureComponent {
         <div className="content-item array-content">
           {isArray(curJsonData) &&
             curJsonData.map((arrItem, arrIndex) => {
-              const curNodeKey = `${nodeKey}-array-items-${arrIndex}`;
+              const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
               return (
-                <div className="array-item-box" key={curNodeKey}>
+                <div className="array-item-box" key={curNodeKey} id={curNodeKey}>
                   <ObjectSchema
                     {...{
                       parentType: currentFormat,
