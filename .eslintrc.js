@@ -42,6 +42,7 @@ module.exports = {
   // "error" or 2 将规则视为一个错误 (退出码为1)
   // ESLint自定义规则：http://eslint.cn/docs/rules/
   rules: {
+    // "prettier/prettier": 0, // Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       js: 'never',
@@ -68,5 +69,9 @@ module.exports = {
     'prefer-object-spread ': 0,
     'import/newline-after-import': 0,
     'no-unreachable': 0,
+    'operator-linebreak': ['error', 'after'], // 操作符的位置
+    'quote-props': 0, // 要求在对象文字属性名称周围加上引号
+    "import/prefer-default-export": 0, // 不强制使用default-export
+    'array-callback-return': 0,
   }
 };

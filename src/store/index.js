@@ -1,9 +1,13 @@
 import JSONSchemaStore from './JSONSchemaStore';
 import JSONEditorStore from './JSONEditorStore';
 
-const JSONStore = {
-  JSONSchemaStore: new JSONSchemaStore(),
-  JSONEditorStore: new JSONEditorStore(),
-};
+class RootJSONStore {
+  constructor() {
+    this.JSONSchemaStore = new JSONSchemaStore(this);
+    this.JSONEditorStore = new JSONEditorStore(this);
+  }
+}
+
+const JSONStore = new RootJSONStore();
 
 export default JSONStore;

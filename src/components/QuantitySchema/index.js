@@ -37,12 +37,11 @@ class QuantitySchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     // const quantityJsonSchema = targetJsonData.properties && targetJsonData.properties.quantity;
-    const unitJsonSchema = targetJsonData.properties && targetJsonData.properties.unit;
+    const unitJsonSchema =
+      targetJsonData.properties && targetJsonData.properties.unit;
     const unitText = curJsonData.quantity;
 
-    const unitAfter = (
-      <span>{unitText === 'percent' ? '%' : unitText}</span>
-    );
+    const unitAfter = <span>{unitText === 'percent' ? '%' : unitText}</span>;
 
     return (
       <div
@@ -65,9 +64,10 @@ class QuantitySchema extends React.PureComponent {
             style={{ display: 'inline-block' }}
             addonAfter={unitAfter}
             placeholder={
-              unitJsonSchema.placeholder || targetJsonData.placeholder
-              || `请输入${unitJsonSchema.title}`
-              || `请输入${targetJsonData.title}`
+              unitJsonSchema.placeholder ||
+              targetJsonData.placeholder ||
+              `请输入${unitJsonSchema.title}` ||
+              `请输入${targetJsonData.title}`
             }
             defaultValue={curJsonData.unit || unitJsonSchema.default}
             onPressEnter={this.handleValueChange}

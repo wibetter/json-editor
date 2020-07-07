@@ -11,6 +11,11 @@ import { initJSONSchemaData } from '$data/index';
  * */
 
 export default class JSONSchemaStore {
+  // 构造函数
+  constructor(rootJSONStore) {
+    this.rootJSONStore = rootJSONStore;
+  }
+
   /** 主要用于自动生成jsonKey中的index */
   curJsonKeyIndex = 1; // 非响应式
   /**

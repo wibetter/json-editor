@@ -28,10 +28,6 @@ class DataSourceSchema extends React.PureComponent {
       updateFormValueData,
       targetJsonData,
     } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
   };
 
   render() {
