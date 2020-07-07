@@ -2,9 +2,11 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
+import { PlusCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import { isArray } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
+import './index.scss';
 
 class ArraySchema extends React.PureComponent {
   static propTypes = {
@@ -19,12 +21,18 @@ class ArraySchema extends React.PureComponent {
   constructor(props) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-    this.handleValueChange = this.handleValueChange.bind(this);
+    this.addArrItem = this.addArrItem.bind(this);
+    this.deleteArrItem = this.deleteArrItem.bind(this);
   }
 
-  /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
+  /** 添加数组项 */
+  addArrItem = (keyRoute, arrIndex) => {
+    // this.props.deleteArrayIndex(keyRoute, arrIndex);
+  };
+
+  /** 删除数组项 */
+  deleteArrItem = (keyRoute, arrIndex) => {
+    this.props.deleteArrayIndex(keyRoute, arrIndex);
   };
 
   render() {
@@ -51,27 +59,43 @@ class ArraySchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        <Tooltip
-          title={targetJsonData.description}
-          placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-        >
-          <div className="element-title">{targetJsonData.title}</div>
-        </Tooltip>
-        <div className="content-item object-content">
+        <div className="element-title">
+          <Tooltip
+            title={targetJsonData.description}
+            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
+          >
+            <span className="title-text">{targetJsonData.title}</span>
+          </Tooltip>
+          <Tooltip title="添加数据项">
+            <PlusCircleOutlined className="add-operate-btn operate-btn" />
+          </Tooltip>
+        </div>
+        <div className="content-item array-content">
           {isArray(curJsonData) &&
             curJsonData.map((arrItem, arrIndex) => {
+              const curNodeKey = `${nodeKey}-array-items-${arrIndex}`;
               return (
-                <ObjectSchema
-                  key={nodeKey}
-                  {...{
-                    parentType: currentFormat,
-                    jsonKey: 'items',
-                    indexRoute: `${indexRoute}-0`,
-                    keyRoute: `${keyRoute}-${arrIndex}`,
-                    nodeKey: `${nodeKey}-array-items`,
-                    targetJsonData: arrayItemsDataObj,
-                  }}
-                />
+                <div className="array-item-box" key={curNodeKey}>
+                  <ObjectSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'items',
+                      indexRoute: `${indexRoute}-0`,
+                      keyRoute: `${keyRoute}-${arrIndex}`,
+                      nodeKey: curNodeKey,
+                      targetJsonData: arrayItemsDataObj,
+                      isArrayItem: true,
+                      arrIndex,
+                    }}
+                  />
+                  <div className="operate-btn-box">
+                    <Tooltip title="删除数据项">
+                      <CloseCircleOutlined className="delete-operate-btn operate-btn" onClick={() => {
+                        this.deleteArrItem(keyRoute, arrIndex);
+                      }} />
+                    </Tooltip>
+                  </div>
+                </div>
               );
             })}
         </div>
@@ -84,4 +108,6 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
+  triggerChange: stores.JSONEditorStore.triggerChange,
 }))(observer(ArraySchema));

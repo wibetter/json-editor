@@ -8,6 +8,8 @@ import './index.scss';
 
 class ObjectSchema extends React.PureComponent {
   static propTypes = {
+    isArrayItem: PropTypes.any, // 如果是数组项，title会进行特殊显示
+    arrIndex: PropTypes.any, // 如果是数组项，title会进行特殊显示
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
     indexRoute: PropTypes.any,
@@ -27,6 +29,8 @@ class ObjectSchema extends React.PureComponent {
       keyRoute,
       targetJsonData,
       pageScreen,
+      isArrayItem,
+      arrIndex,
     } = this.props;
     const curFormat = getCurrentFormat(targetJsonData);
     // 判断是否是一级字段类型，如果是则不显示Title，避免重复的title
@@ -47,7 +51,10 @@ class ObjectSchema extends React.PureComponent {
             title={targetJsonData.description}
             placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
           >
-            <div className="element-title">{targetJsonData.title}</div>
+            <div className="element-title">
+              {targetJsonData.title}
+              {isArrayItem ? `/${arrIndex + 1}` : ''}
+            </div>
           </Tooltip>
         )}
         {!isFirstSchema && !targetJsonData.description && (

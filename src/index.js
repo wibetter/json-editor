@@ -382,6 +382,10 @@ class IndexDemo extends React.PureComponent {
               name: '',
               field_12: '',
             },
+            {
+              name: '',
+              field_12: '',
+            },
           ],
           field_13: {
             a: '',

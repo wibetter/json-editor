@@ -11,6 +11,11 @@ import { objClone } from '$utils/index';
  * */
 
 export default class JSONEditorStore {
+  // 构造函数
+  constructor(rootJSONStore) {
+    this.rootJSONStore = rootJSONStore;
+  }
+
   /** 主要用于自动生成jsonKey中的index */
   curJsonKeyIndex = 1; // 非响应式
   /**
@@ -78,15 +83,15 @@ export default class JSONEditorStore {
    * */
   @action.bound
   deleteArrayIndex(keyRoute, arrayIndex) {
-    // 待开发
-  }
-
-  /**
-   * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)获取对应的数组元素
-   * */
-  @action.bound
-  getArrayItem(keyRoute, arrayIndex) {
-    // 待开发
+    // 1. 获取数组数据对象
+    const arrJsonDataObj = getJSONDataByKeyRoute(
+      keyRoute,
+      this.jsonData,
+    );
+    // 2. 删除对应的数据项
+    arrJsonDataObj.splice(arrayIndex, 1);
+    console.log(this.JSONSchemaObj);
+    this.triggerChangeAction(); // 用于主动触发组件更新
   }
 
   /**
