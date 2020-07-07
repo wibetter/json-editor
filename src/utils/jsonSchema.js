@@ -4,6 +4,20 @@ import { EventTypeDataList } from '$data/TypeDataList';
  */
 import { objClone } from '$utils/index';
 
+/** 获取当前字段的类型（format）
+ *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
+export function getCurrentFormat(targetJsonData) {
+  let currentType = targetJsonData.format;
+  if (!currentType) {
+    if (targetJsonData.type) {
+      currentType = targetJsonData.type;
+    } else {
+      currentType = 'input';
+    }
+  }
+  return currentType;
+}
+
 /** 【校验是否是合法的JsonSchema数据格式】
  *  主要判断当前JSON对象中是否有预先定义的属性：
  *  Object类型必须有的属性：type、format、title、properties、required、propertyOrder；
@@ -111,20 +125,6 @@ export function getJSONDataByIndex(
     }
   }
   return curJsonSchemaObj;
-}
-
-/** 获取当前字段的类型（format）
- *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
-export function getCurrentFormat(targetJsonData) {
-  let currentType = targetJsonData.format;
-  if (!currentType) {
-    if (targetJsonData.type) {
-      currentType = targetJsonData.type;
-    } else {
-      currentType = 'input';
-    }
-  }
-  return currentType;
 }
 
 /** 根据format判断是否是容器类型字段

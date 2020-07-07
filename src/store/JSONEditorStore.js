@@ -72,4 +72,29 @@ export default class JSONEditorStore {
     parentJsonDataObj[curKey] = newVal;
     console.log(this.JSONSchemaObj);
   }
+
+  /**
+   * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)删除对应的数组元素
+   * */
+  @action.bound
+  deleteArrayIndex(keyRoute, arrayIndex) {
+    // 待开发
+  }
+
+  /**
+   * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)获取对应的数组元素
+   * */
+  @action.bound
+  getArrayItem(keyRoute, arrayIndex) {
+    // 待开发
+  }
+
+  /**
+   * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)插入对应的数组元素
+   * position: 设置插入指定位置的前面还是后面，默认插入指定位置的后面
+   * */
+  @action.bound
+  insertArrayItem(keyRoute, arrayIndex, position) {
+    // 待开发
+  }
 }

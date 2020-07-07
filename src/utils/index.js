@@ -66,3 +66,14 @@ export function isFirstSchemaElem(elemClassName) {
   }
   return isFirstSchema;
 }
+
+/**
+ *  判断是否是数组类型
+ * */
+export function isArray(curObj) {
+  let isArray = false;
+  if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Array') {
+    isArray = true;
+  }
+  return isArray;
+}
