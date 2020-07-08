@@ -3,11 +3,10 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { message, Tooltip } from 'antd';
 import AceEditor from 'react-ace';
-import JSON5 from 'json5';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
+import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/theme-monokai';
 
-class JsonFormSchema extends React.PureComponent {
+class HtmlAreaFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -46,7 +45,7 @@ class JsonFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
-    curJsonData = curJsonData || targetJsonData.default || '{}';
+    curJsonData = curJsonData || targetJsonData.default || '() => {}';
 
     return (
       <div
@@ -72,12 +71,13 @@ class JsonFormSchema extends React.PureComponent {
             </div>
           )}
           <AceEditor
-            id="json_area_ace"
-            value={curJsonData}
+            id="code_area_ace"
+            key={`${nodeKey}-ace`}
             className="code-area-item"
-            mode="json"
-            theme="solarized_light"
-            name="JSON_CODE_EDIT"
+            value={curJsonData}
+            mode="html"
+            theme="monokai"
+            name="JS_CODE_EDIT"
             fontSize={14}
             showPrintMargin={true}
             showGutter={true}
@@ -88,7 +88,7 @@ class JsonFormSchema extends React.PureComponent {
             width={'100%'}
             onChange={(newJsonData) => {
               try {
-                JSON5.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                // HtmlParse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
                 this.handleValueChange(newJsonData);
                 this.setState({
@@ -123,4 +123,4 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-}))(observer(JsonFormSchema));
+}))(observer(HtmlAreaFormSchema));

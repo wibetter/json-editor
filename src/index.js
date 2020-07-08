@@ -356,6 +356,15 @@ class IndexDemo extends React.PureComponent {
                 isRequired: false,
                 readOnly: false,
               },
+              field_456: {
+                type: 'string',
+                title: '富文本类型',
+                format: 'htmlarea',
+                default: '<p>hello,world!</p>', // 默认值
+                description: '用于放置html代码片段', // 字段项的说明和描述
+                isRequired: false,
+                readOnly: false,
+              }
             },
             required: [
               'a a',
@@ -440,6 +449,7 @@ class IndexDemo extends React.PureComponent {
             field_27: '',
           },
           field_123: 'function func() { console.log("hello, world!"); }',
+          field_456: ''
         },
       },
     };

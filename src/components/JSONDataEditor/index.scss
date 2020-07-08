@@ -48,6 +48,7 @@
       word-break: keep-all;
       max-width: 100px;
       margin-right: 12px;
+      padding-left: 12px;
       text-align: right;
       white-space: nowrap;
       overflow: hidden;
@@ -89,6 +90,36 @@
   .code-area-item {
     min-width: 300px;
     max-width: 600px;
+  }
+
+  // CodeArea类型组件格式错误提示相关的样式
+  .warning-box {
+    width: 100%;
+    padding: 8px 0;
+    color: red;
+    font-size: 12px;
+    background-color: rgb(254, 236, 235);
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .warning-img {
+      flex: 0 1 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .warning-text {
+      flex: 1 1 160px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
   }
 
   // 当jsonSchema数据对象为空时的占位样式

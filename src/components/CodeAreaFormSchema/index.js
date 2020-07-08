@@ -5,7 +5,6 @@ import { message, Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-monokai'; // ace-builds
-import './index.scss';
 
 class CodeAreaFormSchema extends React.PureComponent {
   static propTypes = {
@@ -74,7 +73,7 @@ class CodeAreaFormSchema extends React.PureComponent {
           <AceEditor
             id="code_area_ace"
             key={`${nodeKey}-ace`}
-            className='code-area-item'
+            className="code-area-item"
             value={curJsonData}
             mode="javascript"
             theme="monokai"
