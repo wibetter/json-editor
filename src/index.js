@@ -415,7 +415,10 @@ class IndexDemo extends React.PureComponent {
         },
         data: {
           linkHref: '#applyInfo',
-          field_23: '',
+          field_23: '{ \n' +
+            '  test: 123,\n' +
+            '  test2: 456\n' +
+            '}',
           field_24: {
             filter: '() => {}',
             type: 'local',
