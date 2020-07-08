@@ -5,7 +5,8 @@ import { Input, message, Tooltip } from 'antd';
 import AceEditor from "react-ace";
 import JSON5 from "json5";
 import "ace-builds/src-noconflict/mode-json";
-import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/theme-monokai"; // ace-builds
+import './index.scss';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -19,15 +20,19 @@ class JsonFormSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    // 组件内部维护的数据
+    this.state = {
+      isShowWarn: false, // 用于判断是否显示错误信息
+      warnText: '', // 错误内容
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
+  handleValueChange = (newJsonData) => {
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, value); // 更新数值
+    updateFormValueData(keyRoute, newJsonData); // 更新数值
   };
 
   render() {
@@ -38,6 +43,10 @@ class JsonFormSchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
+    const {
+      isShowWarn,
+      warnText
+    } = this.state;
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
@@ -60,34 +69,47 @@ class JsonFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
+          {
+            isShowWarn && (
+              <div className="warning-box" >
+                <div className='warning-img'>
+                  X
+                </div>
+                <div className='warning-text'>
+                  {warnText}
+                </div>
+              </div>
+            )
+          }
           <AceEditor
             id="json_unique_id"
             value={curJsonData}
             mode="json"
-            theme="github"
+            theme="monokai"
             name="JSON_CODE_EDIT"
             fontSize={14}
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
             readOnly={false}
-            onBlur={() => {
-              // JSON5.parse(curJsonData);
-            }}
             minLines={5}
             maxLines={30}
             width={"100%"}
-            onChange={newJsonVal => {
+            onChange={newJsonData => {
               try {
-                const newJsonData = JSON5.parse(newJsonVal);
-                if (newJsonData && newJsonVal !== curJsonData) {
+                const jsonData = JSON5.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                if (jsonData && newJsonData !== curJsonData) {
                   // 更新jsonData
+                  this.handleValueChange(newJsonData);
                 }
-                // setIsShowWarn(false);
+                this.setState({
+                  isShowWarn: false
+                })
               } catch (err) {
-                /*setWarnText(err.message);
-                setCurJsonData(newJsonVal);
-                setIsShowWarn(true);*/
+                this.setState({
+                  warnText: err.message,
+                  isShowWarn: true
+                })
               }
             }}
             setOptions={{
