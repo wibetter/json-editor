@@ -442,7 +442,7 @@ class IndexDemo extends React.PureComponent {
             a: '',
             field_27: '',
           },
-          field_123: 'function (params) {↵  console.log("hello, world!");↵}',
+          field_123: 'function func() { console.log("hello, world!"); }',
         },
       },
     };

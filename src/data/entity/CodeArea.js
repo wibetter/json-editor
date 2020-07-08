@@ -13,7 +13,7 @@ export const initCodeAreaData = {
   type: 'string',
   title: '函数类型',
   format: 'codearea',
-  default: '() => {}', // 默认值
+  default: 'function func() { console.log("hello, world!"); }', // 默认值
   description: '用于定义函数方法体', // 字段项的说明和描述
   isRequired: false,
   readOnly: false,

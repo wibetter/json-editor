@@ -49,7 +49,7 @@ class CodeAreaFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
-    curJsonData = curJsonData || targetJsonData.default || '() => {} ';
+    curJsonData = curJsonData || targetJsonData.default || '() => {}';
 
     return (
       <div
@@ -82,6 +82,7 @@ class CodeAreaFormSchema extends React.PureComponent {
           }
           <AceEditor
             id="code_area_ace"
+            key={`${nodeKey}-ace`}
             value={curJsonData}
             mode="javascript"
             theme="monokai"
@@ -96,11 +97,9 @@ class CodeAreaFormSchema extends React.PureComponent {
             width={"100%"}
             onChange={newJsonData => {
               try {
-                const jsonData = eval(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
-                if (jsonData && newJsonData !== curJsonData) {
-                  // 更新jsonData
-                  this.handleValueChange(newJsonData);
-                }
+                eval(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                // 更新jsonData
+                this.handleValueChange(newJsonData);
                 this.setState({
                   isShowWarn: false
                 })

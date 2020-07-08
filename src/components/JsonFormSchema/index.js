@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { message, Tooltip } from 'antd';
 import AceEditor from "react-ace";
 import JSON5 from "json5";
 import "ace-builds/src-noconflict/mode-json";
@@ -97,11 +97,9 @@ class JsonFormSchema extends React.PureComponent {
             width={"100%"}
             onChange={newJsonData => {
               try {
-                const jsonData = JSON5.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
-                if (jsonData && newJsonData !== curJsonData) {
-                  // 更新jsonData
-                  this.handleValueChange(newJsonData);
-                }
+                JSON5.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                // 更新jsonData
+                this.handleValueChange(newJsonData);
                 this.setState({
                   isShowWarn: false
                 })
