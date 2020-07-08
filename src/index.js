@@ -347,6 +347,15 @@ class IndexDemo extends React.PureComponent {
                 description: '普通对象',
                 required: ['a', 'field_27'],
               },
+              field_123: {
+                type: 'string',
+                title: '函数类型',
+                format: 'codearea',
+                default: '() => {}', // 默认值
+                description: '用于定义函数方法体', // 字段项的说明和描述
+                isRequired: false,
+                readOnly: false,
+              }
             },
             required: [
               'a a',
@@ -433,6 +442,7 @@ class IndexDemo extends React.PureComponent {
             a: '',
             field_27: '',
           },
+          field_123: 'function (params) {↵  console.log("hello, world!");↵}',
         },
       },
     };
