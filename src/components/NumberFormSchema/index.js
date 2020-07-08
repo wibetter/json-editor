@@ -53,7 +53,7 @@ class NumberFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <div className='form-item-box'>
+          <div className="form-item-box">
             <InputNumber
               style={{ display: 'inline-block' }}
               placeholder={

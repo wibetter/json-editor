@@ -55,7 +55,7 @@ class TimeFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <div className='form-item-box'>
+          <div className="form-item-box">
             <TimePicker
               style={{ display: 'inline-block' }}
               placeholder={

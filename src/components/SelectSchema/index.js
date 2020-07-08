@@ -56,25 +56,25 @@ class SelectSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <div className='form-item-box'>
+          <div className="form-item-box">
             <Checkbox.Group
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonData.default}
             >
               {enumKeys &&
-              enumKeys.length > 0 &&
-              enumKeys.map((enumKey, enumIndex) => {
-                /** 1. 获取当前enum的title */
-                const enumText = enumTexts[enumIndex];
-                /** 2. 获取当前元素的id，用于做唯一标识 */
-                const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
-                return (
-                  <Checkbox value={enumKey} key={enumNodeKey}>
-                    {enumText}
-                  </Checkbox>
-                );
-              })}
+                enumKeys.length > 0 &&
+                enumKeys.map((enumKey, enumIndex) => {
+                  /** 1. 获取当前enum的title */
+                  const enumText = enumTexts[enumIndex];
+                  /** 2. 获取当前元素的id，用于做唯一标识 */
+                  const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+                  return (
+                    <Checkbox value={enumKey} key={enumNodeKey}>
+                      {enumText}
+                    </Checkbox>
+                  );
+                })}
             </Checkbox.Group>
           </div>
         </div>
