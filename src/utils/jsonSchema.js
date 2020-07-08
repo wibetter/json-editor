@@ -196,7 +196,7 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
       curProperties.data.title = '用于设置获取元素数据的请求地址';
       curProperties.data.format = 'url';
     } else {
-      curProperties.data.title = '本地静态json数据';
+      curProperties.data.title = '本地json数据';
       curProperties.data.format = 'json';
     }
   }

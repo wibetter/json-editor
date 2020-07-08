@@ -306,6 +306,40 @@ class IndexDemo extends React.PureComponent {
                 description: '数据源',
                 required: ['name', 'filter', 'type'],
               },
+              field_234: {
+                type: 'object',
+                format: 'datasource',
+                title: '数据源',
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'remote',
+                    format: 'typeSelect',
+                    enum: ['local', 'remote'],
+                    enumextra: ['local', 'remote'],
+                    title: '数据源类型',
+                  },
+                  data: {
+                    type: 'string',
+                    title: '远程json数据源',
+                    format: 'url',
+                    default: 'http://xxx', // 默认值
+                    isRequired: true,
+                    description: '用于设置获取元素数据的请求地址',
+                  },
+                  filter: {
+                    type: 'string',
+                    title: '过滤器',
+                    format: 'codearea',
+                    default: '() => {}',
+                    description: '用于定义过滤当前数据的函数',
+                    isRequired: true,
+                  },
+                },
+                required: ['type', 'data', 'filter'],
+                propertyOrder: ['type', 'data', 'filter'],
+              },
               field_25: {
                 type: 'object',
                 format: 'event',
@@ -364,7 +398,7 @@ class IndexDemo extends React.PureComponent {
                 description: '用于放置html代码片段', // 字段项的说明和描述
                 isRequired: false,
                 readOnly: false,
-              }
+              },
             },
             required: [
               'a a',
@@ -439,6 +473,11 @@ class IndexDemo extends React.PureComponent {
             type: 'local',
             data: {},
           },
+          field_234: {
+            filter: '() => {}',
+            type: 'remote',
+            data: 'https://'
+          },
           field_25: {
             name: 'type',
             filter: '() => {}',
@@ -449,7 +488,7 @@ class IndexDemo extends React.PureComponent {
             field_27: '',
           },
           field_123: 'function func() { console.log("hello, world!"); }',
-          field_456: ''
+          field_456: '',
         },
       },
     };

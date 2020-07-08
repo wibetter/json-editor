@@ -77,3 +77,14 @@ export function isArray(curObj) {
   }
   return isArray;
 }
+
+/**
+ *  判断是否是对象类型
+ * */
+export function isObject(curObj) {
+  let isObject = false;
+  if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Object') {
+    isObject = true;
+  }
+  return isObject;
+}
