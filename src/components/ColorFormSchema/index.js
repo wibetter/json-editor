@@ -54,13 +54,15 @@ class ColorFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <Input
-            style={{ display: 'inline-block' }}
-            className="color-item-form"
-            type={'color'}
-            defaultValue={curJsonData || targetJsonData.default}
-            onChange={this.handleValueChange}
-          />
+          <div className='form-item-box'>
+            <Input
+              style={{ display: 'inline-block' }}
+              className="color-item-form"
+              type={'color'}
+              defaultValue={curJsonData || targetJsonData.default}
+              onChange={this.handleValueChange}
+            />
+          </div>
         </div>
       </div>
     );

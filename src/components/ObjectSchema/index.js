@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Input, message, Tooltip } from 'antd';
 import MappingRender from '$components/MappingRender';
 import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
-import './index.scss';
 
 class ObjectSchema extends React.PureComponent {
   static propTypes = {
@@ -38,11 +37,11 @@ class ObjectSchema extends React.PureComponent {
 
     return (
       <div
-        className={
+        className={`${
           pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
+            ? 'wide-screen-element-warp  block-element-warp'
             : 'mobile-screen-element-warp'
-        }
+        }`}
         key={nodeKey}
         id={nodeKey}
       >

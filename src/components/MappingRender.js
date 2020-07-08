@@ -17,6 +17,7 @@ import TimeFormSchema from '$components/TimeFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
 import ColorFormSchema from '$components/ColorFormSchema/index';
 import JsonFormSchema from '$components/JsonFormSchema/index';
+import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -75,6 +76,9 @@ const MappingRender = (props) => {
       break;
     case 'json':
       return <JsonFormSchema {...props} key={nodeKey} />;
+      break;
+    case 'codearea':
+      return <CodeAreaFormSchema {...props} key={nodeKey} />;
       break;
     default:
       return <InputFormSchema {...props} key={nodeKey} />;

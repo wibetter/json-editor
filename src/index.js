@@ -347,6 +347,15 @@ class IndexDemo extends React.PureComponent {
                 description: '普通对象',
                 required: ['a', 'field_27'],
               },
+              field_123: {
+                type: 'string',
+                title: '函数类型',
+                format: 'codearea',
+                default: '() => {}', // 默认值
+                description: '用于定义函数方法体', // 字段项的说明和描述
+                isRequired: false,
+                readOnly: false,
+              },
             },
             required: [
               'a a',
@@ -415,10 +424,7 @@ class IndexDemo extends React.PureComponent {
         },
         data: {
           linkHref: '#applyInfo',
-          field_23: '{ \n' +
-            '  test: 123,\n' +
-            '  test2: 456\n' +
-            '}',
+          field_23: '{ \n' + '  test: 123,\n' + '  test2: 456\n' + '}',
           field_24: {
             filter: '() => {}',
             type: 'local',
@@ -433,6 +439,7 @@ class IndexDemo extends React.PureComponent {
             a: '',
             field_27: '',
           },
+          field_123: 'function func() { console.log("hello, world!"); }',
         },
       },
     };
@@ -442,7 +449,7 @@ class IndexDemo extends React.PureComponent {
     const { jsonSchema, jsonData } = this.state;
     return (
       <JSONEditor
-        wideScreen={false}
+        wideScreen={true} // 宽屏和小屏的配置项
         schemaData={jsonSchema}
         jsonData={jsonData}
         onChange={(e) => {

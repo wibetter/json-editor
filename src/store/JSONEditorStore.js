@@ -84,10 +84,7 @@ export default class JSONEditorStore {
   @action.bound
   deleteArrayIndex(keyRoute, arrayIndex) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJSONDataByKeyRoute(
-      keyRoute,
-      this.jsonData,
-    );
+    const arrJsonDataObj = getJSONDataByKeyRoute(keyRoute, this.jsonData);
     // 2. 删除对应的数据项
     arrJsonDataObj.splice(arrayIndex, 1);
     this.triggerChangeAction(); // 用于主动触发组件更新
@@ -108,10 +105,7 @@ export default class JSONEditorStore {
   @action.bound
   addArrayItem(keyRoute) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJSONDataByKeyRoute(
-      keyRoute,
-      this.jsonData,
-    );
+    const arrJsonDataObj = getJSONDataByKeyRoute(keyRoute, this.jsonData);
     if (isArray(arrJsonDataObj)) {
       // 2. 获取数组的第一个数据项
       const newArrItem = objClone(arrJsonDataObj[0]);

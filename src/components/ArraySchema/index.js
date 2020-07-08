@@ -51,11 +51,11 @@ class ArraySchema extends React.PureComponent {
 
     return (
       <div
-        className={
+        className={`${
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
-        }
+        }  block-element-warp`}
         key={nodeKey}
         id={nodeKey}
       >
@@ -67,9 +67,12 @@ class ArraySchema extends React.PureComponent {
             <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
           <Tooltip title="添加数据项">
-            <PlusCircleOutlined className="add-operate-btn operate-btn" onClick={() => {
-              this.addArrayItem(keyRoute);
-            }} />
+            <PlusCircleOutlined
+              className="add-operate-btn operate-btn"
+              onClick={() => {
+                this.addArrayItem(keyRoute);
+              }}
+            />
           </Tooltip>
         </div>
         <div className="content-item array-content">
@@ -77,7 +80,11 @@ class ArraySchema extends React.PureComponent {
             curJsonData.map((arrItem, arrIndex) => {
               const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
               return (
-                <div className="array-item-box" key={curNodeKey} id={curNodeKey}>
+                <div
+                  className="array-item-box"
+                  key={curNodeKey}
+                  id={curNodeKey}
+                >
                   <ObjectSchema
                     {...{
                       parentType: currentFormat,
@@ -92,9 +99,12 @@ class ArraySchema extends React.PureComponent {
                   />
                   <div className="operate-btn-box">
                     <Tooltip title="删除数据项">
-                      <CloseCircleOutlined className="delete-operate-btn operate-btn" onClick={() => {
-                        this.deleteArrItem(keyRoute, arrIndex);
-                      }} />
+                      <CloseCircleOutlined
+                        className="delete-operate-btn operate-btn"
+                        onClick={() => {
+                          this.deleteArrItem(keyRoute, arrIndex);
+                        }}
+                      />
                     </Tooltip>
                   </div>
                 </div>
