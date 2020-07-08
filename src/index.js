@@ -355,7 +355,7 @@ class IndexDemo extends React.PureComponent {
                 description: '用于定义函数方法体', // 字段项的说明和描述
                 isRequired: false,
                 readOnly: false,
-              }
+              },
             },
             required: [
               'a a',
@@ -424,10 +424,7 @@ class IndexDemo extends React.PureComponent {
         },
         data: {
           linkHref: '#applyInfo',
-          field_23: '{ \n' +
-            '  test: 123,\n' +
-            '  test2: 456\n' +
-            '}',
+          field_23: '{ \n' + '  test: 123,\n' + '  test2: 456\n' + '}',
           field_24: {
             filter: '() => {}',
             type: 'local',
@@ -452,7 +449,7 @@ class IndexDemo extends React.PureComponent {
     const { jsonSchema, jsonData } = this.state;
     return (
       <JSONEditor
-        wideScreen={false}
+        wideScreen={true} // 宽屏和小屏的配置项
         schemaData={jsonSchema}
         jsonData={jsonData}
         onChange={(e) => {

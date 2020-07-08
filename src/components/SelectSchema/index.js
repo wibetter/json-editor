@@ -56,12 +56,13 @@ class SelectSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <Checkbox.Group
-            style={{ display: 'inline-block' }}
-            onChange={this.handleValueChange}
-            defaultValue={curJsonData || targetJsonData.default}
-          >
-            {enumKeys &&
+          <div className='form-item-box'>
+            <Checkbox.Group
+              style={{ display: 'inline-block' }}
+              onChange={this.handleValueChange}
+              defaultValue={curJsonData || targetJsonData.default}
+            >
+              {enumKeys &&
               enumKeys.length > 0 &&
               enumKeys.map((enumKey, enumIndex) => {
                 /** 1. 获取当前enum的title */
@@ -74,7 +75,8 @@ class SelectSchema extends React.PureComponent {
                   </Checkbox>
                 );
               })}
-          </Checkbox.Group>
+            </Checkbox.Group>
+          </div>
         </div>
       </div>
     );

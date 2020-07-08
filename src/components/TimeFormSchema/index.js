@@ -55,14 +55,16 @@ class TimeFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <TimePicker
-            style={{ display: 'inline-block' }}
-            placeholder={
-              targetJsonData.placeholder || `请输入${targetJsonData.title}`
-            }
-            defaultValue={defaultTime && moment(defaultTime, 'HH:mm')}
-            onChange={this.handleValueChange}
-          />
+          <div className='form-item-box'>
+            <TimePicker
+              style={{ display: 'inline-block' }}
+              placeholder={
+                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+              }
+              defaultValue={defaultTime && moment(defaultTime, 'HH:mm')}
+              onChange={this.handleValueChange}
+            />
+          </div>
         </div>
       </div>
     );

@@ -60,19 +60,21 @@ class QuantitySchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <Input
-            style={{ display: 'inline-block' }}
-            addonAfter={unitAfter}
-            placeholder={
-              unitJsonSchema.placeholder ||
-              targetJsonData.placeholder ||
-              `请输入${unitJsonSchema.title}` ||
-              `请输入${targetJsonData.title}`
-            }
-            defaultValue={curJsonData.unit || unitJsonSchema.default}
-            onPressEnter={this.handleValueChange}
-            onBlur={this.handleValueChange}
-          />
+          <div className='form-item-box'>
+            <Input
+              style={{ display: 'inline-block' }}
+              addonAfter={unitAfter}
+              placeholder={
+                unitJsonSchema.placeholder ||
+                targetJsonData.placeholder ||
+                `请输入${unitJsonSchema.title}` ||
+                `请输入${targetJsonData.title}`
+              }
+              defaultValue={curJsonData.unit || unitJsonSchema.default}
+              onPressEnter={this.handleValueChange}
+              onBlur={this.handleValueChange}
+            />
+          </div>
         </div>
       </div>
     );

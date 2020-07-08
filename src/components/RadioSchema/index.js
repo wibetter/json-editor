@@ -58,12 +58,13 @@ class RadioSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <Radio.Group
-            style={{ display: 'inline-block' }}
-            onChange={this.handleValueChange}
-            defaultValue={curJsonData || targetJsonData.default}
-          >
-            {enumKeys &&
+          <div className='form-item-box'>
+            <Radio.Group
+              style={{ display: 'inline-block' }}
+              onChange={this.handleValueChange}
+              defaultValue={curJsonData || targetJsonData.default}
+            >
+              {enumKeys &&
               enumKeys.length > 0 &&
               enumKeys.map((enumKey, enumIndex) => {
                 /** 1. 获取当前enum的title */
@@ -76,8 +77,9 @@ class RadioSchema extends React.PureComponent {
                   </Radio>
                 );
               })}
-          </Radio.Group>
-        </div>
+            </Radio.Group>
+          </div>
+          </div>
       </div>
     );
   }

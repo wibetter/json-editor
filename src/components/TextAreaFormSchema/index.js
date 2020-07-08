@@ -55,16 +55,18 @@ class TextAreaFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <TextArea
-            style={{ display: 'inline-block' }}
-            rows={4}
-            placeholder={
-              targetJsonData.placeholder || `请输入${targetJsonData.title}`
-            }
-            defaultValue={curJsonData || targetJsonData.default}
-            onPressEnter={this.handleValueChange}
-            onBlur={this.handleValueChange}
-          />
+          <div className='form-item-box'>
+            <TextArea
+              style={{ display: 'inline-block' }}
+              rows={4}
+              placeholder={
+                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+              }
+              defaultValue={curJsonData || targetJsonData.default}
+              onPressEnter={this.handleValueChange}
+              onBlur={this.handleValueChange}
+            />
+          </div>
         </div>
       </div>
     );

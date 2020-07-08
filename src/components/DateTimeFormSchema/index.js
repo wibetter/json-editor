@@ -64,16 +64,18 @@ class DateTimeFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <DatePicker
-            style={{ display: 'inline-block' }}
-            showTime={curFormat === 'date-time' ? true : false}
-            format={timeFormat}
-            placeholder={
-              targetJsonData.placeholder || `请输入${targetJsonData.title}`
-            }
-            defaultValue={defaultTime && moment(defaultTime, timeFormat)}
-            onChange={this.handleValueChange}
-          />
+          <div className='form-item-box'>
+            <DatePicker
+              style={{ display: 'inline-block' }}
+              showTime={curFormat === 'date-time' ? true : false}
+              format={timeFormat}
+              placeholder={
+                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+              }
+              defaultValue={defaultTime && moment(defaultTime, timeFormat)}
+              onChange={this.handleValueChange}
+            />
+          </div>
         </div>
       </div>
     );

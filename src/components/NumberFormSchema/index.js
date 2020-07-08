@@ -53,16 +53,18 @@ class NumberFormSchema extends React.PureComponent {
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
         <div className="content-item">
-          <InputNumber
-            style={{ display: 'inline-block' }}
-            placeholder={
-              targetJsonData.placeholder || `请输入${targetJsonData.title}`
-            }
-            min={targetJsonData.minimum || 0}
-            max={targetJsonData.maximum || 1000}
-            defaultValue={curJsonData || targetJsonData.default}
-            onChange={this.handleValueChange}
-          />
+          <div className='form-item-box'>
+            <InputNumber
+              style={{ display: 'inline-block' }}
+              placeholder={
+                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+              }
+              min={targetJsonData.minimum || 0}
+              max={targetJsonData.maximum || 1000}
+              defaultValue={curJsonData || targetJsonData.default}
+              onChange={this.handleValueChange}
+            />
+          </div>
         </div>
       </div>
     );
