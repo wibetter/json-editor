@@ -21,8 +21,14 @@ class NumberFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (newVal) => {
-    const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, newVal); // 更新数值
+    const { keyRoute, targetJsonData, updateFormValueData } = this.props;
+    if (newVal < targetJsonData.minimum) {
+      message.warning(`小于设定的最小数值${targetJsonData.minimum}，请重新输入。`)
+    } else if (newVal > targetJsonData.maximum) {
+      message.warning(`超过设定的最大数值${targetJsonData.maximum}，请重新输入。`)
+    } else {
+      updateFormValueData(keyRoute, newVal); // 更新数值
+    }
   };
 
   render() {
