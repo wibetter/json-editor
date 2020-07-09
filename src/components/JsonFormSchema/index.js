@@ -47,7 +47,8 @@ class JsonFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
-    curJsonData = curJsonData !== undefined ? curJsonData : (targetJsonData.default || '()');
+    curJsonData =
+      curJsonData !== undefined ? curJsonData : targetJsonData.default || '()';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
       curJsonData = JSON5.stringify(curJsonData);
@@ -63,12 +64,14 @@ class JsonFormSchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        <Tooltip
-          title={targetJsonData.description}
-          placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-        >
-          <div className="element-title">{targetJsonData.title}</div>
-        </Tooltip>
+        <div className="element-title">
+          <Tooltip
+            title={targetJsonData.description}
+            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
+          >
+            <span className="title-text">{targetJsonData.title}</span>
+          </Tooltip>
+        </div>
         <div className="content-item object-content">
           {isShowWarn && (
             <div className="warning-box code-area-item">
