@@ -11,7 +11,7 @@
     margin-bottom: 12px;
     line-height: 38px;
     box-sizing: border-box;
-    min-width: 320px;
+    min-width: 280px;
 
     .element-title {
       display: block;
@@ -26,6 +26,11 @@
     .content-item {
       position: relative;
 
+      > .small-screen-element-warp,
+      > .mobile-screen-element-warp {
+        min-width: 230px;
+      }
+
       .color-item-form {
         width: 60px;
       }
@@ -37,7 +42,7 @@
     position: relative;
     line-height: 38px;
     box-sizing: border-box;
-    min-width: 350px;
+    min-width: 320px;
     margin-bottom: 12px;
     display: inline-flex;
     justify-content: flex-start;
@@ -88,7 +93,7 @@
 
   // CodeArea类型组件样式
   .code-area-item {
-    min-width: 300px;
+    min-width: 230px;
     max-width: 600px;
   }
 

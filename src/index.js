@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import JSONEditor from './main';
+import { getURLParam } from '$utils/index';
 import './index.scss';
 
 /**
@@ -516,7 +517,7 @@ class IndexDemo extends React.PureComponent {
             field_27: '',
           },
           field_123: 'function func() { console.log("hello, world!"); }',
-          field_456: '',
+          field_456: '<p>hello</p>',
         },
       },
     };
@@ -524,9 +525,10 @@ class IndexDemo extends React.PureComponent {
 
   render() {
     const { jsonSchema, jsonData } = this.state;
+    const wideScreen = getURLParam('wideScreen');
     return (
       <JSONEditor
-        wideScreen={true} // 宽屏和小屏的配置项
+        wideScreen={ wideScreen !== '' ? (wideScreen === 'true' ? true : false) : true } // 宽屏和小屏的配置项
         schemaData={jsonSchema}
         jsonData={jsonData}
         onChange={(e) => {
