@@ -48,12 +48,14 @@ class TextAreaFormSchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        <Tooltip
-          title={targetJsonData.description}
-          placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-        >
-          <div className="element-title">{targetJsonData.title}</div>
-        </Tooltip>
+        <div className="element-title">
+          <Tooltip
+            title={targetJsonData.description}
+            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
+          >
+            <span className="title-text">{targetJsonData.title}</span>
+          </Tooltip>
+        </div>
         <div className="content-item">
           <div className="form-item-box">
             <TextArea
