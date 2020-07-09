@@ -88,3 +88,42 @@ export function isObject(curObj) {
   }
   return isObject;
 }
+
+/**
+ * 获取当前url中的所有参数
+ */
+export function getParams() {
+  let params = location.search;
+  if (!params) {
+    const currentHref = location.href;
+    const startIndex = currentHref.lastIndexOf("?");
+    params = currentHref.substring(startIndex);
+  }
+  const paramsObj = {};
+  if (params) {
+    const arr = params.substr(1).split("&");
+    for (let i = 0, size = arr.length; i < size; i++) {
+      const data = arr[i].split("=");
+      if (data[0] && data[1]) {
+        paramsObj[data[0]] = data[1];
+      }
+    }
+  }
+  return paramsObj;
+}
+/**
+ * 获取当前url中的指定参数
+ */
+export function getURLParam(key) {
+  const params = location.search;
+  if (params) {
+    const arr = params.substr(1).split("&");
+    for (let i = 0, size = arr.length; i < size; i++) {
+      const data = arr[i].split("=");
+      if (data[0] === key) {
+        return data[1];
+      }
+    }
+  }
+  return "";
+}

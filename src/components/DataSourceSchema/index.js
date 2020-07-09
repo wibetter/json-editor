@@ -6,7 +6,6 @@ import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
-import './index.scss';
 
 class DataSourceSchema extends React.PureComponent {
   static propTypes = {

@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
+import JsonFormSchema from '$components/JsonFormSchema/index';
+import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
+import InputFormSchema from '$components/InputFormSchema/index';
+import { getCurrentFormat } from '$utils/jsonSchema';
 
 class EventSchema extends React.PureComponent {
   static propTypes = {
@@ -15,33 +19,27 @@ class EventSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-    this.handleValueChange = this.handleValueChange.bind(this);
   }
-
-  /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
-    const { value } = event.target;
-    const {
-      indexRoute,
-      jsonKey,
-      updateFormValueData,
-      targetJsonData,
-    } = this.props;
-    /*if (targetJsonData.title === value) return; // title值未改变则直接跳出
-    updateFormValueData(indexRoute, jsonKey, {
-      title: value,
-    });*/
-  };
 
   render() {
     const {
-      indexRoute,
-      nodeKey,
       keyRoute,
+      nodeKey,
+      indexRoute,
       targetJsonData,
       pageScreen,
     } = this.props;
+    const currentFormat = getCurrentFormat(targetJsonData);
+
+    const typeDataObj = targetJsonData.properties.type;
+    // 注册类型事件的数据对象：on
+    const registerJsonObj = targetJsonData.properties.register;
+    const actionFuncJsonObj = targetJsonData.properties.actionFunc;
+    // 触发事件类型的数据对象：emit
+    const triggerJsonObj = targetJsonData.properties.trigger;
+    const eventDataJsonObj = targetJsonData.properties.eventData;
+    // 获取当前数据源类型
+    const dataType = typeDataObj.default; // local or remote
 
     return (
       <div
@@ -53,20 +51,91 @@ class EventSchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        <Tooltip
-          title={targetJsonData.description}
-          placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-        >
-          <div className="element-title">{targetJsonData.title}</div>
-        </Tooltip>
-        <div className="content-item object-content">Event元素内容[开发中]</div>
+        <div className="element-title">
+          <Tooltip
+            title={targetJsonData.description}
+            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
+          >
+            <span className="title-text">{targetJsonData.title}</span>
+          </Tooltip>
+        </div>
+        <div className="content-item object-content">
+          {dataType === 'on' && (
+            <>
+              {
+                registerJsonObj && (
+                  <InputFormSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'register',
+                      indexRoute: `${indexRoute}-1`,
+                      keyRoute: `${keyRoute}-register`,
+                      nodeKey: `${nodeKey}-register`,
+                      targetJsonData: registerJsonObj,
+                    }}
+                    key={`${nodeKey}-register`}
+                  />
+                )
+              }
+              {
+                actionFuncJsonObj && (
+                  <CodeAreaFormSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'actionFunc',
+                      indexRoute: `${indexRoute}-2`,
+                      keyRoute: `${keyRoute}-actionFunc`,
+                      nodeKey: `${nodeKey}-actionFunc`,
+                      targetJsonData: actionFuncJsonObj,
+                    }}
+                    key={`${nodeKey}-actionFunc`}
+                  />
+                )
+              }
+            </>
+          )}
+          {dataType === 'emit' && (
+            <>
+              {
+                triggerJsonObj && (
+                  <InputFormSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'trigger',
+                      indexRoute: `${indexRoute}-1`,
+                      keyRoute: `${keyRoute}-trigger`,
+                      nodeKey: `${nodeKey}-trigger`,
+                      targetJsonData: triggerJsonObj,
+                    }}
+                    key={`${nodeKey}-trigger`}
+                  />
+                )
+              }
+              {
+                eventDataJsonObj && (
+                  <JsonFormSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'eventData',
+                      indexRoute: `${indexRoute}-2`,
+                      keyRoute: `${keyRoute}-eventData`,
+                      nodeKey: `${nodeKey}-eventData`,
+                      targetJsonData: eventDataJsonObj,
+                    }}
+                    key={`${nodeKey}-eventData`}
+                  />
+                )
+              }
+            </>
+          )}
+        </div>
       </div>
     );
   }
 }
 
 export default inject((stores) => ({
+  triggerChange: stores.JSONEditorStore.triggerChange,
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(EventSchema));

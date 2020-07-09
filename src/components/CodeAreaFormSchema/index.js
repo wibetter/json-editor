@@ -47,7 +47,7 @@ class CodeAreaFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
-    curJsonData = curJsonData || targetJsonData.default || '() => {}';
+    curJsonData = curJsonData !== undefined ? curJsonData : (targetJsonData.default || '() => {}');
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
       curJsonData = JSON5.stringify(curJsonData);

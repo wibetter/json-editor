@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import JSONEditor from './main';
+import { getURLParam } from '$utils/index';
 import './index.scss';
 
 /**
@@ -363,6 +364,29 @@ class IndexDemo extends React.PureComponent {
                 description: '事件',
                 required: ['name', 'filter', 'type'],
               },
+              field_251: {
+                type: 'object',
+                format: 'event',
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'in',
+                    format: 'typeSelect',
+                    enum: ['in', 'out'],
+                    enumextra: ['in', 'out'],
+                    description: '类型',
+                    readOnlyInJson: false,
+                  },
+                  filter: {
+                    type: 'string',
+                    format: 'textarea',
+                    default: 'return data;',
+                    description: '过滤器',
+                  },
+                },
+                description: '事件',
+                required: ['name', 'filter', 'type'],
+              },
               field_26: {
                 type: 'object',
                 format: 'object',
@@ -483,12 +507,17 @@ class IndexDemo extends React.PureComponent {
             filter: '() => {}',
             type: 'out',
           },
+          field_251: {
+            name: 'type',
+            filter: '() => {}',
+            type: 'in',
+          },
           field_26: {
             a: '',
             field_27: '',
           },
           field_123: 'function func() { console.log("hello, world!"); }',
-          field_456: '',
+          field_456: '<p>hello</p>',
         },
       },
     };
@@ -496,9 +525,10 @@ class IndexDemo extends React.PureComponent {
 
   render() {
     const { jsonSchema, jsonData } = this.state;
+    const wideScreen = getURLParam('wideScreen');
     return (
       <JSONEditor
-        wideScreen={true} // 宽屏和小屏的配置项
+        wideScreen={ wideScreen !== '' ? (wideScreen === 'true' ? true : false) : true } // 宽屏和小屏的配置项
         schemaData={jsonSchema}
         jsonData={jsonData}
         onChange={(e) => {

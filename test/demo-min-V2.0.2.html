@@ -5,17 +5,16 @@
   <meta name="format-detection" content="telephone=no"/>
   <meta name="viewport" content="initial-scale=1.0,user-scalable=no,width=device-width,viewport-fit=cover">
   <title>JSONEditor Demo</title>
-  <link rel="stylesheet" href="../dist/index.css" />
+  <link rel="stylesheet" href="https://storage.360buyimg.com/cdnnpm/JSONEditor/2.0.2/index.css" />
 </head>
 <body>
   <div id="root"></div>
   <script src="https://storage.360buyimg.com/cdnnpm/react16.8.6/react.development.js"></script>
   <script src="https://storage.360buyimg.com/cdnnpm/react-dom16.8.6/react-dom.development.js"></script>
-  <script src="../dist/index.umd.js" defer></script>
+  <script src="https://storage.360buyimg.com/cdnnpm/JSONEditor/2.0.2/index.umd.js" defer></script>
   <script defer>
     import * as React from 'react';
     import ReactDOM from 'react-dom';
-
     /**
      * JSONEditor的测试Demo
      */
@@ -376,6 +375,29 @@
                     description: '事件',
                     required: ['name', 'filter', 'type'],
                   },
+                  field_251: {
+                    type: 'object',
+                    format: 'event',
+                    properties: {
+                      type: {
+                        type: 'string',
+                        default: 'in',
+                        format: 'typeSelect',
+                        enum: ['in', 'out'],
+                        enumextra: ['in', 'out'],
+                        description: '类型',
+                        readOnlyInJson: false,
+                      },
+                      filter: {
+                        type: 'string',
+                        format: 'textarea',
+                        default: 'return data;',
+                        description: '过滤器',
+                      },
+                    },
+                    description: '事件',
+                    required: ['name', 'filter', 'type'],
+                  },
                   field_26: {
                     type: 'object',
                     format: 'object',
@@ -496,6 +518,11 @@
                 filter: '() => {}',
                 type: 'out',
               },
+              field_251: {
+                name: 'type',
+                filter: '() => {}',
+                type: 'in',
+              },
               field_26: {
                 a: '',
                 field_27: '',
@@ -511,7 +538,7 @@
         const { jsonSchema, jsonData } = this.state;
         return (
           <JSONEditor
-            wideScreen={true}
+            wideScreen={false}
             schemaData={jsonSchema}
             jsonData={jsonData}
             onChange={(e) => {
