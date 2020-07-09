@@ -6,6 +6,7 @@ import AceEditor from 'react-ace';
 import JSON5 from 'json5';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
+import { isObject } from '$utils/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -47,6 +48,10 @@ class JsonFormSchema extends React.PureComponent {
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData = curJsonData || targetJsonData.default || '{}';
+    // 判断当前jsonData是否是对象类型
+    if (isObject(curJsonData)) {
+      curJsonData = JSON5.stringify(curJsonData);
+    }
 
     return (
       <div

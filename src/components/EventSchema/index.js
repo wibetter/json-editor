@@ -45,11 +45,11 @@ class EventSchema extends React.PureComponent {
 
     return (
       <div
-        className={
+        className={`${
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
-        }
+        }  block-element-warp`}
         key={nodeKey}
         id={nodeKey}
       >
@@ -59,7 +59,7 @@ class EventSchema extends React.PureComponent {
         >
           <div className="element-title">{targetJsonData.title}</div>
         </Tooltip>
-        <div className="content-item">Event元素内容[开发中]</div>
+        <div className="content-item object-content">Event元素内容[开发中]</div>
       </div>
     );
   }

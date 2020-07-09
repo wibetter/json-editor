@@ -5,6 +5,8 @@ import { message, Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-monokai';
+import { isObject } from '$utils/index';
+import JSON5 from 'json5';
 
 class HtmlAreaFormSchema extends React.PureComponent {
   static propTypes = {
@@ -46,6 +48,10 @@ class HtmlAreaFormSchema extends React.PureComponent {
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData = curJsonData || targetJsonData.default || '() => {}';
+    // 判断当前jsonData是否是对象类型
+    if (isObject(curJsonData)) {
+      curJsonData = JSON5.stringify(curJsonData);
+    }
 
     return (
       <div

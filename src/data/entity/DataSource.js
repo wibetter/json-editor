@@ -24,7 +24,7 @@ export const initDataSourceData = {
     },
     data: {
       type: 'string',
-      title: '本地静态json数据',
+      title: '本地json数据',
       format: 'json',
       default: '{}', // 默认值
       description: '用于设置本地的静态json数据',

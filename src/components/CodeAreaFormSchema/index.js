@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { message, Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/theme-monokai'; // ace-builds
+import 'ace-builds/src-noconflict/theme-monokai';
+import JSON5 from 'json5'; // ace-builds
+import { isObject } from '$utils/index';
 
 class CodeAreaFormSchema extends React.PureComponent {
   static propTypes = {
@@ -46,6 +48,10 @@ class CodeAreaFormSchema extends React.PureComponent {
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData = curJsonData || targetJsonData.default || '() => {}';
+    // 判断当前jsonData是否是对象类型
+    if (isObject(curJsonData)) {
+      curJsonData = JSON5.stringify(curJsonData);
+    }
 
     return (
       <div
