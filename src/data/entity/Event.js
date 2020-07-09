@@ -57,8 +57,8 @@ export const initEventData = {
     trigger: {
       type: 'string',
       format: 'input',
-      default: 'event name',
-      title: '触发事件的名称',
+      default: 'eventName',
+      title: '触发事件',
       description: '用于输入触发事件的名称',
       placeholder: '请输入触发事件的名称',
       isRequired: false,
@@ -97,9 +97,19 @@ export const initEventDataTypeON = {
       isRequired: false,
       readOnly: false,
     },
-    callback: {
+    register: {
       type: 'string',
-      title: '回调函数',
+      format: 'input',
+      default: 'eventName',
+      title: '注册事件',
+      description: '用于输入注册事件的名称',
+      placeholder: '请输入注册事件的名称',
+      isRequired: false,
+      readOnly: false,
+    },
+    actionFunc: {
+      type: 'string',
+      title: '执行函数',
       format: 'codearea',
       default: '() => {}', // 默认值
       description: '', // 字段项的说明和描述

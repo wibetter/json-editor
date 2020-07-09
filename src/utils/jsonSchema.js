@@ -196,7 +196,7 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
       curProperties.data.title = '用于设置获取元素数据的请求地址';
       curProperties.data.format = 'url';
     } else {
-      curProperties.data.title = '本地json数据';
+      curProperties.data.title = '本地静态json数据';
       curProperties.data.format = 'json';
     }
   }
@@ -214,15 +214,15 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
     const eventType = curProperties.type.default;
     const eventFunc = curProperties.filter.default;
     // 重构Event的数据结构
-    if (eventType === 'on') {
+    if (eventType === 'in') {
       // 注册类事件
       newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
-      newJSONSchema.properties.callback.default = eventFunc;
+      newJSONSchema.properties.actionFunc.default = eventFunc;
     } else {
       // 其他，则默认为触发事件
       // 注册类事件
       newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
-      newJSONSchema.properties.trigger.default = eventFunc;
+      // newJSONSchema.properties.eventData.default = eventFunc;
     }
   }
   // 判断是否有propertyOrder属性
