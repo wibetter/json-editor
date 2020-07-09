@@ -97,6 +97,53 @@
     max-width: 600px;
   }
 
+  // ace的过滤器样式
+  .ace-editor-box {
+    position: relative;
+
+    .filter-btn {
+      position: absolute;
+      top: 58px; // 38px + 8px + 12px
+      right: 27px; // 15px + 12px
+      z-index: 100;
+
+      svg {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        color: #595959;
+      }
+
+      svg:hover {
+        color: #1890ff;
+      }
+    }
+  }
+
+  .url-editor-box {
+    position: relative;
+    display: inline-block;
+
+    // 行级元素的过滤图标样式
+    .filter-url-btn {
+      position: absolute;
+      top: 9px; // 12px
+      right: -28px; // 20px + 8px
+      z-index: 100;
+
+      svg {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        color: #595959;
+      }
+
+      svg:hover {
+        color: #1890ff;
+      }
+    }
+  }
+
   // CodeArea类型组件格式错误提示相关的样式
   .warning-box {
     width: 100%;

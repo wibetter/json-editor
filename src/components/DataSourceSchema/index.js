@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
+import { FilterOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
@@ -19,7 +20,21 @@ class DataSourceSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isShowFilter: false, // 是否显示数据过滤器
+    };
+    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+    this.switchFilterBtn = this.switchFilterBtn.bind(this);
   }
+
+  // 显示和隐藏数据过滤器
+  switchFilterBtn = () => {
+    const { isShowFilter } = this.state;
+    this.setState({
+      isShowFilter: !isShowFilter,
+    })
+  };
 
   render() {
     const {
@@ -29,6 +44,7 @@ class DataSourceSchema extends React.PureComponent {
       targetJsonData,
       pageScreen,
     } = this.props;
+    const { isShowFilter } = this.state;
     const currentFormat = getCurrentFormat(targetJsonData);
 
     // 获取DataSource中各类数据对象
@@ -59,54 +75,72 @@ class DataSourceSchema extends React.PureComponent {
         <div className="content-item object-content">
           {dataType === 'local' && (
             <>
-              <JsonFormSchema
-                {...{
-                  parentType: currentFormat,
-                  jsonKey: 'data',
-                  indexRoute: `${indexRoute}-1`,
-                  keyRoute: `${keyRoute}-data`,
-                  nodeKey: `${nodeKey}-data`,
-                  targetJsonData: dataObj,
-                }}
-                key={`${nodeKey}-data`}
-              />
-              <CodeAreaFormSchema
-                {...{
-                  parentType: currentFormat,
-                  jsonKey: 'filter',
-                  indexRoute: `${indexRoute}-2`,
-                  keyRoute: `${keyRoute}-filter`,
-                  nodeKey: `${nodeKey}-filter`,
-                  targetJsonData: filterDataObj,
-                }}
-                key={`${nodeKey}-filter`}
-              />
+              <div className="ace-editor-box code-area-item">
+                <Tooltip title="点击设置数据过滤器" placement="top">
+                  <FilterOutlined className="filter-btn" onClick={this.switchFilterBtn} />
+                </Tooltip>
+                <JsonFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'data',
+                    indexRoute: `${indexRoute}-1`,
+                    keyRoute: `${keyRoute}-data`,
+                    nodeKey: `${nodeKey}-data`,
+                    targetJsonData: dataObj,
+                  }}
+                  key={`${nodeKey}-data`}
+                />
+              </div>
+              {
+                isShowFilter && (
+                  <CodeAreaFormSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'filter',
+                      indexRoute: `${indexRoute}-2`,
+                      keyRoute: `${keyRoute}-filter`,
+                      nodeKey: `${nodeKey}-filter`,
+                      targetJsonData: filterDataObj,
+                    }}
+                    key={`${nodeKey}-filter`}
+                  />
+                )
+              }
             </>
           )}
           {dataType === 'remote' && (
             <>
-              <URLFormSchema
-                {...{
-                  parentType: currentFormat,
-                  jsonKey: 'data',
-                  indexRoute: `${indexRoute}-1`,
-                  keyRoute: `${keyRoute}-data`,
-                  nodeKey: `${nodeKey}-data`,
-                  targetJsonData: dataObj,
-                }}
-                key={`${nodeKey}-data`}
-              />
-              <CodeAreaFormSchema
-                {...{
-                  parentType: currentFormat,
-                  jsonKey: 'filter',
-                  indexRoute: `${indexRoute}-2`,
-                  keyRoute: `${keyRoute}-filter`,
-                  nodeKey: `${nodeKey}-filter`,
-                  targetJsonData: filterDataObj,
-                }}
-                key={`${nodeKey}-filter`}
-              />
+              <div className="url-editor-box">
+                <URLFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'data',
+                    indexRoute: `${indexRoute}-1`,
+                    keyRoute: `${keyRoute}-data`,
+                    nodeKey: `${nodeKey}-data`,
+                    targetJsonData: dataObj,
+                  }}
+                  key={`${nodeKey}-data`}
+                />
+                <Tooltip title="点击设置数据过滤器" placement="top">
+                  <FilterOutlined className="filter-url-btn" onClick={this.switchFilterBtn} />
+                </Tooltip>
+              </div>
+              {
+                isShowFilter && (
+                  <CodeAreaFormSchema
+                    {...{
+                      parentType: currentFormat,
+                      jsonKey: 'filter',
+                      indexRoute: `${indexRoute}-2`,
+                      keyRoute: `${keyRoute}-filter`,
+                      nodeKey: `${nodeKey}-filter`,
+                      targetJsonData: filterDataObj,
+                    }}
+                    key={`${nodeKey}-filter`}
+                  />
+                )
+              }
             </>
           )}
         </div>

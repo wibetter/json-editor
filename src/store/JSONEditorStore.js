@@ -93,7 +93,6 @@ export default class JSONEditorStore {
       } else {
         message.warning('删除失败，至少保留一个数据项。');
       }
-
     }
   }
 
