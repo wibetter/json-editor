@@ -62,70 +62,62 @@ class EventSchema extends React.PureComponent {
         <div className="content-item object-content">
           {dataType === 'on' && (
             <>
-              {
-                registerJsonObj && (
-                  <InputFormSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'register',
-                      indexRoute: `${indexRoute}-1`,
-                      keyRoute: `${keyRoute}-register`,
-                      nodeKey: `${nodeKey}-register`,
-                      targetJsonData: registerJsonObj,
-                    }}
-                    key={`${nodeKey}-register`}
-                  />
-                )
-              }
-              {
-                actionFuncJsonObj && (
-                  <CodeAreaFormSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'actionFunc',
-                      indexRoute: `${indexRoute}-2`,
-                      keyRoute: `${keyRoute}-actionFunc`,
-                      nodeKey: `${nodeKey}-actionFunc`,
-                      targetJsonData: actionFuncJsonObj,
-                    }}
-                    key={`${nodeKey}-actionFunc`}
-                  />
-                )
-              }
+              {registerJsonObj && (
+                <InputFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'register',
+                    indexRoute: `${indexRoute}-1`,
+                    keyRoute: `${keyRoute}-register`,
+                    nodeKey: `${nodeKey}-register`,
+                    targetJsonData: registerJsonObj,
+                  }}
+                  key={`${nodeKey}-register`}
+                />
+              )}
+              {actionFuncJsonObj && (
+                <CodeAreaFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'actionFunc',
+                    indexRoute: `${indexRoute}-2`,
+                    keyRoute: `${keyRoute}-actionFunc`,
+                    nodeKey: `${nodeKey}-actionFunc`,
+                    targetJsonData: actionFuncJsonObj,
+                  }}
+                  key={`${nodeKey}-actionFunc`}
+                />
+              )}
             </>
           )}
           {dataType === 'emit' && (
             <>
-              {
-                triggerJsonObj && (
-                  <InputFormSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'trigger',
-                      indexRoute: `${indexRoute}-1`,
-                      keyRoute: `${keyRoute}-trigger`,
-                      nodeKey: `${nodeKey}-trigger`,
-                      targetJsonData: triggerJsonObj,
-                    }}
-                    key={`${nodeKey}-trigger`}
-                  />
-                )
-              }
-              {
-                eventDataJsonObj && (
-                  <JsonFormSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'eventData',
-                      indexRoute: `${indexRoute}-2`,
-                      keyRoute: `${keyRoute}-eventData`,
-                      nodeKey: `${nodeKey}-eventData`,
-                      targetJsonData: eventDataJsonObj,
-                    }}
-                    key={`${nodeKey}-eventData`}
-                  />
-                )
-              }
+              {triggerJsonObj && (
+                <InputFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'trigger',
+                    indexRoute: `${indexRoute}-1`,
+                    keyRoute: `${keyRoute}-trigger`,
+                    nodeKey: `${nodeKey}-trigger`,
+                    targetJsonData: triggerJsonObj,
+                  }}
+                  key={`${nodeKey}-trigger`}
+                />
+              )}
+              {eventDataJsonObj && (
+                <JsonFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'eventData',
+                    indexRoute: `${indexRoute}-2`,
+                    keyRoute: `${keyRoute}-eventData`,
+                    nodeKey: `${nodeKey}-eventData`,
+                    targetJsonData: eventDataJsonObj,
+                  }}
+                  key={`${nodeKey}-eventData`}
+                />
+              )}
             </>
           )}
         </div>

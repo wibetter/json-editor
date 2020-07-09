@@ -500,7 +500,7 @@ class IndexDemo extends React.PureComponent {
           field_234: {
             filter: '() => {}',
             type: 'remote',
-            data: 'https://'
+            data: 'https://',
           },
           field_25: {
             name: 'type',
@@ -528,7 +528,9 @@ class IndexDemo extends React.PureComponent {
     const wideScreen = getURLParam('wideScreen');
     return (
       <JSONEditor
-        wideScreen={ wideScreen !== '' ? (wideScreen === 'true' ? true : false) : true } // 宽屏和小屏的配置项
+        wideScreen={
+          wideScreen !== '' ? (wideScreen === 'true' ? true : false) : true
+        } // 宽屏和小屏的配置项
         schemaData={jsonSchema}
         jsonData={jsonData}
         onChange={(e) => {

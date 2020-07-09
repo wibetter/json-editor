@@ -85,9 +85,16 @@ export default class JSONEditorStore {
   deleteArrayIndex(keyRoute, arrayIndex) {
     // 1. 获取数组数据对象
     const arrJsonDataObj = getJSONDataByKeyRoute(keyRoute, this.jsonData);
-    // 2. 删除对应的数据项
-    arrJsonDataObj.splice(arrayIndex, 1);
-    this.triggerChangeAction(); // 用于主动触发组件更新
+    if (isArray(arrJsonDataObj)) {
+      if (arrJsonDataObj.length > 1) {
+        // 2. 删除对应的数据项
+        arrJsonDataObj.splice(arrayIndex, 1);
+        this.triggerChangeAction(); // 用于主动触发组件更新
+      } else {
+        message.warning('删除失败，至少保留一个数据项。');
+      }
+
+    }
   }
 
   /**

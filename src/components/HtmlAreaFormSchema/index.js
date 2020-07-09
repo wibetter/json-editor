@@ -47,7 +47,10 @@ class HtmlAreaFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
-    curJsonData = curJsonData !== undefined ? curJsonData : (targetJsonData.default || '<p>hello</p>');
+    curJsonData =
+      curJsonData !== undefined
+        ? curJsonData
+        : targetJsonData.default || '<p>hello</p>';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
       curJsonData = JSON5.stringify(curJsonData);
