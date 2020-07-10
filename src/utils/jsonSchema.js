@@ -267,11 +267,11 @@ export function schema2JsonData(jsonSchema) {
             curJsonData[jsonKey] = jsonItem.default || true;
             break;
           case 'number':
-            curJsonData[jsonKey] = jsonItem.default || 1;
+            curJsonData[jsonKey] = jsonItem.default || 12;
             break;
           case 'array':
             if (jsonItem.format === 'array') {
-              curJsonData[jsonKey] = [].push(schema2JsonData(jsonItem.items));
+              curJsonData[jsonKey] = [schema2JsonData(jsonItem.items)];
             } else {
               curJsonData[jsonKey] = jsonItem.default || [];
             }

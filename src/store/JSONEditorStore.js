@@ -54,13 +54,13 @@ export default class JSONEditorStore {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
       this.jsonData = schema2JsonData(jsonSchema);
-      console.log(this.JSONEditorObj);
     } else {
       /** 1、根据jsonSchema生成对应的jsonData */
       const newJsonData = schema2JsonData(jsonSchema);
       /** 2、根据jsonSchema过滤jsonData中不需要的数据对象 */
       const curJsonData = Object.assign(newJsonData, jsonData);
-      this.jsonData = jsonFilter(jsonSchema, curJsonData);
+      // this.jsonData = jsonFilter(jsonSchema, curJsonData);
+      this.jsonData = curJsonData;
     }
   }
 
