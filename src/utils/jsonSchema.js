@@ -212,7 +212,8 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
     const curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     const eventType = curProperties.type.default;
-    const eventFunc = curProperties.filter.default;
+    const eventFunc =
+      (curProperties.filter && curProperties.filter.default) || '() => {}';
     // 重构Event的数据结构
     if (eventType === 'in') {
       // 注册类事件
@@ -229,8 +230,10 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   if (newJSONSchema.properties) {
     // 3.重新生成required属性
     newJSONSchema.required = Object.keys(newJSONSchema.properties);
-    // 4.生成propertyOrder属性
-    newJSONSchema.propertyOrder = newJSONSchema.required;
+    if (!newJSONSchema.propertyOrder) {
+      // 4.生成propertyOrder属性
+      newJSONSchema.propertyOrder = newJSONSchema.required;
+    }
     // 5.继续遍历properties属性进行转换
     newJSONSchema.propertyOrder.map((jsonKey) => {
       newJSONSchema.properties[jsonKey] = oldJSONSchemaToNewJSONSchema(
