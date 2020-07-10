@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import JSONEditor from './main';
-import { getURLParam } from '$utils/index';
+import { Switch } from 'antd';
 import JSONSchemaEditor from '@jdwork/json-schema-editor/dist/index.umd';
 import '@jdwork/json-schema-editor/dist/index.css';
 import './index.scss';
@@ -719,52 +719,79 @@ class IndexDemo extends React.PureComponent {
         propertyOrder: ['func', 'style', 'data'],
       },
       jsonData: {},
+      wideScreen: false,
     };
   }
 
   render() {
-    const { jsonSchema, jsonData } = this.state;
-    const wideScreen = getURLParam('wideScreen');
+    const { jsonSchema, jsonData, wideScreen } = this.state;
     return (
-      <div className="json-action-container">
-        <div className="json-schema-box">
-          <JSONSchemaEditor
-            data={jsonSchema}
-            onChange={(newJsonSchema) => {
-              console.log('jsonSchemaChange', newJsonSchema);
-              this.setState({
-                jsonSchema: newJsonSchema,
-              });
-            }}
-          />
+      <>
+        <div className="title-container">
+          <div className="title1-box">
+            <p>
+              <b>JSONSchema</b>:
+              提供可视化界面编辑json格式/结构；(目前主要用于区块的模型设置，定义区块的配置项)
+            </p>
+          </div>
+          <div className="title2-box">
+            <p>
+              <b>JSONEditor</b>:
+              提供可视化界面编辑json数据内容，用于区块的可视化配置，避免用户直接编辑json数据内容；
+              (目前主要用于区块的配置) 。
+            </p>
+            <div>
+              展示模式：
+              <Switch
+                style={{ display: 'inline-block' }}
+                defaultChecked={wideScreen}
+                checkedChildren="宽屏"
+                unCheckedChildren="小屏"
+                onChange={(checked) => {
+                  this.setState({
+                    wideScreen: checked,
+                  });
+                }}
+              />
+            </div>
+          </div>
         </div>
-        <div className="json-editor-box">
-          <JSONEditor
-            wideScreen={
-              wideScreen !== '' ? (wideScreen === 'true' ? true : false) : true
-            } // 宽屏和小屏的配置项
-            schemaData={jsonSchema}
-            jsonData={jsonData}
-            onChange={(newJsonData) => {
-              console.log('jsonDataChange', newJsonData);
-              this.setState({
-                jsonData: newJsonData,
-              });
-            }}
-          />
+        <div className="json-action-container">
+          <div className="json-schema-box">
+            <JSONSchemaEditor
+              data={jsonSchema}
+              onChange={(newJsonSchema) => {
+                console.log('jsonSchemaChange', newJsonSchema);
+                this.setState({
+                  jsonSchema: newJsonSchema,
+                });
+              }}
+            />
+          </div>
+          <div className="json-editor-box">
+            <JSONEditor
+              wideScreen={wideScreen} // 宽屏和小屏的配置项
+              schemaData={jsonSchema}
+              jsonData={jsonData}
+              onChange={(newJsonData) => {
+                console.log('jsonDataChange', newJsonData);
+                this.setState({
+                  jsonData: newJsonData,
+                });
+              }}
+            />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
 
 ReactDOM.render(
   <div>
-    <h1>JSONEditor Demo</h1>
+    <h1>JSON数据可视化/JSONSchema&JSONEditor Demo</h1>
 
     <br />
-    <h2>Example:</h2>
-    <hr />
 
     <IndexDemo />
   </div>,
