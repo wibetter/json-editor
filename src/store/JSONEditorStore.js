@@ -1,9 +1,11 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
+import jsonFilter from 'json-schema-filter';
 import {
   getJSONDataByKeyRoute,
   getParentKeyRoute_CurKey,
 } from '$utils/jsonData';
+import { schema2JsonData } from '$utils/jsonSchema';
 import { objClone, isArray, isFunction } from '$utils/index';
 
 /**
@@ -11,6 +13,10 @@ import { objClone, isArray, isFunction } from '$utils/index';
  * */
 
 export default class JSONEditorStore {
+  /**
+   * rootJSONStore: store根数据对象
+   */
+  @observable rootJSONStore = {};
   // 构造函数
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
@@ -42,15 +48,20 @@ export default class JSONEditorStore {
 
   /** 初始化jsonData  */
   @action.bound
-  initJSONData(jsonData, jsonSchema) {
+  initJSONData(jsonData) {
+    const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
     if (!jsonData || JSON.stringify(jsonData) === '{}') {
       // 根据jsonSchema生成一份对应的jsonData
-      /** 待开发 */
-      this.jsonData = {};
+      /** 1、根据jsonSchema生成对应的jsonData */
+      this.jsonData = schema2JsonData(jsonSchema);
+      console.log(this.JSONEditorObj);
     } else {
-      this.jsonData = jsonData;
+      /** 1、根据jsonSchema生成对应的jsonData */
+      const newJsonData = schema2JsonData(jsonSchema);
+      /** 2、根据jsonSchema过滤jsonData中不需要的数据对象 */
+      const curJsonData = Object.assign(newJsonData, jsonData);
+      this.jsonData = jsonFilter(jsonSchema, curJsonData);
     }
-    this.curJsonKeyIndex = 1; // 每次初始化，都需要重置curJsonKeyIndex值
   }
 
   /** 初始化jsonData  */
