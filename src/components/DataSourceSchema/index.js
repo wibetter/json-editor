@@ -76,7 +76,12 @@ class DataSourceSchema extends React.PureComponent {
           {dataType === 'local' && (
             <>
               <div className="ace-editor-box code-area-item">
-                <Tooltip title="点击设置数据过滤器" placement="top">
+                <Tooltip
+                  title={
+                    isShowFilter ? '点击隐藏数据过滤器' : '点击显示数据过滤器'
+                  }
+                  placement="top"
+                >
                   <FilterOutlined
                     className="filter-btn"
                     onClick={this.switchFilterBtn}

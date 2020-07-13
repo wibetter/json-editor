@@ -2,6 +2,7 @@ import { observable, computed, action, toJS } from 'mobx';
 import {
   getJSONDataByIndex,
   oldJSONSchemaToNewJSONSchema,
+  schema2JsonData,
 } from '$utils/jsonSchema';
 import { objClone } from '$utils/index';
 import { initJSONSchemaData } from '$data/index';
@@ -16,12 +17,6 @@ export default class JSONSchemaStore {
     this.rootJSONStore = rootJSONStore;
   }
 
-  /** 主要用于自动生成jsonKey中的index */
-  curJsonKeyIndex = 1; // 非响应式
-  /**
-   * triggerChange: 用于强制触发更新事件
-   */
-  @observable triggerChange = false;
   /**
    * 宽屏（wideScreen） or 小屏（mobileScreen）
    */
@@ -30,14 +25,6 @@ export default class JSONSchemaStore {
    * jsonSchema: JSONSchema数据对象
    */
   @observable jsonSchema = {};
-
-  /**
-   * triggerChangeAction: 用于主动触发更新事件
-   */
-  @action.bound
-  triggerChangeAction() {
-    this.triggerChange = !this.triggerChange;
-  }
 
   /**
    * 设置当前屏幕模式：大屏 or 小屏
@@ -58,11 +45,24 @@ export default class JSONSchemaStore {
       // 使用默认的jsonschema数据进行初始化
       this.jsonSchema = objClone(initJSONSchemaData);
     } else {
-      // 进行一次转换，以便兼容旧版数据
-      const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
-      this.jsonSchema = newJSONSchema;
+      if (jsonSchemaData && jsonSchemaData.lastUpdateTime) {
+        /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
+        this.jsonSchema = jsonSchemaData;
+      } else {
+        // 进行一次转换，以便兼容旧版数据
+        const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
+        this.jsonSchema = newJSONSchema;
+      }
+      /** 根据jsonSchema生成对应的最新jsonData */
+      const newJsonData = schema2JsonData(this.JSONSchemaObj);
+      /** 根据jsonSchema过滤jsonData中不需要的数据对象 */
+      // this.jsonData = jsonFilter(jsonSchema, curJsonData);
+      /** 更新当前的jsonData */
+      this.rootJSONStore.JSONEditorStore.jsonData = Object.assign(
+        newJsonData,
+        this.rootJSONStore.JSONEditorStore.jsonData,
+      );
     }
-    this.curJsonKeyIndex = 1; // 每次初始化，都需要重置curJsonKeyIndex值
   }
 
   @computed get JSONSchemaObj() {

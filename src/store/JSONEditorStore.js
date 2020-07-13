@@ -1,6 +1,5 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
-import jsonFilter from 'json-schema-filter';
 import {
   getJSONDataByKeyRoute,
   getParentKeyRoute_CurKey,
@@ -21,9 +20,6 @@ export default class JSONEditorStore {
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
   }
-
-  /** 主要用于自动生成jsonKey中的index */
-  curJsonKeyIndex = 1; // 非响应式
   /**
    * triggerChange: 用于强制触发更新事件
    */
@@ -55,12 +51,7 @@ export default class JSONEditorStore {
       /** 1、根据jsonSchema生成对应的jsonData */
       this.jsonData = schema2JsonData(jsonSchema);
     } else {
-      /** 1、根据jsonSchema生成对应的jsonData */
-      const newJsonData = schema2JsonData(jsonSchema);
-      /** 2、根据jsonSchema过滤jsonData中不需要的数据对象 */
-      const curJsonData = Object.assign(newJsonData, jsonData);
-      // this.jsonData = jsonFilter(jsonSchema, curJsonData);
-      this.jsonData = curJsonData;
+      this.jsonData = jsonData;
     }
   }
 
