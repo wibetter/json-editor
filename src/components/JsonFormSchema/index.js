@@ -71,10 +71,10 @@ class JsonFormSchema extends React.PureComponent {
             title={targetJsonData.description}
             placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
           >
-            <span className="title-text">{targetJsonData.title}</span>
             <span className="title-text warning-text">
               {readOnly ? '[只读]' : ''}
             </span>
+            <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
         </div>
         <div className="content-item object-content">
