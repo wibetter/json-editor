@@ -10,6 +10,7 @@ import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
   static propTypes = {
+    wideScreen: PropTypes.any,
     onChange: PropTypes.func,
     schemaData: PropTypes.object,
     jsonData: PropTypes.object,
