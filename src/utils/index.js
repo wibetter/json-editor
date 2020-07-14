@@ -90,6 +90,17 @@ export function isObject(curObj) {
 }
 
 /**
+ *  判断是否是函数类型
+ * */
+export function isFunction(curObj) {
+  let isFunction = false;
+  if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Function') {
+    isFunction = true;
+  }
+  return isFunction;
+}
+
+/**
  * 获取当前url中的所有参数
  */
 export function getParams() {

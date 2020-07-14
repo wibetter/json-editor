@@ -2,7 +2,7 @@ import { EventTypeDataList } from '$data/TypeDataList';
 /**
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
-import { objClone } from '$utils/index';
+import { objClone, isObject } from '$utils/index';
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -212,7 +212,8 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
     const curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     const eventType = curProperties.type.default;
-    const eventFunc = curProperties.filter.default;
+    const eventFunc =
+      (curProperties.filter && curProperties.filter.default) || '() => {}';
     // 重构Event的数据结构
     if (eventType === 'in') {
       // 注册类事件
@@ -229,8 +230,10 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   if (newJSONSchema.properties) {
     // 3.重新生成required属性
     newJSONSchema.required = Object.keys(newJSONSchema.properties);
-    // 4.生成propertyOrder属性
-    newJSONSchema.propertyOrder = newJSONSchema.required;
+    if (!newJSONSchema.propertyOrder) {
+      // 4.生成propertyOrder属性
+      newJSONSchema.propertyOrder = newJSONSchema.required;
+    }
     // 5.继续遍历properties属性进行转换
     newJSONSchema.propertyOrder.map((jsonKey) => {
       newJSONSchema.properties[jsonKey] = oldJSONSchemaToNewJSONSchema(
@@ -244,4 +247,73 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
     newJSONSchema.items = oldJSONSchemaToNewJSONSchema(newJSONSchema.items);
   }
   return newJSONSchema;
+}
+
+/**
+ * 根据jsonSchema生成一份对应的jsonData
+ * */
+export function schema2JsonData(jsonSchema) {
+  const curJsonData = {};
+  if (isObject(jsonSchema)) {
+    // 判断是否有propertyOrder属性
+    if (jsonSchema.properties) {
+      jsonSchema.propertyOrder.map((jsonKey) => {
+        const jsonItem = jsonSchema.properties[jsonKey];
+        switch (jsonItem.type) {
+          case 'string':
+            curJsonData[jsonKey] = jsonItem.default || '';
+            break;
+          case 'boolean':
+            curJsonData[jsonKey] = jsonItem.default || true;
+            break;
+          case 'number':
+            curJsonData[jsonKey] = jsonItem.default || 12;
+            break;
+          case 'array':
+            if (jsonItem.format === 'array') {
+              curJsonData[jsonKey] = [schema2JsonData(jsonItem.items)];
+            } else {
+              curJsonData[jsonKey] = jsonItem.default || [];
+            }
+            break;
+          case 'object':
+            if (jsonItem.format === 'datasource') {
+              // 数据源类型
+              curJsonData[jsonKey] = {
+                data: '',
+                filter: '() => {}',
+              };
+            } else if (jsonItem.format === 'event') {
+              // 事件类型
+              if (
+                jsonItem.properties &&
+                jsonItem.properties.type &&
+                jsonItem.properties.type.default &&
+                jsonItem.properties.type.default === 'emit'
+              ) {
+                // 触发事件类型
+                curJsonData[jsonKey] = {
+                  trigger: '',
+                  eventData: '{}',
+                };
+              } else {
+                // 注册事件类型
+                // 触发事件类型
+                curJsonData[jsonKey] = {
+                  register: '',
+                  actionFunc: '() => {}',
+                };
+              }
+            } else {
+              // 普通对象类型
+              curJsonData[jsonKey] = schema2JsonData(jsonItem);
+            }
+            break;
+          default:
+            curJsonData[jsonKey] = jsonItem.default || '';
+        }
+      });
+    }
+  }
+  return curJsonData;
 }

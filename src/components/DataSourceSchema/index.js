@@ -33,7 +33,7 @@ class DataSourceSchema extends React.PureComponent {
     const { isShowFilter } = this.state;
     this.setState({
       isShowFilter: !isShowFilter,
-    })
+    });
   };
 
   render() {
@@ -76,8 +76,16 @@ class DataSourceSchema extends React.PureComponent {
           {dataType === 'local' && (
             <>
               <div className="ace-editor-box code-area-item">
-                <Tooltip title="点击设置数据过滤器" placement="top">
-                  <FilterOutlined className="filter-btn" onClick={this.switchFilterBtn} />
+                <Tooltip
+                  title={
+                    isShowFilter ? '点击隐藏数据过滤器' : '点击显示数据过滤器'
+                  }
+                  placement="top"
+                >
+                  <FilterOutlined
+                    className="filter-btn"
+                    onClick={this.switchFilterBtn}
+                  />
                 </Tooltip>
                 <JsonFormSchema
                   {...{
@@ -91,21 +99,19 @@ class DataSourceSchema extends React.PureComponent {
                   key={`${nodeKey}-data`}
                 />
               </div>
-              {
-                isShowFilter && (
-                  <CodeAreaFormSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'filter',
-                      indexRoute: `${indexRoute}-2`,
-                      keyRoute: `${keyRoute}-filter`,
-                      nodeKey: `${nodeKey}-filter`,
-                      targetJsonData: filterDataObj,
-                    }}
-                    key={`${nodeKey}-filter`}
-                  />
-                )
-              }
+              {isShowFilter && (
+                <CodeAreaFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'filter',
+                    indexRoute: `${indexRoute}-2`,
+                    keyRoute: `${keyRoute}-filter`,
+                    nodeKey: `${nodeKey}-filter`,
+                    targetJsonData: filterDataObj,
+                  }}
+                  key={`${nodeKey}-filter`}
+                />
+              )}
             </>
           )}
           {dataType === 'remote' && (
@@ -123,24 +129,25 @@ class DataSourceSchema extends React.PureComponent {
                   key={`${nodeKey}-data`}
                 />
                 <Tooltip title="点击设置数据过滤器" placement="top">
-                  <FilterOutlined className="filter-url-btn" onClick={this.switchFilterBtn} />
+                  <FilterOutlined
+                    className="filter-url-btn"
+                    onClick={this.switchFilterBtn}
+                  />
                 </Tooltip>
               </div>
-              {
-                isShowFilter && (
-                  <CodeAreaFormSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'filter',
-                      indexRoute: `${indexRoute}-2`,
-                      keyRoute: `${keyRoute}-filter`,
-                      nodeKey: `${nodeKey}-filter`,
-                      targetJsonData: filterDataObj,
-                    }}
-                    key={`${nodeKey}-filter`}
-                  />
-                )
-              }
+              {isShowFilter && (
+                <CodeAreaFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'filter',
+                    indexRoute: `${indexRoute}-2`,
+                    keyRoute: `${keyRoute}-filter`,
+                    nodeKey: `${nodeKey}-filter`,
+                    targetJsonData: filterDataObj,
+                  }}
+                  key={`${nodeKey}-filter`}
+                />
+              )}
             </>
           )}
         </div>

@@ -4,28 +4,35 @@ import {
   getJSONDataByKeyRoute,
   getParentKeyRoute_CurKey,
 } from '$utils/jsonData';
-import { objClone, isArray } from '$utils/index';
+import { schema2JsonData } from '$utils/jsonSchema';
+import { objClone, isArray, isFunction } from '$utils/index';
 
 /**
  * 用于管控JSON数据内容的全局store
  * */
 
 export default class JSONEditorStore {
+  /**
+   * rootJSONStore: store根数据对象
+   */
+  @observable rootJSONStore = {};
   // 构造函数
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
   }
-
-  /** 主要用于自动生成jsonKey中的index */
-  curJsonKeyIndex = 1; // 非响应式
   /**
    * triggerChange: 用于强制触发更新事件
    */
   @observable triggerChange = false;
   /**
-   * jsonSchema: JSONSchema数据对象
+   * jsonData: jsonData数据对象
    */
   @observable jsonData = {};
+
+  /**
+   * onChange: jsonData数据变动触发的onChange
+   */
+  @observable onChange = () => {}; // 函数类型
 
   /**
    * triggerChangeAction: 用于主动触发更新事件
@@ -37,19 +44,33 @@ export default class JSONEditorStore {
 
   /** 初始化jsonData  */
   @action.bound
-  initJSONData(jsonData, jsonSchema) {
+  initJSONData(jsonData) {
+    const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
     if (!jsonData || JSON.stringify(jsonData) === '{}') {
       // 根据jsonSchema生成一份对应的jsonData
-      /** 待开发 */
-      this.jsonData = {};
+      /** 1、根据jsonSchema生成对应的jsonData */
+      this.jsonData = schema2JsonData(jsonSchema);
     } else {
       this.jsonData = jsonData;
     }
-    this.curJsonKeyIndex = 1; // 每次初始化，都需要重置curJsonKeyIndex值
   }
 
-  @computed get JSONSchemaObj() {
+  /** 初始化jsonData  */
+  @action.bound
+  initOnChange(newOnChangeFunc) {
+    if (newOnChangeFunc || isFunction(newOnChangeFunc)) {
+      this.onChange = newOnChangeFunc;
+    }
+  }
+
+  @computed get JSONEditorObj() {
     return toJS(this.jsonData);
+  }
+
+  /** 触发onChange  */
+  @action.bound
+  jsonDataChange() {
+    this.onChange(this.JSONEditorObj);
   }
 
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
@@ -75,7 +96,8 @@ export default class JSONEditorStore {
     );
     // 3. 数值更新
     parentJsonDataObj[curKey] = newVal;
-    console.log(this.JSONSchemaObj);
+    // 4. 触发onChange事件
+    this.jsonDataChange();
   }
 
   /**
@@ -90,6 +112,8 @@ export default class JSONEditorStore {
         // 2. 删除对应的数据项
         arrJsonDataObj.splice(arrayIndex, 1);
         this.triggerChangeAction(); // 用于主动触发组件更新
+        // 3. 触发onChange事件
+        this.jsonDataChange();
       } else {
         message.warning('删除失败，至少保留一个数据项。');
       }
@@ -117,6 +141,8 @@ export default class JSONEditorStore {
       const newArrItem = objClone(arrJsonDataObj[0]);
       arrJsonDataObj.push(newArrItem);
       this.triggerChangeAction(); // 用于主动触发组件更新
+      // 3. 触发onChange事件
+      this.jsonDataChange();
     } else {
       message.warning('数据操作异常：当前数据不是数组类型。');
     }

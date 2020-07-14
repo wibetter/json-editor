@@ -10,6 +10,7 @@ import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
   static propTypes = {
+    wideScreen: PropTypes.any,
     onChange: PropTypes.func,
     schemaData: PropTypes.object,
     jsonData: PropTypes.object,
@@ -25,9 +26,13 @@ class JSONDataEditor extends React.PureComponent {
     if (props.jsonData) {
       this.props.initJSONData(props.jsonData);
     }
-    // 根据props.jsonData对jsonData进行初始化
+    // 读取宽屏和小屏的配置
     if (props.wideScreen) {
       this.props.setPageScreen(props.wideScreen);
+    }
+    // 记录onChange事件
+    if (props.onChange) {
+      this.props.initOnChange(props.onChange);
     }
   }
 
@@ -40,6 +45,10 @@ class JSONDataEditor extends React.PureComponent {
     }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
       this.props.setPageScreen(nextProps.wideScreen);
+    }
+    // 记录onChange事件
+    if (!isEqual(nextProps.onChange, this.props.onChange)) {
+      this.props.initOnChange(nextProps.onChange);
     }
   }
 
@@ -116,5 +125,6 @@ export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
   initJSONData: stores.JSONEditorStore.initJSONData,
+  initOnChange: stores.JSONEditorStore.initOnChange,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
 }))(observer(JSONDataEditor));

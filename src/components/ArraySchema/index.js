@@ -68,7 +68,7 @@ class ArraySchema extends React.PureComponent {
           </Tooltip>
           <Tooltip title="添加数据项">
             <PlusCircleOutlined
-              className="add-operate-btn operate-btn"
+              className="add-operate-btn array-operate-btn"
               onClick={() => {
                 this.addArrayItem(keyRoute);
               }}
@@ -100,7 +100,7 @@ class ArraySchema extends React.PureComponent {
                   <div className="operate-btn-box">
                     <Tooltip title="删除数据项">
                       <CloseCircleOutlined
-                        className="delete-operate-btn operate-btn"
+                        className="delete-operate-btn array-operate-btn"
                         onClick={() => {
                           this.deleteArrItem(keyRoute, arrIndex);
                         }}

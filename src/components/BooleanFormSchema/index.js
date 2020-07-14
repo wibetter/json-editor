@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Switch, message, Tooltip } from 'antd';
-import { PlusCircleOutlined } from '@ant-design/icons';
+import { Switch, Tooltip } from 'antd';
 
 class BooleanFormSchema extends React.PureComponent {
   static propTypes = {

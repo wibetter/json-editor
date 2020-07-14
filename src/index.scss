@@ -1,7 +1,41 @@
 @charset "utf-8";
 
 body {
-  padding: 8px 10px;
+  padding: 20px 10px;
+}
+
+.title-container {
+  display: flex;
+
+  .title1-box {
+    flex: 0 1 700px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+  }
+
+  .title2-box {
+    flex: 1 1 600px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+  }
+}
+
+.json-action-container {
+  display: flex;
+
+  .json-schema-box {
+   flex: 0 1 700px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .json-editor-box {
+    flex: 1 1 600px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* 设置滚动条的样式 */
