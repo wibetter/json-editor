@@ -59,14 +59,23 @@ export default class JSONSchemaStore {
       // this.jsonData = jsonFilter(jsonSchema, curJsonData);
       /** 更新当前的jsonData */
       this.rootJSONStore.JSONEditorStore.jsonData = Object.assign(
-        newJsonData,
         this.rootJSONStore.JSONEditorStore.jsonData,
+        newJsonData,
       );
     }
   }
 
   @computed get JSONSchemaObj() {
     return toJS(this.jsonSchema);
+  }
+
+  /** 获取当前jsonSchema的最新编辑时间的对应时间戳 */
+  @computed get lastUpdateTime() {
+    let curLastUpdateTime = this.jsonSchema.lastUpdateTime;
+    curLastUpdateTime = curLastUpdateTime
+      ? new Date(curLastUpdateTime).getTime()
+      : new Date().getTime();
+    return curLastUpdateTime;
   }
 
   /** 根据索引路径获取对应的json数据[非联动式数据获取]  */

@@ -37,7 +37,7 @@ export function getJSONDataByKeyRoute(
       // 1、获取当前的jsonKey值
       const curKey = keyRouteArr[index];
       // 2、先根据路径值获取key值
-      curJsonDataObj = curJsonDataObj[curKey];
+      curJsonDataObj = curJsonDataObj && curJsonDataObj[curKey];
     }
   }
   return curJsonDataObj;

@@ -36,6 +36,8 @@ class InputFormSchema extends React.PureComponent {
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
 
     return (
       <div
@@ -53,12 +55,17 @@ class InputFormSchema extends React.PureComponent {
             placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
           >
             <span className="title-text">{targetJsonData.title}</span>
+            <span className="title-text warning-text">
+              {readOnly ? '[只读]' : ''}
+            </span>
           </Tooltip>
         </div>
         <div className="content-item">
           <div className="form-item-box">
             <Input
               style={{ display: 'inline-block' }}
+              disabled={readOnly}
+              required={isRequired}
               placeholder={
                 targetJsonData.placeholder || `请输入${targetJsonData.title}`
               }

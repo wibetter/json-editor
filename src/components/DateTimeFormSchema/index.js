@@ -42,6 +42,8 @@ class DateTimeFormSchema extends React.PureComponent {
       getJSONDataByKeyRoute,
     } = this.props;
     const curFormat = getCurrentFormat(targetJsonData);
+    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     const timeFormat = DateTypeList[curFormat] || DateTypeList[0];
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -63,12 +65,17 @@ class DateTimeFormSchema extends React.PureComponent {
             placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
           >
             <span className="title-text">{targetJsonData.title}</span>
+            <span className="title-text warning-text">
+              {readOnly ? '[只读]' : ''}
+            </span>
           </Tooltip>
         </div>
         <div className="content-item">
           <div className="form-item-box">
             <DatePicker
               style={{ display: 'inline-block' }}
+              disabled={readOnly}
+              required={isRequired}
               showTime={curFormat === 'date-time' ? true : false}
               format={timeFormat}
               placeholder={

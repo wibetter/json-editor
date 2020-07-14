@@ -44,6 +44,8 @@ class CodeAreaFormSchema extends React.PureComponent {
       getJSONDataByKeyRoute,
     } = this.props;
     const { isShowWarn, warnText } = this.state;
+    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
@@ -72,6 +74,9 @@ class CodeAreaFormSchema extends React.PureComponent {
             placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
           >
             <span className="title-text">{targetJsonData.title}</span>
+            <span className="title-text warning-text">
+              {readOnly ? '[只读]' : ''}
+            </span>
           </Tooltip>
         </div>
         <div className="content-item object-content">
@@ -93,7 +98,7 @@ class CodeAreaFormSchema extends React.PureComponent {
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
-            readOnly={false}
+            readOnly={readOnly}
             minLines={5}
             maxLines={30}
             width={'100%'}
