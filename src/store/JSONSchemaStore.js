@@ -2,7 +2,7 @@ import { observable, computed, action, toJS } from 'mobx';
 import {
   getJSONDataByIndex,
   oldJSONSchemaToNewJSONSchema,
-  schema2JsonData,
+  schema2NewJsonData,
 } from '$utils/jsonSchema';
 import { objClone } from '$utils/index';
 import { initJSONSchemaData } from '$data/index';
@@ -53,13 +53,14 @@ export default class JSONSchemaStore {
         const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
+      const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
       /** 根据jsonSchema生成对应的最新jsonData */
-      const newJsonData = schema2JsonData(this.JSONSchemaObj);
+      const newJsonData = schema2NewJsonData(this.JSONSchemaObj, curJsonData);
       /** 根据jsonSchema过滤jsonData中不需要的数据对象 */
       // this.jsonData = jsonFilter(jsonSchema, curJsonData);
       /** 更新当前的jsonData */
       this.rootJSONStore.JSONEditorStore.jsonData = Object.assign(
-        this.rootJSONStore.JSONEditorStore.jsonData,
+        curJsonData,
         newJsonData,
       );
     }
