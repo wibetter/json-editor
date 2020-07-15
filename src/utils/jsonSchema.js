@@ -269,7 +269,8 @@ export function schema2JsonData(jsonSchema, jsonData) {
     if (jsonSchema.properties) {
       jsonSchema.propertyOrder.map((jsonKey) => {
         const jsonItem = jsonSchema.properties[jsonKey];
-        let oldValue = jsonData && jsonData[jsonKey];
+        let oldValue =
+          jsonData && jsonData[jsonKey] ? jsonData[jsonKey] : undefined;
         if (
           oldValue &&
           jsonItem.default &&
