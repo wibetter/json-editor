@@ -793,7 +793,7 @@ class IndexDemo extends React.PureComponent {
       jsonData: {},
       wideScreen: false,
     };
-    /* this.state = {
+    /*this.state = {
       jsonSchema: window.PAGEDATA.jsonSchema || {
         type: 'object',
         title: 'jsonSchemaObject',
