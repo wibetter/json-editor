@@ -338,6 +338,7 @@ export function schema2NewJsonData(jsonSchema, jsonData) {
           // 表示当前数据类型发生变化，则丢弃旧版数据
           oldValue = undefined;
         }
+        /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
         const curValue = oldValue !== undefined ? oldValue : jsonItem.default;
         switch (jsonItem.type) {
           case 'string':
