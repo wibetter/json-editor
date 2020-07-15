@@ -65,7 +65,16 @@ export function isEmptySchema(targetJsonObj) {
       targetJsonObj.propertyOrder &&
       targetJsonObj.propertyOrder.length > 0
     ) {
-      isEmpty = false;
+      const funcSchema = targetJsonObj.properties.func;
+      const styleSchema = targetJsonObj.properties.style;
+      const dataSchema = targetJsonObj.properties.data;
+      if (
+        (funcSchema.propertyOrder && funcSchema.propertyOrder.length > 0) ||
+        (styleSchema.propertyOrder && styleSchema.propertyOrder.length > 0) ||
+        (dataSchema.propertyOrder && dataSchema.propertyOrder.length > 0)
+      ) {
+        isEmpty = false;
+      }
     }
   }
   return isEmpty;
@@ -315,12 +324,20 @@ export function schema2JsonData(jsonSchema, jsonData) {
                   data: '{}',
                   filter: '() => {}',
                 };
+                // 纠正data中的默认数据
+                if (curJsonData[jsonKey].data === 'http://xxx') {
+                  curJsonData[jsonKey].data = '{}';
+                }
               } else {
                 // 远程数据类型
                 curJsonData[jsonKey] = oldValue || {
                   data: 'http://xxx',
                   filter: '() => {}',
                 };
+                // 纠正data中的默认数据
+                if (curJsonData[jsonKey].data === '{}') {
+                  curJsonData[jsonKey].data = 'http://xxx';
+                }
               }
             } else if (jsonItem.format === 'event') {
               // 事件类型

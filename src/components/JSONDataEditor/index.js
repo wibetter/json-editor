@@ -100,21 +100,28 @@ class JSONDataEditor extends React.PureComponent {
               /** 5. 获取当前元素的id，用于做唯一标识 */
               const nodeKey = `${lastUpdateTime}-${currentFormat}-${currentJsonKey}`;
 
-              return (
-                <Panel
-                  header={this.renderHeader(currentFormat)}
-                  key={currentJsonKey}
-                >
-                  {MappingRender({
-                    parentType: currentFormat,
-                    jsonKey: currentJsonKey,
-                    indexRoute: currentIndexRoute,
-                    keyRoute: currentKeyRoute,
-                    nodeKey,
-                    targetJsonData: currentSchemaData,
-                  })}
-                </Panel>
-              );
+              if (
+                currentSchemaData.propertyOrder &&
+                currentSchemaData.propertyOrder.length > 0
+              ) {
+                return (
+                  <Panel
+                    header={this.renderHeader(currentFormat)}
+                    key={currentJsonKey}
+                  >
+                    {MappingRender({
+                      parentType: currentFormat,
+                      jsonKey: currentJsonKey,
+                      indexRoute: currentIndexRoute,
+                      keyRoute: currentKeyRoute,
+                      nodeKey,
+                      targetJsonData: currentSchemaData,
+                    })}
+                  </Panel>
+                );
+              } else {
+                return '';
+              }
             })}
           </Collapse>
         )}
