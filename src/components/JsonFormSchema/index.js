@@ -50,7 +50,7 @@ class JsonFormSchema extends React.PureComponent {
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData =
-      curJsonData !== undefined ? curJsonData : targetJsonData.default || '()';
+      curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
       curJsonData = JSON5.stringify(curJsonData);

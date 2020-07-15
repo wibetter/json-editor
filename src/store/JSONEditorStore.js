@@ -12,14 +12,14 @@ import { objClone, isArray, isFunction } from '$utils/index';
  * */
 
 export default class JSONEditorStore {
-  /**
-   * rootJSONStore: store根数据对象
-   */
-  @observable rootJSONStore = {};
   // 构造函数
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
   }
+  /**
+   * rootJSONStore: store根数据对象
+   */
+  @observable rootJSONStore = {};
   /**
    * triggerChange: 用于强制触发更新事件
    */
