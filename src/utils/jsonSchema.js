@@ -3,6 +3,7 @@ import { EventTypeDataList } from '$data/TypeDataList';
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
 import { objClone, isObject } from '$utils/index';
+import { isArray } from './index';
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -304,9 +305,17 @@ export function schema2JsonData(jsonSchema, jsonData) {
             break;
           case 'array':
             if (jsonItem.format === 'array') {
-              curJsonData[jsonKey] = [
-                schema2JsonData(jsonItem.items, oldValue),
-              ];
+              if (isArray(oldValue)) {
+                curJsonData[jsonKey] = [];
+                oldValue.map((arrItem) => {
+                  curJsonData[jsonKey].push(
+                    schema2JsonData(jsonItem.items, arrItem),
+                  );
+                });
+              } else {
+                const childItems = schema2JsonData(jsonItem.items, oldValue);
+                curJsonData[jsonKey] = [childItems];
+              }
             } else {
               curJsonData[jsonKey] = curValue !== undefined ? curValue : [];
             }
