@@ -61,19 +61,12 @@ class ArraySchema extends React.PureComponent {
 
     return (
       <div
-        className={`${
-          pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
-        }  block-element-warp`}
+        className="mobile-screen-element-warp block-element-warp"
         key={nodeKey}
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip
-            title={targetJsonData.description}
-            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-          >
+          <Tooltip title={targetJsonData.description} placement="topLeft">
             <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
           <Tooltip title="添加数据项">

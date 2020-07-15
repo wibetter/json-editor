@@ -13,7 +13,7 @@
     box-sizing: border-box;
     min-width: 280px;
 
-    .element-title {
+    > .element-title {
       display: block;
       word-break: keep-all;
       margin-right: 12px;
@@ -23,7 +23,7 @@
       text-overflow: ellipsis;
     }
 
-    .content-item {
+    > .content-item {
       position: relative;
 
       > .small-screen-element-warp,
@@ -48,7 +48,7 @@
     justify-content: flex-start;
     align-items: flex-start;
 
-    .element-title {
+    > .element-title {
       flex: 0 1 120px;
       word-break: keep-all;
       max-width: 120px;
@@ -60,7 +60,7 @@
       text-overflow: ellipsis;
     }
 
-    .content-item {
+    > .content-item {
       flex: 1 1 200px;
 
       .color-item-form {
