@@ -58,7 +58,9 @@ class BooleanFormSchema extends React.PureComponent {
           <div className="form-item-box">
             <Switch
               style={{ display: 'inline-block' }}
-              defaultChecked={curJsonData || targetJsonData.default}
+              defaultChecked={
+                curJsonData !== undefined ? curJsonData : targetJsonData.default
+              }
               checkedChildren="true"
               unCheckedChildren="false"
               onChange={this.handleValueChange}

@@ -336,17 +336,18 @@ export function schema2NewJsonData(jsonSchema, jsonData) {
           typeof oldValue !== typeof jsonItem.default
         ) {
           // 表示当前数据类型发生变化，则丢弃旧版数据
-          oldValue = '';
+          oldValue = undefined;
         }
+        const curValue = oldValue !== undefined ? oldValue : jsonItem.default;
         switch (jsonItem.type) {
           case 'string':
-            curJsonData[jsonKey] = oldValue || jsonItem.default || '';
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : '';
             break;
           case 'boolean':
-            curJsonData[jsonKey] = oldValue || jsonItem.default || true;
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : false;
             break;
           case 'number':
-            curJsonData[jsonKey] = oldValue || jsonItem.default || 12;
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : 1;
             break;
           case 'array':
             if (jsonItem.format === 'array') {
@@ -354,16 +355,19 @@ export function schema2NewJsonData(jsonSchema, jsonData) {
                 schema2NewJsonData(jsonItem.items, oldValue),
               ];
             } else {
-              curJsonData[jsonKey] = oldValue || jsonItem.default || [];
+              curJsonData[jsonKey] = curValue !== undefined ? curValue : [];
             }
             break;
           case 'object':
             if (jsonItem.format === 'datasource') {
               // 数据源类型
-              curJsonData[jsonKey] = oldValue || {
-                data: '',
-                filter: '() => {}',
-              };
+              curJsonData[jsonKey] =
+                curValue !== undefined
+                  ? curValue
+                  : {
+                      data: '',
+                      filter: '() => {}',
+                    };
             } else if (jsonItem.format === 'event') {
               // 事件类型
               if (
@@ -373,17 +377,22 @@ export function schema2NewJsonData(jsonSchema, jsonData) {
                 jsonItem.properties.type.default === 'emit'
               ) {
                 // 触发事件类型
-                curJsonData[jsonKey] = oldValue || {
-                  trigger: '',
-                  eventData: '{}',
-                };
+                curJsonData[jsonKey] =
+                  curValue !== undefined
+                    ? curValue
+                    : {
+                        trigger: '',
+                        eventData: '{}',
+                      };
               } else {
-                // 注册事件类型
-                // 触发事件类型
-                curJsonData[jsonKey] = oldValue || {
-                  register: '',
-                  actionFunc: '() => {}',
-                };
+                // 注册事件类型-触发事件类型
+                curJsonData[jsonKey] =
+                  curValue !== undefined
+                    ? curValue
+                    : {
+                        register: '',
+                        actionFunc: '() => {}',
+                      };
               }
             } else {
               // 普通对象类型
@@ -391,7 +400,7 @@ export function schema2NewJsonData(jsonSchema, jsonData) {
             }
             break;
           default:
-            curJsonData[jsonKey] = oldValue || jsonItem.default || '';
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : '';
         }
       });
     }

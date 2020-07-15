@@ -121,11 +121,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
             }}
             setOptions={{
               useWorker: false,
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: true,
               showLineNumbers: true,
-              wrapEnabled: true,
               tabSize: 2,
             }}
           />
