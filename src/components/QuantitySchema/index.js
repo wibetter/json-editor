@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Input, InputNumber, message, Tooltip } from 'antd';
 
 class QuantitySchema extends React.PureComponent {
   static propTypes = {
@@ -36,6 +36,7 @@ class QuantitySchema extends React.PureComponent {
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
     // const quantityJsonSchema = targetJsonData.properties && targetJsonData.properties.quantity;
     const unitJsonSchema =
       targetJsonData.properties && targetJsonData.properties.unit;
@@ -54,11 +55,15 @@ class QuantitySchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
           <Tooltip title={targetJsonData.description} placement="top">
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
+                pageScreen === 'wideScreen' &&
+                targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''
               }
@@ -72,6 +77,7 @@ class QuantitySchema extends React.PureComponent {
             <Input
               style={{ display: 'inline-block' }}
               addonAfter={unitAfter}
+              disabled={readOnly}
               placeholder={
                 unitJsonSchema.placeholder ||
                 targetJsonData.placeholder ||
