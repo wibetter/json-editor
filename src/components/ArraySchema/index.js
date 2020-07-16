@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Tooltip } from 'antd';
+import { message, Tooltip } from 'antd';
 import { PlusCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import { isArray } from '$utils/index';
@@ -26,13 +26,23 @@ class ArraySchema extends React.PureComponent {
   }
 
   /** 添加数组项 */
-  addArrayItem = (keyRoute) => {
-    this.props.addArrayItem(keyRoute);
+  addArrayItem = (keyRoute, curArr) => {
+    const maximumChild = this.props.targetJsonData['maximum-child'];
+    if (curArr && curArr.length >= maximumChild) {
+      message.warning(`添加失败，最多可添加${maximumChild}个子项`);
+    } else {
+      this.props.addArrayItem(keyRoute);
+    }
   };
 
   /** 删除数组项 */
-  deleteArrItem = (keyRoute, arrIndex) => {
-    this.props.deleteArrayIndex(keyRoute, arrIndex);
+  deleteArrItem = (keyRoute, arrIndex, curArr) => {
+    const minimumChild = this.props.targetJsonData['minimum-child'];
+    if (curArr && curArr.length <= minimumChild) {
+      message.warning(`删除失败，至少需要保留${minimumChild}个子项`);
+    } else {
+      this.props.deleteArrayIndex(keyRoute, arrIndex);
+    }
   };
 
   render() {
@@ -51,26 +61,19 @@ class ArraySchema extends React.PureComponent {
 
     return (
       <div
-        className={`${
-          pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
-        }  block-element-warp`}
+        className="mobile-screen-element-warp block-element-warp"
         key={nodeKey}
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip
-            title={targetJsonData.description}
-            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-          >
+          <Tooltip title={targetJsonData.description} placement="topLeft">
             <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
           <Tooltip title="添加数据项">
             <PlusCircleOutlined
               className="add-operate-btn array-operate-btn"
               onClick={() => {
-                this.addArrayItem(keyRoute);
+                this.addArrayItem(keyRoute, curJsonData);
               }}
             />
           </Tooltip>
@@ -102,7 +105,7 @@ class ArraySchema extends React.PureComponent {
                       <CloseCircleOutlined
                         className="delete-operate-btn array-operate-btn"
                         onClick={() => {
-                          this.deleteArrItem(keyRoute, arrIndex);
+                          this.deleteArrItem(keyRoute, arrIndex, curJsonData);
                         }}
                       />
                     </Tooltip>

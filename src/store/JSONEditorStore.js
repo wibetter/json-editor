@@ -1,5 +1,6 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
+import JSON5 from 'json5';
 import {
   getJSONDataByKeyRoute,
   getParentKeyRoute_CurKey,
@@ -12,14 +13,14 @@ import { objClone, isArray, isFunction } from '$utils/index';
  * */
 
 export default class JSONEditorStore {
-  /**
-   * rootJSONStore: store根数据对象
-   */
-  @observable rootJSONStore = {};
   // 构造函数
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
   }
+  /**
+   * rootJSONStore: store根数据对象
+   */
+  @observable rootJSONStore = {};
   /**
    * triggerChange: 用于强制触发更新事件
    */
@@ -46,7 +47,7 @@ export default class JSONEditorStore {
   @action.bound
   initJSONData(jsonData) {
     const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
-    if (!jsonData || JSON.stringify(jsonData) === '{}') {
+    if (!jsonData || JSON5.stringify(jsonData) === '{}') {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
       this.jsonData = schema2JsonData(jsonSchema);

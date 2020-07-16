@@ -50,7 +50,7 @@ class JsonFormSchema extends React.PureComponent {
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData =
-      curJsonData !== undefined ? curJsonData : targetJsonData.default || '()';
+      curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
       curJsonData = JSON5.stringify(curJsonData);
@@ -67,10 +67,7 @@ class JsonFormSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip
-            title={targetJsonData.description}
-            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-          >
+          <Tooltip title={targetJsonData.description} placement="topLeft">
             <span className="title-text warning-text">
               {readOnly ? '[只读]' : ''}
             </span>
@@ -118,11 +115,7 @@ class JsonFormSchema extends React.PureComponent {
             }}
             setOptions={{
               useWorker: false,
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: true,
               showLineNumbers: true,
-              wrapEnabled: true,
               tabSize: 2,
             }}
           />

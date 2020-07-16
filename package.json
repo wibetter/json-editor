@@ -1,6 +1,6 @@
 {
   "name": "@jdwork/json-editor",
-  "version": "1.0.1",
+  "version": "2.0.1",
   "description": "JSON数据可视化/JSONEditor",
   "author": "liudan185",
   "license": "MIT",
@@ -31,7 +31,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@babel/polyfill": "^7.10.1",
-    "@jdwork/json-schema-editor": "^2.0.13",
+    "@jdwork/json-schema-editor": "^2.1.5",
     "ace-builds": "^1.4.12",
     "antd": "^4.3.4",
     "generate-schema": "^2.6.0",

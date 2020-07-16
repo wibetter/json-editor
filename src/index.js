@@ -13,8 +13,245 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
+    /*this.state = {
       jsonSchema: {
+        "type": "object",
+        "title": "empty object",
+        "properties": {
+          "func": {
+            "type": "object",
+            "format": "func",
+            "description": "功能设置",
+            "readOnly": true,
+            "properties": {
+              "mainTitle": {
+                "type": "string",
+                "format": "input",
+                "description": "设置Title"
+              },
+              "dataApi": {
+                "type": "string",
+                "format": "url",
+                "description": "获取数据的接口地址"
+              },
+              "getDataCallback": {
+                "type": "string",
+                "format": "textarea",
+                "description": "获取数据后的callback"
+              }
+            },
+            "required": [
+              "columns",
+              "mainTitle",
+              "dataApi",
+              "getDataCallback"
+            ]
+          },
+          "style": {
+            "type": "object",
+            "format": "style",
+            "description": "样式设置",
+            "readOnly": true,
+            "properties": {
+              "backColor": {
+                "type": "string",
+                "format": "color",
+                "description": "背景色"
+              },
+              "isShowTitle": {
+                "type": "boolean",
+                "description": "是否显示Title",
+                "format": "boolean"
+              },
+              "isShowPagination": {
+                "type": "boolean",
+                "description": "是否显示分页",
+                "format": "boolean"
+              }
+            },
+            "required": [
+              "backColor",
+              "titlePosition",
+              "inner",
+              "a",
+              "b",
+              "backColor",
+              "isShowPagination"
+            ]
+          },
+          "data": {
+            "type": "object",
+            "format": "data",
+            "description": "数据设置",
+            "readOnly": true,
+            "properties": {
+              "columns": {
+                "type": "array",
+                "format": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string",
+                      "format": "input",
+                      "description": "列头显示文字"
+                    },
+                    "key": {
+                      "type": "string",
+                      "description": "对应列内容的字段名",
+                      "format": "input"
+                    },
+                    "width": {
+                      "type": "number",
+                      "default": 100,
+                      "minimum": 30,
+                      "maximum": 500,
+                      "description": "设置列宽"
+                    }
+                  },
+                  "description": "数组项",
+                  "required": [
+                    "key",
+                    "width"
+                  ]
+                },
+                "description": "表格头部数据",
+                "required": [
+                  "type"
+                ]
+              },
+              "field_5": {
+                "type": "object",
+                "format": "datasource",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "default": "local",
+                    "format": "typeSelect",
+                    "enum": [
+                      "local",
+                      "remote"
+                    ],
+                    "enumextra": [
+                      "local",
+                      "remote"
+                    ],
+                    "description": "类型"
+                  },
+                  "data": {
+                    "type": "string",
+                    "format": "typeSelectData",
+                    "default": "local",
+                    "readOnlyInJson": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "format": "textarea",
+                    "default": "return data;",
+                    "description": "过滤器"
+                  }
+                },
+                "description": "数据源",
+                "required": [
+                  "name",
+                  "filter",
+                  "type"
+                ]
+              },
+              "field_6": {
+                "type": "object",
+                "format": "datasource",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "default": "remote",
+                    "format": "typeSelect",
+                    "enum": [
+                      "local",
+                      "remote"
+                    ],
+                    "enumextra": [
+                      "local",
+                      "remote"
+                    ],
+                    "description": "类型"
+                  },
+                  "data": {
+                    "type": "string",
+                    "format": "typeSelectData",
+                    "default": "remote",
+                    "readOnlyInJson": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "format": "textarea",
+                    "default": "return data;",
+                    "description": "过滤器"
+                  }
+                },
+                "description": "数据源",
+                "required": [
+                  "name",
+                  "filter",
+                  "type"
+                ]
+              },
+              "field_7": {
+                "type": "object",
+                "format": "event",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "default": "in",
+                    "format": "typeSelect",
+                    "enum": [
+                      "in",
+                      "out"
+                    ],
+                    "enumextra": [
+                      "in",
+                      "out"
+                    ],
+                    "description": "类型",
+                    "readOnlyInJson": false
+                  },
+                  "filter": {
+                    "type": "string",
+                    "format": "textarea",
+                    "default": "return data;",
+                    "description": "过滤器"
+                  }
+                },
+                "description": "事件",
+                "required": [
+                  "name",
+                  "filter",
+                  "type"
+                ]
+              }
+            },
+            "required": [
+              "a a",
+              "jsonItem",
+              "objItem",
+              "field_2",
+              "field_5",
+              "field_6",
+              "field_7"
+            ]
+          }
+        },
+        "required": [
+          "func",
+          "style",
+          "data"
+        ]
+      },
+      jsonData: {},
+      wideScreen: false,
+    };*/
+    this.state = {
+      jsonSchema: window.PAGEDATA.jsonSchema || {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -24,19 +261,204 @@ class IndexDemo extends React.PureComponent {
             title: '功能设置',
             readOnly: true,
             properties: {
-              a: {
+              field_2: {
                 type: 'string',
                 title: '单文本框',
                 format: 'input',
-                default: '', // 默认值
-                description: '', // 字段项的说明和描述
-                placeholder: '', // 输入提示
+                default: '',
+                description: '',
+                placeholder: '',
                 isRequired: false,
                 readOnly: false,
               },
+              field_3: {
+                type: 'boolean',
+                title: '布尔值',
+                format: 'boolean',
+                default: true,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_4: {
+                type: 'string',
+                title: '日期',
+                format: 'date',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_5: {
+                type: 'string',
+                title: '日期',
+                format: 'date-time',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_6: {
+                type: 'string',
+                title: '时间',
+                format: 'time',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_7: {
+                type: 'string',
+                title: 'URL',
+                format: 'url',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_8: {
+                type: 'string',
+                title: '多行文本框',
+                format: 'textarea',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_9: {
+                type: 'number',
+                title: '数值',
+                format: 'number',
+                default: 50,
+                minimum: 0,
+                maximum: 1000,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_10: {
+                type: 'string',
+                title: '单选',
+                format: 'radio',
+                items: {
+                  type: 'string',
+                  enum: ['a', 'b', 'c'],
+                  enumextra: ['选项a', '选项b', '选项c'],
+                },
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_11: {
+                type: 'array',
+                title: '多选',
+                format: 'select',
+                items: {
+                  type: 'string',
+                  enum: ['a', 'b', 'c'],
+                  enumextra: ['选项a', '选项b', '选项c'],
+                },
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_12: {
+                type: 'string',
+                title: '函数类型',
+                format: 'codearea',
+                default: 'function func() { console.log("hello, world!"); }',
+                description: '用于定义函数方法体',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_13: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  isRequired: false,
+                  readOnly: false,
+                  properties: {
+                    name: {
+                      type: 'string',
+                      format: 'input',
+                      title: '名字',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                  },
+                  required: ['name'],
+                  propertyOrder: ['name'],
+                },
+              },
+              field_14: {
+                type: 'object',
+                format: 'object',
+                title: '对象类型',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  a: {
+                    type: 'string',
+                    title: '单文本框',
+                    format: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['a'],
+                propertyOrder: ['a'],
+              },
             },
-            required: ['a'],
-            propertyOrder: ['a'],
+            required: [
+              'field_2',
+              'field_3',
+              'field_4',
+              'field_5',
+              'field_6',
+              'field_7',
+              'field_8',
+              'field_9',
+              'field_10',
+              'field_11',
+              'field_12',
+              'field_13',
+              'field_14',
+            ],
+            propertyOrder: [
+              'field_2',
+              'field_3',
+              'field_4',
+              'field_5',
+              'field_6',
+              'field_7',
+              'field_8',
+              'field_9',
+              'field_10',
+              'field_11',
+              'field_12',
+              'field_13',
+              'field_14',
+            ],
           },
           style: {
             type: 'object',
@@ -44,19 +466,356 @@ class IndexDemo extends React.PureComponent {
             title: '样式设置',
             readOnly: true,
             properties: {
-              b: {
+              field_23: {
                 type: 'string',
                 title: '单文本框',
                 format: 'input',
-                default: '', // 默认值
-                description: '', // 字段项的说明和描述
-                placeholder: '', // 输入提示
+                default: '',
+                description: '',
+                placeholder: '',
                 isRequired: false,
                 readOnly: false,
               },
+              field_24: {
+                type: 'boolean',
+                title: '布尔值',
+                format: 'boolean',
+                default: true,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_25: {
+                type: 'string',
+                title: '颜色值',
+                format: 'color',
+                default: '#ffffff',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_26: {
+                type: 'string',
+                title: 'URL',
+                format: 'url',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_27: {
+                type: 'number',
+                title: '数值',
+                format: 'number',
+                default: 50,
+                minimum: 0,
+                maximum: 1000,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_28: {
+                type: 'string',
+                title: '单选',
+                format: 'radio',
+                items: {
+                  type: 'string',
+                  enum: ['a', 'b', 'c'],
+                  enumextra: ['选项a', '选项b', '选项c'],
+                },
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_29: {
+                type: 'array',
+                title: '多选',
+                format: 'select',
+                items: {
+                  type: 'string',
+                  enum: ['a', 'b', 'c'],
+                  enumextra: ['选项a', '选项b', '选项c'],
+                },
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_30: {
+                type: 'object',
+                format: 'quantity',
+                title: '单位计量输入',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  unit: {
+                    type: 'number',
+                    title: '单位数值',
+                    format: 'number',
+                    default: 50,
+                    minimum: 0,
+                    maximum: 1000,
+                    description: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  quantity: {
+                    type: 'string',
+                    format: 'typeSelect',
+                    default: 'px',
+                    enum: ['px', 'rem', 'em', '%'],
+                    enumextra: ['px', 'rem', 'em', '%'],
+                    title: '单位类型',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['unit', 'quantity'],
+                propertyOrder: ['unit', 'quantity'],
+              },
+              field_31: {
+                type: 'string',
+                title: '富文本类型',
+                format: 'htmlarea',
+                default: '<p>hello,world!</p>',
+                description: '用于放置html代码片段',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_32: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  isRequired: false,
+                  readOnly: false,
+                  properties: {
+                    name: {
+                      type: 'string',
+                      format: 'input',
+                      title: '名字',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                  },
+                  required: ['name'],
+                  propertyOrder: ['name'],
+                },
+              },
+              field_33: {
+                type: 'object',
+                format: 'object',
+                title: '对象类型',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  a: {
+                    type: 'string',
+                    title: '单文本框',
+                    format: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  field_44: {
+                    type: 'string',
+                    title: '单文本框',
+                    format: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['a', 'field_44'],
+                propertyOrder: ['a', 'field_44'],
+              },
+              field_45: {
+                type: 'object',
+                format: 'object',
+                title: '对象类型',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  a: {
+                    type: 'string',
+                    title: '单文本框',
+                    format: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  field_46: {
+                    type: 'array',
+                    format: 'array',
+                    title: '数组',
+                    description: '',
+                    isRequired: false,
+                    readOnly: false,
+                    items: {
+                      type: 'object',
+                      format: 'object',
+                      title: '数组项',
+                      description: '',
+                      isRequired: false,
+                      readOnly: false,
+                      properties: {
+                        name: {
+                          type: 'string',
+                          format: 'input',
+                          title: '名字',
+                          default: '',
+                          description: '',
+                          placeholder: '',
+                          isRequired: false,
+                          readOnly: false,
+                        },
+                        field_47: {
+                          type: 'string',
+                          title: '单文本框',
+                          format: 'input',
+                          default: '',
+                          description: '',
+                          placeholder: '',
+                          isRequired: false,
+                          readOnly: false,
+                        },
+                      },
+                      required: ['name', 'field_47'],
+                      propertyOrder: ['name', 'field_47'],
+                    },
+                  },
+                },
+                required: ['a', 'field_46'],
+                propertyOrder: ['a', 'field_46'],
+              },
+              field_48: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  isRequired: false,
+                  readOnly: false,
+                  properties: {
+                    name: {
+                      type: 'string',
+                      format: 'input',
+                      title: '名字',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                    field_49: {
+                      type: 'array',
+                      format: 'array',
+                      title: '数组',
+                      description: '',
+                      isRequired: false,
+                      readOnly: false,
+                      items: {
+                        type: 'object',
+                        format: 'object',
+                        title: '数组项',
+                        description: '',
+                        isRequired: false,
+                        readOnly: false,
+                        properties: {
+                          name: {
+                            type: 'string',
+                            format: 'input',
+                            title: '名字',
+                            default: '',
+                            description: '',
+                            placeholder: '',
+                            isRequired: false,
+                            readOnly: false,
+                          },
+                          field_50: {
+                            type: 'boolean',
+                            title: '布尔值',
+                            format: 'boolean',
+                            default: true,
+                            description: '',
+                            isRequired: false,
+                            readOnly: false,
+                          },
+                          field_51: {
+                            type: 'string',
+                            title: '单文本框',
+                            format: 'input',
+                            default: '',
+                            description: '',
+                            placeholder: '',
+                            isRequired: false,
+                            readOnly: false,
+                          },
+                        },
+                        required: ['name', 'field_50', 'field_51'],
+                        propertyOrder: ['name', 'field_50', 'field_51'],
+                      },
+                    },
+                  },
+                  required: ['name', 'field_49'],
+                  propertyOrder: ['name', 'field_49'],
+                },
+              },
             },
-            required: ['b'],
-            propertyOrder: ['b'],
+            required: [
+              'field_23',
+              'field_24',
+              'field_25',
+              'field_26',
+              'field_27',
+              'field_28',
+              'field_29',
+              'field_30',
+              'field_31',
+              'field_32',
+              'field_33',
+              'field_45',
+              'field_48',
+            ],
+            propertyOrder: [
+              'field_23',
+              'field_24',
+              'field_25',
+              'field_26',
+              'field_27',
+              'field_28',
+              'field_29',
+              'field_30',
+              'field_31',
+              'field_32',
+              'field_48',
+              'field_45',
+              'field_33',
+            ],
           },
           data: {
             type: 'object',
@@ -64,26 +823,212 @@ class IndexDemo extends React.PureComponent {
             title: '数据设置',
             readOnly: true,
             properties: {
-              c: {
+              field_34: {
                 type: 'string',
                 title: '单文本框',
                 format: 'input',
-                default: '', // 默认值
-                description: '', // 字段项的说明和描述
-                placeholder: '', // 输入提示
+                default: '',
+                description: '',
+                placeholder: '',
                 isRequired: false,
                 readOnly: false,
               },
+              field_35: {
+                type: 'number',
+                title: '数值',
+                format: 'number',
+                default: 50,
+                minimum: 0,
+                maximum: 1000,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_36: {
+                type: 'string',
+                title: 'json数据项',
+                format: 'json',
+                default: '{}',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_37: {
+                type: 'string',
+                title: '函数类型',
+                format: 'codearea',
+                default: 'function func() { console.log("hello, world!"); }',
+                description: '用于定义函数方法体',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_38: {
+                type: 'string',
+                title: '富文本类型',
+                format: 'htmlarea',
+                default: '<p>hello,world!</p>',
+                description: '用于放置html代码片段',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_39: {
+                type: 'object',
+                format: 'datasource',
+                title: '数据源',
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'local',
+                    format: 'typeSelect',
+                    enum: ['local', 'remote'],
+                    enumextra: ['local', 'remote'],
+                    title: '数据源类型',
+                  },
+                  data: {
+                    type: 'string',
+                    title: '本地json数据',
+                    format: 'json',
+                    default: '{}',
+                    description: '用于设置本地的静态json数据',
+                    isRequired: true,
+                  },
+                  filter: {
+                    type: 'string',
+                    title: '过滤器',
+                    format: 'codearea',
+                    default: '() => {}',
+                    description: '用于定义过滤当前数据的函数',
+                    isRequired: true,
+                  },
+                },
+                required: ['type', 'data', 'filter'],
+                propertyOrder: ['type', 'data', 'filter'],
+              },
+              field_40: {
+                type: 'object',
+                format: 'event',
+                title: '事件',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'emit',
+                    format: 'typeSelect',
+                    enum: ['on', 'emit'],
+                    enumextra: ['on', 'emit'],
+                    title: '事件类型',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  trigger: {
+                    type: 'string',
+                    format: 'input',
+                    default: 'eventName',
+                    title: '触发事件',
+                    description: '用于输入触发事件的名称',
+                    placeholder: '请输入触发事件的名称',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  eventData: {
+                    type: 'string',
+                    title: '事件数据',
+                    format: 'json',
+                    default: '{}',
+                    description: '传递给触发事件的数据对象',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['type', 'trigger', 'eventData'],
+                propertyOrder: ['type', 'trigger', 'eventData'],
+              },
+              field_41: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  isRequired: false,
+                  readOnly: false,
+                  properties: {
+                    name: {
+                      type: 'string',
+                      format: 'input',
+                      title: '名字',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                  },
+                  required: ['name'],
+                  propertyOrder: ['name'],
+                },
+              },
+              field_42: {
+                type: 'object',
+                format: 'object',
+                title: '对象类型',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  a: {
+                    type: 'string',
+                    title: '单文本框',
+                    format: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['a'],
+                propertyOrder: ['a'],
+              },
             },
-            required: ['c'],
-            propertyOrder: ['c'],
+            required: [
+              'field_34',
+              'field_35',
+              'field_36',
+              'field_37',
+              'field_38',
+              'field_39',
+              'field_40',
+              'field_41',
+              'field_42',
+            ],
+            propertyOrder: [
+              'field_34',
+              'field_35',
+              'field_36',
+              'field_37',
+              'field_38',
+              'field_39',
+              'field_40',
+              'field_42',
+              'field_41',
+            ],
           },
         },
         required: ['func', 'style', 'data'],
         propertyOrder: ['func', 'style', 'data'],
+        format: 'object',
+        lastUpdateTime: '2020-07-15T02:04:47.537Z',
       },
-      jsonData: {},
-      wideScreen: false,
+      jsonData: window.PAGEDATA.jsonData || {},
+      wideScreen: window.PAGEDATA.wideScreen || false,
     };
   }
 

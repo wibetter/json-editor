@@ -3,6 +3,7 @@ import { EventTypeDataList } from '$data/TypeDataList';
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
 import { objClone, isObject } from '$utils/index';
+import { isArray } from './index';
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -65,7 +66,16 @@ export function isEmptySchema(targetJsonObj) {
       targetJsonObj.propertyOrder &&
       targetJsonObj.propertyOrder.length > 0
     ) {
-      isEmpty = false;
+      const funcSchema = targetJsonObj.properties.func;
+      const styleSchema = targetJsonObj.properties.style;
+      const dataSchema = targetJsonObj.properties.data;
+      if (
+        (funcSchema.propertyOrder && funcSchema.propertyOrder.length > 0) ||
+        (styleSchema.propertyOrder && styleSchema.propertyOrder.length > 0) ||
+        (dataSchema.propertyOrder && dataSchema.propertyOrder.length > 0)
+      ) {
+        isEmpty = false;
+      }
     }
   }
   return isEmpty;
@@ -250,39 +260,95 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
 }
 
 /**
- * 根据jsonSchema生成一份对应的jsonData
+ * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
+ * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-export function schema2JsonData(jsonSchema) {
+export function schema2JsonData(jsonSchema, jsonData) {
   const curJsonData = {};
   if (isObject(jsonSchema)) {
     // 判断是否有propertyOrder属性
     if (jsonSchema.properties) {
       jsonSchema.propertyOrder.map((jsonKey) => {
         const jsonItem = jsonSchema.properties[jsonKey];
+        let oldValue =
+          jsonData && jsonData[jsonKey] ? jsonData[jsonKey] : undefined;
+        if (
+          oldValue &&
+          jsonItem.default &&
+          typeof oldValue !== typeof jsonItem.default
+        ) {
+          // 表示当前数据类型发生变化，则丢弃旧版数据
+          oldValue = undefined;
+        }
+        /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
+        const curValue = oldValue !== undefined ? oldValue : jsonItem.default;
         switch (jsonItem.type) {
           case 'string':
-            curJsonData[jsonKey] = jsonItem.default || '';
+            if (
+              jsonItem.format === 'codearea' ||
+              jsonItem.format === 'json' ||
+              jsonItem.format === 'htmlarea' ||
+              jsonItem.format === 'color'
+            ) {
+              // 特殊类型尽可能避免出现空字符串
+              curJsonData[jsonKey] = oldValue || jsonItem.default || '';
+            } else {
+              // 其他类型
+              curJsonData[jsonKey] = curValue !== undefined ? curValue : '';
+            }
             break;
           case 'boolean':
-            curJsonData[jsonKey] = jsonItem.default || true;
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : false;
             break;
           case 'number':
-            curJsonData[jsonKey] = jsonItem.default || 12;
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : 1;
             break;
           case 'array':
             if (jsonItem.format === 'array') {
-              curJsonData[jsonKey] = [schema2JsonData(jsonItem.items)];
+              if (isArray(oldValue)) {
+                curJsonData[jsonKey] = [];
+                oldValue.map((arrItem) => {
+                  curJsonData[jsonKey].push(
+                    schema2JsonData(jsonItem.items, arrItem),
+                  );
+                });
+              } else {
+                const childItems = schema2JsonData(jsonItem.items, oldValue);
+                curJsonData[jsonKey] = [childItems];
+              }
             } else {
-              curJsonData[jsonKey] = jsonItem.default || [];
+              curJsonData[jsonKey] = curValue !== undefined ? curValue : [];
             }
             break;
           case 'object':
             if (jsonItem.format === 'datasource') {
               // 数据源类型
-              curJsonData[jsonKey] = {
-                data: '',
-                filter: '() => {}',
-              };
+              if (
+                jsonItem.properties &&
+                jsonItem.properties.type &&
+                jsonItem.properties.type.default &&
+                jsonItem.properties.type.default === 'local'
+              ) {
+                // 本地数据源类型
+                curJsonData[jsonKey] = oldValue || {
+                  data: '{}',
+                  filter: '() => {}',
+                };
+                // 纠正data中的默认数据
+                if (curJsonData[jsonKey].data === 'http://xxx') {
+                  curJsonData[jsonKey].data = '{}';
+                }
+              } else {
+                // 远程数据类型
+                curJsonData[jsonKey] = oldValue || {
+                  data: 'http://xxx',
+                  filter: '() => {}',
+                };
+                // 纠正data中的默认数据
+                if (curJsonData[jsonKey].data === '{}') {
+                  curJsonData[jsonKey].data = 'http://xxx';
+                }
+              }
             } else if (jsonItem.format === 'event') {
               // 事件类型
               if (
@@ -292,25 +358,32 @@ export function schema2JsonData(jsonSchema) {
                 jsonItem.properties.type.default === 'emit'
               ) {
                 // 触发事件类型
-                curJsonData[jsonKey] = {
-                  trigger: '',
-                  eventData: '{}',
-                };
+                if (oldValue && oldValue.type === 'emit') {
+                  curJsonData[jsonKey] = oldValue;
+                } else {
+                  curJsonData[jsonKey] = {
+                    trigger: (oldValue && oldValue.filter) || '', // 兼容旧版数据
+                    eventData: '{}',
+                  };
+                }
               } else {
-                // 注册事件类型
-                // 触发事件类型
-                curJsonData[jsonKey] = {
-                  register: '',
-                  actionFunc: '() => {}',
-                };
+                // 注册事件类型-触发事件类型
+                if (oldValue && oldValue.type === 'on') {
+                  curJsonData[jsonKey] = oldValue;
+                } else {
+                  curJsonData[jsonKey] = {
+                    register: '',
+                    actionFunc: (oldValue && oldValue.filter) || '() => {}', // 兼容旧版数据
+                  };
+                }
               }
             } else {
               // 普通对象类型
-              curJsonData[jsonKey] = schema2JsonData(jsonItem);
+              curJsonData[jsonKey] = schema2JsonData(jsonItem, oldValue);
             }
             break;
           default:
-            curJsonData[jsonKey] = jsonItem.default || '';
+            curJsonData[jsonKey] = curValue !== undefined ? curValue : '';
         }
       });
     }

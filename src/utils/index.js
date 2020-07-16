@@ -1,12 +1,14 @@
+import JSON5 from 'json5';
+
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {
-  const newObj = JSON.stringify(targetObj);
-  return JSON.parse(newObj);
+  const newObj = JSON5.stringify(targetObj);
+  return JSON5.parse(newObj);
 }
 
 /** 对比两个json数据是否相等 */
 export function isEqual(targetObj, nextTargetObj) {
-  return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
+  return JSON5.stringify(targetObj) === JSON5.stringify(nextTargetObj);
 }
 
 /** 根据className判断是否是基本类型元素

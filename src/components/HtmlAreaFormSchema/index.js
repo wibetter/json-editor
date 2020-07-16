@@ -69,10 +69,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip
-            title={targetJsonData.description}
-            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-          >
+          <Tooltip title={targetJsonData.description} placement="topLeft">
             <span className="title-text warning-text">
               {readOnly ? '[只读]' : ''}
             </span>
@@ -121,11 +118,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
             }}
             setOptions={{
               useWorker: false,
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: true,
               showLineNumbers: true,
-              wrapEnabled: true,
               tabSize: 2,
             }}
           />

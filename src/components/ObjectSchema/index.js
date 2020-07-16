@@ -46,10 +46,7 @@ class ObjectSchema extends React.PureComponent {
         id={nodeKey}
       >
         {!isFirstSchema && targetJsonData.description && (
-          <Tooltip
-            title={targetJsonData.description}
-            placement={pageScreen === 'wideScreen' ? 'topRight' : 'topLeft'}
-          >
+          <Tooltip title={targetJsonData.description} placement="topLeft">
             <div className="element-title">
               {targetJsonData.title}
               {isArrayItem ? `/${arrIndex + 1}` : ''}

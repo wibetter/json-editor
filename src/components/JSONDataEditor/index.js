@@ -18,13 +18,13 @@ class JSONDataEditor extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    // 根据props.schemaData对jsonSchema进行初始化
-    if (props.schemaData) {
-      this.props.initJSONSchemaData(props.schemaData);
-    }
     // 根据props.jsonData对jsonData进行初始化
     if (props.jsonData) {
       this.props.initJSONData(props.jsonData);
+    }
+    // 根据props.schemaData对jsonSchema进行初始化
+    if (props.schemaData) {
+      this.props.initJSONSchemaData(props.schemaData);
     }
     // 读取宽屏和小屏的配置
     if (props.wideScreen) {
@@ -37,11 +37,13 @@ class JSONDataEditor extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!isEqual(nextProps.schemaData, this.props.schemaData)) {
-      this.props.initJSONSchemaData(nextProps.schemaData);
-    }
+    /** 1. 先初始化jsonData */
     if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
       this.props.initJSONData(nextProps.jsonData);
+    }
+    /** 2. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
+    if (!isEqual(nextProps.schemaData, this.props.schemaData)) {
+      this.props.initJSONSchemaData(nextProps.schemaData);
     }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
       this.props.setPageScreen(nextProps.wideScreen);
@@ -98,21 +100,28 @@ class JSONDataEditor extends React.PureComponent {
               /** 5. 获取当前元素的id，用于做唯一标识 */
               const nodeKey = `${lastUpdateTime}-${currentFormat}-${currentJsonKey}`;
 
-              return (
-                <Panel
-                  header={this.renderHeader(currentFormat)}
-                  key={currentJsonKey}
-                >
-                  {MappingRender({
-                    parentType: currentFormat,
-                    jsonKey: currentJsonKey,
-                    indexRoute: currentIndexRoute,
-                    keyRoute: currentKeyRoute,
-                    nodeKey,
-                    targetJsonData: currentSchemaData,
-                  })}
-                </Panel>
-              );
+              if (
+                currentSchemaData.propertyOrder &&
+                currentSchemaData.propertyOrder.length > 0
+              ) {
+                return (
+                  <Panel
+                    header={this.renderHeader(currentFormat)}
+                    key={currentJsonKey}
+                  >
+                    {MappingRender({
+                      parentType: currentFormat,
+                      jsonKey: currentJsonKey,
+                      indexRoute: currentIndexRoute,
+                      keyRoute: currentKeyRoute,
+                      nodeKey,
+                      targetJsonData: currentSchemaData,
+                    })}
+                  </Panel>
+                );
+              } else {
+                return '';
+              }
             })}
           </Collapse>
         )}
