@@ -358,16 +358,24 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 jsonItem.properties.type.default === 'emit'
               ) {
                 // 触发事件类型
-                curJsonData[jsonKey] = oldValue || {
-                  trigger: '',
-                  eventData: '{}',
-                };
+                if (oldValue && oldValue.type === 'emit') {
+                  curJsonData[jsonKey] = oldValue;
+                } else {
+                  curJsonData[jsonKey] = {
+                    trigger: (oldValue && oldValue.filter) || '', // 兼容旧版数据
+                    eventData: '{}',
+                  };
+                }
               } else {
                 // 注册事件类型-触发事件类型
-                curJsonData[jsonKey] = oldValue || {
-                  register: '',
-                  actionFunc: '() => {}',
-                };
+                if (oldValue && oldValue.type === 'on') {
+                  curJsonData[jsonKey] = oldValue;
+                } else {
+                  curJsonData[jsonKey] = {
+                    register: '',
+                    actionFunc: (oldValue && oldValue.filter) || '() => {}', // 兼容旧版数据
+                  };
+                }
               }
             } else {
               // 普通对象类型
