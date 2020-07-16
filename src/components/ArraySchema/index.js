@@ -66,8 +66,17 @@ class ArraySchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip title={targetJsonData.description} placement="topLeft">
-            <span className="title-text">{targetJsonData.title}</span>
+          <Tooltip title={targetJsonData.description} placement="top">
+            <span
+              className="title-text"
+              title={
+                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
+                  ? targetJsonData.title
+                  : ''
+              }
+            >
+              {targetJsonData.title}
+            </span>
           </Tooltip>
           <Tooltip title="添加数据项">
             <PlusCircleOutlined
