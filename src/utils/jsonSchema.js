@@ -227,13 +227,15 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
     // 重构Event的数据结构
     if (eventType === 'in') {
       // 注册类事件
-      newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
-      newJSONSchema.properties.actionFunc.default = eventFunc;
+      // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
+      newJSONSchema = objClone(EventTypeDataList.on);
+      newJSONSchema.properties.actionFunc.default = objClone(eventFunc);
     } else {
       // 其他，则默认为触发事件
       // 注册类事件
-      newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
-      // newJSONSchema.properties.eventData.default = eventFunc;
+      // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
+      newJSONSchema = objClone(EventTypeDataList.emit);
+      newJSONSchema.properties.eventData.default = eventFunc;
     }
   }
   // 判断是否有propertyOrder属性
