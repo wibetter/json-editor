@@ -38,7 +38,7 @@ export default class JSONEditor extends React.PureComponent {
     );
 
     if (element) {
-      ReactDOM.render(renderContent, element); // 挂载到指定位置
+      ReactDOM.render(element, renderContent); // 挂载到指定位置
       return '';
     } else {
       return renderContent; // 直接输出dom元素
