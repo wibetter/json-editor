@@ -7615,6 +7615,31 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
+      n.d(t, 'a', function () {
+        return o;
+      });
+      var r = n(74);
+      var i = n(85);
+      function o(e) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return Object(r.a)(e);
+          })(e) ||
+          (function (e) {
+            if ('undefined' != typeof Symbol && Symbol.iterator in Object(e))
+              return Array.from(e);
+          })(e) ||
+          Object(i.a)(e) ||
+          (function () {
+            throw new TypeError(
+              'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
+            );
+          })()
+        );
+      }
+    },
+    function (e, t, n) {
+      'use strict';
       n.d(t, 'e', function () {
         return o;
       }),
@@ -7661,31 +7686,6 @@ and limitations under the License.
           'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
             (t = !0),
           t
-        );
-      }
-    },
-    function (e, t, n) {
-      'use strict';
-      n.d(t, 'a', function () {
-        return o;
-      });
-      var r = n(74);
-      var i = n(85);
-      function o(e) {
-        return (
-          (function (e) {
-            if (Array.isArray(e)) return Object(r.a)(e);
-          })(e) ||
-          (function (e) {
-            if ('undefined' != typeof Symbol && Symbol.iterator in Object(e))
-              return Array.from(e);
-          })(e) ||
-          Object(i.a)(e) ||
-          (function () {
-            throw new TypeError(
-              'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-            );
-          })()
         );
       }
     },
@@ -10358,7 +10358,7 @@ and limitations under the License.
         json5__WEBPACK_IMPORTED_MODULE_14___default = __webpack_require__.n(
           json5__WEBPACK_IMPORTED_MODULE_14__,
         ),
-        $utils_index__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(16);
+        $utils_index__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(17);
       function _createSuper(e) {
         var t = _isNativeReflectConstruct();
         return function () {
@@ -51532,7 +51532,7 @@ and limitations under the License.
           r.current.value
         );
       }
-      var M = n(17),
+      var M = n(16),
         k = new Map();
       function D(e, t, n) {
         if ((k.get(e) && cancelAnimationFrame(k.get(e)), n <= 0))
@@ -55375,7 +55375,7 @@ and limitations under the License.
         duration: 1.5,
         style: { right: '50%' },
       };
-      var v = n(17),
+      var v = n(16),
         b = n(7);
       function w(e, t) {
         var n = Object.keys(e);
@@ -74132,7 +74132,7 @@ and limitations under the License.
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
         R = P,
-        F = n(16);
+        F = n(17);
       function $(e) {
         var t = e.format;
         return t || (t = e.type ? e.type : 'input'), t;
@@ -74144,17 +74144,12 @@ and limitations under the License.
             e.properties &&
             e.propertyOrder.map(function (r) {
               var i = e.properties[r],
-                o = t && t[r] ? t[r] : void 0;
+                o = t && t[r];
               o && i.default && T()(o) !== T()(i.default) && (o = void 0);
               var a = void 0 !== o ? o : i.default;
               switch (i.type) {
                 case 'string':
-                  'codearea' === i.format ||
-                  'json' === i.format ||
-                  'htmlarea' === i.format ||
-                  'color' === i.format
-                    ? (n[r] = o || i.default || '')
-                    : (n[r] = void 0 !== a ? a : '');
+                  n[r] = void 0 !== a ? a : '';
                   break;
                 case 'boolean':
                   n[r] = void 0 !== a && a;
@@ -74163,17 +74158,9 @@ and limitations under the License.
                   n[r] = void 0 !== a ? a : 1;
                   break;
                 case 'array':
-                  if ('array' === i.format)
-                    if (Object(F.a)(o))
-                      (n[r] = []),
-                        o.map(function (e) {
-                          n[r].push(N(i.items, e));
-                        });
-                    else {
-                      var s = N(i.items, o);
-                      n[r] = [s];
-                    }
-                  else n[r] = void 0 !== a ? a : [];
+                  'array' === i.format
+                    ? (n[r] = [N(i.items, o)])
+                    : (n[r] = void 0 !== a ? a : []);
                   break;
                 case 'object':
                   'datasource' === i.format
@@ -74181,30 +74168,15 @@ and limitations under the License.
                       i.properties.type &&
                       i.properties.type.default &&
                       'local' === i.properties.type.default
-                      ? ((n[r] = o || { data: '{}', filter: '() => {}' }),
-                        'http://xxx' === n[r].data && (n[r].data = '{}'))
-                      : ((n[r] = o || {
-                          data: 'http://xxx',
-                          filter: '() => {}',
-                        }),
-                        '{}' === n[r].data && (n[r].data = 'http://xxx'))
+                      ? (n[r] = o || { data: '{}', filter: '() => {}' })
+                      : (n[r] = o || { data: 'http://xxx', filter: '() => {}' })
                     : 'event' === i.format
                     ? i.properties &&
                       i.properties.type &&
                       i.properties.type.default &&
                       'emit' === i.properties.type.default
-                      ? o && 'emit' === o.type
-                        ? (n[r] = o)
-                        : (n[r] = {
-                            trigger: (o && o.filter) || '',
-                            eventData: '{}',
-                          })
-                      : o && 'on' === o.type
-                      ? (n[r] = o)
-                      : (n[r] = {
-                          register: '',
-                          actionFunc: (o && o.filter) || '() => {}',
-                        })
+                      ? (n[r] = o || { trigger: '', eventData: '{}' })
+                      : (n[r] = o || { register: '', actionFunc: '() => {}' })
                     : (n[r] = N(i, o));
                   break;
                 default:
@@ -74275,7 +74247,11 @@ and limitations under the License.
                             'datasource' === n.format)
                           ) {
                             var r = n.properties;
-                            (r.type.title = '数据源类型'),
+                            ((r = Object.assign(
+                              r,
+                              { type: {}, filter: {}, data: {} },
+                              r,
+                            )).type.title = '数据源类型'),
                               (r.filter.title = '过滤器'),
                               (r.filter.format = 'codearea'),
                               'remote' === r.type.default
@@ -74287,23 +74263,33 @@ and limitations under the License.
                           }
                           if ('quantity' === n.format) {
                             var i = n.properties;
-                            (i.quantity.title = '单位类型'),
+                            ((i = Object.assign(
+                              i,
+                              { unit: {}, quantity: {} },
+                              i,
+                            )).quantity.title = '单位类型'),
                               (i.quantity.format = 'typeSelect'),
                               (i.unit.format = 'number');
                           }
                           if ('event' === n.format) {
                             var o = n.properties,
-                              a = o.type.default,
+                              a = o.type && o.type.default,
                               s = (o.filter && o.filter.default) || '() => {}';
                             'in' === a
-                              ? ((n = Object(F.e)(
-                                  Y,
-                                )).properties.actionFunc.default = Object(F.e)(
-                                  s,
-                                ))
-                              : ((n = Object(F.e)(
-                                  R,
-                                )).properties.eventData.default = s);
+                              ? ((o = Object.assign(
+                                  o,
+                                  { type: {}, register: {}, actionFunc: {} },
+                                  o,
+                                )),
+                                (n = Object(F.e)(Y)),
+                                (o.actionFunc.default = Object(F.e)(s)))
+                              : ((o = Object.assign(
+                                  o,
+                                  { type: {}, trigger: {}, eventData: {} },
+                                  o,
+                                )),
+                                (n = Object(F.e)(R)),
+                                (o.eventData.default = s));
                           }
                           return (
                             n.properties &&
@@ -77818,7 +77804,7 @@ and limitations under the License.
       var r = n(0),
         i = n(34),
         o = n(3),
-        a = n(17),
+        a = n(16),
         s = n(22),
         u = n(26),
         l = n(29),
