@@ -7110,7 +7110,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       var r = n(62),
-        i = n(15);
+        i = n(16);
       e.exports = function (e, t) {
         return !t || ('object' !== r(t) && 'function' != typeof t) ? i(e) : t;
       };
@@ -7429,6 +7429,57 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
+      n.d(t, 'e', function () {
+        return o;
+      }),
+        n.d(t, 'b', function () {
+          return a;
+        }),
+        n.d(t, 'a', function () {
+          return s;
+        }),
+        n.d(t, 'd', function () {
+          return u;
+        }),
+        n.d(t, 'c', function () {
+          return l;
+        });
+      var r = n(37),
+        i = n.n(r);
+      function o(e) {
+        var t = i.a.stringify(e);
+        return i.a.parse(t);
+      }
+      function a(e, t) {
+        return i.a.stringify(e) === i.a.stringify(t);
+      }
+      function s(e) {
+        var t = !1;
+        return (
+          'Array' === Object.prototype.toString.call(e).slice(8, -1) &&
+            (t = !0),
+          t
+        );
+      }
+      function u(e) {
+        var t = !1;
+        return (
+          'Object' === Object.prototype.toString.call(e).slice(8, -1) &&
+            (t = !0),
+          t
+        );
+      }
+      function l(e) {
+        var t = !1;
+        return (
+          'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
+            (t = !0),
+          t
+        );
+      }
+    },
+    function (e, t, n) {
+      'use strict';
       var r = {
         MAC_ENTER: 3,
         BACKSPACE: 8,
@@ -7635,57 +7686,6 @@ and limitations under the License.
               'Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
             );
           })()
-        );
-      }
-    },
-    function (e, t, n) {
-      'use strict';
-      n.d(t, 'e', function () {
-        return o;
-      }),
-        n.d(t, 'b', function () {
-          return a;
-        }),
-        n.d(t, 'a', function () {
-          return s;
-        }),
-        n.d(t, 'd', function () {
-          return u;
-        }),
-        n.d(t, 'c', function () {
-          return l;
-        });
-      var r = n(37),
-        i = n.n(r);
-      function o(e) {
-        var t = i.a.stringify(e);
-        return i.a.parse(t);
-      }
-      function a(e, t) {
-        return i.a.stringify(e) === i.a.stringify(t);
-      }
-      function s(e) {
-        var t = !1;
-        return (
-          'Array' === Object.prototype.toString.call(e).slice(8, -1) &&
-            (t = !0),
-          t
-        );
-      }
-      function u(e) {
-        var t = !1;
-        return (
-          'Object' === Object.prototype.toString.call(e).slice(8, -1) &&
-            (t = !0),
-          t
-        );
-      }
-      function l(e) {
-        var t = !1;
-        return (
-          'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
-            (t = !0),
-          t
         );
       }
     },
@@ -10306,7 +10306,7 @@ and limitations under the License.
           _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__,
         ),
         _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          15,
+          16,
         ),
         _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = __webpack_require__.n(
           _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__,
@@ -10358,7 +10358,7 @@ and limitations under the License.
         json5__WEBPACK_IMPORTED_MODULE_14___default = __webpack_require__.n(
           json5__WEBPACK_IMPORTED_MODULE_14__,
         ),
-        $utils_index__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(17);
+        $utils_index__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(14);
       function _createSuper(e) {
         var t = _isNativeReflectConstruct();
         return function () {
@@ -51435,7 +51435,7 @@ and limitations under the License.
         f = n(23),
         p = n(36),
         m = n(30),
-        g = n(14),
+        g = n(15),
         y = c.createContext({}),
         _ = { visibility: 'hidden' };
       var v = function (e) {
@@ -51532,7 +51532,7 @@ and limitations under the License.
           r.current.value
         );
       }
-      var M = n(16),
+      var M = n(17),
         k = new Map();
       function D(e, t, n) {
         if ((k.get(e) && cancelAnimationFrame(k.get(e)), n <= 0))
@@ -55375,7 +55375,7 @@ and limitations under the License.
         duration: 1.5,
         style: { right: '50%' },
       };
-      var v = n(16),
+      var v = n(17),
         b = n(7);
       function w(e, t) {
         var n = Object.keys(e);
@@ -68097,7 +68097,7 @@ and limitations under the License.
         i = n.n(r),
         o = n(4),
         a = n.n(o),
-        s = n(14),
+        s = n(15),
         u =
           Object.assign ||
           function (e) {
@@ -69036,7 +69036,7 @@ and limitations under the License.
         s = n(4),
         u = n.n(s),
         l = n(36),
-        c = n(14),
+        c = n(15),
         d = a.forwardRef(function (e, t) {
           var n,
             s = e.prefixCls,
@@ -74132,7 +74132,7 @@ and limitations under the License.
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
         R = P,
-        F = n(17);
+        F = n(14);
       function $(e) {
         var t = e.format;
         return t || (t = e.type ? e.type : 'input'), t;
@@ -74144,12 +74144,17 @@ and limitations under the License.
             e.properties &&
             e.propertyOrder.map(function (r) {
               var i = e.properties[r],
-                o = t && t[r];
+                o = t && t[r] ? t[r] : void 0;
               o && i.default && T()(o) !== T()(i.default) && (o = void 0);
               var a = void 0 !== o ? o : i.default;
               switch (i.type) {
                 case 'string':
-                  n[r] = void 0 !== a ? a : '';
+                  'codearea' === i.format ||
+                  'json' === i.format ||
+                  'htmlarea' === i.format ||
+                  'color' === i.format
+                    ? (n[r] = o || i.default || '')
+                    : (n[r] = void 0 !== a ? a : '');
                   break;
                 case 'boolean':
                   n[r] = void 0 !== a && a;
@@ -74158,9 +74163,17 @@ and limitations under the License.
                   n[r] = void 0 !== a ? a : 1;
                   break;
                 case 'array':
-                  'array' === i.format
-                    ? (n[r] = [N(i.items, o)])
-                    : (n[r] = void 0 !== a ? a : []);
+                  if ('array' === i.format)
+                    if (Object(F.a)(o))
+                      (n[r] = []),
+                        o.map(function (e) {
+                          n[r].push(N(i.items, e));
+                        });
+                    else {
+                      var s = N(i.items, o);
+                      n[r] = [s];
+                    }
+                  else n[r] = void 0 !== a ? a : [];
                   break;
                 case 'object':
                   'datasource' === i.format
@@ -74168,15 +74181,30 @@ and limitations under the License.
                       i.properties.type &&
                       i.properties.type.default &&
                       'local' === i.properties.type.default
-                      ? (n[r] = o || { data: '{}', filter: '() => {}' })
-                      : (n[r] = o || { data: 'http://xxx', filter: '() => {}' })
+                      ? ((n[r] = o || { data: '{}', filter: '() => {}' }),
+                        'http://xxx' === n[r].data && (n[r].data = '{}'))
+                      : ((n[r] = o || {
+                          data: 'http://xxx',
+                          filter: '() => {}',
+                        }),
+                        '{}' === n[r].data && (n[r].data = 'http://xxx'))
                     : 'event' === i.format
                     ? i.properties &&
                       i.properties.type &&
                       i.properties.type.default &&
                       'emit' === i.properties.type.default
-                      ? (n[r] = o || { trigger: '', eventData: '{}' })
-                      : (n[r] = o || { register: '', actionFunc: '() => {}' })
+                      ? o && 'emit' === o.type
+                        ? (n[r] = o)
+                        : (n[r] = {
+                            trigger: (o && o.filter) || '',
+                            eventData: '{}',
+                          })
+                      : o && 'on' === o.type
+                      ? (n[r] = o)
+                      : (n[r] = {
+                          register: '',
+                          actionFunc: (o && o.filter) || '() => {}',
+                        })
                     : (n[r] = N(i, o));
                   break;
                 default:
@@ -74247,49 +74275,45 @@ and limitations under the License.
                             'datasource' === n.format)
                           ) {
                             var r = n.properties;
-                            ((r = Object.assign(
-                              r,
-                              { type: {}, filter: {}, data: {} },
-                              r,
-                            )).type.title = '数据源类型'),
-                              (r.filter.title = '过滤器'),
-                              (r.filter.format = 'codearea'),
-                              'remote' === r.type.default
-                                ? ((r.data.title =
-                                    '用于设置获取元素数据的请求地址'),
-                                  (r.data.format = 'url'))
-                                : ((r.data.title = '本地静态json数据'),
-                                  (r.data.format = 'json'));
+                            r.type &&
+                              Object(F.d)(r.type) &&
+                              (r.type.title = '数据源类型'),
+                              r.filter &&
+                                Object(F.d)(r.filter) &&
+                                ((r.filter.title = '过滤器'),
+                                (r.filter.format = 'codearea')),
+                              r.data &&
+                                Object(F.d)(r.data) &&
+                                ('remote' === r.type.default
+                                  ? ((r.data.title =
+                                      '用于设置获取元素数据的请求地址'),
+                                    (r.data.format = 'url'))
+                                  : ((r.data.title = '本地静态json数据'),
+                                    (r.data.format = 'json')));
                           }
                           if ('quantity' === n.format) {
                             var i = n.properties;
-                            ((i = Object.assign(
-                              i,
-                              { unit: {}, quantity: {} },
-                              i,
-                            )).quantity.title = '单位类型'),
-                              (i.quantity.format = 'typeSelect'),
-                              (i.unit.format = 'number');
+                            i.quantity &&
+                              Object(F.d)(i.quantity) &&
+                              ((i.quantity.title = '单位类型'),
+                              (i.quantity.format = 'typeSelect')),
+                              i.unit &&
+                                Object(F.d)(i.unit) &&
+                                (i.unit.format = 'number');
                           }
                           if ('event' === n.format) {
                             var o = n.properties,
                               a = o.type && o.type.default,
                               s = (o.filter && o.filter.default) || '() => {}';
                             'in' === a
-                              ? ((o = Object.assign(
-                                  o,
-                                  { type: {}, register: {}, actionFunc: {} },
-                                  o,
-                                )),
-                                (n = Object(F.e)(Y)),
-                                (o.actionFunc.default = Object(F.e)(s)))
-                              : ((o = Object.assign(
-                                  o,
-                                  { type: {}, trigger: {}, eventData: {} },
-                                  o,
-                                )),
-                                (n = Object(F.e)(R)),
-                                (o.eventData.default = s));
+                              ? ((n = Object(F.e)(Y)),
+                                o.actionFunc &&
+                                  Object(F.d)(o.actionFunc) &&
+                                  (o.actionFunc.default = Object(F.e)(s)))
+                              : ((n = Object(F.e)(R)),
+                                o.eventData &&
+                                  Object(F.d)(o.eventData) &&
+                                  (o.eventData.default = s));
                           }
                           return (
                             n.properties &&
@@ -74630,18 +74654,18 @@ and limitations under the License.
             q.prototype,
           ),
           q),
-        se = new (function e() {
+        se = function e() {
           c()(this, e),
             (this.JSONSchemaStore = new ee(this)),
             (this.JSONEditorStore = new ae(this));
-        })(),
+        },
         ue = (n(328), n(117)),
         le = n.n(ue),
         ce = n(19),
         de = n.n(ce),
         he = (n(32), n(13)),
         fe = n.n(he),
-        pe = n(15),
+        pe = n(16),
         me = n.n(pe),
         ge = {
           icon: {
@@ -77744,8 +77768,9 @@ and limitations under the License.
       var wn = (function (e) {
         p()(n, e);
         var t = bn(n);
-        function n() {
-          return c()(this, n), t.apply(this, arguments);
+        function n(e) {
+          var r;
+          return c()(this, n), ((r = t.call(this, e)).JSONStore = new se()), r;
         }
         return (
           h()(n, [
@@ -77761,8 +77786,8 @@ and limitations under the License.
                   a = v.createElement(
                     k.a,
                     {
-                      JSONSchemaStore: se.JSONSchemaStore,
-                      JSONEditorStore: se.JSONEditorStore,
+                      JSONSchemaStore: this.JSONStore.JSONSchemaStore,
+                      JSONEditorStore: this.JSONStore.JSONEditorStore,
                     },
                     v.createElement(vn, {
                       wideScreen: t,
@@ -77804,7 +77829,7 @@ and limitations under the License.
       var r = n(0),
         i = n(34),
         o = n(3),
-        a = n(16),
+        a = n(17),
         s = n(22),
         u = n(26),
         l = n(29),
