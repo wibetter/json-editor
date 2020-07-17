@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import PropTypes from 'prop-types';
 
-import JSONStore from '$store/index';
+import RootJSONStore from '$store/index';
 import JSONDataEditor from '$components/JSONDataEditor/index';
 
 /**
@@ -12,6 +12,11 @@ import JSONDataEditor from '$components/JSONDataEditor/index';
  * @constructor
  */
 export default class JSONEditor extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.JSONStore = new RootJSONStore();
+  }
+
   static propTypes = {
     wideScreen: PropTypes.any,
     onChange: PropTypes.func,
@@ -25,8 +30,8 @@ export default class JSONEditor extends React.PureComponent {
 
     const renderContent = (
       <Provider
-        JSONSchemaStore={JSONStore.JSONSchemaStore}
-        JSONEditorStore={JSONStore.JSONEditorStore}
+        JSONSchemaStore={this.JSONStore.JSONSchemaStore}
+        JSONEditorStore={this.JSONStore.JSONEditorStore}
       >
         <JSONDataEditor
           wideScreen={wideScreen}
