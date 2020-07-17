@@ -76,7 +76,8 @@ class HtmlAreaFormSchema extends React.PureComponent {
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
+                pageScreen === 'wideScreen' &&
+                targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''
               }

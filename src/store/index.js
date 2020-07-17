@@ -8,6 +8,4 @@ class RootJSONStore {
   }
 }
 
-const JSONStore = new RootJSONStore();
-
-export default JSONStore;
+export default RootJSONStore;

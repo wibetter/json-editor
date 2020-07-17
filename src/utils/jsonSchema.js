@@ -198,42 +198,58 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   }
   // 转换旧版的datasource类型的数据结构
   if (newJSONSchema.format === 'datasource') {
-    const curProperties = newJSONSchema.properties;
-    curProperties.type.title = '数据源类型';
-    curProperties.filter.title = '过滤器';
-    curProperties.filter.format = 'codearea';
-    if (curProperties.type.default === 'remote') {
-      curProperties.data.title = '用于设置获取元素数据的请求地址';
-      curProperties.data.format = 'url';
-    } else {
-      curProperties.data.title = '本地静态json数据';
-      curProperties.data.format = 'json';
+    let curProperties = newJSONSchema.properties;
+    if (curProperties.type && isObject(curProperties.type)) {
+      curProperties.type.title = '数据源类型';
+    }
+    if (curProperties.filter && isObject(curProperties.filter)) {
+      curProperties.filter.title = '过滤器';
+      curProperties.filter.format = 'codearea';
+    }
+    if (curProperties.data && isObject(curProperties.data)) {
+      if (curProperties.type.default === 'remote') {
+        curProperties.data.title = '用于设置获取元素数据的请求地址';
+        curProperties.data.format = 'url';
+      } else {
+        curProperties.data.title = '本地静态json数据';
+        curProperties.data.format = 'json';
+      }
     }
   }
   // 转换旧版的quantity类型的数据结构
   if (newJSONSchema.format === 'quantity') {
-    const curProperties = newJSONSchema.properties;
-    curProperties.quantity.title = '单位类型';
-    curProperties.quantity.format = 'typeSelect';
-    curProperties.unit.format = 'number';
+    let curProperties = newJSONSchema.properties;
+    if (curProperties.quantity && isObject(curProperties.quantity)) {
+      curProperties.quantity.title = '单位类型';
+      curProperties.quantity.format = 'typeSelect';
+    }
+    if (curProperties.unit && isObject(curProperties.unit)) {
+      curProperties.unit.format = 'number';
+    }
   }
   // 转换旧版的event类型的数据结构
   if (newJSONSchema.format === 'event') {
-    const curProperties = newJSONSchema.properties;
+    let curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
-    const eventType = curProperties.type.default;
+    const eventType = curProperties.type && curProperties.type.default;
     const eventFunc =
       (curProperties.filter && curProperties.filter.default) || '() => {}';
     // 重构Event的数据结构
     if (eventType === 'in') {
       // 注册类事件
-      newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
-      newJSONSchema.properties.actionFunc.default = eventFunc;
+      // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
+      newJSONSchema = objClone(EventTypeDataList.on);
+      if (curProperties.actionFunc && isObject(curProperties.actionFunc)) {
+        curProperties.actionFunc.default = objClone(eventFunc);
+      }
     } else {
       // 其他，则默认为触发事件
       // 注册类事件
-      newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
-      // newJSONSchema.properties.eventData.default = eventFunc;
+      // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
+      newJSONSchema = objClone(EventTypeDataList.emit);
+      if (curProperties.eventData && isObject(curProperties.eventData)) {
+        curProperties.eventData.default = eventFunc;
+      }
     }
   }
   // 判断是否有propertyOrder属性

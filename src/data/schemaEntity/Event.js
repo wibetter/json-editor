@@ -117,6 +117,6 @@ export const initEventDataTypeON = {
       readOnly: false,
     },
   },
-  required: ['type', 'callback'],
-  propertyOrder: ['type', 'callback'],
+  required: ['type', 'register', 'actionFunc'],
+  propertyOrder: ['type', 'register', 'actionFunc'],
 };

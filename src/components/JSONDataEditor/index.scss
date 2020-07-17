@@ -213,4 +213,9 @@
     justify-content: stretch;
     align-items: center;
   }
+
+  // 折叠面板最后一个元素不加底部边框
+  .ant-collapse-borderless > .ant-collapse-item:last-child {
+    border-bottom: none;
+  }
 }
