@@ -74144,7 +74144,7 @@ and limitations under the License.
             e.properties &&
             e.propertyOrder.map(function (r) {
               var i = e.properties[r],
-                o = t && t[r] ? t[r] : void 0;
+                o = t && void 0 !== t[r] ? t[r] : void 0;
               o && i.default && T()(o) !== T()(i.default) && (o = void 0);
               var a = void 0 !== o ? o : i.default;
               switch (i.type) {
