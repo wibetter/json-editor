@@ -53,12 +53,16 @@ export default class JSONSchemaStore {
         const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
-      const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
-      /** 根据jsonSchema生成对应的最新jsonData */
-      const newJsonData = schema2JsonData(this.JSONSchemaObj, curJsonData);
-      /** 更新当前的jsonData */
-      this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
     }
+    const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
+    /** 根据jsonSchema生成对应的最新jsonData */
+    const newJsonData = schema2JsonData(this.JSONSchemaObj, curJsonData);
+    /** 更新当前的jsonData */
+    this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
+    /** jsonSchem变动的时候触发一次jsonDataChange
+     * jsonSchem变动意味着jsonData也需要进行对应的结构更新
+     * */
+    this.rootJSONStore.JSONEditorStore.jsonDataChange();
   }
 
   @computed get JSONSchemaObj() {

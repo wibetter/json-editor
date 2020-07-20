@@ -50,9 +50,9 @@ export default class JSONEditorStore {
     if (!jsonData || JSON5.stringify(jsonData) === '{}') {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
-      this.jsonData = schema2JsonData(jsonSchema);
+      this.jsonData = schema2JsonData(jsonSchema, {});
     } else {
-      this.jsonData = jsonData;
+      this.jsonData = schema2JsonData(jsonSchema, jsonData);
     }
   }
 
@@ -119,15 +119,6 @@ export default class JSONEditorStore {
         message.warning('删除失败，至少保留一个数据项。');
       }
     }
-  }
-
-  /**
-   * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)插入对应的数组元素
-   * position: 设置插入指定位置的前面还是后面，默认插入指定位置的后面
-   * */
-  @action.bound
-  insertArrayItem(keyRoute, arrayIndex, position) {
-    // 待开发
   }
 
   /**
