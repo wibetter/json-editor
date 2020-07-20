@@ -13,6 +13,7 @@ export const initHtmlAreaData = {
   type: 'string',
   title: '富文本类型',
   format: 'htmlarea',
+  placeholder: '请输入html代码片段',
   default: '<p>hello,world!</p>', // 默认值
   description: '用于放置html代码片段', // 字段项的说明和描述
   isRequired: false,
