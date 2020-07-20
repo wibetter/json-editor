@@ -3,7 +3,7 @@ import { EventTypeDataList } from '$data/TypeDataList';
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
 import { objClone, isObject } from '$utils/index';
-import { isArray } from './index';
+import { isArray, exitPropertie } from './index';
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -286,40 +286,26 @@ export function schema2JsonData(jsonSchema, jsonData) {
     if (jsonSchema.properties) {
       jsonSchema.propertyOrder.map((jsonKey) => {
         const jsonItem = jsonSchema.properties[jsonKey];
-        let oldValue =
-          jsonData && jsonData[jsonKey] !== undefined
-            ? jsonData[jsonKey]
-            : undefined;
+        let oldValue = jsonData && jsonData[jsonKey];
         if (
-          oldValue &&
-          jsonItem.default &&
+          exitPropertie(oldValue) &&
+          exitPropertie(jsonItem.default) &&
           typeof oldValue !== typeof jsonItem.default
         ) {
           // 表示当前数据类型发生变化，则丢弃旧版数据
           oldValue = undefined;
         }
         /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
-        const curValue = oldValue !== undefined ? oldValue : jsonItem.default;
+        const curValue = exitPropertie(oldValue) ? oldValue : jsonItem.default;
         switch (jsonItem.type) {
           case 'string':
-            if (
-              jsonItem.format === 'codearea' ||
-              jsonItem.format === 'json' ||
-              jsonItem.format === 'htmlarea' ||
-              jsonItem.format === 'color'
-            ) {
-              // 特殊类型尽可能避免出现空字符串
-              curJsonData[jsonKey] = oldValue || jsonItem.default || '';
-            } else {
-              // 其他类型
-              curJsonData[jsonKey] = curValue !== undefined ? curValue : '';
-            }
+            curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : '';
             break;
           case 'boolean':
-            curJsonData[jsonKey] = curValue !== undefined ? curValue : false;
+            curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : false;
             break;
           case 'number':
-            curJsonData[jsonKey] = curValue !== undefined ? curValue : 1;
+            curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : 1;
             break;
           case 'array':
             if (jsonItem.format === 'array') {
@@ -335,7 +321,8 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 curJsonData[jsonKey] = [childItems];
               }
             } else {
-              curJsonData[jsonKey] = curValue !== undefined ? curValue : [];
+              curJsonData[jsonKey] =
+                curValue !== exitPropertie(curValue) ? curValue : [];
             }
             break;
           case 'object':
@@ -401,7 +388,7 @@ export function schema2JsonData(jsonSchema, jsonData) {
             }
             break;
           default:
-            curJsonData[jsonKey] = curValue !== undefined ? curValue : '';
+            curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : '';
         }
       });
     }
