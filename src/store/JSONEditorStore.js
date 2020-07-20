@@ -47,7 +47,7 @@ export default class JSONEditorStore {
   @action.bound
   initJSONData(jsonData) {
     const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
-    if (!jsonData || JSON5.stringify(jsonData) === '{}') {
+    if (!jsonData || JSON.stringify(jsonData) === '{}') {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
       this.jsonData = schema2JsonData(jsonSchema, {});

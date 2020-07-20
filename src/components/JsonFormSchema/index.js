@@ -53,7 +53,7 @@ class JsonFormSchema extends React.PureComponent {
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
-      curJsonData = JSON5.stringify(curJsonData);
+      curJsonData = JSON.stringify(curJsonData);
     }
 
     return (
@@ -108,7 +108,7 @@ class JsonFormSchema extends React.PureComponent {
             width={'100%'}
             onChange={(newJsonData) => {
               try {
-                JSON5.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
                 this.handleValueChange(newJsonData);
                 this.setState({

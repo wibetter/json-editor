@@ -55,7 +55,7 @@ class CodeAreaFormSchema extends React.PureComponent {
         : targetJsonData.default || '() => {}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
-      curJsonData = JSON5.stringify(curJsonData);
+      curJsonData = JSON.stringify(curJsonData);
     }
 
     return (
