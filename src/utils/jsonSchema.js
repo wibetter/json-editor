@@ -2,8 +2,7 @@ import { EventTypeDataList } from '$data/TypeDataList';
 /**
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
-import { objClone, isObject } from '$utils/index';
-import { isArray, exitPropertie } from './index';
+import { objClone, isObject, isArray, exitPropertie } from '$utils/index';
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -296,10 +295,18 @@ export function schema2JsonData(jsonSchema, jsonData) {
           oldValue = undefined;
         }
         /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
-        const curValue = exitPropertie(oldValue) ? oldValue : jsonItem.default;
+        let curValue = exitPropertie(oldValue) ? oldValue : jsonItem.default;
         switch (jsonItem.type) {
           case 'string':
-            curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : '';
+            if (jsonItem.format === 'color') {
+              if (curValue === '#fff' || curValue === '#FFF') {
+                curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
+              }
+              curJsonData[jsonKey] = curValue || '#ffffff';
+            } else {
+              // 其他类型允许出现空字符串
+              curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : '';
+            }
             break;
           case 'boolean':
             curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : false;
@@ -363,23 +370,23 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 jsonItem.properties.type.default === 'emit'
               ) {
                 // 触发事件类型
-                if (oldValue && oldValue.type === 'emit') {
-                  curJsonData[jsonKey] = oldValue;
-                } else {
+                if (oldValue && oldValue.type === 'out') {
                   curJsonData[jsonKey] = {
                     trigger: (oldValue && oldValue.filter) || '', // 兼容旧版数据
                     eventData: '{}',
                   };
+                } else {
+                  curJsonData[jsonKey] = oldValue;
                 }
               } else {
                 // 注册事件类型-触发事件类型
-                if (oldValue && oldValue.type === 'on') {
-                  curJsonData[jsonKey] = oldValue;
-                } else {
+                if (oldValue && oldValue.type === 'in') {
                   curJsonData[jsonKey] = {
                     register: '',
                     actionFunc: (oldValue && oldValue.filter) || '() => {}', // 兼容旧版数据
                   };
+                } else {
+                  curJsonData[jsonKey] = oldValue;
                 }
               }
             } else {
