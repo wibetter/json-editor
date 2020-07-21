@@ -31,13 +31,13 @@ class EventSchema extends React.PureComponent {
     } = this.props;
     const currentFormat = getCurrentFormat(targetJsonData);
 
-    const typeDataObj = targetJsonData.properties.type;
+    const typeDataObj = targetJsonData.properties.type || {};
     // 注册类型事件的数据对象：on
-    const registerJsonObj = targetJsonData.properties.register;
-    const actionFuncJsonObj = targetJsonData.properties.actionFunc;
+    const registerJsonObj = targetJsonData.properties.register || {};
+    const actionFuncJsonObj = targetJsonData.properties.actionFunc || {};
     // 触发事件类型的数据对象：emit
-    const triggerJsonObj = targetJsonData.properties.trigger;
-    const eventDataJsonObj = targetJsonData.properties.eventData;
+    const triggerJsonObj = targetJsonData.properties.trigger || {};
+    const eventDataJsonObj = targetJsonData.properties.eventData || {};
     // 获取当前数据源类型
     const dataType = typeDataObj.default; // local or remote
 

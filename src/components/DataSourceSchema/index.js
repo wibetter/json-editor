@@ -48,9 +48,9 @@ class DataSourceSchema extends React.PureComponent {
     const currentFormat = getCurrentFormat(targetJsonData);
 
     // 获取DataSource中各类数据对象
-    const typeDataObj = targetJsonData.properties.type; // type中记录了数据源类型：local or remote
-    const dataObj = targetJsonData.properties.data; // 用于录入数据（或者数据源地址）
-    const filterDataObj = targetJsonData.properties.filter; // 数据过滤器
+    const typeDataObj = targetJsonData.properties.type || {}; // type中记录了数据源类型：local or remote
+    const dataObj = targetJsonData.properties.data || {}; // 用于录入数据（或者数据源地址）
+    const filterDataObj = targetJsonData.properties.filter || {}; // 数据过滤器
     // 获取当前数据源类型
     const dataType = typeDataObj.default; // local or remote
 
