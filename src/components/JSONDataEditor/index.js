@@ -39,7 +39,7 @@ class JSONDataEditor extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
     if (!isEqual(nextProps.schemaData, this.props.schemaData)) {
-      this.props.initJSONSchemaData(nextProps.schemaData);
+      this.props.JSONSchemaChange(nextProps.schemaData);
     }
     /** 2. 初始化jsonData */
     if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
@@ -134,6 +134,7 @@ export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
+  JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
   initJSONData: stores.JSONEditorStore.initJSONData,
   initOnChange: stores.JSONEditorStore.initOnChange,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
