@@ -350,6 +350,17 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 if (curJsonData[jsonKey].data === 'http://xxx') {
                   curJsonData[jsonKey].data = '{}';
                 }
+                // 兼容旧版数据（data可能为json对象，自动转换成json字符串）
+                if (
+                  isObject(curJsonData[jsonKey].data) ||
+                  isArray(curJsonData[jsonKey].data)
+                ) {
+                  curJsonData[jsonKey].data = JSON.stringify(
+                    curJsonData[jsonKey].data,
+                    null,
+                    2,
+                  );
+                }
               } else {
                 // 远程数据类型
                 curJsonData[jsonKey] = oldValue || {
@@ -359,6 +370,17 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 // 纠正data中的默认数据
                 if (curJsonData[jsonKey].data === '{}') {
                   curJsonData[jsonKey].data = 'http://xxx';
+                }
+                // 兼容旧版数据（data可能为json对象，自动转换成json字符串）
+                if (
+                  isObject(curJsonData[jsonKey].data) ||
+                  isArray(curJsonData[jsonKey].data)
+                ) {
+                  curJsonData[jsonKey].data = JSON.stringify(
+                    curJsonData[jsonKey].data,
+                    null,
+                    2,
+                  );
                 }
               }
             } else if (jsonItem.format === 'event') {
