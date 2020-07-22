@@ -1,12 +1,11 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
-import JSON5 from 'json5';
 import {
   getJSONDataByKeyRoute,
   getParentKeyRoute_CurKey,
 } from '$utils/jsonData';
 import { schema2JsonData } from '$utils/jsonSchema';
-import { objClone, isArray, isFunction } from '$utils/index';
+import { isEqual, objClone, isArray, isFunction } from '$utils/index';
 
 /**
  * 用于管控JSON数据内容的全局store
@@ -25,6 +24,11 @@ export default class JSONEditorStore {
    * triggerChange: 用于强制触发更新事件
    */
   @observable triggerChange = false;
+
+  /**
+   * 记录当前JSONEditor的更新时间
+   */
+  @observable lastInitTime = new Date().getTime();
   /**
    * jsonData: jsonData数据对象
    */
@@ -34,6 +38,14 @@ export default class JSONEditorStore {
    * onChange: jsonData数据变动触发的onChange
    */
   @observable onChange = () => {}; // 函数类型
+
+  /**
+   * 更新lastInitTime
+   */
+  @action.bound
+  updateLastInitTime() {
+    this.lastInitTime = new Date().getTime();
+  }
 
   /**
    * triggerChangeAction: 用于主动触发更新事件
@@ -46,13 +58,18 @@ export default class JSONEditorStore {
   /** 初始化jsonData  */
   @action.bound
   initJSONData(jsonData) {
-    const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
-    if (!jsonData || JSON5.stringify(jsonData) === '{}') {
-      // 根据jsonSchema生成一份对应的jsonData
-      /** 1、根据jsonSchema生成对应的jsonData */
-      this.jsonData = schema2JsonData(jsonSchema, {});
-    } else {
-      this.jsonData = schema2JsonData(jsonSchema, jsonData);
+    if (!isEqual(jsonData, this.JSONEditorObj)) {
+      // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
+      const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
+      if (!jsonData || JSON.stringify(jsonData) === '{}') {
+        // 根据jsonSchema生成一份对应的jsonData
+        /** 1、根据jsonSchema生成对应的jsonData */
+        this.jsonData = schema2JsonData(jsonSchema, {});
+      } else {
+        this.jsonData = schema2JsonData(jsonSchema, jsonData);
+      }
+      // 记录当前初始化的时间
+      this.updateLastInitTime();
     }
   }
 

@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { message, Tooltip } from 'antd';
 import AceEditor from 'react-ace';
-import JSON5 from 'json5';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import { isObject } from '$utils/index';
@@ -53,7 +52,7 @@ class JsonFormSchema extends React.PureComponent {
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
-      curJsonData = JSON5.stringify(curJsonData);
+      curJsonData = JSON.stringify(curJsonData, null, 2);
     }
 
     return (
@@ -108,7 +107,7 @@ class JsonFormSchema extends React.PureComponent {
             width={'100%'}
             onChange={(newJsonData) => {
               try {
-                JSON5.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
                 this.handleValueChange(newJsonData);
                 this.setState({

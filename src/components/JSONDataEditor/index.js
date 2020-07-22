@@ -39,7 +39,7 @@ class JSONDataEditor extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
     if (!isEqual(nextProps.schemaData, this.props.schemaData)) {
-      this.props.initJSONSchemaData(nextProps.schemaData);
+      this.props.JSONSchemaChange(nextProps.schemaData);
     }
     /** 2. 初始化jsonData */
     if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
@@ -69,7 +69,7 @@ class JSONDataEditor extends React.PureComponent {
   };
 
   render() {
-    const { jsonSchema, lastUpdateTime } = this.props;
+    const { jsonSchema, lastUpdateTime, lastInitTime } = this.props;
     const isEmpty = isEmptySchema(jsonSchema);
     /**
      * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此处进行拖拽事件的处理），
@@ -97,8 +97,9 @@ class JSONDataEditor extends React.PureComponent {
               const currentSchemaData = jsonSchema.properties[currentJsonKey];
               /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
               const currentFormat = getCurrentFormat(currentSchemaData);
+
               /** 5. 获取当前元素的id，用于做唯一标识 */
-              const nodeKey = `${lastUpdateTime}-${currentFormat}-${currentJsonKey}`;
+              const nodeKey = `${lastUpdateTime}-${lastInitTime}-${currentFormat}-${currentJsonKey}`;
 
               if (
                 currentSchemaData.propertyOrder &&
@@ -134,7 +135,9 @@ export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
+  JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
   initJSONData: stores.JSONEditorStore.initJSONData,
+  lastInitTime: stores.JSONEditorStore.lastInitTime,
   initOnChange: stores.JSONEditorStore.initOnChange,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
 }))(observer(JSONDataEditor));

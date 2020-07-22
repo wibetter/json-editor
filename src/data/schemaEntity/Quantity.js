@@ -17,7 +17,7 @@ export const initQuantityData = {
   properties: {
     unit: {
       type: 'number',
-      title: '数值',
+      title: '单位数值',
       format: 'number',
       default: 50, // 默认值
       minimum: 0, // 在高级设置中配置

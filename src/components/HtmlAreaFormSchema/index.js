@@ -6,7 +6,6 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-monokai';
 import { isObject } from '$utils/index';
-import JSON5 from 'json5';
 
 class HtmlAreaFormSchema extends React.PureComponent {
   static propTypes = {
@@ -55,7 +54,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
         : targetJsonData.default || '<p>hello</p>';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
-      curJsonData = JSON5.stringify(curJsonData);
+      curJsonData = JSON.stringify(curJsonData, null, 2);
     }
 
     return (

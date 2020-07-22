@@ -14,7 +14,7 @@ export const initNumberData = {
   type: 'number',
   title: '数值',
   format: 'number',
-  default: 50, // 默认值
+  default: 1, // 默认值
   minimum: 0, // 在高级设置中配置
   maximum: 1000, // 在高级设置中配置
   description: '', // 字段项的说明和描述

@@ -5,7 +5,6 @@ import { message, Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-monokai';
-import JSON5 from 'json5'; // ace-builds
 import { isObject } from '$utils/index';
 
 class CodeAreaFormSchema extends React.PureComponent {
@@ -55,7 +54,7 @@ class CodeAreaFormSchema extends React.PureComponent {
         : targetJsonData.default || '() => {}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
-      curJsonData = JSON5.stringify(curJsonData);
+      curJsonData = JSON.stringify(curJsonData, null, 2);
     }
 
     return (
