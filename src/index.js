@@ -24,108 +24,13 @@ class IndexDemo extends React.PureComponent {
             description: '功能设置',
             readOnly: true,
             properties: {
-              mainTitle: {
-                type: 'string',
-                description: '设置主title',
-                format: 'input',
-                title: '设置主title',
-              },
-              subTitle: {
-                type: 'string',
-                description: '设置副title',
-                format: 'input',
-                title: '设置副title',
-              },
-              bgImg: {
+              backImageUrl: {
                 type: 'string',
                 format: 'url',
                 description: '背景图',
-                title: '背景图',
-              },
-              tabDataSource: {
-                type: 'array',
-                format: 'array',
-                title: 'tab数据',
-                description: '',
-                isRequired: false,
-                readOnly: false,
-                items: {
-                  type: 'object',
-                  format: 'object',
-                  title: '数组项',
-                  description: '',
-                  isRequired: false,
-                  readOnly: false,
-                  properties: {
-                    icons: {
-                      type: 'array',
-                      format: 'array',
-                      title: '图标和文案',
-                      description: '',
-                      isRequired: false,
-                      readOnly: false,
-                      items: {
-                        type: 'object',
-                        format: 'object',
-                        title: '数组项',
-                        description: '',
-                        isRequired: false,
-                        readOnly: false,
-                        properties: {
-                          icon: {
-                            type: 'string',
-                            title: '图标URL',
-                            format: 'url',
-                            default: '',
-                            description: '',
-                            placeholder: '',
-                            isRequired: false,
-                            readOnly: false,
-                          },
-                          text: {
-                            type: 'string',
-                            title: '图标文案',
-                            format: 'input',
-                            default: '',
-                            description: '',
-                            placeholder: '',
-                            isRequired: false,
-                            readOnly: false,
-                          },
-                        },
-                        required: ['icon', 'text'],
-                        propertyOrder: ['icon', 'text'],
-                      },
-                    },
-                    title: {
-                      type: 'string',
-                      title: '标题',
-                      format: 'input',
-                      default: '',
-                      description: '',
-                      placeholder: '',
-                      isRequired: false,
-                      readOnly: false,
-                    },
-                    content: {
-                      type: 'string',
-                      title: '内容',
-                      format: 'input',
-                      default: '',
-                      description: '',
-                      placeholder: '',
-                      isRequired: false,
-                      readOnly: false,
-                    },
-                  },
-                  required: ['icons', 'title', 'content'],
-                  propertyOrder: ['icons', 'title', 'content'],
-                },
               },
             },
-            required: ['mainTitle', 'subTitle', 'bgImg', 'tabDataSource'],
-            title: '功能设置',
-            propertyOrder: ['mainTitle', 'subTitle', 'bgImg', 'tabDataSource'],
+            required: ['field_10', 'field_11', 'backImageUrl'],
           },
           style: {
             type: 'object',
@@ -140,155 +45,173 @@ class IndexDemo extends React.PureComponent {
                   unit: {
                     type: 'number',
                     description: '数量',
-                    format: 'number',
-                    title: '数量',
                   },
                   quantity: {
                     type: 'string',
                     default: 'px',
-                    format: 'typeSelect',
+                    format: 'quantitySelect',
                     enum: ['px', 'rem', 'em', 'percent'],
                     enumextra: ['px', 'rem', 'em', 'percent'],
                     description: '单位',
-                    title: '单位类型',
                   },
                 },
+                description: '上边距',
                 required: ['unit', 'quantity'],
-                description: '容器内边距',
-                title: '容器内边距',
-                propertyOrder: ['unit', 'quantity'],
+                default: 'wrapPadding',
+              },
+              paddingBottom: {
+                type: 'object',
+                format: 'quantity',
+                properties: {
+                  unit: {
+                    type: 'number',
+                    description: '数量',
+                  },
+                  quantity: {
+                    type: 'string',
+                    default: 'px',
+                    format: 'quantitySelect',
+                    enum: ['px', 'rem', 'em', 'percent'],
+                    enumextra: ['px', 'rem', 'em', 'percent'],
+                    description: '单位',
+                  },
+                },
+                description: '下边距',
+                required: ['unit', 'quantity'],
               },
             },
-            required: ['paddingTop'],
-            title: '样式设置',
-            propertyOrder: ['paddingTop'],
+            required: [
+              'field_4',
+              'field_5',
+              'backColor',
+              'titlePosition',
+              'inner',
+              'paddingBottom',
+            ],
           },
           data: {
             type: 'object',
             format: 'data',
             description: '数据设置',
             readOnly: true,
-            properties: {},
-            required: [],
-            title: '数据设置',
-            propertyOrder: [],
+            properties: {
+              exhibitionData: {
+                type: 'object',
+                format: 'datasource',
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'local',
+                    format: 'typeSelect',
+                    enum: ['local', 'remote'],
+                    enumextra: ['local', 'remote'],
+                    description: '类型',
+                  },
+                  data: {
+                    type: 'string',
+                    format: 'typeSelectData',
+                    default: 'local',
+                    readOnlyInJson: true,
+                  },
+                  filter: {
+                    type: 'string',
+                    format: 'textarea',
+                    default: 'return data;',
+                    description: '过滤器',
+                  },
+                },
+                description: '数据源',
+                required: ['data', 'filter', 'type'],
+              },
+            },
+            required: ['a a', 'jsonItem', 'exhibitionData'],
           },
         },
         required: ['func', 'style', 'data'],
-        format: 'object',
-        propertyOrder: ['func', 'style', 'data'],
-        lastUpdateTime: '2020-07-22T03:14:42.164Z',
       },
       jsonData: {
         func: {
-          mainTitle: '行业解决方案',
-          subTitle: '深耕细分行业，提供更加垂直的行业解决方案',
-          bgImg:
-            'https://img13.360buyimg.com/imagetools/jfs/t1/118843/39/12791/28400/5f1692adEf4f9500b/6ec3e2dfc977e4ec.png',
-          tabDataSource: [
-            {
-              icons: [
-                {
-                  icon:
-                    'https://img13.360buyimg.com/imagetools/jfs/t1/128081/12/4820/523/5ee4cdc1E369067c6/4c0347e9d56ae83a.png',
-                  text: '在线商城',
-                },
-                {
-                  icon:
-                    'https://img13.360buyimg.com/imagetools/jfs/t1/118041/20/10031/1114/5ee4cdc0E747ca7cb/e326895a96bbeff0.png',
-                  text: '门店管理',
-                },
-                {
-                  icon:
-                    'https://img14.360buyimg.com/imagetools/jfs/t1/143711/28/575/869/5ee4cdc0E04a14edf/f4f6816386a66d83.png',
-                  text: '前置仓',
-                },
-                {
-                  icon:
-                    'https://img14.360buyimg.com/imagetools/jfs/t1/128330/23/4777/406/5ee4cdc1E2360cd72/19c812103f1156d1.png',
-                  text: '进销存',
-                },
-                {
-                  icon:
-                    'https://img11.360buyimg.com/imagetools/jfs/t1/135438/32/2190/1290/5ee4cdc0E89d67821/ab1f299b1454b17e.png',
-                  text: '客户管理',
-                },
-                {
-                  icon:
-                    'https://img12.360buyimg.com/imagetools/jfs/t1/120167/19/4838/428/5ee4cdc1Eb814e25e/8f45b2f059fd4e54.png',
-                  text: '裂变分销',
-                },
-                {
-                  icon:
-                    'https://img10.360buyimg.com/imagetools/jfs/t1/144879/4/602/602/5ee4cdc0E66eee319/96de2f57f83219d5.png',
-                  text: '拼团砍价',
-                },
-                {
-                  icon:
-                    'https://img10.360buyimg.com/imagetools/jfs/t1/136688/33/2162/399/5ee4cdc0Ed5b35457/6ffc9d37797f0acf.png',
-                  text: '营销插件',
-                },
-              ],
-              title: '智慧线下解决方案',
-              content:
-                '智慧零售解决方案是一款面向线下零售门店的一体化多渠道零售解决方案。智慧零售以在线商城、门店收银、多渠道进销存、客户管理、互动营销、数据分析在内的六大核心服务，实现线上线下商品、会员、场景的互联互通，助推企业快速实现营销、服务、效率转型升级。',
-            },
-            {
-              icons: [
-                {
-                  icon:
-                    'https://img13.360buyimg.com/imagetools/jfs/t1/128081/12/4820/523/5ee4cdc1E369067c6/4c0347e9d56ae83a.png',
-                  text: '在线商城1',
-                },
-                {
-                  icon:
-                    'https://img13.360buyimg.com/imagetools/jfs/t1/118041/20/10031/1114/5ee4cdc0E747ca7cb/e326895a96bbeff0.png',
-                  text: '门店管理',
-                },
-                {
-                  icon:
-                    'https://img14.360buyimg.com/imagetools/jfs/t1/143711/28/575/869/5ee4cdc0E04a14edf/f4f6816386a66d83.png',
-                  text: '前置仓',
-                },
-                {
-                  icon:
-                    'https://img14.360buyimg.com/imagetools/jfs/t1/128330/23/4777/406/5ee4cdc1E2360cd72/19c812103f1156d1.png',
-                  text: '进销存',
-                },
-                {
-                  icon:
-                    'https://img11.360buyimg.com/imagetools/jfs/t1/135438/32/2190/1290/5ee4cdc0E89d67821/ab1f299b1454b17e.png',
-                  text: '客户管理',
-                },
-                {
-                  icon:
-                    'https://img12.360buyimg.com/imagetools/jfs/t1/120167/19/4838/428/5ee4cdc1Eb814e25e/8f45b2f059fd4e54.png',
-                  text: '裂变分销',
-                },
-                {
-                  icon:
-                    'https://img10.360buyimg.com/imagetools/jfs/t1/144879/4/602/602/5ee4cdc0E66eee319/96de2f57f83219d5.png',
-                  text: '拼团砍价',
-                },
-                {
-                  icon:
-                    'https://img10.360buyimg.com/imagetools/jfs/t1/136688/33/2162/399/5ee4cdc0Ed5b35457/6ffc9d37797f0acf.png',
-                  text: '营销插件',
-                },
-              ],
-              title: '占位用途方案11',
-              content:
-                '11智慧零售解决方案是一款面向线下零售门店的一体化多渠道零售解决方案。智慧零售以在线商城、门店收银、多渠道进销存、客户管理、互动营销、数据分析在内的六大核心服务，实现线上线下商品、会员、场景的互联互通，助推企业快速实现营销、服务、效率转型升级。',
-            },
-          ],
+          backImageUrl:
+            'https://img12.360buyimg.com/imagetools/jfs/t1/130978/26/2156/2976318/5ee4e1c0E883919f3/c6386ca41014414d.png',
         },
         style: {
           paddingTop: {
-            unit: 111,
+            unit: 124,
+            quantity: 'px',
+          },
+          paddingBottom: {
+            unit: 124,
             quantity: 'px',
           },
         },
-        data: {},
+        data: {
+          exhibitionData: {
+            type: 'local',
+            data: [
+              {
+                mainTitle: '玩法介绍',
+                subTitle: '多种玩法一网打尽',
+                cards: [
+                  {
+                    icon:
+                      'https://img14.360buyimg.com/imagetools/jfs/t1/118610/37/10140/2261/5ee4e1bdE2eaebab5/04ad51848c96e7ff.png',
+                    title: '获客拉新',
+                    content: '多人拼团、销售员、瓜分券、团购返现',
+                  },
+                  {
+                    icon:
+                      'https://img12.360buyimg.com/imagetools/jfs/t1/125369/32/4859/2199/5ee4e1beEc3dad33f/ff678ee0a973a3f0.png',
+                    title: '下单转化',
+                    content: '限时折扣、优惠券、降价拍、秒杀',
+                  },
+                  {
+                    icon:
+                      'https://img12.360buyimg.com/imagetools/jfs/t1/133121/38/2148/3060/5ee4e1bdE488f3e96/bb531776302e43c1.png',
+                    title: '提高客单',
+                    content: '打包一口价、优惠套餐、满减送',
+                  },
+                  {
+                    icon:
+                      'https://img10.360buyimg.com/imagetools/jfs/t1/131174/3/2136/1034/5ee4e1bdE9cbc6384/309e668fa0723fcb.png',
+                    title: '留存复购',
+                    content: '积分商城、会员储值、会员卡、签到',
+                  },
+                ],
+              },
+              {
+                mainTitle: '服务',
+                subTitle: '360°全方位一站式服务',
+                cards: [
+                  {
+                    icon:
+                      'https://img10.360buyimg.com/imagetools/jfs/t1/129279/1/4730/2526/5ee4e1bdEd0574a8d/9d43d93514943ee0.png',
+                    title: '专业客服答疑',
+                    content: '7*12小时专业指导 答疑解惑',
+                  },
+                  {
+                    icon:
+                      'https://img12.360buyimg.com/imagetools/jfs/t1/127069/11/4761/2448/5ee4e1bdE4b6c12ba/b2589f17c5259899.png ',
+                    title: '一对一运维支持',
+                    content: '随时随地学习，提升能力',
+                  },
+                  {
+                    icon:
+                      'https://img11.360buyimg.com/imagetools/jfs/t1/119895/29/4849/1742/5ee4e1bdEca596e26/5b146d5d8069a73a.png',
+                    title: '同行交流活动',
+                    content: '直播、社区、商盟、实战分享',
+                  },
+                  {
+                    icon:
+                      'https://img14.360buyimg.com/imagetools/jfs/t1/117427/23/10090/2241/5ee4e1bdEcd3ba707/4bb1d794a89b5354.png',
+                    title: '运营者特训营',
+                    content: '培训优良运营人群，轻松招人',
+                  },
+                ],
+              },
+            ],
+            filter: '() => {}',
+          },
+        },
       },
       wideScreen: false,
     };

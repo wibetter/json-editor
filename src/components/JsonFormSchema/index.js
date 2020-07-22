@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { message, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject } from '$utils/index';
+import { isObject, isArray, isFunction } from '$utils/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -31,7 +31,9 @@ class JsonFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (newJsonData) => {
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, newJsonData); // 更新数值
+    if (newJsonData) {
+      updateFormValueData(keyRoute, JSON.parse(newJsonData)); // 更新数值
+    }
   };
 
   render() {
@@ -50,10 +52,29 @@ class JsonFormSchema extends React.PureComponent {
     // 格式化JSON数据
     curJsonData =
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
+    let curJsonDataStr = ''; // 字符串类型的json数据
     // 判断当前jsonData是否是对象类型
-    if (isObject(curJsonData)) {
-      curJsonData = JSON.stringify(curJsonData, null, 2);
+    if (isObject(curJsonData) || isArray(curJsonData)) {
+      curJsonDataStr = JSON.stringify(curJsonData, null, 2);
+    } else if (isFunction(curJsonData) || curJsonData === '') {
+      // 函数类型自动替换成默认的json数据"{}"
+      curJsonDataStr = '{}';
+    } else {
+      /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
+       * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
+       */
+      try {
+        JSON.parse(curJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+        curJsonDataStr = curJsonData;
+      } catch (err) {
+        // 自动转换成一个默认的json数据"{}"
+        curJsonDataStr = '{}';
+      }
     }
+    /*// 判断当前jsonData是否是对象类型
+    if (isObject(curJsonData) || isArray(curJsonData)) {
+      curJsonData = JSON.stringify(curJsonData, null, 2);
+    }*/
 
     return (
       <div
@@ -92,7 +113,7 @@ class JsonFormSchema extends React.PureComponent {
           )}
           <AceEditor
             id="json_area_ace"
-            value={curJsonData}
+            value={curJsonDataStr}
             className="code-area-item"
             mode="json"
             theme="solarized_light"
@@ -115,7 +136,6 @@ class JsonFormSchema extends React.PureComponent {
                 });
               } catch (err) {
                 // 更新jsonData
-                this.handleValueChange(newJsonData);
                 this.setState({
                   warnText: err.message,
                   isShowWarn: true,
