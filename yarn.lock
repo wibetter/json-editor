@@ -1151,10 +1151,10 @@
   dependencies:
     find-up "^4.0.0"
 
-"@jdwork/json-schema-editor@^2.1.25":
-  version "2.1.25"
-  resolved "http://registry.m.jd.com/@jdwork/json-schema-editor/download/@jdwork/json-schema-editor-2.1.25.tgz#32f84c20b2d3cec8ca9f67843f3211940b25eeaa"
-  integrity sha1-MvhMILLTzsjKn2eEPzIRlAsl7qo=
+"@jdwork/json-schema-editor@^2.2.9":
+  version "2.2.9"
+  resolved "http://registry.m.jd.com/@jdwork/json-schema-editor/download/@jdwork/json-schema-editor-2.2.9.tgz#0fa206ec5d9ec94172170dab7fc5033eeac22485"
+  integrity sha1-D6IG7F2eyUFyFw2rf8UDPurCJIU=
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@babel/polyfill" "^7.10.1"
@@ -1169,8 +1169,8 @@
 
 "@mapbox/stylelint-processor-arbitrary-tags@^0.3.0":
   version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/stylelint-processor-arbitrary-tags/-/stylelint-processor-arbitrary-tags-0.3.0.tgz#1d098ef1378fb1da38b156c3cb1e4d778e144825"
-  integrity sha512-DweuA3J3yzIOPNuldidk7qsKGdI1VjIw0yf3S7lNq+1nim8XvJ6LPvtk31CqHLnKs+hEx0j74TWVJBo6D6/5FA==
+  resolved "http://registry.m.jd.com/@mapbox/stylelint-processor-arbitrary-tags/download/@mapbox/stylelint-processor-arbitrary-tags-0.3.0.tgz#1d098ef1378fb1da38b156c3cb1e4d778e144825"
+  integrity sha1-HQmO8TePsdo4sVbDyx5Nd44USCU=
   dependencies:
     execall "^1.0.0"
     split-lines "^1.1.0"
