@@ -7134,20 +7134,6 @@ and limitations under the License.
           });
       }.call(this, n(73), n(52)));
     },
-    function (e, t) {
-      function n(e, t) {
-        for (var n = 0; n < t.length; n++) {
-          var r = t[n];
-          (r.enumerable = r.enumerable || !1),
-            (r.configurable = !0),
-            'value' in r && (r.writable = !0),
-            Object.defineProperty(e, r.key, r);
-        }
-      }
-      e.exports = function (e, t, r) {
-        return t && n(e.prototype, t), r && n(e, r), e;
-      };
-    },
     function (e, t, n) {
       'use strict';
       function r(e) {
@@ -7203,6 +7189,20 @@ and limitations under the License.
         n.d(t, 'd', function () {
           return l;
         });
+    },
+    function (e, t) {
+      function n(e, t) {
+        for (var n = 0; n < t.length; n++) {
+          var r = t[n];
+          (r.enumerable = r.enumerable || !1),
+            (r.configurable = !0),
+            'value' in r && (r.writable = !0),
+            Object.defineProperty(e, r.key, r);
+        }
+      }
+      e.exports = function (e, t, r) {
+        return t && n(e.prototype, t), r && n(e, r), e;
+      };
     },
     function (e, t, n) {
       var r = n(256);
@@ -8917,7 +8917,7 @@ and limitations under the License.
           _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__,
         ),
         _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          13,
+          14,
         ),
         _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default = __webpack_require__.n(
           _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__,
@@ -8971,7 +8971,7 @@ and limitations under the License.
         ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_13___default = __webpack_require__.n(
           ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_13__,
         ),
-        $utils_index__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(14);
+        $utils_index__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(13);
       function _createSuper(e) {
         var t = _isNativeReflectConstruct();
         return function () {
@@ -9449,7 +9449,7 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(7)),
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(15)),
         c = i(n(39)),
         u = i(n(22)),
@@ -9764,7 +9764,7 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(7)),
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(15)),
         c = i(n(39)),
         u = r(n(0)),
@@ -33926,7 +33926,7 @@ and limitations under the License.
         (t.default = void 0);
       var o,
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(19)),
         c = i(n(15)),
         u = i(n(39)),
@@ -35897,7 +35897,7 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(22)),
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(15)),
         c = i(n(39)),
         u = r(n(0)),
@@ -36176,7 +36176,7 @@ and limitations under the License.
       var o = i(n(22)),
         a = i(n(7)),
         s = i(n(11)),
-        l = i(n(13)),
+        l = i(n(14)),
         c = i(n(19)),
         u = i(n(15)),
         d = i(n(39)),
@@ -36369,7 +36369,7 @@ and limitations under the License.
         a = i(n(22)),
         s = i(n(98)),
         l = i(n(11)),
-        c = i(n(13)),
+        c = i(n(14)),
         u = i(n(19)),
         d = i(n(15)),
         h = i(n(39)),
@@ -56375,7 +56375,7 @@ and limitations under the License.
         (t.default = t.ANT_MARK = void 0);
       var o = i(n(7)),
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(15)),
         c = i(n(39)),
         u = r(n(0)),
@@ -57428,7 +57428,7 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(22)),
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(15)),
         c = i(n(16)),
         u = i(n(8)),
@@ -62392,7 +62392,7 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(7)),
         a = i(n(11)),
-        s = i(n(13)),
+        s = i(n(14)),
         l = i(n(15)),
         c = i(n(39)),
         u = r(n(0)),
@@ -64954,7 +64954,7 @@ and limitations under the License.
       var o = i(n(22)),
         a = i(n(7)),
         s = i(n(11)),
-        l = i(n(13)),
+        l = i(n(14)),
         c = i(n(15)),
         u = i(n(39)),
         d = r(n(0)),
@@ -65239,7 +65239,7 @@ and limitations under the License.
       var o = i(n(22)),
         a = i(n(7)),
         s = i(n(11)),
-        l = i(n(13)),
+        l = i(n(14)),
         c = i(n(15)),
         u = i(n(39)),
         d = r(n(0)),
@@ -68451,7 +68451,7 @@ and limitations under the License.
         c,
         u = n(11),
         d = n.n(u),
-        h = n(13),
+        h = n(14),
         f = n.n(h),
         m = n(15),
         p = n.n(m),
@@ -68622,7 +68622,7 @@ and limitations under the License.
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
         $ = R,
-        N = n(14);
+        N = n(13);
       function H(e) {
         var t = e.format;
         return t || (t = e.type ? e.type : 'input'), t;
@@ -68706,10 +68706,24 @@ and limitations under the License.
               var a = Object(N.a)(o) ? o : i.default;
               switch (i.type) {
                 case 'string':
-                  'color' === i.format
-                    ? (('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
-                      (n[r] = a || '#ffffff'))
-                    : (n[r] = Object(N.a)(a) ? a : '');
+                  if (
+                    ('color' === i.format &&
+                      (('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
+                      (n[r] = a || '#ffffff')),
+                    'json' === i.format)
+                  ) {
+                    var s = '',
+                      l = t && t[r];
+                    if (Object(N.e)(l) || Object(N.b)(l)) s = l;
+                    else if (Object(N.d)(l) || '' === l) s = {};
+                    else
+                      try {
+                        s = JSON.parse(l);
+                      } catch (e) {
+                        s = {};
+                      }
+                    n[r] = s;
+                  } else n[r] = Object(N.a)(a) ? a : '';
                   break;
                 case 'boolean':
                   n[r] = !!Object(N.a)(a) && a;
@@ -68725,8 +68739,8 @@ and limitations under the License.
                           n[r].push(I(i.items, e));
                         });
                     else {
-                      var s = I(i.items, o);
-                      n[r] = [s];
+                      var c = I(i.items, o);
+                      n[r] = [c];
                     }
                   else n[r] = a !== Object(N.a)(a) ? a : [];
                   break;
@@ -68737,16 +68751,12 @@ and limitations under the License.
                       i.properties.type.default &&
                       'local' === i.properties.type.default
                       ? ((n[r] = o || { data: '{}', filter: '() => {}' }),
-                        'http://xxx' === n[r].data && (n[r].data = '{}'),
-                        (Object(N.e)(n[r].data) || Object(N.b)(n[r].data)) &&
-                          (n[r].data = JSON.stringify(n[r].data, null, 2)))
+                        'http://xxx' === n[r].data && (n[r].data = '{}'))
                       : ((n[r] = o || {
                           data: 'http://xxx',
                           filter: '() => {}',
                         }),
-                        '{}' === n[r].data && (n[r].data = 'http://xxx'),
-                        (Object(N.e)(n[r].data) || Object(N.b)(n[r].data)) &&
-                          (n[r].data = JSON.stringify(n[r].data, null, 2)))
+                        '{}' === n[r].data && (n[r].data = 'http://xxx'))
                     : 'event' === i.format
                     ? i.properties &&
                       i.properties.type &&
@@ -69637,7 +69647,22 @@ and limitations under the License.
                     w.a.createElement(
                       'div',
                       { className: 'element-title' },
-                      i.title,
+                      w.a.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === o && i.title.length > 6
+                              ? i.title
+                              : '',
+                        },
+                        i.title,
+                      ),
+                      w.a.createElement(
+                        'span',
+                        null,
+                        a ? '/'.concat(s + 1) : '',
+                      ),
                     ),
                   w.a.createElement(
                     'div',
@@ -69919,8 +69944,9 @@ and limitations under the License.
             d()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = r.props,
-                n = t.keyRoute;
-              (0, t.updateFormValueData)(n, e);
+                n = t.keyRoute,
+                i = t.updateFormValueData;
+              e && i(n, JSON.parse(e));
             }),
             (r.state = { isShowWarn: !1, warnText: '' }),
             (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
@@ -69944,99 +69970,102 @@ and limitations under the License.
                   c = s.warnText,
                   u = i.readOnly || !1,
                   d = (i.isRequired, a(r));
-                return (
-                  (d = void 0 !== d ? d : i.default || '{}'),
-                  Object(N.e)(d) && (d = JSON.stringify(d, null, 2)),
+                d = void 0 !== d ? d : i.default || '{}';
+                var h = '';
+                if (Object(N.e)(d) || Object(N.b)(d))
+                  h = JSON.stringify(d, null, 2);
+                else if (Object(N.d)(d) || '' === d) h = '{}';
+                else
+                  try {
+                    JSON.parse(d), (h = d);
+                  } catch (e) {
+                    h = '{}';
+                  }
+                return b.createElement(
+                  'div',
+                  {
+                    className: ''.concat(
+                      'wideScreen' === o
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
+                      '  block-element-warp',
+                    ),
+                    key: n,
+                    id: n,
+                  },
                   b.createElement(
                     'div',
-                    {
-                      className: ''.concat(
-                        'wideScreen' === o
-                          ? 'wide-screen-element-warp'
-                          : 'mobile-screen-element-warp',
-                        '  block-element-warp',
-                      ),
-                      key: n,
-                      id: n,
-                    },
+                    { className: 'element-title' },
                     b.createElement(
-                      'div',
-                      { className: 'element-title' },
+                      'span',
+                      { className: 'title-text warning-text' },
+                      u ? '[只读]' : '',
+                    ),
+                    b.createElement(
+                      me.a,
+                      { title: i.description, placement: 'top' },
                       b.createElement(
                         'span',
-                        { className: 'title-text warning-text' },
-                        u ? '[只读]' : '',
-                      ),
-                      b.createElement(
-                        me.a,
-                        { title: i.description, placement: 'top' },
-                        b.createElement(
-                          'span',
-                          {
-                            className: 'title-text',
-                            title:
-                              'wideScreen' === o && i.title.length > (u ? 4 : 6)
-                                ? i.title
-                                : '',
-                          },
-                          i.title,
-                        ),
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === o && i.title.length > (u ? 4 : 6)
+                              ? i.title
+                              : '',
+                        },
+                        i.title,
                       ),
                     ),
-                    b.createElement(
-                      'div',
-                      { className: 'content-item object-content' },
-                      l &&
+                  ),
+                  b.createElement(
+                    'div',
+                    { className: 'content-item object-content' },
+                    l &&
+                      b.createElement(
+                        'div',
+                        { className: 'warning-box code-area-item' },
                         b.createElement(
                           'div',
-                          { className: 'warning-box code-area-item' },
-                          b.createElement(
-                            'div',
-                            { className: 'warning-img' },
-                            'X',
-                          ),
-                          b.createElement(
-                            'div',
-                            { className: 'warning-text' },
-                            c,
-                          ),
+                          { className: 'warning-img' },
+                          'X',
                         ),
-                      b.createElement(it.a, {
-                        id: 'json_area_ace',
-                        value: d,
-                        className: 'code-area-item',
-                        mode: 'json',
-                        theme: 'solarized_light',
-                        name: 'JSON_CODE_EDIT',
-                        fontSize: 14,
-                        showPrintMargin: !0,
-                        showGutter: !0,
-                        highlightActiveLine: !0,
-                        readOnly: u,
-                        minLines: 5,
-                        maxLines: 30,
-                        width: '100%',
-                        onChange: function (t) {
-                          try {
-                            JSON.parse(t),
-                              e.handleValueChange(t),
-                              e.setState({ isShowWarn: !1 });
-                          } catch (n) {
+                        b.createElement(
+                          'div',
+                          { className: 'warning-text' },
+                          c,
+                        ),
+                      ),
+                    b.createElement(it.a, {
+                      id: 'json_area_ace',
+                      value: h,
+                      className: 'code-area-item',
+                      mode: 'json',
+                      theme: 'solarized_light',
+                      name: 'JSON_CODE_EDIT',
+                      fontSize: 14,
+                      showPrintMargin: !0,
+                      showGutter: !0,
+                      highlightActiveLine: !0,
+                      readOnly: u,
+                      minLines: 5,
+                      maxLines: 30,
+                      width: '100%',
+                      onChange: function (t) {
+                        try {
+                          JSON.parse(t),
                             e.handleValueChange(t),
-                              e.setState({
-                                warnText: n.message,
-                                isShowWarn: !0,
-                              });
-                          }
-                        },
-                        setOptions: {
-                          useWorker: !1,
-                          showLineNumbers: !0,
-                          tabSize: 2,
-                        },
-                      }),
-                    ),
-                  )
+                            e.setState({ isShowWarn: !1 });
+                        } catch (t) {
+                          e.setState({ warnText: t.message, isShowWarn: !0 });
+                        }
+                      },
+                      setOptions: {
+                        useWorker: !1,
+                        showLineNumbers: !0,
+                        tabSize: 2,
+                      },
+                    }),
+                  ),
                 );
               },
             },
