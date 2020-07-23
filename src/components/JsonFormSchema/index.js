@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject, isArray, isFunction } from '$utils/index';
+import { isObject, isArray } from '$utils/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -23,6 +23,7 @@ class JsonFormSchema extends React.PureComponent {
     this.state = {
       isShowWarn: false, // 用于判断是否显示错误信息
       warnText: '', // 错误内容
+      curJSONDataTemp: '', // 用于记录当前不合规范的json数据
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -44,7 +45,7 @@ class JsonFormSchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
-    const { isShowWarn, warnText } = this.state;
+    const { isShowWarn, warnText, curJSONDataTemp } = this.state;
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
@@ -52,29 +53,10 @@ class JsonFormSchema extends React.PureComponent {
     // 格式化JSON数据
     curJsonData =
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
-    let curJsonDataStr = ''; // 字符串类型的json数据
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData) || isArray(curJsonData)) {
-      curJsonDataStr = JSON.stringify(curJsonData, null, 2);
-    } else if (isFunction(curJsonData) || curJsonData === '') {
-      // 函数类型自动替换成默认的json数据"{}"
-      curJsonDataStr = '{}';
-    } else {
-      /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
-       * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
-       */
-      try {
-        JSON.parse(curJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
-        curJsonDataStr = curJsonData;
-      } catch (err) {
-        // 自动转换成一个默认的json数据"{}"
-        curJsonDataStr = '{}';
-      }
-    }
-    /*// 判断当前jsonData是否是对象类型
-    if (isObject(curJsonData) || isArray(curJsonData)) {
       curJsonData = JSON.stringify(curJsonData, null, 2);
-    }*/
+    }
 
     return (
       <div
@@ -113,7 +95,7 @@ class JsonFormSchema extends React.PureComponent {
           )}
           <AceEditor
             id="json_area_ace"
-            value={curJsonDataStr}
+            value={curJSONDataTemp || curJsonData}
             className="code-area-item"
             mode="json"
             theme="solarized_light"
@@ -133,10 +115,12 @@ class JsonFormSchema extends React.PureComponent {
                 this.handleValueChange(newJsonData);
                 this.setState({
                   isShowWarn: false,
+                  curJSONDataTemp: '', // 用于记录当前不合规范的json数据
                 });
               } catch (err) {
                 // 更新jsonData
                 this.setState({
+                  curJSONDataTemp: newJsonData, // 记录当前格式不正确的json数据
                   warnText: err.message,
                   isShowWarn: true,
                 });
