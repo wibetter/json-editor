@@ -2,7 +2,13 @@ import { EventTypeDataList } from '$data/TypeDataList';
 /**
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
-import { objClone, isObject, isArray, exitPropertie } from '$utils/index';
+import {
+  objClone,
+  isObject,
+  isFunction,
+  isArray,
+  exitPropertie,
+} from '$utils/index';
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -303,6 +309,32 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
               }
               curJsonData[jsonKey] = curValue || '#ffffff';
+            }
+            if (jsonItem.format === 'json') {
+              /** 转成json类型进行特殊处理
+               * 需要保证json类型的数值是json对象 */
+              let curJsonItemData = ''; // 字符串类型的json数据
+              let curOldValue = jsonData && jsonData[jsonKey];
+              // 判断当前jsonData是否是对象类型
+              if (isObject(curOldValue) || isArray(curOldValue)) {
+                curJsonItemData = curOldValue;
+              } else if (isFunction(curOldValue) || curOldValue === '') {
+                // 函数类型自动替换成默认的json数据"{}"
+                curJsonItemData = {};
+              } else {
+                /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
+                 * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
+                 */
+                try {
+                  // 进行格式化（检查是否是合格的json数据）
+                  const jsonDataTemp = JSON.parse(curOldValue);
+                  curJsonItemData = jsonDataTemp;
+                } catch (err) {
+                  // 不合格的json数据自动转换成一个默认的json数据"{}"
+                  curJsonItemData = {};
+                }
+              }
+              curJsonData[jsonKey] = curJsonItemData;
             } else {
               // 其他类型允许出现空字符串
               curJsonData[jsonKey] = exitPropertie(curValue) ? curValue : '';
@@ -350,17 +382,6 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 if (curJsonData[jsonKey].data === 'http://xxx') {
                   curJsonData[jsonKey].data = '{}';
                 }
-                // 兼容旧版数据（data可能为json对象，自动转换成json字符串）
-                if (
-                  isObject(curJsonData[jsonKey].data) ||
-                  isArray(curJsonData[jsonKey].data)
-                ) {
-                  curJsonData[jsonKey].data = JSON.stringify(
-                    curJsonData[jsonKey].data,
-                    null,
-                    2,
-                  );
-                }
               } else {
                 // 远程数据类型
                 curJsonData[jsonKey] = oldValue || {
@@ -370,17 +391,6 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 // 纠正data中的默认数据
                 if (curJsonData[jsonKey].data === '{}') {
                   curJsonData[jsonKey].data = 'http://xxx';
-                }
-                // 兼容旧版数据（data可能为json对象，自动转换成json字符串）
-                if (
-                  isObject(curJsonData[jsonKey].data) ||
-                  isArray(curJsonData[jsonKey].data)
-                ) {
-                  curJsonData[jsonKey].data = JSON.stringify(
-                    curJsonData[jsonKey].data,
-                    null,
-                    2,
-                  );
                 }
               }
             } else if (jsonItem.format === 'event') {

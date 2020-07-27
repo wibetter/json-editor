@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { message, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject } from '$utils/index';
+import { isObject, isArray } from '$utils/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -23,6 +23,7 @@ class JsonFormSchema extends React.PureComponent {
     this.state = {
       isShowWarn: false, // 用于判断是否显示错误信息
       warnText: '', // 错误内容
+      curJSONDataTemp: '', // 用于记录当前不合规范的json数据
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -31,7 +32,9 @@ class JsonFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (newJsonData) => {
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, newJsonData); // 更新数值
+    if (newJsonData) {
+      updateFormValueData(keyRoute, JSON.parse(newJsonData)); // 更新数值
+    }
   };
 
   render() {
@@ -42,7 +45,7 @@ class JsonFormSchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
-    const { isShowWarn, warnText } = this.state;
+    const { isShowWarn, warnText, curJSONDataTemp } = this.state;
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
@@ -51,7 +54,7 @@ class JsonFormSchema extends React.PureComponent {
     curJsonData =
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
     // 判断当前jsonData是否是对象类型
-    if (isObject(curJsonData)) {
+    if (isObject(curJsonData) || isArray(curJsonData)) {
       curJsonData = JSON.stringify(curJsonData, null, 2);
     }
 
@@ -92,7 +95,7 @@ class JsonFormSchema extends React.PureComponent {
           )}
           <AceEditor
             id="json_area_ace"
-            value={curJsonData}
+            value={curJSONDataTemp || curJsonData}
             className="code-area-item"
             mode="json"
             theme="solarized_light"
@@ -112,11 +115,12 @@ class JsonFormSchema extends React.PureComponent {
                 this.handleValueChange(newJsonData);
                 this.setState({
                   isShowWarn: false,
+                  curJSONDataTemp: '', // 用于记录当前不合规范的json数据
                 });
               } catch (err) {
                 // 更新jsonData
-                this.handleValueChange(newJsonData);
                 this.setState({
+                  curJSONDataTemp: newJsonData, // 记录当前格式不正确的json数据
                   warnText: err.message,
                   isShowWarn: true,
                 });

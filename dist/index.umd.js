@@ -68706,10 +68706,24 @@ and limitations under the License.
               var a = Object(N.a)(o) ? o : i.default;
               switch (i.type) {
                 case 'string':
-                  'color' === i.format
-                    ? (('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
-                      (n[r] = a || '#ffffff'))
-                    : (n[r] = Object(N.a)(a) ? a : '');
+                  if (
+                    ('color' === i.format &&
+                      (('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
+                      (n[r] = a || '#ffffff')),
+                    'json' === i.format)
+                  ) {
+                    var s = '',
+                      l = t && t[r];
+                    if (Object(N.e)(l) || Object(N.b)(l)) s = l;
+                    else if (Object(N.d)(l) || '' === l) s = {};
+                    else
+                      try {
+                        s = JSON.parse(l);
+                      } catch (e) {
+                        s = {};
+                      }
+                    n[r] = s;
+                  } else n[r] = Object(N.a)(a) ? a : '';
                   break;
                 case 'boolean':
                   n[r] = !!Object(N.a)(a) && a;
@@ -68725,8 +68739,8 @@ and limitations under the License.
                           n[r].push(I(i.items, e));
                         });
                     else {
-                      var s = I(i.items, o);
-                      n[r] = [s];
+                      var c = I(i.items, o);
+                      n[r] = [c];
                     }
                   else n[r] = a !== Object(N.a)(a) ? a : [];
                   break;
@@ -68737,16 +68751,12 @@ and limitations under the License.
                       i.properties.type.default &&
                       'local' === i.properties.type.default
                       ? ((n[r] = o || { data: '{}', filter: '() => {}' }),
-                        'http://xxx' === n[r].data && (n[r].data = '{}'),
-                        (Object(N.e)(n[r].data) || Object(N.b)(n[r].data)) &&
-                          (n[r].data = JSON.stringify(n[r].data, null, 2)))
+                        'http://xxx' === n[r].data && (n[r].data = '{}'))
                       : ((n[r] = o || {
                           data: 'http://xxx',
                           filter: '() => {}',
                         }),
-                        '{}' === n[r].data && (n[r].data = 'http://xxx'),
-                        (Object(N.e)(n[r].data) || Object(N.b)(n[r].data)) &&
-                          (n[r].data = JSON.stringify(n[r].data, null, 2)))
+                        '{}' === n[r].data && (n[r].data = 'http://xxx'))
                     : 'event' === i.format
                     ? i.properties &&
                       i.properties.type &&
@@ -69637,7 +69647,22 @@ and limitations under the License.
                     w.a.createElement(
                       'div',
                       { className: 'element-title' },
-                      i.title,
+                      w.a.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === o && i.title.length > 6
+                              ? i.title
+                              : '',
+                        },
+                        i.title,
+                      ),
+                      w.a.createElement(
+                        'span',
+                        null,
+                        a ? '/'.concat(s + 1) : '',
+                      ),
                     ),
                   w.a.createElement(
                     'div',
@@ -69919,10 +69944,11 @@ and limitations under the License.
             d()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = r.props,
-                n = t.keyRoute;
-              (0, t.updateFormValueData)(n, e);
+                n = t.keyRoute,
+                i = t.updateFormValueData;
+              e && i(n, JSON.parse(e));
             }),
-            (r.state = { isShowWarn: !1, warnText: '' }),
+            (r.state = { isShowWarn: !1, warnText: '', curJSONDataTemp: '' }),
             (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
             r
           );
@@ -69942,11 +69968,13 @@ and limitations under the License.
                   s = this.state,
                   l = s.isShowWarn,
                   c = s.warnText,
-                  u = i.readOnly || !1,
-                  d = (i.isRequired, a(r));
+                  u = s.curJSONDataTemp,
+                  d = i.readOnly || !1,
+                  h = (i.isRequired, a(r));
                 return (
-                  (d = void 0 !== d ? d : i.default || '{}'),
-                  Object(N.e)(d) && (d = JSON.stringify(d, null, 2)),
+                  (h = void 0 !== h ? h : i.default || '{}'),
+                  (Object(N.e)(h) || Object(N.b)(h)) &&
+                    (h = JSON.stringify(h, null, 2)),
                   b.createElement(
                     'div',
                     {
@@ -69965,7 +69993,7 @@ and limitations under the License.
                       b.createElement(
                         'span',
                         { className: 'title-text warning-text' },
-                        u ? '[只读]' : '',
+                        d ? '[只读]' : '',
                       ),
                       b.createElement(
                         me.a,
@@ -69975,7 +70003,7 @@ and limitations under the License.
                           {
                             className: 'title-text',
                             title:
-                              'wideScreen' === o && i.title.length > (u ? 4 : 6)
+                              'wideScreen' === o && i.title.length > (d ? 4 : 6)
                                 ? i.title
                                 : '',
                           },
@@ -70003,7 +70031,7 @@ and limitations under the License.
                         ),
                       b.createElement(it.a, {
                         id: 'json_area_ace',
-                        value: d,
+                        value: u || h,
                         className: 'code-area-item',
                         mode: 'json',
                         theme: 'solarized_light',
@@ -70012,7 +70040,7 @@ and limitations under the License.
                         showPrintMargin: !0,
                         showGutter: !0,
                         highlightActiveLine: !0,
-                        readOnly: u,
+                        readOnly: d,
                         minLines: 5,
                         maxLines: 30,
                         width: '100%',
@@ -70020,13 +70048,16 @@ and limitations under the License.
                           try {
                             JSON.parse(t),
                               e.handleValueChange(t),
-                              e.setState({ isShowWarn: !1 });
-                          } catch (n) {
-                            e.handleValueChange(t),
                               e.setState({
-                                warnText: n.message,
-                                isShowWarn: !0,
+                                isShowWarn: !1,
+                                curJSONDataTemp: '',
                               });
+                          } catch (n) {
+                            e.setState({
+                              curJSONDataTemp: t,
+                              warnText: n.message,
+                              isShowWarn: !0,
+                            });
                           }
                         },
                         setOptions: {

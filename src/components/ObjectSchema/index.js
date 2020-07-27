@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Tooltip } from 'antd';
 import MappingRender from '$components/MappingRender';
 import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
 
@@ -63,7 +63,19 @@ class ObjectSchema extends React.PureComponent {
           </div>
         )}
         {!isFirstSchema && !targetJsonData.description && (
-          <div className="element-title">{targetJsonData.title}</div>
+          <div className="element-title">
+            <span
+              className="title-text"
+              title={
+                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
+                  ? targetJsonData.title
+                  : ''
+              }
+            >
+              {targetJsonData.title}
+            </span>
+            <span>{isArrayItem ? `/${arrIndex + 1}` : ''}</span>
+          </div>
         )}
         <div
           className={
