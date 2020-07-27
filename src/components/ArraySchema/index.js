@@ -91,6 +91,8 @@ class ArraySchema extends React.PureComponent {
           {isArray(curJsonData) &&
             curJsonData.map((arrItem, arrIndex) => {
               const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
+              const curIndexRoute = `${indexRoute}-0`;
+              const curKeyRoute = `${keyRoute}-${arrIndex}`;
               return (
                 <div
                   className="array-item-box"
@@ -101,8 +103,8 @@ class ArraySchema extends React.PureComponent {
                     {...{
                       parentType: currentFormat,
                       jsonKey: 'items',
-                      indexRoute: `${indexRoute}-0`,
-                      keyRoute: `${keyRoute}-${arrIndex}`,
+                      indexRoute: curIndexRoute,
+                      keyRoute: curKeyRoute,
                       nodeKey: curNodeKey,
                       targetJsonData: arrayItemsDataObj,
                       isArrayItem: true,

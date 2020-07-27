@@ -1,6 +1,6 @@
 {
   "name": "@jdwork/json-editor",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "JSON数据可视化/JSONEditor",
   "author": "liudan185",
   "license": "MIT",
@@ -31,7 +31,6 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@babel/polyfill": "^7.10.1",
-    "@jdwork/json-schema-editor": "^2.2.9",
     "ace-builds": "^1.4.12",
     "antd": "^4.3.4",
     "generate-schema": "^2.6.0",
@@ -121,7 +120,8 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "@jdwork/json-schema-editor": "2.2.9"
   },
   "engines": {
     "node": ">= 10.13.0",
