@@ -5,7 +5,12 @@ import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject, isArray } from '$utils/index';
+import {
+  isObject,
+  isArray,
+  getWebCacheData,
+  deleteWebCacheData,
+} from '$utils/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -33,7 +38,7 @@ class JsonFormSchema extends React.PureComponent {
   handleValueChange = (newJsonData) => {
     const { keyRoute, updateFormValueData } = this.props;
     if (newJsonData) {
-      updateFormValueData(keyRoute, JSON.parse(newJsonData)); // 更新数值
+      updateFormValueData(keyRoute, newJsonData); // 更新数值
     }
   };
 
@@ -50,6 +55,19 @@ class JsonFormSchema extends React.PureComponent {
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
+
+    // 判断web缓存中是否有schema写入的缓存数据
+    const backUpKeyRoute = getWebCacheData(`${keyRoute}-json`);
+    if (backUpKeyRoute) {
+      const beckUpJsonData = getJSONDataByKeyRoute(backUpKeyRoute);
+      if (beckUpJsonData) {
+        curJsonData = beckUpJsonData; // 使用原始位置对应的数值
+        // 删除前端缓存后立即更新到jsonData中
+        deleteWebCacheData(`${keyRoute}-json`);
+        this.handleValueChange(beckUpJsonData);
+      }
+    }
+
     // 格式化JSON数据
     curJsonData =
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
@@ -110,9 +128,9 @@ class JsonFormSchema extends React.PureComponent {
             width={'100%'}
             onChange={(newJsonData) => {
               try {
-                JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                const newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
-                this.handleValueChange(newJsonData);
+                this.handleValueChange(newJsonDataTemp);
                 this.setState({
                   isShowWarn: false,
                   curJSONDataTemp: '', // 用于记录当前不合规范的json数据
@@ -141,5 +159,6 @@ class JsonFormSchema extends React.PureComponent {
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(JsonFormSchema));

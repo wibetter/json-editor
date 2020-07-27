@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { message, Tooltip } from 'antd';
 import { PlusCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
-import { isArray } from '$utils/index';
+import { isArray, getWebCacheData, deleteWebCacheData } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import './index.scss';
 
@@ -45,6 +45,14 @@ class ArraySchema extends React.PureComponent {
     }
   };
 
+  /** 数值变动事件处理器 */
+  handleValueChange = (newJsonData) => {
+    const { keyRoute, updateFormValueData } = this.props;
+    if (newJsonData) {
+      updateFormValueData(keyRoute, newJsonData); // 更新数值
+    }
+  };
+
   render() {
     const {
       keyRoute,
@@ -53,10 +61,25 @@ class ArraySchema extends React.PureComponent {
       targetJsonData,
       pageScreen,
       getJSONDataByKeyRoute,
+      indexRoute2keyRoute,
     } = this.props;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    let curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonKey = nodeKey.split('-').pop();
+
+    // 判断web缓存中是否有schema写入的缓存数据
+    const backUpKeyRoute = getWebCacheData(`${keyRoute}-array`);
+    if (backUpKeyRoute) {
+      const beckUpJsonData = getJSONDataByKeyRoute(backUpKeyRoute);
+      if (beckUpJsonData) {
+        curJsonData = beckUpJsonData; // 使用原始位置对应的数值
+        // 删除前端缓存后立即更新到jsonData中
+        deleteWebCacheData(`${keyRoute}-array`);
+        this.handleValueChange(beckUpJsonData);
+      }
+    }
+
     const arrayItemsDataObj = targetJsonData.items;
 
     return (
@@ -133,6 +156,7 @@ class ArraySchema extends React.PureComponent {
 export default inject((stores) => ({
   triggerChange: stores.JSONEditorStore.triggerChange,
   pageScreen: stores.JSONSchemaStore.pageScreen,
+  indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,

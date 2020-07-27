@@ -20,7 +20,7 @@ class BooleanFormSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (checked, event) => {
+  handleValueChange = (checked) => {
     const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, checked); // 更新数值
   };

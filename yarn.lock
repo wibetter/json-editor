@@ -1151,16 +1151,15 @@
   dependencies:
     find-up "^4.0.0"
 
-"@jdwork/json-schema-editor@^2.2.9":
-  version "2.2.9"
-  resolved "http://registry.m.jd.com/@jdwork/json-schema-editor/download/@jdwork/json-schema-editor-2.2.9.tgz#0fa206ec5d9ec94172170dab7fc5033eeac22485"
-  integrity sha1-D6IG7F2eyUFyFw2rf8UDPurCJIU=
+"@jdwork/json-schema-editor@3.1.5":
+  version "3.1.5"
+  resolved "http://registry.m.jd.com/@jdwork/json-schema-editor/download/@jdwork/json-schema-editor-3.1.5.tgz#416b7c4157604f615c8a985a7cd9bfed1790ec19"
+  integrity sha1-QWt8QVdgT2FciphafNm/7ReQ7Bk=
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@babel/polyfill" "^7.10.1"
     antd "^4.3.4"
     generate-schema "^2.6.0"
-    json5 "^2.1.3"
     mobx "^5.15.4"
     mobx-react "^6.2.2"
     prop-types "^15.7.2"
@@ -5514,7 +5513,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.1.2, json5@^2.1.3:
+json5@^2.1.2:
   version "2.1.3"
   resolved "http://registry.m.jd.com/json5/download/json5-2.1.3.tgz#c9b0f7fa9233bfe5807fe66fcf3a5617ed597d43"
   integrity sha1-ybD3+pIzv+WAf+ZvzzpWF+1ZfUM=

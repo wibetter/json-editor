@@ -142,6 +142,29 @@ export function getJSONDataByIndex(
   return curJsonSchemaObj;
 }
 
+/** 根据索引路径获取对应的key值路径 */
+export function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
+  let curJsonSchemaObj = targetJsonSchemaObj;
+  let curKeyRoute = '';
+  const indexRouteArr = indexRoute.split('-');
+  for (let index = 0, size = indexRouteArr.length; index < size; index++) {
+    // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据，使用isJSONSchemaFormat进行校验）
+    const curIndex = indexRouteArr[index];
+    if (curIndex === '0' && curJsonSchemaObj.items) {
+      // 从items中获取数据
+      curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      curKeyRoute = curKeyRoute ? `${curKeyRoute}-items` : 'items';
+    } else {
+      // 1、先根据路径值获取key值
+      const curKey = curJsonSchemaObj.propertyOrder[curIndex];
+      // 2、根据key值获取对应的json数据对象
+      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      curKeyRoute = curKeyRoute ? `${curKeyRoute}-${curKey}` : curKey;
+    }
+  }
+  return curKeyRoute;
+}
+
 /** 根据format判断是否是容器类型字段
  *  容器类型字段：func、style、data、object
  *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。

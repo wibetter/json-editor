@@ -1,6 +1,7 @@
 import { observable, computed, action, toJS } from 'mobx';
 import {
   getJSONDataByIndex,
+  indexRoute2keyRoute,
   oldJSONSchemaToNewJSONSchema,
   schema2JsonData,
 } from '$utils/jsonSchema';
@@ -111,5 +112,11 @@ export default class JSONSchemaStore {
   @action.bound
   getJSONDataByIndex(indexRoute) {
     return getJSONDataByIndex(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
+  }
+
+  /** 根据索引路径获取对应的key值路径 */
+  @action.bound
+  indexRoute2keyRoute(indexRoute) {
+    return indexRoute2keyRoute(indexRoute, this.jsonSchema);
   }
 }
