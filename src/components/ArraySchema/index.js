@@ -58,14 +58,6 @@ class ArraySchema extends React.PureComponent {
     }
   };
 
-  /** 数值变动事件处理器 */
-  handleValueChange = (newJsonData) => {
-    const { keyRoute, updateFormValueData } = this.props;
-    if (newJsonData) {
-      updateFormValueData(keyRoute, newJsonData); // 更新数值
-    }
-  };
-
   render() {
     const {
       keyRoute,

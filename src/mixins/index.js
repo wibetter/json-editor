@@ -4,15 +4,15 @@ import { getCurrentFormat } from '$utils/jsonSchema';
 
 /** js对象数据深拷贝，避免数据联动
  * 备注：引用catchJsonDataByWebCache前，请确保当前组件的props中包含以下属性：
- * keyRoute、targetJsonData、
+ * keyRoute、targetJsonData、updateFormValueData
  * getJSONDataByKeyRoute、getJSONDataTempByKeyRoute
- * 以及有更新jsonData的方法：handleValueChange
  * */
 export function catchJsonDataByWebCache(curKeyRoute) {
   const {
     targetJsonData,
     getJSONDataByKeyRoute,
     getJSONDataTempByKeyRoute,
+    updateFormValueData,
   } = this.props;
   const currentFormat = getCurrentFormat(targetJsonData);
   const keyRoute = curKeyRoute || this.props.keyRoute;
@@ -27,7 +27,7 @@ export function catchJsonDataByWebCache(curKeyRoute) {
     if (beckUpJsonData) {
       // 删除前端缓存后立即更新到jsonData中
       deleteWebCacheData(`${keyRoute}-${currentFormat}`);
-      this.handleValueChange(beckUpJsonData);
+      updateFormValueData(keyRoute, beckUpJsonData); // 更新数值
     }
   }
 }

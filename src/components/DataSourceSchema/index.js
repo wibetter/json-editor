@@ -7,6 +7,7 @@ import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class DataSourceSchema extends React.PureComponent {
   static propTypes = {
@@ -26,6 +27,18 @@ class DataSourceSchema extends React.PureComponent {
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.switchFilterBtn = this.switchFilterBtn.bind(this);
+  }
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
   }
 
   // 显示和隐藏数据过滤器
@@ -166,4 +179,6 @@ export default inject((stores) => ({
   triggerChange: stores.JSONEditorStore.triggerChange,
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
 }))(observer(DataSourceSchema));

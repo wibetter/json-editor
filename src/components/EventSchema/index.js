@@ -6,6 +6,7 @@ import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class EventSchema extends React.PureComponent {
   static propTypes = {
@@ -19,6 +20,18 @@ class EventSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
   }
 
   render() {
@@ -136,4 +149,6 @@ export default inject((stores) => ({
   triggerChange: stores.JSONEditorStore.triggerChange,
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
 }))(observer(EventSchema));
