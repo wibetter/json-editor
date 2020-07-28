@@ -1,6 +1,7 @@
 import { observable, computed, action, toJS } from 'mobx';
 import {
   getJSONDataByIndex,
+  indexRoute2keyRoute,
   oldJSONSchemaToNewJSONSchema,
   schema2JsonData,
 } from '$utils/jsonSchema';
@@ -86,7 +87,7 @@ export default class JSONSchemaStore {
       const newJsonData = schema2JsonData(this.JSONSchemaObj, curJsonData);
       /** 更新当前的jsonData */
       this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
-      console.log('JSONSchemaChange', this.JSONSchemaObj);
+      this.rootJSONStore.JSONEditorStore.jsonDataTemp = objClone(curJsonData); // 备份过滤钱的数据对象
       /** jsonSchem变动的时候触发一次jsonDataChange
        * jsonSchem变动意味着jsonData也需要进行对应的结构更新
        * */
@@ -111,5 +112,11 @@ export default class JSONSchemaStore {
   @action.bound
   getJSONDataByIndex(indexRoute) {
     return getJSONDataByIndex(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
+  }
+
+  /** 根据索引路径获取对应的key值路径 */
+  @action.bound
+  indexRoute2keyRoute(indexRoute) {
+    return indexRoute2keyRoute(indexRoute, this.jsonSchema);
   }
 }

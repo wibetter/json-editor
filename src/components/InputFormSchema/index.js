@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Input, Tooltip } from 'antd';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class InputFormSchema extends React.PureComponent {
   static propTypes = {
@@ -25,6 +26,18 @@ class InputFormSchema extends React.PureComponent {
     const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, value); // 更新数值
   };
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
+  }
 
   render() {
     const {
@@ -90,5 +103,6 @@ class InputFormSchema extends React.PureComponent {
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(InputFormSchema));

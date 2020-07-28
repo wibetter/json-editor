@@ -151,3 +151,30 @@ export function getURLParam(key) {
   }
   return '';
 }
+
+/**
+ *  将数据缓存到sessionStorage中
+ * */
+export function saveWebCacheData(cacheKey, targetSourceIndex) {
+  if (window.sessionStorage) {
+    window.sessionStorage.setItem(cacheKey, targetSourceIndex);
+  }
+}
+
+/**
+ *  从sessionStorage中读取此前缓存的数据
+ * */
+export function getWebCacheData(cacheKey) {
+  if (window.sessionStorage) {
+    return window.sessionStorage.getItem(cacheKey);
+  }
+}
+
+/**
+ *  从sessionStorage中删除此前缓存的数据
+ * */
+export function deleteWebCacheData(cacheKey) {
+  if (window.sessionStorage) {
+    return window.sessionStorage.removeItem(cacheKey);
+  }
+}

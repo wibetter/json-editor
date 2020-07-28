@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, message, Tooltip } from 'antd';
+import { Input, Tooltip } from 'antd';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class URLFormSchema extends React.PureComponent {
   static propTypes = {
@@ -17,6 +18,18 @@ class URLFormSchema extends React.PureComponent {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
+  }
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
   }
 
   /** 数值变动事件处理器 */
@@ -91,4 +104,5 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
 }))(observer(URLFormSchema));

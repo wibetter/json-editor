@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import MappingRender from '$components/MappingRender';
 import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class ObjectSchema extends React.PureComponent {
   static propTypes = {
@@ -19,6 +20,18 @@ class ObjectSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
   }
 
   render() {
@@ -116,4 +129,5 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
 }))(observer(ObjectSchema));

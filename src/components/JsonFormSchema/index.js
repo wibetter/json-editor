@@ -6,6 +6,7 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import { isObject, isArray } from '$utils/index';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -33,9 +34,21 @@ class JsonFormSchema extends React.PureComponent {
   handleValueChange = (newJsonData) => {
     const { keyRoute, updateFormValueData } = this.props;
     if (newJsonData) {
-      updateFormValueData(keyRoute, JSON.parse(newJsonData)); // 更新数值
+      updateFormValueData(keyRoute, newJsonData); // 更新数值
     }
   };
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
+  }
 
   render() {
     const {
@@ -50,6 +63,7 @@ class JsonFormSchema extends React.PureComponent {
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
+
     // 格式化JSON数据
     curJsonData =
       curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
@@ -110,9 +124,9 @@ class JsonFormSchema extends React.PureComponent {
             width={'100%'}
             onChange={(newJsonData) => {
               try {
-                JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                const newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
-                this.handleValueChange(newJsonData);
+                this.handleValueChange(newJsonDataTemp);
                 this.setState({
                   isShowWarn: false,
                   curJSONDataTemp: '', // 用于记录当前不合规范的json数据
@@ -141,5 +155,7 @@ class JsonFormSchema extends React.PureComponent {
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(JsonFormSchema));

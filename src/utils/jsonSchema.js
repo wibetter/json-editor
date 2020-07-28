@@ -142,6 +142,29 @@ export function getJSONDataByIndex(
   return curJsonSchemaObj;
 }
 
+/** 根据索引路径获取对应的key值路径 */
+export function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
+  let curJsonSchemaObj = targetJsonSchemaObj;
+  let curKeyRoute = '';
+  const indexRouteArr = indexRoute.split('-');
+  for (let index = 0, size = indexRouteArr.length; index < size; index++) {
+    // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据，使用isJSONSchemaFormat进行校验）
+    const curIndex = indexRouteArr[index];
+    if (curIndex === '0' && curJsonSchemaObj.items) {
+      // 从items中获取数据
+      curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      curKeyRoute = curKeyRoute ? `${curKeyRoute}-items` : 'items';
+    } else {
+      // 1、先根据路径值获取key值
+      const curKey = curJsonSchemaObj.propertyOrder[curIndex];
+      // 2、根据key值获取对应的json数据对象
+      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      curKeyRoute = curKeyRoute ? `${curKeyRoute}-${curKey}` : curKey;
+    }
+  }
+  return curKeyRoute;
+}
+
 /** 根据format判断是否是容器类型字段
  *  容器类型字段：func、style、data、object
  *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
@@ -292,6 +315,12 @@ export function schema2JsonData(jsonSchema, jsonData) {
       jsonSchema.propertyOrder.map((jsonKey) => {
         const jsonItem = jsonSchema.properties[jsonKey];
         let oldValue = jsonData && jsonData[jsonKey];
+
+        // 旧版数据兼容处理
+        if (jsonItem.format === 'quantity' && jsonItem.default) {
+          delete jsonItem.default; // 单位计量输入类型的默认值改放unit属性中
+        }
+
         if (
           exitPropertie(oldValue) &&
           exitPropertie(jsonItem.default) &&
@@ -374,20 +403,34 @@ export function schema2JsonData(jsonSchema, jsonData) {
                 jsonItem.properties.type.default === 'local'
               ) {
                 // 本地数据源类型
-                curJsonData[jsonKey] = oldValue || {
+                curJsonData[jsonKey] = {
                   data: '{}',
                   filter: '() => {}',
                 };
+                // 读取旧值
+                if (oldValue && oldValue.data) {
+                  curJsonData[jsonKey].data = oldValue.data;
+                }
+                if (oldValue && oldValue.filter) {
+                  curJsonData[jsonKey].filter = oldValue.filter;
+                }
                 // 纠正data中的默认数据
                 if (curJsonData[jsonKey].data === 'http://xxx') {
                   curJsonData[jsonKey].data = '{}';
                 }
               } else {
                 // 远程数据类型
-                curJsonData[jsonKey] = oldValue || {
+                curJsonData[jsonKey] = {
                   data: 'http://xxx',
                   filter: '() => {}',
                 };
+                // 读取旧值
+                if (oldValue && oldValue.data) {
+                  curJsonData[jsonKey].data = oldValue.data;
+                }
+                if (oldValue && oldValue.filter) {
+                  curJsonData[jsonKey].filter = oldValue.filter;
+                }
                 // 纠正data中的默认数据
                 if (curJsonData[jsonKey].data === '{}') {
                   curJsonData[jsonKey].data = 'http://xxx';
@@ -408,7 +451,17 @@ export function schema2JsonData(jsonSchema, jsonData) {
                     eventData: '{}',
                   };
                 } else {
-                  curJsonData[jsonKey] = oldValue;
+                  curJsonData[jsonKey] = {
+                    trigger: '', // 兼容旧版数据
+                    eventData: '{}',
+                  };
+                  // 读取旧值
+                  if (oldValue && oldValue.trigger) {
+                    curJsonData[jsonKey].trigger = oldValue.trigger;
+                  }
+                  if (oldValue && oldValue.eventData) {
+                    curJsonData[jsonKey].eventData = oldValue.eventData;
+                  }
                 }
               } else {
                 // 注册事件类型-触发事件类型
@@ -418,7 +471,17 @@ export function schema2JsonData(jsonSchema, jsonData) {
                     actionFunc: (oldValue && oldValue.filter) || '() => {}', // 兼容旧版数据
                   };
                 } else {
-                  curJsonData[jsonKey] = oldValue;
+                  curJsonData[jsonKey] = {
+                    register: '', // 兼容旧版数据
+                    actionFunc: '() => {}',
+                  };
+                  // 读取旧值
+                  if (oldValue && oldValue.register) {
+                    curJsonData[jsonKey].register = oldValue.register;
+                  }
+                  if (oldValue && oldValue.actionFunc) {
+                    curJsonData[jsonKey].actionFunc = oldValue.actionFunc;
+                  }
                 }
               }
             } else {

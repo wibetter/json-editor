@@ -7,6 +7,7 @@ import ObjectSchema from '$components/ObjectSchema/index';
 import { isArray } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import './index.scss';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class ArraySchema extends React.PureComponent {
   static propTypes = {
@@ -23,6 +24,18 @@ class ArraySchema extends React.PureComponent {
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.addArrayItem = this.addArrayItem.bind(this);
     this.deleteArrItem = this.deleteArrItem.bind(this);
+  }
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
   }
 
   /** 添加数组项 */
@@ -53,10 +66,12 @@ class ArraySchema extends React.PureComponent {
       targetJsonData,
       pageScreen,
       getJSONDataByKeyRoute,
+      indexRoute2keyRoute,
     } = this.props;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    let curJsonData = getJSONDataByKeyRoute(keyRoute);
+
     const arrayItemsDataObj = targetJsonData.items;
 
     return (
@@ -133,7 +148,9 @@ class ArraySchema extends React.PureComponent {
 export default inject((stores) => ({
   triggerChange: stores.JSONEditorStore.triggerChange,
   pageScreen: stores.JSONSchemaStore.pageScreen,
+  indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
   addArrayItem: stores.JSONEditorStore.addArrayItem,
