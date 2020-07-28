@@ -31,8 +31,15 @@ export default class JSONEditorStore {
   @observable lastInitTime = new Date().getTime();
   /**
    * jsonData: jsonData数据对象
+   * 备注：没有多余数据的jsonData
    */
   @observable jsonData = {};
+
+  /**
+   * jsonDataTemp: jsonData的临时数据对象
+   * 备注：包含schema结构变动前的数据内容
+   */
+  @observable jsonDataTemp = {};
 
   /**
    * onChange: jsonData数据变动触发的onChange
@@ -64,8 +71,10 @@ export default class JSONEditorStore {
       if (!jsonData || JSON.stringify(jsonData) === '{}') {
         // 根据jsonSchema生成一份对应的jsonData
         /** 1、根据jsonSchema生成对应的jsonData */
+        this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
         this.jsonData = schema2JsonData(jsonSchema, {});
       } else {
+        this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
         this.jsonData = schema2JsonData(jsonSchema, jsonData);
       }
       // 记录当前初始化的时间
@@ -93,8 +102,18 @@ export default class JSONEditorStore {
 
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
-  getJSONDataByKeyRoute(keyRoute) {
-    return getJSONDataByKeyRoute(keyRoute, this.jsonData, true); // useObjClone: true 避免后续产生数据联动
+  getJSONDataByKeyRoute(keyRoute, jsonDataParam) {
+    const curJsonData = jsonDataParam || toJS(this.jsonData);
+    return getJSONDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
+  }
+
+  /** 根据key索引路径获取对应的json数据[非联动式数据获取]
+   * 备注：从jsonDataTemp获取数据
+   * */
+  @action.bound
+  getJSONDataTempByKeyRoute(keyRoute, jsonDataParam) {
+    const curJsonData = jsonDataParam || toJS(this.jsonDataTemp);
+    return getJSONDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据key路径更新对应的json数据

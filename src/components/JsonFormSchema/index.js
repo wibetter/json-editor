@@ -5,12 +5,8 @@ import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import {
-  isObject,
-  isArray,
-  getWebCacheData,
-  deleteWebCacheData,
-} from '$utils/index';
+import { isObject, isArray } from '$utils/index';
+import { catchJsonDataByWebCache } from '$mixins/index';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -42,6 +38,18 @@ class JsonFormSchema extends React.PureComponent {
     }
   };
 
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
+  }
+
   render() {
     const {
       nodeKey,
@@ -55,18 +63,6 @@ class JsonFormSchema extends React.PureComponent {
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
-
-    // 判断web缓存中是否有schema写入的缓存数据
-    const backUpKeyRoute = getWebCacheData(`${keyRoute}-json`);
-    if (backUpKeyRoute) {
-      const beckUpJsonData = getJSONDataByKeyRoute(backUpKeyRoute);
-      if (beckUpJsonData) {
-        curJsonData = beckUpJsonData; // 使用原始位置对应的数值
-        // 删除前端缓存后立即更新到jsonData中
-        deleteWebCacheData(`${keyRoute}-json`);
-        this.handleValueChange(beckUpJsonData);
-      }
-    }
 
     // 格式化JSON数据
     curJsonData =
@@ -159,6 +155,7 @@ class JsonFormSchema extends React.PureComponent {
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
   indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(JsonFormSchema));

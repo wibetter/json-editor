@@ -87,7 +87,7 @@ export default class JSONSchemaStore {
       const newJsonData = schema2JsonData(this.JSONSchemaObj, curJsonData);
       /** 更新当前的jsonData */
       this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
-      console.log('JSONSchemaChange', this.JSONSchemaObj);
+      this.rootJSONStore.JSONEditorStore.jsonDataTemp = objClone(curJsonData); // 备份过滤钱的数据对象
       /** jsonSchem变动的时候触发一次jsonDataChange
        * jsonSchem变动意味着jsonData也需要进行对应的结构更新
        * */
