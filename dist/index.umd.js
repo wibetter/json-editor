@@ -8,7 +8,7 @@
     : (e.JSONEditor = t(e.React, e.ReactDOM));
 })(this, function (
   __WEBPACK_EXTERNAL_MODULE__0__,
-  __WEBPACK_EXTERNAL_MODULE__30__,
+  __WEBPACK_EXTERNAL_MODULE__33__,
 ) {
   return (function (e) {
     var t = {};
@@ -63,14 +63,14 @@
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
       (n.p = ''),
-      n((n.s = 419))
+      n((n.s = 422))
     );
   })([
     function (e, t) {
       e.exports = __WEBPACK_EXTERNAL_MODULE__0__;
     },
     function (e, t, n) {
-      e.exports = n(257)();
+      e.exports = n(260)();
     },
     function (e, t, n) {
       (function (e) {
@@ -1048,7 +1048,7 @@
             var r = null;
             if (void 0 === tt[t] && void 0 !== e && e && e.exports)
               try {
-                (r = Qe._abbr), n(398)('./' + t), at(r);
+                (r = Qe._abbr), n(401)('./' + t), at(r);
               } catch (e) {
                 tt[t] = null;
               }
@@ -3571,7 +3571,7 @@
             i
           );
         })();
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
       'use strict';
@@ -3630,7 +3630,7 @@
       };
     },
     function (e, t, n) {
-      var r = n(50);
+      var r = n(53);
       function i() {
         if ('function' != typeof WeakMap) return null;
         var e = new WeakMap();
@@ -3689,459 +3689,6 @@
         );
       }
       e.exports = n;
-    },
-    function (e, t, n) {
-      'use strict';
-      n.d(t, 'a', function () {
-        return Y;
-      }),
-        n.d(t, 'b', function () {
-          return P;
-        }),
-        n.d(t, 'c', function () {
-          return D;
-        });
-      var r = n(12),
-        i = n(0),
-        o = n.n(i),
-        a = n(35),
-        s = 0;
-      var l = {};
-      function c(e) {
-        return (
-          l[e] ||
-            (l[e] = (function (e) {
-              if ('function' == typeof Symbol) return Symbol(e);
-              var t = '__$mobx-react ' + e + ' (' + s + ')';
-              return s++, t;
-            })(e)),
-          l[e]
-        );
-      }
-      function u(e, t) {
-        if (d(e, t)) return !0;
-        if (
-          'object' != typeof e ||
-          null === e ||
-          'object' != typeof t ||
-          null === t
-        )
-          return !1;
-        var n = Object.keys(e),
-          r = Object.keys(t);
-        if (n.length !== r.length) return !1;
-        for (var i = 0; i < n.length; i++)
-          if (!Object.hasOwnProperty.call(t, n[i]) || !d(e[n[i]], t[n[i]]))
-            return !1;
-        return !0;
-      }
-      function d(e, t) {
-        return e === t ? 0 !== e || 1 / e == 1 / t : e != e && t != t;
-      }
-      var h = {
-        $$typeof: 1,
-        render: 1,
-        compare: 1,
-        type: 1,
-        childContextTypes: 1,
-        contextType: 1,
-        contextTypes: 1,
-        defaultProps: 1,
-        getDefaultProps: 1,
-        getDerivedStateFromError: 1,
-        getDerivedStateFromProps: 1,
-        mixins: 1,
-        propTypes: 1,
-      };
-      function f(e, t, n) {
-        Object.hasOwnProperty.call(e, t)
-          ? (e[t] = n)
-          : Object.defineProperty(e, t, {
-              enumerable: !1,
-              configurable: !0,
-              writable: !0,
-              value: n,
-            });
-      }
-      var m = c('patchMixins'),
-        p = c('patchedDefinition');
-      function g(e, t) {
-        for (
-          var n = this,
-            r = arguments.length,
-            i = new Array(r > 2 ? r - 2 : 0),
-            o = 2;
-          o < r;
-          o++
-        )
-          i[o - 2] = arguments[o];
-        t.locks++;
-        try {
-          var a;
-          return null != e && (a = e.apply(this, i)), a;
-        } finally {
-          t.locks--,
-            0 === t.locks &&
-              t.methods.forEach(function (e) {
-                e.apply(n, i);
-              });
-        }
-      }
-      function _(e, t) {
-        return function () {
-          for (var n = arguments.length, r = new Array(n), i = 0; i < n; i++)
-            r[i] = arguments[i];
-          g.call.apply(g, [this, e, t].concat(r));
-        };
-      }
-      function v(e, t, n) {
-        var r = (function (e, t) {
-          var n = (e[m] = e[m] || {}),
-            r = (n[t] = n[t] || {});
-          return (r.locks = r.locks || 0), (r.methods = r.methods || []), r;
-        })(e, t);
-        r.methods.indexOf(n) < 0 && r.methods.push(n);
-        var i = Object.getOwnPropertyDescriptor(e, t);
-        if (!i || !i[p]) {
-          var o = e[t],
-            a = (function e(t, n, r, i, o) {
-              var a,
-                s = _(o, i);
-              return (
-                ((a = {})[p] = !0),
-                (a.get = function () {
-                  return s;
-                }),
-                (a.set = function (o) {
-                  if (this === t) s = _(o, i);
-                  else {
-                    var a = e(this, n, r, i, o);
-                    Object.defineProperty(this, n, a);
-                  }
-                }),
-                (a.configurable = !0),
-                (a.enumerable = r),
-                a
-              );
-            })(e, t, i ? i.enumerable : void 0, r, o);
-          Object.defineProperty(e, t, a);
-        }
-      }
-      var y = r.a || '$mobx',
-        b = c('isUnmounted'),
-        w = c('skipRender'),
-        M = c('isForcingUpdate');
-      function k(e) {
-        var t = e.prototype;
-        if (t.componentWillReact)
-          throw new Error(
-            'The componentWillReact life-cycle event is no longer supported',
-          );
-        if (e.__proto__ !== i.PureComponent)
-          if (t.shouldComponentUpdate) {
-            if (t.shouldComponentUpdate !== S)
-              throw new Error(
-                'It is not allowed to use shouldComponentUpdate in observer based components.',
-              );
-          } else t.shouldComponentUpdate = S;
-        x(t, 'props'), x(t, 'state');
-        var n = t.render;
-        return (
-          (t.render = function () {
-            return L.call(this, n);
-          }),
-          v(t, 'componentWillUnmount', function () {
-            if (!0 !== Object(a.b)()) {
-              if (this.render[y]) this.render[y].dispose();
-              else;
-              this[b] = !0;
-            }
-          }),
-          e
-        );
-      }
-      function L(e) {
-        var t = this;
-        if (!0 === Object(a.b)()) return e.call(this);
-        f(this, w, !1), f(this, M, !1);
-        var n,
-          o =
-            (n = this).displayName ||
-            n.name ||
-            (n.constructor &&
-              (n.constructor.displayName || n.constructor.name)) ||
-            '<component>',
-          s = e.bind(this),
-          l = !1,
-          c = new r.b(o + '.render()', function () {
-            if (!l && ((l = !0), !0 !== t[b])) {
-              var e = !0;
-              try {
-                f(t, M, !0),
-                  t[w] || i.Component.prototype.forceUpdate.call(t),
-                  (e = !1);
-              } finally {
-                f(t, M, !1), e && c.dispose();
-              }
-            }
-          });
-        function u() {
-          l = !1;
-          var e = void 0,
-            t = void 0;
-          if (
-            (c.track(function () {
-              try {
-                t = Object(r.c)(!1, s);
-              } catch (t) {
-                e = t;
-              }
-            }),
-            e)
-          )
-            throw e;
-          return t;
-        }
-        return (
-          (c.reactComponent = this), (u[y] = c), (this.render = u), u.call(this)
-        );
-      }
-      function S(e, t) {
-        return (
-          Object(a.b)() &&
-            console.warn(
-              '[mobx-react] It seems that a re-rendering of a React component is triggered while in static (server-side) mode. Please make sure components are rendered only once server-side.',
-            ),
-          this.state !== t || !u(this.props, e)
-        );
-      }
-      function x(e, t) {
-        var n = c('reactProp_' + t + '_valueHolder'),
-          i = c('reactProp_' + t + '_atomHolder');
-        function o() {
-          return this[i] || f(this, i, Object(r.i)('reactive ' + t)), this[i];
-        }
-        Object.defineProperty(e, t, {
-          configurable: !0,
-          enumerable: !0,
-          get: function () {
-            var e = !1;
-            return (
-              r.e && r.d && (e = Object(r.e)(!0)),
-              o.call(this).reportObserved(),
-              r.e && r.d && Object(r.d)(e),
-              this[n]
-            );
-          },
-          set: function (e) {
-            this[M] || u(this[n], e)
-              ? f(this, n, e)
-              : (f(this, n, e),
-                f(this, w, !0),
-                o.call(this).reportChanged(),
-                f(this, w, !1));
-          },
-        });
-      }
-      var O = 'function' == typeof Symbol && Symbol.for,
-        C = O
-          ? Symbol.for('react.forward_ref')
-          : 'function' == typeof i.forwardRef &&
-            Object(i.forwardRef)(function (e) {
-              return null;
-            }).$$typeof,
-        T = O
-          ? Symbol.for('react.memo')
-          : 'function' == typeof i.memo &&
-            Object(i.memo)(function (e) {
-              return null;
-            }).$$typeof;
-      function D(e) {
-        if (
-          (!0 === e.isMobxInjector &&
-            console.warn(
-              "Mobx observer: You are trying to use 'observer' on a component that already has 'inject'. Please apply 'observer' before applying 'inject'",
-            ),
-          T && e.$$typeof === T)
-        )
-          throw new Error(
-            "Mobx observer: You are trying to use 'observer' on a function component wrapped in either another observer or 'React.memo'. The observer already applies 'React.memo' for you.",
-          );
-        if (C && e.$$typeof === C) {
-          var t = e.render;
-          if ('function' != typeof t)
-            throw new Error('render property of ForwardRef was not a function');
-          return Object(i.forwardRef)(function () {
-            var e = arguments;
-            return Object(i.createElement)(a.a, null, function () {
-              return t.apply(void 0, e);
-            });
-          });
-        }
-        return 'function' != typeof e ||
-          (e.prototype && e.prototype.render) ||
-          e.isReactClass ||
-          Object.prototype.isPrototypeOf.call(i.Component, e)
-          ? k(e)
-          : Object(a.c)(e);
-      }
-      function E() {
-        return (E =
-          Object.assign ||
-          function (e) {
-            for (var t = 1; t < arguments.length; t++) {
-              var n = arguments[t];
-              for (var r in n)
-                Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
-            }
-            return e;
-          }).apply(this, arguments);
-      }
-      var A = o.a.createContext({});
-      function Y(e) {
-        var t = e.children,
-          n = (function (e, t) {
-            if (null == e) return {};
-            var n,
-              r,
-              i = {},
-              o = Object.keys(e);
-            for (r = 0; r < o.length; r++)
-              (n = o[r]), t.indexOf(n) >= 0 || (i[n] = e[n]);
-            return i;
-          })(e, ['children']),
-          r = o.a.useContext(A),
-          i = o.a.useRef(E({}, r, {}, n)).current;
-        return o.a.createElement(A.Provider, { value: i }, t);
-      }
-      function j(e, t, n, r) {
-        var i,
-          a,
-          s,
-          l = o.a.forwardRef(function (n, r) {
-            var i = E({}, n),
-              a = o.a.useContext(A);
-            return (
-              Object.assign(i, e(a || {}, i) || {}),
-              r && (i.ref = r),
-              o.a.createElement(t, i)
-            );
-          });
-        return (
-          r && (l = D(l)),
-          (l.isMobxInjector = !0),
-          (i = t),
-          (a = l),
-          (s = Object.getOwnPropertyNames(Object.getPrototypeOf(i))),
-          Object.getOwnPropertyNames(i).forEach(function (e) {
-            h[e] ||
-              -1 !== s.indexOf(e) ||
-              Object.defineProperty(
-                a,
-                e,
-                Object.getOwnPropertyDescriptor(i, e),
-              );
-          }),
-          (l.wrappedComponent = t),
-          (l.displayName = (function (e, t) {
-            var n,
-              r =
-                e.displayName ||
-                e.name ||
-                (e.constructor && e.constructor.name) ||
-                'Component';
-            n = t ? 'inject-with-' + t + '(' + r + ')' : 'inject(' + r + ')';
-            return n;
-          })(t, n)),
-          l
-        );
-      }
-      function R(e) {
-        return function (t, n) {
-          return (
-            e.forEach(function (e) {
-              if (!(e in n)) {
-                if (!(e in t))
-                  throw new Error(
-                    "MobX injector: Store '" +
-                      e +
-                      "' is not available! Make sure it is provided by some Provider",
-                  );
-                n[e] = t[e];
-              }
-            }),
-            n
-          );
-        };
-      }
-      function P() {
-        for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
-          t[n] = arguments[n];
-        if ('function' == typeof arguments[0]) {
-          var r = arguments[0];
-          return function (e) {
-            return j(r, e, r.name, !0);
-          };
-        }
-        return function (e) {
-          return j(R(t), e, t.join('-'), !1);
-        };
-      }
-      Y.displayName = 'MobXProvider';
-      if (!i.Component)
-        throw new Error('mobx-react requires React to be available');
-      if (!r.n) throw new Error('mobx-react requires mobx to be available');
-    },
-    function (e, t, n) {
-      'use strict';
-      n.d(t, 'a', function () {
-        return i;
-      });
-      var r = n(68);
-      function i(e, t) {
-        return (
-          (function (e) {
-            if (Array.isArray(e)) return e;
-          })(e) ||
-          (function (e, t) {
-            if ('undefined' != typeof Symbol && Symbol.iterator in Object(e)) {
-              var n = [],
-                r = !0,
-                i = !1,
-                o = void 0;
-              try {
-                for (
-                  var a, s = e[Symbol.iterator]();
-                  !(r = (a = s.next()).done) &&
-                  (n.push(a.value), !t || n.length !== t);
-                  r = !0
-                );
-              } catch (e) {
-                (i = !0), (o = e);
-              } finally {
-                try {
-                  r || null == s.return || s.return();
-                } finally {
-                  if (i) throw o;
-                }
-              }
-              return n;
-            }
-          })(e, t) ||
-          Object(r.a)(e, t) ||
-          (function () {
-            throw new TypeError(
-              'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
-            );
-          })()
-        );
-      }
-    },
-    function (e, t) {
-      e.exports = function (e, t) {
-        if (!(e instanceof t))
-          throw new TypeError('Cannot call a class as a function');
-      };
     },
     function (e, t, n) {
       'use strict';
@@ -7132,21 +6679,7 @@ and limitations under the License.
             },
             $mobx: S,
           });
-      }.call(this, n(73), n(52)));
-    },
-    function (e, t) {
-      function n(e, t) {
-        for (var n = 0; n < t.length; n++) {
-          var r = t[n];
-          (r.enumerable = r.enumerable || !1),
-            (r.configurable = !0),
-            'value' in r && (r.writable = !0),
-            Object.defineProperty(e, r.key, r);
-        }
-      }
-      e.exports = function (e, t, r) {
-        return t && n(e.prototype, t), r && n(e, r), e;
-      };
+      }.call(this, n(76), n(55)));
     },
     function (e, t, n) {
       'use strict';
@@ -7185,27 +6718,530 @@ and limitations under the License.
           t
         );
       }
-      n.d(t, 'f', function () {
+      function c(e) {
+        if (window.sessionStorage) return window.sessionStorage.getItem(e);
+      }
+      function u(e) {
+        if (window.sessionStorage) return window.sessionStorage.removeItem(e);
+      }
+      n.d(t, 'h', function () {
         return r;
       }),
-        n.d(t, 'c', function () {
+        n.d(t, 'e', function () {
           return i;
         }),
-        n.d(t, 'a', function () {
+        n.d(t, 'b', function () {
           return o;
         }),
-        n.d(t, 'b', function () {
+        n.d(t, 'd', function () {
           return a;
         }),
-        n.d(t, 'e', function () {
+        n.d(t, 'g', function () {
           return s;
         }),
-        n.d(t, 'd', function () {
+        n.d(t, 'f', function () {
           return l;
+        }),
+        n.d(t, 'c', function () {
+          return c;
+        }),
+        n.d(t, 'a', function () {
+          return u;
         });
     },
     function (e, t, n) {
-      var r = n(256);
+      'use strict';
+      n.d(t, 'a', function () {
+        return Y;
+      }),
+        n.d(t, 'b', function () {
+          return P;
+        }),
+        n.d(t, 'c', function () {
+          return D;
+        });
+      var r = n(9),
+        i = n(0),
+        o = n.n(i),
+        a = n(38),
+        s = 0;
+      var l = {};
+      function c(e) {
+        return (
+          l[e] ||
+            (l[e] = (function (e) {
+              if ('function' == typeof Symbol) return Symbol(e);
+              var t = '__$mobx-react ' + e + ' (' + s + ')';
+              return s++, t;
+            })(e)),
+          l[e]
+        );
+      }
+      function u(e, t) {
+        if (d(e, t)) return !0;
+        if (
+          'object' != typeof e ||
+          null === e ||
+          'object' != typeof t ||
+          null === t
+        )
+          return !1;
+        var n = Object.keys(e),
+          r = Object.keys(t);
+        if (n.length !== r.length) return !1;
+        for (var i = 0; i < n.length; i++)
+          if (!Object.hasOwnProperty.call(t, n[i]) || !d(e[n[i]], t[n[i]]))
+            return !1;
+        return !0;
+      }
+      function d(e, t) {
+        return e === t ? 0 !== e || 1 / e == 1 / t : e != e && t != t;
+      }
+      var h = {
+        $$typeof: 1,
+        render: 1,
+        compare: 1,
+        type: 1,
+        childContextTypes: 1,
+        contextType: 1,
+        contextTypes: 1,
+        defaultProps: 1,
+        getDefaultProps: 1,
+        getDerivedStateFromError: 1,
+        getDerivedStateFromProps: 1,
+        mixins: 1,
+        propTypes: 1,
+      };
+      function f(e, t, n) {
+        Object.hasOwnProperty.call(e, t)
+          ? (e[t] = n)
+          : Object.defineProperty(e, t, {
+              enumerable: !1,
+              configurable: !0,
+              writable: !0,
+              value: n,
+            });
+      }
+      var m = c('patchMixins'),
+        p = c('patchedDefinition');
+      function g(e, t) {
+        for (
+          var n = this,
+            r = arguments.length,
+            i = new Array(r > 2 ? r - 2 : 0),
+            o = 2;
+          o < r;
+          o++
+        )
+          i[o - 2] = arguments[o];
+        t.locks++;
+        try {
+          var a;
+          return null != e && (a = e.apply(this, i)), a;
+        } finally {
+          t.locks--,
+            0 === t.locks &&
+              t.methods.forEach(function (e) {
+                e.apply(n, i);
+              });
+        }
+      }
+      function _(e, t) {
+        return function () {
+          for (var n = arguments.length, r = new Array(n), i = 0; i < n; i++)
+            r[i] = arguments[i];
+          g.call.apply(g, [this, e, t].concat(r));
+        };
+      }
+      function v(e, t, n) {
+        var r = (function (e, t) {
+          var n = (e[m] = e[m] || {}),
+            r = (n[t] = n[t] || {});
+          return (r.locks = r.locks || 0), (r.methods = r.methods || []), r;
+        })(e, t);
+        r.methods.indexOf(n) < 0 && r.methods.push(n);
+        var i = Object.getOwnPropertyDescriptor(e, t);
+        if (!i || !i[p]) {
+          var o = e[t],
+            a = (function e(t, n, r, i, o) {
+              var a,
+                s = _(o, i);
+              return (
+                ((a = {})[p] = !0),
+                (a.get = function () {
+                  return s;
+                }),
+                (a.set = function (o) {
+                  if (this === t) s = _(o, i);
+                  else {
+                    var a = e(this, n, r, i, o);
+                    Object.defineProperty(this, n, a);
+                  }
+                }),
+                (a.configurable = !0),
+                (a.enumerable = r),
+                a
+              );
+            })(e, t, i ? i.enumerable : void 0, r, o);
+          Object.defineProperty(e, t, a);
+        }
+      }
+      var y = r.a || '$mobx',
+        b = c('isUnmounted'),
+        w = c('skipRender'),
+        M = c('isForcingUpdate');
+      function k(e) {
+        var t = e.prototype;
+        if (t.componentWillReact)
+          throw new Error(
+            'The componentWillReact life-cycle event is no longer supported',
+          );
+        if (e.__proto__ !== i.PureComponent)
+          if (t.shouldComponentUpdate) {
+            if (t.shouldComponentUpdate !== S)
+              throw new Error(
+                'It is not allowed to use shouldComponentUpdate in observer based components.',
+              );
+          } else t.shouldComponentUpdate = S;
+        x(t, 'props'), x(t, 'state');
+        var n = t.render;
+        return (
+          (t.render = function () {
+            return L.call(this, n);
+          }),
+          v(t, 'componentWillUnmount', function () {
+            if (!0 !== Object(a.b)()) {
+              if (this.render[y]) this.render[y].dispose();
+              else;
+              this[b] = !0;
+            }
+          }),
+          e
+        );
+      }
+      function L(e) {
+        var t = this;
+        if (!0 === Object(a.b)()) return e.call(this);
+        f(this, w, !1), f(this, M, !1);
+        var n,
+          o =
+            (n = this).displayName ||
+            n.name ||
+            (n.constructor &&
+              (n.constructor.displayName || n.constructor.name)) ||
+            '<component>',
+          s = e.bind(this),
+          l = !1,
+          c = new r.b(o + '.render()', function () {
+            if (!l && ((l = !0), !0 !== t[b])) {
+              var e = !0;
+              try {
+                f(t, M, !0),
+                  t[w] || i.Component.prototype.forceUpdate.call(t),
+                  (e = !1);
+              } finally {
+                f(t, M, !1), e && c.dispose();
+              }
+            }
+          });
+        function u() {
+          l = !1;
+          var e = void 0,
+            t = void 0;
+          if (
+            (c.track(function () {
+              try {
+                t = Object(r.c)(!1, s);
+              } catch (t) {
+                e = t;
+              }
+            }),
+            e)
+          )
+            throw e;
+          return t;
+        }
+        return (
+          (c.reactComponent = this), (u[y] = c), (this.render = u), u.call(this)
+        );
+      }
+      function S(e, t) {
+        return (
+          Object(a.b)() &&
+            console.warn(
+              '[mobx-react] It seems that a re-rendering of a React component is triggered while in static (server-side) mode. Please make sure components are rendered only once server-side.',
+            ),
+          this.state !== t || !u(this.props, e)
+        );
+      }
+      function x(e, t) {
+        var n = c('reactProp_' + t + '_valueHolder'),
+          i = c('reactProp_' + t + '_atomHolder');
+        function o() {
+          return this[i] || f(this, i, Object(r.i)('reactive ' + t)), this[i];
+        }
+        Object.defineProperty(e, t, {
+          configurable: !0,
+          enumerable: !0,
+          get: function () {
+            var e = !1;
+            return (
+              r.e && r.d && (e = Object(r.e)(!0)),
+              o.call(this).reportObserved(),
+              r.e && r.d && Object(r.d)(e),
+              this[n]
+            );
+          },
+          set: function (e) {
+            this[M] || u(this[n], e)
+              ? f(this, n, e)
+              : (f(this, n, e),
+                f(this, w, !0),
+                o.call(this).reportChanged(),
+                f(this, w, !1));
+          },
+        });
+      }
+      var O = 'function' == typeof Symbol && Symbol.for,
+        C = O
+          ? Symbol.for('react.forward_ref')
+          : 'function' == typeof i.forwardRef &&
+            Object(i.forwardRef)(function (e) {
+              return null;
+            }).$$typeof,
+        T = O
+          ? Symbol.for('react.memo')
+          : 'function' == typeof i.memo &&
+            Object(i.memo)(function (e) {
+              return null;
+            }).$$typeof;
+      function D(e) {
+        if (
+          (!0 === e.isMobxInjector &&
+            console.warn(
+              "Mobx observer: You are trying to use 'observer' on a component that already has 'inject'. Please apply 'observer' before applying 'inject'",
+            ),
+          T && e.$$typeof === T)
+        )
+          throw new Error(
+            "Mobx observer: You are trying to use 'observer' on a function component wrapped in either another observer or 'React.memo'. The observer already applies 'React.memo' for you.",
+          );
+        if (C && e.$$typeof === C) {
+          var t = e.render;
+          if ('function' != typeof t)
+            throw new Error('render property of ForwardRef was not a function');
+          return Object(i.forwardRef)(function () {
+            var e = arguments;
+            return Object(i.createElement)(a.a, null, function () {
+              return t.apply(void 0, e);
+            });
+          });
+        }
+        return 'function' != typeof e ||
+          (e.prototype && e.prototype.render) ||
+          e.isReactClass ||
+          Object.prototype.isPrototypeOf.call(i.Component, e)
+          ? k(e)
+          : Object(a.c)(e);
+      }
+      function E() {
+        return (E =
+          Object.assign ||
+          function (e) {
+            for (var t = 1; t < arguments.length; t++) {
+              var n = arguments[t];
+              for (var r in n)
+                Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
+            }
+            return e;
+          }).apply(this, arguments);
+      }
+      var A = o.a.createContext({});
+      function Y(e) {
+        var t = e.children,
+          n = (function (e, t) {
+            if (null == e) return {};
+            var n,
+              r,
+              i = {},
+              o = Object.keys(e);
+            for (r = 0; r < o.length; r++)
+              (n = o[r]), t.indexOf(n) >= 0 || (i[n] = e[n]);
+            return i;
+          })(e, ['children']),
+          r = o.a.useContext(A),
+          i = o.a.useRef(E({}, r, {}, n)).current;
+        return o.a.createElement(A.Provider, { value: i }, t);
+      }
+      function j(e, t, n, r) {
+        var i,
+          a,
+          s,
+          l = o.a.forwardRef(function (n, r) {
+            var i = E({}, n),
+              a = o.a.useContext(A);
+            return (
+              Object.assign(i, e(a || {}, i) || {}),
+              r && (i.ref = r),
+              o.a.createElement(t, i)
+            );
+          });
+        return (
+          r && (l = D(l)),
+          (l.isMobxInjector = !0),
+          (i = t),
+          (a = l),
+          (s = Object.getOwnPropertyNames(Object.getPrototypeOf(i))),
+          Object.getOwnPropertyNames(i).forEach(function (e) {
+            h[e] ||
+              -1 !== s.indexOf(e) ||
+              Object.defineProperty(
+                a,
+                e,
+                Object.getOwnPropertyDescriptor(i, e),
+              );
+          }),
+          (l.wrappedComponent = t),
+          (l.displayName = (function (e, t) {
+            var n,
+              r =
+                e.displayName ||
+                e.name ||
+                (e.constructor && e.constructor.name) ||
+                'Component';
+            n = t ? 'inject-with-' + t + '(' + r + ')' : 'inject(' + r + ')';
+            return n;
+          })(t, n)),
+          l
+        );
+      }
+      function R(e) {
+        return function (t, n) {
+          return (
+            e.forEach(function (e) {
+              if (!(e in n)) {
+                if (!(e in t))
+                  throw new Error(
+                    "MobX injector: Store '" +
+                      e +
+                      "' is not available! Make sure it is provided by some Provider",
+                  );
+                n[e] = t[e];
+              }
+            }),
+            n
+          );
+        };
+      }
+      function P() {
+        for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
+          t[n] = arguments[n];
+        if ('function' == typeof arguments[0]) {
+          var r = arguments[0];
+          return function (e) {
+            return j(r, e, r.name, !0);
+          };
+        }
+        return function (e) {
+          return j(R(t), e, t.join('-'), !1);
+        };
+      }
+      Y.displayName = 'MobXProvider';
+      if (!i.Component)
+        throw new Error('mobx-react requires React to be available');
+      if (!r.n) throw new Error('mobx-react requires mobx to be available');
+    },
+    function (e, t, n) {
+      'use strict';
+      n.d(t, 'a', function () {
+        return i;
+      });
+      var r = n(71);
+      function i(e, t) {
+        return (
+          (function (e) {
+            if (Array.isArray(e)) return e;
+          })(e) ||
+          (function (e, t) {
+            if ('undefined' != typeof Symbol && Symbol.iterator in Object(e)) {
+              var n = [],
+                r = !0,
+                i = !1,
+                o = void 0;
+              try {
+                for (
+                  var a, s = e[Symbol.iterator]();
+                  !(r = (a = s.next()).done) &&
+                  (n.push(a.value), !t || n.length !== t);
+                  r = !0
+                );
+              } catch (e) {
+                (i = !0), (o = e);
+              } finally {
+                try {
+                  r || null == s.return || s.return();
+                } finally {
+                  if (i) throw o;
+                }
+              }
+              return n;
+            }
+          })(e, t) ||
+          Object(r.a)(e, t) ||
+          (function () {
+            throw new TypeError(
+              'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
+            );
+          })()
+        );
+      }
+    },
+    function (e, t) {
+      e.exports = function (e, t) {
+        if (!(e instanceof t))
+          throw new TypeError('Cannot call a class as a function');
+      };
+    },
+    function (e, t) {
+      function n(e, t) {
+        for (var n = 0; n < t.length; n++) {
+          var r = t[n];
+          (r.enumerable = r.enumerable || !1),
+            (r.configurable = !0),
+            'value' in r && (r.writable = !0),
+            Object.defineProperty(e, r.key, r);
+        }
+      }
+      e.exports = function (e, t, r) {
+        return t && n(e.prototype, t), r && n(e, r), e;
+      };
+    },
+    function (e, t, n) {
+      'use strict';
+      n.d(t, 'a', function () {
+        return o;
+      });
+      n(0);
+      var r = n(10),
+        i = n(23);
+      function o(e) {
+        var t = this.props,
+          n = t.targetJsonData,
+          o = t.getJSONDataByKeyRoute,
+          a = t.getJSONDataTempByKeyRoute,
+          s = t.updateFormValueData,
+          l = Object(i.a)(n),
+          c = e || this.props.keyRoute,
+          u = Object(r.c)(''.concat(c, '-').concat(l));
+        if (u) {
+          var d = o(u);
+          d || (d = a(u)),
+            d && (Object(r.a)(''.concat(c, '-').concat(l)), s(c, d));
+        }
+      }
+    },
+    function (e, t, n) {
+      var r = n(259);
       e.exports = function (e, t) {
         if ('function' != typeof t && null !== t)
           throw new TypeError(
@@ -7218,8 +7254,8 @@ and limitations under the License.
       };
     },
     function (e, t, n) {
-      var r = n(50),
-        i = n(19);
+      var r = n(53),
+        i = n(20);
       e.exports = function (e, t) {
         return !t || ('object' !== r(t) && 'function' != typeof t) ? i(e) : t;
       };
@@ -7230,16 +7266,16 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
-        a = i(n(43)),
+      var o = i(n(25)),
+        a = i(n(47)),
         s = i(n(7)),
         l = r(n(0)),
-        c = i(n(421)),
+        c = i(n(424)),
         u = i(n(4)),
-        d = i(n(329)),
-        h = n(59),
-        f = n(23),
-        m = n(99),
+        d = i(n(332)),
+        h = n(62),
+        f = n(26),
+        m = n(102),
         p = new RegExp(
           '^('.concat(m.PresetColorTypes.join('|'), ')(-inverse)?$'),
         );
@@ -7626,8 +7662,8 @@ and limitations under the License.
       n.d(t, 'a', function () {
         return o;
       });
-      var r = n(63);
-      var i = n(68);
+      var r = n(66);
+      var i = n(71);
       function o(e) {
         return (
           (function (e) {
@@ -7645,6 +7681,305 @@ and limitations under the License.
           })()
         );
       }
+    },
+    function (e, t, n) {
+      'use strict';
+      n.d(t, 'a', function () {
+        return l;
+      }),
+        n.d(t, 'd', function () {
+          return c;
+        }),
+        n.d(t, 'b', function () {
+          return u;
+        }),
+        n.d(t, 'c', function () {
+          return d;
+        }),
+        n.d(t, 'e', function () {
+          return h;
+        }),
+        n.d(t, 'f', function () {
+          return f;
+        }),
+        n.d(t, 'g', function () {
+          return m;
+        });
+      var r = n(53),
+        i = n.n(r),
+        o = n(28),
+        a =
+          (o.l,
+          o.k,
+          o.b,
+          o.o,
+          o.a,
+          o.u,
+          o.s,
+          o.d,
+          o.n,
+          o.m,
+          o.c,
+          o.j,
+          o.f,
+          o.g,
+          o.t,
+          o.p,
+          o.q,
+          o.r,
+          o.e,
+          o.h,
+          { on: o.i, emit: o.h }),
+        s = n(10);
+      function l(e) {
+        var t = e.format;
+        return t || (t = e.type ? e.type : 'input'), t;
+      }
+      function c(e) {
+        var t = !0;
+        if (
+          e &&
+          'object' === l(e) &&
+          e.properties &&
+          e.propertyOrder &&
+          e.propertyOrder.length > 0
+        ) {
+          var n = e.properties.func,
+            r = e.properties.style,
+            i = e.properties.data;
+          ((n.propertyOrder && n.propertyOrder.length > 0) ||
+            (r.propertyOrder && r.propertyOrder.length > 0) ||
+            (i.propertyOrder && i.propertyOrder.length > 0)) &&
+            (t = !1);
+        }
+        return t;
+      }
+      function u(e, t, n) {
+        var r = t;
+        if ((n && (r = Object(s.h)(t)), e))
+          for (var i = e.split('-'), o = 0, a = i.length; o < a; o++) {
+            var l = i[o];
+            if (
+              '0' !== l ||
+              ('array' !== r.format &&
+                'radio' !== r.format &&
+                'select' !== r.format) ||
+              !r.items
+            ) {
+              var c = r.propertyOrder[l];
+              r = r.properties[c];
+            } else r = r.items;
+          }
+        return r;
+      }
+      function d(e, t) {
+        for (
+          var n = t, r = '', i = e.split('-'), o = 0, a = i.length;
+          o < a;
+          o++
+        ) {
+          var s = i[o];
+          if ('0' === s && n.items)
+            (n = n.items), (r = r ? ''.concat(r, '-items') : 'items');
+          else {
+            var l = n.propertyOrder[s];
+            (n = n.properties[l]), (r = r ? ''.concat(r, '-').concat(l) : l);
+          }
+        }
+        return r;
+      }
+      function h(e) {
+        var t = !1;
+        return ('func' !== e && 'style' !== e && 'data' !== e) || (t = !0), t;
+      }
+      function f(e) {
+        var t = Object(s.h)(e);
+        if (
+          (!t.title && t.description && (t.title = t.description),
+          t.format || (t.format = l(t)),
+          'radio' === t.format &&
+            ((t.type = 'string'),
+            t.enum &&
+              t.enumextra &&
+              ((t.items = {
+                type: 'string',
+                enum: Object(s.h)(t.enum),
+                enumextra: Object(s.h)(t.enumextra),
+              }),
+              delete t.enum,
+              delete t.enumextra)),
+          'datasource' === t.format)
+        ) {
+          var n = t.properties;
+          n.type && Object(s.g)(n.type) && (n.type.title = '数据源类型'),
+            n.filter &&
+              Object(s.g)(n.filter) &&
+              ((n.filter.title = '过滤器'), (n.filter.format = 'codearea')),
+            n.data &&
+              Object(s.g)(n.data) &&
+              ('remote' === n.type.default
+                ? ((n.data.title = '用于设置获取元素数据的请求地址'),
+                  (n.data.format = 'url'))
+                : ((n.data.title = '本地静态json数据'),
+                  (n.data.format = 'json')));
+        }
+        if ('quantity' === t.format) {
+          var r = t.properties;
+          r.quantity &&
+            Object(s.g)(r.quantity) &&
+            ((r.quantity.title = '单位类型'),
+            (r.quantity.format = 'typeSelect')),
+            r.unit && Object(s.g)(r.unit) && (r.unit.format = 'number');
+        }
+        if ('event' === t.format) {
+          var i = t.properties,
+            o = i.type && i.type.default,
+            c = (i.filter && i.filter.default) || '() => {}';
+          'in' === o
+            ? ((t = Object(s.h)(a.on)),
+              i.actionFunc &&
+                Object(s.g)(i.actionFunc) &&
+                (i.actionFunc.default = Object(s.h)(c)))
+            : ((t = Object(s.h)(a.emit)),
+              i.eventData &&
+                Object(s.g)(i.eventData) &&
+                (i.eventData.default = c));
+        }
+        return (
+          t.properties &&
+            ((t.required = Object.keys(t.properties)),
+            t.propertyOrder || (t.propertyOrder = t.required),
+            t.propertyOrder.map(function (e) {
+              t.properties[e] = f(t.properties[e]);
+            })),
+          t.items && (t.items = f(t.items)),
+          t
+        );
+      }
+      function m(e, t) {
+        var n = {};
+        return (
+          Object(s.g)(e) &&
+            e.properties &&
+            e.propertyOrder.map(function (r) {
+              var o = e.properties[r],
+                a = t && t[r];
+              'quantity' === o.format && o.default && delete o.default,
+                Object(s.b)(a) &&
+                  Object(s.b)(o.default) &&
+                  i()(a) !== i()(o.default) &&
+                  (a = void 0);
+              var l = Object(s.b)(a) ? a : o.default;
+              switch (o.type) {
+                case 'string':
+                  if (
+                    ('color' === o.format &&
+                      (('#fff' !== l && '#FFF' !== l) || (l = '#ffffff'),
+                      (n[r] = l || '#ffffff')),
+                    'json' === o.format)
+                  ) {
+                    var c = '',
+                      u = t && t[r];
+                    if (Object(s.g)(u) || Object(s.d)(u)) c = u;
+                    else if (Object(s.f)(u) || '' === u) c = {};
+                    else
+                      try {
+                        c = JSON.parse(u);
+                      } catch (e) {
+                        c = {};
+                      }
+                    n[r] = c;
+                  } else n[r] = Object(s.b)(l) ? l : '';
+                  break;
+                case 'boolean':
+                  n[r] = !!Object(s.b)(l) && l;
+                  break;
+                case 'number':
+                  n[r] = Object(s.b)(l) ? l : 1;
+                  break;
+                case 'array':
+                  if ('array' === o.format)
+                    if (Object(s.d)(a))
+                      (n[r] = []),
+                        a.map(function (e) {
+                          n[r].push(m(o.items, e));
+                        });
+                    else {
+                      var d = m(o.items, a);
+                      n[r] = [d];
+                    }
+                  else n[r] = l !== Object(s.b)(l) ? l : [];
+                  break;
+                case 'object':
+                  'datasource' === o.format
+                    ? o.properties &&
+                      o.properties.type &&
+                      o.properties.type.default &&
+                      'local' === o.properties.type.default
+                      ? ((n[r] = { data: '{}', filter: '() => {}' }),
+                        a && a.data && (n[r].data = a.data),
+                        a && a.filter && (n[r].filter = a.filter),
+                        'http://xxx' === n[r].data && (n[r].data = '{}'))
+                      : ((n[r] = { data: 'http://xxx', filter: '() => {}' }),
+                        a && a.data && (n[r].data = a.data),
+                        a && a.filter && (n[r].filter = a.filter),
+                        '{}' === n[r].data && (n[r].data = 'http://xxx'))
+                    : 'event' === o.format
+                    ? o.properties &&
+                      o.properties.type &&
+                      o.properties.type.default &&
+                      'emit' === o.properties.type.default
+                      ? a && 'out' === a.type
+                        ? (n[r] = {
+                            trigger: (a && a.filter) || '',
+                            eventData: '{}',
+                          })
+                        : ((n[r] = { trigger: '', eventData: '{}' }),
+                          a && a.trigger && (n[r].trigger = a.trigger),
+                          a && a.eventData && (n[r].eventData = a.eventData))
+                      : a && 'in' === a.type
+                      ? (n[r] = {
+                          register: '',
+                          actionFunc: (a && a.filter) || '() => {}',
+                        })
+                      : ((n[r] = { register: '', actionFunc: '() => {}' }),
+                        a && a.register && (n[r].register = a.register),
+                        a && a.actionFunc && (n[r].actionFunc = a.actionFunc))
+                    : (n[r] = m(o, a));
+                  break;
+                default:
+                  n[r] = Object(s.b)(l) ? l : '';
+              }
+            }),
+          n
+        );
+      }
+    },
+    function (e, t) {
+      e.exports = function (e, t, n, r, i) {
+        var o = {};
+        return (
+          Object.keys(r).forEach(function (e) {
+            o[e] = r[e];
+          }),
+          (o.enumerable = !!o.enumerable),
+          (o.configurable = !!o.configurable),
+          ('value' in o || o.initializer) && (o.writable = !0),
+          (o = n
+            .slice()
+            .reverse()
+            .reduce(function (n, r) {
+              return r(e, t, n) || n;
+            }, o)),
+          i &&
+            void 0 !== o.initializer &&
+            ((o.value = o.initializer ? o.initializer.call(i) : void 0),
+            (o.initializer = void 0)),
+          void 0 === o.initializer &&
+            (Object.defineProperty(e, t, o), (o = null)),
+          o
+        );
+      };
     },
     function (e, t) {
       e.exports = function (e, t, n) {
@@ -7681,13 +8016,13 @@ and limitations under the License.
         (t.default = t.configConsumerProps = void 0);
       var o = i(n(7)),
         a = r(n(0)),
-        s = n(420),
-        l = r(n(292)),
-        c = i(n(67)),
-        u = n(299),
-        d = n(44),
-        h = i(n(41)),
-        f = i(n(304));
+        s = n(423),
+        l = r(n(295)),
+        c = i(n(70)),
+        u = n(302),
+        d = n(48),
+        h = i(n(44)),
+        f = i(n(307));
       t.configConsumerProps = [
         'getTargetContainer',
         'getPopupContainer',
@@ -7798,31 +8133,482 @@ and limitations under the License.
         return r;
       });
     },
-    function (e, t) {
-      e.exports = function (e, t, n, r, i) {
-        var o = {};
-        return (
-          Object.keys(r).forEach(function (e) {
-            o[e] = r[e];
-          }),
-          (o.enumerable = !!o.enumerable),
-          (o.configurable = !!o.configurable),
-          ('value' in o || o.initializer) && (o.writable = !0),
-          (o = n
-            .slice()
-            .reverse()
-            .reduce(function (n, r) {
-              return r(e, t, n) || n;
-            }, o)),
-          i &&
-            void 0 !== o.initializer &&
-            ((o.value = o.initializer ? o.initializer.call(i) : void 0),
-            (o.initializer = void 0)),
-          void 0 === o.initializer &&
-            (Object.defineProperty(e, t, o), (o = null)),
-          o
-        );
-      };
+    function (e, t, n) {
+      'use strict';
+      n.d(t, 'l', function () {
+        return r;
+      }),
+        n.d(t, 'k', function () {
+          return i;
+        }),
+        n.d(t, 'b', function () {
+          return o;
+        }),
+        n.d(t, 's', function () {
+          return a;
+        }),
+        n.d(t, 'n', function () {
+          return s;
+        }),
+        n.d(t, 'q', function () {
+          return l;
+        }),
+        n.d(t, 'r', function () {
+          return c;
+        }),
+        n.d(t, 'd', function () {
+          return u;
+        }),
+        n.d(t, 'u', function () {
+          return d;
+        }),
+        n.d(t, 'p', function () {
+          return h;
+        }),
+        n.d(t, 'a', function () {
+          return f;
+        }),
+        n.d(t, 'o', function () {
+          return m;
+        }),
+        n.d(t, 'g', function () {
+          return p;
+        }),
+        n.d(t, 'f', function () {
+          return g;
+        }),
+        n.d(t, 't', function () {
+          return _;
+        }),
+        n.d(t, 'h', function () {
+          return v;
+        }),
+        n.d(t, 'i', function () {
+          return y;
+        }),
+        n.d(t, 'e', function () {
+          return b;
+        }),
+        n.d(t, 'm', function () {
+          return w;
+        }),
+        n.d(t, 'c', function () {
+          return M;
+        }),
+        n.d(t, 'j', function () {
+          return k;
+        });
+      var r = {
+          type: 'object',
+          title: 'jsonSchemaObject',
+          properties: {
+            func: {
+              type: 'object',
+              format: 'func',
+              title: '功能设置',
+              readOnly: !0,
+              properties: {
+                a: {
+                  type: 'string',
+                  title: '单文本框',
+                  format: 'input',
+                  default: '',
+                  description: '',
+                  placeholder: '',
+                  isRequired: !1,
+                  readOnly: !1,
+                },
+              },
+              required: ['a'],
+              propertyOrder: ['a'],
+            },
+            style: {
+              type: 'object',
+              format: 'style',
+              title: '样式设置',
+              readOnly: !0,
+              properties: {
+                b: {
+                  type: 'string',
+                  title: '单文本框',
+                  format: 'input',
+                  default: '',
+                  description: '',
+                  placeholder: '',
+                  isRequired: !1,
+                  readOnly: !1,
+                },
+              },
+              required: ['b'],
+              propertyOrder: ['b'],
+            },
+            data: {
+              type: 'object',
+              format: 'data',
+              title: '数据设置',
+              readOnly: !0,
+              properties: {
+                c: {
+                  type: 'string',
+                  title: '单文本框',
+                  format: 'input',
+                  default: '',
+                  description: '',
+                  placeholder: '',
+                  isRequired: !1,
+                  readOnly: !1,
+                },
+              },
+              required: ['c'],
+              propertyOrder: ['c'],
+            },
+          },
+          required: ['func', 'style', 'data'],
+          propertyOrder: ['func', 'style', 'data'],
+        },
+        i = {
+          type: 'string',
+          title: '单文本框',
+          format: 'input',
+          default: '',
+          description: '',
+          placeholder: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        o = {
+          type: 'boolean',
+          title: '布尔值',
+          format: 'boolean',
+          default: !1,
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        a = {
+          type: 'string',
+          title: '多行文本框',
+          format: 'textarea',
+          default: '',
+          description: '',
+          placeholder: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        s = {
+          type: 'number',
+          title: '数值',
+          format: 'number',
+          default: 1,
+          minimum: 0,
+          maximum: 1e3,
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        l = {
+          type: 'string',
+          title: '单选',
+          format: 'radio',
+          items: {
+            type: 'string',
+            enum: ['a', 'b', 'c'],
+            enumextra: ['选项a', '选项b', '选项c'],
+          },
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        c = {
+          type: 'array',
+          title: '多选',
+          format: 'select',
+          items: {
+            type: 'string',
+            enum: ['a', 'b', 'c'],
+            enumextra: ['选项a', '选项b', '选项c'],
+          },
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        u = {
+          type: 'string',
+          title: '颜色值',
+          format: 'color',
+          default: '#ffffff',
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        d = {
+          type: 'string',
+          title: 'URL',
+          format: 'url',
+          default: '',
+          description: '',
+          placeholder: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        h = {
+          type: 'object',
+          format: 'quantity',
+          title: '单位计量输入',
+          isRequired: !1,
+          readOnly: !1,
+          properties: {
+            unit: {
+              type: 'number',
+              title: '单位数值',
+              format: 'number',
+              default: 50,
+              minimum: 0,
+              maximum: 1e3,
+              description: '',
+              isRequired: !1,
+              readOnly: !1,
+            },
+            quantity: {
+              type: 'string',
+              format: 'typeSelect',
+              default: 'px',
+              enum: ['px', 'rem', 'em', '%'],
+              enumextra: ['px', 'rem', 'em', '%'],
+              title: '单位类型',
+              isRequired: !1,
+              readOnly: !1,
+            },
+          },
+          required: ['unit', 'quantity'],
+          propertyOrder: ['unit', 'quantity'],
+        },
+        f = {
+          type: 'array',
+          format: 'array',
+          title: '数组',
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+          items: {
+            type: 'object',
+            format: 'object',
+            title: '数组项',
+            description: '',
+            isRequired: !1,
+            readOnly: !1,
+            properties: {
+              name: {
+                type: 'string',
+                format: 'input',
+                title: '名字',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: !1,
+                readOnly: !1,
+              },
+            },
+            required: ['name'],
+            propertyOrder: ['name'],
+          },
+        },
+        m = {
+          type: 'object',
+          format: 'object',
+          title: '对象类型',
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+          properties: {
+            a: {
+              type: 'string',
+              title: '单文本框',
+              format: 'input',
+              default: '',
+              description: '',
+              placeholder: '',
+              isRequired: !1,
+              readOnly: !1,
+            },
+          },
+          required: ['a'],
+          propertyOrder: ['a'],
+        },
+        p = {
+          type: 'string',
+          title: '日期',
+          format: 'date-time',
+          default: '',
+          description: '',
+          placeholder: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        g = {
+          type: 'string',
+          title: '日期',
+          format: 'date',
+          default: '',
+          description: '',
+          placeholder: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        _ = {
+          type: 'string',
+          title: '时间',
+          format: 'time',
+          default: '',
+          description: '',
+          placeholder: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        v = {
+          type: 'object',
+          format: 'event',
+          title: '事件',
+          isRequired: !1,
+          readOnly: !1,
+          properties: {
+            type: {
+              type: 'string',
+              default: 'emit',
+              format: 'typeSelect',
+              enum: ['on', 'emit'],
+              enumextra: ['on', 'emit'],
+              title: '事件类型',
+              isRequired: !1,
+              readOnly: !1,
+            },
+            trigger: {
+              type: 'string',
+              format: 'input',
+              default: 'eventName',
+              title: '触发事件',
+              description: '用于输入触发事件的名称',
+              placeholder: '请输入触发事件的名称',
+              isRequired: !1,
+              readOnly: !1,
+            },
+            eventData: {
+              type: 'string',
+              title: '事件数据',
+              format: 'json',
+              default: '{}',
+              description: '传递给触发事件的数据对象',
+              isRequired: !1,
+              readOnly: !1,
+            },
+          },
+          required: ['type', 'trigger', 'eventData'],
+          propertyOrder: ['type', 'trigger', 'eventData'],
+        },
+        y = {
+          type: 'object',
+          format: 'event',
+          title: '事件',
+          isRequired: !1,
+          readOnly: !1,
+          properties: {
+            type: {
+              type: 'string',
+              default: 'on',
+              format: 'typeSelect',
+              enum: ['on', 'emit'],
+              enumextra: ['on', 'emit'],
+              title: '事件类型',
+              isRequired: !1,
+              readOnly: !1,
+            },
+            register: {
+              type: 'string',
+              format: 'input',
+              default: 'eventName',
+              title: '注册事件',
+              description: '用于输入注册事件的名称',
+              placeholder: '请输入注册事件的名称',
+              isRequired: !1,
+              readOnly: !1,
+            },
+            actionFunc: {
+              type: 'string',
+              title: '执行函数',
+              format: 'codearea',
+              default: '() => {}',
+              description: '',
+              isRequired: !1,
+              readOnly: !1,
+            },
+          },
+          required: ['type', 'register', 'actionFunc'],
+          propertyOrder: ['type', 'register', 'actionFunc'],
+        },
+        b = {
+          type: 'object',
+          format: 'datasource',
+          title: '数据源',
+          readOnly: !1,
+          properties: {
+            type: {
+              type: 'string',
+              default: 'local',
+              format: 'typeSelect',
+              enum: ['local', 'remote'],
+              enumextra: ['local', 'remote'],
+              title: '数据源类型',
+            },
+            data: {
+              type: 'string',
+              title: '本地json数据',
+              placeholder: '请输入静态json数据',
+              format: 'json',
+              default: '{}',
+              description: '用于设置本地的静态json数据',
+              isRequired: !0,
+            },
+            filter: {
+              type: 'string',
+              title: '过滤器',
+              format: 'codearea',
+              default: '() => {}',
+              description: '用于定义过滤当前数据的函数',
+              isRequired: !0,
+            },
+          },
+          required: ['type', 'data', 'filter'],
+          propertyOrder: ['type', 'data', 'filter'],
+        },
+        w = {
+          type: 'string',
+          title: 'json数据项',
+          format: 'json',
+          default: '{}',
+          description: '',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        M = {
+          type: 'string',
+          title: '函数类型',
+          format: 'codearea',
+          placeholder: '请输入函数方法',
+          default: 'function func() { console.log("hello, world!"); }',
+          description: '用于定义函数方法',
+          isRequired: !1,
+          readOnly: !1,
+        },
+        k = {
+          type: 'string',
+          title: '富文本类型',
+          format: 'htmlarea',
+          placeholder: '请输入html代码片段',
+          default: '<p>hello,world!</p>',
+          description: '用于放置html代码片段',
+          isRequired: !1,
+          readOnly: !1,
+        };
     },
     function (e, t, n) {
       'use strict';
@@ -7860,8 +8646,8 @@ and limitations under the License.
       n.d(t, 'a', function () {
         return o;
       });
-      var r = n(31),
-        i = n(62);
+      var r = n(34),
+        i = n(65);
       function o(e, t) {
         return !t || ('object' !== Object(r.a)(t) && 'function' != typeof t)
           ? Object(i.a)(e)
@@ -7892,7 +8678,7 @@ and limitations under the License.
       });
     },
     function (e, t) {
-      e.exports = __WEBPACK_EXTERNAL_MODULE__30__;
+      e.exports = __WEBPACK_EXTERNAL_MODULE__33__;
     },
     function (e, t, n) {
       'use strict';
@@ -7921,14 +8707,14 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(43)),
-        a = i(n(22)),
-        s = i(n(92)),
+      var o = i(n(47)),
+        a = i(n(25)),
+        s = i(n(95)),
         l = r(n(0)),
         c = i(n(4)),
-        u = i(n(93)),
-        d = n(270),
-        h = n(75);
+        u = i(n(96)),
+        d = n(273),
+        h = n(78);
       (0, d.setTwoToneColor)('#1890ff');
       var f = l.forwardRef(function (e, t) {
         var n = e.className,
@@ -7990,7 +8776,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(327);
+      n(41), n(330);
     },
     function (e, t, n) {
       'use strict';
@@ -8034,7 +8820,7 @@ and limitations under the License.
           n.d(t, 'c', function () {
             return y;
           });
-        var r = n(12),
+        var r = n(9),
           i = n(0),
           o = n.n(i);
         if (!i.useState)
@@ -8203,7 +8989,7 @@ and limitations under the License.
         }
         (w.propTypes = { children: M, render: M }),
           (w.displayName = 'Observer');
-      }.call(this, n(52)));
+      }.call(this, n(55)));
     },
     function (e, t, n) {
       'use strict';
@@ -8481,8 +9267,8 @@ and limitations under the License.
       }
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(259);
+      var r = n(39),
+        i = n(262);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -8491,8 +9277,8 @@ and limitations under the License.
     },
     function (e, t, n) {
       var r = n(8),
-        i = n(293),
-        o = n(16);
+        i = n(296),
+        o = n(17);
       e.exports = function (e) {
         var t = i();
         return function () {
@@ -8511,11 +9297,11 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(61)),
-        o = r(n(345)),
-        a = r(n(346)),
-        s = r(n(360)),
-        l = r(n(361));
+      var i = r(n(64)),
+        o = r(n(348)),
+        a = r(n(349)),
+        s = r(n(363)),
+        l = r(n(364));
       (i.default.Group = o.default),
         (i.default.Search = a.default),
         (i.default.TextArea = s.default),
@@ -8534,15 +9320,15 @@ and limitations under the License.
         s,
         l,
         c = i(n(7)),
-        u = i(n(22)),
+        u = i(n(25)),
         d = r(n(0)),
         h = i(n(4)),
-        f = i(n(248)),
-        m = i(n(64)),
-        p = i(n(271)),
-        g = i(n(65)),
-        _ = i(n(276)),
-        v = i(n(279)),
+        f = i(n(251)),
+        m = i(n(67)),
+        p = i(n(274)),
+        g = i(n(68)),
+        _ = i(n(279)),
+        v = i(n(282)),
         y = 3,
         b = 1,
         w = 'ant-message',
@@ -8652,7 +9438,7 @@ and limitations under the License.
         n.d(t, 'b', function () {
           return s;
         });
-      var r = n(51);
+      var r = n(54);
       function i(e) {
         return (i =
           'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
@@ -8690,11 +9476,22 @@ and limitations under the License.
         );
       }
     },
+    function (e, t) {
+      e.exports = function (e, t, n, r) {
+        n &&
+          Object.defineProperty(e, t, {
+            enumerable: n.enumerable,
+            configurable: n.configurable,
+            writable: n.writable,
+            value: n.initializer ? n.initializer.call(r) : void 0,
+          });
+      };
+    },
     function (e, t, n) {
-      var r = n(264),
-        i = n(265),
-        o = n(90),
-        a = n(266);
+      var r = n(267),
+        i = n(268),
+        o = n(93),
+        a = n(269);
       e.exports = function (e, t) {
         return r(e) || i(e, t) || o(e, t) || a();
       };
@@ -8743,7 +9540,7 @@ and limitations under the License.
     function (e, t, n) {
       (function (t) {
         for (
-          var r = n(326),
+          var r = n(329),
             i = 'undefined' == typeof window ? t : window,
             o = ['moz', 'webkit'],
             a = 'AnimationFrame',
@@ -8796,7 +9593,7 @@ and limitations under the License.
               (e.requestAnimationFrame = s),
               (e.cancelAnimationFrame = l);
           });
-      }.call(this, n(52)));
+      }.call(this, n(55)));
     },
     function (e, t) {
       e.exports = function (e, t, n, r) {
@@ -8823,17 +9620,6 @@ and limitations under the License.
             return !1;
         }
         return !0;
-      };
-    },
-    function (e, t) {
-      e.exports = function (e, t, n, r) {
-        n &&
-          Object.defineProperty(e, t, {
-            enumerable: n.enumerable,
-            configurable: n.configurable,
-            writable: n.writable,
-            value: n.initializer ? n.initializer.call(r) : void 0,
-          });
       };
     },
     function (e, t, n) {
@@ -8868,7 +9654,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      e.exports = n(286);
+      e.exports = n(289);
     },
     function (e, t) {
       var n;
@@ -8893,7 +9679,7 @@ and limitations under the License.
           },
         }),
         (t.default = void 0);
-      var i = r(n(76));
+      var i = r(n(79));
       t.default = function (e, t, n) {
         (0, i.default)(e, '[antd: '.concat(t, '] ').concat(n));
       };
@@ -8901,41 +9687,41 @@ and limitations under the License.
     function (module, __webpack_exports__, __webpack_require__) {
       'use strict';
       var antd_lib_tooltip_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-          33,
+          36,
         ),
         antd_lib_tooltip_style_css__WEBPACK_IMPORTED_MODULE_0___default = __webpack_require__.n(
           antd_lib_tooltip_style_css__WEBPACK_IMPORTED_MODULE_0__,
         ),
-        antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17),
+        antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18),
         antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_1___default = __webpack_require__.n(
           antd_lib_tooltip__WEBPACK_IMPORTED_MODULE_1__,
         ),
         _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-          11,
+          13,
         ),
         _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default = __webpack_require__.n(
           _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__,
         ),
         _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-          13,
+          14,
         ),
         _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default = __webpack_require__.n(
           _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__,
         ),
         _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-          19,
+          20,
         ),
         _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = __webpack_require__.n(
           _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__,
         ),
         _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-          15,
+          16,
         ),
         _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = __webpack_require__.n(
           _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__,
         ),
         _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-          16,
+          17,
         ),
         _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6___default = __webpack_require__.n(
           _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__,
@@ -8950,28 +9736,29 @@ and limitations under the License.
         react__WEBPACK_IMPORTED_MODULE_8___default = __webpack_require__.n(
           react__WEBPACK_IMPORTED_MODULE_8__,
         ),
-        mobx_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(9),
+        mobx_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(11),
         prop_types__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(1),
         prop_types__WEBPACK_IMPORTED_MODULE_10___default = __webpack_require__.n(
           prop_types__WEBPACK_IMPORTED_MODULE_10__,
         ),
-        react_ace__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(57),
+        react_ace__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(60),
         react_ace__WEBPACK_IMPORTED_MODULE_11___default = __webpack_require__.n(
           react_ace__WEBPACK_IMPORTED_MODULE_11__,
         ),
         ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-          340,
+          343,
         ),
         ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_12___default = __webpack_require__.n(
           ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_12__,
         ),
         ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
-          104,
+          107,
         ),
         ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_13___default = __webpack_require__.n(
           ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_13__,
         ),
-        $utils_index__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(14);
+        $utils_index__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(10),
+        $mixins_index__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(15);
       function _createSuper(e) {
         var t = _isNativeReflectConstruct();
         return function () {
@@ -9038,6 +9825,22 @@ and limitations under the License.
             CodeAreaFormSchema,
             [
               {
+                key: 'componentWillMount',
+                value: function () {
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_15__.a.call(this);
+                },
+              },
+              {
+                key: 'componentWillReceiveProps',
+                value: function (e) {
+                  e.keyRoute !== this.props.keyRoute &&
+                    $mixins_index__WEBPACK_IMPORTED_MODULE_15__.a.call(
+                      this,
+                      e.keyRoute,
+                    );
+                },
+              },
+              {
                 key: 'render',
                 value: function render() {
                   var _this2 = this,
@@ -9058,7 +9861,7 @@ and limitations under the License.
                       void 0 !== curJsonData
                         ? curJsonData
                         : targetJsonData.default || '() => {}'),
-                    Object($utils_index__WEBPACK_IMPORTED_MODULE_14__.e)(
+                    Object($utils_index__WEBPACK_IMPORTED_MODULE_14__.g)(
                       curJsonData,
                     ) && (curJsonData = JSON.stringify(curJsonData, null, 2)),
                     react__WEBPACK_IMPORTED_MODULE_8__.createElement(
@@ -9182,20 +9985,22 @@ and limitations under the License.
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
         })(
           Object(mobx_react__WEBPACK_IMPORTED_MODULE_9__.c)(CodeAreaFormSchema),
         ));
     },
     function (e, t, n) {
-      e.exports = n(291);
+      e.exports = n(294);
     },
     function (e, t, n) {
       'use strict';
       n.d(t, 'a', function () {
         return o;
       });
-      var r = n(30),
+      var r = n(33),
         i = n.n(r);
       function o(e) {
         return e instanceof HTMLElement ? e : i.a.findDOMNode(e);
@@ -9204,10 +10009,10 @@ and limitations under the License.
     function (e, t, n) {
       'use strict';
       Object.defineProperty(t, '__esModule', { value: !0 });
-      var r = n(333),
-        i = n(334);
+      var r = n(336),
+        i = n(337);
       t.diff = i.default;
-      var o = n(103);
+      var o = n(106);
       (t.split = o.default), (t.default = r.default);
     },
     function (e, t, n) {
@@ -9436,7 +10241,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(341), n(105);
+      n(41), n(344), n(108);
     },
     function (e, t, n) {
       'use strict';
@@ -9448,18 +10253,18 @@ and limitations under the License.
         (t.getInputClassName = b),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(15)),
-        c = i(n(39)),
-        u = i(n(22)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(16)),
+        c = i(n(42)),
+        u = i(n(25)),
         d = r(n(0)),
         h = i(n(4)),
-        f = i(n(49)),
-        m = r(n(106)),
-        p = n(23),
-        g = i(n(44)),
-        _ = i(n(53));
+        f = i(n(52)),
+        m = r(n(109)),
+        p = n(26),
+        g = i(n(48)),
+        _ = i(n(56));
       function v(e) {
         return null == e ? '' : e;
       }
@@ -9718,7 +10523,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(262)) && r.__esModule ? r : { default: r };
+      var i = (r = n(265)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -9726,7 +10531,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(274)) && r.__esModule ? r : { default: r };
+      var i = (r = n(277)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -9735,8 +10540,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var i = r(n(7)),
-        o = r(n(296)),
-        a = r(n(95)),
+        o = r(n(299)),
+        a = r(n(98)),
         s = {
           lang: (0, i.default)(
             {
@@ -9763,13 +10568,13 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(15)),
-        c = i(n(39)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(16)),
+        c = i(n(42)),
         u = r(n(0)),
-        d = i(n(298)),
-        h = i(n(96)),
+        d = i(n(301)),
+        h = i(n(99)),
         f = (function (e) {
           (0, l.default)(n, e);
           var t = (0, c.default)(n);
@@ -9823,7 +10628,7 @@ and limitations under the License.
       n.d(t, 'a', function () {
         return i;
       });
-      var r = n(63);
+      var r = n(66);
       function i(e, t) {
         if (e) {
           if ('string' == typeof e) return Object(r.a)(e, t);
@@ -9847,7 +10652,7 @@ and limitations under the License.
       });
       var r = n(0),
         i = n.n(r),
-        o = n(51);
+        o = n(54);
       function a(e) {
         var t = [];
         return (
@@ -10310,20 +11115,20 @@ and limitations under the License.
         });
         var k = void 0 !== i.ResizeObserver ? i.ResizeObserver : M;
         t.a = k;
-      }.call(this, n(52)));
+      }.call(this, n(55)));
     },
     function (e, t, n) {
       'use strict';
       var r = n(3),
-        i = n(24),
-        o = n(26),
-        a = n(62),
-        s = n(29),
-        l = n(28),
-        c = n(20),
+        i = n(27),
+        o = n(29),
+        a = n(65),
+        s = n(32),
+        l = n(31),
+        c = n(21),
         u = n(0),
         d = n.n(u),
-        h = n(30),
+        h = n(33),
         f = n.n(h);
       function m(e, t) {
         for (var n = t; n; ) {
@@ -10332,8 +11137,8 @@ and limitations under the License.
         }
         return !1;
       }
-      var p = n(56),
-        g = n(42);
+      var p = n(59),
+        g = n(45);
       function _(e, t, n, r) {
         var i = f.a.unstable_batchedUpdates
           ? function (e) {
@@ -10532,11 +11337,11 @@ and limitations under the License.
         return n ? e[0] === t[0] : e[0] === t[0] && e[1] === t[1];
       }
       var E,
-        A = n(34),
-        Y = n(46),
+        A = n(37),
+        Y = n(50),
         j = n.n(Y),
-        R = n(10),
-        P = n(31);
+        R = n(12),
+        P = n(34);
       function $(e) {
         return ($ =
           'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
@@ -11270,7 +12075,7 @@ and limitations under the License.
         );
       }
       (Re.__getOffsetParent = Me), (Re.__getVisibleRectForElement = Le);
-      var $e = n(70);
+      var $e = n(73);
       function Ne(e, t) {
         var n = null,
           r = null;
@@ -12974,9 +13779,9 @@ and limitations under the License.
           r
         );
       }
-      var c = n(30),
+      var c = n(33),
         u = n.n(c),
-        d = n(58),
+        d = n(61),
         h = {
           isAppearSupported: function (e) {
             return (
@@ -13596,7 +14401,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(260);
+      n(41), n(263);
     },
     function (e, t, n) {
       'use strict';
@@ -13640,12 +14445,12 @@ and limitations under the License.
           return Array.isArray(e) ? e : [e];
         }),
         (t.useInsertStyles = t.iconStyles = t.svgBaseProps = void 0);
-      var o = i(n(22)),
-        a = i(n(50)),
-        s = n(83),
+      var o = i(n(25)),
+        a = i(n(53)),
+        s = n(86),
         l = r(n(0)),
-        c = i(n(76)),
-        u = n(84);
+        c = i(n(79)),
+        u = n(87);
       function d(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
@@ -17075,7 +17880,7 @@ and limitations under the License.
                     i ||
                     e.packaged ||
                     r.packaged ||
-                    (s.define && n(102).packaged);
+                    (s.define && n(105).packaged);
                   for (
                     var o,
                       a = {},
@@ -33863,7 +34668,7 @@ and limitations under the License.
                 e('./ext/error_marker'),
                 (t.config = e('./config')),
                 (t.require = e),
-                (t.define = n(102)),
+                (t.define = n(105)),
                 (t.edit = function (e, n) {
                   if ('string' == typeof e) {
                     var r = e;
@@ -33916,7 +34721,7 @@ and limitations under the License.
               t.hasOwnProperty(n) && (window.ace[n] = t[n]);
             (window.ace.default = window.ace), e && (e.exports = window.ace);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
       'use strict';
@@ -33925,16 +34730,16 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o,
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(19)),
-        c = i(n(15)),
-        u = i(n(39)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(20)),
+        c = i(n(16)),
+        u = i(n(42)),
         d = r(n(0)),
-        h = n(30),
-        f = i(n(354)),
-        m = i(n(355)),
-        p = n(23);
+        h = n(33),
+        f = i(n(357)),
+        m = i(n(358)),
+        p = n(26);
       function g(e) {
         return !e || null === e.offsetParent;
       }
@@ -34111,15 +34916,15 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = i(n(7)),
         s = r(n(0)),
-        l = i(n(250)),
+        l = i(n(253)),
         c = i(n(4)),
-        u = n(23),
-        d = i(n(81)),
-        h = n(371),
-        f = i(n(53)),
+        u = n(26),
+        d = i(n(84)),
+        h = n(374),
+        f = i(n(56)),
         m = function (e, t) {
           var n = {};
           for (var r in e)
@@ -34233,10 +35038,10 @@ and limitations under the License.
         }),
         (t.default = t.Components = void 0);
       var i = r(n(7)),
-        o = r(n(400)),
-        a = r(n(401)),
-        s = r(n(404)),
-        l = r(n(409)),
+        o = r(n(403)),
+        a = r(n(404)),
+        s = r(n(407)),
+        l = r(n(412)),
         c = { button: o.default, rangeItem: a.default };
       t.Components = c;
       var u = function (e) {
@@ -34267,7 +35072,7 @@ and limitations under the License.
           return e && e.__esModule ? e : { default: e };
         };
       Object.defineProperty(t, '__esModule', { value: !0 });
-      var i = r(n(268));
+      var i = r(n(271));
       t.generate = i.default;
       var o = {
         red: '#F5222D',
@@ -34355,8 +35160,8 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(399)),
-        o = (0, r(n(82)).default)(i.default);
+      var i = r(n(402)),
+        o = (0, r(n(85)).default)(i.default);
       t.default = o;
     },
     function (e, t, n) {
@@ -34364,7 +35169,7 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(285)).default;
+      var i = r(n(288)).default;
       t.default = i;
     },
     function (e, t, n) {
@@ -34385,10 +35190,10 @@ and limitations under the License.
           },
         }),
         (t.default = void 0);
-      var o = r(n(80)),
-        a = r(n(372)),
-        s = r(n(374)),
-        l = n(375);
+      var o = r(n(83)),
+        a = r(n(375)),
+        s = r(n(377)),
+        l = n(378);
       Object.keys(l).forEach(function (e) {
         'default' !== e &&
           '__esModule' !== e &&
@@ -34410,8 +35215,8 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(108)),
-        o = r(n(109));
+      var i = r(n(111)),
+        o = r(n(112));
       i.default.Group = o.default;
       var a = i.default;
       t.default = a;
@@ -34424,7 +35229,7 @@ and limitations under the License.
       };
     },
     function (e, t, n) {
-      var r = n(91);
+      var r = n(94);
       e.exports = function (e, t) {
         if (e) {
           if ('string' == typeof e) return r(e, t);
@@ -34449,7 +35254,7 @@ and limitations under the License.
       };
     },
     function (e, t, n) {
-      var r = n(267);
+      var r = n(270);
       e.exports = function (e, t) {
         if (null == e) return {};
         var n,
@@ -34471,9 +35276,9 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(92)),
-        o = r(n(22)),
-        a = n(75);
+      var i = r(n(95)),
+        o = r(n(25)),
+        a = n(78);
       function s(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
@@ -34587,10 +35392,10 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(295)),
-        o = r(n(66)),
-        a = r(n(95)),
-        s = r(n(297)),
+      var i = r(n(298)),
+        o = r(n(69)),
+        a = r(n(98)),
+        s = r(n(300)),
         l = '${label} is not a valid ${type}',
         c = {
           locale: 'en',
@@ -34718,14 +35523,14 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(305)) && r.__esModule ? r : { default: r };
+      var i = (r = n(308)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
-      var r = n(321),
-        i = n(322),
-        o = n(90),
-        a = n(323);
+      var r = n(324),
+        i = n(325),
+        o = n(93),
+        a = n(326);
       e.exports = function (e) {
         return r(e) || i(e) || o(e) || a();
       };
@@ -34734,7 +35539,7 @@ and limitations under the License.
       'use strict';
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.PresetColorTypes = t.PresetStatusColorTypes = void 0);
-      var r = n(77),
+      var r = n(80),
         i = (0, r.tuple)(
           'success',
           'processing',
@@ -35405,7 +36210,7 @@ and limitations under the License.
         n.exports = function (e, t) {
           return de(e, t);
         };
-      }.call(this, n(52), n(45)(e)));
+      }.call(this, n(55), n(49)(e)));
     },
     function (e, t, n) {
       'use strict';
@@ -35438,11 +36243,11 @@ and limitations under the License.
           var t;
           return (
             'undefined' == typeof window
-              ? ((e.window = {}), (t = n(78)), delete e.window)
+              ? ((e.window = {}), (t = n(81)), delete e.window)
               : window.ace
               ? ((t = window.ace).acequire =
                   window.ace.require || window.ace.acequire)
-              : (t = n(78)),
+              : (t = n(81)),
             t
           );
         };
@@ -35457,7 +36262,7 @@ and limitations under the License.
               }, t));
           };
         };
-      }.call(this, n(52)));
+      }.call(this, n(55)));
     },
     function (e, t) {
       e.exports = function () {
@@ -35503,14 +36308,14 @@ and limitations under the License.
               }).apply(this, arguments);
           };
       Object.defineProperty(t, '__esModule', { value: !0 });
-      var a = n(101),
+      var a = n(104),
         s = a.getAceInstance(),
-        l = n(78),
-        c = n(335),
+        l = n(81),
+        c = n(338),
         u = n(1),
         d = n(0),
-        h = n(100),
-        f = n(336),
+        h = n(103),
+        f = n(339),
         m = (function (e) {
           function t(t) {
             var n = e.call(this, t) || this;
@@ -35882,11 +36687,11 @@ and limitations under the License.
           ace.require(['ace/theme/monokai'], function (t) {
             e && (e.exports = t);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(343);
+      n(41), n(346);
     },
     function (e, t, n) {
       'use strict';
@@ -35895,17 +36700,17 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.hasPrefixSuffix = _),
         (t.default = void 0);
-      var o = i(n(22)),
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(15)),
-        c = i(n(39)),
+      var o = i(n(25)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(16)),
+        c = i(n(42)),
         u = r(n(0)),
         d = i(n(4)),
-        h = i(n(65)),
-        f = n(77),
-        m = n(61),
-        p = n(59),
+        h = i(n(68)),
+        f = n(80),
+        m = n(64),
+        p = n(62),
         g = (0, f.tuple)('text', 'input');
       function _(e) {
         return !!(e.prefix || e.suffix || e.allowClear);
@@ -36164,7 +36969,7 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(351)).default;
+      var i = r(n(354)).default;
       t.default = i;
     },
     function (e, t, n) {
@@ -36173,19 +36978,19 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = i(n(7)),
-        s = i(n(11)),
-        l = i(n(13)),
-        c = i(n(19)),
-        u = i(n(15)),
-        d = i(n(39)),
+        s = i(n(13)),
+        l = i(n(14)),
+        c = i(n(20)),
+        u = i(n(16)),
+        d = i(n(42)),
         h = r(n(0)),
         f = i(n(4)),
-        m = i(n(250)),
-        p = n(109),
-        g = n(23),
-        _ = i(n(53)),
+        m = i(n(253)),
+        p = n(112),
+        g = n(26),
+        _ = i(n(56)),
         v = function (e, t) {
           var n = {};
           for (var r in e)
@@ -36366,18 +37171,18 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = t.GroupContext = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
-        s = i(n(98)),
-        l = i(n(11)),
-        c = i(n(13)),
-        u = i(n(19)),
-        d = i(n(15)),
-        h = i(n(39)),
+        a = i(n(25)),
+        s = i(n(101)),
+        l = i(n(13)),
+        c = i(n(14)),
+        u = i(n(20)),
+        d = i(n(16)),
+        h = i(n(42)),
         f = r(n(0)),
         m = i(n(4)),
-        p = i(n(49)),
-        g = i(n(108)),
-        _ = n(23),
+        p = i(n(52)),
+        g = i(n(111)),
+        _ = n(26),
         v = function (e, t) {
           var n = {};
           for (var r in e)
@@ -36550,7 +37355,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(393), n(395), n(105);
+      n(396), n(398), n(108);
     },
     function (e, t, n) {
       !(function (e) {
@@ -48267,7 +49072,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(405)) && r.__esModule ? r : { default: r };
+      var i = (r = n(408)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -48275,7 +49080,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(407)) && r.__esModule ? r : { default: r };
+      var i = (r = n(410)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -48317,20 +49122,20 @@ and limitations under the License.
         n.d(t, 'RangePicker', function () {
           return tt;
         });
-      var r = n(24),
-        i = n(26),
-        o = n(29),
-        a = n(28),
-        s = n(20),
+      var r = n(27),
+        i = n(29),
+        o = n(32),
+        a = n(31),
+        s = n(21),
         l = n(3),
-        c = n(10),
+        c = n(12),
         u = n(0),
         d = n(4),
         h = n.n(d),
-        f = n(27),
-        m = n(37),
-        p = n(31),
-        g = n(18),
+        f = n(30),
+        m = n(40),
+        p = n(34),
+        g = n(19),
         _ = u.createContext({}),
         v = { visibility: 'hidden' };
       var y = function (e) {
@@ -48427,7 +49232,7 @@ and limitations under the License.
           r.current.value
         );
       }
-      var M = n(21),
+      var M = n(22),
         k = new Map();
       function L(e, t, n) {
         if ((k.get(e) && cancelAnimationFrame(k.get(e)), n <= 0))
@@ -50577,7 +51382,7 @@ and limitations under the License.
             ),
           );
         },
-        je = n(71),
+        je = n(74),
         Re = {
           bottomLeft: {
             points: ['tl', 'bl'],
@@ -50776,7 +51581,7 @@ and limitations under the License.
           ]
         );
       }
-      var He = n(47),
+      var He = n(51),
         Fe = n.n(He);
       function Ie(e, t) {
         var n = t.formatList,
@@ -52106,18 +52911,18 @@ and limitations under the License.
     function (e, t, n) {
       'use strict';
       n.r(t);
-      var r = n(34),
+      var r = n(37),
         i = n(3),
-        o = n(24),
-        a = n(26),
-        s = n(29),
-        l = n(28),
-        c = n(20),
+        o = n(27),
+        a = n(29),
+        s = n(32),
+        l = n(31),
+        c = n(21),
         u = n(0),
         d = n.n(u),
-        h = n(30),
+        h = n(33),
         f = n.n(h),
-        m = n(72);
+        m = n(75);
       var p = n(4),
         g = n.n(p);
       function _(e) {
@@ -52270,8 +53075,8 @@ and limitations under the License.
         duration: 1.5,
         style: { right: '50%' },
       };
-      var y = n(21),
-        b = n(10);
+      var y = n(22),
+        b = n(12);
       function w(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
@@ -52538,7 +53343,7 @@ and limitations under the License.
         i = n.n(r),
         o = n(4),
         a = n.n(o),
-        s = n(47),
+        s = n(51),
         l = n.n(s),
         c = (function () {
           function e(e, t) {
@@ -52658,7 +53463,7 @@ and limitations under the License.
             t
           );
         })(r.Component),
-        m = n(72),
+        m = n(75),
         p = (function () {
           function e(e, t) {
             for (var n = 0; n < t.length; n++) {
@@ -52841,7 +53646,7 @@ and limitations under the License.
         forceRender: !1,
       };
       var b = y,
-        w = n(58);
+        w = n(61);
       function M(e, t, n, r) {
         var i = void 0;
         return Object(w.default)(e, n, {
@@ -52868,7 +53673,7 @@ and limitations under the License.
             },
           };
         },
-        L = n(51),
+        L = n(54),
         S = (function () {
           function e(e, t) {
             for (var n = 0; n < t.length; n++) {
@@ -53084,13 +53889,13 @@ and limitations under the License.
           }).apply(this, arguments);
       }
       n.r(t);
-      var i = n(34),
+      var i = n(37),
         o = n(3),
-        a = n(24),
-        s = n(26),
-        l = n(29),
-        c = n(28),
-        u = n(20),
+        a = n(27),
+        s = n(29),
+        l = n(32),
+        c = n(31),
+        u = n(21),
         d = n(0),
         h = n.n(d),
         f = n(4),
@@ -54103,7 +54908,7 @@ and limitations under the License.
           (x.messages = S),
           (x.validators = k),
           (t.a = x);
-      }.call(this, n(73)));
+      }.call(this, n(76)));
     },
     function (e, t, n) {
       'use strict';
@@ -54112,14 +54917,14 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
         l = i(n(4)),
-        c = i(n(382)),
-        u = i(n(383)),
-        d = i(n(386)),
-        h = n(23),
-        f = i(n(44)),
+        c = i(n(385)),
+        u = i(n(386)),
+        d = i(n(389)),
+        h = n(26),
+        f = i(n(48)),
         m = function (e, t) {
           var n = {};
           for (var r in e)
@@ -54189,15 +54994,15 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
-        l = i(n(392)),
+        l = i(n(395)),
         c = i(n(4)),
-        u = i(n(64)),
-        d = i(n(79)),
-        h = n(23),
-        f = i(n(44)),
-        m = i(n(53)),
+        u = i(n(67)),
+        d = i(n(82)),
+        h = n(26),
+        f = i(n(48)),
+        m = i(n(56)),
         p = function (e, t) {
           var n = {};
           for (var r in e)
@@ -54272,8 +55077,8 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(7)),
         a = r(n(0)),
-        s = i(n(85)),
-        l = i(n(53)),
+        s = i(n(88)),
+        l = i(n(56)),
         c = function (e, t) {
           var n = {};
           for (var r in e)
@@ -54348,7 +55153,7 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      var r = n(258);
+      var r = n(261);
       function i() {}
       function o() {}
       (o.resetWarningCache = i),
@@ -54396,8 +55201,8 @@ and limitations under the License.
     },
     function (e, t, n) {},
     function (e, t, n) {
-      var r = n(36),
-        i = n(261);
+      var r = n(39),
+        i = n(264);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -54412,8 +55217,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(263)),
-        s = r(n(32)),
+        a = r(n(266)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -54504,7 +55309,7 @@ and limitations under the License.
           return e && e.__esModule ? e : { default: e };
         };
       Object.defineProperty(t, '__esModule', { value: !0 });
-      var i = r(n(269));
+      var i = r(n(272));
       function o(e, t, n) {
         var r;
         return (
@@ -55483,16 +56288,16 @@ and limitations under the License.
           if (!e.calculated) return e.primaryColor;
           return [e.primaryColor, e.secondaryColor];
         });
-      var i = r(n(43)),
-        o = r(n(93)),
-        a = n(75);
+      var i = r(n(47)),
+        o = r(n(96)),
+        a = n(78);
     },
     function (e, t, n) {
       'use strict';
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(272)) && r.__esModule ? r : { default: r };
+      var i = (r = n(275)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -55502,8 +56307,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(273)),
-        s = r(n(32)),
+        a = r(n(276)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -55542,8 +56347,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(275)),
-        s = r(n(32)),
+        a = r(n(278)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -55580,7 +56385,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(277)) && r.__esModule ? r : { default: r };
+      var i = (r = n(280)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -55590,8 +56395,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(278)),
-        s = r(n(32)),
+        a = r(n(281)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -55628,7 +56433,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(280)) && r.__esModule ? r : { default: r };
+      var i = (r = n(283)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -55638,8 +56443,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(281)),
-        s = r(n(32)),
+        a = r(n(284)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -55673,11 +56478,11 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(283);
+      n(41), n(286);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(284);
+      var r = n(39),
+        i = n(287);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -55692,15 +56497,15 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
-        l = i(n(249)),
+        l = i(n(252)),
         c = i(n(4)),
-        u = i(n(287)),
-        d = i(n(290)),
-        h = n(23),
-        f = i(n(325)),
-        m = n(59),
+        u = i(n(290)),
+        d = i(n(293)),
+        h = n(26),
+        f = i(n(328)),
+        m = n(62),
         p = function (e) {
           var t,
             n,
@@ -55906,7 +56711,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(288)) && r.__esModule ? r : { default: r };
+      var i = (r = n(291)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -55916,8 +56721,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(289)),
-        s = r(n(32)),
+        a = r(n(292)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -55956,11 +56761,11 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
-        l = i(n(249)),
+        l = i(n(252)),
         c = i(n(4)),
-        u = n(23),
+        u = n(26),
         d = function (e) {
           var t = s.useContext(u.ConfigContext).getPrefixCls,
             n = e.prefixCls,
@@ -56374,14 +57179,14 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = t.ANT_MARK = void 0);
       var o = i(n(7)),
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(15)),
-        c = i(n(39)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(16)),
+        c = i(n(42)),
         u = r(n(0)),
-        d = i(n(53)),
-        h = n(294),
-        f = i(n(96));
+        d = i(n(56)),
+        h = n(297),
+        f = i(n(99));
       t.ANT_MARK = 'internalMark';
       var m = (function (e) {
         (0, l.default)(n, e);
@@ -56466,7 +57271,7 @@ and limitations under the License.
           return a;
         });
       var i = r(n(7)),
-        o = r(n(94)),
+        o = r(n(97)),
         a = (0, i.default)({}, o.default.Modal);
     },
     function (e, t, n) {
@@ -56526,7 +57331,7 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(66)).default;
+      var i = r(n(69)).default;
       t.default = i;
     },
     function (e, t, n) {
@@ -56534,7 +57339,7 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(94)).default;
+      var i = r(n(97)).default;
       t.default = i;
     },
     function (e, t, n) {
@@ -56562,7 +57367,7 @@ and limitations under the License.
         (t.ConfigConsumer = t.ConfigContext = void 0);
       var o = i(n(7)),
         a = r(n(0)),
-        s = i(n(300)),
+        s = i(n(303)),
         l = a.createContext({
           getPrefixCls: function (e, t) {
             return t || (e ? 'ant-'.concat(e) : 'ant');
@@ -56580,8 +57385,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(301)),
-        s = n(23),
+        a = r(n(304)),
+        s = n(26),
         l = function (e) {
           return o.createElement(s.ConfigConsumer, null, function (t) {
             var n = (0, t.getPrefixCls)('empty');
@@ -56614,13 +57419,13 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
         l = i(n(4)),
-        c = n(23),
-        u = i(n(67)),
-        d = i(n(302)),
-        h = i(n(303)),
+        c = n(26),
+        u = i(n(70)),
+        d = i(n(305)),
+        h = i(n(306)),
         f = function (e, t) {
           var n = {};
           for (var r in e)
@@ -56719,7 +57524,7 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var i = r(n(0)),
-        o = n(23),
+        o = n(26),
         a = function () {
           var e = (0, i.useContext(o.ConfigContext).getPrefixCls)(
             'empty-img-default',
@@ -56800,7 +57605,7 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var i = r(n(0)),
-        o = n(23),
+        o = n(26),
         a = function () {
           var e = (0, i.useContext(o.ConfigContext).getPrefixCls)(
             'empty-img-simple',
@@ -56855,16 +57660,16 @@ and limitations under the License.
       var o,
         a,
         s = i(n(7)),
-        l = i(n(22)),
+        l = i(n(25)),
         c = r(n(0)),
-        u = i(n(248)),
-        d = i(n(97)),
+        u = i(n(251)),
+        d = i(n(100)),
         h = i(n(4)),
-        f = i(n(307)),
-        m = i(n(310)),
-        p = i(n(313)),
-        g = i(n(316)),
-        _ = i(n(319)),
+        f = i(n(310)),
+        m = i(n(313)),
+        p = i(n(316)),
+        g = i(n(319)),
+        _ = i(n(322)),
         v = {},
         y = 4.5,
         b = 24,
@@ -57057,8 +57862,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(306)),
-        s = r(n(32)),
+        a = r(n(309)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -57095,7 +57900,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(308)) && r.__esModule ? r : { default: r };
+      var i = (r = n(311)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -57105,8 +57910,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(309)),
-        s = r(n(32)),
+        a = r(n(312)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -57150,7 +57955,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(311)) && r.__esModule ? r : { default: r };
+      var i = (r = n(314)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -57160,8 +57965,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(312)),
-        s = r(n(32)),
+        a = r(n(315)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -57205,7 +58010,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(314)) && r.__esModule ? r : { default: r };
+      var i = (r = n(317)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -57215,8 +58020,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(315)),
-        s = r(n(32)),
+        a = r(n(318)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -57260,7 +58065,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(317)) && r.__esModule ? r : { default: r };
+      var i = (r = n(320)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -57270,8 +58075,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(318)),
-        s = r(n(32)),
+        a = r(n(321)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -57361,10 +58166,10 @@ and limitations under the License.
           };
         });
       var o = i(n(7)),
-        a = i(n(43)),
+        a = i(n(47)),
         s = r(n(0)),
-        l = i(n(320)),
-        c = n(23);
+        l = i(n(323)),
+        c = n(26);
     },
     function (e, t, n) {
       'use strict';
@@ -57396,13 +58201,13 @@ and limitations under the License.
             s.createElement(s.Fragment, null, i),
           ];
         });
-      var o = i(n(98)),
-        a = i(n(43)),
+      var o = i(n(101)),
+        a = i(n(47)),
         s = r(n(0)),
-        l = i(n(324));
+        l = i(n(327));
     },
     function (e, t, n) {
-      var r = n(91);
+      var r = n(94);
       e.exports = function (e) {
         if (Array.isArray(e)) return r(e);
       };
@@ -57426,14 +58231,14 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(15)),
-        c = i(n(16)),
+      var o = i(n(25)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(16)),
+        c = i(n(17)),
         u = i(n(8)),
         d = r(n(0)),
-        h = i(n(30)),
+        h = i(n(33)),
         f = i(n(4));
       function m(e) {
         var t = (function () {
@@ -57592,8 +58397,8 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(58)),
-        o = r(n(46));
+      var i = r(n(61)),
+        o = r(n(50));
       function a(e, t, n) {
         var r, a;
         return (0, i.default)(e, 'ant-motion-collapse-legacy', {
@@ -57664,11 +58469,11 @@ and limitations under the License.
               }),
               (i = new Date().getTime()));
         }.call(this));
-      }.call(this, n(73)));
+      }.call(this, n(76)));
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(328);
+      var r = n(39),
+        i = n(331);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -57719,7 +58524,7 @@ and limitations under the License.
           );
         });
       var i = r(n(7)),
-        o = n(330),
+        o = n(333),
         a = { adjustX: 1, adjustY: 1 },
         s = { adjustX: 0, adjustY: 0 },
         l = [0, 0];
@@ -57816,8 +58621,8 @@ and limitations under the License.
       t.default = a;
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(332);
+      var r = n(39),
+        i = n(335);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -57866,8 +58671,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 });
       var a = n(1),
         s = n(0),
-        l = n(100),
-        c = n(101),
+        l = n(103),
+        c = n(104),
         u = c.getAceInstance(),
         d = u.require('ace/range').Range,
         h = (function (e) {
@@ -58270,8 +59075,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 });
       var o = n(1),
         a = n(0),
-        s = n(103),
-        l = n(337),
+        s = n(106),
+        l = n(340),
         c = (function (e) {
           function t(t) {
             var n = e.call(this, t) || this;
@@ -58677,7 +59482,7 @@ and limitations under the License.
           ace.require(['ace/ext/split'], function (t) {
             e && (e.exports = t);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
       (function (t) {
@@ -58955,7 +59760,7 @@ and limitations under the License.
           var r = null == e ? void 0 : E(e, t);
           return void 0 === r ? n : r;
         };
-      }.call(this, n(52)));
+      }.call(this, n(55)));
     },
     function (e, t) {
       var n = function () {
@@ -60337,7 +61142,7 @@ and limitations under the License.
           ace.require(['ace/mode/json'], function (t) {
             e && (e.exports = t);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
       (function (e) {
@@ -60355,7 +61160,7 @@ and limitations under the License.
           ace.require(['ace/theme/solarized_light'], function (t) {
             e && (e.exports = t);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
       (function (e) {
@@ -61110,11 +61915,11 @@ and limitations under the License.
           ace.require(['ace/mode/javascript'], function (t) {
             e && (e.exports = t);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(342);
+      var r = n(39),
+        i = n(345);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -61123,8 +61928,8 @@ and limitations under the License.
     },
     function (e, t, n) {},
     function (e, t, n) {
-      var r = n(36),
-        i = n(344);
+      var r = n(39),
+        i = n(347);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -61138,10 +61943,10 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = r(n(0)),
         s = i(n(4)),
-        l = n(23),
+        l = n(26),
         c = function (e) {
           return a.createElement(l.ConfigConsumer, null, function (t) {
             var n,
@@ -61183,18 +61988,18 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = i(n(7)),
         s = r(n(0)),
         l = i(n(4)),
-        c = n(347),
-        u = i(n(348)),
-        d = i(n(64)),
-        h = i(n(61)),
-        f = i(n(107)),
-        m = i(n(44)),
-        p = n(23),
-        g = n(59),
+        c = n(350),
+        u = i(n(351)),
+        d = i(n(67)),
+        h = i(n(64)),
+        f = i(n(110)),
+        m = i(n(48)),
+        p = n(26),
+        g = n(62),
         _ = function (e, t) {
           var n = {};
           for (var r in e)
@@ -61397,7 +62202,7 @@ and limitations under the License.
             return !1;
           return !0;
         });
-      var r = n(51);
+      var r = n(54);
       function i(e) {
         return (i =
           'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
@@ -61424,7 +62229,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(349)) && r.__esModule ? r : { default: r };
+      var i = (r = n(352)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -61434,8 +62239,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(350)),
-        s = r(n(32)),
+        a = r(n(353)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -61478,20 +62283,20 @@ and limitations under the License.
         }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
-        s = i(n(43)),
-        l = i(n(50)),
+        a = i(n(25)),
+        s = i(n(47)),
+        l = i(n(53)),
         c = r(n(0)),
         u = i(n(4)),
-        d = i(n(49)),
-        h = i(n(352)),
-        f = n(23),
-        m = i(n(79)),
-        p = n(77),
-        g = i(n(53)),
-        _ = i(n(44)),
-        v = i(n(356)),
-        y = n(59),
+        d = i(n(52)),
+        h = i(n(355)),
+        f = n(26),
+        m = i(n(82)),
+        p = n(80),
+        g = i(n(56)),
+        _ = i(n(48)),
+        v = i(n(359)),
+        y = n(62),
         b = function (e, t) {
           var n = {};
           for (var r in e)
@@ -61714,11 +62519,11 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
         l = i(n(4)),
-        c = n(23),
-        u = i(n(353)),
+        c = n(26),
+        u = i(n(356)),
         d = function (e, t) {
           var n = {};
           for (var r in e)
@@ -61779,7 +62584,7 @@ and limitations under the License.
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = r(n(11));
+      var i = r(n(13));
       t.default = function e(t) {
         return (
           (0, i.default)(this, e),
@@ -61890,7 +62695,7 @@ and limitations under the License.
       'use strict';
       var r = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }), (t.default = s);
-      var i = r(n(46)),
+      var i = r(n(50)),
         o = 0,
         a = {};
       function s(e) {
@@ -61950,8 +62755,8 @@ and limitations under the License.
         });
       var o = i(n(0)),
         a = r(n(4)),
-        s = r(n(357)),
-        l = r(n(64)),
+        s = r(n(360)),
+        l = r(n(67)),
         c = function () {
           return { width: 0, opacity: 0, transform: 'scale(0)' };
         },
@@ -61988,10 +62793,10 @@ and limitations under the License.
         })();
       t.genCSSMotion = h;
       var o = u(n(0)),
-        a = u(n(358)),
+        a = u(n(361)),
         s = u(n(4)),
-        l = u(n(46)),
-        c = n(359);
+        l = u(n(50)),
+        c = n(362);
       function u(e) {
         return e && e.__esModule ? e : { default: e };
       }
@@ -62320,7 +63125,7 @@ and limitations under the License.
           return i.default.findDOMNode(e);
         });
       var r,
-        i = (r = n(30)) && r.__esModule ? r : { default: r };
+        i = (r = n(33)) && r.__esModule ? r : { default: r };
     },
     function (e, t, n) {
       'use strict';
@@ -62391,16 +63196,16 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(11)),
-        s = i(n(13)),
-        l = i(n(15)),
-        c = i(n(39)),
+        a = i(n(13)),
+        s = i(n(14)),
+        l = i(n(16)),
+        c = i(n(42)),
         u = r(n(0)),
-        d = i(n(422)),
-        h = i(n(49)),
-        f = i(n(106)),
-        m = n(23),
-        p = n(61),
+        d = i(n(425)),
+        h = i(n(52)),
+        f = i(n(109)),
+        m = n(26),
+        p = n(64),
         g = (function (e) {
           (0, l.default)(n, e);
           var t = (0, c.default)(n);
@@ -62514,15 +63319,15 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
-        s = i(n(43)),
+        a = i(n(25)),
+        s = i(n(47)),
         l = r(n(0)),
         c = i(n(4)),
-        u = i(n(49)),
-        d = i(n(362)),
-        h = i(n(365)),
-        f = n(23),
-        m = i(n(61)),
+        u = i(n(52)),
+        d = i(n(365)),
+        h = i(n(368)),
+        f = n(26),
+        m = i(n(64)),
         p = function (e, t) {
           var n = {};
           for (var r in e)
@@ -62636,7 +63441,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(363)) && r.__esModule ? r : { default: r };
+      var i = (r = n(366)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -62646,8 +63451,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(364)),
-        s = r(n(32)),
+        a = r(n(367)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -62684,7 +63489,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(366)) && r.__esModule ? r : { default: r };
+      var i = (r = n(369)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -62694,8 +63499,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(367)),
-        s = r(n(32)),
+        a = r(n(370)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -62736,11 +63541,11 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(369);
+      n(41), n(372);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(370);
+      var r = n(39),
+        i = n(373);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -62762,7 +63567,7 @@ and limitations under the License.
             });
           };
         });
-      var i = r(n(50));
+      var i = r(n(53));
       function o(e, t) {
         'function' == typeof e
           ? e(t)
@@ -62778,15 +63583,15 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
-        a = i(n(43)),
+      var o = i(n(25)),
+        a = i(n(47)),
         s = r(n(0)),
         l = i(n(4)),
-        c = i(n(373)),
-        u = i(n(80)),
-        d = n(23),
-        h = i(n(44)),
-        f = n(81),
+        c = i(n(376)),
+        u = i(n(83)),
+        d = n(26),
+        h = i(n(48)),
+        f = n(84),
         m = s.forwardRef(function (e, t) {
           var n = s.useContext(d.ConfigContext),
             r = n.getPrefixCls,
@@ -63042,9 +63847,9 @@ and limitations under the License.
         (t.default = void 0);
       var o = i(n(7)),
         a = r(n(0)),
-        s = i(n(80)),
-        l = n(23),
-        c = i(n(81)),
+        s = i(n(83)),
+        l = n(26),
+        c = i(n(84)),
         u = function (e, t) {
           var n = {};
           for (var r in e)
@@ -63082,11 +63887,11 @@ and limitations under the License.
     function (e, t, n) {},
     function (e, t, n) {
       'use strict';
-      n(38), n(377);
+      n(41), n(380);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(378);
+      var r = n(39),
+        i = n(381);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -63096,11 +63901,11 @@ and limitations under the License.
     function (e, t, n) {},
     function (e, t, n) {
       'use strict';
-      n(38), n(380);
+      n(41), n(383);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(381);
+      var r = n(39),
+        i = n(384);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -63115,7 +63920,7 @@ and limitations under the License.
         i = n.n(r),
         o = n(4),
         a = n.n(o),
-        s = n(18),
+        s = n(19),
         l =
           Object.assign ||
           function (e) {
@@ -63939,7 +64744,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(384)) && r.__esModule ? r : { default: r };
+      var i = (r = n(387)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -63949,8 +64754,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(385)),
-        s = r(n(32)),
+        a = r(n(388)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -63987,7 +64792,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(387)) && r.__esModule ? r : { default: r };
+      var i = (r = n(390)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -63997,8 +64802,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(388)),
-        s = r(n(32)),
+        a = r(n(391)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -64032,11 +64837,11 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(390);
+      n(41), n(393);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(391);
+      var r = n(39),
+        i = n(394);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -64048,13 +64853,13 @@ and limitations under the License.
       'use strict';
       n.r(t);
       var r = n(3),
-        i = n(10),
-        o = n(34),
+        i = n(12),
+        o = n(37),
         a = n(0),
         s = n(4),
         l = n.n(s),
-        c = n(37),
-        u = n(18),
+        c = n(40),
+        u = n(19),
         d = a.forwardRef(function (e, t) {
           var n,
             s = e.prefixCls,
@@ -64129,21 +64934,7 @@ and limitations under the License.
       (d.displayName = 'Switch'), (t.default = d);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(394);
-      'string' == typeof (i = i.__esModule ? i.default : i) &&
-        (i = [[e.i, i, '']]);
-      var o = { insert: 'head', singleton: !1 };
-      r(i, o);
-      e.exports = i.locals || {};
-    },
-    function (e, t, n) {},
-    function (e, t, n) {
-      'use strict';
-      n(38), n(396);
-    },
-    function (e, t, n) {
-      var r = n(36),
+      var r = n(39),
         i = n(397);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
@@ -64153,273 +64944,287 @@ and limitations under the License.
     },
     function (e, t, n) {},
     function (e, t, n) {
+      'use strict';
+      n(41), n(399);
+    },
+    function (e, t, n) {
+      var r = n(39),
+        i = n(400);
+      'string' == typeof (i = i.__esModule ? i.default : i) &&
+        (i = [[e.i, i, '']]);
+      var o = { insert: 'head', singleton: !1 };
+      r(i, o);
+      e.exports = i.locals || {};
+    },
+    function (e, t, n) {},
+    function (e, t, n) {
       var r = {
-        './af': 111,
-        './af.js': 111,
-        './ar': 112,
-        './ar-dz': 113,
-        './ar-dz.js': 113,
-        './ar-kw': 114,
-        './ar-kw.js': 114,
-        './ar-ly': 115,
-        './ar-ly.js': 115,
-        './ar-ma': 116,
-        './ar-ma.js': 116,
-        './ar-sa': 117,
-        './ar-sa.js': 117,
-        './ar-tn': 118,
-        './ar-tn.js': 118,
-        './ar.js': 112,
-        './az': 119,
-        './az.js': 119,
-        './be': 120,
-        './be.js': 120,
-        './bg': 121,
-        './bg.js': 121,
-        './bm': 122,
-        './bm.js': 122,
-        './bn': 123,
-        './bn.js': 123,
-        './bo': 124,
-        './bo.js': 124,
-        './br': 125,
-        './br.js': 125,
-        './bs': 126,
-        './bs.js': 126,
-        './ca': 127,
-        './ca.js': 127,
-        './cs': 128,
-        './cs.js': 128,
-        './cv': 129,
-        './cv.js': 129,
-        './cy': 130,
-        './cy.js': 130,
-        './da': 131,
-        './da.js': 131,
-        './de': 132,
-        './de-at': 133,
-        './de-at.js': 133,
-        './de-ch': 134,
-        './de-ch.js': 134,
-        './de.js': 132,
-        './dv': 135,
-        './dv.js': 135,
-        './el': 136,
-        './el.js': 136,
-        './en-au': 137,
-        './en-au.js': 137,
-        './en-ca': 138,
-        './en-ca.js': 138,
-        './en-gb': 139,
-        './en-gb.js': 139,
-        './en-ie': 140,
-        './en-ie.js': 140,
-        './en-il': 141,
-        './en-il.js': 141,
-        './en-in': 142,
-        './en-in.js': 142,
-        './en-nz': 143,
-        './en-nz.js': 143,
-        './en-sg': 144,
-        './en-sg.js': 144,
-        './eo': 145,
-        './eo.js': 145,
-        './es': 146,
-        './es-do': 147,
-        './es-do.js': 147,
-        './es-us': 148,
-        './es-us.js': 148,
-        './es.js': 146,
-        './et': 149,
-        './et.js': 149,
-        './eu': 150,
-        './eu.js': 150,
-        './fa': 151,
-        './fa.js': 151,
-        './fi': 152,
-        './fi.js': 152,
-        './fil': 153,
-        './fil.js': 153,
-        './fo': 154,
-        './fo.js': 154,
-        './fr': 155,
-        './fr-ca': 156,
-        './fr-ca.js': 156,
-        './fr-ch': 157,
-        './fr-ch.js': 157,
-        './fr.js': 155,
-        './fy': 158,
-        './fy.js': 158,
-        './ga': 159,
-        './ga.js': 159,
-        './gd': 160,
-        './gd.js': 160,
-        './gl': 161,
-        './gl.js': 161,
-        './gom-deva': 162,
-        './gom-deva.js': 162,
-        './gom-latn': 163,
-        './gom-latn.js': 163,
-        './gu': 164,
-        './gu.js': 164,
-        './he': 165,
-        './he.js': 165,
-        './hi': 166,
-        './hi.js': 166,
-        './hr': 167,
-        './hr.js': 167,
-        './hu': 168,
-        './hu.js': 168,
-        './hy-am': 169,
-        './hy-am.js': 169,
-        './id': 170,
-        './id.js': 170,
-        './is': 171,
-        './is.js': 171,
-        './it': 172,
-        './it-ch': 173,
-        './it-ch.js': 173,
-        './it.js': 172,
-        './ja': 174,
-        './ja.js': 174,
-        './jv': 175,
-        './jv.js': 175,
-        './ka': 176,
-        './ka.js': 176,
-        './kk': 177,
-        './kk.js': 177,
-        './km': 178,
-        './km.js': 178,
-        './kn': 179,
-        './kn.js': 179,
-        './ko': 180,
-        './ko.js': 180,
-        './ku': 181,
-        './ku.js': 181,
-        './ky': 182,
-        './ky.js': 182,
-        './lb': 183,
-        './lb.js': 183,
-        './lo': 184,
-        './lo.js': 184,
-        './lt': 185,
-        './lt.js': 185,
-        './lv': 186,
-        './lv.js': 186,
-        './me': 187,
-        './me.js': 187,
-        './mi': 188,
-        './mi.js': 188,
-        './mk': 189,
-        './mk.js': 189,
-        './ml': 190,
-        './ml.js': 190,
-        './mn': 191,
-        './mn.js': 191,
-        './mr': 192,
-        './mr.js': 192,
-        './ms': 193,
-        './ms-my': 194,
-        './ms-my.js': 194,
-        './ms.js': 193,
-        './mt': 195,
-        './mt.js': 195,
-        './my': 196,
-        './my.js': 196,
-        './nb': 197,
-        './nb.js': 197,
-        './ne': 198,
-        './ne.js': 198,
-        './nl': 199,
-        './nl-be': 200,
-        './nl-be.js': 200,
-        './nl.js': 199,
-        './nn': 201,
-        './nn.js': 201,
-        './oc-lnc': 202,
-        './oc-lnc.js': 202,
-        './pa-in': 203,
-        './pa-in.js': 203,
-        './pl': 204,
-        './pl.js': 204,
-        './pt': 205,
-        './pt-br': 206,
-        './pt-br.js': 206,
-        './pt.js': 205,
-        './ro': 207,
-        './ro.js': 207,
-        './ru': 208,
-        './ru.js': 208,
-        './sd': 209,
-        './sd.js': 209,
-        './se': 210,
-        './se.js': 210,
-        './si': 211,
-        './si.js': 211,
-        './sk': 212,
-        './sk.js': 212,
-        './sl': 213,
-        './sl.js': 213,
-        './sq': 214,
-        './sq.js': 214,
-        './sr': 215,
-        './sr-cyrl': 216,
-        './sr-cyrl.js': 216,
-        './sr.js': 215,
-        './ss': 217,
-        './ss.js': 217,
-        './sv': 218,
-        './sv.js': 218,
-        './sw': 219,
-        './sw.js': 219,
-        './ta': 220,
-        './ta.js': 220,
-        './te': 221,
-        './te.js': 221,
-        './tet': 222,
-        './tet.js': 222,
-        './tg': 223,
-        './tg.js': 223,
-        './th': 224,
-        './th.js': 224,
-        './tk': 225,
-        './tk.js': 225,
-        './tl-ph': 226,
-        './tl-ph.js': 226,
-        './tlh': 227,
-        './tlh.js': 227,
-        './tr': 228,
-        './tr.js': 228,
-        './tzl': 229,
-        './tzl.js': 229,
-        './tzm': 230,
-        './tzm-latn': 231,
-        './tzm-latn.js': 231,
-        './tzm.js': 230,
-        './ug-cn': 232,
-        './ug-cn.js': 232,
-        './uk': 233,
-        './uk.js': 233,
-        './ur': 234,
-        './ur.js': 234,
-        './uz': 235,
-        './uz-latn': 236,
-        './uz-latn.js': 236,
-        './uz.js': 235,
-        './vi': 237,
-        './vi.js': 237,
-        './x-pseudo': 238,
-        './x-pseudo.js': 238,
-        './yo': 239,
-        './yo.js': 239,
-        './zh-cn': 240,
-        './zh-cn.js': 240,
-        './zh-hk': 241,
-        './zh-hk.js': 241,
-        './zh-mo': 242,
-        './zh-mo.js': 242,
-        './zh-tw': 243,
-        './zh-tw.js': 243,
+        './af': 114,
+        './af.js': 114,
+        './ar': 115,
+        './ar-dz': 116,
+        './ar-dz.js': 116,
+        './ar-kw': 117,
+        './ar-kw.js': 117,
+        './ar-ly': 118,
+        './ar-ly.js': 118,
+        './ar-ma': 119,
+        './ar-ma.js': 119,
+        './ar-sa': 120,
+        './ar-sa.js': 120,
+        './ar-tn': 121,
+        './ar-tn.js': 121,
+        './ar.js': 115,
+        './az': 122,
+        './az.js': 122,
+        './be': 123,
+        './be.js': 123,
+        './bg': 124,
+        './bg.js': 124,
+        './bm': 125,
+        './bm.js': 125,
+        './bn': 126,
+        './bn.js': 126,
+        './bo': 127,
+        './bo.js': 127,
+        './br': 128,
+        './br.js': 128,
+        './bs': 129,
+        './bs.js': 129,
+        './ca': 130,
+        './ca.js': 130,
+        './cs': 131,
+        './cs.js': 131,
+        './cv': 132,
+        './cv.js': 132,
+        './cy': 133,
+        './cy.js': 133,
+        './da': 134,
+        './da.js': 134,
+        './de': 135,
+        './de-at': 136,
+        './de-at.js': 136,
+        './de-ch': 137,
+        './de-ch.js': 137,
+        './de.js': 135,
+        './dv': 138,
+        './dv.js': 138,
+        './el': 139,
+        './el.js': 139,
+        './en-au': 140,
+        './en-au.js': 140,
+        './en-ca': 141,
+        './en-ca.js': 141,
+        './en-gb': 142,
+        './en-gb.js': 142,
+        './en-ie': 143,
+        './en-ie.js': 143,
+        './en-il': 144,
+        './en-il.js': 144,
+        './en-in': 145,
+        './en-in.js': 145,
+        './en-nz': 146,
+        './en-nz.js': 146,
+        './en-sg': 147,
+        './en-sg.js': 147,
+        './eo': 148,
+        './eo.js': 148,
+        './es': 149,
+        './es-do': 150,
+        './es-do.js': 150,
+        './es-us': 151,
+        './es-us.js': 151,
+        './es.js': 149,
+        './et': 152,
+        './et.js': 152,
+        './eu': 153,
+        './eu.js': 153,
+        './fa': 154,
+        './fa.js': 154,
+        './fi': 155,
+        './fi.js': 155,
+        './fil': 156,
+        './fil.js': 156,
+        './fo': 157,
+        './fo.js': 157,
+        './fr': 158,
+        './fr-ca': 159,
+        './fr-ca.js': 159,
+        './fr-ch': 160,
+        './fr-ch.js': 160,
+        './fr.js': 158,
+        './fy': 161,
+        './fy.js': 161,
+        './ga': 162,
+        './ga.js': 162,
+        './gd': 163,
+        './gd.js': 163,
+        './gl': 164,
+        './gl.js': 164,
+        './gom-deva': 165,
+        './gom-deva.js': 165,
+        './gom-latn': 166,
+        './gom-latn.js': 166,
+        './gu': 167,
+        './gu.js': 167,
+        './he': 168,
+        './he.js': 168,
+        './hi': 169,
+        './hi.js': 169,
+        './hr': 170,
+        './hr.js': 170,
+        './hu': 171,
+        './hu.js': 171,
+        './hy-am': 172,
+        './hy-am.js': 172,
+        './id': 173,
+        './id.js': 173,
+        './is': 174,
+        './is.js': 174,
+        './it': 175,
+        './it-ch': 176,
+        './it-ch.js': 176,
+        './it.js': 175,
+        './ja': 177,
+        './ja.js': 177,
+        './jv': 178,
+        './jv.js': 178,
+        './ka': 179,
+        './ka.js': 179,
+        './kk': 180,
+        './kk.js': 180,
+        './km': 181,
+        './km.js': 181,
+        './kn': 182,
+        './kn.js': 182,
+        './ko': 183,
+        './ko.js': 183,
+        './ku': 184,
+        './ku.js': 184,
+        './ky': 185,
+        './ky.js': 185,
+        './lb': 186,
+        './lb.js': 186,
+        './lo': 187,
+        './lo.js': 187,
+        './lt': 188,
+        './lt.js': 188,
+        './lv': 189,
+        './lv.js': 189,
+        './me': 190,
+        './me.js': 190,
+        './mi': 191,
+        './mi.js': 191,
+        './mk': 192,
+        './mk.js': 192,
+        './ml': 193,
+        './ml.js': 193,
+        './mn': 194,
+        './mn.js': 194,
+        './mr': 195,
+        './mr.js': 195,
+        './ms': 196,
+        './ms-my': 197,
+        './ms-my.js': 197,
+        './ms.js': 196,
+        './mt': 198,
+        './mt.js': 198,
+        './my': 199,
+        './my.js': 199,
+        './nb': 200,
+        './nb.js': 200,
+        './ne': 201,
+        './ne.js': 201,
+        './nl': 202,
+        './nl-be': 203,
+        './nl-be.js': 203,
+        './nl.js': 202,
+        './nn': 204,
+        './nn.js': 204,
+        './oc-lnc': 205,
+        './oc-lnc.js': 205,
+        './pa-in': 206,
+        './pa-in.js': 206,
+        './pl': 207,
+        './pl.js': 207,
+        './pt': 208,
+        './pt-br': 209,
+        './pt-br.js': 209,
+        './pt.js': 208,
+        './ro': 210,
+        './ro.js': 210,
+        './ru': 211,
+        './ru.js': 211,
+        './sd': 212,
+        './sd.js': 212,
+        './se': 213,
+        './se.js': 213,
+        './si': 214,
+        './si.js': 214,
+        './sk': 215,
+        './sk.js': 215,
+        './sl': 216,
+        './sl.js': 216,
+        './sq': 217,
+        './sq.js': 217,
+        './sr': 218,
+        './sr-cyrl': 219,
+        './sr-cyrl.js': 219,
+        './sr.js': 218,
+        './ss': 220,
+        './ss.js': 220,
+        './sv': 221,
+        './sv.js': 221,
+        './sw': 222,
+        './sw.js': 222,
+        './ta': 223,
+        './ta.js': 223,
+        './te': 224,
+        './te.js': 224,
+        './tet': 225,
+        './tet.js': 225,
+        './tg': 226,
+        './tg.js': 226,
+        './th': 227,
+        './th.js': 227,
+        './tk': 228,
+        './tk.js': 228,
+        './tl-ph': 229,
+        './tl-ph.js': 229,
+        './tlh': 230,
+        './tlh.js': 230,
+        './tr': 231,
+        './tr.js': 231,
+        './tzl': 232,
+        './tzl.js': 232,
+        './tzm': 233,
+        './tzm-latn': 234,
+        './tzm-latn.js': 234,
+        './tzm.js': 233,
+        './ug-cn': 235,
+        './ug-cn.js': 235,
+        './uk': 236,
+        './uk.js': 236,
+        './ur': 237,
+        './ur.js': 237,
+        './uz': 238,
+        './uz-latn': 239,
+        './uz-latn.js': 239,
+        './uz.js': 238,
+        './vi': 240,
+        './vi.js': 240,
+        './x-pseudo': 241,
+        './x-pseudo.js': 241,
+        './yo': 242,
+        './yo.js': 242,
+        './zh-cn': 243,
+        './zh-cn.js': 243,
+        './zh-hk': 244,
+        './zh-hk.js': 244,
+        './zh-mo': 245,
+        './zh-mo.js': 245,
+        './zh-tw': 246,
+        './zh-tw.js': 246,
       };
       function i(e) {
         var t = o(e);
@@ -64437,7 +65242,7 @@ and limitations under the License.
       }),
         (i.resolve = o),
         (e.exports = i),
-        (i.id = 398);
+        (i.id = 401);
     },
     function (e, t, n) {
       'use strict';
@@ -64445,7 +65250,7 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var i = r(n(2)),
-        o = n(76),
+        o = n(79),
         a = {
           getNow: function () {
             return (0, i.default)();
@@ -64567,7 +65372,7 @@ and limitations under the License.
         });
       var o = i(n(7)),
         a = r(n(0)),
-        s = i(n(107));
+        s = i(n(110));
     },
     function (e, t, n) {
       'use strict';
@@ -64582,7 +65387,7 @@ and limitations under the License.
         });
       var o = i(n(7)),
         a = r(n(0)),
-        s = i(n(402));
+        s = i(n(405));
     },
     function (e, t, n) {
       'use strict';
@@ -64590,17 +65395,17 @@ and limitations under the License.
         i = n(5);
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = i(n(7)),
-        s = i(n(43)),
+        s = i(n(47)),
         l = r(n(0)),
         c = i(n(4)),
-        u = i(n(49)),
-        d = i(n(97)),
-        h = i(n(403)),
-        f = n(23),
-        m = n(99),
-        p = i(n(79)),
+        u = i(n(52)),
+        d = i(n(100)),
+        h = i(n(406)),
+        f = n(26),
+        m = n(102),
+        p = i(n(82)),
         g = function (e, t) {
           var n = {};
           for (var r in e)
@@ -64719,10 +65524,10 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(7)),
-        a = i(n(22)),
+        a = i(n(25)),
         s = r(n(0)),
         l = i(n(4)),
-        c = n(23),
+        c = n(26),
         u = function (e, t) {
           var n = {};
           for (var r in e)
@@ -64951,24 +65756,24 @@ and limitations under the License.
             TimePicker: S,
           };
         });
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = i(n(7)),
-        s = i(n(11)),
-        l = i(n(13)),
-        c = i(n(15)),
-        u = i(n(39)),
+        s = i(n(13)),
+        l = i(n(14)),
+        c = i(n(16)),
+        u = i(n(42)),
         d = r(n(0)),
         h = i(n(4)),
-        f = i(n(244)),
-        m = i(n(245)),
-        p = i(n(65)),
-        g = i(n(247)),
-        _ = i(n(66)),
-        v = n(246),
-        y = n(23),
-        b = i(n(67)),
-        w = i(n(44)),
-        M = n(82),
+        f = i(n(247)),
+        m = i(n(248)),
+        p = i(n(68)),
+        g = i(n(250)),
+        _ = i(n(69)),
+        v = n(249),
+        y = n(26),
+        b = i(n(70)),
+        w = i(n(48)),
+        M = n(85),
         k = function (e, t) {
           var n = {};
           for (var r in e)
@@ -64992,8 +65797,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(406)),
-        s = r(n(32)),
+        a = r(n(409)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -65032,8 +65837,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(408)),
-        s = r(n(32)),
+        a = r(n(411)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -65236,25 +66041,25 @@ and limitations under the License.
           })(d.Component);
           return (t.contextType = y.ConfigContext), t;
         });
-      var o = i(n(22)),
+      var o = i(n(25)),
         a = i(n(7)),
-        s = i(n(11)),
-        l = i(n(13)),
-        c = i(n(15)),
-        u = i(n(39)),
+        s = i(n(13)),
+        l = i(n(14)),
+        c = i(n(16)),
+        u = i(n(42)),
         d = r(n(0)),
         h = i(n(4)),
-        f = i(n(244)),
-        m = i(n(245)),
-        p = i(n(65)),
-        g = i(n(410)),
-        _ = n(247),
-        v = i(n(66)),
-        y = n(23),
-        b = i(n(44)),
-        w = i(n(67)),
-        M = n(246),
-        k = n(82),
+        f = i(n(247)),
+        m = i(n(248)),
+        p = i(n(68)),
+        g = i(n(413)),
+        _ = n(250),
+        v = i(n(69)),
+        y = n(26),
+        b = i(n(48)),
+        w = i(n(70)),
+        M = n(249),
+        k = n(85),
         L = function (e, t) {
           var n = {};
           for (var r in e)
@@ -65276,7 +66081,7 @@ and limitations under the License.
       var r;
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
-      var i = (r = n(411)) && r.__esModule ? r : { default: r };
+      var i = (r = n(414)) && r.__esModule ? r : { default: r };
       (t.default = i), (e.exports = i);
     },
     function (e, t, n) {
@@ -65286,8 +66091,8 @@ and limitations under the License.
       Object.defineProperty(t, '__esModule', { value: !0 }),
         (t.default = void 0);
       var o = i(n(0)),
-        a = r(n(412)),
-        s = r(n(32)),
+        a = r(n(415)),
+        s = r(n(35)),
         l = function (e, t) {
           return o.createElement(
             s.default,
@@ -65321,11 +66126,11 @@ and limitations under the License.
     },
     function (e, t, n) {
       'use strict';
-      n(38), n(414), n(110);
+      n(41), n(417), n(113);
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(415);
+      var r = n(39),
+        i = n(418);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -68424,11 +69229,11 @@ and limitations under the License.
           ace.require(['ace/mode/html'], function (t) {
             e && (e.exports = t);
           });
-      }.call(this, n(45)(e)));
+      }.call(this, n(49)(e)));
     },
     function (e, t, n) {
-      var r = n(36),
-        i = n(418);
+      var r = n(39),
+        i = n(421);
       'string' == typeof (i = i.__esModule ? i.default : i) &&
         (i = [[e.i, i, '']]);
       var o = { insert: 'head', singleton: !1 };
@@ -68440,7 +69245,7 @@ and limitations under the License.
       'use strict';
       n.r(t),
         n.d(t, 'default', function () {
-          return Mn;
+          return yn;
         });
       var r,
         i,
@@ -68449,369 +69254,64 @@ and limitations under the License.
         s,
         l,
         c,
-        u = n(11),
-        d = n.n(u),
-        h = n(13),
-        f = n.n(h),
-        m = n(15),
-        p = n.n(m),
-        g = n(16),
-        _ = n.n(g),
-        v = n(8),
-        y = n.n(v),
-        b = n(0),
-        w = n.n(b),
-        M = n(30),
-        k = n.n(M),
-        L = n(9),
-        S = n(1),
-        x = n.n(S),
-        O = n(48),
-        C = n.n(O),
-        T = n(25),
-        D = n.n(T),
-        E = (n(89), n(12)),
-        A = n(50),
+        u,
+        d,
+        h,
+        f,
+        m,
+        p,
+        g,
+        _,
+        v,
+        y,
+        b,
+        w,
+        M,
+        k,
+        L,
+        S,
+        x,
+        O,
+        C = n(13),
+        T = n.n(C),
+        D = n(14),
+        E = n.n(D),
+        A = n(16),
         Y = n.n(A),
-        j = {
-          type: 'object',
-          title: 'jsonSchemaObject',
-          properties: {
-            func: {
-              type: 'object',
-              format: 'func',
-              title: '功能设置',
-              readOnly: !0,
-              properties: {
-                a: {
-                  type: 'string',
-                  title: '单文本框',
-                  format: 'input',
-                  default: '',
-                  description: '',
-                  placeholder: '',
-                  isRequired: !1,
-                  readOnly: !1,
-                },
-              },
-              required: ['a'],
-              propertyOrder: ['a'],
-            },
-            style: {
-              type: 'object',
-              format: 'style',
-              title: '样式设置',
-              readOnly: !0,
-              properties: {
-                b: {
-                  type: 'string',
-                  title: '单文本框',
-                  format: 'input',
-                  default: '',
-                  description: '',
-                  placeholder: '',
-                  isRequired: !1,
-                  readOnly: !1,
-                },
-              },
-              required: ['b'],
-              propertyOrder: ['b'],
-            },
-            data: {
-              type: 'object',
-              format: 'data',
-              title: '数据设置',
-              readOnly: !0,
-              properties: {
-                c: {
-                  type: 'string',
-                  title: '单文本框',
-                  format: 'input',
-                  default: '',
-                  description: '',
-                  placeholder: '',
-                  isRequired: !1,
-                  readOnly: !1,
-                },
-              },
-              required: ['c'],
-              propertyOrder: ['c'],
-            },
-          },
-          required: ['func', 'style', 'data'],
-          propertyOrder: ['func', 'style', 'data'],
-        },
-        R = {
-          type: 'object',
-          format: 'event',
-          title: '事件',
-          isRequired: !1,
-          readOnly: !1,
-          properties: {
-            type: {
-              type: 'string',
-              default: 'emit',
-              format: 'typeSelect',
-              enum: ['on', 'emit'],
-              enumextra: ['on', 'emit'],
-              title: '事件类型',
-              isRequired: !1,
-              readOnly: !1,
-            },
-            trigger: {
-              type: 'string',
-              format: 'input',
-              default: 'eventName',
-              title: '触发事件',
-              description: '用于输入触发事件的名称',
-              placeholder: '请输入触发事件的名称',
-              isRequired: !1,
-              readOnly: !1,
-            },
-            eventData: {
-              type: 'string',
-              title: '事件数据',
-              format: 'json',
-              default: '{}',
-              description: '传递给触发事件的数据对象',
-              isRequired: !1,
-              readOnly: !1,
-            },
-          },
-          required: ['type', 'trigger', 'eventData'],
-          propertyOrder: ['type', 'trigger', 'eventData'],
-        },
-        P = {
-          type: 'object',
-          format: 'event',
-          title: '事件',
-          isRequired: !1,
-          readOnly: !1,
-          properties: {
-            type: {
-              type: 'string',
-              default: 'on',
-              format: 'typeSelect',
-              enum: ['on', 'emit'],
-              enumextra: ['on', 'emit'],
-              title: '事件类型',
-              isRequired: !1,
-              readOnly: !1,
-            },
-            register: {
-              type: 'string',
-              format: 'input',
-              default: 'eventName',
-              title: '注册事件',
-              description: '用于输入注册事件的名称',
-              placeholder: '请输入注册事件的名称',
-              isRequired: !1,
-              readOnly: !1,
-            },
-            actionFunc: {
-              type: 'string',
-              title: '执行函数',
-              format: 'codearea',
-              default: '() => {}',
-              description: '',
-              isRequired: !1,
-              readOnly: !1,
-            },
-          },
-          required: ['type', 'register', 'actionFunc'],
-          propertyOrder: ['type', 'register', 'actionFunc'],
-        },
-        $ = R,
-        N = n(14);
-      function H(e) {
-        var t = e.format;
-        return t || (t = e.type ? e.type : 'input'), t;
-      }
-      function F(e) {
-        var t = Object(N.f)(e);
-        if (
-          (!t.title && t.description && (t.title = t.description),
-          t.format || (t.format = H(t)),
-          'radio' === t.format &&
-            ((t.type = 'string'),
-            t.enum &&
-              t.enumextra &&
-              ((t.items = {
-                type: 'string',
-                enum: Object(N.f)(t.enum),
-                enumextra: Object(N.f)(t.enumextra),
-              }),
-              delete t.enum,
-              delete t.enumextra)),
-          'datasource' === t.format)
-        ) {
-          var n = t.properties;
-          n.type && Object(N.e)(n.type) && (n.type.title = '数据源类型'),
-            n.filter &&
-              Object(N.e)(n.filter) &&
-              ((n.filter.title = '过滤器'), (n.filter.format = 'codearea')),
-            n.data &&
-              Object(N.e)(n.data) &&
-              ('remote' === n.type.default
-                ? ((n.data.title = '用于设置获取元素数据的请求地址'),
-                  (n.data.format = 'url'))
-                : ((n.data.title = '本地静态json数据'),
-                  (n.data.format = 'json')));
-        }
-        if ('quantity' === t.format) {
-          var r = t.properties;
-          r.quantity &&
-            Object(N.e)(r.quantity) &&
-            ((r.quantity.title = '单位类型'),
-            (r.quantity.format = 'typeSelect')),
-            r.unit && Object(N.e)(r.unit) && (r.unit.format = 'number');
-        }
-        if ('event' === t.format) {
-          var i = t.properties,
-            o = i.type && i.type.default,
-            a = (i.filter && i.filter.default) || '() => {}';
-          'in' === o
-            ? ((t = Object(N.f)(P)),
-              i.actionFunc &&
-                Object(N.e)(i.actionFunc) &&
-                (i.actionFunc.default = Object(N.f)(a)))
-            : ((t = Object(N.f)($)),
-              i.eventData &&
-                Object(N.e)(i.eventData) &&
-                (i.eventData.default = a));
-        }
-        return (
-          t.properties &&
-            ((t.required = Object.keys(t.properties)),
-            t.propertyOrder || (t.propertyOrder = t.required),
-            t.propertyOrder.map(function (e) {
-              t.properties[e] = F(t.properties[e]);
-            })),
-          t.items && (t.items = F(t.items)),
-          t
-        );
-      }
-      function I(e, t) {
-        var n = {};
-        return (
-          Object(N.e)(e) &&
-            e.properties &&
-            e.propertyOrder.map(function (r) {
-              var i = e.properties[r],
-                o = t && t[r];
-              Object(N.a)(o) &&
-                Object(N.a)(i.default) &&
-                Y()(o) !== Y()(i.default) &&
-                (o = void 0);
-              var a = Object(N.a)(o) ? o : i.default;
-              switch (i.type) {
-                case 'string':
-                  if (
-                    ('color' === i.format &&
-                      (('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
-                      (n[r] = a || '#ffffff')),
-                    'json' === i.format)
-                  ) {
-                    var s = '',
-                      l = t && t[r];
-                    if (Object(N.e)(l) || Object(N.b)(l)) s = l;
-                    else if (Object(N.d)(l) || '' === l) s = {};
-                    else
-                      try {
-                        s = JSON.parse(l);
-                      } catch (e) {
-                        s = {};
-                      }
-                    n[r] = s;
-                  } else n[r] = Object(N.a)(a) ? a : '';
-                  break;
-                case 'boolean':
-                  n[r] = !!Object(N.a)(a) && a;
-                  break;
-                case 'number':
-                  n[r] = Object(N.a)(a) ? a : 1;
-                  break;
-                case 'array':
-                  if ('array' === i.format)
-                    if (Object(N.b)(o))
-                      (n[r] = []),
-                        o.map(function (e) {
-                          n[r].push(I(i.items, e));
-                        });
-                    else {
-                      var c = I(i.items, o);
-                      n[r] = [c];
-                    }
-                  else n[r] = a !== Object(N.a)(a) ? a : [];
-                  break;
-                case 'object':
-                  'datasource' === i.format
-                    ? i.properties &&
-                      i.properties.type &&
-                      i.properties.type.default &&
-                      'local' === i.properties.type.default
-                      ? ((n[r] = o || { data: '{}', filter: '() => {}' }),
-                        'http://xxx' === n[r].data && (n[r].data = '{}'))
-                      : ((n[r] = o || {
-                          data: 'http://xxx',
-                          filter: '() => {}',
-                        }),
-                        '{}' === n[r].data && (n[r].data = 'http://xxx'))
-                    : 'event' === i.format
-                    ? i.properties &&
-                      i.properties.type &&
-                      i.properties.type.default &&
-                      'emit' === i.properties.type.default
-                      ? o && 'out' === o.type
-                        ? (n[r] = {
-                            trigger: (o && o.filter) || '',
-                            eventData: '{}',
-                          })
-                        : (n[r] = o)
-                      : o && 'in' === o.type
-                      ? (n[r] = {
-                          register: '',
-                          actionFunc: (o && o.filter) || '() => {}',
-                        })
-                      : (n[r] = o)
-                    : (n[r] = I(i, o));
-                  break;
-                default:
-                  n[r] = Object(N.a)(a) ? a : '';
-              }
-            }),
-          n
-        );
-      }
-      var W,
-        z,
-        B,
-        V,
-        U,
-        K,
-        J,
-        q,
-        G,
-        X,
-        Q,
-        Z,
-        ee,
-        te,
-        ne,
-        re =
-          ((r = E.f.bound),
-          (i = E.f.bound),
-          (o = E.f.bound),
-          (a = E.f.bound),
-          (s = (function () {
+        j = n(17),
+        R = n.n(j),
+        P = n(8),
+        $ = n.n(P),
+        N = n(0),
+        H = n.n(N),
+        F = n(33),
+        I = n.n(F),
+        W = n(11),
+        z = n(1),
+        B = n.n(z),
+        V = n(46),
+        U = n.n(V),
+        K = n(24),
+        J = n.n(K),
+        q = (n(92), n(9)),
+        G = n(23),
+        X = n(10),
+        Q = n(28),
+        Z =
+          ((r = q.f.bound),
+          (i = q.f.bound),
+          (o = q.f.bound),
+          (a = q.f.bound),
+          (s = q.f.bound),
+          (l = (function () {
             function e(t) {
-              d()(this, e),
-                C()(this, 'pageScreen', l, this),
-                C()(this, 'jsonSchema', c, this),
+              T()(this, e),
+                U()(this, 'pageScreen', c, this),
+                U()(this, 'jsonSchema', u, this),
                 (this.rootJSONStore = t);
             }
             return (
-              f()(e, [
+              E()(e, [
                 {
                   key: 'setPageScreen',
                   value: function (e) {
@@ -68823,7 +69323,7 @@ and limitations under the License.
                   key: 'initJSONSchemaData',
                   value: function (e) {
                     if (e && '{}' !== JSON.stringify(e)) {
-                      if (!Object(N.c)(e, this.JSONSchemaObj)) {
+                      if (!Object(X.e)(e, this.JSONSchemaObj)) {
                         if (
                           (console.log(
                             'initJSONSchemaData',
@@ -68833,34 +69333,36 @@ and limitations under the License.
                         )
                           this.jsonSchema = e;
                         else {
-                          var t = F(e);
+                          var t = Object(G.f)(e);
                           this.jsonSchema = t;
                         }
                         var n = this.rootJSONStore.JSONEditorStore
                           .JSONEditorObj;
                         if ('{}' === JSON.stringify(n)) {
-                          var r = I(this.JSONSchemaObj, n);
+                          var r = Object(G.g)(this.JSONSchemaObj, n);
                           this.rootJSONStore.JSONEditorStore.jsonData = r;
                         }
                       }
-                    } else this.jsonSchema = Object(N.f)(j);
+                    } else this.jsonSchema = Object(X.h)(Q.l);
                   },
                 },
                 {
                   key: 'JSONSchemaChange',
                   value: function (e) {
-                    if (!Object(N.c)(e, this.JSONSchemaObj)) {
+                    if (!Object(X.e)(e, this.JSONSchemaObj)) {
                       if (e && '{}' !== JSON.stringify(e))
                         if (e && e.lastUpdateTime) this.jsonSchema = e;
                         else {
-                          var t = F(e);
+                          var t = Object(G.f)(e);
                           this.jsonSchema = t;
                         }
-                      else this.jsonSchema = Object(N.f)(j);
+                      else this.jsonSchema = Object(X.h)(Q.l);
                       var n = this.rootJSONStore.JSONEditorStore.JSONEditorObj,
-                        r = I(this.JSONSchemaObj, n);
+                        r = Object(G.g)(this.JSONSchemaObj, n);
                       (this.rootJSONStore.JSONEditorStore.jsonData = r),
-                        console.log('JSONSchemaChange', this.JSONSchemaObj),
+                        (this.rootJSONStore.JSONEditorStore.jsonDataTemp = Object(
+                          X.h,
+                        )(n)),
                         this.rootJSONStore.JSONEditorStore.jsonDataChange();
                     }
                   },
@@ -68868,34 +69370,19 @@ and limitations under the License.
                 {
                   key: 'getJSONDataByIndex',
                   value: function (e) {
-                    return (function (e, t, n) {
-                      var r = t;
-                      if ((n && (r = Object(N.f)(t)), e))
-                        for (
-                          var i = e.split('-'), o = 0, a = i.length;
-                          o < a;
-                          o++
-                        ) {
-                          var s = i[o];
-                          if (
-                            '0' !== s ||
-                            ('array' !== r.format &&
-                              'radio' !== r.format &&
-                              'select' !== r.format) ||
-                            !r.items
-                          ) {
-                            var l = r.propertyOrder[s];
-                            r = r.properties[l];
-                          } else r = r.items;
-                        }
-                      return r;
-                    })(e, this.jsonSchema, !0);
+                    return Object(G.b)(e, this.jsonSchema, !0);
+                  },
+                },
+                {
+                  key: 'indexRoute2keyRoute',
+                  value: function (e) {
+                    return Object(G.c)(e, this.jsonSchema);
                   },
                 },
                 {
                   key: 'JSONSchemaObj',
                   get: function () {
-                    return Object(E.q)(this.jsonSchema);
+                    return Object(q.q)(this.jsonSchema);
                   },
                 },
                 {
@@ -68911,7 +69398,7 @@ and limitations under the License.
               e
             );
           })()),
-          (l = D()(s.prototype, 'pageScreen', [E.n], {
+          (c = J()(l.prototype, 'pageScreen', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -68919,7 +69406,7 @@ and limitations under the License.
               return 'mobileScreen';
             },
           })),
-          (c = D()(s.prototype, 'jsonSchema', [E.n], {
+          (u = J()(l.prototype, 'jsonSchema', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -68927,82 +69414,91 @@ and limitations under the License.
               return {};
             },
           })),
-          D()(
-            s.prototype,
+          J()(
+            l.prototype,
             'setPageScreen',
             [r],
-            Object.getOwnPropertyDescriptor(s.prototype, 'setPageScreen'),
-            s.prototype,
+            Object.getOwnPropertyDescriptor(l.prototype, 'setPageScreen'),
+            l.prototype,
           ),
-          D()(
-            s.prototype,
+          J()(
+            l.prototype,
             'initJSONSchemaData',
             [i],
-            Object.getOwnPropertyDescriptor(s.prototype, 'initJSONSchemaData'),
-            s.prototype,
+            Object.getOwnPropertyDescriptor(l.prototype, 'initJSONSchemaData'),
+            l.prototype,
           ),
-          D()(
-            s.prototype,
+          J()(
+            l.prototype,
             'JSONSchemaChange',
             [o],
-            Object.getOwnPropertyDescriptor(s.prototype, 'JSONSchemaChange'),
-            s.prototype,
+            Object.getOwnPropertyDescriptor(l.prototype, 'JSONSchemaChange'),
+            l.prototype,
           ),
-          D()(
-            s.prototype,
+          J()(
+            l.prototype,
             'JSONSchemaObj',
-            [E.g],
-            Object.getOwnPropertyDescriptor(s.prototype, 'JSONSchemaObj'),
-            s.prototype,
+            [q.g],
+            Object.getOwnPropertyDescriptor(l.prototype, 'JSONSchemaObj'),
+            l.prototype,
           ),
-          D()(
-            s.prototype,
+          J()(
+            l.prototype,
             'lastUpdateTime',
-            [E.g],
-            Object.getOwnPropertyDescriptor(s.prototype, 'lastUpdateTime'),
-            s.prototype,
+            [q.g],
+            Object.getOwnPropertyDescriptor(l.prototype, 'lastUpdateTime'),
+            l.prototype,
           ),
-          D()(
-            s.prototype,
+          J()(
+            l.prototype,
             'getJSONDataByIndex',
             [a],
-            Object.getOwnPropertyDescriptor(s.prototype, 'getJSONDataByIndex'),
-            s.prototype,
+            Object.getOwnPropertyDescriptor(l.prototype, 'getJSONDataByIndex'),
+            l.prototype,
           ),
-          s),
-        ie = (n(74), n(41)),
-        oe = n.n(ie);
-      function ae(e, t, n) {
+          J()(
+            l.prototype,
+            'indexRoute2keyRoute',
+            [s],
+            Object.getOwnPropertyDescriptor(l.prototype, 'indexRoute2keyRoute'),
+            l.prototype,
+          ),
+          l),
+        ee = (n(77), n(44)),
+        te = n.n(ee);
+      function ne(e, t, n) {
         var r = t;
-        if ((n && (r = Object(N.f)(t)), e))
+        if ((n && (r = Object(X.h)(t)), e))
           for (var i = e.split('-'), o = 0, a = i.length; o < a; o++) {
             var s = i[o];
             r = r && r[s];
           }
         return r;
       }
-      var se =
-          ((W = E.f.bound),
-          (z = E.f.bound),
-          (B = E.f.bound),
-          (V = E.f.bound),
-          (U = E.f.bound),
-          (K = E.f.bound),
-          (J = E.f.bound),
-          (q = E.f.bound),
-          (G = E.f.bound),
-          (X = (function () {
+      var re =
+          ((d = q.f.bound),
+          (h = q.f.bound),
+          (f = q.f.bound),
+          (m = q.f.bound),
+          (p = q.f.bound),
+          (g = q.f.bound),
+          (_ = q.f.bound),
+          (v = q.f.bound),
+          (y = q.f.bound),
+          (b = q.f.bound),
+          (w = (function () {
             function e(t) {
-              d()(this, e),
-                C()(this, 'rootJSONStore', Q, this),
-                C()(this, 'triggerChange', Z, this),
-                C()(this, 'lastInitTime', ee, this),
-                C()(this, 'jsonData', te, this),
-                C()(this, 'onChange', ne, this),
+              T()(this, e),
+                U()(this, 'rootJSONStore', M, this),
+                U()(this, 'triggerChange', k, this),
+                U()(this, 'lastInitTime', L, this),
+                U()(this, 'jsonData', S, this),
+                U()(this, 'jsonDataTemp', x, this),
+                U()(this, 'onChange', O, this),
                 (this.rootJSONStore = t);
             }
             return (
-              f()(e, [
+              E()(e, [
                 {
                   key: 'updateLastInitTime',
                   value: function () {
@@ -69018,12 +69514,18 @@ and limitations under the License.
                 {
                   key: 'initJSONData',
                   value: function (e) {
-                    if (!Object(N.c)(e, this.JSONEditorObj)) {
+                    if (!Object(X.e)(e, this.JSONEditorObj)) {
                       var t =
                         this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
                       e && '{}' !== JSON.stringify(e)
-                        ? (this.jsonData = I(t, e))
-                        : (this.jsonData = I(t, {})),
+                        ? ((this.jsonDataTemp = Object(X.h)(
+                            this.JSONEditorObj,
+                          )),
+                          (this.jsonData = Object(G.g)(t, e)))
+                        : ((this.jsonDataTemp = Object(X.h)(
+                            this.JSONEditorObj,
+                          )),
+                          (this.jsonData = Object(G.g)(t, {}))),
                         this.updateLastInitTime();
                     }
                   },
@@ -69031,7 +69533,7 @@ and limitations under the License.
                 {
                   key: 'initOnChange',
                   value: function (e) {
-                    (e || Object(N.d)(e)) && (this.onChange = e);
+                    (e || Object(X.f)(e)) && (this.onChange = e);
                   },
                 },
                 {
@@ -69042,8 +69544,14 @@ and limitations under the License.
                 },
                 {
                   key: 'getJSONDataByKeyRoute',
-                  value: function (e) {
-                    return ae(e, this.jsonData, !0);
+                  value: function (e, t) {
+                    return ne(e, t || Object(q.q)(this.jsonData), !0);
+                  },
+                },
+                {
+                  key: 'getJSONDataTempByKeyRoute',
+                  value: function (e, t) {
+                    return ne(e, t || Object(q.q)(this.jsonDataTemp), !0);
                   },
                 },
                 {
@@ -69056,44 +69564,44 @@ and limitations under the License.
                       })(e),
                       r = n[0],
                       i = n[1];
-                    (ae(r, this.jsonData)[i] = t), this.jsonDataChange();
+                    (ne(r, this.jsonData)[i] = t), this.jsonDataChange();
                   },
                 },
                 {
                   key: 'deleteArrayIndex',
                   value: function (e, t) {
-                    var n = ae(e, this.jsonData);
-                    Object(N.b)(n) &&
+                    var n = ne(e, this.jsonData);
+                    Object(X.d)(n) &&
                       (n.length > 1
                         ? (n.splice(t, 1),
                           this.triggerChangeAction(),
                           this.jsonDataChange())
-                        : oe.a.warning('删除失败，至少保留一个数据项。'));
+                        : te.a.warning('删除失败，至少保留一个数据项。'));
                   },
                 },
                 {
                   key: 'addArrayItem',
                   value: function (e) {
-                    var t = ae(e, this.jsonData);
-                    if (Object(N.b)(t)) {
-                      var n = Object(N.f)(t[0]);
+                    var t = ne(e, this.jsonData);
+                    if (Object(X.d)(t)) {
+                      var n = Object(X.h)(t[0]);
                       t.push(n),
                         this.triggerChangeAction(),
                         this.jsonDataChange();
-                    } else oe.a.warning('数据操作异常：当前数据不是数组类型。');
+                    } else te.a.warning('数据操作异常：当前数据不是数组类型。');
                   },
                 },
                 {
                   key: 'JSONEditorObj',
                   get: function () {
-                    return Object(E.q)(this.jsonData);
+                    return Object(q.q)(this.jsonData);
                   },
                 },
               ]),
               e
             );
           })()),
-          (Q = D()(X.prototype, 'rootJSONStore', [E.n], {
+          (M = J()(w.prototype, 'rootJSONStore', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -69101,7 +69609,7 @@ and limitations under the License.
               return {};
             },
           })),
-          (Z = D()(X.prototype, 'triggerChange', [E.n], {
+          (k = J()(w.prototype, 'triggerChange', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -69109,7 +69617,7 @@ and limitations under the License.
               return !1;
             },
           })),
-          (ee = D()(X.prototype, 'lastInitTime', [E.n], {
+          (L = J()(w.prototype, 'lastInitTime', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -69117,7 +69625,7 @@ and limitations under the License.
               return new Date().getTime();
             },
           })),
-          (te = D()(X.prototype, 'jsonData', [E.n], {
+          (S = J()(w.prototype, 'jsonData', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -69125,7 +69633,15 @@ and limitations under the License.
               return {};
             },
           })),
-          (ne = D()(X.prototype, 'onChange', [E.n], {
+          (x = J()(w.prototype, 'jsonDataTemp', [q.n], {
+            configurable: !0,
+            enumerable: !0,
+            writable: !0,
+            initializer: function () {
+              return {};
+            },
+          })),
+          (O = J()(w.prototype, 'onChange', [q.n], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -69133,94 +69649,104 @@ and limitations under the License.
               return function () {};
             },
           })),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'updateLastInitTime',
-            [W],
-            Object.getOwnPropertyDescriptor(X.prototype, 'updateLastInitTime'),
-            X.prototype,
+            [d],
+            Object.getOwnPropertyDescriptor(w.prototype, 'updateLastInitTime'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'triggerChangeAction',
-            [z],
-            Object.getOwnPropertyDescriptor(X.prototype, 'triggerChangeAction'),
-            X.prototype,
+            [h],
+            Object.getOwnPropertyDescriptor(w.prototype, 'triggerChangeAction'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'initJSONData',
-            [B],
-            Object.getOwnPropertyDescriptor(X.prototype, 'initJSONData'),
-            X.prototype,
+            [f],
+            Object.getOwnPropertyDescriptor(w.prototype, 'initJSONData'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'initOnChange',
-            [V],
-            Object.getOwnPropertyDescriptor(X.prototype, 'initOnChange'),
-            X.prototype,
+            [m],
+            Object.getOwnPropertyDescriptor(w.prototype, 'initOnChange'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'JSONEditorObj',
-            [E.g],
-            Object.getOwnPropertyDescriptor(X.prototype, 'JSONEditorObj'),
-            X.prototype,
+            [q.g],
+            Object.getOwnPropertyDescriptor(w.prototype, 'JSONEditorObj'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'jsonDataChange',
-            [U],
-            Object.getOwnPropertyDescriptor(X.prototype, 'jsonDataChange'),
-            X.prototype,
+            [p],
+            Object.getOwnPropertyDescriptor(w.prototype, 'jsonDataChange'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'getJSONDataByKeyRoute',
-            [K],
+            [g],
             Object.getOwnPropertyDescriptor(
-              X.prototype,
+              w.prototype,
               'getJSONDataByKeyRoute',
             ),
-            X.prototype,
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
+            'getJSONDataTempByKeyRoute',
+            [_],
+            Object.getOwnPropertyDescriptor(
+              w.prototype,
+              'getJSONDataTempByKeyRoute',
+            ),
+            w.prototype,
+          ),
+          J()(
+            w.prototype,
             'updateFormValueData',
-            [J],
-            Object.getOwnPropertyDescriptor(X.prototype, 'updateFormValueData'),
-            X.prototype,
+            [v],
+            Object.getOwnPropertyDescriptor(w.prototype, 'updateFormValueData'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'deleteArrayIndex',
-            [q],
-            Object.getOwnPropertyDescriptor(X.prototype, 'deleteArrayIndex'),
-            X.prototype,
+            [y],
+            Object.getOwnPropertyDescriptor(w.prototype, 'deleteArrayIndex'),
+            w.prototype,
           ),
-          D()(
-            X.prototype,
+          J()(
+            w.prototype,
             'addArrayItem',
-            [G],
-            Object.getOwnPropertyDescriptor(X.prototype, 'addArrayItem'),
-            X.prototype,
+            [b],
+            Object.getOwnPropertyDescriptor(w.prototype, 'addArrayItem'),
+            w.prototype,
           ),
-          X),
-        le = function e() {
-          d()(this, e),
-            (this.JSONSchemaStore = new re(this)),
-            (this.JSONEditorStore = new se(this));
+          w),
+        ie = function e() {
+          T()(this, e),
+            (this.JSONSchemaStore = new Z(this)),
+            (this.JSONEditorStore = new re(this));
         },
-        ce = (n(282), n(86)),
+        oe = (n(285), n(89)),
+        ae = n.n(oe),
+        se = n(7),
+        le = n.n(se),
+        ce = (n(36), n(18)),
         ue = n.n(ce),
-        de = n(7),
+        de = n(20),
         he = n.n(de),
-        fe = (n(33), n(17)),
-        me = n.n(fe),
-        pe = n(19),
-        ge = n.n(pe),
-        _e = {
+        fe = {
           icon: {
             tag: 'svg',
             attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -69244,16 +69770,16 @@ and limitations under the License.
           name: 'plus-circle',
           theme: 'outlined',
         },
-        ve = n(10),
-        ye = n(3),
-        be = n(34),
-        we = n(4),
-        Me = n.n(we),
-        ke = n(31),
-        Le = n(83),
-        Se = n(27),
-        xe = n(84);
-      function Oe(e, t) {
+        me = n(12),
+        pe = n(3),
+        ge = n(37),
+        _e = n(4),
+        ve = n.n(_e),
+        ye = n(34),
+        be = n(86),
+        we = n(30),
+        Me = n(87);
+      function ke(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
           var r = Object.getOwnPropertySymbols(e);
@@ -69265,16 +69791,16 @@ and limitations under the License.
         }
         return n;
       }
-      function Ce(e) {
+      function Le(e) {
         for (var t = 1; t < arguments.length; t++) {
           var n = null != arguments[t] ? arguments[t] : {};
           t % 2
-            ? Oe(Object(n), !0).forEach(function (t) {
-                Object(ye.a)(e, t, n[t]);
+            ? ke(Object(n), !0).forEach(function (t) {
+                Object(pe.a)(e, t, n[t]);
               })
             : Object.getOwnPropertyDescriptors
             ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
-            : Oe(Object(n)).forEach(function (t) {
+            : ke(Object(n)).forEach(function (t) {
                 Object.defineProperty(
                   e,
                   t,
@@ -69284,15 +69810,15 @@ and limitations under the License.
         }
         return e;
       }
-      function Te(e) {
+      function Se(e) {
         return (
-          'object' === Object(ke.a)(e) &&
+          'object' === Object(ye.a)(e) &&
           'string' == typeof e.name &&
           'string' == typeof e.theme &&
-          ('object' === Object(ke.a)(e.icon) || 'function' == typeof e.icon)
+          ('object' === Object(ye.a)(e.icon) || 'function' == typeof e.icon)
         );
       }
-      function De() {
+      function xe() {
         var e =
           arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : {};
         return Object.keys(e).reduce(function (t, n) {
@@ -69307,16 +69833,16 @@ and limitations under the License.
           return t;
         }, {});
       }
-      function Ee(e) {
-        return Object(Le.generate)(e)[0];
+      function Oe(e) {
+        return Object(be.generate)(e)[0];
       }
-      function Ae(e) {
+      function Ce(e) {
         return e ? (Array.isArray(e) ? e : [e]) : [];
       }
-      var Ye =
+      var Te =
           '\n.anticon {\n  display: inline-block;\n  color: inherit;\n  font-style: normal;\n  line-height: 0;\n  text-align: center;\n  text-transform: none;\n  vertical-align: -0.125em;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.anticon > * {\n  line-height: 1;\n}\n\n.anticon svg {\n  display: inline-block;\n}\n\n.anticon::before {\n  display: none;\n}\n\n.anticon .anticon-icon {\n  display: block;\n}\n\n.anticon[tabindex] {\n  cursor: pointer;\n}\n\n.anticon-spin::before,\n.anticon-spin {\n  display: inline-block;\n  -webkit-animation: loadingCircle 1s infinite linear;\n  animation: loadingCircle 1s infinite linear;\n}\n\n@-webkit-keyframes loadingCircle {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes loadingCircle {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n',
-        je = !1;
-      function Re(e, t) {
+        De = !1;
+      function Ee(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
           var r = Object.getOwnPropertySymbols(e);
@@ -69328,16 +69854,16 @@ and limitations under the License.
         }
         return n;
       }
-      function Pe(e) {
+      function Ae(e) {
         for (var t = 1; t < arguments.length; t++) {
           var n = null != arguments[t] ? arguments[t] : {};
           t % 2
-            ? Re(Object(n), !0).forEach(function (t) {
-                Object(ye.a)(e, t, n[t]);
+            ? Ee(Object(n), !0).forEach(function (t) {
+                Object(pe.a)(e, t, n[t]);
               })
             : Object.getOwnPropertyDescriptors
             ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
-            : Re(Object(n)).forEach(function (t) {
+            : Ee(Object(n)).forEach(function (t) {
                 Object.defineProperty(
                   e,
                   t,
@@ -69347,12 +69873,12 @@ and limitations under the License.
         }
         return e;
       }
-      var $e = {
+      var Ye = {
         primaryColor: '#333',
         secondaryColor: '#E6E6E6',
         calculated: !1,
       };
-      var Ne = function (e) {
+      var je = function (e) {
         var t,
           n,
           r = e.icon,
@@ -69361,7 +69887,7 @@ and limitations under the License.
           a = e.style,
           s = e.primaryColor,
           l = e.secondaryColor,
-          c = Object(be.a)(e, [
+          c = Object(ge.a)(e, [
             'icon',
             'className',
             'onClick',
@@ -69369,45 +69895,45 @@ and limitations under the License.
             'primaryColor',
             'secondaryColor',
           ]),
-          u = $e;
+          u = Ye;
         if (
-          (s && (u = { primaryColor: s, secondaryColor: l || Ee(s) }),
+          (s && (u = { primaryColor: s, secondaryColor: l || Oe(s) }),
           (function () {
             var e =
               arguments.length > 0 && void 0 !== arguments[0]
                 ? arguments[0]
-                : Ye;
-            Object(b.useEffect)(function () {
-              je || (Object(xe.insertCss)(e, { prepend: !0 }), (je = !0));
+                : Te;
+            Object(N.useEffect)(function () {
+              De || (Object(Me.insertCss)(e, { prepend: !0 }), (De = !0));
             }, []);
           })(),
-          (t = Te(r)),
+          (t = Se(r)),
           (n = 'icon should be icon definiton, but got '.concat(r)),
-          Object(Se.a)(t, '[@ant-design/icons] '.concat(n)),
-          !Te(r))
+          Object(we.a)(t, '[@ant-design/icons] '.concat(n)),
+          !Se(r))
         )
           return null;
         var d = r;
         return (
           d &&
             'function' == typeof d.icon &&
-            (d = Pe(
-              Pe({}, d),
+            (d = Ae(
+              Ae({}, d),
               {},
               { icon: d.icon(u.primaryColor, u.secondaryColor) },
             )),
           (function e(t, n, r) {
             return r
-              ? w.a.createElement(
+              ? H.a.createElement(
                   t.tag,
-                  Ce(Ce({ key: n }, De(t.attrs)), r),
+                  Le(Le({ key: n }, xe(t.attrs)), r),
                   (t.children || []).map(function (r, i) {
                     return e(r, ''.concat(n, '-').concat(t.tag, '-').concat(i));
                   }),
                 )
-              : w.a.createElement(
+              : H.a.createElement(
                   t.tag,
-                  Ce({ key: n }, De(t.attrs)),
+                  Le({ key: n }, xe(t.attrs)),
                   (t.children || []).map(function (r, i) {
                     return e(r, ''.concat(n, '-').concat(t.tag, '-').concat(i));
                   }),
@@ -69415,7 +69941,7 @@ and limitations under the License.
           })(
             d.icon,
             'svg-'.concat(d.name),
-            Pe(
+            Ae(
               {
                 className: i,
                 onClick: o,
@@ -69431,27 +69957,27 @@ and limitations under the License.
           )
         );
       };
-      (Ne.displayName = 'IconReact'),
-        (Ne.getTwoToneColors = function () {
-          return Pe({}, $e);
+      (je.displayName = 'IconReact'),
+        (je.getTwoToneColors = function () {
+          return Ae({}, Ye);
         }),
-        (Ne.setTwoToneColors = function (e) {
+        (je.setTwoToneColors = function (e) {
           var t = e.primaryColor,
             n = e.secondaryColor;
-          ($e.primaryColor = t),
-            ($e.secondaryColor = n || Ee(t)),
-            ($e.calculated = !!n);
+          (Ye.primaryColor = t),
+            (Ye.secondaryColor = n || Oe(t)),
+            (Ye.calculated = !!n);
         });
-      var He = Ne;
-      function Fe(e) {
-        var t = Ae(e),
-          n = Object(ve.a)(t, 2),
+      var Re = je;
+      function Pe(e) {
+        var t = Ce(e),
+          n = Object(me.a)(t, 2),
           r = n[0],
           i = n[1];
-        return He.setTwoToneColors({ primaryColor: r, secondaryColor: i });
+        return Re.setTwoToneColors({ primaryColor: r, secondaryColor: i });
       }
-      Fe('#1890ff');
-      var Ie = b.forwardRef(function (e, t) {
+      Pe('#1890ff');
+      var $e = N.forwardRef(function (e, t) {
         var n = e.className,
           r = e.icon,
           i = e.spin,
@@ -69459,7 +69985,7 @@ and limitations under the License.
           a = e.tabIndex,
           s = e.onClick,
           l = e.twoToneColor,
-          c = Object(be.a)(e, [
+          c = Object(ge.a)(e, [
             'className',
             'icon',
             'spin',
@@ -69468,12 +69994,12 @@ and limitations under the License.
             'onClick',
             'twoToneColor',
           ]),
-          u = Me()(
+          u = ve()(
             'anticon',
-            Object(ye.a)({}, 'anticon-'.concat(r.name), Boolean(r.name)),
+            Object(pe.a)({}, 'anticon-'.concat(r.name), Boolean(r.name)),
             n,
           ),
-          d = Me()({ 'anticon-spin': !!i || 'loading' === r.name }),
+          d = ve()({ 'anticon-spin': !!i || 'loading' === r.name }),
           h = a;
         void 0 === h && s && (h = -1);
         var f = o
@@ -69482,11 +70008,11 @@ and limitations under the License.
                 transform: 'rotate('.concat(o, 'deg)'),
               }
             : void 0,
-          m = Ae(l),
-          p = Object(ve.a)(m, 2),
+          m = Ce(l),
+          p = Object(me.a)(m, 2),
           g = p[0],
           _ = p[1];
-        return b.createElement(
+        return N.createElement(
           'span',
           Object.assign({ role: 'img', 'aria-label': r.name }, c, {
             ref: t,
@@ -69494,7 +70020,7 @@ and limitations under the License.
             onClick: s,
             className: u,
           }),
-          b.createElement(He, {
+          N.createElement(Re, {
             className: d,
             icon: r,
             primaryColor: g,
@@ -69503,24 +70029,24 @@ and limitations under the License.
           }),
         );
       });
-      (Ie.displayName = 'AntdIcon'),
-        (Ie.getTwoToneColor = function () {
-          var e = He.getTwoToneColors();
+      ($e.displayName = 'AntdIcon'),
+        ($e.getTwoToneColor = function () {
+          var e = Re.getTwoToneColors();
           return e.calculated
             ? [e.primaryColor, e.secondaryColor]
             : e.primaryColor;
         }),
-        (Ie.setTwoToneColor = Fe);
-      var We = Ie,
-        ze = function (e, t) {
-          return b.createElement(
-            We,
-            Object.assign({}, e, { ref: t, icon: _e }),
+        ($e.setTwoToneColor = Pe);
+      var Ne = $e,
+        He = function (e, t) {
+          return N.createElement(
+            Ne,
+            Object.assign({}, e, { ref: t, icon: fe }),
           );
         };
-      ze.displayName = 'PlusCircleOutlined';
-      var Be = b.forwardRef(ze),
-        Ve = {
+      He.displayName = 'PlusCircleOutlined';
+      var Fe = N.forwardRef(He),
+        Ie = {
           icon: {
             tag: 'svg',
             attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -69544,14 +70070,186 @@ and limitations under the License.
           name: 'close-circle',
           theme: 'outlined',
         },
-        Ue = function (e, t) {
-          return b.createElement(
-            We,
-            Object.assign({}, e, { ref: t, icon: Ve }),
+        We = function (e, t) {
+          return N.createElement(
+            Ne,
+            Object.assign({}, e, { ref: t, icon: Ie }),
           );
         };
-      Ue.displayName = 'CloseCircleOutlined';
-      var Ke = b.forwardRef(Ue);
+      We.displayName = 'CloseCircleOutlined';
+      var ze = N.forwardRef(We),
+        Be = n(15);
+      function Ve(e) {
+        var t = (function () {
+          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
+          if (Reflect.construct.sham) return !1;
+          if ('function' == typeof Proxy) return !0;
+          try {
+            return (
+              Date.prototype.toString.call(
+                Reflect.construct(Date, [], function () {}),
+              ),
+              !0
+            );
+          } catch (e) {
+            return !1;
+          }
+        })();
+        return function () {
+          var n,
+            r = $()(e);
+          if (t) {
+            var i = $()(this).constructor;
+            n = Reflect.construct(r, arguments, i);
+          } else n = r.apply(this, arguments);
+          return R()(this, n);
+        };
+      }
+      var Ue = (function (e) {
+        Y()(n, e);
+        var t = Ve(n);
+        function n(e) {
+          return T()(this, n), t.call(this, e);
+        }
+        return (
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
+            {
+              key: 'render',
+              value: function () {
+                var e = this.props,
+                  t = e.indexRoute,
+                  n = e.nodeKey,
+                  r = e.keyRoute,
+                  i = e.targetJsonData,
+                  o = e.pageScreen,
+                  a = e.isArrayItem,
+                  s = e.arrIndex,
+                  l = Object(G.a)(i),
+                  c = Object(G.e)(l);
+                return H.a.createElement(
+                  'div',
+                  {
+                    className: ''.concat(
+                      'wideScreen' === o
+                        ? 'wide-screen-element-warp  block-element-warp'
+                        : 'mobile-screen-element-warp',
+                    ),
+                    key: n,
+                    id: n,
+                  },
+                  !c &&
+                    i.description &&
+                    H.a.createElement(
+                      'div',
+                      { className: 'element-title' },
+                      H.a.createElement(
+                        ue.a,
+                        { title: i.description, placement: 'top' },
+                        H.a.createElement(
+                          'span',
+                          {
+                            className: 'title-text',
+                            title:
+                              'wideScreen' === o && i.title.length > 6
+                                ? i.title
+                                : '',
+                          },
+                          i.title,
+                        ),
+                      ),
+                      H.a.createElement(
+                        'span',
+                        null,
+                        a ? '/'.concat(s + 1) : '',
+                      ),
+                    ),
+                  !c &&
+                    !i.description &&
+                    H.a.createElement(
+                      'div',
+                      { className: 'element-title' },
+                      H.a.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === o && i.title.length > 6
+                              ? i.title
+                              : '',
+                        },
+                        i.title,
+                      ),
+                      H.a.createElement(
+                        'span',
+                        null,
+                        a ? '/'.concat(s + 1) : '',
+                      ),
+                    ),
+                  H.a.createElement(
+                    'div',
+                    {
+                      className: c
+                        ? 'content-item'
+                        : 'content-item object-content',
+                    },
+                    i.propertyOrder &&
+                      i.propertyOrder.map(function (e, o) {
+                        var a = ''.concat(t, '-').concat(o),
+                          s = ''.concat(r, '-').concat(e),
+                          l = e,
+                          c = i.properties[l],
+                          u = Object(G.a)(c),
+                          d = ''.concat(n, '-').concat(u, '-').concat(l);
+                        return fn({
+                          parentType: u,
+                          jsonKey: l,
+                          indexRoute: a,
+                          keyRoute: s,
+                          nodeKey: d,
+                          targetJsonData: c,
+                        });
+                      }),
+                  ),
+                );
+              },
+            },
+          ]),
+          n
+        );
+      })(H.a.PureComponent);
+      Ue.propTypes = {
+        isArrayItem: B.a.any,
+        arrIndex: B.a.any,
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.any,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
+      };
+      var Ke = Object(W.b)(function (e) {
+        return {
+          pageScreen: e.JSONSchemaStore.pageScreen,
+          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+          updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
+        };
+      })(Object(W.c)(Ue));
+      n(334);
       function Je(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -69570,202 +70268,53 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
       var qe = (function (e) {
-        p()(n, e);
+        Y()(n, e);
         var t = Je(n);
-        function n(e) {
-          return d()(this, n), t.call(this, e);
-        }
-        return (
-          f()(n, [
-            {
-              key: 'render',
-              value: function () {
-                var e = this.props,
-                  t = e.indexRoute,
-                  n = e.nodeKey,
-                  r = e.keyRoute,
-                  i = e.targetJsonData,
-                  o = e.pageScreen,
-                  a = e.isArrayItem,
-                  s = e.arrIndex,
-                  l = (function (e) {
-                    var t = !1;
-                    return (
-                      ('func' !== e && 'style' !== e && 'data' !== e) ||
-                        (t = !0),
-                      t
-                    );
-                  })(H(i));
-                return w.a.createElement(
-                  'div',
-                  {
-                    className: ''.concat(
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp  block-element-warp'
-                        : 'mobile-screen-element-warp',
-                    ),
-                    key: n,
-                    id: n,
-                  },
-                  !l &&
-                    i.description &&
-                    w.a.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      w.a.createElement(
-                        me.a,
-                        { title: i.description, placement: 'top' },
-                        w.a.createElement(
-                          'span',
-                          {
-                            className: 'title-text',
-                            title:
-                              'wideScreen' === o && i.title.length > 6
-                                ? i.title
-                                : '',
-                          },
-                          i.title,
-                        ),
-                      ),
-                      w.a.createElement(
-                        'span',
-                        null,
-                        a ? '/'.concat(s + 1) : '',
-                      ),
-                    ),
-                  !l &&
-                    !i.description &&
-                    w.a.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      w.a.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o && i.title.length > 6
-                              ? i.title
-                              : '',
-                        },
-                        i.title,
-                      ),
-                      w.a.createElement(
-                        'span',
-                        null,
-                        a ? '/'.concat(s + 1) : '',
-                      ),
-                    ),
-                  w.a.createElement(
-                    'div',
-                    {
-                      className: l
-                        ? 'content-item'
-                        : 'content-item object-content',
-                    },
-                    i.propertyOrder &&
-                      i.propertyOrder.map(function (e, o) {
-                        var a = ''.concat(t, '-').concat(o),
-                          s = ''.concat(r, '-').concat(e),
-                          l = e,
-                          c = i.properties[l],
-                          u = H(c),
-                          d = ''.concat(n, '-').concat(u, '-').concat(l);
-                        return gn({
-                          parentType: u,
-                          jsonKey: l,
-                          indexRoute: a,
-                          keyRoute: s,
-                          nodeKey: d,
-                          targetJsonData: c,
-                        });
-                      }),
-                  ),
-                );
-              },
-            },
-          ]),
-          n
-        );
-      })(w.a.PureComponent);
-      qe.propTypes = {
-        isArrayItem: x.a.any,
-        arrIndex: x.a.any,
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.any,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
-      };
-      var Ge = Object(L.b)(function (e) {
-        return {
-          pageScreen: e.JSONSchemaStore.pageScreen,
-          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-          updateFormValueData: e.JSONEditorStore.updateFormValueData,
-        };
-      })(Object(L.c)(qe));
-      n(331);
-      function Xe(e) {
-        var t = (function () {
-          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
-          if (Reflect.construct.sham) return !1;
-          if ('function' == typeof Proxy) return !0;
-          try {
-            return (
-              Date.prototype.toString.call(
-                Reflect.construct(Date, [], function () {}),
-              ),
-              !0
-            );
-          } catch (e) {
-            return !1;
-          }
-        })();
-        return function () {
-          var n,
-            r = y()(e);
-          if (t) {
-            var i = y()(this).constructor;
-            n = Reflect.construct(r, arguments, i);
-          } else n = r.apply(this, arguments);
-          return _()(this, n);
-        };
-      }
-      var Qe = (function (e) {
-        p()(n, e);
-        var t = Xe(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
+            T()(this, n),
             ((r = t.call(this, e)).addArrayItem = function (e, t) {
               var n = r.props.targetJsonData['maximum-child'];
               t && t.length >= n
-                ? oe.a.warning('添加失败，最多可添加'.concat(n, '个子项'))
+                ? te.a.warning('添加失败，最多可添加'.concat(n, '个子项'))
                 : r.props.addArrayItem(e);
             }),
             (r.deleteArrItem = function (e, t, n) {
               var i = r.props.targetJsonData['minimum-child'];
               n && n.length <= i
-                ? oe.a.warning('删除失败，至少需要保留'.concat(i, '个子项'))
+                ? te.a.warning('删除失败，至少需要保留'.concat(i, '个子项'))
                 : r.props.deleteArrayIndex(e, t);
             }),
-            (r.addArrayItem = r.addArrayItem.bind(ge()(r))),
-            (r.deleteArrItem = r.deleteArrItem.bind(ge()(r))),
+            (r.addArrayItem = r.addArrayItem.bind(he()(r))),
+            (r.deleteArrItem = r.deleteArrItem.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -69777,23 +70326,23 @@ and limitations under the License.
                   o = t.targetJsonData,
                   a = t.pageScreen,
                   s = t.getJSONDataByKeyRoute,
-                  l = H(o),
+                  l = (t.indexRoute2keyRoute, Object(G.a)(o)),
                   c = s(n),
                   u = o.items;
-                return b.createElement(
+                return N.createElement(
                   'div',
                   {
                     className: 'mobile-screen-element-warp block-element-warp',
                     key: r,
                     id: r,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: o.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
@@ -69805,10 +70354,10 @@ and limitations under the License.
                         o.title,
                       ),
                     ),
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: '添加数据项' },
-                      b.createElement(Be, {
+                      N.createElement(Fe, {
                         className: 'add-operate-btn array-operate-btn',
                         onClick: function () {
                           e.addArrayItem(n, c);
@@ -69816,35 +70365,37 @@ and limitations under the License.
                       }),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item array-content' },
-                    Object(N.b)(c) &&
+                    Object(X.d)(c) &&
                       c.map(function (t, o) {
                         var a = ''
-                          .concat(r, '-array-items-')
-                          .concat(c.length, '-')
-                          .concat(o);
-                        return b.createElement(
+                            .concat(r, '-array-items-')
+                            .concat(c.length, '-')
+                            .concat(o),
+                          s = ''.concat(i, '-0'),
+                          d = ''.concat(n, '-').concat(o);
+                        return N.createElement(
                           'div',
                           { className: 'array-item-box', key: a, id: a },
-                          b.createElement(Ge, {
+                          N.createElement(Ke, {
                             parentType: l,
                             jsonKey: 'items',
-                            indexRoute: ''.concat(i, '-0'),
-                            keyRoute: ''.concat(n, '-').concat(o),
+                            indexRoute: s,
+                            keyRoute: d,
                             nodeKey: a,
                             targetJsonData: u,
                             isArrayItem: !0,
                             arrIndex: o,
                           }),
-                          b.createElement(
+                          N.createElement(
                             'div',
                             { className: 'operate-btn-box' },
-                            b.createElement(
-                              me.a,
+                            N.createElement(
+                              ue.a,
                               { title: '删除数据项' },
-                              b.createElement(Ke, {
+                              N.createElement(ze, {
                                 className:
                                   'delete-operate-btn array-operate-btn',
                                 onClick: function () {
@@ -69862,26 +70413,29 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      Qe.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      qe.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var Ze = Object(L.b)(function (e) {
+      var Ge = Object(W.b)(function (e) {
           return {
             triggerChange: e.JSONEditorStore.triggerChange,
             pageScreen: e.JSONSchemaStore.pageScreen,
+            indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
             deleteArrayIndex: e.JSONEditorStore.deleteArrayIndex,
             addArrayItem: e.JSONEditorStore.addArrayItem,
           };
-        })(Object(L.c)(Qe)),
-        et = {
+        })(Object(W.c)(qe)),
+        Xe = {
           icon: {
             tag: 'svg',
             attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -69898,18 +70452,18 @@ and limitations under the License.
           name: 'filter',
           theme: 'outlined',
         },
-        tt = function (e, t) {
-          return b.createElement(
-            We,
-            Object.assign({}, e, { ref: t, icon: et }),
+        Qe = function (e, t) {
+          return N.createElement(
+            Ne,
+            Object.assign({}, e, { ref: t, icon: Xe }),
           );
         };
-      tt.displayName = 'FilterOutlined';
-      var nt = b.forwardRef(tt),
-        rt = n(57),
-        it = n.n(rt);
-      n(338), n(339);
-      function ot(e) {
+      Qe.displayName = 'FilterOutlined';
+      var Ze = N.forwardRef(Qe),
+        et = n(60),
+        tt = n.n(et);
+      n(341), n(342);
+      function nt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -69927,34 +70481,47 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var at = (function (e) {
-        p()(n, e);
-        var t = ot(n);
+      var rt = (function (e) {
+        Y()(n, e);
+        var t = nt(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
+            T()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = r.props,
                 n = t.keyRoute,
                 i = t.updateFormValueData;
-              e && i(n, JSON.parse(e));
+              e && i(n, e);
             }),
             (r.state = { isShowWarn: !1, warnText: '', curJSONDataTemp: '' }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -69973,9 +70540,9 @@ and limitations under the License.
                   h = (i.isRequired, a(r));
                 return (
                   (h = void 0 !== h ? h : i.default || '{}'),
-                  (Object(N.e)(h) || Object(N.b)(h)) &&
+                  (Object(X.g)(h) || Object(X.d)(h)) &&
                     (h = JSON.stringify(h, null, 2)),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     {
                       className: ''.concat(
@@ -69987,18 +70554,18 @@ and limitations under the License.
                       key: n,
                       id: n,
                     },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'element-title' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         { className: 'title-text warning-text' },
                         d ? '[只读]' : '',
                       ),
-                      b.createElement(
-                        me.a,
+                      N.createElement(
+                        ue.a,
                         { title: i.description, placement: 'top' },
-                        b.createElement(
+                        N.createElement(
                           'span',
                           {
                             className: 'title-text',
@@ -70011,25 +70578,25 @@ and limitations under the License.
                         ),
                       ),
                     ),
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'content-item object-content' },
                       l &&
-                        b.createElement(
+                        N.createElement(
                           'div',
                           { className: 'warning-box code-area-item' },
-                          b.createElement(
+                          N.createElement(
                             'div',
                             { className: 'warning-img' },
                             'X',
                           ),
-                          b.createElement(
+                          N.createElement(
                             'div',
                             { className: 'warning-text' },
                             c,
                           ),
                         ),
-                      b.createElement(it.a, {
+                      N.createElement(tt.a, {
                         id: 'json_area_ace',
                         value: u || h,
                         className: 'code-area-item',
@@ -70046,8 +70613,8 @@ and limitations under the License.
                         width: '100%',
                         onChange: function (t) {
                           try {
-                            JSON.parse(t),
-                              e.handleValueChange(t),
+                            var n = JSON.parse(t);
+                            e.handleValueChange(n),
                               e.setState({
                                 isShowWarn: !1,
                                 curJSONDataTemp: '',
@@ -70074,25 +70641,172 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      at.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      rt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var st = Object(L.b)(function (e) {
+      var it = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
+            indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
           };
-        })(Object(L.c)(at)),
-        lt = n(54),
-        ct = (n(60), n(40)),
-        ut = n.n(ct);
+        })(Object(W.c)(rt)),
+        ot = n(57),
+        at = (n(63), n(43)),
+        st = n.n(at);
+      function lt(e) {
+        var t = (function () {
+          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
+          if (Reflect.construct.sham) return !1;
+          if ('function' == typeof Proxy) return !0;
+          try {
+            return (
+              Date.prototype.toString.call(
+                Reflect.construct(Date, [], function () {}),
+              ),
+              !0
+            );
+          } catch (e) {
+            return !1;
+          }
+        })();
+        return function () {
+          var n,
+            r = $()(e);
+          if (t) {
+            var i = $()(this).constructor;
+            n = Reflect.construct(r, arguments, i);
+          } else n = r.apply(this, arguments);
+          return R()(this, n);
+        };
+      }
+      var ct = (function (e) {
+        Y()(n, e);
+        var t = lt(n);
+        function n(e) {
+          var r;
+          return (
+            T()(this, n),
+            ((r = t.call(this, e)).handleValueChange = function (e) {
+              var t = e.target.value,
+                n = r.props,
+                i = n.keyRoute;
+              (0, n.updateFormValueData)(i, t);
+            }),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
+            r
+          );
+        }
+        return (
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
+            {
+              key: 'render',
+              value: function () {
+                var e = this.props,
+                  t = e.keyRoute,
+                  n = e.nodeKey,
+                  r = e.targetJsonData,
+                  i = e.pageScreen,
+                  o = (0, e.getJSONDataByKeyRoute)(t),
+                  a = r.readOnly || !1,
+                  s = r.isRequired || !1;
+                return N.createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === i
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
+                    key: n,
+                    id: n,
+                  },
+                  N.createElement(
+                    'div',
+                    { className: 'element-title' },
+                    N.createElement(
+                      'span',
+                      { className: 'title-text warning-text' },
+                      a ? '[只读]' : '',
+                    ),
+                    N.createElement(
+                      ue.a,
+                      { title: r.description, placement: 'top' },
+                      N.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === i && r.title.length > (a ? 4 : 6)
+                              ? r.title
+                              : '',
+                        },
+                        r.title,
+                      ),
+                    ),
+                  ),
+                  N.createElement(
+                    'div',
+                    { className: 'content-item' },
+                    N.createElement(
+                      'div',
+                      { className: 'form-item-box' },
+                      N.createElement(st.a, {
+                        style: { display: 'inline-block' },
+                        disabled: a,
+                        required: s,
+                        placeholder: r.placeholder || '请输入'.concat(r.title),
+                        defaultValue: o || r.default,
+                        onPressEnter: this.handleValueChange,
+                        onBlur: this.handleValueChange,
+                      }),
+                    ),
+                  ),
+                );
+              },
+            },
+          ]),
+          n
+        );
+      })(N.PureComponent);
+      ct.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
+      };
+      var ut = Object(W.b)(function (e) {
+        return {
+          pageScreen: e.JSONSchemaStore.pageScreen,
+          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+          updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
+        };
+      })(Object(W.c)(ct));
       function dt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -70111,94 +70825,191 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
       var ht = (function (e) {
-        p()(n, e);
+        Y()(n, e);
         var t = dt(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
-            ((r = t.call(this, e)).handleValueChange = function (e) {
-              var t = e.target.value,
-                n = r.props,
-                i = n.keyRoute;
-              (0, n.updateFormValueData)(i, t);
+            T()(this, n),
+            ((r = t.call(this, e)).switchFilterBtn = function () {
+              var e = r.state.isShowFilter;
+              r.setState({ isShowFilter: !e });
             }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.state = { isShowFilter: !1 }),
+            (r.switchFilterBtn = r.switchFilterBtn.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
                 var e = this.props,
                   t = e.keyRoute,
                   n = e.nodeKey,
-                  r = e.targetJsonData,
-                  i = e.pageScreen,
-                  o = (0, e.getJSONDataByKeyRoute)(t),
-                  a = r.readOnly || !1,
-                  s = r.isRequired || !1;
-                return b.createElement(
+                  r = e.indexRoute,
+                  i = e.targetJsonData,
+                  o = e.pageScreen,
+                  a = this.state.isShowFilter,
+                  s = Object(G.a)(i),
+                  l = i.properties.type || {},
+                  c = i.properties.data || {},
+                  u = i.properties.filter || {},
+                  d = l.default;
+                return N.createElement(
                   'div',
                   {
-                    className:
-                      'wideScreen' === i
+                    className: ''.concat(
+                      'wideScreen' === o
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
+                      '  block-element-warp',
+                    ),
                     key: n,
                     id: n,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      a ? '[只读]' : '',
-                    ),
-                    b.createElement(
-                      me.a,
-                      { title: r.description, placement: 'top' },
-                      b.createElement(
+                    N.createElement(
+                      ue.a,
+                      { title: i.description, placement: 'top' },
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
                           title:
-                            'wideScreen' === i && r.title.length > (a ? 4 : 6)
-                              ? r.title
+                            'wideScreen' === o && i.title.length > 6
+                              ? i.title
                               : '',
                         },
-                        r.title,
+                        i.title,
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
-                    { className: 'content-item' },
-                    b.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      b.createElement(ut.a, {
-                        style: { display: 'inline-block' },
-                        disabled: a,
-                        required: s,
-                        placeholder: r.placeholder || '请输入'.concat(r.title),
-                        defaultValue: o || r.default,
-                        onPressEnter: this.handleValueChange,
-                        onBlur: this.handleValueChange,
-                      }),
-                    ),
+                    { className: 'content-item object-content' },
+                    'local' === d &&
+                      N.createElement(
+                        N.Fragment,
+                        null,
+                        N.createElement(
+                          'div',
+                          { className: 'ace-editor-box code-area-item' },
+                          N.createElement(
+                            ue.a,
+                            {
+                              title: a
+                                ? '点击隐藏数据过滤器'
+                                : '点击显示数据过滤器',
+                              placement: 'top',
+                            },
+                            N.createElement(Ze, {
+                              className: 'filter-btn',
+                              onClick: this.switchFilterBtn,
+                            }),
+                          ),
+                          N.createElement(
+                            it,
+                            le()(
+                              {
+                                parentType: s,
+                                jsonKey: 'data',
+                                indexRoute: ''.concat(r, '-1'),
+                                keyRoute: ''.concat(t, '-data'),
+                                nodeKey: ''.concat(n, '-data'),
+                                targetJsonData: c,
+                              },
+                              { key: ''.concat(n, '-data') },
+                            ),
+                          ),
+                        ),
+                        a &&
+                          N.createElement(
+                            ot.a,
+                            le()(
+                              {
+                                parentType: s,
+                                jsonKey: 'filter',
+                                indexRoute: ''.concat(r, '-2'),
+                                keyRoute: ''.concat(t, '-filter'),
+                                nodeKey: ''.concat(n, '-filter'),
+                                targetJsonData: u,
+                              },
+                              { key: ''.concat(n, '-filter') },
+                            ),
+                          ),
+                      ),
+                    'remote' === d &&
+                      N.createElement(
+                        N.Fragment,
+                        null,
+                        N.createElement(
+                          'div',
+                          { className: 'url-editor-box' },
+                          N.createElement(
+                            ut,
+                            le()(
+                              {
+                                parentType: s,
+                                jsonKey: 'data',
+                                indexRoute: ''.concat(r, '-1'),
+                                keyRoute: ''.concat(t, '-data'),
+                                nodeKey: ''.concat(n, '-data'),
+                                targetJsonData: c,
+                              },
+                              { key: ''.concat(n, '-data') },
+                            ),
+                          ),
+                          N.createElement(
+                            ue.a,
+                            { title: '点击设置数据过滤器', placement: 'top' },
+                            N.createElement(Ze, {
+                              className: 'filter-url-btn',
+                              onClick: this.switchFilterBtn,
+                            }),
+                          ),
+                        ),
+                        a &&
+                          N.createElement(
+                            ot.a,
+                            le()(
+                              {
+                                parentType: s,
+                                jsonKey: 'filter',
+                                indexRoute: ''.concat(r, '-2'),
+                                keyRoute: ''.concat(t, '-filter'),
+                                nodeKey: ''.concat(n, '-filter'),
+                                targetJsonData: u,
+                              },
+                              { key: ''.concat(n, '-filter') },
+                            ),
+                          ),
+                      ),
                   ),
                 );
               },
@@ -70206,22 +71017,25 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
+      })(N.PureComponent);
       ht.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var ft = Object(L.b)(function (e) {
+      var ft = Object(W.b)(function (e) {
         return {
+          triggerChange: e.JSONEditorStore.triggerChange,
           pageScreen: e.JSONSchemaStore.pageScreen,
           getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
           updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
         };
-      })(Object(L.c)(ht));
+      })(Object(W.c)(ht));
       function mt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -70240,178 +71054,107 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
       var pt = (function (e) {
-        p()(n, e);
+        Y()(n, e);
         var t = mt(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
-            ((r = t.call(this, e)).switchFilterBtn = function () {
-              var e = r.state.isShowFilter;
-              r.setState({ isShowFilter: !e });
+            T()(this, n),
+            ((r = t.call(this, e)).handleValueChange = function (e) {
+              var t = e.target.value,
+                n = r.props,
+                i = n.keyRoute;
+              (0, n.updateFormValueData)(i, t);
             }),
-            (r.state = { isShowFilter: !1 }),
-            (r.switchFilterBtn = r.switchFilterBtn.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
                 var e = this.props,
-                  t = e.keyRoute,
-                  n = e.nodeKey,
-                  r = e.indexRoute,
-                  i = e.targetJsonData,
-                  o = e.pageScreen,
-                  a = this.state.isShowFilter,
-                  s = H(i),
-                  l = i.properties.type || {},
-                  c = i.properties.data || {},
-                  u = i.properties.filter || {},
-                  d = l.default;
-                return b.createElement(
+                  t = e.nodeKey,
+                  n = e.keyRoute,
+                  r = e.targetJsonData,
+                  i = e.pageScreen,
+                  o = (0, e.getJSONDataByKeyRoute)(n),
+                  a = r.readOnly || !1,
+                  s = r.isRequired || !1;
+                return N.createElement(
                   'div',
                   {
-                    className: ''.concat(
-                      'wideScreen' === o
+                    className:
+                      'wideScreen' === i
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
-                      '  block-element-warp',
-                    ),
-                    key: n,
-                    id: n,
+                    key: t,
+                    id: t,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      me.a,
-                      { title: i.description, placement: 'top' },
-                      b.createElement(
+                    N.createElement(
+                      'span',
+                      { className: 'title-text warning-text' },
+                      a ? '[只读]' : '',
+                    ),
+                    N.createElement(
+                      ue.a,
+                      { title: r.description, placement: 'top' },
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
                           title:
-                            'wideScreen' === o && i.title.length > 6
-                              ? i.title
+                            'wideScreen' === i && r.title.length > (a ? 4 : 6)
+                              ? r.title
                               : '',
                         },
-                        i.title,
+                        r.title,
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
-                    { className: 'content-item object-content' },
-                    'local' === d &&
-                      b.createElement(
-                        b.Fragment,
-                        null,
-                        b.createElement(
-                          'div',
-                          { className: 'ace-editor-box code-area-item' },
-                          b.createElement(
-                            me.a,
-                            {
-                              title: a
-                                ? '点击隐藏数据过滤器'
-                                : '点击显示数据过滤器',
-                              placement: 'top',
-                            },
-                            b.createElement(nt, {
-                              className: 'filter-btn',
-                              onClick: this.switchFilterBtn,
-                            }),
-                          ),
-                          b.createElement(
-                            st,
-                            he()(
-                              {
-                                parentType: s,
-                                jsonKey: 'data',
-                                indexRoute: ''.concat(r, '-1'),
-                                keyRoute: ''.concat(t, '-data'),
-                                nodeKey: ''.concat(n, '-data'),
-                                targetJsonData: c,
-                              },
-                              { key: ''.concat(n, '-data') },
-                            ),
-                          ),
-                        ),
-                        a &&
-                          b.createElement(
-                            lt.a,
-                            he()(
-                              {
-                                parentType: s,
-                                jsonKey: 'filter',
-                                indexRoute: ''.concat(r, '-2'),
-                                keyRoute: ''.concat(t, '-filter'),
-                                nodeKey: ''.concat(n, '-filter'),
-                                targetJsonData: u,
-                              },
-                              { key: ''.concat(n, '-filter') },
-                            ),
-                          ),
-                      ),
-                    'remote' === d &&
-                      b.createElement(
-                        b.Fragment,
-                        null,
-                        b.createElement(
-                          'div',
-                          { className: 'url-editor-box' },
-                          b.createElement(
-                            ft,
-                            he()(
-                              {
-                                parentType: s,
-                                jsonKey: 'data',
-                                indexRoute: ''.concat(r, '-1'),
-                                keyRoute: ''.concat(t, '-data'),
-                                nodeKey: ''.concat(n, '-data'),
-                                targetJsonData: c,
-                              },
-                              { key: ''.concat(n, '-data') },
-                            ),
-                          ),
-                          b.createElement(
-                            me.a,
-                            { title: '点击设置数据过滤器', placement: 'top' },
-                            b.createElement(nt, {
-                              className: 'filter-url-btn',
-                              onClick: this.switchFilterBtn,
-                            }),
-                          ),
-                        ),
-                        a &&
-                          b.createElement(
-                            lt.a,
-                            he()(
-                              {
-                                parentType: s,
-                                jsonKey: 'filter',
-                                indexRoute: ''.concat(r, '-2'),
-                                keyRoute: ''.concat(t, '-filter'),
-                                nodeKey: ''.concat(n, '-filter'),
-                                targetJsonData: u,
-                              },
-                              { key: ''.concat(n, '-filter') },
-                            ),
-                          ),
-                      ),
+                    { className: 'content-item' },
+                    N.createElement(
+                      'div',
+                      { className: 'form-item-box' },
+                      N.createElement(st.a, {
+                        style: { display: 'inline-block' },
+                        disabled: a,
+                        required: s,
+                        placeholder: r.placeholder || '请输入'.concat(r.title),
+                        defaultValue: o || r.default,
+                        onPressEnter: this.handleValueChange,
+                        onBlur: this.handleValueChange,
+                      }),
+                    ),
                   ),
                 );
               },
@@ -70419,22 +71162,24 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
+      })(N.PureComponent);
       pt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var gt = Object(L.b)(function (e) {
+      var gt = Object(W.b)(function (e) {
         return {
-          triggerChange: e.JSONEditorStore.triggerChange,
           pageScreen: e.JSONSchemaStore.pageScreen,
           getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
+          updateFormValueData: e.JSONEditorStore.updateFormValueData,
         };
-      })(Object(L.c)(pt));
+      })(Object(W.c)(pt));
       function _t(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -70453,151 +71198,35 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
       var vt = (function (e) {
-        p()(n, e);
+        Y()(n, e);
         var t = _t(n);
         function n(e) {
-          var r;
-          return (
-            d()(this, n),
-            ((r = t.call(this, e)).handleValueChange = function (e) {
-              var t = e.target.value,
-                n = r.props,
-                i = n.keyRoute;
-              (0, n.updateFormValueData)(i, t);
-            }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
-            r
-          );
+          return T()(this, n), t.call(this, e);
         }
         return (
-          f()(n, [
+          E()(n, [
             {
-              key: 'render',
+              key: 'componentWillMount',
               value: function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonData,
-                  i = e.pageScreen,
-                  o = (0, e.getJSONDataByKeyRoute)(n),
-                  a = r.readOnly || !1,
-                  s = r.isRequired || !1;
-                return b.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === i
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: t,
-                    id: t,
-                  },
-                  b.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    b.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      a ? '[只读]' : '',
-                    ),
-                    b.createElement(
-                      me.a,
-                      { title: r.description, placement: 'top' },
-                      b.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === i && r.title.length > (a ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                      ),
-                    ),
-                  ),
-                  b.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    b.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      b.createElement(ut.a, {
-                        style: { display: 'inline-block' },
-                        disabled: a,
-                        required: s,
-                        placeholder: r.placeholder || '请输入'.concat(r.title),
-                        defaultValue: o || r.default,
-                        onPressEnter: this.handleValueChange,
-                        onBlur: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
+                Be.a.call(this);
               },
             },
-          ]),
-          n
-        );
-      })(b.PureComponent);
-      vt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
-      };
-      var yt = Object(L.b)(function (e) {
-        return {
-          pageScreen: e.JSONSchemaStore.pageScreen,
-          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-          updateFormValueData: e.JSONEditorStore.updateFormValueData,
-        };
-      })(Object(L.c)(vt));
-      function bt(e) {
-        var t = (function () {
-          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
-          if (Reflect.construct.sham) return !1;
-          if ('function' == typeof Proxy) return !0;
-          try {
-            return (
-              Date.prototype.toString.call(
-                Reflect.construct(Date, [], function () {}),
-              ),
-              !0
-            );
-          } catch (e) {
-            return !1;
-          }
-        })();
-        return function () {
-          var n,
-            r = y()(e);
-          if (t) {
-            var i = y()(this).constructor;
-            n = Reflect.construct(r, arguments, i);
-          } else n = r.apply(this, arguments);
-          return _()(this, n);
-        };
-      }
-      var wt = (function (e) {
-        p()(n, e);
-        var t = bt(n);
-        function n(e) {
-          return d()(this, n), t.call(this, e);
-        }
-        return (
-          f()(n, [
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -70607,14 +71236,14 @@ and limitations under the License.
                   r = e.indexRoute,
                   i = e.targetJsonData,
                   o = e.pageScreen,
-                  a = H(i),
+                  a = Object(G.a)(i),
                   s = i.properties.type || {},
                   l = i.properties.register || {},
                   c = i.properties.actionFunc || {},
                   u = i.properties.trigger || {},
                   d = i.properties.eventData || {},
                   h = s.default;
-                return b.createElement(
+                return N.createElement(
                   'div',
                   {
                     className: ''.concat(
@@ -70626,13 +71255,13 @@ and limitations under the License.
                     key: n,
                     id: n,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: i.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
@@ -70645,17 +71274,17 @@ and limitations under the License.
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item object-content' },
                     'on' === h &&
-                      b.createElement(
-                        b.Fragment,
+                      N.createElement(
+                        N.Fragment,
                         null,
                         l &&
-                          b.createElement(
-                            yt,
-                            he()(
+                          N.createElement(
+                            gt,
+                            le()(
                               {
                                 parentType: a,
                                 jsonKey: 'register',
@@ -70668,9 +71297,9 @@ and limitations under the License.
                             ),
                           ),
                         c &&
-                          b.createElement(
-                            lt.a,
-                            he()(
+                          N.createElement(
+                            ot.a,
+                            le()(
                               {
                                 parentType: a,
                                 jsonKey: 'actionFunc',
@@ -70684,13 +71313,13 @@ and limitations under the License.
                           ),
                       ),
                     'emit' === h &&
-                      b.createElement(
-                        b.Fragment,
+                      N.createElement(
+                        N.Fragment,
                         null,
                         u &&
-                          b.createElement(
-                            yt,
-                            he()(
+                          N.createElement(
+                            gt,
+                            le()(
                               {
                                 parentType: a,
                                 jsonKey: 'trigger',
@@ -70703,9 +71332,9 @@ and limitations under the License.
                             ),
                           ),
                         d &&
-                          b.createElement(
-                            st,
-                            he()(
+                          N.createElement(
+                            it,
+                            le()(
                               {
                                 parentType: a,
                                 jsonKey: 'eventData',
@@ -70725,23 +71354,26 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      wt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      vt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var Mt = Object(L.b)(function (e) {
+      var yt = Object(W.b)(function (e) {
         return {
           triggerChange: e.JSONEditorStore.triggerChange,
           pageScreen: e.JSONSchemaStore.pageScreen,
           getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+          updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
         };
-      })(Object(L.c)(wt));
-      function kt(e) {
+      })(Object(W.c)(vt));
+      function bt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -70759,33 +71391,46 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var Lt = (function (e) {
-        p()(n, e);
-        var t = kt(n);
+      var wt = (function (e) {
+        Y()(n, e);
+        var t = bt(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
+            T()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = e.target.value,
                 n = r.props,
                 i = n.keyRoute;
               (0, n.updateFormValueData)(''.concat(i, '-unit'), Number(t));
             }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -70798,8 +71443,8 @@ and limitations under the License.
                   a = r.readOnly || !1,
                   s = r.properties && r.properties.unit,
                   l = o.quantity,
-                  c = b.createElement('span', null, 'percent' === l ? '%' : l);
-                return b.createElement(
+                  c = N.createElement('span', null, 'percent' === l ? '%' : l);
+                return N.createElement(
                   'div',
                   {
                     className:
@@ -70809,18 +71454,18 @@ and limitations under the License.
                     key: n,
                     id: n,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
+                    N.createElement(
                       'span',
                       { className: 'title-text warning-text' },
                       a ? '[只读]' : '',
                     ),
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: r.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
@@ -70833,13 +71478,13 @@ and limitations under the License.
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item' },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      b.createElement(ut.a, {
+                      N.createElement(st.a, {
                         style: { display: 'inline-block' },
                         addonAfter: c,
                         disabled: a,
@@ -70860,25 +71505,27 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      Lt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      wt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var St = Object(L.b)(function (e) {
+      var Mt = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(Lt)),
-        xt = (n(368), n(87)),
-        Ot = n.n(xt);
-      function Ct(e) {
+        })(Object(W.c)(wt)),
+        kt = (n(371), n(90)),
+        Lt = n.n(kt);
+      function St(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -70896,33 +71543,46 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var Tt = (function (e) {
-        p()(n, e);
-        var t = Ct(n);
+      var xt = (function (e) {
+        Y()(n, e);
+        var t = St(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
+            T()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = e.target.value,
                 n = r.props,
                 i = n.keyRoute;
               (0, n.updateFormValueData)(i, t);
             }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -70934,7 +71594,7 @@ and limitations under the License.
                   o = (0, e.getJSONDataByKeyRoute)(n),
                   a = r.items.enum,
                   s = r.items.enumextra;
-                return b.createElement(
+                return N.createElement(
                   'div',
                   {
                     className:
@@ -70944,13 +71604,13 @@ and limitations under the License.
                     key: t,
                     id: t,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: r.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
@@ -70963,14 +71623,14 @@ and limitations under the License.
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item' },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      b.createElement(
-                        Ot.a.Group,
+                      N.createElement(
+                        Lt.a.Group,
                         {
                           style: { display: 'inline-block' },
                           onChange: this.handleValueChange,
@@ -70981,8 +71641,8 @@ and limitations under the License.
                           a.map(function (e, n) {
                             var r = s[n],
                               i = ''.concat(t, '-radio-').concat(e);
-                            return b.createElement(
-                              Ot.a,
+                            return N.createElement(
+                              Lt.a,
                               { value: e, key: i },
                               r,
                             );
@@ -70996,24 +71656,174 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      Tt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      xt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var Dt = Object(L.b)(function (e) {
+      var Ot = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(Tt)),
-        Et = (n(376), n(88)),
-        At = n.n(Et);
+        })(Object(W.c)(xt)),
+        Ct = (n(379), n(91)),
+        Tt = n.n(Ct);
+      function Dt(e) {
+        var t = (function () {
+          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
+          if (Reflect.construct.sham) return !1;
+          if ('function' == typeof Proxy) return !0;
+          try {
+            return (
+              Date.prototype.toString.call(
+                Reflect.construct(Date, [], function () {}),
+              ),
+              !0
+            );
+          } catch (e) {
+            return !1;
+          }
+        })();
+        return function () {
+          var n,
+            r = $()(e);
+          if (t) {
+            var i = $()(this).constructor;
+            n = Reflect.construct(r, arguments, i);
+          } else n = r.apply(this, arguments);
+          return R()(this, n);
+        };
+      }
+      var Et = (function (e) {
+        Y()(n, e);
+        var t = Dt(n);
+        function n(e) {
+          var r;
+          return (
+            T()(this, n),
+            ((r = t.call(this, e)).handleValueChange = function (e) {
+              var t = r.props,
+                n = t.keyRoute;
+              (0, t.updateFormValueData)(n, e);
+            }),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
+            r
+          );
+        }
+        return (
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
+            {
+              key: 'render',
+              value: function () {
+                var e = this.props,
+                  t = e.nodeKey,
+                  n = e.keyRoute,
+                  r = e.targetJsonData,
+                  i = e.pageScreen,
+                  o = (0, e.getJSONDataByKeyRoute)(n),
+                  a = r.items.enum,
+                  s = r.items.enumextra;
+                return N.createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === i
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
+                    key: t,
+                    id: t,
+                  },
+                  N.createElement(
+                    'div',
+                    { className: 'element-title' },
+                    N.createElement(
+                      ue.a,
+                      { title: r.description, placement: 'top' },
+                      N.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === i && r.title.length > 6
+                              ? r.title
+                              : '',
+                        },
+                        r.title,
+                      ),
+                    ),
+                  ),
+                  N.createElement(
+                    'div',
+                    { className: 'content-item' },
+                    N.createElement(
+                      'div',
+                      { className: 'form-item-box' },
+                      N.createElement(
+                        Tt.a.Group,
+                        {
+                          style: { display: 'inline-block' },
+                          onChange: this.handleValueChange,
+                          defaultValue: o || r.default,
+                        },
+                        a &&
+                          a.length > 0 &&
+                          a.map(function (e, n) {
+                            var r = s[n],
+                              i = ''.concat(t, '-radio-').concat(e);
+                            return N.createElement(
+                              Tt.a,
+                              { value: e, key: i },
+                              r,
+                            );
+                          }),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            },
+          ]),
+          n
+        );
+      })(N.PureComponent);
+      Et.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
+      };
+      var At = Object(W.b)(function (e) {
+        return {
+          pageScreen: e.JSONSchemaStore.pageScreen,
+          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+          updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
+        };
+      })(Object(W.c)(Et));
       function Yt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -71032,167 +71842,47 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var jt = (function (e) {
-        p()(n, e);
-        var t = Yt(n);
-        function n(e) {
-          var r;
-          return (
-            d()(this, n),
-            ((r = t.call(this, e)).handleValueChange = function (e) {
-              var t = r.props,
-                n = t.keyRoute;
-              (0, t.updateFormValueData)(n, e);
-            }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
-            r
-          );
-        }
-        return (
-          f()(n, [
-            {
-              key: 'render',
-              value: function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonData,
-                  i = e.pageScreen,
-                  o = (0, e.getJSONDataByKeyRoute)(n),
-                  a = r.items.enum,
-                  s = r.items.enumextra;
-                return b.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === i
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: t,
-                    id: t,
-                  },
-                  b.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    b.createElement(
-                      me.a,
-                      { title: r.description, placement: 'top' },
-                      b.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === i && r.title.length > 6
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                      ),
-                    ),
-                  ),
-                  b.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    b.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      b.createElement(
-                        At.a.Group,
-                        {
-                          style: { display: 'inline-block' },
-                          onChange: this.handleValueChange,
-                          defaultValue: o || r.default,
-                        },
-                        a &&
-                          a.length > 0 &&
-                          a.map(function (e, n) {
-                            var r = s[n],
-                              i = ''.concat(t, '-radio-').concat(e);
-                            return b.createElement(
-                              At.a,
-                              { value: e, key: i },
-                              r,
-                            );
-                          }),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            },
-          ]),
-          n
-        );
-      })(b.PureComponent);
-      jt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
-      };
-      var Rt = Object(L.b)(function (e) {
-        return {
-          pageScreen: e.JSONSchemaStore.pageScreen,
-          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-          updateFormValueData: e.JSONEditorStore.updateFormValueData,
-        };
-      })(Object(L.c)(jt));
-      function Pt(e) {
-        var t = (function () {
-          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
-          if (Reflect.construct.sham) return !1;
-          if ('function' == typeof Proxy) return !0;
-          try {
-            return (
-              Date.prototype.toString.call(
-                Reflect.construct(Date, [], function () {}),
-              ),
-              !0
-            );
-          } catch (e) {
-            return !1;
-          }
-        })();
-        return function () {
-          var n,
-            r = y()(e);
-          if (t) {
-            var i = y()(this).constructor;
-            n = Reflect.construct(r, arguments, i);
-          } else n = r.apply(this, arguments);
-          return _()(this, n);
-        };
-      }
-      var $t = ut.a.TextArea,
-        Nt = (function (e) {
-          p()(n, e);
-          var t = Pt(n);
+      var jt = st.a.TextArea,
+        Rt = (function (e) {
+          Y()(n, e);
+          var t = Yt(n);
           function n(e) {
             var r;
             return (
-              d()(this, n),
+              T()(this, n),
               ((r = t.call(this, e)).handleValueChange = function (e) {
                 var t = e.target.value,
                   n = r.props,
                   i = n.keyRoute;
                 (0, n.updateFormValueData)(i, t);
               }),
-              (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+              (r.handleValueChange = r.handleValueChange.bind(he()(r))),
               r
             );
           }
           return (
-            f()(n, [
+            E()(n, [
+              {
+                key: 'componentWillMount',
+                value: function () {
+                  Be.a.call(this);
+                },
+              },
+              {
+                key: 'componentWillReceiveProps',
+                value: function (e) {
+                  e.keyRoute !== this.props.keyRoute &&
+                    Be.a.call(this, e.keyRoute);
+                },
+              },
               {
                 key: 'render',
                 value: function () {
@@ -71204,7 +71894,7 @@ and limitations under the License.
                     o = (0, e.getJSONDataByKeyRoute)(t),
                     a = r.readOnly || !1,
                     s = r.isRequired || !1;
-                  return b.createElement(
+                  return N.createElement(
                     'div',
                     {
                       className:
@@ -71214,18 +71904,18 @@ and limitations under the License.
                       key: n,
                       id: n,
                     },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'element-title' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         { className: 'title-text warning-text' },
                         a ? '[只读]' : '',
                       ),
-                      b.createElement(
-                        me.a,
+                      N.createElement(
+                        ue.a,
                         { title: r.description, placement: 'top' },
-                        b.createElement(
+                        N.createElement(
                           'span',
                           {
                             className: 'title-text',
@@ -71238,13 +71928,13 @@ and limitations under the License.
                         ),
                       ),
                     ),
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'content-item' },
-                      b.createElement(
+                      N.createElement(
                         'div',
                         { className: 'form-item-box' },
-                        b.createElement($t, {
+                        N.createElement(jt, {
                           style: { display: 'inline-block' },
                           rows: 4,
                           disabled: a,
@@ -71263,25 +71953,27 @@ and limitations under the License.
             ]),
             n
           );
-        })(b.PureComponent);
-      Nt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+        })(N.PureComponent);
+      Rt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var Ht = Object(L.b)(function (e) {
+      var Pt = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(Nt)),
-        Ft = (n(379), n(252)),
-        It = n.n(Ft);
-      function Wt(e) {
+        })(Object(W.c)(Rt)),
+        $t = (n(382), n(255)),
+        Nt = n.n($t);
+      function Ht(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -71299,42 +71991,55 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var zt = (function (e) {
-        p()(n, e);
-        var t = Wt(n);
+      var Ft = (function (e) {
+        Y()(n, e);
+        var t = Ht(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
+            T()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = r.props,
                 n = t.keyRoute,
                 i = t.targetJsonData,
                 o = t.updateFormValueData;
               e < i.minimum
-                ? oe.a.warning(
+                ? te.a.warning(
                     '小于设定的最小数值'.concat(i.minimum, '，请重新输入。'),
                   )
                 : e > i.maximum
-                ? oe.a.warning(
+                ? te.a.warning(
                     '超过设定的最大数值'.concat(i.maximum, '，请重新输入。'),
                   )
                 : o(n, e);
             }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -71346,7 +72051,7 @@ and limitations under the License.
                   o = (0, e.getJSONDataByKeyRoute)(t),
                   a = r.readOnly || !1,
                   s = r.isRequired || !1;
-                return b.createElement(
+                return N.createElement(
                   'div',
                   {
                     className:
@@ -71356,18 +72061,18 @@ and limitations under the License.
                     key: n,
                     id: n,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
+                    N.createElement(
                       'span',
                       { className: 'title-text warning-text' },
                       a ? '[只读]' : '',
                     ),
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: r.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
@@ -71380,13 +72085,13 @@ and limitations under the License.
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item' },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      b.createElement(It.a, {
+                      N.createElement(Nt.a, {
                         style: { display: 'inline-block' },
                         disabled: a,
                         required: s,
@@ -71404,25 +72109,27 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      zt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      Ft.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var Bt = Object(L.b)(function (e) {
+      var It = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(zt)),
-        Vt = (n(389), n(253)),
-        Ut = n.n(Vt);
-      function Kt(e) {
+        })(Object(W.c)(Ft)),
+        Wt = (n(392), n(256)),
+        zt = n.n(Wt);
+      function Bt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -71440,32 +72147,45 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var Jt = (function (e) {
-        p()(n, e);
-        var t = Kt(n);
+      var Vt = (function (e) {
+        Y()(n, e);
+        var t = Bt(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
-            ((r = t.call(this, e)).handleValueChange = function (e, t) {
-              var n = r.props,
-                i = n.keyRoute;
-              (0, n.updateFormValueData)(i, e);
+            T()(this, n),
+            ((r = t.call(this, e)).handleValueChange = function (e) {
+              var t = r.props,
+                n = t.keyRoute;
+              (0, t.updateFormValueData)(n, e);
             }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -71475,7 +72195,7 @@ and limitations under the License.
                   r = e.targetJsonData,
                   i = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(t);
-                return b.createElement(
+                return N.createElement(
                   'div',
                   {
                     className:
@@ -71485,13 +72205,13 @@ and limitations under the License.
                     key: n,
                     id: n,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: r.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
@@ -71504,13 +72224,13 @@ and limitations under the License.
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item' },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      b.createElement(Ut.a, {
+                      N.createElement(zt.a, {
                         style: { display: 'inline-block' },
                         defaultChecked: void 0 !== o ? o : r.default,
                         checkedChildren: 'true',
@@ -71525,27 +72245,29 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      Jt.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      Vt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var qt = Object(L.b)(function (e) {
+      var Ut = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(Jt)),
-        Gt = (n(110), n(85)),
-        Xt = n.n(Gt),
-        Qt = n(2),
-        Zt = n.n(Qt);
-      function en(e) {
+        })(Object(W.c)(Vt)),
+        Kt = (n(113), n(88)),
+        Jt = n.n(Kt),
+        qt = n(2),
+        Gt = n.n(qt);
+      function Xt(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -71563,37 +72285,50 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var tn = {
+      var Qt = {
           'date-time': 'YYYY-MM-DD HH:mm',
           date: 'YYYY-MM-DD',
           time: 'HH:mm',
         },
-        nn = (function (e) {
-          p()(n, e);
-          var t = en(n);
+        Zt = (function (e) {
+          Y()(n, e);
+          var t = Xt(n);
           function n(e) {
             var r;
             return (
-              d()(this, n),
+              T()(this, n),
               ((r = t.call(this, e)).handleValueChange = function (e, t) {
                 var n = r.props,
                   i = n.keyRoute;
                 (0, n.updateFormValueData)(i, t);
               }),
-              (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+              (r.handleValueChange = r.handleValueChange.bind(he()(r))),
               r
             );
           }
           return (
-            f()(n, [
+            E()(n, [
+              {
+                key: 'componentWillMount',
+                value: function () {
+                  Be.a.call(this);
+                },
+              },
+              {
+                key: 'componentWillReceiveProps',
+                value: function (e) {
+                  e.keyRoute !== this.props.keyRoute &&
+                    Be.a.call(this, e.keyRoute);
+                },
+              },
               {
                 key: 'render',
                 value: function () {
@@ -71603,12 +72338,12 @@ and limitations under the License.
                     r = e.targetJsonData,
                     i = e.pageScreen,
                     o = e.getJSONDataByKeyRoute,
-                    a = H(r),
+                    a = Object(G.a)(r),
                     s = r.readOnly || !1,
                     l = r.isRequired || !1,
-                    c = tn[a] || tn[0],
+                    c = Qt[a] || Qt[0],
                     u = o(t) || r.default;
-                  return b.createElement(
+                  return N.createElement(
                     'div',
                     {
                       className:
@@ -71618,18 +72353,18 @@ and limitations under the License.
                       key: n,
                       id: n,
                     },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'element-title' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         { className: 'title-text warning-text' },
                         s ? '[只读]' : '',
                       ),
-                      b.createElement(
-                        me.a,
+                      N.createElement(
+                        ue.a,
                         { title: r.description, placement: 'top' },
-                        b.createElement(
+                        N.createElement(
                           'span',
                           {
                             className: 'title-text',
@@ -71642,13 +72377,13 @@ and limitations under the License.
                         ),
                       ),
                     ),
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'content-item' },
-                      b.createElement(
+                      N.createElement(
                         'div',
                         { className: 'form-item-box' },
-                        b.createElement(Xt.a, {
+                        N.createElement(Jt.a, {
                           style: { display: 'inline-block' },
                           disabled: s,
                           required: l,
@@ -71656,7 +72391,7 @@ and limitations under the License.
                           format: c,
                           placeholder:
                             r.placeholder || '请输入'.concat(r.title),
-                          defaultValue: u && Zt()(u, c),
+                          defaultValue: u && Gt()(u, c),
                           onChange: this.handleValueChange,
                         }),
                       ),
@@ -71667,24 +72402,168 @@ and limitations under the License.
             ]),
             n
           );
-        })(b.PureComponent);
-      nn.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+        })(N.PureComponent);
+      Zt.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var rn = Object(L.b)(function (e) {
+      var en = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(nn)),
-        on = (n(413), n(254)),
-        an = n.n(on);
+        })(Object(W.c)(Zt)),
+        tn = (n(416), n(257)),
+        nn = n.n(tn);
+      function rn(e) {
+        var t = (function () {
+          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
+          if (Reflect.construct.sham) return !1;
+          if ('function' == typeof Proxy) return !0;
+          try {
+            return (
+              Date.prototype.toString.call(
+                Reflect.construct(Date, [], function () {}),
+              ),
+              !0
+            );
+          } catch (e) {
+            return !1;
+          }
+        })();
+        return function () {
+          var n,
+            r = $()(e);
+          if (t) {
+            var i = $()(this).constructor;
+            n = Reflect.construct(r, arguments, i);
+          } else n = r.apply(this, arguments);
+          return R()(this, n);
+        };
+      }
+      var on = (function (e) {
+        Y()(n, e);
+        var t = rn(n);
+        function n(e) {
+          var r;
+          return (
+            T()(this, n),
+            ((r = t.call(this, e)).handleValueChange = function (e, t) {
+              var n = r.props,
+                i = n.keyRoute;
+              (0, n.updateFormValueData)(i, t);
+            }),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
+            r
+          );
+        }
+        return (
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
+            {
+              key: 'render',
+              value: function () {
+                var e = this.props,
+                  t = e.nodeKey,
+                  n = e.keyRoute,
+                  r = e.targetJsonData,
+                  i = e.pageScreen,
+                  o = (0, e.getJSONDataByKeyRoute)(n) || r.default,
+                  a = r.readOnly || !1,
+                  s = r.isRequired || !1;
+                return N.createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === i
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
+                    key: t,
+                    id: t,
+                  },
+                  N.createElement(
+                    'div',
+                    { className: 'element-title' },
+                    N.createElement(
+                      'span',
+                      { className: 'title-text warning-text' },
+                      a ? '[只读]' : '',
+                    ),
+                    N.createElement(
+                      ue.a,
+                      { title: r.description, placement: 'top' },
+                      N.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === i && r.title.length > (a ? 4 : 6)
+                              ? r.title
+                              : '',
+                        },
+                        r.title,
+                      ),
+                    ),
+                  ),
+                  N.createElement(
+                    'div',
+                    { className: 'content-item' },
+                    N.createElement(
+                      'div',
+                      { className: 'form-item-box' },
+                      N.createElement(nn.a, {
+                        style: { display: 'inline-block' },
+                        disabled: a,
+                        required: s,
+                        placeholder: r.placeholder || '请输入'.concat(r.title),
+                        defaultValue: o && Gt()(o, 'HH:mm'),
+                        onChange: this.handleValueChange,
+                      }),
+                    ),
+                  ),
+                );
+              },
+            },
+          ]),
+          n
+        );
+      })(N.PureComponent);
+      on.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
+      };
+      var an = Object(W.b)(function (e) {
+        return {
+          pageScreen: e.JSONSchemaStore.pageScreen,
+          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+          updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
+        };
+      })(Object(W.c)(on));
       function sn(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -71703,70 +72582,77 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
       var ln = (function (e) {
-        p()(n, e);
+        Y()(n, e);
         var t = sn(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
-            ((r = t.call(this, e)).handleValueChange = function (e, t) {
-              var n = r.props,
+            T()(this, n),
+            ((r = t.call(this, e)).handleValueChange = function (e) {
+              var t = e.target.value,
+                n = r.props,
                 i = n.keyRoute;
               (0, n.updateFormValueData)(i, t);
             }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
                 var e = this.props,
-                  t = e.nodeKey,
-                  n = e.keyRoute,
+                  t = e.keyRoute,
+                  n = e.nodeKey,
                   r = e.targetJsonData,
                   i = e.pageScreen,
-                  o = (0, e.getJSONDataByKeyRoute)(n) || r.default,
-                  a = r.readOnly || !1,
-                  s = r.isRequired || !1;
-                return b.createElement(
+                  o = (0, e.getJSONDataByKeyRoute)(t);
+                return N.createElement(
                   'div',
                   {
                     className:
                       'wideScreen' === i
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
-                    key: t,
-                    id: t,
+                    key: n,
+                    id: n,
                   },
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'element-title' },
-                    b.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      a ? '[只读]' : '',
-                    ),
-                    b.createElement(
-                      me.a,
+                    N.createElement(
+                      ue.a,
                       { title: r.description, placement: 'top' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         {
                           className: 'title-text',
                           title:
-                            'wideScreen' === i && r.title.length > (a ? 4 : 6)
+                            'wideScreen' === i && r.title.length > 6
                               ? r.title
                               : '',
                         },
@@ -71774,18 +72660,17 @@ and limitations under the License.
                       ),
                     ),
                   ),
-                  b.createElement(
+                  N.createElement(
                     'div',
                     { className: 'content-item' },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      b.createElement(an.a, {
+                      N.createElement(st.a, {
                         style: { display: 'inline-block' },
-                        disabled: a,
-                        required: s,
-                        placeholder: r.placeholder || '请输入'.concat(r.title),
-                        defaultValue: o && Zt()(o, 'HH:mm'),
+                        className: 'color-item-form',
+                        type: 'color',
+                        defaultValue: o || r.default,
                         onChange: this.handleValueChange,
                       }),
                     ),
@@ -71796,22 +72681,25 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
+      })(N.PureComponent);
       ln.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var cn = Object(L.b)(function (e) {
+      var cn = Object(W.b)(function (e) {
         return {
           pageScreen: e.JSONSchemaStore.pageScreen,
           getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
           updateFormValueData: e.JSONEditorStore.updateFormValueData,
+          getJSONDataTempByKeyRoute:
+            e.JSONEditorStore.getJSONDataTempByKeyRoute,
         };
-      })(Object(L.c)(ln));
+      })(Object(W.c)(ln));
+      n(419), n(107);
       function un(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
@@ -71830,154 +72718,46 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
       var dn = (function (e) {
-        p()(n, e);
+        Y()(n, e);
         var t = un(n);
         function n(e) {
           var r;
           return (
-            d()(this, n),
-            ((r = t.call(this, e)).handleValueChange = function (e) {
-              var t = e.target.value,
-                n = r.props,
-                i = n.keyRoute;
-              (0, n.updateFormValueData)(i, t);
-            }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
-            r
-          );
-        }
-        return (
-          f()(n, [
-            {
-              key: 'render',
-              value: function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  n = e.nodeKey,
-                  r = e.targetJsonData,
-                  i = e.pageScreen,
-                  o = (0, e.getJSONDataByKeyRoute)(t);
-                return b.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === i
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: n,
-                    id: n,
-                  },
-                  b.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    b.createElement(
-                      me.a,
-                      { title: r.description, placement: 'top' },
-                      b.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === i && r.title.length > 6
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                      ),
-                    ),
-                  ),
-                  b.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    b.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      b.createElement(ut.a, {
-                        style: { display: 'inline-block' },
-                        className: 'color-item-form',
-                        type: 'color',
-                        defaultValue: o || r.default,
-                        onChange: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
-              },
-            },
-          ]),
-          n
-        );
-      })(b.PureComponent);
-      dn.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
-      };
-      var hn = Object(L.b)(function (e) {
-        return {
-          pageScreen: e.JSONSchemaStore.pageScreen,
-          getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-          updateFormValueData: e.JSONEditorStore.updateFormValueData,
-        };
-      })(Object(L.c)(dn));
-      n(416), n(104);
-      function fn(e) {
-        var t = (function () {
-          if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
-          if (Reflect.construct.sham) return !1;
-          if ('function' == typeof Proxy) return !0;
-          try {
-            return (
-              Date.prototype.toString.call(
-                Reflect.construct(Date, [], function () {}),
-              ),
-              !0
-            );
-          } catch (e) {
-            return !1;
-          }
-        })();
-        return function () {
-          var n,
-            r = y()(e);
-          if (t) {
-            var i = y()(this).constructor;
-            n = Reflect.construct(r, arguments, i);
-          } else n = r.apply(this, arguments);
-          return _()(this, n);
-        };
-      }
-      var mn = (function (e) {
-        p()(n, e);
-        var t = fn(n);
-        function n(e) {
-          var r;
-          return (
-            d()(this, n),
+            T()(this, n),
             ((r = t.call(this, e)).handleValueChange = function (e) {
               var t = r.props,
                 n = t.keyRoute;
               (0, t.updateFormValueData)(n, e);
             }),
             (r.state = { isShowWarn: !1, warnText: '' }),
-            (r.handleValueChange = r.handleValueChange.bind(ge()(r))),
+            (r.handleValueChange = r.handleValueChange.bind(he()(r))),
             r
           );
         }
         return (
-          f()(n, [
+          E()(n, [
+            {
+              key: 'componentWillMount',
+              value: function () {
+                Be.a.call(this);
+              },
+            },
+            {
+              key: 'componentWillReceiveProps',
+              value: function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  Be.a.call(this, e.keyRoute);
+              },
+            },
             {
               key: 'render',
               value: function () {
@@ -71995,8 +72775,8 @@ and limitations under the License.
                   d = (i.isRequired, a(r));
                 return (
                   (d = void 0 !== d ? d : i.default || '<p>hello</p>'),
-                  Object(N.e)(d) && (d = JSON.stringify(d, null, 2)),
-                  b.createElement(
+                  Object(X.g)(d) && (d = JSON.stringify(d, null, 2)),
+                  N.createElement(
                     'div',
                     {
                       className: ''.concat(
@@ -72008,18 +72788,18 @@ and limitations under the License.
                       key: n,
                       id: n,
                     },
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'element-title' },
-                      b.createElement(
+                      N.createElement(
                         'span',
                         { className: 'title-text warning-text' },
                         u ? '[只读]' : '',
                       ),
-                      b.createElement(
-                        me.a,
+                      N.createElement(
+                        ue.a,
                         { title: i.description, placement: 'top' },
-                        b.createElement(
+                        N.createElement(
                           'span',
                           {
                             className: 'title-text',
@@ -72032,25 +72812,25 @@ and limitations under the License.
                         ),
                       ),
                     ),
-                    b.createElement(
+                    N.createElement(
                       'div',
                       { className: 'content-item object-content' },
                       l &&
-                        b.createElement(
+                        N.createElement(
                           'div',
                           { className: 'warning-box code-area-item' },
-                          b.createElement(
+                          N.createElement(
                             'div',
                             { className: 'warning-img' },
                             'X',
                           ),
-                          b.createElement(
+                          N.createElement(
                             'div',
                             { className: 'warning-text' },
                             c,
                           ),
                         ),
-                      b.createElement(it.a, {
+                      N.createElement(tt.a, {
                         id: 'code_area_ace',
                         key: ''.concat(n, '-ace'),
                         className: 'code-area-item',
@@ -72092,71 +72872,74 @@ and limitations under the License.
           ]),
           n
         );
-      })(b.PureComponent);
-      mn.propTypes = {
-        parentType: x.a.string,
-        jsonKey: x.a.string,
-        indexRoute: x.a.string,
-        keyRoute: x.a.string,
-        nodeKey: x.a.string,
-        targetJsonData: x.a.any,
+      })(N.PureComponent);
+      dn.propTypes = {
+        parentType: B.a.string,
+        jsonKey: B.a.string,
+        indexRoute: B.a.string,
+        keyRoute: B.a.string,
+        nodeKey: B.a.string,
+        targetJsonData: B.a.any,
       };
-      var pn = Object(L.b)(function (e) {
+      var hn = Object(W.b)(function (e) {
           return {
             pageScreen: e.JSONSchemaStore.pageScreen,
             getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             updateFormValueData: e.JSONEditorStore.updateFormValueData,
+            getJSONDataTempByKeyRoute:
+              e.JSONEditorStore.getJSONDataTempByKeyRoute,
           };
-        })(Object(L.c)(mn)),
-        gn = function (e) {
-          var t = e.nodeKey;
-          switch (H(e.targetJsonData)) {
+        })(Object(W.c)(dn)),
+        fn = function (e) {
+          var t = e.nodeKey,
+            n = e.targetJsonData;
+          switch (Object(G.a)(n)) {
             case 'func':
             case 'style':
             case 'data':
             case 'object':
-              return w.a.createElement(Ge, he()({}, e, { key: t }));
+              return H.a.createElement(Ke, le()({}, e, { key: t }));
             case 'array':
-              return w.a.createElement(Ze, he()({}, e, { key: t }));
+              return H.a.createElement(Ge, le()({}, e, { key: t }));
             case 'datasource':
-              return w.a.createElement(gt, he()({}, e, { key: t }));
+              return H.a.createElement(ft, le()({}, e, { key: t }));
             case 'event':
-              return w.a.createElement(Mt, he()({}, e, { key: t }));
+              return H.a.createElement(yt, le()({}, e, { key: t }));
             case 'quantity':
-              return w.a.createElement(St, he()({}, e, { key: t }));
+              return H.a.createElement(Mt, le()({}, e, { key: t }));
             case 'radio':
-              return w.a.createElement(Dt, he()({}, e, { key: t }));
+              return H.a.createElement(Ot, le()({}, e, { key: t }));
             case 'select':
-              return w.a.createElement(Rt, he()({}, e, { key: t }));
+              return H.a.createElement(At, le()({}, e, { key: t }));
             case 'input':
-              return w.a.createElement(yt, he()({}, e, { key: t }));
+              return H.a.createElement(gt, le()({}, e, { key: t }));
             case 'textarea':
-              return w.a.createElement(Ht, he()({}, e, { key: t }));
+              return H.a.createElement(Pt, le()({}, e, { key: t }));
             case 'number':
-              return w.a.createElement(Bt, he()({}, e, { key: t }));
+              return H.a.createElement(It, le()({}, e, { key: t }));
             case 'boolean':
-              return w.a.createElement(qt, he()({}, e, { key: t }));
+              return H.a.createElement(Ut, le()({}, e, { key: t }));
             case 'date':
             case 'date-time':
-              return w.a.createElement(rn, he()({}, e, { key: t }));
+              return H.a.createElement(en, le()({}, e, { key: t }));
             case 'time':
-              return w.a.createElement(cn, he()({}, e, { key: t }));
+              return H.a.createElement(an, le()({}, e, { key: t }));
             case 'url':
-              return w.a.createElement(ft, he()({}, e, { key: t }));
+              return H.a.createElement(ut, le()({}, e, { key: t }));
             case 'color':
-              return w.a.createElement(hn, he()({}, e, { key: t }));
+              return H.a.createElement(cn, le()({}, e, { key: t }));
             case 'json':
-              return w.a.createElement(st, he()({}, e, { key: t }));
+              return H.a.createElement(it, le()({}, e, { key: t }));
             case 'codearea':
-              return w.a.createElement(lt.a, he()({}, e, { key: t }));
+              return H.a.createElement(ot.a, le()({}, e, { key: t }));
             case 'htmlarea':
-              return w.a.createElement(pn, he()({}, e, { key: t }));
+              return H.a.createElement(hn, le()({}, e, { key: t }));
             default:
-              return w.a.createElement(yt, he()({}, e, { key: t }));
+              return H.a.createElement(gt, le()({}, e, { key: t }));
           }
         };
-      n(417);
-      function _n(e) {
+      n(420);
+      function mn(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -72174,22 +72957,22 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var vn = ue.a.Panel,
-        yn = (function (e) {
-          p()(n, e);
-          var t = _n(n);
+      var pn = ae.a.Panel,
+        gn = (function (e) {
+          Y()(n, e);
+          var t = mn(n);
           function n(e) {
             var r;
             return (
-              d()(this, n),
+              T()(this, n),
               ((r = t.call(this, e)).renderHeader = function (e) {
                 switch (e) {
                   case 'func':
@@ -72211,17 +72994,17 @@ and limitations under the License.
             );
           }
           return (
-            f()(n, [
+            E()(n, [
               {
                 key: 'componentWillReceiveProps',
                 value: function (e) {
-                  Object(N.c)(e.schemaData, this.props.schemaData) ||
+                  Object(X.e)(e.schemaData, this.props.schemaData) ||
                     this.props.JSONSchemaChange(e.schemaData),
-                    Object(N.c)(e.jsonData, this.props.jsonData) ||
+                    Object(X.e)(e.jsonData, this.props.jsonData) ||
                       this.props.initJSONData(e.jsonData),
-                    Object(N.c)(e.wideScreen, this.props.wideScreen) ||
+                    Object(X.e)(e.wideScreen, this.props.wideScreen) ||
                       this.props.setPageScreen(e.wideScreen),
-                    Object(N.c)(e.onChange, this.props.onChange) ||
+                    Object(X.e)(e.onChange, this.props.onChange) ||
                       this.props.initOnChange(e.onChange);
                 },
               },
@@ -72233,37 +73016,19 @@ and limitations under the License.
                     n = t.jsonSchema,
                     r = t.lastUpdateTime,
                     i = t.lastInitTime,
-                    o = (function (e) {
-                      var t = !0;
-                      if (
-                        e &&
-                        'object' === H(e) &&
-                        e.properties &&
-                        e.propertyOrder &&
-                        e.propertyOrder.length > 0
-                      ) {
-                        var n = e.properties.func,
-                          r = e.properties.style,
-                          i = e.properties.data;
-                        ((n.propertyOrder && n.propertyOrder.length > 0) ||
-                          (r.propertyOrder && r.propertyOrder.length > 0) ||
-                          (i.propertyOrder && i.propertyOrder.length > 0)) &&
-                          (t = !1);
-                      }
-                      return t;
-                    })(n);
-                  return b.createElement(
+                    o = Object(G.d)(n);
+                  return N.createElement(
                     'div',
                     { className: 'json-editor-container' },
                     o &&
-                      b.createElement(
+                      N.createElement(
                         'p',
                         { className: 'json-editor-empty' },
                         '当前jsonSchema没有数据内容',
                       ),
                     !o &&
-                      b.createElement(
-                        ue.a,
+                      N.createElement(
+                        ae.a,
                         {
                           defaultActiveKey: n.propertyOrder,
                           expandIconPosition: 'right',
@@ -72274,17 +73039,17 @@ and limitations under the License.
                             s = t,
                             l = t,
                             c = n.properties[l],
-                            u = H(c),
+                            u = Object(G.a)(c),
                             d = ''
                               .concat(r, '-')
                               .concat(i, '-')
                               .concat(u, '-')
                               .concat(l);
                           return c.propertyOrder && c.propertyOrder.length > 0
-                            ? b.createElement(
-                                vn,
+                            ? N.createElement(
+                                pn,
                                 { header: e.renderHeader(u), key: l },
-                                gn({
+                                fn({
                                   parentType: u,
                                   jsonKey: l,
                                   indexRoute: a,
@@ -72302,14 +73067,14 @@ and limitations under the License.
             ]),
             n
           );
-        })(b.PureComponent);
-      yn.propTypes = {
-        wideScreen: x.a.any,
-        onChange: x.a.func,
-        schemaData: x.a.object,
-        jsonData: x.a.object,
+        })(N.PureComponent);
+      gn.propTypes = {
+        wideScreen: B.a.any,
+        onChange: B.a.func,
+        schemaData: B.a.object,
+        jsonData: B.a.object,
       };
-      var bn = Object(L.b)(function (e) {
+      var _n = Object(W.b)(function (e) {
         return {
           jsonSchema: e.JSONSchemaStore.jsonSchema,
           lastUpdateTime: e.JSONSchemaStore.lastUpdateTime,
@@ -72320,8 +73085,8 @@ and limitations under the License.
           initOnChange: e.JSONEditorStore.initOnChange,
           setPageScreen: e.JSONSchemaStore.setPageScreen,
         };
-      })(Object(L.c)(yn));
-      function wn(e) {
+      })(Object(W.c)(gn));
+      function vn(e) {
         var t = (function () {
           if ('undefined' == typeof Reflect || !Reflect.construct) return !1;
           if (Reflect.construct.sham) return !1;
@@ -72339,23 +73104,23 @@ and limitations under the License.
         })();
         return function () {
           var n,
-            r = y()(e);
+            r = $()(e);
           if (t) {
-            var i = y()(this).constructor;
+            var i = $()(this).constructor;
             n = Reflect.construct(r, arguments, i);
           } else n = r.apply(this, arguments);
-          return _()(this, n);
+          return R()(this, n);
         };
       }
-      var Mn = (function (e) {
-        p()(n, e);
-        var t = wn(n);
+      var yn = (function (e) {
+        Y()(n, e);
+        var t = vn(n);
         function n(e) {
           var r;
-          return d()(this, n), ((r = t.call(this, e)).JSONStore = new le()), r;
+          return T()(this, n), ((r = t.call(this, e)).JSONStore = new ie()), r;
         }
         return (
-          f()(n, [
+          E()(n, [
             {
               key: 'render',
               value: function () {
@@ -72365,32 +73130,32 @@ and limitations under the License.
                   r = e.jsonData,
                   i = e.onChange,
                   o = e.element,
-                  a = b.createElement(
-                    L.a,
+                  a = N.createElement(
+                    W.a,
                     {
                       JSONSchemaStore: this.JSONStore.JSONSchemaStore,
                       JSONEditorStore: this.JSONStore.JSONEditorStore,
                     },
-                    b.createElement(bn, {
+                    N.createElement(_n, {
                       wideScreen: t,
                       schemaData: n,
                       jsonData: r,
                       onChange: i,
                     }),
                   );
-                return o ? (k.a.render(o, a), '') : a;
+                return o ? (I.a.render(o, a), '') : a;
               },
             },
           ]),
           n
         );
-      })(b.PureComponent);
-      Mn.propTypes = {
-        wideScreen: x.a.any,
-        onChange: x.a.func,
-        schemaData: x.a.any,
-        jsonData: x.a.any,
-        element: x.a.any,
+      })(N.PureComponent);
+      yn.propTypes = {
+        wideScreen: B.a.any,
+        onChange: B.a.func,
+        schemaData: B.a.any,
+        jsonData: B.a.any,
+        element: B.a.any,
       };
     },
     function (e, t, n) {
@@ -72409,16 +73174,16 @@ and limitations under the License.
           return ye;
         });
       var r = n(0),
-        i = n(34),
+        i = n(37),
         o = n(3),
-        a = n(21),
-        s = n(24),
-        l = n(26),
-        c = n(29),
-        u = n(28),
-        d = n(20),
-        h = n(69),
-        f = n(27),
+        a = n(22),
+        s = n(27),
+        l = n(29),
+        c = n(32),
+        u = n(31),
+        d = n(21),
+        h = n(72),
+        f = n(30),
         m = 'RC_FORM_INTERNAL_HOOKS',
         p = function () {
           Object(f.a)(
@@ -72459,7 +73224,7 @@ and limitations under the License.
       function _(e) {
         return null == e ? [] : Array.isArray(e) ? e : [e];
       }
-      var v = n(55),
+      var v = n(58),
         y = n.n(v);
       function b(e, t, n, r, i, o, a) {
         try {
@@ -72486,8 +73251,8 @@ and limitations under the License.
           });
         };
       }
-      var M = n(31),
-        k = n(251);
+      var M = n(34),
+        k = n(254);
       function L(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
@@ -73514,7 +74279,7 @@ and limitations under the License.
             ),
           );
         },
-        ue = n(10);
+        ue = n(12);
       var de = (function () {
         function e() {
           Object(s.a)(this, e), (this.list = []);
@@ -74380,7 +75145,7 @@ and limitations under the License.
       n.r(t);
       var r = n(0),
         i = n.n(r),
-        o = n(71),
+        o = n(74),
         a = { adjustX: 1, adjustY: 1 },
         s = [0, 0],
         l = {
@@ -74668,18 +75433,18 @@ and limitations under the License.
         n.d(t, 'ResizableTextArea', function () {
           return A;
         });
-      var r = n(24),
-        i = n(26),
-        o = n(29),
-        a = n(28),
-        s = n(20),
+      var r = n(27),
+        i = n(29),
+        o = n(32),
+        a = n(31),
+        s = n(21),
         l = n(0),
         c = n(3),
-        u = n(56),
-        d = n(69),
-        h = n(27),
-        f = n(42),
-        m = n(70);
+        u = n(59),
+        d = n(72),
+        h = n(30),
+        f = n(45),
+        m = n(73);
       function p(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
@@ -74862,7 +75627,7 @@ and limitations under the License.
             );
           })(l.Component)).displayName = 'ResizeObserver'),
           v),
-        M = n(49),
+        M = n(52),
         k = n(4),
         L = n.n(k),
         S =
