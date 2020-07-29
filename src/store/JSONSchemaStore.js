@@ -5,7 +5,7 @@ import {
   oldJSONSchemaToNewJSONSchema,
   schema2JsonData,
 } from '$utils/jsonSchema';
-import { isEqual, objClone } from '$utils/index';
+import { isEqual, objClone, isNewSchemaData } from '$utils/index';
 import { initJSONSchemaData } from '$data/index';
 
 /**
@@ -47,7 +47,7 @@ export default class JSONSchemaStore {
       this.jsonSchema = objClone(initJSONSchemaData);
     } else if (!isEqual(jsonSchemaData, this.JSONSchemaObj)) {
       console.log('initJSONSchemaData', this.JSONSchemaObj);
-      if (jsonSchemaData && jsonSchemaData.lastUpdateTime) {
+      if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
         /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
         this.jsonSchema = jsonSchemaData;
       } else {
@@ -73,7 +73,7 @@ export default class JSONSchemaStore {
         // 使用默认的jsonschema数据进行初始化
         this.jsonSchema = objClone(initJSONSchemaData);
       } else {
-        if (jsonSchemaData && jsonSchemaData.lastUpdateTime) {
+        if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
           /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
           this.jsonSchema = jsonSchemaData;
         } else {

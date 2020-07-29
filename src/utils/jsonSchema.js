@@ -1,4 +1,4 @@
-import { EventTypeDataList } from '$data/TypeDataList';
+import { EventTypeDataList, TypeDataList } from '$data/TypeDataList';
 /**
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
@@ -209,6 +209,19 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   if (!newJSONSchema.format) {
     newJSONSchema.format = getCurrentFormat(newJSONSchema);
   }
+  // 3.不需要default属性的类型自动删除
+  if (
+    (newJSONSchema.format === 'quantity' ||
+      newJSONSchema.format === 'array' ||
+      newJSONSchema.format === 'datasource' ||
+      newJSONSchema.format === 'event' ||
+      newJSONSchema.format === 'object' ||
+      newJSONSchema.format === 'radio' ||
+      newJSONSchema.format === 'select') &&
+    exitPropertie(newJSONSchema.default)
+  ) {
+    delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
+  }
   // 转换旧版的radio类型的数据结构
   if (newJSONSchema.format === 'radio') {
     newJSONSchema.type = 'string';
@@ -224,35 +237,42 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
       delete newJSONSchema.enumextra;
     }
   }
-  // 转换旧版的datasource类型的数据结构
-  if (newJSONSchema.format === 'datasource') {
-    let curProperties = newJSONSchema.properties;
-    if (curProperties.type && isObject(curProperties.type)) {
-      curProperties.type.title = '数据源类型';
-    }
-    if (curProperties.filter && isObject(curProperties.filter)) {
-      curProperties.filter.title = '过滤器';
-      curProperties.filter.format = 'codearea';
-    }
-    if (curProperties.data && isObject(curProperties.data)) {
-      if (curProperties.type.default === 'remote') {
-        curProperties.data.title = '用于设置获取元素数据的请求地址';
-        curProperties.data.format = 'url';
-      } else {
-        curProperties.data.title = '本地静态json数据';
-        curProperties.data.format = 'json';
-      }
-    }
-  }
   // 转换旧版的quantity类型的数据结构
   if (newJSONSchema.format === 'quantity') {
     let curProperties = newJSONSchema.properties;
-    if (curProperties.quantity && isObject(curProperties.quantity)) {
-      curProperties.quantity.title = '单位类型';
-      curProperties.quantity.format = 'typeSelect';
+    const newQuantitySchema = objClone(TypeDataList.quantity); // 新版quantity的schema数据对象
+    if (
+      curProperties.quantity &&
+      isObject(curProperties.quantity) &&
+      curProperties.quantity.default
+    ) {
+      const oldDefault = curProperties.quantity.default;
+      // percent 自动转换成 %
+      newQuantitySchema.properties.quantity.default =
+        oldDefault === 'percent' ? '%' : oldDefault;
     }
-    if (curProperties.unit && isObject(curProperties.unit)) {
-      curProperties.unit.format = 'number';
+    // 融合新版schema数据
+    newJSONSchema = Object.assign(newJSONSchema, newQuantitySchema);
+  }
+  // 转换旧版的datasource类型的数据结构
+  if (newJSONSchema.format === 'datasource') {
+    let curProperties = newJSONSchema.properties;
+    newJSONSchema = objClone(TypeDataList.datasource); // 新版datasource的schema数据对象
+    // 先获取旧版的关键数据
+    const typeProp = curProperties.type && curProperties.type.default;
+    const dataProp = curProperties.data && curProperties.data.default;
+    const filterProp = curProperties.filter && curProperties.filter.default;
+    newJSONSchema.properties.filter.default = filterProp
+      ? objClone(filterProp)
+      : '() => {}';
+    if (typeProp === 'local') {
+      newJSONSchema.properties.data.default = dataProp
+        ? objClone(dataProp)
+        : '{}';
+    } else {
+      newJSONSchema.properties.data.default = dataProp
+        ? objClone(dataProp)
+        : 'http://xxx';
     }
   }
   // 转换旧版的event类型的数据结构
@@ -264,19 +284,19 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
       (curProperties.filter && curProperties.filter.default) || '() => {}';
     // 重构Event的数据结构
     if (eventType === 'in') {
-      // 注册类事件
+      // 注册类事件: 新版type改成'on'
       // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
       newJSONSchema = objClone(EventTypeDataList.on);
       if (curProperties.actionFunc && isObject(curProperties.actionFunc)) {
-        curProperties.actionFunc.default = objClone(eventFunc);
+        newJSONSchema.properties.actionFunc.default = objClone(eventFunc);
       }
     } else {
       // 其他，则默认为触发事件
-      // 注册类事件
+      // 注册类事件: 新版type改成'emit'
       // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
       newJSONSchema = objClone(EventTypeDataList.emit);
       if (curProperties.eventData && isObject(curProperties.eventData)) {
-        curProperties.eventData.default = eventFunc;
+        newJSONSchema.properties.eventData.default = eventFunc;
       }
     }
   }
@@ -315,11 +335,6 @@ export function schema2JsonData(jsonSchema, jsonData) {
       jsonSchema.propertyOrder.map((jsonKey) => {
         const jsonItem = jsonSchema.properties[jsonKey];
         let oldValue = jsonData && jsonData[jsonKey];
-
-        // 旧版数据兼容处理
-        if (jsonItem.format === 'quantity' && jsonItem.default) {
-          delete jsonItem.default; // 单位计量输入类型的默认值改放unit属性中
-        }
 
         if (
           exitPropertie(oldValue) &&
