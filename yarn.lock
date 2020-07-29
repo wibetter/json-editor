@@ -1151,10 +1151,10 @@
   dependencies:
     find-up "^4.0.0"
 
-"@jdwork/json-schema-editor@3.1.10":
-  version "3.1.10"
-  resolved "http://registry.m.jd.com/@jdwork/json-schema-editor/download/@jdwork/json-schema-editor-3.1.10.tgz#324c5a8a38d8857cdc8e4acf4bd14aec8e76643a"
-  integrity sha1-MkxaijjYhXzcjkrPS9FK7I52ZDo=
+"@jdwork/json-schema-editor@3.1.12":
+  version "3.1.12"
+  resolved "http://registry.m.jd.com/@jdwork/json-schema-editor/download/@jdwork/json-schema-editor-3.1.12.tgz#e988f61f2e6172b5fb5d39eef730fe32390a2755"
+  integrity sha1-6Yj2Hy5hcrX7XTnu9zD+MjkKJ1U=
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@babel/polyfill" "^7.10.1"

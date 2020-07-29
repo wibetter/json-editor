@@ -594,7 +594,6 @@ class IndexDemo extends React.PureComponent {
         required: ['func', 'style', 'data'],
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
-        lastUpdateTime: '2020-07-29T06:30:23.691Z',
       },
       jsonData: {
         func: {

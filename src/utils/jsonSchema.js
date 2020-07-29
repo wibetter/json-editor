@@ -252,7 +252,7 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
         oldDefault === 'percent' ? '%' : oldDefault;
     }
     // 融合新版schema数据
-    newJSONSchema = Object.assign(newJSONSchema, newQuantitySchema);
+    newJSONSchema = newQuantitySchema;
   }
   // 转换旧版的datasource类型的数据结构
   if (newJSONSchema.format === 'datasource') {
@@ -280,23 +280,26 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
     let curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     const eventType = curProperties.type && curProperties.type.default;
-    const eventFunc =
-      (curProperties.filter && curProperties.filter.default) || '() => {}';
     // 重构Event的数据结构
-    if (eventType === 'in') {
+    if (eventType === 'in' || eventType === 'on') {
+      // 兼容旧版的'in'和新版的'on'
       // 注册类事件: 新版type改成'on'
-      // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.on);
+      const eventFunc =
+        (curProperties.filter && curProperties.filter.default) || '() => {}';
       newJSONSchema = objClone(EventTypeDataList.on);
       if (curProperties.actionFunc && isObject(curProperties.actionFunc)) {
-        newJSONSchema.properties.actionFunc.default = objClone(eventFunc);
+        newJSONSchema.properties.actionFunc.default =
+          curProperties.actionFunc.default || objClone(eventFunc);
       }
     } else {
       // 其他，则默认为触发事件
       // 注册类事件: 新版type改成'emit'
-      // newJSONSchema = Object.assign(newJSONSchema, EventTypeDataList.emit);
+      const eventFunc =
+        (curProperties.filter && curProperties.filter.default) || '{}';
       newJSONSchema = objClone(EventTypeDataList.emit);
       if (curProperties.eventData && isObject(curProperties.eventData)) {
-        newJSONSchema.properties.eventData.default = eventFunc;
+        newJSONSchema.properties.eventData.default =
+          curProperties.eventData.default || objClone(eventFunc);
       }
     }
   }
