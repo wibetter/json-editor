@@ -10,8 +10,6 @@ npm install --save @jdwork/json-editor
 
 ## Usage
 
-# JSONEditor
-
 使用场景：提供可视化界面编辑json数据内容，用于区块的可视化配置，避免用户直接编辑json数据内容
 
 技术栈：React/Mobx/ant-design
@@ -72,6 +70,6 @@ class IndexDemo extends React.PureComponent {
 | name         | type     | default | desc                            |
 | ------------ | -------- | ------- | ------------------------------- |
 | `wideScreen` | function | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
-| `schemaData` | object   | {}      | schema data: json的结构数据       |
-| `jsonData`   | object   | {}      | json data: json的内容数据         |
+| `schemaData` | object   | {}      | json的结构数据       |
+| `jsonData`   | object   | {}      | json的内容数据         |
 | `onChange`   | function | null    | jsonData内容变动时会触发onChange   |
