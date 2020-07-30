@@ -20,7 +20,8 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -60,6 +61,8 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.1",
     "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@jdwork/json-schema-editor": "3.1.12",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.3.0",
     "autoprefixer": "^9.8.0",
     "babel-eslint": "^10.1.0",
@@ -120,8 +123,7 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-merge": "^4.2.2",
-    "@jdwork/json-schema-editor": "3.1.12"
+    "webpack-merge": "^4.2.2"
   },
   "engines": {
     "node": ">= 10.13.0",
