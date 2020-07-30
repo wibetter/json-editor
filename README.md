@@ -13,7 +13,11 @@ npm install --save @jdwork/json-editor
 # JSONEditor
 
 使用场景：提供可视化界面编辑json数据内容，用于区块的可视化配置，避免用户直接编辑json数据内容
+
 技术栈：React/Mobx/ant-design
+
+Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
+
 特点：弹性布局、提供大屏和小屏两种展示模式
 
 ## Usage
