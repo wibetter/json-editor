@@ -12,7 +12,6 @@ import './index.scss';
 class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       jsonSchema: {
         type: 'object',
@@ -595,90 +594,7 @@ class IndexDemo extends React.PureComponent {
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
       },
-      jsonData: {
-        func: {
-          field_1: '111',
-          field_2: true,
-          field_3: '2020-07-10',
-          field_4: '2020-07-11 18:56',
-          field_5: '00:02:07',
-          field_6: '111',
-          field_7: '11111',
-          field_8: 51,
-          field_9: 'b',
-          field_10: ['b', 'a'],
-          field_11: [{ name: '111', field_1: '1111' }],
-          field_12: { a: '111', field_2: '111', field_3: '111' },
-        },
-        style: {
-          field_18: '#6d2222',
-          field_23: { unit: 51, quantity: 'px' },
-          field_1: '<p>hello,world!</p>\n<p>hello,world!</p>',
-        },
-        data: {
-          field_28: { test: 123456 },
-          field_2: 'function func() { \n  console.log("hello, world!");\n}',
-          field_3: '<p>hello,world!</p>\n<p>hello,world!</p>',
-          field_29: { data: { test: 123 }, filter: '() => {}' },
-          field_30: { trigger: 'cliock', eventData: { test: 123456 } },
-          field_34: { obj: { a: 'sdsd', field_1: ['b', 'a'] } },
-          field_33: [
-            {
-              name: '111',
-              field_2: [{ name: '1111', field_3: '111', field_5: '111' }],
-            },
-            {
-              name: '111',
-              field_2: [{ name: '1111', field_3: '111', field_5: '111' }],
-            },
-            {
-              name: '111',
-              field_2: [{ name: '1111', field_3: '111', field_5: '111' }],
-            },
-          ],
-        },
-      },
-      jsonDataV2: {
-        func: {
-          field_1: '123',
-          field_2: true,
-          field_3: '2020-07-10',
-          field_4: '2020-07-10 17:18',
-          field_5: '00:05:00',
-          field_6: 'http://baidu.com',
-          field_7: 'hello，world！',
-          field_8: 99,
-          field_9: 'b',
-          field_10: ['b', 'a'],
-          field_11: [
-            { name: '张三', field_1: '2019' },
-            { name: '李四', field_1: '2020' },
-          ],
-          field_12: { a: '111', field_2: '222', field_3: '333' },
-        },
-        style: {
-          field_18: '#c51b1b',
-          field_23: { unit: 90, quantity: 'px' },
-          field_1: '<p>hello,world!</p>\n<p>hello,world!</p>',
-        },
-        data: {
-          field_28: { test: 123 },
-          field_2: 'function func() { \n  console.log("hello, world!");\n}',
-          field_3: '<p>hello,world!</p>\n<p>hello,world!</p>',
-          field_29: {
-            data: { test: 123 },
-            filter: 'function filter() { \n  console.log("hello, world!");\n}',
-          },
-          field_30: { trigger: 'click', eventData: { test: 123 } },
-          field_34: { obj: { a: '11', field_1: ['a', 'b', 'c'] } },
-          field_33: [
-            {
-              name: '00',
-              field_2: [{ name: '11', field_3: '22', field_5: '33' }],
-            },
-          ],
-        },
-      },
+      jsonData: {},
       wideScreen: false,
     };
   }

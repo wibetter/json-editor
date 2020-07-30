@@ -1,4 +1,6 @@
 /**
+ * https://www.npmjs.com/package/@commitlint/config-conventional\
+ *
  * Git提交规范-配置文件
  * Commit message 由Header、Body 和 Footer三个部分组成，其格式如下：
  *  <type>(<scope>): <subject>
@@ -49,6 +51,7 @@ module.exports = {
         'ci',
       ],
     ],
+    'type-empty': [2, 'never'],
     'scope-empty': [2, 'never'],
     'subject-full-stop': [0, 'never'],
     'subject-case': [0, 'never'],
