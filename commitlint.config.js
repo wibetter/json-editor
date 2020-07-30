@@ -52,7 +52,6 @@ module.exports = {
       ],
     ],
     'type-empty': [2, 'never'],
-    'scope-empty': [2, 'never'],
     'subject-full-stop': [0, 'never'],
     'subject-case': [0, 'never'],
   },
