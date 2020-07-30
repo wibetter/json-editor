@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { getWebCacheData, deleteWebCacheData } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 

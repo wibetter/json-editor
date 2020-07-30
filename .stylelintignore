@@ -1,3 +1,5 @@
- node_modules/*
- build/*
- config/*
+build/*
+config/*
+dist/*
+node_modules/*
+test/*

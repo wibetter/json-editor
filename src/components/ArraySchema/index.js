@@ -66,11 +66,10 @@ class ArraySchema extends React.PureComponent {
       targetJsonData,
       pageScreen,
       getJSONDataByKeyRoute,
-      indexRoute2keyRoute,
     } = this.props;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
-    let curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     const arrayItemsDataObj = targetJsonData.items;
 

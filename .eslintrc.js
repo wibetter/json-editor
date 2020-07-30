@@ -7,34 +7,30 @@ module.exports = {
     ecmaVersion: 6,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   env: {
     browser: true,
     es6: true,
     commonjs: true,
-    node: true
+    node: true,
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   // 此项是用来配置标准的js风格，就是说写代码的时候要规范的写，如果你使用vs-code我觉得应该可以避免出错
   extends: [
-    'airbnb-base' // eslint-config-airbnb-base
+    'airbnb-base', // eslint-config-airbnb-base
   ],
   // 此项是用来提供插件的，插件名称省略了eslint-plugin-，下面这个配置是用来规范html的
   // required to lint *.src files
-  plugins: [
-    'html',
-    'react',
-    'prettier'
-  ],
+  plugins: ['html', 'react', 'prettier'],
   // check if imports actually resolve
   settings: {
     'import/resolver': {
       webpack: {
-        config: 'build/webpack.base.conf.js'
-      }
-    }
+        config: 'build/webpack.base.conf.js',
+      },
+    },
   },
   // 添加自定义ESLint规则
   // "off" or 0 关闭规则
@@ -44,18 +40,25 @@ module.exports = {
   rules: {
     // "prettier/prettier": 0, // Runs Prettier as an ESLint rule and reports differences as individual ESLint issues.
     // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      vue: 'never'
-    }],
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'never',
+        vue: 'never',
+      },
+    ],
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'import/first': 0,
     'arrow-parens': 0,
     // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      optionalDependencies: ['test/unit/jsEntries.js']
-    }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        optionalDependencies: ['test/unit/jsEntries.js'],
+      },
+    ],
     'no-underscore-dangle': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
@@ -69,9 +72,17 @@ module.exports = {
     'prefer-object-spread ': 0,
     'import/newline-after-import': 0,
     'no-unreachable': 0,
-    'operator-linebreak': ['error', 'after'], // 操作符的位置
-    'quote-props': 0, // 要求在对象文字属性名称周围加上引号
-    "import/prefer-default-export": 0, // 不强制使用default-export
+    'import/prefer-default-export': 0, // 不强制使用default-export
     'array-callback-return': 0,
-  }
+    camelcase: 1, // 双峰驼命名格式
+    'no-shadow': 0, // 外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
+    'prefer-destructuring': 0, // 该规则强制执行解构操作，而不是通过成员表达式访问属性。
+    quotes: [1, 'single'], //引号类型 `` "" ''
+    'quote-props': 1, // 对象字面量中的属性名是否强制双引号
+    'import/no-cycle': 0, // 循环依赖
+    'no-lonely-if': 0, // 禁止else语句内只有if语句
+    'no-eval': 1, // JavaScript的eval()功能具有潜在的危险，并且经常被滥用
+    'object-curly-newline': 0, // 该规则在对象文字括号或销毁分配中强制使用一致的换行符
+    'operator-linebreak': [0, 'before'], // 换行时运算符在行尾还是行首
+  },
 };

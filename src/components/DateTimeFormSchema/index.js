@@ -96,7 +96,7 @@ class DateTimeFormSchema extends React.PureComponent {
               style={{ display: 'inline-block' }}
               disabled={readOnly}
               required={isRequired}
-              showTime={curFormat === 'date-time' ? true : false}
+              showTime={curFormat === 'date-time'}
               format={timeFormat}
               placeholder={
                 targetJsonData.placeholder || `请输入${targetJsonData.title}`
