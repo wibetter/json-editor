@@ -18,10 +18,6 @@ class EventSchema extends React.PureComponent {
     targetJsonData: PropTypes.any,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     // 从web缓存中获取数值
     catchJsonDataByWebCache.call(this);

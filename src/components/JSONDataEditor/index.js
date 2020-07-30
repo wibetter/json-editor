@@ -64,7 +64,6 @@ class JSONDataEditor extends React.PureComponent {
       case 'data':
         return '数据设置';
       default:
-        return;
     }
   };
 
@@ -120,9 +119,8 @@ class JSONDataEditor extends React.PureComponent {
                     })}
                   </Panel>
                 );
-              } else {
-                return '';
               }
+              return '';
             })}
           </Collapse>
         )}

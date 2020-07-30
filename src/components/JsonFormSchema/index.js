@@ -60,7 +60,7 @@ class JsonFormSchema extends React.PureComponent {
     } = this.props;
     const { isShowWarn, warnText, curJSONDataTemp } = this.state;
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    // const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
 

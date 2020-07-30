@@ -22,6 +22,7 @@ export default class JSONSchemaStore {
    * 宽屏（wideScreen） or 小屏（mobileScreen）
    */
   @observable pageScreen = 'mobileScreen'; // 默认小屏，宽屏: wideScreen，小屏：mobileScreen
+
   /**
    * jsonSchema: JSONSchema数据对象
    */
@@ -72,15 +73,13 @@ export default class JSONSchemaStore {
       if (!jsonSchemaData || JSON.stringify(jsonSchemaData) === '{}') {
         // 使用默认的jsonschema数据进行初始化
         this.jsonSchema = objClone(initJSONSchemaData);
+      } else if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
+        /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
+        this.jsonSchema = jsonSchemaData;
       } else {
-        if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
-          /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
-          this.jsonSchema = jsonSchemaData;
-        } else {
-          // 进行一次转换，以便兼容旧版数据
-          const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
-          this.jsonSchema = newJSONSchema;
-        }
+        // 进行一次转换，以便兼容旧版数据
+        const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
+        this.jsonSchema = newJSONSchema;
       }
       const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
       /** 根据jsonSchema生成对应的最新jsonData */

@@ -1,5 +1,3 @@
-// import JSON5 from 'json5';
-
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {
   const newObj = JSON.stringify(targetObj);
@@ -16,7 +14,7 @@ export function isEqual(targetObj, nextTargetObj) {
 export function exitPropertie(targetPropertie) {
   let exitPropertie = false;
   if (targetPropertie !== undefined) {
-    // targetPropertie为""、0、false时均认为是存在的属性
+    // targetPropertie 等于""、0、false时均认为是存在的属性
     exitPropertie = true;
   }
   return exitPropertie;
@@ -96,7 +94,7 @@ export function isArray(curObj) {
  * */
 export function isNewSchemaData(schemaData) {
   let isNewVersion = false;
-  const lastUpdateTime = schemaData.lastUpdateTime;
+  const { lastUpdateTime } = schemaData;
   // 从那一刻开始就认为是新版JSONSchema
   const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
   if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
@@ -131,9 +129,9 @@ export function isFunction(curObj) {
  * 获取当前url中的所有参数
  */
 export function getParams() {
-  let params = location.search;
+  let params = window.location.search;
   if (!params) {
-    const currentHref = location.href;
+    const currentHref = window.location.href;
     const startIndex = currentHref.lastIndexOf('?');
     params = currentHref.substring(startIndex);
   }
@@ -153,7 +151,7 @@ export function getParams() {
  * 获取当前url中的指定参数
  */
 export function getURLParam(key) {
-  const params = location.search;
+  const params = window.location.search;
   if (params) {
     const arr = params.substr(1).split('&');
     for (let i = 0, size = arr.length; i < size; i++) {

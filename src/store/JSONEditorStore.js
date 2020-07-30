@@ -16,10 +16,12 @@ export default class JSONEditorStore {
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
   }
+
   /**
    * rootJSONStore: store根数据对象
    */
   @observable rootJSONStore = {};
+
   /**
    * triggerChange: 用于强制触发更新事件
    */
@@ -29,6 +31,7 @@ export default class JSONEditorStore {
    * 记录当前JSONEditor的更新时间
    */
   @observable lastInitTime = new Date().getTime();
+
   /**
    * jsonData: jsonData数据对象
    * 备注：没有多余数据的jsonData

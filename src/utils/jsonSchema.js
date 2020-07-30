@@ -239,7 +239,7 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   }
   // 转换旧版的quantity类型的数据结构
   if (newJSONSchema.format === 'quantity') {
-    let curProperties = newJSONSchema.properties;
+    const curProperties = newJSONSchema.properties;
     const newQuantitySchema = objClone(TypeDataList.quantity); // 新版quantity的schema数据对象
     if (
       curProperties.quantity &&
@@ -256,7 +256,7 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   }
   // 转换旧版的datasource类型的数据结构
   if (newJSONSchema.format === 'datasource') {
-    let curProperties = newJSONSchema.properties;
+    const curProperties = newJSONSchema.properties;
     newJSONSchema = objClone(TypeDataList.datasource); // 新版datasource的schema数据对象
     // 先获取旧版的关键数据
     const typeProp = curProperties.type && curProperties.type.default;
@@ -277,7 +277,7 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   }
   // 转换旧版的event类型的数据结构
   if (newJSONSchema.format === 'event') {
-    let curProperties = newJSONSchema.properties;
+    const curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     const eventType = curProperties.type && curProperties.type.default;
     // 重构Event的数据结构
@@ -361,7 +361,7 @@ export function schema2JsonData(jsonSchema, jsonData) {
               /** 转成json类型进行特殊处理
                * 需要保证json类型的数值是json对象 */
               let curJsonItemData = ''; // 字符串类型的json数据
-              let curOldValue = jsonData && jsonData[jsonKey];
+              const curOldValue = jsonData && jsonData[jsonKey];
               // 判断当前jsonData是否是对象类型
               if (isObject(curOldValue) || isArray(curOldValue)) {
                 curJsonItemData = curOldValue;
