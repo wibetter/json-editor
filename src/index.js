@@ -596,11 +596,12 @@ class IndexDemo extends React.PureComponent {
       },
       jsonData: {},
       wideScreen: false,
+      jsonView: false,
     };
   }
 
   render() {
-    const { jsonSchema, jsonData, wideScreen } = this.state;
+    const { jsonSchema, jsonData, wideScreen, jsonView } = this.state;
     return (
       <>
         <div className="title-container">
@@ -629,6 +630,18 @@ class IndexDemo extends React.PureComponent {
                   });
                 }}
               />
+              &nbsp;&nbsp;&nbsp; 是否开启JSONView模式：
+              <Switch
+                style={{ display: 'inline-block' }}
+                defaultChecked={jsonView}
+                checkedChildren="开启"
+                unCheckedChildren="关闭"
+                onChange={(checked) => {
+                  this.setState({
+                    jsonView: checked,
+                  });
+                }}
+              />
             </div>
           </div>
         </div>
@@ -646,6 +659,7 @@ class IndexDemo extends React.PureComponent {
           </div>
           <div className="json-editor-box">
             <JSONEditor
+              jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
