@@ -69,7 +69,8 @@ class IndexDemo extends React.PureComponent {
 
 | name         | type     | default | desc                            |
 | ------------ | -------- | ------- | ------------------------------- |
-| `wideScreen` | function | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
-| `schemaData` | object   | {}      | json的结构数据       |
-| `jsonData`   | object   | {}      | json的内容数据         |
+| `jsonView  ` | boolean  | false   | 是否开启全局源码模式，默认不开启      |
+| `wideScreen` | boolean  | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
+| `schemaData` | object   | {}      | json的结构数据                    |
+| `jsonData`   | object   | {}      | json的内容数据                    |
 | `onChange`   | function | null    | jsonData内容变动时会触发onChange   |
