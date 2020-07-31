@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { message, Tooltip } from 'antd';
 import { PlusCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
+import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import './index.scss';
@@ -21,6 +22,10 @@ class ArraySchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      jsonView: false, // 是否显示code模式
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.addArrayItem = this.addArrayItem.bind(this);
     this.deleteArrItem = this.deleteArrItem.bind(this);
@@ -67,6 +72,7 @@ class ArraySchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
+    const { jsonView } = this.state;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -92,6 +98,7 @@ class ArraySchema extends React.PureComponent {
               {targetJsonData.title}
             </span>
           </Tooltip>
+
           <Tooltip title="添加数据项">
             <PlusCircleOutlined
               className="add-operate-btn array-operate-btn"
@@ -100,9 +107,42 @@ class ArraySchema extends React.PureComponent {
               }}
             />
           </Tooltip>
+
+          <div
+            className="display-source-btn"
+            onClick={() => {
+              this.setState({
+                jsonView: !jsonView,
+              });
+            }}
+          >
+            <Tooltip
+              title={jsonView ? '点击关闭jsonView模式' : '点击开启jsonView模式'}
+            >
+              <svg
+                t="1596164081465"
+                className="icon"
+                viewBox="0 0 1025 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="1205"
+              >
+                <path
+                  d="M293.0688 755.2c-12.0832 0-24.2688-4.2496-33.9968-12.9024L0 512l273.4592-243.0976C294.5536 250.2144 326.912 252.0064 345.7024 273.152c18.7904 21.1456 16.896 53.504-4.2496 72.2944L154.112 512l172.9536 153.7024c21.1456 18.7904 23.04 51.1488 4.2496 72.2944C321.2288 749.4144 307.1488 755.2 293.0688 755.2zM751.0528 755.0976 1024.512 512l-259.072-230.2976c-21.1456-18.7904-53.504-16.896-72.2432 4.2496-18.7904 21.1456-16.896 53.504 4.2496 72.2944L870.4 512l-187.3408 166.5024c-21.1456 18.7904-23.04 51.1488-4.2496 72.2944C688.896 762.2144 702.976 768 717.056 768 729.1392 768 741.3248 763.7504 751.0528 755.0976zM511.5392 827.648l102.4-614.4c4.6592-27.904-14.1824-54.272-42.0864-58.9312-28.0064-4.7104-54.3232 14.1824-58.88 42.0864l-102.4 614.4c-4.6592 27.904 14.1824 54.272 42.0864 58.9312C455.5264 870.1952 458.2912 870.4 461.1072 870.4 485.6832 870.4 507.392 852.6336 511.5392 827.648z"
+                  p-id="1206"
+                  fill={jsonView ? '#1890ff' : 'currentColor'}
+                ></path>
+              </svg>
+            </Tooltip>
+          </div>
         </div>
-        <div className="content-item array-content">
-          {isArray(curJsonData) &&
+        <div
+          className={`content-item array-content ${
+            jsonView ? 'json-view-array' : ''
+          }`}
+        >
+          {!jsonView &&
+            isArray(curJsonData) &&
             curJsonData.map((arrItem, arrIndex) => {
               const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
               const curIndexRoute = `${indexRoute}-0`;
@@ -138,6 +178,7 @@ class ArraySchema extends React.PureComponent {
                 </div>
               );
             })}
+          {jsonView && <JsonView {...this.props} />}
         </div>
       </div>
     );
