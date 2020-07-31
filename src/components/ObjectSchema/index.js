@@ -3,8 +3,10 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import MappingRender from '$components/MappingRender';
+import JsonView from '$components/JsonView/index';
 import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import './index.scss';
 
 class ObjectSchema extends React.PureComponent {
   static propTypes = {
@@ -17,6 +19,14 @@ class ObjectSchema extends React.PureComponent {
     nodeKey: PropTypes.string,
     targetJsonData: PropTypes.any,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      jsonView: false, // 是否显示code模式
+    };
+  }
 
   componentWillMount() {
     // 从web缓存中获取数值
@@ -40,21 +50,22 @@ class ObjectSchema extends React.PureComponent {
       isArrayItem,
       arrIndex,
     } = this.props;
+    const { jsonView } = this.state;
     const curFormat = getCurrentFormat(targetJsonData);
     // 判断是否是一级字段类型，如果是则不显示Title，避免重复的title
     const isFirstSchema = isFirstSchemaData(curFormat);
 
     return (
       <div
-        className={`${
+        className={`block-element-warp object-schema-warp ${
           pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp  block-element-warp'
+            ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
         }`}
         key={nodeKey}
         id={nodeKey}
       >
-        {!isFirstSchema && targetJsonData.description && (
+        {!isFirstSchema && (
           <div className="element-title">
             <Tooltip title={targetJsonData.description} placement="top">
               <span
@@ -69,29 +80,44 @@ class ObjectSchema extends React.PureComponent {
               </span>
             </Tooltip>
             <span>{isArrayItem ? `/${arrIndex + 1}` : ''}</span>
-          </div>
-        )}
-        {!isFirstSchema && !targetJsonData.description && (
-          <div className="element-title">
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                  ? targetJsonData.title
-                  : ''
-              }
+            <div
+              className="display-source-btn"
+              onClick={() => {
+                this.setState({
+                  jsonView: !jsonView,
+                });
+              }}
             >
-              {targetJsonData.title}
-            </span>
-            <span>{isArrayItem ? `/${arrIndex + 1}` : ''}</span>
+              <Tooltip
+                title={
+                  jsonView ? '点击关闭jsonView模式' : '点击开启jsonView模式'
+                }
+              >
+                <svg
+                  t="1596164081465"
+                  className="icon"
+                  viewBox="0 0 1025 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="1205"
+                >
+                  <path
+                    d="M293.0688 755.2c-12.0832 0-24.2688-4.2496-33.9968-12.9024L0 512l273.4592-243.0976C294.5536 250.2144 326.912 252.0064 345.7024 273.152c18.7904 21.1456 16.896 53.504-4.2496 72.2944L154.112 512l172.9536 153.7024c21.1456 18.7904 23.04 51.1488 4.2496 72.2944C321.2288 749.4144 307.1488 755.2 293.0688 755.2zM751.0528 755.0976 1024.512 512l-259.072-230.2976c-21.1456-18.7904-53.504-16.896-72.2432 4.2496-18.7904 21.1456-16.896 53.504 4.2496 72.2944L870.4 512l-187.3408 166.5024c-21.1456 18.7904-23.04 51.1488-4.2496 72.2944C688.896 762.2144 702.976 768 717.056 768 729.1392 768 741.3248 763.7504 751.0528 755.0976zM511.5392 827.648l102.4-614.4c4.6592-27.904-14.1824-54.272-42.0864-58.9312-28.0064-4.7104-54.3232 14.1824-58.88 42.0864l-102.4 614.4c-4.6592 27.904 14.1824 54.272 42.0864 58.9312C455.5264 870.1952 458.2912 870.4 461.1072 870.4 485.6832 870.4 507.392 852.6336 511.5392 827.648z"
+                    p-id="1206"
+                    fill={jsonView ? '#1890ff' : 'currentColor'}
+                  ></path>
+                </svg>
+              </Tooltip>
+            </div>
           </div>
         )}
         <div
-          className={
-            isFirstSchema ? 'content-item' : 'content-item object-content'
-          }
+          className={`content-item ${!isFirstSchema ? 'object-content' : ''} ${
+            jsonView ? 'json-view-array' : ''
+          }`}
         >
-          {targetJsonData.propertyOrder &&
+          {!jsonView &&
+            targetJsonData.propertyOrder &&
             targetJsonData.propertyOrder.map((key, index) => {
               /** 1. 获取当前元素的路径值 */
               const currentIndexRoute = `${indexRoute}-${index}`;
@@ -115,6 +141,7 @@ class ObjectSchema extends React.PureComponent {
                 targetJsonData: currentSchemaData,
               });
             })}
+          {jsonView && <JsonView {...this.props} />}
         </div>
       </div>
     );

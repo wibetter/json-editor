@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.object-schema-warp {
+  .object-content.json-view-array {
+    padding: 0;
+  }
+
+  .element-title {
+    display: block;
+    width: 100%;
+
+    .display-source-btn {
+      display: inline-block;
+      float: right;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        color: #676767;
+      }
+
+      svg:hover {
+        color: #1890ff;
+      }
+    }
+  }
+}

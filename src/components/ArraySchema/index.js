@@ -7,8 +7,8 @@ import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
-import './index.scss';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import './index.scss';
 
 class ArraySchema extends React.PureComponent {
   static propTypes = {
