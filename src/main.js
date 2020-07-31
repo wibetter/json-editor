@@ -20,25 +20,21 @@ export default class JSONEditor extends React.PureComponent {
   static propTypes = {
     wideScreen: PropTypes.any,
     onChange: PropTypes.func,
+    jsonView: PropTypes.any,
     schemaData: PropTypes.any,
     jsonData: PropTypes.any,
     element: PropTypes.any,
   };
 
   render() {
-    const { wideScreen, schemaData, jsonData, onChange, element } = this.props;
+    const { element } = this.props;
 
     const renderContent = (
       <Provider
         JSONSchemaStore={this.JSONStore.JSONSchemaStore}
         JSONEditorStore={this.JSONStore.JSONEditorStore}
       >
-        <JSONDataEditor
-          wideScreen={wideScreen}
-          schemaData={schemaData}
-          jsonData={jsonData}
-          onChange={onChange}
-        />
+        <JSONDataEditor {...this.props} />
       </Provider>
     );
 

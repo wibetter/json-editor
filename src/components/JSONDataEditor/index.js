@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Collapse } from 'antd';
 const { Panel } = Collapse;
 import MappingRender from '$components/MappingRender';
+import JsonView from '$components/JsonView/index';
 import { isEqual } from '$utils/index';
 import { isEmptySchema, getCurrentFormat } from '$utils/jsonSchema';
 import './index.scss';
@@ -12,12 +13,17 @@ class JSONDataEditor extends React.PureComponent {
   static propTypes = {
     wideScreen: PropTypes.any,
     onChange: PropTypes.func,
+    jsonView: PropTypes.any,
     schemaData: PropTypes.object,
     jsonData: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      jsonView: props.jsonView || false, // 是否显示code模式，默认不显示code模式
+    };
     // 根据props.schemaData对jsonSchema进行初始化
     if (props.schemaData) {
       this.props.initJSONSchemaData(props.schemaData);
@@ -45,6 +51,12 @@ class JSONDataEditor extends React.PureComponent {
     if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
       this.props.initJSONData(nextProps.jsonData);
     }
+    // 读取code模式配置
+    if (!isEqual(nextProps.jsonView, this.props.jsonView)) {
+      this.setState({
+        jsonView: nextProps.jsonView,
+      });
+    }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
       this.props.setPageScreen(nextProps.wideScreen);
     }
@@ -69,6 +81,7 @@ class JSONDataEditor extends React.PureComponent {
 
   render() {
     const { jsonSchema, lastUpdateTime, lastInitTime } = this.props;
+    const { jsonView } = this.state;
     const isEmpty = isEmptySchema(jsonSchema);
     /**
      * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此处进行拖拽事件的处理），
@@ -80,7 +93,7 @@ class JSONDataEditor extends React.PureComponent {
         {isEmpty && (
           <p className="json-editor-empty">当前jsonSchema没有数据内容</p>
         )}
-        {!isEmpty && (
+        {!isEmpty && !jsonView && (
           <Collapse
             defaultActiveKey={jsonSchema.propertyOrder}
             expandIconPosition="right"
@@ -123,6 +136,16 @@ class JSONDataEditor extends React.PureComponent {
               return '';
             })}
           </Collapse>
+        )}
+
+        {!isEmpty && jsonView && (
+          <JsonView
+            {...{
+              nodeKey: 'jsonView',
+              keyRoute: '',
+              targetJsonData: jsonSchema,
+            }}
+          />
         )}
       </div>
     );
