@@ -106,9 +106,7 @@ class ArraySchema extends React.PureComponent {
               });
             }}
           >
-            <Tooltip
-              title={jsonView ? '点击关闭jsonView模式' : '点击开启jsonView模式'}
-            >
+            <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
               <svg
                 t="1596164081465"
                 className="icon"

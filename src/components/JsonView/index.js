@@ -65,7 +65,7 @@ class JsonView extends React.PureComponent {
           highlightActiveLine={true}
           readOnly={true}
           minLines={5}
-          maxLines={30}
+          maxLines={33}
           width={'100%'}
           setOptions={{
             useWorker: false,
