@@ -20,14 +20,32 @@
   }
 }
 
+.array-content.json-view-array {
+  padding: 0;
+}
+
 .element-title {
   display: block;
   width: 100%;
 
-  .add-operate-btn {
+  .add-operate-btn,
+  .display-source-btn {
     display: inline-block;
     float: right;
     margin: 9px 12px 0 0;
+  }
+
+  .display-source-btn {
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      color: #676767;
+    }
+
+    svg:hover {
+      color: #1890ff;
+    }
   }
 
   .add-operate-btn:hover {
