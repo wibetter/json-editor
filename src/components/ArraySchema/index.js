@@ -69,7 +69,6 @@ class ArraySchema extends React.PureComponent {
       nodeKey,
       indexRoute,
       targetJsonData,
-      pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     const { jsonView } = this.state;
@@ -87,16 +86,7 @@ class ArraySchema extends React.PureComponent {
       >
         <div className="element-title">
           <Tooltip title={targetJsonData.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                  ? targetJsonData.title
-                  : ''
-              }
-            >
-              {targetJsonData.title}
-            </span>
+            <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
 
           <Tooltip title="添加数据项">

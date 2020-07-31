@@ -46,7 +46,6 @@ class ObjectSchema extends React.PureComponent {
       nodeKey,
       keyRoute,
       targetJsonData,
-      pageScreen,
       isArrayItem,
       arrIndex,
     } = this.props;
@@ -57,27 +56,14 @@ class ObjectSchema extends React.PureComponent {
 
     return (
       <div
-        className={`block-element-warp object-schema-warp ${
-          pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
-        }`}
+        className="mobile-screen-element-warp block-element-warp object-schema-warp"
         key={nodeKey}
         id={nodeKey}
       >
         {!isFirstSchema && (
           <div className="element-title">
             <Tooltip title={targetJsonData.description} placement="top">
-              <span
-                className="title-text"
-                title={
-                  pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                    ? targetJsonData.title
-                    : ''
-                }
-              >
-                {targetJsonData.title}
-              </span>
+              <span className="title-text">{targetJsonData.title}</span>
             </Tooltip>
             <span>{isArrayItem ? `/${arrIndex + 1}` : ''}</span>
             <div
