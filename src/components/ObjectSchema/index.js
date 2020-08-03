@@ -2,6 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
+import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
@@ -25,6 +26,7 @@ class ObjectSchema extends React.PureComponent {
 
     this.state = {
       jsonView: false, // 是否显示code模式
+      isClosed: false, // 是否为关闭状态，默认是开启状态
     };
   }
 
@@ -49,29 +51,47 @@ class ObjectSchema extends React.PureComponent {
       isArrayItem,
       arrIndex,
     } = this.props;
-    const { jsonView } = this.state;
+    const { jsonView, isClosed } = this.state;
     const curFormat = getCurrentFormat(targetJsonData);
     // 判断是否是一级字段类型，如果是则不显示Title，避免重复的title
     const isFirstSchema = isFirstSchemaData(curFormat);
 
     return (
       <div
-        className="mobile-screen-element-warp block-element-warp object-schema-warp"
+        className="mobile-screen-element-warp element-title-card-warp object-schema-warp"
         key={nodeKey}
         id={nodeKey}
       >
-        {!isFirstSchema && (
-          <div className="element-title">
+        {!isFirstSchema && !isArrayItem && (
+          <div
+            className="element-title"
+            onClick={(event) => {
+              this.setState({
+                isClosed: !isClosed,
+              });
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
             <Tooltip title={targetJsonData.description} placement="top">
               <span className="title-text">{targetJsonData.title}</span>
             </Tooltip>
             <span>{isArrayItem ? `/${arrIndex + 1}` : ''}</span>
+
+            {isClosed ? (
+              <RightOutlined className="close-operate-btn" />
+            ) : (
+              <DownOutlined className="close-operate-btn" />
+            )}
+
             <div
               className="display-source-btn"
-              onClick={() => {
+              onClick={(event) => {
                 this.setState({
                   jsonView: !jsonView,
                 });
+                event.preventDefault();
+                event.stopPropagation();
               }}
             >
               <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
@@ -94,9 +114,9 @@ class ObjectSchema extends React.PureComponent {
           </div>
         )}
         <div
-          className={`content-item ${!isFirstSchema ? 'object-content' : ''} ${
-            jsonView ? 'json-view-array' : ''
-          }`}
+          className={`content-item ${
+            !isFirstSchema && !isArrayItem ? 'object-content' : ''
+          } ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}
         >
           {!jsonView &&
             targetJsonData.propertyOrder &&

@@ -1,8 +1,14 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { message, Tooltip } from 'antd';
-import { PlusCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { Collapse, message, Tooltip, Popconfirm } from 'antd';
+const { Panel } = Collapse;
+import {
+  PlusCircleOutlined,
+  CloseOutlined,
+  RightOutlined,
+  DownOutlined,
+} from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
@@ -25,6 +31,7 @@ class ArraySchema extends React.PureComponent {
 
     this.state = {
       jsonView: false, // 是否显示code模式
+      isClosed: false, // 是否为关闭状态，默认是开启状态
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.addArrayItem = this.addArrayItem.bind(this);
@@ -71,7 +78,7 @@ class ArraySchema extends React.PureComponent {
       targetJsonData,
       getJSONDataByKeyRoute,
     } = this.props;
-    const { jsonView } = this.state;
+    const { jsonView, isClosed } = this.state;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -80,30 +87,49 @@ class ArraySchema extends React.PureComponent {
 
     return (
       <div
-        className="mobile-screen-element-warp block-element-warp"
+        className="mobile-screen-element-warp element-title-card-warp"
         key={nodeKey}
         id={nodeKey}
       >
-        <div className="element-title">
+        <div
+          className="element-title"
+          onClick={(event) => {
+            this.setState({
+              isClosed: !isClosed,
+            });
+            event.preventDefault();
+            event.stopPropagation();
+          }}
+        >
           <Tooltip title={targetJsonData.description} placement="top">
             <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
 
+          {isClosed ? (
+            <RightOutlined className="close-operate-btn" />
+          ) : (
+            <DownOutlined className="close-operate-btn" />
+          )}
+
           <Tooltip title="添加数据项">
             <PlusCircleOutlined
               className="add-operate-btn array-operate-btn"
-              onClick={() => {
+              onClick={(event) => {
                 this.addArrayItem(keyRoute, curJsonData);
+                event.preventDefault();
+                event.stopPropagation();
               }}
             />
           </Tooltip>
 
           <div
             className="display-source-btn"
-            onClick={() => {
+            onClick={(event) => {
               this.setState({
                 jsonView: !jsonView,
               });
+              event.preventDefault();
+              event.stopPropagation();
             }}
           >
             <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
@@ -127,45 +153,73 @@ class ArraySchema extends React.PureComponent {
         <div
           className={`content-item array-content ${
             jsonView ? 'json-view-array' : ''
-          }`}
+          } ${isClosed ? 'closed' : ''}`}
         >
-          {!jsonView &&
-            isArray(curJsonData) &&
-            curJsonData.map((arrItem, arrIndex) => {
-              const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
-              const curIndexRoute = `${indexRoute}-0`;
-              const curKeyRoute = `${keyRoute}-${arrIndex}`;
-              return (
-                <div
-                  className="array-item-box"
-                  key={curNodeKey}
-                  id={curNodeKey}
-                >
-                  <ObjectSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'items',
-                      indexRoute: curIndexRoute,
-                      keyRoute: curKeyRoute,
-                      nodeKey: curNodeKey,
-                      targetJsonData: arrayItemsDataObj,
-                      isArrayItem: true,
-                      arrIndex,
-                    }}
-                  />
-                  <div className="operate-btn-box">
-                    <Tooltip title="删除数据项">
-                      <CloseCircleOutlined
-                        className="delete-operate-btn array-operate-btn"
-                        onClick={() => {
-                          this.deleteArrItem(keyRoute, arrIndex, curJsonData);
+          {!jsonView && isArray(curJsonData) && (
+            <Collapse expandIconPosition="right" bordered={true}>
+              {curJsonData.map((arrItem, arrIndex) => {
+                const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
+                const curIndexRoute = `${indexRoute}-0`;
+                const curKeyRoute = `${keyRoute}-${arrIndex}`;
+                return (
+                  <Panel
+                    header={`${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                    key={curKeyRoute}
+                    extra={
+                      <Tooltip
+                        title={`删除${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                      >
+                        <Popconfirm
+                          placement="top"
+                          title={`确定要删除${arrayItemsDataObj.title}/${
+                            arrIndex + 1
+                          }吗？`}
+                          onCancel={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                          onConfirm={(event) => {
+                            this.deleteArrItem(keyRoute, arrIndex, curJsonData);
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                          okText="确定"
+                          cancelText="取消"
+                        >
+                          <CloseOutlined
+                            className="delete-operate-btn array-operate-btn"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                            }}
+                          />
+                        </Popconfirm>
+                      </Tooltip>
+                    }
+                  >
+                    <div
+                      className="array-item-box"
+                      key={curNodeKey}
+                      id={curNodeKey}
+                    >
+                      <ObjectSchema
+                        {...{
+                          parentType: currentFormat,
+                          jsonKey: 'items',
+                          indexRoute: curIndexRoute,
+                          keyRoute: curKeyRoute,
+                          nodeKey: curNodeKey,
+                          targetJsonData: arrayItemsDataObj,
+                          isArrayItem: true,
+                          arrIndex,
                         }}
                       />
-                    </Tooltip>
-                  </div>
-                </div>
-              );
-            })}
+                    </div>
+                  </Panel>
+                );
+              })}
+            </Collapse>
+          )}
           {jsonView && <JsonView {...this.props} />}
         </div>
       </div>

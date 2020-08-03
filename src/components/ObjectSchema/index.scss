@@ -3,26 +3,12 @@
 .object-schema-warp {
   .object-content.json-view-array {
     padding: 0;
+    transition: 0.4s;
   }
 
-  .element-title {
-    display: block;
-    width: 100%;
-
-    .display-source-btn {
-      display: inline-block;
-      line-height: 0;
-      float: right;
-      cursor: pointer;
-
-      svg {
-        width: 20px;
-        color: #676767;
-      }
-
-      svg:hover {
-        color: #1890ff;
-      }
-    }
+  .object-content.closed {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
   }
 }
