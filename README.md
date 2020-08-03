@@ -10,7 +10,7 @@ npm install --save @wibetter/json-editor
 
 ## Usage
 
-使用场景：提供可视化界面编辑json数据内容，用于区块的可视化配置，避免用户直接编辑json数据内容
+使用场景：提供可视化界面编辑json数据内容，避免用户直接编辑json数据内容
 
 技术栈：React/Mobx/ant-design
 
