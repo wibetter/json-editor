@@ -76,7 +76,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
-        }  block-element-warp`}
+        }  element-title-card-warp`}
         key={nodeKey}
         id={nodeKey}
       >

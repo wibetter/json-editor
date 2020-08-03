@@ -80,7 +80,7 @@ class ArraySchema extends React.PureComponent {
 
     return (
       <div
-        className="mobile-screen-element-warp block-element-warp"
+        className="mobile-screen-element-warp element-title-card-warp"
         key={nodeKey}
         id={nodeKey}
       >

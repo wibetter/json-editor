@@ -56,7 +56,7 @@ class ObjectSchema extends React.PureComponent {
 
     return (
       <div
-        className="mobile-screen-element-warp block-element-warp object-schema-warp"
+        className="mobile-screen-element-warp element-title-card-warp object-schema-warp"
         key={nodeKey}
         id={nodeKey}
       >
