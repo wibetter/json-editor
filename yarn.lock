@@ -1507,6 +1507,21 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@wibetter/json-schema-editor@^3.1.15":
+  version "3.1.15"
+  resolved "https://registry.yarnpkg.com/@wibetter/json-schema-editor/-/json-schema-editor-3.1.15.tgz#f0d4c5de6c3d431eef323e807cf2521dbcf40b18"
+  integrity sha512-C6bHaCGuUr9GWbAOY7bYQacyAFENSXR8Y3wWB03MKf7mJ2fRPSyya2oI8JkeVUo2kLhfd7I0ZVbIcET5k9alNA==
+  dependencies:
+    "@ant-design/icons" "^4.2.1"
+    "@babel/polyfill" "^7.10.1"
+    antd "^4.3.4"
+    generate-schema "^2.6.0"
+    mobx "^5.15.4"
+    mobx-react "^6.2.2"
+    prop-types "^15.7.2"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
