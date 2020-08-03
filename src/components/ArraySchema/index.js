@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Collapse, message, Tooltip } from 'antd';
+import { Collapse, message, Tooltip, Popconfirm } from 'antd';
 const { Panel } = Collapse;
 import { PlusCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
@@ -144,14 +144,31 @@ class ArraySchema extends React.PureComponent {
                       <Tooltip
                         title={`删除${arrayItemsDataObj.title}/${arrIndex + 1}`}
                       >
-                        <CloseOutlined
-                          className="delete-operate-btn array-operate-btn"
-                          onClick={(event) => {
+                        <Popconfirm
+                          placement="top"
+                          title={`确定要删除${arrayItemsDataObj.title}/${
+                            arrIndex + 1
+                          }吗？`}
+                          onCancel={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                          onConfirm={(event) => {
                             this.deleteArrItem(keyRoute, arrIndex, curJsonData);
                             event.preventDefault();
                             event.stopPropagation();
                           }}
-                        />
+                          okText="确定"
+                          cancelText="取消"
+                        >
+                          <CloseOutlined
+                            className="delete-operate-btn array-operate-btn"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                            }}
+                          />
+                        </Popconfirm>
                       </Tooltip>
                     }
                   >
