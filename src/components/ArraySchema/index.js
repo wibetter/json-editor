@@ -3,7 +3,12 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Collapse, message, Tooltip, Popconfirm } from 'antd';
 const { Panel } = Collapse;
-import { PlusCircleOutlined, CloseOutlined } from '@ant-design/icons';
+import {
+  PlusCircleOutlined,
+  CloseOutlined,
+  RightOutlined,
+  DownOutlined,
+} from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
@@ -26,6 +31,7 @@ class ArraySchema extends React.PureComponent {
 
     this.state = {
       jsonView: false, // 是否显示code模式
+      isClosed: false, // 是否为关闭状态
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.addArrayItem = this.addArrayItem.bind(this);
@@ -72,7 +78,7 @@ class ArraySchema extends React.PureComponent {
       targetJsonData,
       getJSONDataByKeyRoute,
     } = this.props;
-    const { jsonView } = this.state;
+    const { jsonView, isClosed } = this.state;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -85,26 +91,45 @@ class ArraySchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        <div className="element-title">
+        <div
+          className="element-title"
+          onClick={(event) => {
+            this.setState({
+              isClosed: !isClosed,
+            });
+            event.preventDefault();
+            event.stopPropagation();
+          }}
+        >
           <Tooltip title={targetJsonData.description} placement="top">
             <span className="title-text">{targetJsonData.title}</span>
           </Tooltip>
 
+          {isClosed ? (
+            <RightOutlined className="close-operate-btn" />
+          ) : (
+            <DownOutlined className="close-operate-btn" />
+          )}
+
           <Tooltip title="添加数据项">
             <PlusCircleOutlined
               className="add-operate-btn array-operate-btn"
-              onClick={() => {
+              onClick={(event) => {
                 this.addArrayItem(keyRoute, curJsonData);
+                event.preventDefault();
+                event.stopPropagation();
               }}
             />
           </Tooltip>
 
           <div
             className="display-source-btn"
-            onClick={() => {
+            onClick={(event) => {
               this.setState({
                 jsonView: !jsonView,
               });
+              event.preventDefault();
+              event.stopPropagation();
             }}
           >
             <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
@@ -128,7 +153,7 @@ class ArraySchema extends React.PureComponent {
         <div
           className={`content-item array-content ${
             jsonView ? 'json-view-array' : ''
-          }`}
+          } ${isClosed ? 'closed' : ''}`}
         >
           {!jsonView && isArray(curJsonData) && (
             <Collapse expandIconPosition="right" bordered={true}>

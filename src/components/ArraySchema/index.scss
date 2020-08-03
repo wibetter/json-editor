@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 .array-content {
+  transition: 0.4s;
   position: relative;
   padding: 8px 15px 20px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -31,17 +32,26 @@
 
 .array-content.json-view-array {
   padding: 0;
+  transition: 0.4s;
+}
+
+.array-content.closed {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .element-title {
   display: block;
   width: 100%;
+  cursor: pointer;
 
   .add-operate-btn,
-  .display-source-btn {
+  .display-source-btn,
+  .close-operate-btn {
+    float: right;
     display: inline-block;
     line-height: 0;
-    float: right;
     margin: 9px 12px 0 0;
   }
 
@@ -70,5 +80,15 @@
   svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+.close-operate-btn {
+  color: #8c8c8c;
+
+  svg {
+    margin-top: 4px;
+    width: 14px;
+    height: 14px;
   }
 }
