@@ -16,7 +16,11 @@ npm install --save @jdwork/json-editor
 
 Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
 
-特点：弹性布局、提供大屏和小屏两种展示模式
+特点：
+1. 弹性布局
+2. 提供大屏和小屏两种展示模式
+3. 支持11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
+4. 支持8个特殊类型组件（Object、Array、Json、datasource、Event、CodeArea、htmlArea、quantity）
 
 ## Usage
 
