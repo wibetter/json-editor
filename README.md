@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-npm install --save @jdwork/json-editor
+npm install --save @wibetter/json-editor
 ```
 
 ## Usage
@@ -25,13 +25,13 @@ Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
 ## Usage
 
 ```
-npm install @jdwork/json-editor
+npm install @wibetter/json-editor
 ```
 
 ```js
 import * as React from 'react';
-import JSONEditor from '@jdwork/json-editor/dist/index.umd';
-import '@jdwork/json-editor/dist/index.css';
+import JSONEditor from '@wibetter/json-editor/dist/index.umd';
+import '@wibetter/json-editor/dist/index.css';
 
 class IndexDemo extends React.PureComponent {
   constructor(props) {
