@@ -1,7 +1,12 @@
 {
-  "name": "@jdwork/json-editor",
-  "version": "3.2.7",
+  "name": "@wibetter/json-editor",
+  "version": "3.2.9",
   "description": "JSON数据可视化/JSONEditor",
+  "keywords": [
+    "json",
+    "json可视化",
+    "表单可视化"
+  ],
   "author": "liudan185",
   "license": "MIT",
   "main": "dist/index.umd.js",
@@ -31,6 +36,10 @@
     "src/**/**/*.{js,vue,tsx,ts,scss,json}": [
       "prettier --write"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://git@github.com:wibetter/json-editor.git"
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
@@ -65,7 +74,6 @@
     "@babel/register": "^7.10.1",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "@jdwork/json-schema-editor": "3.1.12",
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.3.0",
     "autoprefixer": "^9.8.0",
     "babel-eslint": "^10.1.0",
