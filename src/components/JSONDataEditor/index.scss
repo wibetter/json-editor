@@ -90,6 +90,8 @@
   .object-content {
     display: block;
     position: relative;
+    height: auto;
+    transition: 0.4s;
     padding: 8px 15px 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
@@ -126,6 +128,48 @@
   .element-title {
     .warning-text {
       color: #fa8c16;
+    }
+  }
+
+  .element-title {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+
+    .add-operate-btn,
+    .display-source-btn,
+    .close-operate-btn {
+      float: right;
+      display: inline-block;
+      line-height: 0;
+      margin: 9px 12px 0 0;
+    }
+
+    .display-source-btn {
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        color: #676767;
+      }
+
+      svg:hover {
+        color: #1890ff;
+      }
+    }
+
+    .add-operate-btn:hover {
+      color: #1890ff;
+    }
+  }
+
+  .close-operate-btn {
+    color: #8c8c8c;
+
+    svg {
+      margin-top: 4px;
+      width: 14px;
+      height: 14px;
     }
   }
 

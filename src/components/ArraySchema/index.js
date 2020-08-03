@@ -31,7 +31,7 @@ class ArraySchema extends React.PureComponent {
 
     this.state = {
       jsonView: false, // 是否显示code模式
-      isClosed: false, // 是否为关闭状态
+      isClosed: false, // 是否为关闭状态，默认是开启状态
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.addArrayItem = this.addArrayItem.bind(this);
