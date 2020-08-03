@@ -5,16 +5,25 @@
   padding: 8px 15px 20px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 
+  // 覆盖antd的默认样式
+  .ant-collapse-content {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
   .array-item-box {
     position: relative;
   }
 
-  .operate-btn-box {
-    position: absolute;
-    top: 28px; // (38px - 20px / 2)
-    right: -10px; // ( 20px / 2)
+  .delete-operate-btn {
+    svg {
+      margin: 2px;
+      width: 16px;
+      height: 16px;
+      color: #676767;
+    }
 
-    .delete-operate-btn:hover {
+    svg:hover {
       color: #f5222d;
     }
   }

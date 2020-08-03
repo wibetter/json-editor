@@ -69,7 +69,10 @@
     }
   }
 
-  // 特殊类型组件以块级模式进行显示(优先级比wide-screen-element-warp高)
+  /*
+    特殊类型组件以块级模式进行显示(优先级比wide-screen-element-warp高)
+    灰底、圆角边框的element-title
+   */
   .element-title-card-warp {
     display: block;
 
@@ -83,7 +86,7 @@
     }
   }
 
-  // 对象类型盒子样式
+  // 对象类型盒子样式：将子元素放置在带边框的盒子中
   .object-content {
     display: block;
     position: relative;

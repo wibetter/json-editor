@@ -60,7 +60,7 @@ class ObjectSchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        {!isFirstSchema && (
+        {!isFirstSchema && !isArrayItem && (
           <div className="element-title">
             <Tooltip title={targetJsonData.description} placement="top">
               <span className="title-text">{targetJsonData.title}</span>
@@ -94,9 +94,9 @@ class ObjectSchema extends React.PureComponent {
           </div>
         )}
         <div
-          className={`content-item ${!isFirstSchema ? 'object-content' : ''} ${
-            jsonView ? 'json-view-array' : ''
-          }`}
+          className={`content-item ${
+            !isFirstSchema && !isArrayItem ? 'object-content' : ''
+          } ${jsonView ? 'json-view-array' : ''}`}
         >
           {!jsonView &&
             targetJsonData.propertyOrder &&

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { message, Tooltip } from 'antd';
-import { PlusCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
+import { Collapse, message, Tooltip } from 'antd';
+const { Panel } = Collapse;
+import { PlusCircleOutlined, CloseOutlined } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
@@ -129,43 +130,54 @@ class ArraySchema extends React.PureComponent {
             jsonView ? 'json-view-array' : ''
           }`}
         >
-          {!jsonView &&
-            isArray(curJsonData) &&
-            curJsonData.map((arrItem, arrIndex) => {
-              const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
-              const curIndexRoute = `${indexRoute}-0`;
-              const curKeyRoute = `${keyRoute}-${arrIndex}`;
-              return (
-                <div
-                  className="array-item-box"
-                  key={curNodeKey}
-                  id={curNodeKey}
-                >
-                  <ObjectSchema
-                    {...{
-                      parentType: currentFormat,
-                      jsonKey: 'items',
-                      indexRoute: curIndexRoute,
-                      keyRoute: curKeyRoute,
-                      nodeKey: curNodeKey,
-                      targetJsonData: arrayItemsDataObj,
-                      isArrayItem: true,
-                      arrIndex,
-                    }}
-                  />
-                  <div className="operate-btn-box">
-                    <Tooltip title="删除数据项">
-                      <CloseCircleOutlined
-                        className="delete-operate-btn array-operate-btn"
-                        onClick={() => {
-                          this.deleteArrItem(keyRoute, arrIndex, curJsonData);
+          {!jsonView && isArray(curJsonData) && (
+            <Collapse expandIconPosition="right" bordered={true}>
+              {curJsonData.map((arrItem, arrIndex) => {
+                const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
+                const curIndexRoute = `${indexRoute}-0`;
+                const curKeyRoute = `${keyRoute}-${arrIndex}`;
+                return (
+                  <Panel
+                    header={`${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                    key={curKeyRoute}
+                    extra={
+                      <Tooltip
+                        title={`删除${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                      >
+                        <CloseOutlined
+                          className="delete-operate-btn array-operate-btn"
+                          onClick={(event) => {
+                            this.deleteArrItem(keyRoute, arrIndex, curJsonData);
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                        />
+                      </Tooltip>
+                    }
+                  >
+                    <div
+                      className="array-item-box"
+                      key={curNodeKey}
+                      id={curNodeKey}
+                    >
+                      <ObjectSchema
+                        {...{
+                          parentType: currentFormat,
+                          jsonKey: 'items',
+                          indexRoute: curIndexRoute,
+                          keyRoute: curKeyRoute,
+                          nodeKey: curNodeKey,
+                          targetJsonData: arrayItemsDataObj,
+                          isArrayItem: true,
+                          arrIndex,
                         }}
                       />
-                    </Tooltip>
-                  </div>
-                </div>
-              );
-            })}
+                    </div>
+                  </Panel>
+                );
+              })}
+            </Collapse>
+          )}
           {jsonView && <JsonView {...this.props} />}
         </div>
       </div>
