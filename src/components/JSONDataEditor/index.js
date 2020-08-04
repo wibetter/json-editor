@@ -6,7 +6,12 @@ const { Panel } = Collapse;
 import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import { isEqual } from '$utils/index';
-import { isEmptySchema, getCurrentFormat } from '$utils/jsonSchema';
+import {
+  isEmptySchema,
+  isEmptyWidgetSchema,
+  isUsedToWidgetConfig,
+  getCurrentFormat,
+} from '$utils/jsonSchema';
 import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
@@ -82,11 +87,11 @@ class JSONDataEditor extends React.PureComponent {
   render() {
     const { jsonSchema, lastUpdateTime, lastInitTime } = this.props;
     const { jsonView } = this.state;
-    const isEmpty = isEmptySchema(jsonSchema);
+    const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
+    const isEmptyConfig = isEmptyWidgetSchema(jsonSchema); // 判断是否是空的区块配置schema
+    const isWidgetConfig = isUsedToWidgetConfig(jsonSchema); // 判断是否是用于区块配置schema
     /**
-     * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此处进行拖拽事件的处理），
-     * JSONSchema的一级字段必须为object类型（规避非法的jsonSchema数据，
-     * 以及结构单一的jsonSchema数据，后续再单独考虑如何兼容单一结构的jsonSchema数据）。
+     * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此将区块专用的配置数据分类展示），
      * */
     return (
       <div className="json-editor-container">
@@ -94,50 +99,79 @@ class JSONDataEditor extends React.PureComponent {
           <p className="json-editor-empty">当前jsonSchema没有数据内容</p>
         )}
         {!isEmpty && !jsonView && (
-          <Collapse
-            defaultActiveKey={jsonSchema.propertyOrder}
-            expandIconPosition="right"
-            bordered={false}
-          >
-            {jsonSchema.propertyOrder.map((key, index) => {
-              /** 1. 获取当前元素的路径值 */
-              const currentIndexRoute = index;
-              const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
-              /** 2. 获取当前元素的key值 */
-              const currentJsonKey = key;
-              /** 3. 获取当前元素的json结构对象 */
-              const currentSchemaData = jsonSchema.properties[currentJsonKey];
-              /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-              const currentFormat = getCurrentFormat(currentSchemaData);
+          <>
+            {isWidgetConfig && (
+              <>
+                {isEmptyConfig && (
+                  <p className="json-editor-empty">
+                    当前jsonSchema没有数据内容
+                  </p>
+                )}
+                {!isEmptyConfig && (
+                  <>
+                    <Collapse
+                      defaultActiveKey={jsonSchema.propertyOrder}
+                      expandIconPosition="right"
+                      bordered={false}
+                    >
+                      {jsonSchema.propertyOrder.map((key, index) => {
+                        /** 1. 获取当前元素的路径值 */
+                        const currentIndexRoute = index;
+                        const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                        /** 2. 获取当前元素的key值 */
+                        const currentJsonKey = key;
+                        /** 3. 获取当前元素的json结构对象 */
+                        const currentSchemaData =
+                          jsonSchema.properties[currentJsonKey];
+                        /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                        const currentFormat = getCurrentFormat(
+                          currentSchemaData,
+                        );
 
-              /** 5. 获取当前元素的id，用于做唯一标识 */
-              const nodeKey = `${lastUpdateTime}-${lastInitTime}-${currentFormat}-${currentJsonKey}`;
+                        /** 5. 获取当前元素的id，用于做唯一标识 */
+                        const nodeKey = `${lastUpdateTime}-${lastInitTime}-${currentFormat}-${currentJsonKey}`;
 
-              if (
-                currentSchemaData.propertyOrder &&
-                currentSchemaData.propertyOrder.length > 0
-              ) {
-                return (
-                  <Panel
-                    header={this.renderHeader(currentFormat)}
-                    key={currentJsonKey}
-                  >
-                    {MappingRender({
-                      parentType: currentFormat,
-                      jsonKey: currentJsonKey,
-                      indexRoute: currentIndexRoute,
-                      keyRoute: currentKeyRoute,
-                      nodeKey,
-                      targetJsonData: currentSchemaData,
-                    })}
-                  </Panel>
-                );
-              }
-              return '';
-            })}
-          </Collapse>
+                        if (
+                          currentSchemaData.propertyOrder &&
+                          currentSchemaData.propertyOrder.length > 0
+                        ) {
+                          return (
+                            <Panel
+                              header={this.renderHeader(currentFormat)}
+                              key={currentJsonKey}
+                            >
+                              {MappingRender({
+                                parentType: currentFormat,
+                                jsonKey: currentJsonKey,
+                                indexRoute: currentIndexRoute,
+                                keyRoute: currentKeyRoute,
+                                nodeKey,
+                                targetJsonData: currentSchemaData,
+                              })}
+                            </Panel>
+                          );
+                        }
+                        return '';
+                      })}
+                    </Collapse>
+                  </>
+                )}
+              </>
+            )}
+            {!isWidgetConfig && (
+              <>
+                {MappingRender({
+                  parentType: '',
+                  jsonKey: '',
+                  indexRoute: '',
+                  keyRoute: '',
+                  nodeKey: '',
+                  targetJsonData: jsonSchema,
+                })}
+              </>
+            )}
+          </>
         )}
-
         {!isEmpty && jsonView && (
           <JsonView
             {...{

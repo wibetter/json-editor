@@ -90,20 +90,6 @@ export function isArray(curObj) {
 }
 
 /**
- *  判断是否是最新版的schema数据
- * */
-export function isNewSchemaData(schemaData) {
-  let isNewVersion = false;
-  const { lastUpdateTime } = schemaData;
-  // 从那一刻开始就认为是新版JSONSchema
-  const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
-  if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
-    isNewVersion = true;
-  }
-  return isNewVersion;
-}
-
-/**
  *  判断是否是对象类型
  * */
 export function isObject(curObj) {

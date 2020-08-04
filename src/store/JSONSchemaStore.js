@@ -1,11 +1,12 @@
 import { observable, computed, action, toJS } from 'mobx';
 import {
+  isNewSchemaData,
   getJSONDataByIndex,
   indexRoute2keyRoute,
   oldJSONSchemaToNewJSONSchema,
   schema2JsonData,
 } from '$utils/jsonSchema';
-import { isEqual, objClone, isNewSchemaData } from '$utils/index';
+import { isEqual, objClone } from '$utils/index';
 import { initJSONSchemaData } from '$data/index';
 
 /**
@@ -48,19 +49,15 @@ export default class JSONSchemaStore {
       this.jsonSchema = objClone(initJSONSchemaData);
     } else if (!isEqual(jsonSchemaData, this.JSONSchemaObj)) {
       if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
-        /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
+        /**
+         * 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值
+         *
+         *  */
         this.jsonSchema = jsonSchemaData;
       } else {
         // 进行一次转换，以便兼容旧版数据
         const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
-      }
-      const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
-      if (JSON.stringify(curJsonData) === '{}') {
-        /** 根据jsonSchema生成对应的最新jsonData */
-        const newJsonData = schema2JsonData(this.JSONSchemaObj, curJsonData);
-        /** 更新当前的jsonData */
-        this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
       }
     }
   }

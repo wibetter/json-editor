@@ -1,7 +1,7 @@
 import { getWebCacheData, deleteWebCacheData } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 
-/** js对象数据深拷贝，避免数据联动
+/** 从WebCache中获取jsonData数据
  * 备注：引用catchJsonDataByWebCache前，请确保当前组件的props中包含以下属性：
  * keyRoute、targetJsonData、updateFormValueData
  * getJSONDataByKeyRoute、getJSONDataTempByKeyRoute
