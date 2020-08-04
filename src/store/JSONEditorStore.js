@@ -5,7 +5,7 @@ import {
   getParentKeyRoute_CurKey,
 } from '$utils/jsonData';
 import { schema2JsonData } from '$utils/jsonSchema';
-import { isEqual, objClone, isArray, isFunction } from '$utils/index';
+import { objClone, isArray, isFunction } from '$utils/index';
 
 /**
  * 用于管控JSON数据内容的全局store
@@ -68,21 +68,19 @@ export default class JSONEditorStore {
   /** 初始化jsonData  */
   @action.bound
   initJSONData(jsonData) {
-    if (!isEqual(jsonData, this.JSONEditorObj)) {
-      // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
-      const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
-      if (!jsonData || JSON.stringify(jsonData) === '{}') {
-        // 根据jsonSchema生成一份对应的jsonData
-        /** 1、根据jsonSchema生成对应的jsonData */
-        this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
-        this.jsonData = schema2JsonData(jsonSchema, {});
-      } else {
-        this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
-        this.jsonData = schema2JsonData(jsonSchema, jsonData);
-      }
-      // 记录当前初始化的时间
-      this.updateLastInitTime();
+    // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
+    const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
+    if (!jsonData || JSON.stringify(jsonData) === '{}') {
+      // 根据jsonSchema生成一份对应的jsonData
+      /** 1、根据jsonSchema生成对应的jsonData */
+      this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
+      this.jsonData = schema2JsonData(jsonSchema, {});
+    } else {
+      this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
+      this.jsonData = schema2JsonData(jsonSchema, jsonData);
     }
+    // 记录当前初始化的时间
+    this.updateLastInitTime();
   }
 
   /** 初始化jsonData  */

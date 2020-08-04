@@ -22,8 +22,8 @@ class IndexDemo extends React.PureComponent {
         description: '',
         placeholder: '',
         readOnly: false,
-      }, // 通用schema类型-input类型
-      jsonSchemaV: {
+      }, // 通用schema类型-基础类型 ok
+      jsonSchema1: {
         type: 'object',
         title: '对象类型',
         format: 'object',
@@ -66,8 +66,8 @@ class IndexDemo extends React.PureComponent {
         },
         required: ['a', 'field_2', 'field_3'],
         propertyOrder: ['a', 'field_2', 'field_3'],
-      }, // 通用schema类型-对象类型
-      jsonSchemaV0: {
+      }, // 通用schema类型-对象类型 ok
+      jsonSchema2: {
         type: 'array',
         title: '数组',
         format: 'array',
@@ -108,8 +108,83 @@ class IndexDemo extends React.PureComponent {
           required: ['name', 'field_1'],
           propertyOrder: ['name', 'field_1'],
         },
-      }, // 通用schema类型-数组类型
-      jsonSchemaV1: {
+      }, // 通用schema类型-数组类型 ok
+      jsonSchema3: {
+        type: 'object',
+        title: '数据源',
+        format: 'datasource',
+        isRequired: false,
+        default: '',
+        description: '',
+        placeholder: '',
+        readOnly: false,
+        properties: {
+          type: {
+            type: 'string',
+            default: 'local',
+            format: 'typeSelect',
+            enum: ['local', 'remote'],
+            enumextra: ['local', 'remote'],
+            title: '数据源类型',
+          },
+          data: {
+            type: 'string',
+            format: 'json',
+            default: 'local',
+            readOnlyInJson: false,
+            title: '本地静态json数据',
+          },
+          filter: {
+            type: 'string',
+            format: 'codearea',
+            default: 'return data;',
+            title: '过滤器',
+          },
+        },
+        required: ['type', 'data', 'filter'],
+        propertyOrder: ['type', 'data', 'filter'],
+      }, // 通用schema类型-datasource类型 ok
+      jsonSchema4: {
+        type: 'object',
+        format: 'event',
+        title: '事件',
+        isRequired: false,
+        readOnly: false,
+        properties: {
+          type: {
+            type: 'string',
+            default: 'emit',
+            format: 'typeSelect',
+            enum: ['on', 'emit'],
+            enumextra: ['on', 'emit'],
+            title: '事件类型',
+            isRequired: false,
+            readOnly: false,
+          },
+          trigger: {
+            type: 'string',
+            format: 'input',
+            default: 'eventName',
+            title: '触发事件',
+            description: '用于输入触发事件的名称',
+            placeholder: '请输入触发事件的名称',
+            isRequired: false,
+            readOnly: false,
+          },
+          eventData: {
+            type: 'string',
+            title: '事件数据',
+            format: 'json',
+            default: '{}',
+            description: '传递给触发事件的数据对象',
+            isRequired: false,
+            readOnly: false,
+          },
+        },
+        required: ['type', 'trigger', 'eventData'],
+        propertyOrder: ['type', 'trigger', 'eventData'],
+      }, // 通用schema类型-事件类型 ok
+      jsonSchema5: {
         type: 'object',
         format: 'func',
         title: '功能设置',
@@ -345,7 +420,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型
-      jsonSchemaV2: {
+      jsonSchema6: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
