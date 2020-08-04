@@ -12,7 +12,9 @@ npm install --save @wibetter/json-editor
 
 使用场景：提供可视化界面编辑json数据内容，避免用户直接编辑json数据内容
 
-技术栈：React/Mobx/ant-design
+技术栈：React/Mobx/Ant Design
+
+Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
 
 特点：
 1. 弹性布局
