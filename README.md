@@ -1,6 +1,6 @@
 # JSONEditor
 
-> JSON数据可视化/JSONEditor
+> JSON数据可视化/JSONEditor, 可视化界面编辑json数据内容
 
 ## Install
 
@@ -13,8 +13,6 @@ npm install --save @wibetter/json-editor
 使用场景：提供可视化界面编辑json数据内容，避免用户直接编辑json数据内容
 
 技术栈：React/Mobx/ant-design
-
-Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
 
 特点：
 1. 弹性布局
@@ -73,7 +71,7 @@ class IndexDemo extends React.PureComponent {
 
 | name         | type     | default | desc                            |
 | ------------ | -------- | ------- | ------------------------------- |
-| `jsonView  ` | boolean  | false   | 是否开启全局源码模式，默认不开启      |
+| `jsonView`   | boolean  | false   | 是否开启全局源码模式，默认不开启      |
 | `wideScreen` | boolean  | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
 | `schemaData` | object   | {}      | json的结构数据                    |
 | `jsonData`   | object   | {}      | json的内容数据                    |
