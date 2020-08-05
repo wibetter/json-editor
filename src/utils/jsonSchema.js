@@ -567,6 +567,7 @@ export function arraySchema2JsonData(jsonSchema, jsonData) {
   let curJsonData = [];
   // 判断是否是数组类型
   if (jsonSchema && jsonSchema.type === 'array') {
+    // Array数据对象类型
     let oldValue = jsonData;
     if (
       exitPropertie(oldValue) &&
@@ -579,7 +580,7 @@ export function arraySchema2JsonData(jsonSchema, jsonData) {
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
     const curValue = exitPropertie(oldValue) ? oldValue : jsonSchema.default;
 
-    if (jsonSchema.items) {
+    if (jsonSchema.format === 'array') {
       if (isArray(curValue)) {
         curValue.map((arrItem) => {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
@@ -589,7 +590,7 @@ export function arraySchema2JsonData(jsonSchema, jsonData) {
         curJsonData.push(childItems);
       }
     } else {
-      // 如果items为空则直接使用curValue
+      // 考虑select类型（多选的数值也是以array对象记录）
       curJsonData = exitPropertie(curValue) ? curValue : [];
     }
   }
