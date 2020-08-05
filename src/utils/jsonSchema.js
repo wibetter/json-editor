@@ -151,7 +151,7 @@ export function getJSONDataByIndex(
       ) {
         // 从items中获取数据
         curJsonSchemaObj = curJsonSchemaObj.items;
-      } else {
+      } else if (curIndex) {
         // 1、先根据路径值获取key值
         const curKeyTemp = curJsonSchemaObj.propertyOrder[curIndex];
         // 2、根据key值获取对应的json数据对象
@@ -174,7 +174,7 @@ export function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
       // 从items中获取数据
       curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
       curKeyRoute = curKeyRoute ? `${curKeyRoute}-items` : 'items';
-    } else {
+    } else if (curIndex) {
       // 1、先根据路径值获取key值
       const curKey = curJsonSchemaObj.propertyOrder[curIndex];
       // 2、根据key值获取对应的json数据对象

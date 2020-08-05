@@ -12,7 +12,7 @@ import './index.scss';
 class ObjectSchema extends React.PureComponent {
   static propTypes = {
     isArrayItem: PropTypes.any, // 如果是数组项，title会进行特殊显示
-    arrIndex: PropTypes.any, // 如果是数组项，title会进行特殊显示
+    arrIndex: PropTypes.any, // 当前数组项
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
     indexRoute: PropTypes.any,

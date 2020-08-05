@@ -1507,10 +1507,10 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@wibetter/json-schema-editor@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@wibetter/json-schema-editor/-/json-schema-editor-3.2.2.tgz#da9ddc8cf27817f0ba91824e3f131863543a071a"
-  integrity sha512-cCq206mT+NLhtBd9xkhDe+GguEBMyFsCG3VxToFvZYgKbB2yRdnhAGpoOVc4ngvgeEdFhxK1OFqvAmNi0A0a6w==
+"@wibetter/json-schema-editor@^3.2.6":
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/@wibetter/json-schema-editor/-/json-schema-editor-3.2.6.tgz#39f325faa2a4d9634d341f9ec6c656afc2560f54"
+  integrity sha512-jxotWk4nMANanVGWGE2bK/ieDwa/pu8rIG8v29ROfkg5OwGVJw7cfOGacYpemj//ULnmbtR6ANSe9FNA29zZaA==
   dependencies:
     "@ant-design/icons" "^4.2.1"
     "@babel/polyfill" "^7.10.1"

@@ -13,7 +13,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema: {
+      jsonSchema0: {
         type: 'string',
         title: '单文本框',
         format: 'input',
