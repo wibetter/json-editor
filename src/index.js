@@ -13,7 +13,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema0: {
+      jsonSchema: {
         type: 'object',
         title: '单位计量输入',
         format: 'quantity',
@@ -79,7 +79,7 @@ class IndexDemo extends React.PureComponent {
         },
         required: ['a', 'field_2', 'field_3'],
         propertyOrder: ['a', 'field_2', 'field_3'],
-      }, // 通用schema类型-对象类型 显示  / update
+      }, // 通用schema类型-对象类型 显示  / update ok
       jsonSchema2: {
         type: 'array',
         title: '数组',
@@ -121,7 +121,7 @@ class IndexDemo extends React.PureComponent {
           required: ['name', 'field_1'],
           propertyOrder: ['name', 'field_1'],
         },
-      }, // 通用schema类型-数组类型 显示  / update
+      }, // 通用schema类型-数组类型 显示  / update ok
       jsonSchema3: {
         type: 'object',
         title: '数据源',
@@ -156,8 +156,8 @@ class IndexDemo extends React.PureComponent {
         },
         required: ['type', 'data', 'filter'],
         propertyOrder: ['type', 'data', 'filter'],
-      }, // 通用schema类型-datasource类型 显示  / update
-      jsonSchema: {
+      }, // 通用schema类型-datasource类型 显示  / update ok
+      jsonSchema4: {
         type: 'object',
         format: 'event',
         title: '事件',
@@ -196,7 +196,7 @@ class IndexDemo extends React.PureComponent {
         },
         required: ['type', 'trigger', 'eventData'],
         propertyOrder: ['type', 'trigger', 'eventData'],
-      }, // 通用schema类型-事件类型 显示  / update
+      }, // 通用schema类型-事件类型 显示  / update ok
       jsonSchema5: {
         type: 'object',
         format: 'func',
@@ -1013,7 +1013,7 @@ class IndexDemo extends React.PureComponent {
         required: ['func', 'style', 'data'],
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
-      }, // 用于区块配置的schema  显示  / update ok
+      }, // 用于区块配置的schema  显示  / update  select ?
       jsonData: {},
       wideScreen: false,
       jsonView: false,

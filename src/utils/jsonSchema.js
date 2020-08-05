@@ -363,13 +363,15 @@ export function baseSchema2JsonData(jsonSchema, jsonData) {
   let curValue = exitPropertie(oldValue) ? oldValue : jsonSchema.default;
   switch (jsonSchema.type) {
     case 'string':
-      if (jsonSchema.format === 'color') {
+      if (jsonSchema.format === 'typeSelect') {
+        // 选择类型的字段直接使用schema中的数值
+        curJsonData = jsonSchema.default;
+      } else if (jsonSchema.format === 'color') {
         if (curValue === '#fff' || curValue === '#FFF') {
           curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
         }
         curJsonData = curValue || '#ffffff';
-      }
-      if (jsonSchema.format === 'json') {
+      } else if (jsonSchema.format === 'json') {
         /** 转成json类型进行特殊处理
          * 需要保证json类型的数值是json对象 */
         let curJsonItemData = ''; // 字符串类型的json数据

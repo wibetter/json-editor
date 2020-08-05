@@ -51,11 +51,10 @@ class QuantitySchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    // const quantityJsonSchema = targetJsonData.properties && targetJsonData.properties.quantity;
-    const unitJsonSchema =
-      targetJsonData.properties && targetJsonData.properties.unit;
+    /** 获取quantity中的数值对象（默认第一个就是数值对象） */
+    const unitJsonKey = targetJsonData.propertyOrder[0];
+    const unitJsonSchema = targetJsonData.properties[unitJsonKey];
     const unitText = curJsonData.quantity;
-
     const unitAfter = <span>{unitText === 'percent' ? '%' : unitText}</span>;
 
     return (
