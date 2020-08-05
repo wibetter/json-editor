@@ -527,30 +527,28 @@ export function objectSchema2JsonData(jsonSchema, jsonData) {
     } else if (jsonSchema.properties && jsonSchema.propertyOrder) {
       // 其他非固定格式的Object类型
       jsonSchema.propertyOrder.map((jsonKey) => {
-        const jsonItem = jsonSchema.properties[jsonKey];
-        let oldValue = jsonData && jsonData[jsonKey];
-
-        if (
-          exitPropertie(oldValue) &&
-          exitPropertie(jsonItem.default) &&
-          typeof oldValue !== typeof jsonItem.default
-        ) {
-          // 表示当前数据类型发生变化，则丢弃旧版数据
-          oldValue = undefined;
-        }
-        /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
-        const curValue = exitPropertie(oldValue) ? oldValue : jsonItem.default;
-        switch (jsonItem.type) {
+        const curJsonItem = jsonSchema.properties[jsonKey];
+        const curOldValue = jsonData && jsonData[jsonKey];
+        switch (curJsonItem.type) {
           case 'array':
-            curJsonData[jsonKey] = arraySchema2JsonData(jsonItem, curValue);
+            curJsonData[jsonKey] = arraySchema2JsonData(
+              curJsonItem,
+              curOldValue,
+            );
             break;
           case 'object':
             // 普通对象类型
-            curJsonData[jsonKey] = objectSchema2JsonData(jsonItem, curValue);
+            curJsonData[jsonKey] = objectSchema2JsonData(
+              curJsonItem,
+              curOldValue,
+            );
             break;
           default:
             // 其他基础类型
-            curJsonData[jsonKey] = baseSchema2JsonData(jsonItem, curValue);
+            curJsonData[jsonKey] = baseSchema2JsonData(
+              curJsonItem,
+              curOldValue,
+            );
         }
       });
     }
