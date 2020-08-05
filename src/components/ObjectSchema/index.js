@@ -124,8 +124,10 @@ class ObjectSchema extends React.PureComponent {
               /** 1. 获取当前元素的路径值 */
               const currentIndexRoute = indexRoute
                 ? `${indexRoute}-${index}`
-                : index;
-              const currentKeyRoute = keyRoute ? `${keyRoute}-${key}` : key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                : `${index}`;
+              const currentKeyRoute = keyRoute
+                ? `${keyRoute}-${key}`
+                : `${key}`; // key路径值，后续用于从jsonData中提取当前元素的数值
               /** 2. 获取当前元素的key值 */
               const currentJsonKey = key;
               /** 3. 获取当前元素的json结构对象 */

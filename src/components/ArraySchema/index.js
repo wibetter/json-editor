@@ -162,7 +162,7 @@ class ArraySchema extends React.PureComponent {
                 const curIndexRoute = indexRoute ? `${indexRoute}-0` : '0';
                 const curKeyRoute = keyRoute
                   ? `${keyRoute}-${arrIndex}`
-                  : arrIndex;
+                  : `${arrIndex}`;
                 return (
                   <Panel
                     header={`${arrayItemsDataObj.title}/${arrIndex + 1}`}

@@ -117,11 +117,7 @@ export function isNewSchemaData(schemaData) {
   const { lastUpdateTime } = schemaData;
   // 从那一刻开始就认为是新版JSONSchema
   const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
-  if (
-    isUsedToWidgetConfig(schemaData) &&
-    lastUpdateTime &&
-    new Date(lastUpdateTime).getTime() >= newVersionTime
-  ) {
+  if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
     isNewVersion = true;
   }
   return isNewVersion;

@@ -157,7 +157,7 @@ class IndexDemo extends React.PureComponent {
         required: ['type', 'data', 'filter'],
         propertyOrder: ['type', 'data', 'filter'],
       }, // 通用schema类型-datasource类型 显示  / update
-      jsonSchema4: {
+      jsonSchema: {
         type: 'object',
         format: 'event',
         title: '事件',
@@ -432,7 +432,7 @@ class IndexDemo extends React.PureComponent {
           'field_11',
           'field_12',
         ],
-      }, // 通用schema类型 显示  / update
+      }, // 通用schema类型 显示  / update ok
       jsonSchema6: {
         type: 'object',
         title: 'jsonSchemaObject',
@@ -1013,7 +1013,7 @@ class IndexDemo extends React.PureComponent {
         required: ['func', 'style', 'data'],
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
-      }, // 用于区块配置的schema  显示  / update
+      }, // 用于区块配置的schema  显示  / update ok
       jsonData: {},
       wideScreen: false,
       jsonView: false,
@@ -1070,7 +1070,7 @@ class IndexDemo extends React.PureComponent {
             <JSONSchemaEditor
               data={jsonSchema}
               onChange={(newJsonSchema) => {
-                console.log('jsonSchemaChange', JSON.stringify(newJsonSchema));
+                console.log('jsonSchemaChange', newJsonSchema);
                 this.setState({
                   jsonSchema: newJsonSchema,
                 });
@@ -1084,7 +1084,7 @@ class IndexDemo extends React.PureComponent {
               schemaData={jsonSchema}
               jsonData={jsonData}
               onChange={(newJsonData) => {
-                console.log('jsonDataChange', JSON.stringify(newJsonData));
+                console.log('jsonDataChange', newJsonData);
                 this.setState({
                   jsonData: newJsonData,
                 });
