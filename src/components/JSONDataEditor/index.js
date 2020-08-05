@@ -189,10 +189,10 @@ class JSONDataEditor extends React.PureComponent {
 export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
+  lastInitTime: stores.JSONEditorStore.lastInitTime,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
   JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
   initJSONData: stores.JSONEditorStore.initJSONData,
-  lastInitTime: stores.JSONEditorStore.lastInitTime,
   initOnChange: stores.JSONEditorStore.initOnChange,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
 }))(observer(JSONDataEditor));

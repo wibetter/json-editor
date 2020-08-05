@@ -13,7 +13,17 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema: {
+      jsonSchema11: {
+        type: 'string',
+        title: '单文本框',
+        format: 'input',
+        isRequired: false,
+        default: '',
+        description: '',
+        placeholder: '',
+        readOnly: false,
+      }, // 通用schema类型-基础类型 显示  / 不可编辑 ok
+      jsonSchema0: {
         type: 'object',
         title: '单位计量输入',
         format: 'quantity',
@@ -35,7 +45,7 @@ class IndexDemo extends React.PureComponent {
         },
         required: ['unit', 'quantity'],
         propertyOrder: ['unit', 'quantity'],
-      }, // 通用schema类型-基础类型 显示  / 不可编辑
+      }, // 通用schema类型-计量单位类型 显示  / update ok
       jsonSchema1: {
         type: 'object',
         title: '对象类型',
@@ -433,7 +443,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {

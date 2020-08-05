@@ -5,7 +5,7 @@ import {
   getParentKeyRoute_CurKey,
 } from '$utils/jsonData';
 import { schema2JsonData } from '$utils/jsonSchema';
-import { objClone, isArray, isFunction } from '$utils/index';
+import { isEqual, objClone, isArray, isFunction } from '$utils/index';
 
 /**
  * 用于管控JSON数据内容的全局store
@@ -36,7 +36,7 @@ export default class JSONEditorStore {
    * jsonData: jsonData数据对象
    * 备注：没有多余数据的jsonData
    */
-  @observable jsonData = {};
+  @observable jsonData = null;
 
   /**
    * jsonDataTemp: jsonData的临时数据对象
@@ -70,17 +70,14 @@ export default class JSONEditorStore {
   initJSONData(jsonData) {
     // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
     const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
-    if (!jsonData || JSON.stringify(jsonData) === '{}') {
+    if (!isEqual(jsonData, this.jsonData)) {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
       this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
-      this.jsonData = schema2JsonData(jsonSchema, {});
-    } else {
-      this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
-      this.jsonData = schema2JsonData(jsonSchema, jsonData);
+      this.jsonData = schema2JsonData(jsonSchema, jsonData || {});
+      // 记录当前初始化的时间
+      this.updateLastInitTime();
     }
-    // 记录当前初始化的时间
-    this.updateLastInitTime();
   }
 
   /** 初始化jsonData  */
@@ -123,17 +120,23 @@ export default class JSONEditorStore {
    * */
   @action.bound
   updateFormValueData(keyRoute, newVal) {
-    // 1. 获取父级key路径和最近的有一个key
-    const parentKeyRoute_CurKey = getParentKeyRoute_CurKey(keyRoute);
-    const parentKeyRoute = parentKeyRoute_CurKey[0];
-    const curKey = parentKeyRoute_CurKey[1];
-    // 2. 获取父级数据对象
-    const parentJsonDataObj = getJSONDataByKeyRoute(
-      parentKeyRoute,
-      this.jsonData,
-    );
-    // 3. 数值更新
-    parentJsonDataObj[curKey] = newVal;
+    if (keyRoute !== '') {
+      // 1. 获取父级key路径和最近的有一个key
+      const parentKeyRoute_CurKey = getParentKeyRoute_CurKey(keyRoute);
+      const parentKeyRoute = parentKeyRoute_CurKey[0];
+      const curKey = parentKeyRoute_CurKey[1];
+      // 2. 获取父级数据对象
+      const parentJsonDataObj = getJSONDataByKeyRoute(
+        parentKeyRoute,
+        this.jsonData,
+      );
+      // 3. 数值更新
+      parentJsonDataObj[curKey] = newVal;
+    } else {
+      // 当keyRoute为空时直接修改当前schemaData
+      this.jsonData = newVal;
+    }
+
     // 4. 触发onChange事件
     this.jsonDataChange();
   }
