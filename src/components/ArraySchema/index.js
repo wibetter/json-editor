@@ -159,7 +159,7 @@ class ArraySchema extends React.PureComponent {
             <Collapse expandIconPosition="right" bordered={true}>
               {curJsonData.map((arrItem, arrIndex) => {
                 const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
-                const curIndexRoute = `${indexRoute}-0`;
+                const curIndexRoute = indexRoute ? `${indexRoute}-0` : '0';
                 const curKeyRoute = keyRoute
                   ? `${keyRoute}-${arrIndex}`
                   : arrIndex;

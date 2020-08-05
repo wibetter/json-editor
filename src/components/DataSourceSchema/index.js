@@ -110,7 +110,7 @@ class DataSourceSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'data',
-                    indexRoute: `${indexRoute}-1`,
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                     nodeKey: `${nodeKey}-data`,
                     targetJsonData: dataObj,
@@ -123,7 +123,7 @@ class DataSourceSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'filter',
-                    indexRoute: `${indexRoute}-2`,
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
                     nodeKey: `${nodeKey}-filter`,
                     targetJsonData: filterDataObj,
@@ -140,7 +140,7 @@ class DataSourceSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'data',
-                    indexRoute: `${indexRoute}-1`,
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                     nodeKey: `${nodeKey}-data`,
                     targetJsonData: dataObj,
@@ -159,7 +159,7 @@ class DataSourceSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'filter',
-                    indexRoute: `${indexRoute}-2`,
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
                     nodeKey: `${nodeKey}-filter`,
                     targetJsonData: filterDataObj,

@@ -82,7 +82,7 @@ class EventSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'register',
-                    indexRoute: `${indexRoute}-1`,
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
                     nodeKey: `${nodeKey}-register`,
                     targetJsonData: registerJsonObj,
@@ -95,7 +95,7 @@ class EventSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'actionFunc',
-                    indexRoute: `${indexRoute}-2`,
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute
                       ? `${keyRoute}-actionFunc`
                       : 'actionFunc',
@@ -114,7 +114,7 @@ class EventSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'trigger',
-                    indexRoute: `${indexRoute}-1`,
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
                     nodeKey: `${nodeKey}-trigger`,
                     targetJsonData: triggerJsonObj,
@@ -127,7 +127,7 @@ class EventSchema extends React.PureComponent {
                   {...{
                     parentType: currentFormat,
                     jsonKey: 'eventData',
-                    indexRoute: `${indexRoute}-2`,
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-eventData` : 'eventData',
                     nodeKey: `${nodeKey}-eventData`,
                     targetJsonData: eventDataJsonObj,
