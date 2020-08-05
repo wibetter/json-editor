@@ -160,7 +160,9 @@ class ArraySchema extends React.PureComponent {
               {curJsonData.map((arrItem, arrIndex) => {
                 const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
                 const curIndexRoute = `${indexRoute}-0`;
-                const curKeyRoute = `${keyRoute}-${arrIndex}`;
+                const curKeyRoute = keyRoute
+                  ? `${keyRoute}-${arrIndex}`
+                  : arrIndex;
                 return (
                   <Panel
                     header={`${arrayItemsDataObj.title}/${arrIndex + 1}`}

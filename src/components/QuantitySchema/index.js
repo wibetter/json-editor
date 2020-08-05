@@ -36,7 +36,8 @@ class QuantitySchema extends React.PureComponent {
   handleValueChange = (event) => {
     const { value } = event.target;
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(`${keyRoute}-unit`, Number(value)); // 更新单位数值
+    const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
+    updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
   };
 
   render() {
