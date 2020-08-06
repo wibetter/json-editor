@@ -1,3 +1,5 @@
+import { TypeDataList } from '$data/TypeDataList';
+
 // 判断是否是URL地址类型
 export const isURL = (s) => {
   return /^http[s]?:\/\/.*/.test(s);
@@ -20,17 +22,17 @@ export const isBoolean = (o) => {
 
 // 判断是否是年月日的时间类型
 export function isDateStr(dateStr) {
-  return dateStr.match(/\d{4}-\d{2}-\d{2}/);
+  return /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
 }
 
 // 判断是否是年月日时分的时间类型
 export function isDateTimeStr(dateStr) {
-  return dateStr.match(/\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}/);
+  return /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(dateStr);
 }
 
 // 判断是否是时分的时间类型
 export function isTimeStr(dateStr) {
-  return dateStr.match(/\d{2}:\d{2}/);
+  return /^\d{2}:\d{2}$/.test(dateStr);
 }
 
 /**
@@ -45,6 +47,25 @@ export function isArray(curObj) {
 }
 
 /**
+ *  判断是否是select多选类型(基础类型的array)
+ *  select类型一定是一个array类型
+ * */
+export function isSelect(curObj) {
+  if (!isArray(curObj)) {
+    return false;
+  }
+  let isSelect = true;
+  for (let ind = 0, size = curObj.length; ind < size; ind++) {
+    const arrItem = curObj[ind];
+    if (!isString(arrItem)) {
+      // 只要有一个不是string类型就认为不是select
+      return false;
+    }
+  }
+  return isSelect;
+}
+
+/**
  *  判断是否是对象类型
  * */
 export function isObject(curObj) {
@@ -53,6 +74,26 @@ export function isObject(curObj) {
     isObject = true;
   }
   return isObject;
+}
+
+/**
+ *  判断是否是单位类型
+ * */
+export function isQuantity(val) {
+  let isObject = false;
+  // 获取当前计量单位元素可选的单位类型
+  const quantityList = TypeDataList.quantity.properties.enum;
+  if (quantityList.indexOf(val) >= 0) {
+    isObject = true;
+  }
+  return isObject;
+}
+
+/**
+ *  判断是否是颜色值
+ * */
+export function isColor(colorVal) {
+  return /^#[0-9a-f]{3,6}$/.test(colorVal);
 }
 
 /**

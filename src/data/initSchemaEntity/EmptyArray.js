@@ -1,5 +1,5 @@
 // 空数组的schema数据
-export const EmptyArrayData = {
+export const EmptyArray = {
   type: 'array',
   format: 'array',
   title: '数组',

@@ -2,9 +2,12 @@ import {
   initJSONSchemaData,
   initInputData,
   initArrayData,
+  EmptyArray,
+  EmptyObject,
   initBooleanData,
   initColorData,
   initDataSourceData,
+  initDataSourceDataV2,
   initDateData,
   initDateTimeData,
   initEventData,
@@ -29,6 +32,8 @@ export const TypeDataList = {
   boolean: initBooleanData,
   object: initObjectData,
   array: initArrayData,
+  'empty-array': EmptyArray,
+  'empty-object': EmptyObject,
   url: initURLData,
   textarea: initTextareaData,
   color: initColorData,
@@ -50,4 +55,10 @@ export const TypeDataList = {
 export const EventTypeDataList = {
   on: initEventDataTypeON,
   emit: initEventData,
+};
+
+// 数据源类型
+export const DataSourceTypeList = {
+  local: initDataSourceData,
+  remote: initDataSourceDataV2,
 };
