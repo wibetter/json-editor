@@ -27,12 +27,15 @@ export function isDateStr(dateStr) {
 
 // 判断是否是年月日时分的时间类型
 export function isDateTimeStr(dateStr) {
-  return /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(dateStr);
+  return (
+    /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(dateStr) ||
+    /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(dateStr)
+  );
 }
 
 // 判断是否是时分的时间类型
 export function isTimeStr(dateStr) {
-  return /^\d{2}:\d{2}$/.test(dateStr);
+  return /^\d{2}:\d{2}:\d{2}$/.test(dateStr) || /^\d{2}:\d{2}$/.test(dateStr);
 }
 
 /**

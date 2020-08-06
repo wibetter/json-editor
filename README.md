@@ -21,6 +21,7 @@ Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
 2. 提供大屏和小屏两种展示模式
 3. 支持11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
 4. 支持8个特殊类型组件（Object、Array、Json、datasource、Event、CodeArea、htmlArea、quantity）
+5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 
 ## Usage
 
@@ -75,6 +76,6 @@ class IndexDemo extends React.PureComponent {
 | ------------ | -------- | ------- | ------------------------------- |
 | `jsonView`   | boolean  | false   | 是否开启全局源码模式，默认不开启      |
 | `wideScreen` | boolean  | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
-| `schemaData` | object   | {}      | json的结构数据                    |
+| `schemaData` | object   | {}      | json的结构数据，备注：当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData                    |
 | `jsonData`   | object   | {}      | json的内容数据                    |
 | `onChange`   | function | null    | jsonData内容变动时会触发onChange   |
