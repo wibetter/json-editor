@@ -12,6 +12,7 @@ import {
   isUsedToWidgetConfig,
   getCurrentFormat,
 } from '$utils/jsonSchema';
+import { jsonData2schema } from '$utils/json2schema';
 import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
@@ -36,6 +37,13 @@ class JSONDataEditor extends React.PureComponent {
       if (props.jsonData) {
         this.props.initJSONData(props.jsonData);
       }
+    } else if (props.jsonData) {
+      // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
+      const jsonSchema = jsonData2schema(props.jsonData); // 通过json转换schema
+      console.log(JSON.stringify(jsonSchema));
+      this.props.initJSONSchemaData(jsonSchema);
+      // 根据props.jsonData对jsonData进行初始化
+      this.props.initJSONData(props.jsonData);
     }
     // 读取宽屏和小屏的配置
     if (props.wideScreen) {
