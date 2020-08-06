@@ -40,7 +40,7 @@ class JSONDataEditor extends React.PureComponent {
     } else if (props.jsonData) {
       // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
       const jsonSchema = jsonData2schema(props.jsonData); // 通过json转换schema
-      console.log(JSON.stringify(jsonSchema));
+      console.log(jsonSchema);
       this.props.initJSONSchemaData(jsonSchema);
       // 根据props.jsonData对jsonData进行初始化
       this.props.initJSONData(props.jsonData);

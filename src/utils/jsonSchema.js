@@ -1,4 +1,8 @@
-import { EventTypeDataList, TypeDataList } from '$data/TypeDataList';
+import {
+  DataSourceTypeList,
+  EventTypeDataList,
+  TypeDataList,
+} from '$data/TypeDataList';
 /**
  * JSONSchema数据对象的通用操作方法【非响应式数据操作方法集合】
  */
@@ -273,23 +277,24 @@ export function oldJSONSchemaToNewJSONSchema(oldJSONSchema) {
   // 转换旧版的datasource类型的数据结构
   if (newJSONSchema.format === 'datasource') {
     const curProperties = newJSONSchema.properties;
-    newJSONSchema = objClone(TypeDataList.datasource); // 新版datasource的schema数据对象
     // 先获取旧版的关键数据
     const typeProp = curProperties.type && curProperties.type.default;
     const dataProp = curProperties.data && curProperties.data.default;
     const filterProp = curProperties.filter && curProperties.filter.default;
-    newJSONSchema.properties.filter.default = filterProp
-      ? objClone(filterProp)
-      : '() => {}';
     if (typeProp === 'local') {
+      newJSONSchema = objClone(DataSourceTypeList.local);
       newJSONSchema.properties.data.default = dataProp
         ? objClone(dataProp)
         : '{}';
     } else {
+      newJSONSchema = objClone(DataSourceTypeList.remote);
       newJSONSchema.properties.data.default = dataProp
         ? objClone(dataProp)
         : 'http://xxx';
     }
+    newJSONSchema.properties.filter.default = filterProp
+      ? objClone(filterProp)
+      : '() => {}';
   }
   // 转换旧版的event类型的数据结构
   if (newJSONSchema.format === 'event') {
