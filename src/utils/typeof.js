@@ -1,13 +1,13 @@
 import { TypeDataList } from '$data/TypeDataList';
 
 // 判断是否是URL地址类型
-export const isURL = (s) => {
+export function isURL(s) {
   return /^http[s]?:\/\/.*/.test(s);
-};
+}
 // 判断是否是字符串类型
-export const isString = (o) => {
+export function isString(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'String';
-};
+}
 // 判断是否是数字类型
 export function isNumber(value) {
   return (
@@ -16,9 +16,9 @@ export function isNumber(value) {
   );
 }
 // 判断是否是Boolean类型
-export const isBoolean = (o) => {
+export function isBoolean(o) {
   return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean';
-};
+}
 
 // 判断是否是年月日的时间类型
 export function isDateStr(dateStr) {
@@ -54,7 +54,6 @@ export function isSelect(curObj) {
   if (!isArray(curObj)) {
     return false;
   }
-  let isSelect = true;
   for (let ind = 0, size = curObj.length; ind < size; ind++) {
     const arrItem = curObj[ind];
     if (!isString(arrItem)) {
@@ -62,7 +61,7 @@ export function isSelect(curObj) {
       return false;
     }
   }
-  return isSelect;
+  return true;
 }
 
 /**
@@ -82,7 +81,7 @@ export function isObject(curObj) {
 export function isQuantity(val) {
   let isObject = false;
   // 获取当前计量单位元素可选的单位类型
-  const quantityList = TypeDataList.quantity.properties.enum;
+  const quantityList = TypeDataList.quantity.properties.quantity.enum;
   if (quantityList.indexOf(val) >= 0) {
     isObject = true;
   }

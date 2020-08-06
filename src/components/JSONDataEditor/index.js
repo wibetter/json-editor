@@ -12,7 +12,7 @@ import {
   isUsedToWidgetConfig,
   getCurrentFormat,
 } from '$utils/jsonSchema';
-import { json2schema } from '$utils/json2schema';
+import { jsonData2schema } from '$utils/json2schema';
 import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
@@ -42,7 +42,7 @@ class JSONDataEditor extends React.PureComponent {
       console.log(
         'schemaData为空，jsonData不为空时，jsonData转jsonSchema功能正在开发中。',
       );
-      const jsonSchema = json2schema(props.jsonData);
+      const jsonSchema = jsonData2schema(props.jsonData); // 通过json转换schema
       this.props.initJSONSchemaData(jsonSchema);
       // 根据props.jsonData对jsonData进行初始化
       this.props.initJSONData(props.jsonData);

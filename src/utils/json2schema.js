@@ -28,25 +28,25 @@ export function baseJson2Schema(jsonData) {
   let curJsonSchema = '';
   if (isBoolean(jsonData)) {
     // 1、Boolean类型
-    curJsonSchema = objClone(DataSourceTypeList.boolean);
+    curJsonSchema = objClone(TypeDataList.boolean);
   } else if (isNumber(jsonData)) {
     // 2、Number类型
-    curJsonSchema = objClone(DataSourceTypeList.number);
+    curJsonSchema = objClone(TypeDataList.number);
   } else if (isURL(jsonData)) {
     // 3、URL类型
-    curJsonSchema = objClone(DataSourceTypeList.url);
+    curJsonSchema = objClone(TypeDataList.url);
   } else if (isDateStr(jsonData)) {
     // 4、Date类型
-    curJsonSchema = objClone(DataSourceTypeList.date);
+    curJsonSchema = objClone(TypeDataList.date);
   } else if (isDateTimeStr(jsonData)) {
     // 5、DateTime类型
-    curJsonSchema = objClone(DataSourceTypeList['date-time']);
+    curJsonSchema = objClone(TypeDataList['date-time']);
   } else if (isTimeStr(jsonData)) {
     // 6、Time类型
-    curJsonSchema = objClone(DataSourceTypeList.time);
-  } else if (isTimeStr(jsonData)) {
+    curJsonSchema = objClone(TypeDataList.time);
+  } else if (isColor(jsonData)) {
     // 7、Color类型
-    curJsonSchema = objClone(DataSourceTypeList.color);
+    curJsonSchema = objClone(TypeDataList.color);
   } else {
     try {
       // json数据类型：进行格式化（检查是否是合格的json字符串数据）
@@ -55,10 +55,10 @@ export function baseJson2Schema(jsonData) {
       // textarea类型
       if (jsonData && jsonData.length > 30) {
         // 字符串长度超过50则认为是codearea类型
-        curJsonSchema = objClone(DataSourceTypeList.textarea);
+        curJsonSchema = objClone(TypeDataList.textarea);
       } else {
         // 其他类型(input、radio、codearea、htmlarea)
-        curJsonSchema = objClone(DataSourceTypeList.input);
+        curJsonSchema = objClone(TypeDataList.input);
       }
     }
   }
