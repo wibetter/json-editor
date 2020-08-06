@@ -70,13 +70,17 @@ export default class JSONEditorStore {
   initJSONData(jsonData) {
     // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
     const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
+    // 过滤jsonData内部数据变动时触发initJSONData的事件
     if (!isEqual(jsonData, this.jsonData)) {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
       this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
-      this.jsonData = schema2JsonData(jsonSchema, jsonData || {});
-      // 记录当前初始化的时间
-      this.updateLastInitTime();
+      // 判断当前schema是否为空
+      if (jsonSchema) {
+        this.jsonData = schema2JsonData(jsonSchema, jsonData || {});
+        // 记录当前初始化的时间
+        this.updateLastInitTime();
+      }
     }
   }
 

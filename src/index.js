@@ -1084,7 +1084,7 @@ class IndexDemo extends React.PureComponent {
               schemaData={jsonSchema}
               jsonData={jsonData}
               onChange={(newJsonData) => {
-                console.log('jsonDataChange', newJsonData);
+                console.log('jsonDataChange', JSON.stringify(newJsonData));
                 this.setState({
                   jsonData: newJsonData,
                 });

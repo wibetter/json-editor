@@ -41,13 +41,14 @@
     "type": "git",
     "url": "git+http://git@github.com:wibetter/json-editor.git"
   },
+  "bugs": {
+    "url": "https://github.com/wibetter/json-editor/issues"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "@babel/polyfill": "^7.10.1",
     "ace-builds": "^1.4.12",
     "antd": "^4.3.4",
-    "generate-schema": "^2.6.0",
-    "json-schema-filter": "^0.1.5",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "moment": "^2.27.0",

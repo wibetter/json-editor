@@ -36,6 +36,13 @@ class JSONDataEditor extends React.PureComponent {
       if (props.jsonData) {
         this.props.initJSONData(props.jsonData);
       }
+    } else if (props.jsonData) {
+      // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
+      console.log(
+        'schemaData为空，jsonData不为空时，jsonData转jsonSchema功能正在开发中。',
+      );
+      // 根据props.jsonData对jsonData进行初始化
+      this.props.initJSONData(props.jsonData);
     }
     // 读取宽屏和小屏的配置
     if (props.wideScreen) {
