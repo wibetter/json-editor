@@ -2,14 +2,6 @@
 
 > JSON数据可视化/JSONEditor, 可视化界面编辑json数据内容
 
-## Install
-
-```bash
-npm install --save @wibetter/json-editor
-```
-
-## Usage
-
 使用场景：提供可视化界面编辑json数据内容，避免用户直接编辑json数据内容
 
 技术栈：React/Mobx/Ant Design
@@ -22,6 +14,13 @@ Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
 3. 支持11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
 4. 支持8个特殊类型组件（Object、Array、Json、datasource、Event、CodeArea、htmlArea、quantity）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
+
+## Install
+
+```bash
+npm install --save @wibetter/json-editor
+```
+
 
 ## Usage
 
