@@ -1014,7 +1014,7 @@ class IndexDemo extends React.PureComponent {
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
       }, // 用于区块配置的schema  显示  / update  ok
-      jsonData: {
+      jsonData1: {
         func: {
           field_1: 'text1',
           field_2: true,
@@ -1073,6 +1073,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
       },
+      jsonData: {},
       wideScreen: false,
       jsonView: false,
     };
@@ -1139,6 +1140,7 @@ class IndexDemo extends React.PureComponent {
             <JSONEditor
               jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
+              schemaData={jsonSchema}
               jsonData={jsonData}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
