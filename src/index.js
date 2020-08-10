@@ -15,26 +15,342 @@ class IndexDemo extends React.PureComponent {
     this.state = {
       jsonSchema0: {
         type: 'object',
-        title: '单位计量输入',
-        format: 'quantity',
-        isRequired: false,
-        default: '',
+        format: 'object',
+        title: '对象类型',
         description: '',
-        placeholder: '',
-        readOnly: false,
         properties: {
-          unit: { type: 'number', title: '数值', format: 'number' },
-          quantity: {
-            type: 'string',
-            default: 'px',
-            format: 'typeSelect',
-            enum: ['px', 'rem', 'em', '%'],
-            enumextra: ['px', 'rem', 'em', '%'],
-            title: '单位类型',
+          func: {
+            type: 'object',
+            format: 'object',
+            title: '对象类型',
+            description: '',
+            properties: {
+              activeIndex: {
+                type: 'number',
+                title: '数值',
+                format: 'number',
+                default: 1,
+                minimum: 0,
+                maximum: 1000,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              activeIndex_6: {
+                type: 'number',
+                title: '数值',
+                format: 'number',
+                default: 1,
+                minimum: 0,
+                maximum: 1000,
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              tabList: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  properties: {
+                    title: {
+                      type: 'string',
+                      title: '单文本框',
+                      format: 'input',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                    link: {
+                      type: 'string',
+                      title: '单文本框',
+                      format: 'input',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                  },
+                },
+              },
+              tabList_5: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  properties: {
+                    title: {
+                      type: 'string',
+                      title: '单文本框',
+                      format: 'input',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                    link: {
+                      type: 'string',
+                      title: '单文本框',
+                      format: 'input',
+                      default: '',
+                      description: '',
+                      placeholder: '',
+                      isRequired: false,
+                      readOnly: false,
+                    },
+                  },
+                },
+              },
+            },
+          },
+          style: {
+            type: 'object',
+            format: 'object',
+            title: '对象类型',
+            description: '',
+            properties: {
+              backColor: {
+                type: 'string',
+                title: '颜色值',
+                format: 'color',
+                default: '#ffffff',
+                description: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              backColor_7: {
+                type: 'string',
+                title: '单文本框',
+                format: 'input',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+                readOnly: false,
+              },
+              field_3: {
+                type: 'object',
+                format: 'quantity',
+                title: '单位计量输入',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  unit: {
+                    type: 'number',
+                    title: '单位数值',
+                    format: 'number',
+                    default: 50,
+                    minimum: 0,
+                    maximum: 1000,
+                    description: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  quantity: {
+                    type: 'string',
+                    format: 'typeSelect',
+                    default: 'px',
+                    enum: ['px', 'rem', 'em', '%'],
+                    enumextra: ['px', 'rem', 'em', '%'],
+                    title: '单位类型',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['unit', 'quantity'],
+                propertyOrder: ['unit', 'quantity'],
+              },
+            },
+          },
+          data: {
+            type: 'object',
+            format: 'object',
+            title: '对象类型',
+            description: '',
+            properties: {
+              field_3: {
+                type: 'object',
+                format: 'event',
+                title: '事件',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'emit',
+                    format: 'typeSelect',
+                    enum: ['on', 'emit'],
+                    enumextra: ['on', 'emit'],
+                    title: '事件类型',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  trigger: {
+                    type: 'string',
+                    format: 'input',
+                    default: 'eventName',
+                    title: '触发事件',
+                    description: '用于输入触发事件的名称',
+                    placeholder: '请输入触发事件的名称',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  eventData: {
+                    type: 'string',
+                    title: '事件数据',
+                    format: 'json',
+                    default: '{}',
+                    description: '传递给触发事件的数据对象',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['type', 'trigger', 'eventData'],
+                propertyOrder: ['type', 'trigger', 'eventData'],
+              },
+              field_3_13: {
+                type: 'object',
+                format: 'event',
+                title: '事件',
+                isRequired: false,
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'on',
+                    format: 'typeSelect',
+                    enum: ['on', 'emit'],
+                    enumextra: ['on', 'emit'],
+                    title: '事件类型',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  register: {
+                    type: 'string',
+                    format: 'input',
+                    default: 'eventName',
+                    title: '注册事件',
+                    description: '用于输入注册事件的名称',
+                    placeholder: '请输入注册事件的名称',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                  actionFunc: {
+                    type: 'string',
+                    title: '执行函数',
+                    format: 'codearea',
+                    default: '() => {}',
+                    description: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
+                },
+                required: ['type', 'register', 'actionFunc'],
+                propertyOrder: ['type', 'register', 'actionFunc'],
+              },
+              field_1: {
+                type: 'object',
+                format: 'datasource',
+                title: '数据源',
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'local',
+                    format: 'typeSelect',
+                    enum: ['local', 'remote'],
+                    enumextra: ['local', 'remote'],
+                    title: '数据源类型',
+                  },
+                  data: {
+                    type: 'string',
+                    title: '本地json数据',
+                    placeholder: '请输入静态json数据',
+                    format: 'json',
+                    default: '{}',
+                    description: '用于设置本地的静态json数据',
+                    isRequired: true,
+                  },
+                  filter: {
+                    type: 'string',
+                    title: '过滤器',
+                    format: 'codearea',
+                    default: '() => {}',
+                    description: '用于定义过滤当前数据的函数',
+                    isRequired: true,
+                  },
+                },
+                required: ['type', 'data', 'filter'],
+                propertyOrder: ['type', 'data', 'filter'],
+              },
+              field_1_10: {
+                type: 'object',
+                format: 'datasource',
+                title: '数据源',
+                readOnly: false,
+                properties: {
+                  type: {
+                    type: 'string',
+                    default: 'remote',
+                    format: 'typeSelect',
+                    enum: ['local', 'remote'],
+                    enumextra: ['local', 'remote'],
+                    title: '数据源类型',
+                  },
+                  data: {
+                    type: 'string',
+                    title: '远程json数据',
+                    placeholder: '请输入远程json数据源地址',
+                    format: 'url',
+                    default: 'http://xxx',
+                    isRequired: true,
+                    description: '用于设置获取元素数据的请求地址',
+                  },
+                  filter: {
+                    type: 'string',
+                    title: '过滤器',
+                    format: 'codearea',
+                    default: '() => {}',
+                    description: '用于定义过滤当前数据的函数',
+                    isRequired: true,
+                  },
+                },
+                required: ['type', 'data', 'filter'],
+                propertyOrder: ['type', 'data', 'filter'],
+              },
+              field_4: {
+                type: 'array',
+                format: 'array',
+                title: '数组',
+                description: '',
+                items: {
+                  type: 'object',
+                  format: 'object',
+                  title: '数组项',
+                  description: '',
+                  properties: {
+                    name: 1,
+                    field_8: 1,
+                  },
+                },
+              },
+            },
           },
         },
-        required: ['unit', 'quantity'],
-        propertyOrder: ['unit', 'quantity'],
       }, // 通用schema类型-计量单位类型 显示  / update ok
       jsonSchema1: {
         type: 'object',
@@ -433,7 +749,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema: {
+      jsonSchema6: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1073,7 +1389,72 @@ class IndexDemo extends React.PureComponent {
           },
         },
       },
-      jsonData: {},
+      jsonData: {
+        func: {
+          activeIndex: 1,
+          activeIndex_6: 1,
+          tabList: [
+            {
+              title: '我的审批',
+              link: '#myApproval',
+            },
+            {
+              title: '我的申请',
+              link: '#myApply',
+            },
+          ],
+          tabList_5: [
+            {
+              title: '',
+              link: '',
+            },
+          ],
+        },
+        style: {
+          backColor: '#ffffff',
+          backColor_7: '',
+          field_3: {
+            unit: 50,
+            quantity: 'px',
+          },
+        },
+        data: {
+          field_3: {
+            trigger: 'click',
+            eventData: {
+              test: 1,
+            },
+          },
+          field_3_13: {
+            register: 'click',
+            actionFunc: '() => {\n  console.log("触发了点击事件")\n}',
+          },
+          field_1: {
+            data: {
+              test: 1,
+            },
+            filter: '() => {\n  console.log(123)\n}',
+          },
+          field_1_10: {
+            data: 'http://test.data.com/test/getData',
+            filter: '() => {\n  console.log(123)\n}',
+          },
+          field_4: [
+            {
+              name: '1',
+              field_8: '1',
+            },
+            {
+              name: '12',
+              field_8: '12',
+            },
+            {
+              name: '13',
+              field_8: '13',
+            },
+          ],
+        },
+      },
       wideScreen: false,
       jsonView: false,
     };
@@ -1140,7 +1521,7 @@ class IndexDemo extends React.PureComponent {
             <JSONEditor
               jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
-              schemaData={jsonSchema}
+              // schemaData={jsonSchema}
               jsonData={jsonData}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));

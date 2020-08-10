@@ -50,7 +50,14 @@ export function baseJson2Schema(jsonData) {
   } else {
     try {
       // json数据类型：进行格式化（检查是否是合格的json字符串数据）
-      curJsonSchema = JSON.parse(jsonData);
+      const jsonDataObj = JSON.parse(jsonData);
+      if (isNumber(jsonDataObj)) {
+        // 简单数字字符串类型数值统一认为是字符串类型
+        curJsonSchema = objClone(TypeDataList.input);
+      } else {
+        // 排除简单数字字符串类型数值
+        curJsonSchema = objClone(TypeDataList.json);
+      }
     } catch (err) {
       // textarea类型
       if (jsonData && jsonData.length > 30) {

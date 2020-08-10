@@ -5,8 +5,12 @@ import PropTypes from 'prop-types';
 
 import RootJSONStore from '$store/index';
 import JSONDataEditor from '$components/JSONDataEditor/index';
-import { jsonData2schema } from '$utils/json2schema';
 
+/**
+ * 临时使用方法，后续单独将jsonData2schema方法抽离出一个功能包
+ * json转schema方法
+ */
+export { jsonData2schema } from '$utils/json2schema';
 /**
  * JSONEditor功能组件
  * @param props
@@ -46,9 +50,3 @@ export default class JSONEditor extends React.PureComponent {
     return renderContent; // 直接输出dom元素
   }
 }
-
-/**
- * 临时使用方法，后续单独将jsonData2schema方法抽离出一个功能包
- * json转schema方法
- */
-export const json2schema = jsonData2schema;
