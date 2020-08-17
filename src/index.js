@@ -749,7 +749,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1389,72 +1389,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
       },
-      jsonData: {
-        func: {
-          activeIndex: 1,
-          activeIndex_6: 1,
-          tabList: [
-            {
-              title: '我的审批',
-              link: '#myApproval',
-            },
-            {
-              title: '我的申请',
-              link: '#myApply',
-            },
-          ],
-          tabList_5: [
-            {
-              title: '',
-              link: '',
-            },
-          ],
-        },
-        style: {
-          backColor: '#ffffff',
-          backColor_7: '',
-          field_3: {
-            unit: 50,
-            quantity: 'px',
-          },
-        },
-        data: {
-          field_3: {
-            trigger: 'click',
-            eventData: {
-              test: 1,
-            },
-          },
-          field_3_13: {
-            register: 'click',
-            actionFunc: '() => {\n  console.log("触发了点击事件")\n}',
-          },
-          field_1: {
-            data: {
-              test: 1,
-            },
-            filter: '() => {\n  console.log(123)\n}',
-          },
-          field_1_10: {
-            data: 'http://test.data.com/test/getData',
-            filter: '() => {\n  console.log(123)\n}',
-          },
-          field_4: [
-            {
-              name: '1',
-              field_8: '1',
-            },
-            {
-              name: '12',
-              field_8: '12',
-            },
-            {
-              name: '13',
-              field_8: '13',
-            },
-          ],
-        },
-      },
+      jsonData: {},
       wideScreen: false,
       jsonView: false,
     };
@@ -1521,7 +1456,7 @@ class IndexDemo extends React.PureComponent {
             <JSONEditor
               jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
-              // schemaData={jsonSchema}
+              schemaData={jsonSchema}
               jsonData={jsonData}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
