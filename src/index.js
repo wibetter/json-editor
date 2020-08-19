@@ -13,6 +13,75 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      jsonSchema: {
+        type: 'object',
+        title: 'jsonSchemaObject',
+        properties: {
+          func: {
+            type: 'object',
+            format: 'func',
+            title: '功能设置',
+            readOnly: false,
+            properties: {
+              field_1: {
+                type: 'string',
+                title: '单文本框',
+                format: 'input',
+                isRequired: false,
+                default: '',
+                description: '',
+                placeholder: '',
+                readOnly: false,
+              },
+            },
+            required: ['field_1'],
+            propertyOrder: ['field_1'],
+          },
+          style: {
+            type: 'object',
+            format: 'style',
+            title: '样式设置',
+            readOnly: false,
+            properties: {
+              field_18: {
+                type: 'string',
+                title: '颜色值',
+                format: 'color',
+                isRequired: false,
+                default: '#fff',
+                description: '',
+                placeholder: '',
+                readOnly: false,
+              },
+            },
+            required: ['field_18'],
+            propertyOrder: ['field_18'],
+          },
+          data: {
+            type: 'object',
+            format: 'data',
+            title: '数据设置',
+            readOnly: false,
+            properties: {
+              field_28: {
+                type: 'string',
+                title: 'json数据项',
+                format: 'json',
+                isRequired: false,
+                default: '{}',
+                description: '',
+                placeholder: '',
+                readOnly: false,
+              },
+            },
+            required: ['field_28'],
+            propertyOrder: ['field_28'],
+          },
+        },
+        required: ['func', 'style', 'data'],
+        format: 'object',
+        propertyOrder: ['func', 'style', 'data'],
+      }, // 用于区块配置的schema  显示  / update  ok
       jsonSchema0: {
         type: 'object',
         format: 'object',
@@ -749,7 +818,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema: {
+      jsonSchema6: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1389,7 +1458,69 @@ class IndexDemo extends React.PureComponent {
           },
         },
       },
-      jsonData: {},
+      jsonData: {
+        func: {
+          field_1: '',
+        },
+        style: {
+          field_18: '#ffffff',
+        },
+        data: {
+          field_28: {
+            type: 'remote',
+            config: {
+              id: 0, // 动态数据源id
+              dataName: 'data-12', // 动态数据源名称
+              title: 'xxx数据源', // 数据源中文名称
+              desc: 'xxx数据源描述', //  数据源中文描述
+              url: 'https://api.thecatapi.com/v1/images/search', // 动态数据源请求地址
+              method: 'get',
+              option: {},
+              header: {}, // 请求头
+              body: {
+                // 请求参数相关
+                param1: {
+                  title: '参数名称',
+                  scope: 'static', // 固定参数
+                  value: '111', // 固定值
+                },
+                param2: {
+                  title: '参数名称',
+                  scope: 'window',
+                  name: 'PARAM1',
+                  value: '111', // 默认值
+                },
+                pageId: {
+                  title: '页面id',
+                  scope: 'hash',
+                  name: 'pId',
+                  value: '111', // 默认值
+                },
+                param7: {
+                  title: '参数名称',
+                  scope: 'dynamic', // 接口下发
+                  dataName: 'api3',
+                  body: {
+                    param2: {
+                      title: '参数名称',
+                      scope: 'static',
+                      value: '222',
+                    },
+                    param3: {
+                      title: '参数名称',
+                      scope: 'static',
+                      value: '333',
+                    },
+                  },
+                },
+              },
+              mock: '{}',
+            },
+            data: {},
+            filter: '(resp) => { return resp.data; }',
+          },
+        },
+      },
       wideScreen: false,
       jsonView: false,
     };

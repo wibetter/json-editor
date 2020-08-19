@@ -16,7 +16,6 @@ export default class JSONEditorStore {
   constructor(rootJSONStore) {
     this.rootJSONStore = rootJSONStore;
   }
-
   /**
    * rootJSONStore: store根数据对象
    */

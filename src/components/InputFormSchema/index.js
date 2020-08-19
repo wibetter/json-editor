@@ -8,7 +8,7 @@ class InputFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
-    indexRoute: PropTypes.string,
+    indexRoute: PropTypes.any,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonData: PropTypes.any,

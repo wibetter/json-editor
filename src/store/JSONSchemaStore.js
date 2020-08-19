@@ -7,7 +7,8 @@ import {
   schema2JsonData,
 } from '$utils/jsonSchema';
 import { isEqual, objClone } from '$utils/index';
-import { initJSONSchemaData } from '$data/index';
+import { TypeDataList } from '$data/TypeDataList';
+const initJSONSchemaData = TypeDataList.jsonschema;
 
 /**
  * 用于管控JSON结构的全局store

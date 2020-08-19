@@ -6,8 +6,6 @@
 
 技术栈：React/Mobx/Ant Design
 
-Demo：http://qd6mwfbpr.bkt.clouddn.com/demoV2.1.13.html
-
 特点：
 1. 弹性布局
 2. 提供大屏和小屏两种展示模式

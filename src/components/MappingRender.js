@@ -4,6 +4,7 @@ import { getCurrentFormat } from '$utils/jsonSchema';
 import ArraySchema from '$components/ArraySchema/index';
 import ObjectSchema from '$components/ObjectSchema/index';
 import DataSourceSchema from '$components/DataSourceSchema/index';
+import DynamicDataSchema from '$components/DynamicDataSchema/index';
 import EventSchema from '$components/EventSchema/index';
 import QuantitySchema from '$components/QuantitySchema/index';
 import RadioSchema from '$components/RadioSchema/index';
@@ -34,6 +35,9 @@ const MappingRender = (props) => {
       break;
     case 'array':
       return <ArraySchema {...props} key={nodeKey} />;
+      break;
+    case 'dynamic-data':
+      return <DynamicDataSchema {...props} key={nodeKey} />;
       break;
     case 'datasource':
       return <DataSourceSchema {...props} key={nodeKey} />;
