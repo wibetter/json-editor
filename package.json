@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-editor",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "description": "JSON数据可视化/JSONEditor, 可视化界面编辑json数据内容",
   "keywords": [
     "json",
@@ -47,9 +47,8 @@
     "react": "^16.8.6",
     "react-ace": "^9.1.1",
     "react-dom": "^16.8.6",
-    "@wibetter/json-schema-editor": "^3.3.8",
-    "@wibetter/json-utils": "^1.1.7",
-    "@wibetter/json-editor": "^3.3.5"
+    "@wibetter/json-schema-editor": "^3.3.10",
+    "@wibetter/json-utils": "^1.1.9"
   },
   "devDependencies": {
     "akfun": "^1.5.1",

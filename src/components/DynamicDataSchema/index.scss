@@ -24,6 +24,7 @@
 
   .dynamic-data-select {
     display: block;
+    width: 100%;
   }
 
   .json-form-box {
@@ -34,8 +35,8 @@
 
     .filter-btn {
       position: absolute;
-      top: 5px;
-      right: 5px;
+      top: 58px; // 38px + 8px + 12px
+      right: 27px; // 15px + 12px
       z-index: 100;
 
       svg {
@@ -52,7 +53,7 @@
   }
 
   .filter-func-box {
-    padding: 0 10px;
+    padding: 0;
   }
 }
 

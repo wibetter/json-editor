@@ -5,13 +5,13 @@ import { Tabs, Select, Tooltip } from 'antd';
 const { TabPane } = Tabs;
 const { Option } = Select;
 import { FilterOutlined } from '@ant-design/icons';
+import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
 import './index.scss';
-import JSONEditor from '@wibetter/json-editor/dist/index.umd';
 
 class DynamicDataSchema extends React.PureComponent {
   static propTypes = {
@@ -22,6 +22,8 @@ class DynamicDataSchema extends React.PureComponent {
     nodeKey: PropTypes.string,
     targetJsonData: PropTypes.any,
     dynamicDataList: PropTypes.array,
+    dynamicDataObj: PropTypes.object,
+    dynamicDataApiScopeList: PropTypes.object,
   };
 
   constructor(props) {
@@ -67,10 +69,24 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   dynamicDataChange = (dynamicDataName) => {
-    const { keyRoute, dynamicDataList } = this.props;
-    const curDynamicData = dynamicDataList[dynamicDataName];
+    const {
+      keyRoute,
+      dynamicDataObj,
+      getJSONDataByKeyRoute,
+      triggerChangeAction,
+    } = this.props;
+    const curDynamicData = dynamicDataObj[dynamicDataName];
     if (curDynamicData) {
-      this.handleValueChange(`${keyRoute}-config`, curDynamicData);
+      // 从jsonData中获取对应的数值
+      const curFliter =
+        getJSONDataByKeyRoute(`${keyRoute}-config-filter`) || {};
+      const newCurDynamicData = Object.assign(curDynamicData, {
+        filter: curFliter,
+      });
+      this.handleValueChange(`${keyRoute}-config`, newCurDynamicData);
+      setTimeout(() => {
+        triggerChangeAction();
+      }, 100);
     }
   };
 
@@ -81,6 +97,7 @@ class DynamicDataSchema extends React.PureComponent {
       indexRoute,
       targetJsonData,
       dynamicDataList,
+      dynamicDataApiScopeList,
       getJSONDataByKeyRoute,
       pageScreen,
     } = this.props;
@@ -90,9 +107,11 @@ class DynamicDataSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
     // 获取DataSource中各类数据对象
-    const typeDataObj = targetJsonData.properties.type || {}; // type中记录了数据源类型：local or remote
+    const typeDataObj = targetJsonData.properties.type || {}; // type中记录了数据源类型：local or remote// 获取当前数据源类型
+    const dataType = curJsonData.type || typeDataObj.default; // local or remote
+
     const configDataObj = curJsonData.config || {}; // 接口数据请求配置对象
-    const dataName = configDataObj.dataName; // 数据源名称
+    const dataName = configDataObj.name; // 数据源名称
     let apiParams = configDataObj.body || {}; // 动态数据/请求参数
     if (!isObject(apiParams) && apiParams !== '') {
       try {
@@ -102,9 +121,8 @@ class DynamicDataSchema extends React.PureComponent {
         apiParams = {};
       }
     }
-    const dataObj = curJsonData.data || {}; // mockData中的数据对象
-    // 获取当前数据源类型
-    const dataType = curJsonData.type || typeDataObj.default; // local or remote
+
+    const dataObj = targetJsonData.properties.data || {}; // schema中的数据对象
 
     return (
       <div
@@ -131,25 +149,31 @@ class DynamicDataSchema extends React.PureComponent {
                   onClick={this.switchFilterBtn}
                 />
               </Tooltip>
-              <JSONEditor
-                wideScreen={pageScreen}
-                jsonData={dataObj}
-                onChange={(newJsonData) => {
-                  console.log('jsonDataChange', JSON.stringify(newJsonData));
+              <JsonFormSchema
+                {...{
+                  parentType: currentFormat,
+                  jsonKey: 'data',
+                  indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                  keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
+                  nodeKey: `${nodeKey}-data`,
+                  targetJsonData: dataObj,
                 }}
+                key={`${nodeKey}-data`}
               />
-              <div class="filter-func-box">
+              <div className="filter-func-box">
                 {isShowFilter && (
                   <CodeAreaFormSchema
                     {...{
                       parentType: currentFormat,
-                      jsonKey: 'filter',
-                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                      keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
-                      nodeKey: `${nodeKey}-filter`,
-                      targetJsonData: targetJsonData.properties.filter,
+                      jsonKey: 'localFilter',
+                      indexRoute: indexRoute ? `${indexRoute}-3` : '3',
+                      keyRoute: keyRoute
+                        ? `${keyRoute}-localFilter`
+                        : 'localFilter',
+                      nodeKey: `${nodeKey}-localFilter`,
+                      targetJsonData: targetJsonData.properties.localFilter,
                     }}
-                    key={`${nodeKey}-filter`}
+                    key={`${nodeKey}-localFilter`}
                   />
                 )}
               </div>
@@ -163,8 +187,8 @@ class DynamicDataSchema extends React.PureComponent {
                     ? 'wide-screen-element-warp'
                     : 'mobile-screen-element-warp'
                 }
-                key={nodeKey}
-                id={nodeKey}
+                key={`${nodeKey}-${dataName}`}
+                id={`${nodeKey}-${dataName}`}
               >
                 <div className="element-title">数据源列表</div>
                 <div className="content-item">
@@ -190,26 +214,79 @@ class DynamicDataSchema extends React.PureComponent {
                   </div>
                 </div>
               </div>
-              {Object.keys(apiParams).map((paramKey) => {
-                const paramItam = apiParams[paramKey];
-                paramItam.readOnly =
-                  paramItam.scope && paramItam.scope === 'static'
-                    ? true
-                    : false;
-                const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
-                return (
-                  <InputFormSchema
-                    {...{
-                      pageScreen: pageScreen, // 默认使用宽屏模式
-                      jsonKey: paramKey,
-                      keyRoute: `${curKeyRoute}-value`,
-                      nodeKey: curKeyRoute,
-                      targetJsonData: paramItam,
-                    }}
-                    key={curKeyRoute}
-                  />
-                );
-              })}
+              {dataName && apiParams && Object.keys(apiParams).length > 0 && (
+                <div
+                  className={
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'
+                  }
+                  key={`${nodeKey}-${dataName}-params`}
+                  id={`${nodeKey}-${dataName}-params`}
+                >
+                  <div className="element-title">请求参数配置</div>
+                  <div className="content-item object-content">
+                    {Object.keys(apiParams).map((paramKey) => {
+                      const paramItam = apiParams[paramKey];
+                      paramItam.readOnly =
+                        paramItam.scope && paramItam.scope === 'static'
+                          ? true
+                          : false;
+                      const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
+                      const scopeTitle =
+                        dynamicDataApiScopeList[paramItam.scope];
+                      if (scopeTitle) {
+                        paramItam.title = `${paramItam.title}（${scopeTitle}）`;
+                      }
+                      return (
+                        <InputFormSchema
+                          {...{
+                            pageScreen: pageScreen, // 默认使用宽屏模式
+                            jsonKey: paramKey,
+                            keyRoute: `${curKeyRoute}-value`,
+                            nodeKey: curKeyRoute,
+                            targetJsonData: paramItam,
+                          }}
+                          key={curKeyRoute}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+              {dataName && apiParams && Object.keys(apiParams).length === 0 && (
+                <div
+                  className={
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'
+                  }
+                  key={`${nodeKey}-${dataName}-empty`}
+                  id={`${nodeKey}-${dataName}-empty`}
+                >
+                  <div className="element-title">请求参数配置</div>
+                  <div className="content-item object-content">
+                    <span>当前数据源没有提供可配置的请求参数</span>
+                  </div>
+                </div>
+              )}
+              {dataName && (
+                <CodeAreaFormSchema
+                  {...{
+                    parentType: currentFormat,
+                    jsonKey: 'filter',
+                    indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
+                    keyRoute: keyRoute
+                      ? `${keyRoute}-config-filter`
+                      : 'config-filter',
+                    nodeKey: `${nodeKey}-config-filter`,
+                    targetJsonData:
+                      targetJsonData.properties.config &&
+                      targetJsonData.properties.config.properties.filter,
+                  }}
+                  key={`${nodeKey}-config-filter`}
+                />
+              )}
             </div>
           </TabPane>
         </Tabs>
@@ -220,8 +297,11 @@ class DynamicDataSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   triggerChange: stores.JSONEditorStore.triggerChange,
+  triggerChangeAction: stores.JSONEditorStore.triggerChangeAction,
   pageScreen: stores.JSONSchemaStore.pageScreen,
   dynamicDataList: stores.JSONEditorStore.dynamicDataList,
+  dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
+  dynamicDataApiScopeList: stores.JSONEditorStore.dynamicDataApiScopeList,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,

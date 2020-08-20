@@ -1466,60 +1466,7 @@ class IndexDemo extends React.PureComponent {
           field_18: '#ffffff',
         },
         data: {
-          field_28: {
-            type: 'remote',
-            config: {
-              id: 0, // 动态数据源id
-              dataName: 'data-12', // 动态数据源名称
-              title: 'xxx数据源', // 数据源中文名称
-              desc: 'xxx数据源描述', //  数据源中文描述
-              url: 'https://api.thecatapi.com/v1/images/search', // 动态数据源请求地址
-              method: 'get',
-              option: {},
-              header: {}, // 请求头
-              body: {
-                // 请求参数相关
-                param1: {
-                  title: '参数名称',
-                  scope: 'static', // 固定参数
-                  value: '111', // 固定值
-                },
-                param2: {
-                  title: '参数名称',
-                  scope: 'window',
-                  name: 'PARAM1',
-                  value: '111', // 默认值
-                },
-                pageId: {
-                  title: '页面id',
-                  scope: 'hash',
-                  name: 'pId',
-                  value: '111', // 默认值
-                },
-                param7: {
-                  title: '参数名称',
-                  scope: 'dynamic', // 接口下发
-                  dataName: 'api3',
-                  body: {
-                    param2: {
-                      title: '参数名称',
-                      scope: 'static',
-                      value: '222',
-                    },
-                    param3: {
-                      title: '参数名称',
-                      scope: 'static',
-                      value: '333',
-                    },
-                  },
-                },
-              },
-              mock: '{}',
-              filter: '(resp) => { return resp.data; }',
-            },
-            data: {},
-            filter: '(resp) => { return resp.data; }',
-          },
+          field_28: '{}',
         },
       },
       dynamicDataList: [
@@ -1534,8 +1481,48 @@ class IndexDemo extends React.PureComponent {
           title: '属性列表',
           headers: '',
           options: '',
-          body:
-            '{"param1": {     "title": "参数名称",     "scope": "static", // 固定参数     "value": "111" // 固定值   },   "param2": {     "title": "参数名称",     "scope": "window", // 环境变量     "name": "PARAM1",     "value": "111" // 默认值   },   "pageId": {     "title": "页面id",     "scope": "hash", // hash     "name": "pId",     "value": "111" // 默认值   },   "param5": {     "title": "参数名称",     "scope": "url", // url 参数值     "name": "pageId",     "value": "111"   },   "param7": {     "title": "参数名称",     "scope": "dynamic", // 接口下发     "dataName": "api3",     "body": {       "param2": {         "title": "参数名称",         "scope": "static",         "value": "222"       },       "param3": {         "title": "参数名称",         "scope": "static",         "value": "333"       }     }   } }',
+          body: {
+            param1: {
+              title: '参数名称',
+              scope: 'static',
+              value: '111',
+            },
+            param2: {
+              title: '参数名称',
+              scope: 'window',
+              name: 'PARAM1',
+              value: '111',
+            },
+            pageId: {
+              title: '页面id',
+              scope: 'hash',
+              name: 'pId',
+              value: '111',
+            },
+            param5: {
+              title: '参数名称',
+              scope: 'url',
+              name: 'pageId',
+              value: '111',
+            },
+            param7: {
+              title: '参数名称',
+              scope: 'dynamic',
+              dataName: 'api3',
+              body: {
+                param2: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '222',
+                },
+                param3: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '333',
+                },
+              },
+            },
+          },
           respMock:
             '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
           creatorId: '2',
@@ -1546,7 +1533,7 @@ class IndexDemo extends React.PureComponent {
         {
           id: 2,
           projectId: 89,
-          name: 'getAttrs',
+          name: 'getAttrs2',
           type: '1',
           desc: '获取轮播图片列表',
           url: 'http://yapi.jd.com/mock/522/test2',
@@ -1554,8 +1541,48 @@ class IndexDemo extends React.PureComponent {
           title: '轮播图列表',
           headers: '',
           options: '',
-          body:
-            '{"param1": {     "title": "参数名称",     "scope": "static", // 固定参数     "value": "111" // 固定值   },   "param2": {     "title": "参数名称",     "scope": "window", // 环境变量     "name": "PARAM1",     "value": "111" // 默认值   },   "pageId": {     "title": "页面id",     "scope": "hash", // hash     "name": "pId",     "value": "111" // 默认值   },   "param5": {     "title": "参数名称",     "scope": "url", // url 参数值     "name": "pageId",     "value": "111"   },   "param7": {     "title": "参数名称",     "scope": "dynamic", // 接口下发     "dataName": "api3",     "body": {       "param2": {         "title": "参数名称",         "scope": "static",         "value": "222"       },       "param3": {         "title": "参数名称",         "scope": "static",         "value": "333"       }     }   } }',
+          body: {
+            param1: {
+              title: '参数名称222',
+              scope: 'static',
+              value: '111',
+            },
+            param2: {
+              title: '参数名称22',
+              scope: 'window',
+              name: 'PARAM1',
+              value: '111',
+            },
+            pageId: {
+              title: '页面id22',
+              scope: 'hash',
+              name: 'pId',
+              value: '111',
+            },
+            param5: {
+              title: '参数名称22',
+              scope: 'url',
+              name: 'pageId',
+              value: '111',
+            },
+            param7: {
+              title: '参数名称22',
+              scope: 'dynamic',
+              dataName: 'api3',
+              body: {
+                param2: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '222',
+                },
+                param3: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '333',
+                },
+              },
+            },
+          },
           respMock:
             '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
           creatorId: '2',
