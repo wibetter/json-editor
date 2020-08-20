@@ -44,6 +44,12 @@ export default class JSONEditorStore {
   @observable jsonDataTemp = {};
 
   /**
+   * dynamicDataList: 动态数据源列表
+   * 备注：主要在DynamicDataSchema的接口数据/数据源选择列表中使用
+   */
+  @observable dynamicDataList = [];
+
+  /**
    * onChange: jsonData数据变动触发的onChange
    */
   @observable onChange = () => {}; // 函数类型
@@ -88,6 +94,14 @@ export default class JSONEditorStore {
   initOnChange(newOnChangeFunc) {
     if (newOnChangeFunc || isFunction(newOnChangeFunc)) {
       this.onChange = newOnChangeFunc;
+    }
+  }
+
+  /** 设置动态数据源列表  */
+  @action.bound
+  setDynamicDataList(dynamicDataList) {
+    if (!isEqual(dynamicDataList, this.dynamicDataList)) {
+      this.dynamicDataList = dynamicDataList;
     }
   }
 
