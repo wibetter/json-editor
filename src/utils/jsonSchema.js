@@ -13,6 +13,7 @@ import {
   isArray,
   exitPropertie,
 } from '$utils/index';
+const JSONUtils = require('@wibetter/json-utils');
 
 /** 获取当前字段的类型（format）
  *  如果当前字段没有format字段，则根据type字段赋予默认的类型 */
@@ -604,14 +605,4 @@ export function arraySchema2JsonData(jsonSchema, jsonData) {
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-export function schema2JsonData(jsonSchema, jsonData) {
-  let curJsonData = {};
-  if (jsonSchema.type === 'object') {
-    curJsonData = objectSchema2JsonData(jsonSchema, jsonData);
-  } else if (jsonSchema.type === 'array') {
-    curJsonData = arraySchema2JsonData(jsonSchema, jsonData);
-  } else {
-    curJsonData = baseSchema2JsonData(jsonSchema, jsonData);
-  }
-  return curJsonData;
-}
+export const schema2JsonData = JSONUtils.schema2json;

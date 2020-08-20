@@ -13,6 +13,75 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      jsonSchema: {
+        type: 'object',
+        title: 'jsonSchemaObject',
+        properties: {
+          func: {
+            type: 'object',
+            format: 'func',
+            title: '功能设置',
+            readOnly: false,
+            properties: {
+              field_1: {
+                type: 'string',
+                title: '单文本框',
+                format: 'input',
+                isRequired: false,
+                default: '',
+                description: '',
+                placeholder: '',
+                readOnly: false,
+              },
+            },
+            required: ['field_1'],
+            propertyOrder: ['field_1'],
+          },
+          style: {
+            type: 'object',
+            format: 'style',
+            title: '样式设置',
+            readOnly: false,
+            properties: {
+              field_18: {
+                type: 'string',
+                title: '颜色值',
+                format: 'color',
+                isRequired: false,
+                default: '#fff',
+                description: '',
+                placeholder: '',
+                readOnly: false,
+              },
+            },
+            required: ['field_18'],
+            propertyOrder: ['field_18'],
+          },
+          data: {
+            type: 'object',
+            format: 'data',
+            title: '数据设置',
+            readOnly: false,
+            properties: {
+              field_28: {
+                type: 'string',
+                title: 'json数据项',
+                format: 'json',
+                isRequired: false,
+                default: '{}',
+                description: '',
+                placeholder: '',
+                readOnly: false,
+              },
+            },
+            required: ['field_28'],
+            propertyOrder: ['field_28'],
+          },
+        },
+        required: ['func', 'style', 'data'],
+        format: 'object',
+        propertyOrder: ['func', 'style', 'data'],
+      }, // 用于区块配置的schema  显示  / update  ok
       jsonSchema0: {
         type: 'object',
         format: 'object',
@@ -749,7 +818,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema: {
+      jsonSchema6: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1389,14 +1458,152 @@ class IndexDemo extends React.PureComponent {
           },
         },
       },
-      jsonData: {},
+      jsonData: {
+        func: {
+          field_1: '',
+        },
+        style: {
+          field_18: '#ffffff',
+        },
+        data: {
+          field_28: '{}',
+        },
+      },
+      dynamicDataList: [
+        {
+          id: 1,
+          projectId: 88,
+          name: 'getAttrs',
+          type: '1',
+          desc: '获取属性列表',
+          url: 'http://yapi.jd.com/mock/522/test',
+          method: 'GET',
+          title: '属性列表',
+          headers: '',
+          options: '',
+          body: {
+            param1: {
+              title: '参数名称',
+              scope: 'static',
+              value: '111',
+            },
+            param2: {
+              title: '参数名称',
+              scope: 'window',
+              name: 'PARAM1',
+              value: '111',
+            },
+            pageId: {
+              title: '页面id',
+              scope: 'hash',
+              name: 'pId',
+              value: '111',
+            },
+            param5: {
+              title: '参数名称',
+              scope: 'url',
+              name: 'pageId',
+              value: '111',
+            },
+            param7: {
+              title: '参数名称',
+              scope: 'dynamic',
+              dataName: 'api3',
+              body: {
+                param2: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '222',
+                },
+                param3: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '333',
+                },
+              },
+            },
+          },
+          respMock:
+            '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
+          creatorId: '2',
+          createdTime: null,
+          updatedTime: null,
+          deletedTime: null,
+        },
+        {
+          id: 2,
+          projectId: 89,
+          name: 'getAttrs2',
+          type: '1',
+          desc: '获取轮播图片列表',
+          url: 'http://yapi.jd.com/mock/522/test2',
+          method: 'GET',
+          title: '轮播图列表',
+          headers: '',
+          options: '',
+          body: {
+            param1: {
+              title: '参数名称222',
+              scope: 'static',
+              value: '111',
+            },
+            param2: {
+              title: '参数名称22',
+              scope: 'window',
+              name: 'PARAM1',
+              value: '111',
+            },
+            pageId: {
+              title: '页面id22',
+              scope: 'hash',
+              name: 'pId',
+              value: '111',
+            },
+            param5: {
+              title: '参数名称22',
+              scope: 'url',
+              name: 'pageId',
+              value: '111',
+            },
+            param7: {
+              title: '参数名称22',
+              scope: 'dynamic',
+              dataName: 'api3',
+              body: {
+                param2: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '222',
+                },
+                param3: {
+                  title: '参数名称',
+                  scope: 'static',
+                  value: '333',
+                },
+              },
+            },
+          },
+          respMock:
+            '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
+          creatorId: '2',
+          createdTime: null,
+          updatedTime: null,
+          deletedTime: null,
+        },
+      ],
       wideScreen: false,
       jsonView: false,
     };
   }
 
   render() {
-    const { jsonSchema, jsonData, wideScreen, jsonView } = this.state;
+    const {
+      jsonSchema,
+      jsonData,
+      dynamicDataList,
+      wideScreen,
+      jsonView,
+    } = this.state;
     return (
       <>
         <div className="title-container">
@@ -1458,6 +1665,7 @@ class IndexDemo extends React.PureComponent {
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
+              dynamicDataList={dynamicDataList}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
                 this.setState({

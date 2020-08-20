@@ -22,6 +22,7 @@ class JSONDataEditor extends React.PureComponent {
     jsonView: PropTypes.any,
     schemaData: PropTypes.object,
     jsonData: PropTypes.object,
+    dynamicDataList: PropTypes.any,
   };
 
   constructor(props) {
@@ -53,6 +54,11 @@ class JSONDataEditor extends React.PureComponent {
     if (props.onChange) {
       this.props.initOnChange(props.onChange);
     }
+
+    // 获取dynamicDataList（动态数据源）
+    if (props.dynamicDataList) {
+      this.props.setDynamicDataList(props.dynamicDataList);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -76,6 +82,11 @@ class JSONDataEditor extends React.PureComponent {
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
       this.props.initOnChange(nextProps.onChange);
+    }
+
+    // 获取dynamicDataList（动态数据源）
+    if (!isEqual(nextProps.dynamicDataList, this.props.dynamicDataList)) {
+      this.props.setDynamicDataList(nextProps.dynamicDataList);
     }
   }
 
@@ -202,5 +213,6 @@ export default inject((stores) => ({
   JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
   initJSONData: stores.JSONEditorStore.initJSONData,
   initOnChange: stores.JSONEditorStore.initOnChange,
+  setDynamicDataList: stores.JSONEditorStore.setDynamicDataList,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
 }))(observer(JSONDataEditor));
