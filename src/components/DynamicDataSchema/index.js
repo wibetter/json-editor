@@ -216,11 +216,11 @@ class DynamicDataSchema extends React.PureComponent {
               </div>
               {dataName && apiParams && Object.keys(apiParams).length > 0 && (
                 <div
-                  className={
+                  className={`${
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp'
-                  }
+                  }  element-title-card-warp`}
                   key={`${nodeKey}-${dataName}-params`}
                   id={`${nodeKey}-${dataName}-params`}
                 >
@@ -265,8 +265,8 @@ class DynamicDataSchema extends React.PureComponent {
                   id={`${nodeKey}-${dataName}-empty`}
                 >
                   <div className="element-title">请求参数配置</div>
-                  <div className="content-item object-content">
-                    <span>当前数据源没有提供可配置的请求参数</span>
+                  <div className="content-item">
+                    <span className="warning-text">无可配置的请求参数</span>
                   </div>
                 </div>
               )}

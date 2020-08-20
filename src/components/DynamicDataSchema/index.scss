@@ -27,11 +27,15 @@
     width: 100%;
   }
 
+  .warning-text {
+    color: #fa8c16;
+  }
+
   .json-form-box {
     position: relative;
     padding: 15px 15px 20px 15px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-top: none;
+    // border-top: none;
 
     .filter-btn {
       position: absolute;
