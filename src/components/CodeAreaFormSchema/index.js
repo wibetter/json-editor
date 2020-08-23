@@ -10,6 +10,7 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 
 class CodeAreaFormSchema extends React.PureComponent {
   static propTypes = {
+    isIgnoreWarn: PropTypes.any,
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
     indexRoute: PropTypes.string,
@@ -49,6 +50,7 @@ class CodeAreaFormSchema extends React.PureComponent {
 
   render() {
     const {
+      isIgnoreWarn,
       nodeKey,
       keyRoute,
       targetJsonData,
@@ -99,7 +101,7 @@ class CodeAreaFormSchema extends React.PureComponent {
           </Tooltip>
         </div>
         <div className="content-item object-content">
-          {isShowWarn && (
+          {!isIgnoreWarn && isShowWarn && (
             <div className="warning-box code-area-item">
               <div className="warning-img">X</div>
               <div className="warning-text">{warnText}</div>

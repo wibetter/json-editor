@@ -2,15 +2,9 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import PropTypes from 'prop-types';
-
 import RootJSONStore from '$store/index';
 import JSONDataEditor from '$components/JSONDataEditor/index';
 
-/**
- * 临时使用方法，后续单独将jsonData2schema方法抽离出一个功能包
- * json转schema方法
- */
-export { jsonData2schema } from '$utils/json2schema';
 /**
  * JSONEditor功能组件
  * @param props

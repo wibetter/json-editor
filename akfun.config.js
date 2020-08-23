@@ -35,6 +35,9 @@ module.exports = {
     // 从输出的 bundle 中排除依赖
     externals: [
       {
+        JSONEditor: "JSONEditor",
+      },
+      {
         react: {
           commonjs: 'react',
           commonjs2: 'react',

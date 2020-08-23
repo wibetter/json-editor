@@ -80,9 +80,32 @@ class DynamicDataSchema extends React.PureComponent {
       // 从jsonData中获取对应的数值
       const curFliter =
         getJSONDataByKeyRoute(`${keyRoute}-config-filter`) || {};
-      const newCurDynamicData = Object.assign(curDynamicData, {
+      /*const newCurDynamicData = {
+        id: curDynamicData.id,
+        projectId: curDynamicData.id,
+        title: curDynamicData.title,
+        name: curDynamicData.name,
+        url: curDynamicData.url,
+        method: curDynamicData.method,
+        headers: curDynamicData.headers,
+        options: curDynamicData.options,
+        respMock: curDynamicData.respMock,
+        dataName: curDynamicData.dataName,
+        body: curDynamicData.body,
+        data: curDynamicData.data,
+      };*/
+      const newCurDynamicData = {
+        id: curDynamicData.id,
+        name: curDynamicData.name,
+        url: curDynamicData.url,
+        method: curDynamicData.method,
+        headers: curDynamicData.headers,
+        options: curDynamicData.options,
+        dataName: curDynamicData.dataName,
+        body: curDynamicData.body,
+        data: curDynamicData.data,
         filter: curFliter,
-      });
+      };
       this.handleValueChange(`${keyRoute}-config`, newCurDynamicData);
       setTimeout(() => {
         triggerChangeAction();
@@ -164,6 +187,7 @@ class DynamicDataSchema extends React.PureComponent {
                 {isShowFilter && (
                   <CodeAreaFormSchema
                     {...{
+                      isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
                       parentType: currentFormat,
                       jsonKey: 'localFilter',
                       indexRoute: indexRoute ? `${indexRoute}-3` : '3',
@@ -273,6 +297,7 @@ class DynamicDataSchema extends React.PureComponent {
               {dataName && (
                 <CodeAreaFormSchema
                   {...{
+                    isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
                     parentType: currentFormat,
                     jsonKey: 'filter',
                     indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
