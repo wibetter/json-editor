@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
-import { getCurrentFormat, isFirstSchemaData } from '$utils/jsonSchema';
+import { getCurrentFormat, isFirstSchemaData } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 

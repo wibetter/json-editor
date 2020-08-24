@@ -7,7 +7,7 @@ import { FilterOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
 import './index.scss';
@@ -82,7 +82,7 @@ class DynamicDataSchema extends React.PureComponent {
       // 从jsonData中获取对应的数值
       const curFliter =
         getJSONDataByKeyRoute(`${keyRoute}-config-filter`) || {};
-      /*const newCurDynamicData = {
+      /* const newCurDynamicData = {
         id: curDynamicData.id,
         projectId: curDynamicData.id,
         title: curDynamicData.title,
@@ -95,7 +95,7 @@ class DynamicDataSchema extends React.PureComponent {
         dataName: curDynamicData.dataName,
         body: curDynamicData.body,
         data: curDynamicData.data,
-      };*/
+      }; */
       const newCurDynamicData = {
         id: curDynamicData.id,
         name: curDynamicData.name,

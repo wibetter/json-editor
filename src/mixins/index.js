@@ -1,5 +1,5 @@
 import { getWebCacheData, deleteWebCacheData } from '$utils/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 从WebCache中获取jsonData数据
  * 备注：引用catchJsonDataByWebCache前，请确保当前组件的props中包含以下属性：
