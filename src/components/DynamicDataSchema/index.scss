@@ -44,6 +44,7 @@
 
   .dynamic-dat-tabPane {
     display: none;
+    transition: 0.4s;
   }
 
   .dynamic-dat-tabPane-active {
@@ -61,7 +62,7 @@
 
   .json-form-box {
     position: relative;
-    padding: 15px 15px 20px 15px;
+    padding: 25px 15px 10px 15px;
     border: 1px solid rgba(129, 211, 248, 1);
     box-sizing: border-box;
     border-radius: 15px;
