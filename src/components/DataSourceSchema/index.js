@@ -6,7 +6,7 @@ import { FilterOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
 class DataSourceSchema extends React.PureComponent {

@@ -7,7 +7,7 @@ import { FilterOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
 import './index.scss';

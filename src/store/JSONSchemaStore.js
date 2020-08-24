@@ -1,13 +1,14 @@
 import { observable, computed, action, toJS } from 'mobx';
-import { schema2json } from '@wibetter/json-utils';
 import {
+  schema2json,
   isNewSchemaData,
-  getJSONDataByIndex,
   indexRoute2keyRoute,
-  oldJSONSchemaToNewJSONSchema,
-} from '$utils/jsonSchema';
-import { isEqual, objClone } from '$utils/index';
-import { TypeDataList } from '$data/TypeDataList';
+  oldSchemaToNewSchema,
+  isEqual,
+  objClone,
+  TypeDataList,
+} from '@wibetter/json-utils';
+
 const initJSONSchemaData = TypeDataList.jsonschema;
 
 /**
@@ -54,7 +55,7 @@ export default class JSONSchemaStore {
         this.jsonSchema = jsonSchemaData;
       } else {
         // 进行一次转换，以便兼容旧版数据
-        const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
+        const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
     }
@@ -72,7 +73,7 @@ export default class JSONSchemaStore {
         this.jsonSchema = jsonSchemaData;
       } else {
         // 进行一次转换，以便兼容旧版数据
-        const newJSONSchema = oldJSONSchemaToNewJSONSchema(jsonSchemaData);
+        const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
       const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
@@ -99,12 +100,6 @@ export default class JSONSchemaStore {
       ? new Date(curLastUpdateTime).getTime()
       : new Date().getTime();
     return curLastUpdateTime;
-  }
-
-  /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
-  @action.bound
-  getJSONDataByIndex(indexRoute) {
-    return getJSONDataByIndex(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据索引路径获取对应的key值路径 */

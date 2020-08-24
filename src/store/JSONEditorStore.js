@@ -1,10 +1,10 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
-import { schema2json } from '@wibetter/json-utils';
 import {
-  getJSONDataByKeyRoute,
+  schema2json,
+  getJsonDataByKeyRoute,
   getParentKeyRoute_CurKey,
-} from '$utils/jsonData';
+} from '@wibetter/json-utils';
 import { isEqual, objClone, isArray, isFunction } from '$utils/index';
 
 /**
@@ -146,7 +146,7 @@ export default class JSONEditorStore {
   @action.bound
   getJSONDataByKeyRoute(keyRoute, jsonDataParam) {
     const curJsonData = jsonDataParam || toJS(this.jsonData);
-    return getJSONDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
+    return getJsonDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]
@@ -155,7 +155,7 @@ export default class JSONEditorStore {
   @action.bound
   getJSONDataTempByKeyRoute(keyRoute, jsonDataParam) {
     const curJsonData = jsonDataParam || toJS(this.jsonDataTemp);
-    return getJSONDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
+    return getJsonDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据key路径更新对应的json数据
@@ -170,7 +170,7 @@ export default class JSONEditorStore {
       const parentKeyRoute = parentKeyRoute_CurKey[0];
       const curKey = parentKeyRoute_CurKey[1];
       // 2. 获取父级数据对象
-      const parentJsonDataObj = getJSONDataByKeyRoute(
+      const parentJsonDataObj = getJsonDataByKeyRoute(
         parentKeyRoute,
         this.jsonData,
       );
@@ -191,7 +191,7 @@ export default class JSONEditorStore {
   @action.bound
   deleteArrayIndex(keyRoute, arrayIndex) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJSONDataByKeyRoute(keyRoute, this.jsonData);
+    const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
     if (isArray(arrJsonDataObj)) {
       if (arrJsonDataObj.length > 1) {
         // 2. 删除对应的数据项
@@ -211,7 +211,7 @@ export default class JSONEditorStore {
   @action.bound
   addArrayItem(keyRoute) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJSONDataByKeyRoute(keyRoute, this.jsonData);
+    const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
     if (isArray(arrJsonDataObj)) {
       // 2. 获取数组的第一个数据项
       const newArrItem = objClone(arrJsonDataObj[0]);

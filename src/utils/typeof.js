@@ -1,4 +1,4 @@
-import { TypeDataList } from '$data/TypeDataList';
+import { TypeDataList } from '@wibetter/json-utils';
 
 // 判断是否是URL地址类型
 export function isURL(s) {

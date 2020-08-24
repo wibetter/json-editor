@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
 class EventSchema extends React.PureComponent {

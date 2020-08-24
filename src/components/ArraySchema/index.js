@@ -12,7 +12,7 @@ import {
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
+import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 

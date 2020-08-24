@@ -11,8 +11,8 @@ import {
   isEmptyWidgetSchema,
   isUsedToWidgetConfig,
   getCurrentFormat,
-} from '$utils/jsonSchema';
-import { jsonData2schema } from '$utils/json2schema';
+  json2schema,
+} from '@wibetter/json-utils';
 import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
@@ -35,12 +35,10 @@ class JSONDataEditor extends React.PureComponent {
     if (props.schemaData) {
       this.props.initJSONSchemaData(props.schemaData);
       // 根据props.jsonData对jsonData进行初始化
-      if (props.jsonData) {
-        this.props.initJSONData(props.jsonData);
-      }
+      this.props.initJSONData(props.jsonData);
     } else if (props.jsonData) {
       // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
-      const jsonSchema = jsonData2schema(props.jsonData); // 通过json转换schema
+      const jsonSchema = json2schema(props.jsonData); // 通过json转换schema
       console.log(jsonSchema);
       this.props.initJSONSchemaData(jsonSchema);
       // 根据props.jsonData对jsonData进行初始化

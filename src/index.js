@@ -13,7 +13,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema: {
+      jsonSchema00: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -818,7 +818,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
