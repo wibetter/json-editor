@@ -62,9 +62,9 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   // 面板展示内容切换（本地数据/接口数据）
-  tabChange = (ele) => {
+  tabChange = (value) => {
     const { keyRoute, triggerChangeAction } = this.props;
-    this.handleValueChange(`${keyRoute}-type`, ele.target.value);
+    this.handleValueChange(`${keyRoute}-type`, value);
     setTimeout(() => {
       triggerChangeAction();
     }, 100);
@@ -161,15 +161,30 @@ class DynamicDataSchema extends React.PureComponent {
           </Tooltip>
         </div>
 
-        <Radio.Group
-          className="dynamic-data-tab-radio"
-          onChange={this.tabChange}
-          value={dataType}
-          style={{ marginBottom: 8 }}
-        >
-          <Radio.Button value="local">本地数据</Radio.Button>
-          <Radio.Button value="remote">接口数据</Radio.Button>
-        </Radio.Group>
+        <div className="dynamic-data-tab-radio-box">
+          <div className="dynamic-data-tab-radio">
+            <div
+              className={`tab-radio ${
+                dataType === 'local' ? 'tab-radio-active' : ''
+              }`}
+              onClick={() => {
+                this.tabChange('local');
+              }}
+            >
+              本地数据
+            </div>
+            <div
+              className={`tab-radio ${
+                dataType === 'remote' ? 'tab-radio-active' : ''
+              }`}
+              onClick={() => {
+                this.tabChange('remote');
+              }}
+            >
+              接口数据
+            </div>
+          </div>
+        </div>
         <div
           className={`dynamic-dat-tabPane ${
             dataType === 'local' ? 'dynamic-dat-tabPane-active' : ''

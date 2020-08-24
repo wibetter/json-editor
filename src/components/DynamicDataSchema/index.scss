@@ -4,10 +4,42 @@
   transition: 0.4s;
   position: relative;
 
-  .dynamic-data-tab-radio {
-    margin: 0 auto !important;
+  .dynamic-data-tab-radio-box {
+    position: relative;
     display: block;
     text-align: center;
+    z-index: 10;
+
+    .dynamic-data-tab-radio {
+      margin: 0 auto !important;
+      position: relative;
+      display: inline-flex;
+      top: 15px;
+      height: 30px;
+      line-height: 30px;
+      box-sizing: border-box;
+      border: 1px solid rgba(24, 144, 255, 1);
+      border-radius: 18px;
+      align-items: center;
+      background-color: #fff;
+
+      .tab-radio {
+        flex: 1 1 120px;
+        padding: 0 12px;
+        height: 28px;
+        line-height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .tab-radio-active {
+        color: #fff;
+        border-radius: 18px;
+        background-color: rgba(24, 144, 255, 1);
+      }
+    }
   }
 
   .dynamic-dat-tabPane {
@@ -30,7 +62,9 @@
   .json-form-box {
     position: relative;
     padding: 15px 15px 20px 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(129, 211, 248, 1);
+    box-sizing: border-box;
+    border-radius: 15px;
     // border-top: none;
 
     .filter-btn {
