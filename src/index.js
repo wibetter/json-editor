@@ -45,7 +45,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               field_18: {
                 type: 'string',
-                title: '颜色值',
+                title: '颜色值1',
                 format: 'color',
                 isRequired: false,
                 default: '#fff',
@@ -1458,7 +1458,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
       },
-      jsonData: {
+      jsonData2: {
         func: {
           field_1: '',
         },

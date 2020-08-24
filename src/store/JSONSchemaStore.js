@@ -1,10 +1,10 @@
 import { observable, computed, action, toJS } from 'mobx';
+import { schema2json } from '@wibetter/json-utils';
 import {
   isNewSchemaData,
   getJSONDataByIndex,
   indexRoute2keyRoute,
   oldJSONSchemaToNewJSONSchema,
-  schema2JsonData,
 } from '$utils/jsonSchema';
 import { isEqual, objClone } from '$utils/index';
 import { TypeDataList } from '$data/TypeDataList';
@@ -77,7 +77,7 @@ export default class JSONSchemaStore {
       }
       const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
       /** 根据jsonSchema生成对应的最新jsonData */
-      const newJsonData = schema2JsonData(this.JSONSchemaObj, curJsonData);
+      const newJsonData = schema2json(this.JSONSchemaObj, curJsonData);
       /** 更新当前的jsonData */
       this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
       this.rootJSONStore.JSONEditorStore.jsonDataTemp = objClone(curJsonData); // 备份过滤钱的数据对象

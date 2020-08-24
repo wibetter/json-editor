@@ -82,7 +82,7 @@ class DynamicDataSchema extends React.PureComponent {
       // 从jsonData中获取对应的数值
       const curFliter =
         getJSONDataByKeyRoute(`${keyRoute}-config-filter`) || {};
-      /*const newCurDynamicData = {
+      /* const newCurDynamicData = {
         id: curDynamicData.id,
         projectId: curDynamicData.id,
         title: curDynamicData.title,
@@ -95,7 +95,7 @@ class DynamicDataSchema extends React.PureComponent {
         dataName: curDynamicData.dataName,
         body: curDynamicData.body,
         data: curDynamicData.data,
-      };*/
+      }; */
       const newCurDynamicData = {
         id: curDynamicData.id,
         name: curDynamicData.name,

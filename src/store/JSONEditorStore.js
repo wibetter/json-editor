@@ -1,10 +1,10 @@
 import { observable, computed, action, toJS } from 'mobx';
 import { message } from 'antd';
+import { schema2json } from '@wibetter/json-utils';
 import {
   getJSONDataByKeyRoute,
   getParentKeyRoute_CurKey,
 } from '$utils/jsonData';
-import { schema2JsonData } from '$utils/jsonSchema';
 import { isEqual, objClone, isArray, isFunction } from '$utils/index';
 
 /**
@@ -103,7 +103,7 @@ export default class JSONEditorStore {
       this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
       // 判断当前schema是否为空
       if (jsonSchema) {
-        this.jsonData = schema2JsonData(jsonSchema, jsonData || {});
+        this.jsonData = schema2json(jsonSchema, jsonData || {});
         // 记录当前初始化的时间
         this.updateLastInitTime();
       }
