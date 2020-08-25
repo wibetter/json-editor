@@ -51,7 +51,8 @@
     display: block;
   }
 
-  .dynamic-data-select {
+  .dynamic-data-select,
+  .data-route-select {
     display: block;
     width: 100%;
   }
@@ -70,8 +71,8 @@
 
     .filter-btn {
       position: absolute;
-      top: 58px; // 38px + 8px + 12px
-      right: 27px; // 15px + 12px
+      top: 75px; // 38px + 8px + 12px
+      right: 35px; // 15px + 12px
       z-index: 100;
 
       svg {

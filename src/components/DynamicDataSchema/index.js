@@ -7,7 +7,8 @@ import { FilterOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
+import TreeSelectFromSchema from '$components/TreeSelectFromSchema/index';
+import { getCurrentFormat, dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
 import './index.scss';
@@ -115,6 +116,17 @@ class DynamicDataSchema extends React.PureComponent {
     }
   };
 
+  dataRouteChange = (newDataRoute) => {
+    const { keyRoute, triggerChangeAction } = this.props;
+    this.handleValueChange(`${keyRoute}-config-dataRoute`, newDataRoute);
+    const dataPath = dataRoute2dataPath(newDataRoute);
+    // 自动填充当前filter
+    this.handleValueChange(`${keyRoute}-config-filter`, `return ${dataPath};`);
+    setTimeout(() => {
+      triggerChangeAction();
+    }, 100);
+  };
+
   render() {
     const {
       keyRoute,
@@ -122,6 +134,7 @@ class DynamicDataSchema extends React.PureComponent {
       indexRoute,
       targetJsonData,
       dynamicDataList,
+      dynamicDataObj,
       dynamicDataApiScopeList,
       getJSONDataByKeyRoute,
       pageScreen,
@@ -137,6 +150,7 @@ class DynamicDataSchema extends React.PureComponent {
 
     const configDataObj = curJsonData.config || {}; // 接口数据请求配置对象
     const dataName = configDataObj.name; // 数据源名称
+    const dataRoute = configDataObj.dataRoute; // 接口数据路径
     let apiParams = configDataObj.body || {}; // 动态数据/请求参数
     if (!isObject(apiParams) && apiParams !== '') {
       try {
@@ -146,7 +160,7 @@ class DynamicDataSchema extends React.PureComponent {
         apiParams = {};
       }
     }
-
+    const curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
     const dataObj = targetJsonData.properties.data || {}; // schema中的数据对象
 
     return (
@@ -323,8 +337,20 @@ class DynamicDataSchema extends React.PureComponent {
               </div>
             )}
             {dataName && (
+              <TreeSelectFromSchema
+                {...{
+                  nodeKey: `${nodeKey}-config-dataRoute`,
+                  mockData: curDynamicData.respMock,
+                  dataRoute,
+                  onChange: this.dataRouteChange,
+                }}
+                key={`${nodeKey}-config-dataRoute`}
+              />
+            )}
+            {dataName && (
               <CodeAreaFormSchema
                 {...{
+                  isReadOnly: true,
                   isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
                   parentType: currentFormat,
                   jsonKey: 'filter',
@@ -332,7 +358,7 @@ class DynamicDataSchema extends React.PureComponent {
                   keyRoute: keyRoute
                     ? `${keyRoute}-config-filter`
                     : 'config-filter',
-                  nodeKey: `${nodeKey}-config-filter`,
+                  nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
                   targetJsonData:
                     targetJsonData.properties.config &&
                     targetJsonData.properties.config.properties.filter,

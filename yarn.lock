@@ -1584,6 +1584,24 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@wibetter/json-editor@^3.3.23":
+  version "3.3.25"
+  resolved "https://registry.npmjs.org/@wibetter/json-editor/-/json-editor-3.3.25.tgz#02ee919fb2f59e1e62944fd99cbca449316e3b2d"
+  integrity sha512-4ANn5YNEbZdkzBChGcY4V1FrC5mzwhVZosEP7wW7d5tn30Pczbb2rnIWtmE/aTEDcH+/pWMlssA4S2UZVuDF0g==
+  dependencies:
+    "@ant-design/icons" "^4.2.1"
+    "@wibetter/json-schema-editor" "^3.3.15"
+    "@wibetter/json-utils" "^1.1.13"
+    ace-builds "^1.4.12"
+    antd "^4.3.4"
+    mobx "^5.15.4"
+    mobx-react "^6.2.2"
+    moment "^2.27.0"
+    prop-types "^15.7.2"
+    react "^16.8.6"
+    react-ace "^9.1.1"
+    react-dom "^16.8.6"
+
 "@wibetter/json-editor@^3.3.9":
   version "3.3.23"
   resolved "https://registry.npmjs.org/@wibetter/json-editor/-/json-editor-3.3.23.tgz#7669e14dce1444702e6b3b43c85b481451599e26"
@@ -1618,10 +1636,33 @@
     react "^16.8.6"
     react-dom "^16.8.6"
 
+"@wibetter/json-schema-editor@^3.3.16":
+  version "3.3.16"
+  resolved "https://registry.npmjs.org/@wibetter/json-schema-editor/-/json-schema-editor-3.3.16.tgz#88dae8648eccc2fd2665f4089b85185f7bd1eb4e"
+  integrity sha512-oy1gXWeziyAPPa8nYsIZdn/astnFYEhzVXAeeymQrG0WSZv6I3nG8EIhxphGBWJAaKMWok2RD73Vcsc/sWNs5Q==
+  dependencies:
+    "@ant-design/icons" "^4.2.1"
+    "@babel/polyfill" "^7.10.1"
+    "@wibetter/json-editor" "^3.3.23"
+    "@wibetter/json-utils" "^1.1.13"
+    antd "^4.3.4"
+    mobx "^5.15.4"
+    mobx-react "^6.2.2"
+    prop-types "^15.7.2"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+
 "@wibetter/json-utils@^1.1.13":
   version "1.1.13"
   resolved "https://registry.npmjs.org/@wibetter/json-utils/-/json-utils-1.1.13.tgz#ec8b4bf725c0dd998efc0a7255b1efd40909a5be"
   integrity sha512-WQOjA3hLAW+LMYR/JNzi8YXtESj7TNIZbg1IEFolj9/CTe7jz2hRbxp/9Ga+YIhHar8WVT9/lrfty/96dmV4rA==
+  dependencies:
+    "@babel/polyfill" "^7.10.1"
+
+"@wibetter/json-utils@^1.1.15":
+  version "1.1.15"
+  resolved "https://registry.npmjs.org/@wibetter/json-utils/-/json-utils-1.1.15.tgz#0ab824c57937eb9c121840d5a6d593af98e0f48f"
+  integrity sha512-TsGL51Z8/vtX3F7swra1sv7ZmV70jZP1A5PRhTSv5h1n95f8ssDM0wBlafQJqCl/B5b9ZmaNM/6PaywGJGSvtw==
   dependencies:
     "@babel/polyfill" "^7.10.1"
 
