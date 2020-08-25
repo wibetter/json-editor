@@ -8,7 +8,7 @@ import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
 import TreeSelectFromSchema from '$components/TreeSelectFromSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
+import { getCurrentFormat, dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
 import './index.scss';
@@ -119,6 +119,9 @@ class DynamicDataSchema extends React.PureComponent {
   dataRouteChange = (newDataRoute) => {
     const { keyRoute, triggerChangeAction } = this.props;
     this.handleValueChange(`${keyRoute}-config-dataRoute`, newDataRoute);
+    const dataPath = dataRoute2dataPath(newDataRoute);
+    // 自动填充当前filter
+    this.handleValueChange(`${keyRoute}-config-filter`, `return ${dataPath};`);
     setTimeout(() => {
       triggerChangeAction();
     }, 100);
@@ -347,6 +350,7 @@ class DynamicDataSchema extends React.PureComponent {
             {dataName && (
               <CodeAreaFormSchema
                 {...{
+                  isReadOnly: true,
                   isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
                   parentType: currentFormat,
                   jsonKey: 'filter',
@@ -354,7 +358,7 @@ class DynamicDataSchema extends React.PureComponent {
                   keyRoute: keyRoute
                     ? `${keyRoute}-config-filter`
                     : 'config-filter',
-                  nodeKey: `${nodeKey}-config-filter`,
+                  nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
                   targetJsonData:
                     targetJsonData.properties.config &&
                     targetJsonData.properties.config.properties.filter,

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { TreeSelect } from 'antd';
+import { json2treeData, isObject } from '@wibetter/json-utils';
 
 class TreeSelectFromSchema extends React.PureComponent {
   static propTypes = {
@@ -16,7 +17,16 @@ class TreeSelectFromSchema extends React.PureComponent {
     const { pageScreen, mockData, dataRoute, nodeKey, onChange } = this.props;
     let treeData = [];
     if (mockData && JSON.stringify(mockData) !== '{}') {
-      // treeData = mockData
+      let mockObj = mockData;
+      if (!isObject(mockData) && mockData !== '') {
+        try {
+          mockObj = JSON.parse(mockData);
+        } catch (err) {
+          console.log('当前数据源的请求参数对象不是一个合格的json数据');
+          mockObj = {};
+        }
+      }
+      treeData = json2treeData(mockObj);
     }
 
     return (
@@ -36,7 +46,8 @@ class TreeSelectFromSchema extends React.PureComponent {
               className="data-route-select"
               defaultValue={dataRoute}
               treeData={treeData}
-              placeholder="请选择当前数据路径"
+              allowClear={true}
+              placeholder="请选择要使用的数据节点（数据路径）"
               treeDefaultExpandAll
               onChange={onChange}
             ></TreeSelect>
