@@ -163,7 +163,7 @@ export default class JSONEditorStore {
    * 再根据最近的key值对当前数据进行编辑
    * */
   @action.bound
-  updateFormValueData(keyRoute, newVal) {
+  updateFormValueData(keyRoute, newVal, ignoreChange) {
     if (keyRoute !== '') {
       // 1. 获取父级key路径和最近的有一个key
       const parentKeyRoute_CurKey = getParentKeyRoute_CurKey(keyRoute);
@@ -181,8 +181,10 @@ export default class JSONEditorStore {
       this.jsonData = newVal;
     }
 
-    // 4. 触发onChange事件
-    this.jsonDataChange();
+    if (!ignoreChange) {
+      // 4. 触发onChange事件
+      this.jsonDataChange();
+    }
   }
 
   /**

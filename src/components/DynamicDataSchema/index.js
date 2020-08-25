@@ -8,10 +8,13 @@ import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
 import TreeSelectFromSchema from '$components/TreeSelectFromSchema/index';
+import RemoteDynamicDataSchema from '$components/RemoteDynamicDataSchema/index';
 import { getCurrentFormat, dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
+import { objClone } from '$utils/index';
 import './index.scss';
+import { toJS } from 'mobx';
 
 class DynamicDataSchema extends React.PureComponent {
   static propTypes = {
@@ -78,7 +81,7 @@ class DynamicDataSchema extends React.PureComponent {
       getJSONDataByKeyRoute,
       triggerChangeAction,
     } = this.props;
-    const curDynamicData = dynamicDataObj[dynamicDataName];
+    const curDynamicData = objClone(toJS(dynamicDataObj[dynamicDataName]));
     if (curDynamicData) {
       // 从jsonData中获取对应的数值
       const curFliter =
@@ -87,24 +90,22 @@ class DynamicDataSchema extends React.PureComponent {
         id: curDynamicData.id,
         projectId: curDynamicData.id,
         title: curDynamicData.title,
-        name: curDynamicData.name,
         url: curDynamicData.url,
         method: curDynamicData.method,
         headers: curDynamicData.headers,
         options: curDynamicData.options,
         respMock: curDynamicData.respMock,
-        dataName: curDynamicData.dataName,
+        dataName: curDynamicData.name,
         body: curDynamicData.body,
         data: curDynamicData.data,
       }; */
       const newCurDynamicData = {
         id: curDynamicData.id,
-        name: curDynamicData.name,
         url: curDynamicData.url,
         method: curDynamicData.method,
         headers: curDynamicData.headers,
         options: curDynamicData.options,
-        dataName: curDynamicData.dataName,
+        dataName: curDynamicData.name,
         body: curDynamicData.body,
         data: curDynamicData.data,
         filter: curFliter,
@@ -117,11 +118,24 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   dataRouteChange = (newDataRoute) => {
-    const { keyRoute, triggerChangeAction } = this.props;
-    this.handleValueChange(`${keyRoute}-config-dataRoute`, newDataRoute);
+    const { keyRoute, triggerChangeAction, updateFormValueData } = this.props;
+    updateFormValueData(`${keyRoute}-config-dataRoute`, newDataRoute, true);
     const dataPath = dataRoute2dataPath(newDataRoute);
     // 自动填充当前filter
     this.handleValueChange(`${keyRoute}-config-filter`, `return ${dataPath};`);
+    setTimeout(() => {
+      triggerChangeAction();
+    }, 100);
+  };
+
+  paramsConfigChange = (paramsKey, newParamsConfig) => {
+    const { keyRoute, triggerChangeAction, getJSONDataByKeyRoute } = this.props;
+    const curParamsConfigData =
+      getJSONDataByKeyRoute(`${keyRoute}-config-body-${paramsKey}`) || {};
+    this.handleValueChange(
+      `${keyRoute}-config-body-${paramsKey}`,
+      Object.assign(curParamsConfigData, newParamsConfig),
+    );
     setTimeout(() => {
       triggerChangeAction();
     }, 100);
@@ -149,7 +163,7 @@ class DynamicDataSchema extends React.PureComponent {
     const dataType = curJsonData.type || typeDataObj.default; // local or remote
 
     const configDataObj = curJsonData.config || {}; // 接口数据请求配置对象
-    const dataName = configDataObj.name; // 数据源名称
+    const dataName = configDataObj.dataName; // 数据源名称
     const dataRoute = configDataObj.dataRoute; // 接口数据路径
     let apiParams = configDataObj.body || {}; // 动态数据/请求参数
     if (!isObject(apiParams) && apiParams !== '') {
@@ -294,28 +308,51 @@ class DynamicDataSchema extends React.PureComponent {
                 <div className="element-title">请求参数配置</div>
                 <div className="content-item object-content">
                   {Object.keys(apiParams).map((paramKey) => {
-                    const paramItam = apiParams[paramKey];
+                    const paramItam = objClone(apiParams[paramKey]);
                     paramItam.readOnly =
                       paramItam.scope && paramItam.scope === 'static'
                         ? true
                         : false;
                     const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
                     const scopeTitle = dynamicDataApiScopeList[paramItam.scope];
-                    if (scopeTitle) {
+                    if (scopeTitle && paramItam.scope !== 'dynamic') {
                       paramItam.title = `${paramItam.title}（${scopeTitle}）`;
                     }
-                    return (
-                      <InputFormSchema
-                        {...{
-                          pageScreen: pageScreen, // 默认使用宽屏模式
-                          jsonKey: paramKey,
-                          keyRoute: `${curKeyRoute}-value`,
-                          nodeKey: curKeyRoute,
-                          targetJsonData: paramItam,
-                        }}
-                        key={curKeyRoute}
-                      />
-                    );
+                    if (paramItam.scope !== 'dynamic') {
+                      return (
+                        <InputFormSchema
+                          {...{
+                            pageScreen: pageScreen, // 默认使用宽屏模式
+                            jsonKey: paramKey,
+                            keyRoute: `${curKeyRoute}-value`,
+                            nodeKey: curKeyRoute,
+                            targetJsonData: paramItam,
+                          }}
+                          key={curKeyRoute}
+                        />
+                      );
+                    } else {
+                      const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
+                      return (
+                        <RemoteDynamicDataSchema
+                          {...{
+                            pageScreen: pageScreen, // 默认使用宽屏模式
+                            nodeKey: curNodeKay,
+                            keyRoute: keyRoute
+                              ? `${keyRoute}-config-body-${paramKey}`
+                              : 'config-body-${paramKey}',
+                            curConfigData: paramItam || {},
+                            configDataChange: (newParamsConfig) => {
+                              this.paramsConfigChange(
+                                paramKey,
+                                newParamsConfig,
+                              );
+                            },
+                          }}
+                          key={curKeyRoute}
+                        />
+                      );
+                    }
                   })}
                 </div>
               </div>
