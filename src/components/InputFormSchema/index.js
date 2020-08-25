@@ -6,12 +6,13 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 
 class InputFormSchema extends React.PureComponent {
   static propTypes = {
-    parentType: PropTypes.string,
+    parentType: PropTypes.any,
     jsonKey: PropTypes.string,
     indexRoute: PropTypes.any,
-    keyRoute: PropTypes.string,
+    keyRoute: PropTypes.any,
     nodeKey: PropTypes.string,
     targetJsonData: PropTypes.any,
+    onChange: PropTypes.any,
   };
 
   constructor(props) {
@@ -23,8 +24,13 @@ class InputFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;
-    const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, value); // 更新数值
+    if (this.props.onChange) {
+      // 如果有监听数据变动函数则优先触发
+      this.props.onChange(value);
+    } else {
+      const { keyRoute, updateFormValueData } = this.props;
+      updateFormValueData(keyRoute, value); // 更新数值
+    }
   };
 
   componentWillMount() {
@@ -48,7 +54,7 @@ class InputFormSchema extends React.PureComponent {
       getJSONDataByKeyRoute,
     } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
 
@@ -71,6 +77,7 @@ class InputFormSchema extends React.PureComponent {
               className="title-text"
               title={
                 pageScreen === 'wideScreen' &&
+                targetJsonData.title &&
                 targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''

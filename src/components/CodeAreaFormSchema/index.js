@@ -93,6 +93,7 @@ class CodeAreaFormSchema extends React.PureComponent {
               className="title-text"
               title={
                 pageScreen === 'wideScreen' &&
+                targetJsonData.title &&
                 targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''
