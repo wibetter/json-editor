@@ -1500,23 +1500,6 @@ class IndexDemo extends React.PureComponent {
           },
           dataName: 'getProjectDataSource',
           body: {
-            param1: {
-              title: '参数名称',
-              scope: 'static',
-              value: '111',
-            },
-            param2: {
-              title: '参数名称',
-              scope: 'window',
-              name: 'PARAM1',
-              value: '111',
-            },
-            pageId: {
-              title: '页面id',
-              scope: 'hash',
-              name: 'pId',
-              value: '111',
-            },
             param5: {
               title: '参数名称',
               scope: 'url',
