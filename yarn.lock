@@ -1659,10 +1659,10 @@
   dependencies:
     "@babel/polyfill" "^7.10.1"
 
-"@wibetter/json-utils@^1.1.15":
-  version "1.1.15"
-  resolved "https://registry.npmjs.org/@wibetter/json-utils/-/json-utils-1.1.15.tgz#0ab824c57937eb9c121840d5a6d593af98e0f48f"
-  integrity sha512-TsGL51Z8/vtX3F7swra1sv7ZmV70jZP1A5PRhTSv5h1n95f8ssDM0wBlafQJqCl/B5b9ZmaNM/6PaywGJGSvtw==
+"@wibetter/json-utils@^1.1.21":
+  version "1.1.21"
+  resolved "http://registry.m.jd.com/@wibetter/json-utils/download/@wibetter/json-utils-1.1.21.tgz#ff5d336411247e5af21a4cd18e114b7f6cbe8f5b"
+  integrity sha1-/10zZBEkflryGkzRjhFLf2y+j1s=
   dependencies:
     "@babel/polyfill" "^7.10.1"
 
