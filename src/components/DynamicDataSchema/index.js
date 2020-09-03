@@ -75,30 +75,9 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   dynamicDataChange = (dynamicDataName) => {
-    const {
-      keyRoute,
-      dynamicDataObj,
-      getJSONDataByKeyRoute,
-      triggerChangeAction,
-    } = this.props;
+    const { keyRoute, dynamicDataObj, triggerChangeAction } = this.props;
     const curDynamicData = objClone(toJS(dynamicDataObj[dynamicDataName]));
     if (curDynamicData) {
-      // 从jsonData中获取对应的数值
-      const curFliter =
-        getJSONDataByKeyRoute(`${keyRoute}-config-filter`) || {};
-      /* const newCurDynamicData = {
-        id: curDynamicData.id,
-        projectId: curDynamicData.id,
-        title: curDynamicData.title,
-        url: curDynamicData.url,
-        method: curDynamicData.method,
-        headers: curDynamicData.headers,
-        options: curDynamicData.options,
-        respMock: curDynamicData.respMock,
-        dataName: curDynamicData.name,
-        body: curDynamicData.body,
-        data: curDynamicData.data,
-      }; */
       const newCurDynamicData = {
         id: curDynamicData.id,
         url: curDynamicData.url,
@@ -108,7 +87,8 @@ class DynamicDataSchema extends React.PureComponent {
         dataName: curDynamicData.name,
         body: curDynamicData.body,
         data: curDynamicData.data,
-        filter: curFliter,
+        filter: 'return data;',
+        dataRoute: '',
       };
       this.handleValueChange(`${keyRoute}-config`, newCurDynamicData);
       setTimeout(() => {
@@ -119,10 +99,20 @@ class DynamicDataSchema extends React.PureComponent {
 
   dataRouteChange = (newDataRoute) => {
     const { keyRoute, triggerChangeAction, updateFormValueData } = this.props;
-    updateFormValueData(`${keyRoute}-config-dataRoute`, newDataRoute, true);
-    const dataPath = dataRoute2dataPath(newDataRoute);
-    // 自动填充当前filter
-    this.handleValueChange(`${keyRoute}-config-filter`, `return ${dataPath};`);
+    if (newDataRoute) {
+      updateFormValueData(`${keyRoute}-config-dataRoute`, newDataRoute, true);
+      const dataPath = dataRoute2dataPath(newDataRoute);
+      // 自动填充当前filter
+      this.handleValueChange(
+        `${keyRoute}-config-filter`,
+        `return ${dataPath};`,
+      );
+    } else {
+      // newDataRoute为空时，需要重置dataRoute和filter
+      updateFormValueData(`${keyRoute}-config-dataRoute`, '', true);
+      // 自动填充当前filter
+      this.handleValueChange(`${keyRoute}-config-filter`, `return data;`);
+    }
     setTimeout(() => {
       triggerChangeAction();
     }, 100);
@@ -376,7 +366,7 @@ class DynamicDataSchema extends React.PureComponent {
             {dataName && (
               <TreeSelectFromSchema
                 {...{
-                  nodeKey: `${nodeKey}-config-dataRoute`,
+                  nodeKey: `${nodeKey}-config-dataRoute-${dataRoute}`,
                   mockData: curDynamicData.respMock,
                   dataRoute,
                   onChange: this.dataRouteChange,
