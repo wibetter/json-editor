@@ -13,7 +13,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema: {
+      jsonSchema00: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -818,7 +818,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1107,9 +1107,22 @@ class IndexDemo extends React.PureComponent {
                 isRequired: false,
                 readOnly: false,
               },
+              field_111: {
+                type: 'string',
+                title: 'IMG',
+                format: 'image',
+                default: '',
+                description: '上传图片',
+                imgWidth: 200,
+                imgHeight: 200,
+                imgRatio: 1,
+                imgRatioReadOnly: false,
+                isRequired: false,
+                readOnly: false,
+              },
             },
-            required: ['field_18', 'field_23', 'field_1'],
-            propertyOrder: ['field_18', 'field_23', 'field_1'],
+            required: ['field_18', 'field_23', 'field_1', 'field_111'],
+            propertyOrder: ['field_18', 'field_23', 'field_1', 'field_111'],
           },
           data: {
             type: 'object',

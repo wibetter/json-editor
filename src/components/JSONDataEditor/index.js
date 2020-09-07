@@ -13,7 +13,6 @@ import {
   getCurrentFormat,
   json2schema,
 } from '@wibetter/json-utils';
-import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
   static propTypes = {
