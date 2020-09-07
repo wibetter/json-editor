@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject, isArray } from '$utils/index';
+import { isObject, isArray, exitPropertie } from '$utils/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
 class JsonFormSchema extends React.PureComponent {
@@ -24,7 +24,7 @@ class JsonFormSchema extends React.PureComponent {
     this.state = {
       isShowWarn: false, // 用于判断是否显示错误信息
       warnText: '', // 错误内容
-      curJSONDataTemp: '', // 用于记录当前不合规范的json数据
+      curJSONDataTemp: undefined, // 用于记录当前不合规范的json数据
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -109,7 +109,9 @@ class JsonFormSchema extends React.PureComponent {
           )}
           <AceEditor
             id="json_area_ace"
-            value={curJSONDataTemp || curJsonData}
+            value={
+              exitPropertie(curJSONDataTemp) ? curJSONDataTemp : curJsonData
+            }
             className="code-area-item"
             mode="json"
             theme="solarized_light"
@@ -129,7 +131,7 @@ class JsonFormSchema extends React.PureComponent {
                 this.handleValueChange(newJsonDataTemp);
                 this.setState({
                   isShowWarn: false,
-                  curJSONDataTemp: '', // 用于记录当前不合规范的json数据
+                  curJSONDataTemp: undefined, // 重置
                 });
               } catch (err) {
                 // 更新jsonData
