@@ -88,7 +88,7 @@ class QuantitySchema extends React.PureComponent {
         <div className="content-item">
           <div className="form-item-box">
             <Input
-              style={{ display: 'inline-block' }}
+              style={{ display: 'inline-block', width: '120px' }}
               addonAfter={unitAfter}
               disabled={readOnly}
               placeholder={

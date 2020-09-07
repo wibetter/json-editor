@@ -8,6 +8,7 @@ import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import './index.scss';
 
 class DataSourceSchema extends React.PureComponent {
   static propTypes = {

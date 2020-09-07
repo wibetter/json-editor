@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import './index.scss';
 
 class ColorFormSchema extends React.PureComponent {
   static propTypes = {
