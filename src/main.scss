@@ -89,11 +89,11 @@
     align-items: flex-start;
 
     > .element-title {
-      flex: 0 1 90px;
+      flex: 0 1 85px;
       word-break: keep-all;
       min-width: 60px;
       max-width: 120px;
-      margin-right: 12px;
+      margin-right: 7px;
       padding-left: 0;
       text-align: left;
       white-space: nowrap;
@@ -121,6 +121,7 @@
       border-radius: 5px 5px 0 0;
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: none;
+      cursor: pointer;
     }
   }
 
@@ -137,7 +138,6 @@
   .element-title {
     display: block;
     width: 100%;
-    cursor: pointer;
 
     .warning-text {
       color: #fa8c16;
@@ -177,6 +177,11 @@
         width: 14px;
         height: 14px;
       }
+    }
+
+    .info-icon {
+      margin-left: 5px;
+      cursor: pointer;
     }
   }
 

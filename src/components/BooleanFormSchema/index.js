@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Switch, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 class BooleanFormSchema extends React.PureComponent {
   static propTypes = {

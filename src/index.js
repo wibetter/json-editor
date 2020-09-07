@@ -900,7 +900,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_8: {
                 type: 'number',
-                title: '数值',
+                title: '数量number',
                 format: 'number',
                 isRequired: false,
                 default: 50,

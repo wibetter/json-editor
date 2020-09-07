@@ -6,6 +6,7 @@ import { DatePicker, Tooltip } from 'antd';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 const DateTypeList = {
   'date-time': 'YYYY-MM-DD HH:mm',

@@ -2,7 +2,11 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
-import { DownOutlined, RightOutlined } from '@ant-design/icons';
+import {
+  DownOutlined,
+  InfoCircleOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import { getCurrentFormat, isFirstSchemaData } from '@wibetter/json-utils';
@@ -73,9 +77,12 @@ class ObjectSchema extends React.PureComponent {
               event.stopPropagation();
             }}
           >
-            <Tooltip title={targetJsonData.description} placement="top">
-              <span className="title-text">{targetJsonData.title}</span>
-            </Tooltip>
+            <span className="title-text">{targetJsonData.title}</span>
+            {targetJsonData.description && (
+              <Tooltip title={targetJsonData.description} placement="top">
+                <InfoCircleOutlined className="info-icon" />
+              </Tooltip>
+            )}
             <span>{isArrayItem ? `/${arrIndex + 1}` : ''}</span>
 
             {isClosed ? (

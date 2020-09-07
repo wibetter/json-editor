@@ -5,6 +5,7 @@ import { Input, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 class ColorFormSchema extends React.PureComponent {
   static propTypes = {
@@ -66,7 +67,12 @@ class ColorFormSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+            }
+            placement="top"
+          >
             <span
               className="title-text"
               title={

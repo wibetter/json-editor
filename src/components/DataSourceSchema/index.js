@@ -2,7 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
-import { FilterOutlined } from '@ant-design/icons';
+import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
@@ -79,18 +79,21 @@ class DataSourceSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip title={targetJsonData.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                  ? targetJsonData.title
-                  : ''
-              }
-            >
-              {targetJsonData.title}
-            </span>
-          </Tooltip>
+          <span
+            className="title-text"
+            title={
+              pageScreen === 'wideScreen' && targetJsonData.title.length > 6
+                ? targetJsonData.title
+                : ''
+            }
+          >
+            {targetJsonData.title}
+          </span>
+          {targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item object-content">
           {dataType === 'local' && (

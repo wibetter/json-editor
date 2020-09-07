@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, Tooltip } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
 class InputFormSchema extends React.PureComponent {
@@ -72,7 +73,12 @@ class InputFormSchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+            }
+            placement="top"
+          >
             <span
               className="title-text"
               title={
@@ -86,6 +92,11 @@ class InputFormSchema extends React.PureComponent {
               {targetJsonData.title}
             </span>
           </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item">
           <div className="form-item-box">
