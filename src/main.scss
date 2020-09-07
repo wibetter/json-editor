@@ -4,14 +4,15 @@
   position: relative;
   padding: 8px 10px;
 
-  // 移动端的展示样式：块级展示
+  /* 移动端的展示样式：块级展示
+     呈现：screen-element-warp以块级元素模式展示，element-title 和 content-item 分别以上下行块级元素模式展示
+   */
   .small-screen-element-warp,
   .mobile-screen-element-warp {
     position: relative;
     margin-bottom: 12px;
     line-height: 38px;
     box-sizing: border-box;
-    // min-width: 280px;
 
     > .element-title {
       display: block;
@@ -33,7 +34,9 @@
     }
   }
 
-  // 默认为宽屏的展示样式：行内展示
+  /* 默认为宽屏的展示样式：行内展示
+     呈现：screen-element-warp以行内元素模式展示，element-title 和 content-item 在同一行展示
+   */
   .wide-screen-element-warp {
     position: relative;
     line-height: 38px;
@@ -63,6 +66,7 @@
 
   /* 左右两栏布局，比较适合固定宽度的元素，
      比如：boolean、date、date-time、time、number、color、quantity
+     呈现：element-title 和 content-item 在同一行展示
    */
   .two-col-element-warp {
     display: flex;
@@ -70,11 +74,12 @@
     align-items: flex-start;
 
     > .element-title {
-      flex: 0 1 80px;
+      flex: 0 1 90px;
       word-break: keep-all;
+      min-width: 60px;
       max-width: 120px;
       margin-right: 12px;
-      padding-left: 12px;
+      padding-left: 0;
       text-align: left;
       white-space: nowrap;
       overflow: hidden;

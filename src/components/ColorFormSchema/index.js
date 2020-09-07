@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
 
 class ColorFormSchema extends React.PureComponent {
@@ -50,13 +51,16 @@ class ColorFormSchema extends React.PureComponent {
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonData.format); // 是否需要设置成两栏布局
 
     return (
       <div
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
+            : `mobile-screen-element-warp ${
+                isNeedTwoCol ? 'two-col-element-warp' : ''
+              }`
         }
         key={nodeKey}
         id={nodeKey}
@@ -66,7 +70,8 @@ class ColorFormSchema extends React.PureComponent {
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
+                (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                targetJsonData.title.length > 6
                   ? targetJsonData.title
                   : ''
               }

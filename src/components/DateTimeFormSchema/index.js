@@ -5,6 +5,7 @@ import moment from 'moment';
 import { DatePicker, Tooltip } from 'antd';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { isNeedTwoColWarpStyle } from '$utils/index';
 
 const DateTypeList = {
   'date-time': 'YYYY-MM-DD HH:mm',
@@ -61,13 +62,16 @@ class DateTimeFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const defaultTime = curJsonData || targetJsonData.default;
+    const isNeedTwoCol = isNeedTwoColWarpStyle(curFormat); // 是否需要设置成两栏布局
 
     return (
       <div
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
+            : `mobile-screen-element-warp ${
+                isNeedTwoCol ? 'two-col-element-warp' : ''
+              }`
         }
         key={nodeKey}
         id={nodeKey}
@@ -80,7 +84,7 @@ class DateTimeFormSchema extends React.PureComponent {
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' &&
+                (isNeedTwoCol || pageScreen === 'wideScreen') &&
                 targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''

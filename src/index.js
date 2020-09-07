@@ -860,7 +860,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_4: {
                 type: 'string',
-                title: '日期',
+                title: '日期时间',
                 format: 'date-time',
                 isRequired: false,
                 default: '',
@@ -880,7 +880,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_6: {
                 type: 'string',
-                title: 'URL',
+                title: '链接地址url',
                 format: 'url',
                 isRequired: false,
                 default: '',
@@ -1066,7 +1066,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               field_18: {
                 type: 'string',
-                title: '颜色值',
+                title: '颜色color',
                 format: 'color',
                 isRequired: false,
                 default: '#fff',
