@@ -4,13 +4,21 @@ body {
   padding: 20px 10px;
 }
 
+.page-title {
+  text-align: center;
+}
+
 .title-container {
+  display: flex;
+  justify-content: center;
   display: flex;
 
   .title1-box {
     flex: 0 1 700px;
     padding: 8px 10px;
     box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
   }
 
   .title2-box {
@@ -18,10 +26,16 @@ body {
     box-sizing: border-box;
     padding: 8px 10px;
   }
+
+  .title2-box.mobile-view {
+    flex: 0 1 400px;
+  }
 }
 
 .json-action-container {
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
 
   .json-schema-box {
     flex: 0 1 700px;
@@ -35,6 +49,10 @@ body {
     box-sizing: border-box;
     padding: 8px 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .json-editor-box.mobile-view {
+    flex: 0 1 400px;
   }
 }
 
