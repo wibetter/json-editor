@@ -27,9 +27,24 @@
     > .content-item {
       position: relative;
 
-      > .small-screen-element-warp,
-      > .mobile-screen-element-warp {
-        // min-width: 230px;
+      > .form-item-box {
+        > input,
+        > textarea,
+        > .ant-input-number,
+        > .ant-picker {
+          border-radius: 16px;
+        }
+
+        > .ant-input-group-wrapper {
+          input {
+            border-radius: 16px 0 0 16px;
+          }
+          .ant-input-group-addon {
+            color: #fff;
+            background-color: rgba(24, 144, 255, 1);
+            border-radius: 0 16px 16px 0;
+          }
+        }
       }
     }
   }
