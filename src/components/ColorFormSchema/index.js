@@ -67,12 +67,7 @@ class ColorFormSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip
-            title={
-              pageScreen === 'wideScreen' ? targetJsonData.description : ''
-            }
-            placement="top"
-          >
+          <Tooltip title={targetJsonData.description} placement="top">
             <span
               className="title-text"
               title={
