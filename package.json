@@ -47,8 +47,8 @@
     "react": "^16.8.6",
     "react-ace": "^9.1.1",
     "react-dom": "^16.8.6",
-    "@wibetter/json-schema-editor": "^3.3.16",
-    "@wibetter/json-utils": "^1.1.21"
+    "@wibetter/json-schema-editor": "^3.3.21",
+    "@wibetter/json-utils": "^1.2.1"
   },
   "devDependencies": {
     "akfun": "^1.5.1",

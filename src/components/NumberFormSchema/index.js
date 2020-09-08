@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { InputNumber, message, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { isNeedTwoColWarpStyle } from '$utils/index';
 
 class NumberFormSchema extends React.PureComponent {
   static propTypes = {
@@ -60,13 +61,16 @@ class NumberFormSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonData.format); // 是否需要设置成两栏布局
 
     return (
       <div
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
+            : `mobile-screen-element-warp ${
+                isNeedTwoCol ? 'two-col-element-warp' : ''
+              }`
         }
         key={nodeKey}
         id={nodeKey}
@@ -79,7 +83,7 @@ class NumberFormSchema extends React.PureComponent {
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' &&
+                (isNeedTwoCol || pageScreen === 'wideScreen') &&
                 targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''

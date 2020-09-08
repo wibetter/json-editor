@@ -1602,6 +1602,24 @@
     react-ace "^9.1.1"
     react-dom "^16.8.6"
 
+"@wibetter/json-editor@^3.3.27":
+  version "3.3.33"
+  resolved "https://registry.npmjs.org/@wibetter/json-editor/-/json-editor-3.3.33.tgz#82e25b61597c0cf9ab2e6c624e6076457a212c06"
+  integrity sha512-Xo59jYRb9cz7Ingx2CSuoC3jyA2VyMlBLTqD59m3AaCnrcK0J4AxGsMbjRiWMvlDXhCdZmctS4v3KuUk+O5xZA==
+  dependencies:
+    "@ant-design/icons" "^4.2.1"
+    "@wibetter/json-schema-editor" "^3.3.16"
+    "@wibetter/json-utils" "^1.1.21"
+    ace-builds "^1.4.12"
+    antd "^4.3.4"
+    mobx "^5.15.4"
+    mobx-react "^6.2.2"
+    moment "^2.27.0"
+    prop-types "^15.7.2"
+    react "^16.8.6"
+    react-ace "^9.1.1"
+    react-dom "^16.8.6"
+
 "@wibetter/json-editor@^3.3.9":
   version "3.3.23"
   resolved "https://registry.npmjs.org/@wibetter/json-editor/-/json-editor-3.3.23.tgz#7669e14dce1444702e6b3b43c85b481451599e26"
@@ -1652,6 +1670,22 @@
     react "^16.8.6"
     react-dom "^16.8.6"
 
+"@wibetter/json-schema-editor@^3.3.21":
+  version "3.3.21"
+  resolved "https://registry.npmjs.org/@wibetter/json-schema-editor/-/json-schema-editor-3.3.21.tgz#e40733e5be717b66f1b237f369224b0756c4436c"
+  integrity sha512-t0NM4KeVi2MuG8VlS1wUe+rd9JS6A8UsYjPLdHMyKkCMCNtcxAUpnMGMNaZuzm5VYjv3MMGkMAWXHO0xH7JHRQ==
+  dependencies:
+    "@ant-design/icons" "^4.2.1"
+    "@babel/polyfill" "^7.10.1"
+    "@wibetter/json-editor" "^3.3.27"
+    "@wibetter/json-utils" "^1.2.1"
+    antd "^4.3.4"
+    mobx "^5.15.4"
+    mobx-react "^6.2.2"
+    prop-types "^15.7.2"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+
 "@wibetter/json-utils@^1.1.13":
   version "1.1.13"
   resolved "https://registry.npmjs.org/@wibetter/json-utils/-/json-utils-1.1.13.tgz#ec8b4bf725c0dd998efc0a7255b1efd40909a5be"
@@ -1663,6 +1697,13 @@
   version "1.1.21"
   resolved "http://registry.m.jd.com/@wibetter/json-utils/download/@wibetter/json-utils-1.1.21.tgz#ff5d336411247e5af21a4cd18e114b7f6cbe8f5b"
   integrity sha1-/10zZBEkflryGkzRjhFLf2y+j1s=
+  dependencies:
+    "@babel/polyfill" "^7.10.1"
+
+"@wibetter/json-utils@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/@wibetter/json-utils/-/json-utils-1.2.1.tgz#ddf446c92a8a166aabe4dc944d14df356af5592f"
+  integrity sha512-8pSfTD4OHk+GVAnji+dnXJLph8beW7NkPg7gjXkt8GEp5AupeTiuyGspraSqMPh5t00D3WfLvUOVrbw66T7gRw==
   dependencies:
     "@babel/polyfill" "^7.10.1"
 

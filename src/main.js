@@ -4,6 +4,7 @@ import { Provider } from 'mobx-react';
 import PropTypes from 'prop-types';
 import RootJSONStore from '$store/index';
 import JSONDataEditor from '$components/JSONDataEditor/index';
+import './main.scss';
 
 /**
  * JSONEditor功能组件

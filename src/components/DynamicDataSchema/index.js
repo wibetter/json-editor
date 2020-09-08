@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Radio, Select, Tooltip } from 'antd';
 const { Option } = Select;
-import { FilterOutlined } from '@ant-design/icons';
+import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
@@ -174,9 +174,12 @@ class DynamicDataSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip title={targetJsonData.description} placement="top">
-            <span className="title-text">{targetJsonData.title}</span>
-          </Tooltip>
+          <span className="title-text">{targetJsonData.title}</span>
+          {targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
 
         <div className="dynamic-data-tab-radio-box">

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { TimePicker, Tooltip } from 'antd';
 import moment from 'moment';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { isNeedTwoColWarpStyle } from '$utils/index';
 
 class TimeFormSchema extends React.PureComponent {
   static propTypes = {
@@ -52,13 +53,16 @@ class TimeFormSchema extends React.PureComponent {
     const defaultTime = curJsonData || targetJsonData.default;
     const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonData.format); // 是否需要设置成两栏布局
 
     return (
       <div
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
+            : `mobile-screen-element-warp ${
+                isNeedTwoCol ? 'two-col-element-warp' : ''
+              }`
         }
         key={nodeKey}
         id={nodeKey}
@@ -71,7 +75,7 @@ class TimeFormSchema extends React.PureComponent {
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' &&
+                (isNeedTwoCol || pageScreen === 'wideScreen') &&
                 targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''

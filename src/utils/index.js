@@ -20,6 +20,27 @@ export function exitPropertie(targetPropertie) {
   return exitPropertie;
 }
 
+/** 是否需要设置成两栏布局
+ * 比较适合固定宽度的元素，
+ * 比如：boolean、date、date-time、time、number、color、quantity
+ * 呈现：element-title 和 content-item 在同一行展示
+ * */
+export function isNeedTwoColWarpStyle(format) {
+  let isNeedTwoColWarp = false;
+  if (
+    format === 'boolean' ||
+    format === 'date' ||
+    format === 'date-time' ||
+    format === 'time' ||
+    format === 'number' ||
+    format === 'color' ||
+    format === 'quantity'
+  ) {
+    isNeedTwoColWarp = true;
+  }
+  return isNeedTwoColWarp;
+}
+
 /** 根据className判断是否是基本类型元素
  *  基本类型元素：input、boolean、 date、date-time、 time、 url、
  *  textarea、number、 radio、 select、color、quantity

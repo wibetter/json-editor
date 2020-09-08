@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Radio, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 class RadioSchema extends React.PureComponent {
   static propTypes = {
@@ -65,7 +66,12 @@ class RadioSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+            }
+            placement="top"
+          >
             <span
               className="title-text"
               title={
@@ -77,6 +83,11 @@ class RadioSchema extends React.PureComponent {
               {targetJsonData.title}
             </span>
           </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item">
           <div className="form-item-box">

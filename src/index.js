@@ -13,7 +13,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema: {
+      jsonSchema00: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -818,7 +818,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -860,7 +860,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_4: {
                 type: 'string',
-                title: '日期',
+                title: '日期时间',
                 format: 'date-time',
                 isRequired: false,
                 default: '',
@@ -880,7 +880,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_6: {
                 type: 'string',
-                title: 'URL',
+                title: '链接地址url',
                 format: 'url',
                 isRequired: false,
                 default: '',
@@ -900,7 +900,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_8: {
                 type: 'number',
-                title: '数值',
+                title: '数量number',
                 format: 'number',
                 isRequired: false,
                 default: 50,
@@ -1066,7 +1066,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               field_18: {
                 type: 'string',
-                title: '颜色值',
+                title: '颜色color',
                 format: 'color',
                 isRequired: false,
                 default: '#fff',
@@ -1107,9 +1107,22 @@ class IndexDemo extends React.PureComponent {
                 isRequired: false,
                 readOnly: false,
               },
+              field_111: {
+                type: 'string',
+                title: 'IMG',
+                format: 'image',
+                default: '',
+                description: '上传图片',
+                imgWidth: 200,
+                imgHeight: 200,
+                imgRatio: 1,
+                imgRatioReadOnly: false,
+                isRequired: false,
+                readOnly: false,
+              },
             },
-            required: ['field_18', 'field_23', 'field_1'],
-            propertyOrder: ['field_18', 'field_23', 'field_1'],
+            required: ['field_18', 'field_23', 'field_1', 'field_111'],
+            propertyOrder: ['field_18', 'field_23', 'field_1', 'field_111'],
           },
           data: {
             type: 'object',
@@ -1710,11 +1723,12 @@ class IndexDemo extends React.PureComponent {
         <div className="title-container">
           <div className="title1-box">
             <p>
-              <b>JSONSchema</b>:
-              提供可视化界面编辑json格式/结构；(目前主要用于区块的模型设置，定义区块的配置项)
+              <b>JSONSchema</b>: 提供可视化界面编辑json格式/结构；
+              <br />
+              (目前主要用于区块的模型设置，定义区块的配置项)
             </p>
           </div>
-          <div className="title2-box">
+          <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
             <p>
               <b>JSONEditor</b>:
               提供可视化界面编辑json数据内容，用于区块的可视化配置，避免用户直接编辑json数据内容；
@@ -1760,7 +1774,9 @@ class IndexDemo extends React.PureComponent {
               }}
             />
           </div>
-          <div className="json-editor-box">
+          <div
+            className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
+          >
             <JSONEditor
               jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
@@ -1783,7 +1799,7 @@ class IndexDemo extends React.PureComponent {
 
 ReactDOM.render(
   <div>
-    <h1>JSON数据可视化/JSONEditor Demo</h1>
+    <h1 className="page-title">JSON数据可视化/JSONEditor Demo</h1>
 
     <br />
 

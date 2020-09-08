@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Input, Tooltip } from 'antd';
 const { TextArea } = Input;
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 class TextAreaFormSchema extends React.PureComponent {
   static propTypes = {
@@ -67,11 +68,17 @@ class TextAreaFormSchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+            }
+            placement="top"
+          >
             <span
               className="title-text"
               title={
                 pageScreen === 'wideScreen' &&
+                targetJsonData.title &&
                 targetJsonData.title.length > (readOnly ? 4 : 6)
                   ? targetJsonData.title
                   : ''
@@ -80,6 +87,11 @@ class TextAreaFormSchema extends React.PureComponent {
               {targetJsonData.title}
             </span>
           </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item">
           <div className="form-item-box">

@@ -7,6 +7,7 @@ import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import { isObject, isArray, exitPropertie } from '$utils/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -86,19 +87,22 @@ class JsonFormSchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <Tooltip title={targetJsonData.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
-                  : ''
-              }
-            >
-              {targetJsonData.title}
-            </span>
-          </Tooltip>
+          <span
+            className="title-text"
+            title={
+              pageScreen === 'wideScreen' &&
+              targetJsonData.title.length > (readOnly ? 4 : 6)
+                ? targetJsonData.title
+                : ''
+            }
+          >
+            {targetJsonData.title}
+          </span>
+          {targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item object-content">
           {isShowWarn && (

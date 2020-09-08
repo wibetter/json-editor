@@ -8,6 +8,7 @@ import {
   CloseOutlined,
   RightOutlined,
   DownOutlined,
+  InfoCircleOutlined,
 } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
@@ -74,6 +75,7 @@ class ArraySchema extends React.PureComponent {
     const {
       keyRoute,
       nodeKey,
+      pageScreen,
       indexRoute,
       targetJsonData,
       getJSONDataByKeyRoute,
@@ -101,9 +103,12 @@ class ArraySchema extends React.PureComponent {
             event.stopPropagation();
           }}
         >
-          <Tooltip title={targetJsonData.description} placement="top">
-            <span className="title-text">{targetJsonData.title}</span>
-          </Tooltip>
+          <span className="title-text">{targetJsonData.title}</span>
+          {targetJsonData.description && (
+            <Tooltip title={targetJsonData.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
 
           {isClosed ? (
             <RightOutlined className="close-operate-btn" />
