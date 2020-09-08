@@ -1707,6 +1707,13 @@
   dependencies:
     "@babel/polyfill" "^7.10.1"
 
+"@wibetter/json-utils@^1.2.5":
+  version "1.2.5"
+  resolved "http://registry.m.jd.com/@wibetter/json-utils/download/@wibetter/json-utils-1.2.5.tgz#e7c1e815a5180e9a65a32d5624edfcc11d05ac04"
+  integrity sha1-58HoFaUYDpploy1WJO38wR0FrAQ=
+  dependencies:
+    "@babel/polyfill" "^7.10.1"
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
