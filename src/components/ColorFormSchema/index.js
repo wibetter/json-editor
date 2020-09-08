@@ -5,7 +5,6 @@ import { Input, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
-import { InfoCircleOutlined } from '@ant-design/icons';
 
 class ColorFormSchema extends React.PureComponent {
   static propTypes = {
