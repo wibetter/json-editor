@@ -1,8 +1,8 @@
-# JSONEditor
+# JSONEditor功能组件
 
-> JSON数据可视化/JSONEditor, 可视化界面编辑json数据内容
+> JSON数据可视化/JSONEditor，json可视化编辑能力的实现（以表单形式编辑json数据）
 
-使用场景：提供可视化界面编辑json数据内容，避免用户直接编辑json数据内容
+使用场景：提供可视化界面编辑json数据内容
 
 技术栈：React/Mobx/Ant Design
 
@@ -13,18 +13,22 @@
 4. 支持9个特殊类型组件（Object、Array、Json、datasource、dynamic-data、Event、CodeArea、htmlArea、quantity）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 
-## Install
+##### 功能示例一 / JSON数据源（jsonData）：
+![image](https://user-images.githubusercontent.com/11958920/97521887-71a26d80-19d9-11eb-82d5-348d0ac41c70.png)
+
+##### 功能示例一 / JSONEditor编辑界面：
+![image](https://user-images.githubusercontent.com/11958920/97521856-68b19c00-19d9-11eb-8236-49cd35e2b14b.png)
+
+***
+
+## 安装
 
 ```bash
 npm install --save @wibetter/json-editor
 ```
 
 
-## Usage
-
-```
-npm install @wibetter/json-editor
-```
+## 使用示例
 
 ```js
 import * as React from 'react';
@@ -67,12 +71,12 @@ class IndexDemo extends React.PureComponent {
 }
 ```
 
-## JSONEditor Props
+## JSONEditor 可配置参数
 
 | name         | type     | default | desc                            |
 | ------------ | -------- | ------- | ------------------------------- |
 | `jsonView`   | boolean  | false   | 是否开启全局源码模式，默认不开启      |
 | `wideScreen` | boolean  | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
-| `schemaData` | object   | {}      | json的结构数据，备注：当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData                    |
+| `schemaData` | object   | {}      | json的结构数据，备注：schemaData为空而jsonData不为空时，会自动通过jsonData生产一份应的schemaData                    |
 | `jsonData`   | object   | {}      | json的内容数据                    |
-| `onChange`   | function | null    | jsonData内容变动时会触发onChange   |
+| `onChange`   | function | () => {}    | jsonData内容变动时会触发onChange   |
