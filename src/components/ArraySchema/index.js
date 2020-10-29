@@ -7,6 +7,7 @@ import {
   RightOutlined,
   DownOutlined,
   InfoCircleOutlined,
+  PlusOutlined,
 } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
@@ -145,7 +146,7 @@ class ArraySchema extends React.PureComponent {
           </div>
 
           <Tooltip title="添加数据项">
-            <img
+            <PlusOutlined
               src={addElemIcon}
               className="array-add-child-btn"
               onClick={(event) => {
