@@ -818,7 +818,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1482,7 +1482,7 @@ class IndexDemo extends React.PureComponent {
           field_28: '{}',
         },
       },
-      jsonData: {
+      jsonData3: {
         field_1: 'text1',
         field_2: true,
         field_3: '2020-08-08',
@@ -1804,7 +1804,6 @@ class IndexDemo extends React.PureComponent {
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
-              dynamicDataList={dynamicDataList}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
                 this.setState({

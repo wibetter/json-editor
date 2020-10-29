@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { Collapse, message, Tooltip, Popconfirm } from 'antd';
 const { Panel } = Collapse;
 import {
-  PlusCircleOutlined,
-  CloseOutlined,
   RightOutlined,
   DownOutlined,
   InfoCircleOutlined,
@@ -16,6 +14,8 @@ import { isArray } from '$utils/index';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
+import deleteIcon from '$assets/img/delete.svg';
+import addElemIcon from '$assets/img/addElem.svg';
 
 class ArraySchema extends React.PureComponent {
   static propTypes = {
@@ -52,12 +52,12 @@ class ArraySchema extends React.PureComponent {
   }
 
   /** 添加数组项 */
-  addArrayItem = (keyRoute, curArr) => {
+  addArrayItem = (keyRoute, curArr, curArrIndex) => {
     const maximumChild = this.props.targetJsonData['maximum-child'];
     if (curArr && curArr.length >= maximumChild) {
       message.warning(`添加失败，最多可添加${maximumChild}个子项`);
     } else {
-      this.props.addArrayItem(keyRoute);
+      this.props.addArrayItem(keyRoute, curArrIndex);
     }
   };
 
@@ -89,7 +89,7 @@ class ArraySchema extends React.PureComponent {
 
     return (
       <div
-        className="mobile-screen-element-warp element-title-card-warp"
+        className="array-schema-box mobile-screen-element-warp element-title-card-warp"
         key={nodeKey}
         id={nodeKey}
       >
@@ -115,17 +115,6 @@ class ArraySchema extends React.PureComponent {
           ) : (
             <DownOutlined className="close-operate-btn" />
           )}
-
-          <Tooltip title="添加数据项">
-            <PlusCircleOutlined
-              className="add-operate-btn array-operate-btn"
-              onClick={(event) => {
-                this.addArrayItem(keyRoute, curJsonData);
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            />
-          </Tooltip>
 
           <div
             className="display-source-btn"
@@ -154,6 +143,18 @@ class ArraySchema extends React.PureComponent {
               </svg>
             </Tooltip>
           </div>
+
+          <Tooltip title="添加数据项">
+            <img
+              src={addElemIcon}
+              className="array-add-child-btn"
+              onClick={(event) => {
+                this.addArrayItem(keyRoute, curJsonData);
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+            />
+          </Tooltip>
         </div>
         <div
           className={`content-item array-content ${
@@ -161,7 +162,7 @@ class ArraySchema extends React.PureComponent {
           } ${isClosed ? 'closed' : ''}`}
         >
           {!jsonView && isArray(curJsonData) && (
-            <Collapse expandIconPosition="right" bordered={true}>
+            <Collapse expandIconPosition="right" bordered={true} accordion>
               {curJsonData.map((arrItem, arrIndex) => {
                 const curNodeKey = `${nodeKey}-array-items-${curJsonData.length}-${arrIndex}`;
                 const curIndexRoute = indexRoute ? `${indexRoute}-0` : '0';
@@ -173,35 +174,63 @@ class ArraySchema extends React.PureComponent {
                     header={`${arrayItemsDataObj.title}/${arrIndex + 1}`}
                     key={curKeyRoute}
                     extra={
-                      <Tooltip
-                        title={`删除${arrayItemsDataObj.title}/${arrIndex + 1}`}
-                      >
-                        <Popconfirm
-                          placement="top"
-                          title={`确定要删除${arrayItemsDataObj.title}/${
+                      <>
+                        <Tooltip
+                          title={`复制${arrayItemsDataObj.title}/${
                             arrIndex + 1
-                          }吗？`}
-                          onCancel={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-                          }}
-                          onConfirm={(event) => {
-                            this.deleteArrItem(keyRoute, arrIndex, curJsonData);
-                            event.preventDefault();
-                            event.stopPropagation();
-                          }}
-                          okText="确定"
-                          cancelText="取消"
+                          }`}
                         >
-                          <CloseOutlined
-                            className="delete-operate-btn array-operate-btn"
+                          <img
+                            src={addElemIcon}
+                            className="array-operate-btn"
                             onClick={(event) => {
+                              this.addArrayItem(
+                                keyRoute,
+                                curJsonData,
+                                arrIndex,
+                              ); // curArrIndex
                               event.preventDefault();
                               event.stopPropagation();
                             }}
                           />
-                        </Popconfirm>
-                      </Tooltip>
+                        </Tooltip>
+                        <Tooltip
+                          title={`删除${arrayItemsDataObj.title}/${
+                            arrIndex + 1
+                          }`}
+                        >
+                          <Popconfirm
+                            placement="top"
+                            title={`确定要删除${arrayItemsDataObj.title}/${
+                              arrIndex + 1
+                            }吗？`}
+                            onCancel={(event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                            }}
+                            onConfirm={(event) => {
+                              this.deleteArrItem(
+                                keyRoute,
+                                arrIndex,
+                                curJsonData,
+                              );
+                              event.preventDefault();
+                              event.stopPropagation();
+                            }}
+                            okText="确定"
+                            cancelText="取消"
+                          >
+                            <img
+                              src={deleteIcon}
+                              className="delete-operate-btn array-operate-btn"
+                              onClick={(event) => {
+                                event.preventDefault();
+                                event.stopPropagation();
+                              }}
+                            />
+                          </Popconfirm>
+                        </Tooltip>
+                      </>
                     }
                   >
                     <div
