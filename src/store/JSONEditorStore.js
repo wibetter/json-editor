@@ -211,13 +211,24 @@ export default class JSONEditorStore {
    * 根据key索引路径值(keyRoute)在数组中新增数据项
    * */
   @action.bound
-  addArrayItem(keyRoute) {
+  addArrayItem(keyRoute, curArrIndex) {
     // 1. 获取数组数据对象
     const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    const _arrJsonDataObj = toJS(arrJsonDataObj);
     if (isArray(arrJsonDataObj)) {
       // 2. 获取数组的第一个数据项
-      const newArrItem = objClone(arrJsonDataObj[0]);
-      arrJsonDataObj.push(newArrItem);
+      const newArrItem = _arrJsonDataObj[curArrIndex || 0];
+      if (curArrIndex || curArrIndex === 0) {
+        // 先记录插入位置之后的数据
+        const endArr = _arrJsonDataObj.slice(Number(curArrIndex) + 1);
+        const newArrJsonDataObj = [newArrItem, ...endArr];
+        // 删除插入位置之后的数据
+        arrJsonDataObj.splice(Number(curArrIndex) + 1);
+        // 重新插入
+        arrJsonDataObj.push(...newArrJsonDataObj);
+      } else {
+        arrJsonDataObj.push(newArrItem);
+      }
       this.triggerChangeAction(); // 用于主动触发组件更新
       // 3. 触发onChange事件
       this.jsonDataChange();

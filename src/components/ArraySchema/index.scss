@@ -1,52 +1,44 @@
 @charset "utf-8";
 
-.array-content {
-  transition: 0.4s;
-  position: relative;
-  padding: 8px 15px 20px 15px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-
-  // 覆盖antd的默认样式
-  .ant-collapse-content {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+.array-schema-box {
+  .array-add-child-btn {
+    float: right;
+    display: inline-block;
+    line-height: 0;
+    margin: 11px 12px 0 0;
   }
 
-  .array-item-box {
+  .array-content {
+    transition: 0.4s;
     position: relative;
-  }
+    padding: 8px 15px 20px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 
-  .delete-operate-btn {
-    svg {
-      margin-top: 4px;
-      width: 14px;
-      height: 14px;
-      color: #676767;
+    .array-operate-btn {
+      margin: 3px 0 auto 16px;
+      height: 16px;
+      width: auto;
     }
 
-    svg:hover {
-      color: #f5222d;
+    // 覆盖antd的默认样式
+    .ant-collapse-content {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .array-item-box {
+      position: relative;
     }
   }
-}
 
-.array-content.json-view-array {
-  padding: 0;
-  transition: 0.4s;
-}
+  .array-content.json-view-array {
+    padding: 0;
+    transition: 0.4s;
+  }
 
-.array-content.closed {
-  padding: 0;
-  height: 0;
-  overflow: hidden;
-}
-
-.array-operate-btn {
-  cursor: pointer;
-  color: #8c8c8c;
-
-  svg {
-    width: 20px;
-    height: 20px;
+  .array-content.closed {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
   }
 }
