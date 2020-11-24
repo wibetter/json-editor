@@ -274,6 +274,12 @@ export default class JSONEditorStore {
       if (curArrItem !== undefined && exchangeArrItem !== undefined) {
         arrJsonDataObj[curArrIndex] = exchangeArrItem;
         arrJsonDataObj[exchangeArrIndex] = curArrItem;
+        message.success(
+          `原有数据项${curArrIndex + 1}对应的数据内容已${
+            sortAction === 'up' ? '向上' : '向下'
+          }移动一级`,
+          5,
+        );
         // 更新LastInitTime
         this.updateLastTime();
         this.triggerChangeAction(); // 用于主动触发组件更新
