@@ -8,6 +8,8 @@ import {
   DownOutlined,
   InfoCircleOutlined,
   PlusOutlined,
+  ArrowUpOutlined,
+  ArrowDownOutlined,
 } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
@@ -176,6 +178,38 @@ class ArraySchema extends React.PureComponent {
                     key={curKeyRoute}
                     extra={
                       <>
+                        {arrIndex !== 0 && (
+                          <Tooltip title={`向上移动`}>
+                            <ArrowUpOutlined
+                              className="array-operate-btn"
+                              onClick={(event) => {
+                                this.props.sortArrayItem(
+                                  keyRoute,
+                                  arrIndex,
+                                  'up',
+                                );
+                                event.preventDefault();
+                                event.stopPropagation();
+                              }}
+                            />
+                          </Tooltip>
+                        )}
+                        {arrIndex !== curJsonData.length - 1 && (
+                          <Tooltip title={`向下移动`}>
+                            <ArrowDownOutlined
+                              className="array-operate-btn"
+                              onClick={(event) => {
+                                this.props.sortArrayItem(
+                                  keyRoute,
+                                  arrIndex,
+                                  'down',
+                                );
+                                event.preventDefault();
+                                event.stopPropagation();
+                              }}
+                            />
+                          </Tooltip>
+                        )}
                         <Tooltip
                           title={`复制${arrayItemsDataObj.title}/${
                             arrIndex + 1
@@ -273,4 +307,5 @@ export default inject((stores) => ({
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
   addArrayItem: stores.JSONEditorStore.addArrayItem,
+  sortArrayItem: stores.JSONEditorStore.sortArrayItem,
 }))(observer(ArraySchema));

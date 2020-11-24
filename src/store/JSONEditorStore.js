@@ -29,7 +29,7 @@ export default class JSONEditorStore {
   /**
    * 记录当前JSONEditor的更新时间
    */
-  @observable lastInitTime = new Date().getTime();
+  @observable lastUpdateTime = new Date().getTime();
 
   /**
    * jsonData: jsonData数据对象
@@ -76,11 +76,11 @@ export default class JSONEditorStore {
   @observable onChange = () => {}; // 函数类型
 
   /**
-   * 更新lastInitTime
+   * 更新lastUpdateTime
    */
   @action.bound
-  updateLastInitTime() {
-    this.lastInitTime = new Date().getTime();
+  updateLastTime() {
+    this.lastUpdateTime = new Date().getTime();
   }
 
   /**
@@ -105,7 +105,7 @@ export default class JSONEditorStore {
       if (jsonSchema) {
         this.jsonData = schema2json(jsonSchema, jsonData || {});
         // 记录当前初始化的时间
-        this.updateLastInitTime();
+        this.updateLastTime();
       }
     }
   }
@@ -217,7 +217,7 @@ export default class JSONEditorStore {
     const _arrJsonDataObj = toJS(arrJsonDataObj);
     if (isArray(arrJsonDataObj)) {
       // 2. 获取数组的第一个数据项
-      const newArrItem = _arrJsonDataObj[curArrIndex || 0];
+      const newArrItem = _arrJsonDataObj[curArrIndex || 0]; // 复制一个数组项
       if (curArrIndex || curArrIndex === 0) {
         // 先记录插入位置之后的数据
         const endArr = _arrJsonDataObj.slice(Number(curArrIndex) + 1);
@@ -233,7 +233,61 @@ export default class JSONEditorStore {
       // 3. 触发onChange事件
       this.jsonDataChange();
     } else {
-      message.warning('数据操作异常：当前数据不是数组类型。');
+      message.warning('数据操作异常：当前元素不是数组类型。');
+    }
+  }
+
+  /**
+   * 移动指定数据项顺序
+   * keyRoute：根据key索引路径值(keyRoute)查找当前数组元素
+   * curArrIndex：当前需要移动位置的数组项位置
+   * sortAction：
+   * */
+  @action.bound
+  sortArrayItem(keyRoute, curArrIndex, sortAction) {
+    // 1. 获取数组数据对象
+    const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    const _arrJsonDataObj = toJS(arrJsonDataObj);
+    if (isArray(_arrJsonDataObj)) {
+      const curArrItem = objClone(_arrJsonDataObj[curArrIndex || 0]); // 2. 获取当前数组项
+      let exchangeArrIndex = curArrIndex;
+      if (sortAction === 'up' && exchangeArrIndex > 0) {
+        // 向上移动
+        exchangeArrIndex -= 1;
+      } else if (sortAction === 'up' && exchangeArrIndex === 0) {
+        message.warning('数据操作异常：当前数组项已经是第一个元素了。');
+        return;
+      } else if (sortAction === 'down' || !sortAction) {
+        // 默认向下移动
+        exchangeArrIndex += 1;
+        if (
+          sortAction === 'down' &&
+          exchangeArrIndex > _arrJsonDataObj.length - 1
+        ) {
+          message.warning('数据操作异常：当前数组项已经是最后一个元素了。');
+          return;
+        }
+      }
+      const exchangeArrItem = objClone(_arrJsonDataObj[exchangeArrIndex]); // 3. 获取互换数组项
+      // 2. 获取数组的第一个数据项
+
+      if (curArrItem !== undefined && exchangeArrItem !== undefined) {
+        arrJsonDataObj[curArrIndex] = exchangeArrItem;
+        arrJsonDataObj[exchangeArrIndex] = curArrItem;
+        message.success(
+          `原有数据项${curArrIndex + 1}对应的数据内容已${
+            sortAction === 'up' ? '向上' : '向下'
+          }移动一级`,
+          5,
+        );
+        // 更新LastInitTime
+        this.updateLastTime();
+        this.triggerChangeAction(); // 用于主动触发组件更新
+        // 4. 触发onChange事件
+        this.jsonDataChange();
+      }
+    } else {
+      message.warning('数据操作异常：当前元素不是数组类型。');
     }
   }
 }
