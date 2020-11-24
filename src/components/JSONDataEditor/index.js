@@ -100,7 +100,7 @@ class JSONDataEditor extends React.PureComponent {
   };
 
   render() {
-    const { jsonSchema, lastUpdateTime, lastInitTime } = this.props;
+    const { jsonSchema, lastUpdateTime, jsonLastUpdateTime } = this.props;
     const { jsonView } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isEmptyConfig = isEmptyWidgetSchema(jsonSchema); // 判断是否是空的区块配置schema
@@ -144,7 +144,7 @@ class JSONDataEditor extends React.PureComponent {
                         );
 
                         /** 5. 获取当前元素的id，用于做唯一标识 */
-                        const nodeKey = `${lastUpdateTime}-${lastInitTime}-${currentFormat}-${currentJsonKey}`;
+                        const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${currentFormat}-${currentJsonKey}`;
 
                         if (
                           currentSchemaData.propertyOrder &&
@@ -204,7 +204,7 @@ class JSONDataEditor extends React.PureComponent {
 export default inject((stores) => ({
   jsonSchema: stores.JSONSchemaStore.jsonSchema,
   lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
-  lastInitTime: stores.JSONEditorStore.lastInitTime,
+  jsonLastUpdateTime: stores.JSONEditorStore.lastUpdateTime,
   initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
   JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
   initJSONData: stores.JSONEditorStore.initJSONData,
