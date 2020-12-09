@@ -1,6 +1,6 @@
 import React from 'react';
 import { getCurrentFormat } from '@wibetter/json-utils';
-import ArraySchema from '$components/ArraySchema/index';
+import ArraySchema from '$components/ArraySchemaV2/index'; // 使用新版ArraySchema
 import ObjectSchema from '$components/ObjectSchema/index';
 import DataSourceSchema from '$components/DataSourceSchema/index';
 import DynamicDataSchema from '$components/DynamicDataSchema/index';

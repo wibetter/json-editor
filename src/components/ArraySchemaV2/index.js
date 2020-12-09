@@ -21,9 +21,10 @@ import deleteIcon from '$assets/img/delete.svg';
 import addElemIcon from '$assets/img/addElem.svg';
 
 /**
+ * 新版数组类型 v2.0
  * 数组类型：用于展示数组类型的配置字段
- * 功能点：上下移动子项、新增子项、复制子项、删除子项、折叠、源码模式切换
- * 展示：以折叠面板形式展示
+ * 功能点：拖拽排序【新增】、上下移动子项、新增子项、复制子项、删除子项、折叠、源码模式切换
+ * 展示：以折叠面板形式展示【新版UI】
  */
 
 class ArraySchema extends React.PureComponent {
@@ -42,10 +43,13 @@ class ArraySchema extends React.PureComponent {
     this.state = {
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
+      hoverIndex: '', // 记录当前处于hover中的数据项
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.addArrayItem = this.addArrayItem.bind(this);
     this.deleteArrItem = this.deleteArrItem.bind(this);
+    this.elemHoverEnterEvent = this.elemHoverEnterEvent.bind(this);
+    this.elemHoverLeaveEvent = this.elemHoverLeaveEvent.bind(this);
   }
 
   componentWillMount() {
@@ -80,6 +84,33 @@ class ArraySchema extends React.PureComponent {
     }
   };
 
+  /**
+   * 各类元素的onMouseEnter事件
+   */
+  elemHoverEnterEvent = (event, currentIndex) => {
+    event.stopPropagation();
+
+    // 当前元素没有在选中态，且不是上一次hover态的元素
+    if (currentIndex !== this.state.hoverIndex) {
+      this.setState({
+        hoverIndex: currentIndex,
+      });
+    }
+  };
+
+  /**
+   * 各类元素的onMouseLeave事件
+   */
+  elemHoverLeaveEvent = (event, currentIndex) => {
+    event.stopPropagation();
+    // 当前元素没有在选中态，且不是上一次hover态的元素
+    if (currentIndex === this.state.hoverIndex) {
+      this.setState({
+        hoverIndex: '',
+      });
+    }
+  };
+
   render() {
     const {
       keyRoute,
@@ -89,7 +120,7 @@ class ArraySchema extends React.PureComponent {
       targetJsonData,
       getJSONDataByKeyRoute,
     } = this.props;
-    const { jsonView, isClosed } = this.state;
+    const { jsonView, isClosed, hoverIndex } = this.state;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -180,98 +211,112 @@ class ArraySchema extends React.PureComponent {
                   : `${arrIndex}`;
                 return (
                   <Panel
-                    header={`${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                    header={
+                      <div
+                        className="array-item-header"
+                        onMouseMove={(event) => {
+                          this.elemHoverEnterEvent(event, arrIndex);
+                        }}
+                        onMouseLeave={(event) => {
+                          this.elemHoverLeaveEvent(event, arrIndex);
+                        }}
+                      >
+                        {`${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                      </div>
+                    }
                     key={curKeyRoute}
                     extra={
-                      <>
-                        {arrIndex !== 0 && (
-                          <Tooltip title={`向上移动`}>
-                            <ArrowUpOutlined
-                              className="array-operate-btn"
-                              onClick={(event) => {
-                                this.props.sortArrayItem(
-                                  keyRoute,
-                                  arrIndex,
-                                  'up',
-                                );
-                                event.preventDefault();
-                                event.stopPropagation();
-                              }}
-                            />
-                          </Tooltip>
-                        )}
-                        {arrIndex !== curJsonData.length - 1 && (
-                          <Tooltip title={`向下移动`}>
-                            <ArrowDownOutlined
-                              className="array-operate-btn"
-                              onClick={(event) => {
-                                this.props.sortArrayItem(
-                                  keyRoute,
-                                  arrIndex,
-                                  'down',
-                                );
-                                event.preventDefault();
-                                event.stopPropagation();
-                              }}
-                            />
-                          </Tooltip>
-                        )}
-                        <Tooltip
-                          title={`复制${arrayItemsDataObj.title}/${
-                            arrIndex + 1
-                          }`}
-                        >
-                          <img
-                            src={addElemIcon}
-                            className="array-operate-btn"
-                            onClick={(event) => {
-                              this.addArrayItem(
-                                keyRoute,
-                                curJsonData,
-                                arrIndex,
-                              ); // curArrIndex
-                              event.preventDefault();
-                              event.stopPropagation();
-                            }}
-                          />
-                        </Tooltip>
-                        <Tooltip
-                          title={`删除${arrayItemsDataObj.title}/${
-                            arrIndex + 1
-                          }`}
-                        >
-                          <Popconfirm
-                            placement="top"
-                            title={`确定要删除${arrayItemsDataObj.title}/${
+                      hoverIndex === arrIndex && (
+                        <>
+                          {arrIndex !== 0 && (
+                            <Tooltip title={`向上移动`}>
+                              <ArrowUpOutlined
+                                className="array-operate-btn"
+                                onClick={(event) => {
+                                  this.props.sortArrayItem(
+                                    keyRoute,
+                                    arrIndex,
+                                    'up',
+                                  );
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                }}
+                              />
+                            </Tooltip>
+                          )}
+                          {arrIndex !== curJsonData.length - 1 && (
+                            <Tooltip title={`向下移动`}>
+                              <ArrowDownOutlined
+                                className="array-operate-btn"
+                                onClick={(event) => {
+                                  this.props.sortArrayItem(
+                                    keyRoute,
+                                    arrIndex,
+                                    'down',
+                                  );
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                }}
+                              />
+                            </Tooltip>
+                          )}
+                          <Tooltip
+                            title={`复制${arrayItemsDataObj.title}/${
                               arrIndex + 1
-                            }吗？`}
-                            onCancel={(event) => {
-                              event.preventDefault();
-                              event.stopPropagation();
-                            }}
-                            onConfirm={(event) => {
-                              this.deleteArrItem(
-                                keyRoute,
-                                arrIndex,
-                                curJsonData,
-                              );
-                              event.preventDefault();
-                              event.stopPropagation();
-                            }}
-                            okText="确定"
-                            cancelText="取消"
+                            }`}
                           >
                             <img
-                              src={deleteIcon}
-                              className="delete-operate-btn array-operate-btn"
+                              src={addElemIcon}
+                              className="array-operate-btn"
                               onClick={(event) => {
+                                this.addArrayItem(
+                                  keyRoute,
+                                  curJsonData,
+                                  arrIndex,
+                                ); // curArrIndex
                                 event.preventDefault();
                                 event.stopPropagation();
                               }}
                             />
-                          </Popconfirm>
-                        </Tooltip>
-                      </>
+                          </Tooltip>
+                          <Tooltip
+                            title={`删除${arrayItemsDataObj.title}/${
+                              arrIndex + 1
+                            }`}
+                          >
+                            <Popconfirm
+                              placement="top"
+                              title={`确定要删除${arrayItemsDataObj.title}/${
+                                arrIndex + 1
+                              }吗？`}
+                              onCancel={(event) => {
+                                event.preventDefault();
+                                event.stopPropagation();
+                              }}
+                              onConfirm={(event) => {
+                                this.deleteArrItem(
+                                  keyRoute,
+                                  arrIndex,
+                                  curJsonData,
+                                );
+                                event.preventDefault();
+                                event.stopPropagation();
+                              }}
+                              okText="确定"
+                              cancelText="取消"
+                            >
+                              <img
+                                src={deleteIcon}
+                                className="delete-operate-btn array-operate-btn"
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                }}
+                              />
+                            </Popconfirm>
+                          </Tooltip>
+                        </>
+                      )
                     }
                   >
                     <div
