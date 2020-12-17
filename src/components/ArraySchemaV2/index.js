@@ -14,6 +14,7 @@ import {
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
 import { isArray } from '$utils/index';
+import { isString } from '$utils/typeof';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
@@ -41,7 +42,7 @@ class ArraySchema extends React.PureComponent {
     super(props);
 
     this.state = {
-      currentActiveArrIndex: 0, // 记录当前展开的数组项，默认展开第一个数组项
+      currentActiveArrIndex: -1, // 记录当前展开的数组项，默认展开第一个数组项
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
       hoverIndex: '', // 记录当前处于hover中的数据项
@@ -112,6 +113,23 @@ class ArraySchema extends React.PureComponent {
     }
   };
 
+  /**
+   * 获取当前数组项的Title：数组项默认使用其第一个非空子项的数值作为title
+   */
+  getArrItemTitle = (arrItem) => {
+    if (arrItem) {
+      const arrItemKeys = Object.keys(arrItem);
+      for (let index = 0, size = arrItemKeys.length; index < size; index++) {
+        const itemVal = arrItem[arrItemKeys[index]];
+        // 只有不为空时才赋值
+        if (itemVal && isString(itemVal)) {
+          return itemVal;
+        }
+      }
+    }
+    return '';
+  };
+
   render() {
     const {
       keyRoute,
@@ -129,8 +147,8 @@ class ArraySchema extends React.PureComponent {
     } = this.state;
     const currentFormat = getCurrentFormat(targetJsonData);
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const arrayItemsDataObj = targetJsonData.items;
+    const curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
+    const arrayItemsDataObj = targetJsonData.items; // schema数据
 
     return (
       <div className="array-schema-box" key={nodeKey} id={nodeKey}>
@@ -208,6 +226,7 @@ class ArraySchema extends React.PureComponent {
               const curKeyRoute = keyRoute
                 ? `${keyRoute}-${arrIndex}`
                 : `${arrIndex}`;
+              const arrTitle = this.getArrItemTitle(arrItem); // 获取数组项第一个非空元素的值
               return (
                 <div className="array-item" key={curKeyRoute}>
                   <div
@@ -225,13 +244,58 @@ class ArraySchema extends React.PureComponent {
                       this.elemHoverLeaveEvent(event, arrIndex);
                     }}
                   >
-                    {`${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                    {arrTitle
+                      ? arrTitle
+                      : `${arrayItemsDataObj.title}/${arrIndex + 1}`}
                     <>
                       {currentActiveArrIndex !== arrIndex ? (
                         <RightOutlined className="close-operate-btn array-operate-btn" />
                       ) : (
                         <DownOutlined className="close-operate-btn array-operate-btn" />
                       )}
+                      <Tooltip
+                        title={`删除${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                      >
+                        <Popconfirm
+                          placement="top"
+                          title={`确定要删除${arrayItemsDataObj.title}/${
+                            arrIndex + 1
+                          }吗？`}
+                          onCancel={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                          onConfirm={(event) => {
+                            this.deleteArrItem(keyRoute, arrIndex, curJsonData);
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                          okText="确定"
+                          cancelText="取消"
+                        >
+                          <img
+                            src={deleteIcon}
+                            className="delete-operate-btn array-operate-btn"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                            }}
+                          />
+                        </Popconfirm>
+                      </Tooltip>
+                      <Tooltip
+                        title={`复制${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                      >
+                        <img
+                          src={addElemIcon}
+                          className="array-operate-btn"
+                          onClick={(event) => {
+                            this.addArrayItem(keyRoute, curJsonData, arrIndex); // curArrIndex
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }}
+                        />
+                      </Tooltip>
                       {arrIndex !== 0 && (
                         <Tooltip title={`向上移动`}>
                           <ArrowUpOutlined
@@ -264,49 +328,6 @@ class ArraySchema extends React.PureComponent {
                           />
                         </Tooltip>
                       )}
-                      <Tooltip
-                        title={`复制${arrayItemsDataObj.title}/${arrIndex + 1}`}
-                      >
-                        <img
-                          src={addElemIcon}
-                          className="array-operate-btn"
-                          onClick={(event) => {
-                            this.addArrayItem(keyRoute, curJsonData, arrIndex); // curArrIndex
-                            event.preventDefault();
-                            event.stopPropagation();
-                          }}
-                        />
-                      </Tooltip>
-                      <Tooltip
-                        title={`删除${arrayItemsDataObj.title}/${arrIndex + 1}`}
-                      >
-                        <Popconfirm
-                          placement="top"
-                          title={`确定要删除${arrayItemsDataObj.title}/${
-                            arrIndex + 1
-                          }吗？`}
-                          onCancel={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-                          }}
-                          onConfirm={(event) => {
-                            this.deleteArrItem(keyRoute, arrIndex, curJsonData);
-                            event.preventDefault();
-                            event.stopPropagation();
-                          }}
-                          okText="确定"
-                          cancelText="取消"
-                        >
-                          <img
-                            src={deleteIcon}
-                            className="delete-operate-btn array-operate-btn"
-                            onClick={(event) => {
-                              event.preventDefault();
-                              event.stopPropagation();
-                            }}
-                          />
-                        </Popconfirm>
-                      </Tooltip>
                     </>
                   </div>
                   <div
