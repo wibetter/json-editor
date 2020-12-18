@@ -54,6 +54,15 @@
         color: rgba(35, 35, 33, 1);
         background: rgba(245, 246, 250, 1);
 
+        .array-title-text {
+          float: left;
+          width: 100%;
+          max-width: 160px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
         .array-operate-btn {
           float: right;
           margin-top: 12px;
@@ -78,6 +87,7 @@
       /* 数组项内容区 */
       .array-item-content {
         position: relative;
+        width: 100%;
         padding: 12px 15px;
         background-color: #fff;
         box-sizing: border-box;

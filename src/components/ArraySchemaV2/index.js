@@ -244,9 +244,11 @@ class ArraySchema extends React.PureComponent {
                       this.elemHoverLeaveEvent(event, arrIndex);
                     }}
                   >
-                    {arrTitle
-                      ? arrTitle
-                      : `${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                    <div className="array-title-text">
+                      {arrTitle
+                        ? arrTitle
+                        : `${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                    </div>
                     <>
                       {currentActiveArrIndex !== arrIndex ? (
                         <RightOutlined className="close-operate-btn array-operate-btn" />
