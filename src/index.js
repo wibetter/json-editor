@@ -1412,7 +1412,7 @@ class IndexDemo extends React.PureComponent {
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
       }, // 用于区块配置的schema  显示  / update  ok
-      jsonData1: {
+      jsonData: {
         func: {
           field_1: 'text1',
           field_2: true,

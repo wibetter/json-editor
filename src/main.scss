@@ -187,7 +187,7 @@
   // CodeArea类型组件：设置最小和最大宽度
   .code-area-item {
     min-width: 230px;
-    max-width: 600px;
+    // max-width: 600px; // 去除最大宽度限制
   }
 
   // CodeArea类型组件格式错误提示相关的样式

@@ -20,6 +20,12 @@ import './index.scss';
 import deleteIcon from '$assets/img/delete.svg';
 import addElemIcon from '$assets/img/addElem.svg';
 
+/**
+ * 数组类型：用于展示数组类型的配置字段
+ * 功能点：上下移动子项、新增子项、复制子项、删除子项、折叠、源码模式切换
+ * 展示：以折叠面板形式展示
+ */
+
 class ArraySchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
