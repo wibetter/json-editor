@@ -58,7 +58,7 @@ class TextAreaFormSchema extends React.PureComponent {
       <div
         className={
           pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
+            ? 'wide-screen-element-warp container-warp'
             : 'mobile-screen-element-warp'
         }
         key={nodeKey}
