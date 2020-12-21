@@ -75,9 +75,9 @@ class HtmlAreaFormSchema extends React.PureComponent {
       <div
         className={`${
           pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
+            ? 'wide-screen-element-warp container-warp'
             : 'mobile-screen-element-warp'
-        }  element-title-card-warp`}
+        }`}
         key={nodeKey}
         id={nodeKey}
       >
@@ -85,24 +85,34 @@ class HtmlAreaFormSchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <span
-            className="title-text"
+          {/*宽屏模式：Title hover时显示描述信息*/}
+          <Tooltip
             title={
-              pageScreen === 'wideScreen' &&
-              targetJsonData.title.length > (readOnly ? 4 : 6)
-                ? targetJsonData.title
-                : ''
+              pageScreen === 'wideScreen' ? targetJsonData.description : ''
             }
+            placement="top"
           >
-            {targetJsonData.title}
-          </span>
-          {targetJsonData.description && (
+            <span
+              className="title-text"
+              title={
+                pageScreen === 'wideScreen' &&
+                targetJsonData.title &&
+                targetJsonData.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonData.title
+                  : ''
+              }
+            >
+              {targetJsonData.title}
+            </span>
+          </Tooltip>
+          {/*小屏模式*/}
+          {pageScreen === 'mobileScreen' && targetJsonData.description && (
             <Tooltip title={targetJsonData.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
         </div>
-        <div className="content-item object-content">
+        <div className="content-item">
           {isShowWarn && (
             <div className="warning-box code-area-item">
               <div className="warning-img">X</div>
