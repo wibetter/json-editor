@@ -77,9 +77,9 @@ class JsonFormSchema extends React.PureComponent {
       <div
         className={`${
           pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
+            ? 'wide-screen-element-warp container-warp'
             : 'mobile-screen-element-warp'
-        }  element-title-card-warp`}
+        }`}
         key={nodeKey}
         id={nodeKey}
       >
@@ -104,7 +104,7 @@ class JsonFormSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item object-content">
+        <div className="content-item">
           {isShowWarn && (
             <div className="warning-box code-area-item">
               <div className="warning-img">X</div>

@@ -124,6 +124,37 @@
     }
   }
 
+  /*
+    特殊类型组件在通栏模式下以通栏布局模式展示(优先级比element-title-card-warp高)
+    比如：image、textarea
+   */
+  .wide-screen-element-warp.container-warp {
+    position: relative;
+    line-height: 38px;
+    box-sizing: border-box;
+    min-width: 380px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    > .element-title {
+      flex: 0 1 120px;
+      word-break: keep-all;
+      max-width: 120px;
+      margin-right: 12px;
+      padding-left: 12px;
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    > .content-item {
+      flex: 1 1 200px;
+    }
+  }
+
   // 对象类型盒子样式（容器类型）：将子元素放置在带边框的盒子中
   .object-content {
     display: block;

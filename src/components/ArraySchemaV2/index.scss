@@ -48,38 +48,45 @@
         height: 40px;
         line-height: 40px;
         box-sizing: border-box;
-        padding: 0 15px;
+        padding: 0 12px 0 15px;
         font-family: PingFangSC-Regular;
         font-size: 14px;
         color: rgba(35, 35, 33, 1);
         background: rgba(245, 246, 250, 1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
 
         .array-title-text {
-          float: left;
+          flex: 1 1 auto;
+          text-align: left;
           width: 100%;
-          max-width: 160px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
 
-        .array-operate-btn {
-          float: right;
-          margin-top: 12px;
-          margin-left: 12px;
-          height: 16px;
-          width: auto;
-          cursor: pointer;
+        .array-operate-box {
+          flex: 0 0 120px;
+          text-align: right;
           visibility: hidden;
           transition: all 200ms ease;
-        }
 
-        .close-operate-btn {
-          visibility: visible;
+          .array-operate-btn {
+            float: right;
+            margin-left: 8px;
+            height: 16px;
+            cursor: pointer;
+          }
+
+          .close-operate-btn {
+            visibility: visible;
+          }
         }
 
         /* hover时才展示操作按钮 */
-        &:hover .array-operate-btn {
+        &:hover .array-operate-box {
           visibility: visible;
         }
       }
@@ -120,5 +127,12 @@
     padding: 0;
     height: 0;
     overflow: hidden;
+  }
+}
+
+/* 小屏模式 */
+.mobile-screen-view {
+  .array-title-text {
+    max-width: 160px; // 320px - 40px - 120px
   }
 }

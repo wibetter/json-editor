@@ -151,7 +151,15 @@ class ArraySchema extends React.PureComponent {
     const arrayItemsDataObj = targetJsonData.items; // schema数据
 
     return (
-      <div className="array-schema-box" key={nodeKey} id={nodeKey}>
+      <div
+        className={`array-schema-box ${
+          pageScreen === 'wideScreen'
+            ? 'wide-screen-view'
+            : 'mobile-screen-view'
+        }`}
+        key={nodeKey}
+        id={nodeKey}
+      >
         <div
           className="element-title"
           onClick={(event) => {
@@ -249,7 +257,7 @@ class ArraySchema extends React.PureComponent {
                         ? arrTitle
                         : `${arrayItemsDataObj.title}/${arrIndex + 1}`}
                     </div>
-                    <>
+                    <div className="array-operate-box">
                       {currentActiveArrIndex !== arrIndex ? (
                         <RightOutlined className="close-operate-btn array-operate-btn" />
                       ) : (
@@ -330,7 +338,7 @@ class ArraySchema extends React.PureComponent {
                           />
                         </Tooltip>
                       )}
-                    </>
+                    </div>
                   </div>
                   <div
                     className={`array-item-content ${
