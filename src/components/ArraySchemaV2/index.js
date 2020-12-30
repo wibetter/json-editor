@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { message, Tooltip, Popconfirm } from 'antd'; // Collapse,
-// const { Panel } = Collapse;
+import { message, Tooltip, Popconfirm } from 'antd';
 import {
   RightOutlined,
   DownOutlined,
@@ -13,7 +12,16 @@ import {
 } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
-import { isArray, isString } from '$utils/typeof';
+import {
+  isArray,
+  isString,
+  isURL,
+  isColor,
+  isNumber,
+  isDateStr,
+  isDateTimeStr,
+  isTimeStr,
+} from '$utils/typeof';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
@@ -120,8 +128,12 @@ class ArraySchema extends React.PureComponent {
       const arrItemKeys = Object.keys(arrItem);
       for (let index = 0, size = arrItemKeys.length; index < size; index++) {
         const itemVal = arrItem[arrItemKeys[index]];
-        // 只有不为空时才赋值
-        if (itemVal && isString(itemVal)) {
+        // 只有不为空时才赋值（忽略URL类型数值）
+        if (
+          itemVal &&
+          (isNumber(itemVal) ||
+            (isString(itemVal) && !isURL(itemVal) && !isColor(itemVal)))
+        ) {
           return itemVal;
         }
       }
