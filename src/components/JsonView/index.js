@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject, isArray } from '$utils/index';
+import { isObject, isArray } from '$utils/typeof';
 import './index.scss';
 
 class JsonView extends React.PureComponent {

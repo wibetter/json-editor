@@ -13,8 +13,7 @@ import {
 } from '@ant-design/icons';
 import ObjectSchema from '$components/ObjectSchema/index';
 import JsonView from '$components/JsonView/index';
-import { isArray } from '$utils/index';
-import { isString } from '$utils/typeof';
+import { isArray, isString } from '$utils/typeof';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';

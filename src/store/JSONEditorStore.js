@@ -5,7 +5,8 @@ import {
   getJsonDataByKeyRoute,
   getParentKeyRoute_CurKey,
 } from '@wibetter/json-utils';
-import { isEqual, objClone, isArray, isFunction } from '$utils/index';
+import { isEqual, objClone } from '$utils/index';
+import { isArray, isFunction } from '$utils/typeof';
 
 /**
  * 用于管控JSON数据内容的全局store

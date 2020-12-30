@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Radio, Select, Tooltip } from 'antd';
+import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$components/JsonFormSchema/index';

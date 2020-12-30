@@ -5,7 +5,8 @@ import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { isObject, isArray, exitPropertie } from '$utils/index';
+import { exitPropertie } from '$utils/index';
+import { isObject, isArray } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
 

@@ -98,40 +98,6 @@ export function isFirstSchemaElem(elemClassName) {
   }
   return isFirstSchema;
 }
-
-/**
- *  判断是否是数组类型
- * */
-export function isArray(curObj) {
-  let isArray = false;
-  if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Array') {
-    isArray = true;
-  }
-  return isArray;
-}
-
-/**
- *  判断是否是对象类型
- * */
-export function isObject(curObj) {
-  let isObject = false;
-  if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Object') {
-    isObject = true;
-  }
-  return isObject;
-}
-
-/**
- *  判断是否是函数类型
- * */
-export function isFunction(curObj) {
-  let isFunction = false;
-  if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Function') {
-    isFunction = true;
-  }
-  return isFunction;
-}
-
 /**
  * 获取当前url中的所有参数
  */
