@@ -12,7 +12,12 @@
   }
 
   .content-item {
+    box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .bf-container {
+      width: 100%;
+    }
 
     .bf-controlbar {
       // height: 100px;
@@ -21,7 +26,7 @@
 
     .bf-content {
       height: auto;
-      max-height: 500px;
+      max-height: 300px;
       padding-bottom: 10px;
       overflow: auto;
       font-size: 16px;
@@ -30,7 +35,7 @@
 
   .content-item.closed {
     padding: 0;
-    height: 50px;
+    height: 46px;
     box-sizing: border-box;
     overflow: hidden;
   }

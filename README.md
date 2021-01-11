@@ -10,7 +10,7 @@
 1. 弹性布局
 2. 提供大屏和小屏两种展示模式
 3. 支持11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
-4. 支持9个特殊类型组件（object、array、json、datasource、dynamic-data、event、codearea、htmlarea、quantity）
+4. 支持10个特殊类型组件（object、array、json、datasource、dynamic-data、event、codearea、htmlarea、text-editor、quantity）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 
 ![image](https://user-images.githubusercontent.com/11958920/104156633-7eedc680-5424-11eb-9972-2e8613bd5460.png)

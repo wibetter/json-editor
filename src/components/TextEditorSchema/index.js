@@ -28,6 +28,43 @@ class TextEditorSchema extends React.PureComponent {
     super(props);
     this.state = {
       isClosed: true, // 是否为关闭状态，默认是关闭状态
+      allControls: [
+        'undo',
+        'redo',
+        'separator',
+        'font-size',
+        'line-height',
+        'letter-spacing',
+        'separator',
+        'text-color',
+        'bold',
+        'italic',
+        'underline',
+        'strike-through',
+        'separator',
+        'superscript',
+        'subscript',
+        'remove-styles',
+        'emoji',
+        'separator',
+        'text-indent',
+        'text-align',
+        'separator',
+        'headings',
+        'list-ul',
+        'list-ol',
+        'blockquote',
+        'code',
+        'separator',
+        'media',
+        'link',
+        'separator',
+        'hr',
+        'clear',
+        'separator',
+        'fullscreen',
+      ],
+      baseControls: ['font-size', 'text-color', 'bold', 'italic'],
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleEditorChange = this.handleEditorChange.bind(this);
@@ -111,13 +148,19 @@ class TextEditorSchema extends React.PureComponent {
           <div className="form-item-box">
             <BraftEditor
               key={`${nodeKey}-textEditor`}
+              controls={
+                pageScreen === 'wideScreen'
+                  ? this.state.allControls
+                  : this.state.baseControls
+              } // allControls baseControls
               defaultValue={editorState}
               readOnly={readOnly}
               placeholder={
                 targetJsonData.placeholder || `请输入${targetJsonData.title}`
               }
+              lineHeights={[1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4]}
               onChange={this.handleEditorChange}
-              onSave={this.handleEditorChange}
+              onSave={this.handleEditorChange} // 在编辑器获得焦点时按下ctrl+s会执行此方法
             />
           </div>
         </div>
