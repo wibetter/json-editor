@@ -10,6 +10,7 @@ import RadioSchema from '$components/RadioSchema/index';
 import SelectSchema from '$components/SelectSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
 import TextAreaFormSchema from '$components/TextAreaFormSchema/index';
+import TextEditorSchema from '$components/TextEditorSchema/index';
 import NumberFormSchema from '$components/NumberFormSchema/index';
 import BooleanFormSchema from '$components/BooleanFormSchema/index';
 import DateTimeFormSchema from '$components/DateTimeFormSchema/index';
@@ -58,6 +59,9 @@ const MappingRender = (props) => {
       break;
     case 'textarea':
       return <TextAreaFormSchema {...props} key={nodeKey} />;
+      break;
+    case 'text-editor':
+      return <TextEditorSchema {...props} key={nodeKey} />;
       break;
     case 'number':
       return <NumberFormSchema {...props} key={nodeKey} />;

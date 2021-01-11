@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.text-editor-box {
+  position: relative;
+
+  .element-title {
+    cursor: pointer;
+
+    > .close-operate-btn {
+      margin-right: 0 !important;
+    }
+  }
+
+  .content-item {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .bf-controlbar {
+      // height: 100px;
+      // overflow-y: auto;
+    }
+
+    .bf-content {
+      height: auto;
+      max-height: 500px;
+      padding-bottom: 10px;
+      overflow: auto;
+      font-size: 16px;
+    }
+  }
+
+  .content-item.closed {
+    padding: 0;
+    height: 50px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}
