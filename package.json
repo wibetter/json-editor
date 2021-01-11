@@ -47,11 +47,11 @@
     "react": "^16.8.6",
     "react-ace": "^9.1.1",
     "react-dom": "^16.8.6",
-    "@wibetter/json-schema-editor": "^3.3.21",
-    "@wibetter/json-utils": "^1.2.19"
+    "@wibetter/json-schema-editor": "^3.4.11",
+    "@wibetter/json-utils": "^1.2.20"
   },
   "devDependencies": {
-    "akfun": "^1.5.7",
+    "akfun": "^1.5.9",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
     "husky": "^4.2.5",
