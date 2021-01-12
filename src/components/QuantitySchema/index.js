@@ -12,7 +12,7 @@ class QuantitySchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -45,19 +45,19 @@ class QuantitySchema extends React.PureComponent {
     const {
       keyRoute,
       nodeKey,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     /** 获取quantity中的数值对象（默认第一个就是数值对象） */
-    const unitJsonKey = targetJsonData.propertyOrder[0];
-    const unitJsonSchema = targetJsonData.properties[unitJsonKey];
+    const unitJsonKey = targetJsonSchema.propertyOrder[0];
+    const unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
     const unitText = curJsonData.quantity;
     const unitAfter = <span>{unitText === 'percent' ? '%' : unitText}</span>;
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonData.format); // 是否需要设置成两栏布局
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
 
     return (
       <div
@@ -75,17 +75,17 @@ class QuantitySchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
               title={
                 (isNeedTwoCol || pageScreen === 'wideScreen') &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
         </div>
@@ -97,9 +97,9 @@ class QuantitySchema extends React.PureComponent {
               disabled={readOnly}
               placeholder={
                 unitJsonSchema.placeholder ||
-                targetJsonData.placeholder ||
+                targetJsonSchema.placeholder ||
                 `请输入${unitJsonSchema.title}` ||
-                `请输入${targetJsonData.title}`
+                `请输入${targetJsonSchema.title}`
               }
               defaultValue={curJsonData.unit || unitJsonSchema.default}
               onPressEnter={this.handleValueChange}

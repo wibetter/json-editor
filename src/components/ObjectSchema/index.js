@@ -22,7 +22,7 @@ class ObjectSchema extends React.PureComponent {
     indexRoute: PropTypes.any,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -51,12 +51,12 @@ class ObjectSchema extends React.PureComponent {
       indexRoute,
       nodeKey,
       keyRoute,
-      targetJsonData,
+      targetJsonSchema,
       isArrayItem,
       arrIndex,
     } = this.props;
     const { jsonView, isClosed } = this.state;
-    const curFormat = getCurrentFormat(targetJsonData);
+    const curFormat = getCurrentFormat(targetJsonSchema);
     // 判断是否是一级字段类型，如果是则不显示Title，避免重复的title
     const isFirstSchema = isFirstSchemaData(curFormat);
 
@@ -77,9 +77,9 @@ class ObjectSchema extends React.PureComponent {
               event.stopPropagation();
             }}
           >
-            <span className="title-text">{targetJsonData.title}</span>
-            {targetJsonData.description && (
-              <Tooltip title={targetJsonData.description} placement="top">
+            <span className="title-text">{targetJsonSchema.title}</span>
+            {targetJsonSchema.description && (
+              <Tooltip title={targetJsonSchema.description} placement="top">
                 <InfoCircleOutlined className="info-icon" />
               </Tooltip>
             )}
@@ -126,8 +126,8 @@ class ObjectSchema extends React.PureComponent {
           } ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}
         >
           {!jsonView &&
-            targetJsonData.propertyOrder &&
-            targetJsonData.propertyOrder.map((key, index) => {
+            targetJsonSchema.propertyOrder &&
+            targetJsonSchema.propertyOrder.map((key, index) => {
               /** 1. 获取当前元素的路径值 */
               const currentIndexRoute = indexRoute
                 ? `${indexRoute}-${index}`
@@ -139,7 +139,7 @@ class ObjectSchema extends React.PureComponent {
               const currentJsonKey = key;
               /** 3. 获取当前元素的json结构对象 */
               const currentSchemaData =
-                targetJsonData.properties[currentJsonKey];
+                targetJsonSchema.properties[currentJsonKey];
               /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
               const currentFormat = getCurrentFormat(currentSchemaData);
               /** 5. 获取当前元素的id，用于做唯一标识 */
@@ -151,7 +151,7 @@ class ObjectSchema extends React.PureComponent {
                 indexRoute: currentIndexRoute,
                 keyRoute: currentKeyRoute,
                 nodeKey: childNodeKey,
-                targetJsonData: currentSchemaData,
+                targetJsonSchema: currentSchemaData,
               });
             })}
           {jsonView && <JsonView {...this.props} />}

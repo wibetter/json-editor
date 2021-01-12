@@ -23,7 +23,7 @@ class DynamicDataSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
     dynamicDataList: PropTypes.array,
     dynamicDataObj: PropTypes.object,
     dynamicDataApiScopeList: PropTypes.object,
@@ -136,7 +136,7 @@ class DynamicDataSchema extends React.PureComponent {
       keyRoute,
       nodeKey,
       indexRoute,
-      targetJsonData,
+      targetJsonSchema,
       dynamicDataList,
       dynamicDataObj,
       dynamicDataApiScopeList,
@@ -144,12 +144,12 @@ class DynamicDataSchema extends React.PureComponent {
       pageScreen,
     } = this.props;
     const { isShowFilter } = this.state;
-    const currentFormat = getCurrentFormat(targetJsonData);
+    const currentFormat = getCurrentFormat(targetJsonSchema);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
     // 获取DataSource中各类数据对象
-    const typeDataObj = targetJsonData.properties.type || {}; // type中记录了数据源类型：local or remote// 获取当前数据源类型
+    const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote// 获取当前数据源类型
     const dataType = curJsonData.type || typeDataObj.default; // local or remote
 
     const configDataObj = curJsonData.config || {}; // 接口数据请求配置对象
@@ -165,7 +165,7 @@ class DynamicDataSchema extends React.PureComponent {
       }
     }
     const curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
-    const dataObj = targetJsonData.properties.data || {}; // schema中的数据对象
+    const dataObj = targetJsonSchema.properties.data || {}; // schema中的数据对象
 
     return (
       <div
@@ -174,9 +174,9 @@ class DynamicDataSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <span className="title-text">{targetJsonData.title}</span>
-          {targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          <span className="title-text">{targetJsonSchema.title}</span>
+          {targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -228,7 +228,7 @@ class DynamicDataSchema extends React.PureComponent {
                 indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                 keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                 nodeKey: `${nodeKey}-data`,
-                targetJsonData: dataObj,
+                targetJsonSchema: dataObj,
               }}
               key={`${nodeKey}-data`}
             />
@@ -244,7 +244,7 @@ class DynamicDataSchema extends React.PureComponent {
                       ? `${keyRoute}-localFilter`
                       : 'localFilter',
                     nodeKey: `${nodeKey}-localFilter`,
-                    targetJsonData: targetJsonData.properties.localFilter,
+                    targetJsonSchema: targetJsonSchema.properties.localFilter,
                   }}
                   key={`${nodeKey}-localFilter`}
                 />
@@ -319,7 +319,7 @@ class DynamicDataSchema extends React.PureComponent {
                             jsonKey: paramKey,
                             keyRoute: `${curKeyRoute}-value`,
                             nodeKey: curKeyRoute,
-                            targetJsonData: paramItam,
+                            targetJsonSchema: paramItam,
                           }}
                           key={curKeyRoute}
                         />
@@ -389,9 +389,9 @@ class DynamicDataSchema extends React.PureComponent {
                     ? `${keyRoute}-config-filter`
                     : 'config-filter',
                   nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
-                  targetJsonData:
-                    targetJsonData.properties.config &&
-                    targetJsonData.properties.config.properties.filter,
+                  targetJsonSchema:
+                    targetJsonSchema.properties.config &&
+                    targetJsonSchema.properties.config.properties.filter,
                 }}
                 key={`${nodeKey}-config-filter`}
               />

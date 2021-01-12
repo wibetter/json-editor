@@ -17,7 +17,7 @@ class JsonFormSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -56,19 +56,21 @@ class JsonFormSchema extends React.PureComponent {
     const {
       nodeKey,
       keyRoute,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     const { isShowWarn, warnText, curJSONDataTemp } = this.state;
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    // const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
 
     // 格式化JSON数据
     curJsonData =
-      curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
+      curJsonData !== undefined
+        ? curJsonData
+        : targetJsonSchema.default || '{}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData) || isArray(curJsonData)) {
       curJsonData = JSON.stringify(curJsonData, null, 2);
@@ -92,15 +94,15 @@ class JsonFormSchema extends React.PureComponent {
             className="title-text"
             title={
               pageScreen === 'wideScreen' &&
-              targetJsonData.title.length > (readOnly ? 4 : 6)
-                ? targetJsonData.title
+              targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                ? targetJsonSchema.title
                 : ''
             }
           >
-            {targetJsonData.title}
+            {targetJsonSchema.title}
           </span>
-          {targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}

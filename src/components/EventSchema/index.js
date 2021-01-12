@@ -16,7 +16,7 @@ class EventSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   componentWillMount() {
@@ -36,18 +36,18 @@ class EventSchema extends React.PureComponent {
       keyRoute,
       nodeKey,
       indexRoute,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
     } = this.props;
-    const currentFormat = getCurrentFormat(targetJsonData);
+    const currentFormat = getCurrentFormat(targetJsonSchema);
 
-    const typeDataObj = targetJsonData.properties.type || {};
+    const typeDataObj = targetJsonSchema.properties.type || {};
     // 注册类型事件的数据对象：on
-    const registerJsonObj = targetJsonData.properties.register || {};
-    const actionFuncJsonObj = targetJsonData.properties.actionFunc || {};
+    const registerJsonObj = targetJsonSchema.properties.register || {};
+    const actionFuncJsonObj = targetJsonSchema.properties.actionFunc || {};
     // 触发事件类型的数据对象：emit
-    const triggerJsonObj = targetJsonData.properties.trigger || {};
-    const eventDataJsonObj = targetJsonData.properties.eventData || {};
+    const triggerJsonObj = targetJsonSchema.properties.trigger || {};
+    const eventDataJsonObj = targetJsonSchema.properties.eventData || {};
     // 获取当前数据源类型
     const dataType = typeDataObj.default; // local or remote
 
@@ -65,15 +65,15 @@ class EventSchema extends React.PureComponent {
           <span
             className="title-text"
             title={
-              pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                ? targetJsonData.title
+              pageScreen === 'wideScreen' && targetJsonSchema.title.length > 6
+                ? targetJsonSchema.title
                 : ''
             }
           >
-            {targetJsonData.title}
+            {targetJsonSchema.title}
           </span>
-          {targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -89,7 +89,7 @@ class EventSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
                     nodeKey: `${nodeKey}-register`,
-                    targetJsonData: registerJsonObj,
+                    targetJsonSchema: registerJsonObj,
                   }}
                   key={`${nodeKey}-register`}
                 />
@@ -104,7 +104,7 @@ class EventSchema extends React.PureComponent {
                       ? `${keyRoute}-actionFunc`
                       : 'actionFunc',
                     nodeKey: `${nodeKey}-actionFunc`,
-                    targetJsonData: actionFuncJsonObj,
+                    targetJsonSchema: actionFuncJsonObj,
                   }}
                   key={`${nodeKey}-actionFunc`}
                 />
@@ -121,7 +121,7 @@ class EventSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
                     nodeKey: `${nodeKey}-trigger`,
-                    targetJsonData: triggerJsonObj,
+                    targetJsonSchema: triggerJsonObj,
                   }}
                   key={`${nodeKey}-trigger`}
                 />
@@ -134,7 +134,7 @@ class EventSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-eventData` : 'eventData',
                     nodeKey: `${nodeKey}-eventData`,
-                    targetJsonData: eventDataJsonObj,
+                    targetJsonSchema: eventDataJsonObj,
                   }}
                   key={`${nodeKey}-eventData`}
                 />

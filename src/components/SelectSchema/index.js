@@ -12,7 +12,7 @@ class SelectSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -43,15 +43,15 @@ class SelectSchema extends React.PureComponent {
     const {
       nodeKey,
       keyRoute,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 获取枚举值
-    const enumKeys = targetJsonData.items.enum;
-    const enumTexts = targetJsonData.items.enumextra;
+    const enumKeys = targetJsonSchema.items.enum;
+    const enumTexts = targetJsonSchema.items.enumextra;
 
     return (
       <div
@@ -66,23 +66,23 @@ class SelectSchema extends React.PureComponent {
         <div className="element-title">
           <Tooltip
             title={
-              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
             placement="top"
           >
             <span
               className="title-text"
               title={
-                pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                  ? targetJsonData.title
+                pageScreen === 'wideScreen' && targetJsonSchema.title.length > 6
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
-          {pageScreen === 'mobileScreen' && targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -92,7 +92,7 @@ class SelectSchema extends React.PureComponent {
             <Checkbox.Group
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
-              defaultValue={curJsonData || targetJsonData.default}
+              defaultValue={curJsonData || targetJsonSchema.default}
             >
               {enumKeys &&
                 enumKeys.length > 0 &&

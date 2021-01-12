@@ -13,7 +13,7 @@ class NumberFormSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -40,14 +40,14 @@ class NumberFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (newVal) => {
-    const { keyRoute, targetJsonData, updateFormValueData } = this.props;
-    if (newVal < targetJsonData.minimum) {
+    const { keyRoute, targetJsonSchema, updateFormValueData } = this.props;
+    if (newVal < targetJsonSchema.minimum) {
       message.warning(
-        `小于设定的最小数值${targetJsonData.minimum}，请重新输入。`,
+        `小于设定的最小数值${targetJsonSchema.minimum}，请重新输入。`,
       );
-    } else if (newVal > targetJsonData.maximum) {
+    } else if (newVal > targetJsonSchema.maximum) {
       message.warning(
-        `超过设定的最大数值${targetJsonData.maximum}，请重新输入。`,
+        `超过设定的最大数值${targetJsonSchema.maximum}，请重新输入。`,
       );
     } else {
       updateFormValueData(keyRoute, newVal); // 更新数值
@@ -76,16 +76,16 @@ class NumberFormSchema extends React.PureComponent {
     const {
       keyRoute,
       nodeKey,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     const { renderTime } = this.state;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonData.format); // 是否需要设置成两栏布局
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
 
     return (
       <div
@@ -103,17 +103,17 @@ class NumberFormSchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
               title={
                 (isNeedTwoCol || pageScreen === 'wideScreen') &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
         </div>
@@ -128,7 +128,7 @@ class NumberFormSchema extends React.PureComponent {
                     'minus',
                     exitPropertie(curJsonData)
                       ? curJsonData
-                      : targetJsonData.default,
+                      : targetJsonSchema.default,
                   );
                 }}
               >
@@ -140,14 +140,15 @@ class NumberFormSchema extends React.PureComponent {
                 disabled={readOnly}
                 required={isRequired}
                 placeholder={
-                  targetJsonData.placeholder || `请输入${targetJsonData.title}`
+                  targetJsonSchema.placeholder ||
+                  `请输入${targetJsonSchema.title}`
                 }
-                min={targetJsonData.minimum || 0}
-                max={targetJsonData.maximum || 1000000}
+                min={targetJsonSchema.minimum || 0}
+                max={targetJsonSchema.maximum || 1000000}
                 defaultValue={
                   exitPropertie(curJsonData)
                     ? curJsonData
-                    : targetJsonData.default
+                    : targetJsonSchema.default
                 }
                 onChange={this.handleValueChange}
               />
@@ -159,7 +160,7 @@ class NumberFormSchema extends React.PureComponent {
                     'plus',
                     exitPropertie(curJsonData)
                       ? curJsonData
-                      : targetJsonData.default,
+                      : targetJsonSchema.default,
                   );
                 }}
               >

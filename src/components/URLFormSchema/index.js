@@ -12,7 +12,7 @@ class URLFormSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -44,14 +44,14 @@ class URLFormSchema extends React.PureComponent {
     const {
       keyRoute,
       nodeKey,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
     return (
       <div
@@ -69,7 +69,7 @@ class URLFormSchema extends React.PureComponent {
           </span>
           <Tooltip
             title={
-              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
             placement="top"
           >
@@ -77,17 +77,17 @@ class URLFormSchema extends React.PureComponent {
               className="title-text"
               title={
                 pageScreen === 'wideScreen' &&
-                targetJsonData.title &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
+                targetJsonSchema.title &&
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
-          {pageScreen === 'mobileScreen' && targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -99,9 +99,10 @@ class URLFormSchema extends React.PureComponent {
               disabled={readOnly}
               required={isRequired}
               placeholder={
-                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+                targetJsonSchema.placeholder ||
+                `请输入${targetJsonSchema.title}`
               }
-              defaultValue={curJsonData || targetJsonData.default}
+              defaultValue={curJsonData || targetJsonSchema.default}
               onPressEnter={this.handleValueChange}
               onBlur={this.handleValueChange}
             />

@@ -20,7 +20,7 @@ class DateTimeFormSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -51,17 +51,17 @@ class DateTimeFormSchema extends React.PureComponent {
     const {
       keyRoute,
       nodeKey,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
-    const curFormat = getCurrentFormat(targetJsonData);
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const curFormat = getCurrentFormat(targetJsonSchema);
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const timeFormat = DateTypeList[curFormat] || DateTypeList[0];
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const defaultTime = curJsonData || targetJsonData.default;
+    const defaultTime = curJsonData || targetJsonSchema.default;
     const isNeedTwoCol = isNeedTwoColWarpStyle(curFormat); // 是否需要设置成两栏布局
 
     return (
@@ -80,17 +80,17 @@ class DateTimeFormSchema extends React.PureComponent {
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
-          <Tooltip title={targetJsonData.description} placement="top">
+          <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
               title={
                 (isNeedTwoCol || pageScreen === 'wideScreen') &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
         </div>
@@ -103,7 +103,8 @@ class DateTimeFormSchema extends React.PureComponent {
               showTime={curFormat === 'date-time'}
               format={timeFormat}
               placeholder={
-                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+                targetJsonSchema.placeholder ||
+                `请输入${targetJsonSchema.title}`
               }
               defaultValue={defaultTime && moment(defaultTime, timeFormat)}
               onChange={this.handleValueChange}

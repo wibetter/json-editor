@@ -161,7 +161,7 @@ class JSONDataEditor extends React.PureComponent {
                                 indexRoute: currentIndexRoute,
                                 keyRoute: currentKeyRoute,
                                 nodeKey,
-                                targetJsonData: currentSchemaData,
+                                targetJsonSchema: currentSchemaData,
                               })}
                             </Panel>
                           );
@@ -181,7 +181,7 @@ class JSONDataEditor extends React.PureComponent {
                   indexRoute: '',
                   keyRoute: '',
                   nodeKey: '',
-                  targetJsonData: jsonSchema,
+                  targetJsonSchema: jsonSchema,
                 })}
               </>
             )}
@@ -192,7 +192,7 @@ class JSONDataEditor extends React.PureComponent {
             {...{
               nodeKey: 'jsonView',
               keyRoute: '',
-              targetJsonData: jsonSchema,
+              targetJsonSchema: jsonSchema,
             }}
           />
         )}

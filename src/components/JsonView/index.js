@@ -14,7 +14,7 @@ class JsonView extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -35,7 +35,7 @@ class JsonView extends React.PureComponent {
     const {
       nodeKey,
       keyRoute,
-      targetJsonData,
+      targetJsonSchema,
       getJSONDataByKeyRoute,
     } = this.props;
     // 从jsonData中获取对应的数值
@@ -43,7 +43,9 @@ class JsonView extends React.PureComponent {
 
     // 格式化JSON数据
     curJsonData =
-      curJsonData !== undefined ? curJsonData : targetJsonData.default || '{}';
+      curJsonData !== undefined
+        ? curJsonData
+        : targetJsonSchema.default || '{}';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData) || isArray(curJsonData)) {
       curJsonData = JSON.stringify(curJsonData, null, 2);

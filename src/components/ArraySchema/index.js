@@ -33,7 +33,7 @@ class ArraySchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -62,7 +62,7 @@ class ArraySchema extends React.PureComponent {
 
   /** 添加数组项 */
   addArrayItem = (keyRoute, curArr, curArrIndex) => {
-    const maximumChild = this.props.targetJsonData['maximum-child'];
+    const maximumChild = this.props.targetJsonSchema['maximum-child'];
     if (curArr && curArr.length >= maximumChild) {
       message.warning(`添加失败，最多可添加${maximumChild}个子项`);
     } else {
@@ -72,7 +72,7 @@ class ArraySchema extends React.PureComponent {
 
   /** 删除数组项 */
   deleteArrItem = (keyRoute, arrIndex, curArr) => {
-    const minimumChild = this.props.targetJsonData['minimum-child'];
+    const minimumChild = this.props.targetJsonSchema['minimum-child'];
     if (curArr && curArr.length <= minimumChild) {
       message.warning(`删除失败，至少需要保留${minimumChild}个子项`);
     } else {
@@ -86,15 +86,15 @@ class ArraySchema extends React.PureComponent {
       nodeKey,
       pageScreen,
       indexRoute,
-      targetJsonData,
+      targetJsonSchema,
       getJSONDataByKeyRoute,
     } = this.props;
     const { jsonView, isClosed } = this.state;
-    const currentFormat = getCurrentFormat(targetJsonData);
+    const currentFormat = getCurrentFormat(targetJsonSchema);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
-    const arrayItemsDataObj = targetJsonData.items;
+    const arrayItemsDataObj = targetJsonSchema.items;
 
     return (
       <div
@@ -112,9 +112,9 @@ class ArraySchema extends React.PureComponent {
             event.stopPropagation();
           }}
         >
-          <span className="title-text">{targetJsonData.title}</span>
-          {targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          <span className="title-text">{targetJsonSchema.title}</span>
+          {targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -286,7 +286,7 @@ class ArraySchema extends React.PureComponent {
                           indexRoute: curIndexRoute,
                           keyRoute: curKeyRoute,
                           nodeKey: curNodeKey,
-                          targetJsonData: arrayItemsDataObj,
+                          targetJsonSchema: arrayItemsDataObj,
                           isArrayItem: true,
                           arrIndex,
                         }}

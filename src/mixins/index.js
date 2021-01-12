@@ -3,17 +3,17 @@ import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 从WebCache中获取jsonData数据
  * 备注：引用catchJsonDataByWebCache前，请确保当前组件的props中包含以下属性：
- * keyRoute、targetJsonData、updateFormValueData
+ * keyRoute、targetJsonSchema、updateFormValueData
  * getJSONDataByKeyRoute、getJSONDataTempByKeyRoute
  * */
 export function catchJsonDataByWebCache(curKeyRoute) {
   const {
-    targetJsonData,
+    targetJsonSchema,
     getJSONDataByKeyRoute,
     getJSONDataTempByKeyRoute,
     updateFormValueData,
   } = this.props;
-  const currentFormat = getCurrentFormat(targetJsonData);
+  const currentFormat = getCurrentFormat(targetJsonSchema);
   const keyRoute = curKeyRoute || this.props.keyRoute;
   const backUpKeyRoute = getWebCacheData(`${keyRoute}-${currentFormat}`);
   if (backUpKeyRoute) {

@@ -16,7 +16,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -52,20 +52,20 @@ class HtmlAreaFormSchema extends React.PureComponent {
     const {
       nodeKey,
       keyRoute,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     const { isShowWarn, warnText } = this.state;
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    // const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData =
       curJsonData !== undefined
         ? curJsonData
-        : targetJsonData.default || '<p>hello</p>';
+        : targetJsonSchema.default || '<p>hello</p>';
     // 判断当前jsonData是否是对象类型
     if (isObject(curJsonData)) {
       curJsonData = JSON.stringify(curJsonData, null, 2);
@@ -88,7 +88,7 @@ class HtmlAreaFormSchema extends React.PureComponent {
           {/*宽屏模式：Title hover时显示描述信息*/}
           <Tooltip
             title={
-              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
             placement="top"
           >
@@ -96,18 +96,18 @@ class HtmlAreaFormSchema extends React.PureComponent {
               className="title-text"
               title={
                 pageScreen === 'wideScreen' &&
-                targetJsonData.title &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
+                targetJsonSchema.title &&
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
           {/*小屏模式*/}
-          {pageScreen === 'mobileScreen' && targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}

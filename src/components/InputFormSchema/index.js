@@ -12,7 +12,7 @@ class InputFormSchema extends React.PureComponent {
     indexRoute: PropTypes.any,
     keyRoute: PropTypes.any,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
     onChange: PropTypes.any,
   };
 
@@ -50,14 +50,14 @@ class InputFormSchema extends React.PureComponent {
     const {
       nodeKey,
       keyRoute,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
     return (
       <div
@@ -75,7 +75,7 @@ class InputFormSchema extends React.PureComponent {
           </span>
           <Tooltip
             title={
-              pageScreen === 'wideScreen' ? targetJsonData.description : ''
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
             placement="top"
           >
@@ -83,17 +83,17 @@ class InputFormSchema extends React.PureComponent {
               className="title-text"
               title={
                 pageScreen === 'wideScreen' &&
-                targetJsonData.title &&
-                targetJsonData.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonData.title
+                targetJsonSchema.title &&
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
                   : ''
               }
             >
-              {targetJsonData.title}
+              {targetJsonSchema.title}
             </span>
           </Tooltip>
-          {pageScreen === 'mobileScreen' && targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -105,9 +105,10 @@ class InputFormSchema extends React.PureComponent {
               disabled={readOnly}
               required={isRequired}
               placeholder={
-                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+                targetJsonSchema.placeholder ||
+                `请输入${targetJsonSchema.title}`
               }
-              defaultValue={curJsonData || targetJsonData.default}
+              defaultValue={curJsonData || targetJsonSchema.default}
               onPressEnter={this.handleValueChange}
               onBlur={this.handleValueChange}
             />

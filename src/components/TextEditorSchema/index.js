@@ -21,7 +21,7 @@ class TextEditorSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -92,15 +92,15 @@ class TextEditorSchema extends React.PureComponent {
     const {
       keyRoute,
       nodeKey,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
     const { isClosed } = this.state;
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
     const editorState = BraftEditor.createEditorState(curJsonData); // 将html字符串转换成editorState
-    const readOnly = targetJsonData.readOnly || false; // 是否只读（默认可编辑）
-    // const isRequired = targetJsonData.isRequired || false; // 是否必填（默认非必填）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
     return (
       <div
@@ -125,16 +125,16 @@ class TextEditorSchema extends React.PureComponent {
             className="title-text"
             title={
               pageScreen === 'wideScreen' &&
-              targetJsonData.title &&
-              targetJsonData.title.length > (readOnly ? 4 : 6)
-                ? targetJsonData.title
+              targetJsonSchema.title &&
+              targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                ? targetJsonSchema.title
                 : ''
             }
           >
-            {targetJsonData.title}
+            {targetJsonSchema.title}
           </span>
-          {targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -156,7 +156,8 @@ class TextEditorSchema extends React.PureComponent {
               defaultValue={editorState}
               readOnly={readOnly}
               placeholder={
-                targetJsonData.placeholder || `请输入${targetJsonData.title}`
+                targetJsonSchema.placeholder ||
+                `请输入${targetJsonSchema.title}`
               }
               lineHeights={[1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4]}
               onChange={this.handleEditorChange}

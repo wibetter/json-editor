@@ -176,7 +176,7 @@ class RemoteDynamicDataSchema extends React.PureComponent {
                           pageScreen: pageScreen, // 默认使用宽屏模式
                           jsonKey: paramKey,
                           nodeKey: curNodeKey,
-                          targetJsonData: paramItam,
+                          targetJsonSchema: paramItam,
                           onChange: (newVal) => {
                             this.paramsValueChange(paramKey, newVal);
                           },
@@ -223,7 +223,7 @@ class RemoteDynamicDataSchema extends React.PureComponent {
                   jsonKey: 'filter',
                   nodeKey: `${nodeKey}-config-params-filter-${dataRoute}`,
                   keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
-                  targetJsonData: {
+                  targetJsonSchema: {
                     title: '过滤器函数体',
                     default: 'return data;',
                   },

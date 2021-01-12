@@ -17,7 +17,7 @@ class DataSourceSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
-    targetJsonData: PropTypes.any,
+    targetJsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -55,16 +55,16 @@ class DataSourceSchema extends React.PureComponent {
       keyRoute,
       nodeKey,
       indexRoute,
-      targetJsonData,
+      targetJsonSchema,
       pageScreen,
     } = this.props;
     const { isShowFilter } = this.state;
-    const currentFormat = getCurrentFormat(targetJsonData);
+    const currentFormat = getCurrentFormat(targetJsonSchema);
 
     // 获取DataSource中各类数据对象
-    const typeDataObj = targetJsonData.properties.type || {}; // type中记录了数据源类型：local or remote
-    const dataObj = targetJsonData.properties.data || {}; // 用于录入数据（或者数据源地址）
-    const filterDataObj = targetJsonData.properties.filter || {}; // 数据过滤器
+    const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote
+    const dataObj = targetJsonSchema.properties.data || {}; // 用于录入数据（或者数据源地址）
+    const filterDataObj = targetJsonSchema.properties.filter || {}; // 数据过滤器
     // 获取当前数据源类型
     const dataType = typeDataObj.default; // local or remote
 
@@ -82,15 +82,15 @@ class DataSourceSchema extends React.PureComponent {
           <span
             className="title-text"
             title={
-              pageScreen === 'wideScreen' && targetJsonData.title.length > 6
-                ? targetJsonData.title
+              pageScreen === 'wideScreen' && targetJsonSchema.title.length > 6
+                ? targetJsonSchema.title
                 : ''
             }
           >
-            {targetJsonData.title}
+            {targetJsonSchema.title}
           </span>
-          {targetJsonData.description && (
-            <Tooltip title={targetJsonData.description} placement="top">
+          {targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>
           )}
@@ -117,7 +117,7 @@ class DataSourceSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                     nodeKey: `${nodeKey}-data`,
-                    targetJsonData: dataObj,
+                    targetJsonSchema: dataObj,
                   }}
                   key={`${nodeKey}-data`}
                 />
@@ -130,7 +130,7 @@ class DataSourceSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
                     nodeKey: `${nodeKey}-filter`,
-                    targetJsonData: filterDataObj,
+                    targetJsonSchema: filterDataObj,
                   }}
                   key={`${nodeKey}-filter`}
                 />
@@ -147,7 +147,7 @@ class DataSourceSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                     nodeKey: `${nodeKey}-data`,
-                    targetJsonData: dataObj,
+                    targetJsonSchema: dataObj,
                   }}
                   key={`${nodeKey}-data`}
                 />
@@ -166,7 +166,7 @@ class DataSourceSchema extends React.PureComponent {
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
                     nodeKey: `${nodeKey}-filter`,
-                    targetJsonData: filterDataObj,
+                    targetJsonSchema: filterDataObj,
                   }}
                   key={`${nodeKey}-filter`}
                 />
