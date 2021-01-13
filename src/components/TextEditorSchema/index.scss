@@ -22,6 +22,20 @@
     .bf-controlbar {
       // height: 100px;
       // overflow-y: auto;
+
+      .bf-font-size-dropdown,
+      .bf-letter-spacing-dropdown,
+      .headings-dropdown {
+        min-width: 65px;
+      }
+
+      // 用于重置color-picker中色值输入框的样式
+      .braft-color-picker input,
+      .braft-color-picker label {
+        height: 30px !important;
+        padding: 0 !important;
+        text-align: center !important;
+      }
     }
 
     .bf-content {

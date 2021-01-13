@@ -10,9 +10,17 @@ import {
 } from '@ant-design/icons';
 // 引入编辑器组件
 import BraftEditor from 'braft-editor';
+import ColorPicker from 'braft-extensions/dist/color-picker';
+// 引入字体取色器样式
+import 'braft-extensions/dist/color-picker.css';
 // 引入编辑器样式
 import 'braft-editor/dist/index.css';
 import './index.scss';
+
+const colorOptions = {
+  theme: 'light', // 指定取色器样式主题，支持dark和light两种样式
+};
+BraftEditor.use([ColorPicker(colorOptions)]);
 
 class TextEditorSchema extends React.PureComponent {
   static propTypes = {
@@ -32,6 +40,7 @@ class TextEditorSchema extends React.PureComponent {
         'undo',
         'redo',
         'separator',
+        'headings',
         'font-size',
         // 'line-height', // 备注：行高设置无效（待处理BUG）
         'letter-spacing',
@@ -45,22 +54,21 @@ class TextEditorSchema extends React.PureComponent {
         'superscript',
         'subscript',
         'remove-styles',
-        'emoji',
+        // 'emoji', // 备注：数据库可能不支持emoji格式
         'separator',
         'text-indent',
         'text-align',
         'separator',
-        'headings',
         'list-ul',
         'list-ol',
         'blockquote',
         'code',
         'separator',
-        'media',
         'link',
         'separator',
+        'media',
         'hr',
-        'clear',
+        // 'clear',
         'separator',
         'fullscreen',
       ],
@@ -153,6 +161,15 @@ class TextEditorSchema extends React.PureComponent {
                   ? this.state.allControls
                   : this.state.baseControls
               } // allControls baseControls
+              media={{
+                accepts: {
+                  image:
+                    'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
+                  video: false,
+                  audio: false,
+                },
+                pasteImage: true, // 是否允许粘贴图片到编辑器
+              }}
               defaultValue={editorState}
               readOnly={readOnly}
               placeholder={
