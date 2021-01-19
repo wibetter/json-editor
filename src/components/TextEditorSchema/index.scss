@@ -21,6 +21,10 @@
 
     .bf-container.fullscreen {
       height: auto !important;
+
+      .bf-content {
+        max-height: inherit;
+      }
     }
 
     .bf-controlbar {
