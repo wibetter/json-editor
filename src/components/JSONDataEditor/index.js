@@ -32,7 +32,7 @@ class JSONDataEditor extends React.PureComponent {
 
     this.state = {
       jsonView: props.jsonView || false, // 是否显示code模式，默认不显示code模式
-      viewStyle: props.viewStyle || 'fold', // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
+      viewStyle: this.catchViewStyle(props.viewStyle), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
     };
     // 根据props.schemaData对jsonSchema进行初始化
     if (props.schemaData) {
@@ -60,6 +60,18 @@ class JSONDataEditor extends React.PureComponent {
       this.props.setDynamicDataList(props.dynamicDataList);
     }
   }
+
+  /* 获取schema展示风格模式 */
+  catchViewStyle = (viewStyle) => {
+    switch (viewStyle) {
+      case 'fold':
+        return 'fold';
+      case 'tabs':
+        return 'tabs';
+      default:
+        return 'fold';
+    }
+  };
 
   componentWillReceiveProps(nextProps) {
     /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
@@ -100,6 +112,7 @@ class JSONDataEditor extends React.PureComponent {
       case 'data':
         return '数据设置';
       default:
+        return '属性设置';
     }
   };
 
@@ -153,7 +166,10 @@ class JSONDataEditor extends React.PureComponent {
                       ) {
                         return (
                           <Panel
-                            header={this.renderHeader(currentFormat)}
+                            header={
+                              currentSchemaData.title ||
+                              this.renderHeader(currentFormat)
+                            }
                             key={currentJsonKey}
                           >
                             {MappingRender({
