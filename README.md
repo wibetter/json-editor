@@ -28,7 +28,7 @@ npm install --save @wibetter/json-editor
 
 ```js
 import * as React from 'react';
-import JSONEditor from '@wibetter/json-editor/dist/index.umd';
+import JSONEditor from '@wibetter/json-editor';
 import '@wibetter/json-editor/dist/index.css';
 
 class IndexDemo extends React.PureComponent {
@@ -70,8 +70,9 @@ class IndexDemo extends React.PureComponent {
 
 | name         | type     | default | desc                            |
 | ------------ | -------- | ------- | ------------------------------- |
-| `jsonView`   | boolean  | false   | 是否开启全局源码模式，默认不开启      |
-| `wideScreen` | boolean  | false   | 宽屏模式/小屏模式, 默认是小屏模式     |
-| `schemaData` | object   | {}      | json的结构数据，备注：schemaData为空而jsonData不为空时，会自动通过jsonData生产一份应的schemaData                    |
-| `jsonData`   | object   | {}      | json的内容数据                    |
+| `viewStyle`  | string   | fold    | 非必填，默认为fold（可折叠面板），可选：tabs:（tabs切换面板）|
+| `jsonView`   | boolean  | false   | 非必填，是否开启全局源码模式，默认不开启      |
+| `wideScreen` | boolean  | false   | 非必填，宽屏模式/小屏模式, 默认是小屏模式     |
+| `schemaData` | object   | {}      | 非必填，json的结构数据，备注：schemaData为空而jsonData不为空时，会自动通过jsonData生产一份应的schemaData                    |
+| `jsonData`   | object   | {}      | 必填项，json的内容数据                    |
 | `onChange`   | function | () => {}    | jsonData内容变动时会触发onChange   |

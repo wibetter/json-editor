@@ -14,7 +14,7 @@ body {
 
   .title1-box {
     flex: 0 1 700px;
-    padding: 8px 10px;
+    padding: 8px 4px;
     box-sizing: border-box;
     display: flex;
     align-items: flex-end;
@@ -23,7 +23,7 @@ body {
   .title2-box {
     flex: 1 1 600px;
     box-sizing: border-box;
-    padding: 8px 10px;
+    padding: 8px 4px;
   }
 
   .title2-box.mobile-view {
@@ -52,6 +52,22 @@ body {
 
   .json-editor-box.mobile-view {
     flex: 0 1 320px;
+  }
+
+  .json-view-box {
+    position: relative;
+
+    .json-view-ace {
+      width: 100%;
+    }
+
+    .readOnly-btn {
+      position: absolute;
+      top: 0;
+      right: 8px;
+      color: #ad6800;
+      z-index: 100;
+    }
   }
 }
 

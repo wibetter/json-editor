@@ -1505,7 +1505,7 @@ class IndexDemo extends React.PureComponent {
           field_3: 'text13',
         },
       },
-      dynamicDataList: [
+      dynamicDataList0: [
         {
           id: 3,
           projectId: 97,
@@ -1800,6 +1800,7 @@ class IndexDemo extends React.PureComponent {
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
           >
             <JSONEditor
+              // viewStyle={'tabs'}
               jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}

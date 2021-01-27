@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Collapse } from 'antd';
+import { Collapse, Tabs } from 'antd';
 const { Panel } = Collapse;
+const { TabPane } = Tabs;
 import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import { isEqual } from '$utils/index';
@@ -13,9 +14,11 @@ import {
   getCurrentFormat,
   json2schema,
 } from '@wibetter/json-utils';
+import './index.scss';
 
 class JSONDataEditor extends React.PureComponent {
   static propTypes = {
+    viewStyle: PropTypes.any,
     wideScreen: PropTypes.any,
     onChange: PropTypes.func,
     jsonView: PropTypes.any,
@@ -29,6 +32,7 @@ class JSONDataEditor extends React.PureComponent {
 
     this.state = {
       jsonView: props.jsonView || false, // 是否显示code模式，默认不显示code模式
+      viewStyle: props.viewStyle || 'fold', // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
     };
     // 根据props.schemaData对jsonSchema进行初始化
     if (props.schemaData) {
@@ -101,7 +105,7 @@ class JSONDataEditor extends React.PureComponent {
 
   render() {
     const { jsonSchema, lastUpdateTime, jsonLastUpdateTime } = this.props;
-    const { jsonView } = this.state;
+    const { jsonView, viewStyle } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isEmptyConfig = isEmptyWidgetSchema(jsonSchema); // 判断是否是空的区块配置schema
     const isWidgetConfig = isUsedToWidgetConfig(jsonSchema); // 判断是否是用于区块配置schema
@@ -122,54 +126,98 @@ class JSONDataEditor extends React.PureComponent {
                     当前jsonSchema没有数据内容
                   </p>
                 )}
-                {!isEmptyConfig && (
-                  <>
-                    <Collapse
-                      defaultActiveKey={jsonSchema.propertyOrder}
-                      expandIconPosition="right"
-                      bordered={false}
-                    >
-                      {jsonSchema.propertyOrder.map((key, index) => {
-                        /** 1. 获取当前元素的路径值 */
-                        const currentIndexRoute = index;
-                        const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
-                        /** 2. 获取当前元素的key值 */
-                        const currentJsonKey = key;
-                        /** 3. 获取当前元素的json结构对象 */
-                        const currentSchemaData =
-                          jsonSchema.properties[currentJsonKey];
-                        /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                        const currentFormat = getCurrentFormat(
-                          currentSchemaData,
+                {!isEmptyConfig && viewStyle === 'fold' && (
+                  <Collapse
+                    defaultActiveKey={jsonSchema.propertyOrder}
+                    expandIconPosition="right"
+                    bordered={false}
+                  >
+                    {jsonSchema.propertyOrder.map((key, index) => {
+                      /** 1. 获取当前元素的路径值 */
+                      const currentIndexRoute = index;
+                      const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                      /** 2. 获取当前元素的key值 */
+                      const currentJsonKey = key;
+                      /** 3. 获取当前元素的json结构对象 */
+                      const currentSchemaData =
+                        jsonSchema.properties[currentJsonKey];
+                      /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                      const currentFormat = getCurrentFormat(currentSchemaData);
+
+                      /** 5. 获取当前元素的id，用于做唯一标识 */
+                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${currentFormat}-${currentJsonKey}`;
+
+                      if (
+                        currentSchemaData.propertyOrder &&
+                        currentSchemaData.propertyOrder.length > 0
+                      ) {
+                        return (
+                          <Panel
+                            header={this.renderHeader(currentFormat)}
+                            key={currentJsonKey}
+                          >
+                            {MappingRender({
+                              parentType: currentFormat,
+                              jsonKey: currentJsonKey,
+                              indexRoute: currentIndexRoute,
+                              keyRoute: currentKeyRoute,
+                              nodeKey,
+                              targetJsonSchema: currentSchemaData,
+                            })}
+                          </Panel>
                         );
+                      }
+                      return '';
+                    })}
+                  </Collapse>
+                )}
+                {!isEmptyConfig && viewStyle === 'tabs' && (
+                  <Tabs
+                    className={`tabs-schema-box`}
+                    defaultActiveKey={jsonSchema.propertyOrder[0]}
+                    centered={true}
+                    hideAdd={true}
+                  >
+                    {jsonSchema.propertyOrder.map((key, index) => {
+                      /** 1. 获取当前元素的路径值 */
+                      const currentIndexRoute = index;
+                      const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                      /** 2. 获取当前元素的key值 */
+                      const currentJsonKey = key;
+                      /** 3. 获取当前元素的json结构对象 */
+                      const currentSchemaData =
+                        jsonSchema.properties[currentJsonKey];
+                      /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                      const currentFormat = getCurrentFormat(currentSchemaData);
 
-                        /** 5. 获取当前元素的id，用于做唯一标识 */
-                        const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${currentFormat}-${currentJsonKey}`;
+                      /** 5. 获取当前元素的id，用于做唯一标识 */
+                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${currentFormat}-${currentJsonKey}`;
 
-                        if (
-                          currentSchemaData.propertyOrder &&
-                          currentSchemaData.propertyOrder.length > 0
-                        ) {
-                          return (
-                            <Panel
-                              header={this.renderHeader(currentFormat)}
-                              key={currentJsonKey}
-                            >
-                              {MappingRender({
-                                parentType: currentFormat,
-                                jsonKey: currentJsonKey,
-                                indexRoute: currentIndexRoute,
-                                keyRoute: currentKeyRoute,
-                                nodeKey,
-                                targetJsonSchema: currentSchemaData,
-                              })}
-                            </Panel>
-                          );
-                        }
-                        return '';
-                      })}
-                    </Collapse>
-                  </>
+                      if (
+                        currentSchemaData.propertyOrder &&
+                        currentSchemaData.propertyOrder.length > 0
+                      ) {
+                        return (
+                          <TabPane
+                            tab={this.renderHeader(currentFormat)}
+                            key={currentJsonKey}
+                            closable={false}
+                            className={`tabs-schema-item`}
+                          >
+                            {MappingRender({
+                              parentType: currentFormat,
+                              jsonKey: currentJsonKey,
+                              indexRoute: currentIndexRoute,
+                              keyRoute: currentKeyRoute,
+                              nodeKey,
+                              targetJsonSchema: currentSchemaData,
+                            })}
+                          </TabPane>
+                        );
+                      }
+                      return '';
+                    })}
+                  </Tabs>
                 )}
               </>
             )}
