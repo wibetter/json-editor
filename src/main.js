@@ -18,6 +18,7 @@ export default class JSONEditor extends React.PureComponent {
   }
 
   static propTypes = {
+    viewStyle: PropTypes.any,
     wideScreen: PropTypes.any,
     onChange: PropTypes.func,
     jsonView: PropTypes.any,
