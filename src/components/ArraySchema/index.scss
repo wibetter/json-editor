@@ -1,6 +1,10 @@
 @charset "utf-8";
 
 .array-schema-box {
+  > .element-title {
+    line-height: 38px;
+  }
+
   .array-add-child-btn {
     float: right;
     display: inline-block;

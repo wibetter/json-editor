@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
-import { getCurrentFormat, isFirstSchemaData } from '@wibetter/json-utils';
+import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 
@@ -23,6 +23,7 @@ class ObjectSchema extends React.PureComponent {
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
+    isStructuredSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -54,11 +55,11 @@ class ObjectSchema extends React.PureComponent {
       targetJsonSchema,
       isArrayItem,
       arrIndex,
+      isStructuredSchema,
     } = this.props;
     const { jsonView, isClosed } = this.state;
-    const curFormat = getCurrentFormat(targetJsonSchema);
-    // 判断是否是一级字段类型，如果是则不显示Title，避免重复的title
-    const isFirstSchema = isFirstSchemaData(curFormat);
+    // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
+    const isFirstSchema = isStructuredSchema;
 
     return (
       <div

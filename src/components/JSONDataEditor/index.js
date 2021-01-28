@@ -9,8 +9,7 @@ import JsonView from '$components/JsonView/index';
 import { isEqual } from '$utils/index';
 import {
   isEmptySchema,
-  isEmptyWidgetSchema,
-  isUsedToWidgetConfig,
+  isStructuredSchema,
   getCurrentFormat,
   json2schema,
 } from '@wibetter/json-utils';
@@ -120,10 +119,9 @@ class JSONDataEditor extends React.PureComponent {
     const { jsonSchema, lastUpdateTime, jsonLastUpdateTime } = this.props;
     const { jsonView, viewStyle } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
-    const isEmptyConfig = isEmptyWidgetSchema(jsonSchema); // 判断是否是空的区块配置schema
-    const isWidgetConfig = isUsedToWidgetConfig(jsonSchema); // 判断是否是用于区块配置schema
+    const isStructured = isStructuredSchema(jsonSchema); // 判断是否是结构化的schema数据
     /**
-     * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此将区块专用的配置数据分类展示），
+     * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此将组件专用的配置数据分类展示），
      * */
     return (
       <div className="json-editor-container">
@@ -132,14 +130,10 @@ class JSONDataEditor extends React.PureComponent {
         )}
         {!isEmpty && !jsonView && (
           <>
-            {isWidgetConfig && (
+            {/* 作为结构性schema进行渲染 */}
+            {isStructured && (
               <>
-                {isEmptyConfig && (
-                  <p className="json-editor-empty">
-                    当前jsonSchema没有数据内容
-                  </p>
-                )}
-                {!isEmptyConfig && viewStyle === 'fold' && (
+                {viewStyle === 'fold' && (
                   <Collapse
                     defaultActiveKey={jsonSchema.propertyOrder}
                     expandIconPosition="right"
@@ -179,6 +173,7 @@ class JSONDataEditor extends React.PureComponent {
                               keyRoute: currentKeyRoute,
                               nodeKey,
                               targetJsonSchema: currentSchemaData,
+                              isStructuredSchema: isStructured,
                             })}
                           </Panel>
                         );
@@ -187,7 +182,7 @@ class JSONDataEditor extends React.PureComponent {
                     })}
                   </Collapse>
                 )}
-                {!isEmptyConfig && viewStyle === 'tabs' && (
+                {viewStyle === 'tabs' && (
                   <Tabs
                     className={`tabs-schema-box`}
                     defaultActiveKey={jsonSchema.propertyOrder[0]}
@@ -227,6 +222,7 @@ class JSONDataEditor extends React.PureComponent {
                               keyRoute: currentKeyRoute,
                               nodeKey,
                               targetJsonSchema: currentSchemaData,
+                              isStructuredSchema: isStructured,
                             })}
                           </TabPane>
                         );
@@ -237,7 +233,8 @@ class JSONDataEditor extends React.PureComponent {
                 )}
               </>
             )}
-            {!isWidgetConfig && (
+            {/* 作为普通schema数据进行渲染 */}
+            {!isStructured && (
               <>
                 {MappingRender({
                   parentType: '',
