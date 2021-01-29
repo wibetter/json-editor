@@ -87,6 +87,12 @@ class JSONDataEditor extends React.PureComponent {
         jsonView: nextProps.jsonView,
       });
     }
+    // 读取展示模式配置
+    if (!isEqual(nextProps.viewStyle, this.props.viewStyle)) {
+      this.setState({
+        viewStyle: nextProps.viewStyle,
+      });
+    }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
       this.props.setPageScreen(nextProps.wideScreen);
     }

@@ -479,7 +479,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema6: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -1667,7 +1667,7 @@ class IndexDemo extends React.PureComponent {
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
       }, // 用于组件配置的schema  显示  / update  ok
-      jsonSchema: {
+      jsonSchema8: {
         type: 'object',
         format: 'object',
         title: '对象Object',
