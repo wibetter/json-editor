@@ -216,7 +216,10 @@ class JSONDataEditor extends React.PureComponent {
                       ) {
                         return (
                           <TabPane
-                            tab={this.renderHeader(currentFormat)}
+                            tab={
+                              currentSchemaData.title ||
+                              this.renderHeader(currentFormat)
+                            }
                             key={currentJsonKey}
                             closable={false}
                             className={`tabs-schema-item`}

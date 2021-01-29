@@ -479,7 +479,7 @@ class IndexDemo extends React.PureComponent {
           'field_12',
         ],
       }, // 通用schema类型 显示  / update ok
-      jsonSchema: {
+      jsonSchema6: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -2162,6 +2162,56 @@ class IndexDemo extends React.PureComponent {
         required: ['func', 'style', 'data'],
         propertyOrder: ['func', 'style', 'data'],
       },
+      jsonSchema: {
+        type: 'object',
+        name: 'button',
+        title: 'button 元子组件',
+        'ui-name': 'LEGAO',
+        'ui-type': 'ui-widget',
+        'ui-framework': 'react',
+        format: 'object',
+        properties: {
+          props: {
+            type: 'object',
+            format: 'func',
+            title: '属性设置',
+            readOnly: false,
+            properties: {},
+            required: [],
+            propertyOrder: [],
+          },
+          style: {
+            type: 'object',
+            format: 'style',
+            title: '样式设置',
+            readOnly: false,
+            properties: {},
+            required: [],
+            propertyOrder: [],
+          },
+          event: {
+            type: 'object',
+            format: 'event-schema',
+            title: '事件设置',
+            readOnly: false,
+            isFixedSchema: true,
+            properties: {},
+            required: [],
+            propertyOrder: [],
+          },
+          data: {
+            type: 'object',
+            format: 'data',
+            title: '数据设置',
+            readOnly: false,
+            properties: {},
+            required: [],
+            propertyOrder: [],
+          },
+        },
+        required: ['props', 'style', 'event', 'data'],
+        propertyOrder: ['props', 'style', 'event', 'data'],
+      },
       jsonData1: {
         func: {
           field_1: 'text1',
@@ -2479,6 +2529,96 @@ class IndexDemo extends React.PureComponent {
       ],
       wideScreen: false,
       jsonView: false,
+      curTypeList: {
+        func: [
+          'input',
+          'boolean',
+          'number',
+          'color',
+          'url',
+          'textarea',
+          'text-editor',
+          'radio',
+          'select',
+          'date',
+          'date-time',
+          'time',
+          'quantity',
+          'json',
+          'codearea',
+          'htmlarea',
+          'event',
+          'array',
+          'object',
+        ],
+        style: [
+          'color',
+          'quantity',
+          'input',
+          'boolean',
+          'number',
+          'radio',
+          'select',
+        ],
+        data: [
+          'json',
+          'codearea',
+          'htmlarea',
+          'text-editor',
+          'dynamic-data',
+          'datasource',
+          'object',
+          'array',
+        ],
+        'event-schema': ['event'],
+        object: [
+          'input',
+          'boolean',
+          'color',
+          'date',
+          'date-time',
+          'time',
+          'url',
+          'textarea',
+          'number',
+          'object',
+          'array',
+        ],
+        'array-object': [
+          'input',
+          'boolean',
+          'color',
+          'date',
+          'date-time',
+          'time',
+          'url',
+          'textarea',
+          'number',
+          'object',
+          'array',
+        ],
+        all: [
+          'input',
+          'boolean',
+          'number',
+          'color',
+          'url',
+          'textarea',
+          'text-editor',
+          'radio',
+          'select',
+          'date',
+          'date-time',
+          'time',
+          'quantity',
+          'json',
+          'codearea',
+          'htmlarea',
+          'event',
+          'array',
+          'object',
+        ],
+      },
     };
   }
 
@@ -2489,6 +2629,7 @@ class IndexDemo extends React.PureComponent {
       dynamicDataList,
       wideScreen,
       jsonView,
+      curTypeList,
     } = this.state;
     return (
       <>
@@ -2538,6 +2679,7 @@ class IndexDemo extends React.PureComponent {
           <div className="json-schema-box">
             <JSONSchemaEditor
               data={jsonSchema}
+              typeList={curTypeList}
               onChange={(newJsonSchema) => {
                 console.log('jsonSchemaChange', newJsonSchema);
                 this.setState({

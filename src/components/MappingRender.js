@@ -27,10 +27,16 @@ const MappingRender = (props) => {
   const curType = getCurrentFormat(targetJsonSchema); // 获取当前元素类型（format）
 
   switch (curType) {
+    case 'object':
     case 'func':
     case 'style':
     case 'data':
-    case 'object':
+    case 'widgets':
+    case 'func-schema':
+    case 'style-schema':
+    case 'data-schema':
+    case 'widgets-schema':
+    case 'event-schema':
       return <ObjectSchema {...props} key={nodeKey} />;
       break;
     case 'array':
