@@ -39,8 +39,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
-    "@wibetter/json-schema-editor": "^3.5.3",
-    "@wibetter/json-utils": "^1.2.26",
+    "@wibetter/json-schema-editor": "^3.5.5",
+    "@wibetter/json-utils": "^1.2.27",
     "ace-builds": "^1.4.12",
     "antd": "^4.3.4",
     "braft-editor": "^2.3.9",
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^9.1.1",
-    "akfun": "^1.5.11",
+    "akfun": "^1.5.12",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^2.0.5"

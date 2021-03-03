@@ -1,0 +1,109 @@
+/* 容器元素样式 */
+/* 盒子模型-margin和padding的设置相关样式 */
+.layout-box-style-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  box-sizing: content-box;
+  background-color: #fff;
+  border: 1px solid rgba(229, 231, 240, 1);
+  border-radius: 10px;
+
+  > .center-box {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    width: 70px;
+    height: 70px;
+    background-color: #f5f6fa;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .lock-icon {
+      width: 32px;
+      box-shadow: none;
+      cursor: pointer;
+    }
+  }
+
+  .layout-input-number {
+    width: 100px;
+    margin-left: 6px;
+    text-align: right;
+    border-width: 0 0 1px 0;
+  }
+
+  .layout-item {
+    position: relative;
+    width: 50px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+
+    .ant-input-number-input {
+      line-height: 40px;
+      height: 40px;
+      font-family: PingFangSC-Regular;
+      font-size: 14px;
+      color: #bec2c6;
+    }
+  }
+
+  .px-quantity-box:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #232321;
+    content: 'px';
+  }
+
+  .rem-quantity-box:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #232321;
+    content: 'rem';
+  }
+
+  .em-quantity-box:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #232321;
+    content: 'em';
+  }
+
+  .percent-quantity-box:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #232321;
+    content: '%';
+  }
+
+  > .layout-item-top {
+    position: absolute;
+    top: 15px;
+    left: 85px;
+  }
+
+  > .layout-item-right {
+    position: absolute;
+    right: 15px;
+    top: 85px;
+  }
+
+  > .layout-item-bottom {
+    position: absolute;
+    bottom: 15px;
+    left: 85px;
+  }
+
+  > .layout-item-left {
+    position: absolute;
+    left: 15px;
+    top: 85px;
+  }
+}

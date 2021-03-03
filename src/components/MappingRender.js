@@ -6,6 +6,7 @@ import DataSourceSchema from '$components/DataSourceSchema/index';
 import DynamicDataSchema from '$components/DynamicDataSchema/index';
 import EventSchema from '$components/EventSchema/index';
 import QuantitySchema from '$components/QuantitySchema/index';
+import BoxStyleSchema from '$components/BoxStyleSchema/index';
 import RadioSchema from '$components/RadioSchema/index';
 import SelectSchema from '$components/SelectSchema/index';
 import InputFormSchema from '$components/InputFormSchema/index';
@@ -53,6 +54,9 @@ const MappingRender = (props) => {
       break;
     case 'quantity':
       return <QuantitySchema {...props} key={nodeKey} />;
+      break;
+    case 'box-style':
+      return <BoxStyleSchema {...props} key={nodeKey} />;
       break;
     case 'radio':
       return <RadioSchema {...props} key={nodeKey} />;

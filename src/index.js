@@ -2554,6 +2554,7 @@ class IndexDemo extends React.PureComponent {
         style: [
           'color',
           'quantity',
+          'box-style',
           'input',
           'boolean',
           'number',
