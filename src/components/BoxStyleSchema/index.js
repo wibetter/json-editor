@@ -188,8 +188,6 @@ class BoxStyleSchema extends React.PureComponent {
                 : layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            min={0}
-            max={1000}
             value={this.getStyleValNum(layoutStyleObj.top)}
             onChange={(newVal) => {
               if (newVal === '') return;
@@ -214,8 +212,6 @@ class BoxStyleSchema extends React.PureComponent {
                 : layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            min={0}
-            max={1000}
             value={this.getStyleValNum(layoutStyleObj.right)}
             onChange={(newVal) => {
               if (newVal === '') return;
@@ -240,8 +236,6 @@ class BoxStyleSchema extends React.PureComponent {
                 : layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            min={0}
-            max={1000}
             value={this.getStyleValNum(layoutStyleObj.bottom)}
             onChange={(newVal) => {
               if (newVal === '') return;
@@ -266,8 +260,6 @@ class BoxStyleSchema extends React.PureComponent {
                 : layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            min={0}
-            max={1000}
             value={this.getStyleValNum(layoutStyleObj.left)}
             onChange={(newVal) => {
               if (newVal === '') return;
