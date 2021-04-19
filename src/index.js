@@ -1073,7 +1073,7 @@ class IndexDemo extends React.PureComponent {
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
       }, // 用于组件配置的schema  显示  / update  ok
-      jsonSchema7: {
+      jsonSchema: {
         type: 'object',
         title: 'jsonSchemaObject',
         properties: {
@@ -2162,7 +2162,7 @@ class IndexDemo extends React.PureComponent {
         required: ['func', 'style', 'data'],
         propertyOrder: ['func', 'style', 'data'],
       },
-      jsonSchema: {
+      jsonSchema9: {
         type: 'object',
         name: 'button',
         title: 'button 元子组件',

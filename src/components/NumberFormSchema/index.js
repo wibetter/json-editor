@@ -51,6 +51,10 @@ class NumberFormSchema extends React.PureComponent {
       );
     } else {
       updateFormValueData(keyRoute, newVal); // 更新数值
+      // 更新渲染时间戳，以便number能重新渲染
+      this.setState({
+        renderTime: new Date().getTime(),
+      });
     }
   };
 
@@ -66,10 +70,6 @@ class NumberFormSchema extends React.PureComponent {
       curNum -= 1;
     }
     this.handleValueChange(curNum);
-    // 更新渲染时间戳，以便number能重新渲染
-    this.setState({
-      renderTime: new Date().getTime(),
-    });
   };
 
   render() {

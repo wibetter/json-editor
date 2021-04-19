@@ -10,9 +10,12 @@ import {
 } from '@ant-design/icons';
 // 引入编辑器组件
 import BraftEditor from 'braft-editor';
-import ColorPicker from 'braft-extensions/dist/color-picker';
 // 引入字体取色器样式
+import ColorPicker from 'braft-extensions/dist/color-picker';
 import 'braft-extensions/dist/color-picker.css';
+// 引入表格扩展
+import Table from 'braft-extensions/dist/table';
+import 'braft-extensions/dist/table.css';
 // 引入编辑器样式
 import 'braft-editor/dist/index.css';
 import './index.scss';
@@ -21,6 +24,16 @@ const colorOptions = {
   theme: 'light', // 指定取色器样式主题，支持dark和light两种样式
 };
 BraftEditor.use([ColorPicker(colorOptions)]);
+
+// 表格配置项
+const tableOptions = {
+  defaultColumns: 3, // 默认列数
+  defaultRows: 3, // 默认行数
+  withDropdown: false, // 插入表格前是否弹出下拉菜单
+  columnResizable: false, // 是否允许拖动调整列宽，默认false
+  exportAttrString: '', // 指定输出HTML时附加到table标签上的属性字符串
+};
+BraftEditor.use(Table(tableOptions));
 
 class TextEditorSchema extends React.PureComponent {
   static propTypes = {
@@ -67,6 +80,7 @@ class TextEditorSchema extends React.PureComponent {
         'link',
         'separator',
         'media',
+        'table',
         'hr',
         // 'clear',
         'separator',
