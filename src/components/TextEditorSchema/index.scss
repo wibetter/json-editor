@@ -61,4 +61,17 @@
     box-sizing: border-box;
     overflow: hidden;
   }
+
+  // 给富文本中的表格设置默认样式
+  table {
+    border-top: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+
+    td {
+      padding: 5px 8px;
+      border-right: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.3s;
+    }
+  }
 }
