@@ -13,7 +13,7 @@ import BraftEditor from 'braft-editor';
 // 引入字体取色器样式
 import ColorPicker from 'braft-extensions/dist/color-picker';
 import 'braft-extensions/dist/color-picker.css';
-// 引入表格扩展
+// 引入表格扩展（其他扩展：https://github.com/margox/braft-extensions）
 import Table from 'braft-extensions/dist/table';
 import 'braft-extensions/dist/table.css';
 // 引入编辑器样式
@@ -31,7 +31,7 @@ const tableOptions = {
   defaultRows: 3, // 默认行数
   withDropdown: false, // 插入表格前是否弹出下拉菜单
   columnResizable: false, // 是否允许拖动调整列宽，默认false
-  exportAttrString: '', // 指定输出HTML时附加到table标签上的属性字符串
+  exportAttrString: 'border="1" style="border-collapse: collapse"', // 指定输出HTML时附加到table标签上的属性字符串
 };
 BraftEditor.use(Table(tableOptions));
 
