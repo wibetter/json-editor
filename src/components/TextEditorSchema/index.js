@@ -43,6 +43,7 @@ class TextEditorSchema extends React.PureComponent {
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
+    pageScreen: PropTypes.any,
   };
 
   constructor(props) {
@@ -101,6 +102,13 @@ class TextEditorSchema extends React.PureComponent {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    } else if (nextProps.pageScreen !== this.props.pageScreen) {
+      if (nextProps.pageScreen && nextProps.pageScreen === 'wideScreen') {
+        // 大屏幕时默认展开富文本编辑器
+        this.setState({
+          isClosed: false,
+        });
+      }
     }
   }
 
