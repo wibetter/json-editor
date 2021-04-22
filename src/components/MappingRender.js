@@ -21,6 +21,7 @@ import ColorFormSchema from '$components/ColorFormSchema/index';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import HtmlAreaFormSchema from '$components/HtmlAreaFormSchema/index';
+import SingleSelectSchema from '$components/SingleSelectSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -61,7 +62,10 @@ const MappingRender = (props) => {
     case 'radio':
       return <RadioSchema {...props} key={nodeKey} />;
       break;
-    case 'select':
+    case 'single-select':
+      return <SingleSelectSchema {...props} key={nodeKey} />;
+      break;
+    case 'select': // 多选
       return <SelectSchema {...props} key={nodeKey} />;
       break;
     case 'input':

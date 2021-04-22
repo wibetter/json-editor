@@ -107,8 +107,8 @@ class IndexDemo extends React.PureComponent {
               },
               field_9: {
                 type: 'string',
-                title: '单选',
-                format: 'radio',
+                title: '下拉单选',
+                format: 'single-select',
                 isRequired: false,
                 default: '',
                 description: '',

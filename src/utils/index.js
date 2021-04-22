@@ -34,7 +34,8 @@ export function isNeedTwoColWarpStyle(format) {
     format === 'time' ||
     format === 'number' ||
     format === 'color' ||
-    format === 'quantity'
+    format === 'quantity' ||
+    format === 'single-select'
   ) {
     isNeedTwoColWarp = true;
   }
