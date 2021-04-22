@@ -55,7 +55,7 @@ class TextEditorSchema extends React.PureComponent {
         'separator',
         'headings',
         'font-size',
-        // 'line-height', // 备注：行高设置无效（待处理BUG）
+        'line-height', // 备注：行高设置无效（待处理BUG）
         'letter-spacing',
         'separator',
         'text-color',

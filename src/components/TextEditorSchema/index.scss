@@ -74,4 +74,9 @@
       transition: background 0.3s;
     }
   }
+
+  // 修复富文本行高设置无效的问题
+  .bf-content * {
+    line-height: inherit;
+  }
 }
