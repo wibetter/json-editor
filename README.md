@@ -9,8 +9,8 @@
 特点：
 1. 弹性布局
 2. 提供大屏和小屏两种展示模式
-3. 支持11种基础类型组件（input、boolean、 date、date-time、 time、 url、
- textarea、number、color、radio、 select）
+3. 支持12种基础类型组件（input、boolean、 date、date-time、 time、 url、
+ textarea、number、color、radio、 select、single-select）
 4. 支持11个特殊类型组件（object、array、json、datasource、dynamic-data、event、
 codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
