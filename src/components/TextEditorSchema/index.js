@@ -96,6 +96,12 @@ class TextEditorSchema extends React.PureComponent {
   componentWillMount() {
     // 从web缓存中获取数值
     catchJsonDataByWebCache.call(this);
+    if (this.props.pageScreen && this.props.pageScreen === 'wideScreen') {
+      // 大屏幕时默认展开富文本编辑器
+      this.setState({
+        isClosed: false,
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
