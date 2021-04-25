@@ -4,6 +4,7 @@ import {
   isNewSchemaData,
   indexRoute2keyRoute,
   oldSchemaToNewSchema,
+  getSchemaByIndexRoute,
   isEqual,
   objClone,
   TypeDataList,
@@ -106,5 +107,11 @@ export default class JSONSchemaStore {
   @action.bound
   indexRoute2keyRoute(indexRoute) {
     return indexRoute2keyRoute(indexRoute, this.jsonSchema);
+  }
+
+  /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
+  @action.bound
+  getSchemaByIndexRoute(indexRoute) {
+    return getSchemaByIndexRoute(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
   }
 }

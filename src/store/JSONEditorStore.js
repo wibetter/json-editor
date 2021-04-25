@@ -181,6 +181,24 @@ export default class JSONEditorStore {
       // 当keyRoute为空时直接修改当前schemaData
       this.jsonData = newVal;
     }
+    // 获取当前schema的条件字段
+    let curSchema = {};
+    let conditionProps = {};
+    if (
+      this.rootJSONStore.JSONSchemaStore &&
+      this.rootJSONStore.JSONSchemaStore.jsonSchema
+    ) {
+      curSchema = this.rootJSONStore.JSONSchemaStore.jsonSchema;
+      conditionProps = curSchema.conditionProps;
+    }
+    // 判断当前字段是否为条件字段
+    Object.keys(conditionProps).map((propKey) => {
+      const conditionItem = conditionProps[propKey];
+      if (conditionItem.keyRoute === keyRoute) {
+        // 更新LastInitTime
+        this.updateLastTime();
+      }
+    });
 
     if (!ignoreChange) {
       // 4. 触发onChange事件

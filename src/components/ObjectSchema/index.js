@@ -56,6 +56,7 @@ class ObjectSchema extends React.PureComponent {
       isArrayItem,
       arrIndex,
       isStructuredSchema,
+      getJSONDataByKeyRoute,
     } = this.props;
     const { jsonView, isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
@@ -153,6 +154,7 @@ class ObjectSchema extends React.PureComponent {
                 keyRoute: currentKeyRoute,
                 nodeKey: childNodeKey,
                 targetJsonSchema: currentSchemaData,
+                getJSONDataByKeyRoute,
               });
             })}
           {jsonView && <JsonView {...this.props} />}

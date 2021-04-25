@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
 import JSONSchemaEditor from '@wibetter/json-schema-editor/dist/index.umd';
 import JSONEditor from './main';
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import '@wibetter/json-schema-editor/dist/index.css';
 import './index.scss';
 
@@ -25,7 +28,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               field_1: {
                 type: 'string',
-                title: '单文本框',
+                title: '数值条件',
                 format: 'input',
                 isRequired: false,
                 default: '',
@@ -35,7 +38,7 @@ class IndexDemo extends React.PureComponent {
               },
               field_2: {
                 type: 'boolean',
-                title: '布尔值',
+                title: '显示日期',
                 format: 'boolean',
                 isRequired: false,
                 default: true,
@@ -52,6 +55,17 @@ class IndexDemo extends React.PureComponent {
                 description: '',
                 placeholder: '',
                 readOnly: false,
+                hiddenRule: {
+                  conditionProp: {
+                    indexRoute: '0-1',
+                    key: 'field_2',
+                    keyRoute: 'func-field_2',
+                    title: '显示日期',
+                    format: 'boolean',
+                    type: 'boolean',
+                  },
+                  conditionValue: false,
+                },
               },
               field_4: {
                 type: 'string',
@@ -92,6 +106,17 @@ class IndexDemo extends React.PureComponent {
                 description: '',
                 placeholder: '',
                 readOnly: false,
+                hiddenRule: {
+                  conditionProp: {
+                    indexRoute: '0-0',
+                    key: 'field_1',
+                    keyRoute: 'func-field_1',
+                    title: '单文本框',
+                    format: 'input',
+                    type: 'string',
+                  },
+                  conditionValue: '123',
+                },
               },
               field_8: {
                 type: 'number',
@@ -107,10 +132,9 @@ class IndexDemo extends React.PureComponent {
               },
               field_9: {
                 type: 'string',
-                title: '下拉单选',
-                format: 'single-select',
+                title: '单选',
+                format: 'radio',
                 isRequired: false,
-                default: '',
                 description: '',
                 placeholder: '',
                 readOnly: false,
@@ -126,7 +150,6 @@ class IndexDemo extends React.PureComponent {
                 title: '多选',
                 format: 'select',
                 isRequired: false,
-                default: '',
                 description: '',
                 placeholder: '',
                 readOnly: false,
@@ -142,7 +165,6 @@ class IndexDemo extends React.PureComponent {
                 title: '数组',
                 format: 'array',
                 isRequired: false,
-                default: '',
                 description: '',
                 placeholder: '',
                 readOnly: false,
@@ -184,7 +206,6 @@ class IndexDemo extends React.PureComponent {
                 title: '对象类型',
                 format: 'object',
                 isRequired: false,
-                default: '',
                 description: '',
                 placeholder: '',
                 readOnly: false,
@@ -271,22 +292,31 @@ class IndexDemo extends React.PureComponent {
               },
               field_23: {
                 type: 'object',
-                title: '单位计量输入',
                 format: 'quantity',
+                title: '单位计量',
                 isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
                 readOnly: false,
                 properties: {
-                  unit: { type: 'number', title: '数值', format: 'number' },
+                  unit: {
+                    type: 'number',
+                    title: '单位数值',
+                    format: 'number',
+                    default: 50,
+                    minimum: 0,
+                    maximum: 1000,
+                    description: '',
+                    isRequired: false,
+                    readOnly: false,
+                  },
                   quantity: {
                     type: 'string',
-                    default: 'px',
                     format: 'typeSelect',
+                    default: 'px',
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
+                    isRequired: false,
+                    readOnly: false,
                   },
                 },
                 required: ['unit', 'quantity'],
@@ -302,22 +332,9 @@ class IndexDemo extends React.PureComponent {
                 isRequired: false,
                 readOnly: false,
               },
-              field_111: {
-                type: 'string',
-                title: 'IMG',
-                format: 'image',
-                default: '',
-                description: '上传图片',
-                imgWidth: 200,
-                imgHeight: 200,
-                imgRatio: 1,
-                imgRatioReadOnly: false,
-                isRequired: false,
-                readOnly: false,
-              },
             },
-            required: ['field_18', 'field_23', 'field_1', 'field_111'],
-            propertyOrder: ['field_18', 'field_23', 'field_1', 'field_111'],
+            required: ['field_18', 'field_23', 'field_1'],
+            propertyOrder: ['field_18', 'field_23', 'field_1'],
           },
           data: {
             type: 'object',
@@ -337,12 +354,8 @@ class IndexDemo extends React.PureComponent {
               },
               field_29: {
                 type: 'object',
-                title: '数据源',
                 format: 'datasource',
-                isRequired: false,
-                default: '',
-                description: '',
-                placeholder: '',
+                title: '数据源',
                 readOnly: false,
                 properties: {
                   type: {
@@ -355,16 +368,20 @@ class IndexDemo extends React.PureComponent {
                   },
                   data: {
                     type: 'string',
+                    title: '本地json数据',
+                    placeholder: '请输入静态json数据',
                     format: 'json',
                     default: 'local',
-                    readOnlyInJson: false,
-                    title: '本地静态json数据',
+                    description: '用于设置本地的静态json数据',
+                    isRequired: true,
                   },
                   filter: {
                     type: 'string',
+                    title: '过滤器',
                     format: 'codearea',
                     default: 'return data;',
-                    title: '过滤器',
+                    description: '用于定义过滤当前数据的函数',
+                    isRequired: true,
                   },
                 },
                 required: ['type', 'data', 'filter'],
@@ -415,7 +432,6 @@ class IndexDemo extends React.PureComponent {
                 title: '数组',
                 format: 'array',
                 isRequired: false,
-                default: '',
                 description: '',
                 placeholder: '',
                 readOnly: false,
@@ -442,7 +458,6 @@ class IndexDemo extends React.PureComponent {
                       title: '数组',
                       format: 'array',
                       isRequired: false,
-                      default: '',
                       description: '',
                       placeholder: '',
                       readOnly: false,
@@ -513,7 +528,6 @@ class IndexDemo extends React.PureComponent {
                 title: '对象类型',
                 format: 'object',
                 isRequired: false,
-                default: '',
                 description: '',
                 placeholder: '',
                 readOnly: false,
@@ -523,7 +537,6 @@ class IndexDemo extends React.PureComponent {
                     title: '对象类型',
                     format: 'object',
                     isRequired: false,
-                    default: '',
                     description: '',
                     placeholder: '',
                     readOnly: false,
@@ -543,7 +556,6 @@ class IndexDemo extends React.PureComponent {
                         title: '多选',
                         format: 'select',
                         isRequired: false,
-                        default: '',
                         description: '',
                         placeholder: '',
                         readOnly: false,
@@ -606,6 +618,25 @@ class IndexDemo extends React.PureComponent {
         required: ['func', 'style', 'data'],
         format: 'object',
         propertyOrder: ['func', 'style', 'data'],
+        conditionProps: {
+          '0-1': {
+            indexRoute: '0-1',
+            key: 'field_2',
+            keyRoute: 'func-field_2',
+            title: '显示日期',
+            format: 'boolean',
+            type: 'boolean',
+          },
+          '0-0': {
+            indexRoute: '0-0',
+            key: 'field_1',
+            keyRoute: 'func-field_1',
+            title: '单文本框',
+            format: 'input',
+            type: 'string',
+          },
+        },
+        lastUpdateTime: '2021-04-25T08:50:11.575Z',
       }, // 用于组件配置的schema
       jsonData: {},
       dynamicDataList: [
@@ -732,6 +763,7 @@ class IndexDemo extends React.PureComponent {
       ],
       wideScreen: false,
       jsonView: false,
+      schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
       curTypeList: {
         func: [
@@ -837,6 +869,7 @@ class IndexDemo extends React.PureComponent {
       dynamicDataList,
       wideScreen,
       jsonView,
+      schemaCodeView,
       viewStyle,
       curTypeList,
     } = this.state;
@@ -847,7 +880,18 @@ class IndexDemo extends React.PureComponent {
             <p>
               <b>JSONSchema</b>: 提供可视化界面编辑json格式/结构；
               <br />
-              主要用于可视化模型设置（定义可配置项）。
+              主要用于可视化模型设置（定义可配置项）。&nbsp;&nbsp;
+              <Switch
+                style={{ display: 'inline-block' }}
+                defaultChecked={schemaCodeView}
+                checkedChildren="code"
+                unCheckedChildren="view"
+                onChange={(checked) => {
+                  this.setState({
+                    schemaCodeView: checked,
+                  });
+                }}
+              />
             </p>
           </div>
           <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
@@ -897,16 +941,40 @@ class IndexDemo extends React.PureComponent {
         </div>
         <div className="json-action-container">
           <div className="json-schema-box">
-            <JSONSchemaEditor
-              data={jsonSchema}
-              typeList={curTypeList}
-              onChange={(newJsonSchema) => {
-                console.log('jsonSchemaChange', newJsonSchema);
-                this.setState({
-                  jsonSchema: newJsonSchema,
-                });
-              }}
-            />
+            {!schemaCodeView && (
+              <JSONSchemaEditor
+                data={jsonSchema}
+                typeList={curTypeList}
+                onChange={(newJsonSchema) => {
+                  this.setState({
+                    jsonSchema: newJsonSchema,
+                  });
+                }}
+              />
+            )}
+            {schemaCodeView && (
+              <AceEditor
+                id="json_area_ace"
+                value={JSON.stringify(jsonSchema, null, 2)}
+                className="json-view-ace"
+                mode="json"
+                theme="solarized_light"
+                name="JSON_CODE_EDIT"
+                fontSize={14}
+                showPrintMargin={true}
+                showGutter={true}
+                highlightActiveLine={true}
+                readOnly={false}
+                minLines={5}
+                maxLines={33}
+                width={'100%'}
+                setOptions={{
+                  useWorker: false,
+                  showLineNumbers: true,
+                  tabSize: 2,
+                }}
+              />
+            )}
           </div>
           <div
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}

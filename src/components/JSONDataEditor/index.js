@@ -122,7 +122,12 @@ class JSONDataEditor extends React.PureComponent {
   };
 
   render() {
-    const { jsonSchema, lastUpdateTime, jsonLastUpdateTime } = this.props;
+    const {
+      jsonSchema,
+      lastUpdateTime,
+      jsonLastUpdateTime,
+      getJSONDataByKeyRoute,
+    } = this.props;
     const { jsonView, viewStyle } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isStructured = isStructuredSchema(jsonSchema); // 判断是否是结构化的schema数据
@@ -180,6 +185,7 @@ class JSONDataEditor extends React.PureComponent {
                               nodeKey,
                               targetJsonSchema: currentSchemaData,
                               isStructuredSchema: isStructured,
+                              getJSONDataByKeyRoute,
                             })}
                           </Panel>
                         );
@@ -232,6 +238,7 @@ class JSONDataEditor extends React.PureComponent {
                               nodeKey,
                               targetJsonSchema: currentSchemaData,
                               isStructuredSchema: isStructured,
+                              getJSONDataByKeyRoute,
                             })}
                           </TabPane>
                         );
@@ -252,6 +259,7 @@ class JSONDataEditor extends React.PureComponent {
                   keyRoute: '',
                   nodeKey: '',
                   targetJsonSchema: jsonSchema,
+                  getJSONDataByKeyRoute,
                 })}
               </>
             )}
@@ -279,6 +287,7 @@ export default inject((stores) => ({
   JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
   initJSONData: stores.JSONEditorStore.initJSONData,
   initOnChange: stores.JSONEditorStore.initOnChange,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   setDynamicDataList: stores.JSONEditorStore.setDynamicDataList,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
 }))(observer(JSONDataEditor));
