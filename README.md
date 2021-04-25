@@ -7,8 +7,8 @@
 技术栈：React/Mobx/Ant Design
 
 特点：
-1. 弹性布局
-2. 提供大屏和小屏两种展示模式
+1. 弹性布局，提供大屏和小屏两种展示模式
+2. 支持字段联动
 3. 支持12种基础类型组件（input、boolean、 date、date-time、 time、 url、
  textarea、number、color、radio、 select、single-select）
 4. 支持11个特殊类型组件（object、array、json、datasource、dynamic-data、event、

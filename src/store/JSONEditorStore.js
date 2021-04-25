@@ -191,14 +191,16 @@ export default class JSONEditorStore {
       curSchema = this.rootJSONStore.JSONSchemaStore.jsonSchema;
       conditionProps = curSchema.conditionProps;
     }
-    // 判断当前字段是否为条件字段
-    Object.keys(conditionProps).map((propKey) => {
-      const conditionItem = conditionProps[propKey];
-      if (conditionItem.keyRoute === keyRoute) {
-        // 更新LastInitTime
-        this.updateLastTime();
-      }
-    });
+    if (conditionProps) {
+      // 判断当前字段是否为条件字段
+      Object.keys(conditionProps).map((propKey) => {
+        const conditionItem = conditionProps[propKey];
+        if (conditionItem.keyRoute === keyRoute) {
+          // 更新LastInitTime
+          this.updateLastTime();
+        }
+      });
+    }
 
     if (!ignoreChange) {
       // 4. 触发onChange事件

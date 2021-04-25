@@ -4,15 +4,6 @@ import PropTypes from 'prop-types';
 import { InputNumber, Tooltip } from 'antd';
 import './index.scss';
 
-// 记录box-style的数值
-let layoutStyleObj = {
-  top: '',
-  right: '',
-  bottom: '',
-  left: '',
-  quantity: 'px',
-};
-
 class BoxStyleSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
@@ -30,7 +21,7 @@ class BoxStyleSchema extends React.PureComponent {
       renderAction: false, // 用于主动触发render的临时变量
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-    this.updateBoxStyle = this.updateBoxStyle.bind(this);
+    this.updateBoxStyleState = this.updateBoxStyleState.bind(this);
     this.initBoxStyle = this.initBoxStyle.bind(this);
   }
 
@@ -42,6 +33,15 @@ class BoxStyleSchema extends React.PureComponent {
     this.initBoxStyle();
   }
 
+  // 记录box-style的数值（无需实时响应）
+  layoutStyleObj = {
+    top: '',
+    right: '',
+    bottom: '',
+    left: '',
+    quantity: 'px',
+  };
+
   /** 初始化boxStyle的数值 */
   initBoxStyle = () => {
     const { keyRoute, targetJsonSchema, getJSONDataByKeyRoute } = this.props;
@@ -52,54 +52,103 @@ class BoxStyleSchema extends React.PureComponent {
     const unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
     const quantity = curJsonData.quantity; // 获取数值单位
     const unitStr = curJsonData.unit || unitJsonSchema.default; // 获取数值
-    // 设置单位值
-    layoutStyleObj.quantity = quantity;
+    // 重置数值
+    this.layoutStyleObj = {
+      top: '',
+      right: '',
+      bottom: '',
+      left: '',
+      quantity: quantity, // 设置单位值
+    };
     // 设置盒子模型数值
     if (unitStr) {
       const unitArr = unitStr.split(' ');
       if (unitArr.length === 1) {
         if (unitArr[0] && unitArr[0].indexOf(quantity) >= 0) {
           // 表示当前值有单位
-          layoutStyleObj.top = unitArr[0];
-          layoutStyleObj.right = unitArr[0];
-          layoutStyleObj.bottom = unitArr[0];
-          layoutStyleObj.left = unitArr[0];
-        } else if (unitArr[0]) {
-          layoutStyleObj.top = `${unitArr[0]}${quantity}`;
-          layoutStyleObj.right = `${unitArr[0]}${quantity}`;
-          layoutStyleObj.bottom = `${unitArr[0]}${quantity}`;
-          layoutStyleObj.left = `${unitArr[0]}${quantity}`;
+          this.layoutStyleObj.top = unitArr[0];
+          this.layoutStyleObj.right = unitArr[0];
+          this.layoutStyleObj.bottom = unitArr[0];
+          this.layoutStyleObj.left = unitArr[0];
+        } else if (unitArr[0] === 'auto') {
+          this.layoutStyleObj.top = `auto`;
+          this.layoutStyleObj.right = `auto`;
+          this.layoutStyleObj.bottom = `auto`;
+          this.layoutStyleObj.left = `auto`;
+        } else {
+          this.layoutStyleObj.top = `${unitArr[0]}${quantity}`;
+          this.layoutStyleObj.right = `${unitArr[0]}${quantity}`;
+          this.layoutStyleObj.bottom = `${unitArr[0]}${quantity}`;
+          this.layoutStyleObj.left = `${unitArr[0]}${quantity}`;
         }
       } else {
-        layoutStyleObj.top = unitArr[0];
-        layoutStyleObj.right = unitArr[1];
-        layoutStyleObj.bottom = unitArr[2] || unitArr[0];
-        layoutStyleObj.left = unitArr[3] || unitArr[1];
+        this.layoutStyleObj.top = unitArr[0];
+        this.layoutStyleObj.right = unitArr[1];
+        this.layoutStyleObj.bottom = unitArr[2] || unitArr[0];
+        this.layoutStyleObj.left = unitArr[3] || unitArr[1];
       }
     } else if (unitStr === 0) {
-      layoutStyleObj.top = `${unitStr}${quantity}`;
-      layoutStyleObj.right = `${unitStr}${quantity}`;
-      layoutStyleObj.bottom = `${unitStr}${quantity}`;
-      layoutStyleObj.left = `${unitStr}${quantity}`;
+      this.layoutStyleObj.top = `${unitStr}${quantity}`;
+      this.layoutStyleObj.right = `${unitStr}${quantity}`;
+      this.layoutStyleObj.bottom = `${unitStr}${quantity}`;
+      this.layoutStyleObj.left = `${unitStr}${quantity}`;
+    } else {
+      this.layoutStyleObj.top = `auto`;
+      this.layoutStyleObj.right = `auto`;
+      this.layoutStyleObj.bottom = `auto`;
+      this.layoutStyleObj.left = `auto`;
     }
   };
 
   /** 设置布局容器的盒子模型数值 */
-  setLayoutBoxStyle = (newVal) => {
-    if (newVal || newVal === 0) {
-      layoutStyleObj.top = `${newVal}${layoutStyleObj.quantity}`;
-      layoutStyleObj.right = `${newVal}${layoutStyleObj.quantity}`;
-      layoutStyleObj.bottom = `${newVal}${layoutStyleObj.quantity}`;
-      layoutStyleObj.left = `${newVal}${layoutStyleObj.quantity}`;
-      this.updateBoxStyle();
+  setLayoutBoxStyle = (newVal, layoutStyleLock, propKey) => {
+    if (layoutStyleLock) {
+      this.linkLayoutBoxStyle(newVal);
+    } else {
+      if (newVal === 'auto') {
+        this.layoutStyleObj[propKey] = `auto`;
+      } else if (newVal) {
+        this.layoutStyleObj[
+          propKey
+        ] = `${newVal}${this.layoutStyleObj.quantity}`;
+      } else if (newVal === 0 || newVal === '0') {
+        this.layoutStyleObj[propKey] = `0${this.layoutStyleObj.quantity}`;
+      } else {
+        this.layoutStyleObj[propKey] = `auto`;
+      }
+      this.updateBoxStyleState();
     }
   };
 
+  /** 布局容器的盒子模型数值联动设值 */
+  linkLayoutBoxStyle = (newVal) => {
+    let curValue = newVal;
+    if (newVal === 'auto') {
+      curValue = 'auto';
+    } else if (newVal === 0) {
+      curValue = `0${this.layoutStyleObj.quantity}`;
+    } else if (newVal) {
+      curValue = `${newVal}${this.layoutStyleObj.quantity}`;
+    } else {
+      curValue = 'auto';
+    }
+    this.layoutStyleObj.top = curValue;
+    this.layoutStyleObj.right = curValue;
+    this.layoutStyleObj.bottom = curValue;
+    this.layoutStyleObj.left = curValue;
+    this.updateBoxStyleState();
+  };
+
   getStyleValNum = (valStr) => {
-    if (valStr === `0${layoutStyleObj.quantity}` || valStr === '0') {
+    if (valStr === 'auto') {
+      return '';
+    } else if (
+      valStr === `0${this.layoutStyleObj.quantity}` ||
+      valStr === '0'
+    ) {
       return 0;
     } else if (valStr) {
-      const pxIndex = valStr.indexOf(layoutStyleObj.quantity);
+      const pxIndex = valStr.indexOf(this.layoutStyleObj.quantity);
       if (pxIndex > -1) {
         // tslint:disable-next-line:radix
         return parseInt(valStr.substring(0, pxIndex));
@@ -111,16 +160,12 @@ class BoxStyleSchema extends React.PureComponent {
     return 0;
   };
 
-  /** 获取布局容器的盒子模型数值 */
-  getLayoutBoxStyle = () => {
-    return `${layoutStyleObj.top} ${layoutStyleObj.right} ${layoutStyleObj.bottom} ${layoutStyleObj.left}`;
-  };
-
   /** 数值变动事件处理器 */
-  updateBoxStyle = () => {
+  updateBoxStyleState = () => {
     const { keyRoute, updateFormValueData } = this.props;
     const { renderAction } = this.state;
-    const boxStyleUnit = this.getLayoutBoxStyle();
+    /** 获取布局容器的盒子模型数值 */
+    const boxStyleUnit = `${this.layoutStyleObj.top} ${this.layoutStyleObj.right} ${this.layoutStyleObj.bottom} ${this.layoutStyleObj.left}`;
     const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
     updateFormValueData(curKeyRoute, boxStyleUnit); // 更新单位数值
     this.setState({
@@ -167,9 +212,9 @@ class BoxStyleSchema extends React.PureComponent {
               title={layoutStyleLock ? '点击解锁联动' : '点击联动'}
             >
               <img
-                src={`//storage.360buyimg.com/cdnnpm/jdw-web/icon/${
-                  layoutStyleLock ? 'lock' : 'unlock'
-                }.png`}
+                src={`//storage.360buyimg.com/widgeteditor/widget-editor-web/json-editor/${
+                  layoutStyleLock ? 'link' : 'unlink'
+                }.svg`}
                 className="lock-icon"
                 onClick={() => {
                   this.setState({
@@ -183,96 +228,56 @@ class BoxStyleSchema extends React.PureComponent {
             name="layoutPaddingTop"
             className={`layout-input-number layout-item layout-item-top
             ${
-              layoutStyleObj.quantity === '%'
+              this.layoutStyleObj.quantity === '%'
                 ? 'percent'
-                : layoutStyleObj.quantity
+                : this.layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            value={this.getStyleValNum(layoutStyleObj.top)}
+            value={this.getStyleValNum(this.layoutStyleObj.top)}
             onChange={(newVal) => {
-              if (newVal === '') return;
-              if (layoutStyleLock) {
-                this.setLayoutBoxStyle(newVal);
-              } else {
-                if (newVal) {
-                  layoutStyleObj.top = `${newVal}${layoutStyleObj.quantity}`;
-                } else {
-                  layoutStyleObj.top = `0${layoutStyleObj.quantity}`;
-                }
-                this.updateBoxStyle();
-              }
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'top');
             }}
           />
           <InputNumber
             name="layoutPaddingRight"
             className={`layout-input-number layout-item layout-item-right
             ${
-              layoutStyleObj.quantity === '%'
+              this.layoutStyleObj.quantity === '%'
                 ? 'percent'
-                : layoutStyleObj.quantity
+                : this.layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            value={this.getStyleValNum(layoutStyleObj.right)}
+            value={this.getStyleValNum(this.layoutStyleObj.right)}
             onChange={(newVal) => {
-              if (newVal === '') return;
-              if (layoutStyleLock) {
-                this.setLayoutBoxStyle(newVal);
-              } else {
-                if (newVal) {
-                  layoutStyleObj.right = `${newVal}${layoutStyleObj.quantity}`;
-                } else {
-                  layoutStyleObj.right = `0${layoutStyleObj.quantity}`;
-                }
-                this.updateBoxStyle();
-              }
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'right');
             }}
           />
           <InputNumber
             name="layoutPaddingBottom"
             className={`layout-input-number layout-item layout-item-bottom
             ${
-              layoutStyleObj.quantity === '%'
+              this.layoutStyleObj.quantity === '%'
                 ? 'percent'
-                : layoutStyleObj.quantity
+                : this.layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            value={this.getStyleValNum(layoutStyleObj.bottom)}
+            value={this.getStyleValNum(this.layoutStyleObj.bottom)}
             onChange={(newVal) => {
-              if (newVal === '') return;
-              if (layoutStyleLock) {
-                this.setLayoutBoxStyle(newVal);
-              } else {
-                if (newVal) {
-                  layoutStyleObj.bottom = `${newVal}${layoutStyleObj.quantity}`;
-                } else {
-                  layoutStyleObj.bottom = `0${layoutStyleObj.quantity}`;
-                }
-                this.updateBoxStyle();
-              }
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'bottom');
             }}
           />
           <InputNumber
             name="layoutPaddingLeft"
             className={`layout-input-number layout-item layout-item-left
             ${
-              layoutStyleObj.quantity === '%'
+              this.layoutStyleObj.quantity === '%'
                 ? 'percent'
-                : layoutStyleObj.quantity
+                : this.layoutStyleObj.quantity
             }-quantity-box`}
             size="small"
-            value={this.getStyleValNum(layoutStyleObj.left)}
+            value={this.getStyleValNum(this.layoutStyleObj.left)}
             onChange={(newVal) => {
-              if (newVal === '') return;
-              if (layoutStyleLock) {
-                this.setLayoutBoxStyle(newVal);
-              } else {
-                if (newVal) {
-                  layoutStyleObj.left = `${newVal}${layoutStyleObj.quantity}`;
-                } else {
-                  layoutStyleObj.left = `0${layoutStyleObj.quantity}`;
-                }
-                this.updateBoxStyle();
-              }
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'left');
             }}
           />
         </div>
