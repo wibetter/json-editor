@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, Tooltip } from 'antd';
+import { Input, Tooltip, message } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
@@ -39,6 +40,13 @@ class ColorFormSchema extends React.PureComponent {
     const { value } = event.target;
     const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, value); // 更新数值
+  };
+
+  /** color清除事件处理器 */
+  deleteColor = () => {
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, 'initial'); // 更新数值
+    message.success('已移除当前设置的颜色值');
   };
 
   render() {
@@ -89,6 +97,14 @@ class ColorFormSchema extends React.PureComponent {
               defaultValue={curJsonData || targetJsonSchema.default}
               onChange={this.handleValueChange}
             />
+            <Tooltip title={`点击移除当前颜色值`} placement="top">
+              <CloseOutlined
+                className="delete-bgColor-btn"
+                onClick={() => {
+                  this.deleteColor();
+                }}
+              />
+            </Tooltip>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { InputNumber, Tooltip } from 'antd';
+import { Input, InputNumber, Tooltip } from 'antd';
 import './index.scss';
 
 class BoxStyleSchema extends React.PureComponent {
@@ -234,7 +234,12 @@ class BoxStyleSchema extends React.PureComponent {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.top)}
-            onChange={(newVal) => {
+            onPressEnter={(event) => {
+              const newVal = event.target.value;
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'top');
+            }}
+            onBlur={(event) => {
+              const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'top');
             }}
           />
@@ -248,7 +253,12 @@ class BoxStyleSchema extends React.PureComponent {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.right)}
-            onChange={(newVal) => {
+            onPressEnter={(event) => {
+              const newVal = event.target.value;
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'right');
+            }}
+            onBlur={(event) => {
+              const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'right');
             }}
           />
@@ -262,7 +272,12 @@ class BoxStyleSchema extends React.PureComponent {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.bottom)}
-            onChange={(newVal) => {
+            onPressEnter={(event) => {
+              const newVal = event.target.value;
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'bottom');
+            }}
+            onBlur={(event) => {
+              const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'bottom');
             }}
           />
@@ -276,7 +291,12 @@ class BoxStyleSchema extends React.PureComponent {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.left)}
-            onChange={(newVal) => {
+            onPressEnter={(event) => {
+              const newVal = event.target.value;
+              this.setLayoutBoxStyle(newVal, layoutStyleLock, 'left');
+            }}
+            onBlur={(event) => {
+              const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'left');
             }}
           />
