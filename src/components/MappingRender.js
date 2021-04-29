@@ -40,7 +40,7 @@ const MappingRender = (props) => {
   // 隐藏条件成立则直接返回
   if (hiddenRule.conditionProp && exitPropertie(hiddenRule.conditionValue)) {
     const curConditionProp = hiddenRule.conditionProp;
-    const needConditionValue = hiddenRule.conditionValue;
+    const needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
     const keyRoute = curConditionProp.keyRoute;
     curConditionValue = getJSONDataByKeyRoute(keyRoute);
     if (needConditionValue === curConditionValue) {
