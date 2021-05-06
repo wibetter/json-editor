@@ -136,13 +136,7 @@ class ColorFormSchema extends React.PureComponent {
             {displayColorPicker ? (
               <div className="color-picker-container">
                 <div
-                  style={{
-                    position: 'fixed',
-                    top: '0px',
-                    right: '0px',
-                    bottom: '0px',
-                    left: '0px',
-                  }}
+                  className="color-picker-bg"
                   onClick={() => {
                     this.setState({
                       displayColorPicker: false,
@@ -150,6 +144,7 @@ class ColorFormSchema extends React.PureComponent {
                   }}
                 />
                 <SketchPicker
+                  className="color-sketch-picker"
                   key={`${nodeKey}-SketchPicker`}
                   color={curJsonData || targetJsonSchema.default}
                   onChange={this.handleValueChange}
