@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.content-item > .form-item-box > .color-item-form {
+  width: 60px;
+}
+
+.color-item-form:hover + .delete-bgColor-btn,
+.delete-bgColor-btn:hover {
+  visibility: visible;
+}
+
+.delete-bgColor-btn {
+  position: relative;
+  left: -12px;
+  top: -9px;
+  visibility: hidden;
+
+  svg {
+    height: 18px;
+  }
+}
+
+.delete-bgColor-btn:hover {
+  color: red;
+}

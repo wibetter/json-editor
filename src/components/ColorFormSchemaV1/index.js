@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Tooltip, message } from 'antd';
-import { SketchPicker } from 'react-color';
+import { Input, Tooltip, message } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
 
 /**
- * 新版color类型：颜色选择器
+ * 旧版color类型：使用原生input(type=color)实现颜色选择器
  */
 class ColorFormSchema extends React.PureComponent {
   static propTypes = {
@@ -23,10 +22,6 @@ class ColorFormSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      renderState: false, // 用于主动触发更新的状态数据
-      displayColorPicker: false, // 是否展示颜色选择器
-    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
   }
@@ -44,14 +39,10 @@ class ColorFormSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (color) => {
-    const { hex } = color;
+  handleValueChange = (event) => {
+    const { value } = event.target;
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, hex); // 更新数值
-    // 主动触发更新的状态数据
-    this.setState({
-      renderState: !this.state.renderState,
-    });
+    updateFormValueData(keyRoute, value); // 更新数值
   };
 
   /** color清除事件处理器 */
@@ -59,10 +50,6 @@ class ColorFormSchema extends React.PureComponent {
     const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, 'initial'); // 更新数值
     message.success('已移除当前设置的颜色值');
-    // 主动触发更新的状态数据
-    this.setState({
-      renderState: !this.state.renderState,
-    });
   };
 
   render() {
@@ -73,7 +60,6 @@ class ColorFormSchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
-    const { renderState, displayColorPicker } = this.state;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
@@ -106,56 +92,22 @@ class ColorFormSchema extends React.PureComponent {
           </Tooltip>
         </div>
         <div className="content-item">
-          <div className={`form-item-box render-dom-${renderState}`}>
-            <div
-              className={`color-btn-wrap color-item-form ${
-                displayColorPicker ? 'selected' : ''
-              }`}
-              onClick={() => {
-                this.setState({
-                  displayColorPicker: !displayColorPicker,
-                });
-              }}
-            >
-              <button
-                className="ant-input color-btn"
-                style={{
-                  backgroundColor: curJsonData || targetJsonSchema.default,
+          <div className="form-item-box">
+            <Input
+              style={{ display: 'inline-block' }}
+              className="color-item-form"
+              type={'color'}
+              defaultValue={curJsonData || targetJsonSchema.default}
+              onChange={this.handleValueChange}
+            />
+            <Tooltip title={`点击移除当前颜色值`} placement="top">
+              <CloseOutlined
+                className="delete-bgColor-btn"
+                onClick={() => {
+                  this.deleteColor();
                 }}
-              ></button>
-              <Tooltip title={`点击移除当前颜色值`} placement="top">
-                <CloseOutlined
-                  className="delete-bgColor-btn"
-                  onClick={() => {
-                    this.deleteColor();
-                  }}
-                />
-              </Tooltip>
-              <span className="arrow"></span>
-            </div>
-            {displayColorPicker ? (
-              <div className="color-picker-container">
-                <div
-                  style={{
-                    position: 'fixed',
-                    top: '0px',
-                    right: '0px',
-                    bottom: '0px',
-                    left: '0px',
-                  }}
-                  onClick={() => {
-                    this.setState({
-                      displayColorPicker: false,
-                    });
-                  }}
-                />
-                <SketchPicker
-                  key={`${nodeKey}-SketchPicker`}
-                  color={curJsonData || targetJsonSchema.default}
-                  onChange={this.handleValueChange}
-                />
-              </div>
-            ) : null}
+              />
+            </Tooltip>
           </div>
         </div>
       </div>
