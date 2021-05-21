@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Tooltip, message, Popover } from 'antd';
+import { Tooltip, message } from 'antd';
 import { SketchPicker } from 'react-color';
 import { CloseOutlined } from '@ant-design/icons';
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -81,15 +81,6 @@ class ColorFormSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
 
-    const SketchPickerContent = (
-      <SketchPicker
-        className="color-sketch-picker"
-        key={`${nodeKey}-SketchPicker`}
-        color={curJsonData || targetJsonSchema.default}
-        onChange={this.handleValueChange}
-      />
-    );
-
     return (
       <div
         className={
@@ -129,14 +120,12 @@ class ColorFormSchema extends React.PureComponent {
                 });
               }}
             >
-              <Popover content={SketchPickerContent} title="颜色选择器">
-                <button
-                  className="ant-input color-btn"
-                  style={{
-                    backgroundColor: curJsonData || targetJsonSchema.default,
-                  }}
-                ></button>
-              </Popover>
+              <button
+                className="ant-input color-btn"
+                style={{
+                  backgroundColor: curJsonData || targetJsonSchema.default,
+                }}
+              ></button>
               <Tooltip title={`点击移除当前颜色值`} placement="top">
                 <CloseOutlined
                   className="delete-bgColor-btn"
@@ -147,6 +136,24 @@ class ColorFormSchema extends React.PureComponent {
               </Tooltip>
               <span className="arrow"></span>
             </div>
+            {displayColorPicker ? (
+              <div className="color-picker-container">
+                <div
+                  className="color-picker-bg"
+                  onClick={() => {
+                    this.setState({
+                      displayColorPicker: false,
+                    });
+                  }}
+                />
+                <SketchPicker
+                  className="color-sketch-picker"
+                  key={`${nodeKey}-SketchPicker`}
+                  color={curJsonData || targetJsonSchema.default}
+                  onChange={this.handleValueChange}
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

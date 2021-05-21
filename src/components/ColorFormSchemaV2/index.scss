@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+.content-item > .form-item-box {
+  position: relative;
+
+  .color-item-form {
+    width: 60px;
+  }
+  .color-btn-wrap {
+    width: 60px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .color-btn {
+      width: 18px;
+      height: 18px;
+      outline: none;
+      border: none;
+    }
+
+    .delete-bgColor-btn {
+      visibility: hidden;
+
+      svg {
+        height: 18px;
+      }
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    &:hover {
+      width: 70px;
+    }
+
+    &:hover .delete-bgColor-btn,
+    .delete-bgColor-btn:hover {
+      visibility: visible;
+    }
+
+    .arrow {
+      width: 12px;
+      height: 8px;
+      background: url(https://img13.360buyimg.com/imagetools/jfs/t1/89392/19/5730/319/5def47cdEba19fe32/f5fecec45828052b.png)
+        no-repeat;
+      background-size: 12px 8px;
+    }
+
+    &.selected {
+      border-color: rgba(44, 99, 255, 1);
+
+      .arrow {
+        background: url(https://img12.360buyimg.com/imagetools/jfs/t1/106099/19/5608/400/5def47cdEcbb59551/d53662319962a9b3.png)
+          no-repeat;
+        background-size: 12px 8px;
+      }
+    }
+  }
+
+  .color-picker-container {
+    position: absolute;
+    top: 40px;
+    left: -65px;
+    z-index: 20;
+
+    .color-sketch-picker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2000;
+      background-color: #fff;
+    }
+
+    .color-picker-bg {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1999;
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+  }
+}
