@@ -46,7 +46,6 @@ class ColorFormSchema extends React.PureComponent {
   /** 数值变动事件处理器 */
   handleValueChange = (color) => {
     const { rgb } = color; // hex,
-    console.log(color);
     const rgbaVal = `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`;
     const { keyRoute, updateFormValueData } = this.props;
     // updateFormValueData(keyRoute, hex); // 更新数值(#ffffff数据格式)
