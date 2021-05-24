@@ -21,8 +21,8 @@
     .color-btn {
       width: 18px;
       height: 18px;
-      // outline: none;
-      // border: none;
+      outline: none;
+      border: none;
     }
 
     .delete-bgColor-btn {
@@ -37,9 +37,31 @@
       }
     }
 
+    &:hover {
+      width: 70px;
+    }
+
     &:hover .delete-bgColor-btn,
     .delete-bgColor-btn:hover {
       visibility: visible;
+    }
+
+    .arrow {
+      width: 12px;
+      height: 8px;
+      background: url(https://img13.360buyimg.com/imagetools/jfs/t1/89392/19/5730/319/5def47cdEba19fe32/f5fecec45828052b.png)
+        no-repeat;
+      background-size: 12px 8px;
+    }
+
+    &.selected {
+      border-color: rgba(44, 99, 255, 1);
+
+      .arrow {
+        background: url(https://img12.360buyimg.com/imagetools/jfs/t1/106099/19/5608/400/5def47cdEcbb59551/d53662319962a9b3.png)
+          no-repeat;
+        background-size: 12px 8px;
+      }
     }
   }
 

@@ -117,7 +117,7 @@ class ColorFormSchema extends React.PureComponent {
           </Tooltip>
         </div>
         <div className="content-item">
-          <div className={`form-item-box`}>
+          <div className={`form-item-box render-dom-${renderState}`}>
             <div
               className={`color-btn-wrap color-item-form ${
                 displayColorPicker ? 'selected' : ''
@@ -134,7 +134,7 @@ class ColorFormSchema extends React.PureComponent {
                 trigger="click"
               >
                 <button
-                  className={`ant-input color-btn render-dom-${renderState}`}
+                  className="ant-input color-btn"
                   style={{
                     backgroundColor: curJsonData || targetJsonSchema.default,
                   }}
