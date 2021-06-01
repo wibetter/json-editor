@@ -9,19 +9,25 @@ body {
 }
 
 .title-container {
+  margin: 0 auto;
+  max-width: 1200px;
   display: flex;
-  justify-content: center;
+
+  .title-name {
+    font-size: 22px;
+  }
 
   .title1-box {
-    flex: 0 1 600px;
+    flex: 1 1 600px;
     padding: 8px 4px;
     box-sizing: border-box;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .title2-box {
-    flex: 1 1 700px;
+    flex: 1 1 600px;
     box-sizing: border-box;
     padding: 8px 4px;
   }
@@ -33,18 +39,19 @@ body {
 
 .json-action-container {
   margin: 0 auto;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
 
   .json-schema-box {
-    flex: 0 1 600px;
+    flex: 1 1 600px;
     padding: 8px 10px;
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
 
   .json-editor-box {
-    flex: 1 1 700px;
+    flex: 1 1 600px;
     box-sizing: border-box;
     padding: 8px 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
