@@ -15,7 +15,9 @@ import { isArray, isFunction } from '$utils/typeof';
 export default class JSONEditorStore {
   // 构造函数
   constructor(rootJSONStore) {
-    this.rootJSONStore = rootJSONStore;
+    this.state = {
+      rootJSONStore: rootJSONStore, // 初始化一份rootJSONStore
+    };
   }
   /**
    * rootJSONStore: store根数据对象
@@ -96,7 +98,8 @@ export default class JSONEditorStore {
   @action.bound
   initJSONData(jsonData) {
     // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
-    const jsonSchema = this.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
+    const jsonSchema =
+      this.state.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
     // 过滤jsonData内部数据变动时触发initJSONData的事件
     if (!isEqual(jsonData, this.jsonData)) {
       // 根据jsonSchema生成一份对应的jsonData
@@ -182,14 +185,14 @@ export default class JSONEditorStore {
       this.jsonData = newVal;
     }
     if (
-      this.rootJSONStore.JSONSchemaStore &&
-      this.rootJSONStore.JSONSchemaStore.jsonSchema
+      this.state.rootJSONStore.JSONSchemaStore &&
+      this.state.rootJSONStore.JSONSchemaStore.jsonSchema
     ) {
       // 获取当前schema的条件字段
-      const curJsonSchema = this.rootJSONStore.JSONSchemaStore.jsonSchema;
+      const curJsonSchema = this.state.rootJSONStore.JSONSchemaStore.jsonSchema;
       const conditionProps = curJsonSchema.conditionProps;
       const curElemSchema =
-        this.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
+        this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
       if (curElemSchema && curElemSchema.isConditionProp) {
         // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
         this.updateLastTime();

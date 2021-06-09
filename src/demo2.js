@@ -940,7 +940,7 @@ class IndexDemo extends React.PureComponent {
           </div>
           <div className={`title2-box`}>
             <p>
-              <b className="title-name">JSONSchema 2</b>
+              <b className="title-name">JSONEditor 2</b>
             </p>
             <div>
               <b>自定义展示</b>: &nbsp;&nbsp;
@@ -961,6 +961,7 @@ class IndexDemo extends React.PureComponent {
         <div className="json-action-container">
           <div className="json-schema-box">
             <JSONEditor
+              key="JSONEditor1"
               viewStyle={'tabs'}
               jsonView={schemaCodeView1} // code模式
               schemaData={jsonSchema1}
@@ -975,6 +976,7 @@ class IndexDemo extends React.PureComponent {
           </div>
           <div className={`json-editor-box`}>
             <JSONEditor
+              key="JSONEditor2"
               viewStyle={'tabs'}
               jsonView={schemaCodeView2} // code模式
               schemaData={jsonSchema2}
@@ -982,7 +984,7 @@ class IndexDemo extends React.PureComponent {
               onChange={(newJsonData) => {
                 console.log('jsonDataChange2', JSON.stringify(newJsonData));
                 this.setState({
-                  jsonData1: newJsonData,
+                  jsonData2: newJsonData,
                 });
               }}
             />

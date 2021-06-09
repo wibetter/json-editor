@@ -20,7 +20,9 @@ const initJSONSchemaData = TypeDataList.jsonschema;
 export default class JSONSchemaStore {
   // 构造函数
   constructor(rootJSONStore) {
-    this.rootJSONStore = rootJSONStore;
+    this.state = {
+      rootJSONStore: rootJSONStore, // 初始化一份rootJSONStore
+    };
   }
 
   /**
@@ -78,16 +80,18 @@ export default class JSONSchemaStore {
         const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
-      const curJsonData = this.rootJSONStore.JSONEditorStore.JSONEditorObj;
+      const curJsonData =
+        this.state.rootJSONStore.JSONEditorStore.JSONEditorObj;
       /** 根据jsonSchema生成对应的最新jsonData */
       const newJsonData = schema2json(this.JSONSchemaObj, curJsonData);
       /** 更新当前的jsonData */
-      this.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
-      this.rootJSONStore.JSONEditorStore.jsonDataTemp = objClone(curJsonData); // 备份过滤钱的数据对象
+      this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
+      this.state.rootJSONStore.JSONEditorStore.jsonDataTemp =
+        objClone(curJsonData); // 备份过滤钱的数据对象
       /** jsonSchem变动的时候触发一次jsonDataChange
        * jsonSchem变动意味着jsonData也需要进行对应的结构更新
        * */
-      this.rootJSONStore.JSONEditorStore.jsonDataChange();
+      this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
     }
   }
 

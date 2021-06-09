@@ -16,7 +16,7 @@ codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/jso
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 
 在线Demo：
-[点击访问在线Demo](https://wibetter.github.io/json-editor/)
+[点击访问在线Demo](https://wibetter.github.io/json-editor/demo1/index.html)
 
 JSONEditor效果图：
 ![image](https://user-images.githubusercontent.com/11958920/104156633-7eedc680-5424-11eb-9972-2e8613bd5460.png)
