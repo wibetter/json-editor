@@ -14,7 +14,9 @@ import './main.scss';
 export default class JSONEditor extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.JSONStore = new RootJSONStore();
+    this.state = {
+      rootJSONStore: new RootJSONStore(), // 初始化一份rootJSONStore
+    };
   }
 
   static propTypes = {
@@ -29,11 +31,12 @@ export default class JSONEditor extends React.PureComponent {
 
   render() {
     const { element } = this.props;
+    const { rootJSONStore } = this.state;
 
     const renderContent = (
       <Provider
-        JSONSchemaStore={this.JSONStore.JSONSchemaStore}
-        JSONEditorStore={this.JSONStore.JSONEditorStore}
+        JSONSchemaStore={rootJSONStore.JSONSchemaStore}
+        JSONEditorStore={rootJSONStore.JSONEditorStore}
       >
         <JSONDataEditor {...this.props} />
       </Provider>

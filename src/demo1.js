@@ -16,7 +16,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      jsonSchema1: {
+      jsonSchema: {
         type: 'object',
         name: 'column',
         title: '列级容器',
@@ -460,104 +460,6 @@ class IndexDemo extends React.PureComponent {
           },
         },
       }, // 用于组件配置的schema
-      jsonSchema: {
-        type: 'object',
-        title: 'widgetSchemaObject',
-        properties: {
-          style: {
-            type: 'object',
-            format: 'style',
-            title: '样式设置',
-            readOnly: true,
-            properties: {
-              fixedWidth__0_1x2: {
-                type: 'boolean',
-                title: '定宽',
-                format: 'boolean',
-                description:
-                  '块级容器-定宽：是否设置为固定宽度，默认填充父级容器',
-                isRequired: false,
-                readOnly: false,
-                isDynamicParam: true,
-                elemIndexRoute: '0',
-                propIndexRoute: '1-2',
-                isConditionProp: true,
-              },
-              width__0_1x3: {
-                type: 'object',
-                format: 'quantity',
-                title: '宽度',
-                isRequired: false,
-                readOnly: false,
-                properties: {
-                  unit: {
-                    type: 'number',
-                    title: '单位数值',
-                    format: 'number',
-                    default: 300,
-                    minimum: '0',
-                    maximum: '100000',
-                    description: '',
-                    isRequired: false,
-                    readOnly: false,
-                  },
-                  quantity: {
-                    type: 'string',
-                    format: 'typeSelect',
-                    default: 'px',
-                    enum: ['px', 'rem', 'em', '%'],
-                    enumextra: ['px', 'rem', 'em', '%'],
-                    title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
-                  },
-                },
-                required: ['unit', 'quantity'],
-                propertyOrder: ['unit', 'quantity'],
-                hiddenRule: {
-                  conditionProp: {
-                    indexRoute: '1-2',
-                    key: 'fixedWidth',
-                    keyRoute: 'style-fixedWidth',
-                    title: '定宽',
-                    format: 'boolean',
-                    type: 'boolean',
-                  },
-                  conditionValue: false,
-                },
-                isDynamicParam: true,
-                elemIndexRoute: '0',
-                propIndexRoute: '1-3',
-                description: '块级容器-宽度',
-                isConditionProp: false,
-              },
-            },
-            required: ['fixedWidth__0_1x2', 'width__0_1x3'],
-            propertyOrder: ['fixedWidth__0_1x2', 'width__0_1x3'],
-          },
-          func: {
-            type: 'object',
-            format: 'func',
-            title: '功能设置',
-            readOnly: true,
-            properties: {},
-            required: [],
-            propertyOrder: [],
-          },
-          data: {
-            type: 'object',
-            format: 'data',
-            title: '数据设置',
-            readOnly: true,
-            properties: {},
-            required: [],
-            propertyOrder: [],
-          },
-        },
-        required: ['style', 'func', 'data'],
-        propertyOrder: ['style', 'func', 'data'],
-        lastUpdateTime: '2021-06-09T01:53:11.588Z',
-      },
       jsonData: {},
       dynamicDataList: [
         {
