@@ -181,25 +181,28 @@ export default class JSONEditorStore {
       // 当keyRoute为空时直接修改当前schemaData
       this.jsonData = newVal;
     }
-    // 获取当前schema的条件字段
-    let curSchema = {};
-    let conditionProps = {};
     if (
       this.rootJSONStore.JSONSchemaStore &&
       this.rootJSONStore.JSONSchemaStore.jsonSchema
     ) {
-      curSchema = this.rootJSONStore.JSONSchemaStore.jsonSchema;
-      conditionProps = curSchema.conditionProps;
-    }
-    if (conditionProps) {
-      // 判断当前字段是否为条件字段
-      Object.keys(conditionProps).map((propKey) => {
-        const conditionItem = conditionProps[propKey];
-        if (conditionItem.keyRoute === keyRoute) {
-          // 更新LastInitTime
-          this.updateLastTime();
-        }
-      });
+      // 获取当前schema的条件字段
+      const curJsonSchema = this.rootJSONStore.JSONSchemaStore.jsonSchema;
+      const conditionProps = curJsonSchema.conditionProps;
+      const curElemSchema =
+        this.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
+      if (curElemSchema && curElemSchema.isConditionProp) {
+        // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
+        this.updateLastTime();
+      } else if (conditionProps) {
+        // 判断当前字段是否为条件字段
+        Object.keys(conditionProps).map((propKey) => {
+          const conditionItem = conditionProps[propKey];
+          if (conditionItem.keyRoute === keyRoute) {
+            // 更新LastInitTime
+            this.updateLastTime();
+          }
+        });
+      }
     }
 
     if (!ignoreChange) {

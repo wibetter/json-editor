@@ -26,7 +26,13 @@ import SingleSelectSchema from '$components/SingleSelectSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
-  const { nodeKey, targetJsonSchema, getJSONDataByKeyRoute } = props;
+  const {
+    nodeKey,
+    jsonKey,
+    targetJsonSchema,
+    getJSONDataByKeyRoute,
+    keyRoute2indexRoute,
+  } = props;
   const curType = getCurrentFormat(targetJsonSchema); // 获取当前元素类型（format）
   // 获取当前字段的条件规则
   let hiddenRule = {};
@@ -41,17 +47,46 @@ const MappingRender = (props) => {
   if (hiddenRule.conditionProp && exitPropertie(hiddenRule.conditionValue)) {
     const curConditionProp = hiddenRule.conditionProp;
     const needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
-    const keyRoute = curConditionProp.keyRoute;
+    const keyRoute = curConditionProp.keyRoute; // 条件字段的key值
+
+    // 获取条件字段的数值
     curConditionValue = getJSONDataByKeyRoute(keyRoute);
     if (needConditionValue === curConditionValue) {
       return '';
+    } else if (
+      targetJsonSchema.elemIndexRoute &&
+      targetJsonSchema.propIndexRoute
+    ) {
+      // 判断是否是widgetSchema
+      // 兼容widgetSchema的xx__1x1_1x1格式Key值（组件模型-全局配置）
+      const keyRouteArr = keyRoute.split('-');
+      const conditionLastKey = keyRouteArr.pop();
+      let lastKeyRoute = `${conditionLastKey}__${targetJsonSchema.elemIndexRoute.replaceAll(
+        '-',
+        'x',
+      )}`;
+      const conditionParentKeyRoute = keyRouteArr.join('-');
+      if (conditionParentKeyRoute) {
+        // 先获取条件字段父级对象数值
+        const conditionParentMockData = getJSONDataByKeyRoute(
+          conditionParentKeyRoute,
+        );
+        // 获取条件字段最后一个key值
+        const conditionParentKeys = Object.keys(conditionParentMockData);
+        lastKeyRoute = conditionParentKeys.find((keyItem) => {
+          return keyItem.indexOf(lastKeyRoute) > -1;
+        });
+        // 获取条件字段的数值
+        curConditionValue = conditionParentMockData[lastKeyRoute];
+        if (needConditionValue === curConditionValue) {
+          return '';
+        }
+      }
     }
   }
-  if (curConditionValue) {
-    // 将条件字段的数值作为key的一部分
-    curNodeKey = `${nodeKey}-${curConditionValue}`;
-    props.nodeKey = curNodeKey;
-  }
+  // 将条件字段的数值作为key的一部分
+  curNodeKey = `${nodeKey}-${curConditionValue}`;
+  props.nodeKey = curNodeKey;
 
   switch (curType) {
     case 'object':

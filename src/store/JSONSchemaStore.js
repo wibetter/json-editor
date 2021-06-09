@@ -3,6 +3,7 @@ import {
   schema2json,
   isNewSchemaData,
   indexRoute2keyRoute,
+  keyRoute2indexRoute,
   oldSchemaToNewSchema,
   getSchemaByIndexRoute,
   isEqual,
@@ -109,9 +110,22 @@ export default class JSONSchemaStore {
     return indexRoute2keyRoute(indexRoute, this.jsonSchema);
   }
 
-  /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
+  /** 根据key值路径获取对应的index索引路径 */
+  @action.bound
+  keyRoute2indexRoute(keyRoute) {
+    return keyRoute2indexRoute(keyRoute, this.jsonSchema);
+  }
+
+  /** 根据索引路径获取对应的schema数据[非联动式数据获取]  */
   @action.bound
   getSchemaByIndexRoute(indexRoute) {
+    return getSchemaByIndexRoute(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
+  }
+
+  /** 根据key值路径获取对应的schema数据[非联动式数据获取]  */
+  @action.bound
+  getSchemaByKeyRoute(keyRoute) {
+    const indexRoute = this.keyRoute2indexRoute(keyRoute);
     return getSchemaByIndexRoute(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
   }
 }
