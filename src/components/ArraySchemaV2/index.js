@@ -76,7 +76,7 @@ class ArraySchema extends React.PureComponent {
   /** 添加数组项 */
   addArrayItem = (keyRoute, curArr, curArrIndex) => {
     const maximumChild = this.props.targetJsonSchema['maximum-child'];
-    if (curArr && curArr.length >= maximumChild) {
+    if (curArr && maximumChild && curArr.length >= maximumChild) {
       message.warning(`添加失败，最多可添加${maximumChild}个子项`);
     } else {
       this.props.addArrayItem(keyRoute, curArrIndex);
@@ -86,7 +86,7 @@ class ArraySchema extends React.PureComponent {
   /** 删除数组项 */
   deleteArrItem = (keyRoute, arrIndex, curArr) => {
     const minimumChild = this.props.targetJsonSchema['minimum-child'];
-    if (curArr && curArr.length <= minimumChild) {
+    if (curArr && minimumChild && curArr.length <= minimumChild) {
       message.warning(`删除失败，至少需要保留${minimumChild}个子项`);
     } else {
       this.props.deleteArrayIndex(keyRoute, arrIndex);
@@ -150,12 +150,8 @@ class ArraySchema extends React.PureComponent {
       targetJsonSchema,
       getJSONDataByKeyRoute,
     } = this.props;
-    const {
-      jsonView,
-      isClosed,
-      hoverIndex,
-      currentActiveArrIndex,
-    } = this.state;
+    const { jsonView, isClosed, hoverIndex, currentActiveArrIndex } =
+      this.state;
     const currentFormat = getCurrentFormat(targetJsonSchema);
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据

@@ -222,14 +222,14 @@ export default class JSONEditorStore {
     // 1. 获取数组数据对象
     const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
     if (isArray(arrJsonDataObj)) {
-      if (arrJsonDataObj.length > 1) {
+      if (arrJsonDataObj.length > 0) {
         // 2. 删除对应的数据项
         arrJsonDataObj.splice(arrayIndex, 1);
         this.triggerChangeAction(); // 用于主动触发组件更新
         // 3. 触发onChange事件
         this.jsonDataChange();
       } else {
-        message.warning('删除失败，至少保留一个数据项。');
+        message.warning('删除失败，空数组对象暂无可删除子项。');
       }
     }
   }
