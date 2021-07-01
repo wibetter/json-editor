@@ -33,6 +33,10 @@
     margin-left: 6px;
     text-align: right;
     border-width: 0 0 1px 0;
+
+    .ant-input-number-handler-wrap {
+      display: none;
+    }
   }
 
   .layout-item {
