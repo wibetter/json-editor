@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-editor",
-  "version": "3.5.8",
+  "version": "3.5.9",
   "description": "JSON数据可视化/JSONEditor, 可视化界面编辑json数据内容",
   "keywords": [
     "json",

@@ -22,6 +22,9 @@ class InputFormSchema extends React.PureComponent {
     this.handleValueChange = this.handleValueChange.bind(this);
   }
 
+  // 方式1：在class组件中声明静态属性static，且必须是contextType，确保当前组件可以使用全局context中的数据（this.context不为空）
+  // static contextType = ThemeContext;
+
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { value } = event.target;

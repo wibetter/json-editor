@@ -32,12 +32,8 @@ class JsonView extends React.PureComponent {
   };
 
   render() {
-    const {
-      nodeKey,
-      keyRoute,
-      targetJsonSchema,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { nodeKey, keyRoute, targetJsonSchema, getJSONDataByKeyRoute } =
+      this.props;
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
 

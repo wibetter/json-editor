@@ -32,13 +32,8 @@ class EventSchema extends React.PureComponent {
   }
 
   render() {
-    const {
-      keyRoute,
-      nodeKey,
-      indexRoute,
-      targetJsonSchema,
-      pageScreen,
-    } = this.props;
+    const { keyRoute, nodeKey, indexRoute, targetJsonSchema, pageScreen } =
+      this.props;
     const currentFormat = getCurrentFormat(targetJsonSchema);
 
     const typeDataObj = targetJsonSchema.properties.type || {};

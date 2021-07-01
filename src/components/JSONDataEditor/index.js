@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Collapse, Tabs } from 'antd';
 const { Panel } = Collapse;
 const { TabPane } = Tabs;
-import MappingRender from '$components/MappingRender';
+import MappingRender from '$components/MappingRender'; // 普通模式
+// import MappingRender from '$components/MappingRenderV2'; // 按需加载模式
 import JsonView from '$components/JsonView/index';
 import { isEqual } from '$utils/index';
 import {

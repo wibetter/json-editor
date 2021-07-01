@@ -1,7 +1,7 @@
 import React from 'react';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { exitPropertie } from '../utils';
-import ArraySchema from '$components/ArraySchemaV2/index'; // 使用新版ArraySchema
+import ArraySchema from '$components/ArraySchemaV2/index';
 import ObjectSchema from '$components/ObjectSchema/index';
 import DataSourceSchema from '$components/DataSourceSchema/index';
 import DynamicDataSchema from '$components/DynamicDataSchema/index';
@@ -100,71 +100,49 @@ const MappingRender = (props) => {
     case 'widgets-schema':
     case 'event-schema':
       return <ObjectSchema {...props} key={curNodeKey} />;
-      break;
     case 'array':
       return <ArraySchema {...props} key={curNodeKey} />;
-      break;
     case 'dynamic-data':
       return <DynamicDataSchema {...props} key={curNodeKey} />;
-      break;
     case 'datasource':
       return <DataSourceSchema {...props} key={curNodeKey} />;
-      break;
     case 'event':
       return <EventSchema {...props} key={curNodeKey} />;
-      break;
     case 'quantity':
       return <QuantitySchema {...props} key={curNodeKey} />;
-      break;
     case 'box-style':
       return <BoxStyleSchema {...props} key={curNodeKey} />;
-      break;
     case 'radio':
       return <RadioSchema {...props} key={curNodeKey} />;
-      break;
     case 'single-select':
       return <SingleSelectSchema {...props} key={curNodeKey} />;
-      break;
     case 'select': // 多选
       return <SelectSchema {...props} key={curNodeKey} />;
-      break;
     case 'input':
       return <InputFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'textarea':
       return <TextAreaFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'text-editor':
       return <TextEditorSchema {...props} key={curNodeKey} />;
-      break;
     case 'number':
       return <NumberFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'boolean':
       return <BooleanFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'date':
     case 'date-time':
       return <DateTimeFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'time':
       return <TimeFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'url':
       return <URLFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'color':
       return <ColorFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'json':
       return <JsonFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'codearea':
       return <CodeAreaFormSchema {...props} key={curNodeKey} />;
-      break;
     case 'htmlarea':
       return <HtmlAreaFormSchema {...props} key={curNodeKey} />;
-      break;
     default:
       return <InputFormSchema {...props} key={curNodeKey} />;
   }

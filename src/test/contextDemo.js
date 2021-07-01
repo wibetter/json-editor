@@ -2,14 +2,15 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
 import JSONSchemaEditor from '@wibetter/json-schema-editor/dist/index.umd';
-import JSONEditor from './main';
+import JSONEditor from '../main';
 // import JSONEditor from '../dist/index.umd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import '@wibetter/json-schema-editor/dist/index.css';
-import './index.scss';
+import '../index.scss';
 // import '../dist/index.css';
+import { ThemeContext, themes, updateDark } from './reactContext';
 
 /**
  * JSONEditor的测试Demo
@@ -698,139 +699,143 @@ class IndexDemo extends React.PureComponent {
       curTypeList,
     } = this.state;
     return (
-      <>
-        <div className="title-container">
-          <div className="title1-box">
-            <p>
-              <b className="title-name">JSONSchema</b>:
-              提供可视化界面编辑json格式/结构；
-              <br />
-              用于可视化模型设置（定义可配置项）。
-            </p>
-            <div>
-              <b>自定义展示</b>: &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={schemaCodeView}
-                checkedChildren="code"
-                unCheckedChildren="view"
-                onChange={(checked) => {
+      <div>
+        <ThemeContext.Provider value={themes}>
+          <div className="title-container">
+            <div className="title1-box">
+              <p>
+                <b className="title-name">JSONSchema</b>:
+                提供可视化界面编辑json格式/结构；
+                <br />
+                用于可视化模型设置（定义可配置项）。
+              </p>
+              <div>
+                <b>自定义展示</b>: &nbsp;&nbsp;
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={schemaCodeView}
+                  checkedChildren="code"
+                  unCheckedChildren="view"
+                  onChange={(checked) => {
+                    this.setState({
+                      schemaCodeView: checked,
+                    });
+                  }}
+                />
+              </div>
+            </div>
+            <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
+              <p>
+                <b className="title-name">JSONEditor</b>:
+                提供可视化界面编辑json数据内容，用于可视化配置，避免用户直接编辑json数据内容。
+              </p>
+              <div>
+                <b>自定义展示</b>: &nbsp;&nbsp;
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={wideScreen}
+                  checkedChildren="大屏"
+                  unCheckedChildren="小屏"
+                  onChange={(checked) => {
+                    this.setState({
+                      wideScreen: checked,
+                    });
+                  }}
+                />
+                &nbsp;&nbsp;
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={viewStyle === 'tabs' ? true : false}
+                  checkedChildren="tabs"
+                  unCheckedChildren="fold"
+                  onChange={(checked) => {
+                    this.setState({
+                      viewStyle: checked ? 'tabs' : 'fold',
+                    });
+                  }}
+                />
+                &nbsp;&nbsp;
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={jsonView}
+                  checkedChildren="code"
+                  unCheckedChildren="view"
+                  onChange={(checked) => {
+                    this.setState({
+                      jsonView: checked,
+                    });
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="json-action-container">
+            <div className="json-schema-box">
+              {!schemaCodeView && (
+                <JSONSchemaEditor
+                  data={jsonSchema}
+                  typeList={curTypeList}
+                  onChange={(newJsonSchema) => {
+                    this.setState({
+                      jsonSchema: newJsonSchema,
+                    });
+                  }}
+                />
+              )}
+              {schemaCodeView && (
+                <AceEditor
+                  id="json_area_ace"
+                  value={JSON.stringify(jsonSchema, null, 2)}
+                  className="json-view-ace"
+                  mode="json"
+                  theme="solarized_light"
+                  name="JSON_CODE_EDIT"
+                  fontSize={14}
+                  showPrintMargin={true}
+                  showGutter={true}
+                  highlightActiveLine={true}
+                  readOnly={false}
+                  minLines={5}
+                  maxLines={33}
+                  width={'100%'}
+                  setOptions={{
+                    useWorker: false,
+                    showLineNumbers: true,
+                    tabSize: 2,
+                  }}
+                />
+              )}
+            </div>
+            <div
+              className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
+            >
+              <JSONEditor
+                viewStyle={viewStyle}
+                jsonView={jsonView} // code模式
+                wideScreen={wideScreen} // 宽屏和小屏的配置项
+                schemaData={jsonSchema}
+                jsonData={jsonData}
+                dynamicDataList={dynamicDataList}
+                onChange={(newJsonData) => {
+                  console.log('jsonDataChange', JSON.stringify(newJsonData));
                   this.setState({
-                    schemaCodeView: checked,
+                    jsonData: newJsonData,
                   });
                 }}
               />
             </div>
           </div>
-          <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
-            <p>
-              <b className="title-name">JSONEditor</b>:
-              提供可视化界面编辑json数据内容，用于可视化配置，避免用户直接编辑json数据内容。
-            </p>
-            <div>
-              <b>自定义展示</b>: &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={wideScreen}
-                checkedChildren="大屏"
-                unCheckedChildren="小屏"
-                onChange={(checked) => {
-                  this.setState({
-                    wideScreen: checked,
-                  });
-                }}
-              />
-              &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={viewStyle === 'tabs' ? true : false}
-                checkedChildren="tabs"
-                unCheckedChildren="fold"
-                onChange={(checked) => {
-                  this.setState({
-                    viewStyle: checked ? 'tabs' : 'fold',
-                  });
-                }}
-              />
-              &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={jsonView}
-                checkedChildren="code"
-                unCheckedChildren="view"
-                onChange={(checked) => {
-                  this.setState({
-                    jsonView: checked,
-                  });
-                }}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="json-action-container">
-          <div className="json-schema-box">
-            {!schemaCodeView && (
-              <JSONSchemaEditor
-                data={jsonSchema}
-                typeList={curTypeList}
-                onChange={(newJsonSchema) => {
-                  this.setState({
-                    jsonSchema: newJsonSchema,
-                  });
-                }}
-              />
-            )}
-            {schemaCodeView && (
-              <AceEditor
-                id="json_area_ace"
-                value={JSON.stringify(jsonSchema, null, 2)}
-                className="json-view-ace"
-                mode="json"
-                theme="solarized_light"
-                name="JSON_CODE_EDIT"
-                fontSize={14}
-                showPrintMargin={true}
-                showGutter={true}
-                highlightActiveLine={true}
-                readOnly={false}
-                minLines={5}
-                maxLines={33}
-                width={'100%'}
-                setOptions={{
-                  useWorker: false,
-                  showLineNumbers: true,
-                  tabSize: 2,
-                }}
-              />
-            )}
-          </div>
-          <div
-            className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
-          >
-            <JSONEditor
-              viewStyle={viewStyle}
-              jsonView={jsonView} // code模式
-              wideScreen={wideScreen} // 宽屏和小屏的配置项
-              schemaData={jsonSchema}
-              jsonData={jsonData}
-              dynamicDataList={dynamicDataList}
-              onChange={(newJsonData) => {
-                console.log('jsonDataChange', JSON.stringify(newJsonData));
-                this.setState({
-                  jsonData: newJsonData,
-                });
-              }}
-            />
-          </div>
-        </div>
-      </>
+        </ThemeContext.Provider>
+      </div>
     );
   }
 }
 
 ReactDOM.render(
   <div>
-    <h1 className="page-title">JSON数据可视化/JSONEditor Demo</h1>
+    <h1 className="page-title" onClick={updateDark}>
+      JSON数据可视化/JSONEditor Demo
+    </h1>
 
     <br />
 

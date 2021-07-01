@@ -51,13 +51,8 @@ class DataSourceSchema extends React.PureComponent {
   };
 
   render() {
-    const {
-      keyRoute,
-      nodeKey,
-      indexRoute,
-      targetJsonSchema,
-      pageScreen,
-    } = this.props;
+    const { keyRoute, nodeKey, indexRoute, targetJsonSchema, pageScreen } =
+      this.props;
     const { isShowFilter } = this.state;
     const currentFormat = getCurrentFormat(targetJsonSchema);
 
