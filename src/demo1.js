@@ -697,6 +697,7 @@ class IndexDemo extends React.PureComponent {
       viewStyle,
       curTypeList,
     } = this.state;
+
     return (
       <>
         <div className="title-container">
