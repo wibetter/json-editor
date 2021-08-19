@@ -184,6 +184,7 @@ export default class JSONEditorStore {
       // 当keyRoute为空时直接修改当前schemaData
       this.jsonData = newVal;
     }
+
     if (
       this.state.rootJSONStore.JSONSchemaStore &&
       this.state.rootJSONStore.JSONSchemaStore.jsonSchema
@@ -191,6 +192,7 @@ export default class JSONEditorStore {
       // 获取当前schema的条件字段
       const curJsonSchema = this.state.rootJSONStore.JSONSchemaStore.jsonSchema;
       const conditionProps = curJsonSchema.conditionProps;
+      // 备注：数组类型通过keyRoute获取schema对象会有异常
       const curElemSchema =
         this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
       if (curElemSchema && curElemSchema.isConditionProp) {
