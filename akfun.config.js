@@ -48,7 +48,6 @@ module.exports = {
     entry: {
       index: './src/demo1.js',
     },
-    // 用于开启本地调试模式的相关配置信息
     NODE_ENV: 'development',
     port: 80,
     autoOpenBrowser: true,
@@ -75,11 +74,10 @@ module.exports = {
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
   },
-  build: {
-    entry: { // webpack构建入口
-      index: './src/demo1.js', // 构建lib的入口
+  build1: {
+    entry: {
+      index: './src/demo1.js',
     },
-    // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production',
     assetsRoot: resolve('./demo/demo1'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/json-editor/demo/demo1/', // 设置静态资源的引用路径（根域名+路径）
@@ -89,11 +87,10 @@ module.exports = {
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
   },
-  build2: {
-    entry: { // webpack构建入口
-      index: './src/demo2.js', // 构建demo2的入口
+  build: {
+    entry: {
+      index: './src/demo2.js',
     },
-    // 用于构建生产环境代码的相关配置信息
     NODE_ENV: 'production',
     assetsRoot: resolve('./demo/demo2'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/json-editor/demo/demo2/', // 设置静态资源的引用路径（根域名+路径）
