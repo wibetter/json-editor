@@ -1,12 +1,12 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
-import JSONSchemaEditor from '@wibetter/json-schema-editor/dist/index.umd';
+import JSONSchemaEditor from '@wibetter/json-schema-editor';
 import JSONEditor from './main';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import '@wibetter/json-schema-editor/dist/index.css';
+import '@wibetter/json-schema-editor/lib/index.css';
 import './index.scss';
 
 /**
@@ -700,13 +700,12 @@ class IndexDemo extends React.PureComponent {
         <div className="title-container">
           <div className="title1-box">
             <p>
-              <b className="title-name">JSONSchema</b>:
-              提供可视化界面编辑json格式/结构；
-              <br />
-              用于可视化模型设置（定义可配置项）。
+              <b className="title-name">json-schema-editor</b>:
+              JSON数据可视化/JSONSchema，以表单的形式编辑 json
+              schema。可用于在线设计组件的配置面板。
             </p>
             <div>
-              <b>自定义展示</b>: &nbsp;&nbsp;
+              <b>开启源码模式</b>: &nbsp;&nbsp;
               <Switch
                 style={{ display: 'inline-block' }}
                 defaultChecked={schemaCodeView}
@@ -722,11 +721,12 @@ class IndexDemo extends React.PureComponent {
           </div>
           <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
             <p>
-              <b className="title-name">JSONEditor</b>:
-              提供可视化界面编辑json数据内容，用于可视化配置，避免用户直接编辑json数据内容。
+              <b className="title-name">json-editor</b>:
+              JSON数据可视化/JSONEditor，以表单的形式编辑 json
+              数据。可用于支持组件或页面可视化配置。
             </p>
             <div>
-              <b>自定义展示</b>: &nbsp;&nbsp;
+              <b>开启源码模式</b>: &nbsp;&nbsp;
               <Switch
                 style={{ display: 'inline-block' }}
                 defaultChecked={wideScreen}
