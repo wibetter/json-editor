@@ -924,7 +924,7 @@ class IndexDemo extends React.PureComponent {
               <b className="title-name">JSONEditor 1</b>
             </p>
             <div>
-              <b>自定义展示</b>: &nbsp;&nbsp;
+              <b>开启源码模式</b>: &nbsp;&nbsp;
               <Switch
                 style={{ display: 'inline-block' }}
                 defaultChecked={schemaCodeView1}
