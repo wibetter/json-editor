@@ -2,11 +2,13 @@
 
 > JSON数据可视化/JSONEditor，json可视化编辑能力的实现（以表单形式编辑json数据）
 
-使用场景：提供可视化界面编辑json数据内容
+### 使用场景
+以表单的形式编辑 json 数据，可用于支持组件或页面可视化配置。
 
-技术栈：React/Mobx/Ant Design
+### 技术栈
+React/Mobx/Ant Design
 
-特点：
+### 特点
 1. 弹性布局，提供大屏和小屏两种展示模式
 2. 支持字段联动
 3. 支持12种基础类型组件（input、boolean、 date、date-time、 time、 url、
@@ -15,11 +17,11 @@
 codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 
-在线Demo：
-[点击访问在线Demo1](https://wibetter.github.io/json-editor/demo/demo1/index.html)  
-[点击访问在线Demo2](https://wibetter.github.io/json-editor/demo/demo2/index.html)
+### 在线Demo
+1. [点击访问在线Demo1](https://wibetter.github.io/json-editor/demo/demo1/index.html)  
+2. [点击访问在线Demo2](https://wibetter.github.io/json-editor/demo/demo2/index.html)
 
-JSONEditor效果图：
+### JSONEditor效果图
 ![image](https://user-images.githubusercontent.com/11958920/104156633-7eedc680-5424-11eb-9972-2e8613bd5460.png)
 
 ***

@@ -14,7 +14,7 @@ import {
 const initJSONSchemaData = TypeDataList.jsonschema;
 
 /**
- * 用于管控JSON结构的全局store
+ * 用于管控JsonSchema的全局store
  * */
 
 export default class JSONSchemaStore {
