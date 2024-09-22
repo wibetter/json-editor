@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.json-schema-container {
+  position: relative;
+  padding: 8px 10px;
+
+  .schema-item-form {
+    position: relative;
+    min-height: 35px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+// 当jsonSchema数据对象为空时的占位样式
+.json-schema-empty {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* 重置antd的样式 */
+.ant-tree-list-holder-inner {
+  align-items: stretch;
+}
+.ant-tree-switcher {
+  flex: 0 0 auto;
+}
+.ant-tree-node-content-wrapper {
+  flex: 1 1 auto;
+}
+// 重置折叠小箭头的样式
+.ant-tree .ant-tree-switcher {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// 让模态框的右上角删除按钮居中
+.ant-modal-close-x {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

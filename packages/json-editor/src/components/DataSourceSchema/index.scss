@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+// DataSource数据源类型 / 远程数据类型 / URLFormSchema
+.url-editor-box {
+  position: relative;
+  display: inline-block;
+
+  // 行级元素的过滤图标样式
+  .filter-url-btn {
+    position: absolute;
+    top: 9px; // 12px
+    right: -28px; // 20px + 8px
+    z-index: 100;
+
+    svg {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      color: #595959;
+    }
+
+    svg:hover {
+      color: #1890ff;
+    }
+  }
+}
+
+.ace-editor-box {
+  position: relative;
+
+  .filter-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 100;
+
+    svg {
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      color: #595959;
+    }
+
+    svg:hover {
+      color: #1890ff;
+    }
+  }
+}

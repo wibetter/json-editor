@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+body {
+  padding: 20px 10px;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.title-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+
+  .title-name {
+    font-size: 22px;
+  }
+
+  .title1-box {
+    flex: 1 1 600px;
+    padding: 8px 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .title2-box {
+    flex: 1 1 600px;
+    box-sizing: border-box;
+    padding: 8px 4px;
+  }
+
+  .title2-box.mobile-view {
+    flex: 0 1 320px;
+  }
+}
+
+.json-action-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+
+  .json-schema-box {
+    flex: 1 1 600px;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .json-editor-box {
+    flex: 1 1 600px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .json-editor-box.mobile-view {
+    flex: 0 1 320px;
+  }
+
+  .json-view-box {
+    position: relative;
+
+    .json-view-ace {
+      width: 100%;
+    }
+
+    .readOnly-btn {
+      position: absolute;
+      top: 0;
+      right: 8px;
+      color: #ad6800;
+      z-index: 100;
+    }
+  }
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: rgba(255, 0, 0, 0.3);
+
+  background: rgba(255, 255, 255, 0.1);
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.2);
+}

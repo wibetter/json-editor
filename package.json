@@ -1,0 +1,59 @@
+{
+  "name": "json-editor",
+  "workspaces": [
+    "packages/json-schema-editor",
+    "packages/json-editor",
+    "packages/json-utils"
+  ],
+  "description": "JSON可视化工具，含json-schema-editor、json-editor和json-utils。",
+  "keywords": [
+    "json",
+    "json可视化工具"
+  ],
+  "private": "true",
+  "author": "wibetter",
+  "license": "MIT",
+  "scripts": {
+    "dev": "akfun dev",
+    "build": "akfun build",
+    "format": "prettier --write \"packages/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "packages/**/**/*.{js,jsx,ts,tsx,vue,scss,json}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://git@github.com:wibetter/json-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wibetter/json-editor/issues"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "akfun": "^5.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "prettier": "^3.3.3"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "iOS >= 8",
+    "Firefox >= 20",
+    "Android > 4.4"
+  ]
+}

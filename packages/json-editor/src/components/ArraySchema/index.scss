@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+.array-schema-box {
+  > .element-title {
+    line-height: 38px;
+  }
+
+  .array-add-child-btn {
+    float: right;
+    display: inline-block;
+    line-height: 0;
+    margin: 12px 12px 0 0;
+  }
+
+  .array-add-child-btn:hover {
+    color: #1890ff;
+  }
+
+  .array-content {
+    transition: 0.4s;
+    position: relative;
+    padding: 8px 15px 20px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .array-operate-btn {
+      margin-left: 12px;
+      height: 16px;
+      width: auto;
+    }
+
+    // 覆盖antd的默认样式
+    .ant-collapse-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .ant-collapse-content {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    .ant-collapse-extra {
+      float: none !important;
+      position: absolute;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .array-item-box {
+      position: relative;
+    }
+  }
+
+  .array-content.json-view-array {
+    padding: 0;
+    transition: 0.4s;
+  }
+
+  .array-content.closed {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}

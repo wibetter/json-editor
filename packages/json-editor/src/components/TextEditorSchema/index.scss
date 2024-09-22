@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+.text-editor-box {
+  position: relative;
+
+  .element-title {
+    cursor: pointer;
+
+    > .close-operate-btn {
+      margin-right: 0 !important;
+    }
+  }
+
+  .content-item {
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .bf-container {
+      width: 100%;
+    }
+
+    .bf-container.fullscreen {
+      height: auto !important;
+
+      .bf-content {
+        max-height: inherit;
+      }
+    }
+
+    .bf-controlbar {
+      // height: 100px;
+      // overflow-y: auto;
+
+      .bf-font-size-dropdown,
+      .bf-letter-spacing-dropdown,
+      .headings-dropdown {
+        min-width: 65px;
+      }
+
+      // 用于重置color-picker中色值输入框的样式
+      .braft-color-picker input,
+      .braft-color-picker label {
+        height: 30px !important;
+        padding: 0 !important;
+        text-align: center !important;
+      }
+    }
+
+    .bf-content {
+      height: auto;
+      max-height: 300px;
+      padding-bottom: 10px;
+      overflow: auto;
+      font-size: 16px;
+    }
+  }
+
+  .content-item.closed {
+    padding: 0;
+    height: 46px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  // 给富文本中的表格设置默认样式
+  table {
+    border-top: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+
+    td {
+      padding: 5px 8px;
+      border-right: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.3s;
+    }
+  }
+
+  // 修复富文本行高设置无效的问题
+  .bf-content * {
+    line-height: inherit;
+  }
+}

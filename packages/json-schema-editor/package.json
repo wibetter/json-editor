@@ -1,0 +1,56 @@
+{
+  "name": "@wibetter/json-schema-editor",
+  "version": "5.0.0",
+  "description": "JSON数据可视化/JSONSchema，以表单的形式编辑 json schema，可用于在线设计组件的配置面板",
+  "keywords": [
+    "json",
+    "json数据结构可视化"
+  ],
+  "author": "wibetter",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "akfun dev",
+    "build2lib": "akfun build2lib"
+  },
+  "files": [
+    "lib/*",
+    "esm/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+http://git@github.com:wibetter/json-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wibetter/json-editor/issues"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.4.0",
+    "@babel/polyfill": "^7.12.1",
+    "@wibetter/json-utils": "^1.3.2",
+    "ace-builds": "^1.35.4",
+    "antd": "^5.20.1",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
+    "prop-types": "^15.8.1",
+    "react": "^16.8.6",
+    "react-ace": "^12.0.0",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "akfun": "^5.0.0",
+    "@wibetter/json-editor": "^3.5.11"
+  },
+  "engines": {
+    "node": ">= 10.13.0",
+    "npm": ">= 6.4.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "iOS >= 8",
+    "Firefox >= 20",
+    "Android > 4.4"
+  ]
+}

@@ -1,0 +1,139 @@
+## getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj[, useObjClone])
+
+根据key值路径获取对应的json数据
+
+- `indexRoute` `<String>` 必填项，index索引路径
+- `targetJsonSchemaObj` `<Object>` 必填项，schema数据对象
+- `useObjClone` `<Boolean>` 非必填项，是否进行深拷贝，避免影响原有数据。（默认为false，不进行深拷贝）
+
+## Example:
+
+```js
+import { getSchemaByIndexRoute } from '@wibetter/json-utils';
+
+const jsonSchema = {
+  type: 'object',
+  format: 'data',
+  title: '数据设置',
+  readOnly: false,
+  properties: {
+    field_28: {
+      type: 'string',
+      title: 'json数据项',
+      format: 'json',
+      isRequired: false,
+      default: '{}',
+      description: '',
+      placeholder: '',
+      readOnly: false,
+    },
+    field_29: {
+      type: 'object',
+      title: '数据源',
+      format: 'datasource',
+      isRequired: false,
+      default: '',
+      description: '',
+      placeholder: '',
+      readOnly: false,
+      properties: {
+        type: {
+          type: 'string',
+          default: 'local',
+          format: 'typeSelect',
+          enum: ['local', 'remote'],
+          enumextra: ['local', 'remote'],
+          title: '数据源类型',
+        },
+        data: {
+          type: 'string',
+          format: 'json',
+          default: 'local',
+          readOnlyInJson: false,
+          title: '本地静态json数据',
+        },
+        filter: {
+          type: 'string',
+          format: 'codearea',
+          default: 'return data;',
+          title: '过滤器',
+        },
+      },
+      required: ['type', 'data', 'filter'],
+      propertyOrder: ['type', 'data', 'filter'],
+    },
+  }
+};
+const curSchema = getSchemaByIndexRoute('1-2', jsonSchema);
+```
+
+**node端使用方法**
+
+```js
+const { getSchemaByIndexRoute } = require('@wibetter/json-utils');
+
+const jsonSchema = {
+  type: 'object',
+  format: 'data',
+  title: '数据设置',
+  readOnly: false,
+  properties: {
+    field_28: {
+      type: 'string',
+      title: 'json数据项',
+      format: 'json',
+      isRequired: false,
+      default: '{}',
+      description: '',
+      placeholder: '',
+      readOnly: false,
+    },
+    field_29: {
+      type: 'object',
+      title: '数据源',
+      format: 'datasource',
+      isRequired: false,
+      default: '',
+      description: '',
+      placeholder: '',
+      readOnly: false,
+      properties: {
+        type: {
+          type: 'string',
+          default: 'local',
+          format: 'typeSelect',
+          enum: ['local', 'remote'],
+          enumextra: ['local', 'remote'],
+          title: '数据源类型',
+        },
+        data: {
+          type: 'string',
+          format: 'json',
+          default: 'local',
+          readOnlyInJson: false,
+          title: '本地静态json数据',
+        },
+        filter: {
+          type: 'string',
+          format: 'codearea',
+          default: 'return data;',
+          title: '过滤器',
+        },
+      },
+      required: ['type', 'data', 'filter'],
+      propertyOrder: ['type', 'data', 'filter'],
+    },
+  }
+};
+const curSchema = getSchemaByIndexRoute('1-2', jsonSchema);
+```
+
+***输出的curSchema数据***
+```json
+{
+  "type": "string",
+  "format": "codearea",
+  "default": "return data;",
+  "title": "过滤器"
+}
+```

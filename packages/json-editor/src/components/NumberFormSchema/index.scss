@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+.input-number-wrap {
+  margin-right: 24px;
+  width: 141px;
+  height: 32px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(220, 223, 230);
+  user-select: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  .number-cont {
+    flex: 1;
+    border-left: 1px solid rgba(230, 233, 242, 1);
+    border-right: 1px solid rgba(230, 233, 242, 1);
+
+    input {
+      text-align: center;
+    }
+  }
+
+  .number-btn {
+    flex: 0 0 36px;
+    height: 32px;
+    font-size: 16px;
+    color: #a1a6b3;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .number-btn:hover {
+    color: #fff;
+    background-color: rgba(24, 144, 255, 1);
+    border: 1px solid rgba(230, 233, 242, 1);
+  }
+  .plus {
+    border-radius: 0 16px 16px 0;
+  }
+  .plus:hover {
+    border-left: none;
+  }
+  .minus {
+    border-radius: 16px 0 0 16px;
+  }
+  .minus:hover {
+    border-right: none;
+  }
+}
+// 隐藏antd自有的加减功能按钮
+.form-item-box .ant-input-number-handler-wrap {
+  display: none;
+}

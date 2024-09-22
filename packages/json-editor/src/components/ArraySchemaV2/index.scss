@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+/* 数组类型元素样式 */
+.array-schema-box {
+  border-radius: 5px 5px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+
+  /* 头部样式 */
+  > .element-title {
+    line-height: 38px;
+    background-color: #fff;
+    padding-left: 15px;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: rgba(35, 35, 33, 1);
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    // border-bottom: 1px solid rgba(229, 231, 240, 1);
+
+    /* 新增数组项 */
+    .array-add-child-btn {
+      float: right;
+      display: inline-block;
+      line-height: 0;
+      margin: 12px 12px 0 0;
+    }
+
+    .array-add-child-btn:hover {
+      color: #1890ff;
+    }
+  }
+
+  /* 内容区域样式 */
+  .array-content {
+    background-color: #fafafa;
+    transition: 0.4s;
+    position: relative;
+
+    /* 数组项 */
+    > .array-item {
+      border-bottom: 1px solid rgba(229, 231, 240, 1);
+
+      /* 数组项头部 */
+      .array-item-header {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        box-sizing: border-box;
+        padding: 0 12px 0 15px;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: rgba(35, 35, 33, 1);
+        background: rgba(245, 246, 250, 1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .array-title-text {
+          flex: 1 1 auto;
+          text-align: left;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .array-operate-box {
+          flex: 0 0 120px;
+          text-align: right;
+          visibility: hidden;
+          transition: all 200ms ease;
+
+          .array-operate-btn {
+            float: right;
+            margin-left: 8px;
+            height: 16px;
+            cursor: pointer;
+          }
+
+          .close-operate-btn {
+            visibility: visible;
+          }
+        }
+
+        /* hover时才展示操作按钮 */
+        &:hover .array-operate-box {
+          visibility: visible;
+        }
+      }
+
+      /* 数组项内容区 */
+      .array-item-content {
+        position: relative;
+        width: 100%;
+        padding: 12px 15px;
+        background-color: #fff;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all 200ms ease;
+
+        &.closed {
+          height: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        &.open {
+          height: auto;
+        }
+      }
+    }
+
+    > .array-item:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .array-content.json-view-array {
+    padding: 0;
+    transition: 0.4s;
+  }
+
+  .array-content.closed {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+/* 小屏模式 */
+.mobile-screen-view {
+  .array-title-text {
+    max-width: 160px; // 320px - 40px - 120px
+  }
+}

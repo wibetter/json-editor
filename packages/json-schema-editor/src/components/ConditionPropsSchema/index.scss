@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.condition-props-box {
+  position: relative;
+  padding: 8px 10px;
+  display: flex;
+
+  .title {
+    flex: 0 0 70px;
+  }
+
+  .tags-box {
+    flex: 1 1 100px;
+
+    .ant-tag {
+      margin-bottom: 5px;
+    }
+  }
+}

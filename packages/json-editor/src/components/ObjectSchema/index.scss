@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.object-schema-warp {
+  .object-content.json-view-array {
+    padding: 0;
+    transition: 0.4s;
+  }
+
+  .object-content.closed {
+    padding: 0;
+    height: 0;
+    overflow: hidden;
+  }
+}

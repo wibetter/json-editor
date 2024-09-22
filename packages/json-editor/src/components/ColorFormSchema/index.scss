@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+.content-item > .form-item-box {
+  position: relative;
+
+  .color-item-form {
+    width: 60px;
+  }
+  .color-btn-wrap {
+    width: 60px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .color-btn {
+      width: 18px;
+      height: 18px;
+      // outline: none;
+      // border: none;
+    }
+
+    .delete-bgColor-btn {
+      visibility: hidden;
+
+      svg {
+        height: 18px;
+      }
+
+      &:hover {
+        color: red;
+      }
+    }
+
+    &:hover .delete-bgColor-btn,
+    .delete-bgColor-btn:hover {
+      visibility: visible;
+    }
+  }
+
+  .color-picker-container {
+    position: absolute;
+    top: 40px;
+    left: -65px;
+    z-index: 20;
+
+    .color-sketch-picker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2000;
+      background-color: #fff;
+    }
+
+    .color-picker-bg {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1999;
+      background-color: rgba(0, 0, 0, 0.35);
+    }
+  }
+}
