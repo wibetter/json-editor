@@ -11,3 +11,8 @@
 
 ### JSONEditor效果图
 ![image](https://user-images.githubusercontent.com/11958920/104156633-7eedc680-5424-11eb-9972-2e8613bd5460.png)
+
+### 使用说明
+1. [json-schema-editor](./packages/json-schema-editor/README.md);
+2. [json-editor](./packages/json-editor/README.md);
+3. [json-utils](./packages/json-utils/README.md)。
