@@ -10,7 +10,8 @@ const ConditionPropsSchema = (props) => {
   let conditionProps = {};
   if (jsonSchema.conditionProps) {
     // 首次添加条件字段时
-    conditionProps = toJS(jsonSchema.conditionProps);
+    // conditionProps = toJS(jsonSchema.conditionProps);
+    conditionProps = jsonSchema.conditionProps;
   }
   const conditionPropKeys = Object.keys(conditionProps);
 

@@ -29,7 +29,7 @@
     "url": "https://github.com/wibetter/json-utils/issues"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.10.1"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "akfun": "^5.0.0"

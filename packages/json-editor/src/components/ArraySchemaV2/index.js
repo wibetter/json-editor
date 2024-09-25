@@ -382,7 +382,7 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
   addArrayItem: stores.JSONEditorStore.addArrayItem,

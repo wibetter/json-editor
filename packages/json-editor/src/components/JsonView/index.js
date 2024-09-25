@@ -79,5 +79,5 @@ class JsonView extends React.PureComponent {
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
 }))(observer(JsonView));

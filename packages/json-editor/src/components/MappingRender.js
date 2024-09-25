@@ -1,6 +1,6 @@
 import React from 'react';
 import { getCurrentFormat } from '@wibetter/json-utils';
-import { exitPropertie } from '../utils';
+import { hasProperties } from '../utils';
 import ArraySchema from '$components/ArraySchemaV2/index';
 import ObjectSchema from '$components/ObjectSchema/index';
 import DataSourceSchema from '$components/DataSourceSchema/index';
@@ -44,7 +44,7 @@ const MappingRender = (props) => {
   let curNodeKey = nodeKey;
 
   // 隐藏条件成立则直接返回
-  if (hiddenRule.conditionProp && exitPropertie(hiddenRule.conditionValue)) {
+  if (hiddenRule.conditionProp && hasProperties(hiddenRule.conditionValue)) {
     const curConditionProp = hiddenRule.conditionProp;
     const needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
     const keyRoute = curConditionProp.keyRoute; // 条件字段的key值

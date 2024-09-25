@@ -3,7 +3,7 @@
  * 新版新增propertyOrder属性（排序展示需要），因此旧版的required需要根据properties生成对应的propertyOrder属性
  * 备注：新版的title需要从description中获取值（旧版的title值使用的是description字段的值）
  * */
-import { objClone, exitPropertie } from '$utils/index';
+import { objClone, hasProperties } from '$utils/index';
 import { isObject } from '$utils/typeof';
 import {
   DataSourceTypeList,
@@ -31,7 +31,7 @@ export function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.format === 'object' ||
       newJSONSchema.format === 'radio' ||
       newJSONSchema.format === 'select') &&
-    exitPropertie(newJSONSchema.default)
+    hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
   }

@@ -41,10 +41,10 @@ export default class JSONEditorStore {
   @observable jsonData = null;
 
   /**
-   * jsonDataTemp: jsonData的临时数据对象
-   * 备注：包含schema结构变动前的数据内容
+   * initJsonData: jsonData的初始数据对象
+   * 备注：用于记录schema结构变动前的数据内容
    */
-  @observable jsonDataTemp = {};
+  @observable initJsonData = {};
 
   /**
    * dynamicDataList: 动态数据源列表
@@ -99,12 +99,12 @@ export default class JSONEditorStore {
   initJSONData(jsonData) {
     // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
     const jsonSchema =
-      this.state.rootJSONStore.JSONSchemaStore.JSONSchemaObj || {};
+      this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
     // 过滤jsonData内部数据变动时触发initJSONData的事件
     if (!isEqual(jsonData, this.jsonData)) {
       // 根据jsonSchema生成一份对应的jsonData
       /** 1、根据jsonSchema生成对应的jsonData */
-      this.jsonDataTemp = objClone(this.JSONEditorObj); // 备份过滤钱的数据对象
+      this.initJsonData = objClone(this.jsonData); // 备份过滤钱的数据对象
       // 判断当前schema是否为空
       if (jsonSchema) {
         this.jsonData = schema2json(jsonSchema, jsonData || {});
@@ -149,16 +149,16 @@ export default class JSONEditorStore {
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
   getJSONDataByKeyRoute(keyRoute, jsonDataParam) {
-    const curJsonData = jsonDataParam || toJS(this.jsonData);
+    const curJsonData = jsonDataParam || this.jsonData;
     return getJsonDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]
-   * 备注：从jsonDataTemp获取数据
+   * 备注：从initJsonData获取数据
    * */
   @action.bound
-  getJSONDataTempByKeyRoute(keyRoute, jsonDataParam) {
-    const curJsonData = jsonDataParam || toJS(this.jsonDataTemp);
+  getInitJsonDataByKeyRoute(keyRoute, jsonDataParam) {
+    const curJsonData = jsonDataParam || this.initJsonData;
     return getJsonDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
 
@@ -243,13 +243,13 @@ export default class JSONEditorStore {
   addArrayItem(keyRoute, curArrIndex) {
     // 1. 获取数组数据对象
     const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
-    const _arrJsonDataObj = toJS(arrJsonDataObj);
+    // const _arrJsonDataObj = toJS(arrJsonDataObj);
     if (isArray(arrJsonDataObj)) {
       // 2. 获取数组的第一个数据项
-      const newArrItem = _arrJsonDataObj[curArrIndex || 0]; // 复制一个数组项
+      const newArrItem = arrJsonDataObj[curArrIndex || 0]; // 复制一个数组项
       if (curArrIndex || curArrIndex === 0) {
         // 先记录插入位置之后的数据
-        const endArr = _arrJsonDataObj.slice(Number(curArrIndex) + 1);
+        const endArr = arrJsonDataObj.slice(Number(curArrIndex) + 1);
         const newArrJsonDataObj = [newArrItem, ...endArr];
         // 删除插入位置之后的数据
         arrJsonDataObj.splice(Number(curArrIndex) + 1);
@@ -276,9 +276,9 @@ export default class JSONEditorStore {
   sortArrayItem(keyRoute, curArrIndex, sortAction) {
     // 1. 获取数组数据对象
     const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
-    const _arrJsonDataObj = toJS(arrJsonDataObj);
-    if (isArray(_arrJsonDataObj)) {
-      const curArrItem = objClone(_arrJsonDataObj[curArrIndex || 0]); // 2. 获取当前数组项
+    // const _arrJsonDataObj = toJS(arrJsonDataObj);
+    if (isArray(arrJsonDataObj)) {
+      const curArrItem = objClone(arrJsonDataObj[curArrIndex || 0]); // 2. 获取当前数组项
       let exchangeArrIndex = curArrIndex;
       if (sortAction === 'up' && exchangeArrIndex > 0) {
         // 向上移动
@@ -291,13 +291,13 @@ export default class JSONEditorStore {
         exchangeArrIndex += 1;
         if (
           sortAction === 'down' &&
-          exchangeArrIndex > _arrJsonDataObj.length - 1
+          exchangeArrIndex > arrJsonDataObj.length - 1
         ) {
           message.warning('数据操作异常：当前数组项已经是最后一个元素了。');
           return;
         }
       }
-      const exchangeArrItem = objClone(_arrJsonDataObj[exchangeArrIndex]); // 3. 获取互换数组项
+      const exchangeArrItem = objClone(arrJsonDataObj[exchangeArrIndex]); // 3. 获取互换数组项
       // 2. 获取数组的第一个数据项
 
       if (curArrItem !== undefined && exchangeArrItem !== undefined) {

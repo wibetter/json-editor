@@ -81,15 +81,15 @@ export default class JSONSchemaStore {
         this.jsonSchema = newJSONSchema;
       }
       const curJsonData =
-        this.state.rootJSONStore.JSONEditorStore.JSONEditorObj;
+        this.state.rootJSONStore.JSONEditorStore.jsonData;
       /** 根据jsonSchema生成对应的最新jsonData */
-      const newJsonData = schema2json(this.JSONSchemaObj, curJsonData);
+      const newJsonData = schema2json(this.jsonSchema, curJsonData);
       /** 更新当前的jsonData */
       this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
-      this.state.rootJSONStore.JSONEditorStore.jsonDataTemp =
+      this.state.rootJSONStore.JSONEditorStore.initJsonData =
         objClone(curJsonData); // 备份过滤钱的数据对象
-      /** jsonSchem变动的时候触发一次jsonDataChange
-       * jsonSchem变动意味着jsonData也需要进行对应的结构更新
+      /** jsonSchema变动的时候触发一次jsonDataChange
+       * jsonSchema变动意味着jsonData也需要进行对应的结构更新
        * */
       this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
     }

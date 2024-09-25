@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { getCurrentFormat } from '@wibetter/json-utils';
-import { exitPropertie } from '../utils';
+import { hasProperties } from '../utils';
 import InputFormSchema from '$components/InputFormSchema/index';
 import ObjectSchema from '$components/ObjectSchema/index';
 const ArraySchema = React.lazy(() => import('$components/ArraySchemaV2/index')); // 使用新版ArraySchema
@@ -76,7 +76,7 @@ const MappingRenderV2 = (props) => {
   let curNodeKey = nodeKey;
 
   // 隐藏条件成立则直接返回
-  if (hiddenRule.conditionProp && exitPropertie(hiddenRule.conditionValue)) {
+  if (hiddenRule.conditionProp && hasProperties(hiddenRule.conditionValue)) {
     const curConditionProp = hiddenRule.conditionProp;
     const needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
     const keyRoute = curConditionProp.keyRoute; // 条件字段的key值

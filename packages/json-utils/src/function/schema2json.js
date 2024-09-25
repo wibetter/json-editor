@@ -5,7 +5,7 @@
  * jsonSchema: schema数据对象，主要根据此对象生成对应的json数据
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
-import { exitPropertie } from '$utils/index';
+import { hasProperties } from '$utils/index';
 import { getCurrentFormat } from '$utils/jsonSchema';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
@@ -20,15 +20,15 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   let oldValue = jsonData;
 
   if (
-    exitPropertie(oldValue) &&
-    exitPropertie(jsonSchema.default) &&
+    hasProperties(oldValue) &&
+    hasProperties(jsonSchema.default) &&
     typeof oldValue !== typeof jsonSchema.default
   ) {
     // 表示当前数据类型发生变化，则丢弃旧版数据
     oldValue = undefined;
   }
   /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
-  let curValue = exitPropertie(oldValue) ? oldValue : jsonSchema.default;
+  let curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
   switch (jsonSchema.type) {
     case 'string':
       if (jsonSchema.format === 'typeSelect') {
@@ -67,17 +67,17 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
         curJsonData = curJsonItemData;
       } else {
         // 其他类型允许出现空字符串
-        curJsonData = exitPropertie(curValue) ? curValue : '';
+        curJsonData = hasProperties(curValue) ? curValue : '';
       }
       break;
     case 'boolean':
-      curJsonData = exitPropertie(curValue) ? curValue : false;
+      curJsonData = hasProperties(curValue) ? curValue : false;
       break;
     case 'number':
-      curJsonData = exitPropertie(curValue) ? curValue : 1;
+      curJsonData = hasProperties(curValue) ? curValue : 1;
       break;
     default:
-      curJsonData = exitPropertie(curValue) ? curValue : '';
+      curJsonData = hasProperties(curValue) ? curValue : '';
   }
 
   return curJsonData;
@@ -95,15 +95,15 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
     const jsonItem = jsonSchema;
     let oldValue = jsonData;
     if (
-      exitPropertie(oldValue) &&
-      exitPropertie(jsonItem.default) &&
+      hasProperties(oldValue) &&
+      hasProperties(jsonItem.default) &&
       typeof oldValue !== typeof jsonItem.default
     ) {
       // 表示当前数据类型发生变化，则丢弃旧版数据
       oldValue = undefined;
     }
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
-    const curValue = exitPropertie(oldValue) ? oldValue : jsonItem.default;
+    const curValue = hasProperties(oldValue) ? oldValue : jsonItem.default;
 
     if (curType === 'dynamic-data') {
       // 动态数据源类型（固定格式的Object类型）
@@ -251,15 +251,15 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     // Array数据对象类型
     let oldValue = jsonData;
     if (
-      exitPropertie(oldValue) &&
-      exitPropertie(jsonSchema.default) &&
+      hasProperties(oldValue) &&
+      hasProperties(jsonSchema.default) &&
       typeof oldValue !== typeof jsonSchema.default
     ) {
       // 表示当前数据类型发生变化，则丢弃旧版数据
       oldValue = undefined;
     }
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
-    const curValue = exitPropertie(oldValue) ? oldValue : jsonSchema.default;
+    const curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
 
     if (jsonSchema.format === 'array') {
       if (isArray(curValue)) {
@@ -272,7 +272,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
       }
     } else {
       // 考虑select类型（多选的数值也是以array对象记录）
-      curJsonData = exitPropertie(curValue) ? curValue : [];
+      curJsonData = hasProperties(curValue) ? curValue : [];
     }
   }
   return curJsonData;

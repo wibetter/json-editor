@@ -120,5 +120,5 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
 }))(observer(DateTimeFormSchema));

@@ -412,5 +412,5 @@ export default inject((stores) => ({
   dynamicDataApiScopeList: stores.JSONEditorStore.dynamicDataApiScopeList,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
 }))(observer(DynamicDataSchema));

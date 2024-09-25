@@ -72,11 +72,11 @@
 }
  */
 import { isArray, isObject } from '$utils/typeof';
-import { exitPropertie } from '$utils/index';
+import { hasProperties } from '$utils/index';
 
 export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
   let curAnalyzerResult = analyzerResult || [];
-  // 根据当前schem数据分析使用到的元数据情况
+  // 根据当前schema数据分析使用到的元数据情况
   if (curJsonData && JSON.stringify(curJsonData) !== '{}') {
     if (isObject(curJsonData)) {
       // const curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
@@ -87,8 +87,8 @@ export function dynamicDataAnalyzer(curJsonData, analyzerResult) {
         curJsonData.config &&
         isObject(curJsonData.config) &&
         curJsonData.config.dataName &&
-        exitPropertie(curJsonData.localFilter) &&
-        exitPropertie(curJsonData.data)
+        hasProperties(curJsonData.localFilter) &&
+        hasProperties(curJsonData.data)
       ) {
         let apiParams = curJsonData.config.body;
         if (apiParams && !isObject(apiParams)) {

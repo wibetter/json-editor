@@ -1,4 +1,4 @@
-import { observable, computed, action, toJS } from 'mobx';
+import { observable, computed, action, toJS } from 'mobx'; // mobx 5.0 写法
 import { message } from 'antd';
 import { isEqual, objClone, isFunction } from '$utils/index';
 import { TypeList } from '$data/TypeList';

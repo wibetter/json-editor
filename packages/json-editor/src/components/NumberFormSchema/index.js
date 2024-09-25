@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { InputNumber, message, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { isNeedTwoColWarpStyle, exitPropertie } from '$utils/index';
+import { isNeedTwoColWarpStyle, hasProperties } from '$utils/index';
 import './index.scss';
 
 class NumberFormSchema extends React.PureComponent {
@@ -126,7 +126,7 @@ class NumberFormSchema extends React.PureComponent {
                 onClick={() => {
                   this.numberChange(
                     'minus',
-                    exitPropertie(curJsonData)
+                    hasProperties(curJsonData)
                       ? curJsonData
                       : targetJsonSchema.default,
                   );
@@ -146,7 +146,7 @@ class NumberFormSchema extends React.PureComponent {
                 min={targetJsonSchema.minimum || 0}
                 max={targetJsonSchema.maximum || 1000000}
                 defaultValue={
-                  exitPropertie(curJsonData)
+                  hasProperties(curJsonData)
                     ? curJsonData
                     : targetJsonSchema.default
                 }
@@ -158,7 +158,7 @@ class NumberFormSchema extends React.PureComponent {
                 onClick={() => {
                   this.numberChange(
                     'plus',
-                    exitPropertie(curJsonData)
+                    hasProperties(curJsonData)
                       ? curJsonData
                       : targetJsonSchema.default,
                   );
@@ -178,5 +178,5 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
 }))(observer(NumberFormSchema));
