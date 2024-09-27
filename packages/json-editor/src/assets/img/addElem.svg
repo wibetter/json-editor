@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>形状结合</title>
-    <g id="中后台" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="面板" transform="translate(-2833.000000, -1279.000000)" fill="#232321">
+    <g id="新增icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="面板" transform="translate(-2833.000000, -1279.000000)"  fill="currentColor">
             <g id="编组-8备份-2" transform="translate(2587.000000, 65.000000)">
                 <g id="编组-24" transform="translate(38.000000, 1172.000000)">
                     <g id="编组-17" transform="translate(0.000000, 30.000000)">

@@ -17,8 +17,8 @@ import { isArray } from '$utils/typeof';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
-import deleteIcon from '$assets/img/delete.svg';
-import addElemIcon from '$assets/img/addElem.svg';
+import DeleteIcon from '$assets/img/delete.svg';
+import AddElemIcon from '$assets/img/addElem.svg';
 
 /**
  * 数组类型：用于展示数组类型的配置字段
@@ -155,7 +155,7 @@ class ArraySchema extends React.PureComponent {
 
           <Tooltip title="添加数据项">
             <PlusOutlined
-              src={addElemIcon}
+              // src={addElemIcon}
               className="array-add-child-btn"
               onClick={(event) => {
                 this.addArrayItem(keyRoute, curJsonData);
@@ -221,8 +221,8 @@ class ArraySchema extends React.PureComponent {
                             arrIndex + 1
                           }`}
                         >
-                          <img
-                            src={addElemIcon}
+                          <AddElemIcon
+                            // <img src={addElemIcon}
                             className="array-operate-btn"
                             onClick={(event) => {
                               this.addArrayItem(
@@ -261,8 +261,8 @@ class ArraySchema extends React.PureComponent {
                             okText="确定"
                             cancelText="取消"
                           >
-                            <img
-                              src={deleteIcon}
+                            <DeleteIcon
+                              // <img src={deleteIcon}
                               className="delete-operate-btn array-operate-btn"
                               onClick={(event) => {
                                 event.preventDefault();

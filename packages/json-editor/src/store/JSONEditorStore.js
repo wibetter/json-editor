@@ -246,7 +246,7 @@ export default class JSONEditorStore {
     // const _arrJsonDataObj = toJS(arrJsonDataObj);
     if (isArray(arrJsonDataObj)) {
       // 2. 获取数组的第一个数据项
-      const newArrItem = arrJsonDataObj[curArrIndex || 0]; // 复制一个数组项
+      const newArrItem = Object.assign({}, arrJsonDataObj[curArrIndex || 0]); // 复制一个数组项
       if (curArrIndex || curArrIndex === 0) {
         // 先记录插入位置之后的数据
         const endArr = arrJsonDataObj.slice(Number(curArrIndex) + 1);

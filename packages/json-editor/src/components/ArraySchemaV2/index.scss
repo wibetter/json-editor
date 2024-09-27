@@ -77,6 +77,10 @@
             margin-left: 8px;
             height: 16px;
             cursor: pointer;
+
+            &:hover {
+              color: #1890ff;
+            }
           }
 
           .close-operate-btn {
