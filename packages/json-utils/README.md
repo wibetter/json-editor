@@ -35,7 +35,7 @@
 ### 纯工具方法
 - objClone: js对象数据深拷贝，避免数据联动
 - isEqual: 对比两个json数据是否相等
-- exitPropertie: 判断当前属性是否存在（数值为false、0、null也会判断为存在的属性）
+- hasProperties: 判断当前属性是否存在（数值为false、0、null也会判断为存在的属性）
 
 ### 数值类型判断
 - isURL

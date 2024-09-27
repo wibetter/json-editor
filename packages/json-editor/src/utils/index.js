@@ -11,13 +11,13 @@ export function isEqual(targetObj, nextTargetObj) {
 
 /** 判断当前属性是否存在
  * 备注：要识别boolean类型的数值 */
-export function exitPropertie(targetPropertie) {
-  let exitPropertie = false;
+export function hasProperties(targetPropertie) {
+  let hasProperties = false;
   if (targetPropertie !== undefined && targetPropertie !== null) {
     // targetPropertie 等于""、0、false时均认为是存在的属性
-    exitPropertie = true;
+    hasProperties = true;
   }
-  return exitPropertie;
+  return hasProperties;
 }
 
 /** 是否需要设置成两栏布局

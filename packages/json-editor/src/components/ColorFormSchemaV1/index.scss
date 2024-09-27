@@ -6,14 +6,16 @@
 
 .color-item-form:hover + .delete-bgColor-btn,
 .delete-bgColor-btn:hover {
-  visibility: visible;
+  // visibility: visible;
+  display: inline;
 }
 
 .delete-bgColor-btn {
   position: relative;
   left: -12px;
   top: -9px;
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
 
   svg {
     height: 18px;

@@ -6,7 +6,7 @@ import JSONSchemaEditor from './main';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import '@wibetter/json-editor/dist/index.css';
+import '@wibetter/json-editor/lib/index.css';
 import '../../../index.scss';
 
 /**
@@ -750,7 +750,6 @@ class IndexDemo extends React.PureComponent {
               jsonData={jsonData}
               dynamicDataList={dynamicDataList}
               onChange={(newJsonData) => {
-                console.log('jsonDataChange', newJsonData);
                 this.setState({
                   jsonData: newJsonData,
                 });

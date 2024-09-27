@@ -108,9 +108,8 @@ class BoxStyleSchema extends React.PureComponent {
       if (newVal === 'auto') {
         this.layoutStyleObj[propKey] = `auto`;
       } else if (newVal) {
-        this.layoutStyleObj[
-          propKey
-        ] = `${newVal}${this.layoutStyleObj.quantity}`;
+        this.layoutStyleObj[propKey] =
+          `${newVal}${this.layoutStyleObj.quantity}`;
       } else if (newVal === 0 || newVal === '0') {
         this.layoutStyleObj[propKey] = `0${this.layoutStyleObj.quantity}`;
       } else {
@@ -211,17 +210,14 @@ class BoxStyleSchema extends React.PureComponent {
               placement="top"
               title={layoutStyleLock ? '点击解锁联动' : '点击联动'}
             >
-              <img
-                src={`//storage.360buyimg.com/widgeteditor/widget-editor-web/json-editor/${
-                  layoutStyleLock ? 'link' : 'unlink'
-                }.svg`}
-                className="lock-icon"
+              <div
+                className={layoutStyleLock ? 'lock-icon' : 'lock-icon unlock'}
                 onClick={() => {
                   this.setState({
                     layoutStyleLock: !layoutStyleLock,
                   });
                 }}
-              />
+              ></div>
             </Tooltip>
           </div>
           <InputNumber
@@ -310,5 +306,5 @@ export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
 }))(observer(BoxStyleSchema));

@@ -32,7 +32,6 @@ class TypeSelectFormSchema extends React.PureComponent {
 
   /** 数据源类型变动事件处理器 */
   typeHandleChange = (newType) => {
-    console.log(`selected ${newType}`);
     const {
       indexRoute,
       jsonKey,

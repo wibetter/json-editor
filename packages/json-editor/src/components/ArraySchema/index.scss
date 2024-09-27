@@ -26,6 +26,10 @@
       margin-left: 12px;
       height: 16px;
       width: auto;
+
+      &:hover {
+        color: #1890ff;
+      }
     }
 
     // 覆盖antd的默认样式

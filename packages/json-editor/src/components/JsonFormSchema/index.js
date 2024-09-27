@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { exitPropertie } from '$utils/index';
+import { hasProperties } from '$utils/index';
 import { isObject, isArray } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -117,7 +117,7 @@ class JsonFormSchema extends React.PureComponent {
           <AceEditor
             id="json_area_ace"
             value={
-              exitPropertie(curJSONDataTemp) ? curJSONDataTemp : curJsonData
+              hasProperties(curJSONDataTemp) ? curJSONDataTemp : curJsonData
             }
             className="code-area-item"
             mode="json"
@@ -164,7 +164,7 @@ class JsonFormSchema extends React.PureComponent {
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getJSONDataTempByKeyRoute: stores.JSONEditorStore.getJSONDataTempByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
   indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(JsonFormSchema));

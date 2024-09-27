@@ -11,7 +11,7 @@ module.exports = {
     enableESLint: false, // 调试模式是否开启ESLint，默认开启ESLint检测代码格式
     enableESLintFix: false, // 是否自动修正代码格式，默认不自动修正
     enableStyleLint: false, // 是否开启StyleLint，默认开启ESLint检测代码格式
-    enableStyleLintFix: false // 是否需要StyleLint自动修正代码格式
+    enableStyleLintFix: false, // 是否需要StyleLint自动修正代码格式
   },
   webpack: {
     resolve: {
@@ -62,7 +62,7 @@ module.exports = {
       index: './src/main.js',
     },
     output: {
-      filename: '[name].js'
+      filename: '[name].js',
     },
     NODE_ENV: 'production', // development / production
     libraryName: 'JSONSchemaEditor', // 构建第三方功能包时最后导出的引用变量名
@@ -70,9 +70,10 @@ module.exports = {
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
     ignoreNodeModules: true,
+    additionalModuleDirs: ['../../node_modules'], // ignoreNodeModules开启后生效
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
-  }
+  },
 };

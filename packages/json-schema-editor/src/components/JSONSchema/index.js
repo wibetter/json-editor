@@ -94,11 +94,9 @@ class JSONSchema extends React.PureComponent {
     const curJsonKey = dragNode.jsonKey;
     // 获取当前拖动的元素
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    console.log(curIndexRoute);
 
     // 放置的目标元素key
     let targetIndexRoute = node.indexRoute;
-    console.log(targetIndexRoute);
 
     // 判断是否是同一个父级容器
     const isSameParentElem = isSameParent(curIndexRoute, targetIndexRoute);

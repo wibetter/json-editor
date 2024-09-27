@@ -31,7 +31,7 @@ npm install --save @wibetter/json-editor
 ```js
 import * as React from 'react';
 import JSONEditor from '@wibetter/json-editor';
-import '@wibetter/json-editor/dist/index.css';
+import '@wibetter/json-editor/lib/index.css';
 
 class IndexDemo extends React.PureComponent {
   constructor(props) {
