@@ -2,6 +2,6 @@
  * @wibetter/json-editor v5.0.1
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Sep 27 2024 11:38:12 GMT+0800 (China Standard Time)
+ * build time: Fri Sep 27 2024 18:57:16 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */

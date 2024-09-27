@@ -16,6 +16,8 @@
   "scripts": {
     "dev": "akfun dev",
     "build": "akfun build",
+    "build2lib": "npm run build2lib --workspaces",
+    "publish": "npm publish --workspaces",
     "format": "prettier --write \"packages/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
   },
   "husky": {

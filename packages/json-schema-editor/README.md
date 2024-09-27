@@ -31,7 +31,7 @@ npm install --save @wibetter/json-schema-editor
 ```js
 import * as React from 'react';
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
-import '@wibetter/json-schema-editor/dist/index.css';
+import '@wibetter/json-schema-editor/lib/index.css';
 
 class IndexDemo extends React.PureComponent {
   constructor(props) {

@@ -23,6 +23,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      box-sizing: border-box;
     }
 
     > .content-item {
@@ -74,6 +75,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      box-sizing: border-box;
     }
 
     > .content-item {
@@ -101,6 +103,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      box-sizing: border-box;
     }
 
     > .content-item {
@@ -124,6 +127,7 @@
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: none;
       cursor: pointer;
+      box-sizing: border-box;
     }
   }
 
@@ -152,6 +156,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      box-sizing: border-box;
     }
 
     > .content-item {
@@ -172,6 +177,7 @@
   .element-title {
     display: block;
     width: 100%;
+    box-sizing: border-box;
 
     .warning-text {
       color: #fa8c16;

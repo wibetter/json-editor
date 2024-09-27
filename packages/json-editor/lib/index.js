@@ -412,7 +412,7 @@
         },
         266: function () {},
         867: function () {},
-        154: function () {},
+        973: function () {},
         776: function () {},
         470: function () {},
         641: function () {},
@@ -437,12 +437,12 @@
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('2c391f42', n, !1, { sourceMap: !1 });
         },
-        705: function (e, t, a) {
-          var n = a(154);
+        50: function (e, t, a) {
+          var n = a(973);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, a(611).A)('381e1136', n, !1, { sourceMap: !1 });
+            (0, a(611).A)('01cd53b0', n, !1, { sourceMap: !1 });
         },
         913: function (e, t, a) {
           var n = a(776);
@@ -1093,7 +1093,7 @@
                 (t.addArrayItem = function (e, t) {
                   var a = (0, G.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, X.cy)(a)) {
-                    var n = a[t || 0];
+                    var n = Object.assign({}, a[t || 0]);
                     if (t || 0 === t) {
                       var r = a.slice(Number(t) + 1),
                         o = [n].concat(r);
@@ -1628,7 +1628,7 @@
               pe ||
                 (pe = P.createElement('path', {
                   d: 'M15.5 2a.5.5 0 0 1 .09.992L15.5 3H14v10.6a2.4 2.4 0 0 1-2.4 2.4H4.4A2.4 2.4 0 0 1 2 13.6V3H.5a.5.5 0 0 1-.09-.992L.5 2h15ZM13 3H3v10.6a1.4 1.4 0 0 0 1.265 1.394L4.4 15h7.2a1.4 1.4 0 0 0 1.394-1.265L13 13.6V3ZM6 6a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L5.5 11.5v-5A.5.5 0 0 1 6 6Zm4 0a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L9.5 11.5v-5A.5.5 0 0 1 10 6Zm.5-6a.5.5 0 0 1 .09.992L10.5 1h-5a.5.5 0 0 1-.09-.992L5.5 0h5Z',
-                  fill: '#232321',
+                  fill: 'currentColor',
                   fillRule: 'evenodd',
                 })),
             );
@@ -1658,7 +1658,7 @@
               ye ||
                 (ye = P.createElement('path', {
                   d: 'M10.286 4C11.232 4 12 4.768 12 5.714v8.572c0 .946-.768 1.714-1.714 1.714H1.714A1.714 1.714 0 0 1 0 14.286V5.714C0 4.768.768 4 1.714 4h8.572Zm-.12 1H1.834A.833.833 0 0 0 1 5.833v8.334c0 .46.373.833.833.833h8.334c.46 0 .833-.373.833-.833V5.833A.833.833 0 0 0 10.167 5ZM6 7.429c.237 0 .429.191.429.428l-.001 1.714h1.715a.429.429 0 0 1 0 .858H6.428v1.714a.429.429 0 1 1-.857 0v-1.714H3.857a.429.429 0 1 1 0-.858h1.714V7.857c0-.237.192-.428.429-.428ZM14.286 0C15.232 0 16 .768 16 1.714v8.572c0 .946-.768 1.714-1.714 1.714H13v-1h1.167c.46 0 .833-.373.833-.833V1.833A.833.833 0 0 0 14.167 1H5.833A.833.833 0 0 0 5 1.833V3H4V1.714C4 .768 4.768 0 5.714 0h8.572Z',
-                  fill: '#232321',
+                  fill: 'currentColor',
                   fillRule: 'evenodd',
                 })),
             );
@@ -1821,9 +1821,8 @@
                     ),
                     P.createElement(
                       Q.Tooltip,
-                      { title: '添加数据项' },
+                      { title: '添加数据项111' },
                       P.createElement(re.PlusOutlined, {
-                        src: Se,
                         className: 'array-add-child-btn',
                         onClick: function (t) {
                           e.addArrayItem(a, d),
@@ -1909,8 +1908,7 @@
                                     okText: '确定',
                                     cancelText: '取消',
                                   },
-                                  P.createElement('img', {
-                                    src: he,
+                                  P.createElement(he, {
                                     className:
                                       'delete-operate-btn array-operate-btn',
                                     onClick: function (e) {
@@ -1922,8 +1920,7 @@
                               P.createElement(
                                 Q.Tooltip,
                                 { title: '复制' + y.title + '/' + (r + 1) },
-                                P.createElement('img', {
-                                  src: Se,
+                                P.createElement(Se, {
                                   className: 'array-operate-btn',
                                   onClick: function (t) {
                                     e.addArrayItem(a, d, r),
@@ -3811,12 +3808,8 @@
                             placement: 'top',
                             title: l ? '点击解锁联动' : '点击联动',
                           },
-                          P.createElement('img', {
-                            src:
-                              '//storage.360buyimg.com/widgeteditor/widget-editor-web/json-editor/' +
-                              (l ? 'link' : 'unlink') +
-                              '.svg',
-                            className: 'lock-icon',
+                          P.createElement('div', {
+                            className: l ? 'lock-icon' : 'lock-icon unlock',
                             onClick: function () {
                               e.setState({ layoutStyleLock: !l });
                             },
@@ -5002,7 +4995,7 @@
           })((0, M.observer)(dt)),
           ht = require('react-color'),
           gt =
-            (__webpack_require__(705),
+            (__webpack_require__(50),
             (function (e) {
               function t(t) {
                 var a;
@@ -5094,7 +5087,7 @@
                       { className: 'content-item' },
                       P.createElement(
                         'div',
-                        { className: 'form-item-box' },
+                        { className: 'form-item-box render-dom-' + c },
                         P.createElement(
                           'div',
                           {
@@ -5113,7 +5106,7 @@
                               trigger: 'click',
                             },
                             P.createElement('button', {
-                              className: 'ant-input color-btn render-dom-' + c,
+                              className: 'ant-input color-btn',
                               style: { backgroundColor: u || r.default },
                             }),
                           ),

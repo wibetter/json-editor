@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-schema-editor",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "JSON数据可视化/JSONSchema，以表单的形式编辑 json schema，可用于在线设计组件的配置面板",
   "keywords": [
     "json",
@@ -14,8 +14,7 @@
     "build2lib": "akfun build2lib"
   },
   "files": [
-    "lib/*",
-    "esm/*"
+    "lib/*"
   ],
   "repository": {
     "type": "git",
@@ -27,7 +26,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
     "@babel/polyfill": "^7.12.1",
-    "@wibetter/json-utils": "^1.3.2",
+    "@wibetter/json-utils": "^5.0.1",
     "ace-builds": "^1.35.4",
     "antd": "^5.20.1",
     "mobx": "^5.15.4",
@@ -39,7 +38,7 @@
   },
   "devDependencies": {
     "akfun": "^5.0.0",
-    "@wibetter/json-editor": "^3.5.11"
+    "@wibetter/json-editor": "^5.0.1"
   },
   "engines": {
     "node": ">= 10.13.0",

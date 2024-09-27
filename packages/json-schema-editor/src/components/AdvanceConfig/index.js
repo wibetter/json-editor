@@ -245,8 +245,7 @@ class AdvanceConfig extends React.PureComponent {
     // 获取当前字段的条件规则
     let hiddenRule = {};
     if (targetJsonSchema.hiddenRule) {
-      // hiddenRule = toJS(targetJsonSchema.hiddenRule);
-      hiddenRule = targetJsonSchema.hiddenRule;
+      hiddenRule = toJS(targetJsonSchema.hiddenRule);
     }
     hiddenRule.conditionProp = conditionPropItem;
     this.handleValueChange('hiddenRule', hiddenRule);
@@ -258,8 +257,7 @@ class AdvanceConfig extends React.PureComponent {
     // 获取当前字段的条件规则
     let hiddenRule = {};
     if (targetJsonSchema.hiddenRule) {
-      // hiddenRule = toJS(targetJsonSchema.hiddenRule);
-      hiddenRule = targetJsonSchema.hiddenRule;
+      hiddenRule = toJS(targetJsonSchema.hiddenRule);
     }
     hiddenRule.conditionValue = value;
     this.handleValueChange('hiddenRule', hiddenRule);
