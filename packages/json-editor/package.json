@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-editor",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "JSON数据可视化/JSONEditor, 可视化界面编辑json数据",
   "keywords": [
     "json",
@@ -15,8 +15,7 @@
     "build2lib": "akfun build2lib"
   },
   "files": [
-    "lib/*",
-    "esm/*"
+    "lib/*"
   ],
   "repository": {
     "type": "git",
@@ -28,7 +27,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "ace-builds": "^1.35.4",
-    "@wibetter/json-utils": "^1.2.31",
+    "@wibetter/json-utils": "^5.0.1",
     "antd": "^5.20.1",
     "braft-editor": "^2.3.9",
     "braft-extensions": "^0.1.1",
@@ -43,7 +42,7 @@
   },
   "devDependencies": {
     "akfun": "^5.0.0",
-    "@wibetter/json-schema-editor": "^5.0.0"
+    "@wibetter/json-schema-editor": "^5.0.1"
   },
   "engines": {
     "node": ">= 10.13.0",

@@ -23,8 +23,15 @@
 
     > .lock-icon {
       width: 32px;
+      height: 32px;
       box-shadow: none;
       cursor: pointer;
+      background-image: url('../../assets/img/link.svg');
+      background-size: contain;
+
+      &.unlock {
+        background-image: url('../../assets/img/unlink.svg');
+      }
     }
   }
 

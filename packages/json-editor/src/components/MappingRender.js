@@ -18,7 +18,7 @@ import BooleanFormSchema from '$components/BooleanFormSchema/index';
 import DateTimeFormSchema from '$components/DateTimeFormSchema/index';
 import TimeFormSchema from '$components/TimeFormSchema/index';
 import URLFormSchema from '$components/URLFormSchema/index';
-import ColorFormSchema from '$components/ColorFormSchema/index';
+import ColorFormSchema from '$components/ColorFormSchemaV3/index';
 import JsonFormSchema from '$components/JsonFormSchema/index';
 import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
 import HtmlAreaFormSchema from '$components/HtmlAreaFormSchema/index';
