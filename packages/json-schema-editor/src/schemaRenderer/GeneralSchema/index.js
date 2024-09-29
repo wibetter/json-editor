@@ -5,7 +5,7 @@ import BaseFormSchema from '$components/BaseFormSchema/index';
 import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
-const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
+const getTreeNodeTitleCont = (props) => <BaseFormSchema {...props} />;
 
 /** 通用类型渲染组件
  *  可用于渲染：input、boolean、 date、date-time、 time、
@@ -22,9 +22,7 @@ const GeneralSchema = (props) => {
       key={nodeKey}
       indexRoute={indexRoute}
       jsonKey={jsonKey}
-      title={getTreeNodeTitleCont({
-        ...props,
-      })}
+      title={getTreeNodeTitleCont(props)}
     ></TreeNode>
   );
 };

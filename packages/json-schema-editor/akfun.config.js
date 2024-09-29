@@ -20,16 +20,12 @@ module.exports = {
       alias: {
         '@': resolve('src'),
         $components: resolve('src/components'),
-        $pages: resolve('src/pages'),
-        $plugins: resolve('src/plugins'),
+        $schemaRenderer: resolve('src/schemaRenderer'),
         $utils: resolve('src/utils'),
         $assets: resolve('src/assets'),
         $public: resolve('../../public'),
-        $router: resolve('src/router'),
         $store: resolve('src/store'),
         $data: resolve('src/data'),
-        $config: resolve('src/config'),
-        $mixins: resolve('src/mixins'),
       },
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件

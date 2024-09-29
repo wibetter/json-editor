@@ -28,13 +28,8 @@ class EnumItemSchema extends React.PureComponent {
   /** jsonKey类型输入值变动事件处理器 */
   handleEnumKeyChange = (event) => {
     const { value } = event.target;
-    const {
-      indexRoute,
-      enumIndex,
-      enumKey,
-      isExitEnumKey,
-      updateEnumKey,
-    } = this.props;
+    const { indexRoute, enumIndex, enumKey, isExitEnumKey, updateEnumKey } =
+      this.props;
     if (value !== enumKey) {
       if (isExitEnumKey(indexRoute, enumIndex, value)) {
         message.warning('对不起，存在相同的key值，请重新编辑。');
@@ -67,12 +62,8 @@ class EnumItemSchema extends React.PureComponent {
 
   /** 删除字段项 */
   onDeleteBtnEvent = () => {
-    const {
-      indexRoute,
-      enumIndex,
-      getSchemaByIndexRoute,
-      deleteEnumItem,
-    } = this.props;
+    const { indexRoute, enumIndex, getSchemaByIndexRoute, deleteEnumItem } =
+      this.props;
     const itemJSONObj = getSchemaByIndexRoute(indexRoute);
     if (itemJSONObj.enum && itemJSONObj.enum.length > 1) {
       deleteEnumItem(indexRoute, enumIndex); // 删除指定位置的枚举值

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tree } from 'antd';
 import BaseFormSchema from '$components/BaseFormSchema/index';
-import MappingRender from '$components/MappingRender';
+import MappingRender from '$schemaRenderer/MappingRender';
 const { TreeNode } = Tree;
 import { isFirstSchemaData, getCurrentFormat } from '@wibetter/json-utils';
 
@@ -55,13 +55,8 @@ const propertiesRender = (params) => {
  *  Object类型元素渲染组件
  * */
 const ObjectSchema = (props) => {
-  const {
-    jsonKey,
-    indexRoute,
-    nodeKey,
-    targetJsonSchema,
-    isOnlyShowChild,
-  } = props;
+  const { jsonKey, indexRoute, nodeKey, targetJsonSchema, isOnlyShowChild } =
+    props;
   const currentFormat = getCurrentFormat(targetJsonSchema);
   const isFirstSchema =
     targetJsonSchema.isFixedSchema || isFirstSchemaData(currentFormat); // 一级固定类型元素不允许拖拽

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tree, message } from 'antd';
-import ObjectSchema from '$components/ObjectSchema/index';
-import MappingRender from '$components/MappingRender';
+import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
+import MappingRender from '$schemaRenderer/MappingRender';
 import ConditionPropsSchema from '$components/ConditionPropsSchema/index';
 import {
   isEqual,

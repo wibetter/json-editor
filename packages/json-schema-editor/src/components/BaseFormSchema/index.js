@@ -1,3 +1,7 @@
+/**
+ * 通用功能组件
+ * 提供 key值编辑、类型选择列表、title编辑、新增、复制、删除、数据项排序、高级设置 相关操作
+ */
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';

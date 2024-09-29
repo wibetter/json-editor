@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import PropTypes from 'prop-types';
 import JSONStore from '$store/index';
-import JSONSchema from '$components/JSONSchema/index';
+import JSONSchema from '$components/JSONSchemaEditor/index';
 
 /**
  * JSONSchema功能组件
