@@ -74,10 +74,10 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
           curJsonSchemaObj.format === 'radio' ||
           curJsonSchemaObj.format === 'single-select' ||
           curJsonSchemaObj.format === 'select') &&
-        curJsonSchemaObj.items
+        (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
         // 从items中获取数据
-        curJsonSchemaObj = curJsonSchemaObj.items;
+        curJsonSchemaObj = curJsonSchemaObj.options || curJsonSchemaObj.items;
       } else if (curIndex) {
         var curKeyTemp = '0';
         // 1、先根据路径值获取key值
@@ -138,6 +138,10 @@ function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
       // 从items中获取数据
       curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
       curKeyRoute = curKeyRoute ? curKeyRoute + '-items' : 'items';
+    } else if (curIndex === '0' && curJsonSchemaObj.options) {
+      // 从options中获取数据
+      curJsonSchemaObj = curJsonSchemaObj.options;
+      curKeyRoute = curKeyRoute ? curKeyRoute + '-options' : 'options';
     } else if (curIndex) {
       // 1、先根据路径值获取key值
       var curKey = '0';
@@ -185,6 +189,10 @@ function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
         // 兼容数组类型
         curIndex = 0; // curKey;
         curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      } else if (curJsonSchemaObj.options) {
+        // 兼容数组类型
+        curIndex = 0;
+        curJsonSchemaObj = curJsonSchemaObj.options;
       }
       curIndexRoute = curIndexRoute
         ? curIndexRoute + '-' + curIndex
@@ -421,14 +429,21 @@ var initRadioData = {
   type: 'string',
   title: '单选',
   format: 'radio',
-  items: {
-    type: 'string',
-    // 不可编辑
-    enum: ['a', 'b', 'c'],
-    enumextra: ['选项a', '选项b', '选项c'],
-  },
+  options: [
+    {
+      label: '选项a',
+      value: 'a',
+    },
+    {
+      label: '选项b',
+      value: 'b',
+    },
+    {
+      label: '选项c',
+      value: 'c',
+    },
+  ],
   description: '',
-  // 字段项的说明和描述
   isRequired: false,
   readOnly: false,
 };
@@ -447,14 +462,21 @@ var initSingleSelectData = {
   type: 'string',
   title: '下拉单选',
   format: 'single-select',
-  items: {
-    type: 'string',
-    // 不可编辑
-    enum: ['a', 'b', 'c'],
-    enumextra: ['选项a', '选项b', '选项c'],
-  },
+  options: [
+    {
+      label: '选项a',
+      value: 'a',
+    },
+    {
+      label: '选项b',
+      value: 'b',
+    },
+    {
+      label: '选项c',
+      value: 'c',
+    },
+  ],
   description: '',
-  // 字段项的说明和描述
   isRequired: false,
   readOnly: false,
 };
@@ -473,14 +495,21 @@ var initSelectData = {
   type: 'array',
   title: '多选',
   format: 'select',
-  items: {
-    type: 'string',
-    // 不可编辑
-    enum: ['a', 'b', 'c'],
-    enumextra: ['选项a', '选项b', '选项c'],
-  },
+  options: [
+    {
+      label: '选项a',
+      value: 'a',
+    },
+    {
+      label: '选项b',
+      value: 'b',
+    },
+    {
+      label: '选项c',
+      value: 'c',
+    },
+  ],
   description: '',
-  // 字段项的说明和描述
   isRequired: false,
   readOnly: false,
 };

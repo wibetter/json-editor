@@ -37,7 +37,7 @@
           return m;
         },
         KeyWordList: function () {
-          return ae;
+          return ne;
         },
         TypeDataList: function () {
           return y;
@@ -70,7 +70,7 @@
           return ie;
         },
         getParentKeyRoute_CurKey: function () {
-          return ne;
+          return ae;
         },
         getSchemaByIndexRoute: function () {
           return u;
@@ -79,13 +79,13 @@
           return p;
         },
         hasProperties: function () {
-          return a;
+          return n;
         },
         indexRoute2keyRoute: function () {
           return l;
         },
         isArray: function () {
-          return R;
+          return x;
         },
         isBoolean: function () {
           return j;
@@ -109,7 +109,7 @@
           return J;
         },
         isEqual: function () {
-          return n;
+          return a;
         },
         isFirstSchemaData: function () {
           return I;
@@ -121,7 +121,7 @@
           return B;
         },
         isNumber: function () {
-          return v;
+          return O;
         },
         isObject: function () {
           return D;
@@ -136,16 +136,16 @@
           return S;
         },
         isString: function () {
-          return b;
+          return v;
         },
         isStructuredSchema: function () {
           return L;
         },
         isTimeStr: function () {
-          return x;
+          return R;
         },
         isURL: function () {
-          return O;
+          return b;
         },
         isUsedToWidgetConfig: function () {
           return $;
@@ -185,64 +185,66 @@
     function i(e) {
       return (0, r.cloneDeep)(e);
     }
-    function n(e, t) {
+    function a(e, t) {
       return (0, r.isEqual)(e, t);
     }
-    function a(e) {
+    function n(e) {
       var t = !1;
       return null != e && (t = !0), t;
     }
     function o(e, t, r) {
-      var n = t;
-      if ((r && (n = i(t)), e))
-        for (var a = e.split('-'), o = 0, u = a.length; o < u; o++) {
-          var p = a[o];
-          p && (n = n && n[p]);
+      var a = t;
+      if ((r && (a = i(t)), e))
+        for (var n = e.split('-'), o = 0, u = n.length; o < u; o++) {
+          var p = n[o];
+          p && (a = a && a[p]);
         }
-      return n;
+      return a;
     }
     function u(e, t, r) {
-      var n = t;
-      if ((r && (n = i(t)), e))
-        for (var a = e.split('-'), o = 0, u = a.length; o < u; o++) {
-          var p = a[o];
+      var a = t;
+      if ((r && (a = i(t)), e))
+        for (var n = e.split('-'), o = 0, u = n.length; o < u; o++) {
+          var p = n[o];
           if (
             '0' !== p ||
-            ('array' !== n.format &&
-              'radio' !== n.format &&
-              'single-select' !== n.format &&
-              'select' !== n.format) ||
-            !n.items
+            ('array' !== a.format &&
+              'radio' !== a.format &&
+              'single-select' !== a.format &&
+              'select' !== a.format) ||
+            (!a.options && !a.items)
           ) {
             if (p) {
               var l = '0';
-              n.propertyOrder
-                ? (l = n.propertyOrder[p])
-                : n.properties && (l = Object.keys(n.properties)[p]),
-                (n = n.properties[l]);
+              a.propertyOrder
+                ? (l = a.propertyOrder[p])
+                : a.properties && (l = Object.keys(a.properties)[p]),
+                (a = a.properties[l]);
             }
-          } else n = n.items;
+          } else a = a.options || a.items;
         }
-      return n;
+      return a;
     }
     function p(e, t, r) {
-      var n = t;
-      if ((r && (n = i(t)), e && n))
-        for (var a = e.split('-'), o = 0, u = a.length; o < u; o++) {
-          var p = a[o];
-          p && n.properties && (n = n.properties[p]);
+      var a = t;
+      if ((r && (a = i(t)), e && a))
+        for (var n = e.split('-'), o = 0, u = n.length; o < u; o++) {
+          var p = n[o];
+          p && a.properties && (a = a.properties[p]);
         }
-      return n;
+      return a;
     }
     function l(e, t) {
       for (
-        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
-        a < o;
-        a++
+        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
+        n < o;
+        n++
       ) {
-        var u = n[a];
+        var u = a[n];
         if ('0' === u && r.items)
           (r = r.items), (i = i ? i + '-items' : 'items');
+        else if ('0' === u && r.options)
+          (r = r.options), (i = i ? i + '-options' : 'options');
         else if (u) {
           var p = '0';
           r.propertyOrder
@@ -256,11 +258,11 @@
     }
     function d(e, t) {
       for (
-        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
-        a < o;
-        a++
+        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
+        n < o;
+        n++
       ) {
-        var u = n[a];
+        var u = a[n];
         if (u) {
           var p = -1;
           r.propertyOrder
@@ -268,7 +270,9 @@
             : r.properties
               ? ((p = Object.keys(r.properties).indexOf(u)),
                 (r = r.properties[u]))
-              : r.items && ((p = 0), (r = r.items)),
+              : r.items
+                ? ((p = 0), (r = r.items))
+                : r.options && ((p = 0), (r = r.options)),
             (i = i ? i + '-' + p : p.toString());
         }
       }
@@ -702,11 +706,11 @@
           type: 'string',
           title: '单选',
           format: 'radio',
-          items: {
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumextra: ['选项a', '选项b', '选项c'],
-          },
+          options: [
+            { label: '选项a', value: 'a' },
+            { label: '选项b', value: 'b' },
+            { label: '选项c', value: 'c' },
+          ],
           description: '',
           isRequired: !1,
           readOnly: !1,
@@ -715,11 +719,11 @@
           type: 'string',
           title: '下拉单选',
           format: 'single-select',
-          items: {
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumextra: ['选项a', '选项b', '选项c'],
-          },
+          options: [
+            { label: '选项a', value: 'a' },
+            { label: '选项b', value: 'b' },
+            { label: '选项c', value: 'c' },
+          ],
           description: '',
           isRequired: !1,
           readOnly: !1,
@@ -728,11 +732,11 @@
           type: 'array',
           title: '多选',
           format: 'select',
-          items: {
-            type: 'string',
-            enum: ['a', 'b', 'c'],
-            enumextra: ['选项a', '选项b', '选项c'],
-          },
+          options: [
+            { label: '选项a', value: 'a' },
+            { label: '选项b', value: 'b' },
+            { label: '选项c', value: 'c' },
+          ],
           description: '',
           isRequired: !1,
           readOnly: !1,
@@ -898,13 +902,13 @@
           propertyOrder: ['type', 'data', 'filter'],
         },
       };
-    function O(e) {
+    function b(e) {
       return /^http[s]?:\/\/.*/.test(e);
     }
-    function b(e) {
+    function v(e) {
       return 'String' === Object.prototype.toString.call(e).slice(8, -1);
     }
-    function v(e) {
+    function O(e) {
       return (
         'number' == typeof e ||
         '[object Number]' === Object.prototype.toString.call(e)
@@ -922,10 +926,10 @@
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(e)
       );
     }
-    function x(e) {
+    function R(e) {
       return /^\d{2}:\d{2}:\d{2}$/.test(e) || /^\d{2}:\d{2}$/.test(e);
     }
-    function R(e) {
+    function x(e) {
       var t = !1;
       return (
         'Array' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
@@ -933,8 +937,8 @@
       );
     }
     function S(e) {
-      if (!R(e)) return !1;
-      for (var t = 0, r = e.length; t < r; t++) if (!b(e[t])) return !1;
+      if (!x(e)) return !1;
+      for (var t = 0, r = e.length; t < r; t++) if (!v(e[t])) return !1;
       return !0;
     }
     function D(e) {
@@ -969,7 +973,7 @@
                 if (D(e)) {
                   var r = Object.keys(e);
                   e.data && e.filter && 2 === r.length
-                    ? (t = R(e.data) || D(e.data) ? i(g.local) : i(g.remote))
+                    ? (t = x(e.data) || D(e.data) ? i(g.local) : i(g.remote))
                     : e.trigger && e.eventData && 2 === r.length
                       ? (t = i(m.emit))
                       : e.register && e.actionFunc && 2 === r.length
@@ -984,17 +988,17 @@
                 }
                 return t;
               })(e)
-            : e && R(e)
+            : e && x(e)
               ? (function (e) {
                   var t;
-                  if (e && R(e))
+                  if (e && x(e))
                     if (S(e)) {
                       (t = i(y.select)).items.enum = e;
                       var r = t.items.enumextra.length,
-                        n = e.length;
-                      if (n > r)
-                        for (var a = r, o = n; a < o; a++)
-                          t.items.enumextra.push('选项' + e(a));
+                        a = e.length;
+                      if (a > r)
+                        for (var n = r, o = a; n < o; n++)
+                          t.items.enumextra.push('选项' + e(n));
                     } else {
                       t = i(y['empty-array']);
                       var u = w(e[0]);
@@ -1005,15 +1009,15 @@
               : (function (e) {
                   var t = '';
                   if (j(e)) t = i(y.boolean);
-                  else if (v(e)) t = i(y.number);
-                  else if (O(e)) t = i(y.url);
+                  else if (O(e)) t = i(y.number);
+                  else if (b(e)) t = i(y.url);
                   else if (h(e)) t = i(y.date);
                   else if (q(e)) t = i(y['date-time']);
-                  else if (x(e)) t = i(y.time);
+                  else if (R(e)) t = i(y.time);
                   else if (F(e)) t = i(y.color);
                   else
                     try {
-                      t = v(JSON.parse(e)) ? i(y.input) : i(y.json);
+                      t = O(JSON.parse(e)) ? i(y.input) : i(y.json);
                     } catch (r) {
                       t = e && e.length > 30 ? i(y.textarea) : i(y.input);
                     }
@@ -1057,10 +1061,10 @@
       ) {
         var r = e.properties.func || {},
           i = e.properties.style || {},
-          n = e.properties.data || {};
+          a = e.properties.data || {};
         ((r.propertyOrder && r.propertyOrder.length > 0) ||
           (i.propertyOrder && i.propertyOrder.length > 0) ||
-          (n.propertyOrder && n.propertyOrder.length > 0)) &&
+          (a.propertyOrder && a.propertyOrder.length > 0)) &&
           (t = !1);
       }
       return t;
@@ -1139,14 +1143,14 @@
       for (
         var r = e.split('-'),
           i = t.split('-'),
-          n = 'before',
-          a = 0,
+          a = 'before',
+          n = 0,
           o = (r.length > i.length ? i : r).length;
-        a < o;
-        a += 1
+        n < o;
+        n += 1
       )
-        Number(r[a]) > Number(i[a]) && (n = 'after');
-      return n;
+        Number(r[n]) > Number(i[n]) && (a = 'after');
+      return a;
     }
     function E(e) {
       var t = e.split('-');
@@ -1192,16 +1196,16 @@
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
-        var n = T(e);
-        'object' === n || 'func' === n || 'style' === n || 'data' === n
+        var a = T(e);
+        'object' === a || 'func' === a || 'style' === a || 'data' === a
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
             (i = z(e, i)))
-          : 'array' === n
+          : 'array' === a
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
               (i = z((e = e.items), i)))
-            : !r && i[n]
-              ? (i[n] += 1)
-              : r || (i[n] = 1);
+            : !r && i[a]
+              ? (i[a] += 1)
+              : r || (i[a] = 1);
       }
       return i;
     }
@@ -1217,7 +1221,7 @@
           'object' !== t.format &&
           'radio' !== t.format &&
           'select' !== t.format) ||
-          !a(t.default) ||
+          !n(t.default) ||
           delete t.default,
         'radio' === t.format &&
           ((t.type = 'string'),
@@ -1233,12 +1237,12 @@
         'quantity' === t.format)
       ) {
         var r = t.properties,
-          n = i(y.quantity);
+          a = i(y.quantity);
         if (r.quantity && D(r.quantity) && r.quantity.default) {
           var o = r.quantity.default;
-          n.properties.quantity.default = 'percent' === o ? '%' : o;
+          a.properties.quantity.default = 'percent' === o ? '%' : o;
         }
-        t = n;
+        t = a;
       }
       if ('datasource' === t.format) {
         var u = t.properties,
@@ -1262,11 +1266,11 @@
               D(s.actionFunc) &&
               (t.properties.actionFunc.default = s.actionFunc.default || i(f));
         } else {
-          var O = (s.filter && s.filter.default) || '{}';
+          var b = (s.filter && s.filter.default) || '{}';
           (t = i(m.emit)),
             s.eventData &&
               D(s.eventData) &&
-              (t.properties.eventData.default = s.eventData.default || i(O));
+              (t.properties.eventData.default = s.eventData.default || i(b));
         }
       }
       return (
@@ -1283,17 +1287,17 @@
     function Z(e, t) {
       var r = '',
         i = t;
-      a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
-      var n = a(i) ? i : e.default;
+      n(i) && n(e.default) && typeof i != typeof e.default && (i = void 0);
+      var a = n(i) ? i : e.default;
       switch (e.type) {
         case 'string':
           if ('typeSelect' === e.format) r = e.default;
           else if ('color' === e.format)
-            ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
-              (r = n || '#ffffff');
+            ('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
+              (r = a || '#ffffff');
           else if ('json' === e.format || 'widget' === e.format) {
             var o = '';
-            if (D(t) || R(t)) o = t;
+            if (D(t) || x(t)) o = t;
             else if (k(t) || '' === t) o = {};
             else
               try {
@@ -1302,34 +1306,34 @@
                 o = {};
               }
             r = o;
-          } else r = a(n) ? n : '';
+          } else r = n(a) ? a : '';
           break;
         case 'boolean':
-          r = !!a(n) && n;
+          r = !!n(a) && a;
           break;
         case 'number':
-          r = a(n) ? n : 1;
+          r = n(a) ? a : 1;
           break;
         default:
-          r = a(n) ? n : '';
+          r = n(a) ? a : '';
       }
       return r;
     }
     function G(e, t) {
       var r = {},
-        n = T(e);
+        a = T(e);
       if (D(e) && 'object' === e.type) {
         var o = e,
           u = t;
-        a(u) && a(o.default) && typeof u != typeof o.default && (u = void 0);
-        var p = a(u) ? u : o.default;
-        'dynamic-data' === n
+        n(u) && n(o.default) && typeof u != typeof o.default && (u = void 0);
+        var p = n(u) ? u : o.default;
+        'dynamic-data' === a
           ? ((r = i(f)),
             p &&
               D(p) &&
               '{}' !== JSON.stringify(p) &&
               (r = Object.assign(r, p)))
-          : 'datasource' === n
+          : 'datasource' === a
             ? o.properties &&
               o.properties.type &&
               o.properties.type.default &&
@@ -1342,7 +1346,7 @@
                 p && p.data && (r.data = p.data),
                 p && p.filter && (r.filter = p.filter),
                 '{}' === r.data && (r.data = 'http://xxx'))
-            : 'event' === n
+            : 'event' === a
               ? o.properties &&
                 o.properties.type &&
                 o.properties.type.default &&
@@ -1368,17 +1372,17 @@
                   ? e.propertyOrder
                   : Object.keys(e.properties)
                 ).map(function (i) {
-                  var n = e.properties[i],
-                    a = t && t[i];
-                  switch (n.type) {
+                  var a = e.properties[i],
+                    n = t && t[i];
+                  switch (a.type) {
                     case 'array':
-                      r[i] = V(n, a);
+                      r[i] = V(a, n);
                       break;
                     case 'object':
-                      r[i] = G(n, a);
+                      r[i] = G(a, n);
                       break;
                     default:
-                      r[i] = Z(n, a);
+                      r[i] = Z(a, n);
                   }
                 });
       }
@@ -1388,18 +1392,18 @@
       var r = [];
       if (e && 'array' === e.type) {
         var i = t;
-        a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
-        var n = a(i) ? i : e.default;
+        n(i) && n(e.default) && typeof i != typeof e.default && (i = void 0);
+        var a = n(i) ? i : e.default;
         if ('array' === e.format)
-          if (R(n))
-            n.map(function (t) {
+          if (x(a))
+            a.map(function (t) {
               r.push(G(e.items, t));
             });
           else {
-            var o = G(e.items, n);
+            var o = G(e.items, a);
             r.push(o);
           }
-        else r = a(n) ? n : [];
+        else r = n(a) ? a : [];
       }
       return r;
     }
@@ -1421,8 +1425,8 @@
             e.config &&
             D(e.config) &&
             e.config.dataName &&
-            a(e.localFilter) &&
-            a(e.data)
+            n(e.localFilter) &&
+            n(e.data)
           ) {
             var i = e.config.body;
             if (i && !D(i))
@@ -1437,7 +1441,7 @@
               ee(e[t], r);
             });
         else
-          R(e) &&
+          x(e) &&
             e.map(function (e) {
               ee(e, r);
             });
@@ -1457,19 +1461,19 @@
       return (
         D(e)
           ? Object.keys(e).map(function (i) {
-              var n = e[i],
-                a = t ? t + '-' + i : i;
-              D(n) || R(n)
-                ? r.push({ title: i, value: a, key: a, children: re(n, a) })
-                : r.push({ title: i, value: a, key: a });
+              var a = e[i],
+                n = t ? t + '-' + i : i;
+              D(a) || x(a)
+                ? r.push({ title: i, value: n, key: n, children: re(a, n) })
+                : r.push({ title: i, value: n, key: n });
             })
-          : R(e) &&
+          : x(e) &&
             e.map(function (e, i) {
-              var n = i.toString(),
-                a = t ? t + '-' + i : n;
-              D(e) || R(e)
-                ? r.push({ title: n, value: a, key: a, children: re(e, a) })
-                : r.push({ title: n, value: a, key: a });
+              var a = i.toString(),
+                n = t ? t + '-' + i : a;
+              D(e) || x(e)
+                ? r.push({ title: a, value: n, key: n, children: re(e, n) })
+                : r.push({ title: a, value: n, key: n });
             }),
         r
       );
@@ -1478,12 +1482,12 @@
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function ne(e) {
+    function ae(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    var ae = [
+    var ne = [
       'key',
       'enum',
       'enumextra',

@@ -12,12 +12,21 @@ export const initSingleSelectData = {
   type: 'string',
   title: '下拉单选',
   format: 'single-select',
-  items: {
-    type: 'string', // 不可编辑
-    enum: ['a', 'b', 'c'],
-    enumextra: ['选项a', '选项b', '选项c'],
-  },
-  description: '', // 字段项的说明和描述
+  options: [
+    {
+      label: '选项a',
+      value: 'a',
+    },
+    {
+      label: '选项b',
+      value: 'b',
+    },
+    {
+      label: '选项c',
+      value: 'c',
+    },
+  ],
+  description: '',
   isRequired: false,
   readOnly: false,
 };

@@ -742,7 +742,7 @@ class IndexDemo extends React.PureComponent {
           <div
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
           >
-            <JSONEditor
+            {/* <JSONEditor
               viewStyle={viewStyle}
               jsonView={jsonView} // code模式
               wideScreen={wideScreen} // 宽屏和小屏的配置项
@@ -754,7 +754,7 @@ class IndexDemo extends React.PureComponent {
                   jsonData: newJsonData,
                 });
               }}
-            />
+            /> */}
           </div>
         </div>
       </>

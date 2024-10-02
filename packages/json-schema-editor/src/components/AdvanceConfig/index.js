@@ -73,9 +73,7 @@ class AdvanceConfig extends React.PureComponent {
       );
     }
     if (currentFormat === 'radio' || currentFormat === 'single-select') {
-      // 如果是选择类型的组件，需要提取选择项
-      const enumKeys = targetJsonSchema.items.enum;
-      const enumTexts = targetJsonSchema.items.enumextra;
+      const options = targetJsonSchema.options;
       return (
         <Radio.Group
           style={{ display: 'inline-block' }}
@@ -85,16 +83,14 @@ class AdvanceConfig extends React.PureComponent {
             this.handleValueChange('default', value);
           }}
         >
-          {enumKeys &&
-            enumKeys.length > 0 &&
-            enumKeys.map((enumKey, enumIndex) => {
-              /** 1. 获取当前enum的title */
-              const enumText = enumTexts[enumIndex];
+          {options &&
+            options.length > 0 &&
+            options.map((item, optionIndex) => {
               /** 2. 获取当前元素的id，用于做唯一标识 */
-              const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+              const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
               return (
-                <Radio value={enumKey} key={enumNodeKey}>
-                  {enumText}
+                <Radio value={item.value} key={optionNodeKey}>
+                  {item.label || item.name}
                 </Radio>
               );
             })}
@@ -102,9 +98,7 @@ class AdvanceConfig extends React.PureComponent {
       );
     }
     if (currentFormat === 'select') {
-      // 如果是选择类型的组件，需要提取选择项
-      const enumKeys = targetJsonSchema.items.enum;
-      const enumTexts = targetJsonSchema.items.enumextra;
+      const options = targetJsonSchema.options;
       return (
         <Checkbox.Group
           style={{ display: 'inline-block' }}
@@ -113,16 +107,13 @@ class AdvanceConfig extends React.PureComponent {
           }}
           defaultValue={targetJsonSchema.default}
         >
-          {enumKeys &&
-            enumKeys.length > 0 &&
-            enumKeys.map((enumKey, enumIndex) => {
-              /** 1. 获取当前enum的title */
-              const enumText = enumTexts[enumIndex];
-              /** 2. 获取当前元素的id，用于做唯一标识 */
-              const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+          {options &&
+            options.length > 0 &&
+            options.map((item, optionIndex) => {
+              const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
               return (
-                <Checkbox value={enumKey} key={enumNodeKey}>
-                  {enumText}
+                <Checkbox value={item.value} key={optionNodeKey}>
+                  {item.label || item.name}
                 </Checkbox>
               );
             })}
