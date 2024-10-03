@@ -26,10 +26,10 @@ export function getSchemaByIndexRoute(
           curJsonSchemaObj.format === 'radio' ||
           curJsonSchemaObj.format === 'single-select' ||
           curJsonSchemaObj.format === 'select') &&
-        curJsonSchemaObj.items
+        (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
         // 从items中获取数据
-        curJsonSchemaObj = curJsonSchemaObj.items;
+        curJsonSchemaObj = curJsonSchemaObj.options || curJsonSchemaObj.items;
       } else if (curIndex) {
         let curKeyTemp = '0';
         // 1、先根据路径值获取key值

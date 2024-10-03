@@ -35,6 +35,5 @@ export const initBoxStyleData = {
       readOnly: false,
     },
   },
-  required: ['unit', 'quantity'],
   propertyOrder: ['unit', 'quantity'],
 };

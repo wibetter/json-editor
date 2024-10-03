@@ -34,7 +34,6 @@ export const initArrayData = {
         readOnly: false,
       },
     },
-    required: ['name'],
     propertyOrder: ['name'],
   },
 };

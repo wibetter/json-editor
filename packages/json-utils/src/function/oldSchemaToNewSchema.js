@@ -12,7 +12,8 @@ import {
 } from '$data/TypeDataList';
 import { getCurrentFormat } from '$utils/jsonSchema';
 
-export function oldSchemaToNewSchema(oldSchema) {
+// 2020-07-29
+export function oldSchemaToNewSchemaV1(oldSchema) {
   let newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
   // 1.根据原有的description值生成title值
   if (!newJSONSchema.title && newJSONSchema.description) {
@@ -135,6 +136,72 @@ export function oldSchemaToNewSchema(oldSchema) {
   // 判断是否有items属性
   if (newJSONSchema.items) {
     // 6. 转换items中的数据
+    newJSONSchema.items = oldSchemaToNewSchema(newJSONSchema.items);
+  }
+  return newJSONSchema;
+}
+
+// 2024-10-03 之前的旧版转新版schema
+export function oldSchemaToNewSchema(oldSchema) {
+  let newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
+  // 当format为空时重新进行赋值
+  if (!newJSONSchema.format) {
+    newJSONSchema.format = getCurrentFormat(newJSONSchema);
+  }
+  // 删除不需要的属性
+  if (!newJSONSchema.required) {
+    delete newJSONSchema.required;
+  }
+  // 不需要default属性的类型自动删除
+  if (
+    (newJSONSchema.format === 'quantity' ||
+      newJSONSchema.format === 'array' ||
+      newJSONSchema.format === 'datasource' ||
+      newJSONSchema.format === 'event' ||
+      newJSONSchema.format === 'object' ||
+      newJSONSchema.format === 'radio' ||
+      newJSONSchema.format === 'select') &&
+    hasProperties(newJSONSchema.default)
+  ) {
+    delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
+  }
+  // 转换旧版的选择类型的数据结构
+  if (
+    newJSONSchema.format === 'radio' ||
+    newJSONSchema.format === 'select' ||
+    newJSONSchema.format === 'single-select'
+  ) {
+    if (
+      newJSONSchema.items &&
+      newJSONSchema.items.enum &&
+      newJSONSchema.items.enumextra
+    ) {
+      newJSONSchema.options = [];
+      newJSONSchema.items.enum.forEach((option, optionIndex) => {
+        newJSONSchema.options.push({
+          label: newJSONSchema.items.enumextra[optionIndex] || option,
+          value: option,
+        });
+      });
+      // 删除此前的items
+      delete newJSONSchema.items;
+    }
+  }
+  // 判断是否有propertyOrder属性
+  if (newJSONSchema.properties) {
+    if (!newJSONSchema.propertyOrder) {
+      // 生成propertyOrder属性
+      newJSONSchema.propertyOrder = Object.keys(newJSONSchema.properties);
+    }
+    // 继续遍历properties属性进行转换
+    newJSONSchema.propertyOrder.map((jsonKey) => {
+      newJSONSchema.properties[jsonKey] = oldSchemaToNewSchema(
+        newJSONSchema.properties[jsonKey],
+      );
+    });
+  }
+  if (newJSONSchema.format === 'array' && newJSONSchema.items) {
+    // 转换items中的数据
     newJSONSchema.items = oldSchemaToNewSchema(newJSONSchema.items);
   }
   return newJSONSchema;

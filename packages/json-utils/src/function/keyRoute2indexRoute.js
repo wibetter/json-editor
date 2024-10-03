@@ -27,6 +27,10 @@ export function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
         // 兼容数组类型
         curIndex = 0; // curKey;
         curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      } else if (curJsonSchemaObj.options) {
+        // 兼容数组类型
+        curIndex = 0;
+        curJsonSchemaObj = curJsonSchemaObj.options;
       }
       curIndexRoute = curIndexRoute
         ? `${curIndexRoute}-${curIndex}`

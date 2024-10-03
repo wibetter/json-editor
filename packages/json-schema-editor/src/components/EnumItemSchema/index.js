@@ -105,7 +105,7 @@ class EnumItemSchema extends React.PureComponent {
               onClick={this.onDeleteBtnEvent}
             />
           </Tooltip>
-          <Tooltip title="新增兄弟节点">
+          <Tooltip title="新增可选项">
             <PlusOutlined
               className="operate-btn"
               onClick={this.onAddBtnEvent}

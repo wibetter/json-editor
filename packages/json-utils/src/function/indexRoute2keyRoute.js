@@ -15,6 +15,10 @@ export function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
       // 从items中获取数据
       curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
       curKeyRoute = curKeyRoute ? `${curKeyRoute}-items` : 'items';
+    } else if (curIndex === '0' && curJsonSchemaObj.options) {
+      // 从options中获取数据
+      curJsonSchemaObj = curJsonSchemaObj.options;
+      curKeyRoute = curKeyRoute ? `${curKeyRoute}-options` : 'options';
     } else if (curIndex) {
       // 1、先根据路径值获取key值
       let curKey = '0';

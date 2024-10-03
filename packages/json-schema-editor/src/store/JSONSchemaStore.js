@@ -469,7 +469,6 @@ export default class JSONSchemaStore {
     this.jsonSchemaChange(ignoreOnChange);
   }
 
-  /** 根据parentJSONObj自动生成jsonKey */
   @action.bound
   getNewEnumIndex(enumKeys, prefix) {
     let newEnumKey = `${prefix || 'enum'}_${this.curJsonKeyIndex}`;
@@ -505,6 +504,134 @@ export default class JSONSchemaStore {
       const newEnumKey = this.getNewEnumIndex(itemJSONObj.enum, curEnumKey);
       const newEnumText = `${curEnumText}_${this.curJsonKeyIndex - 1}`;
       this.insertEnumItem(indexRoute, enumIndex, newEnumKey, newEnumText); // 插入copy的枚举元素
+    }
+  }
+
+  // 更新选项
+  @action.bound
+  updateOptionItem(
+    indexRoute,
+    optionIndex,
+    optionLabel,
+    optionValue,
+    ignoreOnChange,
+  ) {
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
+      itemJSONObj.options[optionIndex].label = optionLabel;
+      itemJSONObj.options[optionIndex].value = optionValue;
+    }
+    // 触发onChange事件
+    this.jsonSchemaChange(ignoreOnChange);
+  }
+
+  // 判断是否存在重复Label
+  @action.bound
+  isExitOptionLabel(indexRoute, optionLabel) {
+    let isExit = false;
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options) {
+      if (
+        itemJSONObj.options.find(
+          (item) => item.label === optionLabel || item.name === optionLabel,
+        )
+      ) {
+        isExit = true;
+      }
+    }
+    if (KeyWordList && KeyWordList.indexOf(optionLabel) >= 0) {
+      // 表示当前jsonKey是JSONSchema的关键字
+      message.warning(
+        `${optionLabel}是JSONSchema的保留关键字，建议您换一个名称。`,
+      );
+    }
+    return isExit;
+  }
+
+  // 更新选项Label
+  @action.bound
+  updateOptionLabel(indexRoute, optionIndex, optionLabel, ignoreOnChange) {
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
+      itemJSONObj.options[optionIndex].label = optionLabel;
+    }
+    this.jsonSchemaChange(ignoreOnChange);
+  }
+
+  // 更新选项数值
+  @action.bound
+  updateOptionValue(indexRoute, optionIndex, optionValue, ignoreOnChange) {
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
+      itemJSONObj.options[optionIndex].value = optionValue;
+    }
+    this.jsonSchemaChange(ignoreOnChange);
+  }
+
+  // 删除选项
+  @action.bound
+  deleteOptionItem(indexRoute, optionIndex, ignoreOnChange) {
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
+      itemJSONObj.options.splice(optionIndex, 1);
+    }
+    this.jsonSchemaChange(ignoreOnChange);
+  }
+
+  // 在指定位置插入选项
+  @action.bound
+  insertOption(
+    indexRoute,
+    optionIndex,
+    newOptionLabel,
+    newOptionValue,
+    position,
+    ignoreOnChange,
+  ) {
+    const curJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (curJSONObj.options) {
+      const positionIndex =
+        position === 'before' ? Number(optionIndex) : Number(optionIndex) + 1;
+      // 在options指定位置插入新的选项
+      const startKeys = curJSONObj.options.slice(0, positionIndex);
+      const endKeys = curJSONObj.options.slice(positionIndex);
+      const newOption = {
+        label: newOptionLabel,
+        value: newOptionValue,
+      };
+      curJSONObj.options = [...startKeys, newOption, ...endKeys];
+    }
+    this.jsonSchemaChange(ignoreOnChange);
+  }
+
+  @action.bound
+  getNewOptionValue(options) {
+    if (options && options.length > 0) {
+      return `${options[options.length - 1].value}_${options.length + 1}`;
+    }
+    return 'value1';
+  }
+
+  // 添加选项
+  @action.bound
+  addOptionItem(indexRoute, optionIndex) {
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options) {
+      const optionValue = this.getNewOptionValue(itemJSONObj.options);
+      const optionLabel = `选项${itemJSONObj.options.length + 1}`;
+      this.insertOption(indexRoute, optionIndex, optionLabel, optionValue); // 插入新的元素
+    }
+  }
+
+  // 复制选项
+  @action.bound
+  copyOptionItem(indexRoute, optionIndex) {
+    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    if (itemJSONObj.options) {
+      const curOption = itemJSONObj.options[optionIndex];
+      const optionValue = this.getNewOptionValue(itemJSONObj.options);
+      const optionLabel = `${(curOption, label || curOption, name)}_copy`;
+      this.insertOption(indexRoute, optionIndex, optionLabel, optionValue);
     }
   }
 

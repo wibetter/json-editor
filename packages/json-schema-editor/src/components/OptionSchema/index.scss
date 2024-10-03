@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.option-schema-box {
+  position: relative;
+  min-height: 35px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .key-input-item {
+    flex: 1 1 200px;
+    padding-right: 8px;
+  }
+
+  .type-select-item {
+    flex: 0 1 120px;
+    padding-right: 8px;
+  }
+
+  .title-input-item {
+    flex: 0 1 200px;
+  }
+
+  .operate-item {
+    flex: 0 1 110px;
+    padding-left: 10px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .operate-btn {
+      flex: 0 0 auto;
+      width: 15px;
+      margin-right: 8px;
+      color: #2395f1;
+      cursor: pointer !important;
+    }
+
+    .delete-operate {
+      color: #ff561b;
+    }
+  }
+}

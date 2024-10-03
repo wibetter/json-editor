@@ -236,7 +236,7 @@ class BaseFormSchema extends React.PureComponent {
                     />
                   </Tooltip>
                 )}
-                <Tooltip title={isBoxElem ? '新增子节点' : '新增兄弟节点'}>
+                <Tooltip title={isBoxElem ? '新增子元素' : '新增同级元素'}>
                   <PlusOutlined
                     className="operate-btn"
                     onClick={this.onAddBtnEvent}

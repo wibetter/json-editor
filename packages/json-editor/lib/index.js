@@ -3948,8 +3948,7 @@
                   n = e.targetJsonSchema,
                   r = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(a),
-                  i = n.items.enum,
-                  l = n.items.enumextra;
+                  i = n.options;
                 return P.createElement(
                   'div',
                   {
@@ -4007,12 +4006,12 @@
                         i &&
                           i.length > 0 &&
                           i.map(function (e, a) {
-                            var n = l[a],
-                              r = t + '-radio-' + e;
+                            var n = e.label || e.name,
+                              r = t + '-radio-' + n;
                             return P.createElement(
                               Q.Radio,
-                              { value: e, key: r },
-                              n,
+                              { value: e.value, key: r },
+                              e.value,
                             );
                           }),
                       ),
@@ -4072,8 +4071,7 @@
                   n = e.targetJsonSchema,
                   r = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(a),
-                  i = n.items.enum,
-                  l = n.items.enumextra;
+                  i = n.options;
                 return P.createElement(
                   'div',
                   {
@@ -4131,11 +4129,11 @@
                         i &&
                           i.length > 0 &&
                           i.map(function (e, a) {
-                            var n = l[a],
-                              r = t + '-radio-' + e;
+                            var n = e.label || e.name,
+                              r = t + '-select-' + n;
                             return P.createElement(
                               Q.Checkbox,
-                              { value: e, key: r },
+                              { value: e.value, key: r },
                               n,
                             );
                           }),
@@ -5348,9 +5346,8 @@
                   n = e.targetJsonSchema,
                   r = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(a),
-                  i = n.items.enum,
-                  l = n.items.enumextra,
-                  c = (0, Y.y8)(n.format);
+                  i = n.options,
+                  l = (0, Y.y8)(n.format);
                 return P.createElement(
                   'div',
                   {
@@ -5358,7 +5355,7 @@
                       'wideScreen' === r
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp ' +
-                          (c ? 'two-col-element-warp' : ''),
+                          (l ? 'two-col-element-warp' : ''),
                     key: t,
                     id: t,
                   },
@@ -5409,9 +5406,13 @@
                         i &&
                           i.length > 0 &&
                           i.map(function (e, a) {
-                            var n = l[a],
-                              r = t + '-radio-' + e;
-                            return P.createElement(Et, { value: e, key: r }, n);
+                            var n = e.label || e.name,
+                              r = t + '-select-' + n;
+                            return P.createElement(
+                              Et,
+                              { value: e.value, key: r },
+                              n,
+                            );
                           }),
                       ),
                     ),

@@ -3,7 +3,7 @@
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
- *  items：用于设置选择项
+ *  options：用于设置选择项
  *  isRequired：是否是必填项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
@@ -12,12 +12,22 @@ export const initRadioData = {
   type: 'string',
   title: '单选',
   format: 'radio',
-  items: {
-    type: 'string', // 不可编辑
-    enum: ['a', 'b', 'c'],
-    enumextra: ['选项a', '选项b', '选项c'],
-  },
-  description: '', // 字段项的说明和描述
+  options: [
+    {
+      label: '选项a',
+      value: 'a',
+    },
+    {
+      label: '选项b',
+      value: 'b',
+    },
+    {
+      label: '选项c',
+      value: 'c',
+    },
+  ],
+  default: 'a',
+  description: '',
   isRequired: false,
   readOnly: false,
 };

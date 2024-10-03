@@ -37,6 +37,5 @@ export const initQuantityData = {
       readOnly: false,
     },
   },
-  required: ['unit', 'quantity'],
   propertyOrder: ['unit', 'quantity'],
 };

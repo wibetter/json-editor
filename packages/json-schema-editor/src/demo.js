@@ -32,7 +32,6 @@ class IndexDemo extends React.PureComponent {
             title: '属性设置',
             readOnly: false,
             properties: {},
-            required: [],
             propertyOrder: [],
           },
           style: {
@@ -68,7 +67,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
               padding: {
@@ -98,7 +96,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
               height: {
@@ -130,7 +127,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
                 hiddenRule: {
                   conditionProp: {
@@ -165,11 +161,16 @@ class IndexDemo extends React.PureComponent {
                 type: 'string',
                 title: '内容排列方向',
                 format: 'radio',
-                items: {
-                  type: 'string',
-                  enum: ['column', 'row'],
-                  enumextra: ['竖排(默认)', 'row'],
-                },
+                options: [
+                  {
+                    label: '竖排(默认)',
+                    value: 'column',
+                  },
+                  {
+                    label: '横排',
+                    value: 'row',
+                  },
+                ],
                 description:
                   'flex-direction属性：决定主轴的方向（即列级容器内部元素的排列方向）',
                 isRequired: false,
@@ -273,7 +274,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
               hasBorder: {
@@ -354,7 +354,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
                 description: ' border-width 属性为边框指定宽度',
                 hiddenRule: {
@@ -388,22 +387,6 @@ class IndexDemo extends React.PureComponent {
                 },
               },
             },
-            required: [
-              'margin',
-              'padding',
-              'height',
-              'backgroundColor',
-              'fixedHeight',
-              'flexDirection',
-              'justifyContent',
-              'alignItems',
-              'flex',
-              'flexBasis',
-              'hasBorder',
-              'borderStyle',
-              'borderWidth',
-              'borderColor',
-            ],
             propertyOrder: [
               'margin',
               'padding',
@@ -427,7 +410,6 @@ class IndexDemo extends React.PureComponent {
             title: '数据设置',
             readOnly: false,
             properties: {},
-            required: [],
             propertyOrder: [],
           },
           event: {
@@ -437,11 +419,9 @@ class IndexDemo extends React.PureComponent {
             isFixedSchema: true,
             readOnly: false,
             properties: {},
-            required: [],
             propertyOrder: [],
           },
         },
-        required: ['props', 'style', 'data', 'event'],
         propertyOrder: ['props', 'style', 'data', 'event'],
         lastUpdateTime: '2021-04-29T05:51:26.253Z',
         conditionProps: {

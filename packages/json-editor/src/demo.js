@@ -47,7 +47,6 @@ class IndexDemo extends React.PureComponent {
                 default: 'top',
               },
             },
-            required: ['legendAlign'],
             propertyOrder: ['legendAlign'],
           },
           style: {
@@ -83,7 +82,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
               width: {
@@ -115,7 +113,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
               height: {
@@ -147,7 +144,6 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
               padding: {
@@ -177,11 +173,9 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                 },
-                required: ['unit', 'quantity'],
                 propertyOrder: ['unit', 'quantity'],
               },
             },
-            required: ['margin', 'width', 'height', 'padding'],
             propertyOrder: ['width', 'height', 'margin', 'padding'],
           },
           data: {
@@ -235,7 +229,6 @@ class IndexDemo extends React.PureComponent {
                         isRequired: true,
                       },
                     },
-                    required: ['dataName', 'body', 'filter'],
                     propertyOrder: ['dataName', 'body', 'filter'],
                   },
                   data: {
@@ -255,7 +248,6 @@ class IndexDemo extends React.PureComponent {
                     isRequired: true,
                   },
                 },
-                required: ['type', 'config', 'data', 'localFilter'],
                 propertyOrder: ['type', 'config', 'data', 'localFilter'],
               },
               xAxis: {
@@ -289,7 +281,6 @@ class IndexDemo extends React.PureComponent {
                 readOnly: false,
               },
             },
-            required: ['chartDataList', 'xAxis', 'yAxis', 'legend'],
             propertyOrder: ['chartDataList', 'xAxis', 'yAxis', 'legend'],
           },
           event: {
@@ -299,11 +290,9 @@ class IndexDemo extends React.PureComponent {
             isFixedSchema: true,
             readOnly: false,
             properties: {},
-            required: [],
             propertyOrder: [],
           },
         },
-        required: ['data', 'props', 'style', 'event'],
         propertyOrder: ['data', 'props', 'style', 'event'],
         lastUpdateTime: '2021-03-29T02:08:03.551Z',
       }, // 用于组件配置的schema
