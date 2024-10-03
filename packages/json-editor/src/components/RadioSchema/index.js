@@ -50,10 +50,7 @@ class RadioSchema extends React.PureComponent {
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-
-    // 获取枚举值
-    const enumKeys = targetJsonSchema.items.enum;
-    const enumTexts = targetJsonSchema.items.enumextra;
+    const options = targetJsonSchema.options;
 
     return (
       <div
@@ -96,16 +93,14 @@ class RadioSchema extends React.PureComponent {
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
             >
-              {enumKeys &&
-                enumKeys.length > 0 &&
-                enumKeys.map((enumKey, enumIndex) => {
-                  /** 1. 获取当前enum的title */
-                  const enumText = enumTexts[enumIndex];
-                  /** 2. 获取当前元素的id，用于做唯一标识 */
-                  const enumNodeKey = `${nodeKey}-radio-${enumKey}`;
+              {options &&
+                options.length > 0 &&
+                options.map((item, optionIndex) => {
+                  const optionLabel = item.label || item.name;
+                  const optionNodeKey = `${nodeKey}-radio-${optionLabel}`;
                   return (
-                    <Radio value={enumKey} key={enumNodeKey}>
-                      {enumText}
+                    <Radio value={item.value} key={optionNodeKey}>
+                      {item.value}
                     </Radio>
                   );
                 })}
