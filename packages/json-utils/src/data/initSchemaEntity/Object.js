@@ -27,6 +27,5 @@ export const initObjectData = {
       readOnly: false,
     },
   },
-  required: ['a'],
   propertyOrder: ['a'],
 };

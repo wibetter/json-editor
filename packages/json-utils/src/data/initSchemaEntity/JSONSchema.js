@@ -29,7 +29,6 @@ export const initJSONSchemaData = {
           readOnly: false,
         },
       },
-      required: ['a'],
       propertyOrder: ['a'],
     },
     style: {
@@ -49,7 +48,6 @@ export const initJSONSchemaData = {
           readOnly: false,
         },
       },
-      required: ['b'],
       propertyOrder: ['b'],
     },
     data: {
@@ -69,10 +67,8 @@ export const initJSONSchemaData = {
           readOnly: false,
         },
       },
-      required: ['c'],
       propertyOrder: ['c'],
     },
   },
-  required: ['func', 'style', 'data'],
   propertyOrder: ['func', 'style', 'data'],
 };

@@ -53,7 +53,6 @@ export const initDynamicData = {
           isRequired: true,
         },
       },
-      required: ['dataName', 'body', 'filter'],
       propertyOrder: ['dataName', 'body', 'filter'],
     },
     data: {
@@ -73,7 +72,6 @@ export const initDynamicData = {
       isRequired: true,
     },
   },
-  required: ['type', 'config', 'data', 'localFilter'],
   propertyOrder: ['type', 'config', 'data', 'localFilter'],
 };
 

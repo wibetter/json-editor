@@ -40,7 +40,6 @@ export const initDataSourceData = {
       isRequired: true,
     },
   },
-  required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter'],
 };
 
@@ -77,6 +76,5 @@ export const initDataSourceDataV2 = {
       isRequired: true,
     },
   },
-  required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter'],
 };

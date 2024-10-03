@@ -82,7 +82,7 @@ class OptionSchema extends React.PureComponent {
     const { optionLabel, optionValue, optionNodeKey } = this.props;
 
     return (
-      <div className="enum-schema-box" id={optionLabel}>
+      <div className="option-schema-box" id={optionLabel}>
         <div className="key-input-item">
           <Input
             defaultValue={optionLabel}

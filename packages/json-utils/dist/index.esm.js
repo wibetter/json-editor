@@ -236,7 +236,6 @@ var initJSONSchemaData = {
           readOnly: false,
         },
       },
-      required: ['a'],
       propertyOrder: ['a'],
     },
     style: {
@@ -259,7 +258,6 @@ var initJSONSchemaData = {
           readOnly: false,
         },
       },
-      required: ['b'],
       propertyOrder: ['b'],
     },
     data: {
@@ -282,11 +280,9 @@ var initJSONSchemaData = {
           readOnly: false,
         },
       },
-      required: ['c'],
       propertyOrder: ['c'],
     },
   },
-  required: ['func', 'style', 'data'],
   propertyOrder: ['func', 'style', 'data'],
 };
 
@@ -420,7 +416,7 @@ var initNumberData = {
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
- *  items：用于设置选择项
+ *  options：用于设置选择项
  *  isRequired：是否是必填项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
@@ -443,6 +439,7 @@ var initRadioData = {
       value: 'c',
     },
   ],
+  default: 'a',
   description: '',
   isRequired: false,
   readOnly: false,
@@ -453,7 +450,7 @@ var initRadioData = {
  *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
- *  items：用于设置选择项
+ *  options：用于设置选择项
  *  isRequired：是否是必填项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
@@ -476,6 +473,7 @@ var initSingleSelectData = {
       value: 'c',
     },
   ],
+  default: 'a',
   description: '',
   isRequired: false,
   readOnly: false,
@@ -487,7 +485,7 @@ var initSingleSelectData = {
  *  title：字段项的label值
  *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
- *  items：用于设置选择项
+ *  options：用于设置选择项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
@@ -509,6 +507,7 @@ var initSelectData = {
       value: 'c',
     },
   ],
+  default: ['a'],
   description: '',
   isRequired: false,
   readOnly: false,
@@ -700,7 +699,6 @@ var initArrayData = {
         readOnly: false,
       },
     },
-    required: ['name'],
     propertyOrder: ['name'],
   },
 };
@@ -738,7 +736,6 @@ var initObjectData = {
       readOnly: false,
     },
   },
-  required: ['a'],
   propertyOrder: ['a'],
 };
 
@@ -810,7 +807,6 @@ var initQuantityData = {
       readOnly: false,
     },
   },
-  required: ['unit', 'quantity'],
   propertyOrder: ['unit', 'quantity'],
 };
 
@@ -854,7 +850,6 @@ var initBoxStyleData = {
       readOnly: false,
     },
   },
-  required: ['unit', 'quantity'],
   propertyOrder: ['unit', 'quantity'],
 };
 
@@ -982,7 +977,6 @@ var initEventData = {
       readOnly: false,
     },
   },
-  required: ['type', 'trigger', 'eventData'],
   propertyOrder: ['type', 'trigger', 'eventData'],
 };
 
@@ -1027,7 +1021,6 @@ var initEventDataTypeON = {
       readOnly: false,
     },
   },
-  required: ['type', 'register', 'actionFunc'],
   propertyOrder: ['type', 'register', 'actionFunc'],
 };
 
@@ -1075,7 +1068,6 @@ var initDataSourceData = {
       isRequired: true,
     },
   },
-  required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter'],
 };
 
@@ -1114,7 +1106,6 @@ var initDataSourceDataV2 = {
       isRequired: true,
     },
   },
-  required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter'],
 };
 
@@ -1173,7 +1164,6 @@ var initDynamicData = {
           isRequired: true,
         },
       },
-      required: ['dataName', 'body', 'filter'],
       propertyOrder: ['dataName', 'body', 'filter'],
     },
     data: {
@@ -1194,7 +1184,6 @@ var initDynamicData = {
       isRequired: true,
     },
   },
-  required: ['type', 'config', 'data', 'localFilter'],
   propertyOrder: ['type', 'config', 'data', 'localFilter'],
 };
 
@@ -1660,7 +1649,8 @@ function isNewSchemaData(schemaData) {
   var isNewVersion = false;
   var lastUpdateTime = schemaData.lastUpdateTime;
   // 从那一刻开始就认为是新版JSONSchema
-  var newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
+  // const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
+  var newVersionTime = new Date('2024-10-03T23:30:00.691Z').getTime();
   if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
     isNewVersion = true;
   }
@@ -1920,7 +1910,9 @@ function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
  * 新版新增propertyOrder属性（排序展示需要），因此旧版的required需要根据properties生成对应的propertyOrder属性
  * 备注：新版的title需要从description中获取值（旧版的title值使用的是description字段的值）
  * */
-function oldSchemaToNewSchema(oldSchema) {
+
+// 2020-07-29
+function oldSchemaToNewSchemaV1(oldSchema) {
   var newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
   // 1.根据原有的description值生成title值
   if (!newJSONSchema.title && newJSONSchema.description) {
@@ -2044,6 +2036,72 @@ function oldSchemaToNewSchema(oldSchema) {
   // 判断是否有items属性
   if (newJSONSchema.items) {
     // 6. 转换items中的数据
+    newJSONSchema.items = oldSchemaToNewSchema(newJSONSchema.items);
+  }
+  return newJSONSchema;
+}
+
+// 2024-10-03 之前的旧版转新版schema
+function oldSchemaToNewSchema(oldSchema) {
+  var newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
+  // 当format为空时重新进行赋值
+  if (!newJSONSchema.format) {
+    newJSONSchema.format = getCurrentFormat(newJSONSchema);
+  }
+  // 删除不需要的属性
+  if (!newJSONSchema.required) {
+    delete newJSONSchema.required;
+  }
+  // 不需要default属性的类型自动删除
+  if (
+    (newJSONSchema.format === 'quantity' ||
+      newJSONSchema.format === 'array' ||
+      newJSONSchema.format === 'datasource' ||
+      newJSONSchema.format === 'event' ||
+      newJSONSchema.format === 'object' ||
+      newJSONSchema.format === 'radio' ||
+      newJSONSchema.format === 'select') &&
+    hasProperties(newJSONSchema.default)
+  ) {
+    delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
+  }
+  // 转换旧版的选择类型的数据结构
+  if (
+    newJSONSchema.format === 'radio' ||
+    newJSONSchema.format === 'select' ||
+    newJSONSchema.format === 'single-select'
+  ) {
+    if (
+      newJSONSchema.items &&
+      newJSONSchema.items.enum &&
+      newJSONSchema.items.enumextra
+    ) {
+      newJSONSchema.options = [];
+      newJSONSchema.items.enum.forEach(function (option, optionIndex) {
+        newJSONSchema.options.push({
+          label: newJSONSchema.items.enumextra[optionIndex] || option,
+          value: option,
+        });
+      });
+      // 删除此前的items
+      delete newJSONSchema.items;
+    }
+  }
+  // 判断是否有propertyOrder属性
+  if (newJSONSchema.properties) {
+    if (!newJSONSchema.propertyOrder) {
+      // 生成propertyOrder属性
+      newJSONSchema.propertyOrder = Object.keys(newJSONSchema.properties);
+    }
+    // 继续遍历properties属性进行转换
+    newJSONSchema.propertyOrder.map(function (jsonKey) {
+      newJSONSchema.properties[jsonKey] = oldSchemaToNewSchema(
+        newJSONSchema.properties[jsonKey],
+      );
+    });
+  }
+  if (newJSONSchema.format === 'array' && newJSONSchema.items) {
+    // 转换items中的数据
     newJSONSchema.items = oldSchemaToNewSchema(newJSONSchema.items);
   }
   return newJSONSchema;
@@ -2666,6 +2724,7 @@ export {
   moveForward,
   objClone,
   oldSchemaToNewSchema,
+  oldSchemaToNewSchemaV1,
   schema2json,
   schemaMetaList,
 };

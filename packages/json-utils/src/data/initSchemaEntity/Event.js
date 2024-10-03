@@ -31,7 +31,6 @@ export const initEventDataV1 = {
       title: '过滤器',
     },
   },
-  required: ['type', 'data', 'filter'],
   propertyOrder: ['type', 'data', 'filter'],
 };
 
@@ -74,7 +73,6 @@ export const initEventData = {
       readOnly: false,
     },
   },
-  required: ['type', 'trigger', 'eventData'],
   propertyOrder: ['type', 'trigger', 'eventData'],
 };
 
@@ -117,6 +115,5 @@ export const initEventDataTypeON = {
       readOnly: false,
     },
   },
-  required: ['type', 'register', 'actionFunc'],
   propertyOrder: ['type', 'register', 'actionFunc'],
 };
