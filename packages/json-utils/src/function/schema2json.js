@@ -31,18 +31,15 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   let curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
   switch (jsonSchema.type) {
     case 'string':
-      if (jsonSchema.format === 'typeSelect') {
+      if (jsonSchema.type === 'typeSelect') {
         // 选择类型的字段直接使用schema中的数值
         curJsonData = jsonSchema.default;
-      } else if (jsonSchema.format === 'color') {
+      } else if (jsonSchema.type === 'color') {
         if (curValue === '#fff' || curValue === '#FFF') {
           curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
         }
         curJsonData = curValue || '#ffffff';
-      } else if (
-        jsonSchema.format === 'json' ||
-        jsonSchema.format === 'widget'
-      ) {
+      } else if (jsonSchema.type === 'json') {
         /** 转成json类型进行特殊处理
          * 需要保证json类型的数值是json对象 */
         let curJsonItemData = ''; // 字符串类型的json数据
@@ -261,7 +258,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
     const curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
 
-    if (jsonSchema.format === 'array') {
+    if (jsonSchema.type === 'array') {
       if (isArray(curValue)) {
         curValue.map((arrItem) => {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));

@@ -70,10 +70,10 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
       var curIndex = indexRouteArr[index];
       if (
         curIndex === '0' &&
-        (curJsonSchemaObj.format === 'array' ||
-          curJsonSchemaObj.format === 'radio' ||
-          curJsonSchemaObj.format === 'single-select' ||
-          curJsonSchemaObj.format === 'select') &&
+        (curJsonSchemaObj.type === 'array' ||
+          curJsonSchemaObj.type === 'radio' ||
+          curJsonSchemaObj.type === 'single-select' ||
+          curJsonSchemaObj.type === 'select') &&
         (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
         // 从items中获取数据
@@ -204,10 +204,9 @@ function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
 
 /** 新版JSONSchema一级字段项
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
@@ -218,14 +217,12 @@ var initJSONSchemaData = {
   properties: {
     func: {
       type: 'object',
-      format: 'func',
       title: '功能设置',
       readOnly: true,
       properties: {
         a: {
-          type: 'string',
           title: '单文本框',
-          format: 'input',
+          type: 'input',
           default: '',
           // 默认值
           description: '',
@@ -240,14 +237,12 @@ var initJSONSchemaData = {
     },
     style: {
       type: 'object',
-      format: 'style',
       title: '样式设置',
       readOnly: true,
       properties: {
         b: {
-          type: 'string',
           title: '单文本框',
-          format: 'input',
+          type: 'input',
           default: '',
           // 默认值
           description: '',
@@ -261,15 +256,13 @@ var initJSONSchemaData = {
       propertyOrder: ['b'],
     },
     data: {
-      type: 'object',
-      format: 'data',
+      type: 'data',
       title: '数据设置',
       readOnly: true,
       properties: {
         c: {
-          type: 'string',
           title: '单文本框',
-          format: 'input',
+          type: 'input',
           default: '',
           // 默认值
           description: '',
@@ -288,9 +281,8 @@ var initJSONSchemaData = {
 
 /* input类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -298,9 +290,8 @@ var initJSONSchemaData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initInputData = {
-  type: 'string',
   title: '单文本框',
-  format: 'input',
+  type: 'input',
   default: '',
   // 默认值
   description: '',
@@ -313,9 +304,8 @@ var initInputData = {
 
 /* boolean类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number），字段值的数据类型
  *  title：字段项的label值
- *  format：用于标识字段项的UI展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的UI展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -324,7 +314,6 @@ var initInputData = {
 var initBooleanData = {
   type: 'boolean',
   title: '布尔值',
-  format: 'boolean',
   default: false,
   // 默认值
   description: '',
@@ -335,9 +324,8 @@ var initBooleanData = {
 
 /* textarea类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -345,9 +333,8 @@ var initBooleanData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initTextareaData = {
-  type: 'string',
+  type: 'textarea',
   title: '多行文本框',
-  format: 'textarea',
   default: '',
   // 默认值
   description: '',
@@ -360,9 +347,8 @@ var initTextareaData = {
 
 /* 富文本类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -370,9 +356,8 @@ var initTextareaData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initTextEditorData = {
-  type: 'string',
+  type: 'text-editor',
   title: '富文本',
-  format: 'text-editor',
   default: '',
   // 默认值
   description: '',
@@ -385,9 +370,8 @@ var initTextEditorData = {
 
 /* number类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number），字段值的数据类型
  *  title：字段项的label值
- *  format：用于标识字段项的UI展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的UI展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  minimum：最小值
@@ -398,7 +382,6 @@ var initTextEditorData = {
 var initNumberData = {
   type: 'number',
   title: '数量number',
-  format: 'number',
   default: 1,
   // 默认值
   minimum: 0,
@@ -413,18 +396,16 @@ var initNumberData = {
 
 /* radio类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  options：用于设置选择项
  *  isRequired：是否是必填项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
 var initRadioData = {
-  type: 'string',
+  type: 'radio',
   title: '单选',
-  format: 'radio',
   options: [
     {
       label: '选项a',
@@ -447,18 +428,16 @@ var initRadioData = {
 
 /* SingleSelect下拉类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  options：用于设置选择项
  *  isRequired：是否是必填项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
 var initSingleSelectData = {
-  type: 'string',
+  type: 'single-select',
   title: '下拉单选',
-  format: 'single-select',
   options: [
     {
       label: '选项a',
@@ -481,18 +460,16 @@ var initSingleSelectData = {
 
 /* select类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  options：用于设置选择项
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
 var initSelectData = {
-  type: 'array',
+  type: 'select',
   title: '多选',
-  format: 'select',
   options: [
     {
       label: '选项a',
@@ -515,9 +492,8 @@ var initSelectData = {
 
 /* DateTime类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -525,9 +501,8 @@ var initSelectData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initDateTimeData = {
-  type: 'string',
+  type: 'date-time',
   title: '日期时间',
-  format: 'date-time',
   default: '',
   // 默认值
   description: '',
@@ -540,9 +515,8 @@ var initDateTimeData = {
 
 /* Date类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -550,9 +524,8 @@ var initDateTimeData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initDateData = {
-  type: 'string',
+  type: 'date',
   title: '日期Date',
-  format: 'date',
   default: '',
   // 默认值
   description: '',
@@ -565,9 +538,8 @@ var initDateData = {
 
 /* Time类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -575,9 +547,8 @@ var initDateData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initTimeData = {
-  type: 'string',
+  type: 'time',
   title: '时间Time',
-  format: 'time',
   default: '',
   // 默认值
   description: '',
@@ -590,18 +561,16 @@ var initTimeData = {
 
 /* color类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
 var initColorData = {
-  type: 'string',
+  type: 'color',
   title: '颜色color',
-  format: 'color',
   default: '#ffffff',
   // 默认值
   description: '',
@@ -612,9 +581,8 @@ var initColorData = {
 
 /* URL类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -622,9 +590,8 @@ var initColorData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initURLData = {
-  type: 'string',
+  type: 'url',
   title: '链接地址url',
-  format: 'url',
   default: '',
   // 默认值
   description: '',
@@ -639,9 +606,8 @@ var initURLData = {
  *  用户可以使用此组件上传图片，最后返回对应的图片资源地址
  * */
 var initIMGData = {
-  type: 'string',
   title: '图片',
-  format: 'image',
+  type: 'image',
   default: '',
   // 默认值
   description: '上传图片',
@@ -659,9 +625,8 @@ var initIMGData = {
 
 /* array类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  items：用于设置选择项
  *  description：字段说明&描述
@@ -669,7 +634,6 @@ var initIMGData = {
  * */
 var initArrayData = {
   type: 'array',
-  format: 'array',
   title: '数组Array',
   description: '',
   // 字段项的说明和描述
@@ -677,8 +641,6 @@ var initArrayData = {
   readOnly: false,
   items: {
     type: 'object',
-    // 不可编辑
-    format: 'object',
     title: '数组项',
     description: '',
     // 字段项的说明和描述
@@ -686,8 +648,7 @@ var initArrayData = {
     readOnly: false,
     properties: {
       name: {
-        type: 'string',
-        format: 'input',
+        type: 'input',
         title: '名字',
         default: '',
         // 默认值
@@ -703,38 +664,36 @@ var initArrayData = {
   },
 };
 
+var _a;
 /** Object字段项
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
 var initObjectData = {
   type: 'object',
-  format: 'object',
   title: '对象Object',
   description: '',
   // 字段项的说明和描述
   isRequired: false,
   readOnly: false,
   properties: {
-    a: {
-      type: 'string',
-      title: '单文本框',
-      format: 'input',
-      default: '',
-      // 默认值
-      description: '',
-      // 字段项的说明和描述
-      placeholder: '',
-      // 输入提示
-      isRequired: false,
-      readOnly: false,
-    },
+    a:
+      ((_a = {
+        type: 'string',
+        title: '单文本框',
+      }),
+      (_a['type'] = 'input'),
+      (_a.default = ''),
+      (_a.description = ''),
+      (_a.placeholder = ''),
+      (_a.isRequired = false),
+      (_a.readOnly = false),
+      _a),
   },
   propertyOrder: ['a'],
 };
@@ -742,12 +701,10 @@ var initObjectData = {
 // 空数组的schema数据
 var EmptyArray = {
   type: 'array',
-  format: 'array',
   title: '数组Array',
   description: '',
   items: {
     type: 'object',
-    format: 'object',
     title: '数组项',
     description: '',
     properties: {},
@@ -757,7 +714,6 @@ var EmptyArray = {
 // 空对象的schema数据
 var EmptyObject = {
   type: 'object',
-  format: 'object',
   title: '对象Object',
   description: '',
   properties: {},
@@ -765,17 +721,15 @@ var EmptyObject = {
 
 /** quantity字段项
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
 var initQuantityData = {
-  type: 'object',
-  format: 'quantity',
+  type: 'quantity',
   title: '单位计量',
   isRequired: false,
   readOnly: false,
@@ -783,7 +737,6 @@ var initQuantityData = {
     unit: {
       type: 'number',
       title: '单位数值',
-      format: 'number',
       default: 50,
       // 默认值
       minimum: 0,
@@ -796,8 +749,7 @@ var initQuantityData = {
       readOnly: false,
     },
     quantity: {
-      type: 'string',
-      format: 'typeSelect',
+      type: 'typeSelect',
       // 选择列表
       default: 'px',
       enum: ['px', 'rem', 'em', '%'],
@@ -812,25 +764,22 @@ var initQuantityData = {
 
 /** box-style字段项
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
 var initBoxStyleData = {
-  type: 'object',
-  format: 'box-style',
+  type: 'box-style',
   title: '盒子模型',
   isRequired: false,
   readOnly: false,
   properties: {
     unit: {
-      type: 'string',
       title: '单位数值',
-      format: 'string',
+      type: 'string',
       default: '0',
       // 默认值为'0'：'0px 0px 0px 0px'；为'5px': '5px 5px 5px 5px'
       description: '',
@@ -839,8 +788,7 @@ var initBoxStyleData = {
       readOnly: false,
     },
     quantity: {
-      type: 'string',
-      format: 'typeSelect',
+      type: 'typeSelect',
       // 选择列表
       default: 'px',
       enum: ['px', 'rem', 'em', '%'],
@@ -855,9 +803,8 @@ var initBoxStyleData = {
 
 /* json类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -865,9 +812,8 @@ var initBoxStyleData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initJsonData = {
-  type: 'string',
   title: 'json数据',
-  format: 'json',
+  type: 'json',
   default: '{}',
   // 默认值
   description: '',
@@ -878,9 +824,8 @@ var initJsonData = {
 
 /* CodeArea类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -888,9 +833,8 @@ var initJsonData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initCodeAreaData = {
-  type: 'string',
+  type: 'codearea',
   title: '函数类型',
-  format: 'codearea',
   placeholder: '请输入函数方法',
   // 输入提示
   default: 'function func() { console.log("hello, world!"); }',
@@ -903,9 +847,8 @@ var initCodeAreaData = {
 
 /* HtmlArea类型字段
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  isRequired：是否是必填项
  *  default：默认值
  *  description：字段说明&描述
@@ -913,9 +856,8 @@ var initCodeAreaData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initHtmlAreaData = {
-  type: 'string',
   title: '富文本',
-  format: 'htmlarea',
+  type: 'htmlarea',
   placeholder: '请输入html代码片段',
   default: '<p>hello,world!</p>',
   // 默认值
@@ -927,10 +869,9 @@ var initHtmlAreaData = {
 
 /** event字段项
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
@@ -939,16 +880,14 @@ var initHtmlAreaData = {
 /** 新版EventData
  * type: emit 的默认数据 */
 var initEventData = {
-  type: 'object',
-  format: 'event',
+  type: 'event',
   title: '事件',
   isRequired: false,
   readOnly: false,
   properties: {
     type: {
-      type: 'string',
       default: 'emit',
-      format: 'typeSelect',
+      type: 'typeSelect',
       enum: ['on', 'emit'],
       enumextra: ['on', 'emit'],
       title: '事件类型',
@@ -956,8 +895,7 @@ var initEventData = {
       readOnly: false,
     },
     trigger: {
-      type: 'string',
-      format: 'input',
+      type: 'input',
       default: 'eventName',
       title: '触发事件',
       description: '用于输入触发事件的名称',
@@ -966,9 +904,8 @@ var initEventData = {
       readOnly: false,
     },
     eventData: {
-      type: 'string',
       title: '事件数据',
-      format: 'json',
+      type: 'json',
       default: '{}',
       // 默认值
       description: '传递给触发事件的数据对象',
@@ -983,16 +920,14 @@ var initEventData = {
 /** 新版EventData
  * type: on 的默认数据 */
 var initEventDataTypeON = {
-  type: 'object',
-  format: 'event',
+  type: 'event',
   title: '事件',
   isRequired: false,
   readOnly: false,
   properties: {
     type: {
-      type: 'string',
       default: 'on',
-      format: 'typeSelect',
+      type: 'typeSelect',
       enum: ['on', 'emit'],
       enumextra: ['on', 'emit'],
       title: '事件类型',
@@ -1000,8 +935,7 @@ var initEventDataTypeON = {
       readOnly: false,
     },
     register: {
-      type: 'string',
-      format: 'input',
+      type: 'input',
       default: 'eventName',
       title: '注册事件',
       description: '用于输入注册事件的名称',
@@ -1010,9 +944,8 @@ var initEventDataTypeON = {
       readOnly: false,
     },
     actionFunc: {
-      type: 'string',
       title: '执行函数',
-      format: 'codearea',
+      type: 'codearea',
       default: '() => {}',
       // 默认值
       description: '',
@@ -1024,45 +957,41 @@ var initEventDataTypeON = {
   propertyOrder: ['type', 'register', 'actionFunc'],
 };
 
+var _type, _data, _filter, _initDataSourceDataV;
 /** dataSource字段项
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
 var initDataSourceData = {
-  type: 'object',
-  format: 'datasource',
+  type: 'datasource',
   title: '数据源',
   readOnly: false,
   properties: {
     type: {
-      type: 'string',
       default: 'local',
-      format: 'typeSelect',
+      type: 'typeSelect',
       enum: ['local', 'remote'],
       enumextra: ['local', 'remote'],
       title: '数据源类型',
     },
     data: {
-      type: 'string',
       title: '本地json数据',
       placeholder: '请输入静态json数据',
       // 输入提示
-      format: 'json',
+      type: 'json',
       default: '{}',
       // 默认值
       description: '用于设置本地的静态json数据',
       isRequired: true,
     },
     filter: {
-      type: 'string',
       title: '过滤器',
-      format: 'codearea',
+      type: 'codearea',
       default: '() => {}',
       description: '用于定义过滤当前数据的函数',
       isRequired: true,
@@ -1072,78 +1001,79 @@ var initDataSourceData = {
 };
 
 // 默认是用于展示local本地数据源的，如果展示远程数据源使用initDataSourceDataV2
-var initDataSourceDataV2 = {
-  type: 'object',
-  format: 'datasource',
-  title: '数据源',
-  readOnly: false,
-  properties: {
-    type: {
-      type: 'string',
-      default: 'remote',
-      format: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
-      title: '数据源类型',
-    },
-    data: {
-      type: 'string',
-      title: '远程json数据',
-      placeholder: '请输入远程json数据源地址',
-      // 输入提示
-      format: 'url',
-      default: 'http://xxx',
-      // 默认值
-      isRequired: true,
-      description: '用于设置获取元素数据的请求地址',
-    },
-    filter: {
-      type: 'string',
-      title: '过滤器',
-      format: 'codearea',
-      default: '() => {}',
-      description: '用于定义过滤当前数据的函数',
-      isRequired: true,
-    },
-  },
-  propertyOrder: ['type', 'data', 'filter'],
-};
+var initDataSourceDataV2 =
+  ((_initDataSourceDataV = {
+    type: 'object',
+  }),
+  (_initDataSourceDataV['type'] = 'datasource'),
+  (_initDataSourceDataV.title = '数据源'),
+  (_initDataSourceDataV.readOnly = false),
+  (_initDataSourceDataV.properties = {
+    type:
+      ((_type = {
+        type: 'string',
+        default: 'remote',
+      }),
+      (_type['type'] = 'typeSelect'),
+      (_type.enum = ['local', 'remote']),
+      (_type.enumextra = ['local', 'remote']),
+      (_type.title = '数据源类型'),
+      _type),
+    data:
+      ((_data = {
+        type: 'string',
+        title: '远程json数据',
+        placeholder: '请输入远程json数据源地址',
+      }),
+      (_data['type'] = 'url'),
+      (_data.default = 'http://xxx'),
+      (_data.isRequired = true),
+      (_data.description = '用于设置获取元素数据的请求地址'),
+      _data),
+    filter:
+      ((_filter = {
+        type: 'string',
+        title: '过滤器',
+      }),
+      (_filter['type'] = 'codearea'),
+      (_filter.default = '() => {}'),
+      (_filter.description = '用于定义过滤当前数据的函数'),
+      (_filter.isRequired = true),
+      _filter),
+  }),
+  (_initDataSourceDataV.propertyOrder = ['type', 'data', 'filter']),
+  _initDataSourceDataV);
 
 /** dynamic-data: 动态数据
  * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
  *  title：字段项的label值
  *  properties：存放所有的子字段数据内容
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
  *  readOnly：字段项可设置是否可编辑
  *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
  *  propertyOrder：按序存放所有子字段的key值（排序功能）
  * */
 var initDynamicData = {
-  type: 'object',
-  format: 'dynamic-data',
+  type: 'dynamic-data',
   title: '动态数据源',
   readOnly: false,
   properties: {
     type: {
-      type: 'string',
       default: 'local',
-      format: 'typeSelect',
+      type: 'typeSelect',
       enum: ['local', 'remote'],
       enumextra: ['本地数据', '接口数据'],
       title: '数据类型',
     },
     config: {
-      type: 'object',
       title: '接口配置',
-      format: 'object',
+      type: 'object',
       description: '用于存放接口的配置数据(url、请求参数等)',
       isRequired: true,
       properties: {
         dataName: {
-          type: 'string',
           default: 'local',
-          format: 'typeSelect',
+          type: 'typeSelect',
           enum: ['local', 'remote'],
           enumextra: ['本地数据', '接口数据'],
           title: '数据类型',
@@ -1151,14 +1081,12 @@ var initDynamicData = {
         body: {
           type: 'object',
           title: '请求参数配置',
-          format: 'object',
           description: '用于配置当前接口的请求参数数值',
           isRequired: true,
         },
         filter: {
-          type: 'string',
           title: '过滤器函数体',
-          format: 'codearea',
+          type: 'codearea',
           default: 'return data;',
           description: '用于定义过滤接口数据',
           isRequired: true,
@@ -1167,18 +1095,16 @@ var initDynamicData = {
       propertyOrder: ['dataName', 'body', 'filter'],
     },
     data: {
-      type: 'string',
       title: '数据内容',
-      format: 'json',
+      type: 'json',
       default: '{}',
       // 默认值
       description: '用于存放DynamicData的数据内容',
       isRequired: true,
     },
     localFilter: {
-      type: 'string',
       title: '过滤器',
-      format: 'codearea',
+      type: 'codearea',
       default: 'return data;',
       description: '用于定义过滤本地数据',
       isRequired: true,
@@ -1200,29 +1126,6 @@ var EmptyDynamicDataCont = {
   data: '{}',
   // 用于存储结果数据
   localFilter: 'return data;',
-};
-
-/* widget类型字段
- * 【字段属性说明】
- *  type：用于标识字段项的基本数据类型（object、array、string、boolean、number）
- *  title：字段项的label值
- *  format：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
- *  isRequired：是否是必填项
- *  default：默认值
- *  description：字段说明&描述
- *  placeholder：输入提示
- *  readOnly：字段项可设置是否可编辑
- * */
-var initWidgetData = {
-  type: 'string',
-  title: '内嵌组件数据',
-  format: 'widget',
-  default: '{}',
-  // 默认值
-  description: '用于存放内嵌组件的渲染相关数据',
-  // 字段项的说明和描述
-  isRequired: false,
-  readOnly: true, // 默认只读
 };
 
 // 类型数据清单
@@ -1254,7 +1157,6 @@ var TypeDataList = {
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
   event: initEventData,
-  widget: initWidgetData,
 };
 
 // 事件类型数据
@@ -1542,7 +1444,7 @@ function json2schema(jsonData) {
  * 如果当前字段没有format字段，则根据type字段赋予默认的类型
  */
 function getCurrentFormat(targetJsonData) {
-  var currentType = targetJsonData && targetJsonData.format;
+  var currentType = targetJsonData && targetJsonData.type;
   if (!currentType) {
     if (targetJsonData && targetJsonData.type) {
       currentType = targetJsonData.type;
@@ -1583,62 +1485,12 @@ function isEmptySchema(targetJsonSchema) {
     (targetJsonSchema.type &&
       targetJsonSchema.type !== 'array' &&
       targetJsonSchema.type !== 'object') ||
-    targetJsonSchema.format
+    targetJsonSchema.type
   ) {
     // 其他基本类型
     isEmpty = false;
   }
   return isEmpty;
-}
-
-/** 判断是否为空的WidgetSchema
- * 备注：WidgetSchema 一级字段必须为object，且有三个子属性：func、style、data
- * */
-function isEmptyWidgetSchema(targetJsonSchema) {
-  var isEmpty = true;
-  if (targetJsonSchema) {
-    var curType = getCurrentFormat(targetJsonSchema);
-    if (
-      curType === 'object' &&
-      targetJsonSchema.properties &&
-      targetJsonSchema.propertyOrder &&
-      targetJsonSchema.propertyOrder.length > 0
-    ) {
-      var funcSchema = targetJsonSchema.properties.func || {};
-      var styleSchema = targetJsonSchema.properties.style || {};
-      var dataSchema = targetJsonSchema.properties.data || {};
-      if (
-        (funcSchema.propertyOrder && funcSchema.propertyOrder.length > 0) ||
-        (styleSchema.propertyOrder && styleSchema.propertyOrder.length > 0) ||
-        (dataSchema.propertyOrder && dataSchema.propertyOrder.length > 0)
-      ) {
-        isEmpty = false;
-      }
-    }
-  }
-  return isEmpty;
-}
-
-/** 判断是否为用于组件配置的jsonSchema数据
- * 备注：一级字段必须为object（用于规避非法的jsonSchema数据，以及结构单一的jsonSchema数据）
- * 且具备固定的三个子属性（func、style、data）
- * */
-function isUsedToWidgetConfig(targetJsonSchema) {
-  var isWidgetConfig = false;
-  if (targetJsonSchema) {
-    var curType = getCurrentFormat(targetJsonSchema);
-    if (
-      curType === 'object' &&
-      targetJsonSchema.properties &&
-      targetJsonSchema.propertyOrder &&
-      targetJsonSchema.properties.func &&
-      targetJsonSchema.properties.style &&
-      targetJsonSchema.properties.data
-    ) {
-      isWidgetConfig = true;
-    }
-  }
-  return isWidgetConfig;
 }
 
 /**
@@ -1650,7 +1502,7 @@ function isNewSchemaData(schemaData) {
   var lastUpdateTime = schemaData.lastUpdateTime;
   // 从那一刻开始就认为是新版JSONSchema
   // const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
-  var newVersionTime = new Date('2024-10-03T23:30:00.691Z').getTime();
+  var newVersionTime = new Date('2024-10-05T00:01:00.691Z').getTime();
   if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
     isNewVersion = true;
   }
@@ -1669,12 +1521,10 @@ function isBoxSchemaData(format) {
     format === 'func' ||
     format === 'style' ||
     format === 'data' ||
-    format === 'widgets' ||
     format === 'func-schema' ||
     format === 'style-schema' ||
     format === 'data-schema' ||
-    format === 'event-schema' ||
-    format === 'widgets-schema'
+    format === 'event-schema'
   ) {
     isBoxSchema = true;
   }
@@ -1682,7 +1532,7 @@ function isBoxSchemaData(format) {
 }
 
 /** 根据format判断是否是一级类型字段
- *  一级类型字段：func、style、data、props、event-schema、widgets
+ *  一级类型字段：func、style、data、props、event-schema
  *  备注：一级类型字段不允许拖拽和复制
  * */
 function isFirstSchemaData(format) {
@@ -1692,8 +1542,7 @@ function isFirstSchemaData(format) {
     format === 'style' ||
     format === 'data' ||
     format === 'props' ||
-    format === 'event-schema' ||
-    format === 'widgets'
+    format === 'event-schema'
   ) {
     isFirstSchema = true;
   }
@@ -1919,24 +1768,24 @@ function oldSchemaToNewSchemaV1(oldSchema) {
     newJSONSchema.title = newJSONSchema.description;
   }
   // 2.当format为空时重新进行赋值
-  if (!newJSONSchema.format) {
-    newJSONSchema.format = getCurrentFormat(newJSONSchema);
+  if (!newJSONSchema.type) {
+    newJSONSchema.type = getCurrentFormat(newJSONSchema);
   }
   // 3.不需要default属性的类型自动删除
   if (
-    (newJSONSchema.format === 'quantity' ||
-      newJSONSchema.format === 'array' ||
-      newJSONSchema.format === 'datasource' ||
-      newJSONSchema.format === 'event' ||
-      newJSONSchema.format === 'object' ||
-      newJSONSchema.format === 'radio' ||
-      newJSONSchema.format === 'select') &&
+    (newJSONSchema.type === 'quantity' ||
+      newJSONSchema.type === 'array' ||
+      newJSONSchema.type === 'datasource' ||
+      newJSONSchema.type === 'event' ||
+      newJSONSchema.type === 'object' ||
+      newJSONSchema.type === 'radio' ||
+      newJSONSchema.type === 'select') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
   }
   // 转换旧版的radio类型的数据结构
-  if (newJSONSchema.format === 'radio') {
+  if (newJSONSchema.type === 'radio') {
     newJSONSchema.type = 'string';
     if (newJSONSchema.enum && newJSONSchema.enumextra) {
       // 统一转换至items
@@ -1951,7 +1800,7 @@ function oldSchemaToNewSchemaV1(oldSchema) {
     }
   }
   // 转换旧版的quantity类型的数据结构
-  if (newJSONSchema.format === 'quantity') {
+  if (newJSONSchema.type === 'quantity') {
     var curProperties = newJSONSchema.properties;
     var newQuantitySchema = objClone(TypeDataList.quantity); // 新版quantity的schema数据对象
     if (
@@ -1968,7 +1817,7 @@ function oldSchemaToNewSchemaV1(oldSchema) {
     newJSONSchema = newQuantitySchema;
   }
   // 转换旧版的datasource类型的数据结构
-  if (newJSONSchema.format === 'datasource') {
+  if (newJSONSchema.type === 'datasource') {
     var _curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     var typeProp = _curProperties.type && _curProperties.type.default;
@@ -1990,7 +1839,7 @@ function oldSchemaToNewSchemaV1(oldSchema) {
       : '() => {}';
   }
   // 转换旧版的event类型的数据结构
-  if (newJSONSchema.format === 'event') {
+  if (newJSONSchema.type === 'event') {
     var _curProperties2 = newJSONSchema.properties;
     // 先获取旧版的关键数据
     var eventType = _curProperties2.type && _curProperties2.type.default;
@@ -2020,13 +1869,11 @@ function oldSchemaToNewSchemaV1(oldSchema) {
   }
   // 判断是否有propertyOrder属性
   if (newJSONSchema.properties) {
-    // 3.重新生成required属性
-    newJSONSchema.required = Object.keys(newJSONSchema.properties);
     if (!newJSONSchema.propertyOrder) {
-      // 4.生成propertyOrder属性
-      newJSONSchema.propertyOrder = newJSONSchema.required;
+      // 生成propertyOrder属性
+      newJSONSchema.propertyOrder = Object.keys(newJSONSchema.properties);
     }
-    // 5.继续遍历properties属性进行转换
+    // 继续遍历properties属性进行转换
     newJSONSchema.propertyOrder.map(function (jsonKey) {
       newJSONSchema.properties[jsonKey] = oldSchemaToNewSchema(
         newJSONSchema.properties[jsonKey],
@@ -2041,35 +1888,34 @@ function oldSchemaToNewSchemaV1(oldSchema) {
   return newJSONSchema;
 }
 
-// 2024-10-03 之前的旧版转新版schema
+// 2024-10-05 之前的旧版转新版schema
 function oldSchemaToNewSchema(oldSchema) {
   var newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
-  // 当format为空时重新进行赋值
-  if (!newJSONSchema.format) {
-    newJSONSchema.format = getCurrentFormat(newJSONSchema);
-  }
   // 删除不需要的属性
   if (!newJSONSchema.required) {
     delete newJSONSchema.required;
   }
+  if (newJSONSchema.type && newJSONSchema.type) {
+    newJSONSchema.type = newJSONSchema.type;
+  }
   // 不需要default属性的类型自动删除
   if (
-    (newJSONSchema.format === 'quantity' ||
-      newJSONSchema.format === 'array' ||
-      newJSONSchema.format === 'datasource' ||
-      newJSONSchema.format === 'event' ||
-      newJSONSchema.format === 'object' ||
-      newJSONSchema.format === 'radio' ||
-      newJSONSchema.format === 'select') &&
+    (newJSONSchema.type === 'quantity' ||
+      newJSONSchema.type === 'array' ||
+      newJSONSchema.type === 'datasource' ||
+      newJSONSchema.type === 'event' ||
+      newJSONSchema.type === 'object' ||
+      newJSONSchema.type === 'radio' ||
+      newJSONSchema.type === 'select') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
   }
   // 转换旧版的选择类型的数据结构
   if (
-    newJSONSchema.format === 'radio' ||
-    newJSONSchema.format === 'select' ||
-    newJSONSchema.format === 'single-select'
+    newJSONSchema.type === 'radio' ||
+    newJSONSchema.type === 'select' ||
+    newJSONSchema.type === 'single-select'
   ) {
     if (
       newJSONSchema.items &&
@@ -2100,7 +1946,7 @@ function oldSchemaToNewSchema(oldSchema) {
       );
     });
   }
-  if (newJSONSchema.format === 'array' && newJSONSchema.items) {
+  if (newJSONSchema.type === 'array' && newJSONSchema.items) {
     // 转换items中的数据
     newJSONSchema.items = oldSchemaToNewSchema(newJSONSchema.items);
   }
@@ -2134,18 +1980,15 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   var curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
   switch (jsonSchema.type) {
     case 'string':
-      if (jsonSchema.format === 'typeSelect') {
+      if (jsonSchema.type === 'typeSelect') {
         // 选择类型的字段直接使用schema中的数值
         curJsonData = jsonSchema.default;
-      } else if (jsonSchema.format === 'color') {
+      } else if (jsonSchema.type === 'color') {
         if (curValue === '#fff' || curValue === '#FFF') {
           curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
         }
         curJsonData = curValue || '#ffffff';
-      } else if (
-        jsonSchema.format === 'json' ||
-        jsonSchema.format === 'widget'
-      ) {
+      } else if (jsonSchema.type === 'json') {
         /** 转成json类型进行特殊处理
          * 需要保证json类型的数值是json对象 */
         var curJsonItemData = ''; // 字符串类型的json数据
@@ -2364,7 +2207,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     }
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
     var curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
-    if (jsonSchema.format === 'array') {
+    if (jsonSchema.type === 'array') {
       if (isArray(curValue)) {
         curValue.map(function (arrItem) {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
@@ -2400,7 +2243,7 @@ function schema2json(jsonSchema, jsonData) {
 /**
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
  * 11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、img、radio、 select）
- * 10个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity、widget）
+ * 10个特殊类型组件（Object、Array、Json、datasource、DynamicData、Event、CodeArea、htmlArea、quantity）
  */
 
 // 类型数据清单
@@ -2622,6 +2465,55 @@ function json2treeData(mockData, parentDataRoute) {
   return treeData;
 }
 
+// 内置的期望类型值
+var valExpectType = {
+  array: 'array',
+  boolean: 'boolean',
+  'box-style': 'object',
+  codearea: 'string',
+  color: 'string',
+  datasource: 'object',
+  date: 'string',
+  'date-time': 'string',
+  'dynamic-data': 'object',
+  event: 'object',
+  'func-body': 'string',
+  htmlarea: 'string',
+  image: 'string',
+  input: 'string',
+  json: 'string',
+  number: 'number',
+  object: 'object',
+  quantity: 'string',
+  radio: 'string',
+  select: 'array',
+  'single-select': 'string',
+  textarea: 'string',
+  'text-editor': 'string',
+  time: 'string',
+  url: 'string',
+};
+
+// 根据type获取对应元素的期望类型值
+function getExpectType(type) {
+  return valExpectType[type] || type;
+}
+
+// 注册新的期望类型值
+function registerExpectType(type, valType) {
+  if (valExpectType[type]) {
+    console.warn(
+      '\u5F53\u524D\u5DF2\u7ECF\u5B58\u5728' +
+        type +
+        '(' +
+        valExpectType[type] +
+        ')\uFF0C\u6682\u65F6\u4E0D\u652F\u6301\u8986\u76D6\u3002',
+    );
+    return;
+  }
+  valExpectType[type] = valType;
+}
+
 /**
  * 获取父元素的key路径值
  */
@@ -2669,10 +2561,6 @@ var KeyWordList = [
   'event',
   'array',
   'object',
-  'widget',
-  'widgets',
-  'widgetUUID',
-  'embedWidgetList',
 ];
 
 export {
@@ -2684,6 +2572,7 @@ export {
   dynamicDataAnalyzer,
   getCurPosition,
   getCurrentFormat,
+  getExpectType,
   getJsonDataByKeyRoute,
   getNextIndexRoute,
   getParentIndexRoute,
@@ -2701,7 +2590,6 @@ export {
   isDateStr,
   isDateTimeStr,
   isEmptySchema,
-  isEmptyWidgetSchema,
   isEqual,
   isFirstSchemaData,
   isFunction,
@@ -2715,7 +2603,6 @@ export {
   isStructuredSchema,
   isTimeStr,
   isURL,
-  isUsedToWidgetConfig,
   json2schema,
   json2treeData,
   keyRoute2indexRoute,
@@ -2725,6 +2612,7 @@ export {
   objClone,
   oldSchemaToNewSchema,
   oldSchemaToNewSchemaV1,
+  registerExpectType,
   schema2json,
   schemaMetaList,
 };

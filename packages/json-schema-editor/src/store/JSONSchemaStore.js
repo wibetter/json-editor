@@ -171,7 +171,7 @@ export default class JSONSchemaStore {
   isSupportCurType(indexRoute, curType) {
     const parentIndexRoute = getParentIndexRoute(indexRoute);
     const parentJSONObj = this.getSchemaByIndexRoute(parentIndexRoute);
-    const parentTypeList = this.SchemaTypeList[parentJSONObj.format];
+    const parentTypeList = this.SchemaTypeList[parentJSONObj.type];
     if (parentTypeList && parentTypeList.indexOf(curType) >= 0) {
       // 表示支持当前类型
       return true;
@@ -185,9 +185,8 @@ export default class JSONSchemaStore {
   @action.bound
   addChildJson(curIndexRoute, ignoreOnChange) {
     const curJSONObj = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
-    if (isBoxSchemaData(curJSONObj.format)) {
+    if (isBoxSchemaData(curJSONObj.type)) {
       const childKey = this.getNewJsonKeyIndex(curJSONObj);
-      curJSONObj.required.push(childKey);
       curJSONObj.propertyOrder.push(childKey);
       curJSONObj.properties[childKey] = initInputData;
       // 触发onChange事件
@@ -292,7 +291,6 @@ export default class JSONSchemaStore {
       this.jsonSchema,
     );
     // 3.插入新增的对象数据
-    parentJSONObj.required.push(jsonKey);
     parentJSONObj.properties[jsonKey] = curJSONObj;
     // 4.在propertyOrder的对应位置插入newJsonKey【有序插入newJsonKey】
     const currentPropertyOrder = parentJSONObj.propertyOrder;
@@ -320,9 +318,6 @@ export default class JSONSchemaStore {
     // 3.删除propertyOrder中对应的curKey
     const deleteIndex = parentJsonObj.propertyOrder.indexOf(curKey);
     parentJsonObj.propertyOrder.splice(deleteIndex, 1);
-    // 4.删除required中对应的curKey
-    const deleteIndex2 = parentJsonObj.required.indexOf(curKey);
-    parentJsonObj.required.splice(deleteIndex2, 1);
     // 触发onChange事件
     this.jsonSchemaChange(ignoreOnChange);
   }
@@ -344,9 +339,6 @@ export default class JSONSchemaStore {
     // 3.删除propertyOrder中对应的curKey
     const deleteIndex = parentJsonObj.propertyOrder.indexOf(curKey);
     parentJsonObj.propertyOrder.splice(deleteIndex, 1);
-    // 4.删除required中对应的curKey
-    const deleteIndex2 = parentJsonObj.required.indexOf(curKey);
-    parentJsonObj.required.splice(deleteIndex2, 1);
     // 触发onChange事件
     this.jsonSchemaChange(ignoreOnChange);
   }

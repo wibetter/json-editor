@@ -27,8 +27,4 @@ export const KeyWordList = [
   'event',
   'array',
   'object',
-  'widget',
-  'widgets',
-  'widgetUUID',
-  'embedWidgetList',
 ];

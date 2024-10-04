@@ -22,8 +22,8 @@ const ConditionValueSchema = (props) => {
 
   if (
     conditionRule.conditionProp &&
-    (conditionRule.conditionProp.format === 'radio' ||
-      conditionRule.conditionProp.format === 'single-select')
+    (conditionRule.conditionProp.type === 'radio' ||
+      conditionRule.conditionProp.type === 'single-select')
   ) {
     return (
       <Select
@@ -50,7 +50,7 @@ const ConditionValueSchema = (props) => {
     );
   } else if (
     conditionRule.conditionProp &&
-    conditionRule.conditionProp.format === 'boolean'
+    conditionRule.conditionProp.type === 'boolean'
   ) {
     return (
       <Radio.Group

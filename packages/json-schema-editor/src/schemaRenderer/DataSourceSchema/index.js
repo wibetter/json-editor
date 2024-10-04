@@ -68,8 +68,8 @@ const DataSourceSchema = (props) => {
       ></TreeNode>
       <TreeNode
         className={'dataSource-data-item-schema schema-item-form'}
-        id={`${nodeKey}-data-${dataJsonObj.format}`}
-        key={`${nodeKey}-data-${dataJsonObj.format}`}
+        id={`${nodeKey}-data-${dataJsonObj.type}`}
+        key={`${nodeKey}-data-${dataJsonObj.type}`}
         indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
         jsonKey={'data'}
         disabled={true}
@@ -78,7 +78,7 @@ const DataSourceSchema = (props) => {
           jsonKey: 'data',
           targetJsonSchema: dataJsonObj,
           parentType: currentFormat,
-          nodeKey: `${nodeKey}-data-${dataJsonObj.format}`,
+          nodeKey: `${nodeKey}-data-${dataJsonObj.type}`,
           hideOperaBtn: true,
           keyIsFixed: true,
           typeIsFixed: true,

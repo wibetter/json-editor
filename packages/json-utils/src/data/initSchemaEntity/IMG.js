@@ -2,9 +2,8 @@
  *  用户可以使用此组件上传图片，最后返回对应的图片资源地址
  * */
 export const initIMGData = {
-  type: 'string',
   title: '图片',
-  format: 'image',
+  type: 'image',
   default: '', // 默认值
   description: '上传图片', // 字段项的说明和描述
   imgWidth: 200, // 图片默认的宽度，单位默认px

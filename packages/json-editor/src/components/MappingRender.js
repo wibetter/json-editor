@@ -53,35 +53,6 @@ const MappingRender = (props) => {
     curConditionValue = getJSONDataByKeyRoute(keyRoute);
     if (needConditionValue === curConditionValue) {
       return '';
-    } else if (
-      targetJsonSchema.elemIndexRoute &&
-      targetJsonSchema.propIndexRoute
-    ) {
-      // 判断是否是widgetSchema
-      // 兼容widgetSchema的xx__1x1_1x1格式Key值（组件模型-全局配置）
-      const keyRouteArr = keyRoute.split('-');
-      const conditionLastKey = keyRouteArr.pop();
-      let lastKeyRoute = `${conditionLastKey}__${targetJsonSchema.elemIndexRoute.replaceAll(
-        '-',
-        'x',
-      )}`;
-      const conditionParentKeyRoute = keyRouteArr.join('-');
-      if (conditionParentKeyRoute) {
-        // 先获取条件字段父级对象数值
-        const conditionParentMockData = getJSONDataByKeyRoute(
-          conditionParentKeyRoute,
-        );
-        // 获取条件字段最后一个key值
-        const conditionParentKeys = Object.keys(conditionParentMockData);
-        lastKeyRoute = conditionParentKeys.find((keyItem) => {
-          return keyItem.indexOf(lastKeyRoute) > -1;
-        });
-        // 获取条件字段的数值
-        curConditionValue = conditionParentMockData[lastKeyRoute];
-        if (needConditionValue === curConditionValue) {
-          return '';
-        }
-      }
     }
   }
   // 将条件字段的数值作为key的一部分
@@ -93,11 +64,9 @@ const MappingRender = (props) => {
     case 'func':
     case 'style':
     case 'data':
-    case 'widgets':
     case 'func-schema':
     case 'style-schema':
     case 'data-schema':
-    case 'widgets-schema':
     case 'event-schema':
       return <ObjectSchema {...props} key={curNodeKey} />;
     case 'array':

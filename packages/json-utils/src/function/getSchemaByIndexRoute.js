@@ -22,10 +22,10 @@ export function getSchemaByIndexRoute(
       const curIndex = indexRouteArr[index];
       if (
         curIndex === '0' &&
-        (curJsonSchemaObj.format === 'array' ||
-          curJsonSchemaObj.format === 'radio' ||
-          curJsonSchemaObj.format === 'single-select' ||
-          curJsonSchemaObj.format === 'select') &&
+        (curJsonSchemaObj.type === 'array' ||
+          curJsonSchemaObj.type === 'radio' ||
+          curJsonSchemaObj.type === 'single-select' ||
+          curJsonSchemaObj.type === 'select') &&
         (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
         // 从items中获取数据

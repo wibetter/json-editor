@@ -46,8 +46,8 @@ const DynamicDataSchema = (props) => {
       ></TreeNode>
       <TreeNode
         className={'dataSource-config-item-schema schema-item-form'}
-        id={`${nodeKey}-config-${dataJsonObj.format}`}
-        key={`${nodeKey}-config-${dataJsonObj.format}`}
+        id={`${nodeKey}-config-${dataJsonObj.type}`}
+        key={`${nodeKey}-config-${dataJsonObj.type}`}
         indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
         jsonKey={'config'}
         disabled={true}
@@ -56,7 +56,7 @@ const DynamicDataSchema = (props) => {
           jsonKey: 'config',
           targetJsonSchema: configJsonObj,
           parentType: currentFormat,
-          nodeKey: `${nodeKey}-config-${configJsonObj.format}`,
+          nodeKey: `${nodeKey}-config-${configJsonObj.type}`,
           hideOperaBtn: true,
           keyIsFixed: true,
           typeIsFixed: true,
@@ -64,8 +64,8 @@ const DynamicDataSchema = (props) => {
       ></TreeNode>
       <TreeNode
         className={'dataSource-data-item-schema schema-item-form'}
-        id={`${nodeKey}-data-${dataJsonObj.format}`}
-        key={`${nodeKey}-data-${dataJsonObj.format}`}
+        id={`${nodeKey}-data-${dataJsonObj.type}`}
+        key={`${nodeKey}-data-${dataJsonObj.type}`}
         indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
         jsonKey={'data'}
         disabled={true}
@@ -74,7 +74,7 @@ const DynamicDataSchema = (props) => {
           jsonKey: 'data',
           targetJsonSchema: dataJsonObj,
           parentType: currentFormat,
-          nodeKey: `${nodeKey}-data-${dataJsonObj.format}`,
+          nodeKey: `${nodeKey}-data-${dataJsonObj.type}`,
           hideOperaBtn: true,
           keyIsFixed: true,
           typeIsFixed: true,

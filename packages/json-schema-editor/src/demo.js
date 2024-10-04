@@ -30,7 +30,7 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             format: 'func',
             title: '属性设置',
-            readOnly: false,
+            readOnly: true,
             properties: {},
             propertyOrder: [],
           },
