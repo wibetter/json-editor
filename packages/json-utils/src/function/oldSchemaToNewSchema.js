@@ -20,24 +20,24 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
     newJSONSchema.title = newJSONSchema.description;
   }
   // 2.当format为空时重新进行赋值
-  if (!newJSONSchema.format) {
-    newJSONSchema.format = getCurrentFormat(newJSONSchema);
+  if (!newJSONSchema.type) {
+    newJSONSchema.type = getCurrentFormat(newJSONSchema);
   }
   // 3.不需要default属性的类型自动删除
   if (
-    (newJSONSchema.format === 'quantity' ||
-      newJSONSchema.format === 'array' ||
-      newJSONSchema.format === 'datasource' ||
-      newJSONSchema.format === 'event' ||
-      newJSONSchema.format === 'object' ||
-      newJSONSchema.format === 'radio' ||
-      newJSONSchema.format === 'select') &&
+    (newJSONSchema.type === 'quantity' ||
+      newJSONSchema.type === 'array' ||
+      newJSONSchema.type === 'datasource' ||
+      newJSONSchema.type === 'event' ||
+      newJSONSchema.type === 'object' ||
+      newJSONSchema.type === 'radio' ||
+      newJSONSchema.type === 'select') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
   }
   // 转换旧版的radio类型的数据结构
-  if (newJSONSchema.format === 'radio') {
+  if (newJSONSchema.type === 'radio') {
     newJSONSchema.type = 'string';
     if (newJSONSchema.enum && newJSONSchema.enumextra) {
       // 统一转换至items
@@ -52,7 +52,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
     }
   }
   // 转换旧版的quantity类型的数据结构
-  if (newJSONSchema.format === 'quantity') {
+  if (newJSONSchema.type === 'quantity') {
     const curProperties = newJSONSchema.properties;
     const newQuantitySchema = objClone(TypeDataList.quantity); // 新版quantity的schema数据对象
     if (
@@ -69,7 +69,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
     newJSONSchema = newQuantitySchema;
   }
   // 转换旧版的datasource类型的数据结构
-  if (newJSONSchema.format === 'datasource') {
+  if (newJSONSchema.type === 'datasource') {
     const curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     const typeProp = curProperties.type && curProperties.type.default;
@@ -91,7 +91,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
       : '() => {}';
   }
   // 转换旧版的event类型的数据结构
-  if (newJSONSchema.format === 'event') {
+  if (newJSONSchema.type === 'event') {
     const curProperties = newJSONSchema.properties;
     // 先获取旧版的关键数据
     const eventType = curProperties.type && curProperties.type.default;
@@ -120,13 +120,11 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
   }
   // 判断是否有propertyOrder属性
   if (newJSONSchema.properties) {
-    // 3.重新生成required属性
-    newJSONSchema.required = Object.keys(newJSONSchema.properties);
     if (!newJSONSchema.propertyOrder) {
-      // 4.生成propertyOrder属性
-      newJSONSchema.propertyOrder = newJSONSchema.required;
+      // 生成propertyOrder属性
+      newJSONSchema.propertyOrder = Object.keys(newJSONSchema.properties);
     }
-    // 5.继续遍历properties属性进行转换
+    // 继续遍历properties属性进行转换
     newJSONSchema.propertyOrder.map((jsonKey) => {
       newJSONSchema.properties[jsonKey] = oldSchemaToNewSchema(
         newJSONSchema.properties[jsonKey],
@@ -141,35 +139,34 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
   return newJSONSchema;
 }
 
-// 2024-10-03 之前的旧版转新版schema
+// 2024-10-05 之前的旧版转新版schema
 export function oldSchemaToNewSchema(oldSchema) {
   let newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
-  // 当format为空时重新进行赋值
-  if (!newJSONSchema.format) {
-    newJSONSchema.format = getCurrentFormat(newJSONSchema);
-  }
   // 删除不需要的属性
   if (!newJSONSchema.required) {
     delete newJSONSchema.required;
   }
+  if (newJSONSchema.type && newJSONSchema.type) {
+    newJSONSchema.type = newJSONSchema.type;
+  }
   // 不需要default属性的类型自动删除
   if (
-    (newJSONSchema.format === 'quantity' ||
-      newJSONSchema.format === 'array' ||
-      newJSONSchema.format === 'datasource' ||
-      newJSONSchema.format === 'event' ||
-      newJSONSchema.format === 'object' ||
-      newJSONSchema.format === 'radio' ||
-      newJSONSchema.format === 'select') &&
+    (newJSONSchema.type === 'quantity' ||
+      newJSONSchema.type === 'array' ||
+      newJSONSchema.type === 'datasource' ||
+      newJSONSchema.type === 'event' ||
+      newJSONSchema.type === 'object' ||
+      newJSONSchema.type === 'radio' ||
+      newJSONSchema.type === 'select') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
   }
   // 转换旧版的选择类型的数据结构
   if (
-    newJSONSchema.format === 'radio' ||
-    newJSONSchema.format === 'select' ||
-    newJSONSchema.format === 'single-select'
+    newJSONSchema.type === 'radio' ||
+    newJSONSchema.type === 'select' ||
+    newJSONSchema.type === 'single-select'
   ) {
     if (
       newJSONSchema.items &&
@@ -200,7 +197,7 @@ export function oldSchemaToNewSchema(oldSchema) {
       );
     });
   }
-  if (newJSONSchema.format === 'array' && newJSONSchema.items) {
+  if (newJSONSchema.type === 'array' && newJSONSchema.items) {
     // 转换items中的数据
     newJSONSchema.items = oldSchemaToNewSchema(newJSONSchema.items);
   }

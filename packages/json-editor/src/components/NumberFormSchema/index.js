@@ -85,7 +85,7 @@ class NumberFormSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     return (
       <div

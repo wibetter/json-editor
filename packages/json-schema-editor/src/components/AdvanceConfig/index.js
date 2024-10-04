@@ -204,7 +204,7 @@ class AdvanceConfig extends React.PureComponent {
         key: jsonKey,
         keyRoute: curKeyRoute,
         title: targetJsonSchema.title,
-        format: targetJsonSchema.format,
+        format: targetJsonSchema.type,
         type: targetJsonSchema.type,
       });
       // 增加条件字段标记

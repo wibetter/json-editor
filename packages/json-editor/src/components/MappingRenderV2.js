@@ -4,56 +4,56 @@ import { hasProperties } from '../utils';
 import InputFormSchema from '$components/InputFormSchema/index';
 import ObjectSchema from '$components/ObjectSchema/index';
 const ArraySchema = React.lazy(() => import('$components/ArraySchemaV2/index')); // 使用新版ArraySchema
-const DataSourceSchema = React.lazy(() =>
-  import('$components/DataSourceSchema/index'),
+const DataSourceSchema = React.lazy(
+  () => import('$components/DataSourceSchema/index'),
 );
-const DynamicDataSchema = React.lazy(() =>
-  import('$components/DynamicDataSchema/index'),
+const DynamicDataSchema = React.lazy(
+  () => import('$components/DynamicDataSchema/index'),
 );
 const EventSchema = React.lazy(() => import('$components/EventSchema/index'));
-const QuantitySchema = React.lazy(() =>
-  import('$components/QuantitySchema/index'),
+const QuantitySchema = React.lazy(
+  () => import('$components/QuantitySchema/index'),
 );
-const BoxStyleSchema = React.lazy(() =>
-  import('$components/BoxStyleSchema/index'),
+const BoxStyleSchema = React.lazy(
+  () => import('$components/BoxStyleSchema/index'),
 );
 const RadioSchema = React.lazy(() => import('$components/RadioSchema/index'));
 const SelectSchema = React.lazy(() => import('$components/SelectSchema/index'));
-const TextAreaFormSchema = React.lazy(() =>
-  import('$components/TextAreaFormSchema/index'),
+const TextAreaFormSchema = React.lazy(
+  () => import('$components/TextAreaFormSchema/index'),
 );
-const TextEditorSchema = React.lazy(() =>
-  import('$components/TextEditorSchema/index'),
+const TextEditorSchema = React.lazy(
+  () => import('$components/TextEditorSchema/index'),
 );
-const NumberFormSchema = React.lazy(() =>
-  import('$components/NumberFormSchema/index'),
+const NumberFormSchema = React.lazy(
+  () => import('$components/NumberFormSchema/index'),
 );
-const BooleanFormSchema = React.lazy(() =>
-  import('$components/BooleanFormSchema/index'),
+const BooleanFormSchema = React.lazy(
+  () => import('$components/BooleanFormSchema/index'),
 );
-const DateTimeFormSchema = React.lazy(() =>
-  import('$components/DateTimeFormSchema/index'),
+const DateTimeFormSchema = React.lazy(
+  () => import('$components/DateTimeFormSchema/index'),
 );
-const TimeFormSchema = React.lazy(() =>
-  import('$components/TimeFormSchema/index'),
+const TimeFormSchema = React.lazy(
+  () => import('$components/TimeFormSchema/index'),
 );
-const URLFormSchema = React.lazy(() =>
-  import('$components/URLFormSchema/index'),
+const URLFormSchema = React.lazy(
+  () => import('$components/URLFormSchema/index'),
 );
-const ColorFormSchema = React.lazy(() =>
-  import('$components/ColorFormSchema/index'),
+const ColorFormSchema = React.lazy(
+  () => import('$components/ColorFormSchema/index'),
 );
-const JsonFormSchema = React.lazy(() =>
-  import('$components/JsonFormSchema/index'),
+const JsonFormSchema = React.lazy(
+  () => import('$components/JsonFormSchema/index'),
 );
-const CodeAreaFormSchema = React.lazy(() =>
-  import('$components/CodeAreaFormSchema/index'),
+const CodeAreaFormSchema = React.lazy(
+  () => import('$components/CodeAreaFormSchema/index'),
 );
-const HtmlAreaFormSchema = React.lazy(() =>
-  import('$components/HtmlAreaFormSchema/index'),
+const HtmlAreaFormSchema = React.lazy(
+  () => import('$components/HtmlAreaFormSchema/index'),
 );
-const SingleSelectSchema = React.lazy(() =>
-  import('$components/SingleSelectSchema/index'),
+const SingleSelectSchema = React.lazy(
+  () => import('$components/SingleSelectSchema/index'),
 );
 
 /** 根据当前类型选择对应的组件进行渲染 */
@@ -85,35 +85,6 @@ const MappingRenderV2 = (props) => {
     curConditionValue = getJSONDataByKeyRoute(keyRoute);
     if (needConditionValue === curConditionValue) {
       return '';
-    } else if (
-      targetJsonSchema.elemIndexRoute &&
-      targetJsonSchema.propIndexRoute
-    ) {
-      // 判断是否是widgetSchema
-      // 兼容widgetSchema的xx__1x1_1x1格式Key值（组件模型-全局配置）
-      const keyRouteArr = keyRoute.split('-');
-      const conditionLastKey = keyRouteArr.pop();
-      let lastKeyRoute = `${conditionLastKey}__${targetJsonSchema.elemIndexRoute.replaceAll(
-        '-',
-        'x',
-      )}`;
-      const conditionParentKeyRoute = keyRouteArr.join('-');
-      if (conditionParentKeyRoute) {
-        // 先获取条件字段父级对象数值
-        const conditionParentMockData = getJSONDataByKeyRoute(
-          conditionParentKeyRoute,
-        );
-        // 获取条件字段最后一个key值
-        const conditionParentKeys = Object.keys(conditionParentMockData);
-        lastKeyRoute = conditionParentKeys.find((keyItem) => {
-          return keyItem.indexOf(lastKeyRoute) > -1;
-        });
-        // 获取条件字段的数值
-        curConditionValue = conditionParentMockData[lastKeyRoute];
-        if (needConditionValue === curConditionValue) {
-          return '';
-        }
-      }
     }
   }
   // 将条件字段的数值作为key的一部分
@@ -125,11 +96,9 @@ const MappingRenderV2 = (props) => {
     case 'func':
     case 'style':
     case 'data':
-    case 'widgets':
     case 'func-schema':
     case 'style-schema':
     case 'data-schema':
-    case 'widgets-schema':
     case 'event-schema':
       return <ObjectSchema {...props} key={curNodeKey} />;
     case 'array':

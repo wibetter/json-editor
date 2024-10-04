@@ -57,7 +57,7 @@ class QuantitySchema extends React.PureComponent {
     const unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
     const unitText = curJsonData.quantity;
     const unitAfter = <span>{unitText === 'percent' ? '%' : unitText}</span>;
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     return (
       <div

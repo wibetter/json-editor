@@ -25,11 +25,8 @@
  * 【schema相关的操作方法】
  * getCurrentFormat: 获取当前字段的类型（format）
  * isEmptySchema: 判断是否为空的Schema
- * isEmptyWidgetSchema: 判断是否为空的WidgetSchema
- * isUsedToWidgetConfig: 判断是否为用于组件配置的jsonSchema数据
  * isNewSchemaData: 判断是否是最新版的schema数据
  * isBoxSchemaData: 根据format判断是否是容器类型字段
- * isFirstSchemaData: 根据format判断是否是一级类型字段(func、style、data)
  * isStructuredSchema: 判断是否是结构化schema数据（一级schema为object类型，其所有二级schema为object类型）
  * isSameParent: 判断是否是同一个父元素
  * getCurPosition: 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
@@ -73,6 +70,7 @@ export * from './function/schema2json';
 export * from './function/schemaMetaList';
 export * from './function/dynamicDataAnalyzer';
 export * from './function/json2treeData';
+export * from './function/getExpectType';
 
 //【其他较小的json工具方法】
 export * from './utils/index'; // 纯工具方法

@@ -21,7 +21,6 @@ import {
   getCurrentFormat,
   getParentIndexRoute,
   TypeDataList,
-  isFirstSchemaData,
 } from '@wibetter/json-utils';
 import { objClone, saveWebCacheData } from '$utils/index';
 import './index.scss';
@@ -59,7 +58,7 @@ class BaseFormSchema extends React.PureComponent {
   /** select类型变动事件处理器 */
   selectHandleChange = (newFormat) => {
     const { indexRoute, jsonKey, changeType, targetJsonSchema } = this.props;
-    if (targetJsonSchema.format === newFormat) return; // format值未改变则直接跳出
+    if (targetJsonSchema.type === newFormat) return; // format值未改变则直接跳出
     // 根据当前新的类型获取初始化的对象数据
     const newTypeData = TypeDataList[newFormat];
     changeType(indexRoute, jsonKey, newTypeData);
@@ -174,8 +173,7 @@ class BaseFormSchema extends React.PureComponent {
     const isShowAdvanceBtn = this.props.isShowAdvanceBtn || false; // 是否显示高级操作按钮
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
     const currentFormat = getCurrentFormat(targetJsonSchema);
-    const isFixedSchema =
-      targetJsonSchema.isFixedSchema || isFirstSchemaData(currentFormat); // 一级固定类型元素不允许拖拽
+    const isFixedSchema = targetJsonSchema.isFixedSchema;
     const hideOperaBtn = this.props.hideOperaBtn || false; // 是否隐藏操作类按钮
     const readOnly = isFixedSchema || isFirstSchema || isFixed || false; // 是否不可编辑状态，默认为可编辑状态
     const isBoxElem = isBoxSchemaData(currentFormat); // 判断是否是容器类型元素

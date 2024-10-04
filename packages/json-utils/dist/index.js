@@ -31,46 +31,49 @@
     e.r(t),
       e.d(t, {
         DataSourceTypeList: function () {
-          return g;
+          return x;
         },
         EventTypeDataList: function () {
-          return m;
+          return q;
         },
         KeyWordList: function () {
-          return oe;
+          return ye;
         },
         TypeDataList: function () {
-          return y;
+          return j;
         },
         dataRoute2dataPath: function () {
-          return re;
+          return oe;
         },
         dynamicDataAnalyzer: function () {
-          return te;
+          return ae;
         },
         getCurPosition: function () {
-          return U;
+          return M;
         },
         getCurrentFormat: function () {
-          return T;
+          return C;
+        },
+        getExpectType: function () {
+          return le;
         },
         getJsonDataByKeyRoute: function () {
           return o;
         },
         getNextIndexRoute: function () {
-          return K;
-        },
-        getParentIndexRoute: function () {
-          return A;
-        },
-        getParentIndexRoute_CurIndex: function () {
           return W;
         },
+        getParentIndexRoute: function () {
+          return z;
+        },
+        getParentIndexRoute_CurIndex: function () {
+          return H;
+        },
         getParentKeyRoute: function () {
-          return ae;
+          return se;
         },
         getParentKeyRoute_CurKey: function () {
-          return ne;
+          return ce;
         },
         getSchemaByIndexRoute: function () {
           return p;
@@ -79,171 +82,165 @@
           return u;
         },
         hasProperties: function () {
-          return n;
+          return a;
         },
         indexRoute2keyRoute: function () {
           return l;
         },
         isArray: function () {
-          return R;
-        },
-        isBoolean: function () {
-          return j;
-        },
-        isBoxSchemaData: function () {
-          return C;
-        },
-        isColor: function () {
-          return k;
-        },
-        isDateStr: function () {
-          return h;
-        },
-        isDateTimeStr: function () {
-          return q;
-        },
-        isEmptySchema: function () {
-          return P;
-        },
-        isEmptyWidgetSchema: function () {
-          return J;
-        },
-        isEqual: function () {
-          return a;
-        },
-        isFirstSchemaData: function () {
-          return E;
-        },
-        isFunction: function () {
-          return F;
-        },
-        isNewSchemaData: function () {
-          return B;
-        },
-        isNumber: function () {
-          return O;
-        },
-        isObject: function () {
-          return N;
-        },
-        isQuantity: function () {
-          return D;
-        },
-        isSameParent: function () {
-          return L;
-        },
-        isSelect: function () {
-          return S;
-        },
-        isString: function () {
-          return v;
-        },
-        isStructuredSchema: function () {
-          return I;
-        },
-        isTimeStr: function () {
-          return x;
-        },
-        isURL: function () {
-          return b;
-        },
-        isUsedToWidgetConfig: function () {
-          return $;
-        },
-        json2schema: function () {
           return w;
         },
+        isBoolean: function () {
+          return D;
+        },
+        isBoxSchemaData: function () {
+          return L;
+        },
+        isColor: function () {
+          return $;
+        },
+        isDateStr: function () {
+          return k;
+        },
+        isDateTimeStr: function () {
+          return F;
+        },
+        isEmptySchema: function () {
+          return I;
+        },
+        isEqual: function () {
+          return n;
+        },
+        isFunction: function () {
+          return B;
+        },
+        isNewSchemaData: function () {
+          return K;
+        },
+        isNumber: function () {
+          return N;
+        },
+        isObject: function () {
+          return J;
+        },
+        isQuantity: function () {
+          return E;
+        },
+        isSameParent: function () {
+          return _;
+        },
+        isSelect: function () {
+          return P;
+        },
+        isString: function () {
+          return S;
+        },
+        isStructuredSchema: function () {
+          return U;
+        },
+        isTimeStr: function () {
+          return T;
+        },
+        isURL: function () {
+          return R;
+        },
+        json2schema: function () {
+          return A;
+        },
         json2treeData: function () {
-          return ie;
+          return pe;
         },
         keyRoute2indexRoute: function () {
-          return s;
+          return d;
         },
         metaElemAnalyzer: function () {
-          return H;
+          return G;
         },
         moveBackward: function () {
-          return M;
+          return V;
         },
         moveForward: function () {
-          return _;
+          return Q;
         },
         objClone: function () {
           return i;
         },
         oldSchemaToNewSchema: function () {
-          return V;
-        },
-        oldSchemaToNewSchemaV1: function () {
-          return Q;
-        },
-        schema2json: function () {
           return Y;
         },
+        oldSchemaToNewSchemaV1: function () {
+          return X;
+        },
+        registerExpectType: function () {
+          return de;
+        },
+        schema2json: function () {
+          return ie;
+        },
         schemaMetaList: function () {
-          return ee;
+          return ne;
         },
       });
     var r = require('lodash');
     function i(e) {
       return (0, r.cloneDeep)(e);
     }
-    function a(e, t) {
+    function n(e, t) {
       return (0, r.isEqual)(e, t);
     }
-    function n(e) {
+    function a(e) {
       var t = !1;
       return null != e && (t = !0), t;
     }
     function o(e, t, r) {
-      var a = t;
-      if ((r && (a = i(t)), e))
-        for (var n = e.split('-'), o = 0, p = n.length; o < p; o++) {
-          var u = n[o];
-          u && (a = a && a[u]);
+      var n = t;
+      if ((r && (n = i(t)), e))
+        for (var a = e.split('-'), o = 0, p = a.length; o < p; o++) {
+          var u = a[o];
+          u && (n = n && n[u]);
         }
-      return a;
+      return n;
     }
     function p(e, t, r) {
-      var a = t;
-      if ((r && (a = i(t)), e))
-        for (var n = e.split('-'), o = 0, p = n.length; o < p; o++) {
-          var u = n[o];
+      var n = t;
+      if ((r && (n = i(t)), e))
+        for (var a = e.split('-'), o = 0, p = a.length; o < p; o++) {
+          var u = a[o];
           if (
             '0' !== u ||
-            ('array' !== a.format &&
-              'radio' !== a.format &&
-              'single-select' !== a.format &&
-              'select' !== a.format) ||
-            (!a.options && !a.items)
+            ('array' !== n.type &&
+              'radio' !== n.type &&
+              'single-select' !== n.type &&
+              'select' !== n.type) ||
+            (!n.options && !n.items)
           ) {
             if (u) {
               var l = '0';
-              a.propertyOrder
-                ? (l = a.propertyOrder[u])
-                : a.properties && (l = Object.keys(a.properties)[u]),
-                (a = a.properties[l]);
+              n.propertyOrder
+                ? (l = n.propertyOrder[u])
+                : n.properties && (l = Object.keys(n.properties)[u]),
+                (n = n.properties[l]);
             }
-          } else a = a.options || a.items;
+          } else n = n.options || n.items;
         }
-      return a;
+      return n;
     }
     function u(e, t, r) {
-      var a = t;
-      if ((r && (a = i(t)), e && a))
-        for (var n = e.split('-'), o = 0, p = n.length; o < p; o++) {
-          var u = n[o];
-          u && a.properties && (a = a.properties[u]);
+      var n = t;
+      if ((r && (n = i(t)), e && n))
+        for (var a = e.split('-'), o = 0, p = a.length; o < p; o++) {
+          var u = a[o];
+          u && n.properties && (n = n.properties[u]);
         }
-      return a;
+      return n;
     }
     function l(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
-        n < o;
-        n++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var p = a[n];
+        var p = n[a];
         if ('0' === p && r.items)
           (r = r.items), (i = i ? i + '-items' : 'items');
         else if ('0' === p && r.options)
@@ -259,13 +256,13 @@
       }
       return i;
     }
-    function s(e, t) {
+    function d(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
-        n < o;
-        n++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var p = a[n];
+        var p = n[a];
         if (p) {
           var u = -1;
           r.propertyOrder
@@ -281,17 +278,39 @@
       }
       return i;
     }
-    var d = {
+    var s,
+      c,
+      y,
+      f,
+      m,
+      v = {
         type: 'object',
-        format: 'event',
+        title: '对象Object',
+        description: '',
+        isRequired: !1,
+        readOnly: !1,
+        properties: {
+          a:
+            ((s = { type: 'string', title: '单文本框' }),
+            (s.type = 'input'),
+            (s.default = ''),
+            (s.description = ''),
+            (s.placeholder = ''),
+            (s.isRequired = !1),
+            (s.readOnly = !1),
+            s),
+        },
+        propertyOrder: ['a'],
+      },
+      b = {
+        type: 'event',
         title: '事件',
         isRequired: !1,
         readOnly: !1,
         properties: {
           type: {
-            type: 'string',
             default: 'emit',
-            format: 'typeSelect',
+            type: 'typeSelect',
             enum: ['on', 'emit'],
             enumextra: ['on', 'emit'],
             title: '事件类型',
@@ -299,8 +318,7 @@
             readOnly: !1,
           },
           trigger: {
-            type: 'string',
-            format: 'input',
+            type: 'input',
             default: 'eventName',
             title: '触发事件',
             description: '用于输入触发事件的名称',
@@ -309,9 +327,8 @@
             readOnly: !1,
           },
           eventData: {
-            type: 'string',
             title: '事件数据',
-            format: 'json',
+            type: 'json',
             default: '{}',
             description: '传递给触发事件的数据对象',
             isRequired: !1,
@@ -320,33 +337,29 @@
         },
         propertyOrder: ['type', 'trigger', 'eventData'],
       },
-      f = {
-        type: 'object',
-        format: 'datasource',
+      g = {
+        type: 'datasource',
         title: '数据源',
         readOnly: !1,
         properties: {
           type: {
-            type: 'string',
             default: 'local',
-            format: 'typeSelect',
+            type: 'typeSelect',
             enum: ['local', 'remote'],
             enumextra: ['local', 'remote'],
             title: '数据源类型',
           },
           data: {
-            type: 'string',
             title: '本地json数据',
             placeholder: '请输入静态json数据',
-            format: 'json',
+            type: 'json',
             default: '{}',
             description: '用于设置本地的静态json数据',
             isRequired: !0,
           },
           filter: {
-            type: 'string',
             title: '过滤器',
-            format: 'codearea',
+            type: 'codearea',
             default: '() => {}',
             description: '用于定义过滤当前数据的函数',
             isRequired: !0,
@@ -354,27 +367,58 @@
         },
         propertyOrder: ['type', 'data', 'filter'],
       },
-      c = {
+      O =
+        (((m = { type: 'object' }).type = 'datasource'),
+        (m.title = '数据源'),
+        (m.readOnly = !1),
+        (m.properties = {
+          type:
+            ((c = { type: 'string', default: 'remote' }),
+            (c.type = 'typeSelect'),
+            (c.enum = ['local', 'remote']),
+            (c.enumextra = ['local', 'remote']),
+            (c.title = '数据源类型'),
+            c),
+          data:
+            ((y = {
+              type: 'string',
+              title: '远程json数据',
+              placeholder: '请输入远程json数据源地址',
+            }),
+            (y.type = 'url'),
+            (y.default = 'http://xxx'),
+            (y.isRequired = !0),
+            (y.description = '用于设置获取元素数据的请求地址'),
+            y),
+          filter:
+            ((f = { type: 'string', title: '过滤器' }),
+            (f.type = 'codearea'),
+            (f.default = '() => {}'),
+            (f.description = '用于定义过滤当前数据的函数'),
+            (f.isRequired = !0),
+            f),
+        }),
+        (m.propertyOrder = ['type', 'data', 'filter']),
+        m),
+      h = {
         type: 'local',
         config: { dataName: '', body: {}, filter: 'return data;' },
         data: '{}',
         localFilter: 'return data;',
       },
-      y = {
+      j = {
         jsonschema: {
           type: 'object',
           title: 'jsonSchemaObject',
           properties: {
             func: {
               type: 'object',
-              format: 'func',
               title: '功能设置',
               readOnly: !0,
               properties: {
                 a: {
-                  type: 'string',
                   title: '单文本框',
-                  format: 'input',
+                  type: 'input',
                   default: '',
                   description: '',
                   placeholder: '',
@@ -386,14 +430,12 @@
             },
             style: {
               type: 'object',
-              format: 'style',
               title: '样式设置',
               readOnly: !0,
               properties: {
                 b: {
-                  type: 'string',
                   title: '单文本框',
-                  format: 'input',
+                  type: 'input',
                   default: '',
                   description: '',
                   placeholder: '',
@@ -404,15 +446,13 @@
               propertyOrder: ['b'],
             },
             data: {
-              type: 'object',
-              format: 'data',
+              type: 'data',
               title: '数据设置',
               readOnly: !0,
               properties: {
                 c: {
-                  type: 'string',
                   title: '单文本框',
-                  format: 'input',
+                  type: 'input',
                   default: '',
                   description: '',
                   placeholder: '',
@@ -426,9 +466,8 @@
           propertyOrder: ['func', 'style', 'data'],
         },
         input: {
-          type: 'string',
           title: '单文本框',
-          format: 'input',
+          type: 'input',
           default: '',
           description: '',
           placeholder: '',
@@ -438,51 +477,27 @@
         boolean: {
           type: 'boolean',
           title: '布尔值',
-          format: 'boolean',
           default: !1,
           description: '',
           isRequired: !1,
           readOnly: !1,
         },
-        object: {
-          type: 'object',
-          format: 'object',
-          title: '对象Object',
-          description: '',
-          isRequired: !1,
-          readOnly: !1,
-          properties: {
-            a: {
-              type: 'string',
-              title: '单文本框',
-              format: 'input',
-              default: '',
-              description: '',
-              placeholder: '',
-              isRequired: !1,
-              readOnly: !1,
-            },
-          },
-          propertyOrder: ['a'],
-        },
+        object: v,
         array: {
           type: 'array',
-          format: 'array',
           title: '数组Array',
           description: '',
           isRequired: !1,
           readOnly: !1,
           items: {
             type: 'object',
-            format: 'object',
             title: '数组项',
             description: '',
             isRequired: !1,
             readOnly: !1,
             properties: {
               name: {
-                type: 'string',
-                format: 'input',
+                type: 'input',
                 title: '名字',
                 default: '',
                 description: '',
@@ -496,12 +511,10 @@
         },
         'empty-array': {
           type: 'array',
-          format: 'array',
           title: '数组Array',
           description: '',
           items: {
             type: 'object',
-            format: 'object',
             title: '数组项',
             description: '',
             properties: {},
@@ -509,15 +522,13 @@
         },
         'empty-object': {
           type: 'object',
-          format: 'object',
           title: '对象Object',
           description: '',
           properties: {},
         },
         url: {
-          type: 'string',
+          type: 'url',
           title: '链接地址url',
-          format: 'url',
           default: '',
           description: '',
           placeholder: '',
@@ -525,9 +536,8 @@
           readOnly: !1,
         },
         textarea: {
-          type: 'string',
+          type: 'textarea',
           title: '多行文本框',
-          format: 'textarea',
           default: '',
           description: '',
           placeholder: '',
@@ -535,18 +545,16 @@
           readOnly: !1,
         },
         color: {
-          type: 'string',
+          type: 'color',
           title: '颜色color',
-          format: 'color',
           default: '#ffffff',
           description: '',
           isRequired: !1,
           readOnly: !1,
         },
         image: {
-          type: 'string',
           title: '图片',
-          format: 'image',
+          type: 'image',
           default: '',
           description: '上传图片',
           imgWidth: 200,
@@ -558,7 +566,6 @@
         number: {
           type: 'number',
           title: '数量number',
-          format: 'number',
           default: 1,
           minimum: 0,
           maximum: 1e3,
@@ -567,18 +574,16 @@
           readOnly: !1,
         },
         json: {
-          type: 'string',
           title: 'json数据',
-          format: 'json',
+          type: 'json',
           default: '{}',
           description: '',
           isRequired: !1,
           readOnly: !1,
         },
         codearea: {
-          type: 'string',
+          type: 'codearea',
           title: '函数类型',
-          format: 'codearea',
           placeholder: '请输入函数方法',
           default: 'function func() { console.log("hello, world!"); }',
           description: '用于定义函数方法',
@@ -586,9 +591,8 @@
           readOnly: !1,
         },
         htmlarea: {
-          type: 'string',
           title: '富文本',
-          format: 'htmlarea',
+          type: 'htmlarea',
           placeholder: '请输入html代码片段',
           default: '<p>hello,world!</p>',
           description: '用于放置html代码片段',
@@ -596,9 +600,8 @@
           readOnly: !1,
         },
         'text-editor': {
-          type: 'string',
+          type: 'text-editor',
           title: '富文本',
-          format: 'text-editor',
           default: '',
           description: '',
           placeholder: '',
@@ -606,9 +609,8 @@
           readOnly: !1,
         },
         date: {
-          type: 'string',
+          type: 'date',
           title: '日期Date',
-          format: 'date',
           default: '',
           description: '',
           placeholder: '',
@@ -616,9 +618,8 @@
           readOnly: !1,
         },
         'date-time': {
-          type: 'string',
+          type: 'date-time',
           title: '日期时间',
-          format: 'date-time',
           default: '',
           description: '',
           placeholder: '',
@@ -626,9 +627,8 @@
           readOnly: !1,
         },
         time: {
-          type: 'string',
+          type: 'time',
           title: '时间Time',
-          format: 'time',
           default: '',
           description: '',
           placeholder: '',
@@ -636,8 +636,7 @@
           readOnly: !1,
         },
         quantity: {
-          type: 'object',
-          format: 'quantity',
+          type: 'quantity',
           title: '单位计量',
           isRequired: !1,
           readOnly: !1,
@@ -645,7 +644,6 @@
             unit: {
               type: 'number',
               title: '单位数值',
-              format: 'number',
               default: 50,
               minimum: 0,
               maximum: 1e3,
@@ -654,8 +652,7 @@
               readOnly: !1,
             },
             quantity: {
-              type: 'string',
-              format: 'typeSelect',
+              type: 'typeSelect',
               default: 'px',
               enum: ['px', 'rem', 'em', '%'],
               enumextra: ['px', 'rem', 'em', '%'],
@@ -667,24 +664,21 @@
           propertyOrder: ['unit', 'quantity'],
         },
         'box-style': {
-          type: 'object',
-          format: 'box-style',
+          type: 'box-style',
           title: '盒子模型',
           isRequired: !1,
           readOnly: !1,
           properties: {
             unit: {
-              type: 'string',
               title: '单位数值',
-              format: 'string',
+              type: 'string',
               default: '0',
               description: '',
               isRequired: !1,
               readOnly: !1,
             },
             quantity: {
-              type: 'string',
-              format: 'typeSelect',
+              type: 'typeSelect',
               default: 'px',
               enum: ['px', 'rem', 'em', '%'],
               enumextra: ['px', 'rem', 'em', '%'],
@@ -696,9 +690,8 @@
           propertyOrder: ['unit', 'quantity'],
         },
         radio: {
-          type: 'string',
+          type: 'radio',
           title: '单选',
-          format: 'radio',
           options: [
             { label: '选项a', value: 'a' },
             { label: '选项b', value: 'b' },
@@ -710,9 +703,8 @@
           readOnly: !1,
         },
         'single-select': {
-          type: 'string',
+          type: 'single-select',
           title: '下拉单选',
-          format: 'single-select',
           options: [
             { label: '选项a', value: 'a' },
             { label: '选项b', value: 'b' },
@@ -724,9 +716,8 @@
           readOnly: !1,
         },
         select: {
-          type: 'array',
+          type: 'select',
           title: '多选',
-          format: 'select',
           options: [
             { label: '选项a', value: 'a' },
             { label: '选项b', value: 'b' },
@@ -738,30 +729,26 @@
           readOnly: !1,
         },
         'dynamic-data': {
-          type: 'object',
-          format: 'dynamic-data',
+          type: 'dynamic-data',
           title: '动态数据源',
           readOnly: !1,
           properties: {
             type: {
-              type: 'string',
               default: 'local',
-              format: 'typeSelect',
+              type: 'typeSelect',
               enum: ['local', 'remote'],
               enumextra: ['本地数据', '接口数据'],
               title: '数据类型',
             },
             config: {
-              type: 'object',
               title: '接口配置',
-              format: 'object',
+              type: 'object',
               description: '用于存放接口的配置数据(url、请求参数等)',
               isRequired: !0,
               properties: {
                 dataName: {
-                  type: 'string',
                   default: 'local',
-                  format: 'typeSelect',
+                  type: 'typeSelect',
                   enum: ['local', 'remote'],
                   enumextra: ['本地数据', '接口数据'],
                   title: '数据类型',
@@ -769,14 +756,12 @@
                 body: {
                   type: 'object',
                   title: '请求参数配置',
-                  format: 'object',
                   description: '用于配置当前接口的请求参数数值',
                   isRequired: !0,
                 },
                 filter: {
-                  type: 'string',
                   title: '过滤器函数体',
-                  format: 'codearea',
+                  type: 'codearea',
                   default: 'return data;',
                   description: '用于定义过滤接口数据',
                   isRequired: !0,
@@ -785,17 +770,15 @@
               propertyOrder: ['dataName', 'body', 'filter'],
             },
             data: {
-              type: 'string',
               title: '数据内容',
-              format: 'json',
+              type: 'json',
               default: '{}',
               description: '用于存放DynamicData的数据内容',
               isRequired: !0,
             },
             localFilter: {
-              type: 'string',
               title: '过滤器',
-              format: 'codearea',
+              type: 'codearea',
               default: 'return data;',
               description: '用于定义过滤本地数据',
               isRequired: !0,
@@ -803,30 +786,19 @@
           },
           propertyOrder: ['type', 'config', 'data', 'localFilter'],
         },
-        datasource: f,
-        event: d,
-        widget: {
-          type: 'string',
-          title: '内嵌组件数据',
-          format: 'widget',
-          default: '{}',
-          description: '用于存放内嵌组件的渲染相关数据',
-          isRequired: !1,
-          readOnly: !0,
-        },
+        datasource: g,
+        event: b,
       },
-      m = {
+      q = {
         on: {
-          type: 'object',
-          format: 'event',
+          type: 'event',
           title: '事件',
           isRequired: !1,
           readOnly: !1,
           properties: {
             type: {
-              type: 'string',
               default: 'on',
-              format: 'typeSelect',
+              type: 'typeSelect',
               enum: ['on', 'emit'],
               enumextra: ['on', 'emit'],
               title: '事件类型',
@@ -834,8 +806,7 @@
               readOnly: !1,
             },
             register: {
-              type: 'string',
-              format: 'input',
+              type: 'input',
               default: 'eventName',
               title: '注册事件',
               description: '用于输入注册事件的名称',
@@ -844,9 +815,8 @@
               readOnly: !1,
             },
             actionFunc: {
-              type: 'string',
               title: '执行函数',
-              format: 'codearea',
+              type: 'codearea',
               default: '() => {}',
               description: '',
               isRequired: !1,
@@ -855,99 +825,63 @@
           },
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
-        emit: d,
+        emit: b,
       },
-      g = {
-        local: f,
-        remote: {
-          type: 'object',
-          format: 'datasource',
-          title: '数据源',
-          readOnly: !1,
-          properties: {
-            type: {
-              type: 'string',
-              default: 'remote',
-              format: 'typeSelect',
-              enum: ['local', 'remote'],
-              enumextra: ['local', 'remote'],
-              title: '数据源类型',
-            },
-            data: {
-              type: 'string',
-              title: '远程json数据',
-              placeholder: '请输入远程json数据源地址',
-              format: 'url',
-              default: 'http://xxx',
-              isRequired: !0,
-              description: '用于设置获取元素数据的请求地址',
-            },
-            filter: {
-              type: 'string',
-              title: '过滤器',
-              format: 'codearea',
-              default: '() => {}',
-              description: '用于定义过滤当前数据的函数',
-              isRequired: !0,
-            },
-          },
-          propertyOrder: ['type', 'data', 'filter'],
-        },
-      };
-    function b(e) {
+      x = { local: g, remote: O };
+    function R(e) {
       return /^http[s]?:\/\/.*/.test(e);
     }
-    function v(e) {
+    function S(e) {
       return 'String' === Object.prototype.toString.call(e).slice(8, -1);
     }
-    function O(e) {
+    function N(e) {
       return (
         'number' == typeof e ||
         '[object Number]' === Object.prototype.toString.call(e)
       );
     }
-    function j(e) {
+    function D(e) {
       return 'Boolean' === Object.prototype.toString.call(e).slice(8, -1);
     }
-    function h(e) {
+    function k(e) {
       return /^\d{4}-\d{2}-\d{2}$/.test(e);
     }
-    function q(e) {
+    function F(e) {
       return (
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(e) ||
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(e)
       );
     }
-    function x(e) {
+    function T(e) {
       return /^\d{2}:\d{2}:\d{2}$/.test(e) || /^\d{2}:\d{2}$/.test(e);
     }
-    function R(e) {
+    function w(e) {
       var t = !1;
       return (
         'Array' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
         t
       );
     }
-    function S(e) {
-      if (!R(e)) return !1;
-      for (var t = 0, r = e.length; t < r; t++) if (!v(e[t])) return !1;
+    function P(e) {
+      if (!w(e)) return !1;
+      for (var t = 0, r = e.length; t < r; t++) if (!S(e[t])) return !1;
       return !0;
     }
-    function N(e) {
+    function J(e) {
       var t = !1;
       return (
         'Object' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
         t
       );
     }
-    function D(e) {
+    function E(e) {
       var t = !1;
-      return y.quantity.properties.quantity.enum.indexOf(e) >= 0 && (t = !0), t;
+      return j.quantity.properties.quantity.enum.indexOf(e) >= 0 && (t = !0), t;
     }
-    function k(e) {
+    function $(e) {
       return /^#[0-9a-f]{6}$/.test(e) || /^#[0-9a-f]{3}$/.test(e);
     }
-    function F(e) {
+    function B(e) {
       var t = !1;
       return (
         'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
@@ -955,77 +889,77 @@
         t
       );
     }
-    function w(e) {
+    function A(e) {
       var t;
       return (
         (t =
-          e && N(e)
+          e && J(e)
             ? (function (e) {
                 var t;
-                if (N(e)) {
+                if (J(e)) {
                   var r = Object.keys(e);
                   e.data && e.filter && 2 === r.length
-                    ? (t = R(e.data) || N(e.data) ? i(g.local) : i(g.remote))
+                    ? (t = w(e.data) || J(e.data) ? i(x.local) : i(x.remote))
                     : e.trigger && e.eventData && 2 === r.length
-                      ? (t = i(m.emit))
+                      ? (t = i(q.emit))
                       : e.register && e.actionFunc && 2 === r.length
-                        ? (t = i(m.on))
-                        : e.quantity && D(e.quantity) && 2 === r.length
-                          ? (t = i(y.quantity))
-                          : ((t = i(y['empty-object'])),
+                        ? (t = i(q.on))
+                        : e.quantity && E(e.quantity) && 2 === r.length
+                          ? (t = i(j.quantity))
+                          : ((t = i(j['empty-object'])),
                             Object.keys(e).map(function (r) {
                               var i = e[r];
-                              t.properties[r] = w(i);
+                              t.properties[r] = A(i);
                             }));
                 }
                 return t;
               })(e)
-            : e && R(e)
+            : e && w(e)
               ? (function (e) {
                   var t;
-                  if (e && R(e))
-                    if (S(e)) {
-                      (t = i(y.select)).items.enum = e;
+                  if (e && w(e))
+                    if (P(e)) {
+                      (t = i(j.select)).items.enum = e;
                       var r = t.items.enumextra.length,
-                        a = e.length;
-                      if (a > r)
-                        for (var n = r, o = a; n < o; n++)
-                          t.items.enumextra.push('选项' + e(n));
+                        n = e.length;
+                      if (n > r)
+                        for (var a = r, o = n; a < o; a++)
+                          t.items.enumextra.push('选项' + e(a));
                     } else {
-                      t = i(y['empty-array']);
-                      var p = w(e[0]);
+                      t = i(j['empty-array']);
+                      var p = A(e[0]);
                       t.items.properties = p.properties;
                     }
                   return t;
                 })(e)
               : (function (e) {
                   var t = '';
-                  if (j(e)) t = i(y.boolean);
-                  else if (O(e)) t = i(y.number);
-                  else if (b(e)) t = i(y.url);
-                  else if (h(e)) t = i(y.date);
-                  else if (q(e)) t = i(y['date-time']);
-                  else if (x(e)) t = i(y.time);
-                  else if (k(e)) t = i(y.color);
+                  if (D(e)) t = i(j.boolean);
+                  else if (N(e)) t = i(j.number);
+                  else if (R(e)) t = i(j.url);
+                  else if (k(e)) t = i(j.date);
+                  else if (F(e)) t = i(j['date-time']);
+                  else if (T(e)) t = i(j.time);
+                  else if ($(e)) t = i(j.color);
                   else
                     try {
-                      t = O(JSON.parse(e)) ? i(y.input) : i(y.json);
+                      t = N(JSON.parse(e)) ? i(j.input) : i(j.json);
                     } catch (r) {
-                      t = e && e.length > 30 ? i(y.textarea) : i(y.input);
+                      t = e && e.length > 30 ? i(j.textarea) : i(j.input);
                     }
                   return t;
                 })(e)),
         t
       );
     }
-    function T(e) {
-      var t = e && e.format;
+    function C(e) {
+      var t = e && e.type;
       return t || (t = e && e.type ? e.type : 'input'), t;
     }
-    function P(e) {
+    function I(e) {
       var t = !0;
       if (!e) return t;
-      var r = T(e);
+      var r = C(e);
       return (
         (('object' === r &&
           e.properties &&
@@ -1037,87 +971,39 @@
             e.items.propertyOrder &&
             e.items.propertyOrder.length > 0) ||
           (e.type && 'array' !== e.type && 'object' !== e.type) ||
-          e.format) &&
+          e.type) &&
           (t = !1),
         t
       );
     }
-    function J(e) {
-      var t = !0;
-      if (
-        e &&
-        'object' === T(e) &&
-        e.properties &&
-        e.propertyOrder &&
-        e.propertyOrder.length > 0
-      ) {
-        var r = e.properties.func || {},
-          i = e.properties.style || {},
-          a = e.properties.data || {};
-        ((r.propertyOrder && r.propertyOrder.length > 0) ||
-          (i.propertyOrder && i.propertyOrder.length > 0) ||
-          (a.propertyOrder && a.propertyOrder.length > 0)) &&
-          (t = !1);
-      }
-      return t;
-    }
-    function $(e) {
-      var t = !1;
-      return (
-        e &&
-          'object' === T(e) &&
-          e.properties &&
-          e.propertyOrder &&
-          e.properties.func &&
-          e.properties.style &&
-          e.properties.data &&
-          (t = !0),
-        t
-      );
-    }
-    function B(e) {
+    function K(e) {
       var t = !1,
         r = e.lastUpdateTime,
-        i = new Date('2024-10-03T23:30:00.691Z').getTime();
+        i = new Date('2024-10-05T00:01:00.691Z').getTime();
       return r && new Date(r).getTime() >= i && (t = !0), t;
     }
-    function C(e) {
+    function L(e) {
       var t = !1;
       return (
         ('object' !== e &&
           'func' !== e &&
           'style' !== e &&
           'data' !== e &&
-          'widgets' !== e &&
           'func-schema' !== e &&
           'style-schema' !== e &&
           'data-schema' !== e &&
-          'event-schema' !== e &&
-          'widgets-schema' !== e) ||
+          'event-schema' !== e) ||
           (t = !0),
         t
       );
     }
-    function E(e) {
-      var t = !1;
-      return (
-        ('func' !== e &&
-          'style' !== e &&
-          'data' !== e &&
-          'props' !== e &&
-          'event-schema' !== e &&
-          'widgets' !== e) ||
-          (t = !0),
-        t
-      );
-    }
-    function I(e) {
+    function U(e) {
       var t = !0;
       return (
-        'object' === (e.type || T(e)) && e.propertyOrder && e.properties
+        'object' === (e.type || C(e)) && e.propertyOrder && e.properties
           ? e.propertyOrder.map(function (r) {
               var i = e.properties[r];
-              ('object' === (e.type || T(i)) &&
+              ('object' === (e.type || C(i)) &&
                 i.propertyOrder &&
                 i.properties) ||
                 (t = !1);
@@ -1126,96 +1012,96 @@
         t
       );
     }
-    function L(e, t) {
+    function _(e, t) {
       var r = e.split('-'),
         i = t.split('-');
       return r.pop(), i.pop(), r.join('-') === i.join('-');
     }
-    function U(e, t) {
+    function M(e, t) {
       for (
         var r = e.split('-'),
           i = t.split('-'),
-          a = 'before',
-          n = 0,
+          n = 'before',
+          a = 0,
           o = (r.length > i.length ? i : r).length;
-        n < o;
-        n += 1
+        a < o;
+        a += 1
       )
-        Number(r[n]) > Number(i[n]) && (a = 'after');
-      return a;
+        Number(r[a]) > Number(i[a]) && (n = 'after');
+      return n;
     }
-    function A(e) {
+    function z(e) {
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function K(e) {
+    function W(e) {
       var t = e.split('-'),
         r = t.pop(),
         i = Number(r) + 1;
       return t.push('' + i), t.join('-');
     }
-    function W(e) {
+    function H(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    function _(e) {
+    function Q(e) {
       var t = e.split('-'),
         r = t.pop();
       return t.push(Number(r) - 1), t.join('-');
     }
-    function M(e) {
+    function V(e) {
       var t = e.split('-'),
         r = t.pop();
       return t.push(Number(r) + 1), t.join('-');
     }
-    function z(e, t) {
+    function Z(e, t) {
       var r = t || {};
       return (
-        N(e) &&
+        J(e) &&
           'object' === e.type &&
           e.properties &&
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (t) {
               var i = e.properties[t];
-              r = H(i, r);
+              r = G(i, r);
             },
           ),
         r
       );
     }
-    function H(e, t) {
+    function G(e, t) {
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
-        var a = T(e);
-        'object' === a || 'func' === a || 'style' === a || 'data' === a
+        var n = C(e);
+        'object' === n || 'func' === n || 'style' === n || 'data' === n
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
-            (i = z(e, i)))
-          : 'array' === a
+            (i = Z(e, i)))
+          : 'array' === n
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
-              (i = z((e = e.items), i)))
-            : !r && i[a]
-              ? (i[a] += 1)
-              : r || (i[a] = 1);
+              (i = Z((e = e.items), i)))
+            : !r && i[n]
+              ? (i[n] += 1)
+              : r || (i[n] = 1);
       }
       return i;
     }
-    function Q(e) {
+    function X(e) {
       var t = i(e);
       if (
         (!t.title && t.description && (t.title = t.description),
-        t.format || (t.format = T(t)),
-        ('quantity' !== t.format &&
-          'array' !== t.format &&
-          'datasource' !== t.format &&
-          'event' !== t.format &&
-          'object' !== t.format &&
-          'radio' !== t.format &&
-          'select' !== t.format) ||
-          !n(t.default) ||
+        t.type || (t.type = C(t)),
+        ('quantity' !== t.type &&
+          'array' !== t.type &&
+          'datasource' !== t.type &&
+          'event' !== t.type &&
+          'object' !== t.type &&
+          'radio' !== t.type &&
+          'select' !== t.type) ||
+          !a(t.default) ||
           delete t.default,
-        'radio' === t.format &&
+        'radio' === t.type &&
           ((t.type = 'string'),
           t.enum &&
             t.enumextra &&
@@ -1226,73 +1112,72 @@
             }),
             delete t.enum,
             delete t.enumextra)),
-        'quantity' === t.format)
+        'quantity' === t.type)
       ) {
         var r = t.properties,
-          a = i(y.quantity);
-        if (r.quantity && N(r.quantity) && r.quantity.default) {
+          n = i(j.quantity);
+        if (r.quantity && J(r.quantity) && r.quantity.default) {
           var o = r.quantity.default;
-          a.properties.quantity.default = 'percent' === o ? '%' : o;
+          n.properties.quantity.default = 'percent' === o ? '%' : o;
         }
-        t = a;
+        t = n;
       }
-      if ('datasource' === t.format) {
+      if ('datasource' === t.type) {
         var p = t.properties,
           u = p.type && p.type.default,
           l = p.data && p.data.default,
-          s = p.filter && p.filter.default;
+          d = p.filter && p.filter.default;
         'local' === u
-          ? ((t = i(g.local)).properties.data.default = l ? i(l) : '{}')
-          : ((t = i(g.remote)).properties.data.default = l
+          ? ((t = i(x.local)).properties.data.default = l ? i(l) : '{}')
+          : ((t = i(x.remote)).properties.data.default = l
               ? i(l)
               : 'http://xxx'),
-          (t.properties.filter.default = s ? i(s) : '() => {}');
+          (t.properties.filter.default = d ? i(d) : '() => {}');
       }
-      if ('event' === t.format) {
-        var d = t.properties,
-          f = d.type && d.type.default;
-        if ('in' === f || 'on' === f) {
-          var c = (d.filter && d.filter.default) || '() => {}';
-          (t = i(m.on)),
-            d.actionFunc &&
-              N(d.actionFunc) &&
-              (t.properties.actionFunc.default = d.actionFunc.default || i(c));
+      if ('event' === t.type) {
+        var s = t.properties,
+          c = s.type && s.type.default;
+        if ('in' === c || 'on' === c) {
+          var y = (s.filter && s.filter.default) || '() => {}';
+          (t = i(q.on)),
+            s.actionFunc &&
+              J(s.actionFunc) &&
+              (t.properties.actionFunc.default = s.actionFunc.default || i(y));
         } else {
-          var b = (d.filter && d.filter.default) || '{}';
-          (t = i(m.emit)),
-            d.eventData &&
-              N(d.eventData) &&
-              (t.properties.eventData.default = d.eventData.default || i(b));
+          var f = (s.filter && s.filter.default) || '{}';
+          (t = i(q.emit)),
+            s.eventData &&
+              J(s.eventData) &&
+              (t.properties.eventData.default = s.eventData.default || i(f));
         }
       }
       return (
         t.properties &&
-          ((t.required = Object.keys(t.properties)),
-          t.propertyOrder || (t.propertyOrder = t.required),
+          (t.propertyOrder || (t.propertyOrder = Object.keys(t.properties)),
           t.propertyOrder.map(function (e) {
-            t.properties[e] = V(t.properties[e]);
+            t.properties[e] = Y(t.properties[e]);
           })),
-        t.items && (t.items = V(t.items)),
+        t.items && (t.items = Y(t.items)),
         t
       );
     }
-    function V(e) {
+    function Y(e) {
       var t = i(e);
       return (
-        t.format || (t.format = T(t)),
         t.required || delete t.required,
-        ('quantity' !== t.format &&
-          'array' !== t.format &&
-          'datasource' !== t.format &&
-          'event' !== t.format &&
-          'object' !== t.format &&
-          'radio' !== t.format &&
-          'select' !== t.format) ||
-          !n(t.default) ||
+        t.type && t.type && (t.type = t.type),
+        ('quantity' !== t.type &&
+          'array' !== t.type &&
+          'datasource' !== t.type &&
+          'event' !== t.type &&
+          'object' !== t.type &&
+          'radio' !== t.type &&
+          'select' !== t.type) ||
+          !a(t.default) ||
           delete t.default,
-        ('radio' !== t.format &&
-          'select' !== t.format &&
-          'single-select' !== t.format) ||
+        ('radio' !== t.type &&
+          'select' !== t.type &&
+          'single-select' !== t.type) ||
           (t.items &&
             t.items.enum &&
             t.items.enumextra &&
@@ -1304,27 +1189,27 @@
         t.properties &&
           (t.propertyOrder || (t.propertyOrder = Object.keys(t.properties)),
           t.propertyOrder.map(function (e) {
-            t.properties[e] = V(t.properties[e]);
+            t.properties[e] = Y(t.properties[e]);
           })),
-        'array' === t.format && t.items && (t.items = V(t.items)),
+        'array' === t.type && t.items && (t.items = Y(t.items)),
         t
       );
     }
-    function Z(e, t) {
+    function ee(e, t) {
       var r = '',
         i = t;
-      n(i) && n(e.default) && typeof i != typeof e.default && (i = void 0);
-      var a = n(i) ? i : e.default;
+      a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
+      var n = a(i) ? i : e.default;
       switch (e.type) {
         case 'string':
-          if ('typeSelect' === e.format) r = e.default;
-          else if ('color' === e.format)
-            ('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
-              (r = a || '#ffffff');
-          else if ('json' === e.format || 'widget' === e.format) {
+          if ('typeSelect' === e.type) r = e.default;
+          else if ('color' === e.type)
+            ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
+              (r = n || '#ffffff');
+          else if ('json' === e.type) {
             var o = '';
-            if (N(t) || R(t)) o = t;
-            else if (F(t) || '' === t) o = {};
+            if (J(t) || w(t)) o = t;
+            else if (B(t) || '' === t) o = {};
             else
               try {
                 o = JSON.parse(t);
@@ -1332,34 +1217,34 @@
                 o = {};
               }
             r = o;
-          } else r = n(a) ? a : '';
+          } else r = a(n) ? n : '';
           break;
         case 'boolean':
-          r = !!n(a) && a;
+          r = !!a(n) && n;
           break;
         case 'number':
-          r = n(a) ? a : 1;
+          r = a(n) ? n : 1;
           break;
         default:
-          r = n(a) ? a : '';
+          r = a(n) ? n : '';
       }
       return r;
     }
-    function G(e, t) {
+    function te(e, t) {
       var r = {},
-        a = T(e);
-      if (N(e) && 'object' === e.type) {
+        n = C(e);
+      if (J(e) && 'object' === e.type) {
         var o = e,
           p = t;
-        n(p) && n(o.default) && typeof p != typeof o.default && (p = void 0);
-        var u = n(p) ? p : o.default;
-        'dynamic-data' === a
-          ? ((r = i(c)),
+        a(p) && a(o.default) && typeof p != typeof o.default && (p = void 0);
+        var u = a(p) ? p : o.default;
+        'dynamic-data' === n
+          ? ((r = i(h)),
             u &&
-              N(u) &&
+              J(u) &&
               '{}' !== JSON.stringify(u) &&
               (r = Object.assign(r, u)))
-          : 'datasource' === a
+          : 'datasource' === n
             ? o.properties &&
               o.properties.type &&
               o.properties.type.default &&
@@ -1372,7 +1257,7 @@
                 u && u.data && (r.data = u.data),
                 u && u.filter && (r.filter = u.filter),
                 '{}' === r.data && (r.data = 'http://xxx'))
-            : 'event' === a
+            : 'event' === n
               ? o.properties &&
                 o.properties.type &&
                 o.properties.type.default &&
@@ -1398,64 +1283,64 @@
                   ? e.propertyOrder
                   : Object.keys(e.properties)
                 ).map(function (i) {
-                  var a = e.properties[i],
-                    n = t && t[i];
-                  switch (a.type) {
+                  var n = e.properties[i],
+                    a = t && t[i];
+                  switch (n.type) {
                     case 'array':
-                      r[i] = X(a, n);
+                      r[i] = re(n, a);
                       break;
                     case 'object':
-                      r[i] = G(a, n);
+                      r[i] = te(n, a);
                       break;
                     default:
-                      r[i] = Z(a, n);
+                      r[i] = ee(n, a);
                   }
                 });
       }
       return r;
     }
-    function X(e, t) {
+    function re(e, t) {
       var r = [];
       if (e && 'array' === e.type) {
         var i = t;
-        n(i) && n(e.default) && typeof i != typeof e.default && (i = void 0);
-        var a = n(i) ? i : e.default;
-        if ('array' === e.format)
-          if (R(a))
-            a.map(function (t) {
-              r.push(G(e.items, t));
+        a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
+        var n = a(i) ? i : e.default;
+        if ('array' === e.type)
+          if (w(n))
+            n.map(function (t) {
+              r.push(te(e.items, t));
             });
           else {
-            var o = G(e.items, a);
+            var o = te(e.items, n);
             r.push(o);
           }
-        else r = n(a) ? a : [];
+        else r = a(n) ? n : [];
       }
       return r;
     }
-    function Y(e, t) {
+    function ie(e, t) {
       return 'object' === e.type
-        ? G(e, t)
+        ? te(e, t)
         : 'array' === e.type
-          ? X(e, t)
-          : Z(e, t);
+          ? re(e, t)
+          : ee(e, t);
     }
-    var ee = y;
-    function te(e, t) {
+    var ne = j;
+    function ae(e, t) {
       var r = t || [];
       if (e && '{}' !== JSON.stringify(e))
-        if (N(e))
+        if (J(e))
           if (
             e.type &&
             'remote' === e.type &&
             e.config &&
-            N(e.config) &&
+            J(e.config) &&
             e.config.dataName &&
-            n(e.localFilter) &&
-            n(e.data)
+            a(e.localFilter) &&
+            a(e.data)
           ) {
             var i = e.config.body;
-            if (i && !N(i))
+            if (i && !J(i))
               try {
                 i = JSON.parse(i);
               } catch (e) {
@@ -1464,16 +1349,16 @@
             r.push({ id: e.config.id, dataName: e.config.dataName, body: i });
           } else
             Object.keys(e).map(function (t) {
-              te(e[t], r);
+              ae(e[t], r);
             });
         else
-          R(e) &&
+          w(e) &&
             e.map(function (e) {
-              te(e, r);
+              ae(e, r);
             });
       return r;
     }
-    function re(e, t) {
+    function oe(e, t) {
       var r = t || 'data';
       return (
         e.split('-').map(function (e) {
@@ -1482,38 +1367,73 @@
         r
       );
     }
-    function ie(e, t) {
+    function pe(e, t) {
       var r = [];
       return (
-        N(e)
+        J(e)
           ? Object.keys(e).map(function (i) {
-              var a = e[i],
-                n = t ? t + '-' + i : i;
-              N(a) || R(a)
-                ? r.push({ title: i, value: n, key: n, children: ie(a, n) })
-                : r.push({ title: i, value: n, key: n });
+              var n = e[i],
+                a = t ? t + '-' + i : i;
+              J(n) || w(n)
+                ? r.push({ title: i, value: a, key: a, children: pe(n, a) })
+                : r.push({ title: i, value: a, key: a });
             })
-          : R(e) &&
+          : w(e) &&
             e.map(function (e, i) {
-              var a = i.toString(),
-                n = t ? t + '-' + i : a;
-              N(e) || R(e)
-                ? r.push({ title: a, value: n, key: n, children: ie(e, n) })
-                : r.push({ title: a, value: n, key: n });
+              var n = i.toString(),
+                a = t ? t + '-' + i : n;
+              J(e) || w(e)
+                ? r.push({ title: n, value: a, key: a, children: pe(e, a) })
+                : r.push({ title: n, value: a, key: a });
             }),
         r
       );
     }
-    function ae(e) {
+    var ue = {
+      array: 'array',
+      boolean: 'boolean',
+      'box-style': 'object',
+      codearea: 'string',
+      color: 'string',
+      datasource: 'object',
+      date: 'string',
+      'date-time': 'string',
+      'dynamic-data': 'object',
+      event: 'object',
+      'func-body': 'string',
+      htmlarea: 'string',
+      image: 'string',
+      input: 'string',
+      json: 'string',
+      number: 'number',
+      object: 'object',
+      quantity: 'string',
+      radio: 'string',
+      select: 'array',
+      'single-select': 'string',
+      textarea: 'string',
+      'text-editor': 'string',
+      time: 'string',
+      url: 'string',
+    };
+    function le(e) {
+      return ue[e] || e;
+    }
+    function de(e, t) {
+      ue[e]
+        ? console.warn('当前已经存在' + e + '(' + ue[e] + ')，暂时不支持覆盖。')
+        : (ue[e] = t);
+    }
+    function se(e) {
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function ne(e) {
+    function ce(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    var oe = [
+    var ye = [
       'key',
       'enum',
       'enumextra',
@@ -1541,10 +1461,6 @@
       'event',
       'array',
       'object',
-      'widget',
-      'widgets',
-      'widgetUUID',
-      'embedWidgetList',
     ];
     return t;
   })();

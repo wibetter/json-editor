@@ -28,7 +28,7 @@ class IndexDemo extends React.PureComponent {
         properties: {
           props: {
             type: 'object',
-            format: 'func',
+            isFixedSchema: true,
             title: '属性设置',
             readOnly: false,
             properties: {},
@@ -36,7 +36,7 @@ class IndexDemo extends React.PureComponent {
           },
           style: {
             type: 'object',
-            format: 'style',
+            isFixedSchema: true,
             title: '样式设置',
             readOnly: false,
             properties: {
@@ -406,7 +406,7 @@ class IndexDemo extends React.PureComponent {
           },
           data: {
             type: 'object',
-            format: 'data',
+            isFixedSchema: true,
             title: '数据设置',
             readOnly: false,
             properties: {},
@@ -414,7 +414,7 @@ class IndexDemo extends React.PureComponent {
           },
           event: {
             type: 'object',
-            format: 'event-schema',
+            isFixedSchema: true,
             title: '事件设置',
             isFixedSchema: true,
             readOnly: false,

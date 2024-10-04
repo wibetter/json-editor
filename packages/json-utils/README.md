@@ -54,13 +54,10 @@
 
 ### 业务相关的json工具方法
 > 主要在JSON数据可视化组件中使用（[JSONSchema](https://github.com/wibetter/json-schema-editor)、[JSONEditor](https://github.com/wibetter/json-editor)）
-- isEmptyWidgetSchema: 判断是否为空的WidgetSchema
-- isUsedToWidgetConfig: 判断是否为用于区块配置的jsonSchema数据
 - isNewSchemaData: 判断是否是最新版的schema数据
 - oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
 - schemaMetaList: 目前JSON数据可视化组件（JSONSchema、JSONEditor）提供的元数据类型清单
 - dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
-- isFirstSchemaData: 根据format判断是否为一级类型字段(func、style、data)
 - isBoxSchemaData: 根据format判断是否为容器类型字段(func、style、data、object)
 - getCurrentFormat: 获取当前字段的类型（format）
 - isEmptySchema: 判断是否为空的Schema

@@ -19,11 +19,9 @@ const MappingRender = (props) => {
     case 'func':
     case 'style':
     case 'data':
-    case 'widgets':
     case 'func-schema':
     case 'style-schema':
     case 'data-schema':
-    case 'widgets-schema':
     case 'event-schema':
       return ObjectSchema(props);
       break;

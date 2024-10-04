@@ -7,7 +7,7 @@
  * 如果当前字段没有format字段，则根据type字段赋予默认的类型
  */
 export function getCurrentFormat(targetJsonData) {
-  let currentType = targetJsonData && targetJsonData.format;
+  let currentType = targetJsonData && targetJsonData.type;
   if (!currentType) {
     if (targetJsonData && targetJsonData.type) {
       currentType = targetJsonData.type;
@@ -48,62 +48,12 @@ export function isEmptySchema(targetJsonSchema) {
     (targetJsonSchema.type &&
       targetJsonSchema.type !== 'array' &&
       targetJsonSchema.type !== 'object') ||
-    targetJsonSchema.format
+    targetJsonSchema.type
   ) {
     // 其他基本类型
     isEmpty = false;
   }
   return isEmpty;
-}
-
-/** 判断是否为空的WidgetSchema
- * 备注：WidgetSchema 一级字段必须为object，且有三个子属性：func、style、data
- * */
-export function isEmptyWidgetSchema(targetJsonSchema) {
-  let isEmpty = true;
-  if (targetJsonSchema) {
-    const curType = getCurrentFormat(targetJsonSchema);
-    if (
-      curType === 'object' &&
-      targetJsonSchema.properties &&
-      targetJsonSchema.propertyOrder &&
-      targetJsonSchema.propertyOrder.length > 0
-    ) {
-      const funcSchema = targetJsonSchema.properties.func || {};
-      const styleSchema = targetJsonSchema.properties.style || {};
-      const dataSchema = targetJsonSchema.properties.data || {};
-      if (
-        (funcSchema.propertyOrder && funcSchema.propertyOrder.length > 0) ||
-        (styleSchema.propertyOrder && styleSchema.propertyOrder.length > 0) ||
-        (dataSchema.propertyOrder && dataSchema.propertyOrder.length > 0)
-      ) {
-        isEmpty = false;
-      }
-    }
-  }
-  return isEmpty;
-}
-
-/** 判断是否为用于组件配置的jsonSchema数据
- * 备注：一级字段必须为object（用于规避非法的jsonSchema数据，以及结构单一的jsonSchema数据）
- * 且具备固定的三个子属性（func、style、data）
- * */
-export function isUsedToWidgetConfig(targetJsonSchema) {
-  let isWidgetConfig = false;
-  if (targetJsonSchema) {
-    const curType = getCurrentFormat(targetJsonSchema);
-    if (
-      curType === 'object' &&
-      targetJsonSchema.properties &&
-      targetJsonSchema.propertyOrder &&
-      targetJsonSchema.properties.func &&
-      targetJsonSchema.properties.style &&
-      targetJsonSchema.properties.data
-    ) {
-      isWidgetConfig = true;
-    }
-  }
-  return isWidgetConfig;
 }
 
 /**
@@ -115,7 +65,7 @@ export function isNewSchemaData(schemaData) {
   const { lastUpdateTime } = schemaData;
   // 从那一刻开始就认为是新版JSONSchema
   // const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
-  const newVersionTime = new Date('2024-10-03T23:30:00.691Z').getTime();
+  const newVersionTime = new Date('2024-10-05T00:01:00.691Z').getTime();
   if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
     isNewVersion = true;
   }
@@ -134,35 +84,14 @@ export function isBoxSchemaData(format) {
     format === 'func' ||
     format === 'style' ||
     format === 'data' ||
-    format === 'widgets' ||
     format === 'func-schema' ||
     format === 'style-schema' ||
     format === 'data-schema' ||
-    format === 'event-schema' ||
-    format === 'widgets-schema'
+    format === 'event-schema'
   ) {
     isBoxSchema = true;
   }
   return isBoxSchema;
-}
-
-/** 根据format判断是否是一级类型字段
- *  一级类型字段：func、style、data、props、event-schema、widgets
- *  备注：一级类型字段不允许拖拽和复制
- * */
-export function isFirstSchemaData(format) {
-  let isFirstSchema = false;
-  if (
-    format === 'func' ||
-    format === 'style' ||
-    format === 'data' ||
-    format === 'props' ||
-    format === 'event-schema' ||
-    format === 'widgets'
-  ) {
-    isFirstSchema = true;
-  }
-  return isFirstSchema;
 }
 
 /** 判断是否是结构化的schema数据，

@@ -62,7 +62,7 @@ class ColorFormSchema extends React.PureComponent {
     } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.format); // 是否需要设置成两栏布局
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     return (
       <div
