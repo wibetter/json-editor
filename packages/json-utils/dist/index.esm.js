@@ -1531,24 +1531,6 @@ function isBoxSchemaData(format) {
   return isBoxSchema;
 }
 
-/** 根据format判断是否是一级类型字段
- *  一级类型字段：func、style、data、props、event-schema
- *  备注：一级类型字段不允许拖拽和复制
- * */
-function isFirstSchemaData(format) {
-  var isFirstSchema = false;
-  if (
-    format === 'func' ||
-    format === 'style' ||
-    format === 'data' ||
-    format === 'props' ||
-    format === 'event-schema'
-  ) {
-    isFirstSchema = true;
-  }
-  return isFirstSchema;
-}
-
 /** 判断是否是结构化的schema数据，
  *  判定条件：一级schema为object类型，其所有二级schema也为object类型
  * */
@@ -2591,7 +2573,6 @@ export {
   isDateTimeStr,
   isEmptySchema,
   isEqual,
-  isFirstSchemaData,
   isFunction,
   isNewSchemaData,
   isNumber,

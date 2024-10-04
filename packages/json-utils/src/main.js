@@ -27,7 +27,6 @@
  * isEmptySchema: 判断是否为空的Schema
  * isNewSchemaData: 判断是否是最新版的schema数据
  * isBoxSchemaData: 根据format判断是否是容器类型字段
- * isFirstSchemaData: 根据format判断是否是一级类型字段(func、style、data)
  * isStructuredSchema: 判断是否是结构化schema数据（一级schema为object类型，其所有二级schema为object类型）
  * isSameParent: 判断是否是同一个父元素
  * getCurPosition: 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）

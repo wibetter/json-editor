@@ -37,43 +37,43 @@
           return q;
         },
         KeyWordList: function () {
-          return fe;
+          return ye;
         },
         TypeDataList: function () {
           return j;
         },
         dataRoute2dataPath: function () {
-          return pe;
-        },
-        dynamicDataAnalyzer: function () {
           return oe;
         },
+        dynamicDataAnalyzer: function () {
+          return ae;
+        },
         getCurPosition: function () {
-          return z;
+          return M;
         },
         getCurrentFormat: function () {
           return C;
         },
         getExpectType: function () {
-          return se;
+          return le;
         },
         getJsonDataByKeyRoute: function () {
           return o;
         },
         getNextIndexRoute: function () {
-          return H;
-        },
-        getParentIndexRoute: function () {
           return W;
         },
+        getParentIndexRoute: function () {
+          return z;
+        },
         getParentIndexRoute_CurIndex: function () {
-          return Q;
+          return H;
         },
         getParentKeyRoute: function () {
-          return ce;
+          return se;
         },
         getParentKeyRoute_CurKey: function () {
-          return ye;
+          return ce;
         },
         getSchemaByIndexRoute: function () {
           return p;
@@ -111,9 +111,6 @@
         isEqual: function () {
           return n;
         },
-        isFirstSchemaData: function () {
-          return U;
-        },
         isFunction: function () {
           return B;
         },
@@ -130,7 +127,7 @@
           return E;
         },
         isSameParent: function () {
-          return M;
+          return _;
         },
         isSelect: function () {
           return P;
@@ -139,7 +136,7 @@
           return S;
         },
         isStructuredSchema: function () {
-          return _;
+          return U;
         },
         isTimeStr: function () {
           return T;
@@ -151,37 +148,37 @@
           return A;
         },
         json2treeData: function () {
-          return ue;
+          return pe;
         },
         keyRoute2indexRoute: function () {
-          return s;
+          return d;
         },
         metaElemAnalyzer: function () {
-          return X;
+          return G;
         },
         moveBackward: function () {
-          return Z;
+          return V;
         },
         moveForward: function () {
-          return V;
+          return Q;
         },
         objClone: function () {
           return i;
         },
         oldSchemaToNewSchema: function () {
-          return ee;
+          return Y;
         },
         oldSchemaToNewSchemaV1: function () {
-          return Y;
+          return X;
         },
         registerExpectType: function () {
           return de;
         },
         schema2json: function () {
-          return ne;
+          return ie;
         },
         schemaMetaList: function () {
-          return ae;
+          return ne;
         },
       });
     var r = require('lodash');
@@ -259,7 +256,7 @@
       }
       return i;
     }
-    function s(e, t) {
+    function d(e, t) {
       for (
         var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
         a < o;
@@ -281,7 +278,7 @@
       }
       return i;
     }
-    var d,
+    var s,
       c,
       y,
       f,
@@ -294,14 +291,14 @@
         readOnly: !1,
         properties: {
           a:
-            ((d = { type: 'string', title: '单文本框' }),
-            (d.type = 'input'),
-            (d.default = ''),
-            (d.description = ''),
-            (d.placeholder = ''),
-            (d.isRequired = !1),
-            (d.readOnly = !1),
-            d),
+            ((s = { type: 'string', title: '单文本框' }),
+            (s.type = 'input'),
+            (s.default = ''),
+            (s.description = ''),
+            (s.placeholder = ''),
+            (s.isRequired = !1),
+            (s.readOnly = !1),
+            s),
         },
         propertyOrder: ['a'],
       },
@@ -1001,18 +998,6 @@
       );
     }
     function U(e) {
-      var t = !1;
-      return (
-        ('func' !== e &&
-          'style' !== e &&
-          'data' !== e &&
-          'props' !== e &&
-          'event-schema' !== e) ||
-          (t = !0),
-        t
-      );
-    }
-    function _(e) {
       var t = !0;
       return (
         'object' === (e.type || C(e)) && e.propertyOrder && e.properties
@@ -1027,12 +1012,12 @@
         t
       );
     }
-    function M(e, t) {
+    function _(e, t) {
       var r = e.split('-'),
         i = t.split('-');
       return r.pop(), i.pop(), r.join('-') === i.join('-');
     }
-    function z(e, t) {
+    function M(e, t) {
       for (
         var r = e.split('-'),
           i = t.split('-'),
@@ -1045,32 +1030,32 @@
         Number(r[a]) > Number(i[a]) && (n = 'after');
       return n;
     }
-    function W(e) {
+    function z(e) {
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function H(e) {
+    function W(e) {
       var t = e.split('-'),
         r = t.pop(),
         i = Number(r) + 1;
       return t.push('' + i), t.join('-');
     }
-    function Q(e) {
+    function H(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    function V(e) {
+    function Q(e) {
       var t = e.split('-'),
         r = t.pop();
       return t.push(Number(r) - 1), t.join('-');
     }
-    function Z(e) {
+    function V(e) {
       var t = e.split('-'),
         r = t.pop();
       return t.push(Number(r) + 1), t.join('-');
     }
-    function G(e, t) {
+    function Z(e, t) {
       var r = t || {};
       return (
         J(e) &&
@@ -1079,30 +1064,30 @@
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (t) {
               var i = e.properties[t];
-              r = X(i, r);
+              r = G(i, r);
             },
           ),
         r
       );
     }
-    function X(e, t) {
+    function G(e, t) {
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
         var n = C(e);
         'object' === n || 'func' === n || 'style' === n || 'data' === n
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
-            (i = G(e, i)))
+            (i = Z(e, i)))
           : 'array' === n
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
-              (i = G((e = e.items), i)))
+              (i = Z((e = e.items), i)))
             : !r && i[n]
               ? (i[n] += 1)
               : r || (i[n] = 1);
       }
       return i;
     }
-    function Y(e) {
+    function X(e) {
       var t = i(e);
       if (
         (!t.title && t.description && (t.title = t.description),
@@ -1141,42 +1126,42 @@
         var p = t.properties,
           u = p.type && p.type.default,
           l = p.data && p.data.default,
-          s = p.filter && p.filter.default;
+          d = p.filter && p.filter.default;
         'local' === u
           ? ((t = i(x.local)).properties.data.default = l ? i(l) : '{}')
           : ((t = i(x.remote)).properties.data.default = l
               ? i(l)
               : 'http://xxx'),
-          (t.properties.filter.default = s ? i(s) : '() => {}');
+          (t.properties.filter.default = d ? i(d) : '() => {}');
       }
       if ('event' === t.type) {
-        var d = t.properties,
-          c = d.type && d.type.default;
+        var s = t.properties,
+          c = s.type && s.type.default;
         if ('in' === c || 'on' === c) {
-          var y = (d.filter && d.filter.default) || '() => {}';
+          var y = (s.filter && s.filter.default) || '() => {}';
           (t = i(q.on)),
-            d.actionFunc &&
-              J(d.actionFunc) &&
-              (t.properties.actionFunc.default = d.actionFunc.default || i(y));
+            s.actionFunc &&
+              J(s.actionFunc) &&
+              (t.properties.actionFunc.default = s.actionFunc.default || i(y));
         } else {
-          var f = (d.filter && d.filter.default) || '{}';
+          var f = (s.filter && s.filter.default) || '{}';
           (t = i(q.emit)),
-            d.eventData &&
-              J(d.eventData) &&
-              (t.properties.eventData.default = d.eventData.default || i(f));
+            s.eventData &&
+              J(s.eventData) &&
+              (t.properties.eventData.default = s.eventData.default || i(f));
         }
       }
       return (
         t.properties &&
           (t.propertyOrder || (t.propertyOrder = Object.keys(t.properties)),
           t.propertyOrder.map(function (e) {
-            t.properties[e] = ee(t.properties[e]);
+            t.properties[e] = Y(t.properties[e]);
           })),
-        t.items && (t.items = ee(t.items)),
+        t.items && (t.items = Y(t.items)),
         t
       );
     }
-    function ee(e) {
+    function Y(e) {
       var t = i(e);
       return (
         t.required || delete t.required,
@@ -1204,13 +1189,13 @@
         t.properties &&
           (t.propertyOrder || (t.propertyOrder = Object.keys(t.properties)),
           t.propertyOrder.map(function (e) {
-            t.properties[e] = ee(t.properties[e]);
+            t.properties[e] = Y(t.properties[e]);
           })),
-        'array' === t.type && t.items && (t.items = ee(t.items)),
+        'array' === t.type && t.items && (t.items = Y(t.items)),
         t
       );
     }
-    function te(e, t) {
+    function ee(e, t) {
       var r = '',
         i = t;
       a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
@@ -1245,7 +1230,7 @@
       }
       return r;
     }
-    function re(e, t) {
+    function te(e, t) {
       var r = {},
         n = C(e);
       if (J(e) && 'object' === e.type) {
@@ -1302,19 +1287,19 @@
                     a = t && t[i];
                   switch (n.type) {
                     case 'array':
-                      r[i] = ie(n, a);
-                      break;
-                    case 'object':
                       r[i] = re(n, a);
                       break;
-                    default:
+                    case 'object':
                       r[i] = te(n, a);
+                      break;
+                    default:
+                      r[i] = ee(n, a);
                   }
                 });
       }
       return r;
     }
-    function ie(e, t) {
+    function re(e, t) {
       var r = [];
       if (e && 'array' === e.type) {
         var i = t;
@@ -1323,25 +1308,25 @@
         if ('array' === e.type)
           if (w(n))
             n.map(function (t) {
-              r.push(re(e.items, t));
+              r.push(te(e.items, t));
             });
           else {
-            var o = re(e.items, n);
+            var o = te(e.items, n);
             r.push(o);
           }
         else r = a(n) ? n : [];
       }
       return r;
     }
-    function ne(e, t) {
+    function ie(e, t) {
       return 'object' === e.type
-        ? re(e, t)
+        ? te(e, t)
         : 'array' === e.type
-          ? ie(e, t)
-          : te(e, t);
+          ? re(e, t)
+          : ee(e, t);
     }
-    var ae = j;
-    function oe(e, t) {
+    var ne = j;
+    function ae(e, t) {
       var r = t || [];
       if (e && '{}' !== JSON.stringify(e))
         if (J(e))
@@ -1364,16 +1349,16 @@
             r.push({ id: e.config.id, dataName: e.config.dataName, body: i });
           } else
             Object.keys(e).map(function (t) {
-              oe(e[t], r);
+              ae(e[t], r);
             });
         else
           w(e) &&
             e.map(function (e) {
-              oe(e, r);
+              ae(e, r);
             });
       return r;
     }
-    function pe(e, t) {
+    function oe(e, t) {
       var r = t || 'data';
       return (
         e.split('-').map(function (e) {
@@ -1382,7 +1367,7 @@
         r
       );
     }
-    function ue(e, t) {
+    function pe(e, t) {
       var r = [];
       return (
         J(e)
@@ -1390,7 +1375,7 @@
               var n = e[i],
                 a = t ? t + '-' + i : i;
               J(n) || w(n)
-                ? r.push({ title: i, value: a, key: a, children: ue(n, a) })
+                ? r.push({ title: i, value: a, key: a, children: pe(n, a) })
                 : r.push({ title: i, value: a, key: a });
             })
           : w(e) &&
@@ -1398,13 +1383,13 @@
               var n = i.toString(),
                 a = t ? t + '-' + i : n;
               J(e) || w(e)
-                ? r.push({ title: n, value: a, key: a, children: ue(e, a) })
+                ? r.push({ title: n, value: a, key: a, children: pe(e, a) })
                 : r.push({ title: n, value: a, key: a });
             }),
         r
       );
     }
-    var le = {
+    var ue = {
       array: 'array',
       boolean: 'boolean',
       'box-style': 'object',
@@ -1431,24 +1416,24 @@
       time: 'string',
       url: 'string',
     };
-    function se(e) {
-      return le[e] || e;
+    function le(e) {
+      return ue[e] || e;
     }
     function de(e, t) {
-      le[e]
-        ? console.warn('当前已经存在' + e + '(' + le[e] + ')，暂时不支持覆盖。')
-        : (le[e] = t);
+      ue[e]
+        ? console.warn('当前已经存在' + e + '(' + ue[e] + ')，暂时不支持覆盖。')
+        : (ue[e] = t);
     }
-    function ce(e) {
+    function se(e) {
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function ye(e) {
+    function ce(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    var fe = [
+    var ye = [
       'key',
       'enum',
       'enumextra',

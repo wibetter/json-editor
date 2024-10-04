@@ -3,7 +3,7 @@ import { Tree } from 'antd';
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import MappingRender from '$schemaRenderer/MappingRender';
 const { TreeNode } = Tree;
-import { isFirstSchemaData, getCurrentFormat } from '@wibetter/json-utils';
+import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 渲染当前字段的表单项（Tree的表单项内容） */
 const getTreeNodeTitleCont = (params) => {
@@ -58,8 +58,7 @@ const ObjectSchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema, isOnlyShowChild } =
     props;
   const currentFormat = getCurrentFormat(targetJsonSchema);
-  const isFirstSchema =
-    targetJsonSchema.isFixedSchema || isFirstSchemaData(currentFormat); // 一级固定类型元素不允许拖拽
+  const isFirstSchema = targetJsonSchema.isFixedSchema;
 
   /** 先获取当前节点的properties内容 */
   const propertiesContElem = propertiesRender({
