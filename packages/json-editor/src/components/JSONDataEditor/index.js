@@ -6,7 +6,7 @@ const { Panel } = Collapse;
 const { TabPane } = Tabs;
 import MappingRender from '$components/MappingRender'; // 普通模式
 // import MappingRender from '$components/MappingRenderV2'; // 按需加载模式
-import JsonView from '$components/JsonView/index';
+import JsonView from '$renderers/JsonView/index';
 import { isEqual } from '$utils/index';
 import {
   isEmptySchema,
@@ -129,6 +129,7 @@ class JSONDataEditor extends React.PureComponent {
       jsonLastUpdateTime,
       getJSONDataByKeyRoute,
       keyRoute2indexRoute,
+      updateFormValueData,
     } = this.props;
     const { jsonView, viewStyle } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
@@ -189,6 +190,7 @@ class JSONDataEditor extends React.PureComponent {
                               isStructuredSchema: isStructured,
                               getJSONDataByKeyRoute,
                               keyRoute2indexRoute,
+                              updateFormValueData,
                             })}
                           </Panel>
                         );
@@ -243,6 +245,7 @@ class JSONDataEditor extends React.PureComponent {
                               isStructuredSchema: isStructured,
                               getJSONDataByKeyRoute,
                               keyRoute2indexRoute,
+                              updateFormValueData,
                             })}
                           </TabPane>
                         );
@@ -265,6 +268,7 @@ class JSONDataEditor extends React.PureComponent {
                   targetJsonSchema: jsonSchema,
                   getJSONDataByKeyRoute,
                   keyRoute2indexRoute,
+                  updateFormValueData,
                 })}
               </>
             )}
@@ -296,4 +300,5 @@ export default inject((stores) => ({
   keyRoute2indexRoute: stores.JSONSchemaStore.keyRoute2indexRoute,
   setDynamicDataList: stores.JSONEditorStore.setDynamicDataList,
   setPageScreen: stores.JSONSchemaStore.setPageScreen,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
 }))(observer(JSONDataEditor));

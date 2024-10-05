@@ -8,7 +8,7 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import MappingRender from '$components/MappingRender';
-import JsonView from '$components/JsonView/index';
+import JsonView from '$renderers/JsonView/index';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
@@ -58,6 +58,7 @@ class ObjectSchema extends React.PureComponent {
       isStructuredSchema,
       getJSONDataByKeyRoute,
       keyRoute2indexRoute,
+      updateFormValueData,
     } = this.props;
     const { jsonView, isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
@@ -157,6 +158,7 @@ class ObjectSchema extends React.PureComponent {
                 targetJsonSchema: currentSchemaData,
                 getJSONDataByKeyRoute,
                 keyRoute2indexRoute,
+                updateFormValueData,
               });
             })}
           {jsonView && <JsonView {...this.props} />}

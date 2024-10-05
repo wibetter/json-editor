@@ -19,6 +19,7 @@ module.exports = {
       alias: {
         '@': resolve('src'),
         $components: resolve('src/components'),
+        $renderers: resolve('src/renderers'),
         $pages: resolve('src/pages'),
         $plugins: resolve('src/plugins'),
         $utils: resolve('src/utils'),

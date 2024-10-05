@@ -1,37 +1,39 @@
 import React from 'react';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { hasProperties } from '../utils';
-import ArraySchema from '$components/ArraySchemaV2/index';
-import ObjectSchema from '$components/ObjectSchema/index';
-import DataSourceSchema from '$components/DataSourceSchema/index';
-import DynamicDataSchema from '$components/DynamicDataSchema/index';
-import EventSchema from '$components/EventSchema/index';
-import QuantitySchema from '$components/QuantitySchema/index';
-import BoxStyleSchema from '$components/BoxStyleSchema/index';
-import RadioSchema from '$components/RadioSchema/index';
-import SelectSchema from '$components/SelectSchema/index';
-import InputFormSchema from '$components/InputFormSchema/index';
-import TextAreaFormSchema from '$components/TextAreaFormSchema/index';
-import TextEditorSchema from '$components/TextEditorSchema/index';
-import NumberFormSchema from '$components/NumberFormSchema/index';
-import BooleanFormSchema from '$components/BooleanFormSchema/index';
-import DateTimeFormSchema from '$components/DateTimeFormSchema/index';
-import TimeFormSchema from '$components/TimeFormSchema/index';
-import URLFormSchema from '$components/URLFormSchema/index';
-import ColorFormSchema from '$components/ColorFormSchemaV3/index';
-import JsonFormSchema from '$components/JsonFormSchema/index';
-import CodeAreaFormSchema from '$components/CodeAreaFormSchema/index';
-import HtmlAreaFormSchema from '$components/HtmlAreaFormSchema/index';
-import SingleSelectSchema from '$components/SingleSelectSchema/index';
+import ArraySchema from '$renderers/ArraySchemaV2/index';
+import ObjectSchema from '$renderers/ObjectSchema/index';
+import DataSourceSchema from '$renderers/DataSourceSchema/index';
+import DynamicDataSchema from '$renderers/DynamicDataSchema/index';
+import EventSchema from '$renderers/EventSchema/index';
+import QuantitySchema from '$renderers/QuantitySchema/index';
+import BoxStyleSchema from '$renderers/BoxStyleSchema/index';
+import RadioSchema from '$renderers/RadioSchema/index';
+import SelectSchema from '$renderers/SelectSchema/index';
+import InputFormSchema from '$renderers/InputFormSchema/index';
+import TextAreaFormSchema from '$renderers/TextAreaFormSchema/index';
+import TextEditorSchema from '$renderers/TextEditorSchema/index';
+import NumberFormSchema from '$renderers/NumberFormSchema/index';
+import BooleanFormSchema from '$renderers/BooleanFormSchema/index';
+import DateTimeFormSchema from '$renderers/DateTimeFormSchema/index';
+import TimeFormSchema from '$renderers/TimeFormSchema/index';
+import URLFormSchema from '$renderers/URLFormSchema/index';
+import ColorFormSchema from '$renderers/ColorFormSchemaV3/index';
+import JsonFormSchema from '$renderers/JsonFormSchema/index';
+import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
+import HtmlAreaFormSchema from '$renderers/HtmlAreaFormSchema/index';
+import SingleSelectSchema from '$renderers/SingleSelectSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
   const {
     nodeKey,
     jsonKey,
+    keyRoute,
     targetJsonSchema,
     getJSONDataByKeyRoute,
     keyRoute2indexRoute,
+    updateFormValueData,
   } = props;
   const curType = getCurrentFormat(targetJsonSchema); // 获取当前元素类型（format）
   // 获取当前字段的条件规则
@@ -47,12 +49,16 @@ const MappingRender = (props) => {
   if (hiddenRule.conditionProp && hasProperties(hiddenRule.conditionValue)) {
     const curConditionProp = hiddenRule.conditionProp;
     const needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
-    const keyRoute = curConditionProp.keyRoute; // 条件字段的key值
+    const curConditionKeyRoute = curConditionProp.keyRoute; // 条件字段的key值
 
     // 获取条件字段的数值
-    curConditionValue = getJSONDataByKeyRoute(keyRoute);
+    curConditionValue = getJSONDataByKeyRoute(curConditionKeyRoute);
     if (needConditionValue === curConditionValue) {
-      return '';
+      if (targetJsonSchema.clearValueOnHidden) {
+        // 删除掉隐藏的表单项数值
+        updateFormValueData(keyRoute, undefined);
+      }
+      return;
     }
   }
   // 将条件字段的数值作为key的一部分
