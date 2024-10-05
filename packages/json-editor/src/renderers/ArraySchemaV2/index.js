@@ -10,8 +10,8 @@ import {
   ArrowUpOutlined,
   ArrowDownOutlined,
 } from '@ant-design/icons';
-import ObjectSchema from '$components/ObjectSchema/index';
-import JsonView from '$components/JsonView/index';
+import ObjectSchema from '$renderers/ObjectSchema/index';
+import JsonView from '$renderers/JsonView/index';
 import {
   isArray,
   isString,

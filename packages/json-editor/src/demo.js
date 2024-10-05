@@ -24,18 +24,16 @@ class IndexDemo extends React.PureComponent {
         'ui-type': 'ui-materiel',
         'ui-name': 'AntV',
         'ui-framework': 'AntV',
-        format: 'object',
         properties: {
           props: {
             type: 'object',
-            format: 'func',
             title: '属性设置',
+            isFixedSchema: true,
             readOnly: false,
             properties: {
               legendAlign: {
-                type: 'string',
                 title: '图例位置',
-                format: 'single-select',
+                type: 'single-select',
                 items: {
                   type: 'string',
                   enum: ['top', 'right', 'bottom', 'left'],
@@ -51,13 +49,12 @@ class IndexDemo extends React.PureComponent {
           },
           style: {
             type: 'object',
-            format: 'style',
             title: '外观设置',
+            isFixedSchema: true,
             readOnly: false,
             properties: {
               margin: {
-                type: 'object',
-                format: 'box-style',
+                type: 'box-style',
                 title: '外边距',
                 isRequired: false,
                 readOnly: false,
@@ -65,15 +62,13 @@ class IndexDemo extends React.PureComponent {
                   unit: {
                     type: 'string',
                     title: '单位数值',
-                    format: 'string',
                     default: '15px',
                     description: '',
                     isRequired: false,
                     readOnly: false,
                   },
                   quantity: {
-                    type: 'string',
-                    format: 'typeSelect',
+                    type: 'typeSelect',
                     default: 'px',
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
@@ -85,8 +80,7 @@ class IndexDemo extends React.PureComponent {
                 propertyOrder: ['unit', 'quantity'],
               },
               width: {
-                type: 'object',
-                format: 'quantity',
+                type: 'quantity',
                 title: '宽',
                 isRequired: false,
                 readOnly: false,
@@ -94,7 +88,6 @@ class IndexDemo extends React.PureComponent {
                   unit: {
                     type: 'number',
                     title: '单位数值',
-                    format: 'number',
                     default: 220,
                     minimum: 0,
                     maximum: '10000',
@@ -103,8 +96,7 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                   quantity: {
-                    type: 'string',
-                    format: 'typeSelect',
+                    type: 'typeSelect',
                     default: 'px',
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
@@ -116,8 +108,7 @@ class IndexDemo extends React.PureComponent {
                 propertyOrder: ['unit', 'quantity'],
               },
               height: {
-                type: 'object',
-                format: 'quantity',
+                type: 'quantity',
                 title: '高',
                 isRequired: false,
                 readOnly: false,
@@ -125,7 +116,6 @@ class IndexDemo extends React.PureComponent {
                   unit: {
                     type: 'number',
                     title: '单位数值',
-                    format: 'number',
                     default: 220,
                     minimum: 0,
                     maximum: '10000',
@@ -134,8 +124,7 @@ class IndexDemo extends React.PureComponent {
                     readOnly: false,
                   },
                   quantity: {
-                    type: 'string',
-                    format: 'typeSelect',
+                    type: 'typeSelect',
                     default: 'px',
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
@@ -147,8 +136,7 @@ class IndexDemo extends React.PureComponent {
                 propertyOrder: ['unit', 'quantity'],
               },
               padding: {
-                type: 'object',
-                format: 'box-style',
+                type: 'box-style',
                 title: '内边距',
                 isRequired: false,
                 readOnly: false,
@@ -156,15 +144,13 @@ class IndexDemo extends React.PureComponent {
                   unit: {
                     type: 'string',
                     title: '单位数值',
-                    format: 'string',
                     default: '15px',
                     description: '',
                     isRequired: false,
                     readOnly: false,
                   },
                   quantity: {
-                    type: 'string',
-                    format: 'typeSelect',
+                    type: 'typeSelect',
                     default: 'px',
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
@@ -180,20 +166,18 @@ class IndexDemo extends React.PureComponent {
           },
           data: {
             type: 'object',
-            format: 'data',
             title: '数据设置',
+            isFixedSchema: true,
             readOnly: false,
             properties: {
               chartDataList: {
-                type: 'object',
-                format: 'dynamic-data',
+                type: 'dynamic-data',
                 title: '图表数据',
                 readOnly: false,
                 properties: {
                   type: {
-                    type: 'string',
                     default: 'local',
-                    format: 'typeSelect',
+                    type: 'typeSelect',
                     enum: ['local', 'remote'],
                     enumextra: ['本地数据', '接口数据'],
                     title: '数据类型',
@@ -201,14 +185,12 @@ class IndexDemo extends React.PureComponent {
                   config: {
                     type: 'object',
                     title: '接口配置',
-                    format: 'object',
                     description: '用于存放接口的配置数据(url、请求参数等)',
                     isRequired: true,
                     properties: {
                       dataName: {
-                        type: 'string',
                         default: 'local',
-                        format: 'typeSelect',
+                        type: 'typeSelect',
                         enum: ['local', 'remote'],
                         enumextra: ['本地数据', '接口数据'],
                         title: '数据类型',
@@ -216,14 +198,12 @@ class IndexDemo extends React.PureComponent {
                       body: {
                         type: 'object',
                         title: '请求参数配置',
-                        format: 'object',
                         description: '用于配置当前接口的请求参数数值',
                         isRequired: true,
                       },
                       filter: {
-                        type: 'string',
                         title: '过滤器函数体',
-                        format: 'codearea',
+                        type: 'codearea',
                         default: 'return data;',
                         description: '用于定义过滤接口数据',
                         isRequired: true,
@@ -232,17 +212,15 @@ class IndexDemo extends React.PureComponent {
                     propertyOrder: ['dataName', 'body', 'filter'],
                   },
                   data: {
-                    type: 'string',
                     title: '数据内容',
-                    format: 'json',
+                    type: 'json',
                     default: '{}',
                     description: '用于存放DynamicData的数据内容',
                     isRequired: true,
                   },
                   localFilter: {
-                    type: 'string',
                     title: '过滤器',
-                    format: 'codearea',
+                    type: 'codearea',
                     default: 'return data;',
                     description: '用于定义过滤本地数据',
                     isRequired: true,
@@ -251,9 +229,8 @@ class IndexDemo extends React.PureComponent {
                 propertyOrder: ['type', 'config', 'data', 'localFilter'],
               },
               xAxis: {
-                type: 'string',
                 title: 'x轴字段',
-                format: 'input',
+                type: 'input',
                 default: 'x',
                 description: '',
                 placeholder: '',
@@ -261,9 +238,8 @@ class IndexDemo extends React.PureComponent {
                 readOnly: false,
               },
               yAxis: {
-                type: 'string',
                 title: 'y轴字段',
-                format: 'input',
+                type: 'input',
                 default: 'y',
                 description: '',
                 placeholder: '',
@@ -271,9 +247,8 @@ class IndexDemo extends React.PureComponent {
                 readOnly: false,
               },
               legend: {
-                type: 'string',
                 title: '图例字段',
-                format: 'input',
+                type: 'input',
                 default: 'type',
                 description: '',
                 placeholder: '',
@@ -285,7 +260,6 @@ class IndexDemo extends React.PureComponent {
           },
           event: {
             type: 'object',
-            format: 'event-schema',
             title: '事件设置',
             isFixedSchema: true,
             readOnly: false,

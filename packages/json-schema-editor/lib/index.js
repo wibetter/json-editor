@@ -605,15 +605,14 @@
                   (t.isSupportCurType = function (e, t) {
                     var n = (0, Ce.getParentIndexRoute)(e),
                       o = this.getSchemaByIndexRoute(n),
-                      a = this.SchemaTypeList[o.format];
+                      a = this.SchemaTypeList[o.type];
                     return !!(a && a.indexOf(t) >= 0);
                   }),
                   (t.addChildJson = function (e, t) {
                     var n = (0, Ce.getSchemaByIndexRoute)(e, this.jsonSchema);
-                    if ((0, Ce.isBoxSchemaData)(n.format)) {
+                    if ((0, Ce.isBoxSchemaData)(n.type)) {
                       var o = this.getNewJsonKeyIndex(n);
-                      n.required.push(o),
-                        n.propertyOrder.push(o),
+                      n.propertyOrder.push(o),
                         (n.properties[o] = Re),
                         this.jsonSchemaChange(t);
                     } else x.message.warning('非对象类型字段不允许插入子元素');
@@ -657,7 +656,7 @@
                       i = r[0],
                       s = r[1],
                       c = (0, Ce.getSchemaByIndexRoute)(i, this.jsonSchema);
-                    c.required.push(t), (c.properties[t] = n);
+                    c.properties[t] = n;
                     var l = c.propertyOrder,
                       d = 'before' === o ? Number(s) : Number(s) + 1,
                       p = l.slice(0, d),
@@ -670,9 +669,7 @@
                       a = (0, Ce.getSchemaByIndexRoute)(o, this.jsonSchema);
                     delete a.properties[t];
                     var r = a.propertyOrder.indexOf(t);
-                    a.propertyOrder.splice(r, 1);
-                    var i = a.required.indexOf(t);
-                    a.required.splice(i, 1), this.jsonSchemaChange(n);
+                    a.propertyOrder.splice(r, 1), this.jsonSchemaChange(n);
                   }),
                   (t.deleteJsonByIndex = function (e, t) {
                     var n = (0, Ce.getParentIndexRoute_CurIndex)(e),
@@ -682,9 +679,7 @@
                       i = r.propertyOrder[a];
                     delete r.properties[i];
                     var s = r.propertyOrder.indexOf(i);
-                    r.propertyOrder.splice(s, 1);
-                    var c = r.required.indexOf(i);
-                    r.required.splice(c, 1), this.jsonSchemaChange(t);
+                    r.propertyOrder.splice(s, 1), this.jsonSchemaChange(t);
                   }),
                   (t.updateEnumItem = function (e, t, n, o, a) {
                     var r = (0, Ce.getSchemaByIndexRoute)(e, this.jsonSchema);
@@ -1399,9 +1394,9 @@
                 i.items && (a = i.items);
               }
               return !t.conditionProp ||
-                ('radio' !== t.conditionProp.format &&
-                  'single-select' !== t.conditionProp.format)
-                ? t.conditionProp && 'boolean' === t.conditionProp.format
+                ('radio' !== t.conditionProp.type &&
+                  'single-select' !== t.conditionProp.type)
+                ? t.conditionProp && 'boolean' === t.conditionProp.type
                   ? r().createElement(
                       x.Radio.Group,
                       {
@@ -1643,7 +1638,7 @@
                         key: r,
                         keyRoute: d,
                         title: i.title,
-                        format: i.format,
+                        format: i.type,
                         type: i.type,
                       }),
                       n.handleValueChange('isConditionProp', !0))
@@ -2254,6 +2249,49 @@
                     i.hiddenRule &&
                       a.createElement(
                         'div',
+                        {
+                          className: 'wide-screen-element-warp',
+                          key:
+                            o + '-clearValueOnHidden-' + i.clearValueOnHidden,
+                        },
+                        a.createElement(
+                          'div',
+                          { className: 'element-title' },
+                          a.createElement(
+                            x.Tooltip,
+                            {
+                              title:
+                                '默认隐藏表单项时，会保留其对应的表单项数值。如需隐藏时删除表单项数值，请开启以下配置项。',
+                              placement: 'top',
+                            },
+                            a.createElement(
+                              'span',
+                              { className: 'title-text' },
+                              '隐藏时删除',
+                            ),
+                          ),
+                        ),
+                        a.createElement(
+                          'div',
+                          { className: 'content-item' },
+                          a.createElement(
+                            'div',
+                            { className: 'form-item-box' },
+                            a.createElement(x.Switch, {
+                              style: { display: 'inline-block' },
+                              defaultChecked: i.clearValueOnHidden,
+                              checkedChildren: 'true',
+                              unCheckedChildren: 'false',
+                              onChange: function (e) {
+                                t.handleValueChange('clearValueOnHidden', e);
+                              },
+                            }),
+                          ),
+                        ),
+                      ),
+                    i.hiddenRule &&
+                      a.createElement(
+                        'div',
                         { className: 'hidden-rule-box' },
                         a.createElement(
                           'div',
@@ -2369,8 +2407,7 @@
                     o = t.indexRoute,
                     a = t.jsonKey,
                     r = t.changeType;
-                  t.targetJsonSchema.format !== e &&
-                    r(o, a, Ce.TypeDataList[e]);
+                  t.targetJsonSchema.type !== e && r(o, a, Ce.TypeDataList[e]);
                 }),
                 (n.handleJsonKeyChange = function (e) {
                   var t = e.target.value,
@@ -2465,7 +2502,7 @@
                   h = this.props.isShowAdvanceBtn || !1,
                   y = this.getCurrentTypeList(n),
                   g = (0, Ce.getCurrentFormat)(s),
-                  f = s.isFixedSchema || (0, Ce.isFirstSchemaData)(g),
+                  f = s.isFixedSchema,
                   S = this.props.hideOperaBtn || !1,
                   v = f || l || d || !1,
                   b = (0, Ce.isBoxSchemaData)(g);
@@ -3068,11 +3105,9 @@
               case 'func':
               case 'style':
               case 'data':
-              case 'widgets':
               case 'func-schema':
               case 'style-schema':
               case 'data-schema':
-              case 'widgets-schema':
               case 'event-schema':
                 return ht(e);
               case 'array':
@@ -3116,8 +3151,8 @@
                     }),
                     r().createElement(We, {
                       className: 'dataSource-data-item-schema schema-item-form',
-                      id: a + '-data-' + c.format,
-                      key: a + '-data-' + c.format,
+                      id: a + '-data-' + c.type,
+                      key: a + '-data-' + c.type,
                       indexRoute: o ? o + '-1' : '1',
                       jsonKey: 'data',
                       disabled: !0,
@@ -3126,7 +3161,7 @@
                         jsonKey: 'data',
                         targetJsonSchema: c,
                         parentType: s,
-                        nodeKey: a + '-data-' + c.format,
+                        nodeKey: a + '-data-' + c.type,
                         hideOperaBtn: !0,
                         keyIsFixed: !0,
                         typeIsFixed: !0,
@@ -3193,8 +3228,8 @@
                     r().createElement(Xe, {
                       className:
                         'dataSource-config-item-schema schema-item-form',
-                      id: a + '-config-' + l.format,
-                      key: a + '-config-' + l.format,
+                      id: a + '-config-' + l.type,
+                      key: a + '-config-' + l.type,
                       indexRoute: o ? o + '-1' : '1',
                       jsonKey: 'config',
                       disabled: !0,
@@ -3203,7 +3238,7 @@
                         jsonKey: 'config',
                         targetJsonSchema: c,
                         parentType: s,
-                        nodeKey: a + '-config-' + c.format,
+                        nodeKey: a + '-config-' + c.type,
                         hideOperaBtn: !0,
                         keyIsFixed: !0,
                         typeIsFixed: !0,
@@ -3211,8 +3246,8 @@
                     }),
                     r().createElement(Xe, {
                       className: 'dataSource-data-item-schema schema-item-form',
-                      id: a + '-data-' + l.format,
-                      key: a + '-data-' + l.format,
+                      id: a + '-data-' + l.type,
+                      key: a + '-data-' + l.type,
                       indexRoute: o ? o + '-2' : '2',
                       jsonKey: 'data',
                       disabled: !0,
@@ -3221,7 +3256,7 @@
                         jsonKey: 'data',
                         targetJsonSchema: l,
                         parentType: s,
-                        nodeKey: a + '-data-' + l.format,
+                        nodeKey: a + '-data-' + l.type,
                         hideOperaBtn: !0,
                         keyIsFixed: !0,
                         typeIsFixed: !0,
@@ -3534,7 +3569,7 @@
               d = e.targetJsonSchema,
               p = e.isOnlyShowChild,
               m = (0, Ce.getCurrentFormat)(d),
-              h = d.isFixedSchema || (0, Ce.isFirstSchemaData)(m),
+              h = d.isFixedSchema,
               y =
                 ((t = {
                   propertyOrder: d.propertyOrder,

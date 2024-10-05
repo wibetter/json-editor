@@ -606,6 +606,36 @@ class AdvanceConfig extends React.PureComponent {
           </div>
         )}
         {targetJsonSchema.hiddenRule && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-clearValueOnHidden-${targetJsonSchema.clearValueOnHidden}`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={
+                  '默认隐藏表单项时，会保留其对应的表单项数值。如需隐藏时删除表单项数值，请开启以下配置项。'
+                }
+                placement="top"
+              >
+                <span className="title-text">隐藏时删除</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div className="form-item-box">
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.clearValueOnHidden}
+                  checkedChildren="true"
+                  unCheckedChildren="false"
+                  onChange={(checked) => {
+                    this.handleValueChange('clearValueOnHidden', checked);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {targetJsonSchema.hiddenRule && (
           <div className="hidden-rule-box">
             <div className="rule-title">
               <div className="title">隐藏规则：</div>

@@ -1,59 +1,59 @@
 import React, { Suspense } from 'react';
 import { getCurrentFormat } from '@wibetter/json-utils';
 import { hasProperties } from '../utils';
-import InputFormSchema from '$components/InputFormSchema/index';
-import ObjectSchema from '$components/ObjectSchema/index';
-const ArraySchema = React.lazy(() => import('$components/ArraySchemaV2/index')); // 使用新版ArraySchema
+import InputFormSchema from '$renderers/InputFormSchema/index';
+import ObjectSchema from '$renderers/ObjectSchema/index';
+const ArraySchema = React.lazy(() => import('$renderers/ArraySchemaV2/index')); // 使用新版ArraySchema
 const DataSourceSchema = React.lazy(
-  () => import('$components/DataSourceSchema/index'),
+  () => import('$renderers/DataSourceSchema/index'),
 );
 const DynamicDataSchema = React.lazy(
-  () => import('$components/DynamicDataSchema/index'),
+  () => import('$renderers/DynamicDataSchema/index'),
 );
-const EventSchema = React.lazy(() => import('$components/EventSchema/index'));
+const EventSchema = React.lazy(() => import('$renderers/EventSchema/index'));
 const QuantitySchema = React.lazy(
-  () => import('$components/QuantitySchema/index'),
+  () => import('$renderers/QuantitySchema/index'),
 );
 const BoxStyleSchema = React.lazy(
-  () => import('$components/BoxStyleSchema/index'),
+  () => import('$renderers/BoxStyleSchema/index'),
 );
-const RadioSchema = React.lazy(() => import('$components/RadioSchema/index'));
-const SelectSchema = React.lazy(() => import('$components/SelectSchema/index'));
+const RadioSchema = React.lazy(() => import('$renderers/RadioSchema/index'));
+const SelectSchema = React.lazy(() => import('$renderers/SelectSchema/index'));
 const TextAreaFormSchema = React.lazy(
-  () => import('$components/TextAreaFormSchema/index'),
+  () => import('$renderers/TextAreaFormSchema/index'),
 );
 const TextEditorSchema = React.lazy(
-  () => import('$components/TextEditorSchema/index'),
+  () => import('$renderers/TextEditorSchema/index'),
 );
 const NumberFormSchema = React.lazy(
-  () => import('$components/NumberFormSchema/index'),
+  () => import('$renderers/NumberFormSchema/index'),
 );
 const BooleanFormSchema = React.lazy(
-  () => import('$components/BooleanFormSchema/index'),
+  () => import('$renderers/BooleanFormSchema/index'),
 );
 const DateTimeFormSchema = React.lazy(
-  () => import('$components/DateTimeFormSchema/index'),
+  () => import('$renderers/DateTimeFormSchema/index'),
 );
 const TimeFormSchema = React.lazy(
-  () => import('$components/TimeFormSchema/index'),
+  () => import('$renderers/TimeFormSchema/index'),
 );
 const URLFormSchema = React.lazy(
-  () => import('$components/URLFormSchema/index'),
+  () => import('$renderers/URLFormSchema/index'),
 );
 const ColorFormSchema = React.lazy(
-  () => import('$components/ColorFormSchema/index'),
+  () => import('$renderers/ColorFormSchema/index'),
 );
 const JsonFormSchema = React.lazy(
-  () => import('$components/JsonFormSchema/index'),
+  () => import('$renderers/JsonFormSchema/index'),
 );
 const CodeAreaFormSchema = React.lazy(
-  () => import('$components/CodeAreaFormSchema/index'),
+  () => import('$renderers/CodeAreaFormSchema/index'),
 );
 const HtmlAreaFormSchema = React.lazy(
-  () => import('$components/HtmlAreaFormSchema/index'),
+  () => import('$renderers/HtmlAreaFormSchema/index'),
 );
 const SingleSelectSchema = React.lazy(
-  () => import('$components/SingleSelectSchema/index'),
+  () => import('$renderers/SingleSelectSchema/index'),
 );
 
 /** 根据当前类型选择对应的组件进行渲染 */
