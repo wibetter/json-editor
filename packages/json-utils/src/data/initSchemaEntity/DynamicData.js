@@ -10,7 +10,7 @@
 export const initDynamicData = {
   type: 'dynamic-data',
   title: '动态数据源',
-  readOnly: false,
+
   properties: {
     type: {
       default: 'local',

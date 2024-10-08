@@ -6,7 +6,6 @@ import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import URLFormSchema from '$renderers/URLFormSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 
@@ -54,7 +53,7 @@ class DataSourceSchema extends React.PureComponent {
     const { keyRoute, nodeKey, indexRoute, targetJsonSchema, pageScreen } =
       this.props;
     const { isShowFilter } = this.state;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
 
     // 获取DataSource中各类数据对象
     const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote
@@ -107,7 +106,7 @@ class DataSourceSchema extends React.PureComponent {
                 </Tooltip>
                 <JsonFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'data',
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
@@ -120,7 +119,7 @@ class DataSourceSchema extends React.PureComponent {
               {isShowFilter && (
                 <CodeAreaFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'filter',
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
@@ -137,7 +136,7 @@ class DataSourceSchema extends React.PureComponent {
               <div className="url-editor-box">
                 <URLFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'data',
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
@@ -156,7 +155,7 @@ class DataSourceSchema extends React.PureComponent {
               {isShowFilter && (
                 <CodeAreaFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'filter',
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',

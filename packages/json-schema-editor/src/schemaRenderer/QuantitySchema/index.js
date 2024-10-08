@@ -3,7 +3,6 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import TypeSelectFormSchema from '$components/TypeSelectFormSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
 const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
@@ -14,7 +13,7 @@ const getTypeSelectCont = (params) => <TypeSelectFormSchema {...params} />;
 /** Quantity类型渲染组件 */
 const QuantitySchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
-  const currentFormat = getCurrentFormat(targetJsonSchema);
+  const curType = targetJsonSchema.type;
 
   /** 获取quantity中的数值对象（默认第一个就是数值对象） */
   const unitJsonKey = targetJsonSchema.propertyOrder[0];
@@ -22,7 +21,7 @@ const QuantitySchema = (props) => {
 
   return (
     <TreeNode
-      className={`${currentFormat}-schema schema-item-form`}
+      className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
       indexRoute={indexRoute}
@@ -42,7 +41,7 @@ const QuantitySchema = (props) => {
           indexRoute: indexRoute ? `${indexRoute}-0` : '0',
           jsonKey: unitJsonKey,
           targetJsonSchema: unitJsonData,
-          parentType: currentFormat,
+          parentType: curType,
           nodeKey: `${nodeKey}-${unitJsonKey}`,
           typeIsFixed: true,
           hideOperaBtn: true,
@@ -60,7 +59,7 @@ const QuantitySchema = (props) => {
           indexRoute: indexRoute ? `${indexRoute}-1` : '1',
           jsonKey: 'quantity',
           targetJsonSchema: targetJsonSchema.properties.quantity,
-          parentType: currentFormat,
+          parentType: curType,
           nodeKey: `${nodeKey}-quantity`,
         })}
       ></TreeNode>

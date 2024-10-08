@@ -11,7 +11,7 @@
 export const initEventDataV1 = {
   type: 'event',
   title: '事件',
-  readOnly: false,
+
   properties: {
     type: {
       default: 'out',
@@ -35,8 +35,6 @@ export const initEventDataV1 = {
 export const initEventData = {
   type: 'event',
   title: '事件',
-  isRequired: false,
-  readOnly: false,
   properties: {
     type: {
       default: 'emit',
@@ -44,8 +42,6 @@ export const initEventData = {
       enum: ['on', 'emit'],
       enumextra: ['on', 'emit'],
       title: '事件类型',
-      isRequired: false,
-      readOnly: false,
     },
     trigger: {
       type: 'input',
@@ -53,16 +49,12 @@ export const initEventData = {
       title: '触发事件',
       description: '用于输入触发事件的名称',
       placeholder: '请输入触发事件的名称',
-      isRequired: false,
-      readOnly: false,
     },
     eventData: {
       title: '事件数据',
       type: 'json',
       default: '{}', // 默认值
       description: '传递给触发事件的数据对象', // 字段项的说明和描述
-      isRequired: false,
-      readOnly: false,
     },
   },
   propertyOrder: ['type', 'trigger', 'eventData'],
@@ -73,8 +65,6 @@ export const initEventData = {
 export const initEventDataTypeON = {
   type: 'event',
   title: '事件',
-  isRequired: false,
-  readOnly: false,
   properties: {
     type: {
       default: 'on',
@@ -82,8 +72,6 @@ export const initEventDataTypeON = {
       enum: ['on', 'emit'],
       enumextra: ['on', 'emit'],
       title: '事件类型',
-      isRequired: false,
-      readOnly: false,
     },
     register: {
       type: 'input',
@@ -91,16 +79,12 @@ export const initEventDataTypeON = {
       title: '注册事件',
       description: '用于输入注册事件的名称',
       placeholder: '请输入注册事件的名称',
-      isRequired: false,
-      readOnly: false,
     },
     actionFunc: {
       title: '执行函数',
       type: 'codearea',
       default: '() => {}', // 默认值
       description: '', // 字段项的说明和描述
-      isRequired: false,
-      readOnly: false,
     },
   },
   propertyOrder: ['type', 'register', 'actionFunc'],

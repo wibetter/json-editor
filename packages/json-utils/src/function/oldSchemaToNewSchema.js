@@ -10,7 +10,6 @@ import {
   EventTypeDataList,
   TypeDataList,
 } from '$data/TypeDataList';
-import { getCurrentFormat } from '$utils/jsonSchema';
 
 // 2020-07-29
 export function oldSchemaToNewSchemaV1(oldSchema) {
@@ -21,7 +20,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
   }
   // 2.当format为空时重新进行赋值
   if (!newJSONSchema.type) {
-    newJSONSchema.type = getCurrentFormat(newJSONSchema);
+    newJSONSchema.type = newJSONSchema.format;
   }
   // 3.不需要default属性的类型自动删除
   if (

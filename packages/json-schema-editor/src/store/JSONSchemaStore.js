@@ -2,7 +2,6 @@ import { observable, computed, action, toJS } from 'mobx'; // mobx 5.0 写法
 import { message } from 'antd';
 import { isEqual, objClone, isFunction } from '$utils/index';
 import { TypeList } from '$data/TypeList';
-
 import {
   isNewSchemaData,
   getParentIndexRoute,
@@ -13,7 +12,6 @@ import {
   isBoxSchemaData,
   indexRoute2keyRoute,
   keyRoute2indexRoute,
-  getCurrentFormat,
   KeyWordList,
   TypeDataList,
 } from '@wibetter/json-utils';
@@ -644,7 +642,7 @@ export default class JSONSchemaStore {
     for (let index = 0, size = curPropertyOrder.length; index < size; index++) {
       const curKey = curPropertyOrder[index];
       const curItem = itemJSONObj.properties[curKey];
-      const curType = getCurrentFormat(curItem);
+      const curType = curItem.type;
       switch (curType) {
         case 'input':
         case 'url':

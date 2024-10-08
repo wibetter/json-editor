@@ -10,8 +10,6 @@
 export const initQuantityData = {
   type: 'quantity',
   title: '单位计量',
-  isRequired: false,
-  readOnly: false,
   properties: {
     unit: {
       type: 'number',
@@ -20,8 +18,6 @@ export const initQuantityData = {
       minimum: 0, // 在高级设置中配置
       maximum: 1000, // 在高级设置中配置
       description: '', // 字段项的说明和描述
-      isRequired: false,
-      readOnly: false,
     },
     quantity: {
       type: 'typeSelect', // 选择列表
@@ -29,8 +25,6 @@ export const initQuantityData = {
       enum: ['px', 'rem', 'em', '%'],
       enumextra: ['px', 'rem', 'em', '%'],
       title: '单位类型',
-      isRequired: false,
-      readOnly: false,
     },
   },
   propertyOrder: ['unit', 'quantity'],

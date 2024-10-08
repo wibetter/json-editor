@@ -14,6 +14,4 @@ export const initCodeAreaData = {
   placeholder: '请输入函数方法', // 输入提示
   default: 'function func() { console.log("hello, world!"); }', // 默认值
   description: '用于定义函数方法', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
 };

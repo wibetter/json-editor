@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
+
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 
@@ -145,12 +145,12 @@ class ObjectSchema extends React.PureComponent {
               const currentSchemaData =
                 targetJsonSchema.properties[currentJsonKey];
               /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-              const currentFormat = getCurrentFormat(currentSchemaData);
+              const curType = currentSchemaData.type;
               /** 5. 获取当前元素的id，用于做唯一标识 */
-              const childNodeKey = `${nodeKey}-${currentFormat}-${currentJsonKey}`;
+              const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
               return MappingRender({
-                parentType: currentFormat,
+                parentType: curType,
                 jsonKey: currentJsonKey,
                 indexRoute: currentIndexRoute,
                 keyRoute: currentKeyRoute,

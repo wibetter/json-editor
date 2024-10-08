@@ -25,7 +25,7 @@ import {
   isNeedMinMaxOption,
   isNeedMinMaxChildOption,
 } from '$utils/advanced.config';
-import { getCurrentFormat, hasProperties } from '@wibetter/json-utils';
+import { hasProperties } from '@wibetter/json-utils';
 import './index.scss';
 
 class AdvanceConfig extends React.PureComponent {
@@ -58,8 +58,8 @@ class AdvanceConfig extends React.PureComponent {
   };
 
   /** 根据当前类型显示对应的输入组件 */
-  renderDefaultContent = (currentFormat, targetJsonSchema, nodeKey) => {
-    if (currentFormat === 'boolean') {
+  renderDefaultContent = (curType, targetJsonSchema, nodeKey) => {
+    if (curType === 'boolean') {
       return (
         <Switch
           style={{ display: 'inline-block' }}
@@ -72,7 +72,7 @@ class AdvanceConfig extends React.PureComponent {
         />
       );
     }
-    if (currentFormat === 'radio' || currentFormat === 'single-select') {
+    if (curType === 'radio' || curType === 'single-select') {
       const options = targetJsonSchema.options;
       return (
         <Radio.Group
@@ -97,7 +97,7 @@ class AdvanceConfig extends React.PureComponent {
         </Radio.Group>
       );
     }
-    if (currentFormat === 'select') {
+    if (curType === 'select') {
       const options = targetJsonSchema.options;
       return (
         <Checkbox.Group
@@ -120,7 +120,7 @@ class AdvanceConfig extends React.PureComponent {
         </Checkbox.Group>
       );
     }
-    if (currentFormat === 'color') {
+    if (curType === 'color') {
       return (
         <Input
           style={{ display: 'inline-block' }}
@@ -135,10 +135,10 @@ class AdvanceConfig extends React.PureComponent {
       );
     }
     if (
-      currentFormat === 'textarea' ||
-      currentFormat === 'codearea' ||
-      currentFormat === 'htmlarea' ||
-      currentFormat === 'json'
+      curType === 'textarea' ||
+      curType === 'codearea' ||
+      curType === 'htmlarea' ||
+      curType === 'json'
     ) {
       return (
         <TextArea
@@ -157,7 +157,7 @@ class AdvanceConfig extends React.PureComponent {
         />
       );
     }
-    if (currentFormat === 'number') {
+    if (curType === 'number') {
       return (
         <InputNumber
           style={{ display: 'inline-block' }}
@@ -263,7 +263,7 @@ class AdvanceConfig extends React.PureComponent {
       jsonSchema,
       indexRoute2keyRoute,
     } = this.props;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     // 获取对应的keyRoute
     const curKeyRoute = indexRoute2keyRoute(indexRoute);
     // 判断当前是否是条件字段
@@ -298,7 +298,7 @@ class AdvanceConfig extends React.PureComponent {
 
     return (
       <div className="advance-config-model">
-        {isNeedConditionOption(currentFormat) && (
+        {isNeedConditionOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-isConditionProp-${isConditionProp}`}
@@ -331,7 +331,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedReadOnlyOption(currentFormat) && (
+        {isNeedReadOnlyOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-readOnly-${targetJsonSchema.readOnly}`}
@@ -359,7 +359,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedIsRequiredOption(currentFormat) && (
+        {isNeedIsRequiredOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-isRequired-${targetJsonSchema.isRequired}`}
@@ -389,7 +389,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedDefaultOption(currentFormat) && (
+        {isNeedDefaultOption(curType) && (
           <div className="wide-screen-element-warp" key={`${nodeKey}-default`}>
             <div className="element-title">
               <Tooltip placement="top">
@@ -398,16 +398,12 @@ class AdvanceConfig extends React.PureComponent {
             </div>
             <div className="content-item">
               <div className="form-item-box">
-                {this.renderDefaultContent(
-                  currentFormat,
-                  targetJsonSchema,
-                  nodeKey,
-                )}
+                {this.renderDefaultContent(curType, targetJsonSchema, nodeKey)}
               </div>
             </div>
           </div>
         )}
-        {isNeedDescriptionOption(currentFormat) && (
+        {isNeedDescriptionOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-description`}
@@ -439,7 +435,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedPlaceholderOption(currentFormat) && (
+        {isNeedPlaceholderOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-placeholder`}
@@ -471,7 +467,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedMinMaxOption(currentFormat) && (
+        {isNeedMinMaxOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-minimum-${targetJsonSchema.minimum}`}
@@ -502,7 +498,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedMinMaxOption(currentFormat) && (
+        {isNeedMinMaxOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-maximum-${targetJsonSchema.maximum}`}
@@ -533,7 +529,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedMinMaxChildOption(currentFormat) && (
+        {isNeedMinMaxChildOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-minimum-child-${targetJsonSchema['minimum-child']}`}
@@ -561,7 +557,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedMinMaxChildOption(currentFormat) && (
+        {isNeedMinMaxChildOption(curType) && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-maximum-child-${targetJsonSchema['maximum-child']}`}

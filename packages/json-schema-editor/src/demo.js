@@ -30,7 +30,6 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             isFixedSchema: true,
             title: '属性设置',
-            readOnly: false,
             properties: {},
             propertyOrder: [],
           },
@@ -38,14 +37,11 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             isFixedSchema: true,
             title: '样式设置',
-            readOnly: false,
             properties: {
               margin: {
                 type: 'object',
                 format: 'box-style',
                 title: '外边距',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'string',
@@ -53,8 +49,6 @@ class IndexDemo extends React.PureComponent {
                     format: 'string',
                     default: '0',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'string',
@@ -63,8 +57,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -73,8 +65,6 @@ class IndexDemo extends React.PureComponent {
                 type: 'object',
                 format: 'box-style',
                 title: '内边距',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'string',
@@ -82,8 +72,6 @@ class IndexDemo extends React.PureComponent {
                     format: 'string',
                     default: '0',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'string',
@@ -92,8 +80,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -102,8 +88,6 @@ class IndexDemo extends React.PureComponent {
                 type: 'object',
                 format: 'quantity',
                 title: '高度',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'number',
@@ -113,8 +97,6 @@ class IndexDemo extends React.PureComponent {
                     minimum: 0,
                     maximum: '10000',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'string',
@@ -123,8 +105,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -145,8 +125,6 @@ class IndexDemo extends React.PureComponent {
                 format: 'color',
                 default: '#ffffff',
                 description: '',
-                isRequired: false,
-                readOnly: false,
               },
               fixedHeight: {
                 type: 'boolean',
@@ -154,8 +132,6 @@ class IndexDemo extends React.PureComponent {
                 format: 'boolean',
                 default: false,
                 description: '是否设置为固定高度',
-                isRequired: false,
-                readOnly: false,
               },
               flexDirection: {
                 type: 'string',
@@ -173,8 +149,6 @@ class IndexDemo extends React.PureComponent {
                 ],
                 description:
                   'flex-direction属性：决定主轴的方向（即列级容器内部元素的排列方向）',
-                isRequired: false,
-                readOnly: false,
                 default: 'column',
               },
               justifyContent: {
@@ -200,8 +174,6 @@ class IndexDemo extends React.PureComponent {
                 },
                 description:
                   'justify-content属性：定义内部元素在主轴上的对齐方式',
-                isRequired: false,
-                readOnly: false,
                 default: 'flex-start',
               },
               alignItems: {
@@ -227,8 +199,6 @@ class IndexDemo extends React.PureComponent {
                 },
                 description:
                   'align-items属性：定义内部元素在交叉轴上的对齐方式',
-                isRequired: false,
-                readOnly: false,
                 default: 'center',
               },
               flex: {
@@ -241,16 +211,12 @@ class IndexDemo extends React.PureComponent {
                   enumextra: ['固定宽度', '弹性宽度'],
                 },
                 description: '',
-                isRequired: false,
-                readOnly: false,
                 default: '1 1 auto',
               },
               flexBasis: {
                 type: 'object',
                 format: 'quantity',
                 title: '宽度',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'number',
@@ -260,8 +226,6 @@ class IndexDemo extends React.PureComponent {
                     minimum: '0',
                     maximum: '100000',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'string',
@@ -270,8 +234,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -282,8 +244,6 @@ class IndexDemo extends React.PureComponent {
                 format: 'boolean',
                 default: false,
                 description: '是否显示边框，开启后可以设置边框相关配置项',
-                isRequired: false,
-                readOnly: false,
               },
               borderStyle: {
                 type: 'string',
@@ -313,8 +273,6 @@ class IndexDemo extends React.PureComponent {
                   ],
                 },
                 description: '边框样式属性指定要显示什么样的边界',
-                isRequired: false,
-                readOnly: false,
                 default: 'solid',
                 hiddenRule: {
                   conditionProp: {
@@ -331,8 +289,6 @@ class IndexDemo extends React.PureComponent {
                 type: 'object',
                 format: 'box-style',
                 title: '边框宽度',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'string',
@@ -340,8 +296,6 @@ class IndexDemo extends React.PureComponent {
                     format: 'string',
                     default: '1',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'string',
@@ -350,8 +304,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -373,8 +325,6 @@ class IndexDemo extends React.PureComponent {
                 format: 'color',
                 default: '#878787',
                 description: 'border-color属性用于设置边框的颜色',
-                isRequired: false,
-                readOnly: false,
                 hiddenRule: {
                   conditionProp: {
                     key: 'hasBorder',
@@ -408,7 +358,6 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             isFixedSchema: true,
             title: '数据设置',
-            readOnly: false,
             properties: {},
             propertyOrder: [],
           },
@@ -416,8 +365,6 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             isFixedSchema: true,
             title: '事件设置',
-            isFixedSchema: true,
-            readOnly: false,
             properties: {},
             propertyOrder: [],
           },

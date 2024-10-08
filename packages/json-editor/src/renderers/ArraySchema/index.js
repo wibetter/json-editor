@@ -14,7 +14,6 @@ import {
 import ObjectSchema from '$renderers/ObjectSchema/index';
 import JsonView from '$renderers/JsonView/index';
 import { isArray } from '$utils/typeof';
-import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 import DeleteIcon from '$assets/img/delete.svg';
@@ -90,7 +89,7 @@ class ArraySchema extends React.PureComponent {
       getJSONDataByKeyRoute,
     } = this.props;
     const { jsonView, isClosed } = this.state;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
 
@@ -281,7 +280,7 @@ class ArraySchema extends React.PureComponent {
                     >
                       <ObjectSchema
                         {...{
-                          parentType: currentFormat,
+                          parentType: curType,
                           jsonKey: 'items',
                           indexRoute: curIndexRoute,
                           keyRoute: curKeyRoute,

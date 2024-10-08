@@ -6,7 +6,6 @@
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
 import { hasProperties } from '$utils/index';
-import { getCurrentFormat } from '$utils/jsonSchema';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
 import { objClone } from '../utils';
@@ -87,7 +86,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
  * */
 function objectSchema2JsonData(jsonSchema, jsonData) {
   let curJsonData = {};
-  const curType = getCurrentFormat(jsonSchema);
+  const curType = jsonSchema.type;
   if (isObject(jsonSchema) && jsonSchema.type === 'object') {
     const jsonItem = jsonSchema;
     let oldValue = jsonData;

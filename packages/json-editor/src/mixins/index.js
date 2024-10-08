@@ -1,5 +1,4 @@
 import { getWebCacheData, deleteWebCacheData } from '$utils/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 从WebCache中获取jsonData数据
  * 备注：引用catchJsonDataByWebCache前，请确保当前组件的props中包含以下属性：
@@ -13,9 +12,9 @@ export function catchJsonDataByWebCache(curKeyRoute) {
     getInitJsonDataByKeyRoute,
     updateFormValueData,
   } = this.props;
-  const currentFormat = getCurrentFormat(targetJsonSchema);
+  const curType = targetJsonSchema.type;
   const keyRoute = curKeyRoute || this.props.keyRoute;
-  const backUpKeyRoute = getWebCacheData(`${keyRoute}-${currentFormat}`);
+  const backUpKeyRoute = getWebCacheData(`${keyRoute}-${curType}`);
   if (backUpKeyRoute) {
     // 1. 先尝试从jsonData中获取数据
     let beckUpJsonData = getJSONDataByKeyRoute(backUpKeyRoute);
@@ -25,7 +24,7 @@ export function catchJsonDataByWebCache(curKeyRoute) {
     }
     if (beckUpJsonData) {
       // 删除前端缓存后立即更新到jsonData中
-      deleteWebCacheData(`${keyRoute}-${currentFormat}`);
+      deleteWebCacheData(`${keyRoute}-${curType}`);
       updateFormValueData(keyRoute, beckUpJsonData); // 更新数值
     }
   }

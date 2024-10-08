@@ -1,5 +1,4 @@
 import React from 'react';
-import { getCurrentFormat } from '@wibetter/json-utils';
 import { hasProperties } from '../utils';
 import ArraySchema from '$renderers/ArraySchemaV2/index';
 import ObjectSchema from '$renderers/ObjectSchema/index';
@@ -35,7 +34,7 @@ const MappingRender = (props) => {
     keyRoute2indexRoute,
     updateFormValueData,
   } = props;
-  const curType = getCurrentFormat(targetJsonSchema); // 获取当前元素类型（format）
+  const curType = targetJsonSchema.type;
   // 获取当前字段的条件规则
   let hiddenRule = {};
   if (targetJsonSchema.hiddenRule) {

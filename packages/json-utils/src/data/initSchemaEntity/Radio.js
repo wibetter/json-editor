@@ -26,6 +26,4 @@ export const initRadioData = {
   ],
   default: 'a',
   description: '',
-  isRequired: false,
-  readOnly: false,
 };

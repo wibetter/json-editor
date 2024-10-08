@@ -38,11 +38,11 @@ const ALL_TYPE = [...BASE_TYPE, ...HIGH_TYPE];
  *  11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
  *  10种特殊类型组件（Object、Array、Json、datasource、text-editor、dynamic-data、Event、CodeArea、htmlArea、quantity）
  * */
-export function isNeedDescriptionOption(curFormat) {
+export function isNeedDescriptionOption(curType) {
   let isSupported = false;
   const supportedTypeList = ALL_TYPE;
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -53,7 +53,7 @@ export function isNeedDescriptionOption(curFormat) {
  *  11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
  *  3种特殊类型组件（Json、CodeArea、htmlArea）
  * */
-export function isNeedDefaultOption(curFormat) {
+export function isNeedDefaultOption(curType) {
   let isSupported = false;
   const supportedTypeList = [
     'input',
@@ -72,7 +72,7 @@ export function isNeedDefaultOption(curFormat) {
     'htmlarea',
   ];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -82,7 +82,7 @@ export function isNeedDefaultOption(curFormat) {
  *  根据format判断是否显示输入提示配置项
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
-export function isNeedPlaceholderOption(curFormat) {
+export function isNeedPlaceholderOption(curType) {
   let isSupported = false;
   const supportedTypeList = [
     'input',
@@ -97,7 +97,7 @@ export function isNeedPlaceholderOption(curFormat) {
     'htmlarea',
   ];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -107,7 +107,7 @@ export function isNeedPlaceholderOption(curFormat) {
  *  根据type判断是否显示是否只读配置项
  *  radio、boolean、number、string等类型的数值可以设置为条件字段
  * */
-export function isNeedConditionOption(curFormat) {
+export function isNeedConditionOption(curType) {
   let isSupported = false;
   const supportedTypeList = [
     'boolean',
@@ -122,7 +122,7 @@ export function isNeedConditionOption(curFormat) {
     'time',
   ];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -132,7 +132,7 @@ export function isNeedConditionOption(curFormat) {
  *  根据format判断是否显示是否只读配置项
  *  input、number、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
-export function isNeedReadOnlyOption(curFormat) {
+export function isNeedReadOnlyOption(curType) {
   let isSupported = false;
   const supportedTypeList = [
     'input',
@@ -148,7 +148,7 @@ export function isNeedReadOnlyOption(curFormat) {
     'htmlarea',
   ];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -158,7 +158,7 @@ export function isNeedReadOnlyOption(curFormat) {
  *  根据format判断是否显示是否只读配置项
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
-export function isNeedIsRequiredOption(curFormat) {
+export function isNeedIsRequiredOption(curType) {
   let isSupported = false;
   /* const supportedTypeList = [
     'input',
@@ -173,7 +173,7 @@ export function isNeedIsRequiredOption(curFormat) {
   ]; */
   const supportedTypeList = [];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -183,11 +183,11 @@ export function isNeedIsRequiredOption(curFormat) {
  *  根据format判断是否显示是否只读配置项
  *  目前仅Number种类型组件支持
  * */
-export function isNeedMinMaxOption(curFormat) {
+export function isNeedMinMaxOption(curType) {
   let isSupported = false;
   const supportedTypeList = ['number'];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;
@@ -197,11 +197,11 @@ export function isNeedMinMaxOption(curFormat) {
  *  根据format判断是否显示是否只读配置项
  *  目前仅Array种类型组件支持
  * */
-export function isNeedMinMaxChildOption(curFormat) {
+export function isNeedMinMaxChildOption(curType) {
   let isSupported = false;
   const supportedTypeList = ['array'];
   const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curFormat}#`) >= 0) {
+  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
     isSupported = true;
   }
   return isSupported;

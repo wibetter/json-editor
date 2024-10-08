@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { getCurrentFormat } from '@wibetter/json-utils';
 import { hasProperties } from '../utils';
 import InputFormSchema from '$renderers/InputFormSchema/index';
 import ObjectSchema from '$renderers/ObjectSchema/index';
@@ -65,7 +64,7 @@ const MappingRenderV2 = (props) => {
     getJSONDataByKeyRoute,
     keyRoute2indexRoute,
   } = props;
-  const curType = getCurrentFormat(targetJsonSchema); // 获取当前元素类型（format）
+  const curType = targetJsonSchema.type;
   // 获取当前字段的条件规则
   let hiddenRule = {};
   if (targetJsonSchema.hiddenRule) {

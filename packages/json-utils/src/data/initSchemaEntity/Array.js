@@ -11,14 +11,10 @@ export const initArrayData = {
   type: 'array',
   title: '数组Array',
   description: '', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
   items: {
     type: 'object',
     title: '数组项',
     description: '', // 字段项的说明和描述
-    isRequired: false,
-    readOnly: false,
     properties: {
       name: {
         type: 'input',
@@ -26,8 +22,6 @@ export const initArrayData = {
         default: '', // 默认值
         description: '', // 字段项的说明和描述
         placeholder: '', // 输入提示
-        isRequired: false,
-        readOnly: false,
       },
     },
     propertyOrder: ['name'],

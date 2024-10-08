@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Input, Select } from 'antd';
 const { Option } = Select;
 import {
-  getCurrentFormat,
   getNextIndexRoute,
   getParentIndexRoute,
   EventTypeDataList,
@@ -69,7 +68,7 @@ class TypeSelectFormSchema extends React.PureComponent {
 
   render() {
     const { nodeKey, targetJsonSchema } = this.props;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
 
     const curEnums = targetJsonSchema.enum || [];
     const curEnumextras = targetJsonSchema.enumextra || [];
@@ -89,13 +88,9 @@ class TypeSelectFormSchema extends React.PureComponent {
           </Select>
         </div>
         <div className="type-select-item">
-          <Select
-            defaultValue={currentFormat}
-            style={{ width: 120 }}
-            disabled={true}
-          >
-            <Option key={currentFormat} value={currentFormat}>
-              {currentFormat}
+          <Select defaultValue={curType} style={{ width: 120 }} disabled={true}>
+            <Option key={curType} value={curType}>
+              {curType}
             </Option>
           </Select>
         </div>

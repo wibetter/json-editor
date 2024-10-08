@@ -22,7 +22,6 @@ import {
   isDateTimeStr,
   isTimeStr,
 } from '$utils/typeof';
-import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 import DeleteIcon from '$assets/img/delete.svg';
@@ -152,7 +151,7 @@ class ArraySchema extends React.PureComponent {
     } = this.props;
     const { jsonView, isClosed, hoverIndex, currentActiveArrIndex } =
       this.state;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
     const arrayItemsDataObj = targetJsonSchema.items; // schema数据
@@ -356,7 +355,7 @@ class ArraySchema extends React.PureComponent {
                   >
                     <ObjectSchema
                       {...{
-                        parentType: currentFormat,
+                        parentType: curType,
                         jsonKey: 'items',
                         indexRoute: curIndexRoute,
                         keyRoute: curKeyRoute,

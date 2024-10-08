@@ -29,7 +29,6 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             title: '属性设置',
             isFixedSchema: true,
-            readOnly: false,
             properties: {
               legendAlign: {
                 title: '图例位置',
@@ -40,8 +39,6 @@ class IndexDemo extends React.PureComponent {
                   enumextra: ['上', '右', '下', '左'],
                 },
                 description: '',
-                isRequired: false,
-                readOnly: false,
                 default: 'top',
               },
             },
@@ -51,21 +48,16 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             title: '外观设置',
             isFixedSchema: true,
-            readOnly: false,
             properties: {
               margin: {
                 type: 'box-style',
                 title: '外边距',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'string',
                     title: '单位数值',
                     default: '15px',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'typeSelect',
@@ -73,8 +65,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -82,8 +72,6 @@ class IndexDemo extends React.PureComponent {
               width: {
                 type: 'quantity',
                 title: '宽',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'number',
@@ -92,8 +80,6 @@ class IndexDemo extends React.PureComponent {
                     minimum: 0,
                     maximum: '10000',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'typeSelect',
@@ -101,8 +87,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -110,8 +94,6 @@ class IndexDemo extends React.PureComponent {
               height: {
                 type: 'quantity',
                 title: '高',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'number',
@@ -120,8 +102,6 @@ class IndexDemo extends React.PureComponent {
                     minimum: 0,
                     maximum: '10000',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'typeSelect',
@@ -129,8 +109,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -138,16 +116,12 @@ class IndexDemo extends React.PureComponent {
               padding: {
                 type: 'box-style',
                 title: '内边距',
-                isRequired: false,
-                readOnly: false,
                 properties: {
                   unit: {
                     type: 'string',
                     title: '单位数值',
                     default: '15px',
                     description: '',
-                    isRequired: false,
-                    readOnly: false,
                   },
                   quantity: {
                     type: 'typeSelect',
@@ -155,8 +129,6 @@ class IndexDemo extends React.PureComponent {
                     enum: ['px', 'rem', 'em', '%'],
                     enumextra: ['px', 'rem', 'em', '%'],
                     title: '单位类型',
-                    isRequired: false,
-                    readOnly: false,
                   },
                 },
                 propertyOrder: ['unit', 'quantity'],
@@ -168,12 +140,10 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             title: '数据设置',
             isFixedSchema: true,
-            readOnly: false,
             properties: {
               chartDataList: {
                 type: 'dynamic-data',
                 title: '图表数据',
-                readOnly: false,
                 properties: {
                   type: {
                     default: 'local',
@@ -234,8 +204,6 @@ class IndexDemo extends React.PureComponent {
                 default: 'x',
                 description: '',
                 placeholder: '',
-                isRequired: false,
-                readOnly: false,
               },
               yAxis: {
                 title: 'y轴字段',
@@ -243,8 +211,6 @@ class IndexDemo extends React.PureComponent {
                 default: 'y',
                 description: '',
                 placeholder: '',
-                isRequired: false,
-                readOnly: false,
               },
               legend: {
                 title: '图例字段',
@@ -252,8 +218,6 @@ class IndexDemo extends React.PureComponent {
                 default: 'type',
                 description: '',
                 placeholder: '',
-                isRequired: false,
-                readOnly: false,
               },
             },
             propertyOrder: ['chartDataList', 'xAxis', 'yAxis', 'legend'],
@@ -262,7 +226,6 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             title: '事件设置',
             isFixedSchema: true,
-            readOnly: false,
             properties: {},
             propertyOrder: [],
           },

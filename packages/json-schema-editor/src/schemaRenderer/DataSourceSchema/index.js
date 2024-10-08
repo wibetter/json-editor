@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tree } from 'antd';
 const { TreeNode } = Tree;
-import { getCurrentFormat } from '@wibetter/json-utils';
+
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import TypeSelectFormSchema from '$components/TypeSelectFormSchema/index';
 
@@ -36,12 +36,12 @@ const getTypeSelectCont = (params) => <TypeSelectFormSchema {...params} />;
 /** DataSource类型渲染组件 */
 const DataSourceSchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
-  const currentFormat = getCurrentFormat(targetJsonSchema);
+  const curType = targetJsonSchema.type;
   const dataJsonObj = targetJsonSchema.properties.data || {};
 
   return (
     <TreeNode
-      className={`${currentFormat}-schema schema-item-form`}
+      className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
       indexRoute={indexRoute}
@@ -61,7 +61,7 @@ const DataSourceSchema = (props) => {
           indexRoute: indexRoute ? `${indexRoute}-0` : '0',
           jsonKey: 'type',
           targetJsonSchema: targetJsonSchema.properties.type,
-          parentType: currentFormat,
+          parentType: curType,
           nodeKey: `${nodeKey}-type`,
           typeSelectData,
         })}
@@ -77,7 +77,7 @@ const DataSourceSchema = (props) => {
           indexRoute: indexRoute ? `${indexRoute}-1` : '1',
           jsonKey: 'data',
           targetJsonSchema: dataJsonObj,
-          parentType: currentFormat,
+          parentType: curType,
           nodeKey: `${nodeKey}-data-${dataJsonObj.type}`,
           hideOperaBtn: true,
           keyIsFixed: true,
@@ -95,7 +95,7 @@ const DataSourceSchema = (props) => {
           indexRoute: indexRoute ? `${indexRoute}-2` : '2',
           jsonKey: 'filter',
           targetJsonSchema: targetJsonSchema.properties.filter,
-          parentType: currentFormat,
+          parentType: curType,
           nodeKey: `${nodeKey}-filter`,
           hideOperaBtn: true,
           keyIsFixed: true,

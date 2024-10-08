@@ -26,6 +26,4 @@ export const initSelectData = {
   ],
   default: ['a'],
   description: '',
-  isRequired: false,
-  readOnly: false,
 };

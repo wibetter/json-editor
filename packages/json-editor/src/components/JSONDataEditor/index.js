@@ -11,7 +11,6 @@ import { isEqual } from '$utils/index';
 import {
   isEmptySchema,
   isStructuredSchema,
-  getCurrentFormat,
   json2schema,
 } from '@wibetter/json-utils';
 import './index.scss';
@@ -163,10 +162,10 @@ class JSONDataEditor extends React.PureComponent {
                       const currentSchemaData =
                         jsonSchema.properties[currentJsonKey];
                       /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                      const currentFormat = getCurrentFormat(currentSchemaData);
+                      const curType = targetJsonSchema.type;
 
                       /** 5. 获取当前元素的id，用于做唯一标识 */
-                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${currentFormat}-${currentJsonKey}`;
+                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
 
                       if (
                         currentSchemaData.propertyOrder &&
@@ -176,12 +175,12 @@ class JSONDataEditor extends React.PureComponent {
                           <Panel
                             header={
                               currentSchemaData.title ||
-                              this.renderHeader(currentFormat)
+                              this.renderHeader(curType)
                             }
                             key={currentJsonKey}
                           >
                             {MappingRender({
-                              parentType: currentFormat,
+                              parentType: curType,
                               jsonKey: currentJsonKey,
                               indexRoute: currentIndexRoute,
                               keyRoute: currentKeyRoute,
@@ -216,10 +215,10 @@ class JSONDataEditor extends React.PureComponent {
                       const currentSchemaData =
                         jsonSchema.properties[currentJsonKey];
                       /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                      const currentFormat = getCurrentFormat(currentSchemaData);
+                      const curType = targetJsonSchema.type;
 
                       /** 5. 获取当前元素的id，用于做唯一标识 */
-                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${currentFormat}-${currentJsonKey}`;
+                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
 
                       if (
                         currentSchemaData.propertyOrder &&
@@ -229,14 +228,14 @@ class JSONDataEditor extends React.PureComponent {
                           <TabPane
                             tab={
                               currentSchemaData.title ||
-                              this.renderHeader(currentFormat)
+                              this.renderHeader(curType)
                             }
                             key={currentJsonKey}
                             closable={false}
                             className={`tabs-schema-item`}
                           >
                             {MappingRender({
-                              parentType: currentFormat,
+                              parentType: curType,
                               jsonKey: currentJsonKey,
                               indexRoute: currentIndexRoute,
                               keyRoute: currentKeyRoute,

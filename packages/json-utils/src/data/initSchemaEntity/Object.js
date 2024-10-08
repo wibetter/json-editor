@@ -11,8 +11,6 @@ export const initObjectData = {
   type: 'object',
   title: '对象Object',
   description: '', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
   properties: {
     a: {
       type: 'string',
@@ -21,8 +19,6 @@ export const initObjectData = {
       default: '', // 默认值
       description: '', // 字段项的说明和描述
       placeholder: '', // 输入提示
-      isRequired: false,
-      readOnly: false,
     },
   },
   propertyOrder: ['a'],

@@ -16,6 +16,4 @@ export const initNumberData = {
   minimum: 0, // 在高级设置中配置
   maximum: 1000, // 在高级设置中配置
   description: '', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
 };

@@ -10,16 +10,12 @@
 export const initBoxStyleData = {
   type: 'box-style',
   title: '盒子模型',
-  isRequired: false,
-  readOnly: false,
   properties: {
     unit: {
       title: '单位数值',
       type: 'string',
       default: '0', // 默认值为'0'：'0px 0px 0px 0px'；为'5px': '5px 5px 5px 5px'
       description: '', // 字段项的说明和描述
-      isRequired: false,
-      readOnly: false,
     },
     quantity: {
       type: 'typeSelect', // 选择列表
@@ -27,8 +23,6 @@ export const initBoxStyleData = {
       enum: ['px', 'rem', 'em', '%'],
       enumextra: ['px', 'rem', 'em', '%'],
       title: '单位类型',
-      isRequired: false,
-      readOnly: false,
     },
   },
   propertyOrder: ['unit', 'quantity'],

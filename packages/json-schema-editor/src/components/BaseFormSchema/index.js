@@ -18,7 +18,6 @@ import {
 import AdvanceConfig from '$components/AdvanceConfig/index'; // 高级配置内容
 import {
   isBoxSchemaData,
-  getCurrentFormat,
   getParentIndexRoute,
   TypeDataList,
 } from '@wibetter/json-utils';
@@ -104,9 +103,9 @@ class BaseFormSchema extends React.PureComponent {
   onAddBtnEvent = () => {
     const { indexRoute, targetJsonSchema, addChildJson, addNextJsonData } =
       this.props;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
 
-    if (isBoxSchemaData(currentFormat)) {
+    if (isBoxSchemaData(curType)) {
       // 表示当前是容器类型字段
       addChildJson(indexRoute);
     } else {
@@ -134,9 +133,9 @@ class BaseFormSchema extends React.PureComponent {
     // 2.生成一个新的key值
     const newJsonKey = getNewJsonKeyIndex(parentJSONObj, jsonKey);
     // 3.复制时记录数据来源的路径值（备注：只保留最近的一次copy数值源）
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     saveWebCacheData(
-      `${indexRoute2keyRoute(parentIndexRoute)}-${newJsonKey}-${currentFormat}`,
+      `${indexRoute2keyRoute(parentIndexRoute)}-${newJsonKey}-${curType}`,
       indexRoute2keyRoute(indexRoute),
     );
     // 4.插入复制的json数据
@@ -165,18 +164,17 @@ class BaseFormSchema extends React.PureComponent {
     const { parentType, indexRoute, jsonKey, nodeKey, targetJsonSchema } =
       this.props;
     const { isShowAdvance } = this.state;
-    const isFirstSchema = this.props.isFirstSchema || false; // 是否是最外层的schema元素
     const isFixed = this.props.isFixed || false; // 是否为固有的属性（不可编辑、不可删除）
     const keyIsFixed = this.props.keyIsFixed || false; // key是否为不可编辑的属性
     const typeIsFixed = this.props.typeIsFixed || false; // type是否为不可编辑的属性
     const titleIsFixed = this.props.titleIsFixed || false; // title是否为不可编辑的属性
     const isShowAdvanceBtn = this.props.isShowAdvanceBtn || false; // 是否显示高级操作按钮
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     const isFixedSchema = targetJsonSchema.isFixedSchema;
     const hideOperaBtn = this.props.hideOperaBtn || false; // 是否隐藏操作类按钮
-    const readOnly = isFixedSchema || isFirstSchema || isFixed || false; // 是否不可编辑状态，默认为可编辑状态
-    const isBoxElem = isBoxSchemaData(currentFormat); // 判断是否是容器类型元素
+    const readOnly = isFixedSchema || isFixed || false; // 是否不可编辑状态，默认为可编辑状态
+    const isBoxElem = isBoxSchemaData(curType); // 判断是否是容器类型元素
 
     return (
       <>
@@ -200,7 +198,7 @@ class BaseFormSchema extends React.PureComponent {
               onDragStart={this.ignoreDragEvent}
             >
               <Select
-                defaultValue={currentFormat}
+                defaultValue={curType}
                 style={{ width: 150 }}
                 onChange={this.selectHandleChange}
                 disabled={readOnly || typeIsFixed}

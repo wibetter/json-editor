@@ -13,6 +13,4 @@ export const initJsonData = {
   type: 'json',
   default: '{}', // 默认值
   description: '', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
 };

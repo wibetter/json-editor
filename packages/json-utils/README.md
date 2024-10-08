@@ -59,7 +59,6 @@
 - schemaMetaList: 目前JSON数据可视化组件（JSONSchema、JSONEditor）提供的元数据类型清单
 - dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
 - isBoxSchemaData: 根据format判断是否为容器类型字段(func、style、data、object)
-- getCurrentFormat: 获取当前字段的类型（format）
 - isEmptySchema: 判断是否为空的Schema
 
 ## 快速使用

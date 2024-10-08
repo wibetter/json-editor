@@ -2,7 +2,6 @@ import React from 'react';
 import { Tree } from 'antd';
 const { TreeNode } = Tree;
 import BaseFormSchema from '$components/BaseFormSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
 const getTreeNodeTitleCont = (props) => <BaseFormSchema {...props} />;
@@ -13,11 +12,11 @@ const getTreeNodeTitleCont = (props) => <BaseFormSchema {...props} />;
  * */
 const GeneralSchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
-  const currentFormat = getCurrentFormat(targetJsonSchema);
+  const curType = targetJsonSchema.type;
 
   return (
     <TreeNode
-      className={`${currentFormat}-schema schema-item-form`}
+      className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
       indexRoute={indexRoute}
