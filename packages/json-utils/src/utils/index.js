@@ -1,4 +1,4 @@
-import {cloneDeep, isEqual as _isEqual} from 'lodash';
+import { cloneDeep, isEqual as _isEqual } from 'lodash';
 
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {

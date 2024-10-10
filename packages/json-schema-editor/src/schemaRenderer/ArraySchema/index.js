@@ -67,6 +67,7 @@ const itemsRender = (props) => {
         targetJsonSchema,
         parentType,
         nodeKey,
+        typeIsFixed: false,
         isFixed: true,
       })}
     >
@@ -75,7 +76,7 @@ const itemsRender = (props) => {
         properties: targetJsonSchema.properties,
         parentIndexRoute: indexRoute,
         parentNodeKey: nodeKey,
-        parentType: 'array-object',
+        parentType,
       })}
     </TreeNode>
   );
@@ -89,9 +90,10 @@ const ArraySchema = (props) => {
   // 获取items的index路径值
   const currentIndexRoute = indexRoute ? `${indexRoute}-0` : '0';
   // 获取items的jsonKey
-  const currentJsonKey = 'items';
+  const itemsJsonKey = 'items';
   // 获取items的key路径
-  const curNodeKey = nodeKey ? `${nodeKey}-items` : 'items';
+  const curNodeKey = nodeKey ? `${nodeKey}-${itemsJsonKey}` : itemsJsonKey;
+  const items = targetJsonSchema[itemsJsonKey] || {};
 
   return (
     <TreeNode
@@ -105,11 +107,11 @@ const ArraySchema = (props) => {
       })}
     >
       {itemsRender({
-        parentType: curType,
-        jsonKey: currentJsonKey,
+        parentType: items.type || 'object',
+        jsonKey: itemsJsonKey,
         indexRoute: currentIndexRoute,
         nodeKey: curNodeKey,
-        targetJsonSchema: targetJsonSchema.items,
+        targetJsonSchema: items,
       })}
     </TreeNode>
   );

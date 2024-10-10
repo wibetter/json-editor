@@ -60,7 +60,7 @@ class JSONSchema extends React.PureComponent {
     const { node } = eventData;
     const curIndexRoute = node.indexRoute;
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    if (curJsonObj.isFixedSchema) {
+    if (curJsonObj.isFixed) {
       message.warning('当前元素不支持拖拽哦。');
     }
   };
@@ -89,7 +89,7 @@ class JSONSchema extends React.PureComponent {
     const curJsonKey = dragNode.jsonKey;
     // 获取当前拖动的元素
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    if (curJsonObj.isFixedSchema) return; // 固定类型元素不允许拖拽
+    if (curJsonObj.isFixed) return; // 固定类型元素不允许拖拽
 
     // 放置的目标元素key
     let targetIndexRoute = node.indexRoute;

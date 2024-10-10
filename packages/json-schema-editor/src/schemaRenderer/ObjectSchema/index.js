@@ -57,7 +57,7 @@ const ObjectSchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema, isOnlyShowChild } =
     props;
   const curType = targetJsonSchema.type;
-  const isFixedSchema = targetJsonSchema.isFixedSchema;
+  const isFixed = targetJsonSchema.isFixed;
 
   /** 先获取当前节点的properties内容 */
   const propertiesContElem = propertiesRender({
@@ -77,7 +77,7 @@ const ObjectSchema = (props) => {
       key={nodeKey}
       indexRoute={indexRoute}
       jsonKey={jsonKey}
-      disabled={isFixedSchema}
+      disabled={isFixed}
       title={getTreeNodeTitleCont({
         ...props,
       })}

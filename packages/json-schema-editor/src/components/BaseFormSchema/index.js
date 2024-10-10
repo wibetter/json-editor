@@ -31,18 +31,18 @@ class BaseFormSchema extends React.PureComponent {
     indexRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
-    isFixed: PropTypes.any,
-    hideOperaBtn: PropTypes.any,
-    isShowAdvanceBtn: PropTypes.any,
-    keyIsFixed: PropTypes.any,
-    typeIsFixed: PropTypes.any,
-    titleIsFixed: PropTypes.any,
+    isFixed: PropTypes.bool,
+    hideOperaBtn: PropTypes.bool,
+    showAdvanceBtn: PropTypes.bool,
+    keyIsFixed: PropTypes.bool,
+    typeIsFixed: PropTypes.bool,
+    titleIsFixed: PropTypes.bool,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      isShowAdvance: false,
+      showAdvanceConfig: false,
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.onAddBtnEvent = this.onAddBtnEvent.bind(this);
@@ -163,17 +163,20 @@ class BaseFormSchema extends React.PureComponent {
   render() {
     const { parentType, indexRoute, jsonKey, nodeKey, targetJsonSchema } =
       this.props;
-    const { isShowAdvance } = this.state;
-    const isFixed = this.props.isFixed || false; // 是否为固有的属性（不可编辑、不可删除）
-    const keyIsFixed = this.props.keyIsFixed || false; // key是否为不可编辑的属性
-    const typeIsFixed = this.props.typeIsFixed || false; // type是否为不可编辑的属性
-    const titleIsFixed = this.props.titleIsFixed || false; // title是否为不可编辑的属性
-    const isShowAdvanceBtn = this.props.isShowAdvanceBtn || false; // 是否显示高级操作按钮
+    const { showAdvanceConfig } = this.state;
+    const isFixed = targetJsonSchema.isFixed || this.props.isFixed || false;
+    // readOnly: 是否为固有的属性（不可编辑、不可 // 是否不可编辑状态，默认为可编辑状态删除），用于控制json-editor端是否可编辑
+    const readOnly = this.props.readOnly || targetJsonSchema.readOnly || false;
+    const keyIsFixed =
+      this.props.keyIsFixed !== undefined ? this.props.keyIsFixed : isFixed; // key是否为不可编辑的属性
+    const typeIsFixed =
+      this.props.typeIsFixed !== undefined ? this.props.typeIsFixed : isFixed; // type是否为不可编辑的属性
+    const titleIsFixed =
+      this.props.titleIsFixed !== undefined ? this.props.titleIsFixed : isFixed; // title是否为不可编辑的属性
+    const hideOperaBtn = this.props.hideOperaBtn || false; // 是否隐藏操作类按钮
+    const showAdvanceBtn = hideOperaBtn ? this.props.showAdvanceBtn : false; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
     const curType = targetJsonSchema.type;
-    const isFixedSchema = targetJsonSchema.isFixedSchema;
-    const hideOperaBtn = this.props.hideOperaBtn || false; // 是否隐藏操作类按钮
-    const readOnly = isFixedSchema || isFixed || false; // 是否不可编辑状态，默认为可编辑状态
     const isBoxElem = isBoxSchemaData(curType); // 判断是否是容器类型元素
 
     return (
@@ -187,7 +190,7 @@ class BaseFormSchema extends React.PureComponent {
             >
               <Input
                 defaultValue={jsonKey || 'key值不存在'}
-                disabled={readOnly || keyIsFixed}
+                disabled={keyIsFixed}
                 onPressEnter={this.handleJsonKeyChange}
                 onBlur={this.handleJsonKeyChange}
               />
@@ -201,7 +204,7 @@ class BaseFormSchema extends React.PureComponent {
                 defaultValue={curType}
                 style={{ width: 150 }}
                 onChange={this.selectHandleChange}
-                disabled={readOnly || typeIsFixed}
+                disabled={typeIsFixed}
               >
                 {currentTypeList.map((item) => (
                   <Option key={item} value={item}>
@@ -217,14 +220,14 @@ class BaseFormSchema extends React.PureComponent {
             >
               <Input
                 defaultValue={targetJsonSchema.title}
-                disabled={readOnly || titleIsFixed}
+                disabled={titleIsFixed}
                 onPressEnter={this.handleTitleChange}
                 onBlur={this.handleTitleChange}
               />
             </div>
             {!hideOperaBtn && (
               <div className="operate-item">
-                {!readOnly && (
+                {!isFixed && (
                   <Tooltip title="删除">
                     <CloseOutlined
                       className="operate-btn delete-operate"
@@ -238,7 +241,6 @@ class BaseFormSchema extends React.PureComponent {
                     onClick={this.onAddBtnEvent}
                   />
                 </Tooltip>
-
                 {/* 自动排序功能 */}
                 {isBoxElem && (
                   <Tooltip title={'数据项排序'}>
@@ -249,59 +251,52 @@ class BaseFormSchema extends React.PureComponent {
                   </Tooltip>
                 )}
 
-                {!readOnly && (
-                  <Tooltip title="复制">
-                    <CopyOutlined
-                      className="operate-btn"
-                      onClick={this.onCopyBtnEvent}
-                    />
-                  </Tooltip>
-                )}
-                {!readOnly && (
-                  <Tooltip title="高级设置">
-                    <SettingOutlined
-                      className="operate-btn"
-                      onClick={() => {
-                        // 显示高级设置模态框
-                        this.setState({
-                          isShowAdvance: true,
-                        });
-                      }}
-                    />
-                  </Tooltip>
-                )}
-                {!readOnly && (
-                  <Tooltip title="按住进行拖拽">
-                    <DragOutlined className="operate-btn drag-btn" />
-                  </Tooltip>
+                {!isFixed && (
+                  <>
+                    <Tooltip title="复制">
+                      <CopyOutlined
+                        className="operate-btn"
+                        onClick={this.onCopyBtnEvent}
+                      />
+                    </Tooltip>
+                    <Tooltip title="高级设置1">
+                      <SettingOutlined
+                        className="operate-btn"
+                        onClick={() => {
+                          this.setState({
+                            showAdvanceConfig: true,
+                          });
+                        }}
+                      />
+                    </Tooltip>
+                    <Tooltip title="按住进行拖拽">
+                      <DragOutlined className="operate-btn drag-btn" />
+                    </Tooltip>
+                  </>
                 )}
               </div>
             )}
-            {hideOperaBtn && (
+            {showAdvanceBtn && (
               <div className="operate-item">
-                {isShowAdvanceBtn && (
-                  <Tooltip title="高级设置">
-                    <SettingOutlined
-                      className="operate-btn"
-                      onClick={() => {
-                        // 显示高级设置模态框
-                        this.setState({
-                          isShowAdvance: true,
-                        });
-                      }}
-                    />
-                  </Tooltip>
-                )}
-                &nbsp;
+                <Tooltip title="高级设置2">
+                  <SettingOutlined
+                    className="operate-btn"
+                    onClick={() => {
+                      this.setState({
+                        showAdvanceConfig: true,
+                      });
+                    }}
+                  />
+                </Tooltip>
               </div>
             )}
-            {isShowAdvance && (
+            {showAdvanceConfig && (
               <Modal
                 visible={true}
                 title={`高级设置 / 当前字段：${targetJsonSchema.title}(${jsonKey})`}
                 onCancel={() => {
                   this.setState({
-                    isShowAdvance: false,
+                    showAdvanceConfig: false,
                   });
                 }}
                 footer={[
@@ -310,7 +305,7 @@ class BaseFormSchema extends React.PureComponent {
                     type="primary"
                     onClick={() => {
                       this.setState({
-                        isShowAdvance: false,
+                        showAdvanceConfig: false,
                       });
                     }}
                   >

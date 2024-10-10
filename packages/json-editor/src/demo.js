@@ -28,7 +28,7 @@ class IndexDemo extends React.PureComponent {
           props: {
             type: 'object',
             title: '属性设置',
-            isFixedSchema: true,
+            isFixed: true,
             properties: {
               legendAlign: {
                 title: '图例位置',
@@ -47,7 +47,7 @@ class IndexDemo extends React.PureComponent {
           style: {
             type: 'object',
             title: '外观设置',
-            isFixedSchema: true,
+            isFixed: true,
             properties: {
               margin: {
                 type: 'box-style',
@@ -139,7 +139,7 @@ class IndexDemo extends React.PureComponent {
           data: {
             type: 'object',
             title: '数据设置',
-            isFixedSchema: true,
+            isFixed: true,
             properties: {
               chartDataList: {
                 type: 'dynamic-data',
@@ -225,7 +225,7 @@ class IndexDemo extends React.PureComponent {
           event: {
             type: 'object',
             title: '事件设置',
-            isFixedSchema: true,
+            isFixed: true,
             properties: {},
             propertyOrder: [],
           },
@@ -406,19 +406,6 @@ class IndexDemo extends React.PureComponent {
         ],
         'event-schema': ['event'],
         object: [
-          'input',
-          'boolean',
-          'color',
-          'date',
-          'date-time',
-          'time',
-          'url',
-          'textarea',
-          'number',
-          'object',
-          'array',
-        ],
-        'array-object': [
           'input',
           'boolean',
           'color',

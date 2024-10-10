@@ -36,7 +36,7 @@ import { isObject, isArray } from '$utils/typeof';
 export function dataRoute2dataPath(dataRoute, baseDataPath) {
   let dataPath = baseDataPath || 'data'; // 默认数据根路径值为data
   const dataRouteArr = dataRoute.split('-');
-  dataRouteArr.map(path => {
+  dataRouteArr.map((path) => {
     if (/^\d+$/.test(path)) {
       dataPath = `${dataPath}[${path}]`;
     } else {
@@ -53,15 +53,17 @@ export function json2treeData(mockData, parentDataRoute) {
   let treeData = [];
   if (isObject(mockData)) {
     const mockDataProps = Object.keys(mockData);
-    mockDataProps.map(propKey => {
+    mockDataProps.map((propKey) => {
       const mockDataItem = mockData[propKey];
-      const curDataRoute = parentDataRoute ? `${parentDataRoute}-${propKey}` : propKey;
+      const curDataRoute = parentDataRoute
+        ? `${parentDataRoute}-${propKey}`
+        : propKey;
       if (isObject(mockDataItem) || isArray(mockDataItem)) {
         treeData.push({
           title: propKey,
           value: curDataRoute,
           key: curDataRoute,
-          children: json2treeData(mockDataItem, curDataRoute)
+          children: json2treeData(mockDataItem, curDataRoute),
         });
       } else {
         treeData.push({
@@ -74,13 +76,15 @@ export function json2treeData(mockData, parentDataRoute) {
   } else if (isArray(mockData)) {
     mockData.map((mockDataItem, index) => {
       const indexStr = index.toString();
-      const curDataRoute = parentDataRoute ? `${parentDataRoute}-${index}` : indexStr;
+      const curDataRoute = parentDataRoute
+        ? `${parentDataRoute}-${index}`
+        : indexStr;
       if (isObject(mockDataItem) || isArray(mockDataItem)) {
         treeData.push({
           title: indexStr,
           value: curDataRoute,
           key: curDataRoute,
-          children: json2treeData(mockDataItem, curDataRoute)
+          children: json2treeData(mockDataItem, curDataRoute),
         });
       } else {
         treeData.push({

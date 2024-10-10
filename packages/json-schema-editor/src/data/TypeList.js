@@ -66,24 +66,6 @@ export const OBJECT_TYPE = [
   'array',
 ];
 
-// 数组&对象类型可选项（仅用于Array的items子项）
-export const ARRAY_OBJECT_TYPE = [
-  'input',
-  'boolean',
-  'color',
-  'date',
-  'date-time',
-  'time',
-  'url',
-  'textarea',
-  'text-editor',
-  'number',
-  'radio',
-  'single-select',
-  'select',
-  'array',
-];
-
 // 数组类型可选项
 export const ARRAY_TYPE = ['object'];
 
@@ -106,11 +88,11 @@ export const ALL_TYPE = [
   'json',
   'codearea',
   'htmlarea',
+  'array',
+  'object',
   'datasource',
   'dynamic-data',
   'event',
-  'array',
-  'object',
 ];
 // radio单选类型可选项
 export const RADIO_TYPE = ['string'];
@@ -120,12 +102,8 @@ export const SELECT_TYPE = ['string'];
 
 // 类型清单
 export const TypeList = {
-  func: FUNCSCHEME_TYPE,
-  style: STYLESCHEME_TYPE,
-  data: DATASCHEME_TYPE,
-  object: OBJECT_TYPE,
+  object: ALL_TYPE,
   array: ARRAY_TYPE,
-  'array-object': ARRAY_OBJECT_TYPE,
   radio: RADIO_TYPE,
   'single-select': RADIO_TYPE,
   select: SELECT_TYPE,
