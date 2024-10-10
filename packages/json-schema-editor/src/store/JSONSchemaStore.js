@@ -9,7 +9,7 @@ import {
   getSchemaByIndexRoute,
   getSchemaByKeyRoute,
   oldSchemaToNewSchema,
-  isBoxSchemaData,
+  isContainerSchema,
   indexRoute2keyRoute,
   keyRoute2indexRoute,
   KeyWordList,
@@ -182,11 +182,11 @@ export default class JSONSchemaStore {
    * */
   @action.bound
   addChildJson(curIndexRoute, ignoreOnChange) {
-    const curJSONObj = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
-    if (isBoxSchemaData(curJSONObj.type)) {
-      const childKey = this.getNewJsonKeyIndex(curJSONObj);
-      curJSONObj.propertyOrder.push(childKey);
-      curJSONObj.properties[childKey] = initInputData;
+    const curSchema = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
+    if (isContainerSchema(curSchema)) {
+      const childKey = this.getNewJsonKeyIndex(curSchema);
+      curSchema.propertyOrder.push(childKey);
+      curSchema.properties[childKey] = initInputData;
       // 触发onChange事件
       this.jsonSchemaChange(ignoreOnChange);
     } else {

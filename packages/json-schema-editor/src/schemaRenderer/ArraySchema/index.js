@@ -67,8 +67,8 @@ const itemsRender = (props) => {
         targetJsonSchema,
         parentType,
         nodeKey,
-        typeIsFixed: false,
         isFixed: true,
+        typeIsFixed: false,
       })}
     >
       {propertiesRender({

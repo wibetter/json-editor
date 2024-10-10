@@ -1,3 +1,4 @@
+import { getExpectType } from '../function/getExpectType';
 /**
  * JSONSchema(json格式)对象的通用操作方法【非响应式数据操作方法集合】
  */
@@ -56,26 +57,18 @@ export function isNewSchemaData(schemaData) {
   return isNewVersion;
 }
 
-/** 根据format判断是否是容器类型字段
- *  容器类型字段：func、style、data、object
+/** 判断是否是容器类型元素
+ *  容器类型字段：object数值类型，且isFixed不为true
  *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
  *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
  * */
-export function isBoxSchemaData(format) {
-  let isBoxSchema = false;
-  if (
-    format === 'object' ||
-    format === 'func' ||
-    format === 'style' ||
-    format === 'data' ||
-    format === 'func-schema' ||
-    format === 'style-schema' ||
-    format === 'data-schema' ||
-    format === 'event-schema'
-  ) {
-    isBoxSchema = true;
+export function isContainerSchema(curSchema) {
+  let isContainerElem = false;
+  const valueType = getExpectType(curSchema.type);
+  if (valueType === 'object' && !curSchema.isFixed) {
+    isContainerElem = true;
   }
-  return isBoxSchema;
+  return isContainerElem;
 }
 
 /** 判断是否是结构化的schema数据，

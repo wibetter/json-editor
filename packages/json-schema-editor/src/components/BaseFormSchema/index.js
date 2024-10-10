@@ -17,7 +17,7 @@ import {
 } from '@ant-design/icons';
 import AdvanceConfig from '$components/AdvanceConfig/index'; // 高级配置内容
 import {
-  isBoxSchemaData,
+  isContainerSchema,
   getParentIndexRoute,
   TypeDataList,
 } from '@wibetter/json-utils';
@@ -103,9 +103,8 @@ class BaseFormSchema extends React.PureComponent {
   onAddBtnEvent = () => {
     const { indexRoute, targetJsonSchema, addChildJson, addNextJsonData } =
       this.props;
-    const curType = targetJsonSchema.type;
 
-    if (isBoxSchemaData(curType)) {
+    if (isContainerSchema(targetJsonSchema)) {
       // 表示当前是容器类型字段
       addChildJson(indexRoute);
     } else {
@@ -177,7 +176,7 @@ class BaseFormSchema extends React.PureComponent {
     const showAdvanceBtn = hideOperaBtn ? this.props.showAdvanceBtn : false; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
     const curType = targetJsonSchema.type;
-    const isBoxElem = isBoxSchemaData(curType); // 判断是否是容器类型元素
+    const isContainerElem = isContainerSchema(targetJsonSchema); // 判断是否是容器类型元素
 
     return (
       <>
@@ -235,14 +234,16 @@ class BaseFormSchema extends React.PureComponent {
                     />
                   </Tooltip>
                 )}
-                <Tooltip title={isBoxElem ? '新增子元素' : '新增同级元素'}>
+                <Tooltip
+                  title={isContainerElem ? '新增子元素' : '新增同级元素'}
+                >
                   <PlusOutlined
                     className="operate-btn"
                     onClick={this.onAddBtnEvent}
                   />
                 </Tooltip>
                 {/* 自动排序功能 */}
-                {isBoxElem && (
+                {isContainerElem && (
                   <Tooltip title={'数据项排序'}>
                     <SortAscendingOutlined
                       className="operate-btn"
