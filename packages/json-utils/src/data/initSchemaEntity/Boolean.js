@@ -12,6 +12,4 @@ export const initBooleanData = {
   title: '布尔值',
   default: false, // 默认值
   description: '', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
 };

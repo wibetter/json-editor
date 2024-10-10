@@ -5,14 +5,8 @@ import { Tree, message } from 'antd';
 import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
 import MappingRender from '$schemaRenderer/MappingRender';
 import ConditionPropsSchema from '$components/ConditionPropsSchema/index';
+import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
 import {
-  isEqual,
-  isFirstSchemaElem,
-  saveWebCacheData,
-  getWebCacheData,
-} from '$utils/index';
-import {
-  getCurrentFormat,
   getParentIndexRoute,
   isEmptySchema,
   isSameParent,
@@ -62,10 +56,12 @@ class JSONSchema extends React.PureComponent {
    * 拖拽相关方法：开始拖动时触发的事件
    */
   onDragStart = (eventData) => {
+    const { getSchemaByIndexRoute } = this.props;
     const { node } = eventData;
-    // 设置只有指定类型的元素可以拖拽
-    if (node.className && isFirstSchemaElem(node.className)) {
-      message.warning('一级固定类型元素不支持拖拽哦');
+    const curIndexRoute = node.indexRoute;
+    const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
+    if (curJsonObj.isFixed) {
+      message.warning('当前元素不支持拖拽哦。');
     }
   };
 
@@ -88,12 +84,12 @@ class JSONSchema extends React.PureComponent {
       isSupportCurType,
     } = this.props;
 
-    if (dragNode.className && isFirstSchemaElem(dragNode.className)) return; // 一级固定类型元素不允许拖拽
     // 拖动的元素key
     const curIndexRoute = dragNode.indexRoute;
     const curJsonKey = dragNode.jsonKey;
     // 获取当前拖动的元素
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
+    if (curJsonObj.isFixed) return; // 固定类型元素不允许拖拽
 
     // 放置的目标元素key
     let targetIndexRoute = node.indexRoute;
@@ -133,7 +129,7 @@ class JSONSchema extends React.PureComponent {
         message.warning('目标位置中有重名的元素');
         return;
       }
-      const curType = getCurrentFormat(curJsonObj);
+      const curType = curJsonObj.type;
       const isSupportCurType_ = isSupportCurType(targetIndexRoute, curType);
       if (!isSupportCurType_) {
         message.warning(`目标位置不支持${curType}类型元素`);
@@ -141,15 +137,14 @@ class JSONSchema extends React.PureComponent {
       }
 
       // 跨级拖动时
-      const currentFormat = getCurrentFormat(curJsonObj);
       const curKeyRoute = indexRoute2keyRoute(curIndexRoute);
       const targetParentIndexRoute = getParentIndexRoute(targetIndexRoute);
       // 先获取拖拽元素的原始路径
-      const cacheKeyRoute = getWebCacheData(`${curKeyRoute}-${currentFormat}`);
+      const cacheKeyRoute = getWebCacheData(`${curKeyRoute}-${curType}`);
       saveWebCacheData(
         `${indexRoute2keyRoute(
           targetParentIndexRoute,
-        )}-${curJsonKey}-${currentFormat}`,
+        )}-${curJsonKey}-${curType}`,
         cacheKeyRoute || curKeyRoute,
       );
 
@@ -196,9 +191,9 @@ class JSONSchema extends React.PureComponent {
         /** 2. 获取当前元素的json数据对象 */
         const currentSchemaData = jsonSchema.properties[currentJsonKey];
         /** 3. 判断是否是容器类型元素，如果是则禁止选中 */
-        const currentFormat = getCurrentFormat(currentSchemaData);
+        const curType = currentSchemaData.type;
         /** 4. 获取当前元素的id，用于做唯一标识 */
-        let nodeKey = `${currentFormat}-${currentJsonKey}`; // 使用当前format+jsonKey作为nodeKey
+        let nodeKey = `${curType}-${currentJsonKey}`; // 使用当前format+jsonKey作为nodeKey
         defaultExpandedKeys.push(nodeKey);
       });
     }
@@ -208,7 +203,7 @@ class JSONSchema extends React.PureComponent {
   render() {
     const { jsonSchema } = this.props;
     const isEmpty = isEmptySchema(jsonSchema);
-    const currentFormat = getCurrentFormat(jsonSchema);
+    const curType = jsonSchema.type;
     /**
      * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此处进行拖拽事件的处理），
      * JSONSchema的一级字段必须为object类型（规避非法的jsonSchema数据，以及结构单一的jsonSchema数据，
@@ -225,12 +220,12 @@ class JSONSchema extends React.PureComponent {
               onDragStart={this.onDragStart}
               onDrop={this.onDrop}
               defaultExpandedKeys={
-                currentFormat === 'object' && !isEmpty
+                curType === 'object' && !isEmpty
                   ? this.catchExpandedKeys(jsonSchema)
                   : []
               }
             >
-              {currentFormat === 'object' &&
+              {curType === 'object' &&
                 ObjectSchema({
                   parentType: '',
                   jsonKey: '',
@@ -239,7 +234,7 @@ class JSONSchema extends React.PureComponent {
                   targetJsonSchema: jsonSchema,
                   isOnlyShowChild: true, // 一级object类型不显示，仅显示其子项
                 })}
-              {currentFormat !== 'object' &&
+              {curType !== 'object' &&
                 MappingRender({
                   parentType: '',
                   jsonKey: '',

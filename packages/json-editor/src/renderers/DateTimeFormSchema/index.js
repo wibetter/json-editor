@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { DatePicker, Tooltip } from 'antd';
-import { getCurrentFormat } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 
@@ -55,14 +54,14 @@ class DateTimeFormSchema extends React.PureComponent {
       pageScreen,
       getJSONDataByKeyRoute,
     } = this.props;
-    const curFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
-    const timeFormat = DateTypeList[curFormat] || DateTypeList[0];
+    const timeFormat = DateTypeList[curType] || DateTypeList[0];
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const defaultTime = curJsonData || targetJsonSchema.default;
-    const isNeedTwoCol = isNeedTwoColWarpStyle(curFormat); // 是否需要设置成两栏布局
+    const isNeedTwoCol = isNeedTwoColWarpStyle(curType); // 是否需要设置成两栏布局
 
     return (
       <div
@@ -100,7 +99,7 @@ class DateTimeFormSchema extends React.PureComponent {
               style={{ display: 'inline-block' }}
               disabled={readOnly}
               required={isRequired}
-              showTime={curFormat === 'date-time'}
+              showTime={curType === 'date-time'}
               format={timeFormat}
               placeholder={
                 targetJsonSchema.placeholder ||

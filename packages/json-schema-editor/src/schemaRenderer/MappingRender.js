@@ -1,4 +1,3 @@
-import { getCurrentFormat } from '@wibetter/json-utils';
 import ArraySchema from '$schemaRenderer/ArraySchema/index';
 import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
 import DataSourceSchema from '$schemaRenderer/DataSourceSchema/index';
@@ -12,7 +11,7 @@ import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
   const { targetJsonSchema } = props;
-  const curType = getCurrentFormat(targetJsonSchema); // 获取当前元素类型（format）
+  const curType = targetJsonSchema.type; // 获取当前元素类型（format）
 
   switch (curType) {
     case 'object':

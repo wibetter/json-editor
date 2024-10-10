@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
+
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
@@ -34,7 +34,7 @@ class EventSchema extends React.PureComponent {
   render() {
     const { keyRoute, nodeKey, indexRoute, targetJsonSchema, pageScreen } =
       this.props;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
 
     const typeDataObj = targetJsonSchema.properties.type || {};
     // 注册类型事件的数据对象：on
@@ -79,7 +79,7 @@ class EventSchema extends React.PureComponent {
               {registerJsonObj && (
                 <InputFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'register',
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
@@ -92,7 +92,7 @@ class EventSchema extends React.PureComponent {
               {actionFuncJsonObj && (
                 <CodeAreaFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'actionFunc',
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute
@@ -111,7 +111,7 @@ class EventSchema extends React.PureComponent {
               {triggerJsonObj && (
                 <InputFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'trigger',
                     indexRoute: indexRoute ? `${indexRoute}-1` : '1',
                     keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
@@ -124,7 +124,7 @@ class EventSchema extends React.PureComponent {
               {eventDataJsonObj && (
                 <JsonFormSchema
                   {...{
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'eventData',
                     indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                     keyRoute: keyRoute ? `${keyRoute}-eventData` : 'eventData',

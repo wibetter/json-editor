@@ -3,7 +3,6 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import EnumItemSchema from '$components/EnumItemSchema/index';
-import { getCurrentFormat } from '@wibetter/json-utils';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
 const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
@@ -14,7 +13,7 @@ const enumItemRender = (params) => <EnumItemSchema {...params} />;
 /** Radio类型渲染组件 */
 const RadioSchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
-  const currentFormat = getCurrentFormat(targetJsonSchema);
+  const curType = targetJsonSchema.type;
 
   // 获取枚举值
   const enumKeys = targetJsonSchema.items.enum;
@@ -23,7 +22,7 @@ const RadioSchema = (props) => {
 
   return (
     <TreeNode
-      className={`${currentFormat}-schema schema-item-form`}
+      className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
       indexRoute={indexRoute}
@@ -38,7 +37,7 @@ const RadioSchema = (props) => {
           /** 1. 获取当前enum的title */
           const enumText = enumTexts[enumIndex];
           /** 2. 获取当前元素的id，用于做唯一标识 */
-          const enumNodeKey = `${nodeKey}${currentFormat}-${enumKey}`;
+          const enumNodeKey = `${nodeKey}${curType}-${enumKey}`;
 
           return (
             <TreeNode

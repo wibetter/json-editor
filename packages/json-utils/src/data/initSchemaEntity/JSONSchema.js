@@ -14,7 +14,7 @@ export const initJSONSchemaData = {
     func: {
       type: 'object',
       title: '功能设置',
-      readOnly: true,
+      isFixed: true,
       properties: {
         a: {
           title: '单文本框',
@@ -23,7 +23,6 @@ export const initJSONSchemaData = {
           description: '', // 字段项的说明和描述
           placeholder: '', // 输入提示
           isRequired: false,
-          readOnly: false,
         },
       },
       propertyOrder: ['a'],
@@ -31,7 +30,7 @@ export const initJSONSchemaData = {
     style: {
       type: 'object',
       title: '样式设置',
-      readOnly: true,
+      isFixed: true,
       properties: {
         b: {
           title: '单文本框',
@@ -39,8 +38,6 @@ export const initJSONSchemaData = {
           default: '', // 默认值
           description: '', // 字段项的说明和描述
           placeholder: '', // 输入提示
-          isRequired: false,
-          readOnly: false,
         },
       },
       propertyOrder: ['b'],
@@ -48,7 +45,7 @@ export const initJSONSchemaData = {
     data: {
       type: 'data',
       title: '数据设置',
-      readOnly: true,
+      isFixed: true,
       properties: {
         c: {
           title: '单文本框',
@@ -57,7 +54,6 @@ export const initJSONSchemaData = {
           description: '', // 字段项的说明和描述
           placeholder: '', // 输入提示
           isRequired: false,
-          readOnly: false,
         },
       },
       propertyOrder: ['c'],

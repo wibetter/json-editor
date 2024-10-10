@@ -185,6 +185,7 @@ class IndexDemo extends React.PureComponent {
             required: ['margin', 'width', 'height', 'padding'],
             propertyOrder: ['width', 'height', 'margin', 'padding'],
           },
+          // "object-data-object-chartDataList-object-config-object-body"
           data: {
             type: 'object',
             format: 'data',
@@ -223,9 +224,10 @@ class IndexDemo extends React.PureComponent {
                       body: {
                         type: 'object',
                         title: '请求参数配置',
-                        format: 'object',
                         description: '用于配置当前接口的请求参数数值',
                         isRequired: true,
+                        properties: {},
+                        propertyOrder: [],
                       },
                       filter: {
                         type: 'string',

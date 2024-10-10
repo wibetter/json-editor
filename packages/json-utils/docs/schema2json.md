@@ -13,21 +13,17 @@ const jsonSchema = {
   type: 'object',
   title: '对象类型',
   format: 'object',
-  isRequired: false,
   default: '',
   description: '',
   placeholder: '',
-  readOnly: false,
   properties: {
     a: {
       type: 'string',
       title: '单文本框',
       format: 'input',
-      isRequired: false,
       default: '',
       description: '',
-      placeholder: '',
-      readOnly: false,
+      placeholder: ''
     },
     field_2: {
       type: 'string',
@@ -35,9 +31,7 @@ const jsonSchema = {
       format: 'input',
       default: '',
       description: '',
-      placeholder: '',
-      isRequired: false,
-      readOnly: false,
+      placeholder: ''
     },
     field_3: {
       type: 'string',
@@ -45,9 +39,7 @@ const jsonSchema = {
       format: 'input',
       default: '',
       description: '',
-      placeholder: '',
-      isRequired: false,
-      readOnly: false,
+      placeholder: ''
     },
   },
   required: ['a', 'field_2', 'field_3'],
@@ -70,21 +62,17 @@ const jsonSchema = {
   type: 'object',
   title: '对象类型',
   format: 'object',
-  isRequired: false,
   default: '',
   description: '',
   placeholder: '',
-  readOnly: false,
   properties: {
     a: {
       type: 'string',
       title: '单文本框',
       format: 'input',
-      isRequired: false,
       default: '',
       description: '',
       placeholder: '',
-      readOnly: false,
     },
     field_2: {
       type: 'string',
@@ -92,9 +80,7 @@ const jsonSchema = {
       format: 'input',
       default: '',
       description: '',
-      placeholder: '',
-      isRequired: false,
-      readOnly: false,
+      placeholder: ''
     },
     field_3: {
       type: 'string',
@@ -102,9 +88,7 @@ const jsonSchema = {
       format: 'input',
       default: '',
       description: '',
-      placeholder: '',
-      isRequired: false,
-      readOnly: false,
+      placeholder: ''
     },
   },
   required: ['a', 'field_2', 'field_3'],

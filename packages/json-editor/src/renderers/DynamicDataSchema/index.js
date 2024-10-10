@@ -9,7 +9,7 @@ import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
 import TreeSelectFromSchema from '$renderers/TreeSelectFromSchema/index';
 import RemoteDynamicDataSchema from '$renderers/RemoteDynamicDataSchema/index';
-import { getCurrentFormat, dataRoute2dataPath } from '@wibetter/json-utils';
+import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
 import { objClone } from '$utils/index';
@@ -144,7 +144,7 @@ class DynamicDataSchema extends React.PureComponent {
       pageScreen,
     } = this.props;
     const { isShowFilter } = this.state;
-    const currentFormat = getCurrentFormat(targetJsonSchema);
+    const curType = targetJsonSchema.type;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
@@ -223,7 +223,7 @@ class DynamicDataSchema extends React.PureComponent {
             </Tooltip>
             <JsonFormSchema
               {...{
-                parentType: currentFormat,
+                parentType: curType,
                 jsonKey: 'data',
                 indexRoute: indexRoute ? `${indexRoute}-2` : '2',
                 keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
@@ -237,7 +237,7 @@ class DynamicDataSchema extends React.PureComponent {
                 <CodeAreaFormSchema
                   {...{
                     isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                    parentType: currentFormat,
+                    parentType: curType,
                     jsonKey: 'localFilter',
                     indexRoute: indexRoute ? `${indexRoute}-3` : '3',
                     keyRoute: keyRoute
@@ -382,7 +382,7 @@ class DynamicDataSchema extends React.PureComponent {
                 {...{
                   isReadOnly: true,
                   isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                  parentType: currentFormat,
+                  parentType: curType,
                   jsonKey: 'filter',
                   indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
                   keyRoute: keyRoute

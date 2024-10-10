@@ -15,27 +15,22 @@ const jsonSchema = {
   type: 'object',
   format: 'data',
   title: '数据设置',
-  readOnly: false,
   properties: {
     field_28: {
       type: 'string',
       title: 'json数据项',
       format: 'json',
-      isRequired: false,
       default: '{}',
       description: '',
-      placeholder: '',
-      readOnly: false,
+      placeholder: ''
     },
     field_29: {
       type: 'object',
       title: '数据源',
       format: 'datasource',
-      isRequired: false,
       default: '',
       description: '',
       placeholder: '',
-      readOnly: false,
       properties: {
         type: {
           type: 'string',
@@ -76,27 +71,22 @@ const jsonSchema = {
   type: 'object',
   format: 'data',
   title: '数据设置',
-  readOnly: false,
   properties: {
     field_28: {
       type: 'string',
       title: 'json数据项',
       format: 'json',
-      isRequired: false,
       default: '{}',
       description: '',
-      placeholder: '',
-      readOnly: false,
+      placeholder: ''
     },
     field_29: {
       type: 'object',
       title: '数据源',
       format: 'datasource',
-      isRequired: false,
       default: '',
       description: '',
       placeholder: '',
-      readOnly: false,
       properties: {
         type: {
           type: 'string',

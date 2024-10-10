@@ -1,4 +1,3 @@
-
 const { keyRoute2indexRoute } = require('../dist/index.umd');
 const jsonSchema = {
   type: 'object',
@@ -87,8 +86,6 @@ const jsonSchema = {
           type: 'object',
           format: 'quantity',
           title: '单位计量',
-          isRequired: false,
-          readOnly: false,
           properties: {
             unit: {
               type: 'number',
@@ -98,8 +95,6 @@ const jsonSchema = {
               minimum: 0,
               maximum: 1000,
               description: '',
-              isRequired: false,
-              readOnly: false,
             },
             quantity: {
               type: 'string',
@@ -108,8 +103,6 @@ const jsonSchema = {
               enum: ['px', 'rem', 'em', '%'],
               enumextra: ['px', 'rem', 'em', '%'],
               title: '单位类型',
-              isRequired: false,
-              readOnly: false,
             },
           },
           required: ['unit', 'quantity'],
@@ -135,12 +128,7 @@ const jsonSchema = {
           title: '标题位置',
         },
       },
-      required: [
-        'isShowSubTitle',
-        'wrapPadding',
-        'backColor',
-        'titlePosition',
-      ],
+      required: ['isShowSubTitle', 'wrapPadding', 'backColor', 'titlePosition'],
       title: '样式设置',
       propertyOrder: [
         'isShowSubTitle',
@@ -159,8 +147,6 @@ const jsonSchema = {
           type: 'object',
           format: 'event',
           title: '事件',
-          isRequired: false,
-          readOnly: false,
           properties: {
             type: {
               type: 'string',
@@ -169,8 +155,6 @@ const jsonSchema = {
               enum: ['on', 'emit'],
               enumextra: ['on', 'emit'],
               title: '事件类型',
-              isRequired: false,
-              readOnly: false,
             },
             trigger: {
               type: 'string',
@@ -179,8 +163,6 @@ const jsonSchema = {
               title: '触发事件',
               description: '用于输入触发事件的名称',
               placeholder: '请输入触发事件的名称',
-              isRequired: false,
-              readOnly: false,
             },
             eventData: {
               type: 'string',
@@ -188,8 +170,6 @@ const jsonSchema = {
               format: 'json',
               default: '{}',
               description: '传递给触发事件的数据对象',
-              isRequired: false,
-              readOnly: false,
             },
           },
           required: ['type', 'trigger', 'eventData'],
@@ -199,7 +179,6 @@ const jsonSchema = {
           type: 'object',
           format: 'datasource',
           title: '数据源',
-          readOnly: false,
           properties: {
             type: {
               type: 'string',
@@ -239,17 +218,14 @@ const jsonSchema = {
       type: 'object',
       format: 'widgets',
       title: '嵌套组件',
-      readOnly: false,
       properties: {
         widgetUUID: {
           type: 'string',
           title: '嵌套组件UUID',
           format: 'input',
-          isRequired: false,
           default: 'box-widget-e33b3258-6d73-4c07-a6e1-4f67457dafd3',
           description: '唯一标识，用于标记当前可嵌套组件',
           placeholder: '',
-          readOnly: false,
         },
         embedWidgetA: {
           type: 'string',
@@ -257,8 +233,6 @@ const jsonSchema = {
           format: 'widget',
           default: '{}',
           description: '用于存放内嵌组件的渲染数据',
-          isRequired: false,
-          readOnly: true,
         },
         embedWidgetB: {
           type: 'string',
@@ -266,8 +240,6 @@ const jsonSchema = {
           format: 'widget',
           default: '{}',
           description: '用于存放内嵌组件的渲染数据',
-          isRequired: false,
-          readOnly: true,
         },
       },
       required: ['widgetUUID', 'embedWidgetA', 'embedWidgetB'],

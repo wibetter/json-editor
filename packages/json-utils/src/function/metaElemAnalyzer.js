@@ -17,7 +17,6 @@
  *   }
  * }
  */
-import { getCurrentFormat } from '$utils/jsonSchema';
 import { isObject } from '$utils/typeof';
 
 /**
@@ -51,12 +50,12 @@ export function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
   let curAnalyzerResult = analyzerResult || {};
   // 根据当前schem数据分析使用到的元数据情况
   if (curJsonSchemaObj && JSON.stringify(curJsonSchemaObj) !== '{}') {
-    const curFormat = getCurrentFormat(curJsonSchemaObj);
+    const curType = curJsonSchemaObj.type;
     if (
-      curFormat === 'object' ||
-      curFormat === 'func' ||
-      curFormat === 'style' ||
-      curFormat === 'data'
+      curType === 'object' ||
+      curType === 'func' ||
+      curType === 'style' ||
+      curType === 'data'
     ) {
       // 最外层的schema类型不进行统计
       if (!isFirstAnalyzer && curAnalyzerResult['object']) {
@@ -68,7 +67,7 @@ export function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
         curJsonSchemaObj,
         curAnalyzerResult,
       );
-    } else if (curFormat === 'array') {
+    } else if (curType === 'array') {
       // 最外层的schema类型不进行统计
       if (!isFirstAnalyzer && curAnalyzerResult['array']) {
         curAnalyzerResult['array'] += 1;
@@ -81,10 +80,10 @@ export function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
         curAnalyzerResult,
       );
     } else {
-      if (!isFirstAnalyzer && curAnalyzerResult[curFormat]) {
-        curAnalyzerResult[curFormat] += 1;
+      if (!isFirstAnalyzer && curAnalyzerResult[curType]) {
+        curAnalyzerResult[curType] += 1;
       } else if (!isFirstAnalyzer) {
-        curAnalyzerResult[curFormat] = 1;
+        curAnalyzerResult[curType] = 1;
       }
     }
   }

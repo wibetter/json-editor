@@ -80,8 +80,7 @@ export default class JSONSchemaStore {
         const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
-      const curJsonData =
-        this.state.rootJSONStore.JSONEditorStore.jsonData;
+      const curJsonData = this.state.rootJSONStore.JSONEditorStore.jsonData;
       /** 根据jsonSchema生成对应的最新jsonData */
       const newJsonData = schema2json(this.jsonSchema, curJsonData);
       /** 更新当前的jsonData */

@@ -14,6 +14,4 @@ export const initFuncBody = {
   placeholder: '请直接可执行的函数体', // 输入提示
   default: 'return data;', // 默认值
   description: '用于定义函数体', // 字段项的说明和描述
-  isRequired: false,
-  readOnly: false,
 };

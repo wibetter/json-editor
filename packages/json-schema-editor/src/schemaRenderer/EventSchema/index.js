@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tree } from 'antd';
 const { TreeNode } = Tree;
-import { getCurrentFormat } from '@wibetter/json-utils';
+
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import TypeSelectFormSchema from '$components/TypeSelectFormSchema/index';
 
@@ -14,7 +14,7 @@ const getTypeSelectCont = (params) => <TypeSelectFormSchema {...params} />;
 /** Event类型渲染组件 */
 const EventSchema = (props) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
-  const currentFormat = getCurrentFormat(targetJsonSchema);
+  const curType = targetJsonSchema.type;
   const typeJsonObj = targetJsonSchema.properties.type || {};
   // 注册类型事件的数据对象
   const registerJsonObj = targetJsonSchema.properties.register || {};
@@ -25,7 +25,7 @@ const EventSchema = (props) => {
 
   return (
     <TreeNode
-      className={`${currentFormat}-schema schema-item-form`}
+      className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
       indexRoute={indexRoute}
@@ -45,7 +45,7 @@ const EventSchema = (props) => {
           indexRoute: indexRoute ? `${indexRoute}-0` : '0',
           jsonKey: 'type',
           targetJsonSchema: typeJsonObj,
-          parentType: currentFormat,
+          parentType: curType,
           nodeKey: `${nodeKey}-type`,
         })}
       ></TreeNode>
@@ -61,7 +61,7 @@ const EventSchema = (props) => {
             indexRoute: indexRoute ? `${indexRoute}-1` : '1',
             jsonKey: 'register',
             targetJsonSchema: registerJsonObj,
-            parentType: currentFormat,
+            parentType: curType,
             nodeKey: `${nodeKey}-register-${typeJsonObj.default}`,
             hideOperaBtn: true,
             keyIsFixed: true,
@@ -81,7 +81,7 @@ const EventSchema = (props) => {
             indexRoute: indexRoute ? `${indexRoute}-2` : '2',
             jsonKey: 'actionFunc',
             targetJsonSchema: actionFuncJsonObj,
-            parentType: currentFormat,
+            parentType: curType,
             nodeKey: `${nodeKey}-actionFunc-${typeJsonObj.default}`,
             hideOperaBtn: true,
             keyIsFixed: true,
@@ -101,7 +101,7 @@ const EventSchema = (props) => {
             indexRoute: indexRoute ? `${indexRoute}-1` : '1',
             jsonKey: 'trigger',
             targetJsonSchema: triggerJsonObj,
-            parentType: currentFormat,
+            parentType: curType,
             nodeKey: `${nodeKey}-trigger-${typeJsonObj.default}`,
             hideOperaBtn: true,
             keyIsFixed: true,
@@ -121,7 +121,7 @@ const EventSchema = (props) => {
             indexRoute: indexRoute ? `${indexRoute}-2` : '2',
             jsonKey: 'eventData',
             targetJsonSchema: eventDataJsonObj,
-            parentType: currentFormat,
+            parentType: curType,
             nodeKey: `${nodeKey}-eventData-${typeJsonObj.default}`,
             hideOperaBtn: true,
             keyIsFixed: true,

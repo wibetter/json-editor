@@ -10,7 +10,7 @@
 export const initDataSourceData = {
   type: 'datasource',
   title: '数据源',
-  readOnly: false,
+
   properties: {
     type: {
       default: 'local',
@@ -43,7 +43,7 @@ export const initDataSourceDataV2 = {
   type: 'object',
   type: 'datasource',
   title: '数据源',
-  readOnly: false,
+
   properties: {
     type: {
       type: 'string',
