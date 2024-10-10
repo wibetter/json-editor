@@ -2623,7 +2623,6 @@
           keyIsFixed: d().bool,
           typeIsFixed: d().bool,
           titleIsFixed: d().bool,
-          isArrayItem: d().bool,
         };
         var qe = (0, c.inject)(function (e) {
             return {

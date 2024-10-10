@@ -10,7 +10,8 @@ import {
   ArrowUpOutlined,
   ArrowDownOutlined,
 } from '@ant-design/icons';
-import ObjectSchema from '$renderers/ObjectSchema/index';
+// import ObjectSchema from '$renderers/ObjectSchema/index';
+import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
 import {
   isArray,
@@ -18,6 +19,7 @@ import {
   isURL,
   isColor,
   isNumber,
+  isObject,
   isDateStr,
   isDateTimeStr,
   isTimeStr,
@@ -122,7 +124,7 @@ class ArraySchema extends React.PureComponent {
    * 获取当前数组项的Title：数组项默认使用其第一个非空子项的数值作为title
    */
   getArrItemTitle = (arrItem) => {
-    if (arrItem) {
+    if (arrItem && isObject(arrItem)) {
       const arrItemKeys = Object.keys(arrItem);
       for (let index = 0, size = arrItemKeys.length; index < size; index++) {
         const itemVal = arrItem[arrItemKeys[index]];
@@ -135,6 +137,8 @@ class ArraySchema extends React.PureComponent {
           return itemVal;
         }
       }
+    } else {
+      return arrItem;
     }
     return '';
   };
@@ -147,6 +151,8 @@ class ArraySchema extends React.PureComponent {
       indexRoute,
       targetJsonSchema,
       getJSONDataByKeyRoute,
+      keyRoute2indexRoute,
+      updateFormValueData,
     } = this.props;
     const { jsonView, isClosed, hoverIndex, currentActiveArrIndex } =
       this.state;
@@ -359,17 +365,18 @@ class ArraySchema extends React.PureComponent {
                       key={curNodeKey}
                       id={curNodeKey}
                     >
-                      <ObjectSchema
-                        {...{
-                          parentType: curType,
-                          jsonKey: 'items',
-                          indexRoute: curIndexRoute,
-                          keyRoute: curKeyRoute,
-                          nodeKey: curNodeKey,
-                          targetJsonSchema: arrayItemsDataObj,
-                          isArrayItem: true,
-                          arrIndex,
-                        }}
+                      <MappingRender
+                        parentType={curType}
+                        jsonKey={'items'}
+                        indexRoute={curIndexRoute}
+                        keyRoute={curKeyRoute}
+                        nodeKey={curNodeKey}
+                        targetJsonSchema={arrayItemsDataObj}
+                        isArrayItem={true}
+                        arrIndex={arrIndex}
+                        getJSONDataByKeyRoute={getJSONDataByKeyRoute}
+                        keyRoute2indexRoute={keyRoute2indexRoute}
+                        updateFormValueData={updateFormValueData}
                       />
                     </div>
                   </div>

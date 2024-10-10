@@ -62,56 +62,59 @@ const MappingRender = (props) => {
   }
   // 将条件字段的数值作为key的一部分
   curNodeKey = `${nodeKey}-${curConditionValue}`;
-  props.nodeKey = curNodeKey;
+  const newProps = {
+    ...props,
+    nodeKey: curNodeKey,
+  };
 
   switch (curType) {
     case 'object':
-      return <ObjectSchema {...props} key={curNodeKey} />;
+      return <ObjectSchema {...newProps} key={curNodeKey} />;
     case 'array':
-      return <ArraySchema {...props} key={curNodeKey} />;
+      return <ArraySchema {...newProps} key={curNodeKey} />;
     case 'dynamic-data':
-      return <DynamicDataSchema {...props} key={curNodeKey} />;
+      return <DynamicDataSchema {...newProps} key={curNodeKey} />;
     case 'datasource':
-      return <DataSourceSchema {...props} key={curNodeKey} />;
+      return <DataSourceSchema {...newProps} key={curNodeKey} />;
     case 'event':
-      return <EventSchema {...props} key={curNodeKey} />;
+      return <EventSchema {...newProps} key={curNodeKey} />;
     case 'quantity':
-      return <QuantitySchema {...props} key={curNodeKey} />;
+      return <QuantitySchema {...newProps} key={curNodeKey} />;
     case 'box-style':
-      return <BoxStyleSchema {...props} key={curNodeKey} />;
+      return <BoxStyleSchema {...newProps} key={curNodeKey} />;
     case 'radio':
-      return <RadioSchema {...props} key={curNodeKey} />;
+      return <RadioSchema {...newProps} key={curNodeKey} />;
     case 'single-select':
-      return <SingleSelectSchema {...props} key={curNodeKey} />;
+      return <SingleSelectSchema {...newProps} key={curNodeKey} />;
     case 'select': // 多选
-      return <SelectSchema {...props} key={curNodeKey} />;
+      return <SelectSchema {...newProps} key={curNodeKey} />;
     case 'input':
-      return <InputFormSchema {...props} key={curNodeKey} />;
+      return <InputFormSchema {...newProps} key={curNodeKey} />;
     case 'textarea':
-      return <TextAreaFormSchema {...props} key={curNodeKey} />;
+      return <TextAreaFormSchema {...newProps} key={curNodeKey} />;
     case 'text-editor':
-      return <TextEditorSchema {...props} key={curNodeKey} />;
+      return <TextEditorSchema {...newProps} key={curNodeKey} />;
     case 'number':
-      return <NumberFormSchema {...props} key={curNodeKey} />;
+      return <NumberFormSchema {...newProps} key={curNodeKey} />;
     case 'boolean':
-      return <BooleanFormSchema {...props} key={curNodeKey} />;
+      return <BooleanFormSchema {...newProps} key={curNodeKey} />;
     case 'date':
     case 'date-time':
-      return <DateTimeFormSchema {...props} key={curNodeKey} />;
+      return <DateTimeFormSchema {...newProps} key={curNodeKey} />;
     case 'time':
-      return <TimeFormSchema {...props} key={curNodeKey} />;
+      return <TimeFormSchema {...newProps} key={curNodeKey} />;
     case 'url':
-      return <URLFormSchema {...props} key={curNodeKey} />;
+      return <URLFormSchema {...newProps} key={curNodeKey} />;
     case 'color':
-      return <ColorFormSchema {...props} key={curNodeKey} />;
+      return <ColorFormSchema {...newProps} key={curNodeKey} />;
     case 'json':
-      return <JsonFormSchema {...props} key={curNodeKey} />;
+      return <JsonFormSchema {...newProps} key={curNodeKey} />;
     case 'codearea':
-      return <CodeAreaFormSchema {...props} key={curNodeKey} />;
+      return <CodeAreaFormSchema {...newProps} key={curNodeKey} />;
     case 'htmlarea':
-      return <HtmlAreaFormSchema {...props} key={curNodeKey} />;
+      return <HtmlAreaFormSchema {...newProps} key={curNodeKey} />;
     default:
-      return <InputFormSchema {...props} key={curNodeKey} />;
+      return <InputFormSchema {...newProps} key={curNodeKey} />;
   }
 };
 

@@ -6,7 +6,7 @@ import {
   getParentKeyRoute_CurKey,
 } from '@wibetter/json-utils';
 import { isEqual, objClone } from '$utils/index';
-import { isArray, isFunction } from '$utils/typeof';
+import { isArray, isFunction, isObject } from '$utils/typeof';
 
 /**
  * 用于管控JSON数据内容的全局store
@@ -246,7 +246,10 @@ export default class JSONEditorStore {
     // const _arrJsonData = toJS(arrJsonData);
     if (isArray(arrJsonData)) {
       // 2. 获取数组的第一个数据项
-      const newArrItem = Object.assign({}, arrJsonData[curArrIndex || 0]); // 复制一个数组项
+      let newArrItem = arrJsonData[curArrIndex || 0]; // 复制一个数组项
+      if (isObject(newArrItem)) {
+        newArrItem = Object.assign({}, newArrItem);
+      }
       if (curArrIndex || curArrIndex === 0) {
         // 先记录插入位置之后的数据
         const endArr = arrJsonData.slice(Number(curArrIndex) + 1);

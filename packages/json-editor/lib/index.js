@@ -411,7 +411,7 @@
         },
         641: function () {},
         997: function () {},
-        506: function () {},
+        766: function () {},
         523: function () {},
         597: function () {},
         232: function () {},
@@ -436,12 +436,12 @@
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('220f768b', n, !1, { sourceMap: !1 });
         },
-        171: function (e, t, a) {
-          var n = a(506);
+        595: function (e, t, a) {
+          var n = a(766);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, a(611).A)('29e0432b', n, !1, { sourceMap: !1 });
+            (0, a(611).A)('56ceba47', n, !1, { sourceMap: !1 });
         },
         928: function (e, t, a) {
           var n = a(523);
@@ -471,7 +471,7 @@
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('754f9197', n, !1, { sourceMap: !1 });
         },
-        709: function (e, t, a) {
+        90: function (e, t, a) {
           var n = a(161);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
@@ -753,7 +753,7 @@
         __webpack_require__.r(__webpack_exports__),
           __webpack_require__.d(__webpack_exports__, {
             default: function () {
-              return Jt;
+              return xt;
             },
           });
         var e,
@@ -1092,8 +1092,10 @@
                 (t.addArrayItem = function (e, t) {
                   var a = (0, G.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, X.cy)(a)) {
-                    var n = Object.assign({}, a[t || 0]);
-                    if (t || 0 === t) {
+                    var n = a[t || 0];
+                    if (
+                      ((0, X.Gv)(n) && (n = Object.assign({}, n)), t || 0 === t)
+                    ) {
                       var r = a.slice(Number(t) + 1),
                         o = [n].concat(r);
                       a.splice(Number(t) + 1), a.push.apply(a, o);
@@ -1349,7 +1351,7 @@
           le =
             (require('ace-builds/src-noconflict/mode-json'),
             require('ace-builds/src-noconflict/theme-solarized_light'),
-            __webpack_require__(709),
+            __webpack_require__(90),
             (function (e) {
               function t(t) {
                 var a;
@@ -1421,7 +1423,8 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ce = (0, I.inject)(function (e) {
+        var ce,
+          se = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -1429,182 +1432,10 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(le)),
-          se = __webpack_require__(852),
-          ue =
-            (__webpack_require__(657),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).state = {
-                    jsonView: !1,
-                    isClosed: !1,
-                  }),
-                  a
-                );
-              }
-              j()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  se.x.call(this);
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    se.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.indexRoute,
-                    n = t.nodeKey,
-                    r = t.keyRoute,
-                    o = t.targetJsonSchema,
-                    i = t.isArrayItem,
-                    l = t.arrIndex,
-                    c = t.isStructuredSchema,
-                    s = t.getJSONDataByKeyRoute,
-                    u = t.keyRoute2indexRoute,
-                    p = t.updateFormValueData,
-                    m = this.state,
-                    d = m.jsonView,
-                    y = m.isClosed,
-                    h = c;
-                  return B().createElement(
-                    'div',
-                    {
-                      className:
-                        'mobile-screen-element-warp element-title-card-warp object-schema-warp',
-                      key: n,
-                      id: n,
-                    },
-                    !h &&
-                      !i &&
-                      B().createElement(
-                        'div',
-                        {
-                          className: 'element-title',
-                          onClick: function (t) {
-                            e.setState({ isClosed: !y }),
-                              t.preventDefault(),
-                              t.stopPropagation();
-                          },
-                        },
-                        B().createElement(
-                          'span',
-                          { className: 'title-text' },
-                          o.title,
-                        ),
-                        o.description &&
-                          B().createElement(
-                            Q.Tooltip,
-                            { title: o.description, placement: 'top' },
-                            B().createElement(re.InfoCircleOutlined, {
-                              className: 'info-icon',
-                            }),
-                          ),
-                        B().createElement('span', null, i ? '/' + (l + 1) : ''),
-                        y
-                          ? B().createElement(re.RightOutlined, {
-                              className: 'close-operate-btn',
-                            })
-                          : B().createElement(re.DownOutlined, {
-                              className: 'close-operate-btn',
-                            }),
-                        B().createElement(
-                          'div',
-                          {
-                            className: 'display-source-btn',
-                            onClick: function (t) {
-                              e.setState({ jsonView: !d }),
-                                t.preventDefault(),
-                                t.stopPropagation();
-                            },
-                          },
-                          B().createElement(
-                            Q.Tooltip,
-                            { title: d ? '关闭源码模式' : '开启源码模式' },
-                            B().createElement(
-                              'svg',
-                              {
-                                t: '1596164081465',
-                                className: 'icon',
-                                viewBox: '0 0 1025 1024',
-                                version: '1.1',
-                                xmlns: 'http://www.w3.org/2000/svg',
-                                'p-id': '1205',
-                              },
-                              B().createElement('path', {
-                                d: 'M293.0688 755.2c-12.0832 0-24.2688-4.2496-33.9968-12.9024L0 512l273.4592-243.0976C294.5536 250.2144 326.912 252.0064 345.7024 273.152c18.7904 21.1456 16.896 53.504-4.2496 72.2944L154.112 512l172.9536 153.7024c21.1456 18.7904 23.04 51.1488 4.2496 72.2944C321.2288 749.4144 307.1488 755.2 293.0688 755.2zM751.0528 755.0976 1024.512 512l-259.072-230.2976c-21.1456-18.7904-53.504-16.896-72.2432 4.2496-18.7904 21.1456-16.896 53.504 4.2496 72.2944L870.4 512l-187.3408 166.5024c-21.1456 18.7904-23.04 51.1488-4.2496 72.2944C688.896 762.2144 702.976 768 717.056 768 729.1392 768 741.3248 763.7504 751.0528 755.0976zM511.5392 827.648l102.4-614.4c4.6592-27.904-14.1824-54.272-42.0864-58.9312-28.0064-4.7104-54.3232 14.1824-58.88 42.0864l-102.4 614.4c-4.6592 27.904 14.1824 54.272 42.0864 58.9312C455.5264 870.1952 458.2912 870.4 461.1072 870.4 485.6832 870.4 507.392 852.6336 511.5392 827.648z',
-                                'p-id': '1206',
-                                fill: d ? '#1890ff' : 'currentColor',
-                              }),
-                            ),
-                          ),
-                        ),
-                      ),
-                    B().createElement(
-                      'div',
-                      {
-                        className:
-                          'content-item ' +
-                          (h || i ? '' : 'object-content') +
-                          ' ' +
-                          (d ? 'json-view-array' : '') +
-                          ' ' +
-                          (y ? 'closed' : ''),
-                      },
-                      !d &&
-                        o.propertyOrder &&
-                        o.propertyOrder.map(function (e, t) {
-                          var i = a ? a + '-' + t : '' + t,
-                            l = r ? r + '-' + e : '' + e,
-                            c = e,
-                            m = o.properties[c],
-                            d = m.type;
-                          return vt({
-                            parentType: d,
-                            jsonKey: c,
-                            indexRoute: i,
-                            keyRoute: l,
-                            nodeKey: n + '-' + d + '-' + c,
-                            targetJsonSchema: m,
-                            getJSONDataByKeyRoute: s,
-                            keyRoute2indexRoute: u,
-                            updateFormValueData: p,
-                          });
-                        }),
-                      d && B().createElement(ce, this.props),
-                    ),
-                  );
-                }),
-                t
-              );
-            })(B().PureComponent));
-        ue.propTypes = {
-          isArrayItem: A().any,
-          arrIndex: A().any,
-          parentType: A().string,
-          jsonKey: A().string,
-          indexRoute: A().any,
-          keyRoute: A().string,
-          nodeKey: A().string,
-          targetJsonSchema: A().any,
-          isStructuredSchema: A().any,
-        };
-        var pe,
-          me = (0, I.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, I.observer)(ue));
-        function de() {
+          ue = __webpack_require__(852);
+        function pe() {
           return (
-            (de = Object.assign
+            (pe = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1614,29 +1445,29 @@
                   }
                   return e;
                 }),
-            de.apply(null, arguments)
+            pe.apply(null, arguments)
           );
         }
-        __webpack_require__(171);
-        var ye,
-          he = function (e) {
+        __webpack_require__(595);
+        var me,
+          de = function (e) {
             return P.createElement(
               'svg',
-              de(
+              pe(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
-              pe ||
-                (pe = P.createElement('path', {
+              ce ||
+                (ce = P.createElement('path', {
                   d: 'M15.5 2a.5.5 0 0 1 .09.992L15.5 3H14v10.6a2.4 2.4 0 0 1-2.4 2.4H4.4A2.4 2.4 0 0 1 2 13.6V3H.5a.5.5 0 0 1-.09-.992L.5 2h15ZM13 3H3v10.6a1.4 1.4 0 0 0 1.265 1.394L4.4 15h7.2a1.4 1.4 0 0 0 1.394-1.265L13 13.6V3ZM6 6a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L5.5 11.5v-5A.5.5 0 0 1 6 6Zm4 0a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L9.5 11.5v-5A.5.5 0 0 1 10 6Zm.5-6a.5.5 0 0 1 .09.992L10.5 1h-5a.5.5 0 0 1-.09-.992L5.5 0h5Z',
                   fill: 'currentColor',
                   fillRule: 'evenodd',
                 })),
             );
           };
-        function ge() {
+        function ye() {
           return (
-            (ge = Object.assign
+            (ye = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1646,25 +1477,58 @@
                   }
                   return e;
                 }),
-            ge.apply(null, arguments)
+            ye.apply(null, arguments)
           );
         }
-        var Se = function (e) {
+        var he,
+          ge = function (e) {
             return P.createElement(
               'svg',
-              ge(
+              ye(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
-              ye ||
-                (ye = P.createElement('path', {
+              me ||
+                (me = P.createElement('path', {
                   d: 'M10.286 4C11.232 4 12 4.768 12 5.714v8.572c0 .946-.768 1.714-1.714 1.714H1.714A1.714 1.714 0 0 1 0 14.286V5.714C0 4.768.768 4 1.714 4h8.572Zm-.12 1H1.834A.833.833 0 0 0 1 5.833v8.334c0 .46.373.833.833.833h8.334c.46 0 .833-.373.833-.833V5.833A.833.833 0 0 0 10.167 5ZM6 7.429c.237 0 .429.191.429.428l-.001 1.714h1.715a.429.429 0 0 1 0 .858H6.428v1.714a.429.429 0 1 1-.857 0v-1.714H3.857a.429.429 0 1 1 0-.858h1.714V7.857c0-.237.192-.428.429-.428ZM14.286 0C15.232 0 16 .768 16 1.714v8.572c0 .946-.768 1.714-1.714 1.714H13v-1h1.167c.46 0 .833-.373.833-.833V1.833A.833.833 0 0 0 14.167 1H5.833A.833.833 0 0 0 5 1.833V3H4V1.714C4 .768 4.768 0 5.714 0h8.572Z',
                   fill: 'currentColor',
                   fillRule: 'evenodd',
                 })),
             );
+          };
+        function Se() {
+          return (
+            (Se = Object.assign
+              ? Object.assign.bind()
+              : function (e) {
+                  for (var t = 1; t < arguments.length; t++) {
+                    var a = arguments[t];
+                    for (var n in a)
+                      ({}).hasOwnProperty.call(a, n) && (e[n] = a[n]);
+                  }
+                  return e;
+                }),
+            Se.apply(null, arguments)
+          );
+        }
+        var _e = function (e) {
+            return P.createElement(
+              'svg',
+              Se(
+                {
+                  viewBox: '0 0 1025 1024',
+                  xmlns: 'http://www.w3.org/2000/svg',
+                },
+                e,
+              ),
+              he ||
+                (he = P.createElement('path', {
+                  d: 'M293.069 755.2c-12.083 0-24.269-4.25-33.997-12.902L0 512l273.46-243.098c21.094-18.688 53.452-16.896 72.242 4.25 18.79 21.146 16.896 53.504-4.25 72.294L154.113 512l172.954 153.702c21.145 18.79 23.04 51.15 4.25 72.295-10.087 11.417-24.167 17.203-38.247 17.203zm457.984-.102L1024.512 512 765.44 281.702c-21.146-18.79-53.504-16.896-72.243 4.25-18.79 21.146-16.896 53.504 4.25 72.294L870.4 512 683.06 678.502c-21.146 18.79-23.04 51.15-4.25 72.295C688.896 762.214 702.976 768 717.056 768c12.083 0 24.269-4.25 33.997-12.902zm-239.514 72.55 102.4-614.4c4.66-27.904-14.182-54.272-42.086-58.931-28.007-4.71-54.323 14.182-58.88 42.086l-102.4 614.4c-4.66 27.904 14.182 54.272 42.086 58.931a52.65 52.65 0 0 0 8.448.666c24.576 0 46.285-17.766 50.432-42.752z',
+                  fill: 'currentColor',
+                })),
+            );
           },
-          _e = (function (e) {
+          fe = (function (e) {
             function t(t) {
               var a;
               return (
@@ -1693,20 +1557,20 @@
                     t === a.state.hoverIndex && a.setState({ hoverIndex: '' });
                 }),
                 (a.getArrItemTitle = function (e) {
-                  if (e)
-                    for (
-                      var t = Object.keys(e), a = 0, n = t.length;
-                      a < n;
-                      a++
-                    ) {
-                      var r = e[t[a]];
-                      if (
-                        r &&
-                        ((0, X.Et)(r) ||
-                          ((0, X.Kg)(r) && !(0, X.mv)(r) && !(0, X._o)(r)))
-                      )
-                        return r;
-                    }
+                  if (!e || !(0, X.Gv)(e)) return e;
+                  for (
+                    var t = Object.keys(e), a = 0, n = t.length;
+                    a < n;
+                    a++
+                  ) {
+                    var r = e[t[a]];
+                    if (
+                      r &&
+                      ((0, X.Et)(r) ||
+                        ((0, X.Kg)(r) && !(0, X.mv)(r) && !(0, X._o)(r)))
+                    )
+                      return r;
+                  }
                   return '';
                 }),
                 (a.state = {
@@ -1726,11 +1590,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this,
@@ -1741,253 +1605,259 @@
                   o = t.indexRoute,
                   i = t.targetJsonSchema,
                   l = t.getJSONDataByKeyRoute,
-                  c = this.state,
-                  s = c.jsonView,
-                  u = c.isClosed,
-                  p = (c.hoverIndex, c.currentActiveArrIndex),
-                  m = i.type,
-                  d = l(a),
-                  y = i.items;
+                  c = t.keyRoute2indexRoute,
+                  s = t.updateFormValueData,
+                  u = this.state,
+                  p = u.jsonView,
+                  m = u.isClosed,
+                  d = (u.hoverIndex, u.currentActiveArrIndex),
+                  y = i.type,
+                  h = l(a),
+                  g = i.items;
                 return P.createElement(
                   'div',
                   {
                     className:
-                      'array-schema-box ' +
-                      ('wideScreen' === r
+                      'wideScreen' === r
                         ? 'wide-screen-view'
-                        : 'mobile-screen-view'),
+                        : 'mobile-screen-view',
                     key: n,
                     id: n,
                   },
                   P.createElement(
                     'div',
-                    {
-                      className: 'element-title',
-                      onClick: function (t) {
-                        e.setState({ isClosed: !u }),
-                          t.preventDefault(),
-                          t.stopPropagation();
-                      },
-                    },
-                    P.createElement(
-                      'span',
-                      { className: 'title-text' },
-                      i.title,
-                    ),
-                    i.description &&
-                      P.createElement(
-                        Q.Tooltip,
-                        { title: i.description, placement: 'top' },
-                        P.createElement(re.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
-                    u
-                      ? P.createElement(re.RightOutlined, {
-                          className: 'close-operate-btn',
-                        })
-                      : P.createElement(re.DownOutlined, {
-                          className: 'close-operate-btn',
-                        }),
-                    P.createElement(
-                      'div',
-                      {
-                        className: 'display-source-btn',
-                        onClick: function (t) {
-                          e.setState({ jsonView: !s }),
-                            t.preventDefault(),
-                            t.stopPropagation();
-                        },
-                      },
-                      P.createElement(
-                        Q.Tooltip,
-                        { title: s ? '关闭源码模式' : '开启源码模式' },
-                        P.createElement(
-                          'svg',
-                          {
-                            t: '1596164081465',
-                            className: 'icon',
-                            viewBox: '0 0 1025 1024',
-                            version: '1.1',
-                            xmlns: 'http://www.w3.org/2000/svg',
-                            'p-id': '1205',
-                          },
-                          P.createElement('path', {
-                            d: 'M293.0688 755.2c-12.0832 0-24.2688-4.2496-33.9968-12.9024L0 512l273.4592-243.0976C294.5536 250.2144 326.912 252.0064 345.7024 273.152c18.7904 21.1456 16.896 53.504-4.2496 72.2944L154.112 512l172.9536 153.7024c21.1456 18.7904 23.04 51.1488 4.2496 72.2944C321.2288 749.4144 307.1488 755.2 293.0688 755.2zM751.0528 755.0976 1024.512 512l-259.072-230.2976c-21.1456-18.7904-53.504-16.896-72.2432 4.2496-18.7904 21.1456-16.896 53.504 4.2496 72.2944L870.4 512l-187.3408 166.5024c-21.1456 18.7904-23.04 51.1488-4.2496 72.2944C688.896 762.2144 702.976 768 717.056 768 729.1392 768 741.3248 763.7504 751.0528 755.0976zM511.5392 827.648l102.4-614.4c4.6592-27.904-14.1824-54.272-42.0864-58.9312-28.0064-4.7104-54.3232 14.1824-58.88 42.0864l-102.4 614.4c-4.6592 27.904 14.1824 54.272 42.0864 58.9312C455.5264 870.1952 458.2912 870.4 461.1072 870.4 485.6832 870.4 507.392 852.6336 511.5392 827.648z',
-                            'p-id': '1206',
-                            fill: s ? '#1890ff' : 'currentColor',
-                          }),
-                        ),
-                      ),
-                    ),
+                    { className: 'element-title' },
                     P.createElement(
                       Q.Tooltip,
-                      { title: '添加数据项111' },
-                      P.createElement(re.PlusOutlined, {
-                        className: 'array-add-child-btn',
-                        onClick: function (t) {
-                          e.addArrayItem(a, d),
-                            t.preventDefault(),
-                            t.stopPropagation();
+                      { title: i.description, placement: 'top' },
+                      P.createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === r && i.title.length > 6
+                              ? i.title
+                              : '',
                         },
-                      }),
+                        i.title,
+                      ),
                     ),
                   ),
                   P.createElement(
                     'div',
-                    {
-                      className:
-                        'array-content ' +
-                        (s ? 'json-view-array' : '') +
-                        ' ' +
-                        (u ? 'closed' : ''),
-                    },
-                    !s &&
-                      (0, X.cy)(d) &&
-                      d.map(function (t, r) {
-                        var i = n + '-array-items-' + d.length + '-' + r,
-                          l = o ? o + '-0' : '0',
-                          c = a ? a + '-' + r : '' + r,
-                          s = e.getArrItemTitle(t);
-                        return P.createElement(
-                          'div',
-                          { className: 'array-item', key: c },
-                          P.createElement(
+                    { className: 'array-schema-box' },
+                    P.createElement(
+                      'div',
+                      {
+                        className: 'element-title',
+                        onClick: function (t) {
+                          e.setState({ isClosed: !m }),
+                            t.preventDefault(),
+                            t.stopPropagation();
+                        },
+                      },
+                      P.createElement(
+                        'span',
+                        { className: 'title-text' },
+                        '数组配置',
+                      ),
+                      m
+                        ? P.createElement(re.RightOutlined, {
+                            className: 'close-operate-btn',
+                          })
+                        : P.createElement(re.DownOutlined, {
+                            className: 'close-operate-btn',
+                          }),
+                      P.createElement(
+                        'div',
+                        {
+                          className: 'display-source-btn',
+                          onClick: function (t) {
+                            e.setState({ jsonView: !p }),
+                              t.preventDefault(),
+                              t.stopPropagation();
+                          },
+                        },
+                        P.createElement(
+                          Q.Tooltip,
+                          { title: p ? '关闭源码模式' : '开启源码模式' },
+                          P.createElement(_e, {
+                            className: p ? 'info-icon active' : 'info-icon',
+                          }),
+                        ),
+                      ),
+                      P.createElement(
+                        Q.Tooltip,
+                        { title: '添加数据项' },
+                        P.createElement(re.PlusOutlined, {
+                          className: 'array-add-child-btn',
+                          onClick: function (t) {
+                            e.addArrayItem(a, h),
+                              t.preventDefault(),
+                              t.stopPropagation();
+                          },
+                        }),
+                      ),
+                    ),
+                    P.createElement(
+                      'div',
+                      {
+                        className:
+                          'array-content ' +
+                          (p ? 'json-view-array' : '') +
+                          ' ' +
+                          (m ? 'closed' : ''),
+                      },
+                      !p &&
+                        (0, X.cy)(h) &&
+                        h.map(function (t, r) {
+                          var i = n + '-array-items-' + h.length + '-' + r,
+                            u = o ? o + '-0' : '0',
+                            p = a ? a + '-' + r : '' + r,
+                            m = e.getArrItemTitle(t);
+                          return P.createElement(
                             'div',
-                            {
-                              className: 'array-item-header',
-                              onClick: function () {
-                                e.setState({
-                                  currentActiveArrIndex: p === r ? -1 : r,
-                                });
-                              },
-                              onMouseMove: function (t) {
-                                e.elemHoverEnterEvent(t, r);
-                              },
-                              onMouseLeave: function (t) {
-                                e.elemHoverLeaveEvent(t, r);
-                              },
-                            },
+                            { className: 'array-item', key: p },
                             P.createElement(
                               'div',
-                              { className: 'array-title-text' },
-                              s || y.title + '/' + (r + 1),
+                              {
+                                className: 'array-item-header',
+                                onClick: function () {
+                                  e.setState({
+                                    currentActiveArrIndex: d === r ? -1 : r,
+                                  });
+                                },
+                                onMouseMove: function (t) {
+                                  e.elemHoverEnterEvent(t, r);
+                                },
+                                onMouseLeave: function (t) {
+                                  e.elemHoverLeaveEvent(t, r);
+                                },
+                              },
+                              P.createElement(
+                                'div',
+                                { className: 'array-title-text' },
+                                m || g.title + '/' + (r + 1),
+                              ),
+                              P.createElement(
+                                'div',
+                                { className: 'array-operate-box' },
+                                d !== r
+                                  ? P.createElement(re.RightOutlined, {
+                                      className:
+                                        'close-operate-btn array-operate-btn',
+                                    })
+                                  : P.createElement(re.DownOutlined, {
+                                      className:
+                                        'close-operate-btn array-operate-btn',
+                                    }),
+                                P.createElement(
+                                  Q.Tooltip,
+                                  { title: '删除' + g.title + '/' + (r + 1) },
+                                  P.createElement(
+                                    Q.Popconfirm,
+                                    {
+                                      placement: 'top',
+                                      title:
+                                        '确定要删除' +
+                                        g.title +
+                                        '/' +
+                                        (r + 1) +
+                                        '吗？',
+                                      onCancel: function (e) {
+                                        e.preventDefault(), e.stopPropagation();
+                                      },
+                                      onConfirm: function (t) {
+                                        e.deleteArrItem(a, r, h),
+                                          t.preventDefault(),
+                                          t.stopPropagation();
+                                      },
+                                      okText: '确定',
+                                      cancelText: '取消',
+                                    },
+                                    P.createElement(de, {
+                                      className:
+                                        'delete-operate-btn array-operate-btn',
+                                      onClick: function (e) {
+                                        e.preventDefault(), e.stopPropagation();
+                                      },
+                                    }),
+                                  ),
+                                ),
+                                P.createElement(
+                                  Q.Tooltip,
+                                  { title: '复制' + g.title + '/' + (r + 1) },
+                                  P.createElement(ge, {
+                                    className: 'array-operate-btn',
+                                    onClick: function (t) {
+                                      e.addArrayItem(a, h, r),
+                                        t.preventDefault(),
+                                        t.stopPropagation();
+                                    },
+                                  }),
+                                ),
+                                0 !== r &&
+                                  P.createElement(
+                                    Q.Tooltip,
+                                    { title: '向上移动' },
+                                    P.createElement(re.ArrowUpOutlined, {
+                                      className: 'array-operate-btn',
+                                      onClick: function (t) {
+                                        e.props.sortArrayItem(a, r, 'up'),
+                                          t.preventDefault(),
+                                          t.stopPropagation();
+                                      },
+                                    }),
+                                  ),
+                                r !== h.length - 1 &&
+                                  P.createElement(
+                                    Q.Tooltip,
+                                    { title: '向下移动' },
+                                    P.createElement(re.ArrowDownOutlined, {
+                                      className: 'array-operate-btn',
+                                      onClick: function (t) {
+                                        e.props.sortArrayItem(a, r, 'down'),
+                                          t.preventDefault(),
+                                          t.stopPropagation();
+                                      },
+                                    }),
+                                  ),
+                              ),
                             ),
                             P.createElement(
                               'div',
-                              { className: 'array-operate-box' },
-                              p !== r
-                                ? P.createElement(re.RightOutlined, {
-                                    className:
-                                      'close-operate-btn array-operate-btn',
-                                  })
-                                : P.createElement(re.DownOutlined, {
-                                    className:
-                                      'close-operate-btn array-operate-btn',
-                                  }),
-                              P.createElement(
-                                Q.Tooltip,
-                                { title: '删除' + y.title + '/' + (r + 1) },
-                                P.createElement(
-                                  Q.Popconfirm,
-                                  {
-                                    placement: 'top',
-                                    title:
-                                      '确定要删除' +
-                                      y.title +
-                                      '/' +
-                                      (r + 1) +
-                                      '吗？',
-                                    onCancel: function (e) {
-                                      e.preventDefault(), e.stopPropagation();
-                                    },
-                                    onConfirm: function (t) {
-                                      e.deleteArrItem(a, r, d),
-                                        t.preventDefault(),
-                                        t.stopPropagation();
-                                    },
-                                    okText: '确定',
-                                    cancelText: '取消',
-                                  },
-                                  P.createElement(he, {
-                                    className:
-                                      'delete-operate-btn array-operate-btn',
-                                    onClick: function (e) {
-                                      e.preventDefault(), e.stopPropagation();
-                                    },
-                                  }),
-                                ),
-                              ),
-                              P.createElement(
-                                Q.Tooltip,
-                                { title: '复制' + y.title + '/' + (r + 1) },
-                                P.createElement(Se, {
-                                  className: 'array-operate-btn',
-                                  onClick: function (t) {
-                                    e.addArrayItem(a, d, r),
-                                      t.preventDefault(),
-                                      t.stopPropagation();
-                                  },
-                                }),
-                              ),
-                              0 !== r &&
-                                P.createElement(
-                                  Q.Tooltip,
-                                  { title: '向上移动' },
-                                  P.createElement(re.ArrowUpOutlined, {
-                                    className: 'array-operate-btn',
-                                    onClick: function (t) {
-                                      e.props.sortArrayItem(a, r, 'up'),
-                                        t.preventDefault(),
-                                        t.stopPropagation();
-                                    },
-                                  }),
-                                ),
-                              r !== d.length - 1 &&
-                                P.createElement(
-                                  Q.Tooltip,
-                                  { title: '向下移动' },
-                                  P.createElement(re.ArrowDownOutlined, {
-                                    className: 'array-operate-btn',
-                                    onClick: function (t) {
-                                      e.props.sortArrayItem(a, r, 'down'),
-                                        t.preventDefault(),
-                                        t.stopPropagation();
-                                    },
-                                  }),
-                                ),
+                              {
+                                className:
+                                  'array-item-content ' +
+                                  (d === r ? 'open' : 'closed'),
+                                key: i,
+                                id: i,
+                              },
+                              P.createElement(Rt, {
+                                parentType: y,
+                                jsonKey: 'items',
+                                indexRoute: u,
+                                keyRoute: p,
+                                nodeKey: i,
+                                targetJsonSchema: g,
+                                isArrayItem: !0,
+                                arrIndex: r,
+                                getJSONDataByKeyRoute: l,
+                                keyRoute2indexRoute: c,
+                                updateFormValueData: s,
+                              }),
                             ),
-                          ),
-                          P.createElement(
-                            'div',
-                            {
-                              className:
-                                'array-item-content ' +
-                                (p === r ? 'open' : 'closed'),
-                              key: i,
-                              id: i,
-                            },
-                            P.createElement(me, {
-                              parentType: m,
-                              jsonKey: 'items',
-                              indexRoute: l,
-                              keyRoute: c,
-                              nodeKey: i,
-                              targetJsonSchema: y,
-                              isArrayItem: !0,
-                              arrIndex: r,
-                            }),
-                          ),
-                        );
-                      }),
-                    s && P.createElement(ce, this.props),
+                          );
+                        }),
+                      p && P.createElement(se, this.props),
+                    ),
                   ),
                 );
               }),
               t
             );
           })(P.PureComponent);
-        _e.propTypes = {
+        fe.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -1995,7 +1865,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var fe = (0, I.inject)(function (e) {
+        var Ee = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               pageScreen: e.JSONSchemaStore.pageScreen,
@@ -2008,8 +1878,182 @@
               addArrayItem: e.JSONEditorStore.addArrayItem,
               sortArrayItem: e.JSONEditorStore.sortArrayItem,
             };
-          })((0, I.observer)(_e)),
-          Ee = (function (e) {
+          })((0, I.observer)(fe)),
+          be =
+            (__webpack_require__(657),
+            (function (e) {
+              function t(t) {
+                var a;
+                return (
+                  ((a = e.call(this, t) || this).state = {
+                    jsonView: !1,
+                    isClosed: !1,
+                  }),
+                  a
+                );
+              }
+              j()(t, e);
+              var a = t.prototype;
+              return (
+                (a.componentWillMount = function () {
+                  ue.x.call(this);
+                }),
+                (a.componentWillReceiveProps = function (e) {
+                  e.keyRoute !== this.props.keyRoute &&
+                    ue.x.call(this, e.keyRoute);
+                }),
+                (a.render = function () {
+                  var e = this,
+                    t = this.props,
+                    a = t.indexRoute,
+                    n = t.nodeKey,
+                    r = t.keyRoute,
+                    o = t.pageScreen,
+                    i = t.targetJsonSchema,
+                    l = t.isArrayItem,
+                    c = (t.arrIndex, t.isStructuredSchema),
+                    s = t.getJSONDataByKeyRoute,
+                    u = t.keyRoute2indexRoute,
+                    p = t.updateFormValueData,
+                    m = this.state,
+                    d = m.jsonView,
+                    y = m.isClosed,
+                    h = c;
+                  return B().createElement(
+                    'div',
+                    {
+                      className:
+                        'mobile-screen-element-warp object-schema-warp',
+                      key: n,
+                      id: n,
+                    },
+                    !h &&
+                      !l &&
+                      B().createElement(
+                        'div',
+                        { className: 'element-title' },
+                        B().createElement(
+                          Q.Tooltip,
+                          { title: i.description, placement: 'top' },
+                          B().createElement(
+                            'span',
+                            {
+                              className: 'title-text',
+                              title:
+                                'wideScreen' === o && i.title.length > 6
+                                  ? i.title
+                                  : '',
+                            },
+                            i.title,
+                          ),
+                        ),
+                      ),
+                    B().createElement(
+                      'div',
+                      { className: 'element-title-card-warp' },
+                      !h &&
+                        !l &&
+                        B().createElement(
+                          'div',
+                          {
+                            className: 'element-title',
+                            onClick: function (t) {
+                              e.setState({ isClosed: !y }),
+                                t.preventDefault(),
+                                t.stopPropagation();
+                            },
+                          },
+                          B().createElement(
+                            'span',
+                            { className: 'title-text' },
+                            '对象配置',
+                          ),
+                          y
+                            ? B().createElement(re.RightOutlined, {
+                                className: 'close-operate-btn',
+                              })
+                            : B().createElement(re.DownOutlined, {
+                                className: 'close-operate-btn',
+                              }),
+                          B().createElement(
+                            'div',
+                            {
+                              className: 'display-source-btn',
+                              onClick: function (t) {
+                                e.setState({ jsonView: !d }),
+                                  t.preventDefault(),
+                                  t.stopPropagation();
+                              },
+                            },
+                            B().createElement(
+                              Q.Tooltip,
+                              { title: d ? '关闭源码模式' : '开启源码模式' },
+                              B().createElement(_e, {
+                                className: d ? 'info-icon active' : 'info-icon',
+                              }),
+                            ),
+                          ),
+                        ),
+                      B().createElement(
+                        'div',
+                        {
+                          className:
+                            'content-item ' +
+                            (h || l ? '' : 'object-content') +
+                            ' ' +
+                            (d ? 'json-view-array' : '') +
+                            ' ' +
+                            (y ? 'closed' : ''),
+                        },
+                        !d &&
+                          i.propertyOrder &&
+                          i.propertyOrder.map(function (e, t) {
+                            var o = a ? a + '-' + t : '' + t,
+                              l = r ? r + '-' + e : '' + e,
+                              c = e,
+                              m = i.properties[c],
+                              d = m.type;
+                            return Rt({
+                              parentType: d,
+                              jsonKey: c,
+                              indexRoute: o,
+                              keyRoute: l,
+                              nodeKey: n + '-' + d + '-' + c,
+                              targetJsonSchema: m,
+                              getJSONDataByKeyRoute: s,
+                              keyRoute2indexRoute: u,
+                              updateFormValueData: p,
+                            });
+                          }),
+                        d && B().createElement(se, this.props),
+                      ),
+                    ),
+                  );
+                }),
+                t
+              );
+            })(B().PureComponent));
+        be.propTypes = {
+          isArrayItem: A().any,
+          arrIndex: A().any,
+          parentType: A().string,
+          jsonKey: A().string,
+          indexRoute: A().any,
+          keyRoute: A().string,
+          nodeKey: A().string,
+          targetJsonSchema: A().any,
+          isStructuredSchema: A().bool,
+        };
+        var Oe = (0, I.inject)(function (e) {
+            return {
+              pageScreen: e.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: e.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                e.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })((0, I.observer)(be)),
+          ve = (function (e) {
             function t(t) {
               var a;
               return (
@@ -2034,11 +2078,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this,
@@ -2158,7 +2202,7 @@
               t
             );
           })(P.PureComponent);
-        Ee.propTypes = {
+        ve.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -2166,7 +2210,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var be = (0, I.inject)(function (e) {
+        var De = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2175,9 +2219,9 @@
               indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, I.observer)(Ee)),
-          Oe = __webpack_require__(566),
-          ve = (function (e) {
+          })((0, I.observer)(ve)),
+          Ne = __webpack_require__(566),
+          Re = (function (e) {
             function t(t) {
               var a;
               return (
@@ -2197,11 +2241,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -2282,7 +2326,7 @@
               t
             );
           })(P.PureComponent);
-        ve.propTypes = {
+        Re.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -2290,7 +2334,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var De = (0, I.inject)(function (e) {
+        var we = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2298,8 +2342,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(ve)),
-          Ne =
+          })((0, I.observer)(Re)),
+          Je =
             (__webpack_require__(819),
             (function (e) {
               function t(t) {
@@ -2318,11 +2362,11 @@
               var a = t.prototype;
               return (
                 (a.componentWillMount = function () {
-                  se.x.call(this);
+                  ue.x.call(this);
                 }),
                 (a.componentWillReceiveProps = function (e) {
                   e.keyRoute !== this.props.keyRoute &&
-                    se.x.call(this, e.keyRoute);
+                    ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
                   var e = this.props,
@@ -2394,7 +2438,7 @@
                                 onClick: this.switchFilterBtn,
                               }),
                             ),
-                            P.createElement(be, {
+                            P.createElement(De, {
                               parentType: l,
                               jsonKey: 'data',
                               indexRoute: n ? n + '-1' : '1',
@@ -2405,7 +2449,7 @@
                             }),
                           ),
                           i &&
-                            P.createElement(Oe.A, {
+                            P.createElement(Ne.A, {
                               parentType: l,
                               jsonKey: 'filter',
                               indexRoute: n ? n + '-2' : '2',
@@ -2422,7 +2466,7 @@
                           P.createElement(
                             'div',
                             { className: 'url-editor-box' },
-                            P.createElement(De, {
+                            P.createElement(we, {
                               parentType: l,
                               jsonKey: 'data',
                               indexRoute: n ? n + '-1' : '1',
@@ -2441,7 +2485,7 @@
                             ),
                           ),
                           i &&
-                            P.createElement(Oe.A, {
+                            P.createElement(Ne.A, {
                               parentType: l,
                               jsonKey: 'filter',
                               indexRoute: n ? n + '-2' : '2',
@@ -2457,7 +2501,7 @@
                 t
               );
             })(P.PureComponent));
-        Ne.propTypes = {
+        Je.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -2465,7 +2509,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Re = (0, I.inject)(function (e) {
+        var ke = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               pageScreen: e.JSONSchemaStore.pageScreen,
@@ -2474,8 +2518,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Ne)),
-          we = (function (e) {
+          })((0, I.observer)(Je)),
+          Ce = (function (e) {
             function t(t) {
               var a;
               return (
@@ -2498,11 +2542,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -2584,7 +2628,7 @@
               t
             );
           })(P.PureComponent);
-        we.propTypes = {
+        Ce.propTypes = {
           parentType: A().any,
           jsonKey: A().string,
           indexRoute: A().any,
@@ -2593,7 +2637,7 @@
           targetJsonSchema: A().any,
           onChange: A().any,
         };
-        var Je = (0, I.inject)(function (e) {
+        var xe = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2601,8 +2645,8 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, I.observer)(we)),
-          ke = (function (e) {
+          })((0, I.observer)(Ce)),
+          Ke = (function (e) {
             function t() {
               return e.apply(this, arguments) || this;
             }
@@ -2666,18 +2710,18 @@
               t
             );
           })(P.PureComponent);
-        ke.propTypes = {
+        Ke.propTypes = {
           pageScreen: A().any,
           mockData: A().any,
           dataRoute: A().any,
           onChange: A().func,
           nodeKey: A().string,
         };
-        var Ce = (0, I.inject)(function (e) {
+        var je = (0, I.inject)(function (e) {
             return { pageScreen: e.JSONSchemaStore.pageScreen };
-          })((0, I.observer)(ke)),
-          xe = (__webpack_require__(581), Q.Select.Option),
-          Ke = (function (e) {
+          })((0, I.observer)(Ke)),
+          Pe = (__webpack_require__(581), Q.Select.Option),
+          Be = (function (e) {
             function t(t) {
               var a;
               return (
@@ -2801,7 +2845,7 @@
                                 (0, X.cy)(i) &&
                                 i.map(function (e) {
                                   return P.createElement(
-                                    xe,
+                                    Pe,
                                     { value: e.name, key: e.id },
                                     e.title,
                                   );
@@ -2842,7 +2886,7 @@
                                   n.title.indexOf(i) < 0 &&
                                   (n.title = n.title + '（' + i + '）'),
                                 (n.default = n.value),
-                                P.createElement(Je, {
+                                P.createElement(xe, {
                                   pageScreen: a,
                                   jsonKey: t,
                                   nodeKey: o,
@@ -2885,7 +2929,7 @@
                           ),
                         ),
                       s &&
-                        P.createElement(Ce, {
+                        P.createElement(je, {
                           nodeKey: r + '-dataRoute',
                           mockData: m.respMock,
                           dataRoute: u,
@@ -2893,7 +2937,7 @@
                           key: r + '-dataRoute',
                         }),
                       s &&
-                        P.createElement(Oe.A, {
+                        P.createElement(Ne.A, {
                           isReadOnly: !0,
                           isIgnoreWarn: !0,
                           jsonKey: 'filter',
@@ -2912,7 +2956,7 @@
               t
             );
           })(P.PureComponent);
-        Ke.propTypes = {
+        Be.propTypes = {
           pageScreen: A().any,
           keyRoute: A().any,
           nodeKey: A().string,
@@ -2922,7 +2966,7 @@
           dynamicDataObj: A().object,
           dynamicDataApiScopeList: A().object,
         };
-        var je = (0, I.inject)(function (e) {
+        var Te = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               dynamicDataList: e.JSONEditorStore.dynamicDataList,
@@ -2931,9 +2975,9 @@
                 e.JSONEditorStore.dynamicDataApiScopeList,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             };
-          })((0, I.observer)(Ke)),
-          Pe = (__webpack_require__(759), Q.Select.Option),
-          Be = (function (e) {
+          })((0, I.observer)(Be)),
+          Ve = (__webpack_require__(759), Q.Select.Option),
+          Ie = (function (e) {
             function t(t) {
               var a;
               return (
@@ -3024,11 +3068,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this,
@@ -3141,7 +3185,7 @@
                           onClick: this.switchFilterBtn,
                         }),
                       ),
-                      P.createElement(be, {
+                      P.createElement(De, {
                         parentType: m,
                         jsonKey: 'data',
                         indexRoute: r ? r + '-2' : '2',
@@ -3154,7 +3198,7 @@
                         'div',
                         { className: 'filter-func-box' },
                         p &&
-                          P.createElement(Oe.A, {
+                          P.createElement(Ne.A, {
                             isIgnoreWarn: !0,
                             parentType: m,
                             jsonKey: 'localFilter',
@@ -3209,7 +3253,7 @@
                                 (0, X.cy)(i) &&
                                 i.map(function (e) {
                                   return P.createElement(
-                                    Pe,
+                                    Ve,
                                     { value: e.name, key: e.id },
                                     e.title,
                                   );
@@ -3251,7 +3295,7 @@
                                   (r.title = r.title + '（' + i + '）'),
                                 'dynamic' !== r.scope)
                               )
-                                return P.createElement(Je, {
+                                return P.createElement(xe, {
                                   pageScreen: u,
                                   jsonKey: t,
                                   keyRoute: o + '-value',
@@ -3260,7 +3304,7 @@
                                   key: o,
                                 });
                               var l = n + '-' + S + '-params-' + t;
-                              return P.createElement(je, {
+                              return P.createElement(Te, {
                                 pageScreen: u,
                                 nodeKey: l,
                                 keyRoute: a
@@ -3304,7 +3348,7 @@
                           ),
                         ),
                       S &&
-                        P.createElement(Ce, {
+                        P.createElement(je, {
                           nodeKey: n + '-config-dataRoute-' + _,
                           mockData: E.respMock,
                           dataRoute: _,
@@ -3312,7 +3356,7 @@
                           key: n + '-config-dataRoute',
                         }),
                       S &&
-                        P.createElement(Oe.A, {
+                        P.createElement(Ne.A, {
                           isReadOnly: !0,
                           isIgnoreWarn: !0,
                           parentType: m,
@@ -3332,7 +3376,7 @@
               t
             );
           })(P.PureComponent);
-        Be.propTypes = {
+        Ie.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3343,7 +3387,7 @@
           dynamicDataObj: A().object,
           dynamicDataApiScopeList: A().object,
         };
-        var Te = (0, I.inject)(function (e) {
+        var Me = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               triggerChangeAction: e.JSONEditorStore.triggerChangeAction,
@@ -3357,8 +3401,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Be)),
-          Ve = (function (e) {
+          })((0, I.observer)(Ie)),
+          Ae = (function (e) {
             function t() {
               return e.apply(this, arguments) || this;
             }
@@ -3366,11 +3410,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -3428,7 +3472,7 @@
                         P.Fragment,
                         null,
                         c &&
-                          P.createElement(Je, {
+                          P.createElement(xe, {
                             parentType: i,
                             jsonKey: 'register',
                             indexRoute: n ? n + '-1' : '1',
@@ -3438,7 +3482,7 @@
                             key: a + '-register',
                           }),
                         s &&
-                          P.createElement(Oe.A, {
+                          P.createElement(Ne.A, {
                             parentType: i,
                             jsonKey: 'actionFunc',
                             indexRoute: n ? n + '-2' : '2',
@@ -3453,7 +3497,7 @@
                         P.Fragment,
                         null,
                         u &&
-                          P.createElement(Je, {
+                          P.createElement(xe, {
                             parentType: i,
                             jsonKey: 'trigger',
                             indexRoute: n ? n + '-1' : '1',
@@ -3463,7 +3507,7 @@
                             key: a + '-trigger',
                           }),
                         p &&
-                          P.createElement(be, {
+                          P.createElement(De, {
                             parentType: i,
                             jsonKey: 'eventData',
                             indexRoute: n ? n + '-2' : '2',
@@ -3479,7 +3523,7 @@
               t
             );
           })(P.PureComponent);
-        Ve.propTypes = {
+        Ae.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3487,7 +3531,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Ie = (0, I.inject)(function (e) {
+        var Le = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               pageScreen: e.JSONSchemaStore.pageScreen,
@@ -3496,8 +3540,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Ve)),
-          Me = (function (e) {
+          })((0, I.observer)(Ae)),
+          qe = (function (e) {
             function t(t) {
               var a;
               return (
@@ -3520,11 +3564,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -3601,7 +3645,7 @@
               t
             );
           })(P.PureComponent);
-        Me.propTypes = {
+        qe.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3609,7 +3653,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Ae = (0, I.inject)(function (e) {
+        var We = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -3617,8 +3661,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Me)),
-          Le =
+          })((0, I.observer)(qe)),
+          Fe =
             (__webpack_require__(928),
             (function (e) {
               function t(t) {
@@ -3899,7 +3943,7 @@
                 t
               );
             })(P.PureComponent));
-        Le.propTypes = {
+        Fe.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3907,7 +3951,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var qe = (0, I.inject)(function (e) {
+        var Ue = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -3915,8 +3959,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Le)),
-          We = (function (e) {
+          })((0, I.observer)(Fe)),
+          ze = (function (e) {
             function t(t) {
               var a;
               return (
@@ -3936,11 +3980,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -4023,7 +4067,7 @@
               t
             );
           })(P.PureComponent);
-        We.propTypes = {
+        ze.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4031,7 +4075,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Fe = (0, I.inject)(function (e) {
+        var He = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4039,8 +4083,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(We)),
-          Ue = (function (e) {
+          })((0, I.observer)(ze)),
+          Ge = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4059,11 +4103,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -4146,7 +4190,7 @@
               t
             );
           })(P.PureComponent);
-        Ue.propTypes = {
+        Ge.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4154,7 +4198,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ze = (0, I.inject)(function (e) {
+        var $e = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4162,9 +4206,9 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Ue)),
-          He = Q.Input.TextArea,
-          Ge = (function (e) {
+          })((0, I.observer)(Ge)),
+          Ze = Q.Input.TextArea,
+          Qe = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4184,11 +4228,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -4253,7 +4297,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(He, {
+                      P.createElement(Ze, {
                         style: { display: 'inline-block' },
                         rows: 4,
                         disabled: i,
@@ -4270,7 +4314,7 @@
               t
             );
           })(P.PureComponent);
-        Ge.propTypes = {
+        Qe.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4278,7 +4322,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var $e = (0, I.inject)(function (e) {
+        var Ye = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4286,21 +4330,21 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Ge)),
-          Ze = require('braft-editor'),
-          Qe = __webpack_require__.n(Ze),
-          Ye = require('braft-extensions/dist/color-picker'),
-          Xe = __webpack_require__.n(Ye),
-          et =
+          })((0, I.observer)(Qe)),
+          Xe = require('braft-editor'),
+          et = __webpack_require__.n(Xe),
+          tt = require('braft-extensions/dist/color-picker'),
+          at = __webpack_require__.n(tt),
+          nt =
             (require('braft-extensions/dist/color-picker.css'),
             require('braft-extensions/dist/table')),
-          tt = __webpack_require__.n(et);
+          rt = __webpack_require__.n(nt);
         require('braft-extensions/dist/table.css'),
           require('braft-editor/dist/index.css'),
           __webpack_require__(632),
-          Qe().use([Xe()({ theme: 'light' })]),
-          Qe().use(
-            tt()({
+          et().use([at()({ theme: 'light' })]),
+          et().use(
+            rt()({
               defaultColumns: 3,
               defaultRows: 3,
               withDropdown: !1,
@@ -4308,7 +4352,7 @@
               exportAttrString: 'border="1" style="border-collapse: collapse"',
             }),
           );
-        var at = (function (e) {
+        var ot = (function (e) {
           function t(t) {
             var a;
             return (
@@ -4364,14 +4408,14 @@
           var a = t.prototype;
           return (
             (a.componentWillMount = function () {
-              se.x.call(this),
+              ue.x.call(this),
                 this.props.pageScreen &&
                   'wideScreen' === this.props.pageScreen &&
                   this.setState({ isClosed: !1 });
             }),
             (a.componentWillReceiveProps = function (e) {
               e.keyRoute !== this.props.keyRoute
-                ? se.x.call(this, e.keyRoute)
+                ? ue.x.call(this, e.keyRoute)
                 : e.pageScreen !== this.props.pageScreen &&
                   e.pageScreen &&
                   'wideScreen' === e.pageScreen &&
@@ -4387,7 +4431,7 @@
                 i = t.getJSONDataByKeyRoute,
                 l = this.state.isClosed,
                 c = i(a),
-                s = Qe().createEditorState(c),
+                s = et().createEditorState(c),
                 u = r.readOnly || !1;
               return P.createElement(
                 'div',
@@ -4446,7 +4490,7 @@
                   P.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    P.createElement(Qe(), {
+                    P.createElement(et(), {
                       key: n + '-textEditor',
                       controls:
                         'wideScreen' === o
@@ -4475,7 +4519,7 @@
             t
           );
         })(P.PureComponent);
-        at.propTypes = {
+        ot.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4484,7 +4528,7 @@
           targetJsonSchema: A().any,
           pageScreen: A().any,
         };
-        var nt = (0, I.inject)(function (e) {
+        var it = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4492,8 +4536,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(at)),
-          rt =
+          })((0, I.observer)(ot)),
+          lt =
             (__webpack_require__(741),
             (function (e) {
               function t(t) {
@@ -4532,11 +4576,11 @@
               var a = t.prototype;
               return (
                 (a.componentWillMount = function () {
-                  se.x.call(this);
+                  ue.x.call(this);
                 }),
                 (a.componentWillReceiveProps = function (e) {
                   e.keyRoute !== this.props.keyRoute &&
-                    se.x.call(this, e.keyRoute);
+                    ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
                   var e = this,
@@ -4643,7 +4687,7 @@
                 t
               );
             })(P.PureComponent));
-        rt.propTypes = {
+        lt.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4651,7 +4695,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ot = (0, I.inject)(function (e) {
+        var ct = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4659,8 +4703,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(rt)),
-          it = (function (e) {
+          })((0, I.observer)(lt)),
+          st = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4679,11 +4723,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -4743,7 +4787,7 @@
               t
             );
           })(P.PureComponent);
-        it.propTypes = {
+        st.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4751,7 +4795,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var lt = (0, I.inject)(function (e) {
+        var ut = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4759,15 +4803,15 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(it)),
-          ct = require('moment'),
-          st = __webpack_require__.n(ct),
-          ut = {
+          })((0, I.observer)(st)),
+          pt = require('moment'),
+          mt = __webpack_require__.n(pt),
+          dt = {
             'date-time': 'YYYY-MM-DD HH:mm',
             date: 'YYYY-MM-DD',
             time: 'HH:mm',
           },
-          pt = (function (e) {
+          yt = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4787,11 +4831,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -4803,7 +4847,7 @@
                   i = n.type,
                   l = n.readOnly || !1,
                   c = n.isRequired || !1,
-                  s = ut[i] || ut[0],
+                  s = dt[i] || dt[0],
                   u = o(t) || n.default,
                   p = (0, Y.y8)(i);
                 return P.createElement(
@@ -4855,7 +4899,7 @@
                         showTime: 'date-time' === i,
                         format: s,
                         placeholder: n.placeholder || '请输入' + n.title,
-                        defaultValue: u && st()(u, s),
+                        defaultValue: u && mt()(u, s),
                         onChange: this.handleValueChange,
                       }),
                     ),
@@ -4865,7 +4909,7 @@
               t
             );
           })(P.PureComponent);
-        pt.propTypes = {
+        yt.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4873,7 +4917,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var mt = (0, I.inject)(function (e) {
+        var ht = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4881,8 +4925,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(pt)),
-          dt = (function (e) {
+          })((0, I.observer)(yt)),
+          gt = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4902,11 +4946,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -4965,7 +5009,7 @@
                         disabled: i,
                         required: l,
                         placeholder: n.placeholder || '请输入' + n.title,
-                        defaultValue: o && st()(o, 'HH:mm'),
+                        defaultValue: o && mt()(o, 'HH:mm'),
                         onChange: this.handleValueChange,
                       }),
                     ),
@@ -4975,7 +5019,7 @@
               t
             );
           })(P.PureComponent);
-        dt.propTypes = {
+        gt.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4983,7 +5027,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var yt = (0, I.inject)(function (e) {
+        var St = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4991,9 +5035,9 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(dt)),
-          ht = require('react-color'),
-          gt =
+          })((0, I.observer)(gt)),
+          _t = require('react-color'),
+          ft =
             (__webpack_require__(220),
             (function (e) {
               function t(t) {
@@ -5026,11 +5070,11 @@
               var a = t.prototype;
               return (
                 (a.componentWillMount = function () {
-                  se.x.call(this);
+                  ue.x.call(this);
                 }),
                 (a.componentWillReceiveProps = function (e) {
                   e.keyRoute !== this.props.keyRoute &&
-                    se.x.call(this, e.keyRoute);
+                    ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
                   var e = this,
@@ -5045,7 +5089,7 @@
                     s = l.displayColorPicker,
                     u = i(a),
                     p = (0, Y.y8)(r.type),
-                    m = P.createElement(ht.SketchPicker, {
+                    m = P.createElement(_t.SketchPicker, {
                       className: 'color-sketch-picker',
                       key: n + '-SketchPicker',
                       color: u || r.default,
@@ -5128,7 +5172,7 @@
                 t
               );
             })(P.PureComponent));
-        gt.propTypes = {
+        ft.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -5136,7 +5180,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var St = (0, I.inject)(function (e) {
+        var Et = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5144,8 +5188,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(gt)),
-          _t =
+          })((0, I.observer)(ft)),
+          bt =
             (require('ace-builds/src-noconflict/mode-html'),
             __webpack_require__(953),
             (function (e) {
@@ -5168,11 +5212,11 @@
               var a = t.prototype;
               return (
                 (a.componentWillMount = function () {
-                  se.x.call(this);
+                  ue.x.call(this);
                 }),
                 (a.componentWillReceiveProps = function (e) {
                   e.keyRoute !== this.props.keyRoute &&
-                    se.x.call(this, e.keyRoute);
+                    ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
                   var e = this,
@@ -5297,7 +5341,7 @@
                 t
               );
             })(P.PureComponent));
-        _t.propTypes = {
+        bt.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -5305,7 +5349,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ft = (0, I.inject)(function (e) {
+        var Ot = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5313,9 +5357,9 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(_t)),
-          Et = (__webpack_require__(206), Q.Select.Option),
-          bt = (function (e) {
+          })((0, I.observer)(bt)),
+          vt = (__webpack_require__(206), Q.Select.Option),
+          Dt = (function (e) {
             function t(t) {
               var a;
               return (
@@ -5334,11 +5378,11 @@
             var a = t.prototype;
             return (
               (a.componentWillMount = function () {
-                se.x.call(this);
+                ue.x.call(this);
               }),
               (a.componentWillReceiveProps = function (e) {
                 e.keyRoute !== this.props.keyRoute &&
-                  se.x.call(this, e.keyRoute);
+                  ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
                 var e = this.props,
@@ -5410,7 +5454,7 @@
                             var n = e.label || e.name,
                               r = t + '-select-' + n;
                             return P.createElement(
-                              Et,
+                              vt,
                               { value: e.value, key: r },
                               n,
                             );
@@ -5423,7 +5467,7 @@
               t
             );
           })(P.PureComponent);
-        bt.propTypes = {
+        Dt.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -5431,7 +5475,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Ot = (0, I.inject)(function (e) {
+        var Nt = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5439,8 +5483,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(bt)),
-          vt = function (e) {
+          })((0, I.observer)(Dt)),
+          Rt = function (e) {
             var t = e.nodeKey,
               a = (e.jsonKey, e.keyRoute),
               n = e.targetJsonSchema,
@@ -5456,65 +5500,60 @@
               if (l.conditionValue === (s = r(u.keyRoute)))
                 return void (n.clearValueOnHidden && o(a, void 0));
             }
-            switch (((c = t + '-' + s), (e.nodeKey = c), i)) {
+            c = t + '-' + s;
+            var p = ne()({}, e, { nodeKey: c });
+            switch (i) {
               case 'object':
-              case 'func':
-              case 'style':
-              case 'data':
-              case 'func-schema':
-              case 'style-schema':
-              case 'data-schema':
-              case 'event-schema':
-                return B().createElement(me, ne()({}, e, { key: c }));
+                return B().createElement(Oe, ne()({}, p, { key: c }));
               case 'array':
-                return B().createElement(fe, ne()({}, e, { key: c }));
+                return B().createElement(Ee, ne()({}, p, { key: c }));
               case 'dynamic-data':
-                return B().createElement(Te, ne()({}, e, { key: c }));
+                return B().createElement(Me, ne()({}, p, { key: c }));
               case 'datasource':
-                return B().createElement(Re, ne()({}, e, { key: c }));
+                return B().createElement(ke, ne()({}, p, { key: c }));
               case 'event':
-                return B().createElement(Ie, ne()({}, e, { key: c }));
+                return B().createElement(Le, ne()({}, p, { key: c }));
               case 'quantity':
-                return B().createElement(Ae, ne()({}, e, { key: c }));
+                return B().createElement(We, ne()({}, p, { key: c }));
               case 'box-style':
-                return B().createElement(qe, ne()({}, e, { key: c }));
+                return B().createElement(Ue, ne()({}, p, { key: c }));
               case 'radio':
-                return B().createElement(Fe, ne()({}, e, { key: c }));
+                return B().createElement(He, ne()({}, p, { key: c }));
               case 'single-select':
-                return B().createElement(Ot, ne()({}, e, { key: c }));
+                return B().createElement(Nt, ne()({}, p, { key: c }));
               case 'select':
-                return B().createElement(ze, ne()({}, e, { key: c }));
+                return B().createElement($e, ne()({}, p, { key: c }));
               case 'input':
               default:
-                return B().createElement(Je, ne()({}, e, { key: c }));
+                return B().createElement(xe, ne()({}, p, { key: c }));
               case 'textarea':
-                return B().createElement($e, ne()({}, e, { key: c }));
+                return B().createElement(Ye, ne()({}, p, { key: c }));
               case 'text-editor':
-                return B().createElement(nt, ne()({}, e, { key: c }));
+                return B().createElement(it, ne()({}, p, { key: c }));
               case 'number':
-                return B().createElement(ot, ne()({}, e, { key: c }));
+                return B().createElement(ct, ne()({}, p, { key: c }));
               case 'boolean':
-                return B().createElement(lt, ne()({}, e, { key: c }));
+                return B().createElement(ut, ne()({}, p, { key: c }));
               case 'date':
               case 'date-time':
-                return B().createElement(mt, ne()({}, e, { key: c }));
+                return B().createElement(ht, ne()({}, p, { key: c }));
               case 'time':
-                return B().createElement(yt, ne()({}, e, { key: c }));
+                return B().createElement(St, ne()({}, p, { key: c }));
               case 'url':
-                return B().createElement(De, ne()({}, e, { key: c }));
+                return B().createElement(we, ne()({}, p, { key: c }));
               case 'color':
-                return B().createElement(St, ne()({}, e, { key: c }));
+                return B().createElement(Et, ne()({}, p, { key: c }));
               case 'json':
-                return B().createElement(be, ne()({}, e, { key: c }));
+                return B().createElement(De, ne()({}, p, { key: c }));
               case 'codearea':
-                return B().createElement(Oe.A, ne()({}, e, { key: c }));
+                return B().createElement(Ne.A, ne()({}, p, { key: c }));
               case 'htmlarea':
-                return B().createElement(ft, ne()({}, e, { key: c }));
+                return B().createElement(Ot, ne()({}, p, { key: c }));
             }
           },
-          Dt = (__webpack_require__(104), Q.Collapse.Panel),
-          Nt = Q.Tabs.TabPane,
-          Rt = (function (e) {
+          wt = (__webpack_require__(104), Q.Collapse.Panel),
+          Jt = Q.Tabs.TabPane,
+          kt = (function (e) {
             function t(t) {
               var a;
               if (
@@ -5623,17 +5662,17 @@
                                   u = t,
                                   p = t,
                                   d = a.properties[p],
-                                  y = targetJsonSchema.type,
+                                  y = d.type,
                                   h = n + '-' + r + '-' + y + '-' + p;
                                 return d.propertyOrder &&
                                   d.propertyOrder.length > 0
                                   ? P.createElement(
-                                      Dt,
+                                      wt,
                                       {
                                         header: d.title || e.renderHeader(y),
                                         key: p,
                                       },
-                                      vt({
+                                      Rt({
                                         parentType: y,
                                         jsonKey: p,
                                         indexRoute: s,
@@ -5668,14 +5707,14 @@
                                 return d.propertyOrder &&
                                   d.propertyOrder.length > 0
                                   ? P.createElement(
-                                      Nt,
+                                      Jt,
                                       {
                                         tab: d.title || e.renderHeader(y),
                                         key: p,
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
-                                      vt({
+                                      Rt({
                                         parentType: y,
                                         jsonKey: p,
                                         indexRoute: s,
@@ -5696,7 +5735,7 @@
                         P.createElement(
                           P.Fragment,
                           null,
-                          vt({
+                          Rt({
                             parentType: '',
                             jsonKey: '',
                             indexRoute: '',
@@ -5711,7 +5750,7 @@
                     ),
                   !p &&
                     s &&
-                    P.createElement(ce, {
+                    P.createElement(se, {
                       nodeKey: 'jsonView',
                       keyRoute: '',
                       targetJsonSchema: a,
@@ -5721,7 +5760,7 @@
               t
             );
           })(P.PureComponent);
-        Rt.propTypes = {
+        kt.propTypes = {
           viewStyle: A().any,
           wideScreen: A().any,
           onChange: A().func,
@@ -5730,7 +5769,7 @@
           jsonData: A().object,
           dynamicDataList: A().any,
         };
-        var wt = (0, I.inject)(function (e) {
+        var Ct = (0, I.inject)(function (e) {
             return {
               jsonSchema: e.JSONSchemaStore.jsonSchema,
               lastUpdateTime: e.JSONSchemaStore.lastUpdateTime,
@@ -5745,8 +5784,8 @@
               setPageScreen: e.JSONSchemaStore.setPageScreen,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, I.observer)(Rt)),
-          Jt =
+          })((0, I.observer)(kt)),
+          xt =
             (__webpack_require__(410),
             (function (e) {
               function t(t) {
@@ -5769,14 +5808,14 @@
                         JSONSchemaStore: t.JSONSchemaStore,
                         JSONEditorStore: t.JSONEditorStore,
                       },
-                      P.createElement(wt, this.props),
+                      P.createElement(Ct, this.props),
                     );
                   return e ? (V().render(a, e), '') : a;
                 }),
                 t
               );
             })(P.PureComponent));
-        Jt.propTypes = {
+        xt.propTypes = {
           viewStyle: A().any,
           wideScreen: A().any,
           onChange: A().func,

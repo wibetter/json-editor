@@ -219,6 +219,8 @@ class IndexDemo extends React.PureComponent {
                         title: '请求参数配置',
                         description: '用于配置当前接口的请求参数数值',
                         isRequired: true,
+                        properties: {},
+                        propertyOrder: [],
                       },
                       filter: {
                         title: '过滤器函数体',

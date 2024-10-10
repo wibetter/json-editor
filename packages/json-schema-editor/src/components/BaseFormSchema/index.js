@@ -37,7 +37,6 @@ class BaseFormSchema extends React.PureComponent {
     keyIsFixed: PropTypes.bool,
     typeIsFixed: PropTypes.bool,
     titleIsFixed: PropTypes.bool,
-    isArrayItem: PropTypes.bool,
   };
 
   constructor(props) {
