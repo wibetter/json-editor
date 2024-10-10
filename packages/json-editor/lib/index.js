@@ -10,7 +10,30 @@
 })(this, function () {
   return (function () {
     var __webpack_modules__ = {
-        414: function (
+        852: function (e, t, a) {
+          'use strict';
+          a.d(t, {
+            x: function () {
+              return r;
+            },
+          });
+          var n = a(919);
+          function r(e) {
+            var t = this.props,
+              a = t.targetJsonSchema,
+              r = t.getJSONDataByKeyRoute,
+              o = t.getInitJsonDataByKeyRoute,
+              i = t.updateFormValueData,
+              l = a.type,
+              c = e || this.props.keyRoute,
+              s = (0, n.TA)(c + '-' + l);
+            if (s) {
+              var u = r(s);
+              u || (u = o(s)), u && ((0, n.CP)(c + '-' + l), i(c, u));
+            }
+          }
+        },
+        566: function (
           __unused_webpack_module,
           __webpack_exports__,
           __webpack_require__,
@@ -53,13 +76,13 @@
               ),
             $utils_typeof__WEBPACK_IMPORTED_MODULE_8__ =
               __webpack_require__(102),
-            $mixins_index__WEBPACK_IMPORTED_MODULE_9__ =
+            $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
               __webpack_require__(852),
-            _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__ =
+            _ant_design_icons__WEBPACK_IMPORTED_MODULE_9__ =
               __webpack_require__(347),
-            _ant_design_icons__WEBPACK_IMPORTED_MODULE_10___default =
+            _ant_design_icons__WEBPACK_IMPORTED_MODULE_9___default =
               __webpack_require__.n(
-                _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__,
+                _ant_design_icons__WEBPACK_IMPORTED_MODULE_9__,
               ),
             CodeAreaFormSchema = (function (_React$PureComponent) {
               function CodeAreaFormSchema(e) {
@@ -84,11 +107,11 @@
               var _proto = CodeAreaFormSchema.prototype;
               return (
                 (_proto.componentWillMount = function () {
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_9__.x.call(this);
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.x.call(this);
                 }),
                 (_proto.componentWillReceiveProps = function (e) {
                   e.keyRoute !== this.props.keyRoute &&
-                    $mixins_index__WEBPACK_IMPORTED_MODULE_9__.x.call(
+                    $mixins_index__WEBPACK_IMPORTED_MODULE_10__.x.call(
                       this,
                       e.keyRoute,
                     );
@@ -167,7 +190,7 @@
                               placement: 'top',
                             },
                             react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__.InfoCircleOutlined,
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_9__.InfoCircleOutlined,
                               { className: 'info-icon' },
                             ),
                           ),
@@ -263,30 +286,6 @@
                 CodeAreaFormSchema,
               ),
             ));
-        },
-        852: function (e, t, a) {
-          'use strict';
-          a.d(t, {
-            x: function () {
-              return o;
-            },
-          });
-          var n = a(919),
-            r = a(85);
-          function o(e) {
-            var t = this.props,
-              a = t.targetJsonSchema,
-              o = t.getJSONDataByKeyRoute,
-              i = t.getInitJsonDataByKeyRoute,
-              l = t.updateFormValueData,
-              c = (0, r.getCurrentFormat)(a),
-              s = e || this.props.keyRoute,
-              u = (0, n.TA)(s + '-' + c);
-            if (u) {
-              var p = o(u);
-              p || (p = i(u)), p && ((0, n.CP)(s + '-' + c), l(s, p));
-            }
-          }
         },
         919: function (e, t, a) {
           'use strict';
@@ -410,54 +409,19 @@
           }),
             a(85);
         },
-        266: function () {},
-        867: function () {},
-        973: function () {},
-        776: function () {},
-        470: function () {},
         641: function () {},
-        961: function () {},
-        498: function () {},
-        478: function () {},
-        460: function () {},
-        49: function () {},
-        756: function () {},
         997: function () {},
-        466: function (e, t, a) {
-          var n = a(266);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('413f1e12', n, !1, { sourceMap: !1 });
-        },
-        228: function (e, t, a) {
-          var n = a(867);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('2c391f42', n, !1, { sourceMap: !1 });
-        },
-        50: function (e, t, a) {
-          var n = a(973);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('01cd53b0', n, !1, { sourceMap: !1 });
-        },
-        913: function (e, t, a) {
-          var n = a(776);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('619bf3e3', n, !1, { sourceMap: !1 });
-        },
-        385: function (e, t, a) {
-          var n = a(470);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('1fa80d3a', n, !1, { sourceMap: !1 });
-        },
+        506: function () {},
+        523: function () {},
+        597: function () {},
+        232: function () {},
+        534: function () {},
+        161: function () {},
+        258: function () {},
+        6: function () {},
+        196: function () {},
+        561: function () {},
+        396: function () {},
         104: function (e, t, a) {
           var n = a(641);
           n.__esModule && (n = n.default),
@@ -465,54 +429,89 @@
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('1fb1d0ec', n, !1, { sourceMap: !1 });
         },
-        40: function (e, t, a) {
-          var n = a(961);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('5c4a563c', n, !1, { sourceMap: !1 });
-        },
-        571: function (e, t, a) {
-          var n = a(498);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('180eb99b', n, !1, { sourceMap: !1 });
-        },
-        735: function (e, t, a) {
-          var n = a(478);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('7539596e', n, !1, { sourceMap: !1 });
-        },
-        983: function (e, t, a) {
-          var n = a(460);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('06622349', n, !1, { sourceMap: !1 });
-        },
-        456: function (e, t, a) {
-          var n = a(49);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('5329a344', n, !1, { sourceMap: !1 });
-        },
-        630: function (e, t, a) {
-          var n = a(756);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('780e2024', n, !1, { sourceMap: !1 });
-        },
         410: function (e, t, a) {
           var n = a(997);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('220f768b', n, !1, { sourceMap: !1 });
+        },
+        171: function (e, t, a) {
+          var n = a(506);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('29e0432b', n, !1, { sourceMap: !1 });
+        },
+        928: function (e, t, a) {
+          var n = a(523);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('31b3938e', n, !1, { sourceMap: !1 });
+        },
+        220: function (e, t, a) {
+          var n = a(597);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('f7862348', n, !1, { sourceMap: !1 });
+        },
+        819: function (e, t, a) {
+          var n = a(232);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('1b6af5a2', n, !1, { sourceMap: !1 });
+        },
+        759: function (e, t, a) {
+          var n = a(534);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('754f9197', n, !1, { sourceMap: !1 });
+        },
+        709: function (e, t, a) {
+          var n = a(161);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('4ad618f0', n, !1, { sourceMap: !1 });
+        },
+        741: function (e, t, a) {
+          var n = a(258);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('ae856a32', n, !1, { sourceMap: !1 });
+        },
+        657: function (e, t, a) {
+          var n = a(6);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('91732ad6', n, !1, { sourceMap: !1 });
+        },
+        581: function (e, t, a) {
+          var n = a(196);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('5737c47d', n, !1, { sourceMap: !1 });
+        },
+        206: function (e, t, a) {
+          var n = a(561);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('72791190', n, !1, { sourceMap: !1 });
+        },
+        632: function (e, t, a) {
+          var n = a(396);
+          n.__esModule && (n = n.default),
+            'string' == typeof n && (n = [[e.id, n, '']]),
+            n.locals && (e.exports = n.locals),
+            (0, a(611).A)('54a7813a', n, !1, { sourceMap: !1 });
         },
         611: function (e, t, a) {
           'use strict';
@@ -794,10 +793,10 @@
           P = __webpack_require__(15),
           B = __webpack_require__.n(P),
           T = require('react-dom'),
-          I = __webpack_require__.n(T),
-          M = __webpack_require__(20),
-          V = __webpack_require__(825),
-          A = __webpack_require__.n(V),
+          V = __webpack_require__.n(T),
+          I = __webpack_require__(20),
+          M = __webpack_require__(825),
+          A = __webpack_require__.n(M),
           L = require('@babel/runtime/helpers/initializerDefineProperty'),
           q = __webpack_require__.n(L),
           W = require('@babel/runtime/helpers/createClass'),
@@ -1350,7 +1349,7 @@
           le =
             (require('ace-builds/src-noconflict/mode-json'),
             require('ace-builds/src-noconflict/theme-solarized_light'),
-            __webpack_require__(40),
+            __webpack_require__(709),
             (function (e) {
               function t(t) {
                 var a;
@@ -1422,17 +1421,17 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ce = (0, M.inject)(function (e) {
+        var ce = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(le)),
+          })((0, I.observer)(le)),
           se = __webpack_require__(852),
           ue =
-            (__webpack_require__(735),
+            (__webpack_require__(657),
             (function (e) {
               function t(t) {
                 var a;
@@ -1466,10 +1465,11 @@
                     c = t.isStructuredSchema,
                     s = t.getJSONDataByKeyRoute,
                     u = t.keyRoute2indexRoute,
-                    p = this.state,
-                    m = p.jsonView,
-                    d = p.isClosed,
-                    y = c;
+                    p = t.updateFormValueData,
+                    m = this.state,
+                    d = m.jsonView,
+                    y = m.isClosed,
+                    h = c;
                   return B().createElement(
                     'div',
                     {
@@ -1478,14 +1478,14 @@
                       key: n,
                       id: n,
                     },
-                    !y &&
+                    !h &&
                       !i &&
                       B().createElement(
                         'div',
                         {
                           className: 'element-title',
                           onClick: function (t) {
-                            e.setState({ isClosed: !d }),
+                            e.setState({ isClosed: !y }),
                               t.preventDefault(),
                               t.stopPropagation();
                           },
@@ -1504,7 +1504,7 @@
                             }),
                           ),
                         B().createElement('span', null, i ? '/' + (l + 1) : ''),
-                        d
+                        y
                           ? B().createElement(re.RightOutlined, {
                               className: 'close-operate-btn',
                             })
@@ -1516,14 +1516,14 @@
                           {
                             className: 'display-source-btn',
                             onClick: function (t) {
-                              e.setState({ jsonView: !m }),
+                              e.setState({ jsonView: !d }),
                                 t.preventDefault(),
                                 t.stopPropagation();
                             },
                           },
                           B().createElement(
                             Q.Tooltip,
-                            { title: m ? '关闭源码模式' : '开启源码模式' },
+                            { title: d ? '关闭源码模式' : '开启源码模式' },
                             B().createElement(
                               'svg',
                               {
@@ -1537,7 +1537,7 @@
                               B().createElement('path', {
                                 d: 'M293.0688 755.2c-12.0832 0-24.2688-4.2496-33.9968-12.9024L0 512l273.4592-243.0976C294.5536 250.2144 326.912 252.0064 345.7024 273.152c18.7904 21.1456 16.896 53.504-4.2496 72.2944L154.112 512l172.9536 153.7024c21.1456 18.7904 23.04 51.1488 4.2496 72.2944C321.2288 749.4144 307.1488 755.2 293.0688 755.2zM751.0528 755.0976 1024.512 512l-259.072-230.2976c-21.1456-18.7904-53.504-16.896-72.2432 4.2496-18.7904 21.1456-16.896 53.504 4.2496 72.2944L870.4 512l-187.3408 166.5024c-21.1456 18.7904-23.04 51.1488-4.2496 72.2944C688.896 762.2144 702.976 768 717.056 768 729.1392 768 741.3248 763.7504 751.0528 755.0976zM511.5392 827.648l102.4-614.4c4.6592-27.904-14.1824-54.272-42.0864-58.9312-28.0064-4.7104-54.3232 14.1824-58.88 42.0864l-102.4 614.4c-4.6592 27.904 14.1824 54.272 42.0864 58.9312C455.5264 870.1952 458.2912 870.4 461.1072 870.4 485.6832 870.4 507.392 852.6336 511.5392 827.648z',
                                 'p-id': '1206',
-                                fill: m ? '#1890ff' : 'currentColor',
+                                fill: d ? '#1890ff' : 'currentColor',
                               }),
                             ),
                           ),
@@ -1548,32 +1548,33 @@
                       {
                         className:
                           'content-item ' +
-                          (y || i ? '' : 'object-content') +
+                          (h || i ? '' : 'object-content') +
                           ' ' +
-                          (m ? 'json-view-array' : '') +
+                          (d ? 'json-view-array' : '') +
                           ' ' +
-                          (d ? 'closed' : ''),
+                          (y ? 'closed' : ''),
                       },
-                      !m &&
+                      !d &&
                         o.propertyOrder &&
                         o.propertyOrder.map(function (e, t) {
                           var i = a ? a + '-' + t : '' + t,
                             l = r ? r + '-' + e : '' + e,
                             c = e,
-                            p = o.properties[c],
-                            m = (0, G.getCurrentFormat)(p);
+                            m = o.properties[c],
+                            d = m.type;
                           return vt({
-                            parentType: m,
+                            parentType: d,
                             jsonKey: c,
                             indexRoute: i,
                             keyRoute: l,
-                            nodeKey: n + '-' + m + '-' + c,
-                            targetJsonSchema: p,
+                            nodeKey: n + '-' + d + '-' + c,
+                            targetJsonSchema: m,
                             getJSONDataByKeyRoute: s,
                             keyRoute2indexRoute: u,
+                            updateFormValueData: p,
                           });
                         }),
-                      m && B().createElement(ce, this.props),
+                      d && B().createElement(ce, this.props),
                     ),
                   );
                 }),
@@ -1592,7 +1593,7 @@
           isStructuredSchema: A().any,
         };
         var pe,
-          me = (0, M.inject)(function (e) {
+          me = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -1600,7 +1601,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(ue));
+          })((0, I.observer)(ue));
         function de() {
           return (
             (de = Object.assign
@@ -1616,7 +1617,7 @@
             de.apply(null, arguments)
           );
         }
-        __webpack_require__(466);
+        __webpack_require__(171);
         var ye,
           he = function (e) {
             return P.createElement(
@@ -1744,7 +1745,7 @@
                   s = c.jsonView,
                   u = c.isClosed,
                   p = (c.hoverIndex, c.currentActiveArrIndex),
-                  m = (0, G.getCurrentFormat)(i),
+                  m = i.type,
                   d = l(a),
                   y = i.items;
                 return P.createElement(
@@ -1994,7 +1995,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var fe = (0, M.inject)(function (e) {
+        var fe = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               pageScreen: e.JSONSchemaStore.pageScreen,
@@ -2007,7 +2008,7 @@
               addArrayItem: e.JSONEditorStore.addArrayItem,
               sortArrayItem: e.JSONEditorStore.sortArrayItem,
             };
-          })((0, M.observer)(_e)),
+          })((0, I.observer)(_e)),
           Ee = (function (e) {
             function t(t) {
               var a;
@@ -2165,7 +2166,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var be = (0, M.inject)(function (e) {
+        var be = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2174,8 +2175,8 @@
               indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, M.observer)(Ee)),
-          Oe = __webpack_require__(414),
+          })((0, I.observer)(Ee)),
+          Oe = __webpack_require__(566),
           ve = (function (e) {
             function t(t) {
               var a;
@@ -2289,7 +2290,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var De = (0, M.inject)(function (e) {
+        var De = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2297,9 +2298,9 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(ve)),
+          })((0, I.observer)(ve)),
           Ne =
-            (__webpack_require__(913),
+            (__webpack_require__(819),
             (function (e) {
               function t(t) {
                 var a;
@@ -2331,7 +2332,7 @@
                     r = e.targetJsonSchema,
                     o = e.pageScreen,
                     i = this.state.isShowFilter,
-                    l = (0, G.getCurrentFormat)(r),
+                    l = r.type,
                     c = r.properties.type || {},
                     s = r.properties.data || {},
                     u = r.properties.filter || {},
@@ -2464,7 +2465,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Re = (0, M.inject)(function (e) {
+        var Re = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               pageScreen: e.JSONSchemaStore.pageScreen,
@@ -2473,7 +2474,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Ne)),
+          })((0, I.observer)(Ne)),
           we = (function (e) {
             function t(t) {
               var a;
@@ -2592,7 +2593,7 @@
           targetJsonSchema: A().any,
           onChange: A().any,
         };
-        var Je = (0, M.inject)(function (e) {
+        var Je = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2600,7 +2601,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, M.observer)(we)),
+          })((0, I.observer)(we)),
           ke = (function (e) {
             function t() {
               return e.apply(this, arguments) || this;
@@ -2672,10 +2673,10 @@
           onChange: A().func,
           nodeKey: A().string,
         };
-        var Ce = (0, M.inject)(function (e) {
+        var Ce = (0, I.inject)(function (e) {
             return { pageScreen: e.JSONSchemaStore.pageScreen };
-          })((0, M.observer)(ke)),
-          xe = (__webpack_require__(983), Q.Select.Option),
+          })((0, I.observer)(ke)),
+          xe = (__webpack_require__(581), Q.Select.Option),
           Ke = (function (e) {
             function t(t) {
               var a;
@@ -2921,7 +2922,7 @@
           dynamicDataObj: A().object,
           dynamicDataApiScopeList: A().object,
         };
-        var je = (0, M.inject)(function (e) {
+        var je = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               dynamicDataList: e.JSONEditorStore.dynamicDataList,
@@ -2930,8 +2931,8 @@
                 e.JSONEditorStore.dynamicDataApiScopeList,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             };
-          })((0, M.observer)(Ke)),
-          Pe = (__webpack_require__(385), Q.Select.Option),
+          })((0, I.observer)(Ke)),
+          Pe = (__webpack_require__(759), Q.Select.Option),
           Be = (function (e) {
             function t(t) {
               var a;
@@ -3042,7 +3043,7 @@
                   s = t.getJSONDataByKeyRoute,
                   u = t.pageScreen,
                   p = this.state.isShowFilter,
-                  m = (0, G.getCurrentFormat)(o),
+                  m = o.type,
                   d = s(a) || {},
                   y = o.properties.type || {},
                   h = d.type || y.default,
@@ -3342,7 +3343,7 @@
           dynamicDataObj: A().object,
           dynamicDataApiScopeList: A().object,
         };
-        var Te = (0, M.inject)(function (e) {
+        var Te = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               triggerChangeAction: e.JSONEditorStore.triggerChangeAction,
@@ -3356,8 +3357,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Be)),
-          Ie = (function (e) {
+          })((0, I.observer)(Be)),
+          Ve = (function (e) {
             function t() {
               return e.apply(this, arguments) || this;
             }
@@ -3378,7 +3379,7 @@
                   n = e.indexRoute,
                   r = e.targetJsonSchema,
                   o = e.pageScreen,
-                  i = (0, G.getCurrentFormat)(r),
+                  i = r.type,
                   l = r.properties.type || {},
                   c = r.properties.register || {},
                   s = r.properties.actionFunc || {},
@@ -3478,7 +3479,7 @@
               t
             );
           })(P.PureComponent);
-        Ie.propTypes = {
+        Ve.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3486,7 +3487,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Me = (0, M.inject)(function (e) {
+        var Ie = (0, I.inject)(function (e) {
             return {
               triggerChange: e.JSONEditorStore.triggerChange,
               pageScreen: e.JSONSchemaStore.pageScreen,
@@ -3495,8 +3496,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Ie)),
-          Ve = (function (e) {
+          })((0, I.observer)(Ve)),
+          Me = (function (e) {
             function t(t) {
               var a;
               return (
@@ -3537,7 +3538,7 @@
                   c = n.properties[l],
                   s = o.quantity,
                   u = P.createElement('span', null, 'percent' === s ? '%' : s),
-                  p = (0, Y.y8)(n.format);
+                  p = (0, Y.y8)(n.type);
                 return P.createElement(
                   'div',
                   {
@@ -3600,7 +3601,7 @@
               t
             );
           })(P.PureComponent);
-        Ve.propTypes = {
+        Me.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3608,7 +3609,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Ae = (0, M.inject)(function (e) {
+        var Ae = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -3616,9 +3617,9 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Ve)),
+          })((0, I.observer)(Me)),
           Le =
-            (__webpack_require__(228),
+            (__webpack_require__(928),
             (function (e) {
               function t(t) {
                 var a;
@@ -3906,7 +3907,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var qe = (0, M.inject)(function (e) {
+        var qe = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -3914,7 +3915,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Le)),
+          })((0, I.observer)(Le)),
           We = (function (e) {
             function t(t) {
               var a;
@@ -4030,7 +4031,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Fe = (0, M.inject)(function (e) {
+        var Fe = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4038,7 +4039,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(We)),
+          })((0, I.observer)(We)),
           Ue = (function (e) {
             function t(t) {
               var a;
@@ -4153,7 +4154,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ze = (0, M.inject)(function (e) {
+        var ze = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4161,7 +4162,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Ue)),
+          })((0, I.observer)(Ue)),
           He = Q.Input.TextArea,
           Ge = (function (e) {
             function t(t) {
@@ -4277,7 +4278,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var $e = (0, M.inject)(function (e) {
+        var $e = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4285,7 +4286,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(Ge)),
+          })((0, I.observer)(Ge)),
           Ze = require('braft-editor'),
           Qe = __webpack_require__.n(Ze),
           Ye = require('braft-extensions/dist/color-picker'),
@@ -4296,7 +4297,7 @@
           tt = __webpack_require__.n(et);
         require('braft-extensions/dist/table.css'),
           require('braft-editor/dist/index.css'),
-          __webpack_require__(630),
+          __webpack_require__(632),
           Qe().use([Xe()({ theme: 'light' })]),
           Qe().use(
             tt()({
@@ -4483,7 +4484,7 @@
           targetJsonSchema: A().any,
           pageScreen: A().any,
         };
-        var nt = (0, M.inject)(function (e) {
+        var nt = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4491,9 +4492,9 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(at)),
+          })((0, I.observer)(at)),
           rt =
-            (__webpack_require__(571),
+            (__webpack_require__(741),
             (function (e) {
               function t(t) {
                 var a;
@@ -4549,7 +4550,7 @@
                     c = i(a),
                     s = r.readOnly || !1,
                     u = r.isRequired || !1,
-                    p = (0, Y.y8)(r.format);
+                    p = (0, Y.y8)(r.type);
                   return P.createElement(
                     'div',
                     {
@@ -4650,7 +4651,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ot = (0, M.inject)(function (e) {
+        var ot = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4658,7 +4659,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(rt)),
+          })((0, I.observer)(rt)),
           it = (function (e) {
             function t(t) {
               var a;
@@ -4691,7 +4692,7 @@
                   n = e.targetJsonSchema,
                   r = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(t),
-                  i = (0, Y.y8)(n.format);
+                  i = (0, Y.y8)(n.type);
                 return P.createElement(
                   'div',
                   {
@@ -4750,7 +4751,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var lt = (0, M.inject)(function (e) {
+        var lt = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4758,7 +4759,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(it)),
+          })((0, I.observer)(it)),
           ct = require('moment'),
           st = __webpack_require__.n(ct),
           ut = {
@@ -4799,7 +4800,7 @@
                   n = e.targetJsonSchema,
                   r = e.pageScreen,
                   o = e.getJSONDataByKeyRoute,
-                  i = (0, G.getCurrentFormat)(n),
+                  i = n.type,
                   l = n.readOnly || !1,
                   c = n.isRequired || !1,
                   s = ut[i] || ut[0],
@@ -4872,7 +4873,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var mt = (0, M.inject)(function (e) {
+        var mt = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4880,7 +4881,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(pt)),
+          })((0, I.observer)(pt)),
           dt = (function (e) {
             function t(t) {
               var a;
@@ -4916,7 +4917,7 @@
                   o = (0, e.getJSONDataByKeyRoute)(a) || n.default,
                   i = n.readOnly || !1,
                   l = n.isRequired || !1,
-                  c = (0, Y.y8)(n.format);
+                  c = (0, Y.y8)(n.type);
                 return P.createElement(
                   'div',
                   {
@@ -4982,7 +4983,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var yt = (0, M.inject)(function (e) {
+        var yt = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4990,10 +4991,10 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(dt)),
+          })((0, I.observer)(dt)),
           ht = require('react-color'),
           gt =
-            (__webpack_require__(50),
+            (__webpack_require__(220),
             (function (e) {
               function t(t) {
                 var a;
@@ -5043,7 +5044,7 @@
                     c = l.renderState,
                     s = l.displayColorPicker,
                     u = i(a),
-                    p = (0, Y.y8)(r.format),
+                    p = (0, Y.y8)(r.type),
                     m = P.createElement(ht.SketchPicker, {
                       className: 'color-sketch-picker',
                       key: n + '-SketchPicker',
@@ -5135,7 +5136,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var St = (0, M.inject)(function (e) {
+        var St = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5143,7 +5144,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(gt)),
+          })((0, I.observer)(gt)),
           _t =
             (require('ace-builds/src-noconflict/mode-html'),
             __webpack_require__(953),
@@ -5304,7 +5305,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var ft = (0, M.inject)(function (e) {
+        var ft = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5312,8 +5313,8 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(_t)),
-          Et = (__webpack_require__(456), Q.Select.Option),
+          })((0, I.observer)(_t)),
+          Et = (__webpack_require__(206), Q.Select.Option),
           bt = (function (e) {
             function t(t) {
               var a;
@@ -5347,7 +5348,7 @@
                   r = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(a),
                   i = n.options,
-                  l = (0, Y.y8)(n.format);
+                  l = (0, Y.y8)(n.type);
                 return P.createElement(
                   'div',
                   {
@@ -5430,7 +5431,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Ot = (0, M.inject)(function (e) {
+        var Ot = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5438,97 +5439,77 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, M.observer)(bt)),
+          })((0, I.observer)(bt)),
           vt = function (e) {
             var t = e.nodeKey,
-              a = (e.jsonKey, e.targetJsonSchema),
-              n = e.getJSONDataByKeyRoute,
-              r = (e.keyRoute2indexRoute, (0, G.getCurrentFormat)(a)),
-              o = {};
-            a.hiddenRule && (o = a.hiddenRule);
-            var i,
-              l = '';
-            if (o.conditionProp && (0, Y.GT)(o.conditionValue)) {
-              var c = o.conditionProp,
-                s = o.conditionValue,
-                u = c.keyRoute;
-              if (s === (l = n(u))) return '';
-              if (a.elemIndexRoute && a.propIndexRoute) {
-                var p = u.split('-'),
-                  m = p.pop() + '__' + a.elemIndexRoute.replaceAll('-', 'x'),
-                  d = p.join('-');
-                if (d) {
-                  var y = n(d),
-                    h = Object.keys(y);
-                  if (
-                    s ===
-                    (l =
-                      y[
-                        (m = h.find(function (e) {
-                          return e.indexOf(m) > -1;
-                        }))
-                      ])
-                  )
-                    return '';
-                }
-              }
+              a = (e.jsonKey, e.keyRoute),
+              n = e.targetJsonSchema,
+              r = e.getJSONDataByKeyRoute,
+              o = (e.keyRoute2indexRoute, e.updateFormValueData),
+              i = n.type,
+              l = {};
+            n.hiddenRule && (l = n.hiddenRule);
+            var c,
+              s = '';
+            if (l.conditionProp && (0, Y.GT)(l.conditionValue)) {
+              var u = l.conditionProp;
+              if (l.conditionValue === (s = r(u.keyRoute)))
+                return void (n.clearValueOnHidden && o(a, void 0));
             }
-            switch (((i = t + '-' + l), (e.nodeKey = i), r)) {
+            switch (((c = t + '-' + s), (e.nodeKey = c), i)) {
               case 'object':
               case 'func':
               case 'style':
               case 'data':
-              case 'widgets':
               case 'func-schema':
               case 'style-schema':
               case 'data-schema':
-              case 'widgets-schema':
               case 'event-schema':
-                return B().createElement(me, ne()({}, e, { key: i }));
+                return B().createElement(me, ne()({}, e, { key: c }));
               case 'array':
-                return B().createElement(fe, ne()({}, e, { key: i }));
+                return B().createElement(fe, ne()({}, e, { key: c }));
               case 'dynamic-data':
-                return B().createElement(Te, ne()({}, e, { key: i }));
+                return B().createElement(Te, ne()({}, e, { key: c }));
               case 'datasource':
-                return B().createElement(Re, ne()({}, e, { key: i }));
+                return B().createElement(Re, ne()({}, e, { key: c }));
               case 'event':
-                return B().createElement(Me, ne()({}, e, { key: i }));
+                return B().createElement(Ie, ne()({}, e, { key: c }));
               case 'quantity':
-                return B().createElement(Ae, ne()({}, e, { key: i }));
+                return B().createElement(Ae, ne()({}, e, { key: c }));
               case 'box-style':
-                return B().createElement(qe, ne()({}, e, { key: i }));
+                return B().createElement(qe, ne()({}, e, { key: c }));
               case 'radio':
-                return B().createElement(Fe, ne()({}, e, { key: i }));
+                return B().createElement(Fe, ne()({}, e, { key: c }));
               case 'single-select':
-                return B().createElement(Ot, ne()({}, e, { key: i }));
+                return B().createElement(Ot, ne()({}, e, { key: c }));
               case 'select':
-                return B().createElement(ze, ne()({}, e, { key: i }));
+                return B().createElement(ze, ne()({}, e, { key: c }));
               case 'input':
               default:
-                return B().createElement(Je, ne()({}, e, { key: i }));
+                return B().createElement(Je, ne()({}, e, { key: c }));
               case 'textarea':
-                return B().createElement($e, ne()({}, e, { key: i }));
+                return B().createElement($e, ne()({}, e, { key: c }));
               case 'text-editor':
-                return B().createElement(nt, ne()({}, e, { key: i }));
+                return B().createElement(nt, ne()({}, e, { key: c }));
               case 'number':
-                return B().createElement(ot, ne()({}, e, { key: i }));
+                return B().createElement(ot, ne()({}, e, { key: c }));
               case 'boolean':
-                return B().createElement(lt, ne()({}, e, { key: i }));
+                return B().createElement(lt, ne()({}, e, { key: c }));
               case 'date':
               case 'date-time':
-                return B().createElement(mt, ne()({}, e, { key: i }));
+                return B().createElement(mt, ne()({}, e, { key: c }));
               case 'time':
-                return B().createElement(yt, ne()({}, e, { key: i }));
+                return B().createElement(yt, ne()({}, e, { key: c }));
               case 'url':
-                return B().createElement(De, ne()({}, e, { key: i }));
+                return B().createElement(De, ne()({}, e, { key: c }));
               case 'color':
-                return B().createElement(St, ne()({}, e, { key: i }));
+                return B().createElement(St, ne()({}, e, { key: c }));
               case 'json':
-                return B().createElement(be, ne()({}, e, { key: i }));
+                return B().createElement(be, ne()({}, e, { key: c }));
               case 'codearea':
-                return B().createElement(Oe.A, ne()({}, e, { key: i }));
+                return B().createElement(Oe.A, ne()({}, e, { key: c }));
               case 'htmlarea':
-                return B().createElement(ft, ne()({}, e, { key: i }));
+                return B().createElement(ft, ne()({}, e, { key: c }));
             }
           },
           Dt = (__webpack_require__(104), Q.Collapse.Panel),
@@ -5605,30 +5586,31 @@
                   r = t.jsonLastUpdateTime,
                   o = t.getJSONDataByKeyRoute,
                   i = t.keyRoute2indexRoute,
-                  l = this.state,
-                  c = l.jsonView,
-                  s = l.viewStyle,
-                  u = (0, G.isEmptySchema)(a),
-                  p = (0, G.isStructuredSchema)(a);
+                  l = t.updateFormValueData,
+                  c = this.state,
+                  s = c.jsonView,
+                  u = c.viewStyle,
+                  p = (0, G.isEmptySchema)(a),
+                  m = (0, G.isStructuredSchema)(a);
                 return P.createElement(
                   'div',
                   { className: 'json-editor-container' },
-                  u &&
+                  p &&
                     P.createElement(
                       'p',
                       { className: 'json-editor-empty' },
                       '当前jsonSchema没有数据内容',
                     ),
-                  !u &&
-                    !c &&
+                  !p &&
+                    !s &&
                     P.createElement(
                       P.Fragment,
                       null,
-                      p &&
+                      m &&
                         P.createElement(
                           P.Fragment,
                           null,
-                          'fold' === s &&
+                          'fold' === u &&
                             P.createElement(
                               Q.Collapse,
                               {
@@ -5636,37 +5618,38 @@
                                 expandIconPosition: 'right',
                                 bordered: !1,
                               },
-                              a.propertyOrder.map(function (t, l) {
-                                var c = l,
-                                  s = t,
+                              a.propertyOrder.map(function (t, c) {
+                                var s = c,
                                   u = t,
-                                  m = a.properties[u],
-                                  d = (0, G.getCurrentFormat)(m),
-                                  y = n + '-' + r + '-' + d + '-' + u;
-                                return m.propertyOrder &&
-                                  m.propertyOrder.length > 0
+                                  p = t,
+                                  d = a.properties[p],
+                                  y = targetJsonSchema.type,
+                                  h = n + '-' + r + '-' + y + '-' + p;
+                                return d.propertyOrder &&
+                                  d.propertyOrder.length > 0
                                   ? P.createElement(
                                       Dt,
                                       {
-                                        header: m.title || e.renderHeader(d),
-                                        key: u,
+                                        header: d.title || e.renderHeader(y),
+                                        key: p,
                                       },
                                       vt({
-                                        parentType: d,
-                                        jsonKey: u,
-                                        indexRoute: c,
-                                        keyRoute: s,
-                                        nodeKey: y,
-                                        targetJsonSchema: m,
-                                        isStructuredSchema: p,
+                                        parentType: y,
+                                        jsonKey: p,
+                                        indexRoute: s,
+                                        keyRoute: u,
+                                        nodeKey: h,
+                                        targetJsonSchema: d,
+                                        isStructuredSchema: m,
                                         getJSONDataByKeyRoute: o,
                                         keyRoute2indexRoute: i,
+                                        updateFormValueData: l,
                                       }),
                                     )
                                   : '';
                               }),
                             ),
-                          'tabs' === s &&
+                          'tabs' === u &&
                             P.createElement(
                               Q.Tabs,
                               {
@@ -5675,40 +5658,41 @@
                                 centered: !0,
                                 hideAdd: !0,
                               },
-                              a.propertyOrder.map(function (t, l) {
-                                var c = l,
-                                  s = t,
+                              a.propertyOrder.map(function (t, c) {
+                                var s = c,
                                   u = t,
-                                  m = a.properties[u],
-                                  d = (0, G.getCurrentFormat)(m),
-                                  y = n + '-' + r + '-' + d + '-' + u;
-                                return m.propertyOrder &&
-                                  m.propertyOrder.length > 0
+                                  p = t,
+                                  d = a.properties[p],
+                                  y = d.type,
+                                  h = n + '-' + r + '-' + y + '-' + p;
+                                return d.propertyOrder &&
+                                  d.propertyOrder.length > 0
                                   ? P.createElement(
                                       Nt,
                                       {
-                                        tab: m.title || e.renderHeader(d),
-                                        key: u,
+                                        tab: d.title || e.renderHeader(y),
+                                        key: p,
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
                                       vt({
-                                        parentType: d,
-                                        jsonKey: u,
-                                        indexRoute: c,
-                                        keyRoute: s,
-                                        nodeKey: y,
-                                        targetJsonSchema: m,
-                                        isStructuredSchema: p,
+                                        parentType: y,
+                                        jsonKey: p,
+                                        indexRoute: s,
+                                        keyRoute: u,
+                                        nodeKey: h,
+                                        targetJsonSchema: d,
+                                        isStructuredSchema: m,
                                         getJSONDataByKeyRoute: o,
                                         keyRoute2indexRoute: i,
+                                        updateFormValueData: l,
                                       }),
                                     )
                                   : '';
                               }),
                             ),
                         ),
-                      !p &&
+                      !m &&
                         P.createElement(
                           P.Fragment,
                           null,
@@ -5721,11 +5705,12 @@
                             targetJsonSchema: a,
                             getJSONDataByKeyRoute: o,
                             keyRoute2indexRoute: i,
+                            updateFormValueData: l,
                           }),
                         ),
                     ),
-                  !u &&
-                    c &&
+                  !p &&
+                    s &&
                     P.createElement(ce, {
                       nodeKey: 'jsonView',
                       keyRoute: '',
@@ -5745,7 +5730,7 @@
           jsonData: A().object,
           dynamicDataList: A().any,
         };
-        var wt = (0, M.inject)(function (e) {
+        var wt = (0, I.inject)(function (e) {
             return {
               jsonSchema: e.JSONSchemaStore.jsonSchema,
               lastUpdateTime: e.JSONSchemaStore.lastUpdateTime,
@@ -5758,8 +5743,9 @@
               keyRoute2indexRoute: e.JSONSchemaStore.keyRoute2indexRoute,
               setDynamicDataList: e.JSONEditorStore.setDynamicDataList,
               setPageScreen: e.JSONSchemaStore.setPageScreen,
+              updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, M.observer)(Rt)),
+          })((0, I.observer)(Rt)),
           Jt =
             (__webpack_require__(410),
             (function (e) {
@@ -5778,14 +5764,14 @@
                   var e = this.props.element,
                     t = this.state.rootJSONStore,
                     a = P.createElement(
-                      M.Provider,
+                      I.Provider,
                       {
                         JSONSchemaStore: t.JSONSchemaStore,
                         JSONEditorStore: t.JSONEditorStore,
                       },
                       P.createElement(wt, this.props),
                     );
-                  return e ? (I().render(a, e), '') : a;
+                  return e ? (V().render(a, e), '') : a;
                 }),
                 t
               );

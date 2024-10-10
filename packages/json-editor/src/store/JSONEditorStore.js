@@ -222,11 +222,11 @@ export default class JSONEditorStore {
   @action.bound
   deleteArrayIndex(keyRoute, arrayIndex) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
-    if (isArray(arrJsonDataObj)) {
-      if (arrJsonDataObj.length > 0) {
+    const arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    if (isArray(arrJsonData)) {
+      if (arrJsonData.length > 0) {
         // 2. 删除对应的数据项
-        arrJsonDataObj.splice(arrayIndex, 1);
+        arrJsonData.splice(arrayIndex, 1);
         this.triggerChangeAction(); // 用于主动触发组件更新
         // 3. 触发onChange事件
         this.jsonDataChange();
@@ -242,21 +242,21 @@ export default class JSONEditorStore {
   @action.bound
   addArrayItem(keyRoute, curArrIndex) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
-    // const _arrJsonDataObj = toJS(arrJsonDataObj);
-    if (isArray(arrJsonDataObj)) {
+    const arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    // const _arrJsonData = toJS(arrJsonData);
+    if (isArray(arrJsonData)) {
       // 2. 获取数组的第一个数据项
-      const newArrItem = Object.assign({}, arrJsonDataObj[curArrIndex || 0]); // 复制一个数组项
+      const newArrItem = Object.assign({}, arrJsonData[curArrIndex || 0]); // 复制一个数组项
       if (curArrIndex || curArrIndex === 0) {
         // 先记录插入位置之后的数据
-        const endArr = arrJsonDataObj.slice(Number(curArrIndex) + 1);
-        const newArrJsonDataObj = [newArrItem, ...endArr];
+        const endArr = arrJsonData.slice(Number(curArrIndex) + 1);
+        const newArrJsonData = [newArrItem, ...endArr];
         // 删除插入位置之后的数据
-        arrJsonDataObj.splice(Number(curArrIndex) + 1);
+        arrJsonData.splice(Number(curArrIndex) + 1);
         // 重新插入
-        arrJsonDataObj.push(...newArrJsonDataObj);
+        arrJsonData.push(...newArrJsonData);
       } else {
-        arrJsonDataObj.push(newArrItem);
+        arrJsonData.push(newArrItem);
       }
       this.triggerChangeAction(); // 用于主动触发组件更新
       // 3. 触发onChange事件
@@ -275,10 +275,10 @@ export default class JSONEditorStore {
   @action.bound
   sortArrayItem(keyRoute, curArrIndex, sortAction) {
     // 1. 获取数组数据对象
-    const arrJsonDataObj = getJsonDataByKeyRoute(keyRoute, this.jsonData);
-    // const _arrJsonDataObj = toJS(arrJsonDataObj);
-    if (isArray(arrJsonDataObj)) {
-      const curArrItem = objClone(arrJsonDataObj[curArrIndex || 0]); // 2. 获取当前数组项
+    const arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    // const _arrJsonData = toJS(arrJsonData);
+    if (isArray(arrJsonData)) {
+      const curArrItem = objClone(arrJsonData[curArrIndex || 0]); // 2. 获取当前数组项
       let exchangeArrIndex = curArrIndex;
       if (sortAction === 'up' && exchangeArrIndex > 0) {
         // 向上移动
@@ -291,18 +291,18 @@ export default class JSONEditorStore {
         exchangeArrIndex += 1;
         if (
           sortAction === 'down' &&
-          exchangeArrIndex > arrJsonDataObj.length - 1
+          exchangeArrIndex > arrJsonData.length - 1
         ) {
           message.warning('数据操作异常：当前数组项已经是最后一个元素了。');
           return;
         }
       }
-      const exchangeArrItem = objClone(arrJsonDataObj[exchangeArrIndex]); // 3. 获取互换数组项
+      const exchangeArrItem = objClone(arrJsonData[exchangeArrIndex]); // 3. 获取互换数组项
       // 2. 获取数组的第一个数据项
 
       if (curArrItem !== undefined && exchangeArrItem !== undefined) {
-        arrJsonDataObj[curArrIndex] = exchangeArrItem;
-        arrJsonDataObj[exchangeArrIndex] = curArrItem;
+        arrJsonData[curArrIndex] = exchangeArrItem;
+        arrJsonData[exchangeArrIndex] = curArrItem;
         message.success(
           `原有数据项${curArrIndex + 1}对应的数据内容已${
             sortAction === 'up' ? '向上' : '向下'

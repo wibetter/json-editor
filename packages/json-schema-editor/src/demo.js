@@ -19,6 +19,55 @@ class IndexDemo extends React.PureComponent {
     this.state = {
       jsonSchema: {
         type: 'object',
+        name: 'circle',
+        title: 'circle 圆环图',
+        properties: {
+          props: {
+            type: 'object',
+            title: '属性设置',
+            isFixed: true,
+            properties: {
+              legendAlign: {
+                title: '图例位置',
+                type: 'single-select',
+                items: {
+                  type: 'string',
+                  enum: ['top', 'right', 'bottom', 'left'],
+                  enumextra: ['上', '右', '下', '左'],
+                },
+                description: '',
+                default: 'top',
+              },
+            },
+            propertyOrder: ['legendAlign'],
+          },
+          style: {
+            type: 'object',
+            title: '外观设置',
+            isFixed: true,
+            properties: {},
+            propertyOrder: [],
+          },
+          data: {
+            type: 'object',
+            title: '数据设置',
+            isFixed: true,
+            properties: {},
+            propertyOrder: [],
+          },
+          event: {
+            type: 'object',
+            title: '事件设置',
+            isFixed: true,
+            properties: {},
+            propertyOrder: [],
+          },
+        },
+        propertyOrder: ['data', 'props', 'style', 'event'],
+        lastUpdateTime: '2021-03-29T02:08:03.551Z',
+      },
+      jsonSchema1: {
+        type: 'object',
         name: 'column',
         title: '列级容器',
         'ui-type': 'ui-box',

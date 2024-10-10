@@ -179,7 +179,7 @@ export default class JSONSchemaStore {
 
   /** 根据索引路径值(indexRoute)插入新的子元素-json数据对象(childJson)
    *  备注：关键字(childKey)自动生成，json数据对象(childJson)默认使用initInputData
-   * */
+   */
   @action.bound
   addChildJson(curIndexRoute, ignoreOnChange) {
     const curSchema = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
@@ -199,13 +199,19 @@ export default class JSONSchemaStore {
    *  备注：主要用于变更对应的type属性值
    * */
   @action.bound
-  changeType(curIndexRoute, jsonKey, newJsonDataObj, ignoreOnChange) {
+  changeType(curIndexRoute, jsonKey, newSchemaData, ignoreOnChange) {
     const parentIndexRoute = getParentIndexRoute(curIndexRoute);
-    const parentJSONObj = getSchemaByIndexRoute(
+    const parentSchemaData = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
     );
-    parentJSONObj.properties[jsonKey] = objClone(newJsonDataObj);
+    if (parentSchemaData.properties && parentSchemaData.properties[jsonKey]) {
+      parentSchemaData.properties[jsonKey] = objClone(newSchemaData);
+    } else if (parentSchemaData[jsonKey]) {
+      // 支持Array/items 类型切换
+      parentSchemaData[jsonKey] = objClone(newSchemaData);
+    }
+
     // 触发onChange事件
     this.jsonSchemaChange(ignoreOnChange);
   }
@@ -214,9 +220,9 @@ export default class JSONSchemaStore {
    *  备注：用于覆盖整个json对象
    * */
   @action.bound
-  updateSchemaData(curIndexRoute, newJsonDataObj, ignoreOnChange) {
+  updateSchemaData(curIndexRoute, newSchemaData, ignoreOnChange) {
     const curJSONObj = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
-    Object.assign(curJSONObj, objClone(newJsonDataObj));
+    Object.assign(curJSONObj, objClone(newSchemaData));
     // 触发onChange事件
     this.jsonSchemaChange(ignoreOnChange);
   }
@@ -225,7 +231,7 @@ export default class JSONSchemaStore {
    *  备注：用于编辑对应的属性值（type、title、description、placeholder、isRequired、default、readOnly）
    * */
   @action.bound
-  editSchemaData(curIndexRoute, jsonKey, newJsonDataObj, ignoreOnChange) {
+  editSchemaData(curIndexRoute, jsonKey, newSchemaData, ignoreOnChange) {
     const parentIndexRoute = getParentIndexRoute(curIndexRoute);
     const parentSchemaObj = getSchemaByIndexRoute(
       parentIndexRoute,
@@ -233,7 +239,7 @@ export default class JSONSchemaStore {
     );
     parentSchemaObj.properties[jsonKey] = {
       ...objClone(parentSchemaObj.properties[jsonKey]),
-      ...newJsonDataObj,
+      ...newSchemaData,
     };
     // 触发onChange事件
     this.jsonSchemaChange(ignoreOnChange);

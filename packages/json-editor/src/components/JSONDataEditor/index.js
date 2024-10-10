@@ -161,10 +161,9 @@ class JSONDataEditor extends React.PureComponent {
                       /** 3. 获取当前元素的json结构对象 */
                       const currentSchemaData =
                         jsonSchema.properties[currentJsonKey];
-                      /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                      const curType = targetJsonSchema.type;
+                      const curType = currentSchemaData.type;
 
-                      /** 5. 获取当前元素的id，用于做唯一标识 */
+                      /** 获取当前元素的id，用于做唯一标识 */
                       const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
 
                       if (
@@ -214,8 +213,7 @@ class JSONDataEditor extends React.PureComponent {
                       /** 3. 获取当前元素的json结构对象 */
                       const currentSchemaData =
                         jsonSchema.properties[currentJsonKey];
-                      /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                      const curType = targetJsonSchema.type;
+                      const curType = currentSchemaData.type;
 
                       /** 5. 获取当前元素的id，用于做唯一标识 */
                       const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;

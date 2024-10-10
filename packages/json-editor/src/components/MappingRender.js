@@ -1,6 +1,6 @@
 import React from 'react';
 import { hasProperties } from '../utils';
-import ArraySchema from '$renderers/ArraySchemaV2/index';
+import ArraySchema from '$renderers/ArraySchema/index';
 import ObjectSchema from '$renderers/ObjectSchema/index';
 import DataSourceSchema from '$renderers/DataSourceSchema/index';
 import DynamicDataSchema from '$renderers/DynamicDataSchema/index';
@@ -66,13 +66,6 @@ const MappingRender = (props) => {
 
   switch (curType) {
     case 'object':
-    case 'func':
-    case 'style':
-    case 'data':
-    case 'func-schema':
-    case 'style-schema':
-    case 'data-schema':
-    case 'event-schema':
       return <ObjectSchema {...props} key={curNodeKey} />;
     case 'array':
       return <ArraySchema {...props} key={curNodeKey} />;

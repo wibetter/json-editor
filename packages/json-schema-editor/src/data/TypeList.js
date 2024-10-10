@@ -66,8 +66,17 @@ export const OBJECT_TYPE = [
   'array',
 ];
 
-// 数组类型可选项
-export const ARRAY_TYPE = ['object'];
+// 数组类型可用子项类型
+export const ARRAY_TYPE = [
+  'object',
+  'input',
+  'number',
+  'color',
+  'url',
+  'date',
+  'date-time',
+  'time',
+];
 
 // 所有的字段类型
 export const ALL_TYPE = [

@@ -287,21 +287,11 @@
         function E(e, t) {
           return JSON.stringify(e) === JSON.stringify(t);
         }
-        function j(e) {
-          var t = !1;
-          return (
-            (e.indexOf('func-schema') >= 0 ||
-              e.indexOf('style-schema') >= 0 ||
-              e.indexOf('data-schema') >= 0) &&
-              e.indexOf('dynamic-data-schema') < 0 &&
-              (t = !0),
-            t
-          );
-        }
-        function C(e, t) {
+        function j(e, t) {
           window.sessionStorage && window.sessionStorage.setItem(e, t);
         }
-        var O,
+        var C,
+          O,
           R,
           N,
           I,
@@ -314,8 +304,8 @@
           T,
           B,
           V,
-          F,
           L,
+          F,
           q,
           A,
           _,
@@ -351,123 +341,55 @@
           Se,
           ve,
           xe,
-          be,
+          be = [
+            'input',
+            'boolean',
+            'number',
+            'color',
+            'url',
+            'textarea',
+            'text-editor',
+            'radio',
+            'single-select',
+            'select',
+            'date',
+            'date-time',
+            'time',
+            'quantity',
+            'json',
+            'codearea',
+            'htmlarea',
+            'array',
+            'object',
+            'datasource',
+            'dynamic-data',
+            'event',
+          ],
           Ee = ['string'],
           je = {
-            func: [
+            object: be,
+            array: [
+              'object',
               'input',
-              'boolean',
+              'number',
+              'color',
+              'url',
               'date',
               'date-time',
               'time',
-              'url',
-              'textarea',
-              'text-editor',
-              'number',
-              'radio',
-              'single-select',
-              'select',
-              'codearea',
-              'array',
-              'object',
-            ],
-            style: [
-              'input',
-              'boolean',
-              'color',
-              'url',
-              'number',
-              'radio',
-              'single-select',
-              'select',
-              'quantity',
-              'box-style',
-              'htmlarea',
-              'text-editor',
-              'array',
-              'object',
-            ],
-            data: [
-              'input',
-              'number',
-              'json',
-              'codearea',
-              'htmlarea',
-              'text-editor',
-              'dynamic-data',
-              'datasource',
-              'event',
-              'object',
-              'array',
-            ],
-            object: [
-              'input',
-              'boolean',
-              'color',
-              'date',
-              'date-time',
-              'time',
-              'url',
-              'textarea',
-              'text-editor',
-              'number',
-              'radio',
-              'single-select',
-              'select',
-              'object',
-              'array',
-            ],
-            array: ['object'],
-            'array-object': [
-              'input',
-              'boolean',
-              'color',
-              'date',
-              'date-time',
-              'time',
-              'url',
-              'textarea',
-              'text-editor',
-              'number',
-              'radio',
-              'single-select',
-              'select',
-              'array',
             ],
             radio: Ee,
             'single-select': Ee,
             select: ['string'],
-            all: [
-              'input',
-              'boolean',
-              'number',
-              'color',
-              'url',
-              'textarea',
-              'text-editor',
-              'radio',
-              'single-select',
-              'select',
-              'date',
-              'date-time',
-              'time',
-              'quantity',
-              'json',
-              'codearea',
-              'htmlarea',
-              'datasource',
-              'dynamic-data',
-              'event',
-              'array',
-              'object',
-            ],
+            all: be,
           },
           Ce = require('@wibetter/json-utils'),
           Oe = Ce.TypeDataList.jsonschema,
           Re = Ce.TypeDataList.input,
           Ne = {
             jsonSchemaStore:
-              ((O = v.action.bound),
+              ((C = v.action.bound),
+              (O = v.action.bound),
               (R = v.action.bound),
               (N = v.action.bound),
               (I = v.action.bound),
@@ -480,8 +402,8 @@
               (T = v.action.bound),
               (B = v.action.bound),
               (V = v.action.bound),
-              (F = v.action.bound),
               (L = v.action.bound),
+              (F = v.action.bound),
               (q = v.action.bound),
               (A = v.action.bound),
               (_ = v.action.bound),
@@ -511,15 +433,14 @@
               (ue = v.action.bound),
               (me = v.action.bound),
               (he = v.action.bound),
-              (ye = v.action.bound),
-              (ge = (function () {
+              (ye = (function () {
                 function e() {
                   (this.curJsonKeyIndex = 1),
-                    h()(this, 'triggerChange', fe, this),
-                    h()(this, 'jsonSchema', Se, this),
-                    h()(this, 'SchemaTypeList', ve, this),
-                    h()(this, 'onChange', xe, this),
-                    h()(this, 'childElemSort', be, this);
+                    h()(this, 'triggerChange', ge, this),
+                    h()(this, 'jsonSchema', fe, this),
+                    h()(this, 'SchemaTypeList', Se, this),
+                    h()(this, 'onChange', ve, this),
+                    h()(this, 'childElemSort', xe, this);
                 }
                 var t = e.prototype;
                 return (
@@ -610,7 +531,7 @@
                   }),
                   (t.addChildJson = function (e, t) {
                     var n = (0, Ce.getSchemaByIndexRoute)(e, this.jsonSchema);
-                    if ((0, Ce.isBoxSchemaData)(n.type)) {
+                    if ((0, Ce.isContainerSchema)(n)) {
                       var o = this.getNewJsonKeyIndex(n);
                       n.propertyOrder.push(o),
                         (n.properties[o] = Re),
@@ -618,11 +539,11 @@
                     } else x.message.warning('非对象类型字段不允许插入子元素');
                   }),
                   (t.changeType = function (e, t, n, o) {
-                    var a = (0, Ce.getParentIndexRoute)(e);
-                    ((0, Ce.getSchemaByIndexRoute)(
-                      a,
-                      this.jsonSchema,
-                    ).properties[t] = b(n)),
+                    var a = (0, Ce.getParentIndexRoute)(e),
+                      r = (0, Ce.getSchemaByIndexRoute)(a, this.jsonSchema);
+                    r.properties && r.properties[t]
+                      ? (r.properties[t] = b(n))
+                      : r[t] && (r[t] = b(n)),
                       this.jsonSchemaChange(o);
                   }),
                   (t.updateSchemaData = function (e, t, n) {
@@ -883,7 +804,7 @@
                   ])
                 );
               })()),
-              (fe = S()(ge.prototype, 'triggerChange', [v.observable], {
+              (ge = S()(ye.prototype, 'triggerChange', [v.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -891,7 +812,7 @@
                   return !1;
                 },
               })),
-              (Se = S()(ge.prototype, 'jsonSchema', [v.observable], {
+              (fe = S()(ye.prototype, 'jsonSchema', [v.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -899,7 +820,7 @@
                   return {};
                 },
               })),
-              (ve = S()(ge.prototype, 'SchemaTypeList', [v.observable], {
+              (Se = S()(ye.prototype, 'SchemaTypeList', [v.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -907,7 +828,7 @@
                   return je;
                 },
               })),
-              (xe = S()(ge.prototype, 'onChange', [v.observable], {
+              (ve = S()(ye.prototype, 'onChange', [v.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -916,349 +837,349 @@
                 },
               })),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'triggerChangeAction',
-                [O],
+                [C],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'triggerChangeAction',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'initSchemaTypeList',
-                [R],
+                [O],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'initSchemaTypeList',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'initJSONSchemaData',
-                [N],
+                [R],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'initJSONSchemaData',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'JSONSchemaObj',
                 [v.computed],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'JSONSchemaObj'),
-                ge.prototype,
+                Object.getOwnPropertyDescriptor(ye.prototype, 'JSONSchemaObj'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'initOnChange',
-                [I],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'initOnChange'),
-                ge.prototype,
+                [N],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'initOnChange'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'jsonSchemaChange',
-                [K],
+                [I],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'jsonSchemaChange',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'indexRoute2keyRoute',
-                [k],
+                [K],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'indexRoute2keyRoute',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'keyRoute2indexRoute',
-                [P],
+                [k],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'keyRoute2indexRoute',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'getSchemaByIndexRoute',
-                [w],
+                [P],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'getSchemaByIndexRoute',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'getSchemaByKeyRoute',
-                [J],
+                [w],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'getSchemaByKeyRoute',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'getNewJsonKeyIndex',
-                [D],
+                [J],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'getNewJsonKeyIndex',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'isExitJsonKey',
-                [T],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'isExitJsonKey'),
-                ge.prototype,
+                [D],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'isExitJsonKey'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'isSupportCurType',
-                [B],
+                [T],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'isSupportCurType',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'addChildJson',
-                [V],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'addChildJson'),
-                ge.prototype,
+                [B],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'addChildJson'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'changeType',
-                [F],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'changeType'),
-                ge.prototype,
+                [V],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'changeType'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateSchemaData',
                 [L],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'updateSchemaData',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'editSchemaData',
-                [q],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'editSchemaData'),
-                ge.prototype,
+                [F],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'editSchemaData'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'editJsonKey',
-                [A],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'editJsonKey'),
-                ge.prototype,
+                [q],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'editJsonKey'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'addNextJsonData',
-                [_],
+                [A],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'addNextJsonData',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'insertJsonData',
-                [M],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'insertJsonData'),
-                ge.prototype,
+                [_],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'insertJsonData'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'deleteJsonByIndex_CurKey',
-                [H],
+                [M],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'deleteJsonByIndex_CurKey',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'deleteJsonByIndex',
-                [z],
+                [H],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'deleteJsonByIndex',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateEnumItem',
-                [G],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'updateEnumItem'),
-                ge.prototype,
+                [z],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'updateEnumItem'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'isExitEnumKey',
-                [W],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'isExitEnumKey'),
-                ge.prototype,
+                [G],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'isExitEnumKey'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateEnumKey',
-                [U],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'updateEnumKey'),
-                ge.prototype,
+                [W],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'updateEnumKey'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateEnumText',
-                [Q],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'updateEnumText'),
-                ge.prototype,
+                [U],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'updateEnumText'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'deleteEnumItem',
-                [X],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'deleteEnumItem'),
-                ge.prototype,
+                [Q],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'deleteEnumItem'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'insertEnumItem',
-                [Y],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'insertEnumItem'),
-                ge.prototype,
+                [X],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'insertEnumItem'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'getNewEnumIndex',
-                [Z],
+                [Y],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'getNewEnumIndex',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'addEnumItem',
-                [$],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'addEnumItem'),
-                ge.prototype,
+                [Z],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'addEnumItem'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'copyEnumItem',
-                [ee],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'copyEnumItem'),
-                ge.prototype,
+                [$],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'copyEnumItem'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateOptionItem',
-                [te],
+                [ee],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'updateOptionItem',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'isExitOptionLabel',
-                [ne],
+                [te],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'isExitOptionLabel',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateOptionLabel',
-                [oe],
+                [ne],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'updateOptionLabel',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'updateOptionValue',
-                [ae],
+                [oe],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'updateOptionValue',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'deleteOptionItem',
-                [re],
+                [ae],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'deleteOptionItem',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'insertOption',
-                [ie],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'insertOption'),
-                ge.prototype,
+                [re],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'insertOption'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'getNewOptionValue',
-                [se],
+                [ie],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'getNewOptionValue',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'addOptionItem',
-                [ce],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'addOptionItem'),
-                ge.prototype,
+                [se],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'addOptionItem'),
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'copyOptionItem',
-                [le],
-                Object.getOwnPropertyDescriptor(ge.prototype, 'copyOptionItem'),
-                ge.prototype,
+                [ce],
+                Object.getOwnPropertyDescriptor(ye.prototype, 'copyOptionItem'),
+                ye.prototype,
               ),
-              (be = S()(ge.prototype, 'childElemSort', [de], {
+              (xe = S()(ye.prototype, 'childElemSort', [le], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -1281,9 +1202,8 @@
                       u < m;
                       u++
                     ) {
-                      var h = o[u],
-                        y = n.properties[h];
-                      switch ((0, Ce.getCurrentFormat)(y)) {
+                      var h = o[u];
+                      switch (n.properties[h].type) {
                         case 'input':
                         case 'url':
                           a.push(h);
@@ -1326,56 +1246,56 @@
                 },
               })),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'checkConditionProp',
-                [pe],
+                [de],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'checkConditionProp',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'addConditionProp',
-                [ue],
+                [pe],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'addConditionProp',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'removeConditionProp',
-                [me],
+                [ue],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'removeConditionProp',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'cancelConditionProp',
-                [he],
+                [me],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'cancelConditionProp',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
               S()(
-                ge.prototype,
+                ye.prototype,
                 'deleteSchemaProp',
-                [ye],
+                [he],
                 Object.getOwnPropertyDescriptor(
-                  ge.prototype,
+                  ye.prototype,
                   'deleteSchemaProp',
                 ),
-                ge.prototype,
+                ye.prototype,
               ),
-              ge),
+              ye),
           },
           Ie = require('@ant-design/icons'),
           Ke = x.Select.Option,
@@ -1682,41 +1602,42 @@
                   s = n.checkConditionProp,
                   c = n.jsonSchema,
                   l = n.indexRoute2keyRoute,
-                  d = (0, Ce.getCurrentFormat)(i),
+                  d = i.type,
                   p = l(r);
                 e = (0, Ce.hasProperties)(i.isConditionProp)
                   ? i.isConditionProp
                   : s(p);
                 var u = {};
                 c.conditionProps && (u = c.conditionProps);
-                var m,
-                  h,
-                  y = Object.keys(u),
-                  g = {};
+                var m = Object.keys(u),
+                  h = {};
                 return (
-                  i.hiddenRule && (g = i.hiddenRule),
+                  i.hiddenRule && (h = i.hiddenRule),
                   a.createElement(
                     'div',
                     { className: 'advance-config-model' },
-                    ((m = d),
-                    (h = !1),
-                    (
-                      '#' +
-                      [
-                        'boolean',
-                        'input',
-                        'number',
-                        'color',
-                        'url',
-                        'radio',
-                        'single-select',
-                        'date',
-                        'date-time',
-                        'time',
-                      ].join('#') +
-                      '#'
-                    ).indexOf('#' + m + '#') >= 0 && (h = !0),
-                    h &&
+                    (function (e) {
+                      var t = !1;
+                      return (
+                        (
+                          '#' +
+                          [
+                            'boolean',
+                            'input',
+                            'number',
+                            'color',
+                            'url',
+                            'radio',
+                            'single-select',
+                            'date',
+                            'date-time',
+                            'time',
+                          ].join('#') +
+                          '#'
+                        ).indexOf('#' + e + '#') >= 0 && (t = !0),
+                        t
+                      );
+                    })(d) &&
                       a.createElement(
                         'div',
                         {
@@ -1760,7 +1681,7 @@
                             }),
                           ),
                         ),
-                      )),
+                      ),
                     (function (e) {
                       var t = !1;
                       return (
@@ -2325,8 +2246,8 @@
                             a.createElement(
                               x.Select,
                               {
-                                defaultValue: g.conditionProp
-                                  ? g.conditionProp.keyRoute
+                                defaultValue: h.conditionProp
+                                  ? h.conditionProp.keyRoute
                                   : null,
                                 style: { width: 150 },
                                 onChange: function (e) {
@@ -2334,7 +2255,7 @@
                                   t.hiddenRuleConditionChange(n);
                                 },
                               },
-                              y.map(function (e) {
+                              m.map(function (e) {
                                 var t = u[e];
                                 return a.createElement(
                                   Te,
@@ -2360,7 +2281,7 @@
                             'div',
                             { className: 'condition-value' },
                             a.createElement(ke, {
-                              conditionRule: g,
+                              conditionRule: h,
                               hiddenRuleConditionValueChange:
                                 this.hiddenRuleConditionValueChange,
                             }),
@@ -2395,8 +2316,8 @@
               jsonSchema: e.jsonSchemaStore.jsonSchema,
             };
           })((0, c.observer)(Be)),
-          Fe = (n(915), x.Select.Option),
-          Le = (function (e) {
+          Le = (n(915), x.Select.Option),
+          Fe = (function (e) {
             function n(t) {
               var n;
               return (
@@ -2439,9 +2360,8 @@
                     t = e.indexRoute,
                     o = e.targetJsonSchema,
                     a = e.addChildJson,
-                    r = e.addNextJsonData,
-                    i = (0, Ce.getCurrentFormat)(o);
-                  (0, Ce.isBoxSchemaData)(i) ? a(t) : r(t);
+                    r = e.addNextJsonData;
+                  (0, Ce.isContainerSchema)(o) ? a(t) : r(t);
                 }),
                 (n.onCopyBtnEvent = function () {
                   var e = n.props,
@@ -2455,8 +2375,8 @@
                     l = b(o),
                     d = (0, Ce.getParentIndexRoute)(t),
                     p = c(a(d), i),
-                    u = (0, Ce.getCurrentFormat)(o);
-                  C(r(d) + '-' + p + '-' + u, r(t)), s(t, p, l);
+                    u = o.type;
+                  j(r(d) + '-' + p + '-' + u, r(t)), s(t, p, l);
                 }),
                 (n.onDeleteBtnEvent = function () {
                   var e = n.props,
@@ -2472,7 +2392,7 @@
                     t = e.indexRoute;
                   (0, e.childElemSort)(t);
                 }),
-                (n.state = { isShowAdvance: !1 }),
+                (n.state = { showAdvanceConfig: !1 }),
                 (n.onAddBtnEvent = n.onAddBtnEvent.bind(n)),
                 (n.onCopyBtnEvent = n.onCopyBtnEvent.bind(n)),
                 (n.onDeleteBtnEvent = n.onDeleteBtnEvent.bind(n)),
@@ -2493,19 +2413,26 @@
                   r = t.jsonKey,
                   i = t.nodeKey,
                   s = t.targetJsonSchema,
-                  c = this.state.isShowAdvance,
-                  l = this.props.isFirstSchema || !1,
-                  d = this.props.isFixed || !1,
-                  p = this.props.keyIsFixed || !1,
-                  u = this.props.typeIsFixed || !1,
-                  m = this.props.titleIsFixed || !1,
-                  h = this.props.isShowAdvanceBtn || !1,
+                  c = this.state.showAdvanceConfig,
+                  l = s.isFixed || this.props.isFixed || !1,
+                  d =
+                    (this.props.readOnly || s.readOnly,
+                    void 0 !== this.props.keyIsFixed
+                      ? this.props.keyIsFixed
+                      : l),
+                  p =
+                    void 0 !== this.props.typeIsFixed
+                      ? this.props.typeIsFixed
+                      : l,
+                  u =
+                    void 0 !== this.props.titleIsFixed
+                      ? this.props.titleIsFixed
+                      : l,
+                  m = this.props.hideOperaBtn || !1,
+                  h = !!m && this.props.showAdvanceBtn,
                   y = this.getCurrentTypeList(n),
-                  g = (0, Ce.getCurrentFormat)(s),
-                  f = s.isFixedSchema,
-                  S = this.props.hideOperaBtn || !1,
-                  v = f || l || d || !1,
-                  b = (0, Ce.isBoxSchemaData)(g);
+                  g = s.type,
+                  f = (0, Ce.isContainerSchema)(s);
                 return a.createElement(
                   a.Fragment,
                   null,
@@ -2522,7 +2449,7 @@
                         },
                         a.createElement(x.Input, {
                           defaultValue: r || 'key值不存在',
-                          disabled: v || p,
+                          disabled: d,
                           onPressEnter: this.handleJsonKeyChange,
                           onBlur: this.handleJsonKeyChange,
                         }),
@@ -2540,10 +2467,10 @@
                             defaultValue: g,
                             style: { width: 150 },
                             onChange: this.selectHandleChange,
-                            disabled: v || u,
+                            disabled: p,
                           },
                           y.map(function (e) {
-                            return a.createElement(Fe, { key: e, value: e }, e);
+                            return a.createElement(Le, { key: e, value: e }, e);
                           }),
                         ),
                       ),
@@ -2556,16 +2483,16 @@
                         },
                         a.createElement(x.Input, {
                           defaultValue: s.title,
-                          disabled: v || m,
+                          disabled: u,
                           onPressEnter: this.handleTitleChange,
                           onBlur: this.handleTitleChange,
                         }),
                       ),
-                      !S &&
+                      !m &&
                         a.createElement(
                           'div',
                           { className: 'operate-item' },
-                          !v &&
+                          !l &&
                             a.createElement(
                               x.Tooltip,
                               { title: '删除' },
@@ -2576,13 +2503,13 @@
                             ),
                           a.createElement(
                             x.Tooltip,
-                            { title: b ? '新增子元素' : '新增同级元素' },
+                            { title: f ? '新增子元素' : '新增同级元素' },
                             a.createElement(Ie.PlusOutlined, {
                               className: 'operate-btn',
                               onClick: this.onAddBtnEvent,
                             }),
                           ),
-                          b &&
+                          f &&
                             a.createElement(
                               x.Tooltip,
                               { title: '数据项排序' },
@@ -2591,51 +2518,51 @@
                                 onClick: this.childElemSort,
                               }),
                             ),
-                          !v &&
+                          !l &&
                             a.createElement(
-                              x.Tooltip,
-                              { title: '复制' },
-                              a.createElement(Ie.CopyOutlined, {
-                                className: 'operate-btn',
-                                onClick: this.onCopyBtnEvent,
-                              }),
-                            ),
-                          !v &&
-                            a.createElement(
-                              x.Tooltip,
-                              { title: '高级设置' },
-                              a.createElement(Ie.SettingOutlined, {
-                                className: 'operate-btn',
-                                onClick: function () {
-                                  e.setState({ isShowAdvance: !0 });
-                                },
-                              }),
-                            ),
-                          !v &&
-                            a.createElement(
-                              x.Tooltip,
-                              { title: '按住进行拖拽' },
-                              a.createElement(Ie.DragOutlined, {
-                                className: 'operate-btn drag-btn',
-                              }),
+                              a.Fragment,
+                              null,
+                              a.createElement(
+                                x.Tooltip,
+                                { title: '复制' },
+                                a.createElement(Ie.CopyOutlined, {
+                                  className: 'operate-btn',
+                                  onClick: this.onCopyBtnEvent,
+                                }),
+                              ),
+                              a.createElement(
+                                x.Tooltip,
+                                { title: '高级设置1' },
+                                a.createElement(Ie.SettingOutlined, {
+                                  className: 'operate-btn',
+                                  onClick: function () {
+                                    e.setState({ showAdvanceConfig: !0 });
+                                  },
+                                }),
+                              ),
+                              a.createElement(
+                                x.Tooltip,
+                                { title: '按住进行拖拽' },
+                                a.createElement(Ie.DragOutlined, {
+                                  className: 'operate-btn drag-btn',
+                                }),
+                              ),
                             ),
                         ),
-                      S &&
+                      h &&
                         a.createElement(
                           'div',
                           { className: 'operate-item' },
-                          h &&
-                            a.createElement(
-                              x.Tooltip,
-                              { title: '高级设置' },
-                              a.createElement(Ie.SettingOutlined, {
-                                className: 'operate-btn',
-                                onClick: function () {
-                                  e.setState({ isShowAdvance: !0 });
-                                },
-                              }),
-                            ),
-                          ' ',
+                          a.createElement(
+                            x.Tooltip,
+                            { title: '高级设置2' },
+                            a.createElement(Ie.SettingOutlined, {
+                              className: 'operate-btn',
+                              onClick: function () {
+                                e.setState({ showAdvanceConfig: !0 });
+                              },
+                            }),
+                          ),
                         ),
                       c &&
                         a.createElement(
@@ -2645,7 +2572,7 @@
                             title:
                               '高级设置 / 当前字段：' + s.title + '(' + r + ')',
                             onCancel: function () {
-                              e.setState({ isShowAdvance: !1 });
+                              e.setState({ showAdvanceConfig: !1 });
                             },
                             footer: [
                               a.createElement(
@@ -2654,7 +2581,7 @@
                                   key: 'submit',
                                   type: 'primary',
                                   onClick: function () {
-                                    e.setState({ isShowAdvance: !1 });
+                                    e.setState({ showAdvanceConfig: !1 });
                                   },
                                 },
                                 '保存并关闭',
@@ -2684,18 +2611,19 @@
               n
             );
           })(a.PureComponent);
-        Le.propTypes = {
+        Fe.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
           nodeKey: d().string,
           targetJsonSchema: d().any,
-          isFixed: d().any,
-          hideOperaBtn: d().any,
-          isShowAdvanceBtn: d().any,
-          keyIsFixed: d().any,
-          typeIsFixed: d().any,
-          titleIsFixed: d().any,
+          isFixed: d().bool,
+          hideOperaBtn: d().bool,
+          showAdvanceBtn: d().bool,
+          keyIsFixed: d().bool,
+          typeIsFixed: d().bool,
+          titleIsFixed: d().bool,
+          isArrayItem: d().bool,
         };
         var qe = (0, c.inject)(function (e) {
             return {
@@ -2714,7 +2642,7 @@
               changeType: e.jsonSchemaStore.changeType,
               isExitJsonKey: e.jsonSchemaStore.isExitJsonKey,
             };
-          })((0, c.observer)(Le)),
+          })((0, c.observer)(Fe)),
           Ae = x.Tree.TreeNode,
           _e = function (e) {
             return r().createElement(qe, e);
@@ -2724,9 +2652,11 @@
               n = e.indexRoute,
               o = e.nodeKey,
               a = e.targetJsonSchema,
-              i = (0, Ce.getCurrentFormat)(a),
+              i = a.type,
               s = n ? n + '-0' : '0',
-              c = o ? o + '-items' : 'items';
+              c = 'items',
+              l = o ? o + '-' + c : c,
+              d = a[c] || {};
             return r().createElement(
               Ae,
               {
@@ -2759,42 +2689,44 @@
                       parentType: t,
                       nodeKey: a,
                       isFixed: !0,
+                      typeIsFixed: !1,
                     }),
                   },
-                  (function (e) {
-                    var t = e.properties,
-                      n = e.parentIndexRoute,
-                      o = e.parentNodeKey,
-                      a = e.parentType;
-                    return e.propertyOrder.map(function (e, r) {
-                      var i = n ? n + '-' + r : '' + r,
-                        s = e,
-                        c = t[s],
-                        l = (0, Ce.getCurrentFormat)(c),
-                        d = (o ? o + '-' : '') + l + '-' + s;
-                      return pt({
-                        parentType: a,
-                        jsonKey: s,
-                        indexRoute: i,
-                        key: d,
-                        nodeKey: d,
-                        targetJsonSchema: c,
+                  'object' === i.type &&
+                    (function (e) {
+                      var t = e.properties,
+                        n = e.parentIndexRoute,
+                        o = e.parentNodeKey,
+                        a = e.parentType;
+                      return e.propertyOrder.map(function (e, r) {
+                        var i = n ? n + '-' + r : '' + r,
+                          s = e,
+                          c = t[s],
+                          l = c.type,
+                          d = (o ? o + '-' : '') + l + '-' + s;
+                        return pt({
+                          parentType: a,
+                          jsonKey: s,
+                          indexRoute: i,
+                          key: d,
+                          nodeKey: d,
+                          targetJsonSchema: c,
+                        });
                       });
-                    });
-                  })({
-                    propertyOrder: i.propertyOrder,
-                    properties: i.properties,
-                    parentIndexRoute: o,
-                    parentNodeKey: a,
-                    parentType: 'array-object',
-                  }),
+                    })({
+                      propertyOrder: i.propertyOrder,
+                      properties: i.properties,
+                      parentIndexRoute: o,
+                      parentNodeKey: a,
+                      parentType: t,
+                    }),
                 );
               })({
-                parentType: i,
-                jsonKey: 'items',
+                parentType: 'array',
+                jsonKey: c,
                 indexRoute: s,
-                nodeKey: c,
-                targetJsonSchema: a.items,
+                nodeKey: l,
+                targetJsonSchema: d,
               }),
             );
           },
@@ -2836,7 +2768,7 @@
                 var e = this.props,
                   t = e.nodeKey,
                   n = e.targetJsonSchema,
-                  o = (0, Ce.getCurrentFormat)(n),
+                  o = n.type,
                   r = n.enum || [],
                   i = n.enumextra || [];
                 return a.createElement(
@@ -3099,8 +3031,7 @@
             return r().createElement(qe, e);
           },
           pt = function (e) {
-            var t = e.targetJsonSchema;
-            switch ((0, Ce.getCurrentFormat)(t)) {
+            switch (e.targetJsonSchema.type) {
               case 'object':
               case 'func':
               case 'style':
@@ -3119,7 +3050,7 @@
                     o = e.indexRoute,
                     a = e.nodeKey,
                     i = e.targetJsonSchema,
-                    s = (0, Ce.getCurrentFormat)(i),
+                    s = i.type,
                     c = i.properties.data || {};
                   return r().createElement(
                     We,
@@ -3195,7 +3126,7 @@
                     o = e.indexRoute,
                     a = e.nodeKey,
                     i = e.targetJsonSchema,
-                    s = (0, Ce.getCurrentFormat)(i),
+                    s = i.type,
                     c = i.properties.config || {},
                     l = i.properties.data || {};
                   return r().createElement(
@@ -3271,7 +3202,7 @@
                     o = e.indexRoute,
                     a = e.nodeKey,
                     i = e.targetJsonSchema,
-                    s = (0, Ce.getCurrentFormat)(i),
+                    s = i.type,
                     c = i.properties.type || {},
                     l = i.properties.register || {},
                     d = i.properties.actionFunc || {},
@@ -3397,7 +3328,7 @@
                     o = e.indexRoute,
                     a = e.nodeKey,
                     i = e.targetJsonSchema,
-                    s = (0, Ce.getCurrentFormat)(i),
+                    s = i.type,
                     c = i.propertyOrder[0],
                     l = i.properties[c];
                   return r().createElement(
@@ -3423,9 +3354,9 @@
                         targetJsonSchema: l,
                         parentType: s,
                         nodeKey: a + '-' + c,
-                        typeIsFixed: !0,
                         hideOperaBtn: !0,
-                        isShowAdvanceBtn: !0,
+                        showAdvanceBtn: !0,
+                        typeIsFixed: !0,
                       }),
                     }),
                     r().createElement(et, {
@@ -3455,7 +3386,7 @@
                     o = e.indexRoute,
                     a = e.nodeKey,
                     i = e.targetJsonSchema,
-                    s = (0, Ce.getCurrentFormat)(i),
+                    s = i.type,
                     c = i.options,
                     l = o || '0';
                   return r().createElement(
@@ -3499,7 +3430,7 @@
                     o = e.indexRoute,
                     a = e.nodeKey,
                     i = e.targetJsonSchema,
-                    s = (0, Ce.getCurrentFormat)(i),
+                    s = i.type,
                     c = i.options,
                     l = o || '0';
                   return r().createElement(
@@ -3540,10 +3471,9 @@
                   var t = e.jsonKey,
                     n = e.indexRoute,
                     o = e.nodeKey,
-                    a = e.targetJsonSchema,
-                    i = (0, Ce.getCurrentFormat)(a);
+                    a = e.targetJsonSchema.type;
                   return r().createElement(lt, {
-                    className: i + '-schema schema-item-form',
+                    className: a + '-schema schema-item-form',
                     id: o,
                     key: o,
                     indexRoute: n,
@@ -3568,8 +3498,8 @@
               l = e.nodeKey,
               d = e.targetJsonSchema,
               p = e.isOnlyShowChild,
-              m = (0, Ce.getCurrentFormat)(d),
-              h = d.isFixedSchema,
+              m = d.type,
+              h = d.isFixed,
               y =
                 ((t = {
                   propertyOrder: d.propertyOrder,
@@ -3587,7 +3517,7 @@
                   var r = o ? o + '-' + t : '' + t,
                     s = e,
                     c = n[s],
-                    l = (0, Ce.getCurrentFormat)(c),
+                    l = c.type,
                     d = (a ? a + '-' : '') + l + '-' + s;
                   return pt({
                     parentType: i,
@@ -3678,10 +3608,8 @@
                 var n;
                 return (
                   ((n = e.call(this, t) || this).onDragStart = function (e) {
-                    var t = e.node;
-                    t.className &&
-                      j(t.className) &&
-                      x.message.warning('一级固定类型元素不支持拖拽哦');
+                    (0, n.props.getSchemaByIndexRoute)(e.node.indexRoute)
+                      .isFixed && x.message.warning('当前元素不支持拖拽哦。');
                   }),
                   (n.onDrop = function (e) {
                     var t = e.dragNode,
@@ -3692,12 +3620,12 @@
                       s = a.insertJsonData,
                       c = a.deleteJsonByIndex,
                       l = a.isExitJsonKey,
-                      d = a.isSupportCurType;
-                    if (!t.className || !j(t.className)) {
-                      var p = t.indexRoute,
-                        u = t.jsonKey,
-                        m = r(p),
-                        h = o.indexRoute,
+                      d = a.isSupportCurType,
+                      p = t.indexRoute,
+                      u = t.jsonKey,
+                      m = r(p);
+                    if (!m.isFixed) {
+                      var h = o.indexRoute,
                         y = (0, Ce.isSameParent)(p, h),
                         g = (0, Ce.getCurPosition)(p, h);
                       if (y)
@@ -3711,19 +3639,18 @@
                           return void x.message.warning(
                             '目标位置中有重名的元素',
                           );
-                        var f = (0, Ce.getCurrentFormat)(m);
+                        var f = m.type;
                         if (!d(h, f))
                           return void x.message.warning(
                             '目标位置不支持' + f + '类型元素',
                           );
-                        var S = (0, Ce.getCurrentFormat)(m),
-                          v = i(p),
-                          b = (0, Ce.getParentIndexRoute)(h),
-                          E = (function (e) {
+                        var S = i(p),
+                          v = (0, Ce.getParentIndexRoute)(h),
+                          b = (function (e) {
                             if (window.sessionStorage)
                               return window.sessionStorage.getItem(e);
-                          })(v + '-' + S);
-                        C(i(b) + '-' + u + '-' + S, E || v),
+                          })(S + '-' + f);
+                        j(i(v) + '-' + u + '-' + f, b || S),
                           o.dragOverGapTop
                             ? 'after' === g
                               ? (c(p, !0), s(h, u, m, 'before'))
@@ -3743,9 +3670,8 @@
                         e.properties &&
                         e.propertyOrder.map(function (n, o) {
                           var a = n,
-                            r = e.properties[a],
-                            i = (0, Ce.getCurrentFormat)(r) + '-' + a;
-                          t.push(i);
+                            r = e.properties[a].type + '-' + a;
+                          t.push(r);
                         }),
                       t
                     );
@@ -3770,7 +3696,7 @@
                 (o.render = function () {
                   var e = this.props.jsonSchema,
                     t = (0, Ce.isEmptySchema)(e),
-                    n = (0, Ce.getCurrentFormat)(e);
+                    n = e.type;
                   return a.createElement(
                     'div',
                     { className: 'json-schema-container' },

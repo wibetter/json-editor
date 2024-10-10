@@ -222,6 +222,10 @@
     .info-icon {
       margin-left: 5px;
       cursor: pointer;
+
+      &.active {
+        color: #1890ff;
+      }
     }
   }
 

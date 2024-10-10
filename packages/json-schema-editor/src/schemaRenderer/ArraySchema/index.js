@@ -71,13 +71,14 @@ const itemsRender = (props) => {
         typeIsFixed: false,
       })}
     >
-      {propertiesRender({
-        propertyOrder: targetJsonSchema.propertyOrder,
-        properties: targetJsonSchema.properties,
-        parentIndexRoute: indexRoute,
-        parentNodeKey: nodeKey,
-        parentType,
-      })}
+      {targetJsonSchema.type === 'object' &&
+        propertiesRender({
+          propertyOrder: targetJsonSchema.propertyOrder,
+          properties: targetJsonSchema.properties,
+          parentIndexRoute: indexRoute,
+          parentNodeKey: nodeKey,
+          parentType,
+        })}
     </TreeNode>
   );
 };
@@ -107,7 +108,7 @@ const ArraySchema = (props) => {
       })}
     >
       {itemsRender({
-        parentType: items.type || 'object',
+        parentType: 'array',
         jsonKey: itemsJsonKey,
         indexRoute: currentIndexRoute,
         nodeKey: curNodeKey,
