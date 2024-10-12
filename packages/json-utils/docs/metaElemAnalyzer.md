@@ -96,7 +96,7 @@ const jsonSchema = {
     field_10: {
       type: 'array',
       title: '多选',
-      format: 'select',
+      format: 'checkboxes',
       default: '',
       description: '',
       placeholder: '',
@@ -302,7 +302,7 @@ const jsonSchema = {
     field_10: {
       type: 'array',
       title: '多选',
-      format: 'select',
+      format: 'checkboxes',
       default: '',
       description: '',
       placeholder: '',

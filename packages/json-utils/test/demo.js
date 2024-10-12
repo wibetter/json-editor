@@ -116,7 +116,7 @@ const jsonSchema = {
         },
         titlePosition: {
           type: 'array',
-          format: 'select',
+          format: 'checkboxes',
           items: {
             type: 'string',
             enum: ['left', 'center', 'right'],

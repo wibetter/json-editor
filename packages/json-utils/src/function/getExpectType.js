@@ -20,7 +20,7 @@ const valExpectType = {
   quantity: 'string',
   radio: 'string',
   select: 'array',
-  'single-select': 'string',
+  select: 'string',
   textarea: 'string',
   'text-editor': 'string',
   time: 'string',

@@ -17,7 +17,9 @@ const BoxStyleSchema = React.lazy(
   () => import('$renderers/BoxStyleSchema/index'),
 );
 const RadioSchema = React.lazy(() => import('$renderers/RadioSchema/index'));
-const SelectSchema = React.lazy(() => import('$renderers/SelectSchema/index'));
+const CheckboxSchema = React.lazy(
+  () => import('$renderers/CheckboxSchema/index'),
+);
 const TextAreaFormSchema = React.lazy(
   () => import('$renderers/TextAreaFormSchema/index'),
 );
@@ -51,9 +53,7 @@ const CodeAreaFormSchema = React.lazy(
 const HtmlAreaFormSchema = React.lazy(
   () => import('$renderers/HtmlAreaFormSchema/index'),
 );
-const SingleSelectSchema = React.lazy(
-  () => import('$renderers/SingleSelectSchema/index'),
-);
+const SelectSchema = React.lazy(() => import('$renderers/SelectSchema/index'));
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRenderV2 = (props) => {
@@ -163,22 +163,22 @@ const MappingRenderV2 = (props) => {
           <RadioSchema {...props} key={curNodeKey} />
         </Suspense>
       );
-    case 'single-select':
-      return (
-        <Suspense
-          key={`suspense-${curNodeKey}`}
-          fallback={<div>Loading...</div>}
-        >
-          <SingleSelectSchema {...props} key={curNodeKey} />
-        </Suspense>
-      );
-    case 'select': // 多选
+    case 'select':
       return (
         <Suspense
           key={`suspense-${curNodeKey}`}
           fallback={<div>Loading...</div>}
         >
           <SelectSchema {...props} key={curNodeKey} />
+        </Suspense>
+      );
+    case 'checkboxes': // 多选
+      return (
+        <Suspense
+          key={`suspense-${curNodeKey}`}
+          fallback={<div>Loading...</div>}
+        >
+          <CheckboxSchema {...props} key={curNodeKey} />
         </Suspense>
       );
     case 'input':

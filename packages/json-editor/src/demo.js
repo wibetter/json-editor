@@ -27,19 +27,25 @@ class IndexDemo extends React.PureComponent {
             title: '属性设置',
             isFixed: true,
             properties: {
-              legendAlign: {
-                title: '图例位置',
-                type: 'single-select',
-                items: {
-                  type: 'string',
-                  enum: ['top', 'right', 'bottom', 'left'],
-                  enumextra: ['上', '右', '下', '左'],
-                },
-                description: '',
-                default: 'top',
+              flexDirection: {
+                type: 'select',
+                title: '内容排列方向',
+                options: [
+                  {
+                    label: '竖排(默认)',
+                    value: 'column',
+                  },
+                  {
+                    label: '横排',
+                    value: 'row',
+                  },
+                ],
+                description:
+                  'flex-direction属性：决定主轴的方向（即列级容器内部元素的排列方向）',
+                default: 'column',
               },
             },
-            propertyOrder: ['legendAlign'],
+            propertyOrder: ['flexDirection'],
           },
           style: {
             type: 'object',
@@ -64,7 +70,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
         propertyOrder: ['data', 'props', 'style', 'event'],
-        lastUpdateTime: '2021-03-29T02:08:03.551Z',
+        lastUpdateTime: '2024-10-13T02:08:03.551Z',
       },
       jsonSchema1: {
         type: 'object',
@@ -81,7 +87,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               legendAlign: {
                 title: '图例位置',
-                type: 'single-select',
+                type: 'select',
                 items: {
                   type: 'string',
                   enum: ['top', 'right', 'bottom', 'left'],
@@ -421,8 +427,8 @@ class IndexDemo extends React.PureComponent {
           'textarea',
           'text-editor',
           'radio',
-          'single-select',
           'select',
+          'checkboxes',
           'date',
           'date-time',
           'time',
@@ -441,8 +447,8 @@ class IndexDemo extends React.PureComponent {
           'boolean',
           'number',
           'radio',
-          'single-select',
           'select',
+          'checkboxes',
           'box-style',
         ],
         data: [
@@ -478,8 +484,8 @@ class IndexDemo extends React.PureComponent {
           'textarea',
           'text-editor',
           'radio',
-          'single-select',
           'select',
+          'checkboxes',
           'date',
           'date-time',
           'time',

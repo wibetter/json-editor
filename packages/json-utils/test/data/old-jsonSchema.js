@@ -76,7 +76,7 @@ export const jsonSchemaData = {
         },
         field_10: {
           type: 'array',
-          format: 'select',
+          format: 'checkboxes',
           items: {
             type: 'string',
             enum: ['a', 'b', 'c'],

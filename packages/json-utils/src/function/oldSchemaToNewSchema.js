@@ -30,7 +30,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
       newJSONSchema.type === 'event' ||
       newJSONSchema.type === 'object' ||
       newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'select') &&
+      newJSONSchema.type === 'checkboxes') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -156,7 +156,7 @@ export function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.type === 'event' ||
       newJSONSchema.type === 'object' ||
       newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'select') &&
+      newJSONSchema.type === 'checkboxes') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -164,8 +164,8 @@ export function oldSchemaToNewSchema(oldSchema) {
   // 转换旧版的选择类型的数据结构
   if (
     newJSONSchema.type === 'radio' ||
-    newJSONSchema.type === 'select' ||
-    newJSONSchema.type === 'single-select'
+    newJSONSchema.type === 'checkboxes' ||
+    newJSONSchema.type === 'select'
   ) {
     if (
       newJSONSchema.items &&

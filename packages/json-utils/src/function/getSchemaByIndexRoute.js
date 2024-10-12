@@ -24,8 +24,8 @@ export function getSchemaByIndexRoute(
         curIndex === '0' &&
         (curJsonSchemaObj.type === 'array' ||
           curJsonSchemaObj.type === 'radio' ||
-          curJsonSchemaObj.type === 'single-select' ||
-          curJsonSchemaObj.type === 'select') &&
+          curJsonSchemaObj.type === 'select' ||
+          curJsonSchemaObj.type === 'checkboxes') &&
         (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
         // 从items中获取数据

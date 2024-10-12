@@ -16,16 +16,13 @@ const { TextArea } = Input;
 const { Option } = Select;
 import ConditionValueSchema from '$components/ConditionValueSchema'; // 条件数值选择器
 import {
-  isNeedDescriptionOption,
   isNeedDefaultOption,
   isNeedPlaceholderOption,
   isNeedReadOnlyOption,
   isNeedConditionOption,
   isNeedIsRequiredOption,
-  isNeedMinMaxOption,
-  isNeedMinMaxChildOption,
 } from '$utils/advanced.config';
-import { hasProperties } from '@wibetter/json-utils';
+import { hasProperties, getExpectType } from '@wibetter/json-utils';
 import './index.scss';
 
 class AdvanceConfig extends React.PureComponent {
@@ -71,8 +68,32 @@ class AdvanceConfig extends React.PureComponent {
           }}
         />
       );
-    }
-    if (curType === 'radio' || curType === 'single-select') {
+    } else if (
+      curType === 'checkboxes' ||
+      (curType === 'select' && targetJsonSchema.multiple)
+    ) {
+      const options = targetJsonSchema.options;
+      return (
+        <Checkbox.Group
+          style={{ display: 'inline-block' }}
+          onChange={(checkedValue) => {
+            this.handleValueChange('default', checkedValue);
+          }}
+          defaultValue={targetJsonSchema.default}
+        >
+          {options &&
+            options.length > 0 &&
+            options.map((item, optionIndex) => {
+              const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
+              return (
+                <Checkbox value={item.value} key={optionNodeKey}>
+                  {item.label || item.name}
+                </Checkbox>
+              );
+            })}
+        </Checkbox.Group>
+      );
+    } else if (curType === 'radio' || curType === 'select') {
       const options = targetJsonSchema.options;
       return (
         <Radio.Group
@@ -96,31 +117,7 @@ class AdvanceConfig extends React.PureComponent {
             })}
         </Radio.Group>
       );
-    }
-    if (curType === 'select') {
-      const options = targetJsonSchema.options;
-      return (
-        <Checkbox.Group
-          style={{ display: 'inline-block' }}
-          onChange={(checkedValue) => {
-            this.handleValueChange('default', checkedValue);
-          }}
-          defaultValue={targetJsonSchema.default}
-        >
-          {options &&
-            options.length > 0 &&
-            options.map((item, optionIndex) => {
-              const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
-              return (
-                <Checkbox value={item.value} key={optionNodeKey}>
-                  {item.label || item.name}
-                </Checkbox>
-              );
-            })}
-        </Checkbox.Group>
-      );
-    }
-    if (curType === 'color') {
+    } else if (curType === 'color') {
       return (
         <Input
           style={{ display: 'inline-block' }}
@@ -133,8 +130,7 @@ class AdvanceConfig extends React.PureComponent {
           }}
         />
       );
-    }
-    if (
+    } else if (
       curType === 'textarea' ||
       curType === 'codearea' ||
       curType === 'htmlarea' ||
@@ -331,6 +327,37 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
+        {curType === 'select' && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-selectConfig`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'开启多选后，select下拉列表支持选择多个选项。'}
+                placement="top"
+              >
+                <span className="title-text">支持多选</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div
+                className="form-item-box"
+                key={`${nodeKey}-selectConfig-multiple`}
+              >
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.multiple}
+                  checkedChildren="多选"
+                  unCheckedChildren="单选"
+                  onChange={(checked) => {
+                    this.handleValueChange('multiple', checked);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
         {isNeedReadOnlyOption(curType) && (
           <div
             className="wide-screen-element-warp"
@@ -403,38 +430,36 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedDescriptionOption(curType) && (
-          <div
-            className="wide-screen-element-warp"
-            key={`${nodeKey}-description`}
-          >
-            <div className="element-title">
-              <Tooltip
-                title={'字段描述内容将作为Title的补充信息提供给用户'}
-                placement="top"
-              >
-                <span className="title-text">字段描述</span>
-              </Tooltip>
-            </div>
-            <div className="content-item">
-              <div className="form-item-box">
-                <Input
-                  style={{ display: 'inline-block' }}
-                  placeholder={`请输入${targetJsonSchema.title}的字段描述`}
-                  defaultValue={targetJsonSchema.description}
-                  onPressEnter={(event) => {
-                    const { value } = event.target;
-                    this.handleValueChange('description', value);
-                  }}
-                  onBlur={(event) => {
-                    const { value } = event.target;
-                    this.handleValueChange('description', value);
-                  }}
-                />
-              </div>
+        <div
+          className="wide-screen-element-warp"
+          key={`${nodeKey}-description`}
+        >
+          <div className="element-title">
+            <Tooltip
+              title={'字段描述内容将作为Title的补充信息提供给用户'}
+              placement="top"
+            >
+              <span className="title-text">字段描述</span>
+            </Tooltip>
+          </div>
+          <div className="content-item">
+            <div className="form-item-box">
+              <Input
+                style={{ display: 'inline-block' }}
+                placeholder={`请输入${targetJsonSchema.title}的字段描述`}
+                defaultValue={targetJsonSchema.description}
+                onPressEnter={(event) => {
+                  const { value } = event.target;
+                  this.handleValueChange('description', value);
+                }}
+                onBlur={(event) => {
+                  const { value } = event.target;
+                  this.handleValueChange('description', value);
+                }}
+              />
             </div>
           </div>
-        )}
+        </div>
         {isNeedPlaceholderOption(curType) && (
           <div
             className="wide-screen-element-warp"
@@ -467,123 +492,113 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {isNeedMinMaxOption(curType) && (
-          <div
-            className="wide-screen-element-warp"
-            key={`${nodeKey}-minimum-${targetJsonSchema.minimum}`}
-          >
-            <div className="element-title">
-              <Tooltip
-                title={'设置最小值后，用户输入的数值必须大于当前最小值'}
-                placement="top"
-              >
-                <span className="title-text">最小值</span>
-              </Tooltip>
-            </div>
-            <div className="content-item">
-              <div className="form-item-box">
-                <InputNumber
-                  style={{ display: 'inline-block' }}
-                  defaultValue={targetJsonSchema.minimum}
-                  onPressEnter={(event) => {
-                    const { value } = event.target;
-                    this.handleValueChange('minimum', value);
-                  }}
-                  onBlur={(event) => {
-                    const { value } = event.target;
-                    this.handleValueChange('minimum', value);
-                  }}
-                />
+        {getExpectType(curType) === 'number' && (
+          <>
+            <div
+              className="wide-screen-element-warp"
+              key={`${nodeKey}-minimum-${targetJsonSchema.minimum}`}
+            >
+              <div className="element-title">
+                <Tooltip
+                  title={'设置最小值后，用户输入的数值必须大于当前最小值'}
+                  placement="top"
+                >
+                  <span className="title-text">最小值</span>
+                </Tooltip>
+              </div>
+              <div className="content-item">
+                <div className="form-item-box">
+                  <InputNumber
+                    style={{ display: 'inline-block' }}
+                    defaultValue={targetJsonSchema.minimum}
+                    onPressEnter={(event) => {
+                      const { value } = event.target;
+                      this.handleValueChange('minimum', value);
+                    }}
+                    onBlur={(event) => {
+                      const { value } = event.target;
+                      this.handleValueChange('minimum', value);
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+            <div
+              className="wide-screen-element-warp"
+              key={`${nodeKey}-maximum-${targetJsonSchema.maximum}`}
+            >
+              <div className="element-title">
+                <Tooltip
+                  title={'设置最大值后，用户输入的数值必须大于当前最大值'}
+                  placement="top"
+                >
+                  <span className="title-text">最大值</span>
+                </Tooltip>
+              </div>
+              <div className="content-item">
+                <div className="form-item-box">
+                  <InputNumber
+                    style={{ display: 'inline-block' }}
+                    defaultValue={targetJsonSchema.maximum}
+                    onPressEnter={(event) => {
+                      const { value } = event.target;
+                      this.handleValueChange('maximum', value);
+                    }}
+                    onBlur={(event) => {
+                      const { value } = event.target;
+                      this.handleValueChange('maximum', value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
         )}
-        {isNeedMinMaxOption(curType) && (
-          <div
-            className="wide-screen-element-warp"
-            key={`${nodeKey}-maximum-${targetJsonSchema.maximum}`}
-          >
-            <div className="element-title">
-              <Tooltip
-                title={'设置最大值后，用户输入的数值必须大于当前最大值'}
-                placement="top"
-              >
-                <span className="title-text">最大值</span>
-              </Tooltip>
-            </div>
-            <div className="content-item">
-              <div className="form-item-box">
-                <InputNumber
-                  style={{ display: 'inline-block' }}
-                  defaultValue={targetJsonSchema.maximum}
-                  onPressEnter={(event) => {
-                    const { value } = event.target;
-                    this.handleValueChange('maximum', value);
-                  }}
-                  onBlur={(event) => {
-                    const { value } = event.target;
-                    this.handleValueChange('maximum', value);
-                  }}
-                />
+        {getExpectType(curType) === 'array' && (
+          <>
+            <div
+              className="wide-screen-element-warp"
+              key={`${nodeKey}-minimum-child`}
+            >
+              <div className="element-title">
+                <Tooltip title={'用于控制最少应选择的选项个数'} placement="top">
+                  <span className="title-text">限制最少选择数</span>
+                </Tooltip>
+              </div>
+              <div className="content-item">
+                <div className="form-item-box">
+                  <InputNumber
+                    style={{ display: 'inline-block' }}
+                    defaultValue={targetJsonSchema['minimum-child']}
+                    onChange={(newVal) => {
+                      this.handleValueChange('minimum-child', newVal);
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        {isNeedMinMaxChildOption(curType) && (
-          <div
-            className="wide-screen-element-warp"
-            key={`${nodeKey}-minimum-child-${targetJsonSchema['minimum-child']}`}
-          >
-            <div className="element-title">
-              <Tooltip
-                title={
-                  '设置最少子项个数后，当前字段的子字段数量必须大于最少子项数'
-                }
-                placement="top"
-              >
-                <span className="title-text">最少子项数</span>
-              </Tooltip>
-            </div>
-            <div className="content-item">
-              <div className="form-item-box">
-                <InputNumber
-                  style={{ display: 'inline-block' }}
-                  defaultValue={targetJsonSchema['minimum-child']}
-                  onChange={(newVal) => {
-                    this.handleValueChange('minimum-child', newVal);
-                  }}
-                />
+            <div
+              className="wide-screen-element-warp"
+              key={`${nodeKey}-maximum-child`}
+            >
+              <div className="element-title">
+                <Tooltip title={'用于控制最多可选择的选项个数'} placement="top">
+                  <span className="title-text">限制最多选择数</span>
+                </Tooltip>
+              </div>
+              <div className="content-item">
+                <div className="form-item-box">
+                  <InputNumber
+                    style={{ display: 'inline-block' }}
+                    defaultValue={targetJsonSchema['maximum-child']}
+                    onChange={(newVal) => {
+                      this.handleValueChange('maximum-child', newVal);
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-        {isNeedMinMaxChildOption(curType) && (
-          <div
-            className="wide-screen-element-warp"
-            key={`${nodeKey}-maximum-child-${targetJsonSchema['maximum-child']}`}
-          >
-            <div className="element-title">
-              <Tooltip
-                title={
-                  '设置最多子项个数后，当前字段的子字段数量必须少于最多子项数'
-                }
-                placement="top"
-              >
-                <span className="title-text">最多子项数</span>
-              </Tooltip>
-            </div>
-            <div className="content-item">
-              <div className="form-item-box">
-                <InputNumber
-                  style={{ display: 'inline-block' }}
-                  defaultValue={targetJsonSchema['maximum-child']}
-                  onChange={(newVal) => {
-                    this.handleValueChange('maximum-child', newVal);
-                  }}
-                />
-              </div>
-            </div>
-          </div>
+          </>
         )}
         {!targetJsonSchema.hiddenRule && (
           <div className="wide-screen-element-warp">

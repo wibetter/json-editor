@@ -73,7 +73,7 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
         (curJsonSchemaObj.type === 'array' ||
           curJsonSchemaObj.type === 'radio' ||
           curJsonSchemaObj.type === 'single-select' ||
-          curJsonSchemaObj.type === 'select') &&
+          curJsonSchemaObj.type === 'checkboxes') &&
         (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
         // 从items中获取数据
@@ -434,7 +434,7 @@ var initSingleSelectData = {
   description: '',
 };
 
-/* select类型字段
+/* checkboxes元素
  * 【字段属性说明】
  *  title：字段项的label值
  *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
@@ -443,8 +443,8 @@ var initSingleSelectData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-var initSelectData = {
-  type: 'select',
+var initCheckboxSchema = {
+  type: 'checkboxes',
   title: '多选',
   options: [
     {
@@ -1053,7 +1053,7 @@ var TypeDataList = {
   'box-style': initBoxStyleData,
   radio: initRadioData,
   'single-select': initSingleSelectData,
-  select: initSelectData,
+  checkboxes: initCheckboxSchema,
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
   event: initEventData,
@@ -1451,7 +1451,7 @@ function oldSchemaToNewSchemaV1(oldSchema) {
       newJSONSchema.type === 'event' ||
       newJSONSchema.type === 'object' ||
       newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'select') &&
+      newJSONSchema.type === 'checkboxes') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -1578,7 +1578,7 @@ function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.type === 'event' ||
       newJSONSchema.type === 'object' ||
       newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'select') &&
+      newJSONSchema.type === 'checkboxes') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -1586,7 +1586,7 @@ function oldSchemaToNewSchema(oldSchema) {
   // 转换旧版的选择类型的数据结构
   if (
     newJSONSchema.type === 'radio' ||
-    newJSONSchema.type === 'select' ||
+    newJSONSchema.type === 'checkboxes' ||
     newJSONSchema.type === 'single-select'
   ) {
     if (
@@ -2405,7 +2405,7 @@ var KeyWordList = [
   'text-editor',
   'radio',
   'single-select',
-  'select',
+  'checkboxes',
   'date',
   'date-time',
   'time',

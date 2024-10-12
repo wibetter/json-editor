@@ -310,7 +310,7 @@
                 'number' !== e &&
                 'color' !== e &&
                 'quantity' !== e &&
-                'single-select' !== e) ||
+                'select' !== e) ||
                 (t = !0),
               t
             );
@@ -420,7 +420,7 @@
         258: function () {},
         6: function () {},
         196: function () {},
-        561: function () {},
+        505: function () {},
         396: function () {},
         104: function (e, t, a) {
           var n = a(641);
@@ -499,12 +499,12 @@
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('5737c47d', n, !1, { sourceMap: !1 });
         },
-        206: function (e, t, a) {
-          var n = a(561);
+        546: function (e, t, a) {
+          var n = a(505);
           n.__esModule && (n = n.default),
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
-            (0, a(611).A)('72791190', n, !1, { sourceMap: !1 });
+            (0, a(611).A)('e6602b10', n, !1, { sourceMap: !1 });
         },
         632: function (e, t, a) {
           var n = a(396);
@@ -5358,7 +5358,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(bt)),
-          vt = (__webpack_require__(206), Q.Select.Option),
+          vt = (__webpack_require__(546), Q.Select.Option),
           Dt = (function (e) {
             function t(t) {
               var a;
@@ -5440,10 +5440,12 @@
                     { className: 'content-item' },
                     P.createElement(
                       'div',
-                      { className: 'form-item-box single-select-box' },
+                      { className: 'form-item-box select-box' },
                       P.createElement(
                         Q.Select,
                         {
+                          showSearch: !0,
+                          mode: n.multiple ? 'multiple' : void 0,
                           style: { display: 'inline-block' },
                           onChange: this.handleValueChange,
                           defaultValue: o || n.default,
@@ -5519,9 +5521,9 @@
                 return B().createElement(Ue, ne()({}, p, { key: c }));
               case 'radio':
                 return B().createElement(He, ne()({}, p, { key: c }));
-              case 'single-select':
-                return B().createElement(Nt, ne()({}, p, { key: c }));
               case 'select':
+                return B().createElement(Nt, ne()({}, p, { key: c }));
+              case 'checkboxes':
                 return B().createElement($e, ne()({}, p, { key: c }));
               case 'input':
               default:

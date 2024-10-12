@@ -1,17 +1,11 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Select, Tooltip } from 'antd';
-const { Option } = Select;
+import { Checkbox, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { isNeedTwoColWarpStyle } from '$utils/index';
-import './index.scss';
 
-/**
- * select下拉单选类型
- */
-class SingleSelectSchema extends React.PureComponent {
+class CheckboxSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -40,9 +34,9 @@ class SingleSelectSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (value) => {
+  handleValueChange = (checkedValue) => {
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, value); // 更新数值
+    updateFormValueData(keyRoute, checkedValue); // 更新数值
   };
 
   render() {
@@ -57,16 +51,12 @@ class SingleSelectSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
 
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
-
     return (
       <div
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : `mobile-screen-element-warp ${
-                isNeedTwoCol ? 'two-col-element-warp' : ''
-              }`
+            : 'mobile-screen-element-warp'
         }
         key={nodeKey}
         id={nodeKey}
@@ -96,9 +86,8 @@ class SingleSelectSchema extends React.PureComponent {
           )}
         </div>
         <div className="content-item">
-          <div className="form-item-box single-select-box">
-            <Select
-              showSearch
+          <div className="form-item-box">
+            <Checkbox.Group
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
@@ -109,12 +98,12 @@ class SingleSelectSchema extends React.PureComponent {
                   const optionLabel = item.label || item.name;
                   const optionNodeKey = `${nodeKey}-select-${optionLabel}`;
                   return (
-                    <Option value={item.value} key={optionNodeKey}>
+                    <Checkbox value={item.value} key={optionNodeKey}>
                       {optionLabel}
-                    </Option>
+                    </Checkbox>
                   );
                 })}
-            </Select>
+            </Checkbox.Group>
           </div>
         </div>
       </div>
@@ -127,4 +116,4 @@ export default inject((stores) => ({
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-}))(observer(SingleSelectSchema));
+}))(observer(CheckboxSchema));

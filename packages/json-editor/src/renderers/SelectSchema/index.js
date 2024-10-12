@@ -1,10 +1,16 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Checkbox, Tooltip } from 'antd';
+import { Select, Tooltip } from 'antd';
+const { Option } = Select;
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import { isNeedTwoColWarpStyle } from '$utils/index';
+import './index.scss';
 
+/**
+ * select下拉单选类型
+ */
 class SelectSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
@@ -34,9 +40,9 @@ class SelectSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (checkedValue) => {
+  handleValueChange = (value) => {
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, checkedValue); // 更新数值
+    updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
@@ -50,13 +56,16 @@ class SelectSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     return (
       <div
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : 'mobile-screen-element-warp'
+            : `mobile-screen-element-warp ${
+                isNeedTwoCol ? 'two-col-element-warp' : ''
+              }`
         }
         key={nodeKey}
         id={nodeKey}
@@ -86,8 +95,10 @@ class SelectSchema extends React.PureComponent {
           )}
         </div>
         <div className="content-item">
-          <div className="form-item-box">
-            <Checkbox.Group
+          <div className="form-item-box select-box">
+            <Select
+              showSearch
+              mode={targetJsonSchema.multiple ? 'multiple' : undefined}
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
@@ -98,12 +109,12 @@ class SelectSchema extends React.PureComponent {
                   const optionLabel = item.label || item.name;
                   const optionNodeKey = `${nodeKey}-select-${optionLabel}`;
                   return (
-                    <Checkbox value={item.value} key={optionNodeKey}>
+                    <Option value={item.value} key={optionNodeKey}>
                       {optionLabel}
-                    </Checkbox>
+                    </Option>
                   );
                 })}
-            </Checkbox.Group>
+            </Select>
           </div>
         </div>
       </div>

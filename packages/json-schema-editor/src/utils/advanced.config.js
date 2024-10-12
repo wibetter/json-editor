@@ -1,3 +1,4 @@
+import { getExpectType } from '@wibetter/json-utils';
 /** 11种基础类型 */
 const BASE_TYPE = [
   'input',
@@ -7,14 +8,14 @@ const BASE_TYPE = [
   'url',
   'textarea',
   'radio',
-  'single-select',
   'select',
+  'checkboxes',
   'date',
   'date-time',
   'time',
 ];
 
-/** 10种高级类型（特殊类型） */
+/** 10种高级类型 */
 const HIGH_TYPE = [
   'quantity',
   'box-style',
@@ -30,52 +31,17 @@ const HIGH_TYPE = [
   'object',
 ];
 
-/** 所有类型，包含11种基础类型和8种高级类型（特殊类型） */
+/** 所有类型，包含基础类型和高级类型 */
 const ALL_TYPE = [...BASE_TYPE, ...HIGH_TYPE];
 
-/** 字段描述配置项（description）
- *  根据format判断是否显示字段描述配置项
- *  11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
- *  10种特殊类型组件（Object、Array、Json、datasource、text-editor、dynamic-data、Event、CodeArea、htmlArea、quantity）
- * */
-export function isNeedDescriptionOption(curType) {
-  let isSupported = false;
-  const supportedTypeList = ALL_TYPE;
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
-}
-
 /** 默认值（default）
- *  根据format判断是否显示字段描述配置项
+ *  根据type判断是否显示默认配置项
  *  11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
  *  3种特殊类型组件（Json、CodeArea、htmlArea）
  * */
 export function isNeedDefaultOption(curType) {
-  let isSupported = false;
-  const supportedTypeList = [
-    'input',
-    'string',
-    'boolean',
-    'number',
-    'color',
-    'url',
-    'textarea',
-    'text-editor',
-    'radio',
-    'single-select',
-    'select',
-    'json',
-    'codearea',
-    'htmlarea',
-  ];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
+  const supportedTypeList = [...BASE_TYPE, 'json', 'codearea', 'htmlarea'];
+  return supportedTypeList.indexOf(curType) > -1;
 }
 
 /** 输入提示（placeholder）
@@ -83,7 +49,6 @@ export function isNeedDefaultOption(curType) {
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
 export function isNeedPlaceholderOption(curType) {
-  let isSupported = false;
   const supportedTypeList = [
     'input',
     'url',
@@ -96,19 +61,14 @@ export function isNeedPlaceholderOption(curType) {
     'codearea',
     'htmlarea',
   ];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
+  return supportedTypeList.indexOf(curType) > -1;
 }
 
-/** 是否为条件字段（conditionProps）
+/** 是否支持配置成条件字段（conditionProps）
  *  根据type判断是否显示是否只读配置项
  *  radio、boolean、number、string等类型的数值可以设置为条件字段
  * */
 export function isNeedConditionOption(curType) {
-  let isSupported = false;
   const supportedTypeList = [
     'boolean',
     'input',
@@ -116,42 +76,29 @@ export function isNeedConditionOption(curType) {
     'color',
     'url',
     'radio',
-    'single-select',
+    'select',
     'date',
     'date-time',
     'time',
   ];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
+  return supportedTypeList.indexOf(curType) > -1;
 }
 
-/** 是否只读（readOnly）
+/** 是否支持只读配置（readOnly）
  *  根据format判断是否显示是否只读配置项
  *  input、number、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
 export function isNeedReadOnlyOption(curType) {
-  let isSupported = false;
   const supportedTypeList = [
-    'input',
-    'number',
-    'url',
-    'textarea',
+    ...BASE_TYPE,
+    'quantity',
     'text-editor',
-    'date',
-    'date-time',
-    'time',
     'json',
     'codearea',
     'htmlarea',
+    'text-editor',
   ];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
+  return supportedTypeList.indexOf(curType) > -1;
 }
 
 /** 是否必填（isRequired）
@@ -159,50 +106,14 @@ export function isNeedReadOnlyOption(curType) {
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
 export function isNeedIsRequiredOption(curType) {
-  let isSupported = false;
-  /* const supportedTypeList = [
-    'input',
-    'url',
-    'textarea',
-    'date',
-    'date-time',
-    'time',
+  const supportedTypeList = [
+    ...BASE_TYPE,
+    'quantity',
+    'text-editor',
     'json',
     'codearea',
     'htmlarea',
-  ]; */
-  const supportedTypeList = [];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
-}
-
-/** 设置最小值和最大值（minimum、maximum）
- *  根据format判断是否显示是否只读配置项
- *  目前仅Number种类型组件支持
- * */
-export function isNeedMinMaxOption(curType) {
-  let isSupported = false;
-  const supportedTypeList = ['number'];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
-}
-
-/** 设置最多可添加子项，最少应添加子项的数量（minimum-child、maximum-child）
- *  根据format判断是否显示是否只读配置项
- *  目前仅Array种类型组件支持
- * */
-export function isNeedMinMaxChildOption(curType) {
-  let isSupported = false;
-  const supportedTypeList = ['array'];
-  const supportedTypeListChar = `#${supportedTypeList.join('#')}#`;
-  if (supportedTypeListChar.indexOf(`#${curType}#`) >= 0) {
-    isSupported = true;
-  }
-  return isSupported;
+    'text-editor',
+  ];
+  return supportedTypeList.indexOf(curType) > -1;
 }

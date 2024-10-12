@@ -35,7 +35,7 @@ export function isNeedTwoColWarpStyle(format) {
     format === 'number' ||
     format === 'color' ||
     format === 'quantity' ||
-    format === 'single-select'
+    format === 'select'
   ) {
     isNeedTwoColWarp = true;
   }
