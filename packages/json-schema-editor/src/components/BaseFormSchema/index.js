@@ -262,7 +262,7 @@ class BaseFormSchema extends React.PureComponent {
                         onClick={this.onCopyBtnEvent}
                       />
                     </Tooltip>
-                    <Tooltip title="高级设置1">
+                    <Tooltip title="高级设置">
                       <SettingOutlined
                         className="operate-btn"
                         onClick={() => {
@@ -281,7 +281,7 @@ class BaseFormSchema extends React.PureComponent {
             )}
             {showAdvanceBtn && (
               <div className="operate-item">
-                <Tooltip title="高级设置2">
+                <Tooltip title="高级设置">
                   <SettingOutlined
                     className="operate-btn"
                     onClick={() => {

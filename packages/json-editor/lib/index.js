@@ -5444,6 +5444,7 @@
                       P.createElement(
                         Q.Select,
                         {
+                          showSearch: !0,
                           style: { display: 'inline-block' },
                           onChange: this.handleValueChange,
                           defaultValue: o || n.default,
@@ -5521,7 +5522,7 @@
                 return B().createElement(He, ne()({}, p, { key: c }));
               case 'single-select':
                 return B().createElement(Nt, ne()({}, p, { key: c }));
-              case 'select':
+              case 'checkboxes':
                 return B().createElement($e, ne()({}, p, { key: c }));
               case 'input':
               default:

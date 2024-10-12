@@ -659,7 +659,7 @@ export default class JSONSchemaStore {
           numberElemArr.push(curKey);
           break;
         case 'radio':
-        case 'select':
+        case 'checkboxes':
         case 'boolean':
         case 'color':
           selectElemArr.push(curKey);

@@ -8,7 +8,7 @@ import EventSchema from '$renderers/EventSchema/index';
 import QuantitySchema from '$renderers/QuantitySchema/index';
 import BoxStyleSchema from '$renderers/BoxStyleSchema/index';
 import RadioSchema from '$renderers/RadioSchema/index';
-import SelectSchema from '$renderers/SelectSchema/index';
+import CheckboxSchema from '$renderers/CheckboxSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
 import TextAreaFormSchema from '$renderers/TextAreaFormSchema/index';
 import TextEditorSchema from '$renderers/TextEditorSchema/index';
@@ -86,8 +86,8 @@ const MappingRender = (props) => {
       return <RadioSchema {...newProps} key={curNodeKey} />;
     case 'single-select':
       return <SingleSelectSchema {...newProps} key={curNodeKey} />;
-    case 'select': // 多选
-      return <SelectSchema {...newProps} key={curNodeKey} />;
+    case 'checkboxes': // 多选
+      return <CheckboxSchema {...newProps} key={curNodeKey} />;
     case 'input':
       return <InputFormSchema {...newProps} key={curNodeKey} />;
     case 'textarea':

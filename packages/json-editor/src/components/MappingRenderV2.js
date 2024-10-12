@@ -17,7 +17,9 @@ const BoxStyleSchema = React.lazy(
   () => import('$renderers/BoxStyleSchema/index'),
 );
 const RadioSchema = React.lazy(() => import('$renderers/RadioSchema/index'));
-const SelectSchema = React.lazy(() => import('$renderers/SelectSchema/index'));
+const CheckboxSchema = React.lazy(
+  () => import('$renderers/CheckboxSchema/index'),
+);
 const TextAreaFormSchema = React.lazy(
   () => import('$renderers/TextAreaFormSchema/index'),
 );
@@ -172,13 +174,13 @@ const MappingRenderV2 = (props) => {
           <SingleSelectSchema {...props} key={curNodeKey} />
         </Suspense>
       );
-    case 'select': // 多选
+    case 'checkboxes': // 多选
       return (
         <Suspense
           key={`suspense-${curNodeKey}`}
           fallback={<div>Loading...</div>}
         >
-          <SelectSchema {...props} key={curNodeKey} />
+          <CheckboxSchema {...props} key={curNodeKey} />
         </Suspense>
       );
     case 'input':

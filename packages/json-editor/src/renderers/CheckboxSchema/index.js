@@ -5,7 +5,7 @@ import { Checkbox, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
-class SelectSchema extends React.PureComponent {
+class CheckboxSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -116,4 +116,4 @@ export default inject((stores) => ({
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-}))(observer(SelectSchema));
+}))(observer(CheckboxSchema));

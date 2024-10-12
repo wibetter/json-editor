@@ -102,7 +102,7 @@ export const jsonSchemaData = {
         field_11: {
           type: 'array',
           title: '多选',
-          format: 'select',
+          format: 'checkboxes',
           items: {
             type: 'string',
             enum: ['a', 'b', 'c'],
@@ -274,7 +274,7 @@ export const jsonSchemaData = {
         field_29: {
           type: 'array',
           title: '多选',
-          format: 'select',
+          format: 'checkboxes',
           items: {
             type: 'string',
             enum: ['a', 'b', 'c'],

@@ -511,7 +511,7 @@ class IndexDemo extends React.PureComponent {
           'text-editor',
           'radio',
           'single-select',
-          'select',
+          'checkboxes',
           'date',
           'date-time',
           'time',
@@ -531,7 +531,7 @@ class IndexDemo extends React.PureComponent {
           'number',
           'radio',
           'single-select',
-          'select',
+          'checkboxes',
           'box-style',
         ],
         data: [

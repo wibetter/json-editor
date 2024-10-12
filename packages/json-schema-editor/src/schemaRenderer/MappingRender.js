@@ -4,7 +4,6 @@ import DataSourceSchema from '$schemaRenderer/DataSourceSchema/index';
 import DynamicDataSchema from '$schemaRenderer/DynamicDataSchema/index';
 import EventSchema from '$schemaRenderer/EventSchema/index';
 import QuantitySchema from '$schemaRenderer/QuantitySchema/index';
-import RadioSchema from '$schemaRenderer/RadioSchema/index';
 import SelectSchema from '$schemaRenderer/SelectSchema/index';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 
@@ -18,10 +17,6 @@ const MappingRender = (props) => {
     case 'func':
     case 'style':
     case 'data':
-    case 'func-schema':
-    case 'style-schema':
-    case 'data-schema':
-    case 'event-schema':
       return ObjectSchema(props);
       break;
     case 'array':
@@ -41,10 +36,8 @@ const MappingRender = (props) => {
       return QuantitySchema(props);
       break;
     case 'radio':
-      return RadioSchema(props);
-      break;
     case 'single-select': // 下拉单选
-    case 'select': // 下拉多选
+    case 'checkboxes': // 下拉多选
       return SelectSchema(props);
       break;
     default:
