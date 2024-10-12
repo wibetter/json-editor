@@ -201,6 +201,7 @@ class BaseFormSchema extends React.PureComponent {
               onDragStart={this.ignoreDragEvent}
             >
               <Select
+                showSearch
                 defaultValue={curType}
                 style={{ width: 150 }}
                 onChange={this.selectHandleChange}

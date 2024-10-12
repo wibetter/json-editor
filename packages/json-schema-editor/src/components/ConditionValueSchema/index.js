@@ -27,6 +27,7 @@ const ConditionValueSchema = (props) => {
   ) {
     return (
       <Select
+        showSearch
         defaultValue={conditionRule.conditionValue}
         style={{ width: 150 }}
         onChange={(conditionValue) => {

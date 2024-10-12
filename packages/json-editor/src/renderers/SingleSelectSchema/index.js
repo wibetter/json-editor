@@ -98,6 +98,7 @@ class SingleSelectSchema extends React.PureComponent {
         <div className="content-item">
           <div className="form-item-box single-select-box">
             <Select
+              showSearch
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}

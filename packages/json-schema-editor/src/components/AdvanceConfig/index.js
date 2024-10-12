@@ -645,6 +645,7 @@ class AdvanceConfig extends React.PureComponent {
               <div className="condition-title">隐藏条件：</div>
               <div className="condition-prop">
                 <Select
+                  showSearch
                   defaultValue={
                     hiddenRule.conditionProp
                       ? hiddenRule.conditionProp.keyRoute
