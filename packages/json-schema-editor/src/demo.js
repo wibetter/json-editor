@@ -29,7 +29,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               legendAlign: {
                 title: '图例位置',
-                type: 'single-select',
+                type: 'select',
                 items: {
                   type: 'string',
                   enum: ['top', 'right', 'bottom', 'left'],
@@ -203,7 +203,7 @@ class IndexDemo extends React.PureComponent {
               justifyContent: {
                 type: 'string',
                 title: '主轴对齐',
-                format: 'single-select',
+                format: 'select',
                 items: {
                   type: 'string',
                   enum: [
@@ -228,7 +228,7 @@ class IndexDemo extends React.PureComponent {
               alignItems: {
                 type: 'string',
                 title: '交叉轴',
-                format: 'single-select',
+                format: 'select',
                 items: {
                   type: 'string',
                   enum: [
@@ -297,7 +297,7 @@ class IndexDemo extends React.PureComponent {
               borderStyle: {
                 type: 'string',
                 title: '边框样式',
-                format: 'single-select',
+                format: 'select',
                 items: {
                   type: 'string',
                   enum: [
@@ -510,7 +510,7 @@ class IndexDemo extends React.PureComponent {
           'textarea',
           'text-editor',
           'radio',
-          'single-select',
+          'select',
           'checkboxes',
           'date',
           'date-time',
@@ -530,7 +530,7 @@ class IndexDemo extends React.PureComponent {
           'boolean',
           'number',
           'radio',
-          'single-select',
+          'select',
           'checkboxes',
           'box-style',
         ],

@@ -53,9 +53,7 @@ const CodeAreaFormSchema = React.lazy(
 const HtmlAreaFormSchema = React.lazy(
   () => import('$renderers/HtmlAreaFormSchema/index'),
 );
-const SingleSelectSchema = React.lazy(
-  () => import('$renderers/SingleSelectSchema/index'),
-);
+const SelectSchema = React.lazy(() => import('$renderers/SelectSchema/index'));
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRenderV2 = (props) => {
@@ -165,13 +163,13 @@ const MappingRenderV2 = (props) => {
           <RadioSchema {...props} key={curNodeKey} />
         </Suspense>
       );
-    case 'single-select':
+    case 'select':
       return (
         <Suspense
           key={`suspense-${curNodeKey}`}
           fallback={<div>Loading...</div>}
         >
-          <SingleSelectSchema {...props} key={curNodeKey} />
+          <SelectSchema {...props} key={curNodeKey} />
         </Suspense>
       );
     case 'checkboxes': // 多选

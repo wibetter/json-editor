@@ -165,7 +165,7 @@ export function oldSchemaToNewSchema(oldSchema) {
   if (
     newJSONSchema.type === 'radio' ||
     newJSONSchema.type === 'checkboxes' ||
-    newJSONSchema.type === 'single-select'
+    newJSONSchema.type === 'select'
   ) {
     if (
       newJSONSchema.items &&

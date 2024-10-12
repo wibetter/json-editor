@@ -23,7 +23,7 @@ const ConditionValueSchema = (props) => {
   if (
     conditionRule.conditionProp &&
     (conditionRule.conditionProp.type === 'radio' ||
-      conditionRule.conditionProp.type === 'single-select')
+      conditionRule.conditionProp.type === 'select')
   ) {
     return (
       <Select

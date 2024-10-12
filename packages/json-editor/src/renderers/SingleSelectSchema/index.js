@@ -11,7 +11,7 @@ import './index.scss';
 /**
  * select下拉单选类型
  */
-class SingleSelectSchema extends React.PureComponent {
+class SelectSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -96,7 +96,7 @@ class SingleSelectSchema extends React.PureComponent {
           )}
         </div>
         <div className="content-item">
-          <div className="form-item-box single-select-box">
+          <div className="form-item-box select-box">
             <Select
               showSearch
               style={{ display: 'inline-block' }}
@@ -127,4 +127,4 @@ export default inject((stores) => ({
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-}))(observer(SingleSelectSchema));
+}))(observer(SelectSchema));

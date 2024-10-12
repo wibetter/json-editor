@@ -12,7 +12,7 @@ export const KeyWordList = [
   'textarea',
   'text-editor',
   'radio',
-  'single-select',
+  'select',
   'checkboxes',
   'date',
   'date-time',

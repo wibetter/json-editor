@@ -36,7 +36,7 @@ const MappingRender = (props) => {
       return QuantitySchema(props);
       break;
     case 'radio':
-    case 'single-select': // 下拉单选
+    case 'select': // 下拉单选
     case 'checkboxes': // 下拉多选
       return SelectSchema(props);
       break;

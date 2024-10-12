@@ -29,7 +29,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               legendAlign: {
                 title: '图例位置',
-                type: 'single-select',
+                type: 'select',
                 items: {
                   type: 'string',
                   enum: ['top', 'right', 'bottom', 'left'],
@@ -81,7 +81,7 @@ class IndexDemo extends React.PureComponent {
             properties: {
               legendAlign: {
                 title: '图例位置',
-                type: 'single-select',
+                type: 'select',
                 items: {
                   type: 'string',
                   enum: ['top', 'right', 'bottom', 'left'],
@@ -421,7 +421,7 @@ class IndexDemo extends React.PureComponent {
           'textarea',
           'text-editor',
           'radio',
-          'single-select',
+          'select',
           'checkboxes',
           'date',
           'date-time',
@@ -441,7 +441,7 @@ class IndexDemo extends React.PureComponent {
           'boolean',
           'number',
           'radio',
-          'single-select',
+          'select',
           'checkboxes',
           'box-style',
         ],
@@ -478,7 +478,7 @@ class IndexDemo extends React.PureComponent {
           'textarea',
           'text-editor',
           'radio',
-          'single-select',
+          'select',
           'checkboxes',
           'date',
           'date-time',

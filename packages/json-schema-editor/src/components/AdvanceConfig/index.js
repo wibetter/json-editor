@@ -69,7 +69,7 @@ class AdvanceConfig extends React.PureComponent {
         />
       );
     }
-    if (curType === 'radio' || curType === 'single-select') {
+    if (curType === 'radio' || curType === 'select') {
       const options = targetJsonSchema.options;
       return (
         <Radio.Group
