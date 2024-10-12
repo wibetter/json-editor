@@ -68,8 +68,32 @@ class AdvanceConfig extends React.PureComponent {
           }}
         />
       );
-    }
-    if (curType === 'radio' || curType === 'select') {
+    } else if (
+      curType === 'checkboxes' ||
+      (curType === 'select' && targetJsonSchema.multiple)
+    ) {
+      const options = targetJsonSchema.options;
+      return (
+        <Checkbox.Group
+          style={{ display: 'inline-block' }}
+          onChange={(checkedValue) => {
+            this.handleValueChange('default', checkedValue);
+          }}
+          defaultValue={targetJsonSchema.default}
+        >
+          {options &&
+            options.length > 0 &&
+            options.map((item, optionIndex) => {
+              const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
+              return (
+                <Checkbox value={item.value} key={optionNodeKey}>
+                  {item.label || item.name}
+                </Checkbox>
+              );
+            })}
+        </Checkbox.Group>
+      );
+    } else if (curType === 'radio' || curType === 'select') {
       const options = targetJsonSchema.options;
       return (
         <Radio.Group
@@ -93,31 +117,7 @@ class AdvanceConfig extends React.PureComponent {
             })}
         </Radio.Group>
       );
-    }
-    if (curType === 'checkboxes') {
-      const options = targetJsonSchema.options;
-      return (
-        <Checkbox.Group
-          style={{ display: 'inline-block' }}
-          onChange={(checkedValue) => {
-            this.handleValueChange('default', checkedValue);
-          }}
-          defaultValue={targetJsonSchema.default}
-        >
-          {options &&
-            options.length > 0 &&
-            options.map((item, optionIndex) => {
-              const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
-              return (
-                <Checkbox value={item.value} key={optionNodeKey}>
-                  {item.label || item.name}
-                </Checkbox>
-              );
-            })}
-        </Checkbox.Group>
-      );
-    }
-    if (curType === 'color') {
+    } else if (curType === 'color') {
       return (
         <Input
           style={{ display: 'inline-block' }}
@@ -130,8 +130,7 @@ class AdvanceConfig extends React.PureComponent {
           }}
         />
       );
-    }
-    if (
+    } else if (
       curType === 'textarea' ||
       curType === 'codearea' ||
       curType === 'htmlarea' ||
@@ -322,6 +321,37 @@ class AdvanceConfig extends React.PureComponent {
                   unCheckedChildren="否"
                   onChange={(checked) => {
                     this.curConditionPropChange(checked, curKeyRoute);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {curType === 'select' && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-selectConfig`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'开启多选后，select下拉列表支持选择多个选项。'}
+                placement="top"
+              >
+                <span className="title-text">支持多选</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div
+                className="form-item-box"
+                key={`${nodeKey}-selectConfig-multiple`}
+              >
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.multiple}
+                  checkedChildren="多选"
+                  unCheckedChildren="单选"
+                  onChange={(checked) => {
+                    this.handleValueChange('multiple', checked);
                   }}
                 />
               </div>
@@ -531,8 +561,8 @@ class AdvanceConfig extends React.PureComponent {
               key={`${nodeKey}-minimum-child`}
             >
               <div className="element-title">
-                <Tooltip title={'用于控制最少应设置的选项个数'} placement="top">
-                  <span className="title-text">最少选项</span>
+                <Tooltip title={'用于控制最少应选择的选项个数'} placement="top">
+                  <span className="title-text">限制最少选择数</span>
                 </Tooltip>
               </div>
               <div className="content-item">
@@ -552,8 +582,8 @@ class AdvanceConfig extends React.PureComponent {
               key={`${nodeKey}-maximum-child`}
             >
               <div className="element-title">
-                <Tooltip title={'用于控制最多可设置的选项个数'} placement="top">
-                  <span className="title-text">最多选项</span>
+                <Tooltip title={'用于控制最多可选择的选项个数'} placement="top">
+                  <span className="title-text">限制最多选择数</span>
                 </Tooltip>
               </div>
               <div className="content-item">

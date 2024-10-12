@@ -56,7 +56,6 @@ class SelectSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
-
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     return (
@@ -99,6 +98,7 @@ class SelectSchema extends React.PureComponent {
           <div className="form-item-box select-box">
             <Select
               showSearch
+              mode={targetJsonSchema.multiple ? 'multiple' : undefined}
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
