@@ -115,10 +115,26 @@ class IndexDemo extends React.PureComponent {
                     description: '',
                   },
                   quantity: {
-                    type: 'typeSelect',
+                    type: 'select',
                     default: 'px',
-                    enum: ['px', 'rem', 'em', '%'],
-                    enumextra: ['px', 'rem', 'em', '%'],
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
                     title: '单位类型',
                   },
                 },
@@ -137,10 +153,26 @@ class IndexDemo extends React.PureComponent {
                     description: '',
                   },
                   quantity: {
-                    type: 'typeSelect',
+                    type: 'select',
                     default: 'px',
-                    enum: ['px', 'rem', 'em', '%'],
-                    enumextra: ['px', 'rem', 'em', '%'],
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
                     title: '单位类型',
                   },
                 },
@@ -159,10 +191,26 @@ class IndexDemo extends React.PureComponent {
                     description: '',
                   },
                   quantity: {
-                    type: 'typeSelect',
+                    type: 'select',
                     default: 'px',
-                    enum: ['px', 'rem', 'em', '%'],
-                    enumextra: ['px', 'rem', 'em', '%'],
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
                     title: '单位类型',
                   },
                 },
@@ -179,10 +227,26 @@ class IndexDemo extends React.PureComponent {
                     description: '',
                   },
                   quantity: {
-                    type: 'typeSelect',
+                    type: 'select',
                     default: 'px',
-                    enum: ['px', 'rem', 'em', '%'],
-                    enumextra: ['px', 'rem', 'em', '%'],
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
                     title: '单位类型',
                   },
                 },
@@ -202,9 +266,17 @@ class IndexDemo extends React.PureComponent {
                 properties: {
                   type: {
                     default: 'local',
-                    type: 'typeSelect',
-                    enum: ['local', 'remote'],
-                    enumextra: ['本地数据', '接口数据'],
+                    type: 'select',
+                    options: [
+                      {
+                        label: '本地数据',
+                        value: 'local',
+                      },
+                      {
+                        label: '接口数据',
+                        value: 'remote',
+                      },
+                    ],
                     title: '数据类型',
                   },
                   config: {
@@ -215,9 +287,17 @@ class IndexDemo extends React.PureComponent {
                     properties: {
                       dataName: {
                         default: 'local',
-                        type: 'typeSelect',
-                        enum: ['local', 'remote'],
-                        enumextra: ['本地数据', '接口数据'],
+                        type: 'select',
+                        options: [
+                          {
+                            label: '本地数据',
+                            value: 'local',
+                          },
+                          {
+                            label: '接口数据',
+                            value: 'remote',
+                          },
+                        ],
                         title: '数据类型',
                       },
                       body: {
@@ -417,87 +497,7 @@ class IndexDemo extends React.PureComponent {
       jsonView: false,
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
-      curTypeList: {
-        func: [
-          'input',
-          'boolean',
-          'number',
-          'color',
-          'url',
-          'textarea',
-          'text-editor',
-          'radio',
-          'select',
-          'checkboxes',
-          'date',
-          'date-time',
-          'time',
-          'quantity',
-          'json',
-          'codearea',
-          'htmlarea',
-          'event',
-          'array',
-          'object',
-        ],
-        style: [
-          'color',
-          'quantity',
-          'input',
-          'boolean',
-          'number',
-          'radio',
-          'select',
-          'checkboxes',
-          'box-style',
-        ],
-        data: [
-          'json',
-          'codearea',
-          'htmlarea',
-          'text-editor',
-          'dynamic-data',
-          'datasource',
-          'object',
-          'array',
-        ],
-        'event-schema': ['event'],
-        object: [
-          'input',
-          'boolean',
-          'color',
-          'date',
-          'date-time',
-          'time',
-          'url',
-          'textarea',
-          'number',
-          'object',
-          'array',
-        ],
-        all: [
-          'input',
-          'boolean',
-          'number',
-          'color',
-          'url',
-          'textarea',
-          'text-editor',
-          'radio',
-          'select',
-          'checkboxes',
-          'date',
-          'date-time',
-          'time',
-          'quantity',
-          'json',
-          'codearea',
-          'htmlarea',
-          'event',
-          'array',
-          'object',
-        ],
-      },
+      curTypeList: {},
     };
   }
 

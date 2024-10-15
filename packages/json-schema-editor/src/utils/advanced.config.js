@@ -1,38 +1,4 @@
-import { getExpectType } from '@wibetter/json-utils';
-/** 11种基础类型 */
-const BASE_TYPE = [
-  'input',
-  'boolean',
-  'number',
-  'color',
-  'url',
-  'textarea',
-  'radio',
-  'select',
-  'checkboxes',
-  'date',
-  'date-time',
-  'time',
-];
-
-/** 10种高级类型 */
-const HIGH_TYPE = [
-  'quantity',
-  'box-style',
-  'text-editor',
-  'json',
-  'codearea',
-  'htmlarea',
-  'text-editor',
-  'datasource',
-  'dynamic-data',
-  'event',
-  'array',
-  'object',
-];
-
-/** 所有类型，包含基础类型和高级类型 */
-const ALL_TYPE = [...BASE_TYPE, ...HIGH_TYPE];
+import { BASE_TYPE, HIGH_TYPE, ALL_TYPE } from '../data/TypeList';
 
 /** 默认值（default）
  *  根据type判断是否显示默认配置项
@@ -45,7 +11,7 @@ export function isNeedDefaultOption(curType) {
 }
 
 /** 输入提示（placeholder）
- *  根据format判断是否显示输入提示配置项
+ *  根据 type 判断是否显示输入提示配置项
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
 export function isNeedPlaceholderOption(curType) {
@@ -96,7 +62,6 @@ export function isNeedReadOnlyOption(curType) {
     'json',
     'codearea',
     'htmlarea',
-    'text-editor',
   ];
   return supportedTypeList.indexOf(curType) > -1;
 }
@@ -113,7 +78,6 @@ export function isNeedIsRequiredOption(curType) {
     'json',
     'codearea',
     'htmlarea',
-    'text-editor',
   ];
   return supportedTypeList.indexOf(curType) > -1;
 }

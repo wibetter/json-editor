@@ -2666,10 +2666,7 @@
                     try {
                       l = JSON.parse(a);
                     } catch (e) {
-                      console.log(
-                        '当前数据源的请求参数对象不是一个合格的json数据',
-                      ),
-                        (l = {});
+                      console.log('当前数据源的请求参数格式异常'), (l = {});
                     }
                   i = (0, G.json2treeData)(l);
                 }
@@ -2782,10 +2779,7 @@
                   try {
                     p = JSON.parse(p);
                   } catch (e) {
-                    console.log(
-                      '当前数据源的请求参数对象不是一个合格的json数据',
-                    ),
-                      (p = {});
+                    console.log('当前数据源的请求参数格式异常'), (p = {});
                   }
                 var m = l[s] || {};
                 return P.createElement(
@@ -3099,10 +3093,7 @@
                   try {
                     f = JSON.parse(f);
                   } catch (e) {
-                    console.log(
-                      '当前数据源的请求参数对象不是一个合格的json数据',
-                    ),
-                      (f = {});
+                    console.log('当前数据源的请求参数格式异常'), (f = {});
                   }
                 var E = l[S] || {},
                   b = o.properties.data || {};
@@ -3578,11 +3569,10 @@
                   r = e.pageScreen,
                   o = (0, e.getJSONDataByKeyRoute)(t),
                   i = n.readOnly || !1,
-                  l = n.propertyOrder[0],
-                  c = n.properties[l],
-                  s = o.quantity,
-                  u = P.createElement('span', null, 'percent' === s ? '%' : s),
-                  p = (0, Y.y8)(n.type);
+                  l = n.properties.unit,
+                  c = o.quantity,
+                  s = P.createElement('span', null, 'percent' === c ? '%' : c),
+                  u = (0, Y.y8)(n.type);
                 return P.createElement(
                   'div',
                   {
@@ -3590,7 +3580,7 @@
                       'wideScreen' === r
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp ' +
-                          (p ? 'two-col-element-warp' : ''),
+                          (u ? 'two-col-element-warp' : ''),
                     key: a,
                     id: a,
                   },
@@ -3610,7 +3600,7 @@
                         {
                           className: 'title-text',
                           title:
-                            (p || 'wideScreen' === r) &&
+                            (u || 'wideScreen' === r) &&
                             n.title.length > (i ? 4 : 6)
                               ? n.title
                               : '',
@@ -3627,14 +3617,14 @@
                       { className: 'form-item-box' },
                       P.createElement(Q.Input, {
                         style: { display: 'inline-block', width: '120px' },
-                        addonAfter: u,
+                        addonAfter: s,
                         disabled: i,
                         placeholder:
-                          c.placeholder ||
+                          l.placeholder ||
                           n.placeholder ||
-                          '请输入' + c.title ||
+                          '请输入' + l.title ||
                           0,
-                        defaultValue: o.unit || c.default,
+                        defaultValue: o.unit || l.default,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
                       }),

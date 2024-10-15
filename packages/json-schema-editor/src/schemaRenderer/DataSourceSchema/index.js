@@ -3,7 +3,7 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 
 import BaseFormSchema from '$components/BaseFormSchema/index';
-import TypeSelectFormSchema from '$components/TypeSelectFormSchema/index';
+import SelectFormSchema from '$components/SelectFormSchema/index';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
 const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
@@ -11,18 +11,16 @@ const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
 // 选择不同的数据源类型，则展示不同的data内容(均为不可编辑状态)
 const typeSelectData = {
   local: {
-    type: 'string',
+    type: 'json',
     title: '本地json数据',
-    format: 'json',
     default: '{}', // 默认值
     placeholder: '请输入静态json数据', // 输入提示
     isRequired: true,
     description: '用于设置本地的静态json数据',
   },
   remote: {
-    type: 'string',
+    type: 'url',
     title: '远程json数据',
-    format: 'url',
     default: 'http://xxx', // 默认值
     placeholder: '请输入远程json数据源地址', // 输入提示
     isRequired: true,
@@ -31,7 +29,7 @@ const typeSelectData = {
 };
 
 /** 渲染dataSelect在的内容 */
-const getTypeSelectCont = (params) => <TypeSelectFormSchema {...params} />;
+const getTypeSelectCont = (params) => <SelectFormSchema {...params} />;
 
 /** DataSource类型渲染组件 */
 const DataSourceSchema = (props) => {

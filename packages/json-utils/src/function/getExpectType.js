@@ -17,7 +17,7 @@ const valExpectType = {
   json: 'string',
   number: 'number',
   object: 'object',
-  quantity: 'string',
+  quantity: 'object',
   radio: 'string',
   select: 'array',
   select: 'string',

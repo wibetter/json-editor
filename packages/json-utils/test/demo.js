@@ -97,11 +97,26 @@ const jsonSchema = {
               description: '',
             },
             quantity: {
-              type: 'string',
-              format: 'typeSelect',
+              type: 'select',
               default: 'px',
-              enum: ['px', 'rem', 'em', '%'],
-              enumextra: ['px', 'rem', 'em', '%'],
+              options: [
+                {
+                  label: 'px',
+                  value: 'px',
+                },
+                {
+                  label: 'rem',
+                  value: 'rem',
+                },
+                {
+                  label: 'em',
+                  value: 'em',
+                },
+                {
+                  label: '%',
+                  value: '%',
+                },
+              ],
               title: '单位类型',
             },
           },
@@ -149,11 +164,26 @@ const jsonSchema = {
           title: '事件',
           properties: {
             type: {
-              type: 'string',
+              type: 'select',
               default: 'emit',
-              format: 'typeSelect',
-              enum: ['on', 'emit'],
-              enumextra: ['on', 'emit'],
+              options: [
+                {
+                  label: 'px',
+                  value: 'px',
+                },
+                {
+                  label: 'rem',
+                  value: 'rem',
+                },
+                {
+                  label: 'em',
+                  value: 'em',
+                },
+                {
+                  label: '%',
+                  value: '%',
+                },
+              ],
               title: '事件类型',
             },
             trigger: {
@@ -181,11 +211,18 @@ const jsonSchema = {
           title: '数据源',
           properties: {
             type: {
-              type: 'string',
+              type: 'select',
               default: 'local',
-              format: 'typeSelect',
-              enum: ['local', 'remote'],
-              enumextra: ['local', 'remote'],
+              options: [
+                {
+                  label: '本地数据',
+                  value: 'local',
+                },
+                {
+                  label: '接口数据',
+                  value: 'remote',
+                },
+              ],
               title: '数据源类型',
             },
             data: {

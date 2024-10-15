@@ -20,10 +20,26 @@ export const initQuantityData = {
       description: '', // 字段项的说明和描述
     },
     quantity: {
-      type: 'typeSelect', // 选择列表
+      type: 'select', // 选择列表
       default: 'px',
-      enum: ['px', 'rem', 'em', '%'],
-      enumextra: ['px', 'rem', 'em', '%'],
+      options: [
+        {
+          label: 'px',
+          value: 'px',
+        },
+        {
+          label: 'rem',
+          value: 'rem',
+        },
+        {
+          label: 'em',
+          value: 'em',
+        },
+        {
+          label: '%',
+          value: '%',
+        },
+      ],
       title: '单位类型',
     },
   },

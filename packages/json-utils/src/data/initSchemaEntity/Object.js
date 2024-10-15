@@ -13,9 +13,8 @@ export const initObjectData = {
   description: '', // 字段项的说明和描述
   properties: {
     a: {
-      type: 'string',
-      title: '单文本框',
       type: 'input',
+      title: '单文本框',
       default: '', // 默认值
       description: '', // 字段项的说明和描述
       placeholder: '', // 输入提示

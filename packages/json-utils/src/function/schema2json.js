@@ -8,7 +8,10 @@
 import { hasProperties } from '$utils/index';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
-import { objClone } from '../utils';
+import { objClone } from '$utils';
+import { getDefaultOptionVal } from '$utils/jsonSchema';
+import { getExpectType } from '$function/getExpectType';
+
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
@@ -29,42 +32,41 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
   let curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
   switch (jsonSchema.type) {
-    case 'string':
-      if (jsonSchema.type === 'typeSelect') {
-        // 选择类型的字段直接使用schema中的数值
-        curJsonData = jsonSchema.default;
-      } else if (jsonSchema.type === 'color') {
-        if (curValue === '#fff' || curValue === '#FFF') {
-          curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
-        }
-        curJsonData = curValue || '#ffffff';
-      } else if (jsonSchema.type === 'json') {
-        /** 转成json类型进行特殊处理
-         * 需要保证json类型的数值是json对象 */
-        let curJsonItemData = ''; // 字符串类型的json数据
-        // 判断当前jsonData是否是对象类型
-        if (isObject(jsonData) || isArray(jsonData)) {
-          curJsonItemData = jsonData;
-        } else if (isFunction(jsonData) || jsonData === '') {
-          // 函数类型自动替换成默认的json数据"{}"
-          curJsonItemData = {};
-        } else {
-          /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
-           * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
-           */
-          try {
-            // 进行格式化（检查是否是合格的json数据）
-            curJsonItemData = JSON.parse(jsonData);
-          } catch (err) {
-            // 不合格的json数据自动转换成一个默认的json数据"{}"
-            curJsonItemData = {};
-          }
-        }
-        curJsonData = curJsonItemData;
-      } else {
-        // 其他类型允许出现空字符串
-        curJsonData = hasProperties(curValue) ? curValue : '';
+    case 'select':
+    case 'radio':
+      curJsonData = curValue || getDefaultOptionVal(jsonSchema);
+      break;
+    case 'checkboxes':
+      curJsonData = curValue || getDefaultOptionVal(jsonSchema, true);
+      break;
+    case 'color':
+      if (curValue === '#fff' || curValue === '#FFF') {
+        curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
       }
+      curJsonData = curValue || getDefaultOptionVal(jsonSchema, true);
+      break;
+    case 'json':
+      /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */
+      let curJsonItemData = ''; // 字符串类型的json数据
+      // 判断当前jsonData是否是对象类型
+      if (isObject(curValue) || isArray(curValue)) {
+        curJsonItemData = curValue;
+      } else if (isFunction(curValue) || curValue === '') {
+        // 函数类型自动替换成默认的json数据"{}"
+        curJsonItemData = {};
+      } else {
+        /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
+         * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
+         */
+        try {
+          // 进行格式化（检查是否是合格的json数据）
+          curJsonItemData = JSON.parse(curValue);
+        } catch (err) {
+          // 不合格的json数据自动转换成一个默认的json数据"{}"
+          curJsonItemData = {};
+        }
+      }
+      curJsonData = curJsonItemData;
       break;
     case 'boolean':
       curJsonData = hasProperties(curValue) ? curValue : false;
@@ -87,7 +89,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
 function objectSchema2JsonData(jsonSchema, jsonData) {
   let curJsonData = {};
   const curType = jsonSchema.type;
-  if (isObject(jsonSchema) && jsonSchema.type === 'object') {
+  if (isObject(jsonSchema) && getExpectType(jsonSchema.type) === 'object') {
     const jsonItem = jsonSchema;
     let oldValue = jsonData;
     if (
@@ -208,7 +210,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       curPropertyOrder.map((jsonKey) => {
         const curJsonItem = jsonSchema.properties[jsonKey];
         const curOldValue = jsonData && jsonData[jsonKey];
-        switch (curJsonItem.type) {
+        switch (getExpectType(curJsonItem.type)) {
           case 'array':
             curJsonData[jsonKey] = arraySchema2JsonData(
               curJsonItem,
@@ -243,7 +245,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
 function arraySchema2JsonData(jsonSchema, jsonData) {
   let curJsonData = [];
   // 判断是否是数组类型
-  if (jsonSchema && jsonSchema.type === 'array') {
+  if (jsonSchema && getExpectType(jsonSchema.type) === 'array') {
     // Array数据对象类型
     let oldValue = jsonData;
     if (
@@ -257,7 +259,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
     const curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
 
-    if (jsonSchema.type === 'array') {
+    if (getExpectType(jsonSchema.type) === 'array') {
       if (isArray(curValue)) {
         curValue.map((arrItem) => {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
@@ -280,9 +282,9 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
  * */
 export function schema2json(jsonSchema, jsonData) {
   let curJsonData = {};
-  if (jsonSchema.type === 'object') {
+  if (getExpectType(jsonSchema.type) === 'object') {
     curJsonData = objectSchema2JsonData(jsonSchema, jsonData);
-  } else if (jsonSchema.type === 'array') {
+  } else if (getExpectType(jsonSchema.type) === 'array') {
     curJsonData = arraySchema2JsonData(jsonSchema, jsonData);
   } else {
     curJsonData = baseSchema2JsonData(jsonSchema, jsonData);

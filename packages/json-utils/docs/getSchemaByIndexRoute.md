@@ -33,11 +33,16 @@ const jsonSchema = {
       placeholder: '',
       properties: {
         type: {
-          type: 'string',
+          type: 'select',
           default: 'local',
-          format: 'typeSelect',
-          enum: ['local', 'remote'],
-          enumextra: ['local', 'remote'],
+          options: [{
+            label: '本地数据',
+            value: 'local',
+          },
+          {
+            label: '接口数据',
+            value: 'remote',
+          }],
           title: '数据源类型',
         },
         data: {
@@ -89,11 +94,16 @@ const jsonSchema = {
       placeholder: '',
       properties: {
         type: {
-          type: 'string',
+          type: 'select',
           default: 'local',
-          format: 'typeSelect',
-          enum: ['local', 'remote'],
-          enumextra: ['local', 'remote'],
+          options: [{
+            label: '本地数据',
+            value: 'local',
+          },
+          {
+            label: '接口数据',
+            value: 'remote',
+          }],
           title: '数据源类型',
         },
         data: {
@@ -121,8 +131,7 @@ const curSchema = getSchemaByIndexRoute('1-2', jsonSchema);
 ***输出的curSchema数据***
 ```json
 {
-  "type": "string",
-  "format": "codearea",
+  "type": "codearea",
   "default": "return data;",
   "title": "过滤器"
 }

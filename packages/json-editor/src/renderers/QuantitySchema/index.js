@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
-import { Input, Tooltip } from 'antd';
+import { Input, InputNumber, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 
@@ -53,10 +53,11 @@ class QuantitySchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     /** 获取quantity中的数值对象（默认第一个就是数值对象） */
-    const unitJsonKey = targetJsonSchema.propertyOrder[0];
-    const unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
-    const unitText = curJsonData.quantity;
-    const unitAfter = <span>{unitText === 'percent' ? '%' : unitText}</span>;
+    const unitJsonSchema = targetJsonSchema.properties['unit'];
+    const curQuantity = curJsonData.quantity;
+    const unitSuffix = (
+      <span>{curQuantity === 'percent' ? '%' : curQuantity}</span>
+    );
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     return (
@@ -91,9 +92,9 @@ class QuantitySchema extends React.PureComponent {
         </div>
         <div className="content-item">
           <div className="form-item-box">
-            <Input
+            <InputNumber
               style={{ display: 'inline-block', width: '120px' }}
-              addonAfter={unitAfter}
+              addonAfter={unitSuffix}
               disabled={readOnly}
               placeholder={
                 unitJsonSchema.placeholder ||

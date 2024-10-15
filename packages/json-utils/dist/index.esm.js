@@ -72,7 +72,7 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
         curIndex === '0' &&
         (curJsonSchemaObj.type === 'array' ||
           curJsonSchemaObj.type === 'radio' ||
-          curJsonSchemaObj.type === 'single-select' ||
+          curJsonSchemaObj.type === 'select' ||
           curJsonSchemaObj.type === 'checkboxes') &&
         (curJsonSchemaObj.options || curJsonSchemaObj.items)
       ) {
@@ -404,7 +404,7 @@ var initRadioData = {
   description: '',
 };
 
-/* SingleSelect下拉类型字段
+/* Select下拉类型字段
  * 【字段属性说明】
  *  title：字段项的label值
  *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
@@ -413,8 +413,8 @@ var initRadioData = {
  *  description：字段说明&描述
  *  readOnly：字段项可设置是否可编辑
  * */
-var initSingleSelectData = {
-  type: 'single-select',
+var initSelectData = {
+  type: 'select',
   title: '下拉单选',
   options: [
     {
@@ -612,7 +612,6 @@ var initArrayData = {
   },
 };
 
-var _a;
 /** Object字段项
  * 【字段属性说明】
  *  title：字段项的label值
@@ -628,16 +627,15 @@ var initObjectData = {
   description: '',
   // 字段项的说明和描述
   properties: {
-    a:
-      ((_a = {
-        type: 'string',
-        title: '单文本框',
-      }),
-      (_a['type'] = 'input'),
-      (_a.default = ''),
-      (_a.description = ''),
-      (_a.placeholder = ''),
-      _a),
+    a: {
+      type: 'input',
+      title: '单文本框',
+      default: '',
+      // 默认值
+      description: '',
+      // 字段项的说明和描述
+      placeholder: '', // 输入提示
+    },
   },
   propertyOrder: ['a'],
 };
@@ -688,11 +686,27 @@ var initQuantityData = {
       description: '', // 字段项的说明和描述
     },
     quantity: {
-      type: 'typeSelect',
+      type: 'select',
       // 选择列表
       default: 'px',
-      enum: ['px', 'rem', 'em', '%'],
-      enumextra: ['px', 'rem', 'em', '%'],
+      options: [
+        {
+          label: 'px',
+          value: 'px',
+        },
+        {
+          label: 'rem',
+          value: 'rem',
+        },
+        {
+          label: 'em',
+          value: 'em',
+        },
+        {
+          label: '%',
+          value: '%',
+        },
+      ],
       title: '单位类型',
     },
   },
@@ -714,17 +728,33 @@ var initBoxStyleData = {
   properties: {
     unit: {
       title: '单位数值',
-      type: 'string',
+      type: 'input',
       default: '0',
       // 默认值为'0'：'0px 0px 0px 0px'；为'5px': '5px 5px 5px 5px'
       description: '', // 字段项的说明和描述
     },
     quantity: {
-      type: 'typeSelect',
+      type: 'select',
       // 选择列表
       default: 'px',
-      enum: ['px', 'rem', 'em', '%'],
-      enumextra: ['px', 'rem', 'em', '%'],
+      options: [
+        {
+          label: 'px',
+          value: 'px',
+        },
+        {
+          label: 'rem',
+          value: 'rem',
+        },
+        {
+          label: 'em',
+          value: 'em',
+        },
+        {
+          label: '%',
+          value: '%',
+        },
+      ],
       title: '单位类型',
     },
   },
@@ -806,9 +836,17 @@ var initEventData = {
   properties: {
     type: {
       default: 'emit',
-      type: 'typeSelect',
-      enum: ['on', 'emit'],
-      enumextra: ['on', 'emit'],
+      type: 'select',
+      options: [
+        {
+          label: 'on',
+          value: 'on',
+        },
+        {
+          label: 'emit',
+          value: 'emit',
+        },
+      ],
       title: '事件类型',
     },
     trigger: {
@@ -837,9 +875,17 @@ var initEventDataTypeON = {
   properties: {
     type: {
       default: 'on',
-      type: 'typeSelect',
-      enum: ['on', 'emit'],
-      enumextra: ['on', 'emit'],
+      type: 'select',
+      options: [
+        {
+          label: 'on',
+          value: 'on',
+        },
+        {
+          label: 'emit',
+          value: 'emit',
+        },
+      ],
       title: '事件类型',
     },
     register: {
@@ -860,7 +906,7 @@ var initEventDataTypeON = {
   propertyOrder: ['type', 'register', 'actionFunc'],
 };
 
-var _type, _data, _filter, _initDataSourceDataV;
+var _initDataSourceDataV;
 /** dataSource字段项
  * 【字段属性说明】
  *  title：字段项的label值
@@ -876,9 +922,17 @@ var initDataSourceData = {
   properties: {
     type: {
       default: 'local',
-      type: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
+      type: 'select',
+      options: [
+        {
+          label: '本地数据',
+          value: 'local',
+        },
+        {
+          label: '接口数据',
+          value: 'remote',
+        },
+      ],
       title: '数据源类型',
     },
     data: {
@@ -910,37 +964,38 @@ var initDataSourceDataV2 =
   (_initDataSourceDataV['type'] = 'datasource'),
   (_initDataSourceDataV.title = '数据源'),
   (_initDataSourceDataV.properties = {
-    type:
-      ((_type = {
-        type: 'string',
-        default: 'remote',
-      }),
-      (_type['type'] = 'typeSelect'),
-      (_type.enum = ['local', 'remote']),
-      (_type.enumextra = ['local', 'remote']),
-      (_type.title = '数据源类型'),
-      _type),
-    data:
-      ((_data = {
-        type: 'string',
-        title: '远程json数据',
-        placeholder: '请输入远程json数据源地址',
-      }),
-      (_data['type'] = 'url'),
-      (_data.default = 'http://xxx'),
-      (_data.isRequired = true),
-      (_data.description = '用于设置获取元素数据的请求地址'),
-      _data),
-    filter:
-      ((_filter = {
-        type: 'string',
-        title: '过滤器',
-      }),
-      (_filter['type'] = 'codearea'),
-      (_filter.default = '() => {}'),
-      (_filter.description = '用于定义过滤当前数据的函数'),
-      (_filter.isRequired = true),
-      _filter),
+    type: {
+      type: 'select',
+      default: 'remote',
+      options: [
+        {
+          label: '本地数据',
+          value: 'local',
+        },
+        {
+          label: '接口数据',
+          value: 'remote',
+        },
+      ],
+      title: '数据源类型',
+    },
+    data: {
+      type: 'url',
+      title: '远程json数据',
+      placeholder: '请输入远程json数据源地址',
+      // 输入提示
+      default: 'http://xxx',
+      // 默认值
+      isRequired: true,
+      description: '用于设置获取元素数据的请求地址',
+    },
+    filter: {
+      type: 'codearea',
+      title: '过滤器',
+      default: '() => {}',
+      description: '用于定义过滤当前数据的函数',
+      isRequired: true,
+    },
   }),
   (_initDataSourceDataV.propertyOrder = ['type', 'data', 'filter']),
   _initDataSourceDataV);
@@ -960,9 +1015,17 @@ var initDynamicData = {
   properties: {
     type: {
       default: 'local',
-      type: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['本地数据', '接口数据'],
+      type: 'select',
+      options: [
+        {
+          label: '本地数据',
+          value: 'local',
+        },
+        {
+          label: '接口数据',
+          value: 'remote',
+        },
+      ],
       title: '数据类型',
     },
     config: {
@@ -973,9 +1036,17 @@ var initDynamicData = {
       properties: {
         dataName: {
           default: 'local',
-          type: 'typeSelect',
-          enum: ['local', 'remote'],
-          enumextra: ['本地数据', '接口数据'],
+          type: 'select',
+          options: [
+            {
+              label: '本地数据',
+              value: 'local',
+            },
+            {
+              label: '接口数据',
+              value: 'remote',
+            },
+          ],
           title: '数据类型',
         },
         body: {
@@ -1052,7 +1123,7 @@ var TypeDataList = {
   quantity: initQuantityData,
   'box-style': initBoxStyleData,
   radio: initRadioData,
-  'single-select': initSingleSelectData,
+  select: initSelectData,
   checkboxes: initCheckboxSchema,
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
@@ -1362,7 +1433,7 @@ function objectSchema2JsonData$1(jsonSchema, analyzerResult) {
   var curAnalyzerResult = analyzerResult || {};
   if (
     isObject(jsonSchema) &&
-    jsonSchema.type === 'object' &&
+    getExpectType(jsonSchema.type) === 'object' &&
     jsonSchema.properties
   ) {
     var curPropertyOrder = [];
@@ -1449,9 +1520,7 @@ function oldSchemaToNewSchemaV1(oldSchema) {
       newJSONSchema.type === 'array' ||
       newJSONSchema.type === 'datasource' ||
       newJSONSchema.type === 'event' ||
-      newJSONSchema.type === 'object' ||
-      newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'checkboxes') &&
+      newJSONSchema.type === 'object') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -1576,9 +1645,7 @@ function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.type === 'array' ||
       newJSONSchema.type === 'datasource' ||
       newJSONSchema.type === 'event' ||
-      newJSONSchema.type === 'object' ||
-      newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'checkboxes') &&
+      newJSONSchema.type === 'object') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -1587,7 +1654,7 @@ function oldSchemaToNewSchema(oldSchema) {
   if (
     newJSONSchema.type === 'radio' ||
     newJSONSchema.type === 'checkboxes' ||
-    newJSONSchema.type === 'single-select'
+    newJSONSchema.type === 'select'
   ) {
     if (
       newJSONSchema.items &&
@@ -1625,6 +1692,258 @@ function oldSchemaToNewSchema(oldSchema) {
   return newJSONSchema;
 }
 
+var _valExpectType;
+// 内置的期望类型值
+var valExpectType =
+  ((_valExpectType = {
+    array: 'array',
+    boolean: 'boolean',
+    'box-style': 'object',
+    codearea: 'string',
+    color: 'string',
+    datasource: 'object',
+    date: 'string',
+    'date-time': 'string',
+    'dynamic-data': 'object',
+    event: 'object',
+    'func-body': 'string',
+    htmlarea: 'string',
+    image: 'string',
+    input: 'string',
+    json: 'string',
+    number: 'number',
+    object: 'object',
+    quantity: 'object',
+    radio: 'string',
+    select: 'array',
+  }),
+  (_valExpectType['select'] = 'string'),
+  (_valExpectType.textarea = 'string'),
+  (_valExpectType['text-editor'] = 'string'),
+  (_valExpectType.time = 'string'),
+  (_valExpectType.url = 'string'),
+  _valExpectType);
+
+// 根据type获取对应元素的期望类型值
+function getExpectType$1(type) {
+  return valExpectType[type] || type;
+}
+
+// 注册新的期望类型值
+function registerExpectType(type, valType) {
+  if (valExpectType[type]) {
+    console.warn(
+      '\u5F53\u524D\u5DF2\u7ECF\u5B58\u5728' +
+        type +
+        '(' +
+        valExpectType[type] +
+        ')\uFF0C\u6682\u65F6\u4E0D\u652F\u6301\u8986\u76D6\u3002',
+    );
+    return;
+  }
+  valExpectType[type] = valType;
+}
+
+/**
+ * JSONSchema(json格式)对象的通用操作方法【非响应式数据操作方法集合】
+ */
+
+/** 判断是否为空的Schema
+ * 包括 通用schema和组件配置专用的schema
+ * */
+function isEmptySchema(targetJsonSchema) {
+  var isEmpty = true;
+  if (!targetJsonSchema) {
+    return isEmpty;
+  }
+  var curType = targetJsonSchema.type;
+  if (
+    curType === 'object' &&
+    targetJsonSchema.properties &&
+    targetJsonSchema.propertyOrder &&
+    targetJsonSchema.propertyOrder.length > 0
+  ) {
+    // Object对象类型
+    isEmpty = false;
+  } else if (
+    curType === 'array' &&
+    targetJsonSchema.items &&
+    targetJsonSchema.items.properties &&
+    targetJsonSchema.items.propertyOrder &&
+    targetJsonSchema.items.propertyOrder.length > 0
+  ) {
+    // Array数组类型
+    isEmpty = false;
+  } else if (
+    (targetJsonSchema.type &&
+      targetJsonSchema.type !== 'array' &&
+      targetJsonSchema.type !== 'object') ||
+    targetJsonSchema.type
+  ) {
+    // 其他基本类型
+    isEmpty = false;
+  }
+  return isEmpty;
+}
+
+/**
+ *  判断是否是最新版的schema数据
+ *  备注：确保当前schema数据是通过@wibetter/json-schema-editor生成的
+ * */
+function isNewSchemaData(schemaData) {
+  var isNewVersion = false;
+  var lastUpdateTime = schemaData.lastUpdateTime;
+  // 从那一刻开始就认为是新版JSONSchema
+  // const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
+  var newVersionTime = new Date('2024-10-05T00:01:00.691Z').getTime();
+  if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
+    isNewVersion = true;
+  }
+  return isNewVersion;
+}
+
+/** 判断是否是容器类型元素
+ *  容器类型字段：object数值类型
+ *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
+ *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
+ * */
+function isContainerSchema(curSchema) {
+  var isContainerElem = false;
+  var valueType = getExpectType$1(curSchema.type);
+  if (valueType === 'object') {
+    isContainerElem = true;
+  }
+  return isContainerElem;
+}
+
+/** 判断是否是结构化的schema数据，
+ *  判定条件：一级schema为object类型，其所有二级schema也为object类型
+ * */
+function isStructuredSchema(jsonSchema) {
+  var isStructured = true;
+  var currentType = jsonSchema.type;
+  if (
+    currentType !== 'object' ||
+    !jsonSchema.propertyOrder ||
+    !jsonSchema.properties
+  ) {
+    isStructured = false;
+  } else {
+    jsonSchema.propertyOrder.map(function (key) {
+      /** 1. 获取当前schema对象 */
+      var curSchemaData = jsonSchema.properties[key];
+      /** 2. 判断是否是容器类型元素，如果是则禁止选中 */
+      var curType = jsonSchema.type;
+      if (
+        curType !== 'object' ||
+        !curSchemaData.propertyOrder ||
+        !curSchemaData.properties
+      ) {
+        isStructured = false;
+      }
+    });
+  }
+  return isStructured;
+}
+
+/**
+ * 判断是否是同一个父元素
+ * 备注：用于判断两个元素是否在同一个父级容器中
+ */
+function isSameParent(curIndex, targetIndex) {
+  var curIndexArr = curIndex.split('-');
+  var targetIndexArr = targetIndex.split('-');
+  curIndexArr.pop();
+  targetIndexArr.pop();
+  if (curIndexArr.join('-') === targetIndexArr.join('-')) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
+ */
+function getCurPosition(curIndex, targetIndex) {
+  var curIndexArr = curIndex.split('-');
+  var targetIndexArr = targetIndex.split('-');
+  var curPosition = 'before'; // 默认在目标元素的前面
+  // 使用短的路径进行遍历（避免空指针）
+  var forEachArr =
+    curIndexArr.length > targetIndexArr.length ? targetIndexArr : curIndexArr;
+  for (var index = 0, size = forEachArr.length; index < size; index += 1) {
+    var curIndexItem = Number(curIndexArr[index]);
+    var targetIndexItem = Number(targetIndexArr[index]);
+    if (curIndexItem > targetIndexItem) {
+      curPosition = 'after'; // 表示当前元素在目标元素的后面
+    }
+  }
+  return curPosition;
+}
+
+/**
+ * 获取父元素的路径值
+ */
+function getParentIndexRoute(curIndexRoute) {
+  var curIndexArr = curIndexRoute.split('-');
+  curIndexArr.pop();
+  return curIndexArr.join('-');
+}
+
+/**
+ * 获取下一个兄弟元素的路径值
+ */
+function getNextIndexRoute(curIndexRoute) {
+  var curIndexArr = curIndexRoute.split('-');
+  var lastIndex = curIndexArr.pop();
+  var endIndex = Number(lastIndex) + 1;
+  curIndexArr.push('' + endIndex);
+  return curIndexArr.join('-');
+}
+
+/**
+ * 获取父元素的路径值和当前index
+ */
+function getParentIndexRoute_CurIndex(curIndexRoute) {
+  var curIndexArr = curIndexRoute.split('-');
+  var curIndex = curIndexArr.pop();
+  return [curIndexArr.join('-'), curIndex];
+}
+
+/**
+ * 将当前路径值向前移动一位
+ */
+function moveForward(curIndexRoute) {
+  var curIndexArr = curIndexRoute.split('-');
+  var curIndex = curIndexArr.pop();
+  curIndexArr.push(Number(curIndex) - 1);
+  return curIndexArr.join('-');
+}
+
+/**
+ * 将当前路径值向后移动一位
+ */
+function moveBackward(curIndexRoute) {
+  var curIndexArr = curIndexRoute.split('-');
+  var curIndex = curIndexArr.pop();
+  curIndexArr.push(Number(curIndex) + 1);
+  return curIndexArr.join('-');
+}
+
+/**
+ * 获取第一个选项值
+ */
+function getDefaultOptionVal(jsonSchema, multiple) {
+  var defaultVal = '';
+  if (jsonSchema.options) {
+    defaultVal = jsonSchema.options[0].value;
+  }
+  if (multiple || jsonSchema.multiple) {
+    defaultVal = [defaultVal];
+  }
+  return defaultVal;
+}
+
 /**
  * schema2Json：根据schema数据内容生成一份对应的json数据
  * 当前包含三个转换方法：baseSchema2JsonData、objectSchema2JsonData、arraySchema2JsonData
@@ -1632,6 +1951,7 @@ function oldSchemaToNewSchema(oldSchema) {
  * jsonSchema: schema数据对象，主要根据此对象生成对应的json数据
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
+
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
@@ -1651,42 +1971,41 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
   var curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
   switch (jsonSchema.type) {
-    case 'string':
-      if (jsonSchema.type === 'typeSelect') {
-        // 选择类型的字段直接使用schema中的数值
-        curJsonData = jsonSchema.default;
-      } else if (jsonSchema.type === 'color') {
-        if (curValue === '#fff' || curValue === '#FFF') {
-          curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
-        }
-        curJsonData = curValue || '#ffffff';
-      } else if (jsonSchema.type === 'json') {
-        /** 转成json类型进行特殊处理
-         * 需要保证json类型的数值是json对象 */
-        var curJsonItemData = ''; // 字符串类型的json数据
-        // 判断当前jsonData是否是对象类型
-        if (isObject(jsonData) || isArray(jsonData)) {
-          curJsonItemData = jsonData;
-        } else if (isFunction(jsonData) || jsonData === '') {
-          // 函数类型自动替换成默认的json数据"{}"
-          curJsonItemData = {};
-        } else {
-          /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
-           * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
-           */
-          try {
-            // 进行格式化（检查是否是合格的json数据）
-            curJsonItemData = JSON.parse(jsonData);
-          } catch (err) {
-            // 不合格的json数据自动转换成一个默认的json数据"{}"
-            curJsonItemData = {};
-          }
-        }
-        curJsonData = curJsonItemData;
-      } else {
-        // 其他类型允许出现空字符串
-        curJsonData = hasProperties(curValue) ? curValue : '';
+    case 'select':
+    case 'radio':
+      curJsonData = curValue || getDefaultOptionVal(jsonSchema);
+      break;
+    case 'checkboxes':
+      curJsonData = curValue || getDefaultOptionVal(jsonSchema, true);
+      break;
+    case 'color':
+      if (curValue === '#fff' || curValue === '#FFF') {
+        curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
       }
+      curJsonData = curValue || getDefaultOptionVal(jsonSchema, true);
+      break;
+    case 'json':
+      /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */
+      var curJsonItemData = ''; // 字符串类型的json数据
+      // 判断当前jsonData是否是对象类型
+      if (isObject(curValue) || isArray(curValue)) {
+        curJsonItemData = curValue;
+      } else if (isFunction(curValue) || curValue === '') {
+        // 函数类型自动替换成默认的json数据"{}"
+        curJsonItemData = {};
+      } else {
+        /** 当前的curJsonData是一个字符串，需要判断是否可以系列化成一个json对象
+         * 如果不能系列化一个json对象，则自动转换成一个默认的json数据"{}"
+         */
+        try {
+          // 进行格式化（检查是否是合格的json数据）
+          curJsonItemData = JSON.parse(curValue);
+        } catch (err) {
+          // 不合格的json数据自动转换成一个默认的json数据"{}"
+          curJsonItemData = {};
+        }
+      }
+      curJsonData = curJsonItemData;
       break;
     case 'boolean':
       curJsonData = hasProperties(curValue) ? curValue : false;
@@ -1708,7 +2027,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
 function objectSchema2JsonData(jsonSchema, jsonData) {
   var curJsonData = {};
   var curType = jsonSchema.type;
-  if (isObject(jsonSchema) && jsonSchema.type === 'object') {
+  if (isObject(jsonSchema) && getExpectType$1(jsonSchema.type) === 'object') {
     var jsonItem = jsonSchema;
     var oldValue = jsonData;
     if (
@@ -1831,7 +2150,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       curPropertyOrder.map(function (jsonKey) {
         var curJsonItem = jsonSchema.properties[jsonKey];
         var curOldValue = jsonData && jsonData[jsonKey];
-        switch (curJsonItem.type) {
+        switch (getExpectType$1(curJsonItem.type)) {
           case 'array':
             curJsonData[jsonKey] = arraySchema2JsonData(
               curJsonItem,
@@ -1866,7 +2185,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
 function arraySchema2JsonData(jsonSchema, jsonData) {
   var curJsonData = [];
   // 判断是否是数组类型
-  if (jsonSchema && jsonSchema.type === 'array') {
+  if (jsonSchema && getExpectType$1(jsonSchema.type) === 'array') {
     // Array数据对象类型
     var oldValue = jsonData;
     if (
@@ -1879,7 +2198,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     }
     /** 旧版原有数值优先使用，其次在使用schema中定义的默认值 */
     var curValue = hasProperties(oldValue) ? oldValue : jsonSchema.default;
-    if (jsonSchema.type === 'array') {
+    if (getExpectType$1(jsonSchema.type) === 'array') {
       if (isArray(curValue)) {
         curValue.map(function (arrItem) {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
@@ -1902,9 +2221,9 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
  * */
 function schema2json(jsonSchema, jsonData) {
   var curJsonData = {};
-  if (jsonSchema.type === 'object') {
+  if (getExpectType$1(jsonSchema.type) === 'object') {
     curJsonData = objectSchema2JsonData(jsonSchema, jsonData);
-  } else if (jsonSchema.type === 'array') {
+  } else if (getExpectType$1(jsonSchema.type) === 'array') {
     curJsonData = arraySchema2JsonData(jsonSchema, jsonData);
   } else {
     curJsonData = baseSchema2JsonData(jsonSchema, jsonData);
@@ -2137,55 +2456,6 @@ function json2treeData(mockData, parentDataRoute) {
   return treeData;
 }
 
-// 内置的期望类型值
-var valExpectType = {
-  array: 'array',
-  boolean: 'boolean',
-  'box-style': 'object',
-  codearea: 'string',
-  color: 'string',
-  datasource: 'object',
-  date: 'string',
-  'date-time': 'string',
-  'dynamic-data': 'object',
-  event: 'object',
-  'func-body': 'string',
-  htmlarea: 'string',
-  image: 'string',
-  input: 'string',
-  json: 'string',
-  number: 'number',
-  object: 'object',
-  quantity: 'string',
-  radio: 'string',
-  select: 'array',
-  'single-select': 'string',
-  textarea: 'string',
-  'text-editor': 'string',
-  time: 'string',
-  url: 'string',
-};
-
-// 根据type获取对应元素的期望类型值
-function getExpectType(type) {
-  return valExpectType[type] || type;
-}
-
-// 注册新的期望类型值
-function registerExpectType(type, valType) {
-  if (valExpectType[type]) {
-    console.warn(
-      '\u5F53\u524D\u5DF2\u7ECF\u5B58\u5728' +
-        type +
-        '(' +
-        valExpectType[type] +
-        ')\uFF0C\u6682\u65F6\u4E0D\u652F\u6301\u8986\u76D6\u3002',
-    );
-    return;
-  }
-  valExpectType[type] = valType;
-}
-
 /**
  * 获取父元素的key路径值
  */
@@ -2204,192 +2474,6 @@ function getParentKeyRoute_CurKey(curKeyRoute) {
   return [curKeyArr.join('-'), curKey];
 }
 
-/**
- * JSONSchema(json格式)对象的通用操作方法【非响应式数据操作方法集合】
- */
-
-/** 判断是否为空的Schema
- * 包括 通用schema和组件配置专用的schema
- * */
-function isEmptySchema(targetJsonSchema) {
-  var isEmpty = true;
-  if (!targetJsonSchema) {
-    return isEmpty;
-  }
-  var curType = targetJsonSchema.type;
-  if (
-    curType === 'object' &&
-    targetJsonSchema.properties &&
-    targetJsonSchema.propertyOrder &&
-    targetJsonSchema.propertyOrder.length > 0
-  ) {
-    // Object对象类型
-    isEmpty = false;
-  } else if (
-    curType === 'array' &&
-    targetJsonSchema.items &&
-    targetJsonSchema.items.properties &&
-    targetJsonSchema.items.propertyOrder &&
-    targetJsonSchema.items.propertyOrder.length > 0
-  ) {
-    // Array数组类型
-    isEmpty = false;
-  } else if (
-    (targetJsonSchema.type &&
-      targetJsonSchema.type !== 'array' &&
-      targetJsonSchema.type !== 'object') ||
-    targetJsonSchema.type
-  ) {
-    // 其他基本类型
-    isEmpty = false;
-  }
-  return isEmpty;
-}
-
-/**
- *  判断是否是最新版的schema数据
- *  备注：确保当前schema数据是通过@wibetter/json-schema-editor生成的
- * */
-function isNewSchemaData(schemaData) {
-  var isNewVersion = false;
-  var lastUpdateTime = schemaData.lastUpdateTime;
-  // 从那一刻开始就认为是新版JSONSchema
-  // const newVersionTime = new Date('2020-07-29T07:30:00.691Z').getTime();
-  var newVersionTime = new Date('2024-10-05T00:01:00.691Z').getTime();
-  if (lastUpdateTime && new Date(lastUpdateTime).getTime() >= newVersionTime) {
-    isNewVersion = true;
-  }
-  return isNewVersion;
-}
-
-/** 判断是否是容器类型元素
- *  容器类型字段：object数值类型
- *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
- *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
- * */
-function isContainerSchema(curSchema) {
-  var isContainerElem = false;
-  var valueType = getExpectType(curSchema.type);
-  if (valueType === 'object') {
-    isContainerElem = true;
-  }
-  return isContainerElem;
-}
-
-/** 判断是否是结构化的schema数据，
- *  判定条件：一级schema为object类型，其所有二级schema也为object类型
- * */
-function isStructuredSchema(jsonSchema) {
-  var isStructured = true;
-  var currentType = jsonSchema.type;
-  if (
-    currentType !== 'object' ||
-    !jsonSchema.propertyOrder ||
-    !jsonSchema.properties
-  ) {
-    isStructured = false;
-  } else {
-    jsonSchema.propertyOrder.map(function (key) {
-      /** 1. 获取当前schema对象 */
-      var curSchemaData = jsonSchema.properties[key];
-      /** 2. 判断是否是容器类型元素，如果是则禁止选中 */
-      var curType = jsonSchema.type;
-      if (
-        curType !== 'object' ||
-        !curSchemaData.propertyOrder ||
-        !curSchemaData.properties
-      ) {
-        isStructured = false;
-      }
-    });
-  }
-  return isStructured;
-}
-
-/**
- * 判断是否是同一个父元素
- * 备注：用于判断两个元素是否在同一个父级容器中
- */
-function isSameParent(curIndex, targetIndex) {
-  var curIndexArr = curIndex.split('-');
-  var targetIndexArr = targetIndex.split('-');
-  curIndexArr.pop();
-  targetIndexArr.pop();
-  if (curIndexArr.join('-') === targetIndexArr.join('-')) {
-    return true;
-  }
-  return false;
-}
-
-/**
- * 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
- */
-function getCurPosition(curIndex, targetIndex) {
-  var curIndexArr = curIndex.split('-');
-  var targetIndexArr = targetIndex.split('-');
-  var curPosition = 'before'; // 默认在目标元素的前面
-  // 使用短的路径进行遍历（避免空指针）
-  var forEachArr =
-    curIndexArr.length > targetIndexArr.length ? targetIndexArr : curIndexArr;
-  for (var index = 0, size = forEachArr.length; index < size; index += 1) {
-    var curIndexItem = Number(curIndexArr[index]);
-    var targetIndexItem = Number(targetIndexArr[index]);
-    if (curIndexItem > targetIndexItem) {
-      curPosition = 'after'; // 表示当前元素在目标元素的后面
-    }
-  }
-  return curPosition;
-}
-
-/**
- * 获取父元素的路径值
- */
-function getParentIndexRoute(curIndexRoute) {
-  var curIndexArr = curIndexRoute.split('-');
-  curIndexArr.pop();
-  return curIndexArr.join('-');
-}
-
-/**
- * 获取下一个兄弟元素的路径值
- */
-function getNextIndexRoute(curIndexRoute) {
-  var curIndexArr = curIndexRoute.split('-');
-  var lastIndex = curIndexArr.pop();
-  var endIndex = Number(lastIndex) + 1;
-  curIndexArr.push('' + endIndex);
-  return curIndexArr.join('-');
-}
-
-/**
- * 获取父元素的路径值和当前index
- */
-function getParentIndexRoute_CurIndex(curIndexRoute) {
-  var curIndexArr = curIndexRoute.split('-');
-  var curIndex = curIndexArr.pop();
-  return [curIndexArr.join('-'), curIndex];
-}
-
-/**
- * 将当前路径值向前移动一位
- */
-function moveForward(curIndexRoute) {
-  var curIndexArr = curIndexRoute.split('-');
-  var curIndex = curIndexArr.pop();
-  curIndexArr.push(Number(curIndex) - 1);
-  return curIndexArr.join('-');
-}
-
-/**
- * 将当前路径值向后移动一位
- */
-function moveBackward(curIndexRoute) {
-  var curIndexArr = curIndexRoute.split('-');
-  var curIndex = curIndexArr.pop();
-  curIndexArr.push(Number(curIndex) + 1);
-  return curIndexArr.join('-');
-}
-
 // JSONSchema关键字清单
 var KeyWordList = [
   'key',
@@ -2404,7 +2488,7 @@ var KeyWordList = [
   'textarea',
   'text-editor',
   'radio',
-  'single-select',
+  'select',
   'checkboxes',
   'date',
   'date-time',
@@ -2429,7 +2513,8 @@ export {
   dataRoute2dataPath,
   dynamicDataAnalyzer,
   getCurPosition,
-  getExpectType,
+  getDefaultOptionVal,
+  getExpectType$1 as getExpectType,
   getJsonDataByKeyRoute,
   getNextIndexRoute,
   getParentIndexRoute,

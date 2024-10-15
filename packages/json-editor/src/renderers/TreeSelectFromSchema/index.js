@@ -22,7 +22,7 @@ class TreeSelectFromSchema extends React.PureComponent {
         try {
           mockObj = JSON.parse(mockData);
         } catch (err) {
-          console.log('当前数据源的请求参数对象不是一个合格的json数据');
+          console.log('当前数据源的请求参数格式异常');
           mockObj = {};
         }
       }

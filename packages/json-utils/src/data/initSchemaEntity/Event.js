@@ -11,13 +11,20 @@
 export const initEventDataV1 = {
   type: 'event',
   title: '事件',
-
   properties: {
     type: {
       default: 'out',
-      type: 'typeSelect',
-      enum: ['in', 'out'],
-      enumextra: ['in', 'out'],
+      type: 'select',
+      options: [
+        {
+          label: 'in',
+          value: 'in',
+        },
+        {
+          label: 'out',
+          value: 'out',
+        },
+      ],
       title: '事件类型',
       readOnlyInJson: false,
     },
@@ -38,9 +45,17 @@ export const initEventData = {
   properties: {
     type: {
       default: 'emit',
-      type: 'typeSelect',
-      enum: ['on', 'emit'],
-      enumextra: ['on', 'emit'],
+      type: 'select',
+      options: [
+        {
+          label: 'on',
+          value: 'on',
+        },
+        {
+          label: 'emit',
+          value: 'emit',
+        },
+      ],
       title: '事件类型',
     },
     trigger: {
@@ -68,9 +83,17 @@ export const initEventDataTypeON = {
   properties: {
     type: {
       default: 'on',
-      type: 'typeSelect',
-      enum: ['on', 'emit'],
-      enumextra: ['on', 'emit'],
+      type: 'select',
+      options: [
+        {
+          label: 'on',
+          value: 'on',
+        },
+        {
+          label: 'emit',
+          value: 'emit',
+        },
+      ],
       title: '事件类型',
     },
     register: {

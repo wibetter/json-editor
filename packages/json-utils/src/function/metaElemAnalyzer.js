@@ -26,7 +26,7 @@ function objectSchema2JsonData(jsonSchema, analyzerResult) {
   let curAnalyzerResult = analyzerResult || {};
   if (
     isObject(jsonSchema) &&
-    jsonSchema.type === 'object' &&
+    getExpectType(jsonSchema.type) === 'object' &&
     jsonSchema.properties
   ) {
     let curPropertyOrder = [];

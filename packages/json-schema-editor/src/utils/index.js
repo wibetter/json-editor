@@ -11,10 +11,10 @@ export function isEqual(targetObj, nextTargetObj) {
 
 /** 判断当前属性是否存在
  * 备注：要识别boolean类型的数值 */
-export function hasProperties(targetPropertie) {
+export function hasProperties(targetProperties) {
   let hasProperties = false;
-  if (targetPropertie !== undefined) {
-    // targetPropertie为""、0、false时均认为是存在的属性
+  if (targetProperties !== undefined) {
+    // ""、0、false时均认为是存在的属性
     hasProperties = true;
   }
   return hasProperties;
@@ -23,7 +23,7 @@ export function hasProperties(targetPropertie) {
 /** 根据className判断是否是基本类型元素
  *  基本类型元素：input、boolean、 date、date-time、 time、 url、
  *  textarea、number、 radio、 select、color、quantity
- * */
+ */
 export function isBaseSchemaElem(elemClassName) {
   let isBaseSchema = false;
   if (
@@ -49,7 +49,7 @@ export function isBaseSchemaElem(elemClassName) {
  *  容器类型元素：func、style、data、object
  *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
  *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
- * */
+ */
 export function isBoxSchemaElem(elemClassName) {
   let isBoxSchema = false;
   if (
@@ -65,7 +65,7 @@ export function isBoxSchemaElem(elemClassName) {
 
 /**
  *  判断是否是数组类型
- * */
+ */
 export function isArray(curObj) {
   let isArray = false;
   if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Array') {
@@ -76,7 +76,7 @@ export function isArray(curObj) {
 
 /**
  *  判断是否是对象类型
- * */
+ */
 export function isObject(curObj) {
   let isObject = false;
   if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Object') {
@@ -87,7 +87,7 @@ export function isObject(curObj) {
 
 /**
  *  判断是否是函数类型
- * */
+ */
 export function isFunction(curObj) {
   let isFunction = false;
   if (Object.prototype.toString.call(curObj).slice(8, -1) === 'Function') {
@@ -98,7 +98,7 @@ export function isFunction(curObj) {
 
 /**
  *  将数据缓存到sessionStorage中
- * */
+ */
 export function saveWebCacheData(cacheKey, targetSourceIndex) {
   if (window.sessionStorage) {
     window.sessionStorage.setItem(cacheKey, targetSourceIndex);
@@ -107,7 +107,7 @@ export function saveWebCacheData(cacheKey, targetSourceIndex) {
 
 /**
  *  从sessionStorage中读取此前缓存的数据
- * */
+ */
 export function getWebCacheData(cacheKey) {
   if (window.sessionStorage) {
     return window.sessionStorage.getItem(cacheKey);
@@ -116,7 +116,7 @@ export function getWebCacheData(cacheKey) {
 
 /**
  *  从sessionStorage中删除此前缓存的数据
- * */
+ */
 export function deleteWebCacheData(cacheKey) {
   if (window.sessionStorage) {
     return window.sessionStorage.removeItem(cacheKey);

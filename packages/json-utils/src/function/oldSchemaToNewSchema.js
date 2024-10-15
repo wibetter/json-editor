@@ -28,9 +28,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
       newJSONSchema.type === 'array' ||
       newJSONSchema.type === 'datasource' ||
       newJSONSchema.type === 'event' ||
-      newJSONSchema.type === 'object' ||
-      newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'checkboxes') &&
+      newJSONSchema.type === 'object') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中
@@ -154,9 +152,7 @@ export function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.type === 'array' ||
       newJSONSchema.type === 'datasource' ||
       newJSONSchema.type === 'event' ||
-      newJSONSchema.type === 'object' ||
-      newJSONSchema.type === 'radio' ||
-      newJSONSchema.type === 'checkboxes') &&
+      newJSONSchema.type === 'object') &&
     hasProperties(newJSONSchema.default)
   ) {
     delete newJSONSchema.default; // 单位计量输入类型的默认值改放unit属性中

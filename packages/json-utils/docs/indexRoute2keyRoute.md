@@ -31,11 +31,16 @@ const jsonSchema = {
       placeholder: '',
       properties: {
         type: {
-          type: 'string',
+          type: 'select',
           default: 'local',
-          format: 'typeSelect',
-          enum: ['local', 'remote'],
-          enumextra: ['local', 'remote'],
+          options: [{
+            label: '本地数据',
+            value: 'local',
+          },
+          {
+            label: '接口数据',
+            value: 'remote',
+          }],
           title: '数据源类型',
         },
         data: {
@@ -86,11 +91,16 @@ const jsonSchema = {
       placeholder: '',
       properties: {
         type: {
-          type: 'string',
+          type: 'select',
           default: 'local',
-          format: 'typeSelect',
-          enum: ['local', 'remote'],
-          enumextra: ['local', 'remote'],
+          options: [{
+            label: '本地数据',
+            value: 'local',
+          },
+          {
+            label: '接口数据',
+            value: 'remote',
+          }],
           title: '数据源类型',
         },
         data: {

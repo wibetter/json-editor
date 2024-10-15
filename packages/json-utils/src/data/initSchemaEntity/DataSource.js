@@ -10,13 +10,20 @@
 export const initDataSourceData = {
   type: 'datasource',
   title: '数据源',
-
   properties: {
     type: {
       default: 'local',
-      type: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
+      type: 'select',
+      options: [
+        {
+          label: '本地数据',
+          value: 'local',
+        },
+        {
+          label: '接口数据',
+          value: 'remote',
+        },
+      ],
       title: '数据源类型',
     },
     data: {
@@ -43,29 +50,33 @@ export const initDataSourceDataV2 = {
   type: 'object',
   type: 'datasource',
   title: '数据源',
-
   properties: {
     type: {
-      type: 'string',
+      type: 'select',
       default: 'remote',
-      type: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['local', 'remote'],
+      options: [
+        {
+          label: '本地数据',
+          value: 'local',
+        },
+        {
+          label: '接口数据',
+          value: 'remote',
+        },
+      ],
       title: '数据源类型',
     },
     data: {
-      type: 'string',
+      type: 'url',
       title: '远程json数据',
       placeholder: '请输入远程json数据源地址', // 输入提示
-      type: 'url',
       default: 'http://xxx', // 默认值
       isRequired: true,
       description: '用于设置获取元素数据的请求地址',
     },
     filter: {
-      type: 'string',
-      title: '过滤器',
       type: 'codearea',
+      title: '过滤器',
       default: '() => {}',
       description: '用于定义过滤当前数据的函数',
       isRequired: true,

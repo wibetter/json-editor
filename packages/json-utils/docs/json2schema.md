@@ -37,9 +37,8 @@ const curJsonSchema = json2schema(jsonData);
   "description": "",
   "properties": {
     "a": {
-      "type": "string",
+      "type": "input",
       "title": "单文本框",
-      "format": "input",
       "default": "",
       "description": "",
       "placeholder": "",
@@ -47,9 +46,8 @@ const curJsonSchema = json2schema(jsonData);
       "readOnly": false
     },
     "field_2": {
-      "type": "string",
+      "type": "input",
       "title": "单文本框",
-      "format": "input",
       "default": "",
       "description": "",
       "placeholder": "",
@@ -57,9 +55,8 @@ const curJsonSchema = json2schema(jsonData);
       "readOnly": false
     },
     "field_3": {
-      "type": "string",
+      "type": "input",
       "title": "单文本框",
-      "format": "input",
       "default": "",
       "description": "",
       "placeholder": "",

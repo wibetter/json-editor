@@ -2,6 +2,6 @@
  * @wibetter/json-schema-editor v5.0.2
  * author: wibetter
  * build tool: AKFun
- * build time: Sun Oct 13 2024 00:42:22 GMT+0800 (China Standard Time)
+ * build time: Tue Oct 15 2024 18:39:02 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */

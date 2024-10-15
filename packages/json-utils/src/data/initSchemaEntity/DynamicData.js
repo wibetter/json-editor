@@ -10,13 +10,20 @@
 export const initDynamicData = {
   type: 'dynamic-data',
   title: '动态数据源',
-
   properties: {
     type: {
       default: 'local',
-      type: 'typeSelect',
-      enum: ['local', 'remote'],
-      enumextra: ['本地数据', '接口数据'],
+      type: 'select',
+      options: [
+        {
+          label: '本地数据',
+          value: 'local',
+        },
+        {
+          label: '接口数据',
+          value: 'remote',
+        },
+      ],
       title: '数据类型',
     },
     config: {
@@ -27,9 +34,17 @@ export const initDynamicData = {
       properties: {
         dataName: {
           default: 'local',
-          type: 'typeSelect',
-          enum: ['local', 'remote'],
-          enumextra: ['本地数据', '接口数据'],
+          type: 'select',
+          options: [
+            {
+              label: '本地数据',
+              value: 'local',
+            },
+            {
+              label: '接口数据',
+              value: 'remote',
+            },
+          ],
           title: '数据类型',
         },
         body: {

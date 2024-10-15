@@ -3,13 +3,13 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 
 import BaseFormSchema from '$components/BaseFormSchema/index';
-import TypeSelectFormSchema from '$components/TypeSelectFormSchema/index';
+import SelectFormSchema from '$components/SelectFormSchema/index';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
 const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
 
 /** 渲染dataSelect在的内容 */
-const getTypeSelectCont = (params) => <TypeSelectFormSchema {...params} />;
+const getTypeSelectCont = (params) => <SelectFormSchema {...params} />;
 
 /** Event类型渲染组件 */
 const EventSchema = (props) => {

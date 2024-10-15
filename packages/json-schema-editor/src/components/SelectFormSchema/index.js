@@ -11,8 +11,8 @@ import {
 import './index.scss';
 
 /** 主要用于渲染typeSelect类型的元素
- * 备注：TypeSelectFormSchema组件中只有default是可编辑的（提供选择列表） */
-class TypeSelectFormSchema extends React.PureComponent {
+ * 备注：SelectFormSchema组件中只有default是可编辑的（提供选择列表） */
+class SelectFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
@@ -25,12 +25,11 @@ class TypeSelectFormSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-    this.typeHandleChange = this.typeHandleChange.bind(this);
+    this.typeChange = this.typeChange.bind(this);
   }
 
   /** 数据源类型变动事件处理器 */
-  typeHandleChange = (newType) => {
+  typeChange = (newType) => {
     const {
       indexRoute,
       jsonKey,
@@ -69,20 +68,18 @@ class TypeSelectFormSchema extends React.PureComponent {
   render() {
     const { nodeKey, targetJsonSchema } = this.props;
     const curType = targetJsonSchema.type;
-
-    const curEnums = targetJsonSchema.enum || [];
-    const curEnumextras = targetJsonSchema.enumextra || [];
+    const options = targetJsonSchema.options || [];
 
     return (
       <div className="typeSelect-schema-box" id={nodeKey}>
         <div className="key-input-item">
           <Select
             defaultValue={targetJsonSchema.default || 'local'}
-            onChange={this.typeHandleChange}
+            onChange={this.typeChange}
           >
-            {curEnums.map((item, enumIndex) => (
-              <Option key={item} value={item}>
-                {curEnumextras[enumIndex]}
+            {options.map((optionItem, optionIndex) => (
+              <Option key={optionIndex} value={optionItem.value}>
+                {optionItem.label || optionItem.name}
               </Option>
             ))}
           </Select>
@@ -106,4 +103,4 @@ class TypeSelectFormSchema extends React.PureComponent {
 export default inject((stores) => ({
   editSchemaData: stores.jsonSchemaStore.editSchemaData,
   updateSchemaData: stores.jsonSchemaStore.updateSchemaData,
-}))(observer(TypeSelectFormSchema));
+}))(observer(SelectFormSchema));

@@ -44,8 +44,13 @@ class IndexDemo extends React.PureComponent {
                   'flex-direction属性：决定主轴的方向（即列级容器内部元素的排列方向）',
                 default: 'column',
               },
+              field_10: {
+                title: 'json数据',
+                type: 'json',
+                default: '{\n"t1": 123\n}',
+              },
             },
-            propertyOrder: ['flexDirection'],
+            propertyOrder: ['flexDirection', 'field_10'],
           },
           style: {
             type: 'object',

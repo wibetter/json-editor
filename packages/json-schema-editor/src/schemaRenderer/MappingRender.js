@@ -36,8 +36,8 @@ const MappingRender = (props) => {
       return QuantitySchema(props);
       break;
     case 'radio':
-    case 'select': // 下拉单选
-    case 'checkboxes': // 下拉多选
+    case 'checkboxes':
+    case 'select': // 下拉选择（单选/多选）
       return SelectSchema(props);
       break;
     default:

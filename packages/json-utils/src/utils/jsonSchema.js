@@ -1,4 +1,4 @@
-import { getExpectType } from '../function/getExpectType';
+import { getExpectType } from '$function/getExpectType';
 /**
  * JSONSchema(json格式)对象的通用操作方法【非响应式数据操作方法集合】
  */
@@ -183,4 +183,18 @@ export function moveBackward(curIndexRoute) {
   const curIndex = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) + 1);
   return curIndexArr.join('-');
+}
+
+/**
+ * 获取第一个选项值
+ */
+export function getDefaultOptionVal(jsonSchema, multiple) {
+  let defaultVal = '';
+  if (jsonSchema.options) {
+    defaultVal = jsonSchema.options[0].value;
+  }
+  if (multiple || jsonSchema.multiple) {
+    defaultVal = [defaultVal];
+  }
+  return defaultVal;
 }
