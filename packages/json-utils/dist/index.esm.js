@@ -218,7 +218,7 @@ var initJSONSchemaData = {
     func: {
       type: 'object',
       title: '功能设置',
-      isFixed: true,
+      isContainer: false,
       properties: {
         a: {
           title: '单文本框',
@@ -237,7 +237,7 @@ var initJSONSchemaData = {
     style: {
       type: 'object',
       title: '样式设置',
-      isFixed: true,
+      isContainer: false,
       properties: {
         b: {
           title: '单文本框',
@@ -254,7 +254,7 @@ var initJSONSchemaData = {
     data: {
       type: 'data',
       title: '数据设置',
-      isFixed: true,
+      isContainer: false,
       properties: {
         c: {
           title: '单文本框',
@@ -673,6 +673,7 @@ var EmptyObject = {
 var initQuantityData = {
   type: 'quantity',
   title: '单位计量',
+  isContainer: false,
   properties: {
     unit: {
       type: 'number',
@@ -725,6 +726,7 @@ var initQuantityData = {
 var initBoxStyleData = {
   type: 'box-style',
   title: '盒子模型',
+  isContainer: false,
   properties: {
     unit: {
       title: '单位数值',
@@ -833,6 +835,7 @@ var initHtmlAreaData = {
 var initEventData = {
   type: 'event',
   title: '事件',
+  isContainer: false,
   properties: {
     type: {
       default: 'emit',
@@ -872,6 +875,7 @@ var initEventData = {
 var initEventDataTypeON = {
   type: 'event',
   title: '事件',
+  isContainer: false,
   properties: {
     type: {
       default: 'on',
@@ -919,6 +923,7 @@ var _initDataSourceDataV;
 var initDataSourceData = {
   type: 'datasource',
   title: '数据源',
+  isContainer: false,
   properties: {
     type: {
       default: 'local',
@@ -963,6 +968,7 @@ var initDataSourceDataV2 =
   }),
   (_initDataSourceDataV['type'] = 'datasource'),
   (_initDataSourceDataV.title = '数据源'),
+  (_initDataSourceDataV.isContainer = false),
   (_initDataSourceDataV.properties = {
     type: {
       type: 'select',
@@ -1012,6 +1018,7 @@ var initDataSourceDataV2 =
 var initDynamicData = {
   type: 'dynamic-data',
   title: '动态数据源',
+  isContainer: false,
   properties: {
     type: {
       default: 'local',
@@ -1810,7 +1817,9 @@ function isNewSchemaData(schemaData) {
 function isContainerSchema(curSchema) {
   var isContainerElem = false;
   var valueType = getExpectType$1(curSchema.type);
-  if (valueType === 'object') {
+  var isContainer =
+    curSchema.isContainer !== undefined ? curSchema.isContainer : true; // 默认 isContainer 为 true
+  if (valueType === 'object' && isContainer) {
     isContainerElem = true;
   }
   return isContainerElem;

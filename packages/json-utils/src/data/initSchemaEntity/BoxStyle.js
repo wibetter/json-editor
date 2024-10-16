@@ -10,6 +10,7 @@
 export const initBoxStyleData = {
   type: 'box-style',
   title: '盒子模型',
+  isContainer: false,
   properties: {
     unit: {
       title: '单位数值',

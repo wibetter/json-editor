@@ -10,6 +10,7 @@
 export const initQuantityData = {
   type: 'quantity',
   title: '单位计量',
+  isContainer: false,
   properties: {
     unit: {
       type: 'number',

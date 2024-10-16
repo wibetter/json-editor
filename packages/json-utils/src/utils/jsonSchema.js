@@ -65,7 +65,9 @@ export function isNewSchemaData(schemaData) {
 export function isContainerSchema(curSchema) {
   let isContainerElem = false;
   const valueType = getExpectType(curSchema.type);
-  if (valueType === 'object') {
+  const isContainer =
+    curSchema.isContainer !== undefined ? curSchema.isContainer : true; // 默认 isContainer 为 true
+  if (valueType === 'object' && isContainer) {
     isContainerElem = true;
   }
   return isContainerElem;

@@ -10,6 +10,7 @@
 export const initDataSourceData = {
   type: 'datasource',
   title: '数据源',
+  isContainer: false,
   properties: {
     type: {
       default: 'local',
@@ -50,6 +51,7 @@ export const initDataSourceDataV2 = {
   type: 'object',
   type: 'datasource',
   title: '数据源',
+  isContainer: false,
   properties: {
     type: {
       type: 'select',

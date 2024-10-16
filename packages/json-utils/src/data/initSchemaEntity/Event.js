@@ -11,6 +11,7 @@
 export const initEventDataV1 = {
   type: 'event',
   title: '事件',
+  isContainer: false,
   properties: {
     type: {
       default: 'out',
@@ -42,6 +43,7 @@ export const initEventDataV1 = {
 export const initEventData = {
   type: 'event',
   title: '事件',
+  isContainer: false,
   properties: {
     type: {
       default: 'emit',
@@ -80,6 +82,7 @@ export const initEventData = {
 export const initEventDataTypeON = {
   type: 'event',
   title: '事件',
+  isContainer: false,
   properties: {
     type: {
       default: 'on',

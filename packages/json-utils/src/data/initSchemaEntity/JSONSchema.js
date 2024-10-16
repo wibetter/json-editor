@@ -14,7 +14,7 @@ export const initJSONSchemaData = {
     func: {
       type: 'object',
       title: '功能设置',
-      isFixed: true,
+      isContainer: false,
       properties: {
         a: {
           title: '单文本框',
@@ -30,7 +30,7 @@ export const initJSONSchemaData = {
     style: {
       type: 'object',
       title: '样式设置',
-      isFixed: true,
+      isContainer: false,
       properties: {
         b: {
           title: '单文本框',
@@ -45,7 +45,7 @@ export const initJSONSchemaData = {
     data: {
       type: 'data',
       title: '数据设置',
-      isFixed: true,
+      isContainer: false,
       properties: {
         c: {
           title: '单文本框',
