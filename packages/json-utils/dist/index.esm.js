@@ -1982,7 +1982,13 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
       if (curValue === '#fff' || curValue === '#FFF') {
         curValue = '#ffffff'; // 避免出现#fff类型的值，type=color不能识别
       }
-      curJsonData = curValue || getDefaultOptionVal(jsonSchema, true);
+      curJsonData = hasProperties(curValue) ? curValue : '#ffffff';
+      break;
+    case 'boolean':
+      curJsonData = hasProperties(curValue) ? curValue : false;
+      break;
+    case 'number':
+      curJsonData = hasProperties(curValue) ? curValue : 1;
       break;
     case 'json':
       /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */
@@ -2007,14 +2013,13 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
       }
       curJsonData = curJsonItemData;
       break;
-    case 'boolean':
-      curJsonData = hasProperties(curValue) ? curValue : false;
-      break;
-    case 'number':
-      curJsonData = hasProperties(curValue) ? curValue : 1;
-      break;
     default:
-      curJsonData = hasProperties(curValue) ? curValue : '';
+      if (jsonSchema.type === 'input' && jsonSchema.default === '0') {
+        // 兼容处理：解决box-style默认值丢失问题
+        curJsonData = curValue ? curValue : jsonSchema.default;
+      } else {
+        curJsonData = hasProperties(curValue) ? curValue : '';
+      }
   }
   return curJsonData;
 }

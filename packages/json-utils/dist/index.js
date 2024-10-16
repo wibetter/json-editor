@@ -1165,7 +1165,13 @@
           break;
         case 'color':
           ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
-            (r = n || X(e, !0));
+            (r = a(n) ? n : '#ffffff');
+          break;
+        case 'boolean':
+          r = !!a(n) && n;
+          break;
+        case 'number':
+          r = a(n) ? n : 1;
           break;
         case 'json':
           var o = '';
@@ -1179,14 +1185,13 @@
             }
           r = o;
           break;
-        case 'boolean':
-          r = !!a(n) && n;
-          break;
-        case 'number':
-          r = a(n) ? n : 1;
-          break;
         default:
-          r = a(n) ? n : '';
+          r =
+            'input' === e.type && '0' === e.default
+              ? n || e.default
+              : a(n)
+                ? n
+                : '';
       }
       return r;
     }

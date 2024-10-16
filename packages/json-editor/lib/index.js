@@ -3615,7 +3615,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Q.Input, {
+                      P.createElement(Q.InputNumber, {
                         style: { display: 'inline-block', width: '120px' },
                         addonAfter: s,
                         disabled: i,
