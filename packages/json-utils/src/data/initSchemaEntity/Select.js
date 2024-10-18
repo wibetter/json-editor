@@ -9,7 +9,7 @@
  * */
 export const initSelectData = {
   type: 'select',
-  title: '下拉单选',
+  title: '下拉选择',
   options: [
     {
       label: '选项a',

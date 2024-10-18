@@ -65,10 +65,10 @@
     align-items: flex-start;
 
     > .element-title {
-      flex: 0 1 120px;
+      flex: 0 0 120px;
       line-height: 38px;
       word-break: keep-all;
-      max-width: 120px;
+      // max-width: 120px;
       margin-right: 12px;
       padding-left: 12px;
       text-align: right;
@@ -93,10 +93,10 @@
     align-items: flex-start;
 
     > .element-title {
-      flex: 0 1 85px;
+      flex: 0 0 85px;
       word-break: keep-all;
-      min-width: 60px;
-      max-width: 120px;
+      // min-width: 60px;
+      // max-width: 120px;
       margin-right: 7px;
       padding-left: 0;
       text-align: left;
@@ -146,10 +146,10 @@
     align-items: flex-start;
 
     > .element-title {
-      flex: 0 1 120px;
+      flex: 0 0 120px;
       line-height: 38px;
       word-break: keep-all;
-      max-width: 120px;
+      // max-width: 120px;
       margin-right: 12px;
       padding-left: 12px;
       text-align: right;

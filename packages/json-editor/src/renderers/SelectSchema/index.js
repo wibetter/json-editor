@@ -9,7 +9,7 @@ import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
 
 /**
- * select下拉单选类型
+ * select下拉选择类型
  */
 class SelectSchema extends React.PureComponent {
   static propTypes = {

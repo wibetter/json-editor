@@ -169,7 +169,12 @@ class DynamicDataSchema extends React.PureComponent {
 
     return (
       <div
-        className="mobile-screen-element-warp dynamic-data-schema"
+        className1="mobile-screen-element-warp dynamic-data-schema"
+        className={
+          pageScreen === 'wideScreen'
+            ? 'dynamic-data-schema wide-screen-element-warp'
+            : 'dynamic-data-schema mobile-screen-element-warp'
+        }
         key={nodeKey}
         id={nodeKey}
       >
@@ -181,221 +186,228 @@ class DynamicDataSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-
-        <div className="dynamic-data-tab-radio-box">
-          <div className="dynamic-data-tab-radio">
-            <div
-              className={`tab-radio ${
-                dataType === 'local' ? 'tab-radio-active' : ''
-              }`}
-              onClick={() => {
-                this.tabChange('local');
-              }}
-            >
-              本地数据
-            </div>
-            <div
-              className={`tab-radio ${
-                dataType === 'remote' ? 'tab-radio-active' : ''
-              }`}
-              onClick={() => {
-                this.tabChange('remote');
-              }}
-            >
-              接口数据
-            </div>
-          </div>
-        </div>
-        <div
-          className={`dynamic-dat-tabPane ${
-            dataType === 'local' ? 'dynamic-dat-tabPane-active' : ''
-          }`}
-        >
-          <div className="json-form-box">
-            <Tooltip
-              title={isShowFilter ? '点击隐藏数据过滤器' : '点击显示数据过滤器'}
-              placement="top"
-            >
-              <FilterOutlined
-                className="filter-btn"
-                onClick={this.switchFilterBtn}
-              />
-            </Tooltip>
-            <JsonFormSchema
-              {...{
-                parentType: curType,
-                jsonKey: 'data',
-                indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
-                nodeKey: `${nodeKey}-data`,
-                targetJsonSchema: dataObj,
-              }}
-              key={`${nodeKey}-data`}
-            />
-            <div className="filter-func-box">
-              {isShowFilter && (
-                <CodeAreaFormSchema
-                  {...{
-                    isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                    parentType: curType,
-                    jsonKey: 'localFilter',
-                    indexRoute: indexRoute ? `${indexRoute}-3` : '3',
-                    keyRoute: keyRoute
-                      ? `${keyRoute}-localFilter`
-                      : 'localFilter',
-                    nodeKey: `${nodeKey}-localFilter`,
-                    targetJsonSchema: targetJsonSchema.properties.localFilter,
-                  }}
-                  key={`${nodeKey}-localFilter`}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-        <div
-          className={`dynamic-dat-tabPane ${
-            dataType === 'remote' ? 'dynamic-dat-tabPane-active' : ''
-          }`}
-        >
-          <div className="json-form-box">
-            <div
-              className={
-                pageScreen === 'wideScreen'
-                  ? 'wide-screen-element-warp'
-                  : 'mobile-screen-element-warp'
-              }
-              key={`${nodeKey}-${dataName}`}
-              id={`${nodeKey}-${dataName}`}
-            >
-              <div className="element-title">数据源列表</div>
-              <div className="content-item">
-                <div className="form-item-box">
-                  <Select
-                    className="dynamic-data-select"
-                    defaultValue={dataName}
-                    onSelect={this.dynamicDataChange}
-                  >
-                    {dynamicDataList &&
-                      isArray(dynamicDataList) &&
-                      dynamicDataList.map((dynamicData) => {
-                        return (
-                          <Option value={dynamicData.name} key={dynamicData.id}>
-                            {dynamicData.title}
-                          </Option>
-                        );
-                      })}
-                  </Select>
-                </div>
-              </div>
-            </div>
-            {dataName && apiParams && Object.keys(apiParams).length > 0 && (
+        <div className="content-item">
+          <div className="dynamic-data-tab-radio-box">
+            <div className="dynamic-data-tab-radio">
               <div
-                className={`${
-                  pageScreen === 'wideScreen'
-                    ? 'wide-screen-element-warp'
-                    : 'mobile-screen-element-warp'
-                }  element-title-card-warp`}
-                key={`${nodeKey}-${dataName}-params`}
-                id={`${nodeKey}-${dataName}-params`}
+                className={`tab-radio ${
+                  dataType === 'local' ? 'tab-radio-active' : ''
+                }`}
+                onClick={() => {
+                  this.tabChange('local');
+                }}
               >
-                <div className="element-title">请求参数配置</div>
-                <div className="content-item object-content">
-                  {Object.keys(apiParams).map((paramKey) => {
-                    const paramItam = objClone(apiParams[paramKey]);
-                    paramItam.readOnly =
-                      paramItam.scope && paramItam.scope === 'static'
-                        ? true
-                        : false;
-                    const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
-                    const scopeTitle = dynamicDataApiScopeList[paramItam.scope];
-                    if (scopeTitle && paramItam.scope !== 'dynamic') {
-                      paramItam.title = `${paramItam.title}（${scopeTitle}）`;
-                    }
-                    if (paramItam.scope !== 'dynamic') {
-                      return (
-                        <InputFormSchema
-                          {...{
-                            pageScreen: pageScreen, // 默认使用宽屏模式
-                            jsonKey: paramKey,
-                            keyRoute: `${curKeyRoute}-value`,
-                            nodeKey: curKeyRoute,
-                            targetJsonSchema: paramItam,
-                          }}
-                          key={curKeyRoute}
-                        />
-                      );
-                    } else {
-                      const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
-                      return (
-                        <RemoteDynamicDataSchema
-                          {...{
-                            pageScreen: pageScreen, // 默认使用宽屏模式
-                            nodeKey: curNodeKay,
-                            keyRoute: keyRoute
-                              ? `${keyRoute}-config-body-${paramKey}`
-                              : 'config-body-${paramKey}',
-                            curConfigData: paramItam || {},
-                            configDataChange: (newParamsConfig) => {
-                              this.paramsConfigChange(
-                                paramKey,
-                                newParamsConfig,
-                              );
-                            },
-                          }}
-                          key={curKeyRoute}
-                        />
-                      );
-                    }
-                  })}
-                </div>
+                本地数据
               </div>
-            )}
-            {dataName && apiParams && Object.keys(apiParams).length === 0 && (
+              <div
+                className={`tab-radio ${
+                  dataType === 'remote' ? 'tab-radio-active' : ''
+                }`}
+                onClick={() => {
+                  this.tabChange('remote');
+                }}
+              >
+                接口数据
+              </div>
+            </div>
+          </div>
+          <div
+            className={`dynamic-dat-tabPane ${
+              dataType === 'local' ? 'dynamic-dat-tabPane-active' : ''
+            }`}
+          >
+            <div className="json-form-box">
+              <Tooltip
+                title={
+                  isShowFilter ? '点击隐藏数据过滤器' : '点击显示数据过滤器'
+                }
+                placement="top"
+              >
+                <FilterOutlined
+                  className="filter-btn"
+                  onClick={this.switchFilterBtn}
+                />
+              </Tooltip>
+              <JsonFormSchema
+                {...{
+                  parentType: curType,
+                  jsonKey: 'data',
+                  indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                  keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
+                  nodeKey: `${nodeKey}-data`,
+                  targetJsonSchema: dataObj,
+                }}
+                key={`${nodeKey}-data`}
+              />
+              <div className="filter-func-box">
+                {isShowFilter && (
+                  <CodeAreaFormSchema
+                    {...{
+                      isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
+                      parentType: curType,
+                      jsonKey: 'localFilter',
+                      indexRoute: indexRoute ? `${indexRoute}-3` : '3',
+                      keyRoute: keyRoute
+                        ? `${keyRoute}-localFilter`
+                        : 'localFilter',
+                      nodeKey: `${nodeKey}-localFilter`,
+                      targetJsonSchema: targetJsonSchema.properties.localFilter,
+                    }}
+                    key={`${nodeKey}-localFilter`}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+          <div
+            className={`dynamic-dat-tabPane ${
+              dataType === 'remote' ? 'dynamic-dat-tabPane-active' : ''
+            }`}
+          >
+            <div className="json-form-box">
               <div
                 className={
                   pageScreen === 'wideScreen'
                     ? 'wide-screen-element-warp'
                     : 'mobile-screen-element-warp'
                 }
-                key={`${nodeKey}-${dataName}-empty`}
-                id={`${nodeKey}-${dataName}-empty`}
+                key={`${nodeKey}-${dataName}`}
+                id={`${nodeKey}-${dataName}`}
               >
-                <div className="element-title">请求参数配置</div>
+                <div className="element-title">数据源列表</div>
                 <div className="content-item">
-                  <span className="warning-text">无可配置的请求参数</span>
+                  <div className="form-item-box">
+                    <Select
+                      className="dynamic-data-select"
+                      defaultValue={dataName}
+                      onSelect={this.dynamicDataChange}
+                    >
+                      {dynamicDataList &&
+                        isArray(dynamicDataList) &&
+                        dynamicDataList.map((dynamicData) => {
+                          return (
+                            <Option
+                              value={dynamicData.name}
+                              key={dynamicData.id}
+                            >
+                              {dynamicData.title}
+                            </Option>
+                          );
+                        })}
+                    </Select>
+                  </div>
                 </div>
               </div>
-            )}
-            {dataName && (
-              <TreeSelectFromSchema
-                {...{
-                  nodeKey: `${nodeKey}-config-dataRoute-${dataRoute}`,
-                  mockData: curDynamicData.respMock,
-                  dataRoute,
-                  onChange: this.dataRouteChange,
-                }}
-                key={`${nodeKey}-config-dataRoute`}
-              />
-            )}
-            {dataName && (
-              <CodeAreaFormSchema
-                {...{
-                  isReadOnly: true,
-                  isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                  parentType: curType,
-                  jsonKey: 'filter',
-                  indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
-                  keyRoute: keyRoute
-                    ? `${keyRoute}-config-filter`
-                    : 'config-filter',
-                  nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
-                  targetJsonSchema:
-                    targetJsonSchema.properties.config &&
-                    targetJsonSchema.properties.config.properties.filter,
-                }}
-                key={`${nodeKey}-config-filter`}
-              />
-            )}
+              {dataName && apiParams && Object.keys(apiParams).length > 0 && (
+                <div
+                  className={`${
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'
+                  }  element-title-card-warp`}
+                  key={`${nodeKey}-${dataName}-params`}
+                  id={`${nodeKey}-${dataName}-params`}
+                >
+                  <div className="element-title">请求参数配置</div>
+                  <div className="content-item object-content">
+                    {Object.keys(apiParams).map((paramKey) => {
+                      const paramItam = objClone(apiParams[paramKey]);
+                      paramItam.readOnly =
+                        paramItam.scope && paramItam.scope === 'static'
+                          ? true
+                          : false;
+                      const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
+                      const scopeTitle =
+                        dynamicDataApiScopeList[paramItam.scope];
+                      if (scopeTitle && paramItam.scope !== 'dynamic') {
+                        paramItam.title = `${paramItam.title}（${scopeTitle}）`;
+                      }
+                      if (paramItam.scope !== 'dynamic') {
+                        return (
+                          <InputFormSchema
+                            {...{
+                              pageScreen: pageScreen, // 默认使用宽屏模式
+                              jsonKey: paramKey,
+                              keyRoute: `${curKeyRoute}-value`,
+                              nodeKey: curKeyRoute,
+                              targetJsonSchema: paramItam,
+                            }}
+                            key={curKeyRoute}
+                          />
+                        );
+                      } else {
+                        const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
+                        return (
+                          <RemoteDynamicDataSchema
+                            {...{
+                              pageScreen: pageScreen, // 默认使用宽屏模式
+                              nodeKey: curNodeKay,
+                              keyRoute: keyRoute
+                                ? `${keyRoute}-config-body-${paramKey}`
+                                : 'config-body-${paramKey}',
+                              curConfigData: paramItam || {},
+                              configDataChange: (newParamsConfig) => {
+                                this.paramsConfigChange(
+                                  paramKey,
+                                  newParamsConfig,
+                                );
+                              },
+                            }}
+                            key={curKeyRoute}
+                          />
+                        );
+                      }
+                    })}
+                  </div>
+                </div>
+              )}
+              {dataName && apiParams && Object.keys(apiParams).length === 0 && (
+                <div
+                  className={
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'
+                  }
+                  key={`${nodeKey}-${dataName}-empty`}
+                  id={`${nodeKey}-${dataName}-empty`}
+                >
+                  <div className="element-title">请求参数配置</div>
+                  <div className="content-item">
+                    <span className="warning-text">无可配置的请求参数</span>
+                  </div>
+                </div>
+              )}
+              {dataName && (
+                <TreeSelectFromSchema
+                  {...{
+                    nodeKey: `${nodeKey}-config-dataRoute-${dataRoute}`,
+                    mockData: curDynamicData.respMock,
+                    dataRoute,
+                    onChange: this.dataRouteChange,
+                  }}
+                  key={`${nodeKey}-config-dataRoute`}
+                />
+              )}
+              {dataName && (
+                <CodeAreaFormSchema
+                  {...{
+                    isReadOnly: true,
+                    isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
+                    parentType: curType,
+                    jsonKey: 'filter',
+                    indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
+                    keyRoute: keyRoute
+                      ? `${keyRoute}-config-filter`
+                      : 'config-filter',
+                    nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
+                    targetJsonSchema:
+                      targetJsonSchema.properties.config &&
+                      targetJsonSchema.properties.config.properties.filter,
+                  }}
+                  key={`${nodeKey}-config-filter`}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
