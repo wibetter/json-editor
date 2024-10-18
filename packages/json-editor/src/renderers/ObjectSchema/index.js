@@ -67,7 +67,11 @@ class ObjectSchema extends React.PureComponent {
 
     return (
       <div
-        className="mobile-screen-element-warp object-schema-warp"
+        className={
+          pageScreen === 'wideScreen'
+            ? 'object-schema-warp wide-screen-element-warp'
+            : 'object-schema-warp mobile-screen-element-warp'
+        }
         key={nodeKey}
         id={nodeKey}
       >
@@ -88,7 +92,7 @@ class ObjectSchema extends React.PureComponent {
             </Tooltip>
           </div>
         )}
-        <div className="element-title-card-warp">
+        <div className="element-title-card-warp content-item">
           {!isFirstSchema && !isArrayItem && (
             <div
               className="element-title"

@@ -165,8 +165,8 @@ class ArraySchema extends React.PureComponent {
       <div
         className={
           pageScreen === 'wideScreen'
-            ? 'wide-screen-view'
-            : 'mobile-screen-view'
+            ? 'wide-screen-element-warp'
+            : 'mobile-screen-element-warp'
         }
         key={nodeKey}
         id={nodeKey}
@@ -185,7 +185,7 @@ class ArraySchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="array-schema-box">
+        <div className="array-schema-box content-item">
           <div
             className="element-title"
             onClick={(event) => {

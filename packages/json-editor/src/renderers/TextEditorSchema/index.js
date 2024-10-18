@@ -87,7 +87,7 @@ class TextEditorSchema extends React.PureComponent {
         'separator',
         'fullscreen',
       ],
-      baseControls: ['font-size', 'text-color', 'bold', 'italic'],
+      baseControls: ['font-size', 'text-color', 'bold', 'italic', 'fullscreen'],
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleEditorChange = this.handleEditorChange.bind(this);
@@ -140,7 +140,11 @@ class TextEditorSchema extends React.PureComponent {
 
     return (
       <div
-        className={'text-editor-box mobile-screen-element-warp'}
+        className={
+          pageScreen === 'wideScreen'
+            ? 'text-editor-box wide-screen-element-warp'
+            : 'text-editor-box mobile-screen-element-warp'
+        }
         key={nodeKey}
         id={nodeKey}
       >
