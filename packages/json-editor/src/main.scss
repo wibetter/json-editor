@@ -52,7 +52,7 @@
   }
 
   /* 默认为宽屏的展示样式：行内展示
-     呈现：screen-element-warp以行内元素模式展示，element-title 和 content-item 在同一行展示
+     呈现：element-title 和 content-item 在同一行展示
    */
   .wide-screen-element-warp {
     position: relative;
@@ -60,7 +60,7 @@
     box-sizing: border-box;
     min-width: 380px;
     margin-bottom: 12px;
-    display: inline-flex;
+    display: flex; // screen-element-warp以行内元素模式展示: inline-flex
     justify-content: flex-start;
     align-items: flex-start;
 
@@ -286,11 +286,6 @@
   }
   .ant-collapse-content {
     padding: 10px 0 20px;
-  }
-
-  // Title
-  .ant-collapse-header {
-    // background-color: #f7f7f7;
   }
 
   // 表单元素盒子样式，主要为了让表单元素垂直居中

@@ -152,7 +152,7 @@ class RemoteDynamicDataSchema extends React.PureComponent {
                   pageScreen === 'wideScreen'
                     ? 'wide-screen-element-warp'
                     : 'mobile-screen-element-warp'
-                }  element-title-card-warp`}
+                } element-title-card-warp`}
                 key={`${nodeKey}-${dataName}-params`}
                 id={`${nodeKey}-${dataName}-params`}
               >

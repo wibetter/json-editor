@@ -2,12 +2,18 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
+import {
+  DownOutlined,
+  InfoCircleOutlined,
+  RightOutlined,
+  FilterOutlined,
+} from '@ant-design/icons';
+import JsonView from '$renderers/JsonView/index';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
-
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import CodeIcon from '$assets/img/code.svg';
 
 class EventSchema extends React.PureComponent {
   static propTypes = {
@@ -18,6 +24,15 @@ class EventSchema extends React.PureComponent {
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      jsonView: false, // 是否显示code模式
+      isClosed: false, // 是否为关闭状态，默认是开启状态
+    };
+  }
 
   componentWillMount() {
     // 从web缓存中获取数值
@@ -35,6 +50,7 @@ class EventSchema extends React.PureComponent {
     const { keyRoute, nodeKey, indexRoute, targetJsonSchema, pageScreen } =
       this.props;
     const curType = targetJsonSchema.type;
+    const { jsonView, isClosed } = this.state;
 
     const typeDataObj = targetJsonSchema.properties.type || {};
     // 注册类型事件的数据对象：on
@@ -52,7 +68,7 @@ class EventSchema extends React.PureComponent {
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
-        }  element-title-card-warp`}
+        }`}
         key={nodeKey}
         id={nodeKey}
       >
@@ -73,69 +89,110 @@ class EventSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item object-content">
-          {dataType === 'on' && (
-            <>
-              {registerJsonObj && (
-                <InputFormSchema
-                  {...{
-                    parentType: curType,
-                    jsonKey: 'register',
-                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
-                    keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
-                    nodeKey: `${nodeKey}-register`,
-                    targetJsonSchema: registerJsonObj,
-                  }}
-                  key={`${nodeKey}-register`}
+        <div className="element-title-card-warp content-item">
+          <div
+            className="element-title"
+            onClick={(event) => {
+              this.setState({
+                isClosed: !isClosed,
+              });
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
+            <span className="title-text">事件配置</span>
+            {isClosed ? (
+              <RightOutlined className="close-operate-btn" />
+            ) : (
+              <DownOutlined className="close-operate-btn" />
+            )}
+
+            <div
+              className="display-source-btn"
+              onClick={(event) => {
+                this.setState({
+                  jsonView: !jsonView,
+                });
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+            >
+              <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
+                <CodeIcon
+                  className={jsonView ? 'info-icon active' : 'info-icon'}
                 />
-              )}
-              {actionFuncJsonObj && (
-                <CodeAreaFormSchema
-                  {...{
-                    parentType: curType,
-                    jsonKey: 'actionFunc',
-                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                    keyRoute: keyRoute
-                      ? `${keyRoute}-actionFunc`
-                      : 'actionFunc',
-                    nodeKey: `${nodeKey}-actionFunc`,
-                    targetJsonSchema: actionFuncJsonObj,
-                  }}
-                  key={`${nodeKey}-actionFunc`}
-                />
-              )}
-            </>
-          )}
-          {dataType === 'emit' && (
-            <>
-              {triggerJsonObj && (
-                <InputFormSchema
-                  {...{
-                    parentType: curType,
-                    jsonKey: 'trigger',
-                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
-                    keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
-                    nodeKey: `${nodeKey}-trigger`,
-                    targetJsonSchema: triggerJsonObj,
-                  }}
-                  key={`${nodeKey}-trigger`}
-                />
-              )}
-              {eventDataJsonObj && (
-                <JsonFormSchema
-                  {...{
-                    parentType: curType,
-                    jsonKey: 'eventData',
-                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                    keyRoute: keyRoute ? `${keyRoute}-eventData` : 'eventData',
-                    nodeKey: `${nodeKey}-eventData`,
-                    targetJsonSchema: eventDataJsonObj,
-                  }}
-                  key={`${nodeKey}-eventData`}
-                />
-              )}
-            </>
-          )}
+              </Tooltip>
+            </div>
+          </div>
+          <div
+            className={`content-item object-content ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}
+          >
+            {!jsonView && dataType === 'on' && (
+              <>
+                {registerJsonObj && (
+                  <InputFormSchema
+                    {...{
+                      parentType: curType,
+                      jsonKey: 'register',
+                      indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                      keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
+                      nodeKey: `${nodeKey}-register`,
+                      targetJsonSchema: registerJsonObj,
+                    }}
+                    key={`${nodeKey}-register`}
+                  />
+                )}
+                {actionFuncJsonObj && (
+                  <CodeAreaFormSchema
+                    {...{
+                      parentType: curType,
+                      jsonKey: 'actionFunc',
+                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                      keyRoute: keyRoute
+                        ? `${keyRoute}-actionFunc`
+                        : 'actionFunc',
+                      nodeKey: `${nodeKey}-actionFunc`,
+                      targetJsonSchema: actionFuncJsonObj,
+                    }}
+                    key={`${nodeKey}-actionFunc`}
+                  />
+                )}
+              </>
+            )}
+            {!jsonView && dataType === 'emit' && (
+              <>
+                {triggerJsonObj && (
+                  <InputFormSchema
+                    {...{
+                      parentType: curType,
+                      jsonKey: 'trigger',
+                      indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                      keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
+                      nodeKey: `${nodeKey}-trigger`,
+                      targetJsonSchema: triggerJsonObj,
+                    }}
+                    key={`${nodeKey}-trigger`}
+                  />
+                )}
+                {eventDataJsonObj && (
+                  <JsonFormSchema
+                    {...{
+                      parentType: curType,
+                      jsonKey: 'eventData',
+                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                      keyRoute: keyRoute
+                        ? `${keyRoute}-eventData`
+                        : 'eventData',
+                      nodeKey: `${nodeKey}-eventData`,
+                      targetJsonSchema: eventDataJsonObj,
+                    }}
+                    key={`${nodeKey}-eventData`}
+                  />
+                )}
+              </>
+            )}
+            {jsonView && <JsonView {...this.props} />}
+          </div>
         </div>
       </div>
     );
