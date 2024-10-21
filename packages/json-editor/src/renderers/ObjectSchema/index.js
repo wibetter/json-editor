@@ -63,7 +63,7 @@ class ObjectSchema extends React.PureComponent {
     } = this.props;
     const { jsonView, isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
-    const isFirstSchema = isStructuredSchema;
+    const isStructured = isStructuredSchema;
 
     return (
       <div
@@ -75,7 +75,7 @@ class ObjectSchema extends React.PureComponent {
         key={nodeKey}
         id={nodeKey}
       >
-        {!isFirstSchema && !isArrayItem && (
+        {!isStructured && !isArrayItem && (
           <div className="element-title">
             <Tooltip title={targetJsonSchema.description} placement="top">
               <span
@@ -93,7 +93,7 @@ class ObjectSchema extends React.PureComponent {
           </div>
         )}
         <div className="element-title-card-warp content-item">
-          {!isFirstSchema && !isArrayItem && (
+          {!isStructured && !isArrayItem && (
             <div
               className="element-title"
               onClick={(event) => {
@@ -131,7 +131,7 @@ class ObjectSchema extends React.PureComponent {
           )}
           <div
             className={`content-item ${
-              !isFirstSchema && !isArrayItem ? 'object-content' : ''
+              !isStructured && !isArrayItem ? 'object-content' : ''
             } ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}
           >
             {!jsonView &&
