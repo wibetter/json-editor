@@ -140,52 +140,7 @@ class IndexDemo extends React.PureComponent {
       jsonView: false,
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
-      curTypeList: {
-        func: [
-          'input',
-          'boolean',
-          'number',
-          'color',
-          'url',
-          'textarea',
-          'text-editor',
-          'radio',
-          'select',
-          'checkboxes',
-          'date',
-          'date-time',
-          'time',
-          'quantity',
-          'json',
-          'codearea',
-          'htmlarea',
-          'event',
-          'array',
-          'object',
-        ],
-        style: [
-          'color',
-          'quantity',
-          'input',
-          'boolean',
-          'number',
-          'radio',
-          'select',
-          'checkboxes',
-          'box-style',
-        ],
-        data: [
-          'json',
-          'codearea',
-          'htmlarea',
-          'text-editor',
-          'dynamic-data',
-          'datasource',
-          'object',
-          'array',
-        ],
-        'event-schema': ['event'],
-      },
+      curTypeList: {},
     };
   }
 

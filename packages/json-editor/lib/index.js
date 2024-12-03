@@ -780,8 +780,8 @@
           b,
           O,
           v,
-          D,
           N,
+          D,
           R,
           w,
           J,
@@ -999,8 +999,8 @@
             (O = (function () {
               function e(e) {
                 q()(this, 'rootJSONStore', v, this),
-                  q()(this, 'triggerChange', D, this),
-                  q()(this, 'lastUpdateTime', N, this),
+                  q()(this, 'triggerChange', N, this),
+                  q()(this, 'lastUpdateTime', D, this),
                   q()(this, 'jsonData', R, this),
                   q()(this, 'initJsonData', w, this),
                   q()(this, 'dynamicDataList', J, this),
@@ -1160,7 +1160,7 @@
                 return {};
               },
             })),
-            (D = z()(O.prototype, 'triggerChange', [H.observable], {
+            (N = z()(O.prototype, 'triggerChange', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1168,7 +1168,7 @@
                 return !1;
               },
             })),
-            (N = z()(O.prototype, 'lastUpdateTime', [H.observable], {
+            (D = z()(O.prototype, 'lastUpdateTime', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1619,8 +1619,8 @@
                   {
                     className:
                       'wideScreen' === r
-                        ? 'wide-screen-view'
-                        : 'mobile-screen-view',
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
                     key: n,
                     id: n,
                   },
@@ -1645,7 +1645,7 @@
                   ),
                   P.createElement(
                     'div',
-                    { className: 'array-schema-box' },
+                    { className: 'array-schema-box content-item' },
                     P.createElement(
                       'div',
                       {
@@ -1923,7 +1923,9 @@
                     'div',
                     {
                       className:
-                        'mobile-screen-element-warp object-schema-warp',
+                        'wideScreen' === o
+                          ? 'object-schema-warp wide-screen-element-warp'
+                          : 'object-schema-warp mobile-screen-element-warp',
                       key: n,
                       id: n,
                     },
@@ -1950,7 +1952,7 @@
                       ),
                     B().createElement(
                       'div',
-                      { className: 'element-title-card-warp' },
+                      { className: 'element-title-card-warp content-item' },
                       !h &&
                         !l &&
                         B().createElement(
@@ -2210,7 +2212,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var De = (0, I.inject)(function (e) {
+        var Ne = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2220,7 +2222,7 @@
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
           })((0, I.observer)(ve)),
-          Ne = __webpack_require__(566),
+          De = __webpack_require__(566),
           Re = (function (e) {
             function t(t) {
               var a;
@@ -2353,7 +2355,7 @@
                     var e = a.state.isShowFilter;
                     a.setState({ isShowFilter: !e });
                   }),
-                  (a.state = { isShowFilter: !1 }),
+                  (a.state = { isShowFilter: !1, jsonView: !1, isClosed: !1 }),
                   (a.switchFilterBtn = a.switchFilterBtn.bind(a)),
                   a
                 );
@@ -2369,28 +2371,31 @@
                     ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
-                  var e = this.props,
-                    t = e.keyRoute,
-                    a = e.nodeKey,
-                    n = e.indexRoute,
-                    r = e.targetJsonSchema,
-                    o = e.pageScreen,
-                    i = this.state.isShowFilter,
-                    l = r.type,
-                    c = r.properties.type || {},
-                    s = r.properties.data || {},
-                    u = r.properties.filter || {},
-                    p = c.default;
+                  var e = this,
+                    t = this.props,
+                    a = t.keyRoute,
+                    n = t.nodeKey,
+                    r = t.indexRoute,
+                    o = t.targetJsonSchema,
+                    i = t.pageScreen,
+                    l = this.state,
+                    c = l.jsonView,
+                    s = l.isClosed,
+                    u = l.isShowFilter,
+                    p = o.type,
+                    m = o.properties.type || {},
+                    d = o.properties.data || {},
+                    y = o.properties.filter || {},
+                    h = m.default;
                   return P.createElement(
                     'div',
                     {
                       className:
-                        ('wideScreen' === o
+                        'wideScreen' === i
                           ? 'wide-screen-element-warp'
-                          : 'mobile-screen-element-warp') +
-                        '  element-title-card-warp',
-                      key: a,
-                      id: a,
+                          : 'mobile-screen-element-warp',
+                      key: n,
+                      id: n,
                     },
                     P.createElement(
                       'div',
@@ -2400,16 +2405,16 @@
                         {
                           className: 'title-text',
                           title:
-                            'wideScreen' === o && r.title.length > 6
-                              ? r.title
+                            'wideScreen' === i && o.title.length > 6
+                              ? o.title
                               : '',
                         },
-                        r.title,
+                        o.title,
                       ),
-                      r.description &&
+                      o.description &&
                         P.createElement(
                           Q.Tooltip,
-                          { title: r.description, placement: 'top' },
+                          { title: o.description, placement: 'top' },
                           P.createElement(re.InfoCircleOutlined, {
                             className: 'info-icon',
                           }),
@@ -2417,84 +2422,141 @@
                     ),
                     P.createElement(
                       'div',
-                      { className: 'content-item object-content' },
-                      'local' === p &&
+                      { className: 'element-title-card-warp content-item' },
+                      P.createElement(
+                        'div',
+                        {
+                          className: 'element-title',
+                          onClick: function (t) {
+                            e.setState({ isClosed: !s }),
+                              t.preventDefault(),
+                              t.stopPropagation();
+                          },
+                        },
                         P.createElement(
-                          P.Fragment,
-                          null,
+                          'span',
+                          { className: 'title-text' },
+                          '数据源配置',
+                        ),
+                        s
+                          ? P.createElement(re.RightOutlined, {
+                              className: 'close-operate-btn',
+                            })
+                          : P.createElement(re.DownOutlined, {
+                              className: 'close-operate-btn',
+                            }),
+                        P.createElement(
+                          'div',
+                          {
+                            className: 'display-source-btn',
+                            onClick: function (t) {
+                              e.setState({ jsonView: !c }),
+                                t.preventDefault(),
+                                t.stopPropagation();
+                            },
+                          },
                           P.createElement(
-                            'div',
-                            { className: 'ace-editor-box code-area-item' },
-                            P.createElement(
-                              Q.Tooltip,
-                              {
-                                title: i
-                                  ? '点击隐藏数据过滤器'
-                                  : '点击显示数据过滤器',
-                                placement: 'top',
-                              },
-                              P.createElement(re.FilterOutlined, {
-                                className: 'filter-btn',
-                                onClick: this.switchFilterBtn,
-                              }),
-                            ),
-                            P.createElement(De, {
-                              parentType: l,
-                              jsonKey: 'data',
-                              indexRoute: n ? n + '-1' : '1',
-                              keyRoute: t ? t + '-data' : 'data',
-                              nodeKey: a + '-data',
-                              targetJsonSchema: s,
-                              key: a + '-data',
+                            Q.Tooltip,
+                            { title: c ? '关闭源码模式' : '开启源码模式' },
+                            P.createElement(_e, {
+                              className: c ? 'info-icon active' : 'info-icon',
                             }),
                           ),
-                          i &&
-                            P.createElement(Ne.A, {
-                              parentType: l,
-                              jsonKey: 'filter',
-                              indexRoute: n ? n + '-2' : '2',
-                              keyRoute: t ? t + '-filter' : 'filter',
-                              nodeKey: a + '-filter',
-                              targetJsonSchema: u,
-                              key: a + '-filter',
-                            }),
                         ),
-                      'remote' === p &&
-                        P.createElement(
-                          P.Fragment,
-                          null,
+                      ),
+                      P.createElement(
+                        'div',
+                        {
+                          className:
+                            'content-item object-content ' +
+                            (c ? 'json-view-array' : '') +
+                            ' ' +
+                            (s ? 'closed' : ''),
+                        },
+                        !c &&
+                          'local' === h &&
                           P.createElement(
-                            'div',
-                            { className: 'url-editor-box' },
-                            P.createElement(we, {
-                              parentType: l,
-                              jsonKey: 'data',
-                              indexRoute: n ? n + '-1' : '1',
-                              keyRoute: t ? t + '-data' : 'data',
-                              nodeKey: a + '-data',
-                              targetJsonSchema: s,
-                              key: a + '-data',
-                            }),
+                            P.Fragment,
+                            null,
                             P.createElement(
-                              Q.Tooltip,
-                              { title: '点击设置数据过滤器', placement: 'top' },
-                              P.createElement(re.FilterOutlined, {
-                                className: 'filter-url-btn',
-                                onClick: this.switchFilterBtn,
+                              'div',
+                              { className: 'ace-editor-box code-area-item' },
+                              P.createElement(
+                                Q.Tooltip,
+                                {
+                                  title: u
+                                    ? '点击隐藏数据过滤器'
+                                    : '点击显示数据过滤器',
+                                  placement: 'top',
+                                },
+                                P.createElement(re.FilterOutlined, {
+                                  className: 'filter-btn',
+                                  onClick: this.switchFilterBtn,
+                                }),
+                              ),
+                              P.createElement(Ne, {
+                                parentType: p,
+                                jsonKey: 'data',
+                                indexRoute: r ? r + '-1' : '1',
+                                keyRoute: a ? a + '-data' : 'data',
+                                nodeKey: n + '-data',
+                                targetJsonSchema: d,
+                                key: n + '-data',
                               }),
                             ),
+                            u &&
+                              P.createElement(De.A, {
+                                parentType: p,
+                                jsonKey: 'filter',
+                                indexRoute: r ? r + '-2' : '2',
+                                keyRoute: a ? a + '-filter' : 'filter',
+                                nodeKey: n + '-filter',
+                                targetJsonSchema: y,
+                                key: n + '-filter',
+                              }),
                           ),
-                          i &&
-                            P.createElement(Ne.A, {
-                              parentType: l,
-                              jsonKey: 'filter',
-                              indexRoute: n ? n + '-2' : '2',
-                              keyRoute: t ? t + '-filter' : 'filter',
-                              nodeKey: a + '-filter',
-                              targetJsonSchema: u,
-                              key: a + '-filter',
-                            }),
-                        ),
+                        !c &&
+                          'remote' === h &&
+                          P.createElement(
+                            P.Fragment,
+                            null,
+                            P.createElement(
+                              'div',
+                              { className: 'url-editor-box' },
+                              P.createElement(we, {
+                                parentType: p,
+                                jsonKey: 'data',
+                                indexRoute: r ? r + '-1' : '1',
+                                keyRoute: a ? a + '-data' : 'data',
+                                nodeKey: n + '-data',
+                                targetJsonSchema: d,
+                                key: n + '-data',
+                              }),
+                              P.createElement(
+                                Q.Tooltip,
+                                {
+                                  title: '点击设置数据过滤器',
+                                  placement: 'top',
+                                },
+                                P.createElement(re.FilterOutlined, {
+                                  className: 'filter-url-btn',
+                                  onClick: this.switchFilterBtn,
+                                }),
+                              ),
+                            ),
+                            u &&
+                              P.createElement(De.A, {
+                                parentType: p,
+                                jsonKey: 'filter',
+                                indexRoute: r ? r + '-2' : '2',
+                                keyRoute: a ? a + '-filter' : 'filter',
+                                nodeKey: n + '-filter',
+                                targetJsonSchema: y,
+                                key: n + '-filter',
+                              }),
+                          ),
+                        c && P.createElement(se, this.props),
+                      ),
                     ),
                   );
                 }),
@@ -2858,7 +2920,7 @@
                               ('wideScreen' === a
                                 ? 'wide-screen-element-warp'
                                 : 'mobile-screen-element-warp') +
-                              '  element-title-card-warp',
+                              ' element-title-card-warp',
                             key: r + '-' + s + '-params',
                             id: r + '-' + s + '-params',
                           },
@@ -2931,7 +2993,7 @@
                           key: r + '-dataRoute',
                         }),
                       s &&
-                        P.createElement(Ne.A, {
+                        P.createElement(De.A, {
                           isReadOnly: !0,
                           isIgnoreWarn: !0,
                           jsonKey: 'filter',
@@ -3100,7 +3162,12 @@
                 return P.createElement(
                   'div',
                   {
-                    className: 'mobile-screen-element-warp dynamic-data-schema',
+                    className1:
+                      'mobile-screen-element-warp dynamic-data-schema',
+                    className:
+                      'wideScreen' === u
+                        ? 'dynamic-data-schema wide-screen-element-warp'
+                        : 'dynamic-data-schema mobile-screen-element-warp',
                     key: n,
                     id: n,
                   },
@@ -3123,196 +3190,98 @@
                   ),
                   P.createElement(
                     'div',
-                    { className: 'dynamic-data-tab-radio-box' },
+                    { className: 'content-item' },
                     P.createElement(
                       'div',
-                      { className: 'dynamic-data-tab-radio' },
+                      { className: 'dynamic-data-tab-radio-box' },
                       P.createElement(
                         'div',
-                        {
-                          className:
-                            'tab-radio ' +
-                            ('local' === h ? 'tab-radio-active' : ''),
-                          onClick: function () {
-                            e.tabChange('local');
-                          },
-                        },
-                        '本地数据',
-                      ),
-                      P.createElement(
-                        'div',
-                        {
-                          className:
-                            'tab-radio ' +
-                            ('remote' === h ? 'tab-radio-active' : ''),
-                          onClick: function () {
-                            e.tabChange('remote');
-                          },
-                        },
-                        '接口数据',
-                      ),
-                    ),
-                  ),
-                  P.createElement(
-                    'div',
-                    {
-                      className:
-                        'dynamic-dat-tabPane ' +
-                        ('local' === h ? 'dynamic-dat-tabPane-active' : ''),
-                    },
-                    P.createElement(
-                      'div',
-                      { className: 'json-form-box' },
-                      P.createElement(
-                        Q.Tooltip,
-                        {
-                          title: p
-                            ? '点击隐藏数据过滤器'
-                            : '点击显示数据过滤器',
-                          placement: 'top',
-                        },
-                        P.createElement(re.FilterOutlined, {
-                          className: 'filter-btn',
-                          onClick: this.switchFilterBtn,
-                        }),
-                      ),
-                      P.createElement(De, {
-                        parentType: m,
-                        jsonKey: 'data',
-                        indexRoute: r ? r + '-2' : '2',
-                        keyRoute: a ? a + '-data' : 'data',
-                        nodeKey: n + '-data',
-                        targetJsonSchema: b,
-                        key: n + '-data',
-                      }),
-                      P.createElement(
-                        'div',
-                        { className: 'filter-func-box' },
-                        p &&
-                          P.createElement(Ne.A, {
-                            isIgnoreWarn: !0,
-                            parentType: m,
-                            jsonKey: 'localFilter',
-                            indexRoute: r ? r + '-3' : '3',
-                            keyRoute: a ? a + '-localFilter' : 'localFilter',
-                            nodeKey: n + '-localFilter',
-                            targetJsonSchema: o.properties.localFilter,
-                            key: n + '-localFilter',
-                          }),
-                      ),
-                    ),
-                  ),
-                  P.createElement(
-                    'div',
-                    {
-                      className:
-                        'dynamic-dat-tabPane ' +
-                        ('remote' === h ? 'dynamic-dat-tabPane-active' : ''),
-                    },
-                    P.createElement(
-                      'div',
-                      { className: 'json-form-box' },
-                      P.createElement(
-                        'div',
-                        {
-                          className:
-                            'wideScreen' === u
-                              ? 'wide-screen-element-warp'
-                              : 'mobile-screen-element-warp',
-                          key: n + '-' + S,
-                          id: n + '-' + S,
-                        },
-                        P.createElement(
-                          'div',
-                          { className: 'element-title' },
-                          '数据源列表',
-                        ),
-                        P.createElement(
-                          'div',
-                          { className: 'content-item' },
-                          P.createElement(
-                            'div',
-                            { className: 'form-item-box' },
-                            P.createElement(
-                              Q.Select,
-                              {
-                                className: 'dynamic-data-select',
-                                defaultValue: S,
-                                onSelect: this.dynamicDataChange,
-                              },
-                              i &&
-                                (0, X.cy)(i) &&
-                                i.map(function (e) {
-                                  return P.createElement(
-                                    Ve,
-                                    { value: e.name, key: e.id },
-                                    e.title,
-                                  );
-                                }),
-                            ),
-                          ),
-                        ),
-                      ),
-                      S &&
-                        f &&
-                        Object.keys(f).length > 0 &&
+                        { className: 'dynamic-data-tab-radio' },
                         P.createElement(
                           'div',
                           {
                             className:
-                              ('wideScreen' === u
-                                ? 'wide-screen-element-warp'
-                                : 'mobile-screen-element-warp') +
-                              '  element-title-card-warp',
-                            key: n + '-' + S + '-params',
-                            id: n + '-' + S + '-params',
+                              'tab-radio ' +
+                              ('local' === h ? 'tab-radio-active' : ''),
+                            onClick: function () {
+                              e.tabChange('local');
+                            },
                           },
-                          P.createElement(
-                            'div',
-                            { className: 'element-title' },
-                            '请求参数配置',
-                          ),
-                          P.createElement(
-                            'div',
-                            { className: 'content-item object-content' },
-                            Object.keys(f).map(function (t) {
-                              var r = (0, Y.bQ)(f[t]);
-                              r.readOnly = !(!r.scope || 'static' !== r.scope);
-                              var o = a + '-config-body-' + t,
-                                i = c[r.scope];
-                              if (
-                                (i &&
-                                  'dynamic' !== r.scope &&
-                                  (r.title = r.title + '（' + i + '）'),
-                                'dynamic' !== r.scope)
-                              )
-                                return P.createElement(xe, {
-                                  pageScreen: u,
-                                  jsonKey: t,
-                                  keyRoute: o + '-value',
-                                  nodeKey: o,
-                                  targetJsonSchema: r,
-                                  key: o,
-                                });
-                              var l = n + '-' + S + '-params-' + t;
-                              return P.createElement(Te, {
-                                pageScreen: u,
-                                nodeKey: l,
-                                keyRoute: a
-                                  ? a + '-config-body-' + t
-                                  : 'config-body-${paramKey}',
-                                curConfigData: r || {},
-                                configDataChange: function (a) {
-                                  e.paramsConfigChange(t, a);
-                                },
-                                key: o,
-                              });
-                            }),
-                          ),
+                          '本地数据',
                         ),
-                      S &&
-                        f &&
-                        0 === Object.keys(f).length &&
+                        P.createElement(
+                          'div',
+                          {
+                            className:
+                              'tab-radio ' +
+                              ('remote' === h ? 'tab-radio-active' : ''),
+                            onClick: function () {
+                              e.tabChange('remote');
+                            },
+                          },
+                          '接口数据',
+                        ),
+                      ),
+                    ),
+                    P.createElement(
+                      'div',
+                      {
+                        className:
+                          'dynamic-dat-tabPane ' +
+                          ('local' === h ? 'dynamic-dat-tabPane-active' : ''),
+                      },
+                      P.createElement(
+                        'div',
+                        { className: 'json-form-box' },
+                        P.createElement(
+                          Q.Tooltip,
+                          {
+                            title: p
+                              ? '点击隐藏数据过滤器'
+                              : '点击显示数据过滤器',
+                            placement: 'top',
+                          },
+                          P.createElement(re.FilterOutlined, {
+                            className: 'filter-btn',
+                            onClick: this.switchFilterBtn,
+                          }),
+                        ),
+                        P.createElement(Ne, {
+                          parentType: m,
+                          jsonKey: 'data',
+                          indexRoute: r ? r + '-2' : '2',
+                          keyRoute: a ? a + '-data' : 'data',
+                          nodeKey: n + '-data',
+                          targetJsonSchema: b,
+                          key: n + '-data',
+                        }),
+                        P.createElement(
+                          'div',
+                          { className: 'filter-func-box' },
+                          p &&
+                            P.createElement(De.A, {
+                              isIgnoreWarn: !0,
+                              parentType: m,
+                              jsonKey: 'localFilter',
+                              indexRoute: r ? r + '-3' : '3',
+                              keyRoute: a ? a + '-localFilter' : 'localFilter',
+                              nodeKey: n + '-localFilter',
+                              targetJsonSchema: o.properties.localFilter,
+                              key: n + '-localFilter',
+                            }),
+                        ),
+                      ),
+                    ),
+                    P.createElement(
+                      'div',
+                      {
+                        className:
+                          'dynamic-dat-tabPane ' +
+                          ('remote' === h ? 'dynamic-dat-tabPane-active' : ''),
+                      },
+                      P.createElement(
+                        'div',
+                        { className: 'json-form-box' },
                         P.createElement(
                           'div',
                           {
@@ -3320,46 +3289,152 @@
                               'wideScreen' === u
                                 ? 'wide-screen-element-warp'
                                 : 'mobile-screen-element-warp',
-                            key: n + '-' + S + '-empty',
-                            id: n + '-' + S + '-empty',
+                            key: n + '-' + S,
+                            id: n + '-' + S,
                           },
                           P.createElement(
                             'div',
                             { className: 'element-title' },
-                            '请求参数配置',
+                            '数据源列表',
                           ),
                           P.createElement(
                             'div',
                             { className: 'content-item' },
                             P.createElement(
-                              'span',
-                              { className: 'warning-text' },
-                              '无可配置的请求参数',
+                              'div',
+                              { className: 'form-item-box' },
+                              P.createElement(
+                                Q.Select,
+                                {
+                                  className: 'dynamic-data-select',
+                                  defaultValue: S,
+                                  onSelect: this.dynamicDataChange,
+                                },
+                                i &&
+                                  (0, X.cy)(i) &&
+                                  i.map(function (e) {
+                                    return P.createElement(
+                                      Ve,
+                                      { value: e.name, key: e.id },
+                                      e.title,
+                                    );
+                                  }),
+                              ),
                             ),
                           ),
                         ),
-                      S &&
-                        P.createElement(je, {
-                          nodeKey: n + '-config-dataRoute-' + _,
-                          mockData: E.respMock,
-                          dataRoute: _,
-                          onChange: this.dataRouteChange,
-                          key: n + '-config-dataRoute',
-                        }),
-                      S &&
-                        P.createElement(Ne.A, {
-                          isReadOnly: !0,
-                          isIgnoreWarn: !0,
-                          parentType: m,
-                          jsonKey: 'filter',
-                          indexRoute: r ? r + '-1-2' : '1-2',
-                          keyRoute: a ? a + '-config-filter' : 'config-filter',
-                          nodeKey: n + '-config-filter-' + _,
-                          targetJsonSchema:
-                            o.properties.config &&
-                            o.properties.config.properties.filter,
-                          key: n + '-config-filter',
-                        }),
+                        S &&
+                          f &&
+                          Object.keys(f).length > 0 &&
+                          P.createElement(
+                            'div',
+                            {
+                              className:
+                                ('wideScreen' === u
+                                  ? 'wide-screen-element-warp'
+                                  : 'mobile-screen-element-warp') +
+                                ' element-title-card-warp',
+                              key: n + '-' + S + '-params',
+                              id: n + '-' + S + '-params',
+                            },
+                            P.createElement(
+                              'div',
+                              { className: 'element-title' },
+                              '请求参数配置',
+                            ),
+                            P.createElement(
+                              'div',
+                              { className: 'content-item object-content' },
+                              Object.keys(f).map(function (t) {
+                                var r = (0, Y.bQ)(f[t]);
+                                r.readOnly = !(
+                                  !r.scope || 'static' !== r.scope
+                                );
+                                var o = a + '-config-body-' + t,
+                                  i = c[r.scope];
+                                if (
+                                  (i &&
+                                    'dynamic' !== r.scope &&
+                                    (r.title = r.title + '（' + i + '）'),
+                                  'dynamic' !== r.scope)
+                                )
+                                  return P.createElement(xe, {
+                                    pageScreen: u,
+                                    jsonKey: t,
+                                    keyRoute: o + '-value',
+                                    nodeKey: o,
+                                    targetJsonSchema: r,
+                                    key: o,
+                                  });
+                                var l = n + '-' + S + '-params-' + t;
+                                return P.createElement(Te, {
+                                  pageScreen: u,
+                                  nodeKey: l,
+                                  keyRoute: a
+                                    ? a + '-config-body-' + t
+                                    : 'config-body-${paramKey}',
+                                  curConfigData: r || {},
+                                  configDataChange: function (a) {
+                                    e.paramsConfigChange(t, a);
+                                  },
+                                  key: o,
+                                });
+                              }),
+                            ),
+                          ),
+                        S &&
+                          f &&
+                          0 === Object.keys(f).length &&
+                          P.createElement(
+                            'div',
+                            {
+                              className:
+                                'wideScreen' === u
+                                  ? 'wide-screen-element-warp'
+                                  : 'mobile-screen-element-warp',
+                              key: n + '-' + S + '-empty',
+                              id: n + '-' + S + '-empty',
+                            },
+                            P.createElement(
+                              'div',
+                              { className: 'element-title' },
+                              '请求参数配置',
+                            ),
+                            P.createElement(
+                              'div',
+                              { className: 'content-item' },
+                              P.createElement(
+                                'span',
+                                { className: 'warning-text' },
+                                '无可配置的请求参数',
+                              ),
+                            ),
+                          ),
+                        S &&
+                          P.createElement(je, {
+                            nodeKey: n + '-config-dataRoute-' + _,
+                            mockData: E.respMock,
+                            dataRoute: _,
+                            onChange: this.dataRouteChange,
+                            key: n + '-config-dataRoute',
+                          }),
+                        S &&
+                          P.createElement(De.A, {
+                            isReadOnly: !0,
+                            isIgnoreWarn: !0,
+                            parentType: m,
+                            jsonKey: 'filter',
+                            indexRoute: r ? r + '-1-2' : '1-2',
+                            keyRoute: a
+                              ? a + '-config-filter'
+                              : 'config-filter',
+                            nodeKey: n + '-config-filter-' + _,
+                            targetJsonSchema:
+                              o.properties.config &&
+                              o.properties.config.properties.filter,
+                            key: n + '-config-filter',
+                          }),
+                      ),
                     ),
                   ),
                 );
@@ -3394,8 +3469,15 @@
             };
           })((0, I.observer)(Ie)),
           Ae = (function (e) {
-            function t() {
-              return e.apply(this, arguments) || this;
+            function t(t) {
+              var a;
+              return (
+                ((a = e.call(this, t) || this).state = {
+                  jsonView: !1,
+                  isClosed: !1,
+                }),
+                a
+              );
             }
             j()(t, e);
             var a = t.prototype;
@@ -3408,29 +3490,32 @@
                   ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  a = e.nodeKey,
-                  n = e.indexRoute,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = r.type,
-                  l = r.properties.type || {},
-                  c = r.properties.register || {},
-                  s = r.properties.actionFunc || {},
-                  u = r.properties.trigger || {},
-                  p = r.properties.eventData || {},
-                  m = l.default;
+                var e = this,
+                  t = this.props,
+                  a = t.keyRoute,
+                  n = t.nodeKey,
+                  r = t.indexRoute,
+                  o = t.targetJsonSchema,
+                  i = t.pageScreen,
+                  l = o.type,
+                  c = this.state,
+                  s = c.jsonView,
+                  u = c.isClosed,
+                  p = o.properties.type || {},
+                  m = o.properties.register || {},
+                  d = o.properties.actionFunc || {},
+                  y = o.properties.trigger || {},
+                  h = o.properties.eventData || {},
+                  g = p.default;
                 return P.createElement(
                   'div',
                   {
                     className:
-                      ('wideScreen' === o
+                      'wideScreen' === i
                         ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp') +
-                      '  element-title-card-warp',
-                    key: a,
-                    id: a,
+                        : 'mobile-screen-element-warp',
+                    key: n,
+                    id: n,
                   },
                   P.createElement(
                     'div',
@@ -3440,16 +3525,16 @@
                       {
                         className: 'title-text',
                         title:
-                          'wideScreen' === o && r.title.length > 6
-                            ? r.title
+                          'wideScreen' === i && o.title.length > 6
+                            ? o.title
                             : '',
                       },
-                      r.title,
+                      o.title,
                     ),
-                    r.description &&
+                    o.description &&
                       P.createElement(
                         Q.Tooltip,
-                        { title: r.description, placement: 'top' },
+                        { title: o.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
@@ -3457,57 +3542,111 @@
                   ),
                   P.createElement(
                     'div',
-                    { className: 'content-item object-content' },
-                    'on' === m &&
+                    { className: 'element-title-card-warp content-item' },
+                    P.createElement(
+                      'div',
+                      {
+                        className: 'element-title',
+                        onClick: function (t) {
+                          e.setState({ isClosed: !u }),
+                            t.preventDefault(),
+                            t.stopPropagation();
+                        },
+                      },
                       P.createElement(
-                        P.Fragment,
-                        null,
-                        c &&
-                          P.createElement(xe, {
-                            parentType: i,
-                            jsonKey: 'register',
-                            indexRoute: n ? n + '-1' : '1',
-                            keyRoute: t ? t + '-register' : 'register',
-                            nodeKey: a + '-register',
-                            targetJsonSchema: c,
-                            key: a + '-register',
-                          }),
-                        s &&
-                          P.createElement(Ne.A, {
-                            parentType: i,
-                            jsonKey: 'actionFunc',
-                            indexRoute: n ? n + '-2' : '2',
-                            keyRoute: t ? t + '-actionFunc' : 'actionFunc',
-                            nodeKey: a + '-actionFunc',
-                            targetJsonSchema: s,
-                            key: a + '-actionFunc',
-                          }),
+                        'span',
+                        { className: 'title-text' },
+                        '事件配置',
                       ),
-                    'emit' === m &&
+                      u
+                        ? P.createElement(re.RightOutlined, {
+                            className: 'close-operate-btn',
+                          })
+                        : P.createElement(re.DownOutlined, {
+                            className: 'close-operate-btn',
+                          }),
                       P.createElement(
-                        P.Fragment,
-                        null,
-                        u &&
-                          P.createElement(xe, {
-                            parentType: i,
-                            jsonKey: 'trigger',
-                            indexRoute: n ? n + '-1' : '1',
-                            keyRoute: t ? t + '-trigger' : 'trigger',
-                            nodeKey: a + '-trigger',
-                            targetJsonSchema: u,
-                            key: a + '-trigger',
+                        'div',
+                        {
+                          className: 'display-source-btn',
+                          onClick: function (t) {
+                            e.setState({ jsonView: !s }),
+                              t.preventDefault(),
+                              t.stopPropagation();
+                          },
+                        },
+                        P.createElement(
+                          Q.Tooltip,
+                          { title: s ? '关闭源码模式' : '开启源码模式' },
+                          P.createElement(_e, {
+                            className: s ? 'info-icon active' : 'info-icon',
                           }),
-                        p &&
-                          P.createElement(De, {
-                            parentType: i,
-                            jsonKey: 'eventData',
-                            indexRoute: n ? n + '-2' : '2',
-                            keyRoute: t ? t + '-eventData' : 'eventData',
-                            nodeKey: a + '-eventData',
-                            targetJsonSchema: p,
-                            key: a + '-eventData',
-                          }),
+                        ),
                       ),
+                    ),
+                    P.createElement(
+                      'div',
+                      {
+                        className:
+                          'content-item object-content ' +
+                          (s ? 'json-view-array' : '') +
+                          ' ' +
+                          (u ? 'closed' : ''),
+                      },
+                      !s &&
+                        'on' === g &&
+                        P.createElement(
+                          P.Fragment,
+                          null,
+                          m &&
+                            P.createElement(xe, {
+                              parentType: l,
+                              jsonKey: 'register',
+                              indexRoute: r ? r + '-1' : '1',
+                              keyRoute: a ? a + '-register' : 'register',
+                              nodeKey: n + '-register',
+                              targetJsonSchema: m,
+                              key: n + '-register',
+                            }),
+                          d &&
+                            P.createElement(De.A, {
+                              parentType: l,
+                              jsonKey: 'actionFunc',
+                              indexRoute: r ? r + '-2' : '2',
+                              keyRoute: a ? a + '-actionFunc' : 'actionFunc',
+                              nodeKey: n + '-actionFunc',
+                              targetJsonSchema: d,
+                              key: n + '-actionFunc',
+                            }),
+                        ),
+                      !s &&
+                        'emit' === g &&
+                        P.createElement(
+                          P.Fragment,
+                          null,
+                          y &&
+                            P.createElement(xe, {
+                              parentType: l,
+                              jsonKey: 'trigger',
+                              indexRoute: r ? r + '-1' : '1',
+                              keyRoute: a ? a + '-trigger' : 'trigger',
+                              nodeKey: n + '-trigger',
+                              targetJsonSchema: y,
+                              key: n + '-trigger',
+                            }),
+                          h &&
+                            P.createElement(Ne, {
+                              parentType: l,
+                              jsonKey: 'eventData',
+                              indexRoute: r ? r + '-2' : '2',
+                              keyRoute: a ? a + '-eventData' : 'eventData',
+                              nodeKey: n + '-eventData',
+                              targetJsonSchema: h,
+                              key: n + '-eventData',
+                            }),
+                        ),
+                      s && P.createElement(se, this.props),
+                    ),
                   ),
                 );
               }),
@@ -4388,7 +4527,13 @@
                   'separator',
                   'fullscreen',
                 ],
-                baseControls: ['font-size', 'text-color', 'bold', 'italic'],
+                baseControls: [
+                  'font-size',
+                  'text-color',
+                  'bold',
+                  'italic',
+                  'fullscreen',
+                ],
               }),
               (a.handleEditorChange = a.handleEditorChange.bind(a)),
               a
@@ -4426,7 +4571,10 @@
               return P.createElement(
                 'div',
                 {
-                  className: 'text-editor-box mobile-screen-element-warp',
+                  className:
+                    'wideScreen' === o
+                      ? 'text-editor-box wide-screen-element-warp'
+                      : 'text-editor-box mobile-screen-element-warp',
                   key: n,
                   id: n,
                 },
@@ -5349,7 +5497,7 @@
             };
           })((0, I.observer)(bt)),
           vt = (__webpack_require__(546), Q.Select.Option),
-          Dt = (function (e) {
+          Nt = (function (e) {
             function t(t) {
               var a;
               return (
@@ -5459,7 +5607,7 @@
               t
             );
           })(P.PureComponent);
-        Dt.propTypes = {
+        Nt.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -5467,7 +5615,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Nt = (0, I.inject)(function (e) {
+        var Dt = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5475,7 +5623,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Dt)),
+          })((0, I.observer)(Nt)),
           Rt = function (e) {
             var t = e.nodeKey,
               a = (e.jsonKey, e.keyRoute),
@@ -5512,7 +5660,7 @@
               case 'radio':
                 return B().createElement(He, ne()({}, p, { key: c }));
               case 'select':
-                return B().createElement(Nt, ne()({}, p, { key: c }));
+                return B().createElement(Dt, ne()({}, p, { key: c }));
               case 'checkboxes':
                 return B().createElement($e, ne()({}, p, { key: c }));
               case 'input':
@@ -5536,9 +5684,9 @@
               case 'color':
                 return B().createElement(Et, ne()({}, p, { key: c }));
               case 'json':
-                return B().createElement(De, ne()({}, p, { key: c }));
+                return B().createElement(Ne, ne()({}, p, { key: c }));
               case 'codearea':
-                return B().createElement(Ne.A, ne()({}, p, { key: c }));
+                return B().createElement(De.A, ne()({}, p, { key: c }));
               case 'htmlarea':
                 return B().createElement(Ot, ne()({}, p, { key: c }));
             }
