@@ -88,11 +88,24 @@ class IndexDemo extends React.PureComponent {
               legendAlign: {
                 title: '图例位置',
                 type: 'select',
-                items: {
-                  type: 'string',
-                  enum: ['top', 'right', 'bottom', 'left'],
-                  enumextra: ['上', '右', '下', '左'],
-                },
+                options: [
+                  {
+                    label: '上',
+                    value: 'top',
+                  },
+                  {
+                    label: '右',
+                    value: 'right',
+                  },
+                  {
+                    label: '下',
+                    value: 'bottom',
+                  },
+                  {
+                    label: '左',
+                    value: 'left',
+                  },
+                ],
                 description: '',
                 default: 'top',
               },
