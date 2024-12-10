@@ -1597,49 +1597,51 @@
                   ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = t.keyRoute,
-                  n = t.nodeKey,
-                  r = t.pageScreen,
-                  o = t.indexRoute,
-                  i = t.targetJsonSchema,
-                  l = t.getJSONDataByKeyRoute,
-                  c = t.keyRoute2indexRoute,
-                  s = t.updateFormValueData,
-                  u = this.state,
-                  p = u.jsonView,
-                  m = u.isClosed,
-                  d = (u.hoverIndex, u.currentActiveArrIndex),
-                  y = i.type,
-                  h = l(a),
-                  g = i.items;
+                var e,
+                  t = this,
+                  a = this.props,
+                  n = a.keyRoute,
+                  r = a.nodeKey,
+                  o = a.pageScreen,
+                  i = a.indexRoute,
+                  l = a.targetJsonSchema,
+                  c = a.getJSONDataByKeyRoute,
+                  s = a.keyRoute2indexRoute,
+                  u = a.updateFormValueData,
+                  p = this.state,
+                  m = p.jsonView,
+                  d = p.isClosed,
+                  y = (p.hoverIndex, p.currentActiveArrIndex),
+                  h = l.type,
+                  g = null == (e = l.showCodeViewBtn) || e,
+                  S = c(n),
+                  _ = l.items;
                 return P.createElement(
                   'div',
                   {
                     className:
-                      'wideScreen' === r
+                      'wideScreen' === o
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
-                    key: n,
-                    id: n,
+                    key: r,
+                    id: r,
                   },
                   P.createElement(
                     'div',
                     { className: 'element-title' },
                     P.createElement(
                       Q.Tooltip,
-                      { title: i.description, placement: 'top' },
+                      { title: l.description, placement: 'top' },
                       P.createElement(
                         'span',
                         {
                           className: 'title-text',
                           title:
-                            'wideScreen' === r && i.title.length > 6
-                              ? i.title
+                            'wideScreen' === o && l.title.length > 6
+                              ? l.title
                               : '',
                         },
-                        i.title,
+                        l.title,
                       ),
                     ),
                   ),
@@ -1650,10 +1652,10 @@
                       'div',
                       {
                         className: 'element-title',
-                        onClick: function (t) {
-                          e.setState({ isClosed: !m }),
-                            t.preventDefault(),
-                            t.stopPropagation();
+                        onClick: function (e) {
+                          t.setState({ isClosed: !d }),
+                            e.preventDefault(),
+                            e.stopPropagation();
                         },
                       },
                       P.createElement(
@@ -1661,40 +1663,41 @@
                         { className: 'title-text' },
                         '数组配置',
                       ),
-                      m
+                      d
                         ? P.createElement(re.RightOutlined, {
                             className: 'close-operate-btn',
                           })
                         : P.createElement(re.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
-                      P.createElement(
-                        'div',
-                        {
-                          className: 'display-source-btn',
-                          onClick: function (t) {
-                            e.setState({ jsonView: !p }),
-                              t.preventDefault(),
-                              t.stopPropagation();
-                          },
-                        },
+                      g &&
                         P.createElement(
-                          Q.Tooltip,
-                          { title: p ? '关闭源码模式' : '开启源码模式' },
-                          P.createElement(_e, {
-                            className: p ? 'info-icon active' : 'info-icon',
-                          }),
+                          'div',
+                          {
+                            className: 'display-source-btn',
+                            onClick: function (e) {
+                              t.setState({ jsonView: !m }),
+                                e.preventDefault(),
+                                e.stopPropagation();
+                            },
+                          },
+                          P.createElement(
+                            Q.Tooltip,
+                            { title: m ? '关闭源码模式' : '开启源码模式' },
+                            P.createElement(_e, {
+                              className: m ? 'info-icon active' : 'info-icon',
+                            }),
+                          ),
                         ),
-                      ),
                       P.createElement(
                         Q.Tooltip,
                         { title: '添加数据项' },
                         P.createElement(re.PlusOutlined, {
                           className: 'array-add-child-btn',
-                          onClick: function (t) {
-                            e.addArrayItem(a, h),
-                              t.preventDefault(),
-                              t.stopPropagation();
+                          onClick: function (e) {
+                            t.addArrayItem(n, S),
+                              e.preventDefault(),
+                              e.stopPropagation();
                           },
                         }),
                       ),
@@ -1704,17 +1707,17 @@
                       {
                         className:
                           'array-content ' +
-                          (p ? 'json-view-array' : '') +
+                          (m ? 'json-view-array' : '') +
                           ' ' +
-                          (m ? 'closed' : ''),
+                          (d ? 'closed' : ''),
                       },
-                      !p &&
-                        (0, X.cy)(h) &&
-                        h.map(function (t, r) {
-                          var i = n + '-array-items-' + h.length + '-' + r,
-                            u = o ? o + '-0' : '0',
-                            p = a ? a + '-' + r : '' + r,
-                            m = e.getArrItemTitle(t);
+                      !m &&
+                        (0, X.cy)(S) &&
+                        S.map(function (e, a) {
+                          var o = r + '-array-items-' + S.length + '-' + a,
+                            l = i ? i + '-0' : '0',
+                            p = n ? n + '-' + a : '' + a,
+                            m = t.getArrItemTitle(e);
                           return P.createElement(
                             'div',
                             { className: 'array-item', key: p },
@@ -1723,26 +1726,26 @@
                               {
                                 className: 'array-item-header',
                                 onClick: function () {
-                                  e.setState({
-                                    currentActiveArrIndex: d === r ? -1 : r,
+                                  t.setState({
+                                    currentActiveArrIndex: y === a ? -1 : a,
                                   });
                                 },
-                                onMouseMove: function (t) {
-                                  e.elemHoverEnterEvent(t, r);
+                                onMouseMove: function (e) {
+                                  t.elemHoverEnterEvent(e, a);
                                 },
-                                onMouseLeave: function (t) {
-                                  e.elemHoverLeaveEvent(t, r);
+                                onMouseLeave: function (e) {
+                                  t.elemHoverLeaveEvent(e, a);
                                 },
                               },
                               P.createElement(
                                 'div',
                                 { className: 'array-title-text' },
-                                m || g.title + '/' + (r + 1),
+                                m || _.title + '/' + (a + 1),
                               ),
                               P.createElement(
                                 'div',
                                 { className: 'array-operate-box' },
-                                d !== r
+                                y !== a
                                   ? P.createElement(re.RightOutlined, {
                                       className:
                                         'close-operate-btn array-operate-btn',
@@ -1753,24 +1756,24 @@
                                     }),
                                 P.createElement(
                                   Q.Tooltip,
-                                  { title: '删除' + g.title + '/' + (r + 1) },
+                                  { title: '删除' + _.title + '/' + (a + 1) },
                                   P.createElement(
                                     Q.Popconfirm,
                                     {
                                       placement: 'top',
                                       title:
                                         '确定要删除' +
-                                        g.title +
+                                        _.title +
                                         '/' +
-                                        (r + 1) +
+                                        (a + 1) +
                                         '吗？',
                                       onCancel: function (e) {
                                         e.preventDefault(), e.stopPropagation();
                                       },
-                                      onConfirm: function (t) {
-                                        e.deleteArrItem(a, r, h),
-                                          t.preventDefault(),
-                                          t.stopPropagation();
+                                      onConfirm: function (e) {
+                                        t.deleteArrItem(n, a, S),
+                                          e.preventDefault(),
+                                          e.stopPropagation();
                                       },
                                       okText: '确定',
                                       cancelText: '取消',
@@ -1786,39 +1789,39 @@
                                 ),
                                 P.createElement(
                                   Q.Tooltip,
-                                  { title: '复制' + g.title + '/' + (r + 1) },
+                                  { title: '复制' + _.title + '/' + (a + 1) },
                                   P.createElement(ge, {
                                     className: 'array-operate-btn',
-                                    onClick: function (t) {
-                                      e.addArrayItem(a, h, r),
-                                        t.preventDefault(),
-                                        t.stopPropagation();
+                                    onClick: function (e) {
+                                      t.addArrayItem(n, S, a),
+                                        e.preventDefault(),
+                                        e.stopPropagation();
                                     },
                                   }),
                                 ),
-                                0 !== r &&
+                                0 !== a &&
                                   P.createElement(
                                     Q.Tooltip,
                                     { title: '向上移动' },
                                     P.createElement(re.ArrowUpOutlined, {
                                       className: 'array-operate-btn',
-                                      onClick: function (t) {
-                                        e.props.sortArrayItem(a, r, 'up'),
-                                          t.preventDefault(),
-                                          t.stopPropagation();
+                                      onClick: function (e) {
+                                        t.props.sortArrayItem(n, a, 'up'),
+                                          e.preventDefault(),
+                                          e.stopPropagation();
                                       },
                                     }),
                                   ),
-                                r !== h.length - 1 &&
+                                a !== S.length - 1 &&
                                   P.createElement(
                                     Q.Tooltip,
                                     { title: '向下移动' },
                                     P.createElement(re.ArrowDownOutlined, {
                                       className: 'array-operate-btn',
-                                      onClick: function (t) {
-                                        e.props.sortArrayItem(a, r, 'down'),
-                                          t.preventDefault(),
-                                          t.stopPropagation();
+                                      onClick: function (e) {
+                                        t.props.sortArrayItem(n, a, 'down'),
+                                          e.preventDefault(),
+                                          e.stopPropagation();
                                       },
                                     }),
                                   ),
@@ -1829,27 +1832,27 @@
                               {
                                 className:
                                   'array-item-content ' +
-                                  (d === r ? 'open' : 'closed'),
-                                key: i,
-                                id: i,
+                                  (y === a ? 'open' : 'closed'),
+                                key: o,
+                                id: o,
                               },
                               P.createElement(Rt, {
-                                parentType: y,
+                                parentType: h,
                                 jsonKey: 'items',
-                                indexRoute: u,
+                                indexRoute: l,
                                 keyRoute: p,
-                                nodeKey: i,
-                                targetJsonSchema: g,
+                                nodeKey: o,
+                                targetJsonSchema: _,
                                 isArrayItem: !0,
-                                arrIndex: r,
-                                getJSONDataByKeyRoute: l,
-                                keyRoute2indexRoute: c,
-                                updateFormValueData: s,
+                                arrIndex: a,
+                                getJSONDataByKeyRoute: c,
+                                keyRoute2indexRoute: s,
+                                updateFormValueData: u,
                               }),
                             ),
                           );
                         }),
-                      p && P.createElement(se, this.props),
+                      m && P.createElement(se, this.props),
                     ),
                   ),
                 );
@@ -1903,66 +1906,68 @@
                     ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.indexRoute,
-                    n = t.nodeKey,
-                    r = t.keyRoute,
-                    o = t.pageScreen,
-                    i = t.targetJsonSchema,
-                    l = t.isArrayItem,
-                    c = (t.arrIndex, t.isStructuredSchema),
-                    s = t.getJSONDataByKeyRoute,
-                    u = t.keyRoute2indexRoute,
-                    p = t.updateFormValueData,
-                    m = this.state,
-                    d = m.jsonView,
-                    y = m.isClosed,
-                    h = c;
+                  var e,
+                    t = this,
+                    a = this.props,
+                    n = a.indexRoute,
+                    r = a.nodeKey,
+                    o = a.keyRoute,
+                    i = a.pageScreen,
+                    l = a.targetJsonSchema,
+                    c = a.isArrayItem,
+                    s = (a.arrIndex, a.isStructuredSchema),
+                    u = a.getJSONDataByKeyRoute,
+                    p = a.keyRoute2indexRoute,
+                    m = a.updateFormValueData,
+                    d = this.state,
+                    y = d.jsonView,
+                    h = d.isClosed,
+                    g = s,
+                    S = null == (e = l.showCodeViewBtn) || e;
                   return B().createElement(
                     'div',
                     {
                       className:
-                        'wideScreen' === o
+                        'wideScreen' === i
                           ? 'object-schema-warp wide-screen-element-warp'
                           : 'object-schema-warp mobile-screen-element-warp',
-                      key: n,
-                      id: n,
+                      key: r,
+                      id: r,
                     },
-                    !h &&
-                      !l &&
+                    !g &&
+                      !c &&
                       B().createElement(
                         'div',
                         { className: 'element-title' },
                         B().createElement(
                           Q.Tooltip,
-                          { title: i.description, placement: 'top' },
+                          { title: l.description, placement: 'top' },
                           B().createElement(
                             'span',
                             {
                               className: 'title-text',
                               title:
-                                'wideScreen' === o && i.title.length > 6
-                                  ? i.title
+                                'wideScreen' === i && l.title.length > 6
+                                  ? l.title
                                   : '',
                             },
-                            i.title,
+                            l.title,
                           ),
                         ),
                       ),
                     B().createElement(
                       'div',
                       { className: 'element-title-card-warp content-item' },
-                      !h &&
-                        !l &&
+                      !g &&
+                        !c &&
                         B().createElement(
                           'div',
                           {
                             className: 'element-title',
-                            onClick: function (t) {
-                              e.setState({ isClosed: !y }),
-                                t.preventDefault(),
-                                t.stopPropagation();
+                            onClick: function (e) {
+                              t.setState({ isClosed: !h }),
+                                e.preventDefault(),
+                                e.stopPropagation();
                             },
                           },
                           B().createElement(
@@ -1970,64 +1975,67 @@
                             { className: 'title-text' },
                             '对象配置',
                           ),
-                          y
+                          h
                             ? B().createElement(re.RightOutlined, {
                                 className: 'close-operate-btn',
                               })
                             : B().createElement(re.DownOutlined, {
                                 className: 'close-operate-btn',
                               }),
-                          B().createElement(
-                            'div',
-                            {
-                              className: 'display-source-btn',
-                              onClick: function (t) {
-                                e.setState({ jsonView: !d }),
-                                  t.preventDefault(),
-                                  t.stopPropagation();
-                              },
-                            },
+                          S &&
                             B().createElement(
-                              Q.Tooltip,
-                              { title: d ? '关闭源码模式' : '开启源码模式' },
-                              B().createElement(_e, {
-                                className: d ? 'info-icon active' : 'info-icon',
-                              }),
+                              'div',
+                              {
+                                className: 'display-source-btn',
+                                onClick: function (e) {
+                                  t.setState({ jsonView: !y }),
+                                    e.preventDefault(),
+                                    e.stopPropagation();
+                                },
+                              },
+                              B().createElement(
+                                Q.Tooltip,
+                                { title: y ? '关闭源码模式' : '开启源码模式' },
+                                B().createElement(_e, {
+                                  className: y
+                                    ? 'info-icon active'
+                                    : 'info-icon',
+                                }),
+                              ),
                             ),
-                          ),
                         ),
                       B().createElement(
                         'div',
                         {
                           className:
                             'content-item ' +
-                            (h || l ? '' : 'object-content') +
+                            (g || c ? '' : 'object-content') +
                             ' ' +
-                            (d ? 'json-view-array' : '') +
+                            (y ? 'json-view-array' : '') +
                             ' ' +
-                            (y ? 'closed' : ''),
+                            (h ? 'closed' : ''),
                         },
-                        !d &&
-                          i.propertyOrder &&
-                          i.propertyOrder.map(function (e, t) {
-                            var o = a ? a + '-' + t : '' + t,
-                              l = r ? r + '-' + e : '' + e,
+                        !y &&
+                          l.propertyOrder &&
+                          l.propertyOrder.map(function (e, t) {
+                            var a = n ? n + '-' + t : '' + t,
+                              i = o ? o + '-' + e : '' + e,
                               c = e,
-                              m = i.properties[c],
-                              d = m.type;
+                              s = l.properties[c],
+                              d = s.type;
                             return Rt({
                               parentType: d,
                               jsonKey: c,
-                              indexRoute: o,
-                              keyRoute: l,
-                              nodeKey: n + '-' + d + '-' + c,
-                              targetJsonSchema: m,
-                              getJSONDataByKeyRoute: s,
-                              keyRoute2indexRoute: u,
-                              updateFormValueData: p,
+                              indexRoute: a,
+                              keyRoute: i,
+                              nodeKey: r + '-' + d + '-' + c,
+                              targetJsonSchema: s,
+                              getJSONDataByKeyRoute: u,
+                              keyRoute2indexRoute: p,
+                              updateFormValueData: m,
                             });
                           }),
-                        d && B().createElement(se, this.props),
+                        y && B().createElement(se, this.props),
                       ),
                     ),
                   );
@@ -2371,31 +2379,33 @@
                     ue.x.call(this, e.keyRoute);
                 }),
                 (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.keyRoute,
-                    n = t.nodeKey,
-                    r = t.indexRoute,
-                    o = t.targetJsonSchema,
-                    i = t.pageScreen,
-                    l = this.state,
-                    c = l.jsonView,
-                    s = l.isClosed,
-                    u = l.isShowFilter,
-                    p = o.type,
-                    m = o.properties.type || {},
-                    d = o.properties.data || {},
-                    y = o.properties.filter || {},
-                    h = m.default;
+                  var e,
+                    t = this,
+                    a = this.props,
+                    n = a.keyRoute,
+                    r = a.nodeKey,
+                    o = a.indexRoute,
+                    i = a.targetJsonSchema,
+                    l = a.pageScreen,
+                    c = this.state,
+                    s = c.jsonView,
+                    u = c.isClosed,
+                    p = c.isShowFilter,
+                    m = i.type,
+                    d = i.properties.type || {},
+                    y = i.properties.data || {},
+                    h = i.properties.filter || {},
+                    g = d.default,
+                    S = null == (e = i.showCodeViewBtn) || e;
                   return P.createElement(
                     'div',
                     {
                       className:
-                        'wideScreen' === i
+                        'wideScreen' === l
                           ? 'wide-screen-element-warp'
                           : 'mobile-screen-element-warp',
-                      key: n,
-                      id: n,
+                      key: r,
+                      id: r,
                     },
                     P.createElement(
                       'div',
@@ -2405,16 +2415,16 @@
                         {
                           className: 'title-text',
                           title:
-                            'wideScreen' === i && o.title.length > 6
-                              ? o.title
+                            'wideScreen' === l && i.title.length > 6
+                              ? i.title
                               : '',
                         },
-                        o.title,
+                        i.title,
                       ),
-                      o.description &&
+                      i.description &&
                         P.createElement(
                           Q.Tooltip,
-                          { title: o.description, placement: 'top' },
+                          { title: i.description, placement: 'top' },
                           P.createElement(re.InfoCircleOutlined, {
                             className: 'info-icon',
                           }),
@@ -2427,10 +2437,10 @@
                         'div',
                         {
                           className: 'element-title',
-                          onClick: function (t) {
-                            e.setState({ isClosed: !s }),
-                              t.preventDefault(),
-                              t.stopPropagation();
+                          onClick: function (e) {
+                            t.setState({ isClosed: !u }),
+                              e.preventDefault(),
+                              e.stopPropagation();
                           },
                         },
                         P.createElement(
@@ -2438,43 +2448,44 @@
                           { className: 'title-text' },
                           '数据源配置',
                         ),
-                        s
+                        u
                           ? P.createElement(re.RightOutlined, {
                               className: 'close-operate-btn',
                             })
                           : P.createElement(re.DownOutlined, {
                               className: 'close-operate-btn',
                             }),
-                        P.createElement(
-                          'div',
-                          {
-                            className: 'display-source-btn',
-                            onClick: function (t) {
-                              e.setState({ jsonView: !c }),
-                                t.preventDefault(),
-                                t.stopPropagation();
-                            },
-                          },
+                        S &&
                           P.createElement(
-                            Q.Tooltip,
-                            { title: c ? '关闭源码模式' : '开启源码模式' },
-                            P.createElement(_e, {
-                              className: c ? 'info-icon active' : 'info-icon',
-                            }),
+                            'div',
+                            {
+                              className: 'display-source-btn',
+                              onClick: function (e) {
+                                t.setState({ jsonView: !s }),
+                                  e.preventDefault(),
+                                  e.stopPropagation();
+                              },
+                            },
+                            P.createElement(
+                              Q.Tooltip,
+                              { title: s ? '关闭源码模式' : '开启源码模式' },
+                              P.createElement(_e, {
+                                className: s ? 'info-icon active' : 'info-icon',
+                              }),
+                            ),
                           ),
-                        ),
                       ),
                       P.createElement(
                         'div',
                         {
                           className:
                             'content-item object-content ' +
-                            (c ? 'json-view-array' : '') +
+                            (s ? 'json-view-array' : '') +
                             ' ' +
-                            (s ? 'closed' : ''),
+                            (u ? 'closed' : ''),
                         },
-                        !c &&
-                          'local' === h &&
+                        !s &&
+                          'local' === g &&
                           P.createElement(
                             P.Fragment,
                             null,
@@ -2484,7 +2495,7 @@
                               P.createElement(
                                 Q.Tooltip,
                                 {
-                                  title: u
+                                  title: p
                                     ? '点击隐藏数据过滤器'
                                     : '点击显示数据过滤器',
                                   placement: 'top',
@@ -2495,28 +2506,28 @@
                                 }),
                               ),
                               P.createElement(Ne, {
-                                parentType: p,
+                                parentType: m,
                                 jsonKey: 'data',
-                                indexRoute: r ? r + '-1' : '1',
-                                keyRoute: a ? a + '-data' : 'data',
-                                nodeKey: n + '-data',
-                                targetJsonSchema: d,
-                                key: n + '-data',
+                                indexRoute: o ? o + '-1' : '1',
+                                keyRoute: n ? n + '-data' : 'data',
+                                nodeKey: r + '-data',
+                                targetJsonSchema: y,
+                                key: r + '-data',
                               }),
                             ),
-                            u &&
+                            p &&
                               P.createElement(De.A, {
-                                parentType: p,
+                                parentType: m,
                                 jsonKey: 'filter',
-                                indexRoute: r ? r + '-2' : '2',
-                                keyRoute: a ? a + '-filter' : 'filter',
-                                nodeKey: n + '-filter',
-                                targetJsonSchema: y,
-                                key: n + '-filter',
+                                indexRoute: o ? o + '-2' : '2',
+                                keyRoute: n ? n + '-filter' : 'filter',
+                                nodeKey: r + '-filter',
+                                targetJsonSchema: h,
+                                key: r + '-filter',
                               }),
                           ),
-                        !c &&
-                          'remote' === h &&
+                        !s &&
+                          'remote' === g &&
                           P.createElement(
                             P.Fragment,
                             null,
@@ -2524,13 +2535,13 @@
                               'div',
                               { className: 'url-editor-box' },
                               P.createElement(we, {
-                                parentType: p,
+                                parentType: m,
                                 jsonKey: 'data',
-                                indexRoute: r ? r + '-1' : '1',
-                                keyRoute: a ? a + '-data' : 'data',
-                                nodeKey: n + '-data',
-                                targetJsonSchema: d,
-                                key: n + '-data',
+                                indexRoute: o ? o + '-1' : '1',
+                                keyRoute: n ? n + '-data' : 'data',
+                                nodeKey: r + '-data',
+                                targetJsonSchema: y,
+                                key: r + '-data',
                               }),
                               P.createElement(
                                 Q.Tooltip,
@@ -2544,18 +2555,18 @@
                                 }),
                               ),
                             ),
-                            u &&
+                            p &&
                               P.createElement(De.A, {
-                                parentType: p,
+                                parentType: m,
                                 jsonKey: 'filter',
-                                indexRoute: r ? r + '-2' : '2',
-                                keyRoute: a ? a + '-filter' : 'filter',
-                                nodeKey: n + '-filter',
-                                targetJsonSchema: y,
-                                key: n + '-filter',
+                                indexRoute: o ? o + '-2' : '2',
+                                keyRoute: n ? n + '-filter' : 'filter',
+                                nodeKey: r + '-filter',
+                                targetJsonSchema: h,
+                                key: r + '-filter',
                               }),
                           ),
-                        c && P.createElement(se, this.props),
+                        s && P.createElement(se, this.props),
                       ),
                     ),
                   );
@@ -3490,32 +3501,34 @@
                   ue.x.call(this, e.keyRoute);
               }),
               (a.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = t.keyRoute,
-                  n = t.nodeKey,
-                  r = t.indexRoute,
-                  o = t.targetJsonSchema,
-                  i = t.pageScreen,
-                  l = o.type,
-                  c = this.state,
-                  s = c.jsonView,
-                  u = c.isClosed,
-                  p = o.properties.type || {},
-                  m = o.properties.register || {},
-                  d = o.properties.actionFunc || {},
-                  y = o.properties.trigger || {},
-                  h = o.properties.eventData || {},
-                  g = p.default;
+                var e,
+                  t = this,
+                  a = this.props,
+                  n = a.keyRoute,
+                  r = a.nodeKey,
+                  o = a.indexRoute,
+                  i = a.targetJsonSchema,
+                  l = a.pageScreen,
+                  c = i.type,
+                  s = this.state,
+                  u = s.jsonView,
+                  p = s.isClosed,
+                  m = i.properties.type || {},
+                  d = i.properties.register || {},
+                  y = i.properties.actionFunc || {},
+                  h = i.properties.trigger || {},
+                  g = i.properties.eventData || {},
+                  S = m.default,
+                  _ = null == (e = i.showCodeViewBtn) || e;
                 return P.createElement(
                   'div',
                   {
                     className:
-                      'wideScreen' === i
+                      'wideScreen' === l
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
-                    key: n,
-                    id: n,
+                    key: r,
+                    id: r,
                   },
                   P.createElement(
                     'div',
@@ -3525,16 +3538,16 @@
                       {
                         className: 'title-text',
                         title:
-                          'wideScreen' === i && o.title.length > 6
-                            ? o.title
+                          'wideScreen' === l && i.title.length > 6
+                            ? i.title
                             : '',
                       },
-                      o.title,
+                      i.title,
                     ),
-                    o.description &&
+                    i.description &&
                       P.createElement(
                         Q.Tooltip,
-                        { title: o.description, placement: 'top' },
+                        { title: i.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
@@ -3547,10 +3560,10 @@
                       'div',
                       {
                         className: 'element-title',
-                        onClick: function (t) {
-                          e.setState({ isClosed: !u }),
-                            t.preventDefault(),
-                            t.stopPropagation();
+                        onClick: function (e) {
+                          t.setState({ isClosed: !p }),
+                            e.preventDefault(),
+                            e.stopPropagation();
                         },
                       },
                       P.createElement(
@@ -3558,94 +3571,95 @@
                         { className: 'title-text' },
                         '事件配置',
                       ),
-                      u
+                      p
                         ? P.createElement(re.RightOutlined, {
                             className: 'close-operate-btn',
                           })
                         : P.createElement(re.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
-                      P.createElement(
-                        'div',
-                        {
-                          className: 'display-source-btn',
-                          onClick: function (t) {
-                            e.setState({ jsonView: !s }),
-                              t.preventDefault(),
-                              t.stopPropagation();
-                          },
-                        },
+                      _ &&
                         P.createElement(
-                          Q.Tooltip,
-                          { title: s ? '关闭源码模式' : '开启源码模式' },
-                          P.createElement(_e, {
-                            className: s ? 'info-icon active' : 'info-icon',
-                          }),
+                          'div',
+                          {
+                            className: 'display-source-btn',
+                            onClick: function (e) {
+                              t.setState({ jsonView: !u }),
+                                e.preventDefault(),
+                                e.stopPropagation();
+                            },
+                          },
+                          P.createElement(
+                            Q.Tooltip,
+                            { title: u ? '关闭源码模式' : '开启源码模式' },
+                            P.createElement(_e, {
+                              className: u ? 'info-icon active' : 'info-icon',
+                            }),
+                          ),
                         ),
-                      ),
                     ),
                     P.createElement(
                       'div',
                       {
                         className:
                           'content-item object-content ' +
-                          (s ? 'json-view-array' : '') +
+                          (u ? 'json-view-array' : '') +
                           ' ' +
-                          (u ? 'closed' : ''),
+                          (p ? 'closed' : ''),
                       },
-                      !s &&
-                        'on' === g &&
+                      !u &&
+                        'on' === S &&
                         P.createElement(
                           P.Fragment,
                           null,
-                          m &&
-                            P.createElement(xe, {
-                              parentType: l,
-                              jsonKey: 'register',
-                              indexRoute: r ? r + '-1' : '1',
-                              keyRoute: a ? a + '-register' : 'register',
-                              nodeKey: n + '-register',
-                              targetJsonSchema: m,
-                              key: n + '-register',
-                            }),
                           d &&
-                            P.createElement(De.A, {
-                              parentType: l,
-                              jsonKey: 'actionFunc',
-                              indexRoute: r ? r + '-2' : '2',
-                              keyRoute: a ? a + '-actionFunc' : 'actionFunc',
-                              nodeKey: n + '-actionFunc',
+                            P.createElement(xe, {
+                              parentType: c,
+                              jsonKey: 'register',
+                              indexRoute: o ? o + '-1' : '1',
+                              keyRoute: n ? n + '-register' : 'register',
+                              nodeKey: r + '-register',
                               targetJsonSchema: d,
-                              key: n + '-actionFunc',
+                              key: r + '-register',
+                            }),
+                          y &&
+                            P.createElement(De.A, {
+                              parentType: c,
+                              jsonKey: 'actionFunc',
+                              indexRoute: o ? o + '-2' : '2',
+                              keyRoute: n ? n + '-actionFunc' : 'actionFunc',
+                              nodeKey: r + '-actionFunc',
+                              targetJsonSchema: y,
+                              key: r + '-actionFunc',
                             }),
                         ),
-                      !s &&
-                        'emit' === g &&
+                      !u &&
+                        'emit' === S &&
                         P.createElement(
                           P.Fragment,
                           null,
-                          y &&
-                            P.createElement(xe, {
-                              parentType: l,
-                              jsonKey: 'trigger',
-                              indexRoute: r ? r + '-1' : '1',
-                              keyRoute: a ? a + '-trigger' : 'trigger',
-                              nodeKey: n + '-trigger',
-                              targetJsonSchema: y,
-                              key: n + '-trigger',
-                            }),
                           h &&
-                            P.createElement(Ne, {
-                              parentType: l,
-                              jsonKey: 'eventData',
-                              indexRoute: r ? r + '-2' : '2',
-                              keyRoute: a ? a + '-eventData' : 'eventData',
-                              nodeKey: n + '-eventData',
+                            P.createElement(xe, {
+                              parentType: c,
+                              jsonKey: 'trigger',
+                              indexRoute: o ? o + '-1' : '1',
+                              keyRoute: n ? n + '-trigger' : 'trigger',
+                              nodeKey: r + '-trigger',
                               targetJsonSchema: h,
-                              key: n + '-eventData',
+                              key: r + '-trigger',
+                            }),
+                          g &&
+                            P.createElement(Ne, {
+                              parentType: c,
+                              jsonKey: 'eventData',
+                              indexRoute: o ? o + '-2' : '2',
+                              keyRoute: n ? n + '-eventData' : 'eventData',
+                              nodeKey: r + '-eventData',
+                              targetJsonSchema: g,
+                              key: r + '-eventData',
                             }),
                         ),
-                      s && P.createElement(se, this.props),
+                      u && P.createElement(se, this.props),
                     ),
                   ),
                 );

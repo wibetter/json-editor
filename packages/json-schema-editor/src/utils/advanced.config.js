@@ -1,4 +1,9 @@
-import { BASE_TYPE, HIGH_TYPE, ALL_TYPE } from '../data/TypeList';
+import {
+  BASE_TYPE,
+  HIGH_TYPE,
+  ALL_TYPE,
+  CONTAINER_TYPE,
+} from '../data/TypeList';
 
 /** 默认值（default）
  *  根据type判断是否显示默认配置项
@@ -79,5 +84,12 @@ export function isNeedIsRequiredOption(curType) {
     'codearea',
     'htmlarea',
   ];
+  return supportedTypeList.indexOf(curType) > -1;
+}
+
+/** 用于显示控制 showCodeViewBtn
+ * */
+export function isNeedCodeViewOption(curType) {
+  const supportedTypeList = [...CONTAINER_TYPE];
   return supportedTypeList.indexOf(curType) > -1;
 }

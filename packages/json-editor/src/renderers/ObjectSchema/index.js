@@ -64,6 +64,8 @@ class ObjectSchema extends React.PureComponent {
     const { jsonView, isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
     const isStructured = isStructuredSchema;
+    // 是否显示源码切换按钮
+    const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
 
     return (
       <div
@@ -111,22 +113,24 @@ class ObjectSchema extends React.PureComponent {
                 <DownOutlined className="close-operate-btn" />
               )}
 
-              <div
-                className="display-source-btn"
-                onClick={(event) => {
-                  this.setState({
-                    jsonView: !jsonView,
-                  });
-                  event.preventDefault();
-                  event.stopPropagation();
-                }}
-              >
-                <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
-                  <CodeIcon
-                    className={jsonView ? 'info-icon active' : 'info-icon'}
-                  />
-                </Tooltip>
-              </div>
+              {showCodeViewBtn && (
+                <div
+                  className="display-source-btn"
+                  onClick={(event) => {
+                    this.setState({
+                      jsonView: !jsonView,
+                    });
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }}
+                >
+                  <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
+                    <CodeIcon
+                      className={jsonView ? 'info-icon active' : 'info-icon'}
+                    />
+                  </Tooltip>
+                </div>
+              )}
             </div>
           )}
           <div

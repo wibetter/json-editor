@@ -21,6 +21,7 @@ import {
   isNeedReadOnlyOption,
   isNeedConditionOption,
   isNeedIsRequiredOption,
+  isNeedCodeViewOption,
 } from '$utils/advanced.config';
 import { hasProperties, getExpectType } from '@wibetter/json-utils';
 import './index.scss';
@@ -492,6 +493,34 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
+        {isNeedCodeViewOption(curType) && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-showCodeViewBtn-${targetJsonSchema.showCodeViewBtn}`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'用于控制是否显示源码模式切换按钮，默认显示'}
+                placement="top"
+              >
+                <span className="title-text">源码模式</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div className="form-item-box">
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.showCodeViewBtn ?? true}
+                  checkedChildren="true"
+                  unCheckedChildren="false"
+                  onChange={(checked) => {
+                    this.handleValueChange('showCodeViewBtn', checked);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
         {getExpectType(curType) === 'number' && (
           <>
             <div
@@ -561,8 +590,8 @@ class AdvanceConfig extends React.PureComponent {
               key={`${nodeKey}-minimum-child`}
             >
               <div className="element-title">
-                <Tooltip title={'用于控制最少应选择的选项个数'} placement="top">
-                  <span className="title-text">限制最少选择数</span>
+                <Tooltip title={'用于限制数据项最小个数'} placement="top">
+                  <span className="title-text">最小数据项</span>
                 </Tooltip>
               </div>
               <div className="content-item">
@@ -582,8 +611,8 @@ class AdvanceConfig extends React.PureComponent {
               key={`${nodeKey}-maximum-child`}
             >
               <div className="element-title">
-                <Tooltip title={'用于控制最多可选择的选项个数'} placement="top">
-                  <span className="title-text">限制最多选择数</span>
+                <Tooltip title={'用于限制数据项最多个数'} placement="top">
+                  <span className="title-text">最多数据项</span>
                 </Tooltip>
               </div>
               <div className="content-item">

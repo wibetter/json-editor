@@ -61,6 +61,8 @@ class EventSchema extends React.PureComponent {
     const eventDataJsonObj = targetJsonSchema.properties.eventData || {};
     // 获取当前数据源类型
     const dataType = typeDataObj.default; // local or remote
+    // 是否显示源码切换按钮
+    const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
 
     return (
       <div
@@ -107,22 +109,24 @@ class EventSchema extends React.PureComponent {
               <DownOutlined className="close-operate-btn" />
             )}
 
-            <div
-              className="display-source-btn"
-              onClick={(event) => {
-                this.setState({
-                  jsonView: !jsonView,
-                });
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            >
-              <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
-                <CodeIcon
-                  className={jsonView ? 'info-icon active' : 'info-icon'}
-                />
-              </Tooltip>
-            </div>
+            {showCodeViewBtn && (
+              <div
+                className="display-source-btn"
+                onClick={(event) => {
+                  this.setState({
+                    jsonView: !jsonView,
+                  });
+                  event.preventDefault();
+                  event.stopPropagation();
+                }}
+              >
+                <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
+                  <CodeIcon
+                    className={jsonView ? 'info-icon active' : 'info-icon'}
+                  />
+                </Tooltip>
+              </div>
+            )}
           </div>
           <div
             className={`content-item object-content ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}

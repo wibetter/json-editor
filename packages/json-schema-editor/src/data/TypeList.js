@@ -52,8 +52,11 @@ export const OBJECT_TYPE = [
   'box-style',
 ];
 
+// 当前容器类型
+export const CONTAINER_TYPE = ['object', 'array', 'datasource', 'event'];
+
 // 数组类型可用子项类型
-export const ARRAY_TYPE = [
+export const ARRAY_ITEM_TYPE = [
   'object',
   'input',
   'number',
@@ -73,7 +76,7 @@ export const SELECT_TYPE = ['string'];
 // 类型清单
 export const TypeList = {
   object: ALL_TYPE,
-  array: ARRAY_TYPE,
+  array: ARRAY_ITEM_TYPE,
   radio: RADIO_TYPE,
   select: RADIO_TYPE,
   select: SELECT_TYPE,

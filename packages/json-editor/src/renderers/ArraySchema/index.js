@@ -157,6 +157,8 @@ class ArraySchema extends React.PureComponent {
     const { jsonView, isClosed, hoverIndex, currentActiveArrIndex } =
       this.state;
     const curType = targetJsonSchema.type;
+    // 是否显示源码切换按钮
+    const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
     const arrayItemsDataObj = targetJsonSchema.items; // schema数据
@@ -202,22 +204,25 @@ class ArraySchema extends React.PureComponent {
             ) : (
               <DownOutlined className="close-operate-btn" />
             )}
-            <div
-              className="display-source-btn"
-              onClick={(event) => {
-                this.setState({
-                  jsonView: !jsonView,
-                });
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            >
-              <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
-                <CodeIcon
-                  className={jsonView ? 'info-icon active' : 'info-icon'}
-                />
-              </Tooltip>
-            </div>
+
+            {showCodeViewBtn && (
+              <div
+                className="display-source-btn"
+                onClick={(event) => {
+                  this.setState({
+                    jsonView: !jsonView,
+                  });
+                  event.preventDefault();
+                  event.stopPropagation();
+                }}
+              >
+                <Tooltip title={jsonView ? '关闭源码模式' : '开启源码模式'}>
+                  <CodeIcon
+                    className={jsonView ? 'info-icon active' : 'info-icon'}
+                  />
+                </Tooltip>
+              </div>
+            )}
 
             <Tooltip title="添加数据项">
               <PlusOutlined
