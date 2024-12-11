@@ -14,6 +14,12 @@ export const BASE_TYPE = [
   'time',
 ];
 
+// 固有容器类型
+export const Fixed_CONTAINER_TYPE = ['datasource', 'event', 'dynamic-data'];
+
+// 当前容器类型
+export const CONTAINER_TYPE = ['object', ...Fixed_CONTAINER_TYPE];
+
 /** 10种高级类型 */
 export const HIGH_TYPE = [
   'quantity',
@@ -22,11 +28,8 @@ export const HIGH_TYPE = [
   'json',
   'codearea',
   'htmlarea',
-  'datasource',
-  'dynamic-data',
-  'event',
   'array',
-  'object',
+  ...CONTAINER_TYPE,
 ];
 
 /** 所有类型，包含基础类型和高级类型 */
@@ -51,9 +54,6 @@ export const OBJECT_TYPE = [
   'array',
   'box-style',
 ];
-
-// 当前容器类型
-export const CONTAINER_TYPE = ['object', 'array', 'datasource', 'event'];
 
 // 数组类型可用子项类型
 export const ARRAY_ITEM_TYPE = [

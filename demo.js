@@ -69,6 +69,7 @@ class IndexDemo extends React.PureComponent {
               margin: {
                 type: 'box-style',
                 title: '外边距',
+                isContainer: false,
                 properties: {
                   unit: {
                     type: 'string',
@@ -105,44 +106,7 @@ class IndexDemo extends React.PureComponent {
               width: {
                 type: 'quantity',
                 title: '宽',
-                properties: {
-                  unit: {
-                    type: 'number',
-                    title: '单位数值',
-                    default: 220,
-                    minimum: 0,
-                    maximum: '10000',
-                    description: '',
-                  },
-                  quantity: {
-                    type: 'select',
-                    default: 'px',
-                    options: [
-                      {
-                        label: 'px',
-                        value: 'px',
-                      },
-                      {
-                        label: 'rem',
-                        value: 'rem',
-                      },
-                      {
-                        label: 'em',
-                        value: 'em',
-                      },
-                      {
-                        label: '%',
-                        value: '%',
-                      },
-                    ],
-                    title: '单位类型',
-                  },
-                },
-                propertyOrder: ['unit', 'quantity'],
-              },
-              height: {
-                type: 'quantity',
-                title: '高',
+                isContainer: false,
                 properties: {
                   unit: {
                     type: 'number',
@@ -181,6 +145,7 @@ class IndexDemo extends React.PureComponent {
               padding: {
                 type: 'box-style',
                 title: '内边距',
+                isContainer: false,
                 properties: {
                   unit: {
                     type: 'string',
@@ -214,8 +179,158 @@ class IndexDemo extends React.PureComponent {
                 },
                 propertyOrder: ['unit', 'quantity'],
               },
+              padding2: {
+                title: '内边距',
+                type: 'select',
+                options: [
+                  {
+                      label: '无间距',
+                      value: ''
+                  },
+                  {
+                      label: '上下左右（间距-4,8px）',
+                      value: '$Spacing-4,$Spacing-4,$Spacing-4,$Spacing-4'
+                  },
+                  {
+                      label: '上下左右（间距-8,20px）',
+                      value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8'
+                  },
+                  {
+                      label: '上（间距-8,20px）',
+                      value: '$Spacing-8,0,0,0'
+                  },
+                  {
+                      label: '上（间距-12,40x）',
+                      value: '$Spacing-12,0,0,0'
+                  },
+                  {
+                      label: '上（间距-13,48px）',
+                      value: '$Spacing-13,0,0,0'
+                  },
+                  {
+                      label: '右（间距-15,60px）',
+                      value: '0,$Spacing-15,0,0'
+                  },
+                  {
+                      label: '右（间距-18,80px）',
+                      value: '0,$Spacing-18,0,0'
+                  },
+                  {
+                      label: '下（间距-12,40px）',
+                      value: '0,0,$Spacing-12,0'
+                  },
+                  {
+                      label: '左（间距-15,60）',
+                      value: '0,0,0,$Spacing-15'
+                  },
+              ],
+              },
+              margin2: {
+                title: '外边距',
+                type: 'select',
+                options: [
+                  {
+                      label: '无间距',
+                      value: ''
+                  },
+                  {
+                      label: '上下0，左右居中',
+                      value: '0,auto,0,auto'
+                  },
+                  {
+                      label: '上下左右（间距-8,20px） 20px',
+                      value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8'
+                  },
+                  {
+                      label: '上（间距-12,40px）',
+                      value: '$Spacing-12,0,0,0'
+                  },
+                  {
+                      label: '上（间距-13,48px）',
+                      value: '$Spacing-13,0,0,0'
+                  },
+                  {
+                      label: '右（间距-15,60px）',
+                      value: '0,$Spacing-15,0,0'
+                  },
+                  {
+                      label: '右（间距-18,80px）',
+                      value: '0,$Spacing-18,0,0'
+                  },
+                  {
+                      label: '下（间距-12,40px）',
+                      value: '0,0,$Spacing-12,0'
+                  },
+                  {
+                      label: '左（间距-15,60px）',
+                      value: '0,0,0,$Spacing-15'
+                  },
+                ],
+              },
+              mianAlignment: {
+                title: '主轴对齐',
+                type: 'select',
+                options: [
+                  {
+                      label: '无',
+                      value: '',
+                  },
+                  {
+                      label: '起始位置开始排列',
+                      value: 'start',
+                  },
+                  {
+                      label: '结束位置开始排列',
+                      value: 'end',
+                  },
+                  {
+                      label: '居中对齐',
+                      value: 'center',
+                  },
+                  {
+                      label: '拉伸以适应容器的尺寸',
+                      value: 'stretch',
+                  },
+                  {
+                      label: '以基线对齐',
+                      value: 'baseline',
+                  }
+                ],
+                default: 'start',
+              },
+              crossAlignment: {
+                title: '交叉轴对齐',
+                type: 'select',
+                options: [
+                  {
+                      label: '无',
+                      value: '',
+                  },
+                  {
+                      label: '起始位置开始排列',
+                      value: 'start',
+                  },
+                  {
+                      label: '结束位置开始排列',
+                      value: 'end',
+                  },
+                  {
+                      label: '居中对齐',
+                      value: 'center',
+                  },
+                  {
+                      label: '均匀分布，首尾不留白',
+                      value: 'space-between',
+                  },
+                  {
+                      label: '均匀分布，两侧间隔相等',
+                      value: 'space-around',
+                  }
+                ],
+                default: 'start',
+              },
             },
-            propertyOrder: ['width', 'height', 'margin', 'padding'],
+            propertyOrder: ['width', 'margin', 'padding', 'margin2', 'padding2', 'mianAlignment', 'crossAlignment'],
           },
           data: {
             type: 'object',
@@ -225,6 +340,7 @@ class IndexDemo extends React.PureComponent {
               chartDataList: {
                 type: 'dynamic-data',
                 title: '图表数据',
+                isContainer: false,
                 properties: {
                   type: {
                     default: 'local',

@@ -90,6 +90,6 @@ export function isNeedIsRequiredOption(curType) {
 /** 用于显示控制 showCodeViewBtn
  * */
 export function isNeedCodeViewOption(curType) {
-  const supportedTypeList = [...CONTAINER_TYPE];
+  const supportedTypeList = [...CONTAINER_TYPE, 'array'];
   return supportedTypeList.indexOf(curType) > -1;
 }
