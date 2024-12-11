@@ -1,4 +1,8 @@
-import { cloneDeep, isEqual as isEqual$1 } from 'lodash';
+import {
+  cloneDeep,
+  isEqual as isEqual$1,
+  truncate as truncate$1,
+} from 'lodash';
 
 /** js对象数据深拷贝，避免数据联动 */
 function objClone(targetObj) {
@@ -22,6 +26,15 @@ function hasProperties(targetProperties) {
     hasProperties = true;
   }
   return hasProperties;
+}
+
+// 截断字符串，避免撑开元素
+// https://www.lodashjs.com/docs/lodash.truncate
+function truncate(str, paramConfig) {
+  if (str) {
+    return truncate$1(str, paramConfig);
+  }
+  return truncate$1(str, paramConfig);
 }
 
 /**
@@ -2570,4 +2583,5 @@ export {
   registerExpectType,
   schema2json,
   schemaMetaList,
+  truncate,
 };

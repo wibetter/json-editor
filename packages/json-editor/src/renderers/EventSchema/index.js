@@ -8,6 +8,7 @@ import {
   RightOutlined,
   FilterOutlined,
 } from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
 import JsonView from '$renderers/JsonView/index';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
@@ -47,8 +48,14 @@ class EventSchema extends React.PureComponent {
   }
 
   render() {
-    const { keyRoute, nodeKey, indexRoute, targetJsonSchema, pageScreen } =
-      this.props;
+    const {
+      keyRoute,
+      jsonKey,
+      nodeKey,
+      indexRoute,
+      targetJsonSchema,
+      pageScreen,
+    } = this.props;
     const curType = targetJsonSchema.type;
     const { jsonView, isClosed } = this.state;
 
@@ -84,6 +91,9 @@ class EventSchema extends React.PureComponent {
             }
           >
             {targetJsonSchema.title}
+            {targetJsonSchema.showKey && (
+              <span>（{truncate(jsonKey, { length: 15 })}）</span>
+            )}
           </span>
           {targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">

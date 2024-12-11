@@ -461,6 +461,29 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         </div>
+        <div className="wide-screen-element-warp" key={`${nodeKey}-showKey`}>
+          <div className="element-title">
+            <Tooltip
+              title={'开启后，在JSONEditor端会展示当前Key值，以便增加辨识度。'}
+              placement="top"
+            >
+              <span className="title-text">展示Key值</span>
+            </Tooltip>
+          </div>
+          <div className="content-item">
+            <div className="form-item-box">
+              <Switch
+                style={{ display: 'inline-block' }}
+                defaultChecked={targetJsonSchema.showKey}
+                checkedChildren="true"
+                unCheckedChildren="false"
+                onChange={(checked) => {
+                  this.handleValueChange('showKey', checked);
+                }}
+              />
+            </div>
+          </div>
+        </div>
         {isNeedPlaceholderOption(curType) && (
           <div
             className="wide-screen-element-warp"

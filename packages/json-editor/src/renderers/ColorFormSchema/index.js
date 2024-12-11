@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Tooltip, message, Popover } from 'antd';
 import { SketchPicker } from 'react-color';
 import { CloseOutlined } from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 import './index.scss';
@@ -70,6 +71,7 @@ class ColorFormSchema extends React.PureComponent {
   render() {
     const {
       keyRoute,
+      jsonKey,
       nodeKey,
       targetJsonSchema,
       pageScreen,
@@ -113,6 +115,9 @@ class ColorFormSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
         </div>

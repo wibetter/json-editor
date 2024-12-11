@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Radio, Tooltip } from 'antd';
+import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
 
@@ -43,6 +44,7 @@ class RadioSchema extends React.PureComponent {
   render() {
     const {
       nodeKey,
+      jsonKey,
       keyRoute,
       targetJsonSchema,
       pageScreen,
@@ -78,6 +80,9 @@ class RadioSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (

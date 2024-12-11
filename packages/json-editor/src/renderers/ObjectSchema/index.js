@@ -7,6 +7,7 @@ import {
   InfoCircleOutlined,
   RightOutlined,
 } from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -50,6 +51,7 @@ class ObjectSchema extends React.PureComponent {
   render() {
     const {
       indexRoute,
+      jsonKey,
       nodeKey,
       keyRoute,
       pageScreen,
@@ -90,6 +92,9 @@ class ObjectSchema extends React.PureComponent {
                 }
               >
                 {targetJsonSchema.title}
+                {targetJsonSchema.showKey && (
+                  <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                )}
               </span>
             </Tooltip>
           </div>

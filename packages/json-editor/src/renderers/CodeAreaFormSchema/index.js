@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
+import { truncate } from '@wibetter/json-utils';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/theme-monokai';
 import { isObject } from '$utils/typeof';
@@ -53,6 +54,7 @@ class CodeAreaFormSchema extends React.PureComponent {
   render() {
     const {
       isReadOnly,
+      jsonKey,
       isIgnoreWarn,
       nodeKey,
       keyRoute,
@@ -107,6 +109,9 @@ class CodeAreaFormSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
           {/*小屏模式*/}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Checkbox, Tooltip } from 'antd';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
 
 class CheckboxSchema extends React.PureComponent {
   static propTypes = {
@@ -42,6 +43,7 @@ class CheckboxSchema extends React.PureComponent {
   render() {
     const {
       nodeKey,
+      jsonKey,
       keyRoute,
       targetJsonSchema,
       pageScreen,
@@ -77,6 +79,9 @@ class CheckboxSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
@@ -134,6 +135,7 @@ class DynamicDataSchema extends React.PureComponent {
   render() {
     const {
       keyRoute,
+      jsonKey,
       nodeKey,
       indexRoute,
       targetJsonSchema,
@@ -179,7 +181,12 @@ class DynamicDataSchema extends React.PureComponent {
         id={nodeKey}
       >
         <div className="element-title">
-          <span className="title-text">{targetJsonSchema.title}</span>
+          <span className="title-text">
+            {targetJsonSchema.title}
+            {targetJsonSchema.showKey && (
+              <span>（{truncate(jsonKey, { length: 15 })}）</span>
+            )}
+          </span>
           {targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />

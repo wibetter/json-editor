@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
+import { truncate } from '@wibetter/json-utils';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import { hasProperties } from '$utils/index';
@@ -55,6 +56,7 @@ class JsonFormSchema extends React.PureComponent {
   render() {
     const {
       nodeKey,
+      jsonKey,
       keyRoute,
       targetJsonSchema,
       pageScreen,
@@ -100,6 +102,9 @@ class JsonFormSchema extends React.PureComponent {
             }
           >
             {targetJsonSchema.title}
+            {targetJsonSchema.showKey && (
+              <span>（{truncate(jsonKey, { length: 15 })}）</span>
+            )}
           </span>
           {targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">

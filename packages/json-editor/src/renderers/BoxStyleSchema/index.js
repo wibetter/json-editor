@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Input, InputNumber, Tooltip } from 'antd';
+import { truncate } from '@wibetter/json-utils';
 import './index.scss';
 
 class BoxStyleSchema extends React.PureComponent {
@@ -173,7 +174,7 @@ class BoxStyleSchema extends React.PureComponent {
   };
 
   render() {
-    const { nodeKey, targetJsonSchema, pageScreen } = this.props;
+    const { nodeKey, jsonKey, targetJsonSchema, pageScreen } = this.props;
     const { renderAction, layoutStyleLock } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
@@ -201,6 +202,9 @@ class BoxStyleSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
         </div>

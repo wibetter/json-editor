@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
+import { truncate } from '@wibetter/json-utils';
 import { Input, Tooltip } from 'antd';
 const { TextArea } = Input;
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -44,6 +45,7 @@ class TextAreaFormSchema extends React.PureComponent {
   render() {
     const {
       keyRoute,
+      jsonKey,
       nodeKey,
       targetJsonSchema,
       pageScreen,
@@ -85,6 +87,9 @@ class TextAreaFormSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (

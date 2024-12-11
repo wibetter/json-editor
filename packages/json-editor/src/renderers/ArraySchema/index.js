@@ -10,6 +10,7 @@ import {
   ArrowUpOutlined,
   ArrowDownOutlined,
 } from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
 // import ObjectSchema from '$renderers/ObjectSchema/index';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
@@ -146,6 +147,7 @@ class ArraySchema extends React.PureComponent {
   render() {
     const {
       keyRoute,
+      jsonKey,
       nodeKey,
       pageScreen,
       indexRoute,
@@ -184,6 +186,9 @@ class ArraySchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
         </div>

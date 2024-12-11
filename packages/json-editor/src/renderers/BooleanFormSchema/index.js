@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { Switch, Tooltip } from 'antd';
+import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 
@@ -42,6 +43,7 @@ class BooleanFormSchema extends React.PureComponent {
   render() {
     const {
       keyRoute,
+      jsonKey,
       nodeKey,
       targetJsonSchema,
       pageScreen,
@@ -75,6 +77,9 @@ class BooleanFormSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
         </div>

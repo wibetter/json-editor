@@ -1869,6 +1869,47 @@
                         ),
                       ),
                     ),
+                    r.createElement(
+                      'div',
+                      {
+                        className: 'wide-screen-element-warp',
+                        key: a + '-showKey',
+                      },
+                      r.createElement(
+                        'div',
+                        { className: 'element-title' },
+                        r.createElement(
+                          b.Tooltip,
+                          {
+                            title:
+                              '开启后，在JSONEditor端会展示当前Key值，以便增加辨识度。',
+                            placement: 'top',
+                          },
+                          r.createElement(
+                            'span',
+                            { className: 'title-text' },
+                            '展示Key值',
+                          ),
+                        ),
+                      ),
+                      r.createElement(
+                        'div',
+                        { className: 'content-item' },
+                        r.createElement(
+                          'div',
+                          { className: 'form-item-box' },
+                          r.createElement(b.Switch, {
+                            style: { display: 'inline-block' },
+                            defaultChecked: s.showKey,
+                            checkedChildren: 'true',
+                            unCheckedChildren: 'false',
+                            onChange: function (e) {
+                              n.handleValueChange('showKey', e);
+                            },
+                          }),
+                        ),
+                      ),
+                    ),
                     (function (e) {
                       return (
                         [

@@ -18,7 +18,8 @@
     "build": "akfun build",
     "build2lib": "npm run build2lib --workspaces",
     "publish": "npm publish --workspaces",
-    "format": "prettier --write \"packages/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\""
+    "format": "prettier --write \"packages/**/**/*.{js,jsx,ts,tsx,vue,scss,json}\"",
+    "format2": "prettier --write \"demo.js\""
   },
   "husky": {
     "hooks": {

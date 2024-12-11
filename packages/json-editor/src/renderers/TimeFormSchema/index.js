@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
 import { TimePicker, Tooltip } from 'antd';
 import moment from 'moment';
+import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
 
@@ -43,6 +44,7 @@ class TimeFormSchema extends React.PureComponent {
   render() {
     const {
       nodeKey,
+      jsonKey,
       keyRoute,
       targetJsonSchema,
       pageScreen,
@@ -82,6 +84,9 @@ class TimeFormSchema extends React.PureComponent {
               }
             >
               {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
             </span>
           </Tooltip>
         </div>

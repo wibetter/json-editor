@@ -45,7 +45,8 @@ class IndexDemo extends React.PureComponent {
               renderMethod: {
                 title: '渲染方式',
                 type: 'radio',
-                description: '组件的渲染方式，支持客户端和服务端。首屏内容选择服务端，非首屏内容选择客户端',
+                description:
+                  '组件的渲染方式，支持客户端和服务端。首屏内容选择服务端，非首屏内容选择客户端',
                 options: [
                   {
                     label: '客户端',
@@ -54,12 +55,134 @@ class IndexDemo extends React.PureComponent {
                   {
                     label: '服务端',
                     value: 'server',
-                  }
+                  },
                 ],
                 default: 'client',
               },
+              firstChannel: {
+                type: 'object',
+                title: '一级标题',
+                description: '',
+                isContainer: false,
+                properties: {
+                  type: {
+                    type: 'select',
+                    title: '数据来源',
+                    options: [
+                      {
+                        label: '模板直接设置',
+                        value: 'DevDefaults',
+                      },
+                      {
+                        label: 'mp后台配置',
+                        value: 'ContentStaticConfig',
+                      },
+                      {
+                        label: '内容Meta数据',
+                        value: 'Content',
+                      },
+                      {
+                        label: '全局配置数据',
+                        value: 'RuntimeConst',
+                      },
+                      {
+                        label: '资源中心配置',
+                        value: 'ResourceCenter',
+                      },
+                    ],
+                    default: 'DevDefaults',
+                    description:
+                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
+                  },
+                  value: {
+                    title: '数据值',
+                    type: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                  },
+                  description: {
+                    title: '属性名称',
+                    type: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                  },
+                  valueType: {
+                    type: 'radio',
+                    title: '配置方式',
+                    options: [
+                      {
+                        label: '填写',
+                        value: 'string',
+                      },
+                      {
+                        label: '选择',
+                        value: 'select',
+                      },
+                    ],
+                    default: 'a',
+                    description: '',
+                  },
+                  range: {
+                    type: 'select',
+                    title: '可选项',
+                    multiple: true,
+                    options: [
+                      {
+                        label: '选项a',
+                        value: 'a',
+                      },
+                      {
+                        label: '选项b',
+                        value: 'b',
+                      },
+                      {
+                        label: '选项c',
+                        value: 'c',
+                      },
+                    ],
+                    default: 'a',
+                    description: '',
+                  },
+                  value2: {
+                    type: 'select',
+                    title: '取值字段',
+                    options: [
+                      {
+                        label: '选项a',
+                        value: 'a',
+                      },
+                      {
+                        label: '选项b',
+                        value: 'b',
+                      },
+                      {
+                        label: '选项c',
+                        value: 'c',
+                      },
+                    ],
+                    default: 'a',
+                    description: '',
+                  },
+                },
+                propertyOrder: [
+                  'type',
+                  'value',
+                  'description',
+                  'valueType',
+                  'range',
+                  'value2',
+                ],
+                showCodeViewBtn: false,
+              },
             },
-            propertyOrder: ['name', 'description', 'renderMethod'],
+            propertyOrder: [
+              'name',
+              'description',
+              'renderMethod',
+              'firstChannel',
+            ],
           },
           style: {
             type: 'object',
@@ -184,86 +307,86 @@ class IndexDemo extends React.PureComponent {
                 type: 'select',
                 options: [
                   {
-                      label: '无间距',
-                      value: ''
+                    label: '无间距',
+                    value: '',
                   },
                   {
-                      label: '上下左右（间距-4,8px）',
-                      value: '$Spacing-4,$Spacing-4,$Spacing-4,$Spacing-4'
+                    label: '上下左右（间距-4,8px）',
+                    value: '$Spacing-4,$Spacing-4,$Spacing-4,$Spacing-4',
                   },
                   {
-                      label: '上下左右（间距-8,20px）',
-                      value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8'
+                    label: '上下左右（间距-8,20px）',
+                    value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8',
                   },
                   {
-                      label: '上（间距-8,20px）',
-                      value: '$Spacing-8,0,0,0'
+                    label: '上（间距-8,20px）',
+                    value: '$Spacing-8,0,0,0',
                   },
                   {
-                      label: '上（间距-12,40x）',
-                      value: '$Spacing-12,0,0,0'
+                    label: '上（间距-12,40x）',
+                    value: '$Spacing-12,0,0,0',
                   },
                   {
-                      label: '上（间距-13,48px）',
-                      value: '$Spacing-13,0,0,0'
+                    label: '上（间距-13,48px）',
+                    value: '$Spacing-13,0,0,0',
                   },
                   {
-                      label: '右（间距-15,60px）',
-                      value: '0,$Spacing-15,0,0'
+                    label: '右（间距-15,60px）',
+                    value: '0,$Spacing-15,0,0',
                   },
                   {
-                      label: '右（间距-18,80px）',
-                      value: '0,$Spacing-18,0,0'
+                    label: '右（间距-18,80px）',
+                    value: '0,$Spacing-18,0,0',
                   },
                   {
-                      label: '下（间距-12,40px）',
-                      value: '0,0,$Spacing-12,0'
+                    label: '下（间距-12,40px）',
+                    value: '0,0,$Spacing-12,0',
                   },
                   {
-                      label: '左（间距-15,60）',
-                      value: '0,0,0,$Spacing-15'
+                    label: '左（间距-15,60）',
+                    value: '0,0,0,$Spacing-15',
                   },
-              ],
+                ],
               },
               margin2: {
                 title: '外边距',
                 type: 'select',
                 options: [
                   {
-                      label: '无间距',
-                      value: ''
+                    label: '无间距',
+                    value: '',
                   },
                   {
-                      label: '上下0，左右居中',
-                      value: '0,auto,0,auto'
+                    label: '上下0，左右居中',
+                    value: '0,auto,0,auto',
                   },
                   {
-                      label: '上下左右（间距-8,20px） 20px',
-                      value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8'
+                    label: '上下左右（间距-8,20px） 20px',
+                    value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8',
                   },
                   {
-                      label: '上（间距-12,40px）',
-                      value: '$Spacing-12,0,0,0'
+                    label: '上（间距-12,40px）',
+                    value: '$Spacing-12,0,0,0',
                   },
                   {
-                      label: '上（间距-13,48px）',
-                      value: '$Spacing-13,0,0,0'
+                    label: '上（间距-13,48px）',
+                    value: '$Spacing-13,0,0,0',
                   },
                   {
-                      label: '右（间距-15,60px）',
-                      value: '0,$Spacing-15,0,0'
+                    label: '右（间距-15,60px）',
+                    value: '0,$Spacing-15,0,0',
                   },
                   {
-                      label: '右（间距-18,80px）',
-                      value: '0,$Spacing-18,0,0'
+                    label: '右（间距-18,80px）',
+                    value: '0,$Spacing-18,0,0',
                   },
                   {
-                      label: '下（间距-12,40px）',
-                      value: '0,0,$Spacing-12,0'
+                    label: '下（间距-12,40px）',
+                    value: '0,0,$Spacing-12,0',
                   },
                   {
-                      label: '左（间距-15,60px）',
-                      value: '0,0,0,$Spacing-15'
+                    label: '左（间距-15,60px）',
+                    value: '0,0,0,$Spacing-15',
                   },
                 ],
               },
@@ -272,29 +395,29 @@ class IndexDemo extends React.PureComponent {
                 type: 'select',
                 options: [
                   {
-                      label: '无',
-                      value: '',
+                    label: '无',
+                    value: '',
                   },
                   {
-                      label: '起始位置开始排列',
-                      value: 'start',
+                    label: '起始位置开始排列',
+                    value: 'start',
                   },
                   {
-                      label: '结束位置开始排列',
-                      value: 'end',
+                    label: '结束位置开始排列',
+                    value: 'end',
                   },
                   {
-                      label: '居中对齐',
-                      value: 'center',
+                    label: '居中对齐',
+                    value: 'center',
                   },
                   {
-                      label: '拉伸以适应容器的尺寸',
-                      value: 'stretch',
+                    label: '拉伸以适应容器的尺寸',
+                    value: 'stretch',
                   },
                   {
-                      label: '以基线对齐',
-                      value: 'baseline',
-                  }
+                    label: '以基线对齐',
+                    value: 'baseline',
+                  },
                 ],
                 default: 'start',
               },
@@ -303,34 +426,42 @@ class IndexDemo extends React.PureComponent {
                 type: 'select',
                 options: [
                   {
-                      label: '无',
-                      value: '',
+                    label: '无',
+                    value: '',
                   },
                   {
-                      label: '起始位置开始排列',
-                      value: 'start',
+                    label: '起始位置开始排列',
+                    value: 'start',
                   },
                   {
-                      label: '结束位置开始排列',
-                      value: 'end',
+                    label: '结束位置开始排列',
+                    value: 'end',
                   },
                   {
-                      label: '居中对齐',
-                      value: 'center',
+                    label: '居中对齐',
+                    value: 'center',
                   },
                   {
-                      label: '均匀分布，首尾不留白',
-                      value: 'space-between',
+                    label: '均匀分布，首尾不留白',
+                    value: 'space-between',
                   },
                   {
-                      label: '均匀分布，两侧间隔相等',
-                      value: 'space-around',
-                  }
+                    label: '均匀分布，两侧间隔相等',
+                    value: 'space-around',
+                  },
                 ],
                 default: 'start',
               },
             },
-            propertyOrder: ['width', 'margin', 'padding', 'margin2', 'padding2', 'mianAlignment', 'crossAlignment'],
+            propertyOrder: [
+              'width',
+              'margin',
+              'padding',
+              'margin2',
+              'padding2',
+              'mianAlignment',
+              'crossAlignment',
+            ],
           },
           data: {
             type: 'object',
@@ -886,7 +1017,7 @@ class IndexDemo extends React.PureComponent {
       jsonView: false,
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
-      curTypeList: {}
+      curTypeList: {},
     };
   }
 
