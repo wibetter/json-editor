@@ -4710,14 +4710,14 @@
                         ? Q.message.warning(
                             '超过设定的最大数值' + r.maximum + '，请重新输入。',
                           )
-                        : (o(n, e),
-                          a.setState({ renderTime: new Date().getTime() }));
+                        : o(n, e);
                   }),
                   (a.numberChange = function (e, t) {
                     var n = 0;
                     t && (n = t),
                       'plus' === e ? (n += 1) : 'minus' === e && (n -= 1),
-                      a.handleValueChange(n);
+                      a.handleValueChange(n),
+                      a.setState({ renderTime: new Date().getTime() });
                   }),
                   (a.state = { renderTime: new Date().getTime() }),
                   (a.handleValueChange = a.handleValueChange.bind(a)),
