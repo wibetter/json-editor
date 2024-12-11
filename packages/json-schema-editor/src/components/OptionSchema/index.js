@@ -85,9 +85,9 @@ class OptionSchema extends React.PureComponent {
       <div className="option-schema-box" id={optionLabel}>
         <div className="key-input-item">
           <Input
-            defaultValue={optionLabel}
-            onPressEnter={this.handleLabelChange}
-            onBlur={this.handleLabelChange}
+            defaultValue={optionValue}
+            onPressEnter={this.handleValueChange}
+            onBlur={this.handleValueChange}
           />
         </div>
         <div className="type-select-item">
@@ -99,9 +99,9 @@ class OptionSchema extends React.PureComponent {
         </div>
         <div className="title-input-item">
           <Input
-            defaultValue={optionValue}
-            onPressEnter={this.handleValueChange}
-            onBlur={this.handleValueChange}
+            defaultValue={optionLabel}
+            onPressEnter={this.handleLabelChange}
+            onBlur={this.handleLabelChange}
           />
         </div>
         <div className="operate-item">

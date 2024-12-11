@@ -4199,7 +4199,7 @@
                             return P.createElement(
                               Q.Radio,
                               { value: e.value, key: r },
-                              e.value,
+                              e.label,
                             );
                           }),
                       ),

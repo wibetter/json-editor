@@ -2953,9 +2953,9 @@
                       'div',
                       { className: 'key-input-item' },
                       r.createElement(b.Input, {
-                        defaultValue: t,
-                        onPressEnter: this.handleLabelChange,
-                        onBlur: this.handleLabelChange,
+                        defaultValue: n,
+                        onPressEnter: this.handleValueChange,
+                        onBlur: this.handleValueChange,
                       }),
                     ),
                     r.createElement(
@@ -2975,9 +2975,9 @@
                       'div',
                       { className: 'title-input-item' },
                       r.createElement(b.Input, {
-                        defaultValue: n,
-                        onPressEnter: this.handleValueChange,
-                        onBlur: this.handleValueChange,
+                        defaultValue: t,
+                        onPressEnter: this.handleLabelChange,
+                        onBlur: this.handleLabelChange,
                       }),
                     ),
                     r.createElement(

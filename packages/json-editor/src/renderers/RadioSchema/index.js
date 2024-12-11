@@ -100,7 +100,7 @@ class RadioSchema extends React.PureComponent {
                   const optionNodeKey = `${nodeKey}-radio-${optionLabel}`;
                   return (
                     <Radio value={item.value} key={optionNodeKey}>
-                      {item.value}
+                      {item.label}
                     </Radio>
                   );
                 })}

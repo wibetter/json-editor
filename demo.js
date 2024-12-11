@@ -20,6 +20,320 @@ class IndexDemo extends React.PureComponent {
     this.state = {
       jsonSchema: {
         type: 'object',
+        name: 'TPLSearch',
+        title: '头部组件',
+        properties: {
+          props: {
+            type: 'object',
+            title: '属性',
+            isFixed: true,
+            properties: {
+              name: {
+                title: '组件名称',
+                type: 'input',
+                default: 'x',
+                description: '',
+                placeholder: '',
+              },
+              description: {
+                title: '组件描述',
+                type: 'input',
+                default: 'x',
+                description: '组件的描述，该值会外显至mp后台',
+                placeholder: '',
+              },
+              renderMethod: {
+                title: '渲染方式',
+                type: 'radio',
+                description: '组件的渲染方式，支持客户端和服务端。首屏内容选择服务端，非首屏内容选择客户端',
+                options: [
+                  {
+                    label: '客户端',
+                    value: 'client',
+                  },
+                  {
+                    label: '服务端',
+                    value: 'server',
+                  }
+                ],
+                default: 'client',
+              },
+            },
+            propertyOrder: ['name', 'description', 'renderMethod'],
+          },
+          style: {
+            type: 'object',
+            title: '样式',
+            isFixed: true,
+            properties: {
+              margin: {
+                type: 'box-style',
+                title: '外边距',
+                properties: {
+                  unit: {
+                    type: 'string',
+                    title: '单位数值',
+                    default: '15px',
+                    description: '',
+                  },
+                  quantity: {
+                    type: 'select',
+                    default: 'px',
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
+                    title: '单位类型',
+                  },
+                },
+                propertyOrder: ['unit', 'quantity'],
+              },
+              width: {
+                type: 'quantity',
+                title: '宽',
+                properties: {
+                  unit: {
+                    type: 'number',
+                    title: '单位数值',
+                    default: 220,
+                    minimum: 0,
+                    maximum: '10000',
+                    description: '',
+                  },
+                  quantity: {
+                    type: 'select',
+                    default: 'px',
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
+                    title: '单位类型',
+                  },
+                },
+                propertyOrder: ['unit', 'quantity'],
+              },
+              height: {
+                type: 'quantity',
+                title: '高',
+                properties: {
+                  unit: {
+                    type: 'number',
+                    title: '单位数值',
+                    default: 220,
+                    minimum: 0,
+                    maximum: '10000',
+                    description: '',
+                  },
+                  quantity: {
+                    type: 'select',
+                    default: 'px',
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
+                    title: '单位类型',
+                  },
+                },
+                propertyOrder: ['unit', 'quantity'],
+              },
+              padding: {
+                type: 'box-style',
+                title: '内边距',
+                properties: {
+                  unit: {
+                    type: 'string',
+                    title: '单位数值',
+                    default: '15px',
+                    description: '',
+                  },
+                  quantity: {
+                    type: 'select',
+                    default: 'px',
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
+                    title: '单位类型',
+                  },
+                },
+                propertyOrder: ['unit', 'quantity'],
+              },
+            },
+            propertyOrder: ['width', 'height', 'margin', 'padding'],
+          },
+          data: {
+            type: 'object',
+            title: '数据',
+            isFixed: true,
+            properties: {
+              chartDataList: {
+                type: 'dynamic-data',
+                title: '图表数据',
+                properties: {
+                  type: {
+                    default: 'local',
+                    type: 'select',
+                    options: [
+                      {
+                        label: '本地数据',
+                        value: 'local',
+                      },
+                      {
+                        label: '接口数据',
+                        value: 'remote',
+                      },
+                    ],
+                    title: '数据类型',
+                  },
+                  config: {
+                    type: 'object',
+                    title: '接口配置',
+                    description: '用于存放接口的配置数据(url、请求参数等)',
+                    isRequired: true,
+                    properties: {
+                      dataName: {
+                        default: 'local',
+                        type: 'select',
+                        options: [
+                          {
+                            label: '本地数据',
+                            value: 'local',
+                          },
+                          {
+                            label: '接口数据',
+                            value: 'remote',
+                          },
+                        ],
+                        title: '数据类型',
+                      },
+                      body: {
+                        type: 'object',
+                        title: '请求参数配置',
+                        description: '用于配置当前接口的请求参数数值',
+                        isRequired: true,
+                        properties: {},
+                        propertyOrder: [],
+                      },
+                      filter: {
+                        title: '过滤器函数体',
+                        type: 'codearea',
+                        default: 'return data;',
+                        description: '用于定义过滤接口数据',
+                        isRequired: true,
+                      },
+                    },
+                    propertyOrder: ['dataName', 'body', 'filter'],
+                  },
+                  data: {
+                    title: '数据内容',
+                    type: 'json',
+                    default: '{}',
+                    description: '用于存放DynamicData的数据内容',
+                    isRequired: true,
+                  },
+                  localFilter: {
+                    title: '过滤器',
+                    type: 'codearea',
+                    default: 'return data;',
+                    description: '用于定义过滤本地数据',
+                    isRequired: true,
+                  },
+                },
+                propertyOrder: ['type', 'config', 'data', 'localFilter'],
+              },
+              xAxis: {
+                title: 'x轴字段',
+                type: 'input',
+                default: 'x',
+                description: '',
+                placeholder: '',
+              },
+              yAxis: {
+                title: 'y轴字段',
+                type: 'input',
+                default: 'y',
+                description: '',
+                placeholder: '',
+              },
+              legend: {
+                title: '图例字段',
+                type: 'input',
+                default: 'type',
+                description: '',
+                placeholder: '',
+              },
+            },
+            propertyOrder: ['chartDataList', 'xAxis', 'yAxis', 'legend'],
+          },
+          event: {
+            type: 'object',
+            title: '事件',
+            isFixed: true,
+            properties: {},
+            propertyOrder: [],
+          },
+        },
+        propertyOrder: ['props', 'data', 'style', 'event'],
+        lastUpdateTime: '2021-03-29T02:08:03.551Z',
+      },
+      jsonSchema2: {
+        type: 'object',
         name: 'circle',
         title: 'circle 圆环图',
         'ui-type': 'ui-materiel',
