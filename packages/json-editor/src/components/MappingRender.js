@@ -22,6 +22,7 @@ import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import HtmlAreaFormSchema from '$renderers/HtmlAreaFormSchema/index';
 import SelectSchema from '$renderers/SelectSchema/index';
+import DynamicConfigSchema from '$renderers/DynamicConfigSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -35,6 +36,7 @@ const MappingRender = (props) => {
     updateFormValueData,
   } = props;
   const curType = targetJsonSchema.type;
+
   // 获取当前字段的条件规则
   let hiddenRule = {};
   if (targetJsonSchema.hiddenRule) {
@@ -65,11 +67,14 @@ const MappingRender = (props) => {
   const newProps = {
     ...props,
     nodeKey: curNodeKey,
+    mappingRenderUpdateFormValueData: updateFormValueData,
   };
 
   switch (curType) {
     case 'object':
       return <ObjectSchema {...newProps} key={curNodeKey} />;
+    case 'dynamic-config':
+      return <DynamicConfigSchema {...newProps} key={curNodeKey} />;
     case 'array':
       return <ArraySchema {...newProps} key={curNodeKey} />;
     case 'dynamic-data':

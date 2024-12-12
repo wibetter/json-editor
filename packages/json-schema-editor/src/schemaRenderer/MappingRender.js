@@ -17,6 +17,7 @@ const MappingRender = (props) => {
     case 'func':
     case 'style':
     case 'data':
+    case 'dynamic-config':
       return ObjectSchema(props);
       break;
     case 'array':
@@ -25,7 +26,6 @@ const MappingRender = (props) => {
     case 'datasource':
       return DataSourceSchema(props);
       break;
-    case 'dynamic-data':
       return DynamicDataSchema(props);
       break;
     case 'event':

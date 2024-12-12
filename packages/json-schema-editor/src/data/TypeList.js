@@ -15,7 +15,12 @@ export const BASE_TYPE = [
 ];
 
 // 固有容器类型
-export const Fixed_CONTAINER_TYPE = ['datasource', 'event', 'dynamic-data'];
+export const Fixed_CONTAINER_TYPE = [
+  'datasource',
+  'event',
+  'dynamic-data',
+  'dynamic-config',
+];
 
 // 当前容器类型
 export const CONTAINER_TYPE = ['object', ...Fixed_CONTAINER_TYPE];
