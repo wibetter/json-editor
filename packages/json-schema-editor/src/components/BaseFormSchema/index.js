@@ -24,6 +24,13 @@ import {
 import { objClone, saveWebCacheData } from '$utils/index';
 import './index.scss';
 
+/**
+ * 基本配置
+ * 1、关于schema中的特殊属性：
+ * 1）isFixed 表示当前元素是固定元素，不可 复制、拖拽和删除等；
+ * 2）父元素 isContainer 为false 时，则当前元素不支持 新增、复制、删除和拖拽等操作，高级操作icon 显隐单独控制；
+ */
+
 class BaseFormSchema extends React.PureComponent {
   static propTypes = {
     parentType: PropTypes.string,
@@ -161,9 +168,21 @@ class BaseFormSchema extends React.PureComponent {
   };
 
   render() {
-    const { parentType, indexRoute, jsonKey, nodeKey, targetJsonSchema } =
-      this.props;
+    const {
+      parentType,
+      indexRoute,
+      jsonKey,
+      nodeKey,
+      targetJsonSchema,
+      getSchemaByIndexRoute,
+    } = this.props;
     const { showAdvanceConfig } = this.state;
+    // 获取父元素
+    const parentIndexRoute = indexRoute ? getParentIndexRoute(indexRoute) : '';
+    const parentSchemaObj = parentIndexRoute
+      ? getSchemaByIndexRoute(parentIndexRoute)
+      : {};
+
     const isFixed = targetJsonSchema.isFixed || this.props.isFixed || false;
     // readOnly: 是否为固有的属性（不可编辑、不可 // 是否不可编辑状态，默认为可编辑状态删除），用于控制json-editor端是否可编辑
     const readOnly = this.props.readOnly || targetJsonSchema.readOnly || false;
@@ -173,7 +192,11 @@ class BaseFormSchema extends React.PureComponent {
       this.props.typeIsFixed !== undefined ? this.props.typeIsFixed : isFixed; // type是否为不可编辑的属性
     const titleIsFixed =
       this.props.titleIsFixed !== undefined ? this.props.titleIsFixed : isFixed; // title是否为不可编辑的属性
-    const hideOperaBtn = this.props.hideOperaBtn || false; // 是否隐藏操作类按钮
+    const hideOperaBtn =
+      this.props.hideOperaBtn ||
+      (parentSchemaObj && parentSchemaObj.isContainer === false)
+        ? true
+        : false; // 是否隐藏操作类按钮
     const showAdvanceBtn = hideOperaBtn ? this.props.showAdvanceBtn : false; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
     const curType = targetJsonSchema.type;

@@ -26,6 +26,10 @@ import {
 import { hasProperties, getExpectType } from '@wibetter/json-utils';
 import './index.scss';
 
+/**
+ * 高级配置面板
+ */
+
 class AdvanceConfig extends React.PureComponent {
   static propTypes = {
     jsonKey: PropTypes.string,

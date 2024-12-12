@@ -2464,26 +2464,32 @@
                   a = t.jsonKey,
                   i = t.nodeKey,
                   s = t.targetJsonSchema,
-                  c = this.state.showAdvanceConfig,
-                  l = s.isFixed || this.props.isFixed || !1,
-                  d =
+                  c = t.getSchemaByIndexRoute,
+                  l = this.state.showAdvanceConfig,
+                  d = o ? (0, Ie.getParentIndexRoute)(o) : '',
+                  p = d ? c(d) : {},
+                  u = s.isFixed || this.props.isFixed || !1,
+                  m =
                     (this.props.readOnly || s.readOnly,
                     void 0 !== this.props.keyIsFixed
                       ? this.props.keyIsFixed
-                      : l),
-                  p =
+                      : u),
+                  h =
                     void 0 !== this.props.typeIsFixed
                       ? this.props.typeIsFixed
-                      : l,
-                  u =
+                      : u,
+                  y =
                     void 0 !== this.props.titleIsFixed
                       ? this.props.titleIsFixed
-                      : l,
-                  m = this.props.hideOperaBtn || !1,
-                  h = !!m && this.props.showAdvanceBtn,
-                  y = this.getCurrentTypeList(n),
-                  g = s.type,
-                  f = (0, Ie.isContainerSchema)(s);
+                      : u,
+                  g = !!(
+                    this.props.hideOperaBtn ||
+                    (p && !1 === p.isContainer)
+                  ),
+                  f = !!g && this.props.showAdvanceBtn,
+                  S = this.getCurrentTypeList(n),
+                  v = s.type,
+                  x = (0, Ie.isContainerSchema)(s);
                 return r.createElement(
                   r.Fragment,
                   null,
@@ -2500,7 +2506,7 @@
                         },
                         r.createElement(b.Input, {
                           defaultValue: a || 'key值不存在',
-                          disabled: d,
+                          disabled: m,
                           onPressEnter: this.handleJsonKeyChange,
                           onBlur: this.handleJsonKeyChange,
                         }),
@@ -2516,12 +2522,12 @@
                           b.Select,
                           {
                             showSearch: !0,
-                            defaultValue: g,
+                            defaultValue: v,
                             style: { width: 150 },
                             onChange: this.selectHandleChange,
-                            disabled: p,
+                            disabled: h,
                           },
-                          y.map(function (e) {
+                          S.map(function (e) {
                             return r.createElement(Fe, { key: e, value: e }, e);
                           }),
                         ),
@@ -2535,16 +2541,16 @@
                         },
                         r.createElement(b.Input, {
                           defaultValue: s.title,
-                          disabled: u,
+                          disabled: y,
                           onPressEnter: this.handleTitleChange,
                           onBlur: this.handleTitleChange,
                         }),
                       ),
-                      !m &&
+                      !g &&
                         r.createElement(
                           'div',
                           { className: 'operate-item' },
-                          !l &&
+                          !u &&
                             r.createElement(
                               b.Tooltip,
                               { title: '删除' },
@@ -2555,13 +2561,13 @@
                             ),
                           r.createElement(
                             b.Tooltip,
-                            { title: f ? '新增子元素' : '新增同级元素' },
+                            { title: x ? '新增子元素' : '新增同级元素' },
                             r.createElement(Pe.PlusOutlined, {
                               className: 'operate-btn',
                               onClick: this.onAddBtnEvent,
                             }),
                           ),
-                          f &&
+                          x &&
                             r.createElement(
                               b.Tooltip,
                               { title: '数据项排序' },
@@ -2570,7 +2576,7 @@
                                 onClick: this.childElemSort,
                               }),
                             ),
-                          !l &&
+                          !u &&
                             r.createElement(
                               r.Fragment,
                               null,
@@ -2601,7 +2607,7 @@
                               ),
                             ),
                         ),
-                      h &&
+                      f &&
                         r.createElement(
                           'div',
                           { className: 'operate-item' },
@@ -2616,7 +2622,7 @@
                             }),
                           ),
                         ),
-                      c &&
+                      l &&
                         r.createElement(
                           b.Modal,
                           {
