@@ -92,9 +92,10 @@ class ObjectSchema extends React.PureComponent {
         </div>
         <div className="array-schema-box">
           <Collapse
-            defaultActiveKey={targetJsonSchema.propertyOrder}
+            defaultActiveKey={['mainConfig']}
             expandIconPosition="right"
             bordered={false}
+            accordion
           >
             {targetJsonSchema.properties['mainConfig'] && (
               <Panel

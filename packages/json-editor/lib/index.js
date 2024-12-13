@@ -6161,9 +6161,10 @@
                     T().createElement(
                       Q.Collapse,
                       {
-                        defaultActiveKey: i.propertyOrder,
+                        defaultActiveKey: ['mainConfig'],
                         expandIconPosition: 'right',
                         bordered: !1,
+                        accordion: !0,
                       },
                       i.properties.mainConfig &&
                         T().createElement(
