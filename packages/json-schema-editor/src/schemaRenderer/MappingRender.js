@@ -26,6 +26,7 @@ const MappingRender = (props) => {
     case 'datasource':
       return DataSourceSchema(props);
       break;
+    case 'dynamic-data':
       return DynamicDataSchema(props);
       break;
     case 'event':

@@ -107,6 +107,7 @@ class SelectSchema extends React.PureComponent {
               style={{ display: 'inline-block', minWidth: '80px' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
+              disabled={targetJsonSchema.readOnly}
             >
               {options &&
                 options.length > 0 &&

@@ -14,7 +14,6 @@ import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import CodeIcon from '$assets/img/code.svg';
-import './index.scss';
 
 class ObjectSchema extends React.PureComponent {
   static propTypes = {

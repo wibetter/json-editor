@@ -95,6 +95,7 @@ class BooleanFormSchema extends React.PureComponent {
               checkedChildren="true"
               unCheckedChildren="false"
               onChange={this.handleValueChange}
+              disabled={targetJsonSchema.readOnly}
             />
           </div>
         </div>

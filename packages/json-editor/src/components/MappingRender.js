@@ -67,7 +67,6 @@ const MappingRender = (props) => {
   const newProps = {
     ...props,
     nodeKey: curNodeKey,
-    mappingRenderUpdateFormValueData: updateFormValueData,
   };
 
   switch (curType) {

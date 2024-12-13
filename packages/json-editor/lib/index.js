@@ -434,7 +434,6 @@
         523: function () {},
         597: function () {},
         232: function () {},
-        48: function () {},
         534: function () {},
         161: function () {},
         258: function () {},
@@ -483,13 +482,6 @@
             'string' == typeof n && (n = [[e.id, n, '']]),
             n.locals && (e.exports = n.locals),
             (0, a(611).A)('1b6af5a2', n, !1, { sourceMap: !1 });
-        },
-        645: function (e, t, a) {
-          var n = a(48);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('1ab6d982', n, !1, { sourceMap: !1 });
         },
         759: function (e, t, a) {
           var n = a(534);
@@ -4449,6 +4441,7 @@
                           style: { display: 'inline-block' },
                           onChange: this.handleValueChange,
                           defaultValue: i || r.default,
+                          disabled: r.readOnly,
                         },
                         l &&
                           l.length > 0 &&
@@ -5103,6 +5096,7 @@
                         checkedChildren: 'true',
                         unCheckedChildren: 'false',
                         onChange: this.handleValueChange,
+                        disabled: r.readOnly,
                       }),
                     ),
                   ),
@@ -5818,6 +5812,7 @@
                           style: { display: 'inline-block', minWidth: '80px' },
                           onChange: this.handleValueChange,
                           defaultValue: i || r.default,
+                          disabled: r.readOnly,
                         },
                         l &&
                           l.length > 0 &&
@@ -5855,225 +5850,221 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(Dt)),
-          Rt =
-            (__webpack_require__(645),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).state = {
-                    jsonView: !1,
-                    isClosed: !1,
-                  }),
-                  a
-                );
-              }
-              j()(t, e);
-              var a = t.prototype;
+          Rt = (function (e) {
+            function t(t) {
+              var a;
               return (
-                (a.componentWillMount = function () {
-                  ue.x.call(this);
+                ((a = e.call(this, t) || this).state = {
+                  jsonView: !1,
+                  isClosed: !1,
                 }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    ue.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e,
-                    t = this,
-                    a = this.props,
-                    n = a.indexRoute,
-                    r = a.jsonKey,
-                    o = a.nodeKey,
-                    i = a.keyRoute,
-                    l = a.pageScreen,
-                    s = a.targetJsonSchema,
-                    c = a.isArrayItem,
-                    u = (a.arrIndex, a.isStructuredSchema),
-                    p = a.getJSONDataByKeyRoute,
-                    m = a.keyRoute2indexRoute,
-                    d = a.updateFormValueData,
-                    y = this.state,
-                    h = y.jsonView,
-                    g = y.isClosed,
-                    _ = u,
-                    S = null == (e = s.showCodeViewBtn) || e,
-                    f = p(i),
-                    E = o + '-' + f.type + '-' + f.valueType;
-                  return B().createElement(
+                a
+              );
+            }
+            j()(t, e);
+            var a = t.prototype;
+            return (
+              (a.componentWillMount = function () {
+                ue.x.call(this);
+              }),
+              (a.componentWillReceiveProps = function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  ue.x.call(this, e.keyRoute);
+              }),
+              (a.render = function () {
+                var e,
+                  t = this,
+                  a = this.props,
+                  n = a.indexRoute,
+                  r = a.jsonKey,
+                  o = a.nodeKey,
+                  i = a.keyRoute,
+                  l = a.pageScreen,
+                  s = a.targetJsonSchema,
+                  c = a.isArrayItem,
+                  u = (a.arrIndex, a.isStructuredSchema),
+                  p = a.getJSONDataByKeyRoute,
+                  m = a.keyRoute2indexRoute,
+                  d = a.updateFormValueData,
+                  y = this.state,
+                  h = y.jsonView,
+                  g = y.isClosed,
+                  _ = u,
+                  S = null == (e = s.showCodeViewBtn) || e,
+                  f = p(i),
+                  E = o + '-' + f.type + '-' + f.valueType;
+                return B().createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === l
+                        ? 'object-schema-warp wide-screen-element-warp'
+                        : 'object-schema-warp mobile-screen-element-warp',
+                    key: E,
+                    id: o,
+                  },
+                  !_ &&
+                    !c &&
+                    B().createElement(
+                      'div',
+                      { className: 'element-title' },
+                      B().createElement(
+                        Z.Tooltip,
+                        { title: s.description, placement: 'top' },
+                        B().createElement(
+                          'span',
+                          {
+                            className: 'title-text',
+                            title:
+                              'wideScreen' === l && s.title.length > 6
+                                ? s.title
+                                : '',
+                          },
+                          s.title,
+                          s.showKey &&
+                            B().createElement(
+                              'span',
+                              null,
+                              '（',
+                              (0, G.truncate)(r, { length: 15 }),
+                              '）',
+                            ),
+                        ),
+                      ),
+                    ),
+                  B().createElement(
                     'div',
-                    {
-                      className:
-                        'wideScreen' === l
-                          ? 'object-schema-warp wide-screen-element-warp'
-                          : 'object-schema-warp mobile-screen-element-warp',
-                      key: E,
-                      id: o,
-                    },
+                    { className: 'element-title-card-warp content-item' },
                     !_ &&
                       !c &&
                       B().createElement(
                         'div',
-                        { className: 'element-title' },
+                        {
+                          className: 'element-title',
+                          onClick: function (e) {
+                            t.setState({ isClosed: !g }),
+                              e.preventDefault(),
+                              e.stopPropagation();
+                          },
+                        },
                         B().createElement(
-                          Z.Tooltip,
-                          { title: s.description, placement: 'top' },
-                          B().createElement(
-                            'span',
-                            {
-                              className: 'title-text',
-                              title:
-                                'wideScreen' === l && s.title.length > 6
-                                  ? s.title
-                                  : '',
-                            },
-                            s.title,
-                            s.showKey &&
-                              B().createElement(
-                                'span',
-                                null,
-                                '（',
-                                (0, G.truncate)(r, { length: 15 }),
-                                '）',
-                              ),
-                          ),
+                          'span',
+                          { className: 'title-text' },
+                          '动态配置',
                         ),
+                        g
+                          ? B().createElement(re.RightOutlined, {
+                              className: 'close-operate-btn',
+                            })
+                          : B().createElement(re.DownOutlined, {
+                              className: 'close-operate-btn',
+                            }),
+                        S &&
+                          B().createElement(
+                            'div',
+                            {
+                              className: 'display-source-btn',
+                              onClick: function (e) {
+                                t.setState({ jsonView: !h }),
+                                  e.preventDefault(),
+                                  e.stopPropagation();
+                              },
+                            },
+                            B().createElement(
+                              Z.Tooltip,
+                              { title: h ? '关闭源码模式' : '开启源码模式' },
+                              B().createElement(Se, {
+                                className: h ? 'info-icon active' : 'info-icon',
+                              }),
+                            ),
+                          ),
                       ),
                     B().createElement(
                       'div',
-                      { className: 'element-title-card-warp content-item' },
-                      !_ &&
-                        !c &&
-                        B().createElement(
-                          'div',
-                          {
-                            className: 'element-title',
-                            onClick: function (e) {
-                              t.setState({ isClosed: !g }),
-                                e.preventDefault(),
-                                e.stopPropagation();
-                            },
-                          },
-                          B().createElement(
-                            'span',
-                            { className: 'title-text' },
-                            '动态配置',
-                          ),
-                          g
-                            ? B().createElement(re.RightOutlined, {
-                                className: 'close-operate-btn',
-                              })
-                            : B().createElement(re.DownOutlined, {
-                                className: 'close-operate-btn',
-                              }),
-                          S &&
-                            B().createElement(
-                              'div',
-                              {
-                                className: 'display-source-btn',
-                                onClick: function (e) {
-                                  t.setState({ jsonView: !h }),
-                                    e.preventDefault(),
-                                    e.stopPropagation();
-                                },
-                              },
-                              B().createElement(
-                                Z.Tooltip,
-                                { title: h ? '关闭源码模式' : '开启源码模式' },
-                                B().createElement(Se, {
-                                  className: h
-                                    ? 'info-icon active'
-                                    : 'info-icon',
-                                }),
-                              ),
-                            ),
-                        ),
-                      B().createElement(
-                        'div',
-                        {
-                          className:
-                            'content-item ' +
-                            (_ || c ? '' : 'object-content') +
-                            ' ' +
-                            (h ? 'json-view-array' : '') +
-                            ' ' +
-                            (g ? 'closed' : ''),
-                        },
-                        !h &&
-                          s.propertyOrder &&
-                          s.propertyOrder.map(function (e, t) {
-                            var a = n ? n + '-' + t : '' + t,
-                              r = i ? i + '-' + e : '' + e,
-                              l = e,
-                              c = (0, H.toJS)(s.properties[l]),
-                              u = c.type,
-                              y = o + '-' + u + '-' + l,
-                              h = ![
-                                'description',
-                                'valueType',
-                                'range',
-                                'value',
-                              ].includes(l);
-                            if (
-                              ('description' !== l && 'valueType' !== l) ||
-                              ('ContentStaticConfig' !== f.type &&
-                                'ResourceCenter' !== f.type)
-                            )
-                              if ('range' === l) {
-                                if (
-                                  ('select' !== f.valueType ||
-                                    ('ContentStaticConfig' !== f.type &&
-                                      'ResourceCenter' !== f.type) ||
-                                    (h = !0),
-                                  h)
-                                ) {
-                                  var g = s.properties.value;
-                                  ['select', 'radio', 'checkboxes'].includes(
-                                    g.type,
-                                  ) &&
-                                    g.options &&
-                                    g.options.length > 0 &&
-                                    (c.options = (0, Y.bQ)(g.options));
-                                }
-                              } else
-                                'value' !== l ||
-                                  ('DevDefaults' !== f.type &&
-                                    'RuntimeConst' !== f.type &&
-                                    'Content' !== f.type) ||
-                                  (h = !0);
-                            else {
-                              h = !0;
-                              var _ = s.properties.value;
-                              'valueType' !== l ||
+                      {
+                        className:
+                          'content-item ' +
+                          (_ || c ? '' : 'object-content') +
+                          ' ' +
+                          (h ? 'json-view-array' : '') +
+                          ' ' +
+                          (g ? 'closed' : ''),
+                      },
+                      !h &&
+                        s.propertyOrder &&
+                        s.propertyOrder.map(function (e, t) {
+                          var a = n ? n + '-' + t : '' + t,
+                            r = i ? i + '-' + e : '' + e,
+                            l = e,
+                            c = (0, H.toJS)(s.properties[l]),
+                            u = c.type,
+                            y = o + '-' + u + '-' + l,
+                            h = ![
+                              'description',
+                              'valueType',
+                              'range',
+                              'value',
+                            ].includes(l);
+                          if (
+                            ('description' !== l && 'valueType' !== l) ||
+                            ('ContentStaticConfig' !== f.type &&
+                              'ResourceCenter' !== f.type)
+                          )
+                            if ('range' === l) {
+                              if (
+                                ('select' !== f.valueType ||
+                                  ('ContentStaticConfig' !== f.type &&
+                                    'ResourceCenter' !== f.type) ||
+                                  (h = !0),
+                                h)
+                              ) {
+                                var g = s.properties.value;
                                 ['select', 'radio', 'checkboxes'].includes(
-                                  _.type,
-                                ) ||
-                                ((c.default = 'string'),
-                                (c.readOnly = !0),
-                                (c.description =
-                                  '当前数值没有可选项，不支持设置。'));
-                            }
-                            if (h)
-                              return Jt({
-                                parentType: u,
-                                jsonKey: l,
-                                indexRoute: a,
-                                keyRoute: r,
-                                nodeKey: y,
-                                targetJsonSchema: c,
-                                getJSONDataByKeyRoute: p,
-                                keyRoute2indexRoute: m,
-                                updateFormValueData: d,
-                              });
-                          }),
-                        h && B().createElement(ce, this.props),
-                      ),
+                                  g.type,
+                                ) &&
+                                  g.options &&
+                                  g.options.length > 0 &&
+                                  (c.options = (0, Y.bQ)(g.options));
+                              }
+                            } else
+                              'value' !== l ||
+                                ('DevDefaults' !== f.type &&
+                                  'RuntimeConst' !== f.type &&
+                                  'Content' !== f.type) ||
+                                (h = !0);
+                          else {
+                            h = !0;
+                            var _ = s.properties.value;
+                            'valueType' !== l ||
+                              ['select', 'radio', 'checkboxes'].includes(
+                                _.type,
+                              ) ||
+                              ((c.default = 'string'),
+                              (c.readOnly = !0),
+                              (c.description =
+                                '当前数值没有可选项，不支持设置。'));
+                          }
+                          if (h)
+                            return Jt({
+                              parentType: u,
+                              jsonKey: l,
+                              indexRoute: a,
+                              keyRoute: r,
+                              nodeKey: y,
+                              targetJsonSchema: c,
+                              getJSONDataByKeyRoute: p,
+                              keyRoute2indexRoute: m,
+                              updateFormValueData: d,
+                            });
+                        }),
+                      h && B().createElement(ce, this.props),
                     ),
-                  );
-                }),
-                t
-              );
-            })(B().PureComponent));
+                  ),
+                );
+              }),
+              t
+            );
+          })(B().PureComponent);
         Rt.propTypes = {
           isArrayItem: A().any,
           arrIndex: A().any,
@@ -6111,10 +6102,7 @@
                 return void (n.clearValueOnHidden && o(a, void 0));
             }
             s = t + '-' + c;
-            var p = ne()({}, e, {
-              nodeKey: s,
-              mappingRenderUpdateFormValueData: o,
-            });
+            var p = ne()({}, e, { nodeKey: s });
             switch (i) {
               case 'object':
                 return B().createElement(ve, ne()({}, p, { key: s }));
