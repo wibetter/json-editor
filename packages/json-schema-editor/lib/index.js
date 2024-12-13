@@ -356,7 +356,12 @@
             'date-time',
             'time',
           ],
-          Ce = ['object'].concat(['datasource', 'event', 'dynamic-data']),
+          Ce = ['object'].concat([
+            'datasource',
+            'event',
+            'dynamic-data',
+            'dynamic-config',
+          ]),
           je = [
             'quantity',
             'box-style',
@@ -2457,46 +2462,45 @@
             return (
               a()(t, e),
               (t.prototype.render = function () {
-                var e = this,
-                  t = this.props,
-                  n = t.parentType,
-                  o = t.indexRoute,
-                  a = t.jsonKey,
-                  i = t.nodeKey,
-                  s = t.targetJsonSchema,
-                  c = t.getSchemaByIndexRoute,
-                  l = this.state.showAdvanceConfig,
-                  d = o ? (0, Ie.getParentIndexRoute)(o) : '',
-                  p = d ? c(d) : {},
-                  u = s.isFixed || this.props.isFixed || !1,
-                  m =
-                    (this.props.readOnly || s.readOnly,
+                var e,
+                  t = this,
+                  n = this.props,
+                  o = n.parentType,
+                  a = n.indexRoute,
+                  i = n.jsonKey,
+                  s = n.nodeKey,
+                  c = n.targetJsonSchema,
+                  l = n.getSchemaByIndexRoute,
+                  d = this.state.showAdvanceConfig,
+                  p = a ? (0, Ie.getParentIndexRoute)(a) : '',
+                  u = p ? l(p) : {},
+                  m = null == (e = u && u.isContainer) || e,
+                  h = c.isFixed || this.props.isFixed || !1,
+                  y =
+                    (this.props.readOnly || c.readOnly,
                     void 0 !== this.props.keyIsFixed
                       ? this.props.keyIsFixed
-                      : u),
-                  h =
+                      : !m || h),
+                  g =
                     void 0 !== this.props.typeIsFixed
                       ? this.props.typeIsFixed
-                      : u,
-                  y =
+                      : h,
+                  f =
                     void 0 !== this.props.titleIsFixed
                       ? this.props.titleIsFixed
-                      : u,
-                  g = !!(
-                    this.props.hideOperaBtn ||
-                    (p && !1 === p.isContainer)
-                  ),
-                  f = !!g && this.props.showAdvanceBtn,
-                  S = this.getCurrentTypeList(n),
-                  v = s.type,
-                  x = (0, Ie.isContainerSchema)(s);
+                      : h,
+                  S = this.props.hideOperaBtn || !m,
+                  v = !!S && this.props.showAdvanceBtn,
+                  x = this.getCurrentTypeList(o),
+                  E = c.type,
+                  C = (0, Ie.isContainerSchema)(c);
                 return r.createElement(
                   r.Fragment,
                   null,
-                  s &&
+                  c &&
                     r.createElement(
                       'div',
-                      { className: 'base-schema-box', id: i },
+                      { className: 'base-schema-box', id: s },
                       r.createElement(
                         'div',
                         {
@@ -2505,8 +2509,8 @@
                           onDragStart: this.ignoreDragEvent,
                         },
                         r.createElement(b.Input, {
-                          defaultValue: a || 'key值不存在',
-                          disabled: m,
+                          defaultValue: i || 'key值不存在',
+                          disabled: y,
                           onPressEnter: this.handleJsonKeyChange,
                           onBlur: this.handleJsonKeyChange,
                         }),
@@ -2522,12 +2526,12 @@
                           b.Select,
                           {
                             showSearch: !0,
-                            defaultValue: v,
+                            defaultValue: E,
                             style: { width: 150 },
                             onChange: this.selectHandleChange,
-                            disabled: h,
+                            disabled: g,
                           },
-                          S.map(function (e) {
+                          x.map(function (e) {
                             return r.createElement(Fe, { key: e, value: e }, e);
                           }),
                         ),
@@ -2540,17 +2544,17 @@
                           onDragStart: this.ignoreDragEvent,
                         },
                         r.createElement(b.Input, {
-                          defaultValue: s.title,
-                          disabled: y,
+                          defaultValue: c.title,
+                          disabled: f,
                           onPressEnter: this.handleTitleChange,
                           onBlur: this.handleTitleChange,
                         }),
                       ),
-                      !g &&
+                      !S &&
                         r.createElement(
                           'div',
                           { className: 'operate-item' },
-                          !u &&
+                          !h &&
                             r.createElement(
                               b.Tooltip,
                               { title: '删除' },
@@ -2561,13 +2565,13 @@
                             ),
                           r.createElement(
                             b.Tooltip,
-                            { title: x ? '新增子元素' : '新增同级元素' },
+                            { title: C ? '新增子元素' : '新增同级元素' },
                             r.createElement(Pe.PlusOutlined, {
                               className: 'operate-btn',
                               onClick: this.onAddBtnEvent,
                             }),
                           ),
-                          x &&
+                          C &&
                             r.createElement(
                               b.Tooltip,
                               { title: '数据项排序' },
@@ -2576,7 +2580,7 @@
                                 onClick: this.childElemSort,
                               }),
                             ),
-                          !u &&
+                          !h &&
                             r.createElement(
                               r.Fragment,
                               null,
@@ -2594,7 +2598,7 @@
                                 r.createElement(Pe.SettingOutlined, {
                                   className: 'operate-btn',
                                   onClick: function () {
-                                    e.setState({ showAdvanceConfig: !0 });
+                                    t.setState({ showAdvanceConfig: !0 });
                                   },
                                 }),
                               ),
@@ -2607,7 +2611,7 @@
                               ),
                             ),
                         ),
-                      f &&
+                      v &&
                         r.createElement(
                           'div',
                           { className: 'operate-item' },
@@ -2617,20 +2621,20 @@
                             r.createElement(Pe.SettingOutlined, {
                               className: 'operate-btn',
                               onClick: function () {
-                                e.setState({ showAdvanceConfig: !0 });
+                                t.setState({ showAdvanceConfig: !0 });
                               },
                             }),
                           ),
                         ),
-                      l &&
+                      d &&
                         r.createElement(
                           b.Modal,
                           {
                             visible: !0,
                             title:
-                              '高级设置 / 当前字段：' + s.title + '(' + a + ')',
+                              '高级设置 / 当前字段：' + c.title + '(' + i + ')',
                             onCancel: function () {
-                              e.setState({ showAdvanceConfig: !1 });
+                              t.setState({ showAdvanceConfig: !1 });
                             },
                             footer: [
                               r.createElement(
@@ -2639,7 +2643,7 @@
                                   key: 'submit',
                                   type: 'primary',
                                   onClick: function () {
-                                    e.setState({ showAdvanceConfig: !1 });
+                                    t.setState({ showAdvanceConfig: !1 });
                                   },
                                 },
                                 '保存并关闭',
@@ -2647,20 +2651,20 @@
                             ],
                           },
                           r.createElement(Le, {
-                            indexRoute: o,
-                            jsonKey: a,
-                            targetJsonSchema: s,
+                            indexRoute: a,
+                            jsonKey: i,
+                            targetJsonSchema: c,
                           }),
                         ),
                     ),
-                  !s &&
+                  !c &&
                     r.createElement(
                       'div',
                       { className: 'base-schema-box' },
                       r.createElement(
                         'div',
                         { className: 'warn-text' },
-                        a,
+                        i,
                         '：数据元素为空',
                       ),
                     ),
@@ -3090,6 +3094,7 @@
               case 'func':
               case 'style':
               case 'data':
+              case 'dynamic-config':
                 return mt(e);
               case 'array':
                 return He(e);

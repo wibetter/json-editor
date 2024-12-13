@@ -192,11 +192,13 @@ export function moveBackward(curIndexRoute) {
  */
 export function getDefaultOptionVal(jsonSchema, multiple) {
   let defaultVal = '';
-  if (jsonSchema.options) {
+  let hasOptions = false;
+  if (jsonSchema.options && jsonSchema.options[0]) {
     defaultVal = jsonSchema.options[0].value;
+    hasOptions = true;
   }
   if (multiple || jsonSchema.multiple) {
-    defaultVal = [defaultVal];
+    defaultVal = hasOptions ? [defaultVal] : [];
   }
   return defaultVal;
 }

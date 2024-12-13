@@ -182,21 +182,22 @@ class BaseFormSchema extends React.PureComponent {
     const parentSchemaObj = parentIndexRoute
       ? getSchemaByIndexRoute(parentIndexRoute)
       : {};
+    const parentIsContainer =
+      (parentSchemaObj && parentSchemaObj.isContainer) ?? true; // 判断父级元素是否为容器元素（默认均为容器元素）
 
     const isFixed = targetJsonSchema.isFixed || this.props.isFixed || false;
     // readOnly: 是否为固有的属性（不可编辑、不可 // 是否不可编辑状态，默认为可编辑状态删除），用于控制json-editor端是否可编辑
     const readOnly = this.props.readOnly || targetJsonSchema.readOnly || false;
     const keyIsFixed =
-      this.props.keyIsFixed !== undefined ? this.props.keyIsFixed : isFixed; // key是否为不可编辑的属性
+      this.props.keyIsFixed !== undefined
+        ? this.props.keyIsFixed
+        : !parentIsContainer || isFixed; // key是否为不可编辑的属性
     const typeIsFixed =
       this.props.typeIsFixed !== undefined ? this.props.typeIsFixed : isFixed; // type是否为不可编辑的属性
     const titleIsFixed =
       this.props.titleIsFixed !== undefined ? this.props.titleIsFixed : isFixed; // title是否为不可编辑的属性
-    const hideOperaBtn =
-      this.props.hideOperaBtn ||
-      (parentSchemaObj && parentSchemaObj.isContainer === false)
-        ? true
-        : false; // 是否隐藏操作类按钮
+    const hideOperaBtn = this.props.hideOperaBtn || !parentIsContainer; // 是否隐藏操作类按钮
+
     const showAdvanceBtn = hideOperaBtn ? this.props.showAdvanceBtn : false; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
     const curType = targetJsonSchema.type;
