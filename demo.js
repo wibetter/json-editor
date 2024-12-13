@@ -132,7 +132,7 @@ class IndexDemo extends React.PureComponent {
                     multiple: true,
                     options: [],
                     description: '这里会使用value中的配置选项作为options',
-                  }
+                  },
                 },
                 propertyOrder: [
                   'type',
@@ -142,98 +142,13 @@ class IndexDemo extends React.PureComponent {
                   'range',
                 ],
                 showCodeViewBtn: false,
-              },
-              firstChannel: {
-                type: 'object',
-                title: '一级标题',
-                description: '',
-                isContainer: false,
-                properties: {
-                  type: {
-                    type: 'select',
-                    title: '数据来源',
-                    options: [
-                      {
-                        label: '模板直接设置',
-                        value: 'DevDefaults',
-                      },
-                      {
-                        label: 'mp后台配置',
-                        value: 'ContentStaticConfig',
-                      },
-                      {
-                        label: '内容Meta数据',
-                        value: 'Content',
-                      },
-                      {
-                        label: '全局配置数据',
-                        value: 'RuntimeConst',
-                      },
-                      {
-                        label: '资源中心配置',
-                        value: 'ResourceCenter',
-                      },
-                    ],
-                    default: 'DevDefaults',
-                    isConditionProp: true,
-                    description:
-                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                  },
-                  value: {
-                    title: '数据值',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  description: {
-                    title: '属性名称',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  valueType: {
-                    type: 'radio',
-                    title: '配置方式',
-                    options: [
-                      {
-                        label: '填写',
-                        value: 'string',
-                      },
-                      {
-                        label: '选择',
-                        value: 'select',
-                      },
-                    ],
-                    default: 'string',
-                    isConditionProp: true,
-                    description: '',
-                  },
-                  range: {
-                    type: 'select',
-                    title: '可选项',
-                    multiple: true,
-                    options: [],
-                    description: '这里会使用value中的配置选项作为options',
-                  }
-                },
-                propertyOrder: [
-                  'type',
-                  'value',
-                  'description',
-                  'valueType',
-                  'range',
-                ],
-                showCodeViewBtn: false,
-              },
+              }
             },
             propertyOrder: [
               'name',
               'description',
               'renderMethod',
-              'firstChannel1',
-              'firstChannel',
+              'firstChannel1'
             ],
           },
           style: {

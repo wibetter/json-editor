@@ -104,7 +104,7 @@ class SelectSchema extends React.PureComponent {
             <Select
               showSearch
               mode={targetJsonSchema.multiple ? 'multiple' : undefined}
-              style={{ display: 'inline-block', minWidth: '80px' }}
+              style={{ display: 'inline-block', minWidth: '120px' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
               disabled={targetJsonSchema.readOnly}

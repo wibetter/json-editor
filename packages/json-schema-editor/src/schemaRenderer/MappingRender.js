@@ -18,6 +18,7 @@ const MappingRender = (props) => {
     case 'style':
     case 'data':
     case 'dynamic-config':
+    case 'sohu-source':
       return ObjectSchema(props);
       break;
     case 'array':

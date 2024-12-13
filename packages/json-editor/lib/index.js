@@ -603,12 +603,12 @@
               if (n) {
                 n.refs++;
                 for (var r = 0; r < n.parts.length; r++) n.parts[r](a.parts[r]);
-                for (; r < a.parts.length; r++) n.parts.push(_(a.parts[r]));
+                for (; r < a.parts.length; r++) n.parts.push(S(a.parts[r]));
                 n.parts.length > a.parts.length &&
                   (n.parts.length = a.parts.length);
               } else {
                 var i = [];
-                for (r = 0; r < a.parts.length; r++) i.push(_(a.parts[r]));
+                for (r = 0; r < a.parts.length; r++) i.push(S(a.parts[r]));
                 o[a.id] = { id: a.id, refs: 1, parts: i };
               }
             }
@@ -617,7 +617,7 @@
             var e = document.createElement('style');
             return (e.type = 'text/css'), i.appendChild(e), e;
           }
-          function _(e) {
+          function S(e) {
             var t,
               a,
               n = document.querySelector('style[' + m + '~="' + e.id + '"]');
@@ -651,11 +651,11 @@
               }
             );
           }
-          var S,
+          var _,
             f =
-              ((S = []),
+              ((_ = []),
               function (e, t) {
-                return (S[e] = t), S.filter(Boolean).join('\n');
+                return (_[e] = t), _.filter(Boolean).join('\n');
               });
           function E(e, t, a, n) {
             var r = a ? '' : n.css;
@@ -772,7 +772,7 @@
         __webpack_require__.r(__webpack_exports__),
           __webpack_require__.d(__webpack_exports__, {
             default: function () {
-              return jt;
+              return Bt;
             },
           });
         var e,
@@ -792,13 +792,13 @@
           y,
           h,
           g,
-          _,
           S,
+          _,
           f,
           E,
           b,
-          v,
           O,
+          v,
           D,
           N,
           R,
@@ -810,16 +810,16 @@
           x = __webpack_require__(820),
           j = __webpack_require__.n(x),
           P = __webpack_require__(15),
-          B = __webpack_require__.n(P),
-          T = require('react-dom'),
-          V = __webpack_require__.n(T),
+          T = __webpack_require__.n(P),
+          B = require('react-dom'),
+          V = __webpack_require__.n(B),
           I = __webpack_require__(20),
           M = __webpack_require__(825),
           A = __webpack_require__.n(M),
           L = require('@babel/runtime/helpers/initializerDefineProperty'),
-          q = __webpack_require__.n(L),
-          W = require('@babel/runtime/helpers/createClass'),
-          F = __webpack_require__.n(W),
+          W = __webpack_require__.n(L),
+          q = require('@babel/runtime/helpers/createClass'),
+          F = __webpack_require__.n(q),
           U = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
           z = __webpack_require__.n(U),
           H =
@@ -827,7 +827,7 @@
             require('mobx')),
           G = __webpack_require__(85),
           $ = G.TypeDataList.jsonschema,
-          Q =
+          Y =
             ((e = H.action.bound),
             (t = H.action.bound),
             (a = H.action.bound),
@@ -837,8 +837,8 @@
             (i = H.action.bound),
             (l = (function () {
               function e(e) {
-                q()(this, 'pageScreen', s, this),
-                  q()(this, 'jsonSchema', c, this),
+                W()(this, 'pageScreen', s, this),
+                  W()(this, 'jsonSchema', c, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -999,8 +999,8 @@
               l.prototype,
             ),
             l),
-          Z = __webpack_require__(375),
-          Y = __webpack_require__(919),
+          Q = __webpack_require__(375),
+          Z = __webpack_require__(919),
           X = __webpack_require__(102),
           ee =
             ((u = H.action.bound),
@@ -1010,22 +1010,22 @@
             (y = H.action.bound),
             (h = H.action.bound),
             (g = H.action.bound),
-            (_ = H.action.bound),
             (S = H.action.bound),
+            (_ = H.action.bound),
             (f = H.action.bound),
             (E = H.action.bound),
             (b = H.action.bound),
-            (v = (function () {
+            (O = (function () {
               function e(e) {
-                q()(this, 'rootJSONStore', O, this),
-                  q()(this, 'triggerChange', D, this),
-                  q()(this, 'lastUpdateTime', N, this),
-                  q()(this, 'jsonData', R, this),
-                  q()(this, 'initJsonData', w, this),
-                  q()(this, 'dynamicDataList', J, this),
-                  q()(this, 'dynamicDataObj', k, this),
-                  q()(this, 'dynamicDataApiScopeList', C, this),
-                  q()(this, 'onChange', K, this),
+                W()(this, 'rootJSONStore', v, this),
+                  W()(this, 'triggerChange', D, this),
+                  W()(this, 'lastUpdateTime', N, this),
+                  W()(this, 'jsonData', R, this),
+                  W()(this, 'initJsonData', w, this),
+                  W()(this, 'dynamicDataList', J, this),
+                  W()(this, 'dynamicDataObj', k, this),
+                  W()(this, 'dynamicDataApiScopeList', C, this),
+                  W()(this, 'onChange', K, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -1039,8 +1039,8 @@
                 (t.initJSONData = function (e) {
                   var t =
                     this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
-                  (0, Y.n4)(e, this.jsonData) ||
-                    ((this.initJsonData = (0, Y.bQ)(this.jsonData)),
+                  (0, Z.n4)(e, this.jsonData) ||
+                    ((this.initJsonData = (0, Z.bQ)(this.jsonData)),
                     t &&
                       ((this.jsonData = (0, G.schema2json)(t, e || {})),
                       this.updateLastTime()));
@@ -1049,8 +1049,8 @@
                   (e || (0, X.Tn)(e)) && (this.onChange = e);
                 }),
                 (t.setDynamicDataList = function (e) {
-                  if (!(0, Y.n4)(e, this.dynamicDataList)) {
-                    this.dynamicDataList = (0, Y.bQ)(e);
+                  if (!(0, Z.n4)(e, this.dynamicDataList)) {
+                    this.dynamicDataList = (0, Z.bQ)(e);
                     var t = {};
                     e.map(function (e) {
                       t[e.name] = e;
@@ -1104,7 +1104,7 @@
                       ? (a.splice(t, 1),
                         this.triggerChangeAction(),
                         this.jsonDataChange())
-                      : Z.message.warning(
+                      : Q.message.warning(
                           '删除失败，空数组对象暂无可删除子项。',
                         ));
                 }),
@@ -1121,33 +1121,33 @@
                     } else a.push(n);
                     this.triggerChangeAction(), this.jsonDataChange();
                   } else
-                    Z.message.warning('数据操作异常：当前元素不是数组类型。');
+                    Q.message.warning('数据操作异常：当前元素不是数组类型。');
                 }),
                 (t.sortArrayItem = function (e, t, a) {
                   var n = (0, G.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, X.cy)(n)) {
-                    var r = (0, Y.bQ)(n[t || 0]),
+                    var r = (0, Z.bQ)(n[t || 0]),
                       o = t;
                     if ('up' === a && o > 0) o -= 1;
                     else {
                       if ('up' === a && 0 === o)
-                        return void Z.message.warning(
+                        return void Q.message.warning(
                           '数据操作异常：当前数组项已经是第一个元素了。',
                         );
                       if (
                         ('down' === a || !a) &&
                         ((o += 1), 'down' === a && o > n.length - 1)
                       )
-                        return void Z.message.warning(
+                        return void Q.message.warning(
                           '数据操作异常：当前数组项已经是最后一个元素了。',
                         );
                     }
-                    var i = (0, Y.bQ)(n[o]);
+                    var i = (0, Z.bQ)(n[o]);
                     void 0 !== r &&
                       void 0 !== i &&
                       ((n[t] = i),
                       (n[o] = r),
-                      Z.message.success(
+                      Q.message.success(
                         '原有数据项' +
                           (t + 1) +
                           '对应的数据内容已' +
@@ -1159,7 +1159,7 @@
                       this.triggerChangeAction(),
                       this.jsonDataChange());
                   } else
-                    Z.message.warning('数据操作异常：当前元素不是数组类型。');
+                    Q.message.warning('数据操作异常：当前元素不是数组类型。');
                 }),
                 F()(e, [
                   {
@@ -1171,7 +1171,7 @@
                 ])
               );
             })()),
-            (O = z()(v.prototype, 'rootJSONStore', [H.observable], {
+            (v = z()(O.prototype, 'rootJSONStore', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1179,7 +1179,7 @@
                 return {};
               },
             })),
-            (D = z()(v.prototype, 'triggerChange', [H.observable], {
+            (D = z()(O.prototype, 'triggerChange', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1187,7 +1187,7 @@
                 return !1;
               },
             })),
-            (N = z()(v.prototype, 'lastUpdateTime', [H.observable], {
+            (N = z()(O.prototype, 'lastUpdateTime', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1195,7 +1195,7 @@
                 return new Date().getTime();
               },
             })),
-            (R = z()(v.prototype, 'jsonData', [H.observable], {
+            (R = z()(O.prototype, 'jsonData', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1203,7 +1203,7 @@
                 return null;
               },
             })),
-            (w = z()(v.prototype, 'initJsonData', [H.observable], {
+            (w = z()(O.prototype, 'initJsonData', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1211,7 +1211,7 @@
                 return {};
               },
             })),
-            (J = z()(v.prototype, 'dynamicDataList', [H.observable], {
+            (J = z()(O.prototype, 'dynamicDataList', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1219,7 +1219,7 @@
                 return [];
               },
             })),
-            (k = z()(v.prototype, 'dynamicDataObj', [H.observable], {
+            (k = z()(O.prototype, 'dynamicDataObj', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1227,7 +1227,7 @@
                 return {};
               },
             })),
-            (C = z()(v.prototype, 'dynamicDataApiScopeList', [H.observable], {
+            (C = z()(O.prototype, 'dynamicDataApiScopeList', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1243,7 +1243,7 @@
                 };
               },
             })),
-            (K = z()(v.prototype, 'onChange', [H.observable], {
+            (K = z()(O.prototype, 'onChange', [H.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1252,114 +1252,114 @@
               },
             })),
             z()(
-              v.prototype,
+              O.prototype,
               'updateLastTime',
               [u],
-              Object.getOwnPropertyDescriptor(v.prototype, 'updateLastTime'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'updateLastTime'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'triggerChangeAction',
               [p],
               Object.getOwnPropertyDescriptor(
-                v.prototype,
+                O.prototype,
                 'triggerChangeAction',
               ),
-              v.prototype,
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'initJSONData',
               [m],
-              Object.getOwnPropertyDescriptor(v.prototype, 'initJSONData'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'initJSONData'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'initOnChange',
               [d],
-              Object.getOwnPropertyDescriptor(v.prototype, 'initOnChange'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'initOnChange'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'setDynamicDataList',
               [y],
               Object.getOwnPropertyDescriptor(
-                v.prototype,
+                O.prototype,
                 'setDynamicDataList',
               ),
-              v.prototype,
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'JSONEditorObj',
               [H.computed],
-              Object.getOwnPropertyDescriptor(v.prototype, 'JSONEditorObj'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'JSONEditorObj'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'jsonDataChange',
               [h],
-              Object.getOwnPropertyDescriptor(v.prototype, 'jsonDataChange'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'jsonDataChange'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'getJSONDataByKeyRoute',
               [g],
               Object.getOwnPropertyDescriptor(
-                v.prototype,
+                O.prototype,
                 'getJSONDataByKeyRoute',
               ),
-              v.prototype,
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'getInitJsonDataByKeyRoute',
-              [_],
-              Object.getOwnPropertyDescriptor(
-                v.prototype,
-                'getInitJsonDataByKeyRoute',
-              ),
-              v.prototype,
-            ),
-            z()(
-              v.prototype,
-              'updateFormValueData',
               [S],
               Object.getOwnPropertyDescriptor(
-                v.prototype,
+                O.prototype,
+                'getInitJsonDataByKeyRoute',
+              ),
+              O.prototype,
+            ),
+            z()(
+              O.prototype,
+              'updateFormValueData',
+              [_],
+              Object.getOwnPropertyDescriptor(
+                O.prototype,
                 'updateFormValueData',
               ),
-              v.prototype,
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'deleteArrayIndex',
               [f],
-              Object.getOwnPropertyDescriptor(v.prototype, 'deleteArrayIndex'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'deleteArrayIndex'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'addArrayItem',
               [E],
-              Object.getOwnPropertyDescriptor(v.prototype, 'addArrayItem'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'addArrayItem'),
+              O.prototype,
             ),
             z()(
-              v.prototype,
+              O.prototype,
               'sortArrayItem',
               [b],
-              Object.getOwnPropertyDescriptor(v.prototype, 'sortArrayItem'),
-              v.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'sortArrayItem'),
+              O.prototype,
             ),
-            v),
+            O),
           te = function () {
-            (this.JSONSchemaStore = new Q(this)),
+            (this.JSONSchemaStore = new Y(this)),
               (this.JSONEditorStore = new ee(this));
           },
           ae = require('@babel/runtime/helpers/extends'),
@@ -1515,9 +1515,9 @@
                 })),
             );
           };
-        function _e() {
+        function Se() {
           return (
-            (_e = Object.assign
+            (Se = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1527,13 +1527,13 @@
                   }
                   return e;
                 }),
-            _e.apply(null, arguments)
+            Se.apply(null, arguments)
           );
         }
-        var Se = function (e) {
+        var _e = function (e) {
             return P.createElement(
               'svg',
-              _e(
+              Se(
                 {
                   viewBox: '0 0 1025 1024',
                   xmlns: 'http://www.w3.org/2000/svg',
@@ -1558,13 +1558,13 @@
                 ) {
                   var r = a.props.targetJsonSchema['maximum-child'];
                   t && r && t.length >= r
-                    ? Z.message.warning('添加失败，最多可添加' + r + '个子项')
+                    ? Q.message.warning('添加失败，最多可添加' + r + '个子项')
                     : a.props.addArrayItem(e, n);
                 }),
                 (a.deleteArrItem = function (e, t, n) {
                   var r = a.props.targetJsonSchema['minimum-child'];
                   n && r && n.length <= r
-                    ? Z.message.warning('删除失败，至少需要保留' + r + '个子项')
+                    ? Q.message.warning('删除失败，至少需要保留' + r + '个子项')
                     : a.props.deleteArrayIndex(e, t);
                 }),
                 (a.elemHoverEnterEvent = function (e, t) {
@@ -1633,8 +1633,8 @@
                   y = m.isClosed,
                   h = (m.hoverIndex, m.currentActiveArrIndex),
                   g = s.type,
-                  _ = null == (e = s.showCodeViewBtn) || e,
-                  S = c(n),
+                  S = null == (e = s.showCodeViewBtn) || e,
+                  _ = c(n),
                   f = s.items;
                 return P.createElement(
                   'div',
@@ -1650,7 +1650,7 @@
                     'div',
                     { className: 'element-title' },
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       { title: s.description, placement: 'top' },
                       P.createElement(
                         'span',
@@ -1698,7 +1698,7 @@
                         : P.createElement(re.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
-                      _ &&
+                      S &&
                         P.createElement(
                           'div',
                           {
@@ -1710,20 +1710,20 @@
                             },
                           },
                           P.createElement(
-                            Z.Tooltip,
+                            Q.Tooltip,
                             { title: d ? '关闭源码模式' : '开启源码模式' },
-                            P.createElement(Se, {
+                            P.createElement(_e, {
                               className: d ? 'info-icon active' : 'info-icon',
                             }),
                           ),
                         ),
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: '添加数据项' },
                         P.createElement(re.PlusOutlined, {
                           className: 'array-add-child-btn',
                           onClick: function (e) {
-                            t.addArrayItem(n, S),
+                            t.addArrayItem(n, _),
                               e.preventDefault(),
                               e.stopPropagation();
                           },
@@ -1740,9 +1740,9 @@
                           (y ? 'closed' : ''),
                       },
                       !d &&
-                        (0, X.cy)(S) &&
-                        S.map(function (e, a) {
-                          var r = o + '-array-items-' + S.length + '-' + a,
+                        (0, X.cy)(_) &&
+                        _.map(function (e, a) {
+                          var r = o + '-array-items-' + _.length + '-' + a,
                             i = l ? l + '-0' : '0',
                             s = n ? n + '-' + a : '' + a,
                             m = t.getArrItemTitle(e);
@@ -1783,10 +1783,10 @@
                                         'close-operate-btn array-operate-btn',
                                     }),
                                 P.createElement(
-                                  Z.Tooltip,
+                                  Q.Tooltip,
                                   { title: '删除' + f.title + '/' + (a + 1) },
                                   P.createElement(
-                                    Z.Popconfirm,
+                                    Q.Popconfirm,
                                     {
                                       placement: 'top',
                                       title:
@@ -1799,7 +1799,7 @@
                                         e.preventDefault(), e.stopPropagation();
                                       },
                                       onConfirm: function (e) {
-                                        t.deleteArrItem(n, a, S),
+                                        t.deleteArrItem(n, a, _),
                                           e.preventDefault(),
                                           e.stopPropagation();
                                       },
@@ -1816,12 +1816,12 @@
                                   ),
                                 ),
                                 P.createElement(
-                                  Z.Tooltip,
+                                  Q.Tooltip,
                                   { title: '复制' + f.title + '/' + (a + 1) },
                                   P.createElement(ge, {
                                     className: 'array-operate-btn',
                                     onClick: function (e) {
-                                      t.addArrayItem(n, S, a),
+                                      t.addArrayItem(n, _, a),
                                         e.preventDefault(),
                                         e.stopPropagation();
                                     },
@@ -1829,7 +1829,7 @@
                                 ),
                                 0 !== a &&
                                   P.createElement(
-                                    Z.Tooltip,
+                                    Q.Tooltip,
                                     { title: '向上移动' },
                                     P.createElement(re.ArrowUpOutlined, {
                                       className: 'array-operate-btn',
@@ -1840,9 +1840,9 @@
                                       },
                                     }),
                                   ),
-                                a !== S.length - 1 &&
+                                a !== _.length - 1 &&
                                   P.createElement(
-                                    Z.Tooltip,
+                                    Q.Tooltip,
                                     { title: '向下移动' },
                                     P.createElement(re.ArrowDownOutlined, {
                                       className: 'array-operate-btn',
@@ -1864,7 +1864,7 @@
                                 key: r,
                                 id: r,
                               },
-                              P.createElement(Jt, {
+                              P.createElement(Kt, {
                                 parentType: g,
                                 jsonKey: 'items',
                                 indexRoute: i,
@@ -1951,9 +1951,9 @@
                     y = this.state,
                     h = y.jsonView,
                     g = y.isClosed,
-                    _ = u,
-                    S = null == (e = s.showCodeViewBtn) || e;
-                  return B().createElement(
+                    S = u,
+                    _ = null == (e = s.showCodeViewBtn) || e;
+                  return T().createElement(
                     'div',
                     {
                       className:
@@ -1963,15 +1963,15 @@
                       key: o,
                       id: o,
                     },
-                    !_ &&
+                    !S &&
                       !c &&
-                      B().createElement(
+                      T().createElement(
                         'div',
                         { className: 'element-title' },
-                        B().createElement(
-                          Z.Tooltip,
+                        T().createElement(
+                          Q.Tooltip,
                           { title: s.description, placement: 'top' },
-                          B().createElement(
+                          T().createElement(
                             'span',
                             {
                               className: 'title-text',
@@ -1982,7 +1982,7 @@
                             },
                             s.title,
                             s.showKey &&
-                              B().createElement(
+                              T().createElement(
                                 'span',
                                 null,
                                 '（',
@@ -1992,12 +1992,12 @@
                           ),
                         ),
                       ),
-                    B().createElement(
+                    T().createElement(
                       'div',
                       { className: 'element-title-card-warp content-item' },
-                      !_ &&
+                      !S &&
                         !c &&
-                        B().createElement(
+                        T().createElement(
                           'div',
                           {
                             className: 'element-title',
@@ -2007,20 +2007,20 @@
                                 e.stopPropagation();
                             },
                           },
-                          B().createElement(
+                          T().createElement(
                             'span',
                             { className: 'title-text' },
                             '对象配置',
                           ),
                           g
-                            ? B().createElement(re.RightOutlined, {
+                            ? T().createElement(re.RightOutlined, {
                                 className: 'close-operate-btn',
                               })
-                            : B().createElement(re.DownOutlined, {
+                            : T().createElement(re.DownOutlined, {
                                 className: 'close-operate-btn',
                               }),
-                          S &&
-                            B().createElement(
+                          _ &&
+                            T().createElement(
                               'div',
                               {
                                 className: 'display-source-btn',
@@ -2030,10 +2030,10 @@
                                     e.stopPropagation();
                                 },
                               },
-                              B().createElement(
-                                Z.Tooltip,
+                              T().createElement(
+                                Q.Tooltip,
                                 { title: h ? '关闭源码模式' : '开启源码模式' },
-                                B().createElement(Se, {
+                                T().createElement(_e, {
                                   className: h
                                     ? 'info-icon active'
                                     : 'info-icon',
@@ -2041,12 +2041,12 @@
                               ),
                             ),
                         ),
-                      B().createElement(
+                      T().createElement(
                         'div',
                         {
                           className:
                             'content-item ' +
-                            (_ || c ? '' : 'object-content') +
+                            (S || c ? '' : 'object-content') +
                             ' ' +
                             (h ? 'json-view-array' : '') +
                             ' ' +
@@ -2060,7 +2060,7 @@
                               l = e,
                               c = s.properties[l],
                               u = c.type;
-                            return Jt({
+                            return Kt({
                               parentType: u,
                               jsonKey: l,
                               indexRoute: a,
@@ -2072,14 +2072,14 @@
                               updateFormValueData: d,
                             });
                           }),
-                        h && B().createElement(ce, this.props),
+                        h && T().createElement(ce, this.props),
                       ),
                     ),
                   );
                 }),
                 t
               );
-            })(B().PureComponent));
+            })(T().PureComponent));
         be.propTypes = {
           isArrayItem: A().any,
           arrIndex: A().any,
@@ -2091,7 +2091,7 @@
           targetJsonSchema: A().any,
           isStructuredSchema: A().bool,
         };
-        var ve = (0, I.inject)(function (e) {
+        var Oe = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -2100,7 +2100,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(be)),
-          Oe = (function (e) {
+          ve = (function (e) {
             function t(t) {
               var a;
               return (
@@ -2189,7 +2189,7 @@
                       ),
                       o.description &&
                         P.createElement(
-                          Z.Tooltip,
+                          Q.Tooltip,
                           { title: o.description, placement: 'top' },
                           P.createElement(re.InfoCircleOutlined, {
                             className: 'info-icon',
@@ -2216,7 +2216,7 @@
                         ),
                       P.createElement(ie(), {
                         id: 'json_area_ace',
-                        value: (0, Y.GT)(p) ? p : d,
+                        value: (0, Z.GT)(p) ? p : d,
                         className: 'code-area-item',
                         mode: 'json',
                         theme: 'solarized_light',
@@ -2258,7 +2258,7 @@
               t
             );
           })(P.PureComponent);
-        Oe.propTypes = {
+        ve.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -2275,7 +2275,7 @@
               indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, I.observer)(Oe)),
+          })((0, I.observer)(ve)),
           Ne = __webpack_require__(566),
           Re = (function (e) {
             function t(t) {
@@ -2332,7 +2332,7 @@
                       l ? '[只读]' : '',
                     ),
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       {
                         title: 'wideScreen' === o ? r.description : '',
                         placement: 'top',
@@ -2362,7 +2362,7 @@
                     'mobileScreen' === o &&
                       r.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -2375,7 +2375,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.Input, {
+                      P.createElement(Q.Input, {
                         style: { display: 'inline-block' },
                         disabled: l,
                         required: s,
@@ -2451,8 +2451,8 @@
                     y = l.properties.type || {},
                     h = l.properties.data || {},
                     g = l.properties.filter || {},
-                    _ = y.default,
-                    S = null == (e = l.showCodeViewBtn) || e;
+                    S = y.default,
+                    _ = null == (e = l.showCodeViewBtn) || e;
                   return P.createElement(
                     'div',
                     {
@@ -2487,7 +2487,7 @@
                       ),
                       l.description &&
                         P.createElement(
-                          Z.Tooltip,
+                          Q.Tooltip,
                           { title: l.description, placement: 'top' },
                           P.createElement(re.InfoCircleOutlined, {
                             className: 'info-icon',
@@ -2519,7 +2519,7 @@
                           : P.createElement(re.DownOutlined, {
                               className: 'close-operate-btn',
                             }),
-                        S &&
+                        _ &&
                           P.createElement(
                             'div',
                             {
@@ -2531,9 +2531,9 @@
                               },
                             },
                             P.createElement(
-                              Z.Tooltip,
+                              Q.Tooltip,
                               { title: u ? '关闭源码模式' : '开启源码模式' },
-                              P.createElement(Se, {
+                              P.createElement(_e, {
                                 className: u ? 'info-icon active' : 'info-icon',
                               }),
                             ),
@@ -2549,7 +2549,7 @@
                             (p ? 'closed' : ''),
                         },
                         !u &&
-                          'local' === _ &&
+                          'local' === S &&
                           P.createElement(
                             P.Fragment,
                             null,
@@ -2557,7 +2557,7 @@
                               'div',
                               { className: 'ace-editor-box code-area-item' },
                               P.createElement(
-                                Z.Tooltip,
+                                Q.Tooltip,
                                 {
                                   title: m
                                     ? '点击隐藏数据过滤器'
@@ -2591,7 +2591,7 @@
                               }),
                           ),
                         !u &&
-                          'remote' === _ &&
+                          'remote' === S &&
                           P.createElement(
                             P.Fragment,
                             null,
@@ -2608,7 +2608,7 @@
                                 key: o + '-data',
                               }),
                               P.createElement(
-                                Z.Tooltip,
+                                Q.Tooltip,
                                 {
                                   title: '点击设置数据过滤器',
                                   placement: 'top',
@@ -2715,7 +2715,7 @@
                       s ? '[只读]' : '',
                     ),
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       {
                         title: 'wideScreen' === o ? r.description : '',
                         placement: 'top',
@@ -2745,7 +2745,7 @@
                     'mobileScreen' === o &&
                       r.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -2758,7 +2758,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.Input, {
+                      P.createElement(Q.Input, {
                         style: { display: 'inline-block' },
                         disabled: s,
                         required: c,
@@ -2837,7 +2837,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.TreeSelect, {
+                      P.createElement(Q.TreeSelect, {
                         className: 'data-route-select',
                         defaultValue: n,
                         treeData: i,
@@ -2863,8 +2863,8 @@
         var je = (0, I.inject)(function (e) {
             return { pageScreen: e.JSONSchemaStore.pageScreen };
           })((0, I.observer)(xe)),
-          Pe = (__webpack_require__(581), Z.Select.Option),
-          Be = (function (e) {
+          Pe = (__webpack_require__(581), Q.Select.Option),
+          Te = (function (e) {
             function t(t) {
               var a;
               return (
@@ -2881,7 +2881,7 @@
                     a.props.configDataChange(n);
                 }),
                 (a.dynamicDataChange = function (e) {
-                  var t = (0, Y.bQ)((0, H.toJS)(a.props.dynamicDataObj[e]));
+                  var t = (0, Z.bQ)((0, H.toJS)(a.props.dynamicDataObj[e]));
                   if (t) {
                     var n = {
                       id: t.id,
@@ -2975,7 +2975,7 @@
                             'div',
                             { className: 'form-item-box' },
                             P.createElement(
-                              Z.Select,
+                              Q.Select,
                               {
                                 className: 'dynamic-data-select',
                                 defaultValue: c,
@@ -3096,7 +3096,7 @@
               t
             );
           })(P.PureComponent);
-        Be.propTypes = {
+        Te.propTypes = {
           pageScreen: A().any,
           keyRoute: A().any,
           nodeKey: A().string,
@@ -3106,7 +3106,7 @@
           dynamicDataObj: A().object,
           dynamicDataApiScopeList: A().object,
         };
-        var Te = (0, I.inject)(function (e) {
+        var Be = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               dynamicDataList: e.JSONEditorStore.dynamicDataList,
@@ -3115,8 +3115,8 @@
                 e.JSONEditorStore.dynamicDataApiScopeList,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
             };
-          })((0, I.observer)(Be)),
-          Ve = (__webpack_require__(759), Z.Select.Option),
+          })((0, I.observer)(Te)),
+          Ve = (__webpack_require__(759), Q.Select.Option),
           Ie = (function (e) {
             function t(t) {
               var a;
@@ -3145,7 +3145,7 @@
                     n = t.keyRoute,
                     r = t.dynamicDataObj,
                     o = t.triggerChangeAction,
-                    i = (0, Y.bQ)((0, H.toJS)(r[e]));
+                    i = (0, Z.bQ)((0, H.toJS)(r[e]));
                   if (i) {
                     var l = {
                       id: i.id,
@@ -3232,18 +3232,18 @@
                   y = u(a) || {},
                   h = i.properties.type || {},
                   g = y.type || h.default,
-                  _ = y.config || {},
-                  S = _.dataName,
-                  f = _.dataRoute,
-                  E = _.body || {};
+                  S = y.config || {},
+                  _ = S.dataName,
+                  f = S.dataRoute,
+                  E = S.body || {};
                 if (!(0, X.Gv)(E) && '' !== E)
                   try {
                     E = JSON.parse(E);
                   } catch (e) {
                     console.log('当前数据源的请求参数格式异常'), (E = {});
                   }
-                var b = s[S] || {},
-                  v = i.properties.data || {};
+                var b = s[_] || {},
+                  O = i.properties.data || {};
                 return P.createElement(
                   'div',
                   {
@@ -3274,7 +3274,7 @@
                     ),
                     i.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: i.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -3327,7 +3327,7 @@
                         'div',
                         { className: 'json-form-box' },
                         P.createElement(
-                          Z.Tooltip,
+                          Q.Tooltip,
                           {
                             title: m
                               ? '点击隐藏数据过滤器'
@@ -3345,7 +3345,7 @@
                           indexRoute: o ? o + '-2' : '2',
                           keyRoute: a ? a + '-data' : 'data',
                           nodeKey: r + '-data',
-                          targetJsonSchema: v,
+                          targetJsonSchema: O,
                           key: r + '-data',
                         }),
                         P.createElement(
@@ -3382,8 +3382,8 @@
                               'wideScreen' === p
                                 ? 'wide-screen-element-warp'
                                 : 'mobile-screen-element-warp',
-                            key: r + '-' + S,
-                            id: r + '-' + S,
+                            key: r + '-' + _,
+                            id: r + '-' + _,
                           },
                           P.createElement(
                             'div',
@@ -3397,10 +3397,10 @@
                               'div',
                               { className: 'form-item-box' },
                               P.createElement(
-                                Z.Select,
+                                Q.Select,
                                 {
                                   className: 'dynamic-data-select',
-                                  defaultValue: S,
+                                  defaultValue: _,
                                   onSelect: this.dynamicDataChange,
                                 },
                                 l &&
@@ -3416,7 +3416,7 @@
                             ),
                           ),
                         ),
-                        S &&
+                        _ &&
                           E &&
                           Object.keys(E).length > 0 &&
                           P.createElement(
@@ -3427,8 +3427,8 @@
                                   ? 'wide-screen-element-warp'
                                   : 'mobile-screen-element-warp') +
                                 ' element-title-card-warp',
-                              key: r + '-' + S + '-params',
-                              id: r + '-' + S + '-params',
+                              key: r + '-' + _ + '-params',
+                              id: r + '-' + _ + '-params',
                             },
                             P.createElement(
                               'div',
@@ -3439,7 +3439,7 @@
                               'div',
                               { className: 'content-item object-content' },
                               Object.keys(E).map(function (t) {
-                                var n = (0, Y.bQ)(E[t]);
+                                var n = (0, Z.bQ)(E[t]);
                                 n.readOnly = !(
                                   !n.scope || 'static' !== n.scope
                                 );
@@ -3459,8 +3459,8 @@
                                     targetJsonSchema: n,
                                     key: o,
                                   });
-                                var l = r + '-' + S + '-params-' + t;
-                                return P.createElement(Te, {
+                                var l = r + '-' + _ + '-params-' + t;
+                                return P.createElement(Be, {
                                   pageScreen: p,
                                   nodeKey: l,
                                   keyRoute: a
@@ -3475,7 +3475,7 @@
                               }),
                             ),
                           ),
-                        S &&
+                        _ &&
                           E &&
                           0 === Object.keys(E).length &&
                           P.createElement(
@@ -3485,8 +3485,8 @@
                                 'wideScreen' === p
                                   ? 'wide-screen-element-warp'
                                   : 'mobile-screen-element-warp',
-                              key: r + '-' + S + '-empty',
-                              id: r + '-' + S + '-empty',
+                              key: r + '-' + _ + '-empty',
+                              id: r + '-' + _ + '-empty',
                             },
                             P.createElement(
                               'div',
@@ -3503,7 +3503,7 @@
                               ),
                             ),
                           ),
-                        S &&
+                        _ &&
                           P.createElement(je, {
                             nodeKey: r + '-config-dataRoute-' + f,
                             mockData: b.respMock,
@@ -3511,7 +3511,7 @@
                             onChange: this.dataRouteChange,
                             key: r + '-config-dataRoute',
                           }),
-                        S &&
+                        _ &&
                           P.createElement(Ne.A, {
                             isReadOnly: !0,
                             isIgnoreWarn: !0,
@@ -3600,8 +3600,8 @@
                   y = l.properties.register || {},
                   h = l.properties.actionFunc || {},
                   g = l.properties.trigger || {},
-                  _ = l.properties.eventData || {},
-                  S = d.default,
+                  S = l.properties.eventData || {},
+                  _ = d.default,
                   f = null == (e = l.showCodeViewBtn) || e;
                 return P.createElement(
                   'div',
@@ -3637,7 +3637,7 @@
                     ),
                     l.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: l.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -3681,9 +3681,9 @@
                             },
                           },
                           P.createElement(
-                            Z.Tooltip,
+                            Q.Tooltip,
                             { title: p ? '关闭源码模式' : '开启源码模式' },
-                            P.createElement(Se, {
+                            P.createElement(_e, {
                               className: p ? 'info-icon active' : 'info-icon',
                             }),
                           ),
@@ -3699,7 +3699,7 @@
                           (m ? 'closed' : ''),
                       },
                       !p &&
-                        'on' === S &&
+                        'on' === _ &&
                         P.createElement(
                           P.Fragment,
                           null,
@@ -3725,7 +3725,7 @@
                             }),
                         ),
                       !p &&
-                        'emit' === S &&
+                        'emit' === _ &&
                         P.createElement(
                           P.Fragment,
                           null,
@@ -3739,14 +3739,14 @@
                               targetJsonSchema: g,
                               key: o + '-trigger',
                             }),
-                          _ &&
+                          S &&
                             P.createElement(De, {
                               parentType: c,
                               jsonKey: 'eventData',
                               indexRoute: i ? i + '-2' : '2',
                               keyRoute: n ? n + '-eventData' : 'eventData',
                               nodeKey: o + '-eventData',
-                              targetJsonSchema: _,
+                              targetJsonSchema: S,
                               key: o + '-eventData',
                             }),
                         ),
@@ -3776,7 +3776,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(Ae)),
-          qe = (function (e) {
+          We = (function (e) {
             function t(t) {
               var a;
               return (
@@ -3817,7 +3817,7 @@
                   s = r.properties.unit,
                   c = i.quantity,
                   u = P.createElement('span', null, 'percent' === c ? '%' : c),
-                  p = (0, Y.y8)(r.type);
+                  p = (0, Z.y8)(r.type);
                 return P.createElement(
                   'div',
                   {
@@ -3838,7 +3838,7 @@
                       l ? '[只读]' : '',
                     ),
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       { title: r.description, placement: 'top' },
                       P.createElement(
                         'span',
@@ -3868,7 +3868,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.InputNumber, {
+                      P.createElement(Q.InputNumber, {
                         style: { display: 'inline-block', width: '120px' },
                         addonAfter: u,
                         disabled: l,
@@ -3888,7 +3888,7 @@
               t
             );
           })(P.PureComponent);
-        qe.propTypes = {
+        We.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -3896,7 +3896,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var We = (0, I.inject)(function (e) {
+        var qe = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -3904,7 +3904,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(qe)),
+          })((0, I.observer)(We)),
           Fe =
             (__webpack_require__(928),
             (function (e) {
@@ -4070,7 +4070,7 @@
                         c ? '[只读]' : '',
                       ),
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(
                           'span',
@@ -4100,7 +4100,7 @@
                         'div',
                         { className: 'center-box' },
                         P.createElement(
-                          Z.Tooltip,
+                          Q.Tooltip,
                           {
                             placement: 'top',
                             title: s ? '点击解锁联动' : '点击联动',
@@ -4113,7 +4113,7 @@
                           }),
                         ),
                       ),
-                      P.createElement(Z.InputNumber, {
+                      P.createElement(Q.InputNumber, {
                         name: 'layoutPaddingTop',
                         className:
                           'layout-input-number layout-item layout-item-top\n            ' +
@@ -4132,7 +4132,7 @@
                           e.setLayoutBoxStyle(a, s, 'top');
                         },
                       }),
-                      P.createElement(Z.InputNumber, {
+                      P.createElement(Q.InputNumber, {
                         name: 'layoutPaddingRight',
                         className:
                           'layout-input-number layout-item layout-item-right\n            ' +
@@ -4151,7 +4151,7 @@
                           e.setLayoutBoxStyle(a, s, 'right');
                         },
                       }),
-                      P.createElement(Z.InputNumber, {
+                      P.createElement(Q.InputNumber, {
                         name: 'layoutPaddingBottom',
                         className:
                           'layout-input-number layout-item layout-item-bottom\n            ' +
@@ -4170,7 +4170,7 @@
                           e.setLayoutBoxStyle(a, s, 'bottom');
                         },
                       }),
-                      P.createElement(Z.InputNumber, {
+                      P.createElement(Q.InputNumber, {
                         name: 'layoutPaddingLeft',
                         className:
                           'layout-input-number layout-item layout-item-left\n            ' +
@@ -4261,7 +4261,7 @@
                     'div',
                     { className: 'element-title' },
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       {
                         title: 'wideScreen' === o ? r.description : '',
                         placement: 'top',
@@ -4289,7 +4289,7 @@
                     'mobileScreen' === o &&
                       r.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -4303,7 +4303,7 @@
                       'div',
                       { className: 'form-item-box' },
                       P.createElement(
-                        Z.Radio.Group,
+                        Q.Radio.Group,
                         {
                           style: { display: 'inline-block' },
                           onChange: this.handleValueChange,
@@ -4316,7 +4316,7 @@
                             var n = e.label || e.name,
                               r = t + '-radio-' + n;
                             return P.createElement(
-                              Z.Radio,
+                              Q.Radio,
                               { value: e.value, key: r },
                               e.label,
                             );
@@ -4394,7 +4394,7 @@
                     'div',
                     { className: 'element-title' },
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       {
                         title: 'wideScreen' === o ? r.description : '',
                         placement: 'top',
@@ -4422,7 +4422,7 @@
                     'mobileScreen' === o &&
                       r.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -4436,7 +4436,7 @@
                       'div',
                       { className: 'form-item-box' },
                       P.createElement(
-                        Z.Checkbox.Group,
+                        Q.Checkbox.Group,
                         {
                           style: { display: 'inline-block' },
                           onChange: this.handleValueChange,
@@ -4449,7 +4449,7 @@
                             var n = e.label || e.name,
                               r = t + '-select-' + n;
                             return P.createElement(
-                              Z.Checkbox,
+                              Q.Checkbox,
                               { value: e.value, key: r },
                               n,
                             );
@@ -4479,8 +4479,8 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(Ge)),
-          Qe = Z.Input.TextArea,
-          Ze = (function (e) {
+          Ye = Q.Input.TextArea,
+          Qe = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4535,7 +4535,7 @@
                       l ? '[只读]' : '',
                     ),
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       {
                         title: 'wideScreen' === o ? r.description : '',
                         placement: 'top',
@@ -4565,7 +4565,7 @@
                     'mobileScreen' === o &&
                       r.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -4578,7 +4578,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Qe, {
+                      P.createElement(Ye, {
                         style: { display: 'inline-block' },
                         rows: 4,
                         disabled: l,
@@ -4595,7 +4595,7 @@
               t
             );
           })(P.PureComponent);
-        Ze.propTypes = {
+        Qe.propTypes = {
           parentType: A().string,
           jsonKey: A().string,
           indexRoute: A().string,
@@ -4603,7 +4603,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var Ye = (0, I.inject)(function (e) {
+        var Ze = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4611,7 +4611,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, I.observer)(Ze)),
+          })((0, I.observer)(Qe)),
           Xe = require('braft-editor'),
           et = __webpack_require__.n(Xe),
           tt = require('braft-extensions/dist/color-picker'),
@@ -4769,7 +4769,7 @@
                   ),
                   o.description &&
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       { title: o.description, placement: 'top' },
                       P.createElement(re.InfoCircleOutlined, {
                         className: 'info-icon',
@@ -4850,11 +4850,11 @@
                       r = t.targetJsonSchema,
                       o = t.updateFormValueData;
                     e < r.minimum
-                      ? Z.message.warning(
+                      ? Q.message.warning(
                           '小于设定的最小数值' + r.minimum + '，请重新输入。',
                         )
                       : e > r.maximum
-                        ? Z.message.warning(
+                        ? Q.message.warning(
                             '超过设定的最大数值' + r.maximum + '，请重新输入。',
                           )
                         : o(n, e);
@@ -4894,7 +4894,7 @@
                     c = l(a),
                     u = o.readOnly || !1,
                     p = o.isRequired || !1,
-                    m = (0, Y.y8)(o.type);
+                    m = (0, Z.y8)(o.type);
                   return P.createElement(
                     'div',
                     {
@@ -4915,7 +4915,7 @@
                         u ? '[只读]' : '',
                       ),
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: o.description, placement: 'top' },
                         P.createElement(
                           'span',
@@ -4956,13 +4956,13 @@
                               onClick: function () {
                                 e.numberChange(
                                   'minus',
-                                  (0, Y.GT)(c) ? c : o.default,
+                                  (0, Z.GT)(c) ? c : o.default,
                                 );
                               },
                             },
                             '-',
                           ),
-                          P.createElement(Z.InputNumber, {
+                          P.createElement(Q.InputNumber, {
                             className: 'number-cont',
                             style: { display: 'inline-block' },
                             disabled: u,
@@ -4970,7 +4970,7 @@
                             placeholder: o.placeholder || '请输入' + o.title,
                             min: o.minimum || 0,
                             max: o.maximum || 1e6,
-                            defaultValue: (0, Y.GT)(c) ? c : o.default,
+                            defaultValue: (0, Z.GT)(c) ? c : o.default,
                             onChange: this.handleValueChange,
                           }),
                           P.createElement(
@@ -4981,7 +4981,7 @@
                               onClick: function () {
                                 e.numberChange(
                                   'plus',
-                                  (0, Y.GT)(c) ? c : o.default,
+                                  (0, Z.GT)(c) ? c : o.default,
                                 );
                               },
                             },
@@ -5045,7 +5045,7 @@
                   r = e.targetJsonSchema,
                   o = e.pageScreen,
                   i = (0, e.getJSONDataByKeyRoute)(t),
-                  l = (0, Y.y8)(r.type);
+                  l = (0, Z.y8)(r.type);
                 return P.createElement(
                   'div',
                   {
@@ -5061,7 +5061,7 @@
                     'div',
                     { className: 'element-title' },
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       { title: r.description, placement: 'top' },
                       P.createElement(
                         'span',
@@ -5090,7 +5090,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.Switch, {
+                      P.createElement(Q.Switch, {
                         style: { display: 'inline-block' },
                         defaultChecked: void 0 !== i ? i : r.default,
                         checkedChildren: 'true',
@@ -5168,7 +5168,7 @@
                   c = r.isRequired || !1,
                   u = dt[l] || dt[0],
                   p = i(t) || r.default,
-                  m = (0, Y.y8)(l);
+                  m = (0, Z.y8)(l);
                 return P.createElement(
                   'div',
                   {
@@ -5189,7 +5189,7 @@
                       s ? '[只读]' : '',
                     ),
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       { title: r.description, placement: 'top' },
                       P.createElement(
                         'span',
@@ -5219,7 +5219,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.DatePicker, {
+                      P.createElement(Q.DatePicker, {
                         style: { display: 'inline-block' },
                         disabled: s,
                         required: c,
@@ -5289,7 +5289,7 @@
                   i = (0, e.getJSONDataByKeyRoute)(n) || r.default,
                   l = r.readOnly || !1,
                   s = r.isRequired || !1,
-                  c = (0, Y.y8)(r.type);
+                  c = (0, Z.y8)(r.type);
                 return P.createElement(
                   'div',
                   {
@@ -5310,7 +5310,7 @@
                       l ? '[只读]' : '',
                     ),
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       { title: r.description, placement: 'top' },
                       P.createElement(
                         'span',
@@ -5340,7 +5340,7 @@
                     P.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      P.createElement(Z.TimePicker, {
+                      P.createElement(Q.TimePicker, {
                         style: { display: 'inline-block' },
                         disabled: l,
                         required: s,
@@ -5363,7 +5363,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var _t = (0, I.inject)(function (e) {
+        var St = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5372,7 +5372,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(gt)),
-          St = require('react-color'),
+          _t = require('react-color'),
           ft =
             (__webpack_require__(220),
             (function (e) {
@@ -5394,7 +5394,7 @@
                     var e = a.props,
                       t = e.keyRoute;
                     (0, e.updateFormValueData)(t, 'initial'),
-                      Z.message.success('已移除当前设置的颜色值'),
+                      Q.message.success('已移除当前设置的颜色值'),
                       a.setState({ renderState: !a.state.renderState });
                   }),
                   (a.state = { renderState: !1, displayColorPicker: !1 }),
@@ -5425,8 +5425,8 @@
                     c = s.renderState,
                     u = s.displayColorPicker,
                     p = l(a),
-                    m = (0, Y.y8)(o.type),
-                    d = P.createElement(St.SketchPicker, {
+                    m = (0, Z.y8)(o.type),
+                    d = P.createElement(_t.SketchPicker, {
                       className: 'color-sketch-picker',
                       key: r + '-SketchPicker',
                       color: p || o.default,
@@ -5447,7 +5447,7 @@
                       'div',
                       { className: 'element-title' },
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: o.description, placement: 'top' },
                         P.createElement(
                           'span',
@@ -5487,7 +5487,7 @@
                             },
                           },
                           P.createElement(
-                            Z.Popover,
+                            Q.Popover,
                             {
                               content: d,
                               title: '颜色选择器',
@@ -5499,7 +5499,7 @@
                             }),
                           ),
                           P.createElement(
-                            Z.Tooltip,
+                            Q.Tooltip,
                             { title: '点击移除当前颜色值', placement: 'top' },
                             P.createElement(re.CloseOutlined, {
                               className: 'delete-bgColor-btn',
@@ -5599,7 +5599,7 @@
                           p ? '[只读]' : '',
                         ),
                         P.createElement(
-                          Z.Tooltip,
+                          Q.Tooltip,
                           {
                             title: 'wideScreen' === i ? o.description : '',
                             placement: 'top',
@@ -5629,7 +5629,7 @@
                         'mobileScreen' === i &&
                           o.description &&
                           P.createElement(
-                            Z.Tooltip,
+                            Q.Tooltip,
                             { title: o.description, placement: 'top' },
                             P.createElement(re.InfoCircleOutlined, {
                               className: 'info-icon',
@@ -5703,7 +5703,7 @@
           nodeKey: A().string,
           targetJsonSchema: A().any,
         };
-        var vt = (0, I.inject)(function (e) {
+        var Ot = (0, I.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -5712,7 +5712,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(bt)),
-          Ot = (__webpack_require__(546), Z.Select.Option),
+          vt = (__webpack_require__(546), Q.Select.Option),
           Dt = (function (e) {
             function t(t) {
               var a;
@@ -5747,7 +5747,7 @@
                   o = e.pageScreen,
                   i = (0, e.getJSONDataByKeyRoute)(n),
                   l = r.options,
-                  s = (0, Y.y8)(r.type);
+                  s = (0, Z.y8)(r.type);
                 return P.createElement(
                   'div',
                   {
@@ -5763,7 +5763,7 @@
                     'div',
                     { className: 'element-title' },
                     P.createElement(
-                      Z.Tooltip,
+                      Q.Tooltip,
                       {
                         title: 'wideScreen' === o ? r.description : '',
                         placement: 'top',
@@ -5791,7 +5791,7 @@
                     'mobileScreen' === o &&
                       r.description &&
                       P.createElement(
-                        Z.Tooltip,
+                        Q.Tooltip,
                         { title: r.description, placement: 'top' },
                         P.createElement(re.InfoCircleOutlined, {
                           className: 'info-icon',
@@ -5805,11 +5805,11 @@
                       'div',
                       { className: 'form-item-box select-box' },
                       P.createElement(
-                        Z.Select,
+                        Q.Select,
                         {
                           showSearch: !0,
                           mode: r.multiple ? 'multiple' : void 0,
-                          style: { display: 'inline-block', minWidth: '80px' },
+                          style: { display: 'inline-block', minWidth: '120px' },
                           onChange: this.handleValueChange,
                           defaultValue: i || r.default,
                           disabled: r.readOnly,
@@ -5820,7 +5820,7 @@
                             var n = e.label || e.name,
                               r = t + '-select-' + n;
                             return P.createElement(
-                              Ot,
+                              vt,
                               { value: e.value, key: r },
                               n,
                             );
@@ -5889,11 +5889,11 @@
                   y = this.state,
                   h = y.jsonView,
                   g = y.isClosed,
-                  _ = u,
-                  S = null == (e = s.showCodeViewBtn) || e,
+                  S = u,
+                  _ = null == (e = s.showCodeViewBtn) || e,
                   f = p(i),
                   E = o + '-' + f.type + '-' + f.valueType;
-                return B().createElement(
+                return T().createElement(
                   'div',
                   {
                     className:
@@ -5903,15 +5903,15 @@
                     key: E,
                     id: o,
                   },
-                  !_ &&
+                  !S &&
                     !c &&
-                    B().createElement(
+                    T().createElement(
                       'div',
                       { className: 'element-title' },
-                      B().createElement(
-                        Z.Tooltip,
+                      T().createElement(
+                        Q.Tooltip,
                         { title: s.description, placement: 'top' },
-                        B().createElement(
+                        T().createElement(
                           'span',
                           {
                             className: 'title-text',
@@ -5922,7 +5922,7 @@
                           },
                           s.title,
                           s.showKey &&
-                            B().createElement(
+                            T().createElement(
                               'span',
                               null,
                               '（',
@@ -5932,12 +5932,12 @@
                         ),
                       ),
                     ),
-                  B().createElement(
+                  T().createElement(
                     'div',
                     { className: 'element-title-card-warp content-item' },
-                    !_ &&
+                    !S &&
                       !c &&
-                      B().createElement(
+                      T().createElement(
                         'div',
                         {
                           className: 'element-title',
@@ -5947,20 +5947,20 @@
                               e.stopPropagation();
                           },
                         },
-                        B().createElement(
+                        T().createElement(
                           'span',
                           { className: 'title-text' },
                           '动态配置',
                         ),
                         g
-                          ? B().createElement(re.RightOutlined, {
+                          ? T().createElement(re.RightOutlined, {
                               className: 'close-operate-btn',
                             })
-                          : B().createElement(re.DownOutlined, {
+                          : T().createElement(re.DownOutlined, {
                               className: 'close-operate-btn',
                             }),
-                        S &&
-                          B().createElement(
+                        _ &&
+                          T().createElement(
                             'div',
                             {
                               className: 'display-source-btn',
@@ -5970,21 +5970,21 @@
                                   e.stopPropagation();
                               },
                             },
-                            B().createElement(
-                              Z.Tooltip,
+                            T().createElement(
+                              Q.Tooltip,
                               { title: h ? '关闭源码模式' : '开启源码模式' },
-                              B().createElement(Se, {
+                              T().createElement(_e, {
                                 className: h ? 'info-icon active' : 'info-icon',
                               }),
                             ),
                           ),
                       ),
-                    B().createElement(
+                    T().createElement(
                       'div',
                       {
                         className:
                           'content-item ' +
-                          (_ || c ? '' : 'object-content') +
+                          (S || c ? '' : 'object-content') +
                           ' ' +
                           (h ? 'json-view-array' : '') +
                           ' ' +
@@ -6024,7 +6024,7 @@
                                 ) &&
                                   g.options &&
                                   g.options.length > 0 &&
-                                  (c.options = (0, Y.bQ)(g.options));
+                                  (c.options = (0, Z.bQ)(g.options));
                               }
                             } else
                               'value' !== l ||
@@ -6034,10 +6034,10 @@
                                 (h = !0);
                           else {
                             h = !0;
-                            var _ = s.properties.value;
+                            var S = s.properties.value;
                             'valueType' !== l ||
                               ['select', 'radio', 'checkboxes'].includes(
-                                _.type,
+                                S.type,
                               ) ||
                               ((c.default = 'string'),
                               (c.readOnly = !0),
@@ -6045,7 +6045,7 @@
                                 '当前数值没有可选项，不支持设置。'));
                           }
                           if (h)
-                            return Jt({
+                            return Kt({
                               parentType: u,
                               jsonKey: l,
                               indexRoute: a,
@@ -6057,14 +6057,14 @@
                               updateFormValueData: d,
                             });
                         }),
-                      h && B().createElement(ce, this.props),
+                      h && T().createElement(ce, this.props),
                     ),
                   ),
                 );
               }),
               t
             );
-          })(B().PureComponent);
+          })(T().PureComponent);
         Rt.propTypes = {
           isArrayItem: A().any,
           arrIndex: A().any,
@@ -6085,7 +6085,194 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, I.observer)(Rt)),
-          Jt = function (e) {
+          Jt = Q.Collapse.Panel,
+          kt = (function (e) {
+            function t(t) {
+              var a;
+              return (
+                ((a = e.call(this, t) || this).state = {
+                  jsonView: !1,
+                  isClosed: !1,
+                }),
+                a
+              );
+            }
+            j()(t, e);
+            var a = t.prototype;
+            return (
+              (a.componentWillMount = function () {
+                ue.x.call(this);
+              }),
+              (a.componentWillReceiveProps = function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  ue.x.call(this, e.keyRoute);
+              }),
+              (a.render = function () {
+                var e = this.props,
+                  t = e.indexRoute,
+                  a = e.jsonKey,
+                  n = e.nodeKey,
+                  r = e.keyRoute,
+                  o = e.pageScreen,
+                  i = e.targetJsonSchema,
+                  l = e.getJSONDataByKeyRoute,
+                  s = e.keyRoute2indexRoute,
+                  c = e.updateFormValueData;
+                return T().createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === o
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
+                    key: n,
+                    id: n,
+                  },
+                  T().createElement(
+                    'div',
+                    { className: 'element-title' },
+                    T().createElement(
+                      Q.Tooltip,
+                      { title: i.description, placement: 'top' },
+                      T().createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            'wideScreen' === o && i.title.length > 6
+                              ? i.title
+                              : '',
+                        },
+                        i.title,
+                        i.showKey &&
+                          T().createElement(
+                            'span',
+                            null,
+                            '（',
+                            (0, G.truncate)(a, { length: 15 }),
+                            '）',
+                          ),
+                      ),
+                    ),
+                  ),
+                  T().createElement(
+                    'div',
+                    { className: 'array-schema-box' },
+                    T().createElement(
+                      Q.Collapse,
+                      {
+                        defaultActiveKey: i.propertyOrder,
+                        expandIconPosition: 'right',
+                        bordered: !1,
+                      },
+                      i.properties.mainConfig &&
+                        T().createElement(
+                          Jt,
+                          {
+                            header: i.properties.mainConfig.title,
+                            key: 'mainConfig',
+                          },
+                          i.properties.mainConfig.propertyOrder.map(
+                            function (e, a) {
+                              var o = t ? t + '-0-' + a : '0-' + a,
+                                u = r
+                                  ? r + '-mainConfig-' + e
+                                  : 'mainConfig-' + e,
+                                p =
+                                  l(r ? r + '-mainConfig' : 'mainConfig') || {},
+                                m = e,
+                                d = (0, H.toJS)(
+                                  i.properties.mainConfig.properties[m],
+                                );
+                              console.log('mainConfigJsonData:', d, m, p);
+                              var y = d.type,
+                                h = n + '-' + y + '-' + m,
+                                g = ![
+                                  'description',
+                                  'CONTENTID',
+                                  'CONTENTTYPE',
+                                ].includes(m);
+                              if (
+                                ('description' === m &&
+                                'ContentStaticConfig' === p.type
+                                  ? (g = !0)
+                                  : ('CONTENTID' !== m &&
+                                      'CONTENTTYPE' !== m) ||
+                                    'RuntimeDataSelfDefine' !== p.type ||
+                                    (g = !0),
+                                g)
+                              )
+                                return Kt({
+                                  parentType: y,
+                                  jsonKey: m,
+                                  indexRoute: o,
+                                  keyRoute: u,
+                                  nodeKey: h,
+                                  targetJsonSchema: d,
+                                  isArrayItem: !0,
+                                  getJSONDataByKeyRoute: l,
+                                  keyRoute2indexRoute: s,
+                                  updateFormValueData: c,
+                                });
+                            },
+                          ),
+                        ),
+                      i.propertyOrder.map(function (e, a) {
+                        if ('mainConfig' !== e) {
+                          var o = t ? t + '-' + a : '' + a,
+                            u = r ? r + '-' + e : '' + e,
+                            p = e,
+                            m = (0, H.toJS)(i.properties[p]),
+                            d = m.type,
+                            y = n + '-' + d + '-' + p;
+                          return m.propertyOrder && m.propertyOrder.length > 0
+                            ? T().createElement(
+                                Jt,
+                                { header: m.title, key: p },
+                                Kt({
+                                  parentType: d,
+                                  jsonKey: p,
+                                  indexRoute: o,
+                                  keyRoute: u,
+                                  nodeKey: y,
+                                  targetJsonSchema: m,
+                                  isArrayItem: !0,
+                                  getJSONDataByKeyRoute: l,
+                                  keyRoute2indexRoute: s,
+                                  updateFormValueData: c,
+                                }),
+                              )
+                            : void 0;
+                        }
+                      }),
+                    ),
+                  ),
+                );
+              }),
+              t
+            );
+          })(T().PureComponent);
+        kt.propTypes = {
+          isArrayItem: A().any,
+          arrIndex: A().any,
+          parentType: A().string,
+          jsonKey: A().string,
+          indexRoute: A().any,
+          keyRoute: A().string,
+          nodeKey: A().string,
+          targetJsonSchema: A().any,
+          isStructuredSchema: A().bool,
+        };
+        var Ct = (0, I.inject)(function (e) {
+            return {
+              pageScreen: e.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: e.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                e.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })((0, I.observer)(kt)),
+          Kt = function (e) {
             var t = e.nodeKey,
               a = (e.jsonKey, e.keyRoute),
               n = e.targetJsonSchema,
@@ -6096,7 +6283,7 @@
             n.hiddenRule && (l = n.hiddenRule);
             var s,
               c = '';
-            if (l.conditionProp && (0, Y.GT)(l.conditionValue)) {
+            if (l.conditionProp && (0, Z.GT)(l.conditionValue)) {
               var u = l.conditionProp;
               if (l.conditionValue === (c = r(u.keyRoute)))
                 return void (n.clearValueOnHidden && o(a, void 0));
@@ -6105,58 +6292,60 @@
             var p = ne()({}, e, { nodeKey: s });
             switch (i) {
               case 'object':
-                return B().createElement(ve, ne()({}, p, { key: s }));
+                return T().createElement(Oe, ne()({}, p, { key: s }));
               case 'dynamic-config':
-                return B().createElement(wt, ne()({}, p, { key: s }));
+                return T().createElement(wt, ne()({}, p, { key: s }));
+              case 'sohu-source':
+                return T().createElement(Ct, ne()({}, p, { key: s }));
               case 'array':
-                return B().createElement(Ee, ne()({}, p, { key: s }));
+                return T().createElement(Ee, ne()({}, p, { key: s }));
               case 'dynamic-data':
-                return B().createElement(Me, ne()({}, p, { key: s }));
+                return T().createElement(Me, ne()({}, p, { key: s }));
               case 'datasource':
-                return B().createElement(ke, ne()({}, p, { key: s }));
+                return T().createElement(ke, ne()({}, p, { key: s }));
               case 'event':
-                return B().createElement(Le, ne()({}, p, { key: s }));
+                return T().createElement(Le, ne()({}, p, { key: s }));
               case 'quantity':
-                return B().createElement(We, ne()({}, p, { key: s }));
+                return T().createElement(qe, ne()({}, p, { key: s }));
               case 'box-style':
-                return B().createElement(Ue, ne()({}, p, { key: s }));
+                return T().createElement(Ue, ne()({}, p, { key: s }));
               case 'radio':
-                return B().createElement(He, ne()({}, p, { key: s }));
+                return T().createElement(He, ne()({}, p, { key: s }));
               case 'select':
-                return B().createElement(Nt, ne()({}, p, { key: s }));
+                return T().createElement(Nt, ne()({}, p, { key: s }));
               case 'checkboxes':
-                return B().createElement($e, ne()({}, p, { key: s }));
+                return T().createElement($e, ne()({}, p, { key: s }));
               case 'input':
               default:
-                return B().createElement(Ke, ne()({}, p, { key: s }));
+                return T().createElement(Ke, ne()({}, p, { key: s }));
               case 'textarea':
-                return B().createElement(Ye, ne()({}, p, { key: s }));
+                return T().createElement(Ze, ne()({}, p, { key: s }));
               case 'text-editor':
-                return B().createElement(it, ne()({}, p, { key: s }));
+                return T().createElement(it, ne()({}, p, { key: s }));
               case 'number':
-                return B().createElement(st, ne()({}, p, { key: s }));
+                return T().createElement(st, ne()({}, p, { key: s }));
               case 'boolean':
-                return B().createElement(ut, ne()({}, p, { key: s }));
+                return T().createElement(ut, ne()({}, p, { key: s }));
               case 'date':
               case 'date-time':
-                return B().createElement(ht, ne()({}, p, { key: s }));
+                return T().createElement(ht, ne()({}, p, { key: s }));
               case 'time':
-                return B().createElement(_t, ne()({}, p, { key: s }));
+                return T().createElement(St, ne()({}, p, { key: s }));
               case 'url':
-                return B().createElement(we, ne()({}, p, { key: s }));
+                return T().createElement(we, ne()({}, p, { key: s }));
               case 'color':
-                return B().createElement(Et, ne()({}, p, { key: s }));
+                return T().createElement(Et, ne()({}, p, { key: s }));
               case 'json':
-                return B().createElement(De, ne()({}, p, { key: s }));
+                return T().createElement(De, ne()({}, p, { key: s }));
               case 'codearea':
-                return B().createElement(Ne.A, ne()({}, p, { key: s }));
+                return T().createElement(Ne.A, ne()({}, p, { key: s }));
               case 'htmlarea':
-                return B().createElement(vt, ne()({}, p, { key: s }));
+                return T().createElement(Ot, ne()({}, p, { key: s }));
             }
           },
-          kt = (__webpack_require__(104), Z.Collapse.Panel),
-          Ct = Z.Tabs.TabPane,
-          Kt = (function (e) {
+          xt = (__webpack_require__(104), Q.Collapse.Panel),
+          jt = Q.Tabs.TabPane,
+          Pt = (function (e) {
             function t(t) {
               var a;
               if (
@@ -6205,19 +6394,19 @@
             var a = t.prototype;
             return (
               (a.componentWillReceiveProps = function (e) {
-                (0, Y.n4)(e.schemaData, this.props.schemaData) ||
+                (0, Z.n4)(e.schemaData, this.props.schemaData) ||
                   this.props.JSONSchemaChange(e.schemaData),
-                  (0, Y.n4)(e.jsonData, this.props.jsonData) ||
+                  (0, Z.n4)(e.jsonData, this.props.jsonData) ||
                     this.props.initJSONData(e.jsonData),
-                  (0, Y.n4)(e.jsonView, this.props.jsonView) ||
+                  (0, Z.n4)(e.jsonView, this.props.jsonView) ||
                     this.setState({ jsonView: e.jsonView }),
-                  (0, Y.n4)(e.viewStyle, this.props.viewStyle) ||
+                  (0, Z.n4)(e.viewStyle, this.props.viewStyle) ||
                     this.setState({ viewStyle: e.viewStyle }),
-                  (0, Y.n4)(e.wideScreen, this.props.wideScreen) ||
+                  (0, Z.n4)(e.wideScreen, this.props.wideScreen) ||
                     this.props.setPageScreen(e.wideScreen),
-                  (0, Y.n4)(e.onChange, this.props.onChange) ||
+                  (0, Z.n4)(e.onChange, this.props.onChange) ||
                     this.props.initOnChange(e.onChange),
-                  (0, Y.n4)(e.dynamicDataList, this.props.dynamicDataList) ||
+                  (0, Z.n4)(e.dynamicDataList, this.props.dynamicDataList) ||
                     this.props.setDynamicDataList(e.dynamicDataList);
               }),
               (a.render = function () {
@@ -6254,7 +6443,7 @@
                           null,
                           'fold' === u &&
                             P.createElement(
-                              Z.Collapse,
+                              Q.Collapse,
                               {
                                 defaultActiveKey: a.propertyOrder,
                                 expandIconPosition: 'right',
@@ -6270,12 +6459,12 @@
                                 return d.propertyOrder &&
                                   d.propertyOrder.length > 0
                                   ? P.createElement(
-                                      kt,
+                                      xt,
                                       {
                                         header: d.title || e.renderHeader(y),
                                         key: p,
                                       },
-                                      Jt({
+                                      Kt({
                                         parentType: y,
                                         jsonKey: p,
                                         indexRoute: c,
@@ -6293,7 +6482,7 @@
                             ),
                           'tabs' === u &&
                             P.createElement(
-                              Z.Tabs,
+                              Q.Tabs,
                               {
                                 className: 'tabs-schema-box',
                                 defaultActiveKey: a.propertyOrder[0],
@@ -6310,14 +6499,14 @@
                                 return d.propertyOrder &&
                                   d.propertyOrder.length > 0
                                   ? P.createElement(
-                                      Ct,
+                                      jt,
                                       {
                                         tab: d.title || e.renderHeader(y),
                                         key: p,
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
-                                      Jt({
+                                      Kt({
                                         parentType: y,
                                         jsonKey: p,
                                         indexRoute: c,
@@ -6338,7 +6527,7 @@
                         P.createElement(
                           P.Fragment,
                           null,
-                          Jt({
+                          Kt({
                             parentType: '',
                             jsonKey: '',
                             indexRoute: '',
@@ -6363,7 +6552,7 @@
               t
             );
           })(P.PureComponent);
-        Kt.propTypes = {
+        Pt.propTypes = {
           viewStyle: A().any,
           wideScreen: A().any,
           onChange: A().func,
@@ -6372,7 +6561,7 @@
           jsonData: A().object,
           dynamicDataList: A().any,
         };
-        var xt = (0, I.inject)(function (e) {
+        var Tt = (0, I.inject)(function (e) {
             return {
               jsonSchema: e.JSONSchemaStore.jsonSchema,
               lastUpdateTime: e.JSONSchemaStore.lastUpdateTime,
@@ -6387,8 +6576,8 @@
               setPageScreen: e.JSONSchemaStore.setPageScreen,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
             };
-          })((0, I.observer)(Kt)),
-          jt =
+          })((0, I.observer)(Pt)),
+          Bt =
             (__webpack_require__(410),
             (function (e) {
               function t(t) {
@@ -6411,14 +6600,14 @@
                         JSONSchemaStore: t.JSONSchemaStore,
                         JSONEditorStore: t.JSONEditorStore,
                       },
-                      P.createElement(xt, this.props),
+                      P.createElement(Tt, this.props),
                     );
                   return e ? (V().render(a, e), '') : a;
                 }),
                 t
               );
             })(P.PureComponent));
-        jt.propTypes = {
+        Bt.propTypes = {
           viewStyle: A().any,
           wideScreen: A().any,
           onChange: A().func,

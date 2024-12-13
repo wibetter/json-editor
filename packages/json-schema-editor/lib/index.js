@@ -361,6 +361,7 @@
             'event',
             'dynamic-data',
             'dynamic-config',
+            'sohu-source',
           ]),
           je = [
             'quantity',
@@ -3095,6 +3096,7 @@
               case 'style':
               case 'data':
               case 'dynamic-config':
+              case 'sohu-source':
                 return mt(e);
               case 'array':
                 return He(e);

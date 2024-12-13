@@ -23,6 +23,7 @@ import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import HtmlAreaFormSchema from '$renderers/HtmlAreaFormSchema/index';
 import SelectSchema from '$renderers/SelectSchema/index';
 import DynamicConfigSchema from '$renderers/DynamicConfigSchema/index';
+import SohuDataSourceSchema from '$renderers/SohuDataSourceSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -74,6 +75,8 @@ const MappingRender = (props) => {
       return <ObjectSchema {...newProps} key={curNodeKey} />;
     case 'dynamic-config':
       return <DynamicConfigSchema {...newProps} key={curNodeKey} />;
+    case 'sohu-source':
+      return <SohuDataSourceSchema {...newProps} key={curNodeKey} />;
     case 'array':
       return <ArraySchema {...newProps} key={curNodeKey} />;
     case 'dynamic-data':
