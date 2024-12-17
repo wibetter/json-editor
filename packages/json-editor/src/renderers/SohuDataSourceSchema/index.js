@@ -4,22 +4,13 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Collapse, Tooltip } from 'antd';
 const { Panel } = Collapse;
-import {
-  DownOutlined,
-  InfoCircleOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
-import { objClone } from '$utils/index';
 import MappingRender from '$components/MappingRender';
-import JsonView from '$renderers/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import CodeIcon from '$assets/img/code.svg';
 
-class ObjectSchema extends React.PureComponent {
+class SohuDataSourceSchema extends React.PureComponent {
   static propTypes = {
     isArrayItem: PropTypes.any, // 如果是数组项，title会进行特殊显示
-    arrIndex: PropTypes.any, // 当前数组项
     parentType: PropTypes.string,
     jsonKey: PropTypes.string,
     indexRoute: PropTypes.any,
@@ -231,4 +222,4 @@ export default inject((stores) => ({
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-}))(observer(ObjectSchema));
+}))(observer(SohuDataSourceSchema));

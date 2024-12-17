@@ -32,3 +32,4 @@ export * from './initSchemaEntity/DataSource';
 export * from './initSchemaEntity/DynamicData';
 export * from './initSchemaEntity/DynamicConfigData';
 export * from './initSchemaEntity/SohuSourceData';
+export * from './initSchemaEntity/SohuEventData';

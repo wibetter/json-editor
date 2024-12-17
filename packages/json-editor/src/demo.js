@@ -538,7 +538,6 @@ class IndexDemo extends React.PureComponent {
                         options: [
                           {
                             label: '模板直接配置',
-                            // value: "DevDefaults",
                             value: 'RuntimeDataSelfDefine',
                           },
                           {
@@ -629,8 +628,14 @@ class IndexDemo extends React.PureComponent {
                         type: 'select',
                         title: '内容类型',
                         options: [
-                          { label: '置顶+加精', value: '4' },
-                          { label: '长效置顶', value: '5' },
+                          {
+                            label: '置顶+加精',
+                            value: '4',
+                          },
+                          {
+                            label: '长效置顶',
+                            value: '5',
+                          },
                         ],
                         description: '',
                       },
@@ -638,9 +643,18 @@ class IndexDemo extends React.PureComponent {
                         type: 'select',
                         title: '排序类型',
                         options: [
-                          { label: '综合', value: 'XTOPIC_SYNTHETICAL' },
-                          { label: '最新', value: 'XTOPIC_LATEST' },
-                          { label: '相关', value: 'XTOPIC_RELATED' },
+                          {
+                            label: '综合',
+                            value: 'XTOPIC_SYNTHETICAL',
+                          },
+                          {
+                            label: '最新',
+                            value: 'XTOPIC_LATEST',
+                          },
+                          {
+                            label: '相关',
+                            value: 'XTOPIC_RELATED',
+                          },
                         ],
                         description: '',
                       },
@@ -648,9 +662,18 @@ class IndexDemo extends React.PureComponent {
                         type: 'select',
                         title: '数据裁剪',
                         options: [
-                          { label: '相关推荐模式', value: 'articleFeedMode' },
-                          { label: '文字链裁剪方式', value: 'textMode' },
-                          { label: '短内容摘录方式', value: 'excerptMode' },
+                          {
+                            label: '相关推荐模式',
+                            value: 'articleFeedMode',
+                          },
+                          {
+                            label: '文字链裁剪方式',
+                            value: 'textMode',
+                          },
+                          {
+                            label: '短内容摘录方式',
+                            value: 'excerptMode',
+                          },
                           {
                             label: '互动（点赞/评论）裁剪方式',
                             value: 'interactMode',
@@ -663,9 +686,18 @@ class IndexDemo extends React.PureComponent {
                             label: '摘录方式（无点赞）',
                             value: 'excerptCommentMode',
                           },
-                          { label: '无限流卡片模式', value: 'dynamicFeedMode' },
-                          { label: '时间线模式', value: 'timeLineMode' },
-                          { label: '复合内容流模式', value: 'multiFeedMode' },
+                          {
+                            label: '无限流卡片模式',
+                            value: 'dynamicFeedMode',
+                          },
+                          {
+                            label: '时间线模式',
+                            value: 'timeLineMode',
+                          },
+                          {
+                            label: '复合内容流模式',
+                            value: 'multiFeedMode',
+                          },
                           {
                             label: '搜狐号推荐模式',
                             value: 'recommendFeedMode',
@@ -674,10 +706,22 @@ class IndexDemo extends React.PureComponent {
                             label: '作者页内容流模式',
                             value: 'operateFeedMode',
                           },
-                          { label: '标签内容流模式', value: 'tagsFeedMode' },
-                          { label: '评论链裁剪方式', value: 'commentMode' },
-                          { label: '标签摘录方式', value: 'excerptTagsMode' },
-                          { label: '内容流模式', value: 'feedMode' },
+                          {
+                            label: '标签内容流模式',
+                            value: 'tagsFeedMode',
+                          },
+                          {
+                            label: '评论链裁剪方式',
+                            value: 'commentMode',
+                          },
+                          {
+                            label: '标签摘录方式',
+                            value: 'excerptTagsMode',
+                          },
+                          {
+                            label: '内容流模式',
+                            value: 'feedMode',
+                          },
                         ],
                         description: '',
                       },
@@ -783,14 +827,99 @@ class IndexDemo extends React.PureComponent {
             type: 'object',
             title: '事件',
             isFixed: true,
-            properties: {},
-            propertyOrder: [],
+            properties: {
+              sohuEvent: {
+                type: 'sohu-event',
+                title: 'sohu组件事件',
+                showCodeViewBtn: false,
+                isContainer: false,
+                properties: {
+                  globalEventMap: {
+                    type: 'object',
+                    title: '全局事件Map',
+                    description: '',
+                    properties: {
+                      eventCode: {
+                        type: 'input',
+                        title: '事件名称',
+                        default: '',
+                        description: '',
+                        placeholder: '',
+                        readOnly: true,
+                      },
+                    },
+                    propertyOrder: ['eventCode'],
+                    showCodeViewBtn: false,
+                  },
+                  event: {
+                    type: 'array',
+                    title: '监听事件',
+                    description: '当前组件监听事件列表',
+                    items: {
+                      type: 'object',
+                      title: '数组项',
+                      description: '',
+                      properties: {
+                        name: {
+                          type: 'input',
+                          title: '事件',
+                          default: '',
+                          description: '',
+                          placeholder: '',
+                        },
+                        code: {
+                          title: '事件code',
+                          type: 'input',
+                          default: '',
+                          description: '',
+                          placeholder: '',
+                        },
+                        listenName: {
+                          title: '事件名称',
+                          type: 'input',
+                          default: '',
+                          description: '',
+                          placeholder: '',
+                        },
+                        desc: {
+                          title: '事件描述',
+                          type: 'input',
+                          default: '',
+                          description: '',
+                          placeholder: '',
+                        },
+                      },
+                      propertyOrder: ['name', 'code', 'listenName', 'desc'],
+                    },
+                    showCodeViewBtn: false,
+                  },
+                },
+                propertyOrder: ['globalEventMap', 'event'],
+              },
+            },
+            propertyOrder: ['sohuEvent'],
           },
         },
         propertyOrder: ['props', 'data', 'style', 'event'],
-        lastUpdateTime: '2024-12-13T06:31:15.454Z',
+        lastUpdateTime: '2024-12-16T09:11:14.153Z',
       },
-      jsonData: {},
+      jsonData: {
+        event: {
+          sohuEvent: {
+            event: [
+              {
+                name: 'changeTab',
+                listenName: 'TPLTabMenu_1720691304950_tabChange',
+              },
+            ],
+            globalEventMap: {
+              TPLTabMenu_1720691304950_tabChange: 'TabMenu菜单切换',
+              TPLTabMenu_1720691304952_tabChange: 'TabMenu菜单切换2',
+              CompTest1_1720691304953_click: '自定义点击事件',
+            },
+          },
+        },
+      },
       dynamicDataList: [
         {
           id: 1,
@@ -913,6 +1042,45 @@ class IndexDemo extends React.PureComponent {
           deletedTime: null,
         },
       ],
+      options: {
+        widgetType: 'page', // 组件类型 comp / page
+        eventListenConfig: [
+          {
+            name: 'changeTab',
+            desc: 'TabMenu菜单切换',
+            code: 'TPLTabMenu_1720691304950_tabChange',
+            listenName: 'TPLTabMenu_1720691304950',
+          },
+        ],
+        eventEmitConfig: [
+          {
+            name: 'click',
+            desc: '点击事件',
+            code: 'CompTest1_1720691304953_click',
+            compCode: 'CompTest1_1720691304953',
+          },
+        ], // 组件触发事件
+        allEmitEventList: [
+          {
+            name: 'changeTab',
+            desc: 'TabMenu菜单切换',
+            code: 'TPLTabMenu_1720691304950_tabChange',
+            compCode: 'TPLTabMenu_1720691304950',
+          },
+          {
+            name: 'changeTab',
+            desc: 'TabMenu菜单切换2',
+            code: 'TPLTabMenu_1720691304952_tabChange',
+            compCode: 'TPLTabMenu_1720691304952',
+          },
+          {
+            name: 'click',
+            desc: '点击事件',
+            code: 'CompTest1_1720691304953_click',
+            compCode: 'CompTest1_1720691304953',
+          },
+        ], // 全局可用事件列表
+      },
       wideScreen: false,
       jsonView: false,
       schemaCodeView: false, // schema源码模式
@@ -931,6 +1099,7 @@ class IndexDemo extends React.PureComponent {
       schemaCodeView,
       viewStyle,
       curTypeList,
+      options,
     } = this.state;
 
     return (
@@ -1050,6 +1219,7 @@ class IndexDemo extends React.PureComponent {
               schemaData={jsonSchema}
               jsonData={jsonData}
               dynamicDataList={dynamicDataList}
+              options={options}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
                 this.setState({

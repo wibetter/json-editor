@@ -21,6 +21,7 @@ export const Fixed_CONTAINER_TYPE = [
   'dynamic-data',
   'dynamic-config',
   'sohu-source',
+  'sohu-event',
 ];
 
 // 当前容器类型
