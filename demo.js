@@ -856,6 +856,7 @@ class IndexDemo extends React.PureComponent {
                     type: 'array',
                     title: '监听事件',
                     description: '当前组件监听事件列表',
+                    default: [],
                     items: {
                       type: 'object',
                       title: '数组项',

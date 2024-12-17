@@ -58,7 +58,7 @@ class SohuEventSchema extends React.PureComponent {
     const curKeyRout = `${keyRoute}-event`;
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
     let curEvent = [];
-    if (curJsonData.event) {
+    if (curJsonData.event && curJsonData.event.length > 0) {
       curEvent = toJS(curJsonData.event);
     } else if (
       options.eventListenConfig &&
@@ -148,11 +148,16 @@ class SohuEventSchema extends React.PureComponent {
                         defaultValue={curEventCode}
                       >
                         {allEmitEventList.map((event) => {
-                          const eventTitle = event.desc || event.name;
-                          const optionNodeKey = `${nodeKey}-allEmitEvent-${event.code}`;
+                          const eventTitle =
+                            globalEventMap[event.code] ||
+                            event.desc ||
+                            event.name;
+
+                          console.log(event, eventTitle, globalEventMap);
+                          const optionNodeKey = `${nodeKey}-allEmitEvent-${eventTitle}`;
                           return (
                             <Option value={event.code} key={optionNodeKey}>
-                              {globalEventMap[event.code] || eventTitle}
+                              {eventTitle}
                             </Option>
                           );
                         })}

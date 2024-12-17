@@ -11,6 +11,7 @@ export const initArrayData = {
   type: 'array',
   title: '数组Array',
   description: '', // 字段项的说明和描述
+  default: [],
   items: {
     type: 'object',
     title: '数组项',

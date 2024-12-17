@@ -838,23 +838,15 @@ class IndexDemo extends React.PureComponent {
                     type: 'object',
                     title: '全局事件Map',
                     description: '',
-                    properties: {
-                      eventCode: {
-                        type: 'input',
-                        title: '事件名称',
-                        default: '',
-                        description: '',
-                        placeholder: '',
-                        readOnly: true,
-                      },
-                    },
-                    propertyOrder: ['eventCode'],
+                    properties: {},
+                    propertyOrder: [],
                     showCodeViewBtn: false,
                   },
                   event: {
                     type: 'array',
                     title: '监听事件',
                     description: '当前组件监听事件列表',
+                    default: [],
                     items: {
                       type: 'object',
                       title: '数组项',
@@ -1080,6 +1072,25 @@ class IndexDemo extends React.PureComponent {
             compCode: 'CompTest1_1720691304953',
           },
         ], // 全局可用事件列表
+        metaContentKeyList: [
+          {
+            label: '全部内容',
+            value: 'ALLCONTENT',
+          },
+          {
+            label: 'title',
+            value: 'title',
+          },
+          {
+            label: 'id',
+            value: 'id',
+          },
+          {
+            label: 'newsMeta',
+            value: 'newsMeta',
+          },
+        ],
+        globalMetaConfig: [],
       },
       wideScreen: false,
       jsonView: false,

@@ -605,6 +605,7 @@ var initArrayData = {
   title: '数组Array',
   description: '',
   // 字段项的说明和描述
+  default: [],
   items: {
     type: 'object',
     title: '数组项',
@@ -658,6 +659,7 @@ var EmptyArray = {
   type: 'array',
   title: '数组Array',
   description: '',
+  default: [],
   items: {
     type: 'object',
     title: '数组项',
@@ -1544,6 +1546,7 @@ var initSohuEventConfig = {
       type: 'array',
       title: '监听事件',
       description: '当前组件监听事件列表',
+      default: [],
       items: {
         type: 'object',
         title: '数组项',
@@ -7129,8 +7132,6 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       JSON.stringify(curValue) !== '{}'
     ) {
       curJsonData = Object.assign(curJsonData, curValue);
-    } else if (jsonSchema.isContainer === false && !curValue) {
-      curJsonData = {}; // 非容器类复合元素 默认为空对象
     } else if (jsonSchema.properties) {
       var curPropertyOrder = [];
       if (jsonSchema.propertyOrder) {
@@ -7195,6 +7196,8 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
         curValue.map(function (arrItem) {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
         });
+      } else if (curValue) {
+        curJsonData = curValue;
       } else {
         var childItems = objectSchema2JsonData(jsonSchema.items, curValue);
         curJsonData.push(childItems);

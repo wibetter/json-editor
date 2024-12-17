@@ -835,8 +835,8 @@
           $ =
             (require('@babel/runtime/helpers/initializerWarningHelper'),
             require('mobx')),
-          Y = __webpack_require__(85),
-          Q = Y.TypeDataList.jsonschema,
+          Q = __webpack_require__(85),
+          Y = Q.TypeDataList.jsonschema,
           Z =
             ((e = $.action.bound),
             (t = $.action.bound),
@@ -859,43 +859,43 @@
                 }),
                 (t.initJSONSchemaData = function (e) {
                   if (e && '{}' !== JSON.stringify(e)) {
-                    if (!(0, Y.isEqual)(e, this.JSONSchemaObj))
-                      if (e && (0, Y.isNewSchemaData)(e)) this.jsonSchema = e;
+                    if (!(0, Q.isEqual)(e, this.JSONSchemaObj))
+                      if (e && (0, Q.isNewSchemaData)(e)) this.jsonSchema = e;
                       else {
-                        var t = (0, Y.oldSchemaToNewSchema)(e);
+                        var t = (0, Q.oldSchemaToNewSchema)(e);
                         this.jsonSchema = t;
                       }
-                  } else this.jsonSchema = (0, Y.objClone)(Q);
+                  } else this.jsonSchema = (0, Q.objClone)(Y);
                 }),
                 (t.JSONSchemaChange = function (e) {
-                  if (!(0, Y.isEqual)(e, this.JSONSchemaObj)) {
+                  if (!(0, Q.isEqual)(e, this.JSONSchemaObj)) {
                     if (e && '{}' !== JSON.stringify(e))
-                      if (e && (0, Y.isNewSchemaData)(e)) this.jsonSchema = e;
+                      if (e && (0, Q.isNewSchemaData)(e)) this.jsonSchema = e;
                       else {
-                        var t = (0, Y.oldSchemaToNewSchema)(e);
+                        var t = (0, Q.oldSchemaToNewSchema)(e);
                         this.jsonSchema = t;
                       }
-                    else this.jsonSchema = (0, Y.objClone)(Q);
+                    else this.jsonSchema = (0, Q.objClone)(Y);
                     var a = this.state.rootJSONStore.JSONEditorStore.jsonData,
-                      n = (0, Y.schema2json)(this.jsonSchema, a);
+                      n = (0, Q.schema2json)(this.jsonSchema, a);
                     (this.state.rootJSONStore.JSONEditorStore.jsonData = n),
                       (this.state.rootJSONStore.JSONEditorStore.initJsonData =
-                        (0, Y.objClone)(a)),
+                        (0, Q.objClone)(a)),
                       this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
                   }
                 }),
                 (t.indexRoute2keyRoute = function (e) {
-                  return (0, Y.indexRoute2keyRoute)(e, this.jsonSchema);
+                  return (0, Q.indexRoute2keyRoute)(e, this.jsonSchema);
                 }),
                 (t.keyRoute2indexRoute = function (e) {
-                  return (0, Y.keyRoute2indexRoute)(e, this.jsonSchema);
+                  return (0, Q.keyRoute2indexRoute)(e, this.jsonSchema);
                 }),
                 (t.getSchemaByIndexRoute = function (e) {
-                  return (0, Y.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
+                  return (0, Q.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
                 }),
                 (t.getSchemaByKeyRoute = function (e) {
                   var t = this.keyRoute2indexRoute(e);
-                  return (0, Y.getSchemaByIndexRoute)(t, this.jsonSchema, !0);
+                  return (0, Q.getSchemaByIndexRoute)(t, this.jsonSchema, !0);
                 }),
                 z()(e, [
                   {
@@ -1054,7 +1054,7 @@
                   (0, ee.n4)(e, this.jsonData) ||
                     ((this.initJsonData = (0, ee.bQ)(this.jsonData)),
                     t &&
-                      ((this.jsonData = (0, Y.schema2json)(t, e || {})),
+                      ((this.jsonData = (0, Q.schema2json)(t, e || {})),
                       this.updateLastTime()));
                 }),
                 (t.initOnChange = function (e) {
@@ -1078,19 +1078,19 @@
                 }),
                 (t.getJSONDataByKeyRoute = function (e, t) {
                   var a = t || this.jsonData;
-                  return (0, Y.getJsonDataByKeyRoute)(e, a, !0);
+                  return (0, Q.getJsonDataByKeyRoute)(e, a, !0);
                 }),
                 (t.getInitJsonDataByKeyRoute = function (e, t) {
                   var a = t || this.initJsonData;
-                  return (0, Y.getJsonDataByKeyRoute)(e, a, !0);
+                  return (0, Q.getJsonDataByKeyRoute)(e, a, !0);
                 }),
                 (t.updateFormValueData = function (e, t, a) {
                   var n = this;
                   if ('' !== e) {
-                    var r = (0, Y.getParentKeyRoute_CurKey)(e),
+                    var r = (0, Q.getParentKeyRoute_CurKey)(e),
                       o = r[0],
                       i = r[1];
-                    (0, Y.getJsonDataByKeyRoute)(o, this.jsonData)[i] = t;
+                    (0, Q.getJsonDataByKeyRoute)(o, this.jsonData)[i] = t;
                   } else this.jsonData = t;
                   if (
                     this.state.rootJSONStore.JSONSchemaStore &&
@@ -1113,7 +1113,7 @@
                   a || this.jsonDataChange();
                 }),
                 (t.deleteArrayIndex = function (e, t) {
-                  var a = (0, Y.getJsonDataByKeyRoute)(e, this.jsonData);
+                  var a = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
                   (0, te.cy)(a) &&
                     (a.length > 0
                       ? (a.splice(t, 1),
@@ -1124,7 +1124,7 @@
                         ));
                 }),
                 (t.addArrayItem = function (e, t) {
-                  var a = (0, Y.getJsonDataByKeyRoute)(e, this.jsonData);
+                  var a = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, te.cy)(a)) {
                     var n = a[t || 0];
                     if (
@@ -1140,7 +1140,7 @@
                     X.message.warning('数据操作异常：当前元素不是数组类型。');
                 }),
                 (t.sortArrayItem = function (e, t, a) {
-                  var n = (0, Y.getJsonDataByKeyRoute)(e, this.jsonData);
+                  var n = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, te.cy)(n)) {
                     var r = (0, ee.bQ)(n[t || 0]),
                       o = t;
@@ -1698,7 +1698,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(r, { length: 15 }),
+                            (0, Q.truncate)(r, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2017,7 +2017,7 @@
                                 'span',
                                 null,
                                 '（',
-                                (0, Y.truncate)(r, { length: 15 }),
+                                (0, Q.truncate)(r, { length: 15 }),
                                 '）',
                               ),
                           ),
@@ -2214,7 +2214,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(n, { length: 15 }),
+                            (0, Q.truncate)(n, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2385,7 +2385,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2512,7 +2512,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(r, { length: 15 }),
+                            (0, Q.truncate)(r, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2768,7 +2768,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2839,13 +2839,13 @@
                   i = [];
                 if (a && '{}' !== JSON.stringify(a)) {
                   var l = a;
-                  if (!(0, Y.isObject)(a) && '' !== a)
+                  if (!(0, Q.isObject)(a) && '' !== a)
                     try {
                       l = JSON.parse(a);
                     } catch (e) {
                       console.log('当前数据源的请求参数格式异常'), (l = {});
                     }
-                  i = (0, Y.json2treeData)(l);
+                  i = (0, Q.json2treeData)(l);
                 }
                 return B.createElement(
                   'div',
@@ -2931,7 +2931,7 @@
                 (a.dataRouteChange = function (e) {
                   var t = Object.assign({}, a.props.curConfigData);
                   t.dataRoute = e;
-                  var n = (0, Y.dataRoute2dataPath)(e);
+                  var n = (0, Q.dataRoute2dataPath)(e);
                   (t.filter = 'return ' + n + ';'), a.props.configDataChange(t);
                 }),
                 a
@@ -3203,7 +3203,7 @@
                     o = t.updateFormValueData;
                   if (e) {
                     o(n + '-config-dataRoute', e, !0);
-                    var i = (0, Y.dataRoute2dataPath)(e);
+                    var i = (0, Q.dataRoute2dataPath)(e);
                     a.handleValueChange(
                       n + '-config-filter',
                       'return ' + i + ';',
@@ -3299,7 +3299,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Y.truncate)(n, { length: 15 }),
+                          (0, Q.truncate)(n, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -3662,7 +3662,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Y.truncate)(r, { length: 15 }),
+                          (0, Q.truncate)(r, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -3887,7 +3887,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -4118,7 +4118,7 @@
                               'span',
                               null,
                               '（',
-                              (0, Y.truncate)(n, { length: 15 }),
+                              (0, Q.truncate)(n, { length: 15 }),
                               '）',
                             ),
                         ),
@@ -4312,7 +4312,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -4377,7 +4377,7 @@
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
           })((0, A.observer)(Ge)),
-          Ye = (function (e) {
+          Qe = (function (e) {
             function t(t) {
               var a;
               return (
@@ -4445,7 +4445,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -4493,7 +4493,7 @@
               t
             );
           })(B.PureComponent);
-        Ye.propTypes = {
+        Qe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4501,7 +4501,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         };
-        var Qe = (0, A.inject)(function (e) {
+        var Ye = (0, A.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
@@ -4509,7 +4509,7 @@
               getInitJsonDataByKeyRoute:
                 e.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, A.observer)(Ye)),
+          })((0, A.observer)(Qe)),
           Ze = X.Input.TextArea,
           Xe = (function (e) {
             function t(t) {
@@ -4588,7 +4588,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -4794,7 +4794,7 @@
                         'span',
                         null,
                         '（',
-                        (0, Y.truncate)(n, { length: 15 }),
+                        (0, Q.truncate)(n, { length: 15 }),
                         '）',
                       ),
                   ),
@@ -4964,7 +4964,7 @@
                               'span',
                               null,
                               '（',
-                              (0, Y.truncate)(n, { length: 15 }),
+                              (0, Q.truncate)(n, { length: 15 }),
                               '）',
                             ),
                         ),
@@ -5109,7 +5109,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -5238,7 +5238,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -5359,7 +5359,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -5495,7 +5495,7 @@
                               'span',
                               null,
                               '（',
-                              (0, Y.truncate)(n, { length: 15 }),
+                              (0, Q.truncate)(n, { length: 15 }),
                               '）',
                             ),
                         ),
@@ -5652,7 +5652,7 @@
                                 'span',
                                 null,
                                 '（',
-                                (0, Y.truncate)(n, { length: 15 }),
+                                (0, Q.truncate)(n, { length: 15 }),
                                 '）',
                               ),
                           ),
@@ -5814,7 +5814,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -5920,10 +5920,13 @@
                   y = this.state,
                   h = y.jsonView,
                   g = y.isClosed,
-                  S = u,
-                  _ = null == (e = s.showCodeViewBtn) || e,
-                  f = p(i),
-                  E = o + '-' + f.type + '-' + f.valueType;
+                  S = this.props.options || {},
+                  _ = u,
+                  f = null == (e = s.showCodeViewBtn) || e,
+                  E = p(i),
+                  v = o + '-' + E.type + '-' + E.valueType,
+                  b = S.metaContentKeyList || [],
+                  O = S.globalMetaConfig || [];
                 return V().createElement(
                   'div',
                   {
@@ -5931,10 +5934,10 @@
                       'wideScreen' === l
                         ? 'object-schema-warp wide-screen-element-warp'
                         : 'object-schema-warp mobile-screen-element-warp',
-                    key: E,
+                    key: v,
                     id: o,
                   },
-                  !S &&
+                  !_ &&
                     !c &&
                     V().createElement(
                       'div',
@@ -5957,7 +5960,7 @@
                               'span',
                               null,
                               '（',
-                              (0, Y.truncate)(r, { length: 15 }),
+                              (0, Q.truncate)(r, { length: 15 }),
                               '）',
                             ),
                         ),
@@ -5966,7 +5969,7 @@
                   V().createElement(
                     'div',
                     { className: 'element-title-card-warp content-item' },
-                    !S &&
+                    !_ &&
                       !c &&
                       V().createElement(
                         'div',
@@ -5990,7 +5993,7 @@
                           : V().createElement(ie.DownOutlined, {
                               className: 'close-operate-btn',
                             }),
-                        _ &&
+                        f &&
                           V().createElement(
                             'div',
                             {
@@ -6015,7 +6018,7 @@
                       {
                         className:
                           'content-item ' +
-                          (S || c ? '' : 'object-content') +
+                          (_ || c ? '' : 'object-content') +
                           ' ' +
                           (h ? 'json-view-array' : '') +
                           ' ' +
@@ -6038,14 +6041,14 @@
                             ].includes(l);
                           if (
                             ('description' !== l && 'valueType' !== l) ||
-                            ('ContentStaticConfig' !== f.type &&
-                              'ResourceCenter' !== f.type)
+                            ('ContentStaticConfig' !== E.type &&
+                              'ResourceCenter' !== E.type)
                           )
                             if ('range' === l) {
                               if (
-                                ('select' !== f.valueType ||
-                                  ('ContentStaticConfig' !== f.type &&
-                                    'ResourceCenter' !== f.type) ||
+                                ('select' !== E.valueType ||
+                                  ('ContentStaticConfig' !== E.type &&
+                                    'ResourceCenter' !== E.type) ||
                                   (h = !0),
                                 h)
                               ) {
@@ -6059,9 +6062,9 @@
                               }
                             } else
                               'value' !== l ||
-                                ('DevDefaults' !== f.type &&
-                                  'RuntimeConst' !== f.type &&
-                                  'Content' !== f.type) ||
+                                ('DevDefaults' !== E.type &&
+                                  'RuntimeConst' !== E.type &&
+                                  'Content' !== E.type) ||
                                 (h = !0);
                           else {
                             h = !0;
@@ -6075,7 +6078,16 @@
                               (c.description =
                                 '当前数值没有可选项，不支持设置。'));
                           }
-                          if (h)
+                          if (
+                            ('value' === l && 'Content' === E.type
+                              ? ((c.type = 'select'),
+                                (c.options = (0, ee.bQ)(b)))
+                              : 'value' === l &&
+                                'RuntimeConst' === E.type &&
+                                ((c.type = 'select'),
+                                (c.options = (0, ee.bQ)(O))),
+                            h)
+                          )
                             return Vt({
                               parentType: u,
                               jsonKey: l,
@@ -6110,6 +6122,7 @@
         var kt = (0, A.inject)(function (e) {
             return {
               pageScreen: e.JSONSchemaStore.pageScreen,
+              options: e.JSONEditorStore.options,
               getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
               updateFormValueData: e.JSONEditorStore.updateFormValueData,
               getInitJsonDataByKeyRoute:
@@ -6180,7 +6193,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Y.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -6329,7 +6342,7 @@
                     s = r + '-event',
                     c = i(r) || {},
                     u = [];
-                  c.event
+                  c.event && c.event.length > 0
                     ? (u = (0, $.toJS)(c.event))
                     : l.eventListenConfig &&
                       l.eventListenConfig.length > 0 &&
@@ -6430,12 +6443,13 @@
                                   defaultValue: o,
                                 },
                                 d.map(function (e) {
-                                  var t = e.desc || e.name,
-                                    n = a + '-allEmitEvent-' + e.code;
+                                  var t = s[e.code] || e.desc || e.name;
+                                  console.log(e, t, s);
+                                  var n = a + '-allEmitEvent-' + t;
                                   return V().createElement(
                                     jt,
                                     { value: e.code, key: n },
-                                    s[e.code] || t,
+                                    t,
                                   );
                                 }),
                               ),
@@ -6478,7 +6492,7 @@
                               V().createElement(
                                 'div',
                                 { className: 'form-item-box' },
-                                (0, Y.truncate)(t.code, { length: 30 }),
+                                (0, Q.truncate)(t.code, { length: 30 }),
                               ),
                             ),
                             V().createElement(
@@ -6520,7 +6534,7 @@
                               null,
                               V().createElement(X.List.Item.Meta, {
                                 title: s[e.code] || e.desc || e.name,
-                                description: (0, Y.truncate)(e.code || e.desc, {
+                                description: (0, Q.truncate)(e.code || e.desc, {
                                   length: 30,
                                 }),
                               }),
@@ -6602,7 +6616,7 @@
               case 'select':
                 return V().createElement(wt, oe()({}, p, { key: s }));
               case 'checkboxes':
-                return V().createElement(Qe, oe()({}, p, { key: s }));
+                return V().createElement(Ye, oe()({}, p, { key: s }));
               case 'input':
               default:
                 return V().createElement(je, oe()({}, p, { key: s }));
@@ -6667,7 +6681,7 @@
                 a.props.initJSONSchemaData(t.schemaData),
                   a.props.initJSONData(t.jsonData);
               else if (t.jsonData) {
-                var n = (0, Y.json2schema)(t.jsonData);
+                var n = (0, Q.json2schema)(t.jsonData);
                 a.props.initJSONSchemaData(n), a.props.initJSONData(t.jsonData);
               }
               return (
@@ -6712,8 +6726,8 @@
                   s = this.state,
                   c = s.jsonView,
                   u = s.viewStyle,
-                  p = (0, Y.isEmptySchema)(a),
-                  m = (0, Y.isStructuredSchema)(a);
+                  p = (0, Q.isEmptySchema)(a),
+                  m = (0, Q.isStructuredSchema)(a);
                 return B.createElement(
                   'div',
                   { className: 'json-editor-container' },

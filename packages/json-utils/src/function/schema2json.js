@@ -211,8 +211,6 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       JSON.stringify(curValue) !== '{}'
     ) {
       curJsonData = Object.assign(curJsonData, curValue);
-    } else if (jsonSchema.isContainer === false && !curValue) {
-      curJsonData = {}; // 非容器类复合元素 默认为空对象
     } else if (jsonSchema.properties) {
       let curPropertyOrder = [];
       if (jsonSchema.propertyOrder) {
@@ -278,6 +276,8 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
         curValue.map((arrItem) => {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
         });
+      } else if (curValue) {
+        curJsonData = curValue;
       } else {
         const childItems = objectSchema2JsonData(jsonSchema.items, curValue);
         curJsonData.push(childItems);
