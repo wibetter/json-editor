@@ -839,17 +839,8 @@ class IndexDemo extends React.PureComponent {
                     type: 'object',
                     title: '全局事件Map',
                     description: '',
-                    properties: {
-                      eventCode: {
-                        type: 'input',
-                        title: '事件名称',
-                        default: '',
-                        description: '',
-                        placeholder: '',
-                        readOnly: true,
-                      },
-                    },
-                    propertyOrder: ['eventCode'],
+                    properties: {},
+                    propertyOrder: [],
                     showCodeViewBtn: false,
                   },
                   event: {
@@ -1759,7 +1750,7 @@ class IndexDemo extends React.PureComponent {
               CompTest1_1720691304953_click: '自定义点击事件',
             },
           },
-        }
+        },
       },
       dynamicDataList: [
         {
@@ -1885,6 +1876,14 @@ class IndexDemo extends React.PureComponent {
       ],
       options: {
         widgetType: 'page', // 组件类型 comp / page
+        eventListenConfig: [
+          {
+            name: 'changeTab',
+            desc: 'TabMenu菜单切换',
+            code: 'TPLTabMenu_1720691304950_tabChange',
+            listenName: 'TPLTabMenu_1720691304950',
+          },
+        ],
         eventEmitConfig: [
           {
             name: 'click',
@@ -1893,14 +1892,6 @@ class IndexDemo extends React.PureComponent {
             compCode: 'CompTest1_1720691304953',
           },
         ], // 组件触发事件
-        eventListenConfig: [
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换',
-            code: 'TPLTabMenu_1720691304950_tabChange',
-            listenName: 'TPLTabMenu_1720691304950',
-          },
-        ], // 组件监听事件
         allEmitEventList: [
           {
             name: 'changeTab',
@@ -1921,6 +1912,25 @@ class IndexDemo extends React.PureComponent {
             compCode: 'CompTest1_1720691304953',
           },
         ], // 全局可用事件列表
+        metaContentKeyList: [
+          {
+            label: '全部内容',
+            value: 'ALLCONTENT',
+          },
+          {
+            label: 'title',
+            value: 'title',
+          },
+          {
+            label: 'id',
+            value: 'id',
+          },
+          {
+            label: 'newsMeta',
+            value: 'newsMeta',
+          },
+        ],
+        globalMetaConfig: [],
       },
       wideScreen: false,
       jsonView: false,
