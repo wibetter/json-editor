@@ -26,6 +26,8 @@ const valExpectType = {
   time: 'string',
   url: 'string',
   'dynamic-config': 'object',
+  'sohu-source': 'object',
+  'sohu-event': 'object',
 };
 
 // 根据type获取对应元素的期望类型值

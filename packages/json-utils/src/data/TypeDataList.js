@@ -31,6 +31,8 @@ import {
   initDataSourceDataV2,
   initDynamicData,
   initDynamicConfig,
+  initSohuSourceData,
+  initSohuEventConfig,
 } from '$data/index';
 
 // 类型数据清单
@@ -63,6 +65,8 @@ export const TypeDataList = {
   datasource: initDataSourceData,
   event: initEventData,
   'dynamic-config': initDynamicConfig,
+  'sohu-source': initSohuSourceData,
+  'sohu-event': initSohuEventConfig,
 };
 
 // 事件类型数据

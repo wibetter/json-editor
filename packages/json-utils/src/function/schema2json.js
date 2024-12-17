@@ -6,6 +6,7 @@
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
 import { hasProperties } from '$utils/index';
+import { toJS } from 'mobx';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
 import { objClone } from '$utils';
@@ -203,6 +204,13 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
           }
         }
       }
+    } else if (
+      jsonSchema.isContainer === false &&
+      curValue &&
+      isObject(curValue) &&
+      JSON.stringify(curValue) !== '{}'
+    ) {
+      curJsonData = Object.assign(curJsonData, curValue);
     } else if (jsonSchema.properties) {
       let curPropertyOrder = [];
       if (jsonSchema.propertyOrder) {
@@ -268,6 +276,8 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
         curValue.map((arrItem) => {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
         });
+      } else if (curValue) {
+        curJsonData = curValue;
       } else {
         const childItems = objectSchema2JsonData(jsonSchema.items, curValue);
         curJsonData.push(childItems);

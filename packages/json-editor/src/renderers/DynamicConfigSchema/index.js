@@ -65,12 +65,17 @@ class ObjectSchema extends React.PureComponent {
       updateFormValueData,
     } = this.props;
     const { jsonView, isClosed } = this.state;
+    const options = this.props.options || {};
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
     const isStructured = isStructuredSchema;
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true; // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const curNodeKey = `${nodeKey}-${curJsonData.type}-${curJsonData.valueType}`;
+
+    // 内容Meta数据
+    const metaContentKeyList = options.metaContentKeyList || [];
+    const globalMetaConfig = options.globalMetaConfig || [];
 
     return (
       <div
@@ -229,6 +234,22 @@ class ObjectSchema extends React.PureComponent {
                   visibleOn = true;
                 }
 
+                if (
+                  currentJsonKey === 'value' &&
+                  curJsonData.type === 'Content'
+                ) {
+                  // 内容Meta数据
+                  currentSchemaData.type = 'select'; // 改用下拉列表
+                  currentSchemaData.options = objClone(metaContentKeyList);
+                } else if (
+                  currentJsonKey === 'value' &&
+                  curJsonData.type === 'RuntimeConst'
+                ) {
+                  // 全局配置数据
+                  currentSchemaData.type = 'select'; // 改用下拉列表
+                  currentSchemaData.options = objClone(globalMetaConfig);
+                }
+
                 if (visibleOn) {
                   return MappingRender({
                     parentType: curType,
@@ -253,6 +274,7 @@ class ObjectSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   pageScreen: stores.JSONSchemaStore.pageScreen,
+  options: stores.JSONEditorStore.options,
   getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
   updateFormValueData: stores.JSONEditorStore.updateFormValueData,
   getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,

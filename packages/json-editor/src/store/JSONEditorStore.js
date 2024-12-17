@@ -54,6 +54,11 @@ export default class JSONEditorStore {
   @observable dynamicDataObj = {}; // 数据源的配置对象（主要用于方便取值）
 
   /**
+   * 存放当前配置类对象数据
+   */
+  @observable options = {};
+
+  /**
    * DynamicData中支持的请求参数类型: 动态请求参数
    * 固定值参数（scope: static）： eg: 写死固定参数 => framework=1
    * URL 参数（scope: url）： eg: pages?projectId=xxx => projectId=xxx
@@ -133,6 +138,13 @@ export default class JSONEditorStore {
         dynamicDataObjTemp[dynamicData.name] = dynamicData;
       });
       this.dynamicDataObj = dynamicDataObjTemp;
+    }
+  }
+
+  @action.bound
+  setOptions(optionsData) {
+    if (optionsData) {
+      this.options = optionsData;
     }
   }
 

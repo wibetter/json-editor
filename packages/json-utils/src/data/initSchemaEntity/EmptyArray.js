@@ -3,6 +3,7 @@ export const EmptyArray = {
   type: 'array',
   title: '数组Array',
   description: '',
+  default: [],
   items: {
     type: 'object',
     title: '数组项',
