@@ -152,8 +152,6 @@ class SohuEventSchema extends React.PureComponent {
                             globalEventMap[event.code] ||
                             event.desc ||
                             event.name;
-
-                          console.log(event, eventTitle, globalEventMap);
                           const optionNodeKey = `${nodeKey}-allEmitEvent-${eventTitle}`;
                           return (
                             <Option value={event.code} key={optionNodeKey}>

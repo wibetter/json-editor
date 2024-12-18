@@ -1,284 +1,3215 @@
-/*! For license information please see index.js.LICENSE.txt */
-!(function (e, t) {
-  'object' == typeof exports && 'object' == typeof module
-    ? (module.exports = t())
-    : 'function' == typeof define && define.amd
-      ? define([], t)
-      : 'object' == typeof exports
-        ? (exports.JSONEditor = t())
-        : (e.JSONEditor = t());
+/*!
+ * @wibetter/json-editor v5.0.4
+ * author: wibetter
+ * build tool: AKFun
+ * build time: Wed Dec 18 2024 16:24:11 GMT+0800 (中国标准时间)
+ * build tool info: https://github.com/wibetter/akfun
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+  if (typeof exports === 'object' && typeof module === 'object')
+    module.exports = factory();
+  else if (typeof define === 'function' && define.amd) define([], factory);
+  else if (typeof exports === 'object') exports['JSONEditor'] = factory();
+  else root['JSONEditor'] = factory();
 })(this, function () {
-  return (function () {
-    var __webpack_modules__ = {
-        852: function (e, t, a) {
-          'use strict';
-          a.d(t, {
-            x: function () {
-              return r;
-            },
-          });
-          var n = a(919);
-          function r(e) {
-            var t = this.props,
-              a = t.targetJsonSchema,
-              r = t.getJSONDataByKeyRoute,
-              o = t.getInitJsonDataByKeyRoute,
-              i = t.updateFormValueData,
-              l = a.type,
-              s = e || this.props.keyRoute,
-              c = (0, n.TA)(s + '-' + l);
-            if (c) {
-              var u = r(c);
-              u || (u = o(c)), u && ((0, n.CP)(s + '-' + l), i(s, u));
-            }
-          }
-        },
-        566: function (
+  return /******/ (function () {
+    // webpackBootstrap
+    /******/ var __webpack_modules__ = {
+      /***/ './src/assets/img/addElem.svg':
+        /*!************************************!*\
+  !*** ./src/assets/img/addElem.svg ***!
+  \************************************/
+        /***/ function (
           __unused_webpack_module,
           __webpack_exports__,
           __webpack_require__,
         ) {
           'use strict';
-          var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
-              __webpack_require__(820),
-            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
-              __webpack_require__.n(
-                _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
-              ),
-            react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15),
-            react__WEBPACK_IMPORTED_MODULE_1___default = __webpack_require__.n(
-              react__WEBPACK_IMPORTED_MODULE_1__,
-            ),
-            mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20),
-            mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
-              __webpack_require__.n(mobx_react__WEBPACK_IMPORTED_MODULE_2__),
-            prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(825),
-            prop_types__WEBPACK_IMPORTED_MODULE_3___default =
-              __webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__),
-            antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(375),
-            antd__WEBPACK_IMPORTED_MODULE_4___default = __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
-            ),
-            react_ace__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(813),
-            react_ace__WEBPACK_IMPORTED_MODULE_5___default =
-              __webpack_require__.n(react_ace__WEBPACK_IMPORTED_MODULE_5__),
-            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
-              __webpack_require__(85),
-            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
-              __webpack_require__.n(
-                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
-              ),
-            ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7__ =
-              __webpack_require__(426),
-            ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7___default =
-              __webpack_require__.n(
-                ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7__,
-              ),
-            ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__ =
-              __webpack_require__(953),
-            ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8___default =
-              __webpack_require__.n(
-                ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__,
-              ),
-            $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
-              __webpack_require__(102),
-            $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
-              __webpack_require__(852),
-            _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__ =
-              __webpack_require__(347),
-            _ant_design_icons__WEBPACK_IMPORTED_MODULE_10___default =
-              __webpack_require__.n(
-                _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__,
-              ),
-            CodeAreaFormSchema = (function (_React$PureComponent) {
-              function CodeAreaFormSchema(e) {
-                var t;
-                return (
-                  ((t =
-                    _React$PureComponent.call(this, e) ||
-                    this).handleValueChange = function (e) {
-                    var a = t.props,
-                      n = a.keyRoute;
-                    (0, a.updateFormValueData)(n, e);
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          var _path;
+          function _extends() {
+            return (
+              (_extends = Object.assign
+                ? Object.assign.bind()
+                : function (n) {
+                    for (var e = 1; e < arguments.length; e++) {
+                      var t = arguments[e];
+                      for (var r in t)
+                        ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+                    }
+                    return n;
                   }),
-                  (t.state = { isShowWarn: !1, warnText: '' }),
-                  (t.handleValueChange = t.handleValueChange.bind(t)),
-                  t
-                );
+              _extends.apply(null, arguments)
+            );
+          }
+
+          var SvgAddElem = function SvgAddElem(props) {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+              'svg',
+              _extends(
+                {
+                  width: 16,
+                  height: 16,
+                  xmlns: 'http://www.w3.org/2000/svg',
+                },
+                props,
+              ),
+              _path ||
+                (_path =
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'path',
+                    {
+                      d: 'M10.286 4C11.232 4 12 4.768 12 5.714v8.572c0 .946-.768 1.714-1.714 1.714H1.714A1.714 1.714 0 0 1 0 14.286V5.714C0 4.768.768 4 1.714 4h8.572Zm-.12 1H1.834A.833.833 0 0 0 1 5.833v8.334c0 .46.373.833.833.833h8.334c.46 0 .833-.373.833-.833V5.833A.833.833 0 0 0 10.167 5ZM6 7.429c.237 0 .429.191.429.428l-.001 1.714h1.715a.429.429 0 0 1 0 .858H6.428v1.714a.429.429 0 1 1-.857 0v-1.714H3.857a.429.429 0 1 1 0-.858h1.714V7.857c0-.237.192-.428.429-.428ZM14.286 0C15.232 0 16 .768 16 1.714v8.572c0 .946-.768 1.714-1.714 1.714H13v-1h1.167c.46 0 .833-.373.833-.833V1.833A.833.833 0 0 0 14.167 1H5.833A.833.833 0 0 0 5 1.833V3H4V1.714C4 .768 4.768 0 5.714 0h8.572Z',
+                      fill: 'currentColor',
+                      fillRule: 'evenodd',
+                    },
+                  )),
+            );
+          };
+          /* harmony default export */ __webpack_exports__['default'] =
+            SvgAddElem;
+
+          /***/
+        },
+
+      /***/ './src/assets/img/code.svg':
+        /*!*********************************!*\
+  !*** ./src/assets/img/code.svg ***!
+  \*********************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          var _path;
+          function _extends() {
+            return (
+              (_extends = Object.assign
+                ? Object.assign.bind()
+                : function (n) {
+                    for (var e = 1; e < arguments.length; e++) {
+                      var t = arguments[e];
+                      for (var r in t)
+                        ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+                    }
+                    return n;
+                  }),
+              _extends.apply(null, arguments)
+            );
+          }
+
+          var SvgCode = function SvgCode(props) {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+              'svg',
+              _extends(
+                {
+                  viewBox: '0 0 1025 1024',
+                  xmlns: 'http://www.w3.org/2000/svg',
+                },
+                props,
+              ),
+              _path ||
+                (_path =
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'path',
+                    {
+                      d: 'M293.069 755.2c-12.083 0-24.269-4.25-33.997-12.902L0 512l273.46-243.098c21.094-18.688 53.452-16.896 72.242 4.25 18.79 21.146 16.896 53.504-4.25 72.294L154.113 512l172.954 153.702c21.145 18.79 23.04 51.15 4.25 72.295-10.087 11.417-24.167 17.203-38.247 17.203zm457.984-.102L1024.512 512 765.44 281.702c-21.146-18.79-53.504-16.896-72.243 4.25-18.79 21.146-16.896 53.504 4.25 72.294L870.4 512 683.06 678.502c-21.146 18.79-23.04 51.15-4.25 72.295C688.896 762.214 702.976 768 717.056 768c12.083 0 24.269-4.25 33.997-12.902zm-239.514 72.55 102.4-614.4c4.66-27.904-14.182-54.272-42.086-58.931-28.007-4.71-54.323 14.182-58.88 42.086l-102.4 614.4c-4.66 27.904 14.182 54.272 42.086 58.931a52.65 52.65 0 0 0 8.448.666c24.576 0 46.285-17.766 50.432-42.752z',
+                      fill: 'currentColor',
+                    },
+                  )),
+            );
+          };
+          /* harmony default export */ __webpack_exports__['default'] = SvgCode;
+
+          /***/
+        },
+
+      /***/ './src/assets/img/delete.svg':
+        /*!***********************************!*\
+  !*** ./src/assets/img/delete.svg ***!
+  \***********************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          var _path;
+          function _extends() {
+            return (
+              (_extends = Object.assign
+                ? Object.assign.bind()
+                : function (n) {
+                    for (var e = 1; e < arguments.length; e++) {
+                      var t = arguments[e];
+                      for (var r in t)
+                        ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
+                    }
+                    return n;
+                  }),
+              _extends.apply(null, arguments)
+            );
+          }
+
+          var SvgDelete = function SvgDelete(props) {
+            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+              'svg',
+              _extends(
+                {
+                  width: 16,
+                  height: 16,
+                  xmlns: 'http://www.w3.org/2000/svg',
+                },
+                props,
+              ),
+              _path ||
+                (_path =
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_0__.createElement(
+                    'path',
+                    {
+                      d: 'M15.5 2a.5.5 0 0 1 .09.992L15.5 3H14v10.6a2.4 2.4 0 0 1-2.4 2.4H4.4A2.4 2.4 0 0 1 2 13.6V3H.5a.5.5 0 0 1-.09-.992L.5 2h15ZM13 3H3v10.6a1.4 1.4 0 0 0 1.265 1.394L4.4 15h7.2a1.4 1.4 0 0 0 1.394-1.265L13 13.6V3ZM6 6a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L5.5 11.5v-5A.5.5 0 0 1 6 6Zm4 0a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L9.5 11.5v-5A.5.5 0 0 1 10 6Zm.5-6a.5.5 0 0 1 .09.992L10.5 1h-5a.5.5 0 0 1-.09-.992L5.5 0h5Z',
+                      fill: 'currentColor',
+                      fillRule: 'evenodd',
+                    },
+                  )),
+            );
+          };
+          /* harmony default export */ __webpack_exports__['default'] =
+            SvgDelete;
+
+          /***/
+        },
+
+      /***/ './src/components/JSONDataEditor/index.js':
+        /*!************************************************!*\
+  !*** ./src/components/JSONDataEditor/index.js ***!
+  \************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! $components/MappingRender */ './src/components/MappingRender.js',
+            );
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/components/JSONDataEditor/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_9__,
+            );
+
+          var Panel = antd__WEBPACK_IMPORTED_MODULE_4__.Collapse.Panel;
+          var TabPane = antd__WEBPACK_IMPORTED_MODULE_4__.Tabs.TabPane;
+          // 普通模式
+          // import MappingRender from '$components/MappingRenderV2'; // 按需加载模式
+
+          var JSONDataEditor = /*#__PURE__*/ (function (_React$PureComponent) {
+            function JSONDataEditor(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /* 获取schema展示风格模式 */
+              _this.catchViewStyle = function (viewStyle) {
+                switch (viewStyle) {
+                  case 'fold':
+                    return 'fold';
+                  case 'tabs':
+                    return 'tabs';
+                  default:
+                    return 'fold';
+                }
+              };
+              /* schema一级字段Title显示 */
+              _this.renderHeader = function (format) {
+                switch (format) {
+                  case 'func':
+                    return '功能设置';
+                  case 'style':
+                    return '样式设置';
+                  case 'data':
+                    return '数据设置';
+                  default:
+                    return '属性设置';
+                }
+              };
+              _this.state = {
+                jsonView: props.jsonView || false,
+                // 是否显示code模式，默认不显示code模式
+                viewStyle: _this.catchViewStyle(props.viewStyle), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
+              };
+              // 根据props.schemaData对jsonSchema进行初始化
+              if (props.schemaData) {
+                _this.props.initJSONSchemaData(props.schemaData);
+                // 根据props.jsonData对jsonData进行初始化
+                _this.props.initJSONData(props.jsonData);
+              } else if (props.jsonData) {
+                // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
+                var jsonSchema = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.json2schema)(
+                  props.jsonData,
+                ); // 通过json转换schema
+                _this.props.initJSONSchemaData(jsonSchema);
+                // 根据props.jsonData对jsonData进行初始化
+                _this.props.initJSONData(props.jsonData);
               }
-              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
-                CodeAreaFormSchema,
-                _React$PureComponent,
+              // 读取宽屏和小屏的配置
+              if (props.wideScreen) {
+                _this.props.setPageScreen(props.wideScreen);
+              }
+              // 记录onChange事件
+              if (props.onChange) {
+                _this.props.initOnChange(props.onChange);
+              }
+
+              // 获取dynamicDataList（动态数据源）
+              if (props.dynamicDataList) {
+                _this.props.setDynamicDataList(props.dynamicDataList);
+              }
+              // 配置类数据
+              if (props.options) {
+                _this.props.setOptions(props.options);
+              }
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              JSONDataEditor,
+              _React$PureComponent,
+            );
+            var _proto = JSONDataEditor.prototype;
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.schemaData,
+                    this.props.schemaData,
+                  )
+                ) {
+                  this.props.JSONSchemaChange(nextProps.schemaData);
+                }
+                /** 2. 初始化jsonData */
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.jsonData,
+                    this.props.jsonData,
+                  )
+                ) {
+                  this.props.initJSONData(nextProps.jsonData);
+                }
+                // 读取code模式配置
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.jsonView,
+                    this.props.jsonView,
+                  )
+                ) {
+                  this.setState({
+                    jsonView: nextProps.jsonView,
+                  });
+                }
+                // 读取展示模式配置
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.viewStyle,
+                    this.props.viewStyle,
+                  )
+                ) {
+                  this.setState({
+                    viewStyle: nextProps.viewStyle,
+                  });
+                }
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.wideScreen,
+                    this.props.wideScreen,
+                  )
+                ) {
+                  this.props.setPageScreen(nextProps.wideScreen);
+                }
+                // 记录onChange事件
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.onChange,
+                    this.props.onChange,
+                  )
+                ) {
+                  this.props.initOnChange(nextProps.onChange);
+                }
+
+                // 获取dynamicDataList（动态数据源）
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.dynamicDataList,
+                    this.props.dynamicDataList,
+                  )
+                ) {
+                  this.props.setDynamicDataList(nextProps.dynamicDataList);
+                }
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    nextProps.options,
+                    this.props.options,
+                  )
+                ) {
+                  this.props.setOptions(nextProps.options);
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props = this.props,
+                jsonSchema = _this$props.jsonSchema,
+                lastUpdateTime = _this$props.lastUpdateTime,
+                jsonLastUpdateTime = _this$props.jsonLastUpdateTime,
+                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
+                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
+                updateFormValueData = _this$props.updateFormValueData;
+              var _this$state = this.state,
+                jsonView = _this$state.jsonView,
+                viewStyle = _this$state.viewStyle;
+              var isEmpty = (0,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.isEmptySchema)(
+                jsonSchema,
+              ); // 判断是否是空的schema
+              var isStructured = (0,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.isStructuredSchema)(
+                jsonSchema,
+              ); // 判断是否是结构化的schema数据
+              /**
+               * 备注：此处单独将object进行渲染，主要是为了将Tree根组件抽离出来（以便在此将组件专用的配置数据分类展示），
+               * */
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className: 'json-editor-container',
+                },
+                isEmpty &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'p',
+                    {
+                      className: 'json-editor-empty',
+                    },
+                    '\u5F53\u524DjsonSchema\u6CA1\u6709\u6570\u636E\u5185\u5BB9',
+                  ),
+                !isEmpty &&
+                  !jsonView &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                    null,
+                    isStructured &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        viewStyle === 'fold' &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Collapse,
+                            {
+                              defaultActiveKey: jsonSchema.propertyOrder,
+                              expandIconPosition: 'right',
+                              bordered: false,
+                            },
+                            jsonSchema.propertyOrder.map(function (key, index) {
+                              /** 1. 获取当前元素的路径值 */
+                              var currentIndexRoute = index;
+                              var currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                              /** 2. 获取当前元素的key值 */
+                              var currentJsonKey = key;
+                              /** 3. 获取当前元素的json结构对象 */
+                              var currentSchemaData =
+                                jsonSchema.properties[currentJsonKey];
+                              var curType = currentSchemaData.type;
+
+                              /** 获取当前元素的id，用于做唯一标识 */
+                              var nodeKey =
+                                lastUpdateTime +
+                                '-' +
+                                jsonLastUpdateTime +
+                                '-' +
+                                curType +
+                                '-' +
+                                currentJsonKey;
+                              if (
+                                currentSchemaData.propertyOrder &&
+                                currentSchemaData.propertyOrder.length > 0
+                              ) {
+                                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  Panel,
+                                  {
+                                    header:
+                                      currentSchemaData.title ||
+                                      _this2.renderHeader(curType),
+                                    key: currentJsonKey,
+                                  },
+                                  (0,
+                                  $components_MappingRender__WEBPACK_IMPORTED_MODULE_5__[
+                                    'default'
+                                  ])({
+                                    parentType: curType,
+                                    jsonKey: currentJsonKey,
+                                    indexRoute: currentIndexRoute,
+                                    keyRoute: currentKeyRoute,
+                                    nodeKey: nodeKey,
+                                    targetJsonSchema: currentSchemaData,
+                                    isStructuredSchema: isStructured,
+                                    getJSONDataByKeyRoute:
+                                      getJSONDataByKeyRoute,
+                                    keyRoute2indexRoute: keyRoute2indexRoute,
+                                    updateFormValueData: updateFormValueData,
+                                  }),
+                                );
+                              }
+                              return '';
+                            }),
+                          ),
+                        viewStyle === 'tabs' &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Tabs,
+                            {
+                              className: 'tabs-schema-box',
+                              defaultActiveKey: jsonSchema.propertyOrder[0],
+                              centered: true,
+                              hideAdd: true,
+                            },
+                            jsonSchema.propertyOrder.map(function (key, index) {
+                              /** 1. 获取当前元素的路径值 */
+                              var currentIndexRoute = index;
+                              var currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                              /** 2. 获取当前元素的key值 */
+                              var currentJsonKey = key;
+                              /** 3. 获取当前元素的json结构对象 */
+                              var currentSchemaData =
+                                jsonSchema.properties[currentJsonKey];
+                              var curType = currentSchemaData.type;
+
+                              /** 5. 获取当前元素的id，用于做唯一标识 */
+                              var nodeKey =
+                                lastUpdateTime +
+                                '-' +
+                                jsonLastUpdateTime +
+                                '-' +
+                                curType +
+                                '-' +
+                                currentJsonKey;
+                              if (
+                                currentSchemaData.propertyOrder &&
+                                currentSchemaData.propertyOrder.length > 0
+                              ) {
+                                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  TabPane,
+                                  {
+                                    tab:
+                                      currentSchemaData.title ||
+                                      _this2.renderHeader(curType),
+                                    key: currentJsonKey,
+                                    closable: false,
+                                    className: 'tabs-schema-item',
+                                  },
+                                  (0,
+                                  $components_MappingRender__WEBPACK_IMPORTED_MODULE_5__[
+                                    'default'
+                                  ])({
+                                    parentType: curType,
+                                    jsonKey: currentJsonKey,
+                                    indexRoute: currentIndexRoute,
+                                    keyRoute: currentKeyRoute,
+                                    nodeKey: nodeKey,
+                                    targetJsonSchema: currentSchemaData,
+                                    isStructuredSchema: isStructured,
+                                    getJSONDataByKeyRoute:
+                                      getJSONDataByKeyRoute,
+                                    keyRoute2indexRoute: keyRoute2indexRoute,
+                                    updateFormValueData: updateFormValueData,
+                                  }),
+                                );
+                              }
+                              return '';
+                            }),
+                          ),
+                      ),
+                    !isStructured &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        (0,
+                        $components_MappingRender__WEBPACK_IMPORTED_MODULE_5__[
+                          'default'
+                        ])({
+                          parentType: '',
+                          jsonKey: '',
+                          indexRoute: '',
+                          keyRoute: '',
+                          nodeKey: '',
+                          targetJsonSchema: jsonSchema,
+                          getJSONDataByKeyRoute: getJSONDataByKeyRoute,
+                          keyRoute2indexRoute: keyRoute2indexRoute,
+                          updateFormValueData: updateFormValueData,
+                        }),
+                      ),
+                  ),
+                !isEmpty &&
+                  jsonView &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_6__[
+                      'default'
+                    ],
+                    {
+                      nodeKey: 'jsonView',
+                      keyRoute: '',
+                      targetJsonSchema: jsonSchema,
+                    },
+                  ),
               );
-              var _proto = CodeAreaFormSchema.prototype;
-              return (
-                (_proto.componentWillMount = function () {
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.x.call(this);
-                }),
-                (_proto.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    $mixins_index__WEBPACK_IMPORTED_MODULE_11__.x.call(
-                      this,
-                      e.keyRoute,
-                    );
-                }),
-                (_proto.render = function render() {
-                  var _this2 = this,
-                    _this$props2 = this.props,
-                    isReadOnly = _this$props2.isReadOnly,
-                    jsonKey = _this$props2.jsonKey,
-                    isIgnoreWarn = _this$props2.isIgnoreWarn,
-                    nodeKey = _this$props2.nodeKey,
-                    keyRoute = _this$props2.keyRoute,
-                    targetJsonSchema = _this$props2.targetJsonSchema,
-                    pageScreen = _this$props2.pageScreen,
-                    getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute,
-                    _this$state = this.state,
-                    isShowWarn = _this$state.isShowWarn,
-                    warnText = _this$state.warnText,
-                    readOnly = isReadOnly || targetJsonSchema.readOnly || !1,
-                    curJsonData = getJSONDataByKeyRoute(keyRoute);
-                  return (
-                    (curJsonData =
-                      void 0 !== curJsonData
-                        ? curJsonData
-                        : targetJsonSchema.default || '() => {}'),
-                    (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.Gv)(
-                      curJsonData,
-                    ) && (curJsonData = JSON.stringify(curJsonData, null, 2)),
-                    react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      'div',
+            };
+            return JSONDataEditor;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          JSONDataEditor.propTypes = {
+            viewStyle: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            wideScreen: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().func,
+            jsonView: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            schemaData:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
+            jsonData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
+            dynamicDataList:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            options: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              jsonSchema: stores.JSONSchemaStore.jsonSchema,
+              lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
+              jsonLastUpdateTime: stores.JSONEditorStore.lastUpdateTime,
+              initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
+              JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
+              initJSONData: stores.JSONEditorStore.initJSONData,
+              initOnChange: stores.JSONEditorStore.initOnChange,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              keyRoute2indexRoute: stores.JSONSchemaStore.keyRoute2indexRoute,
+              setDynamicDataList: stores.JSONEditorStore.setDynamicDataList,
+              setOptions: stores.JSONEditorStore.setOptions,
+              setPageScreen: stores.JSONSchemaStore.setPageScreen,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              JSONDataEditor,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/components/MappingRender.js':
+        /*!*****************************************!*\
+  !*** ./src/components/MappingRender.js ***!
+  \*****************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/extends */ '@babel/runtime/helpers/extends',
+            );
+          /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! ../utils */ './src/utils/index.js');
+          /* harmony import */ var $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(
+              /*! $renderers/ArraySchema/index */ './src/renderers/ArraySchema/index.js',
+            );
+          /* harmony import */ var $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(
+              /*! $renderers/ObjectSchema/index */ './src/renderers/ObjectSchema/index.js',
+            );
+          /* harmony import */ var $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! $renderers/DataSourceSchema/index */ './src/renderers/DataSourceSchema/index.js',
+            );
+          /* harmony import */ var $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! $renderers/DynamicDataSchema/index */ './src/renderers/DynamicDataSchema/index.js',
+            );
+          /* harmony import */ var $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $renderers/EventSchema/index */ './src/renderers/EventSchema/index.js',
+            );
+          /* harmony import */ var $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/QuantitySchema/index */ './src/renderers/QuantitySchema/index.js',
+            );
+          /* harmony import */ var $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! $renderers/BoxStyleSchema/index */ './src/renderers/BoxStyleSchema/index.js',
+            );
+          /* harmony import */ var $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $renderers/RadioSchema/index */ './src/renderers/RadioSchema/index.js',
+            );
+          /* harmony import */ var $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(
+              /*! $renderers/CheckboxSchema/index */ './src/renderers/CheckboxSchema/index.js',
+            );
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(
+              /*! $renderers/TextAreaFormSchema/index */ './src/renderers/TextAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_14__ =
+            __webpack_require__(
+              /*! $renderers/TextEditorSchema/index */ './src/renderers/TextEditorSchema/index.js',
+            );
+          /* harmony import */ var $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_15__ =
+            __webpack_require__(
+              /*! $renderers/NumberFormSchema/index */ './src/renderers/NumberFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_16__ =
+            __webpack_require__(
+              /*! $renderers/BooleanFormSchema/index */ './src/renderers/BooleanFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_17__ =
+            __webpack_require__(
+              /*! $renderers/DateTimeFormSchema/index */ './src/renderers/DateTimeFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
+            __webpack_require__(
+              /*! $renderers/TimeFormSchema/index */ './src/renderers/TimeFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
+            __webpack_require__(
+              /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_20__ =
+            __webpack_require__(
+              /*! $renderers/ColorFormSchemaV3/index */ './src/renderers/ColorFormSchemaV3/index.js',
+            );
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_21__ =
+            __webpack_require__(
+              /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
+            __webpack_require__(
+              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
+            __webpack_require__(
+              /*! $renderers/HtmlAreaFormSchema/index */ './src/renderers/HtmlAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_24__ =
+            __webpack_require__(
+              /*! $renderers/SelectSchema/index */ './src/renderers/SelectSchema/index.js',
+            );
+          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+            __webpack_require__(
+              /*! $renderers/DynamicConfigSchema/index */ './src/renderers/DynamicConfigSchema/index.js',
+            );
+          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
+            __webpack_require__(
+              /*! $renderers/SohuDataSourceSchema/index */ './src/renderers/SohuDataSourceSchema/index.js',
+            );
+          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
+            __webpack_require__(
+              /*! $renderers/SohuEventSchema/index */ './src/renderers/SohuEventSchema/index.js',
+            );
+
+          /** 根据当前类型选择对应的组件进行渲染 */
+          var MappingRender = function MappingRender(props) {
+            var nodeKey = props.nodeKey,
+              jsonKey = props.jsonKey,
+              keyRoute = props.keyRoute,
+              targetJsonSchema = props.targetJsonSchema,
+              getJSONDataByKeyRoute = props.getJSONDataByKeyRoute,
+              keyRoute2indexRoute = props.keyRoute2indexRoute,
+              updateFormValueData = props.updateFormValueData;
+            var curType = targetJsonSchema.type;
+
+            // 获取当前字段的条件规则
+            var hiddenRule = {};
+            if (targetJsonSchema.hiddenRule) {
+              hiddenRule = targetJsonSchema.hiddenRule;
+            }
+            var curConditionValue = '';
+            var curNodeKey = nodeKey;
+
+            // 隐藏条件成立则直接返回
+            if (
+              hiddenRule.conditionProp &&
+              (0, _utils__WEBPACK_IMPORTED_MODULE_2__.hasProperties)(
+                hiddenRule.conditionValue,
+              )
+            ) {
+              var curConditionProp = hiddenRule.conditionProp;
+              var needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
+              var curConditionKeyRoute = curConditionProp.keyRoute; // 条件字段的key值
+
+              // 获取条件字段的数值
+              curConditionValue = getJSONDataByKeyRoute(curConditionKeyRoute);
+              if (needConditionValue === curConditionValue) {
+                if (targetJsonSchema.clearValueOnHidden) {
+                  // 删除掉隐藏的表单项数值
+                  updateFormValueData(keyRoute, undefined);
+                }
+                return;
+              }
+            }
+            // 将条件字段的数值作为key的一部分
+            curNodeKey = nodeKey + '-' + curConditionValue;
+            var newProps =
+              _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                {},
+                props,
+                {
+                  nodeKey: curNodeKey,
+                },
+              );
+            switch (curType) {
+              case 'object':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_4__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'dynamic-config':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_25__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'sohu-source':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_26__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'sohu-event':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_27__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'array':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_3__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'dynamic-data':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_6__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'datasource':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_5__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'event':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_7__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'quantity':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'box-style':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'radio':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'select':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_24__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'checkboxes':
+                // 多选
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_11__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'input':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_12__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'textarea':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'text-editor':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_14__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'number':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_15__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'boolean':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_16__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'date':
+              case 'date-time':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'time':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'url':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_19__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'color':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_20__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'json':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_21__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'codearea':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'htmlarea':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              default:
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_12__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+            }
+          };
+          /* harmony default export */ __webpack_exports__['default'] =
+            MappingRender;
+
+          /***/
+        },
+
+      /***/ './src/mixins/index.js':
+        /*!*****************************!*\
+  !*** ./src/mixins/index.js ***!
+  \*****************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ catchJsonDataByWebCache: function () {
+              return /* binding */ catchJsonDataByWebCache;
+            },
+            /* harmony export */
+          });
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+
+          /** 从WebCache中获取jsonData数据
+           * 备注：引用catchJsonDataByWebCache前，请确保当前组件的props中包含以下属性：
+           * keyRoute、targetJsonSchema、updateFormValueData
+           * getJSONDataByKeyRoute、getInitJsonDataByKeyRoute
+           * */
+          function catchJsonDataByWebCache(curKeyRoute) {
+            var _this$props = this.props,
+              targetJsonSchema = _this$props.targetJsonSchema,
+              getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute = _this$props.getInitJsonDataByKeyRoute,
+              updateFormValueData = _this$props.updateFormValueData;
+            var curType = targetJsonSchema.type;
+            var keyRoute = curKeyRoute || this.props.keyRoute;
+            var backUpKeyRoute = (0,
+            $utils_index__WEBPACK_IMPORTED_MODULE_0__.getWebCacheData)(
+              keyRoute + '-' + curType,
+            );
+            if (backUpKeyRoute) {
+              // 1. 先尝试从jsonData中获取数据
+              var beckUpJsonData = getJSONDataByKeyRoute(backUpKeyRoute);
+              if (!beckUpJsonData) {
+                // 2. 再尝试从jsonDataTemp中获取数据
+                beckUpJsonData = getInitJsonDataByKeyRoute(backUpKeyRoute);
+              }
+              if (beckUpJsonData) {
+                // 删除前端缓存后立即更新到jsonData中
+                (0,
+                $utils_index__WEBPACK_IMPORTED_MODULE_0__.deleteWebCacheData)(
+                  keyRoute + '-' + curType,
+                );
+                updateFormValueData(keyRoute, beckUpJsonData); // 更新数值
+              }
+            }
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/ArraySchema/index.js':
+        /*!********************************************!*\
+  !*** ./src/renderers/ArraySchema/index.js ***!
+  \********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $components/MappingRender */ './src/components/MappingRender.js',
+            );
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+            );
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/ArraySchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_11__,
+            );
+          /* harmony import */ var $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! $assets/img/delete.svg */ './src/assets/img/delete.svg',
+            );
+          /* harmony import */ var $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(
+              /*! $assets/img/addElem.svg */ './src/assets/img/addElem.svg',
+            );
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__ =
+            __webpack_require__(
+              /*! $assets/img/code.svg */ './src/assets/img/code.svg',
+            );
+
+          // import ObjectSchema from '$renderers/ObjectSchema/index';
+
+          /**
+           * 数组类型：用于展示数组类型的配置字段
+           * 功能点：拖拽排序【新增】、上下移动子项、新增子项、复制子项、删除子项、折叠、源码模式切换
+           * 展示：以折叠面板形式展示
+           */
+          var ArraySchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function ArraySchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /** 添加数组项 */
+              _this.addArrayItem = function (keyRoute, curArr, curArrIndex) {
+                var maximumChild =
+                  _this.props.targetJsonSchema['maximum-child'];
+                if (curArr && maximumChild && curArr.length >= maximumChild) {
+                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                    '\u6DFB\u52A0\u5931\u8D25\uFF0C\u6700\u591A\u53EF\u6DFB\u52A0' +
+                      maximumChild +
+                      '\u4E2A\u5B50\u9879',
+                  );
+                } else {
+                  _this.props.addArrayItem(keyRoute, curArrIndex);
+                }
+              };
+              /** 删除数组项 */
+              _this.deleteArrItem = function (keyRoute, arrIndex, curArr) {
+                var minimumChild =
+                  _this.props.targetJsonSchema['minimum-child'];
+                if (curArr && minimumChild && curArr.length <= minimumChild) {
+                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                    '\u5220\u9664\u5931\u8D25\uFF0C\u81F3\u5C11\u9700\u8981\u4FDD\u7559' +
+                      minimumChild +
+                      '\u4E2A\u5B50\u9879',
+                  );
+                } else {
+                  _this.props.deleteArrayIndex(keyRoute, arrIndex);
+                }
+              };
+              /**
+               * 各类元素的onMouseEnter事件
+               */
+              _this.elemHoverEnterEvent = function (event, currentIndex) {
+                event.stopPropagation();
+
+                // 当前元素没有在选中态，且不是上一次hover态的元素
+                if (currentIndex !== _this.state.hoverIndex) {
+                  _this.setState({
+                    hoverIndex: currentIndex,
+                  });
+                }
+              };
+              /**
+               * 各类元素的onMouseLeave事件
+               */
+              _this.elemHoverLeaveEvent = function (event, currentIndex) {
+                event.stopPropagation();
+                // 当前元素没有在选中态，且不是上一次hover态的元素
+                if (currentIndex === _this.state.hoverIndex) {
+                  _this.setState({
+                    hoverIndex: '',
+                  });
+                }
+              };
+              /**
+               * 获取当前数组项的Title：数组项默认使用其第一个非空子项的数值作为title
+               */
+              _this.getArrItemTitle = function (arrItem) {
+                if (
+                  arrItem &&
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isObject)(
+                    arrItem,
+                  )
+                ) {
+                  var arrItemKeys = Object.keys(arrItem);
+                  for (
+                    var index = 0, size = arrItemKeys.length;
+                    index < size;
+                    index++
+                  ) {
+                    var itemVal = arrItem[arrItemKeys[index]];
+                    // 只有不为空时才赋值（忽略URL类型数值）
+                    if (
+                      itemVal &&
+                      ((0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isNumber)(
+                        itemVal,
+                      ) ||
+                        ((0,
+                        $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isString)(
+                          itemVal,
+                        ) &&
+                          !(0,
+                          $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isURL)(
+                            itemVal,
+                          ) &&
+                          !(0,
+                          $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isColor)(
+                            itemVal,
+                          )))
+                    ) {
+                      return itemVal;
+                    }
+                  }
+                } else {
+                  return arrItem;
+                }
+                return '';
+              };
+              _this.state = {
+                currentActiveArrIndex: -1,
+                // 记录当前展开的数组项，默认展开第一个数组项
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false,
+                // 是否为关闭状态，默认是开启状态
+                hoverIndex: '', // 记录当前处于hover中的数据项
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.addArrayItem = _this.addArrayItem.bind(_this);
+              _this.deleteArrItem = _this.deleteArrItem.bind(_this);
+              _this.elemHoverEnterEvent = _this.elemHoverEnterEvent.bind(_this);
+              _this.elemHoverLeaveEvent = _this.elemHoverLeaveEvent.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              ArraySchema,
+              _React$PureComponent,
+            );
+            var _proto = ArraySchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$sho,
+                _this2 = this;
+              var _this$props = this.props,
+                keyRoute = _this$props.keyRoute,
+                jsonKey = _this$props.jsonKey,
+                nodeKey = _this$props.nodeKey,
+                pageScreen = _this$props.pageScreen,
+                indexRoute = _this$props.indexRoute,
+                targetJsonSchema = _this$props.targetJsonSchema,
+                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
+                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
+                updateFormValueData = _this$props.updateFormValueData;
+              var _this$state = this.state,
+                jsonView = _this$state.jsonView,
+                isClosed = _this$state.isClosed,
+                hoverIndex = _this$state.hoverIndex,
+                currentActiveArrIndex = _this$state.currentActiveArrIndex;
+              var curType = targetJsonSchema.type;
+              // 是否显示源码切换按钮
+              var showCodeViewBtn =
+                (_targetJsonSchema$sho = targetJsonSchema.showCodeViewBtn) !=
+                null
+                  ? _targetJsonSchema$sho
+                  : true;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
+              var arrayItemsDataObj = targetJsonSchema.items; // schema数据
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
                       {
-                        className:
-                          'wideScreen' === pageScreen
-                            ? 'wide-screen-element-warp container-warp'
-                            : 'mobile-screen-element-warp',
-                        key: nodeKey,
-                        id: nodeKey,
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
                       },
-                      react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        'div',
-                        { className: 'element-title' },
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                           'span',
-                          { className: 'title-text warning-text' },
-                          readOnly ? '[只读]' : '',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
                         ),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'array-schema-box content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'element-title',
+                      onClick: function onClick(event) {
+                        _this2.setState({
+                          isClosed: !isClosed,
+                        });
+                        event.preventDefault();
+                        event.stopPropagation();
+                      },
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                      },
+                      '\u6570\u7EC4\u914D\u7F6E',
+                    ),
+                    isClosed
+                      ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                          {
+                            className: 'close-operate-btn',
+                          },
+                        )
+                      : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                          {
+                            className: 'close-operate-btn',
+                          },
+                        ),
+                    showCodeViewBtn &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'display-source-btn',
+                          onClick: function onClick(event) {
+                            _this2.setState({
+                              jsonView: !jsonView,
+                            });
+                            event.preventDefault();
+                            event.stopPropagation();
+                          },
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                           antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
                           {
-                            title:
-                              'wideScreen' === pageScreen
-                                ? targetJsonSchema.description
-                                : '',
-                            placement: 'top',
+                            title: jsonView ? '关闭源码模式' : '开启源码模式',
                           },
-                          react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            'span',
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__[
+                              'default'
+                            ],
                             {
-                              className: 'title-text',
-                              title:
-                                'wideScreen' === pageScreen &&
-                                targetJsonSchema.title &&
-                                targetJsonSchema.title.length >
-                                  (readOnly ? 4 : 6)
-                                  ? targetJsonSchema.title
-                                  : '',
+                              className: jsonView
+                                ? 'info-icon active'
+                                : 'info-icon',
                             },
-                            targetJsonSchema.title,
-                            targetJsonSchema.showKey &&
-                              react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                'span',
-                                null,
-                                '（',
-                                (0,
-                                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
-                                  jsonKey,
-                                  { length: 15 },
-                                ),
-                                '）',
-                              ),
                           ),
                         ),
-                        'mobileScreen' === pageScreen &&
-                          targetJsonSchema.description &&
-                          react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
-                            {
-                              title: targetJsonSchema.description,
-                              placement: 'top',
-                            },
-                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_10__.InfoCircleOutlined,
-                              { className: 'info-icon' },
-                            ),
-                          ),
                       ),
-                      react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        'div',
-                        { className: 'content-item' },
-                        !isIgnoreWarn &&
-                          isShowWarn &&
-                          react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            'div',
-                            { className: 'warning-box code-area-item' },
-                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              'div',
-                              { className: 'warning-img' },
-                              'X',
-                            ),
-                            react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              'div',
-                              { className: 'warning-text' },
-                              warnText,
-                            ),
-                          ),
-                        react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: '\u6DFB\u52A0\u6570\u636E\u9879',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.PlusOutlined,
+                        // src={addElemIcon}
+                        {
+                          className: 'array-add-child-btn',
+                          onClick: function onClick(event) {
+                            _this2.addArrayItem(keyRoute, curJsonData);
+                            event.preventDefault();
+                            event.stopPropagation();
+                          },
+                        },
+                      ),
+                    ),
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className:
+                        'array-content ' +
+                        (jsonView ? 'json-view-array' : '') +
+                        ' ' +
+                        (isClosed ? 'closed' : ''),
+                    },
+                    !jsonView &&
+                      (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isArray)(
+                        curJsonData,
+                      ) &&
+                      curJsonData.map(function (arrItem, arrIndex) {
+                        var curNodeKey =
+                          nodeKey +
+                          '-array-items-' +
+                          curJsonData.length +
+                          '-' +
+                          arrIndex;
+                        var curIndexRoute = indexRoute
+                          ? indexRoute + '-0'
+                          : '0';
+                        var curKeyRoute = keyRoute
+                          ? keyRoute + '-' + arrIndex
+                          : '' + arrIndex;
+                        var arrTitle = _this2.getArrItemTitle(arrItem); // 获取数组项第一个非空元素的值
+                        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
                           {
-                            id: 'code_area_ace',
-                            key: nodeKey + '-ace',
-                            className: 'code-area-item',
-                            value: curJsonData,
-                            mode: 'javascript',
-                            theme: 'monokai',
-                            name: 'JS_CODE_EDIT',
-                            fontSize: 14,
-                            showPrintMargin: !0,
-                            showGutter: !0,
-                            highlightActiveLine: !0,
-                            readOnly: readOnly,
-                            minLines: 5,
-                            maxLines: 30,
-                            width: '100%',
-                            onChange: function onChange(newJsonData) {
-                              try {
-                                eval(newJsonData),
-                                  _this2.handleValueChange(newJsonData),
-                                  _this2.setState({ isShowWarn: !1 });
-                              } catch (e) {
-                                _this2.handleValueChange(newJsonData),
-                                  _this2.setState({
-                                    warnText: e.message,
-                                    isShowWarn: !0,
-                                  });
-                              }
-                            },
-                            setOptions: {
-                              useWorker: !1,
-                              showLineNumbers: !0,
-                              tabSize: 2,
-                            },
+                            className: 'array-item',
+                            key: curKeyRoute,
                           },
-                        ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            {
+                              className: 'array-item-header',
+                              onClick: function onClick() {
+                                _this2.setState({
+                                  currentActiveArrIndex:
+                                    currentActiveArrIndex === arrIndex
+                                      ? -1
+                                      : arrIndex,
+                                });
+                              },
+                              onMouseMove: function onMouseMove(event) {
+                                _this2.elemHoverEnterEvent(event, arrIndex);
+                              },
+                              onMouseLeave: function onMouseLeave(event) {
+                                _this2.elemHoverLeaveEvent(event, arrIndex);
+                              },
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              'div',
+                              {
+                                className: 'array-title-text',
+                              },
+                              arrTitle
+                                ? arrTitle
+                                : arrayItemsDataObj.title +
+                                    '/' +
+                                    (arrIndex + 1),
+                            ),
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              'div',
+                              {
+                                className: 'array-operate-box',
+                              },
+                              currentActiveArrIndex !== arrIndex
+                                ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                                    {
+                                      className:
+                                        'close-operate-btn array-operate-btn',
+                                    },
+                                  )
+                                : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                                    {
+                                      className:
+                                        'close-operate-btn array-operate-btn',
+                                    },
+                                  ),
+                              /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                {
+                                  title:
+                                    '\u5220\u9664' +
+                                    arrayItemsDataObj.title +
+                                    '/' +
+                                    (arrIndex + 1),
+                                },
+                                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  antd__WEBPACK_IMPORTED_MODULE_4__.Popconfirm,
+                                  {
+                                    placement: 'top',
+                                    title:
+                                      '\u786E\u5B9A\u8981\u5220\u9664' +
+                                      arrayItemsDataObj.title +
+                                      '/' +
+                                      (arrIndex + 1) +
+                                      '\u5417\uFF1F',
+                                    onCancel: function onCancel(event) {
+                                      event.preventDefault();
+                                      event.stopPropagation();
+                                    },
+                                    onConfirm: function onConfirm(event) {
+                                      _this2.deleteArrItem(
+                                        keyRoute,
+                                        arrIndex,
+                                        curJsonData,
+                                      );
+                                      event.preventDefault();
+                                      event.stopPropagation();
+                                    },
+                                    okText: '\u786E\u5B9A',
+                                    cancelText: '\u53D6\u6D88',
+                                  },
+                                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                    $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_12__[
+                                      'default'
+                                    ],
+                                    // <img src={deleteIcon}
+                                    {
+                                      className:
+                                        'delete-operate-btn array-operate-btn',
+                                      onClick: function onClick(event) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                      },
+                                    },
+                                  ),
+                                ),
+                              ),
+                              /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                {
+                                  title:
+                                    '\u590D\u5236' +
+                                    arrayItemsDataObj.title +
+                                    '/' +
+                                    (arrIndex + 1),
+                                },
+                                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_13__[
+                                    'default'
+                                  ],
+                                  // <img src={addElemIcon}
+                                  {
+                                    className: 'array-operate-btn',
+                                    onClick: function onClick(event) {
+                                      _this2.addArrayItem(
+                                        keyRoute,
+                                        curJsonData,
+                                        arrIndex,
+                                      ); // curArrIndex
+                                      event.preventDefault();
+                                      event.stopPropagation();
+                                    },
+                                  },
+                                ),
+                              ),
+                              arrIndex !== 0 &&
+                                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                  {
+                                    title: '\u5411\u4E0A\u79FB\u52A8',
+                                  },
+                                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.ArrowUpOutlined,
+                                    {
+                                      className: 'array-operate-btn',
+                                      onClick: function onClick(event) {
+                                        _this2.props.sortArrayItem(
+                                          keyRoute,
+                                          arrIndex,
+                                          'up',
+                                        );
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                      },
+                                    },
+                                  ),
+                                ),
+                              arrIndex !== curJsonData.length - 1 &&
+                                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                  {
+                                    title: '\u5411\u4E0B\u79FB\u52A8',
+                                  },
+                                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.ArrowDownOutlined,
+                                    {
+                                      className: 'array-operate-btn',
+                                      onClick: function onClick(event) {
+                                        _this2.props.sortArrayItem(
+                                          keyRoute,
+                                          arrIndex,
+                                          'down',
+                                        );
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                      },
+                                    },
+                                  ),
+                                ),
+                            ),
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            {
+                              className:
+                                'array-item-content ' +
+                                (currentActiveArrIndex === arrIndex
+                                  ? 'open'
+                                  : 'closed'),
+                              key: curNodeKey,
+                              id: curNodeKey,
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
+                                'default'
+                              ],
+                              {
+                                parentType: curType,
+                                jsonKey: 'items',
+                                indexRoute: curIndexRoute,
+                                keyRoute: curKeyRoute,
+                                nodeKey: curNodeKey,
+                                targetJsonSchema: arrayItemsDataObj,
+                                isArrayItem: true,
+                                arrIndex: arrIndex,
+                                getJSONDataByKeyRoute: getJSONDataByKeyRoute,
+                                keyRoute2indexRoute: keyRoute2indexRoute,
+                                updateFormValueData: updateFormValueData,
+                              },
+                            ),
+                          ),
+                        );
+                      }),
+                    jsonView &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
+                          'default'
+                        ],
+                        this.props,
                       ),
-                    )
-                  );
-                }),
-                CodeAreaFormSchema
+                  ),
+                ),
               );
-            })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
-          (CodeAreaFormSchema.propTypes = {
+            };
+            return ArraySchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          ArraySchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              triggerChange: stores.JSONEditorStore.triggerChange,
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
+              addArrayItem: stores.JSONEditorStore.addArrayItem,
+              sortArrayItem: stores.JSONEditorStore.sortArrayItem,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(ArraySchema),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/BooleanFormSchema/index.js':
+        /*!**************************************************!*\
+  !*** ./src/renderers/BooleanFormSchema/index.js ***!
+  \**************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+
+          var BooleanFormSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function BooleanFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (checked) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, checked); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              BooleanFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = BooleanFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_7__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Switch,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        defaultChecked:
+                          curJsonData !== undefined
+                            ? curJsonData
+                            : targetJsonSchema.default,
+                        checkedChildren: 'true',
+                        unCheckedChildren: 'false',
+                        onChange: this.handleValueChange,
+                        disabled: targetJsonSchema.readOnly,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return BooleanFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          BooleanFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              BooleanFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/BoxStyleSchema/index.js':
+        /*!***********************************************!*\
+  !*** ./src/renderers/BoxStyleSchema/index.js ***!
+  \***********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/BoxStyleSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_6__,
+            );
+
+          var BoxStyleSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function BoxStyleSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 记录box-style的数值（无需实时响应）
+              _this.layoutStyleObj = {
+                top: '',
+                right: '',
+                bottom: '',
+                left: '',
+                quantity: 'px',
+              };
+              /** 初始化boxStyle的数值 */
+              _this.initBoxStyle = function () {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  targetJsonSchema = _this$props.targetJsonSchema,
+                  getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute;
+                // 从jsonData中获取对应的数值
+                var curJsonData = getJSONDataByKeyRoute(keyRoute);
+                /** 获取quantity中的数值对象（默认第一个就是数值对象） */
+                var unitJsonKey = targetJsonSchema.propertyOrder[0];
+                var unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
+                var quantity = curJsonData.quantity; // 获取数值单位
+                var unitStr = curJsonData.unit || unitJsonSchema.default; // 获取数值
+                // 重置数值
+                _this.layoutStyleObj = {
+                  top: '',
+                  right: '',
+                  bottom: '',
+                  left: '',
+                  quantity: quantity, // 设置单位值
+                };
+                // 设置盒子模型数值
+                if (unitStr) {
+                  var unitArr = unitStr.split(' ');
+                  if (unitArr.length === 1) {
+                    if (unitArr[0] && unitArr[0].indexOf(quantity) >= 0) {
+                      // 表示当前值有单位
+                      _this.layoutStyleObj.top = unitArr[0];
+                      _this.layoutStyleObj.right = unitArr[0];
+                      _this.layoutStyleObj.bottom = unitArr[0];
+                      _this.layoutStyleObj.left = unitArr[0];
+                    } else if (unitArr[0] === 'auto') {
+                      _this.layoutStyleObj.top = 'auto';
+                      _this.layoutStyleObj.right = 'auto';
+                      _this.layoutStyleObj.bottom = 'auto';
+                      _this.layoutStyleObj.left = 'auto';
+                    } else {
+                      _this.layoutStyleObj.top = '' + unitArr[0] + quantity;
+                      _this.layoutStyleObj.right = '' + unitArr[0] + quantity;
+                      _this.layoutStyleObj.bottom = '' + unitArr[0] + quantity;
+                      _this.layoutStyleObj.left = '' + unitArr[0] + quantity;
+                    }
+                  } else {
+                    _this.layoutStyleObj.top = unitArr[0];
+                    _this.layoutStyleObj.right = unitArr[1];
+                    _this.layoutStyleObj.bottom = unitArr[2] || unitArr[0];
+                    _this.layoutStyleObj.left = unitArr[3] || unitArr[1];
+                  }
+                } else if (unitStr === 0) {
+                  _this.layoutStyleObj.top = '' + unitStr + quantity;
+                  _this.layoutStyleObj.right = '' + unitStr + quantity;
+                  _this.layoutStyleObj.bottom = '' + unitStr + quantity;
+                  _this.layoutStyleObj.left = '' + unitStr + quantity;
+                } else {
+                  _this.layoutStyleObj.top = 'auto';
+                  _this.layoutStyleObj.right = 'auto';
+                  _this.layoutStyleObj.bottom = 'auto';
+                  _this.layoutStyleObj.left = 'auto';
+                }
+              };
+              /** 设置布局容器的盒子模型数值 */
+              _this.setLayoutBoxStyle = function (
+                newVal,
+                layoutStyleLock,
+                propKey,
+              ) {
+                if (layoutStyleLock) {
+                  _this.linkLayoutBoxStyle(newVal);
+                } else {
+                  if (newVal === 'auto') {
+                    _this.layoutStyleObj[propKey] = 'auto';
+                  } else if (newVal) {
+                    _this.layoutStyleObj[propKey] =
+                      '' + newVal + _this.layoutStyleObj.quantity;
+                  } else if (newVal === 0 || newVal === '0') {
+                    _this.layoutStyleObj[propKey] =
+                      '0' + _this.layoutStyleObj.quantity;
+                  } else {
+                    _this.layoutStyleObj[propKey] = 'auto';
+                  }
+                  _this.updateBoxStyleState();
+                }
+              };
+              /** 布局容器的盒子模型数值联动设值 */
+              _this.linkLayoutBoxStyle = function (newVal) {
+                var curValue = newVal;
+                if (newVal === 'auto') {
+                  curValue = 'auto';
+                } else if (newVal === 0) {
+                  curValue = '0' + _this.layoutStyleObj.quantity;
+                } else if (newVal) {
+                  curValue = '' + newVal + _this.layoutStyleObj.quantity;
+                } else {
+                  curValue = 'auto';
+                }
+                _this.layoutStyleObj.top = curValue;
+                _this.layoutStyleObj.right = curValue;
+                _this.layoutStyleObj.bottom = curValue;
+                _this.layoutStyleObj.left = curValue;
+                _this.updateBoxStyleState();
+              };
+              _this.getStyleValNum = function (valStr) {
+                if (valStr === 'auto') {
+                  return '';
+                } else if (
+                  valStr === '0' + _this.layoutStyleObj.quantity ||
+                  valStr === '0'
+                ) {
+                  return 0;
+                } else if (valStr) {
+                  var pxIndex = valStr.indexOf(_this.layoutStyleObj.quantity);
+                  if (pxIndex > -1) {
+                    // tslint:disable-next-line:radix
+                    return parseInt(valStr.substring(0, pxIndex));
+                  } else {
+                    // tslint:disable-next-line:radix
+                    return parseInt(valStr);
+                  }
+                }
+                return 0;
+              };
+              /** 数值变动事件处理器 */
+              _this.updateBoxStyleState = function () {
+                var _this$props2 = _this.props,
+                  keyRoute = _this$props2.keyRoute,
+                  updateFormValueData = _this$props2.updateFormValueData;
+                var renderAction = _this.state.renderAction;
+                /** 获取布局容器的盒子模型数值 */
+                var boxStyleUnit =
+                  _this.layoutStyleObj.top +
+                  ' ' +
+                  _this.layoutStyleObj.right +
+                  ' ' +
+                  _this.layoutStyleObj.bottom +
+                  ' ' +
+                  _this.layoutStyleObj.left;
+                var curKeyRoute = keyRoute ? keyRoute + '-unit' : 'unit';
+                updateFormValueData(curKeyRoute, boxStyleUnit); // 更新单位数值
+                _this.setState({
+                  renderAction: !renderAction,
+                });
+              };
+              _this.state = {
+                layoutStyleLock: false,
+                // 是否锁住容器数值值的设置，默认为false，设置为true后4个数值同时联动
+                renderAction: false, // 用于主动触发render的临时变量
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.updateBoxStyleState = _this.updateBoxStyleState.bind(_this);
+              _this.initBoxStyle = _this.initBoxStyle.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              BoxStyleSchema,
+              _React$PureComponent,
+            );
+            var _proto = BoxStyleSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              this.initBoxStyle();
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                this.initBoxStyle();
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                targetJsonSchema = _this$props3.targetJsonSchema,
+                pageScreen = _this$props3.pageScreen;
+              var _this$state = this.state,
+                renderAction = _this$state.renderAction,
+                layoutStyleLock = _this$state.layoutStyleLock;
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp') +
+                    ' ' +
+                    (renderAction ? 'render-mark' : ''),
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item layout-box-style-container',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'center-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        placement: 'top',
+                        title: layoutStyleLock ? '点击解锁联动' : '点击联动',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: layoutStyleLock
+                            ? 'lock-icon'
+                            : 'lock-icon unlock',
+                          onClick: function onClick() {
+                            _this2.setState({
+                              layoutStyleLock: !layoutStyleLock,
+                            });
+                          },
+                        },
+                      ),
+                    ),
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    {
+                      name: 'layoutPaddingTop',
+                      className:
+                        'layout-input-number layout-item layout-item-top\n            ' +
+                        (this.layoutStyleObj.quantity === '%'
+                          ? 'percent'
+                          : this.layoutStyleObj.quantity) +
+                        '-quantity-box',
+                      size: 'small',
+                      value: this.getStyleValNum(this.layoutStyleObj.top),
+                      onPressEnter: function onPressEnter(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'top',
+                        );
+                      },
+                      onBlur: function onBlur(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'top',
+                        );
+                      },
+                    },
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    {
+                      name: 'layoutPaddingRight',
+                      className:
+                        'layout-input-number layout-item layout-item-right\n            ' +
+                        (this.layoutStyleObj.quantity === '%'
+                          ? 'percent'
+                          : this.layoutStyleObj.quantity) +
+                        '-quantity-box',
+                      size: 'small',
+                      value: this.getStyleValNum(this.layoutStyleObj.right),
+                      onPressEnter: function onPressEnter(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'right',
+                        );
+                      },
+                      onBlur: function onBlur(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'right',
+                        );
+                      },
+                    },
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    {
+                      name: 'layoutPaddingBottom',
+                      className:
+                        'layout-input-number layout-item layout-item-bottom\n            ' +
+                        (this.layoutStyleObj.quantity === '%'
+                          ? 'percent'
+                          : this.layoutStyleObj.quantity) +
+                        '-quantity-box',
+                      size: 'small',
+                      value: this.getStyleValNum(this.layoutStyleObj.bottom),
+                      onPressEnter: function onPressEnter(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'bottom',
+                        );
+                      },
+                      onBlur: function onBlur(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'bottom',
+                        );
+                      },
+                    },
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    {
+                      name: 'layoutPaddingLeft',
+                      className:
+                        'layout-input-number layout-item layout-item-left\n            ' +
+                        (this.layoutStyleObj.quantity === '%'
+                          ? 'percent'
+                          : this.layoutStyleObj.quantity) +
+                        '-quantity-box',
+                      size: 'small',
+                      value: this.getStyleValNum(this.layoutStyleObj.left),
+                      onPressEnter: function onPressEnter(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'left',
+                        );
+                      },
+                      onBlur: function onBlur(event) {
+                        var newVal = event.target.value;
+                        _this2.setLayoutBoxStyle(
+                          newVal,
+                          layoutStyleLock,
+                          'left',
+                        );
+                      },
+                    },
+                  ),
+                ),
+              );
+            };
+            return BoxStyleSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          BoxStyleSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              BoxStyleSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/CheckboxSchema/index.js':
+        /*!***********************************************!*\
+  !*** ./src/renderers/CheckboxSchema/index.js ***!
+  \***********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
+            );
+
+          var CheckboxSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function CheckboxSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (checkedValue) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, checkedValue); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              CheckboxSchema,
+              _React$PureComponent,
+            );
+            var _proto = CheckboxSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_5__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_5__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var options = targetJsonSchema.options;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Checkbox.Group,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        onChange: this.handleValueChange,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        disabled: targetJsonSchema.readOnly,
+                      },
+                      options &&
+                        options.length > 0 &&
+                        options.map(function (item, optionIndex) {
+                          var optionLabel = item.label || item.name;
+                          var optionNodeKey =
+                            nodeKey + '-select-' + optionLabel;
+                          return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Checkbox,
+                            {
+                              value: item.value,
+                              key: optionNodeKey,
+                            },
+                            optionLabel,
+                          );
+                        }),
+                    ),
+                  ),
+                ),
+              );
+            };
+            return CheckboxSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          CheckboxSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              CheckboxSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/CodeAreaFormSchema/index.js':
+        /*!***************************************************!*\
+  !*** ./src/renderers/CodeAreaFormSchema/index.js ***!
+  \***************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! react-ace */ 'react-ace');
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react_ace__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/mode-javascript */ 'ace-builds/src-noconflict/mode-javascript',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/theme-monokai */ 'ace-builds/src-noconflict/theme-monokai',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__,
+            );
+
+          var CodeAreaFormSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function CodeAreaFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 组件内部维护的数据
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (newJsonData) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, newJsonData); // 更新数值
+              };
+              _this.state = {
+                isShowWarn: false,
+                // 用于判断是否显示错误信息
+                warnText: '', // 错误内容
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              CodeAreaFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = CodeAreaFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props2 = this.props,
+                isReadOnly = _this$props2.isReadOnly,
+                jsonKey = _this$props2.jsonKey,
+                isIgnoreWarn = _this$props2.isIgnoreWarn,
+                nodeKey = _this$props2.nodeKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var _this$state = this.state,
+                isShowWarn = _this$state.isShowWarn,
+                warnText = _this$state.warnText;
+              var readOnly = isReadOnly || targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              // 格式化JSON数据
+              curJsonData =
+                curJsonData !== undefined
+                  ? curJsonData
+                  : targetJsonSchema.default || '() => {}';
+              // 判断当前jsonData是否是对象类型
+              if (
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isObject)(
+                  curJsonData,
+                )
+              ) {
+                curJsonData = JSON.stringify(curJsonData, null, 2);
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp container-warp'
+                      : 'mobile-screen-element-warp'), //  element-title-card-warp
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  !isIgnoreWarn &&
+                    isShowWarn &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'warning-box code-area-item',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'warning-img',
+                        },
+                        'X',
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'warning-text',
+                        },
+                        warnText,
+                      ),
+                    ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    {
+                      id: 'code_area_ace',
+                      key: nodeKey + '-ace',
+                      className: 'code-area-item',
+                      value: curJsonData,
+                      mode: 'javascript',
+                      theme: 'monokai',
+                      name: 'JS_CODE_EDIT',
+                      fontSize: 14,
+                      showPrintMargin: true,
+                      showGutter: true,
+                      highlightActiveLine: true,
+                      readOnly: readOnly,
+                      minLines: 5,
+                      maxLines: 30,
+                      width: '100%',
+                      onChange: function onChange(newJsonData) {
+                        try {
+                          eval(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                          // 更新jsonData
+                          _this2.handleValueChange(newJsonData);
+                          _this2.setState({
+                            isShowWarn: false,
+                          });
+                        } catch (err) {
+                          // 更新jsonData
+                          _this2.handleValueChange(newJsonData);
+                          _this2.setState({
+                            warnText: err.message,
+                            isShowWarn: true,
+                          });
+                        }
+                      },
+                      setOptions: {
+                        useWorker: false,
+                        showLineNumbers: true,
+                        tabSize: 2,
+                      },
+                    },
+                  ),
+                ),
+              );
+            };
+            return CodeAreaFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          CodeAreaFormSchema.propTypes = {
             isIgnoreWarn: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
             isReadOnly: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
             parentType:
@@ -290,4391 +3221,6865 @@
             nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
             targetJsonSchema:
               prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-          }),
-            (__webpack_exports__.A = (0,
-            mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (e) {
-              return {
-                pageScreen: e.JSONSchemaStore.pageScreen,
-                getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-                updateFormValueData: e.JSONEditorStore.updateFormValueData,
-                getInitJsonDataByKeyRoute:
-                  e.JSONEditorStore.getInitJsonDataByKeyRoute,
-              };
-            })(
-              (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
-                CodeAreaFormSchema,
-              ),
-            ));
-        },
-        919: function (e, t, a) {
-          'use strict';
-          function n(e) {
-            var t = JSON.stringify(e);
-            return JSON.parse(t);
-          }
-          function r(e, t) {
-            return JSON.stringify(e) === JSON.stringify(t);
-          }
-          function o(e) {
-            var t = !1;
-            return null != e && (t = !0), t;
-          }
-          function i(e) {
-            var t = !1;
-            return (
-              ('boolean' !== e &&
-                'date' !== e &&
-                'date-time' !== e &&
-                'time' !== e &&
-                'number' !== e &&
-                'color' !== e &&
-                'quantity' !== e &&
-                'select' !== e) ||
-                (t = !0),
-              t
-            );
-          }
-          function l(e) {
-            if (window.sessionStorage) return window.sessionStorage.getItem(e);
-          }
-          function s(e) {
-            if (window.sessionStorage)
-              return window.sessionStorage.removeItem(e);
-          }
-          a.d(t, {
-            CP: function () {
-              return s;
-            },
-            GT: function () {
-              return o;
-            },
-            TA: function () {
-              return l;
-            },
-            bQ: function () {
-              return n;
-            },
-            n4: function () {
-              return r;
-            },
-            y8: function () {
-              return i;
-            },
-          });
-        },
-        102: function (e, t, a) {
-          'use strict';
-          function n(e) {
-            return /^http[s]?:\/\/.*/.test(e);
-          }
-          function r(e) {
-            return 'String' === Object.prototype.toString.call(e).slice(8, -1);
-          }
-          function o(e) {
-            return (
-              'number' == typeof e ||
-              '[object Number]' === Object.prototype.toString.call(e)
-            );
-          }
-          function i(e) {
-            var t = !1;
-            return (
-              'Array' === Object.prototype.toString.call(e).slice(8, -1) &&
-                (t = !0),
-              t
-            );
-          }
-          function l(e) {
-            var t = !1;
-            return (
-              'Object' === Object.prototype.toString.call(e).slice(8, -1) &&
-                (t = !0),
-              t
-            );
-          }
-          function s(e) {
-            return /^#[0-9a-f]{3,6}$/.test(e);
-          }
-          function c(e) {
-            var t = !1;
-            return (
-              'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
-                (t = !0),
-              t
-            );
-          }
-          a.d(t, {
-            Et: function () {
-              return o;
-            },
-            Gv: function () {
-              return l;
-            },
-            Kg: function () {
-              return r;
-            },
-            Tn: function () {
-              return c;
-            },
-            _o: function () {
-              return s;
-            },
-            cy: function () {
-              return i;
-            },
-            mv: function () {
-              return n;
-            },
-          }),
-            a(85);
-        },
-        641: function () {},
-        997: function () {},
-        766: function () {},
-        523: function () {},
-        597: function () {},
-        232: function () {},
-        534: function () {},
-        161: function () {},
-        258: function () {},
-        6: function () {},
-        196: function () {},
-        505: function () {},
-        12: function () {},
-        396: function () {},
-        104: function (e, t, a) {
-          var n = a(641);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('1fb1d0ec', n, !1, { sourceMap: !1 });
-        },
-        410: function (e, t, a) {
-          var n = a(997);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('220f768b', n, !1, { sourceMap: !1 });
-        },
-        595: function (e, t, a) {
-          var n = a(766);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('56ceba47', n, !1, { sourceMap: !1 });
-        },
-        928: function (e, t, a) {
-          var n = a(523);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('31b3938e', n, !1, { sourceMap: !1 });
-        },
-        220: function (e, t, a) {
-          var n = a(597);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('f7862348', n, !1, { sourceMap: !1 });
-        },
-        819: function (e, t, a) {
-          var n = a(232);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('1b6af5a2', n, !1, { sourceMap: !1 });
-        },
-        759: function (e, t, a) {
-          var n = a(534);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('754f9197', n, !1, { sourceMap: !1 });
-        },
-        90: function (e, t, a) {
-          var n = a(161);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('4ad618f0', n, !1, { sourceMap: !1 });
-        },
-        741: function (e, t, a) {
-          var n = a(258);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('ae856a32', n, !1, { sourceMap: !1 });
-        },
-        657: function (e, t, a) {
-          var n = a(6);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('91732ad6', n, !1, { sourceMap: !1 });
-        },
-        581: function (e, t, a) {
-          var n = a(196);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('5737c47d', n, !1, { sourceMap: !1 });
-        },
-        546: function (e, t, a) {
-          var n = a(505);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('e6602b10', n, !1, { sourceMap: !1 });
-        },
-        165: function (e, t, a) {
-          var n = a(12);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('4cab1cef', n, !1, { sourceMap: !1 });
-        },
-        632: function (e, t, a) {
-          var n = a(396);
-          n.__esModule && (n = n.default),
-            'string' == typeof n && (n = [[e.id, n, '']]),
-            n.locals && (e.exports = n.locals),
-            (0, a(611).A)('54a7813a', n, !1, { sourceMap: !1 });
-        },
-        611: function (e, t, a) {
-          'use strict';
-          function n(e, t) {
-            for (var a = [], n = {}, r = 0; r < t.length; r++) {
-              var o = t[r],
-                i = o[0],
-                l = {
-                  id: e + ':' + r,
-                  css: o[1],
-                  media: o[2],
-                  sourceMap: o[3],
-                };
-              n[i]
-                ? n[i].parts.push(l)
-                : a.push((n[i] = { id: i, parts: [l] }));
-            }
-            return a;
-          }
-          a.d(t, {
-            A: function () {
-              return y;
-            },
-          });
-          var r = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !r)
-            throw new Error(
-              "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
-            );
-          var o = {},
-            i =
-              r && (document.head || document.getElementsByTagName('head')[0]),
-            l = null,
-            s = 0,
-            c = !1,
-            u = function () {},
-            p = null,
-            m = 'data-vue-ssr-id',
-            d =
-              'undefined' != typeof navigator &&
-              /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function y(e, t, a, r) {
-            (c = a), (p = r || {});
-            var i = n(e, t);
-            return (
-              h(i),
-              function (t) {
-                for (var a = [], r = 0; r < i.length; r++) {
-                  var l = i[r];
-                  (s = o[l.id]).refs--, a.push(s);
-                }
-                for (
-                  t ? h((i = n(e, t))) : (i = []), r = 0;
-                  r < a.length;
-                  r++
-                ) {
-                  var s;
-                  if (0 === (s = a[r]).refs) {
-                    for (var c = 0; c < s.parts.length; c++) s.parts[c]();
-                    delete o[s.id];
-                  }
-                }
-              }
-            );
-          }
-          function h(e) {
-            for (var t = 0; t < e.length; t++) {
-              var a = e[t],
-                n = o[a.id];
-              if (n) {
-                n.refs++;
-                for (var r = 0; r < n.parts.length; r++) n.parts[r](a.parts[r]);
-                for (; r < a.parts.length; r++) n.parts.push(S(a.parts[r]));
-                n.parts.length > a.parts.length &&
-                  (n.parts.length = a.parts.length);
-              } else {
-                var i = [];
-                for (r = 0; r < a.parts.length; r++) i.push(S(a.parts[r]));
-                o[a.id] = { id: a.id, refs: 1, parts: i };
-              }
-            }
-          }
-          function g() {
-            var e = document.createElement('style');
-            return (e.type = 'text/css'), i.appendChild(e), e;
-          }
-          function S(e) {
-            var t,
-              a,
-              n = document.querySelector('style[' + m + '~="' + e.id + '"]');
-            if (n) {
-              if (c) return u;
-              n.parentNode.removeChild(n);
-            }
-            if (d) {
-              var r = s++;
-              (n = l || (l = g())),
-                (t = E.bind(null, n, r, !1)),
-                (a = E.bind(null, n, r, !0));
-            } else
-              (n = g()),
-                (t = v.bind(null, n)),
-                (a = function () {
-                  n.parentNode.removeChild(n);
-                });
-            return (
-              t(e),
-              function (n) {
-                if (n) {
-                  if (
-                    n.css === e.css &&
-                    n.media === e.media &&
-                    n.sourceMap === e.sourceMap
-                  )
-                    return;
-                  t((e = n));
-                } else a();
-              }
-            );
-          }
-          var _,
-            f =
-              ((_ = []),
-              function (e, t) {
-                return (_[e] = t), _.filter(Boolean).join('\n');
-              });
-          function E(e, t, a, n) {
-            var r = a ? '' : n.css;
-            if (e.styleSheet) e.styleSheet.cssText = f(t, r);
-            else {
-              var o = document.createTextNode(r),
-                i = e.childNodes;
-              i[t] && e.removeChild(i[t]),
-                i.length ? e.insertBefore(o, i[t]) : e.appendChild(o);
-            }
-          }
-          function v(e, t) {
-            var a = t.css,
-              n = t.media,
-              r = t.sourceMap;
-            if (
-              (n && e.setAttribute('media', n),
-              p.ssrId && e.setAttribute(m, t.id),
-              r &&
-                ((a += '\n/*# sourceURL=' + r.sources[0] + ' */'),
-                (a +=
-                  '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(r)))) +
-                  ' */')),
-              e.styleSheet)
-            )
-              e.styleSheet.cssText = a;
-            else {
-              for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(a));
-            }
-          }
-        },
-        347: function (e) {
-          'use strict';
-          e.exports = require('@ant-design/icons');
-        },
-        820: function (e) {
-          'use strict';
-          e.exports = require('@babel/runtime/helpers/inheritsLoose');
-        },
-        85: function (e) {
-          'use strict';
-          e.exports = require('@wibetter/json-utils');
-        },
-        426: function (e) {
-          'use strict';
-          e.exports = require('ace-builds/src-noconflict/mode-javascript');
-        },
-        953: function (e) {
-          'use strict';
-          e.exports = require('ace-builds/src-noconflict/theme-monokai');
-        },
-        375: function (e) {
-          'use strict';
-          e.exports = require('antd');
-        },
-        20: function (e) {
-          'use strict';
-          e.exports = require('mobx-react');
-        },
-        825: function (e) {
-          'use strict';
-          e.exports = require('prop-types');
-        },
-        15: function (e) {
-          'use strict';
-          e.exports = require('react');
-        },
-        813: function (e) {
-          'use strict';
-          e.exports = require('react-ace');
-        },
-      },
-      __webpack_module_cache__ = {};
-    function __webpack_require__(e) {
-      var t = __webpack_module_cache__[e];
-      if (void 0 !== t) return t.exports;
-      var a = (__webpack_module_cache__[e] = { id: e, exports: {} });
-      return (
-        __webpack_modules__[e](a, a.exports, __webpack_require__), a.exports
-      );
-    }
-    (__webpack_require__.n = function (e) {
-      var t =
-        e && e.__esModule
-          ? function () {
-              return e.default;
-            }
-          : function () {
-              return e;
-            };
-      return __webpack_require__.d(t, { a: t }), t;
-    }),
-      (__webpack_require__.d = function (e, t) {
-        for (var a in t)
-          __webpack_require__.o(t, a) &&
-            !__webpack_require__.o(e, a) &&
-            Object.defineProperty(e, a, { enumerable: !0, get: t[a] });
-      }),
-      (__webpack_require__.o = function (e, t) {
-        return Object.prototype.hasOwnProperty.call(e, t);
-      }),
-      (__webpack_require__.r = function (e) {
-        'undefined' != typeof Symbol &&
-          Symbol.toStringTag &&
-          Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-          Object.defineProperty(e, '__esModule', { value: !0 });
-      });
-    var __webpack_exports__ = {};
-    return (
-      (function () {
-        'use strict';
-        __webpack_require__.r(__webpack_exports__),
-          __webpack_require__.d(__webpack_exports__, {
-            default: function () {
-              return Wt;
-            },
-          });
-        var e,
-          t,
-          a,
-          n,
-          r,
-          o,
-          i,
-          l,
-          s,
-          c,
-          u,
-          p,
-          m,
-          d,
-          y,
-          h,
-          g,
-          S,
-          _,
-          f,
-          E,
-          v,
-          b,
-          O,
-          N,
-          D,
-          R,
-          w,
-          J,
-          k,
-          C,
-          K,
-          x,
-          j,
-          P = __webpack_require__(820),
-          T = __webpack_require__.n(P),
-          B = __webpack_require__(15),
-          V = __webpack_require__.n(B),
-          I = require('react-dom'),
-          M = __webpack_require__.n(I),
-          A = __webpack_require__(20),
-          L = __webpack_require__(825),
-          W = __webpack_require__.n(L),
-          q = require('@babel/runtime/helpers/initializerDefineProperty'),
-          F = __webpack_require__.n(q),
-          U = require('@babel/runtime/helpers/createClass'),
-          z = __webpack_require__.n(U),
-          H = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
-          G = __webpack_require__.n(H),
-          $ =
-            (require('@babel/runtime/helpers/initializerWarningHelper'),
-            require('mobx')),
-          Q = __webpack_require__(85),
-          Y = Q.TypeDataList.jsonschema,
-          Z =
-            ((e = $.action.bound),
-            (t = $.action.bound),
-            (a = $.action.bound),
-            (n = $.action.bound),
-            (r = $.action.bound),
-            (o = $.action.bound),
-            (i = $.action.bound),
-            (l = (function () {
-              function e(e) {
-                F()(this, 'pageScreen', s, this),
-                  F()(this, 'jsonSchema', c, this),
-                  (this.state = { rootJSONStore: e });
-              }
-              var t = e.prototype;
-              return (
-                (t.setPageScreen = function (e) {
-                  this.pageScreen =
-                    'wideScreen' === e || e ? 'wideScreen' : 'mobileScreen';
-                }),
-                (t.initJSONSchemaData = function (e) {
-                  if (e && '{}' !== JSON.stringify(e)) {
-                    if (!(0, Q.isEqual)(e, this.JSONSchemaObj))
-                      if (e && (0, Q.isNewSchemaData)(e)) this.jsonSchema = e;
-                      else {
-                        var t = (0, Q.oldSchemaToNewSchema)(e);
-                        this.jsonSchema = t;
-                      }
-                  } else this.jsonSchema = (0, Q.objClone)(Y);
-                }),
-                (t.JSONSchemaChange = function (e) {
-                  if (!(0, Q.isEqual)(e, this.JSONSchemaObj)) {
-                    if (e && '{}' !== JSON.stringify(e))
-                      if (e && (0, Q.isNewSchemaData)(e)) this.jsonSchema = e;
-                      else {
-                        var t = (0, Q.oldSchemaToNewSchema)(e);
-                        this.jsonSchema = t;
-                      }
-                    else this.jsonSchema = (0, Q.objClone)(Y);
-                    var a = this.state.rootJSONStore.JSONEditorStore.jsonData,
-                      n = (0, Q.schema2json)(this.jsonSchema, a);
-                    (this.state.rootJSONStore.JSONEditorStore.jsonData = n),
-                      (this.state.rootJSONStore.JSONEditorStore.initJsonData =
-                        (0, Q.objClone)(a)),
-                      this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
-                  }
-                }),
-                (t.indexRoute2keyRoute = function (e) {
-                  return (0, Q.indexRoute2keyRoute)(e, this.jsonSchema);
-                }),
-                (t.keyRoute2indexRoute = function (e) {
-                  return (0, Q.keyRoute2indexRoute)(e, this.jsonSchema);
-                }),
-                (t.getSchemaByIndexRoute = function (e) {
-                  return (0, Q.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
-                }),
-                (t.getSchemaByKeyRoute = function (e) {
-                  var t = this.keyRoute2indexRoute(e);
-                  return (0, Q.getSchemaByIndexRoute)(t, this.jsonSchema, !0);
-                }),
-                z()(e, [
-                  {
-                    key: 'JSONSchemaObj',
-                    get: function () {
-                      return (0, $.toJS)(this.jsonSchema);
-                    },
-                  },
-                  {
-                    key: 'lastUpdateTime',
-                    get: function () {
-                      var e = this.jsonSchema.lastUpdateTime;
-                      return e ? new Date(e).getTime() : new Date().getTime();
-                    },
-                  },
-                ])
-              );
-            })()),
-            (s = G()(l.prototype, 'pageScreen', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return 'mobileScreen';
-              },
-            })),
-            (c = G()(l.prototype, 'jsonSchema', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return {};
-              },
-            })),
-            G()(
-              l.prototype,
-              'setPageScreen',
-              [e],
-              Object.getOwnPropertyDescriptor(l.prototype, 'setPageScreen'),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'initJSONSchemaData',
-              [t],
-              Object.getOwnPropertyDescriptor(
-                l.prototype,
-                'initJSONSchemaData',
-              ),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'JSONSchemaChange',
-              [a],
-              Object.getOwnPropertyDescriptor(l.prototype, 'JSONSchemaChange'),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'JSONSchemaObj',
-              [$.computed],
-              Object.getOwnPropertyDescriptor(l.prototype, 'JSONSchemaObj'),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'lastUpdateTime',
-              [$.computed],
-              Object.getOwnPropertyDescriptor(l.prototype, 'lastUpdateTime'),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'indexRoute2keyRoute',
-              [n],
-              Object.getOwnPropertyDescriptor(
-                l.prototype,
-                'indexRoute2keyRoute',
-              ),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'keyRoute2indexRoute',
-              [r],
-              Object.getOwnPropertyDescriptor(
-                l.prototype,
-                'keyRoute2indexRoute',
-              ),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'getSchemaByIndexRoute',
-              [o],
-              Object.getOwnPropertyDescriptor(
-                l.prototype,
-                'getSchemaByIndexRoute',
-              ),
-              l.prototype,
-            ),
-            G()(
-              l.prototype,
-              'getSchemaByKeyRoute',
-              [i],
-              Object.getOwnPropertyDescriptor(
-                l.prototype,
-                'getSchemaByKeyRoute',
-              ),
-              l.prototype,
-            ),
-            l),
-          X = __webpack_require__(375),
-          ee = __webpack_require__(919),
-          te = __webpack_require__(102),
-          ae =
-            ((u = $.action.bound),
-            (p = $.action.bound),
-            (m = $.action.bound),
-            (d = $.action.bound),
-            (y = $.action.bound),
-            (h = $.action.bound),
-            (g = $.action.bound),
-            (S = $.action.bound),
-            (_ = $.action.bound),
-            (f = $.action.bound),
-            (E = $.action.bound),
-            (v = $.action.bound),
-            (b = $.action.bound),
-            (O = (function () {
-              function e(e) {
-                F()(this, 'rootJSONStore', N, this),
-                  F()(this, 'triggerChange', D, this),
-                  F()(this, 'lastUpdateTime', R, this),
-                  F()(this, 'jsonData', w, this),
-                  F()(this, 'initJsonData', J, this),
-                  F()(this, 'dynamicDataList', k, this),
-                  F()(this, 'dynamicDataObj', C, this),
-                  F()(this, 'options', K, this),
-                  F()(this, 'dynamicDataApiScopeList', x, this),
-                  F()(this, 'onChange', j, this),
-                  (this.state = { rootJSONStore: e });
-              }
-              var t = e.prototype;
-              return (
-                (t.updateLastTime = function () {
-                  this.lastUpdateTime = new Date().getTime();
-                }),
-                (t.triggerChangeAction = function () {
-                  this.triggerChange = !this.triggerChange;
-                }),
-                (t.initJSONData = function (e) {
-                  var t =
-                    this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
-                  (0, ee.n4)(e, this.jsonData) ||
-                    ((this.initJsonData = (0, ee.bQ)(this.jsonData)),
-                    t &&
-                      ((this.jsonData = (0, Q.schema2json)(t, e || {})),
-                      this.updateLastTime()));
-                }),
-                (t.initOnChange = function (e) {
-                  (e || (0, te.Tn)(e)) && (this.onChange = e);
-                }),
-                (t.setDynamicDataList = function (e) {
-                  if (!(0, ee.n4)(e, this.dynamicDataList)) {
-                    this.dynamicDataList = (0, ee.bQ)(e);
-                    var t = {};
-                    e.map(function (e) {
-                      t[e.name] = e;
-                    }),
-                      (this.dynamicDataObj = t);
-                  }
-                }),
-                (t.setOptions = function (e) {
-                  e && (this.options = e);
-                }),
-                (t.jsonDataChange = function () {
-                  this.onChange(this.JSONEditorObj);
-                }),
-                (t.getJSONDataByKeyRoute = function (e, t) {
-                  var a = t || this.jsonData;
-                  return (0, Q.getJsonDataByKeyRoute)(e, a, !0);
-                }),
-                (t.getInitJsonDataByKeyRoute = function (e, t) {
-                  var a = t || this.initJsonData;
-                  return (0, Q.getJsonDataByKeyRoute)(e, a, !0);
-                }),
-                (t.updateFormValueData = function (e, t, a) {
-                  var n = this;
-                  if ('' !== e) {
-                    var r = (0, Q.getParentKeyRoute_CurKey)(e),
-                      o = r[0],
-                      i = r[1];
-                    (0, Q.getJsonDataByKeyRoute)(o, this.jsonData)[i] = t;
-                  } else this.jsonData = t;
-                  if (
-                    this.state.rootJSONStore.JSONSchemaStore &&
-                    this.state.rootJSONStore.JSONSchemaStore.jsonSchema
-                  ) {
-                    var l =
-                        this.state.rootJSONStore.JSONSchemaStore.jsonSchema
-                          .conditionProps,
-                      s =
-                        this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
-                          e,
-                        );
-                    s && s.isConditionProp
-                      ? this.updateLastTime()
-                      : l &&
-                        Object.keys(l).map(function (t) {
-                          l[t].keyRoute === e && n.updateLastTime();
-                        });
-                  }
-                  a || this.jsonDataChange();
-                }),
-                (t.deleteArrayIndex = function (e, t) {
-                  var a = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
-                  (0, te.cy)(a) &&
-                    (a.length > 0
-                      ? (a.splice(t, 1),
-                        this.triggerChangeAction(),
-                        this.jsonDataChange())
-                      : X.message.warning(
-                          '删除失败，空数组对象暂无可删除子项。',
-                        ));
-                }),
-                (t.addArrayItem = function (e, t) {
-                  var a = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
-                  if ((0, te.cy)(a)) {
-                    var n = a[t || 0];
-                    if (
-                      ((0, te.Gv)(n) && (n = Object.assign({}, n)),
-                      t || 0 === t)
-                    ) {
-                      var r = a.slice(Number(t) + 1),
-                        o = [n].concat(r);
-                      a.splice(Number(t) + 1), a.push.apply(a, o);
-                    } else a.push(n);
-                    this.triggerChangeAction(), this.jsonDataChange();
-                  } else
-                    X.message.warning('数据操作异常：当前元素不是数组类型。');
-                }),
-                (t.sortArrayItem = function (e, t, a) {
-                  var n = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
-                  if ((0, te.cy)(n)) {
-                    var r = (0, ee.bQ)(n[t || 0]),
-                      o = t;
-                    if ('up' === a && o > 0) o -= 1;
-                    else {
-                      if ('up' === a && 0 === o)
-                        return void X.message.warning(
-                          '数据操作异常：当前数组项已经是第一个元素了。',
-                        );
-                      if (
-                        ('down' === a || !a) &&
-                        ((o += 1), 'down' === a && o > n.length - 1)
-                      )
-                        return void X.message.warning(
-                          '数据操作异常：当前数组项已经是最后一个元素了。',
-                        );
-                    }
-                    var i = (0, ee.bQ)(n[o]);
-                    void 0 !== r &&
-                      void 0 !== i &&
-                      ((n[t] = i),
-                      (n[o] = r),
-                      X.message.success(
-                        '原有数据项' +
-                          (t + 1) +
-                          '对应的数据内容已' +
-                          ('up' === a ? '向上' : '向下') +
-                          '移动一级',
-                        5,
-                      ),
-                      this.updateLastTime(),
-                      this.triggerChangeAction(),
-                      this.jsonDataChange());
-                  } else
-                    X.message.warning('数据操作异常：当前元素不是数组类型。');
-                }),
-                z()(e, [
-                  {
-                    key: 'JSONEditorObj',
-                    get: function () {
-                      return (0, $.toJS)(this.jsonData);
-                    },
-                  },
-                ])
-              );
-            })()),
-            (N = G()(O.prototype, 'rootJSONStore', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return {};
-              },
-            })),
-            (D = G()(O.prototype, 'triggerChange', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return !1;
-              },
-            })),
-            (R = G()(O.prototype, 'lastUpdateTime', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return new Date().getTime();
-              },
-            })),
-            (w = G()(O.prototype, 'jsonData', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return null;
-              },
-            })),
-            (J = G()(O.prototype, 'initJsonData', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return {};
-              },
-            })),
-            (k = G()(O.prototype, 'dynamicDataList', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return [];
-              },
-            })),
-            (C = G()(O.prototype, 'dynamicDataObj', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return {};
-              },
-            })),
-            (K = G()(O.prototype, 'options', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return {};
-              },
-            })),
-            (x = G()(O.prototype, 'dynamicDataApiScopeList', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return {
-                  static: '固定值',
-                  url: 'URL参数',
-                  hash: 'Hash参数',
-                  window: '环境变量',
-                  dynamic: '接口下发',
-                  page: '页面参数',
-                  input: '用户输入',
-                };
-              },
-            })),
-            (j = G()(O.prototype, 'onChange', [$.observable], {
-              configurable: !0,
-              enumerable: !0,
-              writable: !0,
-              initializer: function () {
-                return function () {};
-              },
-            })),
-            G()(
-              O.prototype,
-              'updateLastTime',
-              [u],
-              Object.getOwnPropertyDescriptor(O.prototype, 'updateLastTime'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'triggerChangeAction',
-              [p],
-              Object.getOwnPropertyDescriptor(
-                O.prototype,
-                'triggerChangeAction',
-              ),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'initJSONData',
-              [m],
-              Object.getOwnPropertyDescriptor(O.prototype, 'initJSONData'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'initOnChange',
-              [d],
-              Object.getOwnPropertyDescriptor(O.prototype, 'initOnChange'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'setDynamicDataList',
-              [y],
-              Object.getOwnPropertyDescriptor(
-                O.prototype,
-                'setDynamicDataList',
-              ),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'setOptions',
-              [h],
-              Object.getOwnPropertyDescriptor(O.prototype, 'setOptions'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'JSONEditorObj',
-              [$.computed],
-              Object.getOwnPropertyDescriptor(O.prototype, 'JSONEditorObj'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'jsonDataChange',
-              [g],
-              Object.getOwnPropertyDescriptor(O.prototype, 'jsonDataChange'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'getJSONDataByKeyRoute',
-              [S],
-              Object.getOwnPropertyDescriptor(
-                O.prototype,
-                'getJSONDataByKeyRoute',
-              ),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'getInitJsonDataByKeyRoute',
-              [_],
-              Object.getOwnPropertyDescriptor(
-                O.prototype,
-                'getInitJsonDataByKeyRoute',
-              ),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'updateFormValueData',
-              [f],
-              Object.getOwnPropertyDescriptor(
-                O.prototype,
-                'updateFormValueData',
-              ),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'deleteArrayIndex',
-              [E],
-              Object.getOwnPropertyDescriptor(O.prototype, 'deleteArrayIndex'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'addArrayItem',
-              [v],
-              Object.getOwnPropertyDescriptor(O.prototype, 'addArrayItem'),
-              O.prototype,
-            ),
-            G()(
-              O.prototype,
-              'sortArrayItem',
-              [b],
-              Object.getOwnPropertyDescriptor(O.prototype, 'sortArrayItem'),
-              O.prototype,
-            ),
-            O),
-          ne = function () {
-            (this.JSONSchemaStore = new Z(this)),
-              (this.JSONEditorStore = new ae(this));
-          },
-          re = require('@babel/runtime/helpers/extends'),
-          oe = __webpack_require__.n(re),
-          ie = __webpack_require__(347),
-          le = __webpack_require__(813),
-          se = __webpack_require__.n(le),
-          ce =
-            (require('ace-builds/src-noconflict/mode-json'),
-            require('ace-builds/src-noconflict/theme-solarized_light'),
-            __webpack_require__(90),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).handleValueChange = function (
-                    e,
-                  ) {
-                    var t = a.props,
-                      n = t.keyRoute,
-                      r = t.updateFormValueData;
-                    e && r(n, e);
-                  }),
-                  (a.handleValueChange = a.handleValueChange.bind(a)),
-                  a
-                );
-              }
-              return (
-                T()(t, e),
-                (t.prototype.render = function () {
-                  var e = this.props,
-                    t = e.nodeKey,
-                    a = e.keyRoute,
-                    n = e.targetJsonSchema,
-                    r = (0, e.getJSONDataByKeyRoute)(a);
-                  return (
-                    (r = void 0 !== r ? r : n.default || '{}'),
-                    ((0, te.Gv)(r) || (0, te.cy)(r)) &&
-                      (r = JSON.stringify(r, null, 2)),
-                    B.createElement(
-                      'div',
-                      { className: 'json-view-box', key: t, id: t },
-                      B.createElement(
-                        'div',
-                        { className: 'readOnly-btn' },
-                        '[只读]',
-                      ),
-                      B.createElement(se(), {
-                        id: 'json_area_ace',
-                        value: r,
-                        className: 'json-view-ace',
-                        mode: 'json',
-                        theme: 'solarized_light',
-                        name: 'JSON_CODE_EDIT',
-                        fontSize: 14,
-                        showPrintMargin: !0,
-                        showGutter: !0,
-                        highlightActiveLine: !0,
-                        readOnly: !0,
-                        minLines: 5,
-                        maxLines: 33,
-                        width: '100%',
-                        setOptions: {
-                          useWorker: !1,
-                          showLineNumbers: !0,
-                          tabSize: 2,
-                        },
-                      }),
-                    )
-                  );
-                }),
-                t
-              );
-            })(B.PureComponent));
-        ce.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var ue,
-          pe = (0, A.inject)(function (e) {
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
               getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
             };
-          })((0, A.observer)(ce)),
-          me = __webpack_require__(852);
-        function de() {
-          return (
-            (de = Object.assign
-              ? Object.assign.bind()
-              : function (e) {
-                  for (var t = 1; t < arguments.length; t++) {
-                    var a = arguments[t];
-                    for (var n in a)
-                      ({}).hasOwnProperty.call(a, n) && (e[n] = a[n]);
-                  }
-                  return e;
-                }),
-            de.apply(null, arguments)
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              CodeAreaFormSchema,
+            ),
           );
-        }
-        __webpack_require__(595);
-        var ye,
-          he = function (e) {
-            return B.createElement(
-              'svg',
-              de(
-                { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
-                e,
-              ),
-              ue ||
-                (ue = B.createElement('path', {
-                  d: 'M15.5 2a.5.5 0 0 1 .09.992L15.5 3H14v10.6a2.4 2.4 0 0 1-2.4 2.4H4.4A2.4 2.4 0 0 1 2 13.6V3H.5a.5.5 0 0 1-.09-.992L.5 2h15ZM13 3H3v10.6a1.4 1.4 0 0 0 1.265 1.394L4.4 15h7.2a1.4 1.4 0 0 0 1.394-1.265L13 13.6V3ZM6 6a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L5.5 11.5v-5A.5.5 0 0 1 6 6Zm4 0a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L9.5 11.5v-5A.5.5 0 0 1 10 6Zm.5-6a.5.5 0 0 1 .09.992L10.5 1h-5a.5.5 0 0 1-.09-.992L5.5 0h5Z',
-                  fill: 'currentColor',
-                  fillRule: 'evenodd',
-                })),
+
+          /***/
+        },
+
+      /***/ './src/renderers/ColorFormSchemaV3/index.js':
+        /*!**************************************************!*\
+  !*** ./src/renderers/ColorFormSchemaV3/index.js ***!
+  \**************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
             );
-          };
-        function ge() {
-          return (
-            (ge = Object.assign
-              ? Object.assign.bind()
-              : function (e) {
-                  for (var t = 1; t < arguments.length; t++) {
-                    var a = arguments[t];
-                    for (var n in a)
-                      ({}).hasOwnProperty.call(a, n) && (e[n] = a[n]);
-                  }
-                  return e;
-                }),
-            ge.apply(null, arguments)
-          );
-        }
-        var Se,
-          _e = function (e) {
-            return B.createElement(
-              'svg',
-              ge(
-                { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
-                e,
-              ),
-              ye ||
-                (ye = B.createElement('path', {
-                  d: 'M10.286 4C11.232 4 12 4.768 12 5.714v8.572c0 .946-.768 1.714-1.714 1.714H1.714A1.714 1.714 0 0 1 0 14.286V5.714C0 4.768.768 4 1.714 4h8.572Zm-.12 1H1.834A.833.833 0 0 0 1 5.833v8.334c0 .46.373.833.833.833h8.334c.46 0 .833-.373.833-.833V5.833A.833.833 0 0 0 10.167 5ZM6 7.429c.237 0 .429.191.429.428l-.001 1.714h1.715a.429.429 0 0 1 0 .858H6.428v1.714a.429.429 0 1 1-.857 0v-1.714H3.857a.429.429 0 1 1 0-.858h1.714V7.857c0-.237.192-.428.429-.428ZM14.286 0C15.232 0 16 .768 16 1.714v8.572c0 .946-.768 1.714-1.714 1.714H13v-1h1.167c.46 0 .833-.373.833-.833V1.833A.833.833 0 0 0 14.167 1H5.833A.833.833 0 0 0 5 1.833V3H4V1.714C4 .768 4.768 0 5.714 0h8.572Z',
-                  fill: 'currentColor',
-                  fillRule: 'evenodd',
-                })),
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
             );
-          };
-        function fe() {
-          return (
-            (fe = Object.assign
-              ? Object.assign.bind()
-              : function (e) {
-                  for (var t = 1; t < arguments.length; t++) {
-                    var a = arguments[t];
-                    for (var n in a)
-                      ({}).hasOwnProperty.call(a, n) && (e[n] = a[n]);
-                  }
-                  return e;
-                }),
-            fe.apply(null, arguments)
-          );
-        }
-        var Ee = function (e) {
-            return B.createElement(
-              'svg',
-              fe(
-                {
-                  viewBox: '0 0 1025 1024',
-                  xmlns: 'http://www.w3.org/2000/svg',
-                },
-                e,
-              ),
-              Se ||
-                (Se = B.createElement('path', {
-                  d: 'M293.069 755.2c-12.083 0-24.269-4.25-33.997-12.902L0 512l273.46-243.098c21.094-18.688 53.452-16.896 72.242 4.25 18.79 21.146 16.896 53.504-4.25 72.294L154.113 512l172.954 153.702c21.145 18.79 23.04 51.15 4.25 72.295-10.087 11.417-24.167 17.203-38.247 17.203zm457.984-.102L1024.512 512 765.44 281.702c-21.146-18.79-53.504-16.896-72.243 4.25-18.79 21.146-16.896 53.504 4.25 72.294L870.4 512 683.06 678.502c-21.146 18.79-23.04 51.15-4.25 72.295C688.896 762.214 702.976 768 717.056 768c12.083 0 24.269-4.25 33.997-12.902zm-239.514 72.55 102.4-614.4c4.66-27.904-14.182-54.272-42.086-58.931-28.007-4.71-54.323 14.182-58.88 42.086l-102.4 614.4c-4.66 27.904 14.182 54.272 42.086 58.931a52.65 52.65 0 0 0 8.448.666c24.576 0 46.285-17.766 50.432-42.752z',
-                  fill: 'currentColor',
-                })),
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
             );
-          },
-          ve = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).addArrayItem = function (
-                  e,
-                  t,
-                  n,
-                ) {
-                  var r = a.props.targetJsonSchema['maximum-child'];
-                  t && r && t.length >= r
-                    ? X.message.warning('添加失败，最多可添加' + r + '个子项')
-                    : a.props.addArrayItem(e, n);
-                }),
-                (a.deleteArrItem = function (e, t, n) {
-                  var r = a.props.targetJsonSchema['minimum-child'];
-                  n && r && n.length <= r
-                    ? X.message.warning('删除失败，至少需要保留' + r + '个子项')
-                    : a.props.deleteArrayIndex(e, t);
-                }),
-                (a.elemHoverEnterEvent = function (e, t) {
-                  e.stopPropagation(),
-                    t !== a.state.hoverIndex && a.setState({ hoverIndex: t });
-                }),
-                (a.elemHoverLeaveEvent = function (e, t) {
-                  e.stopPropagation(),
-                    t === a.state.hoverIndex && a.setState({ hoverIndex: '' });
-                }),
-                (a.getArrItemTitle = function (e) {
-                  if (!e || !(0, te.Gv)(e)) return e;
-                  for (
-                    var t = Object.keys(e), a = 0, n = t.length;
-                    a < n;
-                    a++
-                  ) {
-                    var r = e[t[a]];
-                    if (
-                      r &&
-                      ((0, te.Et)(r) ||
-                        ((0, te.Kg)(r) && !(0, te.mv)(r) && !(0, te._o)(r)))
-                    )
-                      return r;
-                  }
-                  return '';
-                }),
-                (a.state = {
-                  currentActiveArrIndex: -1,
-                  jsonView: !1,
-                  isClosed: !1,
-                  hoverIndex: '',
-                }),
-                (a.addArrayItem = a.addArrayItem.bind(a)),
-                (a.deleteArrItem = a.deleteArrItem.bind(a)),
-                (a.elemHoverEnterEvent = a.elemHoverEnterEvent.bind(a)),
-                (a.elemHoverLeaveEvent = a.elemHoverLeaveEvent.bind(a)),
-                a
-              );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! react-color */ 'react-color');
+          /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react_color__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/ColorFormSchemaV3/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_10__,
+            );
+
+          /**
+           * 新版color类型：颜色选择器
+           */
+          var ColorFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function ColorFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (color) {
+                var rgb = color.rgb; // hex,
+                var rgbaVal =
+                  'rgba(' +
+                  rgb.r +
+                  ',' +
+                  rgb.g +
+                  ',' +
+                  rgb.b +
+                  ',' +
+                  rgb.a +
+                  ')';
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                // updateFormValueData(keyRoute, hex); // 更新数值(#ffffff数据格式)
+                updateFormValueData(keyRoute, rgbaVal); // 更新数值: rgba(255,255,255,100)
+                // 主动触发更新的状态数据
+                _this.setState({
+                  renderState: !_this.state.renderState,
+                });
+              };
+              /** color清除事件处理器 */
+              _this.deleteColor = function () {
+                var _this$props2 = _this.props,
+                  keyRoute = _this$props2.keyRoute,
+                  updateFormValueData = _this$props2.updateFormValueData;
+                updateFormValueData(keyRoute, 'initial'); // 更新数值
+                antd__WEBPACK_IMPORTED_MODULE_4__.message.success(
+                  '已移除当前设置的颜色值',
+                );
+                // 主动触发更新的状态数据
+                _this.setState({
+                  renderState: !_this.state.renderState,
+                });
+              };
+              _this.state = {
+                renderState: false,
+                // 用于主动触发更新的状态数据
+                displayColorPicker: false, // 是否展示颜色选择器
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
             }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e,
-                  t = this,
-                  a = this.props,
-                  n = a.keyRoute,
-                  r = a.jsonKey,
-                  o = a.nodeKey,
-                  i = a.pageScreen,
-                  l = a.indexRoute,
-                  s = a.targetJsonSchema,
-                  c = a.getJSONDataByKeyRoute,
-                  u = a.keyRoute2indexRoute,
-                  p = a.updateFormValueData,
-                  m = this.state,
-                  d = m.jsonView,
-                  y = m.isClosed,
-                  h = (m.hoverIndex, m.currentActiveArrIndex),
-                  g = s.type,
-                  S = null == (e = s.showCodeViewBtn) || e,
-                  _ = c(n),
-                  f = s.items;
-                return B.createElement(
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              ColorFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = ColorFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema,
+                pageScreen = _this$props3.pageScreen,
+                getJSONDataByKeyRoute = _this$props3.getJSONDataByKeyRoute;
+              var _this$state = this.state,
+                renderState = _this$state.renderState,
+                displayColorPicker = _this$state.displayColorPicker;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_9__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              var SketchPickerContent =
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  react_color__WEBPACK_IMPORTED_MODULE_5__.SketchPicker,
+                  {
+                    className: 'color-sketch-picker',
+                    key: nodeKey + '-SketchPicker',
+                    color: curJsonData || targetJsonSchema.default,
+                    onChange: this.handleValueChange,
+                  },
+                );
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
-                    className:
-                      'wideScreen' === i
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: o,
-                    id: o,
+                    className: 'element-title',
                   },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      X.Tooltip,
-                      { title: s.description, placement: 'top' },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === i && s.title.length > 6
-                              ? s.title
-                              : '',
-                        },
-                        s.title,
-                        s.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(r, { length: 15 }),
-                            '）',
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
                           ),
-                      ),
+                          '\uFF09',
+                        ),
                     ),
                   ),
-                  B.createElement(
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
-                    { className: 'array-schema-box content-item' },
-                    B.createElement(
-                      'div',
-                      {
-                        className: 'element-title',
-                        onClick: function (e) {
-                          t.setState({ isClosed: !y }),
-                            e.preventDefault(),
-                            e.stopPropagation();
-                        },
-                      },
-                      B.createElement(
-                        'span',
-                        { className: 'title-text' },
-                        '数组配置',
-                      ),
-                      y
-                        ? B.createElement(ie.RightOutlined, {
-                            className: 'close-operate-btn',
-                          })
-                        : B.createElement(ie.DownOutlined, {
-                            className: 'close-operate-btn',
-                          }),
-                      S &&
-                        B.createElement(
-                          'div',
-                          {
-                            className: 'display-source-btn',
-                            onClick: function (e) {
-                              t.setState({ jsonView: !d }),
-                                e.preventDefault(),
-                                e.stopPropagation();
-                            },
-                          },
-                          B.createElement(
-                            X.Tooltip,
-                            { title: d ? '关闭源码模式' : '开启源码模式' },
-                            B.createElement(Ee, {
-                              className: d ? 'info-icon active' : 'info-icon',
-                            }),
-                          ),
-                        ),
-                      B.createElement(
-                        X.Tooltip,
-                        { title: '添加数据项' },
-                        B.createElement(ie.PlusOutlined, {
-                          className: 'array-add-child-btn',
-                          onClick: function (e) {
-                            t.addArrayItem(n, _),
-                              e.preventDefault(),
-                              e.stopPropagation();
-                          },
-                        }),
-                      ),
-                    ),
-                    B.createElement(
+                    {
+                      className: 'form-item-box render-dom-' + renderState,
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                       'div',
                       {
                         className:
-                          'array-content ' +
-                          (d ? 'json-view-array' : '') +
-                          ' ' +
-                          (y ? 'closed' : ''),
+                          'color-btn-wrap color-item-form ' +
+                          (displayColorPicker ? 'selected' : ''),
+                        onClick: function onClick() {
+                          _this2.setState({
+                            displayColorPicker: !displayColorPicker,
+                          });
+                        },
                       },
-                      !d &&
-                        (0, te.cy)(_) &&
-                        _.map(function (e, a) {
-                          var r = o + '-array-items-' + _.length + '-' + a,
-                            i = l ? l + '-0' : '0',
-                            s = n ? n + '-' + a : '' + a,
-                            m = t.getArrItemTitle(e);
-                          return B.createElement(
-                            'div',
-                            { className: 'array-item', key: s },
-                            B.createElement(
-                              'div',
-                              {
-                                className: 'array-item-header',
-                                onClick: function () {
-                                  t.setState({
-                                    currentActiveArrIndex: h === a ? -1 : a,
-                                  });
-                                },
-                                onMouseMove: function (e) {
-                                  t.elemHoverEnterEvent(e, a);
-                                },
-                                onMouseLeave: function (e) {
-                                  t.elemHoverLeaveEvent(e, a);
-                                },
-                              },
-                              B.createElement(
-                                'div',
-                                { className: 'array-title-text' },
-                                m || f.title + '/' + (a + 1),
-                              ),
-                              B.createElement(
-                                'div',
-                                { className: 'array-operate-box' },
-                                h !== a
-                                  ? B.createElement(ie.RightOutlined, {
-                                      className:
-                                        'close-operate-btn array-operate-btn',
-                                    })
-                                  : B.createElement(ie.DownOutlined, {
-                                      className:
-                                        'close-operate-btn array-operate-btn',
-                                    }),
-                                B.createElement(
-                                  X.Tooltip,
-                                  { title: '删除' + f.title + '/' + (a + 1) },
-                                  B.createElement(
-                                    X.Popconfirm,
-                                    {
-                                      placement: 'top',
-                                      title:
-                                        '确定要删除' +
-                                        f.title +
-                                        '/' +
-                                        (a + 1) +
-                                        '吗？',
-                                      onCancel: function (e) {
-                                        e.preventDefault(), e.stopPropagation();
-                                      },
-                                      onConfirm: function (e) {
-                                        t.deleteArrItem(n, a, _),
-                                          e.preventDefault(),
-                                          e.stopPropagation();
-                                      },
-                                      okText: '确定',
-                                      cancelText: '取消',
-                                    },
-                                    B.createElement(he, {
-                                      className:
-                                        'delete-operate-btn array-operate-btn',
-                                      onClick: function (e) {
-                                        e.preventDefault(), e.stopPropagation();
-                                      },
-                                    }),
-                                  ),
-                                ),
-                                B.createElement(
-                                  X.Tooltip,
-                                  { title: '复制' + f.title + '/' + (a + 1) },
-                                  B.createElement(_e, {
-                                    className: 'array-operate-btn',
-                                    onClick: function (e) {
-                                      t.addArrayItem(n, _, a),
-                                        e.preventDefault(),
-                                        e.stopPropagation();
-                                    },
-                                  }),
-                                ),
-                                0 !== a &&
-                                  B.createElement(
-                                    X.Tooltip,
-                                    { title: '向上移动' },
-                                    B.createElement(ie.ArrowUpOutlined, {
-                                      className: 'array-operate-btn',
-                                      onClick: function (e) {
-                                        t.props.sortArrayItem(n, a, 'up'),
-                                          e.preventDefault(),
-                                          e.stopPropagation();
-                                      },
-                                    }),
-                                  ),
-                                a !== _.length - 1 &&
-                                  B.createElement(
-                                    X.Tooltip,
-                                    { title: '向下移动' },
-                                    B.createElement(ie.ArrowDownOutlined, {
-                                      className: 'array-operate-btn',
-                                      onClick: function (e) {
-                                        t.props.sortArrayItem(n, a, 'down'),
-                                          e.preventDefault(),
-                                          e.stopPropagation();
-                                      },
-                                    }),
-                                  ),
-                              ),
-                            ),
-                            B.createElement(
-                              'div',
-                              {
-                                className:
-                                  'array-item-content ' +
-                                  (h === a ? 'open' : 'closed'),
-                                key: r,
-                                id: r,
-                              },
-                              B.createElement(Vt, {
-                                parentType: g,
-                                jsonKey: 'items',
-                                indexRoute: i,
-                                keyRoute: s,
-                                nodeKey: r,
-                                targetJsonSchema: f,
-                                isArrayItem: !0,
-                                arrIndex: a,
-                                getJSONDataByKeyRoute: c,
-                                keyRoute2indexRoute: u,
-                                updateFormValueData: p,
-                              }),
-                            ),
-                          );
-                        }),
-                      d && B.createElement(pe, this.props),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_4__.Popover,
+                        {
+                          content: SketchPickerContent,
+                          title: '\u989C\u8272\u9009\u62E9\u5668',
+                          trigger: 'click',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'button',
+                          {
+                            className: 'ant-input color-btn',
+                            style: {
+                              backgroundColor:
+                                curJsonData || targetJsonSchema.default,
+                            },
+                          },
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                        {
+                          title:
+                            '\u70B9\u51FB\u79FB\u9664\u5F53\u524D\u989C\u8272\u503C',
+                          placement: 'top',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.CloseOutlined,
+                          {
+                            className: 'delete-bgColor-btn',
+                            onClick: function onClick() {
+                              _this2.deleteColor();
+                            },
+                          },
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'span',
+                        {
+                          className: 'arrow',
+                        },
+                      ),
                     ),
                   ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        ve.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var be = (0, A.inject)(function (e) {
-            return {
-              triggerChange: e.JSONEditorStore.triggerChange,
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              deleteArrayIndex: e.JSONEditorStore.deleteArrayIndex,
-              addArrayItem: e.JSONEditorStore.addArrayItem,
-              sortArrayItem: e.JSONEditorStore.sortArrayItem,
+                ),
+              );
             };
-          })((0, A.observer)(ve)),
-          Oe =
-            (__webpack_require__(657),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).state = {
-                    jsonView: !1,
-                    isClosed: !1,
-                  }),
-                  a
-                );
-              }
-              T()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  me.x.call(this);
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    me.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e,
-                    t = this,
-                    a = this.props,
-                    n = a.indexRoute,
-                    r = a.jsonKey,
-                    o = a.nodeKey,
-                    i = a.keyRoute,
-                    l = a.pageScreen,
-                    s = a.targetJsonSchema,
-                    c = a.isArrayItem,
-                    u = (a.arrIndex, a.isStructuredSchema),
-                    p = a.getJSONDataByKeyRoute,
-                    m = a.keyRoute2indexRoute,
-                    d = a.updateFormValueData,
-                    y = this.state,
-                    h = y.jsonView,
-                    g = y.isClosed,
-                    S = u,
-                    _ = null == (e = s.showCodeViewBtn) || e;
-                  return V().createElement(
+            return ColorFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          ColorFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              ColorFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/DataSourceSchema/index.js':
+        /*!*************************************************!*\
+  !*** ./src/renderers/DataSourceSchema/index.js ***!
+  \*************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+            );
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! $assets/img/code.svg */ './src/assets/img/code.svg',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/DataSourceSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_13___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_13__,
+            );
+
+          var DataSourceSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function DataSourceSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 显示和隐藏数据过滤器
+              _this.switchFilterBtn = function () {
+                var isShowFilter = _this.state.isShowFilter;
+                _this.setState({
+                  isShowFilter: !isShowFilter,
+                });
+              };
+              _this.state = {
+                isShowFilter: false,
+                // 是否显示数据过滤器
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false, // 是否为关闭状态，默认是开启状态
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.switchFilterBtn = _this.switchFilterBtn.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              DataSourceSchema,
+              _React$PureComponent,
+            );
+            var _proto = DataSourceSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$sho,
+                _this2 = this;
+              var _this$props = this.props,
+                keyRoute = _this$props.keyRoute,
+                jsonKey = _this$props.jsonKey,
+                nodeKey = _this$props.nodeKey,
+                indexRoute = _this$props.indexRoute,
+                targetJsonSchema = _this$props.targetJsonSchema,
+                pageScreen = _this$props.pageScreen;
+              var _this$state = this.state,
+                jsonView = _this$state.jsonView,
+                isClosed = _this$state.isClosed,
+                isShowFilter = _this$state.isShowFilter;
+              var curType = targetJsonSchema.type;
+
+              // 获取DataSource中各类数据对象
+              var typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote
+              var dataObj = targetJsonSchema.properties.data || {}; // 用于录入数据（或者数据源地址）
+              var filterDataObj = targetJsonSchema.properties.filter || {}; // 数据过滤器
+              // 获取当前数据源类型
+              var dataType = typeDataObj.default; // local or remote
+              // 是否显示源码切换按钮
+              var showCodeViewBtn =
+                (_targetJsonSchema$sho = targetJsonSchema.showCodeViewBtn) !=
+                null
+                  ? _targetJsonSchema$sho
+                  : true;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text',
+                      title:
+                        pageScreen === 'wideScreen' &&
+                        targetJsonSchema.title.length > 6
+                          ? targetJsonSchema.title
+                          : '',
+                    },
+                    targetJsonSchema.title,
+                    targetJsonSchema.showKey &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'span',
+                        null,
+                        '\uFF08',
+                        (0,
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          jsonKey,
+                          {
+                            length: 15,
+                          },
+                        ),
+                        '\uFF09',
+                      ),
+                  ),
+                  targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title-card-warp content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
                     {
-                      className:
-                        'wideScreen' === l
-                          ? 'object-schema-warp wide-screen-element-warp'
-                          : 'object-schema-warp mobile-screen-element-warp',
-                      key: o,
-                      id: o,
+                      className: 'element-title',
+                      onClick: function onClick(event) {
+                        _this2.setState({
+                          isClosed: !isClosed,
+                        });
+                        event.preventDefault();
+                        event.stopPropagation();
+                      },
                     },
-                    !S &&
-                      !c &&
-                      V().createElement(
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                      },
+                      '\u6570\u636E\u6E90\u914D\u7F6E',
+                    ),
+                    isClosed
+                      ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                          {
+                            className: 'close-operate-btn',
+                          },
+                        )
+                      : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                          {
+                            className: 'close-operate-btn',
+                          },
+                        ),
+                    showCodeViewBtn &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                         'div',
-                        { className: 'element-title' },
-                        V().createElement(
-                          X.Tooltip,
-                          { title: s.description, placement: 'top' },
-                          V().createElement(
-                            'span',
+                        {
+                          className: 'display-source-btn',
+                          onClick: function onClick(event) {
+                            _this2.setState({
+                              jsonView: !jsonView,
+                            });
+                            event.preventDefault();
+                            event.stopPropagation();
+                          },
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                          {
+                            title: jsonView ? '关闭源码模式' : '开启源码模式',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
+                              'default'
+                            ],
                             {
-                              className: 'title-text',
-                              title:
-                                'wideScreen' === l && s.title.length > 6
-                                  ? s.title
-                                  : '',
+                              className: jsonView
+                                ? 'info-icon active'
+                                : 'info-icon',
                             },
-                            s.title,
-                            s.showKey &&
-                              V().createElement(
-                                'span',
-                                null,
-                                '（',
-                                (0, Q.truncate)(r, { length: 15 }),
-                                '）',
-                              ),
                           ),
                         ),
                       ),
-                    V().createElement(
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className:
+                        'content-item object-content ' +
+                        (jsonView ? 'json-view-array' : '') +
+                        ' ' +
+                        (isClosed ? 'closed' : ''),
+                    },
+                    !jsonView &&
+                      dataType === 'local' &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'ace-editor-box code-area-item',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                            {
+                              title: isShowFilter
+                                ? '点击隐藏数据过滤器'
+                                : '点击显示数据过滤器',
+                              placement: 'top',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.FilterOutlined,
+                              {
+                                className: 'filter-btn',
+                                onClick: this.switchFilterBtn,
+                              },
+                            ),
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'data',
+                              indexRoute: indexRoute ? indexRoute + '-1' : '1',
+                              keyRoute: keyRoute ? keyRoute + '-data' : 'data',
+                              nodeKey: nodeKey + '-data',
+                              targetJsonSchema: dataObj,
+                              key: nodeKey + '-data',
+                            },
+                          ),
+                        ),
+                        isShowFilter &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'filter',
+                              indexRoute: indexRoute ? indexRoute + '-2' : '2',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-filter'
+                                : 'filter',
+                              nodeKey: nodeKey + '-filter',
+                              targetJsonSchema: filterDataObj,
+                              key: nodeKey + '-filter',
+                            },
+                          ),
+                      ),
+                    !jsonView &&
+                      dataType === 'remote' &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'url-editor-box',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'data',
+                              indexRoute: indexRoute ? indexRoute + '-1' : '1',
+                              keyRoute: keyRoute ? keyRoute + '-data' : 'data',
+                              nodeKey: nodeKey + '-data',
+                              targetJsonSchema: dataObj,
+                              key: nodeKey + '-data',
+                            },
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                            {
+                              title:
+                                '\u70B9\u51FB\u8BBE\u7F6E\u6570\u636E\u8FC7\u6EE4\u5668',
+                              placement: 'top',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.FilterOutlined,
+                              {
+                                className: 'filter-url-btn',
+                                onClick: this.switchFilterBtn,
+                              },
+                            ),
+                          ),
+                        ),
+                        isShowFilter &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'filter',
+                              indexRoute: indexRoute ? indexRoute + '-2' : '2',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-filter'
+                                : 'filter',
+                              nodeKey: nodeKey + '-filter',
+                              targetJsonSchema: filterDataObj,
+                              key: nodeKey + '-filter',
+                            },
+                          ),
+                      ),
+                    jsonView &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__[
+                          'default'
+                        ],
+                        this.props,
+                      ),
+                  ),
+                ),
+              );
+            };
+            return DataSourceSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          DataSourceSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              triggerChange: stores.JSONEditorStore.triggerChange,
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              DataSourceSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/DateTimeFormSchema/index.js':
+        /*!***************************************************!*\
+  !*** ./src/renderers/DateTimeFormSchema/index.js ***!
+  \***************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! moment */ 'moment');
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              moment__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+
+          var DateTypeList = {
+            'date-time': 'YYYY-MM-DD HH:mm',
+            date: 'YYYY-MM-DD',
+            time: 'HH:mm',
+          };
+          var DateTimeFormSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function DateTimeFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event, dateString) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, dateString); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              DateTimeFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = DateTimeFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var curType = targetJsonSchema.type;
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+              var timeFormat = DateTypeList[curType] || DateTypeList[0];
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var defaultTime = curJsonData || targetJsonSchema.default;
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
+                curType,
+              ); // 是否需要设置成两栏布局
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_5__.DatePicker,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        disabled: readOnly,
+                        required: isRequired,
+                        showTime: curType === 'date-time',
+                        format: timeFormat,
+                        placeholder:
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                        defaultValue:
+                          defaultTime &&
+                          moment__WEBPACK_IMPORTED_MODULE_4___default()(
+                            defaultTime,
+                            timeFormat,
+                          ),
+                        onChange: this.handleValueChange,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return DateTimeFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          DateTimeFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              DateTimeFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/DynamicConfigSchema/index.js':
+        /*!****************************************************!*\
+  !*** ./src/renderers/DynamicConfigSchema/index.js ***!
+  \****************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! $components/MappingRender */ './src/components/MappingRender.js',
+            );
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! $assets/img/code.svg */ './src/assets/img/code.svg',
+            );
+
+          var ObjectSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function ObjectSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.state = {
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false, // 是否为关闭状态，默认是开启状态
+              };
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              ObjectSchema,
+              _React$PureComponent,
+            );
+            var _proto = ObjectSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$sho,
+                _this2 = this;
+              var _this$props = this.props,
+                indexRoute = _this$props.indexRoute,
+                jsonKey = _this$props.jsonKey,
+                nodeKey = _this$props.nodeKey,
+                keyRoute = _this$props.keyRoute,
+                pageScreen = _this$props.pageScreen,
+                targetJsonSchema = _this$props.targetJsonSchema,
+                isArrayItem = _this$props.isArrayItem,
+                arrIndex = _this$props.arrIndex,
+                isStructuredSchema = _this$props.isStructuredSchema,
+                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
+                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
+                updateFormValueData = _this$props.updateFormValueData;
+              var _this$state = this.state,
+                jsonView = _this$state.jsonView,
+                isClosed = _this$state.isClosed;
+              var options = this.props.options || {};
+              // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
+              var isStructured = isStructuredSchema;
+              // 是否显示源码切换按钮
+              var showCodeViewBtn =
+                (_targetJsonSchema$sho = targetJsonSchema.showCodeViewBtn) !=
+                null
+                  ? _targetJsonSchema$sho
+                  : true; // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var curNodeKey =
+                nodeKey + '-' + curJsonData.type + '-' + curJsonData.valueType;
+
+              // 内容Meta数据
+              var metaContentKeyList = options.metaContentKeyList || [];
+              var globalMetaConfig = options.globalMetaConfig || [];
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'object-schema-warp wide-screen-element-warp'
+                      : 'object-schema-warp mobile-screen-element-warp'),
+                  key: curNodeKey,
+                  id: nodeKey,
+                },
+                !isStructured &&
+                  !isArrayItem &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                    'div',
+                    {
+                      className: 'element-title',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            pageScreen === 'wideScreen' &&
+                            targetJsonSchema.title.length > 6
+                              ? targetJsonSchema.title
+                              : '',
+                        },
+                        targetJsonSchema.title,
+                        targetJsonSchema.showKey &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'span',
+                            null,
+                            '\uFF08',
+                            (0,
+                            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
+                              jsonKey,
+                              {
+                                length: 15,
+                              },
+                            ),
+                            '\uFF09',
+                          ),
+                      ),
+                    ),
+                  ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  'div',
+                  {
+                    className: 'element-title-card-warp content-item',
+                  },
+                  !isStructured &&
+                    !isArrayItem &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                       'div',
-                      { className: 'element-title-card-warp content-item' },
-                      !S &&
-                        !c &&
-                        V().createElement(
+                      {
+                        className: 'element-title',
+                        onClick: function onClick(event) {
+                          _this2.setState({
+                            isClosed: !isClosed,
+                          });
+                          event.preventDefault();
+                          event.stopPropagation();
+                        },
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                        },
+                        '\u52A8\u6001\u914D\u7F6E',
+                      ),
+                      isClosed
+                        ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.RightOutlined,
+                            {
+                              className: 'close-operate-btn',
+                            },
+                          )
+                        : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.DownOutlined,
+                            {
+                              className: 'close-operate-btn',
+                            },
+                          ),
+                      showCodeViewBtn &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                          'div',
+                          {
+                            className: 'display-source-btn',
+                            onClick: function onClick(event) {
+                              _this2.setState({
+                                jsonView: !jsonView,
+                              });
+                              event.preventDefault();
+                              event.stopPropagation();
+                            },
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                            {
+                              title: jsonView ? '关闭源码模式' : '开启源码模式',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
+                                'default'
+                              ],
+                              {
+                                className: jsonView
+                                  ? 'info-icon active'
+                                  : 'info-icon',
+                              },
+                            ),
+                          ),
+                        ),
+                    ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                    'div',
+                    {
+                      className:
+                        'content-item ' +
+                        (!isStructured && !isArrayItem
+                          ? 'object-content'
+                          : '') +
+                        ' ' +
+                        (jsonView ? 'json-view-array' : '') +
+                        ' ' +
+                        (isClosed ? 'closed' : ''),
+                    },
+                    !jsonView &&
+                      targetJsonSchema.propertyOrder &&
+                      targetJsonSchema.propertyOrder.map(function (key, index) {
+                        /** 1. 获取当前元素的路径值 */
+                        var currentIndexRoute = indexRoute
+                          ? indexRoute + '-' + index
+                          : '' + index;
+                        var currentKeyRoute = keyRoute
+                          ? keyRoute + '-' + key
+                          : '' + key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                        /** 2. 获取当前元素的key值 */
+                        var currentJsonKey = key;
+                        /** 3. 获取当前元素的json结构对象 */
+                        var currentSchemaData = (0,
+                        mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                          targetJsonSchema.properties[currentJsonKey],
+                        );
+                        /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                        var curType = currentSchemaData.type;
+                        /** 5. 获取当前元素的id，用于做唯一标识 */
+                        var childNodeKey =
+                          nodeKey + '-' + curType + '-' + currentJsonKey;
+                        var visibleOn = [
+                          'description',
+                          'valueType',
+                          'range',
+                          'value',
+                        ].includes(currentJsonKey)
+                          ? false
+                          : true; // 是否显示当前元素
+
+                        // 补充动态配置类型相关显隐逻辑【定制逻辑】
+                        if (
+                          (currentJsonKey === 'description' ||
+                            currentJsonKey === 'valueType') &&
+                          (curJsonData.type === 'ContentStaticConfig' ||
+                            curJsonData.type === 'ResourceCenter')
+                        ) {
+                          // 资源中心配置、mp后台配置 时显示 description（属性名称）、valueType（配置方式）配置项
+                          visibleOn = true;
+                          var valueSchema =
+                            targetJsonSchema.properties['value'];
+                          if (
+                            currentJsonKey === 'valueType' &&
+                            !['select', 'radio', 'checkboxes'].includes(
+                              valueSchema.type,
+                            )
+                          ) {
+                            // 当value选择input、select、checkboxes，才可设置「配置方式」，其他默认都是 "填写"
+                            currentSchemaData.default = 'string';
+                            currentSchemaData.readOnly = true;
+                            currentSchemaData.description =
+                              '当前数值没有可选项，不支持设置。';
+                          }
+                        } else if (currentJsonKey === 'range') {
+                          if (
+                            curJsonData.valueType === 'select' &&
+                            (curJsonData.type === 'ContentStaticConfig' ||
+                              curJsonData.type === 'ResourceCenter')
+                          ) {
+                            visibleOn = true;
+                          }
+                          if (visibleOn) {
+                            var _valueSchema =
+                              targetJsonSchema.properties['value'];
+                            if (
+                              ['select', 'radio', 'checkboxes'].includes(
+                                _valueSchema.type,
+                              ) &&
+                              _valueSchema.options &&
+                              _valueSchema.options.length > 0
+                            ) {
+                              // range 和 value 复用 options
+                              currentSchemaData.options = (0,
+                              $utils_index__WEBPACK_IMPORTED_MODULE_8__.objClone)(
+                                _valueSchema.options,
+                              );
+                            }
+                          }
+                        } else if (
+                          currentJsonKey === 'value' &&
+                          (curJsonData.type === 'DevDefaults' ||
+                            curJsonData.type === 'RuntimeConst' ||
+                            curJsonData.type === 'Content')
+                        ) {
+                          // 全局配置数据、内容Meta数据 显示 数据值 配置项
+                          visibleOn = true;
+                        }
+                        if (
+                          currentJsonKey === 'value' &&
+                          curJsonData.type === 'Content'
+                        ) {
+                          // 内容Meta数据
+                          currentSchemaData.type = 'select'; // 改用下拉列表
+                          currentSchemaData.options = (0,
+                          $utils_index__WEBPACK_IMPORTED_MODULE_8__.objClone)(
+                            metaContentKeyList,
+                          );
+                        } else if (
+                          currentJsonKey === 'value' &&
+                          curJsonData.type === 'RuntimeConst'
+                        ) {
+                          // 全局配置数据
+                          currentSchemaData.type = 'select'; // 改用下拉列表
+                          currentSchemaData.options = (0,
+                          $utils_index__WEBPACK_IMPORTED_MODULE_8__.objClone)(
+                            globalMetaConfig,
+                          );
+                        }
+                        if (visibleOn) {
+                          return (0,
+                          $components_MappingRender__WEBPACK_IMPORTED_MODULE_9__[
+                            'default'
+                          ])({
+                            parentType: curType,
+                            jsonKey: currentJsonKey,
+                            indexRoute: currentIndexRoute,
+                            keyRoute: currentKeyRoute,
+                            nodeKey: childNodeKey,
+                            targetJsonSchema: currentSchemaData,
+                            getJSONDataByKeyRoute: getJSONDataByKeyRoute,
+                            keyRoute2indexRoute: keyRoute2indexRoute,
+                            updateFormValueData: updateFormValueData,
+                          });
+                        }
+                      }),
+                    jsonView &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__[
+                          'default'
+                        ],
+                        this.props,
+                      ),
+                  ),
+                ),
+              );
+            };
+            return ObjectSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1___default().PureComponent);
+          ObjectSchema.propTypes = {
+            isArrayItem: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            // 如果是数组项，title会进行特殊显示
+            arrIndex: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            // 当前数组项
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            isStructuredSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              options: stores.JSONEditorStore.options,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(ObjectSchema),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/DynamicDataSchema/index.js':
+        /*!**************************************************!*\
+  !*** ./src/renderers/DynamicDataSchema/index.js ***!
+  \**************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $renderers/TreeSelectFromSchema/index */ './src/renderers/TreeSelectFromSchema/index.js',
+            );
+          /* harmony import */ var $renderers_RemoteDynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(
+              /*! $renderers/RemoteDynamicDataSchema/index */ './src/renderers/RemoteDynamicDataSchema/index.js',
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_14__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_15__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/DynamicDataSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_15___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_15__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_16__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_16___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_16__,
+            );
+
+          var Option = antd__WEBPACK_IMPORTED_MODULE_4__.Select.Option;
+
+          var DynamicDataSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function DynamicDataSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (curKeyRoute, value) {
+                var updateFormValueData = _this.props.updateFormValueData;
+                updateFormValueData(curKeyRoute, value); // 更新数值
+              };
+              // 显示和隐藏数据过滤器
+              _this.switchFilterBtn = function () {
+                var isShowFilter = _this.state.isShowFilter;
+                _this.setState({
+                  isShowFilter: !isShowFilter,
+                });
+              };
+              // 面板展示内容切换（本地数据/接口数据）
+              _this.tabChange = function (value) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  triggerChangeAction = _this$props.triggerChangeAction;
+                _this.handleValueChange(keyRoute + '-type', value);
+                setTimeout(function () {
+                  triggerChangeAction();
+                }, 100);
+              };
+              _this.dynamicDataChange = function (dynamicDataName) {
+                var _this$props2 = _this.props,
+                  keyRoute = _this$props2.keyRoute,
+                  dynamicDataObj = _this$props2.dynamicDataObj,
+                  triggerChangeAction = _this$props2.triggerChangeAction;
+                var curDynamicData = (0,
+                $utils_index__WEBPACK_IMPORTED_MODULE_14__.objClone)(
+                  (0, mobx__WEBPACK_IMPORTED_MODULE_16__.toJS)(
+                    dynamicDataObj[dynamicDataName],
+                  ),
+                );
+                if (curDynamicData) {
+                  var newCurDynamicData = {
+                    id: curDynamicData.id,
+                    url: curDynamicData.url,
+                    method: curDynamicData.method,
+                    headers: curDynamicData.headers,
+                    options: curDynamicData.options,
+                    dataName: curDynamicData.name,
+                    body: curDynamicData.body,
+                    data: curDynamicData.data,
+                    filter: 'return data;',
+                    dataRoute: '',
+                  };
+                  _this.handleValueChange(
+                    keyRoute + '-config',
+                    newCurDynamicData,
+                  );
+                  setTimeout(function () {
+                    triggerChangeAction();
+                  }, 100);
+                }
+              };
+              _this.dataRouteChange = function (newDataRoute) {
+                var _this$props3 = _this.props,
+                  keyRoute = _this$props3.keyRoute,
+                  triggerChangeAction = _this$props3.triggerChangeAction,
+                  updateFormValueData = _this$props3.updateFormValueData;
+                if (newDataRoute) {
+                  updateFormValueData(
+                    keyRoute + '-config-dataRoute',
+                    newDataRoute,
+                    true,
+                  );
+                  var dataPath = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.dataRoute2dataPath)(
+                    newDataRoute,
+                  );
+                  // 自动填充当前filter
+                  _this.handleValueChange(
+                    keyRoute + '-config-filter',
+                    'return ' + dataPath + ';',
+                  );
+                } else {
+                  // newDataRoute为空时，需要重置dataRoute和filter
+                  updateFormValueData(keyRoute + '-config-dataRoute', '', true);
+                  // 自动填充当前filter
+                  _this.handleValueChange(
+                    keyRoute + '-config-filter',
+                    'return data;',
+                  );
+                }
+                setTimeout(function () {
+                  triggerChangeAction();
+                }, 100);
+              };
+              _this.paramsConfigChange = function (paramsKey, newParamsConfig) {
+                var _this$props4 = _this.props,
+                  keyRoute = _this$props4.keyRoute,
+                  triggerChangeAction = _this$props4.triggerChangeAction,
+                  getJSONDataByKeyRoute = _this$props4.getJSONDataByKeyRoute;
+                var curParamsConfigData =
+                  getJSONDataByKeyRoute(
+                    keyRoute + '-config-body-' + paramsKey,
+                  ) || {};
+                _this.handleValueChange(
+                  keyRoute + '-config-body-' + paramsKey,
+                  Object.assign(curParamsConfigData, newParamsConfig),
+                );
+                setTimeout(function () {
+                  triggerChangeAction();
+                }, 100);
+              };
+              _this.state = {
+                isShowFilter: false, // 是否显示数据过滤器
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.switchFilterBtn = _this.switchFilterBtn.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              DynamicDataSchema,
+              _React$PureComponent,
+            );
+            var _proto = DynamicDataSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props5 = this.props,
+                keyRoute = _this$props5.keyRoute,
+                jsonKey = _this$props5.jsonKey,
+                nodeKey = _this$props5.nodeKey,
+                indexRoute = _this$props5.indexRoute,
+                targetJsonSchema = _this$props5.targetJsonSchema,
+                dynamicDataList = _this$props5.dynamicDataList,
+                dynamicDataObj = _this$props5.dynamicDataObj,
+                dynamicDataApiScopeList = _this$props5.dynamicDataApiScopeList,
+                getJSONDataByKeyRoute = _this$props5.getJSONDataByKeyRoute,
+                pageScreen = _this$props5.pageScreen;
+              var isShowFilter = this.state.isShowFilter;
+              var curType = targetJsonSchema.type;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+
+              // 获取DataSource中各类数据对象
+              var typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote// 获取当前数据源类型
+              var dataType = curJsonData.type || typeDataObj.default; // local or remote
+
+              var configDataObj = curJsonData.config || {}; // 接口数据请求配置对象
+              var dataName = configDataObj.dataName; // 数据源名称
+              var dataRoute = configDataObj.dataRoute; // 接口数据路径
+              var apiParams = configDataObj.body || {}; // 动态数据/请求参数
+              if (
+                !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_13__.isObject)(
+                  apiParams,
+                ) &&
+                apiParams !== ''
+              ) {
+                try {
+                  apiParams = JSON.parse(apiParams);
+                } catch (err) {
+                  console.log('当前数据源的请求参数格式异常');
+                  apiParams = {};
+                }
+              }
+              var curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
+              var dataObj = targetJsonSchema.properties.data || {}; // schema中的数据对象
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className1: 'mobile-screen-element-warp dynamic-data-schema',
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'dynamic-data-schema wide-screen-element-warp'
+                      : 'dynamic-data-schema mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text',
+                    },
+                    targetJsonSchema.title,
+                    targetJsonSchema.showKey &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'span',
+                        null,
+                        '\uFF08',
+                        (0,
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          jsonKey,
+                          {
+                            length: 15,
+                          },
+                        ),
+                        '\uFF09',
+                      ),
+                  ),
+                  targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'dynamic-data-tab-radio-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'dynamic-data-tab-radio',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            'tab-radio ' +
+                            (dataType === 'local' ? 'tab-radio-active' : ''),
+                          onClick: function onClick() {
+                            _this2.tabChange('local');
+                          },
+                        },
+                        '\u672C\u5730\u6570\u636E',
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            'tab-radio ' +
+                            (dataType === 'remote' ? 'tab-radio-active' : ''),
+                          onClick: function onClick() {
+                            _this2.tabChange('remote');
+                          },
+                        },
+                        '\u63A5\u53E3\u6570\u636E',
+                      ),
+                    ),
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className:
+                        'dynamic-dat-tabPane ' +
+                        (dataType === 'local'
+                          ? 'dynamic-dat-tabPane-active'
+                          : ''),
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'json-form-box',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                        {
+                          title: isShowFilter
+                            ? '点击隐藏数据过滤器'
+                            : '点击显示数据过滤器',
+                          placement: 'top',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.FilterOutlined,
+                          {
+                            className: 'filter-btn',
+                            onClick: this.switchFilterBtn,
+                          },
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_7__[
+                          'default'
+                        ],
+                        {
+                          parentType: curType,
+                          jsonKey: 'data',
+                          indexRoute: indexRoute ? indexRoute + '-2' : '2',
+                          keyRoute: keyRoute ? keyRoute + '-data' : 'data',
+                          nodeKey: nodeKey + '-data',
+                          targetJsonSchema: dataObj,
+                          key: nodeKey + '-data',
+                        },
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'filter-func-box',
+                        },
+                        isShowFilter &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                              'default'
+                            ],
+                            {
+                              isIgnoreWarn: true,
+                              // 当前主要使用方法体(非直接执行函数)
+                              parentType: curType,
+                              jsonKey: 'localFilter',
+                              indexRoute: indexRoute ? indexRoute + '-3' : '3',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-localFilter'
+                                : 'localFilter',
+                              nodeKey: nodeKey + '-localFilter',
+                              targetJsonSchema:
+                                targetJsonSchema.properties.localFilter,
+                              key: nodeKey + '-localFilter',
+                            },
+                          ),
+                      ),
+                    ),
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className:
+                        'dynamic-dat-tabPane ' +
+                        (dataType === 'remote'
+                          ? 'dynamic-dat-tabPane-active'
+                          : ''),
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'json-form-box',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            pageScreen === 'wideScreen'
+                              ? 'wide-screen-element-warp'
+                              : 'mobile-screen-element-warp',
+                          key: nodeKey + '-' + dataName,
+                          id: nodeKey + '-' + dataName,
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                           'div',
                           {
                             className: 'element-title',
-                            onClick: function (e) {
-                              t.setState({ isClosed: !g }),
-                                e.preventDefault(),
-                                e.stopPropagation();
-                            },
                           },
-                          V().createElement(
-                            'span',
-                            { className: 'title-text' },
-                            '对象配置',
-                          ),
-                          g
-                            ? V().createElement(ie.RightOutlined, {
-                                className: 'close-operate-btn',
-                              })
-                            : V().createElement(ie.DownOutlined, {
-                                className: 'close-operate-btn',
-                              }),
-                          _ &&
-                            V().createElement(
-                              'div',
-                              {
-                                className: 'display-source-btn',
-                                onClick: function (e) {
-                                  t.setState({ jsonView: !h }),
-                                    e.preventDefault(),
-                                    e.stopPropagation();
-                                },
-                              },
-                              V().createElement(
-                                X.Tooltip,
-                                { title: h ? '关闭源码模式' : '开启源码模式' },
-                                V().createElement(Ee, {
-                                  className: h
-                                    ? 'info-icon active'
-                                    : 'info-icon',
-                                }),
-                              ),
-                            ),
+                          '\u6570\u636E\u6E90\u5217\u8868',
                         ),
-                      V().createElement(
-                        'div',
-                        {
-                          className:
-                            'content-item ' +
-                            (S || c ? '' : 'object-content') +
-                            ' ' +
-                            (h ? 'json-view-array' : '') +
-                            ' ' +
-                            (g ? 'closed' : ''),
-                        },
-                        !h &&
-                          s.propertyOrder &&
-                          s.propertyOrder.map(function (e, t) {
-                            var a = n ? n + '-' + t : '' + t,
-                              r = i ? i + '-' + e : '' + e,
-                              l = e,
-                              c = s.properties[l],
-                              u = c.type;
-                            return Vt({
-                              parentType: u,
-                              jsonKey: l,
-                              indexRoute: a,
-                              keyRoute: r,
-                              nodeKey: o + '-' + u + '-' + l,
-                              targetJsonSchema: c,
-                              getJSONDataByKeyRoute: p,
-                              keyRoute2indexRoute: m,
-                              updateFormValueData: d,
-                            });
-                          }),
-                        h && V().createElement(pe, this.props),
-                      ),
-                    ),
-                  );
-                }),
-                t
-              );
-            })(V().PureComponent));
-        Oe.propTypes = {
-          isArrayItem: W().any,
-          arrIndex: W().any,
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().any,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          isStructuredSchema: W().bool,
-        };
-        var Ne = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Oe)),
-          De = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = a.props,
-                    n = t.keyRoute,
-                    r = t.updateFormValueData;
-                  e && r(n, e);
-                }),
-                (a.state = {
-                  isShowWarn: !1,
-                  warnText: '',
-                  curJSONDataTemp: void 0,
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = t.nodeKey,
-                  n = t.jsonKey,
-                  r = t.keyRoute,
-                  o = t.targetJsonSchema,
-                  i = t.pageScreen,
-                  l = t.getJSONDataByKeyRoute,
-                  s = this.state,
-                  c = s.isShowWarn,
-                  u = s.warnText,
-                  p = s.curJSONDataTemp,
-                  m = o.readOnly || !1,
-                  d = l(r);
-                return (
-                  (d = void 0 !== d ? d : o.default || '{}'),
-                  ((0, te.Gv)(d) || (0, te.cy)(d)) &&
-                    (d = JSON.stringify(d, null, 2)),
-                  B.createElement(
-                    'div',
-                    {
-                      className:
-                        'wideScreen' === i
-                          ? 'wide-screen-element-warp container-warp'
-                          : 'mobile-screen-element-warp',
-                      key: a,
-                      id: a,
-                    },
-                    B.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      B.createElement(
-                        'span',
-                        { className: 'title-text warning-text' },
-                        m ? '[只读]' : '',
-                      ),
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === i && o.title.length > (m ? 4 : 6)
-                              ? o.title
-                              : '',
-                        },
-                        o.title,
-                        o.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(n, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                      o.description &&
-                        B.createElement(
-                          X.Tooltip,
-                          { title: o.description, placement: 'top' },
-                          B.createElement(ie.InfoCircleOutlined, {
-                            className: 'info-icon',
-                          }),
-                        ),
-                    ),
-                    B.createElement(
-                      'div',
-                      { className: 'content-item' },
-                      c &&
-                        B.createElement(
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                           'div',
-                          { className: 'warning-box code-area-item' },
-                          B.createElement(
-                            'div',
-                            { className: 'warning-img' },
-                            'X',
-                          ),
-                          B.createElement(
-                            'div',
-                            { className: 'warning-text' },
-                            u,
-                          ),
-                        ),
-                      B.createElement(se(), {
-                        id: 'json_area_ace',
-                        value: (0, ee.GT)(p) ? p : d,
-                        className: 'code-area-item',
-                        mode: 'json',
-                        theme: 'solarized_light',
-                        name: 'JSON_CODE_EDIT',
-                        fontSize: 14,
-                        showPrintMargin: !0,
-                        showGutter: !0,
-                        highlightActiveLine: !0,
-                        readOnly: m,
-                        minLines: 5,
-                        maxLines: 30,
-                        width: '100%',
-                        onChange: function (t) {
-                          try {
-                            var a = JSON.parse(t);
-                            e.handleValueChange(a),
-                              e.setState({
-                                isShowWarn: !1,
-                                curJSONDataTemp: void 0,
-                              });
-                          } catch (a) {
-                            e.setState({
-                              curJSONDataTemp: t,
-                              warnText: a.message,
-                              isShowWarn: !0,
-                            });
-                          }
-                        },
-                        setOptions: {
-                          useWorker: !1,
-                          showLineNumbers: !0,
-                          tabSize: 2,
-                        },
-                      }),
-                    ),
-                  )
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        De.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var Re = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-              indexRoute2keyRoute: e.JSONSchemaStore.indexRoute2keyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-            };
-          })((0, A.observer)(De)),
-          we = __webpack_require__(566),
-          Je = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = e.target.value,
-                    n = a.props,
-                    r = n.keyRoute;
-                  (0, n.updateFormValueData)(r, t);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  a = e.jsonKey,
-                  n = e.nodeKey,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(t),
-                  l = r.readOnly || !1,
-                  s = r.isRequired || !1;
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: n,
-                    id: n,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      l ? '[只读]' : '',
-                    ),
-                    B.createElement(
-                      X.Tooltip,
-                      {
-                        title: 'wideScreen' === o ? r.description : '',
-                        placement: 'top',
-                      },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o &&
-                            r.title &&
-                            r.title.length > (l ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                    'mobileScreen' === o &&
-                      r.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.Input, {
-                        style: { display: 'inline-block' },
-                        disabled: l,
-                        required: s,
-                        placeholder: r.placeholder || '请输入' + r.title,
-                        defaultValue: i || r.default,
-                        onPressEnter: this.handleValueChange,
-                        onBlur: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Je.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var ke = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Je)),
-          Ce =
-            (__webpack_require__(819),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).switchFilterBtn = function () {
-                    var e = a.state.isShowFilter;
-                    a.setState({ isShowFilter: !e });
-                  }),
-                  (a.state = { isShowFilter: !1, jsonView: !1, isClosed: !1 }),
-                  (a.switchFilterBtn = a.switchFilterBtn.bind(a)),
-                  a
-                );
-              }
-              T()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  me.x.call(this);
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    me.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e,
-                    t = this,
-                    a = this.props,
-                    n = a.keyRoute,
-                    r = a.jsonKey,
-                    o = a.nodeKey,
-                    i = a.indexRoute,
-                    l = a.targetJsonSchema,
-                    s = a.pageScreen,
-                    c = this.state,
-                    u = c.jsonView,
-                    p = c.isClosed,
-                    m = c.isShowFilter,
-                    d = l.type,
-                    y = l.properties.type || {},
-                    h = l.properties.data || {},
-                    g = l.properties.filter || {},
-                    S = y.default,
-                    _ = null == (e = l.showCodeViewBtn) || e;
-                  return B.createElement(
-                    'div',
-                    {
-                      className:
-                        'wideScreen' === s
-                          ? 'wide-screen-element-warp'
-                          : 'mobile-screen-element-warp',
-                      key: o,
-                      id: o,
-                    },
-                    B.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === s && l.title.length > 6
-                              ? l.title
-                              : '',
-                        },
-                        l.title,
-                        l.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(r, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                      l.description &&
-                        B.createElement(
-                          X.Tooltip,
-                          { title: l.description, placement: 'top' },
-                          B.createElement(ie.InfoCircleOutlined, {
-                            className: 'info-icon',
-                          }),
-                        ),
-                    ),
-                    B.createElement(
-                      'div',
-                      { className: 'element-title-card-warp content-item' },
-                      B.createElement(
-                        'div',
-                        {
-                          className: 'element-title',
-                          onClick: function (e) {
-                            t.setState({ isClosed: !p }),
-                              e.preventDefault(),
-                              e.stopPropagation();
+                          {
+                            className: 'content-item',
                           },
-                        },
-                        B.createElement(
-                          'span',
-                          { className: 'title-text' },
-                          '数据源配置',
-                        ),
-                        p
-                          ? B.createElement(ie.RightOutlined, {
-                              className: 'close-operate-btn',
-                            })
-                          : B.createElement(ie.DownOutlined, {
-                              className: 'close-operate-btn',
-                            }),
-                        _ &&
-                          B.createElement(
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                             'div',
                             {
-                              className: 'display-source-btn',
-                              onClick: function (e) {
-                                t.setState({ jsonView: !u }),
-                                  e.preventDefault(),
-                                  e.stopPropagation();
-                              },
+                              className: 'form-item-box',
                             },
-                            B.createElement(
-                              X.Tooltip,
-                              { title: u ? '关闭源码模式' : '开启源码模式' },
-                              B.createElement(Ee, {
-                                className: u ? 'info-icon active' : 'info-icon',
-                              }),
-                            ),
-                          ),
-                      ),
-                      B.createElement(
-                        'div',
-                        {
-                          className:
-                            'content-item object-content ' +
-                            (u ? 'json-view-array' : '') +
-                            ' ' +
-                            (p ? 'closed' : ''),
-                        },
-                        !u &&
-                          'local' === S &&
-                          B.createElement(
-                            B.Fragment,
-                            null,
-                            B.createElement(
-                              'div',
-                              { className: 'ace-editor-box code-area-item' },
-                              B.createElement(
-                                X.Tooltip,
-                                {
-                                  title: m
-                                    ? '点击隐藏数据过滤器'
-                                    : '点击显示数据过滤器',
-                                  placement: 'top',
-                                },
-                                B.createElement(ie.FilterOutlined, {
-                                  className: 'filter-btn',
-                                  onClick: this.switchFilterBtn,
-                                }),
-                              ),
-                              B.createElement(Re, {
-                                parentType: d,
-                                jsonKey: 'data',
-                                indexRoute: i ? i + '-1' : '1',
-                                keyRoute: n ? n + '-data' : 'data',
-                                nodeKey: o + '-data',
-                                targetJsonSchema: h,
-                                key: o + '-data',
-                              }),
-                            ),
-                            m &&
-                              B.createElement(we.A, {
-                                parentType: d,
-                                jsonKey: 'filter',
-                                indexRoute: i ? i + '-2' : '2',
-                                keyRoute: n ? n + '-filter' : 'filter',
-                                nodeKey: o + '-filter',
-                                targetJsonSchema: g,
-                                key: o + '-filter',
-                              }),
-                          ),
-                        !u &&
-                          'remote' === S &&
-                          B.createElement(
-                            B.Fragment,
-                            null,
-                            B.createElement(
-                              'div',
-                              { className: 'url-editor-box' },
-                              B.createElement(ke, {
-                                parentType: d,
-                                jsonKey: 'data',
-                                indexRoute: i ? i + '-1' : '1',
-                                keyRoute: n ? n + '-data' : 'data',
-                                nodeKey: o + '-data',
-                                targetJsonSchema: h,
-                                key: o + '-data',
-                              }),
-                              B.createElement(
-                                X.Tooltip,
-                                {
-                                  title: '点击设置数据过滤器',
-                                  placement: 'top',
-                                },
-                                B.createElement(ie.FilterOutlined, {
-                                  className: 'filter-url-btn',
-                                  onClick: this.switchFilterBtn,
-                                }),
-                              ),
-                            ),
-                            m &&
-                              B.createElement(we.A, {
-                                parentType: d,
-                                jsonKey: 'filter',
-                                indexRoute: i ? i + '-2' : '2',
-                                keyRoute: n ? n + '-filter' : 'filter',
-                                nodeKey: o + '-filter',
-                                targetJsonSchema: g,
-                                key: o + '-filter',
-                              }),
-                          ),
-                        u && B.createElement(pe, this.props),
-                      ),
-                    ),
-                  );
-                }),
-                t
-              );
-            })(B.PureComponent));
-        Ce.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var Ke = (0, A.inject)(function (e) {
-            return {
-              triggerChange: e.JSONEditorStore.triggerChange,
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Ce)),
-          xe = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = e.target.value;
-                  if (a.props.onChange) a.props.onChange(t);
-                  else {
-                    var n = a.props,
-                      r = n.keyRoute;
-                    (0, n.updateFormValueData)(r, t);
-                  }
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  a = e.jsonKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = e.getJSONDataByKeyRoute,
-                  l = n && i(n),
-                  s = r.readOnly || !1,
-                  c = r.isRequired || !1;
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: t,
-                    id: t,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      s ? '[只读]' : '',
-                    ),
-                    B.createElement(
-                      X.Tooltip,
-                      {
-                        title: 'wideScreen' === o ? r.description : '',
-                        placement: 'top',
-                      },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o &&
-                            r.title &&
-                            r.title.length > (s ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                    'mobileScreen' === o &&
-                      r.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.Input, {
-                        style: { display: 'inline-block' },
-                        disabled: s,
-                        required: c,
-                        placeholder: r.placeholder || '请输入' + r.title,
-                        defaultValue: l || r.default,
-                        onPressEnter: this.handleValueChange,
-                        onBlur: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        xe.propTypes = {
-          parentType: W().any,
-          jsonKey: W().string,
-          indexRoute: W().any,
-          keyRoute: W().any,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          onChange: W().any,
-        };
-        var je = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-            };
-          })((0, A.observer)(xe)),
-          Pe = (function (e) {
-            function t() {
-              return e.apply(this, arguments) || this;
-            }
-            return (
-              T()(t, e),
-              (t.prototype.render = function () {
-                var e = this.props,
-                  t = e.pageScreen,
-                  a = e.mockData,
-                  n = e.dataRoute,
-                  r = e.nodeKey,
-                  o = e.onChange,
-                  i = [];
-                if (a && '{}' !== JSON.stringify(a)) {
-                  var l = a;
-                  if (!(0, Q.isObject)(a) && '' !== a)
-                    try {
-                      l = JSON.parse(a);
-                    } catch (e) {
-                      console.log('当前数据源的请求参数格式异常'), (l = {});
-                    }
-                  i = (0, Q.json2treeData)(l);
-                }
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === t
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: r + '-dataRoute-select',
-                    id: r + '-dataRoute-select',
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    '数据路径选择',
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.TreeSelect, {
-                        className: 'data-route-select',
-                        defaultValue: n,
-                        treeData: i,
-                        allowClear: !0,
-                        placeholder: '请选择要使用的数据节点（数据路径）',
-                        treeDefaultExpandAll: !0,
-                        onChange: o,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Pe.propTypes = {
-          pageScreen: W().any,
-          mockData: W().any,
-          dataRoute: W().any,
-          onChange: W().func,
-          nodeKey: W().string,
-        };
-        var Te = (0, A.inject)(function (e) {
-            return { pageScreen: e.JSONSchemaStore.pageScreen };
-          })((0, A.observer)(Pe)),
-          Be = (__webpack_require__(581), X.Select.Option),
-          Ve = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                  t,
-                ) {
-                  var n = Object.assign({}, a.props.curConfigData);
-                  (n[e] = t), a.props.configDataChange(n);
-                }),
-                (a.paramsValueChange = function (e, t) {
-                  var n = Object.assign({}, a.props.curConfigData);
-                  n.body && n.body[e] && (n.body[e].value = t),
-                    a.props.configDataChange(n);
-                }),
-                (a.dynamicDataChange = function (e) {
-                  var t = (0, ee.bQ)((0, $.toJS)(a.props.dynamicDataObj[e]));
-                  if (t) {
-                    var n = {
-                      id: t.id,
-                      url: t.url,
-                      method: t.method,
-                      headers: t.headers,
-                      options: t.options,
-                      dataName: t.name,
-                      body: t.body,
-                      data: t.data,
-                      filter: t.filter,
-                    };
-                    a.props.configDataChange(n);
-                  }
-                }),
-                (a.dataRouteChange = function (e) {
-                  var t = Object.assign({}, a.props.curConfigData);
-                  t.dataRoute = e;
-                  var n = (0, Q.dataRoute2dataPath)(e);
-                  (t.filter = 'return ' + n + ';'), a.props.configDataChange(t);
-                }),
-                a
-              );
-            }
-            return (
-              T()(t, e),
-              (t.prototype.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = t.pageScreen,
-                  n = t.curConfigData,
-                  r = t.nodeKey,
-                  o = t.keyRoute,
-                  i = t.dynamicDataList,
-                  l = t.dynamicDataObj,
-                  s = t.dynamicDataApiScopeList,
-                  c = ((0, t.getJSONDataByKeyRoute)(o), n.dataName),
-                  u = n.dataRoute,
-                  p = n.body || {};
-                if (!(0, te.Gv)(p) && '' !== p)
-                  try {
-                    p = JSON.parse(p);
-                  } catch (e) {
-                    console.log('当前数据源的请求参数格式异常'), (p = {});
-                  }
-                var m = l[c] || {};
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === a
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: r,
-                    id: r,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    n.title + ' (接口下发）',
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item object-content' },
-                    B.createElement(
-                      'div',
-                      {
-                        className: 'remote-dynamic-data-schema',
-                        key: r + '-remote-dynamic-data',
-                        id: r + '-remote-dynamic-data',
-                      },
-                      B.createElement(
-                        'div',
-                        {
-                          className:
-                            'wideScreen' === a
-                              ? 'wide-screen-element-warp'
-                              : 'mobile-screen-element-warp',
-                          key: r + '-' + c,
-                          id: r + '-' + c,
-                        },
-                        B.createElement(
-                          'div',
-                          { className: 'element-title' },
-                          '数据源列表',
-                        ),
-                        B.createElement(
-                          'div',
-                          { className: 'content-item' },
-                          B.createElement(
-                            'div',
-                            { className: 'form-item-box' },
-                            B.createElement(
-                              X.Select,
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_4__.Select,
                               {
                                 className: 'dynamic-data-select',
-                                defaultValue: c,
+                                defaultValue: dataName,
                                 onSelect: this.dynamicDataChange,
                               },
-                              i &&
-                                (0, te.cy)(i) &&
-                                i.map(function (e) {
-                                  return B.createElement(
-                                    Be,
-                                    { value: e.name, key: e.id },
-                                    e.title,
+                              dynamicDataList &&
+                                (0,
+                                $utils_typeof__WEBPACK_IMPORTED_MODULE_13__.isArray)(
+                                  dynamicDataList,
+                                ) &&
+                                dynamicDataList.map(function (dynamicData) {
+                                  return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                    Option,
+                                    {
+                                      value: dynamicData.name,
+                                      key: dynamicData.id,
+                                    },
+                                    dynamicData.title,
                                   );
                                 }),
                             ),
                           ),
                         ),
                       ),
-                      c &&
-                        p &&
-                        Object.keys(p).length > 0 &&
-                        B.createElement(
+                      dataName &&
+                        apiParams &&
+                        Object.keys(apiParams).length > 0 &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                           'div',
                           {
                             className:
-                              ('wideScreen' === a
+                              (pageScreen === 'wideScreen'
                                 ? 'wide-screen-element-warp'
                                 : 'mobile-screen-element-warp') +
                               ' element-title-card-warp',
-                            key: r + '-' + c + '-params',
-                            id: r + '-' + c + '-params',
+                            key: nodeKey + '-' + dataName + '-params',
+                            id: nodeKey + '-' + dataName + '-params',
                           },
-                          B.createElement(
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                             'div',
-                            { className: 'element-title' },
-                            '请求参数配置',
+                            {
+                              className: 'element-title',
+                            },
+                            '\u8BF7\u6C42\u53C2\u6570\u914D\u7F6E',
                           ),
-                          B.createElement(
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                             'div',
-                            { className: 'content-item object-content' },
-                            Object.keys(p).map(function (t) {
-                              var n = p[t];
-                              n.readOnly = !(!n.scope || 'static' !== n.scope);
-                              var o = r + '-body-' + t,
-                                i = s[n.scope];
-                              return (
-                                i &&
-                                  n.title.indexOf(i) < 0 &&
-                                  (n.title = n.title + '（' + i + '）'),
-                                (n.default = n.value),
-                                B.createElement(je, {
-                                  pageScreen: a,
-                                  jsonKey: t,
-                                  nodeKey: o,
-                                  targetJsonSchema: n,
-                                  onChange: function (a) {
-                                    e.paramsValueChange(t, a);
-                                  },
-                                  key: o,
-                                })
+                            {
+                              className: 'content-item object-content',
+                            },
+                            Object.keys(apiParams).map(function (paramKey) {
+                              var paramItam = (0,
+                              $utils_index__WEBPACK_IMPORTED_MODULE_14__.objClone)(
+                                apiParams[paramKey],
                               );
-                            }),
-                          ),
-                        ),
-                      c &&
-                        p &&
-                        0 === Object.keys(p).length &&
-                        B.createElement(
-                          'div',
-                          {
-                            className:
-                              'wideScreen' === a
-                                ? 'wide-screen-element-warp'
-                                : 'mobile-screen-element-warp',
-                            key: r + '-' + c + '-empty',
-                            id: r + '-' + c + '-empty',
-                          },
-                          B.createElement(
-                            'div',
-                            { className: 'element-title' },
-                            '请求参数配置',
-                          ),
-                          B.createElement(
-                            'div',
-                            { className: 'content-item' },
-                            B.createElement(
-                              'span',
-                              { className: 'warning-text' },
-                              '无可配置的请求参数',
-                            ),
-                          ),
-                        ),
-                      c &&
-                        B.createElement(Te, {
-                          nodeKey: r + '-dataRoute',
-                          mockData: m.respMock,
-                          dataRoute: u,
-                          onChange: this.dataRouteChange,
-                          key: r + '-dataRoute',
-                        }),
-                      c &&
-                        B.createElement(we.A, {
-                          isReadOnly: !0,
-                          isIgnoreWarn: !0,
-                          jsonKey: 'filter',
-                          nodeKey: r + '-config-params-filter-' + u,
-                          keyRoute: o ? o + '-filter' : 'filter',
-                          targetJsonSchema: {
-                            title: '过滤器函数体',
-                            default: 'return data;',
-                          },
-                          key: r + '-filter',
-                        }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Ve.propTypes = {
-          pageScreen: W().any,
-          keyRoute: W().any,
-          nodeKey: W().string,
-          curConfigData: W().object,
-          configDataChange: W().func,
-          dynamicDataList: W().array,
-          dynamicDataObj: W().object,
-          dynamicDataApiScopeList: W().object,
-        };
-        var Ie = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              dynamicDataList: e.JSONEditorStore.dynamicDataList,
-              dynamicDataObj: e.JSONEditorStore.dynamicDataObj,
-              dynamicDataApiScopeList:
-                e.JSONEditorStore.dynamicDataApiScopeList,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-            };
-          })((0, A.observer)(Ve)),
-          Me = (__webpack_require__(759), X.Select.Option),
-          Ae = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                  t,
-                ) {
-                  (0, a.props.updateFormValueData)(e, t);
-                }),
-                (a.switchFilterBtn = function () {
-                  var e = a.state.isShowFilter;
-                  a.setState({ isShowFilter: !e });
-                }),
-                (a.tabChange = function (e) {
-                  var t = a.props,
-                    n = t.keyRoute,
-                    r = t.triggerChangeAction;
-                  a.handleValueChange(n + '-type', e),
-                    setTimeout(function () {
-                      r();
-                    }, 100);
-                }),
-                (a.dynamicDataChange = function (e) {
-                  var t = a.props,
-                    n = t.keyRoute,
-                    r = t.dynamicDataObj,
-                    o = t.triggerChangeAction,
-                    i = (0, ee.bQ)((0, $.toJS)(r[e]));
-                  if (i) {
-                    var l = {
-                      id: i.id,
-                      url: i.url,
-                      method: i.method,
-                      headers: i.headers,
-                      options: i.options,
-                      dataName: i.name,
-                      body: i.body,
-                      data: i.data,
-                      filter: 'return data;',
-                      dataRoute: '',
-                    };
-                    a.handleValueChange(n + '-config', l),
-                      setTimeout(function () {
-                        o();
-                      }, 100);
-                  }
-                }),
-                (a.dataRouteChange = function (e) {
-                  var t = a.props,
-                    n = t.keyRoute,
-                    r = t.triggerChangeAction,
-                    o = t.updateFormValueData;
-                  if (e) {
-                    o(n + '-config-dataRoute', e, !0);
-                    var i = (0, Q.dataRoute2dataPath)(e);
-                    a.handleValueChange(
-                      n + '-config-filter',
-                      'return ' + i + ';',
-                    );
-                  } else
-                    o(n + '-config-dataRoute', '', !0),
-                      a.handleValueChange(n + '-config-filter', 'return data;');
-                  setTimeout(function () {
-                    r();
-                  }, 100);
-                }),
-                (a.paramsConfigChange = function (e, t) {
-                  var n = a.props,
-                    r = n.keyRoute,
-                    o = n.triggerChangeAction,
-                    i =
-                      (0, n.getJSONDataByKeyRoute)(r + '-config-body-' + e) ||
-                      {};
-                  a.handleValueChange(
-                    r + '-config-body-' + e,
-                    Object.assign(i, t),
-                  ),
-                    setTimeout(function () {
-                      o();
-                    }, 100);
-                }),
-                (a.state = { isShowFilter: !1 }),
-                (a.switchFilterBtn = a.switchFilterBtn.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = t.keyRoute,
-                  n = t.jsonKey,
-                  r = t.nodeKey,
-                  o = t.indexRoute,
-                  i = t.targetJsonSchema,
-                  l = t.dynamicDataList,
-                  s = t.dynamicDataObj,
-                  c = t.dynamicDataApiScopeList,
-                  u = t.getJSONDataByKeyRoute,
-                  p = t.pageScreen,
-                  m = this.state.isShowFilter,
-                  d = i.type,
-                  y = u(a) || {},
-                  h = i.properties.type || {},
-                  g = y.type || h.default,
-                  S = y.config || {},
-                  _ = S.dataName,
-                  f = S.dataRoute,
-                  E = S.body || {};
-                if (!(0, te.Gv)(E) && '' !== E)
-                  try {
-                    E = JSON.parse(E);
-                  } catch (e) {
-                    console.log('当前数据源的请求参数格式异常'), (E = {});
-                  }
-                var v = s[_] || {},
-                  b = i.properties.data || {};
-                return B.createElement(
-                  'div',
-                  {
-                    className1:
-                      'mobile-screen-element-warp dynamic-data-schema',
-                    className:
-                      'wideScreen' === p
-                        ? 'dynamic-data-schema wide-screen-element-warp'
-                        : 'dynamic-data-schema mobile-screen-element-warp',
-                    key: r,
-                    id: r,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      'span',
-                      { className: 'title-text' },
-                      i.title,
-                      i.showKey &&
-                        B.createElement(
-                          'span',
-                          null,
-                          '（',
-                          (0, Q.truncate)(n, { length: 15 }),
-                          '）',
-                        ),
-                    ),
-                    i.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: i.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'dynamic-data-tab-radio-box' },
-                      B.createElement(
-                        'div',
-                        { className: 'dynamic-data-tab-radio' },
-                        B.createElement(
-                          'div',
-                          {
-                            className:
-                              'tab-radio ' +
-                              ('local' === g ? 'tab-radio-active' : ''),
-                            onClick: function () {
-                              e.tabChange('local');
-                            },
-                          },
-                          '本地数据',
-                        ),
-                        B.createElement(
-                          'div',
-                          {
-                            className:
-                              'tab-radio ' +
-                              ('remote' === g ? 'tab-radio-active' : ''),
-                            onClick: function () {
-                              e.tabChange('remote');
-                            },
-                          },
-                          '接口数据',
-                        ),
-                      ),
-                    ),
-                    B.createElement(
-                      'div',
-                      {
-                        className:
-                          'dynamic-dat-tabPane ' +
-                          ('local' === g ? 'dynamic-dat-tabPane-active' : ''),
-                      },
-                      B.createElement(
-                        'div',
-                        { className: 'json-form-box' },
-                        B.createElement(
-                          X.Tooltip,
-                          {
-                            title: m
-                              ? '点击隐藏数据过滤器'
-                              : '点击显示数据过滤器',
-                            placement: 'top',
-                          },
-                          B.createElement(ie.FilterOutlined, {
-                            className: 'filter-btn',
-                            onClick: this.switchFilterBtn,
-                          }),
-                        ),
-                        B.createElement(Re, {
-                          parentType: d,
-                          jsonKey: 'data',
-                          indexRoute: o ? o + '-2' : '2',
-                          keyRoute: a ? a + '-data' : 'data',
-                          nodeKey: r + '-data',
-                          targetJsonSchema: b,
-                          key: r + '-data',
-                        }),
-                        B.createElement(
-                          'div',
-                          { className: 'filter-func-box' },
-                          m &&
-                            B.createElement(we.A, {
-                              isIgnoreWarn: !0,
-                              parentType: d,
-                              jsonKey: 'localFilter',
-                              indexRoute: o ? o + '-3' : '3',
-                              keyRoute: a ? a + '-localFilter' : 'localFilter',
-                              nodeKey: r + '-localFilter',
-                              targetJsonSchema: i.properties.localFilter,
-                              key: r + '-localFilter',
-                            }),
-                        ),
-                      ),
-                    ),
-                    B.createElement(
-                      'div',
-                      {
-                        className:
-                          'dynamic-dat-tabPane ' +
-                          ('remote' === g ? 'dynamic-dat-tabPane-active' : ''),
-                      },
-                      B.createElement(
-                        'div',
-                        { className: 'json-form-box' },
-                        B.createElement(
-                          'div',
-                          {
-                            className:
-                              'wideScreen' === p
-                                ? 'wide-screen-element-warp'
-                                : 'mobile-screen-element-warp',
-                            key: r + '-' + _,
-                            id: r + '-' + _,
-                          },
-                          B.createElement(
-                            'div',
-                            { className: 'element-title' },
-                            '数据源列表',
-                          ),
-                          B.createElement(
-                            'div',
-                            { className: 'content-item' },
-                            B.createElement(
-                              'div',
-                              { className: 'form-item-box' },
-                              B.createElement(
-                                X.Select,
-                                {
-                                  className: 'dynamic-data-select',
-                                  defaultValue: _,
-                                  onSelect: this.dynamicDataChange,
-                                },
-                                l &&
-                                  (0, te.cy)(l) &&
-                                  l.map(function (e) {
-                                    return B.createElement(
-                                      Me,
-                                      { value: e.name, key: e.id },
-                                      e.title,
-                                    );
-                                  }),
-                              ),
-                            ),
-                          ),
-                        ),
-                        _ &&
-                          E &&
-                          Object.keys(E).length > 0 &&
-                          B.createElement(
-                            'div',
-                            {
-                              className:
-                                ('wideScreen' === p
-                                  ? 'wide-screen-element-warp'
-                                  : 'mobile-screen-element-warp') +
-                                ' element-title-card-warp',
-                              key: r + '-' + _ + '-params',
-                              id: r + '-' + _ + '-params',
-                            },
-                            B.createElement(
-                              'div',
-                              { className: 'element-title' },
-                              '请求参数配置',
-                            ),
-                            B.createElement(
-                              'div',
-                              { className: 'content-item object-content' },
-                              Object.keys(E).map(function (t) {
-                                var n = (0, ee.bQ)(E[t]);
-                                n.readOnly = !(
-                                  !n.scope || 'static' !== n.scope
-                                );
-                                var o = a + '-config-body-' + t,
-                                  i = c[n.scope];
-                                if (
-                                  (i &&
-                                    'dynamic' !== n.scope &&
-                                    (n.title = n.title + '（' + i + '）'),
-                                  'dynamic' !== n.scope)
-                                )
-                                  return B.createElement(je, {
-                                    pageScreen: p,
-                                    jsonKey: t,
-                                    keyRoute: o + '-value',
-                                    nodeKey: o,
-                                    targetJsonSchema: n,
-                                    key: o,
-                                  });
-                                var l = r + '-' + _ + '-params-' + t;
-                                return B.createElement(Ie, {
-                                  pageScreen: p,
-                                  nodeKey: l,
-                                  keyRoute: a
-                                    ? a + '-config-body-' + t
-                                    : 'config-body-${paramKey}',
-                                  curConfigData: n || {},
-                                  configDataChange: function (a) {
-                                    e.paramsConfigChange(t, a);
+                              paramItam.readOnly =
+                                paramItam.scope && paramItam.scope === 'static'
+                                  ? true
+                                  : false;
+                              var curKeyRoute =
+                                keyRoute + '-config-body-' + paramKey;
+                              var scopeTitle =
+                                dynamicDataApiScopeList[paramItam.scope];
+                              if (scopeTitle && paramItam.scope !== 'dynamic') {
+                                paramItam.title =
+                                  paramItam.title +
+                                  '\uFF08' +
+                                  scopeTitle +
+                                  '\uFF09';
+                              }
+                              if (paramItam.scope !== 'dynamic') {
+                                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                                    'default'
+                                  ],
+                                  {
+                                    pageScreen: pageScreen,
+                                    // 默认使用宽屏模式
+                                    jsonKey: paramKey,
+                                    keyRoute: curKeyRoute + '-value',
+                                    nodeKey: curKeyRoute,
+                                    targetJsonSchema: paramItam,
+                                    key: curKeyRoute,
                                   },
-                                  key: o,
-                                });
-                              }),
-                            ),
+                                );
+                              } else {
+                                var curNodeKay =
+                                  nodeKey +
+                                  '-' +
+                                  dataName +
+                                  '-params-' +
+                                  paramKey;
+                                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  $renderers_RemoteDynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_11__[
+                                    'default'
+                                  ],
+                                  {
+                                    pageScreen: pageScreen,
+                                    // 默认使用宽屏模式
+                                    nodeKey: curNodeKay,
+                                    keyRoute: keyRoute
+                                      ? keyRoute + '-config-body-' + paramKey
+                                      : 'config-body-${paramKey}',
+                                    curConfigData: paramItam || {},
+                                    configDataChange: function configDataChange(
+                                      newParamsConfig,
+                                    ) {
+                                      _this2.paramsConfigChange(
+                                        paramKey,
+                                        newParamsConfig,
+                                      );
+                                    },
+                                    key: curKeyRoute,
+                                  },
+                                );
+                              }
+                            }),
                           ),
-                        _ &&
-                          E &&
-                          0 === Object.keys(E).length &&
-                          B.createElement(
+                        ),
+                      dataName &&
+                        apiParams &&
+                        Object.keys(apiParams).length === 0 &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              pageScreen === 'wideScreen'
+                                ? 'wide-screen-element-warp'
+                                : 'mobile-screen-element-warp',
+                            key: nodeKey + '-' + dataName + '-empty',
+                            id: nodeKey + '-' + dataName + '-empty',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                             'div',
                             {
-                              className:
-                                'wideScreen' === p
-                                  ? 'wide-screen-element-warp'
-                                  : 'mobile-screen-element-warp',
-                              key: r + '-' + _ + '-empty',
-                              id: r + '-' + _ + '-empty',
+                              className: 'element-title',
                             },
-                            B.createElement(
-                              'div',
-                              { className: 'element-title' },
-                              '请求参数配置',
-                            ),
-                            B.createElement(
-                              'div',
-                              { className: 'content-item' },
-                              B.createElement(
-                                'span',
-                                { className: 'warning-text' },
-                                '无可配置的请求参数',
-                              ),
+                            '\u8BF7\u6C42\u53C2\u6570\u914D\u7F6E',
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            {
+                              className: 'content-item',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              'span',
+                              {
+                                className: 'warning-text',
+                              },
+                              '\u65E0\u53EF\u914D\u7F6E\u7684\u8BF7\u6C42\u53C2\u6570',
                             ),
                           ),
-                        _ &&
-                          B.createElement(Te, {
-                            nodeKey: r + '-config-dataRoute-' + f,
-                            mockData: v.respMock,
-                            dataRoute: f,
+                        ),
+                      dataName &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                            'default'
+                          ],
+                          {
+                            nodeKey: nodeKey + '-config-dataRoute-' + dataRoute,
+                            mockData: curDynamicData.respMock,
+                            dataRoute: dataRoute,
                             onChange: this.dataRouteChange,
-                            key: r + '-config-dataRoute',
-                          }),
-                        _ &&
-                          B.createElement(we.A, {
-                            isReadOnly: !0,
-                            isIgnoreWarn: !0,
-                            parentType: d,
+                            key: nodeKey + '-config-dataRoute',
+                          },
+                        ),
+                      dataName &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                            'default'
+                          ],
+                          {
+                            isReadOnly: true,
+                            isIgnoreWarn: true,
+                            // 当前主要使用方法体(非直接执行函数)
+                            parentType: curType,
                             jsonKey: 'filter',
-                            indexRoute: o ? o + '-1-2' : '1-2',
-                            keyRoute: a
-                              ? a + '-config-filter'
+                            indexRoute: indexRoute
+                              ? indexRoute + '-1-2'
+                              : '1-2',
+                            keyRoute: keyRoute
+                              ? keyRoute + '-config-filter'
                               : 'config-filter',
-                            nodeKey: r + '-config-filter-' + f,
+                            nodeKey: nodeKey + '-config-filter-' + dataRoute,
                             targetJsonSchema:
-                              i.properties.config &&
-                              i.properties.config.properties.filter,
-                            key: r + '-config-filter',
-                          }),
-                      ),
+                              targetJsonSchema.properties.config &&
+                              targetJsonSchema.properties.config.properties
+                                .filter,
+                            key: nodeKey + '-config-filter',
+                          },
+                        ),
                     ),
                   ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Ae.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          dynamicDataList: W().array,
-          dynamicDataObj: W().object,
-          dynamicDataApiScopeList: W().object,
-        };
-        var Le = (0, A.inject)(function (e) {
-            return {
-              triggerChange: e.JSONEditorStore.triggerChange,
-              triggerChangeAction: e.JSONEditorStore.triggerChangeAction,
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              dynamicDataList: e.JSONEditorStore.dynamicDataList,
-              dynamicDataObj: e.JSONEditorStore.dynamicDataObj,
-              dynamicDataApiScopeList:
-                e.JSONEditorStore.dynamicDataApiScopeList,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Ae)),
-          We = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).state = {
-                  jsonView: !1,
-                  isClosed: !1,
-                }),
-                a
+                ),
               );
+            };
+            return DynamicDataSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          DynamicDataSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            dynamicDataList:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().array,
+            dynamicDataObj:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
+            dynamicDataApiScopeList:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              triggerChange: stores.JSONEditorStore.triggerChange,
+              triggerChangeAction: stores.JSONEditorStore.triggerChangeAction,
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              dynamicDataList: stores.JSONEditorStore.dynamicDataList,
+              dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
+              dynamicDataApiScopeList:
+                stores.JSONEditorStore.dynamicDataApiScopeList,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              DynamicDataSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/EventSchema/index.js':
+        /*!********************************************!*\
+  !*** ./src/renderers/EventSchema/index.js ***!
+  \********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+            );
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! $assets/img/code.svg */ './src/assets/img/code.svg',
+            );
+
+          var EventSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function EventSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.state = {
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false, // 是否为关闭状态，默认是开启状态
+              };
+              return _this;
             }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e,
-                  t = this,
-                  a = this.props,
-                  n = a.keyRoute,
-                  r = a.jsonKey,
-                  o = a.nodeKey,
-                  i = a.indexRoute,
-                  l = a.targetJsonSchema,
-                  s = a.pageScreen,
-                  c = l.type,
-                  u = this.state,
-                  p = u.jsonView,
-                  m = u.isClosed,
-                  d = l.properties.type || {},
-                  y = l.properties.register || {},
-                  h = l.properties.actionFunc || {},
-                  g = l.properties.trigger || {},
-                  S = l.properties.eventData || {},
-                  _ = d.default,
-                  f = null == (e = l.showCodeViewBtn) || e;
-                return B.createElement(
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              EventSchema,
+              _React$PureComponent,
+            );
+            var _proto = EventSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$sho,
+                _this2 = this;
+              var _this$props = this.props,
+                keyRoute = _this$props.keyRoute,
+                jsonKey = _this$props.jsonKey,
+                nodeKey = _this$props.nodeKey,
+                indexRoute = _this$props.indexRoute,
+                targetJsonSchema = _this$props.targetJsonSchema,
+                pageScreen = _this$props.pageScreen;
+              var curType = targetJsonSchema.type;
+              var _this$state = this.state,
+                jsonView = _this$state.jsonView,
+                isClosed = _this$state.isClosed;
+              var typeDataObj = targetJsonSchema.properties.type || {};
+              // 注册类型事件的数据对象：on
+              var registerJsonObj = targetJsonSchema.properties.register || {};
+              var actionFuncJsonObj =
+                targetJsonSchema.properties.actionFunc || {};
+              // 触发事件类型的数据对象：emit
+              var triggerJsonObj = targetJsonSchema.properties.trigger || {};
+              var eventDataJsonObj =
+                targetJsonSchema.properties.eventData || {};
+              // 获取当前数据源类型
+              var dataType = typeDataObj.default; // local or remote
+              // 是否显示源码切换按钮
+              var showCodeViewBtn =
+                (_targetJsonSchema$sho = targetJsonSchema.showCodeViewBtn) !=
+                null
+                  ? _targetJsonSchema$sho
+                  : true;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
-                    className:
-                      'wideScreen' === s
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: o,
-                    id: o,
+                    className: 'element-title',
                   },
-                  B.createElement(
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text',
+                      title:
+                        pageScreen === 'wideScreen' &&
+                        targetJsonSchema.title.length > 6
+                          ? targetJsonSchema.title
+                          : '',
+                    },
+                    targetJsonSchema.title,
+                    targetJsonSchema.showKey &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'span',
+                        null,
+                        '\uFF08',
+                        (0,
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          jsonKey,
+                          {
+                            length: 15,
+                          },
+                        ),
+                        '\uFF09',
+                      ),
+                  ),
+                  targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title-card-warp content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
-                    { className: 'element-title' },
-                    B.createElement(
+                    {
+                      className: 'element-title',
+                      onClick: function onClick(event) {
+                        _this2.setState({
+                          isClosed: !isClosed,
+                        });
+                        event.preventDefault();
+                        event.stopPropagation();
+                      },
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                      },
+                      '\u4E8B\u4EF6\u914D\u7F6E',
+                    ),
+                    isClosed
+                      ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                          {
+                            className: 'close-operate-btn',
+                          },
+                        )
+                      : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                          {
+                            className: 'close-operate-btn',
+                          },
+                        ),
+                    showCodeViewBtn &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'display-source-btn',
+                          onClick: function onClick(event) {
+                            _this2.setState({
+                              jsonView: !jsonView,
+                            });
+                            event.preventDefault();
+                            event.stopPropagation();
+                          },
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                          {
+                            title: jsonView ? '关闭源码模式' : '开启源码模式',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
+                              'default'
+                            ],
+                            {
+                              className: jsonView
+                                ? 'info-icon active'
+                                : 'info-icon',
+                            },
+                          ),
+                        ),
+                      ),
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className:
+                        'content-item object-content ' +
+                        (jsonView ? 'json-view-array' : '') +
+                        ' ' +
+                        (isClosed ? 'closed' : ''),
+                    },
+                    !jsonView &&
+                      dataType === 'on' &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        registerJsonObj &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'register',
+                              indexRoute: indexRoute ? indexRoute + '-1' : '1',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-register'
+                                : 'register',
+                              nodeKey: nodeKey + '-register',
+                              targetJsonSchema: registerJsonObj,
+                              key: nodeKey + '-register',
+                            },
+                          ),
+                        actionFuncJsonObj &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'actionFunc',
+                              indexRoute: indexRoute ? indexRoute + '-2' : '2',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-actionFunc'
+                                : 'actionFunc',
+                              nodeKey: nodeKey + '-actionFunc',
+                              targetJsonSchema: actionFuncJsonObj,
+                              key: nodeKey + '-actionFunc',
+                            },
+                          ),
+                      ),
+                    !jsonView &&
+                      dataType === 'emit' &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        triggerJsonObj &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'trigger',
+                              indexRoute: indexRoute ? indexRoute + '-1' : '1',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-trigger'
+                                : 'trigger',
+                              nodeKey: nodeKey + '-trigger',
+                              targetJsonSchema: triggerJsonObj,
+                              key: nodeKey + '-trigger',
+                            },
+                          ),
+                        eventDataJsonObj &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                              'default'
+                            ],
+                            {
+                              parentType: curType,
+                              jsonKey: 'eventData',
+                              indexRoute: indexRoute ? indexRoute + '-2' : '2',
+                              keyRoute: keyRoute
+                                ? keyRoute + '-eventData'
+                                : 'eventData',
+                              nodeKey: nodeKey + '-eventData',
+                              targetJsonSchema: eventDataJsonObj,
+                              key: nodeKey + '-eventData',
+                            },
+                          ),
+                      ),
+                    jsonView &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__[
+                          'default'
+                        ],
+                        this.props,
+                      ),
+                  ),
+                ),
+              );
+            };
+            return EventSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          EventSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              triggerChange: stores.JSONEditorStore.triggerChange,
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(EventSchema),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/HtmlAreaFormSchema/index.js':
+        /*!***************************************************!*\
+  !*** ./src/renderers/HtmlAreaFormSchema/index.js ***!
+  \***************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! react-ace */ 'react-ace');
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react_ace__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/mode-html */ 'ace-builds/src-noconflict/mode-html',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/theme-monokai */ 'ace-builds/src-noconflict/theme-monokai',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__,
+            );
+
+          var HtmlAreaFormSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function HtmlAreaFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 组件内部维护的数据
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (newJsonData) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, newJsonData); // 更新数值
+              };
+              _this.state = {
+                isShowWarn: false,
+                // 用于判断是否显示错误信息
+                warnText: '', // 错误内容
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              HtmlAreaFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = HtmlAreaFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var _this$state = this.state,
+                isShowWarn = _this$state.isShowWarn,
+                warnText = _this$state.warnText;
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              // 格式化JSON数据
+              curJsonData =
+                curJsonData !== undefined
+                  ? curJsonData
+                  : targetJsonSchema.default || '<p>hello</p>';
+              // 判断当前jsonData是否是对象类型
+              if (
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isObject)(
+                  curJsonData,
+                )
+              ) {
+                curJsonData = JSON.stringify(curJsonData, null, 2);
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp container-warp'
+                      : 'mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                       'span',
                       {
                         className: 'title-text',
                         title:
-                          'wideScreen' === s && l.title.length > 6
-                            ? l.title
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
                             : '',
                       },
-                      l.title,
-                      l.showKey &&
-                        B.createElement(
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                           'span',
                           null,
-                          '（',
-                          (0, Q.truncate)(r, { length: 15 }),
-                          '）',
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
                         ),
                     ),
-                    l.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: l.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__.InfoCircleOutlined,
+                        {
                           className: 'info-icon',
-                        }),
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  isShowWarn &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'warning-box code-area-item',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'warning-img',
+                        },
+                        'X',
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'warning-text',
+                        },
+                        warnText,
+                      ),
+                    ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    {
+                      id: 'code_area_ace',
+                      key: nodeKey + '-ace',
+                      className: 'code-area-item',
+                      value: curJsonData,
+                      mode: 'html',
+                      theme: 'monokai',
+                      name: 'JS_CODE_EDIT',
+                      fontSize: 14,
+                      showPrintMargin: true,
+                      showGutter: true,
+                      highlightActiveLine: true,
+                      readOnly: readOnly,
+                      minLines: 5,
+                      maxLines: 30,
+                      width: '100%',
+                      onChange: function onChange(newJsonData) {
+                        try {
+                          // HtmlParse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                          // 更新jsonData
+                          _this2.handleValueChange(newJsonData);
+                          _this2.setState({
+                            isShowWarn: false,
+                          });
+                        } catch (err) {
+                          // 更新jsonData
+                          _this2.handleValueChange(newJsonData);
+                          _this2.setState({
+                            warnText: err.message,
+                            isShowWarn: true,
+                          });
+                        }
+                      },
+                      setOptions: {
+                        useWorker: false,
+                        showLineNumbers: true,
+                        tabSize: 2,
+                      },
+                    },
+                  ),
+                ),
+              );
+            };
+            return HtmlAreaFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          HtmlAreaFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              HtmlAreaFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/InputFormSchema/index.js':
+        /*!************************************************!*\
+  !*** ./src/renderers/InputFormSchema/index.js ***!
+  \************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+
+          var InputFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function InputFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              // 方式1：在class组件中声明静态属性static，且必须是contextType，确保当前组件可以使用全局context中的数据（this.context不为空）
+              // static contextType = ThemeContext;
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event) {
+                var value = event.target.value;
+                if (_this.props.onChange) {
+                  // 如果有监听数据变动函数则优先触发
+                  _this.props.onChange(value);
+                } else {
+                  var _this$props = _this.props,
+                    keyRoute = _this$props.keyRoute,
+                    updateFormValueData = _this$props.updateFormValueData;
+                  updateFormValueData(keyRoute, value); // 更新数值
+                }
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              InputFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = InputFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Input,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        disabled: readOnly,
+                        required: isRequired,
+                        placeholder:
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        onPressEnter: this.handleValueChange,
+                        onBlur: this.handleValueChange,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return InputFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          InputFormSchema.propTypes = {
+            parentType: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              InputFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/JsonFormSchema/index.js':
+        /*!***********************************************!*\
+  !*** ./src/renderers/JsonFormSchema/index.js ***!
+  \***********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! react-ace */ 'react-ace');
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react_ace__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/mode-json */ 'ace-builds/src-noconflict/mode-json',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/theme-solarized_light */ 'ace-builds/src-noconflict/theme-solarized_light',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_12___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__,
+            );
+
+          // ace-builds
+
+          var JsonFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function JsonFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 组件内部维护的数据
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (newJsonData) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                if (newJsonData) {
+                  updateFormValueData(keyRoute, newJsonData); // 更新数值
+                }
+              };
+              _this.state = {
+                isShowWarn: false,
+                // 用于判断是否显示错误信息
+                warnText: '',
+                // 错误内容
+                curJSONDataTemp: undefined, // 用于记录当前不合规范的json数据
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              JsonFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = JsonFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var _this$state = this.state,
+                isShowWarn = _this$state.isShowWarn,
+                warnText = _this$state.warnText,
+                curJSONDataTemp = _this$state.curJSONDataTemp;
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+
+              // 格式化JSON数据
+              curJsonData =
+                curJsonData !== undefined
+                  ? curJsonData
+                  : targetJsonSchema.default || '{}';
+              // 判断当前jsonData是否是对象类型
+              if (
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isObject)(
+                  curJsonData,
+                ) ||
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isArray)(
+                  curJsonData,
+                )
+              ) {
+                curJsonData = JSON.stringify(curJsonData, null, 2);
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp container-warp'
+                      : 'mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text',
+                      title:
+                        pageScreen === 'wideScreen' &&
+                        targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                          ? targetJsonSchema.title
+                          : '',
+                    },
+                    targetJsonSchema.title,
+                    targetJsonSchema.showKey &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'span',
+                        null,
+                        '\uFF08',
+                        (0,
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          jsonKey,
+                          {
+                            length: 15,
+                          },
+                        ),
+                        '\uFF09',
                       ),
                   ),
-                  B.createElement(
+                  targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  isShowWarn &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'warning-box code-area-item',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'warning-img',
+                        },
+                        'X',
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'warning-text',
+                        },
+                        warnText,
+                      ),
+                    ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    {
+                      id: 'json_area_ace',
+                      value: (0,
+                      $utils_index__WEBPACK_IMPORTED_MODULE_9__.hasProperties)(
+                        curJSONDataTemp,
+                      )
+                        ? curJSONDataTemp
+                        : curJsonData,
+                      className: 'code-area-item',
+                      mode: 'json',
+                      theme: 'solarized_light',
+                      name: 'JSON_CODE_EDIT',
+                      fontSize: 14,
+                      showPrintMargin: true,
+                      showGutter: true,
+                      highlightActiveLine: true,
+                      readOnly: readOnly,
+                      minLines: 5,
+                      maxLines: 30,
+                      width: '100%',
+                      onChange: function onChange(newJsonData) {
+                        try {
+                          var newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                          // 更新jsonData
+                          _this2.handleValueChange(newJsonDataTemp);
+                          _this2.setState({
+                            isShowWarn: false,
+                            curJSONDataTemp: undefined, // 重置
+                          });
+                        } catch (err) {
+                          // 更新jsonData
+                          _this2.setState({
+                            curJSONDataTemp: newJsonData,
+                            // 记录当前格式不正确的json数据
+                            warnText: err.message,
+                            isShowWarn: true,
+                          });
+                        }
+                      },
+                      setOptions: {
+                        useWorker: false,
+                        showLineNumbers: true,
+                        tabSize: 2,
+                      },
+                    },
+                  ),
+                ),
+              );
+            };
+            return JsonFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          JsonFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              JsonFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/JsonView/index.js':
+        /*!*****************************************!*\
+  !*** ./src/renderers/JsonView/index.js ***!
+  \*****************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! react-ace */ 'react-ace');
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react_ace__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/mode-json */ 'ace-builds/src-noconflict/mode-json',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/theme-solarized_light */ 'ace-builds/src-noconflict/theme-solarized_light',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/JsonView/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
+            );
+
+          // ace-builds
+
+          var JsonView = /*#__PURE__*/ (function (_React$PureComponent) {
+            function JsonView(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (newJsonData) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                if (newJsonData) {
+                  updateFormValueData(keyRoute, newJsonData); // 更新数值
+                }
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              JsonView,
+              _React$PureComponent,
+            );
+            var _proto = JsonView.prototype;
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+
+              // 格式化JSON数据
+              curJsonData =
+                curJsonData !== undefined
+                  ? curJsonData
+                  : targetJsonSchema.default || '{}';
+              // 判断当前jsonData是否是对象类型
+              if (
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_7__.isObject)(
+                  curJsonData,
+                ) ||
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_7__.isArray)(
+                  curJsonData,
+                )
+              ) {
+                curJsonData = JSON.stringify(curJsonData, null, 2);
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className: 'json-view-box',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'readOnly-btn',
+                  },
+                  '[\u53EA\u8BFB]',
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  react_ace__WEBPACK_IMPORTED_MODULE_4___default(),
+                  {
+                    id: 'json_area_ace',
+                    value: curJsonData,
+                    className: 'json-view-ace',
+                    mode: 'json',
+                    theme: 'solarized_light',
+                    name: 'JSON_CODE_EDIT',
+                    fontSize: 14,
+                    showPrintMargin: true,
+                    showGutter: true,
+                    highlightActiveLine: true,
+                    readOnly: true,
+                    minLines: 5,
+                    maxLines: 33,
+                    width: '100%',
+                    setOptions: {
+                      useWorker: false,
+                      showLineNumbers: true,
+                      tabSize: 2,
+                    },
+                  },
+                ),
+              );
+            };
+            return JsonView;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          JsonView.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })((0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(JsonView));
+
+          /***/
+        },
+
+      /***/ './src/renderers/NumberFormSchema/index.js':
+        /*!*************************************************!*\
+  !*** ./src/renderers/NumberFormSchema/index.js ***!
+  \*************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/NumberFormSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
+            );
+
+          var NumberFormSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function NumberFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (newVal) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  targetJsonSchema = _this$props.targetJsonSchema,
+                  updateFormValueData = _this$props.updateFormValueData;
+                if (newVal < targetJsonSchema.minimum) {
+                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                    '\u5C0F\u4E8E\u8BBE\u5B9A\u7684\u6700\u5C0F\u6570\u503C' +
+                      targetJsonSchema.minimum +
+                      '\uFF0C\u8BF7\u91CD\u65B0\u8F93\u5165\u3002',
+                  );
+                } else if (newVal > targetJsonSchema.maximum) {
+                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                    '\u8D85\u8FC7\u8BBE\u5B9A\u7684\u6700\u5927\u6570\u503C' +
+                      targetJsonSchema.maximum +
+                      '\uFF0C\u8BF7\u91CD\u65B0\u8F93\u5165\u3002',
+                  );
+                } else {
+                  updateFormValueData(keyRoute, newVal); // 更新数值
+                }
+              };
+              /** 数值加减按钮事件处理器 */
+              _this.numberChange = function (type, curValue) {
+                var curNum = 0;
+                if (curValue) {
+                  curNum = curValue;
+                }
+                if (type === 'plus') {
+                  curNum += 1;
+                } else if (type === 'minus') {
+                  curNum -= 1;
+                }
+                _this.handleValueChange(curNum);
+                // 更新渲染时间戳，以便number能重新渲染
+                _this.setState({
+                  renderTime: new Date().getTime(),
+                });
+              };
+              _this.state = {
+                renderTime: new Date().getTime(),
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              NumberFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = NumberFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var renderTime = this.state.renderTime;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_7__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey + '-' + renderTime,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
-                    { className: 'element-title-card-warp content-item' },
-                    B.createElement(
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'input-number-wrap',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'number-btn minus',
+                          title: '\u70B9\u51FB\u51CF1',
+                          onClick: function onClick() {
+                            _this2.numberChange(
+                              'minus',
+                              (0,
+                              $utils_index__WEBPACK_IMPORTED_MODULE_7__.hasProperties)(
+                                curJsonData,
+                              )
+                                ? curJsonData
+                                : targetJsonSchema.default,
+                            );
+                          },
+                        },
+                        '-',
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                        {
+                          className: 'number-cont',
+                          style: {
+                            display: 'inline-block',
+                          },
+                          disabled: readOnly,
+                          required: isRequired,
+                          placeholder:
+                            targetJsonSchema.placeholder ||
+                            '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                          min: targetJsonSchema.minimum || 0,
+                          max: targetJsonSchema.maximum || 1000000,
+                          defaultValue: (0,
+                          $utils_index__WEBPACK_IMPORTED_MODULE_7__.hasProperties)(
+                            curJsonData,
+                          )
+                            ? curJsonData
+                            : targetJsonSchema.default,
+                          onChange: this.handleValueChange,
+                        },
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'number-btn plus',
+                          title: '\u70B9\u51FB\u52A01',
+                          onClick: function onClick() {
+                            _this2.numberChange(
+                              'plus',
+                              (0,
+                              $utils_index__WEBPACK_IMPORTED_MODULE_7__.hasProperties)(
+                                curJsonData,
+                              )
+                                ? curJsonData
+                                : targetJsonSchema.default,
+                            );
+                          },
+                        },
+                        '+',
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            };
+            return NumberFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          NumberFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              NumberFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/ObjectSchema/index.js':
+        /*!*********************************************!*\
+  !*** ./src/renderers/ObjectSchema/index.js ***!
+  \*********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $components/MappingRender */ './src/components/MappingRender.js',
+            );
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $assets/img/code.svg */ './src/assets/img/code.svg',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/ObjectSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_11__,
+            );
+
+          var ObjectSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function ObjectSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.state = {
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false, // 是否为关闭状态，默认是开启状态
+              };
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              ObjectSchema,
+              _React$PureComponent,
+            );
+            var _proto = ObjectSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_9__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_9__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$sho,
+                _this2 = this;
+              var _this$props = this.props,
+                indexRoute = _this$props.indexRoute,
+                jsonKey = _this$props.jsonKey,
+                nodeKey = _this$props.nodeKey,
+                keyRoute = _this$props.keyRoute,
+                pageScreen = _this$props.pageScreen,
+                targetJsonSchema = _this$props.targetJsonSchema,
+                isArrayItem = _this$props.isArrayItem,
+                arrIndex = _this$props.arrIndex,
+                isStructuredSchema = _this$props.isStructuredSchema,
+                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
+                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
+                updateFormValueData = _this$props.updateFormValueData;
+              var _this$state = this.state,
+                jsonView = _this$state.jsonView,
+                isClosed = _this$state.isClosed;
+              // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
+              var isStructured = isStructuredSchema;
+              // 是否显示源码切换按钮
+              var showCodeViewBtn =
+                (_targetJsonSchema$sho = targetJsonSchema.showCodeViewBtn) !=
+                null
+                  ? _targetJsonSchema$sho
+                  : true;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'object-schema-warp wide-screen-element-warp'
+                      : 'object-schema-warp mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                !isStructured &&
+                  !isArrayItem &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                    'div',
+                    {
+                      className: 'element-title',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        'span',
+                        {
+                          className: 'title-text',
+                          title:
+                            pageScreen === 'wideScreen' &&
+                            targetJsonSchema.title.length > 6
+                              ? targetJsonSchema.title
+                              : '',
+                        },
+                        targetJsonSchema.title,
+                        targetJsonSchema.showKey &&
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'span',
+                            null,
+                            '\uFF08',
+                            (0,
+                            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                              jsonKey,
+                              {
+                                length: 15,
+                              },
+                            ),
+                            '\uFF09',
+                          ),
+                      ),
+                    ),
+                  ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  'div',
+                  {
+                    className: 'element-title-card-warp content-item',
+                  },
+                  !isStructured &&
+                    !isArrayItem &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                       'div',
                       {
                         className: 'element-title',
-                        onClick: function (e) {
-                          t.setState({ isClosed: !m }),
-                            e.preventDefault(),
-                            e.stopPropagation();
+                        onClick: function onClick(event) {
+                          _this2.setState({
+                            isClosed: !isClosed,
+                          });
+                          event.preventDefault();
+                          event.stopPropagation();
                         },
                       },
-                      B.createElement(
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                         'span',
-                        { className: 'title-text' },
-                        '事件配置',
+                        {
+                          className: 'title-text',
+                        },
+                        '\u5BF9\u8C61\u914D\u7F6E',
                       ),
-                      m
-                        ? B.createElement(ie.RightOutlined, {
-                            className: 'close-operate-btn',
-                          })
-                        : B.createElement(ie.DownOutlined, {
-                            className: 'close-operate-btn',
-                          }),
-                      f &&
-                        B.createElement(
+                      isClosed
+                        ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                            {
+                              className: 'close-operate-btn',
+                            },
+                          )
+                        : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                            {
+                              className: 'close-operate-btn',
+                            },
+                          ),
+                      showCodeViewBtn &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                           'div',
                           {
                             className: 'display-source-btn',
-                            onClick: function (e) {
-                              t.setState({ jsonView: !p }),
-                                e.preventDefault(),
-                                e.stopPropagation();
+                            onClick: function onClick(event) {
+                              _this2.setState({
+                                jsonView: !jsonView,
+                              });
+                              event.preventDefault();
+                              event.stopPropagation();
                             },
                           },
-                          B.createElement(
-                            X.Tooltip,
-                            { title: p ? '关闭源码模式' : '开启源码模式' },
-                            B.createElement(Ee, {
-                              className: p ? 'info-icon active' : 'info-icon',
-                            }),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                            {
+                              title: jsonView ? '关闭源码模式' : '开启源码模式',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_10__[
+                                'default'
+                              ],
+                              {
+                                className: jsonView
+                                  ? 'info-icon active'
+                                  : 'info-icon',
+                              },
+                            ),
                           ),
                         ),
                     ),
-                    B.createElement(
-                      'div',
-                      {
-                        className:
-                          'content-item object-content ' +
-                          (p ? 'json-view-array' : '') +
-                          ' ' +
-                          (m ? 'closed' : ''),
-                      },
-                      !p &&
-                        'on' === _ &&
-                        B.createElement(
-                          B.Fragment,
-                          null,
-                          y &&
-                            B.createElement(je, {
-                              parentType: c,
-                              jsonKey: 'register',
-                              indexRoute: i ? i + '-1' : '1',
-                              keyRoute: n ? n + '-register' : 'register',
-                              nodeKey: o + '-register',
-                              targetJsonSchema: y,
-                              key: o + '-register',
-                            }),
-                          h &&
-                            B.createElement(we.A, {
-                              parentType: c,
-                              jsonKey: 'actionFunc',
-                              indexRoute: i ? i + '-2' : '2',
-                              keyRoute: n ? n + '-actionFunc' : 'actionFunc',
-                              nodeKey: o + '-actionFunc',
-                              targetJsonSchema: h,
-                              key: o + '-actionFunc',
-                            }),
-                        ),
-                      !p &&
-                        'emit' === _ &&
-                        B.createElement(
-                          B.Fragment,
-                          null,
-                          g &&
-                            B.createElement(je, {
-                              parentType: c,
-                              jsonKey: 'trigger',
-                              indexRoute: i ? i + '-1' : '1',
-                              keyRoute: n ? n + '-trigger' : 'trigger',
-                              nodeKey: o + '-trigger',
-                              targetJsonSchema: g,
-                              key: o + '-trigger',
-                            }),
-                          S &&
-                            B.createElement(Re, {
-                              parentType: c,
-                              jsonKey: 'eventData',
-                              indexRoute: i ? i + '-2' : '2',
-                              keyRoute: n ? n + '-eventData' : 'eventData',
-                              nodeKey: o + '-eventData',
-                              targetJsonSchema: S,
-                              key: o + '-eventData',
-                            }),
-                        ),
-                      p && B.createElement(pe, this.props),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        We.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var qe = (0, A.inject)(function (e) {
-            return {
-              triggerChange: e.JSONEditorStore.triggerChange,
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(We)),
-          Fe = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = e.target.value,
-                    n = a.props,
-                    r = n.keyRoute;
-                  (0, n.updateFormValueData)(
-                    r ? r + '-unit' : 'unit',
-                    Number(t),
-                  );
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  a = e.jsonKey,
-                  n = e.nodeKey,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(t),
-                  l = r.readOnly || !1,
-                  s = r.properties.unit,
-                  c = i.quantity,
-                  u = B.createElement('span', null, 'percent' === c ? '%' : c),
-                  p = (0, ee.y8)(r.type);
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp ' +
-                          (p ? 'two-col-element-warp' : ''),
-                    key: n,
-                    id: n,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      l ? '[只读]' : '',
-                    ),
-                    B.createElement(
-                      X.Tooltip,
-                      { title: r.description, placement: 'top' },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            (p || 'wideScreen' === o) &&
-                            r.title.length > (l ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.InputNumber, {
-                        style: { display: 'inline-block', width: '120px' },
-                        addonAfter: u,
-                        disabled: l,
-                        placeholder:
-                          s.placeholder ||
-                          r.placeholder ||
-                          '请输入' + s.title ||
-                          0,
-                        defaultValue: i.unit || s.default,
-                        onPressEnter: this.handleValueChange,
-                        onBlur: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Fe.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var Ue = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Fe)),
-          ze =
-            (__webpack_require__(928),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).layoutStyleObj = {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: '',
-                    quantity: 'px',
-                  }),
-                  (a.initBoxStyle = function () {
-                    var e = a.props,
-                      t = e.keyRoute,
-                      n = e.targetJsonSchema,
-                      r = (0, e.getJSONDataByKeyRoute)(t),
-                      o = n.propertyOrder[0],
-                      i = n.properties[o],
-                      l = r.quantity,
-                      s = r.unit || i.default;
-                    if (
-                      ((a.layoutStyleObj = {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: '',
-                        quantity: l,
-                      }),
-                      s)
-                    ) {
-                      var c = s.split(' ');
-                      1 === c.length
-                        ? c[0] && c[0].indexOf(l) >= 0
-                          ? ((a.layoutStyleObj.top = c[0]),
-                            (a.layoutStyleObj.right = c[0]),
-                            (a.layoutStyleObj.bottom = c[0]),
-                            (a.layoutStyleObj.left = c[0]))
-                          : 'auto' === c[0]
-                            ? ((a.layoutStyleObj.top = 'auto'),
-                              (a.layoutStyleObj.right = 'auto'),
-                              (a.layoutStyleObj.bottom = 'auto'),
-                              (a.layoutStyleObj.left = 'auto'))
-                            : ((a.layoutStyleObj.top = '' + c[0] + l),
-                              (a.layoutStyleObj.right = '' + c[0] + l),
-                              (a.layoutStyleObj.bottom = '' + c[0] + l),
-                              (a.layoutStyleObj.left = '' + c[0] + l))
-                        : ((a.layoutStyleObj.top = c[0]),
-                          (a.layoutStyleObj.right = c[1]),
-                          (a.layoutStyleObj.bottom = c[2] || c[0]),
-                          (a.layoutStyleObj.left = c[3] || c[1]));
-                    } else
-                      0 === s
-                        ? ((a.layoutStyleObj.top = '' + s + l),
-                          (a.layoutStyleObj.right = '' + s + l),
-                          (a.layoutStyleObj.bottom = '' + s + l),
-                          (a.layoutStyleObj.left = '' + s + l))
-                        : ((a.layoutStyleObj.top = 'auto'),
-                          (a.layoutStyleObj.right = 'auto'),
-                          (a.layoutStyleObj.bottom = 'auto'),
-                          (a.layoutStyleObj.left = 'auto'));
-                  }),
-                  (a.setLayoutBoxStyle = function (e, t, n) {
-                    t
-                      ? a.linkLayoutBoxStyle(e)
-                      : ((a.layoutStyleObj[n] =
-                          'auto' === e
-                            ? 'auto'
-                            : e
-                              ? '' + e + a.layoutStyleObj.quantity
-                              : 0 === e || '0' === e
-                                ? '0' + a.layoutStyleObj.quantity
-                                : 'auto'),
-                        a.updateBoxStyleState());
-                  }),
-                  (a.linkLayoutBoxStyle = function (e) {
-                    var t;
-                    (t =
-                      'auto' === e
-                        ? 'auto'
-                        : 0 === e
-                          ? '0' + a.layoutStyleObj.quantity
-                          : e
-                            ? '' + e + a.layoutStyleObj.quantity
-                            : 'auto'),
-                      (a.layoutStyleObj.top = t),
-                      (a.layoutStyleObj.right = t),
-                      (a.layoutStyleObj.bottom = t),
-                      (a.layoutStyleObj.left = t),
-                      a.updateBoxStyleState();
-                  }),
-                  (a.getStyleValNum = function (e) {
-                    if ('auto' === e) return '';
-                    if (e === '0' + a.layoutStyleObj.quantity || '0' === e)
-                      return 0;
-                    if (e) {
-                      var t = e.indexOf(a.layoutStyleObj.quantity);
-                      return t > -1 ? parseInt(e.substring(0, t)) : parseInt(e);
-                    }
-                    return 0;
-                  }),
-                  (a.updateBoxStyleState = function () {
-                    var e = a.props,
-                      t = e.keyRoute,
-                      n = e.updateFormValueData,
-                      r = a.state.renderAction;
-                    n(
-                      t ? t + '-unit' : 'unit',
-                      a.layoutStyleObj.top +
-                        ' ' +
-                        a.layoutStyleObj.right +
-                        ' ' +
-                        a.layoutStyleObj.bottom +
-                        ' ' +
-                        a.layoutStyleObj.left,
-                    ),
-                      a.setState({ renderAction: !r });
-                  }),
-                  (a.state = { layoutStyleLock: !1, renderAction: !1 }),
-                  (a.updateBoxStyleState = a.updateBoxStyleState.bind(a)),
-                  (a.initBoxStyle = a.initBoxStyle.bind(a)),
-                  a
-                );
-              }
-              T()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  this.initBoxStyle();
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  this.initBoxStyle();
-                }),
-                (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.nodeKey,
-                    n = t.jsonKey,
-                    r = t.targetJsonSchema,
-                    o = t.pageScreen,
-                    i = this.state,
-                    l = i.renderAction,
-                    s = i.layoutStyleLock,
-                    c = r.readOnly || !1;
-                  return B.createElement(
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                     'div',
                     {
                       className:
-                        ('wideScreen' === o
-                          ? 'wide-screen-element-warp'
-                          : 'mobile-screen-element-warp') +
+                        'content-item ' +
+                        (!isStructured && !isArrayItem
+                          ? 'object-content'
+                          : '') +
                         ' ' +
-                        (l ? 'render-mark' : ''),
-                      id: a,
+                        (jsonView ? 'json-view-array' : '') +
+                        ' ' +
+                        (isClosed ? 'closed' : ''),
                     },
-                    B.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      B.createElement(
-                        'span',
-                        { className: 'title-text warning-text' },
-                        c ? '[只读]' : '',
+                    !jsonView &&
+                      targetJsonSchema.propertyOrder &&
+                      targetJsonSchema.propertyOrder.map(function (key, index) {
+                        /** 1. 获取当前元素的路径值 */
+                        var currentIndexRoute = indexRoute
+                          ? indexRoute + '-' + index
+                          : '' + index;
+                        var currentKeyRoute = keyRoute
+                          ? keyRoute + '-' + key
+                          : '' + key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                        /** 2. 获取当前元素的key值 */
+                        var currentJsonKey = key;
+                        /** 3. 获取当前元素的json结构对象 */
+                        var currentSchemaData =
+                          targetJsonSchema.properties[currentJsonKey];
+                        /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                        var curType = currentSchemaData.type;
+                        /** 5. 获取当前元素的id，用于做唯一标识 */
+                        var childNodeKey =
+                          nodeKey + '-' + curType + '-' + currentJsonKey;
+                        return (0,
+                        $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
+                          'default'
+                        ])({
+                          parentType: curType,
+                          jsonKey: currentJsonKey,
+                          indexRoute: currentIndexRoute,
+                          keyRoute: currentKeyRoute,
+                          nodeKey: childNodeKey,
+                          targetJsonSchema: currentSchemaData,
+                          getJSONDataByKeyRoute: getJSONDataByKeyRoute,
+                          keyRoute2indexRoute: keyRoute2indexRoute,
+                          updateFormValueData: updateFormValueData,
+                        });
+                      }),
+                    jsonView &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
+                          'default'
+                        ],
+                        this.props,
                       ),
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(
-                          'span',
-                          {
-                            className: 'title-text',
-                            title:
-                              'wideScreen' === o && r.title.length > (c ? 4 : 6)
-                                ? r.title
-                                : '',
-                          },
-                          r.title,
-                          r.showKey &&
-                            B.createElement(
-                              'span',
-                              null,
-                              '（',
-                              (0, Q.truncate)(n, { length: 15 }),
-                              '）',
-                            ),
-                        ),
-                      ),
-                    ),
-                    B.createElement(
-                      'div',
-                      { className: 'content-item layout-box-style-container' },
-                      B.createElement(
-                        'div',
-                        { className: 'center-box' },
-                        B.createElement(
-                          X.Tooltip,
-                          {
-                            placement: 'top',
-                            title: s ? '点击解锁联动' : '点击联动',
-                          },
-                          B.createElement('div', {
-                            className: s ? 'lock-icon' : 'lock-icon unlock',
-                            onClick: function () {
-                              e.setState({ layoutStyleLock: !s });
-                            },
-                          }),
-                        ),
-                      ),
-                      B.createElement(X.InputNumber, {
-                        name: 'layoutPaddingTop',
-                        className:
-                          'layout-input-number layout-item layout-item-top\n            ' +
-                          ('%' === this.layoutStyleObj.quantity
-                            ? 'percent'
-                            : this.layoutStyleObj.quantity) +
-                          '-quantity-box',
-                        size: 'small',
-                        value: this.getStyleValNum(this.layoutStyleObj.top),
-                        onPressEnter: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'top');
-                        },
-                        onBlur: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'top');
-                        },
-                      }),
-                      B.createElement(X.InputNumber, {
-                        name: 'layoutPaddingRight',
-                        className:
-                          'layout-input-number layout-item layout-item-right\n            ' +
-                          ('%' === this.layoutStyleObj.quantity
-                            ? 'percent'
-                            : this.layoutStyleObj.quantity) +
-                          '-quantity-box',
-                        size: 'small',
-                        value: this.getStyleValNum(this.layoutStyleObj.right),
-                        onPressEnter: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'right');
-                        },
-                        onBlur: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'right');
-                        },
-                      }),
-                      B.createElement(X.InputNumber, {
-                        name: 'layoutPaddingBottom',
-                        className:
-                          'layout-input-number layout-item layout-item-bottom\n            ' +
-                          ('%' === this.layoutStyleObj.quantity
-                            ? 'percent'
-                            : this.layoutStyleObj.quantity) +
-                          '-quantity-box',
-                        size: 'small',
-                        value: this.getStyleValNum(this.layoutStyleObj.bottom),
-                        onPressEnter: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'bottom');
-                        },
-                        onBlur: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'bottom');
-                        },
-                      }),
-                      B.createElement(X.InputNumber, {
-                        name: 'layoutPaddingLeft',
-                        className:
-                          'layout-input-number layout-item layout-item-left\n            ' +
-                          ('%' === this.layoutStyleObj.quantity
-                            ? 'percent'
-                            : this.layoutStyleObj.quantity) +
-                          '-quantity-box',
-                        size: 'small',
-                        value: this.getStyleValNum(this.layoutStyleObj.left),
-                        onPressEnter: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'left');
-                        },
-                        onBlur: function (t) {
-                          var a = t.target.value;
-                          e.setLayoutBoxStyle(a, s, 'left');
-                        },
-                      }),
-                    ),
+                  ),
+                ),
+              );
+            };
+            return ObjectSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1___default().PureComponent);
+          ObjectSchema.propTypes = {
+            isArrayItem: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            // 如果是数组项，title会进行特殊显示
+            arrIndex: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            // 当前数组项
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            isStructuredSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(ObjectSchema),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/QuantitySchema/index.js':
+        /*!***********************************************!*\
+  !*** ./src/renderers/QuantitySchema/index.js ***!
+  \***********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+
+          var QuantitySchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function QuantitySchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event) {
+                var value = event.target.value;
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                var curKeyRoute = keyRoute ? keyRoute + '-unit' : 'unit';
+                updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              QuantitySchema,
+              _React$PureComponent,
+            );
+            var _proto = QuantitySchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
                   );
-                }),
-                t
-              );
-            })(B.PureComponent));
-        ze.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var He = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(ze)),
-          Ge = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = e.target.value,
-                    n = a.props,
-                    r = n.keyRoute;
-                  (0, n.updateFormValueData)(r, t);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  a = e.jsonKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(n),
-                  l = r.options;
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: t,
-                    id: t,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      X.Tooltip,
-                      {
-                        title: 'wideScreen' === o ? r.description : '',
-                        placement: 'top',
-                      },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o && r.title.length > 6
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                    'mobileScreen' === o &&
-                      r.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(
-                        X.Radio.Group,
-                        {
-                          style: { display: 'inline-block' },
-                          onChange: this.handleValueChange,
-                          defaultValue: i || r.default,
-                          disabled: r.readOnly,
-                        },
-                        l &&
-                          l.length > 0 &&
-                          l.map(function (e, a) {
-                            var n = e.label || e.name,
-                              r = t + '-radio-' + n;
-                            return B.createElement(
-                              X.Radio,
-                              { value: e.value, key: r },
-                              e.label,
-                            );
-                          }),
-                      ),
-                    ),
-                  ),
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              /** 获取quantity中的数值对象（默认第一个就是数值对象） */
+              var unitJsonSchema = targetJsonSchema.properties['unit'];
+              var curQuantity = curJsonData.quantity;
+              var unitSuffix =
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'span',
+                  null,
+                  curQuantity === 'percent' ? '%' : curQuantity,
                 );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Ge.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var $e = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Ge)),
-          Qe = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = a.props,
-                    n = t.keyRoute;
-                  (0, t.updateFormValueData)(n, e);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  a = e.jsonKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(n),
-                  l = r.options;
-                return B.createElement(
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_7__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: t,
-                    id: t,
+                    className: 'element-title',
                   },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      X.Tooltip,
-                      {
-                        title: 'wideScreen' === o ? r.description : '',
-                        placement: 'top',
-                      },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o && r.title.length > 6
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                    'mobileScreen' === o &&
-                      r.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
                   ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(
-                        X.Checkbox.Group,
-                        {
-                          style: { display: 'inline-block' },
-                          onChange: this.handleValueChange,
-                          defaultValue: i || r.default,
-                          disabled: r.readOnly,
-                        },
-                        l &&
-                          l.length > 0 &&
-                          l.map(function (e, a) {
-                            var n = e.label || e.name,
-                              r = t + '-select-' + n;
-                            return B.createElement(
-                              X.Checkbox,
-                              { value: e.value, key: r },
-                              n,
-                            );
-                          }),
-                      ),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Qe.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var Ye = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Qe)),
-          Ze = X.Input.TextArea,
-          Xe = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = e.target.value,
-                    n = a.props,
-                    r = n.keyRoute;
-                  (0, n.updateFormValueData)(r, t);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  a = e.jsonKey,
-                  n = e.nodeKey,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(t),
-                  l = r.readOnly || !1,
-                  s = r.isRequired || !1;
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp container-warp'
-                        : 'mobile-screen-element-warp',
-                    key: n,
-                    id: n,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                       'span',
-                      { className: 'title-text warning-text' },
-                      l ? '[只读]' : '',
-                    ),
-                    B.createElement(
-                      X.Tooltip,
                       {
-                        title: 'wideScreen' === o ? r.description : '',
-                        placement: 'top',
+                        className: 'title-text',
+                        title:
+                          (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
                       },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o &&
-                            r.title &&
-                            r.title.length > (l ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
                           ),
-                      ),
+                          '\uFF09',
+                        ),
                     ),
-                    'mobileScreen' === o &&
-                      r.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
                   ),
-                  B.createElement(
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(Ze, {
-                        style: { display: 'inline-block' },
-                        rows: 4,
-                        disabled: l,
-                        required: s,
-                        placeholder: r.placeholder || '请输入' + r.title,
-                        defaultValue: i || r.default,
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                      {
+                        style: {
+                          display: 'inline-block',
+                          width: '120px',
+                        },
+                        addonAfter: unitSuffix,
+                        disabled: readOnly,
+                        placeholder:
+                          unitJsonSchema.placeholder ||
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + unitJsonSchema.title ||
+                          0,
+                        defaultValue:
+                          curJsonData.unit || unitJsonSchema.default,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
-                      }),
+                      },
                     ),
                   ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Xe.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var et = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
+                ),
+              );
             };
-          })((0, A.observer)(Xe)),
-          tt = require('braft-editor'),
-          at = __webpack_require__.n(tt),
-          nt = require('braft-extensions/dist/color-picker'),
-          rt = __webpack_require__.n(nt),
-          ot =
-            (require('braft-extensions/dist/color-picker.css'),
-            require('braft-extensions/dist/table')),
-          it = __webpack_require__.n(ot);
-        require('braft-extensions/dist/table.css'),
-          require('braft-editor/dist/index.css'),
-          __webpack_require__(632),
-          at().use([rt()({ theme: 'light' })]),
-          at().use(
-            it()({
-              defaultColumns: 3,
-              defaultRows: 3,
-              withDropdown: !1,
-              columnResizable: !1,
-              exportAttrString: 'border="1" style="border-collapse: collapse"',
-            }),
+            return QuantitySchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          QuantitySchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              QuantitySchema,
+            ),
           );
-        var lt = (function (e) {
-          function t(t) {
-            var a;
-            return (
-              ((a = e.call(this, t) || this).handleEditorChange = function (e) {
-                var t = a.props,
-                  n = t.keyRoute;
-                (0, t.updateFormValueData)(n, e.toHTML());
-              }),
-              (a.state = {
-                isClosed: !0,
+
+          /***/
+        },
+
+      /***/ './src/renderers/RadioSchema/index.js':
+        /*!********************************************!*\
+  !*** ./src/renderers/RadioSchema/index.js ***!
+  \********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+
+          var RadioSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function RadioSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event) {
+                var value = event.target.value;
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, value); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              RadioSchema,
+              _React$PureComponent,
+            );
+            var _proto = RadioSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var options = targetJsonSchema.options;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Radio.Group,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        onChange: this.handleValueChange,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        disabled: targetJsonSchema.readOnly,
+                      },
+                      options &&
+                        options.length > 0 &&
+                        options.map(function (item, optionIndex) {
+                          var optionLabel = item.label || item.name;
+                          var optionNodeKey = nodeKey + '-radio-' + optionLabel;
+                          return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_4__.Radio,
+                            {
+                              value: item.value,
+                              key: optionNodeKey,
+                            },
+                            item.label,
+                          );
+                        }),
+                    ),
+                  ),
+                ),
+              );
+            };
+            return RadioSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          RadioSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(RadioSchema),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/RemoteDynamicDataSchema/index.js':
+        /*!********************************************************!*\
+  !*** ./src/renderers/RemoteDynamicDataSchema/index.js ***!
+  \********************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $renderers/TreeSelectFromSchema/index */ './src/renderers/TreeSelectFromSchema/index.js',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_9___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_9__,
+            );
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/RemoteDynamicDataSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_12__,
+            );
+
+          var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
+
+          var RemoteDynamicDataSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function RemoteDynamicDataSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (curKey, value) {
+                var curConfigData = Object.assign(
+                  {},
+                  _this.props.curConfigData,
+                );
+                curConfigData[curKey] = value;
+                _this.props.configDataChange(curConfigData); // 更新数值
+              };
+              _this.paramsValueChange = function (curKey, value) {
+                var curConfigData = Object.assign(
+                  {},
+                  _this.props.curConfigData,
+                );
+                if (curConfigData.body && curConfigData.body[curKey]) {
+                  curConfigData.body[curKey].value = value;
+                }
+                _this.props.configDataChange(curConfigData); // 更新数值
+              };
+              _this.dynamicDataChange = function (dynamicDataName) {
+                var curDynamicData = (0,
+                $utils_index__WEBPACK_IMPORTED_MODULE_11__.objClone)(
+                  (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                    _this.props.dynamicDataObj[dynamicDataName],
+                  ),
+                );
+                if (curDynamicData) {
+                  // 从jsonData中获取对应的数值
+                  var newCurDynamicData = {
+                    id: curDynamicData.id,
+                    url: curDynamicData.url,
+                    method: curDynamicData.method,
+                    headers: curDynamicData.headers,
+                    options: curDynamicData.options,
+                    dataName: curDynamicData.name,
+                    body: curDynamicData.body,
+                    data: curDynamicData.data,
+                    filter: curDynamicData.filter,
+                  };
+                  _this.props.configDataChange(newCurDynamicData); // 更新整个config数值
+                }
+              };
+              _this.dataRouteChange = function (newDataRoute) {
+                var curConfigData = Object.assign(
+                  {},
+                  _this.props.curConfigData,
+                );
+                curConfigData['dataRoute'] = newDataRoute;
+                var dataPath = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_9__.dataRoute2dataPath)(
+                  newDataRoute,
+                );
+                curConfigData['filter'] = 'return ' + dataPath + ';';
+                _this.props.configDataChange(curConfigData); // 更新数值
+              };
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              RemoteDynamicDataSchema,
+              _React$PureComponent,
+            );
+            var _proto = RemoteDynamicDataSchema.prototype;
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props = this.props,
+                pageScreen = _this$props.pageScreen,
+                curConfigData = _this$props.curConfigData,
+                nodeKey = _this$props.nodeKey,
+                keyRoute = _this$props.keyRoute,
+                dynamicDataList = _this$props.dynamicDataList,
+                dynamicDataObj = _this$props.dynamicDataObj,
+                dynamicDataApiScopeList = _this$props.dynamicDataApiScopeList,
+                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+              var dataName = curConfigData.dataName; // 数据源名称
+              var dataRoute = curConfigData.dataRoute; // 接口数据路径
+              var apiParams = curConfigData.body || {}; // 动态数据/请求参数
+              if (
+                !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isObject)(
+                  apiParams,
+                ) &&
+                apiParams !== ''
+              ) {
+                try {
+                  apiParams = JSON.parse(apiParams);
+                } catch (err) {
+                  console.log('当前数据源的请求参数格式异常');
+                  apiParams = {};
+                }
+              }
+              var curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  curConfigData.title + ' (\u63A5\u53E3\u4E0B\u53D1\uFF09',
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item object-content',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'remote-dynamic-data-schema',
+                      key: nodeKey + '-remote-dynamic-data',
+                      id: nodeKey + '-remote-dynamic-data',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className:
+                          pageScreen === 'wideScreen'
+                            ? 'wide-screen-element-warp'
+                            : 'mobile-screen-element-warp',
+                        key: nodeKey + '-' + dataName,
+                        id: nodeKey + '-' + dataName,
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'element-title',
+                        },
+                        '\u6570\u636E\u6E90\u5217\u8868',
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className: 'content-item',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'form-item-box',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Select,
+                            {
+                              className: 'dynamic-data-select',
+                              defaultValue: dataName,
+                              onSelect: this.dynamicDataChange,
+                            },
+                            dynamicDataList &&
+                              (0,
+                              $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isArray)(
+                                dynamicDataList,
+                              ) &&
+                              dynamicDataList.map(function (dynamicData) {
+                                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                                  Option,
+                                  {
+                                    value: dynamicData.name,
+                                    key: dynamicData.id,
+                                  },
+                                  dynamicData.title,
+                                );
+                              }),
+                          ),
+                        ),
+                      ),
+                    ),
+                    dataName &&
+                      apiParams &&
+                      Object.keys(apiParams).length > 0 &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            (pageScreen === 'wideScreen'
+                              ? 'wide-screen-element-warp'
+                              : 'mobile-screen-element-warp') +
+                            ' element-title-card-warp',
+                          key: nodeKey + '-' + dataName + '-params',
+                          id: nodeKey + '-' + dataName + '-params',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'element-title',
+                          },
+                          '\u8BF7\u6C42\u53C2\u6570\u914D\u7F6E',
+                        ),
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'content-item object-content',
+                          },
+                          Object.keys(apiParams).map(function (paramKey) {
+                            var paramItam = apiParams[paramKey];
+                            paramItam.readOnly =
+                              paramItam.scope && paramItam.scope === 'static'
+                                ? true
+                                : false;
+                            var curNodeKey = nodeKey + '-body-' + paramKey;
+                            var scopeTitle =
+                              dynamicDataApiScopeList[paramItam.scope];
+                            if (
+                              scopeTitle &&
+                              paramItam.title.indexOf(scopeTitle) < 0
+                            ) {
+                              paramItam.title =
+                                paramItam.title +
+                                '\uFF08' +
+                                scopeTitle +
+                                '\uFF09';
+                            }
+                            paramItam.default = paramItam.value; // 将当前参数值保存在schema的default，以便展示
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_7__[
+                                'default'
+                              ],
+                              {
+                                pageScreen: pageScreen,
+                                // 默认使用宽屏模式
+                                jsonKey: paramKey,
+                                nodeKey: curNodeKey,
+                                targetJsonSchema: paramItam,
+                                onChange: function onChange(newVal) {
+                                  _this2.paramsValueChange(paramKey, newVal);
+                                },
+                                key: curNodeKey,
+                              },
+                            );
+                          }),
+                        ),
+                      ),
+                    dataName &&
+                      apiParams &&
+                      Object.keys(apiParams).length === 0 &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            pageScreen === 'wideScreen'
+                              ? 'wide-screen-element-warp'
+                              : 'mobile-screen-element-warp',
+                          key: nodeKey + '-' + dataName + '-empty',
+                          id: nodeKey + '-' + dataName + '-empty',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'element-title',
+                          },
+                          '\u8BF7\u6C42\u53C2\u6570\u914D\u7F6E',
+                        ),
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'content-item',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'span',
+                            {
+                              className: 'warning-text',
+                            },
+                            '\u65E0\u53EF\u914D\u7F6E\u7684\u8BF7\u6C42\u53C2\u6570',
+                          ),
+                        ),
+                      ),
+                    dataName &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                          'default'
+                        ],
+                        {
+                          nodeKey: nodeKey + '-dataRoute',
+                          mockData: curDynamicData.respMock,
+                          dataRoute: dataRoute,
+                          onChange: this.dataRouteChange,
+                          key: nodeKey + '-dataRoute',
+                        },
+                      ),
+                    dataName &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_6__[
+                          'default'
+                        ],
+                        {
+                          isReadOnly: true,
+                          isIgnoreWarn: true,
+                          // 当前主要使用方法体(非直接执行函数)
+                          jsonKey: 'filter',
+                          nodeKey:
+                            nodeKey + '-config-params-filter-' + dataRoute,
+                          keyRoute: keyRoute ? keyRoute + '-filter' : 'filter',
+                          targetJsonSchema: {
+                            title: '过滤器函数体',
+                            default: 'return data;',
+                          },
+                          key: nodeKey + '-filter',
+                        },
+                      ),
+                  ),
+                ),
+              );
+            };
+            return RemoteDynamicDataSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          RemoteDynamicDataSchema.propTypes = {
+            pageScreen: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            curConfigData:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().object,
+            configDataChange:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().func,
+            dynamicDataList:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().array,
+            dynamicDataObj:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().object,
+            dynamicDataApiScopeList:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().object,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              dynamicDataList: stores.JSONEditorStore.dynamicDataList,
+              dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
+              dynamicDataApiScopeList:
+                stores.JSONEditorStore.dynamicDataApiScopeList,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              RemoteDynamicDataSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/SelectSchema/index.js':
+        /*!*********************************************!*\
+  !*** ./src/renderers/SelectSchema/index.js ***!
+  \*********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/SelectSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_9__,
+            );
+
+          var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
+
+          /**
+           * select下拉选择类型
+           */
+          var SelectSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function SelectSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (value) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, value); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              SelectSchema,
+              _React$PureComponent,
+            );
+            var _proto = SelectSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var options = targetJsonSchema.options;
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box select-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Select,
+                      {
+                        showSearch: true,
+                        mode: targetJsonSchema.multiple
+                          ? 'multiple'
+                          : undefined,
+                        style: {
+                          display: 'inline-block',
+                          minWidth: '120px',
+                        },
+                        onChange: this.handleValueChange,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        disabled: targetJsonSchema.readOnly,
+                      },
+                      options &&
+                        options.length > 0 &&
+                        options.map(function (item, optionIndex) {
+                          var optionLabel = item.label || item.name;
+                          var optionNodeKey =
+                            nodeKey + '-select-' + optionLabel;
+                          return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            Option,
+                            {
+                              value: item.value,
+                              key: optionNodeKey,
+                            },
+                            optionLabel,
+                          );
+                        }),
+                    ),
+                  ),
+                ),
+              );
+            };
+            return SelectSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          SelectSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(SelectSchema),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/SohuDataSourceSchema/index.js':
+        /*!*****************************************************!*\
+  !*** ./src/renderers/SohuDataSourceSchema/index.js ***!
+  \*****************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $components/MappingRender */ './src/components/MappingRender.js',
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+
+          var Panel = antd__WEBPACK_IMPORTED_MODULE_5__.Collapse.Panel;
+
+          var SohuDataSourceSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function SohuDataSourceSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.state = {
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false, // 是否为关闭状态，默认是开启状态
+              };
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              SohuDataSourceSchema,
+              _React$PureComponent,
+            );
+            var _proto = SohuDataSourceSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props = this.props,
+                indexRoute = _this$props.indexRoute,
+                jsonKey = _this$props.jsonKey,
+                nodeKey = _this$props.nodeKey,
+                keyRoute = _this$props.keyRoute,
+                pageScreen = _this$props.pageScreen,
+                targetJsonSchema = _this$props.targetJsonSchema,
+                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
+                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
+                updateFormValueData = _this$props.updateFormValueData;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  'div',
+                  {
+                    className: 'array-schema-box',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
+                    {
+                      defaultActiveKey: ['mainConfig'],
+                      expandIconPosition: 'right',
+                      bordered: false,
+                      accordion: true,
+                    },
+                    targetJsonSchema.properties['mainConfig'] &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        Panel,
+                        {
+                          header:
+                            targetJsonSchema.properties['mainConfig'].title,
+                          key: 'mainConfig',
+                        },
+                        targetJsonSchema.properties[
+                          'mainConfig'
+                        ].propertyOrder.map(function (key, index) {
+                          /** 1. 获取当前元素的路径值 */
+                          var currentIndexRoute = indexRoute
+                            ? indexRoute + '-0-' + index
+                            : '0-' + index;
+                          var currentKeyRoute = keyRoute
+                            ? keyRoute + '-mainConfig-' + key
+                            : 'mainConfig-' + key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                          var mainConfigJsonData =
+                            getJSONDataByKeyRoute(
+                              keyRoute
+                                ? keyRoute + '-mainConfig'
+                                : 'mainConfig',
+                            ) || {};
+                          /** 2. 获取当前元素的key值 */
+                          var currentJsonKey = key;
+                          /** 3. 获取当前元素的json结构对象 */
+                          var currentSchemaData = (0,
+                          mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                            targetJsonSchema.properties['mainConfig']
+                              .properties[currentJsonKey],
+                          );
+                          console.log(
+                            'mainConfigJsonData:',
+                            currentSchemaData,
+                            currentJsonKey,
+                            mainConfigJsonData,
+                          );
+                          /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                          var curType = currentSchemaData.type;
+                          /** 5. 获取当前元素的id，用于做唯一标识 */
+                          var childNodeKey =
+                            nodeKey + '-' + curType + '-' + currentJsonKey;
+                          var visibleOn = [
+                            'description',
+                            'CONTENTID',
+                            'CONTENTTYPE',
+                          ].includes(currentJsonKey)
+                            ? false
+                            : true; // 是否显示当前元素
+
+                          // 补充动态配置类型相关显隐逻辑【定制逻辑】
+                          if (
+                            currentJsonKey === 'description' &&
+                            mainConfigJsonData.type === 'ContentStaticConfig'
+                          ) {
+                            // mp后台配置 时显示 description（属性名称）
+                            visibleOn = true;
+                          } else if (
+                            (currentJsonKey === 'CONTENTID' ||
+                              currentJsonKey === 'CONTENTTYPE') &&
+                            mainConfigJsonData.type === 'RuntimeDataSelfDefine'
+                          ) {
+                            visibleOn = true;
+                          }
+                          if (visibleOn) {
+                            return (0,
+                            $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
+                              'default'
+                            ])({
+                              parentType: curType,
+                              jsonKey: currentJsonKey,
+                              indexRoute: currentIndexRoute,
+                              keyRoute: currentKeyRoute,
+                              nodeKey: childNodeKey,
+                              targetJsonSchema: currentSchemaData,
+                              isArrayItem: true,
+                              getJSONDataByKeyRoute: getJSONDataByKeyRoute,
+                              keyRoute2indexRoute: keyRoute2indexRoute,
+                              updateFormValueData: updateFormValueData,
+                            });
+                          }
+                        }),
+                      ),
+                    targetJsonSchema.propertyOrder.map(function (key, index) {
+                      if (key === 'mainConfig') {
+                        return;
+                      }
+                      /** 1. 获取当前元素的路径值 */
+                      var currentIndexRoute = indexRoute
+                        ? indexRoute + '-' + index
+                        : '' + index;
+                      var currentKeyRoute = keyRoute
+                        ? keyRoute + '-' + key
+                        : '' + key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                      /** 2. 获取当前元素的key值 */
+                      var currentJsonKey = key;
+                      /** 3. 获取当前元素的json结构对象 */
+                      var currentSchemaData = (0,
+                      mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                        targetJsonSchema.properties[currentJsonKey],
+                      );
+                      /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                      var curType = currentSchemaData.type;
+                      /** 5. 获取当前元素的id，用于做唯一标识 */
+                      var childNodeKey =
+                        nodeKey + '-' + curType + '-' + currentJsonKey;
+                      if (
+                        currentSchemaData.propertyOrder &&
+                        currentSchemaData.propertyOrder.length > 0
+                      ) {
+                        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                          Panel,
+                          {
+                            header: currentSchemaData.title,
+                            key: currentJsonKey,
+                          },
+                          (0,
+                          $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
+                            'default'
+                          ])({
+                            parentType: curType,
+                            jsonKey: currentJsonKey,
+                            indexRoute: currentIndexRoute,
+                            keyRoute: currentKeyRoute,
+                            nodeKey: childNodeKey,
+                            targetJsonSchema: currentSchemaData,
+                            isArrayItem: true,
+                            getJSONDataByKeyRoute: getJSONDataByKeyRoute,
+                            keyRoute2indexRoute: keyRoute2indexRoute,
+                            updateFormValueData: updateFormValueData,
+                          }),
+                        );
+                      }
+                    }),
+                  ),
+                ),
+              );
+            };
+            return SohuDataSourceSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1___default().PureComponent);
+          SohuDataSourceSchema.propTypes = {
+            isArrayItem: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            // 如果是数组项，title会进行特殊显示
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            isStructuredSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              SohuDataSourceSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/SohuEventSchema/index.js':
+        /*!************************************************!*\
+  !*** ./src/renderers/SohuEventSchema/index.js ***!
+  \************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/SohuEventSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
+            );
+
+          var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
+          var Panel = antd__WEBPACK_IMPORTED_MODULE_5__.Collapse.Panel;
+
+          var SohuEventSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function SohuEventSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.handleEventTitleChange = function (eventCode, inputEvent) {
+                var newTitle = inputEvent.target.value;
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData,
+                  getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute;
+                var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+                var globalEventMap = Object.assign(
+                  {},
+                  (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                    curJsonData.globalEventMap,
+                  ),
+                );
+                var curKeyRout = keyRoute + '-globalEventMap';
+                globalEventMap[eventCode] = newTitle;
+                updateFormValueData(curKeyRout, globalEventMap);
+              };
+              _this.handleSelectEventChange = function (
+                eventName,
+                newEventCode,
+              ) {
+                var _this$props2 = _this.props,
+                  keyRoute = _this$props2.keyRoute,
+                  updateFormValueData = _this$props2.updateFormValueData,
+                  getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                var options = _this.props.options || {};
+                var curKeyRout = keyRoute + '-event';
+                var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+                var curEvent = [];
+                if (curJsonData.event && curJsonData.event.length > 0) {
+                  curEvent = (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                    curJsonData.event,
+                  );
+                } else if (
+                  options.eventListenConfig &&
+                  options.eventListenConfig.length > 0
+                ) {
+                  var eventListenConfig = options.eventListenConfig || [];
+                  eventListenConfig.forEach(function (event) {
+                    curEvent.push({
+                      name: event.name,
+                      listenName: event.code,
+                    });
+                  });
+                }
+                // 更新监听事件数据
+                curEvent.forEach(function (event) {
+                  if (event.name === eventName) {
+                    event.listenName = newEventCode;
+                  }
+                });
+                updateFormValueData(curKeyRout, curEvent); // 更新数值
+              };
+              _this.state = {
+                jsonView: false,
+                // 是否显示code模式
+                isClosed: false, // 是否为关闭状态，默认是开启状态
+              };
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              SohuEventSchema,
+              _React$PureComponent,
+            );
+            var _proto = SohuEventSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props3 = this.props,
+                indexRoute = _this$props3.indexRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                keyRoute = _this$props3.keyRoute,
+                pageScreen = _this$props3.pageScreen,
+                targetJsonSchema = _this$props3.targetJsonSchema,
+                getJSONDataByKeyRoute = _this$props3.getJSONDataByKeyRoute,
+                keyRoute2indexRoute = _this$props3.keyRoute2indexRoute,
+                updateFormValueData = _this$props3.updateFormValueData;
+              var options = this.props.options || {};
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var globalEventMap = curJsonData.globalEventMap || {}; // 全局事件列表
+              var curEventList = curJsonData.event || []; // 当前组件事件列表
+
+              // 从 options 获取相关数据
+              var widgetType = options.widgetType; // 组件类型
+              var eventEmitConfig = options.eventEmitConfig || [];
+              var eventListenConfig = options.eventListenConfig || [];
+              var allEmitEventList = options.allEmitEventList || [];
+              var isEmpty =
+                widgetType !== 'page' &&
+                eventEmitConfig.length === 0 &&
+                eventListenConfig.length === 0;
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                'div',
+                {
+                  className:
+                    '' +
+                    (pageScreen === 'wideScreen'
+                      ? 'sohu-event-container array-schema-box wide-screen-element-warp'
+                      : 'sohu-event-container array-schema-box mobile-screen-element-warp'),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
+                  {
+                    defaultActiveKey: ['mainConfig'],
+                    expandIconPosition: 'right',
+                    bordered: false,
+                    // accordion
+                  },
+                  eventListenConfig &&
+                    eventListenConfig.length > 0 &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                      Panel,
+                      {
+                        header: '监听的事件',
+                        key: 'eventListenConfig',
+                      },
+                      eventListenConfig.map(function (event, eventIndex) {
+                        var eventNodeKey =
+                          nodeKey + '-eventListen-' + event.code;
+                        var curEventCode =
+                          (
+                            curEventList.find(function (item) {
+                              return item.name === event.name;
+                            }) || {}
+                          ).listenName || '';
+                        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                          'div',
+                          {
+                            key: eventNodeKey,
+                            className: 'listen-event-content',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'title-text',
+                            },
+                            event.desc || event.name,
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'form-item-box',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              'span',
+                              null,
+                              '\u7ED1\u5B9A\u4E8B\u4EF6\uFF1A',
+                            ),
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Select,
+                              {
+                                showSearch: true,
+                                style: {
+                                  display: 'inline-block',
+                                  minWidth: '120px',
+                                },
+                                onChange: function onChange(newEventCode) {
+                                  return _this2.handleSelectEventChange(
+                                    event.name,
+                                    newEventCode,
+                                  );
+                                },
+                                defaultValue: curEventCode,
+                              },
+                              allEmitEventList.map(function (event) {
+                                var eventTitle =
+                                  globalEventMap[event.code] ||
+                                  event.desc ||
+                                  event.name;
+                                var optionNodeKey =
+                                  nodeKey + '-allEmitEvent-' + eventTitle;
+                                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                                  Option,
+                                  {
+                                    value: event.code,
+                                    key: optionNodeKey,
+                                  },
+                                  eventTitle,
+                                );
+                              }),
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  eventEmitConfig &&
+                    eventEmitConfig.length > 0 &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                      Panel,
+                      {
+                        header: '触发的事件',
+                        key: 'eventEmitConfig',
+                      },
+                      eventEmitConfig.map(function (event, eventIndex) {
+                        var eventNodeKey = nodeKey + '-eventEmit-' + event.code;
+                        var eventTitle = event.desc || event.name;
+                        return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                          'div',
+                          {
+                            key: eventNodeKey,
+                            className: 'object-content emit-event-content',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'title-text',
+                            },
+                            '\u4E8B\u4EF6\u540D\u79F0',
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'form-item-box',
+                            },
+                            eventTitle,
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'title-text',
+                            },
+                            '\u4E8B\u4EF6code',
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'content-item',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              'div',
+                              {
+                                className: 'form-item-box',
+                              },
+                              (0,
+                              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                                event.code,
+                                {
+                                  length: 30,
+                                },
+                              ),
+                            ),
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'title-text',
+                            },
+                            '\u81EA\u5B9A\u4E49\u540D\u79F0',
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                            'div',
+                            {
+                              className: 'content-item',
+                            },
+                            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              'div',
+                              {
+                                className: 'form-item-box',
+                              },
+                              /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                                antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                                {
+                                  style: {
+                                    display: 'inline-block',
+                                  },
+                                  defaultValue:
+                                    globalEventMap[event.code] || eventTitle,
+                                  onPressEnter: function onPressEnter(
+                                    inputEvent,
+                                  ) {
+                                    return _this2.handleEventTitleChange(
+                                      event.code,
+                                      inputEvent,
+                                    );
+                                  },
+                                  onBlur: function onBlur(inputEvent) {
+                                    return _this2.handleEventTitleChange(
+                                      event.code,
+                                      inputEvent,
+                                    );
+                                  },
+                                },
+                              ),
+                            ),
+                          ),
+                        );
+                      }),
+                    ),
+                  widgetType === 'page' &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                      Panel,
+                      {
+                        header: '事件列表',
+                        key: 'AllEmitEventList',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.List,
+                        {
+                          itemLayout: 'horizontal',
+                          dataSource: allEmitEventList,
+                          renderItem: function renderItem(event, index) {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.List.Item,
+                              null,
+                              /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                                antd__WEBPACK_IMPORTED_MODULE_5__.List.Item
+                                  .Meta,
+                                {
+                                  title:
+                                    globalEventMap[event.code] ||
+                                    event.desc ||
+                                    event.name,
+                                  description: (0,
+                                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                                    event.code || event.desc,
+                                    {
+                                      length: 30,
+                                    },
+                                  ),
+                                },
+                              ),
+                            );
+                          },
+                        },
+                      ),
+                    ),
+                ),
+                isEmpty &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Empty,
+                    {
+                      description: '暂无事件相关数据',
+                    },
+                  ),
+              );
+            };
+            return SohuEventSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1___default().PureComponent);
+          SohuEventSchema.propTypes = {
+            isArrayItem: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            // 如果是数组项，title会进行特殊显示
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            isStructuredSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              options: stores.JSONEditorStore.options,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              SohuEventSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/TextAreaFormSchema/index.js':
+        /*!***************************************************!*\
+  !*** ./src/renderers/TextAreaFormSchema/index.js ***!
+  \***************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+
+          var TextArea = antd__WEBPACK_IMPORTED_MODULE_5__.Input.TextArea;
+
+          var TextAreaFormSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function TextAreaFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event) {
+                var value = event.target.value;
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, value); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              TextAreaFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = TextAreaFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp container-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      TextArea,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        rows: 4,
+                        disabled: readOnly,
+                        required: isRequired,
+                        placeholder:
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        onPressEnter: this.handleValueChange,
+                        onBlur: this.handleValueChange,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return TextAreaFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          TextAreaFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              TextAreaFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/TextEditorSchema/index.js':
+        /*!*************************************************!*\
+  !*** ./src/renderers/TextEditorSchema/index.js ***!
+  \*************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var braft_editor__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! braft-editor */ 'braft-editor');
+          /* harmony import */ var braft_editor__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              braft_editor__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! braft-extensions/dist/color-picker */ 'braft-extensions/dist/color-picker',
+            );
+          /* harmony import */ var braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9__,
+            );
+          /* harmony import */ var braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! braft-extensions/dist/color-picker.css */ 'braft-extensions/dist/color-picker.css',
+            );
+          /* harmony import */ var braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_10___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_10__,
+            );
+          /* harmony import */ var braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(
+              /*! braft-extensions/dist/table */ 'braft-extensions/dist/table',
+            );
+          /* harmony import */ var braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11__,
+            );
+          /* harmony import */ var braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! braft-extensions/dist/table.css */ 'braft-extensions/dist/table.css',
+            );
+          /* harmony import */ var braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_12___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_12__,
+            );
+          /* harmony import */ var braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(
+              /*! braft-editor/dist/index.css */ 'braft-editor/dist/index.css',
+            );
+          /* harmony import */ var braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_13___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_13__,
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/TextEditorSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_14__,
+            );
+
+          // 引入编辑器组件
+
+          // 引入字体取色器样式
+
+          // 引入表格扩展（其他扩展：https://github.com/margox/braft-extensions）
+
+          // 引入编辑器样式
+
+          var colorOptions = {
+            theme: 'light', // 指定取色器样式主题，支持dark和light两种样式
+          };
+          braft_editor__WEBPACK_IMPORTED_MODULE_8___default().use([
+            braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9___default()(
+              colorOptions,
+            ),
+          ]);
+
+          // 表格配置项
+          var tableOptions = {
+            defaultColumns: 3,
+            // 默认列数
+            defaultRows: 3,
+            // 默认行数
+            withDropdown: false,
+            // 插入表格前是否弹出下拉菜单
+            columnResizable: false,
+            // 是否允许拖动调整列宽，默认false
+            exportAttrString: 'border="1" style="border-collapse: collapse"', // 指定输出HTML时附加到table标签上的属性字符串
+          };
+          braft_editor__WEBPACK_IMPORTED_MODULE_8___default().use(
+            braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11___default()(
+              tableOptions,
+            ),
+          );
+          var TextEditorSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function TextEditorSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              /** 富文本内容变动事件处理器 */
+              _this.handleEditorChange = function (editorState) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
+              };
+              _this.state = {
+                isClosed: true,
+                // 是否为关闭状态，默认是关闭状态
                 allControls: [
                   'undo',
                   'redo',
@@ -4682,6 +10087,7 @@
                   'headings',
                   'font-size',
                   'line-height',
+                  // 备注：行高设置无效（待处理BUG）
                   'letter-spacing',
                   'separator',
                   'text-color',
@@ -4693,6 +10099,7 @@
                   'superscript',
                   'subscript',
                   'remove-styles',
+                  // 'emoji', // 备注：数据库可能不支持emoji格式
                   'separator',
                   'text-indent',
                   'text-align',
@@ -4707,6 +10114,7 @@
                   'media',
                   'table',
                   'hr',
+                  // 'clear',
                   'separator',
                   'fullscreen',
                 ],
@@ -4717,2214 +10125,3941 @@
                   'italic',
                   'fullscreen',
                 ],
-              }),
-              (a.handleEditorChange = a.handleEditorChange.bind(a)),
-              a
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleEditorChange = _this.handleEditorChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              TextEditorSchema,
+              _React$PureComponent,
             );
-          }
-          T()(t, e);
-          var a = t.prototype;
-          return (
-            (a.componentWillMount = function () {
-              me.x.call(this),
+            var _proto = TextEditorSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+              if (
                 this.props.pageScreen &&
-                  'wideScreen' === this.props.pageScreen &&
-                  this.setState({ isClosed: !1 });
-            }),
-            (a.componentWillReceiveProps = function (e) {
-              e.keyRoute !== this.props.keyRoute
-                ? me.x.call(this, e.keyRoute)
-                : e.pageScreen !== this.props.pageScreen &&
-                  e.pageScreen &&
-                  'wideScreen' === e.pageScreen &&
-                  this.setState({ isClosed: !1 });
-            }),
-            (a.render = function () {
-              var e = this,
-                t = this.props,
-                a = t.keyRoute,
-                n = t.jsonKey,
-                r = t.nodeKey,
-                o = t.targetJsonSchema,
-                i = t.pageScreen,
-                l = t.getJSONDataByKeyRoute,
-                s = this.state.isClosed,
-                c = l(a),
-                u = at().createEditorState(c),
-                p = o.readOnly || !1;
-              return B.createElement(
+                this.props.pageScreen === 'wideScreen'
+              ) {
+                // 大屏幕时默认展开富文本编辑器
+                this.setState({
+                  isClosed: false,
+                });
+              }
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                } else if (nextProps.pageScreen !== this.props.pageScreen) {
+                  if (
+                    nextProps.pageScreen &&
+                    nextProps.pageScreen === 'wideScreen'
+                  ) {
+                    // 大屏幕时默认展开富文本编辑器
+                    this.setState({
+                      isClosed: false,
+                    });
+                  }
+                }
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var isClosed = this.state.isClosed;
+              var curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
+              var editorState =
+                braft_editor__WEBPACK_IMPORTED_MODULE_8___default().createEditorState(
+                  curJsonData,
+                ); // 将html字符串转换成editorState
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
                   className:
-                    'wideScreen' === i
+                    pageScreen === 'wideScreen'
                       ? 'text-editor-box wide-screen-element-warp'
                       : 'text-editor-box mobile-screen-element-warp',
-                  key: r,
-                  id: r,
+                  key: nodeKey,
+                  id: nodeKey,
                 },
-                B.createElement(
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
-                    onClick: function (t) {
-                      e.setState({ isClosed: !s }),
-                        t.preventDefault(),
-                        t.stopPropagation();
+                    onClick: function onClick(event) {
+                      _this2.setState({
+                        isClosed: !isClosed,
+                      });
+                      event.preventDefault();
+                      event.stopPropagation();
                     },
                   },
-                  B.createElement(
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
-                    { className: 'title-text warning-text' },
-                    p ? '[只读]' : '',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
                   ),
-                  B.createElement(
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
                     {
                       className: 'title-text',
                       title:
-                        'wideScreen' === i &&
-                        o.title &&
-                        o.title.length > (p ? 4 : 6)
-                          ? o.title
+                        pageScreen === 'wideScreen' &&
+                        targetJsonSchema.title &&
+                        targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                          ? targetJsonSchema.title
                           : '',
                     },
-                    o.title,
-                    o.showKey &&
-                      B.createElement(
+                    targetJsonSchema.title,
+                    targetJsonSchema.showKey &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                         'span',
                         null,
-                        '（',
-                        (0, Q.truncate)(n, { length: 15 }),
-                        '）',
-                      ),
-                  ),
-                  o.description &&
-                    B.createElement(
-                      X.Tooltip,
-                      { title: o.description, placement: 'top' },
-                      B.createElement(ie.InfoCircleOutlined, {
-                        className: 'info-icon',
-                      }),
-                    ),
-                  s
-                    ? B.createElement(ie.RightOutlined, {
-                        className: 'close-operate-btn',
-                      })
-                    : B.createElement(ie.DownOutlined, {
-                        className: 'close-operate-btn',
-                      }),
-                ),
-                B.createElement(
-                  'div',
-                  { className: 'content-item ' + (s ? 'closed' : '') },
-                  B.createElement(
-                    'div',
-                    { className: 'form-item-box' },
-                    B.createElement(at(), {
-                      key: r + '-textEditor',
-                      controls:
-                        'wideScreen' === i
-                          ? this.state.allControls
-                          : this.state.baseControls,
-                      media: {
-                        accepts: {
-                          image:
-                            'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
-                          video: !1,
-                          audio: !1,
-                        },
-                        pasteImage: !0,
-                      },
-                      defaultValue: u,
-                      readOnly: p,
-                      placeholder: o.placeholder || '请输入' + o.title,
-                      lineHeights: [1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4],
-                      onChange: this.handleEditorChange,
-                      onSave: this.handleEditorChange,
-                    }),
-                  ),
-                ),
-              );
-            }),
-            t
-          );
-        })(B.PureComponent);
-        lt.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          pageScreen: W().any,
-        };
-        var st = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(lt)),
-          ct =
-            (__webpack_require__(741),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).handleValueChange = function (
-                    e,
-                  ) {
-                    var t = a.props,
-                      n = t.keyRoute,
-                      r = t.targetJsonSchema,
-                      o = t.updateFormValueData;
-                    e < r.minimum
-                      ? X.message.warning(
-                          '小于设定的最小数值' + r.minimum + '，请重新输入。',
-                        )
-                      : e > r.maximum
-                        ? X.message.warning(
-                            '超过设定的最大数值' + r.maximum + '，请重新输入。',
-                          )
-                        : o(n, e);
-                  }),
-                  (a.numberChange = function (e, t) {
-                    var n = 0;
-                    t && (n = t),
-                      'plus' === e ? (n += 1) : 'minus' === e && (n -= 1),
-                      a.handleValueChange(n),
-                      a.setState({ renderTime: new Date().getTime() });
-                  }),
-                  (a.state = { renderTime: new Date().getTime() }),
-                  (a.handleValueChange = a.handleValueChange.bind(a)),
-                  a
-                );
-              }
-              T()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  me.x.call(this);
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    me.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.keyRoute,
-                    n = t.jsonKey,
-                    r = t.nodeKey,
-                    o = t.targetJsonSchema,
-                    i = t.pageScreen,
-                    l = t.getJSONDataByKeyRoute,
-                    s = this.state.renderTime,
-                    c = l(a),
-                    u = o.readOnly || !1,
-                    p = o.isRequired || !1,
-                    m = (0, ee.y8)(o.type);
-                  return B.createElement(
-                    'div',
-                    {
-                      className:
-                        'wideScreen' === i
-                          ? 'wide-screen-element-warp'
-                          : 'mobile-screen-element-warp ' +
-                            (m ? 'two-col-element-warp' : ''),
-                      key: r + '-' + s,
-                      id: r,
-                    },
-                    B.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      B.createElement(
-                        'span',
-                        { className: 'title-text warning-text' },
-                        u ? '[只读]' : '',
-                      ),
-                      B.createElement(
-                        X.Tooltip,
-                        { title: o.description, placement: 'top' },
-                        B.createElement(
-                          'span',
+                        '\uFF08',
+                        (0,
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          jsonKey,
                           {
-                            className: 'title-text',
-                            title:
-                              (m || 'wideScreen' === i) &&
-                              o.title.length > (u ? 4 : 6)
-                                ? o.title
-                                : '',
+                            length: 15,
                           },
-                          o.title,
-                          o.showKey &&
-                            B.createElement(
-                              'span',
-                              null,
-                              '（',
-                              (0, Q.truncate)(n, { length: 15 }),
-                              '）',
-                            ),
                         ),
+                        '\uFF09',
                       ),
-                    ),
-                    B.createElement(
-                      'div',
-                      { className: 'content-item' },
-                      B.createElement(
-                        'div',
-                        { className: 'form-item-box' },
-                        B.createElement(
-                          'div',
-                          { className: 'input-number-wrap' },
-                          B.createElement(
-                            'div',
-                            {
-                              className: 'number-btn minus',
-                              title: '点击减1',
-                              onClick: function () {
-                                e.numberChange(
-                                  'minus',
-                                  (0, ee.GT)(c) ? c : o.default,
-                                );
-                              },
-                            },
-                            '-',
-                          ),
-                          B.createElement(X.InputNumber, {
-                            className: 'number-cont',
-                            style: { display: 'inline-block' },
-                            disabled: u,
-                            required: p,
-                            placeholder: o.placeholder || '请输入' + o.title,
-                            min: o.minimum || 0,
-                            max: o.maximum || 1e6,
-                            defaultValue: (0, ee.GT)(c) ? c : o.default,
-                            onChange: this.handleValueChange,
-                          }),
-                          B.createElement(
-                            'div',
-                            {
-                              className: 'number-btn plus',
-                              title: '点击加1',
-                              onClick: function () {
-                                e.numberChange(
-                                  'plus',
-                                  (0, ee.GT)(c) ? c : o.default,
-                                );
-                              },
-                            },
-                            '+',
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-                t
-              );
-            })(B.PureComponent));
-        ct.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var ut = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(ct)),
-          pt = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = a.props,
-                    n = t.keyRoute;
-                  (0, t.updateFormValueData)(n, e);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  a = e.jsonKey,
-                  n = e.nodeKey,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(t),
-                  l = (0, ee.y8)(r.type);
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp ' +
-                          (l ? 'two-col-element-warp' : ''),
-                    key: n,
-                    id: n,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      X.Tooltip,
-                      { title: r.description, placement: 'top' },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            (l || 'wideScreen' === o) && r.title.length > 6
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
                   ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.Switch, {
-                        style: { display: 'inline-block' },
-                        defaultChecked: void 0 !== i ? i : r.default,
-                        checkedChildren: 'true',
-                        unCheckedChildren: 'false',
-                        onChange: this.handleValueChange,
-                        disabled: r.readOnly,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        pt.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var mt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(pt)),
-          dt = require('moment'),
-          yt = __webpack_require__.n(dt),
-          ht = {
-            'date-time': 'YYYY-MM-DD HH:mm',
-            date: 'YYYY-MM-DD',
-            time: 'HH:mm',
-          },
-          gt = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                  t,
-                ) {
-                  var n = a.props,
-                    r = n.keyRoute;
-                  (0, n.updateFormValueData)(r, t);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.keyRoute,
-                  a = e.jsonKey,
-                  n = e.nodeKey,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = e.getJSONDataByKeyRoute,
-                  l = r.type,
-                  s = r.readOnly || !1,
-                  c = r.isRequired || !1,
-                  u = ht[l] || ht[0],
-                  p = i(t) || r.default,
-                  m = (0, ee.y8)(l);
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp ' +
-                          (m ? 'two-col-element-warp' : ''),
-                    key: n,
-                    id: n,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      s ? '[只读]' : '',
-                    ),
-                    B.createElement(
-                      X.Tooltip,
-                      { title: r.description, placement: 'top' },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            (m || 'wideScreen' === o) &&
-                            r.title.length > (s ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.DatePicker, {
-                        style: { display: 'inline-block' },
-                        disabled: s,
-                        required: c,
-                        showTime: 'date-time' === l,
-                        format: u,
-                        placeholder: r.placeholder || '请输入' + r.title,
-                        defaultValue: p && yt()(p, u),
-                        onChange: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        gt.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var St = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(gt)),
-          _t = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                  t,
-                ) {
-                  var n = a.props,
-                    r = n.keyRoute;
-                  (0, n.updateFormValueData)(r, t);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  a = e.jsonKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(n) || r.default,
-                  l = r.readOnly || !1,
-                  s = r.isRequired || !1,
-                  c = (0, ee.y8)(r.type);
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp ' +
-                          (c ? 'two-col-element-warp' : ''),
-                    key: t,
-                    id: t,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      'span',
-                      { className: 'title-text warning-text' },
-                      l ? '[只读]' : '',
-                    ),
-                    B.createElement(
-                      X.Tooltip,
-                      { title: r.description, placement: 'top' },
-                      B.createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            (c || 'wideScreen' === o) &&
-                            r.title.length > (l ? 4 : 6)
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box' },
-                      B.createElement(X.TimePicker, {
-                        style: { display: 'inline-block' },
-                        disabled: l,
-                        required: s,
-                        placeholder: r.placeholder || '请输入' + r.title,
-                        defaultValue: i && yt()(i, 'HH:mm'),
-                        onChange: this.handleValueChange,
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        _t.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var ft = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(_t)),
-          Et = require('react-color'),
-          vt =
-            (__webpack_require__(220),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).handleValueChange = function (
-                    e,
-                  ) {
-                    var t = e.rgb,
-                      n =
-                        'rgba(' + t.r + ',' + t.g + ',' + t.b + ',' + t.a + ')',
-                      r = a.props,
-                      o = r.keyRoute;
-                    (0, r.updateFormValueData)(o, n),
-                      a.setState({ renderState: !a.state.renderState });
-                  }),
-                  (a.deleteColor = function () {
-                    var e = a.props,
-                      t = e.keyRoute;
-                    (0, e.updateFormValueData)(t, 'initial'),
-                      X.message.success('已移除当前设置的颜色值'),
-                      a.setState({ renderState: !a.state.renderState });
-                  }),
-                  (a.state = { renderState: !1, displayColorPicker: !1 }),
-                  (a.handleValueChange = a.handleValueChange.bind(a)),
-                  a
-                );
-              }
-              T()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  me.x.call(this);
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    me.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.keyRoute,
-                    n = t.jsonKey,
-                    r = t.nodeKey,
-                    o = t.targetJsonSchema,
-                    i = t.pageScreen,
-                    l = t.getJSONDataByKeyRoute,
-                    s = this.state,
-                    c = s.renderState,
-                    u = s.displayColorPicker,
-                    p = l(a),
-                    m = (0, ee.y8)(o.type),
-                    d = B.createElement(Et.SketchPicker, {
-                      className: 'color-sketch-picker',
-                      key: r + '-SketchPicker',
-                      color: p || o.default,
-                      onChange: this.handleValueChange,
-                    });
-                  return B.createElement(
-                    'div',
-                    {
-                      className:
-                        'wideScreen' === i
-                          ? 'wide-screen-element-warp'
-                          : 'mobile-screen-element-warp ' +
-                            (m ? 'two-col-element-warp' : ''),
-                      key: r,
-                      id: r,
-                    },
-                    B.createElement(
-                      'div',
-                      { className: 'element-title' },
-                      B.createElement(
-                        X.Tooltip,
-                        { title: o.description, placement: 'top' },
-                        B.createElement(
-                          'span',
-                          {
-                            className: 'title-text',
-                            title:
-                              (m || 'wideScreen' === i) && o.title.length > 6
-                                ? o.title
-                                : '',
-                          },
-                          o.title,
-                          o.showKey &&
-                            B.createElement(
-                              'span',
-                              null,
-                              '（',
-                              (0, Q.truncate)(n, { length: 15 }),
-                              '）',
-                            ),
-                        ),
-                      ),
-                    ),
-                    B.createElement(
-                      'div',
-                      { className: 'content-item' },
-                      B.createElement(
-                        'div',
-                        { className: 'form-item-box render-dom-' + c },
-                        B.createElement(
-                          'div',
-                          {
-                            className:
-                              'color-btn-wrap color-item-form ' +
-                              (u ? 'selected' : ''),
-                            onClick: function () {
-                              e.setState({ displayColorPicker: !u });
-                            },
-                          },
-                          B.createElement(
-                            X.Popover,
-                            {
-                              content: d,
-                              title: '颜色选择器',
-                              trigger: 'click',
-                            },
-                            B.createElement('button', {
-                              className: 'ant-input color-btn',
-                              style: { backgroundColor: p || o.default },
-                            }),
-                          ),
-                          B.createElement(
-                            X.Tooltip,
-                            { title: '点击移除当前颜色值', placement: 'top' },
-                            B.createElement(ie.CloseOutlined, {
-                              className: 'delete-bgColor-btn',
-                              onClick: function () {
-                                e.deleteColor();
-                              },
-                            }),
-                          ),
-                          B.createElement('span', { className: 'arrow' }),
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-                t
-              );
-            })(B.PureComponent));
-        vt.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var bt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(vt)),
-          Ot =
-            (require('ace-builds/src-noconflict/mode-html'),
-            __webpack_require__(953),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).handleValueChange = function (
-                    e,
-                  ) {
-                    var t = a.props,
-                      n = t.keyRoute;
-                    (0, t.updateFormValueData)(n, e);
-                  }),
-                  (a.state = { isShowWarn: !1, warnText: '' }),
-                  (a.handleValueChange = a.handleValueChange.bind(a)),
-                  a
-                );
-              }
-              T()(t, e);
-              var a = t.prototype;
-              return (
-                (a.componentWillMount = function () {
-                  me.x.call(this);
-                }),
-                (a.componentWillReceiveProps = function (e) {
-                  e.keyRoute !== this.props.keyRoute &&
-                    me.x.call(this, e.keyRoute);
-                }),
-                (a.render = function () {
-                  var e = this,
-                    t = this.props,
-                    a = t.nodeKey,
-                    n = t.jsonKey,
-                    r = t.keyRoute,
-                    o = t.targetJsonSchema,
-                    i = t.pageScreen,
-                    l = t.getJSONDataByKeyRoute,
-                    s = this.state,
-                    c = s.isShowWarn,
-                    u = s.warnText,
-                    p = o.readOnly || !1,
-                    m = l(r);
-                  return (
-                    (m = void 0 !== m ? m : o.default || '<p>hello</p>'),
-                    (0, te.Gv)(m) && (m = JSON.stringify(m, null, 2)),
-                    B.createElement(
-                      'div',
+                  targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
                       {
-                        className:
-                          'wideScreen' === i
-                            ? 'wide-screen-element-warp container-warp'
-                            : 'mobile-screen-element-warp',
-                        key: a,
-                        id: a,
-                      },
-                      B.createElement(
-                        'div',
-                        { className: 'element-title' },
-                        B.createElement(
-                          'span',
-                          { className: 'title-text warning-text' },
-                          p ? '[只读]' : '',
-                        ),
-                        B.createElement(
-                          X.Tooltip,
-                          {
-                            title: 'wideScreen' === i ? o.description : '',
-                            placement: 'top',
-                          },
-                          B.createElement(
-                            'span',
-                            {
-                              className: 'title-text',
-                              title:
-                                'wideScreen' === i &&
-                                o.title &&
-                                o.title.length > (p ? 4 : 6)
-                                  ? o.title
-                                  : '',
-                            },
-                            o.title,
-                            o.showKey &&
-                              B.createElement(
-                                'span',
-                                null,
-                                '（',
-                                (0, Q.truncate)(n, { length: 15 }),
-                                '）',
-                              ),
-                          ),
-                        ),
-                        'mobileScreen' === i &&
-                          o.description &&
-                          B.createElement(
-                            X.Tooltip,
-                            { title: o.description, placement: 'top' },
-                            B.createElement(ie.InfoCircleOutlined, {
-                              className: 'info-icon',
-                            }),
-                          ),
-                      ),
-                      B.createElement(
-                        'div',
-                        { className: 'content-item' },
-                        c &&
-                          B.createElement(
-                            'div',
-                            { className: 'warning-box code-area-item' },
-                            B.createElement(
-                              'div',
-                              { className: 'warning-img' },
-                              'X',
-                            ),
-                            B.createElement(
-                              'div',
-                              { className: 'warning-text' },
-                              u,
-                            ),
-                          ),
-                        B.createElement(se(), {
-                          id: 'code_area_ace',
-                          key: a + '-ace',
-                          className: 'code-area-item',
-                          value: m,
-                          mode: 'html',
-                          theme: 'monokai',
-                          name: 'JS_CODE_EDIT',
-                          fontSize: 14,
-                          showPrintMargin: !0,
-                          showGutter: !0,
-                          highlightActiveLine: !0,
-                          readOnly: p,
-                          minLines: 5,
-                          maxLines: 30,
-                          width: '100%',
-                          onChange: function (t) {
-                            try {
-                              e.handleValueChange(t),
-                                e.setState({ isShowWarn: !1 });
-                            } catch (a) {
-                              e.handleValueChange(t),
-                                e.setState({
-                                  warnText: a.message,
-                                  isShowWarn: !0,
-                                });
-                            }
-                          },
-                          setOptions: {
-                            useWorker: !1,
-                            showLineNumbers: !0,
-                            tabSize: 2,
-                          },
-                        }),
-                      ),
-                    )
-                  );
-                }),
-                t
-              );
-            })(B.PureComponent));
-        Ot.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var Nt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Ot)),
-          Dt = (__webpack_require__(546), X.Select.Option),
-          Rt = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                ) {
-                  var t = a.props,
-                    n = t.keyRoute;
-                  (0, t.updateFormValueData)(n, e);
-                }),
-                (a.handleValueChange = a.handleValueChange.bind(a)),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.nodeKey,
-                  a = e.jsonKey,
-                  n = e.keyRoute,
-                  r = e.targetJsonSchema,
-                  o = e.pageScreen,
-                  i = (0, e.getJSONDataByKeyRoute)(n),
-                  l = r.options,
-                  s = (0, ee.y8)(r.type);
-                return B.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp ' +
-                          (s ? 'two-col-element-warp' : ''),
-                    key: t,
-                    id: t,
-                  },
-                  B.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    B.createElement(
-                      X.Tooltip,
-                      {
-                        title: 'wideScreen' === o ? r.description : '',
+                        title: targetJsonSchema.description,
                         placement: 'top',
                       },
-                      B.createElement(
-                        'span',
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
                         {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o && r.title.length > 6
-                              ? r.title
-                              : '',
-                        },
-                        r.title,
-                        r.showKey &&
-                          B.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                    'mobileScreen' === o &&
-                      r.description &&
-                      B.createElement(
-                        X.Tooltip,
-                        { title: r.description, placement: 'top' },
-                        B.createElement(ie.InfoCircleOutlined, {
                           className: 'info-icon',
-                        }),
-                      ),
-                  ),
-                  B.createElement(
-                    'div',
-                    { className: 'content-item' },
-                    B.createElement(
-                      'div',
-                      { className: 'form-item-box select-box' },
-                      B.createElement(
-                        X.Select,
-                        {
-                          showSearch: !0,
-                          mode: r.multiple ? 'multiple' : void 0,
-                          style: { display: 'inline-block', minWidth: '120px' },
-                          onChange: this.handleValueChange,
-                          defaultValue: i || r.default,
-                          disabled: r.readOnly,
                         },
-                        l &&
-                          l.length > 0 &&
-                          l.map(function (e, a) {
-                            var n = e.label || e.name,
-                              r = t + '-select-' + n;
-                            return B.createElement(
-                              Dt,
-                              { value: e.value, key: r },
-                              n,
-                            );
-                          }),
                       ),
                     ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        Rt.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        };
-        var wt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Rt)),
-          Jt = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).state = {
-                  jsonView: !1,
-                  isClosed: !1,
-                }),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e,
-                  t = this,
-                  a = this.props,
-                  n = a.indexRoute,
-                  r = a.jsonKey,
-                  o = a.nodeKey,
-                  i = a.keyRoute,
-                  l = a.pageScreen,
-                  s = a.targetJsonSchema,
-                  c = a.isArrayItem,
-                  u = (a.arrIndex, a.isStructuredSchema),
-                  p = a.getJSONDataByKeyRoute,
-                  m = a.keyRoute2indexRoute,
-                  d = a.updateFormValueData,
-                  y = this.state,
-                  h = y.jsonView,
-                  g = y.isClosed,
-                  S = this.props.options || {},
-                  _ = u,
-                  f = null == (e = s.showCodeViewBtn) || e,
-                  E = p(i),
-                  v = o + '-' + E.type + '-' + E.valueType,
-                  b = S.metaContentKeyList || [],
-                  O = S.globalMetaConfig || [];
-                return V().createElement(
+                  isClosed
+                    ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.RightOutlined,
+                        {
+                          className: 'close-operate-btn',
+                        },
+                      )
+                    : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.DownOutlined,
+                        {
+                          className: 'close-operate-btn',
+                        },
+                      ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
-                    className:
-                      'wideScreen' === l
-                        ? 'object-schema-warp wide-screen-element-warp'
-                        : 'object-schema-warp mobile-screen-element-warp',
-                    key: v,
-                    id: o,
+                    className: 'content-item ' + (isClosed ? 'closed' : ''),
                   },
-                  !_ &&
-                    !c &&
-                    V().createElement(
-                      'div',
-                      { className: 'element-title' },
-                      V().createElement(
-                        X.Tooltip,
-                        { title: s.description, placement: 'top' },
-                        V().createElement(
-                          'span',
-                          {
-                            className: 'title-text',
-                            title:
-                              'wideScreen' === l && s.title.length > 6
-                                ? s.title
-                                : '',
-                          },
-                          s.title,
-                          s.showKey &&
-                            V().createElement(
-                              'span',
-                              null,
-                              '（',
-                              (0, Q.truncate)(r, { length: 15 }),
-                              '）',
-                            ),
-                        ),
-                      ),
-                    ),
-                  V().createElement(
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
-                    { className: 'element-title-card-warp content-item' },
-                    !_ &&
-                      !c &&
-                      V().createElement(
-                        'div',
-                        {
-                          className: 'element-title',
-                          onClick: function (e) {
-                            t.setState({ isClosed: !g }),
-                              e.preventDefault(),
-                              e.stopPropagation();
-                          },
-                        },
-                        V().createElement(
-                          'span',
-                          { className: 'title-text' },
-                          '动态配置',
-                        ),
-                        g
-                          ? V().createElement(ie.RightOutlined, {
-                              className: 'close-operate-btn',
-                            })
-                          : V().createElement(ie.DownOutlined, {
-                              className: 'close-operate-btn',
-                            }),
-                        f &&
-                          V().createElement(
-                            'div',
-                            {
-                              className: 'display-source-btn',
-                              onClick: function (e) {
-                                t.setState({ jsonView: !h }),
-                                  e.preventDefault(),
-                                  e.stopPropagation();
-                              },
-                            },
-                            V().createElement(
-                              X.Tooltip,
-                              { title: h ? '关闭源码模式' : '开启源码模式' },
-                              V().createElement(Ee, {
-                                className: h ? 'info-icon active' : 'info-icon',
-                              }),
-                            ),
-                          ),
-                      ),
-                    V().createElement(
-                      'div',
-                      {
-                        className:
-                          'content-item ' +
-                          (_ || c ? '' : 'object-content') +
-                          ' ' +
-                          (h ? 'json-view-array' : '') +
-                          ' ' +
-                          (g ? 'closed' : ''),
-                      },
-                      !h &&
-                        s.propertyOrder &&
-                        s.propertyOrder.map(function (e, t) {
-                          var a = n ? n + '-' + t : '' + t,
-                            r = i ? i + '-' + e : '' + e,
-                            l = e,
-                            c = (0, $.toJS)(s.properties[l]),
-                            u = c.type,
-                            y = o + '-' + u + '-' + l,
-                            h = ![
-                              'description',
-                              'valueType',
-                              'range',
-                              'value',
-                            ].includes(l);
-                          if (
-                            ('description' !== l && 'valueType' !== l) ||
-                            ('ContentStaticConfig' !== E.type &&
-                              'ResourceCenter' !== E.type)
-                          )
-                            if ('range' === l) {
-                              if (
-                                ('select' !== E.valueType ||
-                                  ('ContentStaticConfig' !== E.type &&
-                                    'ResourceCenter' !== E.type) ||
-                                  (h = !0),
-                                h)
-                              ) {
-                                var g = s.properties.value;
-                                ['select', 'radio', 'checkboxes'].includes(
-                                  g.type,
-                                ) &&
-                                  g.options &&
-                                  g.options.length > 0 &&
-                                  (c.options = (0, ee.bQ)(g.options));
-                              }
-                            } else
-                              'value' !== l ||
-                                ('DevDefaults' !== E.type &&
-                                  'RuntimeConst' !== E.type &&
-                                  'Content' !== E.type) ||
-                                (h = !0);
-                          else {
-                            h = !0;
-                            var S = s.properties.value;
-                            'valueType' !== l ||
-                              ['select', 'radio', 'checkboxes'].includes(
-                                S.type,
-                              ) ||
-                              ((c.default = 'string'),
-                              (c.readOnly = !0),
-                              (c.description =
-                                '当前数值没有可选项，不支持设置。'));
-                          }
-                          if (
-                            ('value' === l && 'Content' === E.type
-                              ? ((c.type = 'select'),
-                                (c.options = (0, ee.bQ)(b)))
-                              : 'value' === l &&
-                                'RuntimeConst' === E.type &&
-                                ((c.type = 'select'),
-                                (c.options = (0, ee.bQ)(O))),
-                            h)
-                          )
-                            return Vt({
-                              parentType: u,
-                              jsonKey: l,
-                              indexRoute: a,
-                              keyRoute: r,
-                              nodeKey: y,
-                              targetJsonSchema: c,
-                              getJSONDataByKeyRoute: p,
-                              keyRoute2indexRoute: m,
-                              updateFormValueData: d,
-                            });
-                        }),
-                      h && V().createElement(pe, this.props),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(V().PureComponent);
-        Jt.propTypes = {
-          isArrayItem: W().any,
-          arrIndex: W().any,
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().any,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          isStructuredSchema: W().bool,
-        };
-        var kt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              options: e.JSONEditorStore.options,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Jt)),
-          Ct = X.Collapse.Panel,
-          Kt = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).state = {
-                  jsonView: !1,
-                  isClosed: !1,
-                }),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this.props,
-                  t = e.indexRoute,
-                  a = e.jsonKey,
-                  n = e.nodeKey,
-                  r = e.keyRoute,
-                  o = e.pageScreen,
-                  i = e.targetJsonSchema,
-                  l = e.getJSONDataByKeyRoute,
-                  s = e.keyRoute2indexRoute,
-                  c = e.updateFormValueData;
-                return V().createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    key: n,
-                    id: n,
-                  },
-                  V().createElement(
-                    'div',
-                    { className: 'element-title' },
-                    V().createElement(
-                      X.Tooltip,
-                      { title: i.description, placement: 'top' },
-                      V().createElement(
-                        'span',
-                        {
-                          className: 'title-text',
-                          title:
-                            'wideScreen' === o && i.title.length > 6
-                              ? i.title
-                              : '',
-                        },
-                        i.title,
-                        i.showKey &&
-                          V().createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Q.truncate)(a, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                  ),
-                  V().createElement(
-                    'div',
-                    { className: 'array-schema-box' },
-                    V().createElement(
-                      X.Collapse,
-                      {
-                        defaultActiveKey: ['mainConfig'],
-                        expandIconPosition: 'right',
-                        bordered: !1,
-                        accordion: !0,
-                      },
-                      i.properties.mainConfig &&
-                        V().createElement(
-                          Ct,
-                          {
-                            header: i.properties.mainConfig.title,
-                            key: 'mainConfig',
-                          },
-                          i.properties.mainConfig.propertyOrder.map(
-                            function (e, a) {
-                              var o = t ? t + '-0-' + a : '0-' + a,
-                                u = r
-                                  ? r + '-mainConfig-' + e
-                                  : 'mainConfig-' + e,
-                                p =
-                                  l(r ? r + '-mainConfig' : 'mainConfig') || {},
-                                m = e,
-                                d = (0, $.toJS)(
-                                  i.properties.mainConfig.properties[m],
-                                );
-                              console.log('mainConfigJsonData:', d, m, p);
-                              var y = d.type,
-                                h = n + '-' + y + '-' + m,
-                                g = ![
-                                  'description',
-                                  'CONTENTID',
-                                  'CONTENTTYPE',
-                                ].includes(m);
-                              if (
-                                ('description' === m &&
-                                'ContentStaticConfig' === p.type
-                                  ? (g = !0)
-                                  : ('CONTENTID' !== m &&
-                                      'CONTENTTYPE' !== m) ||
-                                    'RuntimeDataSelfDefine' !== p.type ||
-                                    (g = !0),
-                                g)
-                              )
-                                return Vt({
-                                  parentType: y,
-                                  jsonKey: m,
-                                  indexRoute: o,
-                                  keyRoute: u,
-                                  nodeKey: h,
-                                  targetJsonSchema: d,
-                                  isArrayItem: !0,
-                                  getJSONDataByKeyRoute: l,
-                                  keyRoute2indexRoute: s,
-                                  updateFormValueData: c,
-                                });
-                            },
-                          ),
-                        ),
-                      i.propertyOrder.map(function (e, a) {
-                        if ('mainConfig' !== e) {
-                          var o = t ? t + '-' + a : '' + a,
-                            u = r ? r + '-' + e : '' + e,
-                            p = e,
-                            m = (0, $.toJS)(i.properties[p]),
-                            d = m.type,
-                            y = n + '-' + d + '-' + p;
-                          return m.propertyOrder && m.propertyOrder.length > 0
-                            ? V().createElement(
-                                Ct,
-                                { header: m.title, key: p },
-                                Vt({
-                                  parentType: d,
-                                  jsonKey: p,
-                                  indexRoute: o,
-                                  keyRoute: u,
-                                  nodeKey: y,
-                                  targetJsonSchema: m,
-                                  isArrayItem: !0,
-                                  getJSONDataByKeyRoute: l,
-                                  keyRoute2indexRoute: s,
-                                  updateFormValueData: c,
-                                }),
-                              )
-                            : void 0;
-                        }
-                      }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(V().PureComponent);
-        Kt.propTypes = {
-          isArrayItem: W().any,
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().any,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          isStructuredSchema: W().bool,
-        };
-        var xt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Kt)),
-          jt = (__webpack_require__(165), X.Select.Option),
-          Pt = X.Collapse.Panel,
-          Tt = (function (e) {
-            function t(t) {
-              var a;
-              return (
-                ((a = e.call(this, t) || this).handleEventTitleChange =
-                  function (e, t) {
-                    var n = t.target.value,
-                      r = a.props,
-                      o = r.keyRoute,
-                      i = r.updateFormValueData,
-                      l = (0, r.getJSONDataByKeyRoute)(o) || {},
-                      s = Object.assign({}, (0, $.toJS)(l.globalEventMap)),
-                      c = o + '-globalEventMap';
-                    (s[e] = n), i(c, s);
-                  }),
-                (a.handleSelectEventChange = function (e, t) {
-                  var n = a.props,
-                    r = n.keyRoute,
-                    o = n.updateFormValueData,
-                    i = n.getJSONDataByKeyRoute,
-                    l = a.props.options || {},
-                    s = r + '-event',
-                    c = i(r) || {},
-                    u = [];
-                  c.event && c.event.length > 0
-                    ? (u = (0, $.toJS)(c.event))
-                    : l.eventListenConfig &&
-                      l.eventListenConfig.length > 0 &&
-                      (l.eventListenConfig || []).forEach(function (e) {
-                        u.push({ name: e.name, listenName: e.code });
-                      }),
-                    u.forEach(function (a) {
-                      a.name === e && (a.listenName = t);
-                    }),
-                    o(s, u);
-                }),
-                (a.state = { jsonView: !1, isClosed: !1 }),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillMount = function () {
-                me.x.call(this);
-              }),
-              (a.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  me.x.call(this, e.keyRoute);
-              }),
-              (a.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = (t.indexRoute, t.jsonKey, t.nodeKey),
-                  n = t.keyRoute,
-                  r = t.pageScreen,
-                  o = (t.targetJsonSchema, t.getJSONDataByKeyRoute),
-                  i =
-                    (t.keyRoute2indexRoute,
-                    t.updateFormValueData,
-                    this.props.options || {}),
-                  l = o(n),
-                  s = l.globalEventMap || {},
-                  c = l.event || [],
-                  u = i.widgetType,
-                  p = i.eventEmitConfig || [],
-                  m = i.eventListenConfig || [],
-                  d = i.allEmitEventList || [],
-                  y = 'page' !== u && 0 === p.length && 0 === m.length;
-                return V().createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === r
-                        ? 'sohu-event-container array-schema-box wide-screen-element-warp'
-                        : 'sohu-event-container array-schema-box mobile-screen-element-warp',
-                    key: a,
-                    id: a,
-                  },
-                  V().createElement(
-                    X.Collapse,
                     {
-                      defaultActiveKey: ['mainConfig'],
-                      expandIconPosition: 'right',
-                      bordered: !1,
+                      className: 'form-item-box',
                     },
-                    m &&
-                      m.length > 0 &&
-                      V().createElement(
-                        Pt,
-                        { header: '监听的事件', key: 'eventListenConfig' },
-                        m.map(function (t, n) {
-                          var r = a + '-eventListen-' + t.code,
-                            o =
-                              (
-                                c.find(function (e) {
-                                  return e.name === t.name;
-                                }) || {}
-                              ).listenName || '';
-                          return V().createElement(
-                            'div',
-                            { key: r, className: 'listen-event-content' },
-                            V().createElement(
-                              'div',
-                              { className: 'title-text' },
-                              t.desc || t.name,
-                            ),
-                            V().createElement(
-                              'div',
-                              { className: 'form-item-box' },
-                              V().createElement('span', null, '绑定事件：'),
-                              V().createElement(
-                                X.Select,
-                                {
-                                  showSearch: !0,
-                                  style: {
-                                    display: 'inline-block',
-                                    minWidth: '120px',
-                                  },
-                                  onChange: function (a) {
-                                    return e.handleSelectEventChange(t.name, a);
-                                  },
-                                  defaultValue: o,
-                                },
-                                d.map(function (e) {
-                                  var t = s[e.code] || e.desc || e.name;
-                                  console.log(e, t, s);
-                                  var n = a + '-allEmitEvent-' + t;
-                                  return V().createElement(
-                                    jt,
-                                    { value: e.code, key: n },
-                                    t,
-                                  );
-                                }),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    p &&
-                      p.length > 0 &&
-                      V().createElement(
-                        Pt,
-                        { header: '触发的事件', key: 'eventEmitConfig' },
-                        p.map(function (t, n) {
-                          var r = a + '-eventEmit-' + t.code,
-                            o = t.desc || t.name;
-                          return V().createElement(
-                            'div',
-                            {
-                              key: r,
-                              className: 'object-content emit-event-content',
-                            },
-                            V().createElement(
-                              'div',
-                              { className: 'title-text' },
-                              '事件名称',
-                            ),
-                            V().createElement(
-                              'div',
-                              { className: 'form-item-box' },
-                              o,
-                            ),
-                            V().createElement(
-                              'div',
-                              { className: 'title-text' },
-                              '事件code',
-                            ),
-                            V().createElement(
-                              'div',
-                              { className: 'content-item' },
-                              V().createElement(
-                                'div',
-                                { className: 'form-item-box' },
-                                (0, Q.truncate)(t.code, { length: 30 }),
-                              ),
-                            ),
-                            V().createElement(
-                              'div',
-                              { className: 'title-text' },
-                              '自定义名称',
-                            ),
-                            V().createElement(
-                              'div',
-                              { className: 'content-item' },
-                              V().createElement(
-                                'div',
-                                { className: 'form-item-box' },
-                                V().createElement(X.Input, {
-                                  style: { display: 'inline-block' },
-                                  defaultValue: s[t.code] || o,
-                                  onPressEnter: function (a) {
-                                    return e.handleEventTitleChange(t.code, a);
-                                  },
-                                  onBlur: function (a) {
-                                    return e.handleEventTitleChange(t.code, a);
-                                  },
-                                }),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    'page' === u &&
-                      V().createElement(
-                        Pt,
-                        { header: '事件列表', key: 'AllEmitEventList' },
-                        V().createElement(X.List, {
-                          itemLayout: 'horizontal',
-                          dataSource: d,
-                          renderItem: function (e, t) {
-                            return V().createElement(
-                              X.List.Item,
-                              null,
-                              V().createElement(X.List.Item.Meta, {
-                                title: s[e.code] || e.desc || e.name,
-                                description: (0, Q.truncate)(e.code || e.desc, {
-                                  length: 30,
-                                }),
-                              }),
-                            );
-                          },
-                        }),
-                      ),
-                  ),
-                  y &&
-                    V().createElement(X.Empty, {
-                      description: '暂无事件相关数据',
-                    }),
-                );
-              }),
-              t
-            );
-          })(V().PureComponent);
-        Tt.propTypes = {
-          isArrayItem: W().any,
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().any,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-          isStructuredSchema: W().bool,
-        };
-        var Bt = (0, A.inject)(function (e) {
-            return {
-              pageScreen: e.JSONSchemaStore.pageScreen,
-              options: e.JSONEditorStore.options,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                e.JSONEditorStore.getInitJsonDataByKeyRoute,
-            };
-          })((0, A.observer)(Tt)),
-          Vt = function (e) {
-            var t = e.nodeKey,
-              a = (e.jsonKey, e.keyRoute),
-              n = e.targetJsonSchema,
-              r = e.getJSONDataByKeyRoute,
-              o = (e.keyRoute2indexRoute, e.updateFormValueData),
-              i = n.type,
-              l = {};
-            n.hiddenRule && (l = n.hiddenRule);
-            var s,
-              c = '';
-            if (l.conditionProp && (0, ee.GT)(l.conditionValue)) {
-              var u = l.conditionProp;
-              if (l.conditionValue === (c = r(u.keyRoute)))
-                return void (n.clearValueOnHidden && o(a, void 0));
-            }
-            s = t + '-' + c;
-            var p = oe()({}, e, { nodeKey: s });
-            switch (i) {
-              case 'object':
-                return V().createElement(Ne, oe()({}, p, { key: s }));
-              case 'dynamic-config':
-                return V().createElement(kt, oe()({}, p, { key: s }));
-              case 'sohu-source':
-                return V().createElement(xt, oe()({}, p, { key: s }));
-              case 'sohu-event':
-                return V().createElement(Bt, oe()({}, p, { key: s }));
-              case 'array':
-                return V().createElement(be, oe()({}, p, { key: s }));
-              case 'dynamic-data':
-                return V().createElement(Le, oe()({}, p, { key: s }));
-              case 'datasource':
-                return V().createElement(Ke, oe()({}, p, { key: s }));
-              case 'event':
-                return V().createElement(qe, oe()({}, p, { key: s }));
-              case 'quantity':
-                return V().createElement(Ue, oe()({}, p, { key: s }));
-              case 'box-style':
-                return V().createElement(He, oe()({}, p, { key: s }));
-              case 'radio':
-                return V().createElement($e, oe()({}, p, { key: s }));
-              case 'select':
-                return V().createElement(wt, oe()({}, p, { key: s }));
-              case 'checkboxes':
-                return V().createElement(Ye, oe()({}, p, { key: s }));
-              case 'input':
-              default:
-                return V().createElement(je, oe()({}, p, { key: s }));
-              case 'textarea':
-                return V().createElement(et, oe()({}, p, { key: s }));
-              case 'text-editor':
-                return V().createElement(st, oe()({}, p, { key: s }));
-              case 'number':
-                return V().createElement(ut, oe()({}, p, { key: s }));
-              case 'boolean':
-                return V().createElement(mt, oe()({}, p, { key: s }));
-              case 'date':
-              case 'date-time':
-                return V().createElement(St, oe()({}, p, { key: s }));
-              case 'time':
-                return V().createElement(ft, oe()({}, p, { key: s }));
-              case 'url':
-                return V().createElement(ke, oe()({}, p, { key: s }));
-              case 'color':
-                return V().createElement(bt, oe()({}, p, { key: s }));
-              case 'json':
-                return V().createElement(Re, oe()({}, p, { key: s }));
-              case 'codearea':
-                return V().createElement(we.A, oe()({}, p, { key: s }));
-              case 'htmlarea':
-                return V().createElement(Nt, oe()({}, p, { key: s }));
-            }
-          },
-          It = (__webpack_require__(104), X.Collapse.Panel),
-          Mt = X.Tabs.TabPane,
-          At = (function (e) {
-            function t(t) {
-              var a;
-              if (
-                (((a = e.call(this, t) || this).catchViewStyle = function (e) {
-                  switch (e) {
-                    case 'fold':
-                    default:
-                      return 'fold';
-                    case 'tabs':
-                      return 'tabs';
-                  }
-                }),
-                (a.renderHeader = function (e) {
-                  switch (e) {
-                    case 'func':
-                      return '功能设置';
-                    case 'style':
-                      return '样式设置';
-                    case 'data':
-                      return '数据设置';
-                    default:
-                      return '属性设置';
-                  }
-                }),
-                (a.state = {
-                  jsonView: t.jsonView || !1,
-                  viewStyle: a.catchViewStyle(t.viewStyle),
-                }),
-                t.schemaData)
-              )
-                a.props.initJSONSchemaData(t.schemaData),
-                  a.props.initJSONData(t.jsonData);
-              else if (t.jsonData) {
-                var n = (0, Q.json2schema)(t.jsonData);
-                a.props.initJSONSchemaData(n), a.props.initJSONData(t.jsonData);
-              }
-              return (
-                t.wideScreen && a.props.setPageScreen(t.wideScreen),
-                t.onChange && a.props.initOnChange(t.onChange),
-                t.dynamicDataList &&
-                  a.props.setDynamicDataList(t.dynamicDataList),
-                t.options && a.props.setOptions(t.options),
-                a
-              );
-            }
-            T()(t, e);
-            var a = t.prototype;
-            return (
-              (a.componentWillReceiveProps = function (e) {
-                (0, ee.n4)(e.schemaData, this.props.schemaData) ||
-                  this.props.JSONSchemaChange(e.schemaData),
-                  (0, ee.n4)(e.jsonData, this.props.jsonData) ||
-                    this.props.initJSONData(e.jsonData),
-                  (0, ee.n4)(e.jsonView, this.props.jsonView) ||
-                    this.setState({ jsonView: e.jsonView }),
-                  (0, ee.n4)(e.viewStyle, this.props.viewStyle) ||
-                    this.setState({ viewStyle: e.viewStyle }),
-                  (0, ee.n4)(e.wideScreen, this.props.wideScreen) ||
-                    this.props.setPageScreen(e.wideScreen),
-                  (0, ee.n4)(e.onChange, this.props.onChange) ||
-                    this.props.initOnChange(e.onChange),
-                  (0, ee.n4)(e.dynamicDataList, this.props.dynamicDataList) ||
-                    this.props.setDynamicDataList(e.dynamicDataList),
-                  (0, ee.n4)(e.options, this.props.options) ||
-                    this.props.setOptions(e.options);
-              }),
-              (a.render = function () {
-                var e = this,
-                  t = this.props,
-                  a = t.jsonSchema,
-                  n = t.lastUpdateTime,
-                  r = t.jsonLastUpdateTime,
-                  o = t.getJSONDataByKeyRoute,
-                  i = t.keyRoute2indexRoute,
-                  l = t.updateFormValueData,
-                  s = this.state,
-                  c = s.jsonView,
-                  u = s.viewStyle,
-                  p = (0, Q.isEmptySchema)(a),
-                  m = (0, Q.isStructuredSchema)(a);
-                return B.createElement(
-                  'div',
-                  { className: 'json-editor-container' },
-                  p &&
-                    B.createElement(
-                      'p',
-                      { className: 'json-editor-empty' },
-                      '当前jsonSchema没有数据内容',
-                    ),
-                  !p &&
-                    !c &&
-                    B.createElement(
-                      B.Fragment,
-                      null,
-                      m &&
-                        B.createElement(
-                          B.Fragment,
-                          null,
-                          'fold' === u &&
-                            B.createElement(
-                              X.Collapse,
-                              {
-                                defaultActiveKey: a.propertyOrder,
-                                expandIconPosition: 'right',
-                                bordered: !1,
-                              },
-                              a.propertyOrder.map(function (t, s) {
-                                var c = s,
-                                  u = t,
-                                  p = t,
-                                  d = a.properties[p],
-                                  y = d.type,
-                                  h = n + '-' + r + '-' + y + '-' + p;
-                                return d.propertyOrder &&
-                                  d.propertyOrder.length > 0
-                                  ? B.createElement(
-                                      It,
-                                      {
-                                        header: d.title || e.renderHeader(y),
-                                        key: p,
-                                      },
-                                      Vt({
-                                        parentType: y,
-                                        jsonKey: p,
-                                        indexRoute: c,
-                                        keyRoute: u,
-                                        nodeKey: h,
-                                        targetJsonSchema: d,
-                                        isStructuredSchema: m,
-                                        getJSONDataByKeyRoute: o,
-                                        keyRoute2indexRoute: i,
-                                        updateFormValueData: l,
-                                      }),
-                                    )
-                                  : '';
-                              }),
-                            ),
-                          'tabs' === u &&
-                            B.createElement(
-                              X.Tabs,
-                              {
-                                className: 'tabs-schema-box',
-                                defaultActiveKey: a.propertyOrder[0],
-                                centered: !0,
-                                hideAdd: !0,
-                              },
-                              a.propertyOrder.map(function (t, s) {
-                                var c = s,
-                                  u = t,
-                                  p = t,
-                                  d = a.properties[p],
-                                  y = d.type,
-                                  h = n + '-' + r + '-' + y + '-' + p;
-                                return d.propertyOrder &&
-                                  d.propertyOrder.length > 0
-                                  ? B.createElement(
-                                      Mt,
-                                      {
-                                        tab: d.title || e.renderHeader(y),
-                                        key: p,
-                                        closable: !1,
-                                        className: 'tabs-schema-item',
-                                      },
-                                      Vt({
-                                        parentType: y,
-                                        jsonKey: p,
-                                        indexRoute: c,
-                                        keyRoute: u,
-                                        nodeKey: h,
-                                        targetJsonSchema: d,
-                                        isStructuredSchema: m,
-                                        getJSONDataByKeyRoute: o,
-                                        keyRoute2indexRoute: i,
-                                        updateFormValueData: l,
-                                      }),
-                                    )
-                                  : '';
-                              }),
-                            ),
-                        ),
-                      !m &&
-                        B.createElement(
-                          B.Fragment,
-                          null,
-                          Vt({
-                            parentType: '',
-                            jsonKey: '',
-                            indexRoute: '',
-                            keyRoute: '',
-                            nodeKey: '',
-                            targetJsonSchema: a,
-                            getJSONDataByKeyRoute: o,
-                            keyRoute2indexRoute: i,
-                            updateFormValueData: l,
-                          }),
-                        ),
-                    ),
-                  !p &&
-                    c &&
-                    B.createElement(pe, {
-                      nodeKey: 'jsonView',
-                      keyRoute: '',
-                      targetJsonSchema: a,
-                    }),
-                );
-              }),
-              t
-            );
-          })(B.PureComponent);
-        At.propTypes = {
-          viewStyle: W().any,
-          wideScreen: W().any,
-          onChange: W().func,
-          jsonView: W().any,
-          schemaData: W().object,
-          jsonData: W().object,
-          dynamicDataList: W().any,
-          options: W().any,
-        };
-        var Lt = (0, A.inject)(function (e) {
-            return {
-              jsonSchema: e.JSONSchemaStore.jsonSchema,
-              lastUpdateTime: e.JSONSchemaStore.lastUpdateTime,
-              jsonLastUpdateTime: e.JSONEditorStore.lastUpdateTime,
-              initJSONSchemaData: e.JSONSchemaStore.initJSONSchemaData,
-              JSONSchemaChange: e.JSONSchemaStore.JSONSchemaChange,
-              initJSONData: e.JSONEditorStore.initJSONData,
-              initOnChange: e.JSONEditorStore.initOnChange,
-              getJSONDataByKeyRoute: e.JSONEditorStore.getJSONDataByKeyRoute,
-              keyRoute2indexRoute: e.JSONSchemaStore.keyRoute2indexRoute,
-              setDynamicDataList: e.JSONEditorStore.setDynamicDataList,
-              setOptions: e.JSONEditorStore.setOptions,
-              setPageScreen: e.JSONSchemaStore.setPageScreen,
-              updateFormValueData: e.JSONEditorStore.updateFormValueData,
-            };
-          })((0, A.observer)(At)),
-          Wt =
-            (__webpack_require__(410),
-            (function (e) {
-              function t(t) {
-                var a;
-                return (
-                  ((a = e.call(this, t) || this).state = {
-                    rootJSONStore: new ne(),
-                  }),
-                  a
-                );
-              }
-              return (
-                T()(t, e),
-                (t.prototype.render = function () {
-                  var e = this.props.element,
-                    t = this.state.rootJSONStore,
-                    a = B.createElement(
-                      A.Provider,
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      braft_editor__WEBPACK_IMPORTED_MODULE_8___default(),
                       {
-                        JSONSchemaStore: t.JSONSchemaStore,
-                        JSONEditorStore: t.JSONEditorStore,
+                        key: nodeKey + '-textEditor',
+                        controls:
+                          pageScreen === 'wideScreen'
+                            ? this.state.allControls
+                            : this.state.baseControls, // allControls baseControls
+                        media: {
+                          accepts: {
+                            image:
+                              'image/png,image/jpeg,image/gif,image/webp,image/apng,image/svg',
+                            video: false,
+                            audio: false,
+                          },
+                          pasteImage: true, // 是否允许粘贴图片到编辑器
+                        },
+                        defaultValue: editorState,
+                        readOnly: readOnly,
+                        placeholder:
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                        lineHeights: [1, 1.2, 1.5, 1.75, 2, 2.5, 3, 4],
+                        onChange: this.handleEditorChange,
+                        onSave: this.handleEditorChange, // 在编辑器获得焦点时按下ctrl+s会执行此方法
                       },
-                      B.createElement(Lt, this.props),
-                    );
-                  return e ? (M().render(a, e), '') : a;
-                }),
-                t
+                    ),
+                  ),
+                ),
               );
-            })(B.PureComponent));
-        Wt.propTypes = {
-          viewStyle: W().any,
-          wideScreen: W().any,
-          onChange: W().func,
-          jsonView: W().any,
-          schemaData: W().any,
-          jsonData: W().any,
-          element: W().any,
+            };
+            return TextEditorSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          TextEditorSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            pageScreen: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              TextEditorSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/TimeFormSchema/index.js':
+        /*!***********************************************!*\
+  !*** ./src/renderers/TimeFormSchema/index.js ***!
+  \***********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! moment */ 'moment');
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              moment__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+
+          var TimeFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function TimeFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event, dateString) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, dateString); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              TimeFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = TimeFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var defaultTime = curJsonData || targetJsonSchema.default;
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          (isNeedTwoCol || pageScreen === 'wideScreen') &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.TimePicker,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        disabled: readOnly,
+                        required: isRequired,
+                        placeholder:
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                        defaultValue:
+                          defaultTime &&
+                          moment__WEBPACK_IMPORTED_MODULE_5___default()(
+                            defaultTime,
+                            'HH:mm',
+                          ),
+                        onChange: this.handleValueChange,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return TimeFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          TimeFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              TimeFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/TreeSelectFromSchema/index.js':
+        /*!*****************************************************!*\
+  !*** ./src/renderers/TreeSelectFromSchema/index.js ***!
+  \*****************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+
+          var TreeSelectFromSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function TreeSelectFromSchema() {
+              return _React$PureComponent.apply(this, arguments) || this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              TreeSelectFromSchema,
+              _React$PureComponent,
+            );
+            var _proto = TreeSelectFromSchema.prototype;
+            _proto.render = function render() {
+              var _this$props = this.props,
+                pageScreen = _this$props.pageScreen,
+                mockData = _this$props.mockData,
+                dataRoute = _this$props.dataRoute,
+                nodeKey = _this$props.nodeKey,
+                onChange = _this$props.onChange;
+              var treeData = [];
+              if (mockData && JSON.stringify(mockData) !== '{}') {
+                var mockObj = mockData;
+                if (
+                  !(0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isObject)(
+                    mockData,
+                  ) &&
+                  mockData !== ''
+                ) {
+                  try {
+                    mockObj = JSON.parse(mockData);
+                  } catch (err) {
+                    console.log('当前数据源的请求参数格式异常');
+                    mockObj = {};
+                  }
+                }
+                treeData = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.json2treeData)(
+                  mockObj,
+                );
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey + '-dataRoute-select',
+                  id: nodeKey + '-dataRoute-select',
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  '\u6570\u636E\u8DEF\u5F84\u9009\u62E9',
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.TreeSelect,
+                      {
+                        className: 'data-route-select',
+                        defaultValue: dataRoute,
+                        treeData: treeData,
+                        allowClear: true,
+                        placeholder:
+                          '\u8BF7\u9009\u62E9\u8981\u4F7F\u7528\u7684\u6570\u636E\u8282\u70B9\uFF08\u6570\u636E\u8DEF\u5F84\uFF09',
+                        treeDefaultExpandAll: true,
+                        onChange: onChange,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return TreeSelectFromSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          TreeSelectFromSchema.propTypes = {
+            pageScreen: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            mockData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            // 接口mock数据
+            dataRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            // 数据路径
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().func,
+            // 数据路径值变动后触发
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              TreeSelectFromSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/URLFormSchema/index.js':
+        /*!**********************************************!*\
+  !*** ./src/renderers/URLFormSchema/index.js ***!
+  \**********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+
+          var URLFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function URLFormSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (event) {
+                var value = event.target.value;
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                updateFormValueData(keyRoute, value); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              URLFormSchema,
+              _React$PureComponent,
+            );
+            var _proto = URLFormSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Input,
+                      {
+                        style: {
+                          display: 'inline-block',
+                        },
+                        disabled: readOnly,
+                        required: isRequired,
+                        placeholder:
+                          targetJsonSchema.placeholder ||
+                          '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        onPressEnter: this.handleValueChange,
+                        onBlur: this.handleValueChange,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return URLFormSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          URLFormSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              URLFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/store/JSONEditorStore.js':
+        /*!**************************************!*\
+  !*** ./src/store/JSONEditorStore.js ***!
+  \**************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ default: function () {
+              return /* binding */ JSONEditorStore;
+            },
+            /* harmony export */
+          });
+          /* harmony import */ var _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/initializerDefineProperty */ '@babel/runtime/helpers/initializerDefineProperty',
+            );
+          /* harmony import */ var _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/createClass */ '@babel/runtime/helpers/createClass',
+            );
+          /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/applyDecoratedDescriptor */ '@babel/runtime/helpers/applyDecoratedDescriptor',
+            );
+          /* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var _babel_runtime_helpers_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/initializerWarningHelper */ '@babel/runtime/helpers/initializerWarningHelper',
+            );
+          /* harmony import */ var _babel_runtime_helpers_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
+
+          var _dec,
+            _dec2,
+            _dec3,
+            _dec4,
+            _dec5,
+            _dec6,
+            _dec7,
+            _dec8,
+            _dec9,
+            _dec10,
+            _dec11,
+            _dec12,
+            _dec13,
+            _class,
+            _descriptor,
+            _descriptor2,
+            _descriptor3,
+            _descriptor4,
+            _descriptor5,
+            _descriptor6,
+            _descriptor7,
+            _descriptor8,
+            _descriptor9,
+            _descriptor10;
+
+          /**
+           * 用于管控JSON数据内容的全局store
+           * */
+          var JSONEditorStore =
+            ((_dec = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec2 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec3 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec4 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec5 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec6 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec7 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec8 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec9 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec10 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec11 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec12 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec13 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_class = /*#__PURE__*/ (function () {
+              // 构造函数
+              function JSONEditorStore(rootJSONStore) {
+                /**
+                 * rootJSONStore: store根数据对象
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'rootJSONStore',
+                  _descriptor,
+                  this,
+                );
+                /**
+                 * triggerChange: 用于强制触发更新事件
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'triggerChange',
+                  _descriptor2,
+                  this,
+                );
+                /**
+                 * 记录当前JSONEditor的更新时间
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'lastUpdateTime',
+                  _descriptor3,
+                  this,
+                );
+                /**
+                 * jsonData: jsonData数据对象
+                 * 备注：没有多余数据的jsonData
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'jsonData',
+                  _descriptor4,
+                  this,
+                );
+                /**
+                 * initJsonData: jsonData的初始数据对象
+                 * 备注：用于记录schema结构变动前的数据内容
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'initJsonData',
+                  _descriptor5,
+                  this,
+                );
+                /**
+                 * dynamicDataList: 动态数据源列表
+                 * 备注：主要在DynamicDataSchema的接口数据/数据源选择列表中使用
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'dynamicDataList',
+                  _descriptor6,
+                  this,
+                );
+                // 数据源的配置
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'dynamicDataObj',
+                  _descriptor7,
+                  this,
+                );
+                // 数据源的配置对象（主要用于方便取值）
+                /**
+                 * 存放当前配置类对象数据
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'options',
+                  _descriptor8,
+                  this,
+                );
+                /**
+                 * DynamicData中支持的请求参数类型: 动态请求参数
+                 * 固定值参数（scope: static）： eg: 写死固定参数 => framework=1
+                 * URL 参数（scope: url）： eg: pages?projectId=xxx => projectId=xxx
+                 * Hash 参数（scope: hash）： eg: /pages/:pageId => pageId=xxx
+                 * 环境变量（scope: window）： eg: 代码上下文里的变量 => env=dev
+                 * 接口下发（scope: dynamic）： eg: 另一个接口返回结果字段 =>
+                 * 页面参数（scope: page）： eg: 事件流设置参数
+                 * 需要用户输入的参数（scope: input）： eg: 事件流设置参数
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'dynamicDataApiScopeList',
+                  _descriptor9,
+                  this,
+                );
+                /**
+                 * onChange: jsonData数据变动触发的onChange
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'onChange',
+                  _descriptor10,
+                  this,
+                );
+                this.state = {
+                  rootJSONStore: rootJSONStore, // 初始化一份rootJSONStore
+                };
+              }
+              var _proto = JSONEditorStore.prototype;
+              // 函数类型
+              /**
+               * 更新lastUpdateTime
+               */
+              _proto.updateLastTime = function updateLastTime() {
+                this.lastUpdateTime = new Date().getTime();
+              };
+
+              /**
+               * triggerChangeAction: 用于主动触发更新事件
+               */
+              _proto.triggerChangeAction = function triggerChangeAction() {
+                this.triggerChange = !this.triggerChange;
+              };
+
+              /** 初始化jsonData  */
+              _proto.initJSONData = function initJSONData(jsonData) {
+                // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
+                var jsonSchema =
+                  this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
+                // 过滤jsonData内部数据变动时触发initJSONData的事件
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    jsonData,
+                    this.jsonData,
+                  )
+                ) {
+                  // 根据jsonSchema生成一份对应的jsonData
+                  /** 1、根据jsonSchema生成对应的jsonData */
+                  this.initJsonData = (0,
+                  $utils_index__WEBPACK_IMPORTED_MODULE_7__.objClone)(
+                    this.jsonData,
+                  ); // 备份过滤钱的数据对象
+                  // 判断当前schema是否为空
+                  if (jsonSchema) {
+                    this.jsonData = (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.schema2json)(
+                      jsonSchema,
+                      jsonData || {},
+                    );
+                    // 记录当前初始化的时间
+                    this.updateLastTime();
+                  }
+                }
+              };
+
+              /** 初始化jsonData  */
+              _proto.initOnChange = function initOnChange(newOnChangeFunc) {
+                if (
+                  newOnChangeFunc ||
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_8__.isFunction)(
+                    newOnChangeFunc,
+                  )
+                ) {
+                  this.onChange = newOnChangeFunc;
+                }
+              };
+
+              /** 设置动态数据源列表  */
+              _proto.setDynamicDataList = function setDynamicDataList(
+                dynamicDataList,
+              ) {
+                if (
+                  !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
+                    dynamicDataList,
+                    this.dynamicDataList,
+                  )
+                ) {
+                  this.dynamicDataList = (0,
+                  $utils_index__WEBPACK_IMPORTED_MODULE_7__.objClone)(
+                    dynamicDataList,
+                  );
+                  // 重新对 赋值
+                  var dynamicDataObjTemp = {};
+                  dynamicDataList.map(function (dynamicData) {
+                    dynamicDataObjTemp[dynamicData.name] = dynamicData;
+                  });
+                  this.dynamicDataObj = dynamicDataObjTemp;
+                }
+              };
+              _proto.setOptions = function setOptions(optionsData) {
+                if (optionsData) {
+                  this.options = optionsData;
+                }
+              };
+              /** 触发onChange  */
+              _proto.jsonDataChange = function jsonDataChange() {
+                this.onChange(this.JSONEditorObj);
+              };
+
+              /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
+              _proto.getJSONDataByKeyRoute = function getJSONDataByKeyRoute(
+                keyRoute,
+                jsonDataParam,
+              ) {
+                var curJsonData = jsonDataParam || this.jsonData;
+                return (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getJsonDataByKeyRoute)(
+                  keyRoute,
+                  curJsonData,
+                  true,
+                ); // useObjClone: true 避免后续产生数据联动
+              };
+
+              /** 根据key索引路径获取对应的json数据[非联动式数据获取]
+               * 备注：从initJsonData获取数据
+               * */
+              _proto.getInitJsonDataByKeyRoute =
+                function getInitJsonDataByKeyRoute(keyRoute, jsonDataParam) {
+                  var curJsonData = jsonDataParam || this.initJsonData;
+                  return (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getJsonDataByKeyRoute)(
+                    keyRoute,
+                    curJsonData,
+                    true,
+                  ); // useObjClone: true 避免后续产生数据联动
+                };
+
+              /** 根据key路径更新对应的json数据
+               * 备注：从jsonData中获取数据，需要先获取父级对象（以便产生数据联动），
+               * 再根据最近的key值对当前数据进行编辑
+               * */
+              _proto.updateFormValueData = function updateFormValueData(
+                keyRoute,
+                newVal,
+                ignoreChange,
+              ) {
+                var _this = this;
+                if (keyRoute !== '') {
+                  // 1. 获取父级key路径和最近的有一个key
+                  var parentKeyRoute_CurKey = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getParentKeyRoute_CurKey)(
+                    keyRoute,
+                  );
+                  var parentKeyRoute = parentKeyRoute_CurKey[0];
+                  var curKey = parentKeyRoute_CurKey[1];
+                  // 2. 获取父级数据对象
+                  var parentJsonDataObj = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getJsonDataByKeyRoute)(
+                    parentKeyRoute,
+                    this.jsonData,
+                  );
+                  // 3. 数值更新
+                  parentJsonDataObj[curKey] = newVal;
+                } else {
+                  // 当keyRoute为空时直接修改当前schemaData
+                  this.jsonData = newVal;
+                }
+                if (
+                  this.state.rootJSONStore.JSONSchemaStore &&
+                  this.state.rootJSONStore.JSONSchemaStore.jsonSchema
+                ) {
+                  // 获取当前schema的条件字段
+                  var curJsonSchema =
+                    this.state.rootJSONStore.JSONSchemaStore.jsonSchema;
+                  var conditionProps = curJsonSchema.conditionProps;
+                  // 备注：数组类型通过keyRoute获取schema对象会有异常
+                  var curElemSchema =
+                    this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
+                      keyRoute,
+                    );
+                  if (curElemSchema && curElemSchema.isConditionProp) {
+                    // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
+                    this.updateLastTime();
+                  } else if (conditionProps) {
+                    // 判断当前字段是否为条件字段
+                    Object.keys(conditionProps).map(function (propKey) {
+                      var conditionItem = conditionProps[propKey];
+                      if (conditionItem.keyRoute === keyRoute) {
+                        // 更新LastInitTime
+                        _this.updateLastTime();
+                      }
+                    });
+                  }
+                }
+                if (!ignoreChange) {
+                  // 4. 触发onChange事件
+                  this.jsonDataChange();
+                }
+              };
+
+              /**
+               * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)删除对应的数组元素
+               * */
+              _proto.deleteArrayIndex = function deleteArrayIndex(
+                keyRoute,
+                arrayIndex,
+              ) {
+                // 1. 获取数组数据对象
+                var arrJsonData = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getJsonDataByKeyRoute)(
+                  keyRoute,
+                  this.jsonData,
+                );
+                if (
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_8__.isArray)(
+                    arrJsonData,
+                  )
+                ) {
+                  if (arrJsonData.length > 0) {
+                    // 2. 删除对应的数据项
+                    arrJsonData.splice(arrayIndex, 1);
+                    this.triggerChangeAction(); // 用于主动触发组件更新
+                    // 3. 触发onChange事件
+                    this.jsonDataChange();
+                  } else {
+                    antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
+                      '删除失败，空数组对象暂无可删除子项。',
+                    );
+                  }
+                }
+              };
+
+              /**
+               * 根据key索引路径值(keyRoute)在数组中新增数据项
+               * */
+              _proto.addArrayItem = function addArrayItem(
+                keyRoute,
+                curArrIndex,
+              ) {
+                // 1. 获取数组数据对象
+                var arrJsonData = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getJsonDataByKeyRoute)(
+                  keyRoute,
+                  this.jsonData,
+                );
+                // const _arrJsonData = toJS(arrJsonData);
+                if (
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_8__.isArray)(
+                    arrJsonData,
+                  )
+                ) {
+                  // 2. 获取数组的第一个数据项
+                  var newArrItem = arrJsonData[curArrIndex || 0]; // 复制一个数组项
+                  if (
+                    (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_8__.isObject)(
+                      newArrItem,
+                    )
+                  ) {
+                    newArrItem = Object.assign({}, newArrItem);
+                  }
+                  if (curArrIndex || curArrIndex === 0) {
+                    // 先记录插入位置之后的数据
+                    var endArr = arrJsonData.slice(Number(curArrIndex) + 1);
+                    var newArrJsonData = [newArrItem].concat(endArr);
+                    // 删除插入位置之后的数据
+                    arrJsonData.splice(Number(curArrIndex) + 1);
+                    // 重新插入
+                    arrJsonData.push.apply(arrJsonData, newArrJsonData);
+                  } else {
+                    arrJsonData.push(newArrItem);
+                  }
+                  this.triggerChangeAction(); // 用于主动触发组件更新
+                  // 3. 触发onChange事件
+                  this.jsonDataChange();
+                } else {
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
+                    '数据操作异常：当前元素不是数组类型。',
+                  );
+                }
+              };
+
+              /**
+               * 移动指定数据项顺序
+               * keyRoute：根据key索引路径值(keyRoute)查找当前数组元素
+               * curArrIndex：当前需要移动位置的数组项位置
+               * sortAction：
+               * */
+              _proto.sortArrayItem = function sortArrayItem(
+                keyRoute,
+                curArrIndex,
+                sortAction,
+              ) {
+                // 1. 获取数组数据对象
+                var arrJsonData = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.getJsonDataByKeyRoute)(
+                  keyRoute,
+                  this.jsonData,
+                );
+                // const _arrJsonData = toJS(arrJsonData);
+                if (
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_8__.isArray)(
+                    arrJsonData,
+                  )
+                ) {
+                  var curArrItem = (0,
+                  $utils_index__WEBPACK_IMPORTED_MODULE_7__.objClone)(
+                    arrJsonData[curArrIndex || 0],
+                  ); // 2. 获取当前数组项
+                  var exchangeArrIndex = curArrIndex;
+                  if (sortAction === 'up' && exchangeArrIndex > 0) {
+                    // 向上移动
+                    exchangeArrIndex -= 1;
+                  } else if (sortAction === 'up' && exchangeArrIndex === 0) {
+                    antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
+                      '数据操作异常：当前数组项已经是第一个元素了。',
+                    );
+                    return;
+                  } else if (sortAction === 'down' || !sortAction) {
+                    // 默认向下移动
+                    exchangeArrIndex += 1;
+                    if (
+                      sortAction === 'down' &&
+                      exchangeArrIndex > arrJsonData.length - 1
+                    ) {
+                      antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
+                        '数据操作异常：当前数组项已经是最后一个元素了。',
+                      );
+                      return;
+                    }
+                  }
+                  var exchangeArrItem = (0,
+                  $utils_index__WEBPACK_IMPORTED_MODULE_7__.objClone)(
+                    arrJsonData[exchangeArrIndex],
+                  ); // 3. 获取互换数组项
+                  // 2. 获取数组的第一个数据项
+
+                  if (
+                    curArrItem !== undefined &&
+                    exchangeArrItem !== undefined
+                  ) {
+                    arrJsonData[curArrIndex] = exchangeArrItem;
+                    arrJsonData[exchangeArrIndex] = curArrItem;
+                    antd__WEBPACK_IMPORTED_MODULE_5__.message.success(
+                      '\u539F\u6709\u6570\u636E\u9879' +
+                        (curArrIndex + 1) +
+                        '\u5BF9\u5E94\u7684\u6570\u636E\u5185\u5BB9\u5DF2' +
+                        (sortAction === 'up' ? '向上' : '向下') +
+                        '\u79FB\u52A8\u4E00\u7EA7',
+                      5,
+                    );
+                    // 更新LastInitTime
+                    this.updateLastTime();
+                    this.triggerChangeAction(); // 用于主动触发组件更新
+                    // 4. 触发onChange事件
+                    this.jsonDataChange();
+                  }
+                } else {
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
+                    '数据操作异常：当前元素不是数组类型。',
+                  );
+                }
+              };
+              return _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(
+                JSONEditorStore,
+                [
+                  {
+                    key: 'JSONEditorObj',
+                    get: function get() {
+                      return (0, mobx__WEBPACK_IMPORTED_MODULE_4__.toJS)(
+                        this.jsonData,
+                      );
+                    },
+                  },
+                ],
+              );
+            })()),
+            (_descriptor =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'rootJSONStore',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return {};
+                  },
+                },
+              )),
+            (_descriptor2 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'triggerChange',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return false;
+                  },
+                },
+              )),
+            (_descriptor3 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'lastUpdateTime',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return new Date().getTime();
+                  },
+                },
+              )),
+            (_descriptor4 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'jsonData',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return null;
+                  },
+                },
+              )),
+            (_descriptor5 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'initJsonData',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return {};
+                  },
+                },
+              )),
+            (_descriptor6 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'dynamicDataList',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return [];
+                  },
+                },
+              )),
+            (_descriptor7 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'dynamicDataObj',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return {};
+                  },
+                },
+              )),
+            (_descriptor8 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'options',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return {};
+                  },
+                },
+              )),
+            (_descriptor9 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'dynamicDataApiScopeList',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return {
+                      static: '固定值',
+                      url: 'URL参数',
+                      hash: 'Hash参数',
+                      window: '环境变量',
+                      dynamic: '接口下发',
+                      page: '页面参数',
+                      input: '用户输入',
+                    };
+                  },
+                },
+              )),
+            (_descriptor10 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'onChange',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return function () {};
+                  },
+                },
+              )),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'updateLastTime',
+              [_dec],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'updateLastTime',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'triggerChangeAction',
+              [_dec2],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'triggerChangeAction',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'initJSONData',
+              [_dec3],
+              Object.getOwnPropertyDescriptor(_class.prototype, 'initJSONData'),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'initOnChange',
+              [_dec4],
+              Object.getOwnPropertyDescriptor(_class.prototype, 'initOnChange'),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'setDynamicDataList',
+              [_dec5],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'setDynamicDataList',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'setOptions',
+              [_dec6],
+              Object.getOwnPropertyDescriptor(_class.prototype, 'setOptions'),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'JSONEditorObj',
+              [mobx__WEBPACK_IMPORTED_MODULE_4__.computed],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'JSONEditorObj',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'jsonDataChange',
+              [_dec7],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'jsonDataChange',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'getJSONDataByKeyRoute',
+              [_dec8],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'getJSONDataByKeyRoute',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'getInitJsonDataByKeyRoute',
+              [_dec9],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'getInitJsonDataByKeyRoute',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'updateFormValueData',
+              [_dec10],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'updateFormValueData',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'deleteArrayIndex',
+              [_dec11],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'deleteArrayIndex',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'addArrayItem',
+              [_dec12],
+              Object.getOwnPropertyDescriptor(_class.prototype, 'addArrayItem'),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'sortArrayItem',
+              [_dec13],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'sortArrayItem',
+              ),
+              _class.prototype,
+            ),
+            _class);
+
+          /***/
+        },
+
+      /***/ './src/store/JSONSchemaStore.js':
+        /*!**************************************!*\
+  !*** ./src/store/JSONSchemaStore.js ***!
+  \**************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ default: function () {
+              return /* binding */ JSONSchemaStore;
+            },
+            /* harmony export */
+          });
+          /* harmony import */ var _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/initializerDefineProperty */ '@babel/runtime/helpers/initializerDefineProperty',
+            );
+          /* harmony import */ var _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/createClass */ '@babel/runtime/helpers/createClass',
+            );
+          /* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/applyDecoratedDescriptor */ '@babel/runtime/helpers/applyDecoratedDescriptor',
+            );
+          /* harmony import */ var _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var _babel_runtime_helpers_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/initializerWarningHelper */ '@babel/runtime/helpers/initializerWarningHelper',
+            );
+          /* harmony import */ var _babel_runtime_helpers_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_initializerWarningHelper__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+
+          var _dec,
+            _dec2,
+            _dec3,
+            _dec4,
+            _dec5,
+            _dec6,
+            _dec7,
+            _class,
+            _descriptor,
+            _descriptor2;
+
+          var _initJSONSchemaData =
+            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.TypeDataList
+              .jsonschema;
+
+          /**
+           * 用于管控JsonSchema的全局store
+           * */
+          var JSONSchemaStore =
+            ((_dec = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec2 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec3 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec4 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec5 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec6 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec7 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_class = /*#__PURE__*/ (function () {
+              // 构造函数
+              function JSONSchemaStore(rootJSONStore) {
+                /**
+                 * 宽屏（wideScreen） or 小屏（mobileScreen）
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'pageScreen',
+                  _descriptor,
+                  this,
+                );
+                // 默认小屏，宽屏: wideScreen，小屏：mobileScreen
+                /**
+                 * jsonSchema: JSONSchema数据对象
+                 */
+                _babel_runtime_helpers_initializerDefineProperty__WEBPACK_IMPORTED_MODULE_0___default()(
+                  this,
+                  'jsonSchema',
+                  _descriptor2,
+                  this,
+                );
+                this.state = {
+                  rootJSONStore: rootJSONStore, // 初始化一份rootJSONStore
+                };
+              }
+              var _proto = JSONSchemaStore.prototype;
+              /**
+               * 设置当前屏幕模式：大屏 or 小屏
+               */
+              _proto.setPageScreen = function setPageScreen(pageScreen) {
+                if (pageScreen === 'wideScreen' || pageScreen) {
+                  this.pageScreen = 'wideScreen';
+                } else {
+                  this.pageScreen = 'mobileScreen'; // 默认宽屏
+                }
+              };
+
+              /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
+              _proto.initJSONSchemaData = function initJSONSchemaData(
+                jsonSchemaData,
+              ) {
+                if (
+                  !jsonSchemaData ||
+                  JSON.stringify(jsonSchemaData) === '{}'
+                ) {
+                  // 使用默认的jsonschema数据进行初始化
+                  this.jsonSchema = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
+                    _initJSONSchemaData,
+                  );
+                } else if (
+                  !(0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isEqual)(
+                    jsonSchemaData,
+                    this.JSONSchemaObj,
+                  )
+                ) {
+                  if (
+                    jsonSchemaData &&
+                    (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isNewSchemaData)(
+                      jsonSchemaData,
+                    )
+                  ) {
+                    // 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值
+                    this.jsonSchema = jsonSchemaData;
+                  } else {
+                    // 进行一次转换，以便兼容旧版数据
+                    var newJSONSchema = (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.oldSchemaToNewSchema)(
+                      jsonSchemaData,
+                    );
+                    this.jsonSchema = newJSONSchema;
+                  }
+                }
+              };
+
+              /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
+              _proto.JSONSchemaChange = function JSONSchemaChange(
+                jsonSchemaData,
+              ) {
+                if (
+                  !(0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isEqual)(
+                    jsonSchemaData,
+                    this.JSONSchemaObj,
+                  )
+                ) {
+                  if (
+                    !jsonSchemaData ||
+                    JSON.stringify(jsonSchemaData) === '{}'
+                  ) {
+                    // 使用默认的jsonschema数据进行初始化
+                    this.jsonSchema = (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
+                      _initJSONSchemaData,
+                    );
+                  } else if (
+                    jsonSchemaData &&
+                    (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isNewSchemaData)(
+                      jsonSchemaData,
+                    )
+                  ) {
+                    /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
+                    this.jsonSchema = jsonSchemaData;
+                  } else {
+                    // 进行一次转换，以便兼容旧版数据
+                    var newJSONSchema = (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.oldSchemaToNewSchema)(
+                      jsonSchemaData,
+                    );
+                    this.jsonSchema = newJSONSchema;
+                  }
+                  var curJsonData =
+                    this.state.rootJSONStore.JSONEditorStore.jsonData;
+                  /** 根据jsonSchema生成对应的最新jsonData */
+                  var newJsonData = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
+                    this.jsonSchema,
+                    curJsonData,
+                  );
+                  /** 更新当前的jsonData */
+                  this.state.rootJSONStore.JSONEditorStore.jsonData =
+                    newJsonData;
+                  this.state.rootJSONStore.JSONEditorStore.initJsonData = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
+                    curJsonData,
+                  ); // 备份过滤钱的数据对象
+                  /** jsonSchema变动的时候触发一次jsonDataChange
+                   * jsonSchema变动意味着jsonData也需要进行对应的结构更新
+                   * */
+                  this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+                }
+              };
+              /** 根据索引路径获取对应的key值路径 */
+              _proto.indexRoute2keyRoute = function indexRoute2keyRoute(
+                indexRoute,
+              ) {
+                return (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.indexRoute2keyRoute)(
+                  indexRoute,
+                  this.jsonSchema,
+                );
+              };
+
+              /** 根据key值路径获取对应的index索引路径 */
+              _proto.keyRoute2indexRoute = function keyRoute2indexRoute(
+                keyRoute,
+              ) {
+                return (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.keyRoute2indexRoute)(
+                  keyRoute,
+                  this.jsonSchema,
+                );
+              };
+
+              /** 根据索引路径获取对应的schema数据[非联动式数据获取]  */
+              _proto.getSchemaByIndexRoute = function getSchemaByIndexRoute(
+                indexRoute,
+              ) {
+                return (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.getSchemaByIndexRoute)(
+                  indexRoute,
+                  this.jsonSchema,
+                  true,
+                ); // useObjClone: true 避免后续产生数据联动
+              };
+
+              /** 根据key值路径获取对应的schema数据[非联动式数据获取]  */
+              _proto.getSchemaByKeyRoute = function getSchemaByKeyRoute(
+                keyRoute,
+              ) {
+                var indexRoute = this.keyRoute2indexRoute(keyRoute);
+                return (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.getSchemaByIndexRoute)(
+                  indexRoute,
+                  this.jsonSchema,
+                  true,
+                ); // useObjClone: true 避免后续产生数据联动
+              };
+              return _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(
+                JSONSchemaStore,
+                [
+                  {
+                    key: 'JSONSchemaObj',
+                    get: function get() {
+                      return (0, mobx__WEBPACK_IMPORTED_MODULE_4__.toJS)(
+                        this.jsonSchema,
+                      );
+                    },
+
+                    /** 获取当前jsonSchema的最新编辑时间的对应时间戳 */
+                  },
+                  {
+                    key: 'lastUpdateTime',
+                    get: function get() {
+                      var curLastUpdateTime = this.jsonSchema.lastUpdateTime;
+                      curLastUpdateTime = curLastUpdateTime
+                        ? new Date(curLastUpdateTime).getTime()
+                        : new Date().getTime();
+                      return curLastUpdateTime;
+                    },
+                  },
+                ],
+              );
+            })()),
+            (_descriptor =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'pageScreen',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return 'mobileScreen';
+                  },
+                },
+              )),
+            (_descriptor2 =
+              _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+                _class.prototype,
+                'jsonSchema',
+                [mobx__WEBPACK_IMPORTED_MODULE_4__.observable],
+                {
+                  configurable: true,
+                  enumerable: true,
+                  writable: true,
+                  initializer: function initializer() {
+                    return {};
+                  },
+                },
+              )),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'setPageScreen',
+              [_dec],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'setPageScreen',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'initJSONSchemaData',
+              [_dec2],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'initJSONSchemaData',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'JSONSchemaChange',
+              [_dec3],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'JSONSchemaChange',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'JSONSchemaObj',
+              [mobx__WEBPACK_IMPORTED_MODULE_4__.computed],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'JSONSchemaObj',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'lastUpdateTime',
+              [mobx__WEBPACK_IMPORTED_MODULE_4__.computed],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'lastUpdateTime',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'indexRoute2keyRoute',
+              [_dec4],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'indexRoute2keyRoute',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'keyRoute2indexRoute',
+              [_dec5],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'keyRoute2indexRoute',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'getSchemaByIndexRoute',
+              [_dec6],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'getSchemaByIndexRoute',
+              ),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'getSchemaByKeyRoute',
+              [_dec7],
+              Object.getOwnPropertyDescriptor(
+                _class.prototype,
+                'getSchemaByKeyRoute',
+              ),
+              _class.prototype,
+            ),
+            _class);
+
+          /***/
+        },
+
+      /***/ './src/store/index.js':
+        /*!****************************!*\
+  !*** ./src/store/index.js ***!
+  \****************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _JSONSchemaStore__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! ./JSONSchemaStore */ './src/store/JSONSchemaStore.js',
+            );
+          /* harmony import */ var _JSONEditorStore__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(
+              /*! ./JSONEditorStore */ './src/store/JSONEditorStore.js',
+            );
+
+          var RootJSONStore = function RootJSONStore() {
+            this.JSONSchemaStore =
+              new _JSONSchemaStore__WEBPACK_IMPORTED_MODULE_0__['default'](
+                this,
+              );
+            this.JSONEditorStore =
+              new _JSONEditorStore__WEBPACK_IMPORTED_MODULE_1__['default'](
+                this,
+              );
+          };
+          /* harmony default export */ __webpack_exports__['default'] =
+            RootJSONStore;
+
+          /***/
+        },
+
+      /***/ './src/utils/index.js':
+        /*!****************************!*\
+  !*** ./src/utils/index.js ***!
+  \****************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ deleteWebCacheData: function () {
+              return /* binding */ deleteWebCacheData;
+            },
+            /* harmony export */ getParams: function () {
+              return /* binding */ getParams;
+            },
+            /* harmony export */ getURLParam: function () {
+              return /* binding */ getURLParam;
+            },
+            /* harmony export */ getWebCacheData: function () {
+              return /* binding */ getWebCacheData;
+            },
+            /* harmony export */ hasProperties: function () {
+              return /* binding */ hasProperties;
+            },
+            /* harmony export */ isBaseSchemaElem: function () {
+              return /* binding */ isBaseSchemaElem;
+            },
+            /* harmony export */ isBoxSchemaElem: function () {
+              return /* binding */ isBoxSchemaElem;
+            },
+            /* harmony export */ isEqual: function () {
+              return /* binding */ isEqual;
+            },
+            /* harmony export */ isFirstSchemaElem: function () {
+              return /* binding */ isFirstSchemaElem;
+            },
+            /* harmony export */ isNeedTwoColWarpStyle: function () {
+              return /* binding */ isNeedTwoColWarpStyle;
+            },
+            /* harmony export */ objClone: function () {
+              return /* binding */ objClone;
+            },
+            /* harmony export */ saveWebCacheData: function () {
+              return /* binding */ saveWebCacheData;
+            },
+            /* harmony export */
+          });
+          /** js对象数据深拷贝，避免数据联动 */
+          function objClone(targetObj) {
+            var newObj = JSON.stringify(targetObj);
+            return JSON.parse(newObj);
+          }
+
+          /** 对比两个json数据是否相等 */
+          function isEqual(targetObj, nextTargetObj) {
+            return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
+          }
+
+          /** 判断当前属性是否存在
+           * 备注：要识别boolean类型的数值 */
+          function hasProperties(targetPropertie) {
+            var hasProperties = false;
+            if (targetPropertie !== undefined && targetPropertie !== null) {
+              // targetPropertie 等于""、0、false时均认为是存在的属性
+              hasProperties = true;
+            }
+            return hasProperties;
+          }
+
+          /** 是否需要设置成两栏布局
+           * 比较适合固定宽度的元素，
+           * 比如：boolean、date、date-time、time、number、color、quantity
+           * 呈现：element-title 和 content-item 在同一行展示
+           * */
+          function isNeedTwoColWarpStyle(format) {
+            var isNeedTwoColWarp = false;
+            if (
+              format === 'boolean' ||
+              format === 'date' ||
+              format === 'date-time' ||
+              format === 'time' ||
+              format === 'number' ||
+              format === 'color' ||
+              format === 'quantity' ||
+              format === 'select'
+            ) {
+              isNeedTwoColWarp = true;
+            }
+            return isNeedTwoColWarp;
+          }
+
+          /** 根据className判断是否是基本类型元素
+           *  基本类型元素：input、boolean、 date、date-time、 time、 url、
+           *  textarea、number、 radio、 select、color、quantity
+           * */
+          function isBaseSchemaElem(elemClassName) {
+            var isBaseSchema = false;
+            if (
+              elemClassName.indexOf('input-schema') >= 0 ||
+              elemClassName.indexOf('boolean-schema') >= 0 ||
+              elemClassName.indexOf('date-schema') >= 0 ||
+              elemClassName.indexOf('date-time-schema') >= 0 ||
+              elemClassName.indexOf('time-schema') >= 0 ||
+              elemClassName.indexOf('url-schema') >= 0 ||
+              elemClassName.indexOf('textarea-schema') >= 0 ||
+              elemClassName.indexOf('number-schema') >= 0 ||
+              elemClassName.indexOf('radio-schema') >= 0 ||
+              elemClassName.indexOf('select-schema') >= 0 ||
+              elemClassName.indexOf('color-schema') >= 0 ||
+              elemClassName.indexOf('quantity-schema') >= 0
+            ) {
+              isBaseSchema = true;
+            }
+            return isBaseSchema;
+          }
+
+          /** 根据className判断是否是容器类型元素
+           *  容器类型元素：func、style、data、object
+           *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
+           *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
+           * */
+          function isBoxSchemaElem(elemClassName) {
+            var isBoxSchema = false;
+            if (
+              elemClassName.indexOf('func-schema') >= 0 ||
+              elemClassName.indexOf('style-schema') >= 0 ||
+              elemClassName.indexOf('data-schema') >= 0 ||
+              elemClassName.indexOf('object-schema') >= 0
+            ) {
+              isBoxSchema = true;
+            }
+            return isBoxSchema;
+          }
+
+          /** 根据className判断是否是一级固定类型元素
+           *  容器类型元素：func、style、data
+           * */
+          function isFirstSchemaElem(elemClassName) {
+            var isFirstSchema = false;
+            if (
+              elemClassName.indexOf('func-schema') >= 0 ||
+              elemClassName.indexOf('style-schema') >= 0 ||
+              elemClassName.indexOf('data-schema') >= 0
+            ) {
+              isFirstSchema = true;
+            }
+            return isFirstSchema;
+          }
+          /**
+           * 获取当前url中的所有参数
+           */
+          function getParams() {
+            var params = window.location.search;
+            if (!params) {
+              var currentHref = window.location.href;
+              var startIndex = currentHref.lastIndexOf('?');
+              params = currentHref.substring(startIndex);
+            }
+            var paramsObj = {};
+            if (params) {
+              var arr = params.substr(1).split('&');
+              for (var i = 0, size = arr.length; i < size; i++) {
+                var data = arr[i].split('=');
+                if (data[0] && data[1]) {
+                  paramsObj[data[0]] = data[1];
+                }
+              }
+            }
+            return paramsObj;
+          }
+          /**
+           * 获取当前url中的指定参数
+           */
+          function getURLParam(key) {
+            var params = window.location.search;
+            if (params) {
+              var arr = params.substr(1).split('&');
+              for (var i = 0, size = arr.length; i < size; i++) {
+                var data = arr[i].split('=');
+                if (data[0] === key) {
+                  return data[1];
+                }
+              }
+            }
+            return '';
+          }
+
+          /**
+           *  将数据缓存到sessionStorage中
+           * */
+          function saveWebCacheData(cacheKey, targetSourceIndex) {
+            if (window.sessionStorage) {
+              window.sessionStorage.setItem(cacheKey, targetSourceIndex);
+            }
+          }
+
+          /**
+           *  从sessionStorage中读取此前缓存的数据
+           * */
+          function getWebCacheData(cacheKey) {
+            if (window.sessionStorage) {
+              return window.sessionStorage.getItem(cacheKey);
+            }
+          }
+
+          /**
+           *  从sessionStorage中删除此前缓存的数据
+           * */
+          function deleteWebCacheData(cacheKey) {
+            if (window.sessionStorage) {
+              return window.sessionStorage.removeItem(cacheKey);
+            }
+          }
+
+          /***/
+        },
+
+      /***/ './src/utils/typeof.js':
+        /*!*****************************!*\
+  !*** ./src/utils/typeof.js ***!
+  \*****************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ isArray: function () {
+              return /* binding */ isArray;
+            },
+            /* harmony export */ isBoolean: function () {
+              return /* binding */ isBoolean;
+            },
+            /* harmony export */ isColor: function () {
+              return /* binding */ isColor;
+            },
+            /* harmony export */ isDateStr: function () {
+              return /* binding */ isDateStr;
+            },
+            /* harmony export */ isDateTimeStr: function () {
+              return /* binding */ isDateTimeStr;
+            },
+            /* harmony export */ isFunction: function () {
+              return /* binding */ isFunction;
+            },
+            /* harmony export */ isNumber: function () {
+              return /* binding */ isNumber;
+            },
+            /* harmony export */ isObject: function () {
+              return /* binding */ isObject;
+            },
+            /* harmony export */ isQuantity: function () {
+              return /* binding */ isQuantity;
+            },
+            /* harmony export */ isSelect: function () {
+              return /* binding */ isSelect;
+            },
+            /* harmony export */ isString: function () {
+              return /* binding */ isString;
+            },
+            /* harmony export */ isTimeStr: function () {
+              return /* binding */ isTimeStr;
+            },
+            /* harmony export */ isURL: function () {
+              return /* binding */ isURL;
+            },
+            /* harmony export */
+          });
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__,
+            );
+
+          // 判断是否是URL地址类型
+          function isURL(s) {
+            return /^http[s]?:\/\/.*/.test(s);
+          }
+          // 判断是否是字符串类型
+          function isString(o) {
+            return Object.prototype.toString.call(o).slice(8, -1) === 'String';
+          }
+          // 判断是否是数字类型
+          function isNumber(value) {
+            return (
+              typeof value === 'number' ||
+              Object.prototype.toString.call(value) === '[object Number]'
+            );
+          }
+          // 判断是否是Boolean类型
+          function isBoolean(o) {
+            return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean';
+          }
+
+          // 判断是否是年月日的时间类型
+          function isDateStr(dateStr) {
+            return /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
+          }
+
+          // 判断是否是年月日时分的时间类型
+          function isDateTimeStr(dateStr) {
+            return (
+              /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(dateStr) ||
+              /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(dateStr)
+            );
+          }
+
+          // 判断是否是时分的时间类型
+          function isTimeStr(dateStr) {
+            return (
+              /^\d{2}:\d{2}:\d{2}$/.test(dateStr) ||
+              /^\d{2}:\d{2}$/.test(dateStr)
+            );
+          }
+
+          /**
+           *  判断是否是数组类型
+           * */
+          function isArray(curObj) {
+            var isArray = false;
+            if (
+              Object.prototype.toString.call(curObj).slice(8, -1) === 'Array'
+            ) {
+              isArray = true;
+            }
+            return isArray;
+          }
+
+          /**
+           *  判断是否是select多选类型(基础类型的array)
+           *  select类型一定是一个array类型
+           * */
+          function isSelect(curObj) {
+            if (!isArray(curObj)) {
+              return false;
+            }
+            for (var ind = 0, size = curObj.length; ind < size; ind++) {
+              var arrItem = curObj[ind];
+              if (!isString(arrItem)) {
+                // 只要有一个不是string类型就认为不是select
+                return false;
+              }
+            }
+            return true;
+          }
+
+          /**
+           *  判断是否是对象类型
+           * */
+          function isObject(curObj) {
+            var isObject = false;
+            if (
+              Object.prototype.toString.call(curObj).slice(8, -1) === 'Object'
+            ) {
+              isObject = true;
+            }
+            return isObject;
+          }
+
+          /**
+           *  判断是否是单位类型
+           * */
+          function isQuantity(val) {
+            var isObject = false;
+            // 获取当前计量单位元素可选的单位类型
+            var quantityList =
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.TypeDataList
+                .quantity.properties.quantity.enum;
+            if (quantityList.indexOf(val) >= 0) {
+              isObject = true;
+            }
+            return isObject;
+          }
+
+          /**
+           *  判断是否是颜色值
+           * */
+          function isColor(colorVal) {
+            return /^#[0-9a-f]{3,6}$/.test(colorVal);
+          }
+
+          /**
+           *  判断是否是函数类型
+           * */
+          function isFunction(curObj) {
+            var isFunction = false;
+            if (
+              Object.prototype.toString.call(curObj).slice(8, -1) === 'Function'
+            ) {
+              isFunction = true;
+            }
+            return isFunction;
+          }
+
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JSONDataEditor/index.scss':
+        /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JSONDataEditor/index.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/main.scss':
+        /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/main.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ArraySchema/index.scss':
+        /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ArraySchema/index.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/BoxStyleSchema/index.scss':
+        /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/BoxStyleSchema/index.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ColorFormSchemaV3/index.scss':
+        /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ColorFormSchemaV3/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DataSourceSchema/index.scss':
+        /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DataSourceSchema/index.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DynamicDataSchema/index.scss':
+        /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DynamicDataSchema/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss':
+        /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/NumberFormSchema/index.scss':
+        /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/NumberFormSchema/index.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ObjectSchema/index.scss':
+        /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ObjectSchema/index.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/RemoteDynamicDataSchema/index.scss':
+        /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/RemoteDynamicDataSchema/index.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SelectSchema/index.scss':
+        /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SelectSchema/index.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SohuEventSchema/index.scss':
+        /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SohuEventSchema/index.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/TextEditorSchema/index.scss':
+        /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/TextEditorSchema/index.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
+      /***/ './src/components/JSONDataEditor/index.scss':
+        /*!**************************************************!*\
+  !*** ./src/components/JSONDataEditor/index.scss ***!
+  \**************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JSONDataEditor/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('1fb1d0ec', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/main.scss':
+        /*!***********************!*\
+  !*** ./src/main.scss ***!
+  \***********************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./main.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/main.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('220f768b', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/ArraySchema/index.scss':
+        /*!**********************************************!*\
+  !*** ./src/renderers/ArraySchema/index.scss ***!
+  \**********************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ArraySchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('56ceba47', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/BoxStyleSchema/index.scss':
+        /*!*************************************************!*\
+  !*** ./src/renderers/BoxStyleSchema/index.scss ***!
+  \*************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/BoxStyleSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('31b3938e', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/ColorFormSchemaV3/index.scss':
+        /*!****************************************************!*\
+  !*** ./src/renderers/ColorFormSchemaV3/index.scss ***!
+  \****************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ColorFormSchemaV3/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('f7862348', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/DataSourceSchema/index.scss':
+        /*!***************************************************!*\
+  !*** ./src/renderers/DataSourceSchema/index.scss ***!
+  \***************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DataSourceSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('1b6af5a2', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/DynamicDataSchema/index.scss':
+        /*!****************************************************!*\
+  !*** ./src/renderers/DynamicDataSchema/index.scss ***!
+  \****************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DynamicDataSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('754f9197', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/JsonView/index.scss':
+        /*!*******************************************!*\
+  !*** ./src/renderers/JsonView/index.scss ***!
+  \*******************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('4ad618f0', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/NumberFormSchema/index.scss':
+        /*!***************************************************!*\
+  !*** ./src/renderers/NumberFormSchema/index.scss ***!
+  \***************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/NumberFormSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('ae856a32', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/ObjectSchema/index.scss':
+        /*!***********************************************!*\
+  !*** ./src/renderers/ObjectSchema/index.scss ***!
+  \***********************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ObjectSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('91732ad6', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/RemoteDynamicDataSchema/index.scss':
+        /*!**********************************************************!*\
+  !*** ./src/renderers/RemoteDynamicDataSchema/index.scss ***!
+  \**********************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/RemoteDynamicDataSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('5737c47d', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/SelectSchema/index.scss':
+        /*!***********************************************!*\
+  !*** ./src/renderers/SelectSchema/index.scss ***!
+  \***********************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SelectSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('e6602b10', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/SohuEventSchema/index.scss':
+        /*!**************************************************!*\
+  !*** ./src/renderers/SohuEventSchema/index.scss ***!
+  \**************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SohuEventSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('4cab1cef', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/TextEditorSchema/index.scss':
+        /*!***************************************************!*\
+  !*** ./src/renderers/TextEditorSchema/index.scss ***!
+  \***************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/TextEditorSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('54a7813a', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ '../../node_modules/vue-style-loader/lib/addStylesClient.js':
+        /*!******************************************************************!*\
+  !*** ../../node_modules/vue-style-loader/lib/addStylesClient.js ***!
+  \******************************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ default: function () {
+              return /* binding */ addStylesClient;
+            },
+            /* harmony export */
+          });
+          /* harmony import */ var _listToStyles__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! ./listToStyles */ '../../node_modules/vue-style-loader/lib/listToStyles.js',
+            );
+          /*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+          var hasDocument = typeof document !== 'undefined';
+
+          if (typeof DEBUG !== 'undefined' && DEBUG) {
+            if (!hasDocument) {
+              throw new Error(
+                'vue-style-loader cannot be used in a non-browser environment. ' +
+                  "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
+              );
+            }
+          }
+
+          /*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+          var stylesInDom = {
+            /*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/
+          };
+
+          var head =
+            hasDocument &&
+            (document.head || document.getElementsByTagName('head')[0]);
+          var singletonElement = null;
+          var singletonCounter = 0;
+          var isProduction = false;
+          var noop = function () {};
+          var options = null;
+          var ssrIdKey = 'data-vue-ssr-id';
+
+          // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+          // tags it will allow on a page
+          var isOldIE =
+            typeof navigator !== 'undefined' &&
+            /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
+
+          function addStylesClient(parentId, list, _isProduction, _options) {
+            isProduction = _isProduction;
+
+            options = _options || {};
+
+            var styles = (0,
+            _listToStyles__WEBPACK_IMPORTED_MODULE_0__['default'])(
+              parentId,
+              list,
+            );
+            addStylesToDom(styles);
+
+            return function update(newList) {
+              var mayRemove = [];
+              for (var i = 0; i < styles.length; i++) {
+                var item = styles[i];
+                var domStyle = stylesInDom[item.id];
+                domStyle.refs--;
+                mayRemove.push(domStyle);
+              }
+              if (newList) {
+                styles = (0,
+                _listToStyles__WEBPACK_IMPORTED_MODULE_0__['default'])(
+                  parentId,
+                  newList,
+                );
+                addStylesToDom(styles);
+              } else {
+                styles = [];
+              }
+              for (var i = 0; i < mayRemove.length; i++) {
+                var domStyle = mayRemove[i];
+                if (domStyle.refs === 0) {
+                  for (var j = 0; j < domStyle.parts.length; j++) {
+                    domStyle.parts[j]();
+                  }
+                  delete stylesInDom[domStyle.id];
+                }
+              }
+            };
+          }
+
+          function addStylesToDom(styles /* Array<StyleObject> */) {
+            for (var i = 0; i < styles.length; i++) {
+              var item = styles[i];
+              var domStyle = stylesInDom[item.id];
+              if (domStyle) {
+                domStyle.refs++;
+                for (var j = 0; j < domStyle.parts.length; j++) {
+                  domStyle.parts[j](item.parts[j]);
+                }
+                for (; j < item.parts.length; j++) {
+                  domStyle.parts.push(addStyle(item.parts[j]));
+                }
+                if (domStyle.parts.length > item.parts.length) {
+                  domStyle.parts.length = item.parts.length;
+                }
+              } else {
+                var parts = [];
+                for (var j = 0; j < item.parts.length; j++) {
+                  parts.push(addStyle(item.parts[j]));
+                }
+                stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts };
+              }
+            }
+          }
+
+          function createStyleElement() {
+            var styleElement = document.createElement('style');
+            styleElement.type = 'text/css';
+            head.appendChild(styleElement);
+            return styleElement;
+          }
+
+          function addStyle(obj /* StyleObjectPart */) {
+            var update, remove;
+            var styleElement = document.querySelector(
+              'style[' + ssrIdKey + '~="' + obj.id + '"]',
+            );
+
+            if (styleElement) {
+              if (isProduction) {
+                // has SSR styles and in production mode.
+                // simply do nothing.
+                return noop;
+              } else {
+                // has SSR styles but in dev mode.
+                // for some reason Chrome can't handle source map in server-rendered
+                // style tags - source maps in <style> only works if the style tag is
+                // created and inserted dynamically. So we remove the server rendered
+                // styles and inject new ones.
+                styleElement.parentNode.removeChild(styleElement);
+              }
+            }
+
+            if (isOldIE) {
+              // use singleton mode for IE9.
+              var styleIndex = singletonCounter++;
+              styleElement =
+                singletonElement || (singletonElement = createStyleElement());
+              update = applyToSingletonTag.bind(
+                null,
+                styleElement,
+                styleIndex,
+                false,
+              );
+              remove = applyToSingletonTag.bind(
+                null,
+                styleElement,
+                styleIndex,
+                true,
+              );
+            } else {
+              // use multi-style-tag mode in all other cases
+              styleElement = createStyleElement();
+              update = applyToTag.bind(null, styleElement);
+              remove = function () {
+                styleElement.parentNode.removeChild(styleElement);
+              };
+            }
+
+            update(obj);
+
+            return function updateStyle(newObj /* StyleObjectPart */) {
+              if (newObj) {
+                if (
+                  newObj.css === obj.css &&
+                  newObj.media === obj.media &&
+                  newObj.sourceMap === obj.sourceMap
+                ) {
+                  return;
+                }
+                update((obj = newObj));
+              } else {
+                remove();
+              }
+            };
+          }
+
+          var replaceText = (function () {
+            var textStore = [];
+
+            return function (index, replacement) {
+              textStore[index] = replacement;
+              return textStore.filter(Boolean).join('\n');
+            };
+          })();
+
+          function applyToSingletonTag(styleElement, index, remove, obj) {
+            var css = remove ? '' : obj.css;
+
+            if (styleElement.styleSheet) {
+              styleElement.styleSheet.cssText = replaceText(index, css);
+            } else {
+              var cssNode = document.createTextNode(css);
+              var childNodes = styleElement.childNodes;
+              if (childNodes[index])
+                styleElement.removeChild(childNodes[index]);
+              if (childNodes.length) {
+                styleElement.insertBefore(cssNode, childNodes[index]);
+              } else {
+                styleElement.appendChild(cssNode);
+              }
+            }
+          }
+
+          function applyToTag(styleElement, obj) {
+            var css = obj.css;
+            var media = obj.media;
+            var sourceMap = obj.sourceMap;
+
+            if (media) {
+              styleElement.setAttribute('media', media);
+            }
+            if (options.ssrId) {
+              styleElement.setAttribute(ssrIdKey, obj.id);
+            }
+
+            if (sourceMap) {
+              // https://developer.chrome.com/devtools/docs/javascript-debugging
+              // this makes source maps inside style tags work properly in Chrome
+              css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+              // http://stackoverflow.com/a/26603875
+              css +=
+                '\n/*# sourceMappingURL=data:application/json;base64,' +
+                btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) +
+                ' */';
+            }
+
+            if (styleElement.styleSheet) {
+              styleElement.styleSheet.cssText = css;
+            } else {
+              while (styleElement.firstChild) {
+                styleElement.removeChild(styleElement.firstChild);
+              }
+              styleElement.appendChild(document.createTextNode(css));
+            }
+          }
+
+          /***/
+        },
+
+      /***/ '../../node_modules/vue-style-loader/lib/listToStyles.js':
+        /*!***************************************************************!*\
+  !*** ../../node_modules/vue-style-loader/lib/listToStyles.js ***!
+  \***************************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ default: function () {
+              return /* binding */ listToStyles;
+            },
+            /* harmony export */
+          });
+          /**
+           * Translates the list format produced by css-loader into something
+           * easier to manipulate.
+           */
+          function listToStyles(parentId, list) {
+            var styles = [];
+            var newStyles = {};
+            for (var i = 0; i < list.length; i++) {
+              var item = list[i];
+              var id = item[0];
+              var css = item[1];
+              var media = item[2];
+              var sourceMap = item[3];
+              var part = {
+                id: parentId + ':' + i,
+                css: css,
+                media: media,
+                sourceMap: sourceMap,
+              };
+              if (!newStyles[id]) {
+                styles.push((newStyles[id] = { id: id, parts: [part] }));
+              } else {
+                newStyles[id].parts.push(part);
+              }
+            }
+            return styles;
+          }
+
+          /***/
+        },
+
+      /***/ '@ant-design/icons':
+        /*!************************************!*\
+  !*** external "@ant-design/icons" ***!
+  \************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@ant-design/icons');
+
+          /***/
+        },
+
+      /***/ '@babel/runtime/helpers/applyDecoratedDescriptor':
+        /*!******************************************************************!*\
+  !*** external "@babel/runtime/helpers/applyDecoratedDescriptor" ***!
+  \******************************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@babel/runtime/helpers/applyDecoratedDescriptor');
+
+          /***/
+        },
+
+      /***/ '@babel/runtime/helpers/createClass':
+        /*!*****************************************************!*\
+  !*** external "@babel/runtime/helpers/createClass" ***!
+  \*****************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@babel/runtime/helpers/createClass');
+
+          /***/
+        },
+
+      /***/ '@babel/runtime/helpers/extends':
+        /*!*************************************************!*\
+  !*** external "@babel/runtime/helpers/extends" ***!
+  \*************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@babel/runtime/helpers/extends');
+
+          /***/
+        },
+
+      /***/ '@babel/runtime/helpers/inheritsLoose':
+        /*!*******************************************************!*\
+  !*** external "@babel/runtime/helpers/inheritsLoose" ***!
+  \*******************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@babel/runtime/helpers/inheritsLoose');
+
+          /***/
+        },
+
+      /***/ '@babel/runtime/helpers/initializerDefineProperty':
+        /*!*******************************************************************!*\
+  !*** external "@babel/runtime/helpers/initializerDefineProperty" ***!
+  \*******************************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@babel/runtime/helpers/initializerDefineProperty');
+
+          /***/
+        },
+
+      /***/ '@babel/runtime/helpers/initializerWarningHelper':
+        /*!******************************************************************!*\
+  !*** external "@babel/runtime/helpers/initializerWarningHelper" ***!
+  \******************************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@babel/runtime/helpers/initializerWarningHelper');
+
+          /***/
+        },
+
+      /***/ '@wibetter/json-utils':
+        /*!***************************************!*\
+  !*** external "@wibetter/json-utils" ***!
+  \***************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('@wibetter/json-utils');
+
+          /***/
+        },
+
+      /***/ 'ace-builds/src-noconflict/mode-html':
+        /*!******************************************************!*\
+  !*** external "ace-builds/src-noconflict/mode-html" ***!
+  \******************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('ace-builds/src-noconflict/mode-html');
+
+          /***/
+        },
+
+      /***/ 'ace-builds/src-noconflict/mode-javascript':
+        /*!************************************************************!*\
+  !*** external "ace-builds/src-noconflict/mode-javascript" ***!
+  \************************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('ace-builds/src-noconflict/mode-javascript');
+
+          /***/
+        },
+
+      /***/ 'ace-builds/src-noconflict/mode-json':
+        /*!******************************************************!*\
+  !*** external "ace-builds/src-noconflict/mode-json" ***!
+  \******************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('ace-builds/src-noconflict/mode-json');
+
+          /***/
+        },
+
+      /***/ 'ace-builds/src-noconflict/theme-monokai':
+        /*!**********************************************************!*\
+  !*** external "ace-builds/src-noconflict/theme-monokai" ***!
+  \**********************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('ace-builds/src-noconflict/theme-monokai');
+
+          /***/
+        },
+
+      /***/ 'ace-builds/src-noconflict/theme-solarized_light':
+        /*!******************************************************************!*\
+  !*** external "ace-builds/src-noconflict/theme-solarized_light" ***!
+  \******************************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('ace-builds/src-noconflict/theme-solarized_light');
+
+          /***/
+        },
+
+      /***/ antd:
+        /*!***********************!*\
+  !*** external "antd" ***!
+  \***********************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('antd');
+
+          /***/
+        },
+
+      /***/ 'braft-editor':
+        /*!*******************************!*\
+  !*** external "braft-editor" ***!
+  \*******************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('braft-editor');
+
+          /***/
+        },
+
+      /***/ 'braft-editor/dist/index.css':
+        /*!**********************************************!*\
+  !*** external "braft-editor/dist/index.css" ***!
+  \**********************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('braft-editor/dist/index.css');
+
+          /***/
+        },
+
+      /***/ 'braft-extensions/dist/color-picker':
+        /*!*****************************************************!*\
+  !*** external "braft-extensions/dist/color-picker" ***!
+  \*****************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('braft-extensions/dist/color-picker');
+
+          /***/
+        },
+
+      /***/ 'braft-extensions/dist/color-picker.css':
+        /*!*********************************************************!*\
+  !*** external "braft-extensions/dist/color-picker.css" ***!
+  \*********************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('braft-extensions/dist/color-picker.css');
+
+          /***/
+        },
+
+      /***/ 'braft-extensions/dist/table':
+        /*!**********************************************!*\
+  !*** external "braft-extensions/dist/table" ***!
+  \**********************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('braft-extensions/dist/table');
+
+          /***/
+        },
+
+      /***/ 'braft-extensions/dist/table.css':
+        /*!**************************************************!*\
+  !*** external "braft-extensions/dist/table.css" ***!
+  \**************************************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('braft-extensions/dist/table.css');
+
+          /***/
+        },
+
+      /***/ mobx:
+        /*!***********************!*\
+  !*** external "mobx" ***!
+  \***********************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('mobx');
+
+          /***/
+        },
+
+      /***/ 'mobx-react':
+        /*!*****************************!*\
+  !*** external "mobx-react" ***!
+  \*****************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('mobx-react');
+
+          /***/
+        },
+
+      /***/ moment:
+        /*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('moment');
+
+          /***/
+        },
+
+      /***/ 'prop-types':
+        /*!*****************************!*\
+  !*** external "prop-types" ***!
+  \*****************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('prop-types');
+
+          /***/
+        },
+
+      /***/ react:
+        /*!************************!*\
+  !*** external "react" ***!
+  \************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('react');
+
+          /***/
+        },
+
+      /***/ 'react-ace':
+        /*!****************************!*\
+  !*** external "react-ace" ***!
+  \****************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('react-ace');
+
+          /***/
+        },
+
+      /***/ 'react-color':
+        /*!******************************!*\
+  !*** external "react-color" ***!
+  \******************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('react-color');
+
+          /***/
+        },
+
+      /***/ 'react-dom':
+        /*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('react-dom');
+
+          /***/
+        },
+
+      /******/
+    };
+    /************************************************************************/
+    /******/ // The module cache
+    /******/ var __webpack_module_cache__ = {};
+    /******/
+    /******/ // The require function
+    /******/ function __webpack_require__(moduleId) {
+      /******/ // Check if module is in cache
+      /******/ var cachedModule = __webpack_module_cache__[moduleId];
+      /******/ if (cachedModule !== undefined) {
+        /******/ return cachedModule.exports;
+        /******/
+      }
+      /******/ // Create a new module (and put it into the cache)
+      /******/ var module = (__webpack_module_cache__[moduleId] = {
+        /******/ id: moduleId,
+        /******/ // no module.loaded needed
+        /******/ exports: {},
+        /******/
+      });
+      /******/
+      /******/ // Execute the module function
+      /******/ __webpack_modules__[moduleId](
+        module,
+        module.exports,
+        __webpack_require__,
+      );
+      /******/
+      /******/ // Return the exports of the module
+      /******/ return module.exports;
+      /******/
+    }
+    /******/
+    /************************************************************************/
+    /******/ /* webpack/runtime/compat get default export */
+    /******/ !(function () {
+      /******/ // getDefaultExport function for compatibility with non-harmony modules
+      /******/ __webpack_require__.n = function (module) {
+        /******/ var getter =
+          module && module.__esModule
+            ? /******/ function () {
+                return module['default'];
+              }
+            : /******/ function () {
+                return module;
+              };
+        /******/ __webpack_require__.d(getter, { a: getter });
+        /******/ return getter;
+        /******/
+      };
+      /******/
+    })();
+    /******/
+    /******/ /* webpack/runtime/define property getters */
+    /******/ !(function () {
+      /******/ // define getter functions for harmony exports
+      /******/ __webpack_require__.d = function (exports, definition) {
+        /******/ for (var key in definition) {
+          /******/ if (
+            __webpack_require__.o(definition, key) &&
+            !__webpack_require__.o(exports, key)
+          ) {
+            /******/ Object.defineProperty(exports, key, {
+              enumerable: true,
+              get: definition[key],
+            });
+            /******/
+          }
+          /******/
+        }
+        /******/
+      };
+      /******/
+    })();
+    /******/
+    /******/ /* webpack/runtime/hasOwnProperty shorthand */
+    /******/ !(function () {
+      /******/ __webpack_require__.o = function (obj, prop) {
+        return Object.prototype.hasOwnProperty.call(obj, prop);
+      };
+      /******/
+    })();
+    /******/
+    /******/ /* webpack/runtime/make namespace object */
+    /******/ !(function () {
+      /******/ // define __esModule on exports
+      /******/ __webpack_require__.r = function (exports) {
+        /******/ if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+          /******/ Object.defineProperty(exports, Symbol.toStringTag, {
+            value: 'Module',
+          });
+          /******/
+        }
+        /******/ Object.defineProperty(exports, '__esModule', { value: true });
+        /******/
+      };
+      /******/
+    })();
+    /******/
+    /************************************************************************/
+    var __webpack_exports__ = {};
+    // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
+    !(function () {
+      'use strict';
+      /*!*********************!*\
+  !*** ./src/main.js ***!
+  \*********************/
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */ default: function () {
+          return /* binding */ JSONEditor;
+        },
+        /* harmony export */
+      });
+      /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+        __webpack_require__(
+          /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+        );
+      /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+        /*#__PURE__*/ __webpack_require__.n(
+          _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+        );
+      /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+        __webpack_require__(/*! react */ 'react');
+      /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+        /*#__PURE__*/ __webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+      /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ =
+        __webpack_require__(/*! react-dom */ 'react-dom');
+      /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default =
+        /*#__PURE__*/ __webpack_require__.n(
+          react_dom__WEBPACK_IMPORTED_MODULE_2__,
+        );
+      /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ =
+        __webpack_require__(/*! mobx-react */ 'mobx-react');
+      /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3___default =
+        /*#__PURE__*/ __webpack_require__.n(
+          mobx_react__WEBPACK_IMPORTED_MODULE_3__,
+        );
+      /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+        __webpack_require__(/*! prop-types */ 'prop-types');
+      /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+        /*#__PURE__*/ __webpack_require__.n(
+          prop_types__WEBPACK_IMPORTED_MODULE_4__,
+        );
+      /* harmony import */ var $store_index__WEBPACK_IMPORTED_MODULE_5__ =
+        __webpack_require__(/*! $store/index */ './src/store/index.js');
+      /* harmony import */ var $components_JSONDataEditor_index__WEBPACK_IMPORTED_MODULE_6__ =
+        __webpack_require__(
+          /*! $components/JSONDataEditor/index */ './src/components/JSONDataEditor/index.js',
+        );
+      /* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_7__ =
+        __webpack_require__(/*! ./main.scss */ './src/main.scss');
+      /* harmony import */ var _main_scss__WEBPACK_IMPORTED_MODULE_7___default =
+        /*#__PURE__*/ __webpack_require__.n(
+          _main_scss__WEBPACK_IMPORTED_MODULE_7__,
+        );
+
+      /**
+       * JSONEditor功能组件
+       * @param props
+       * @constructor
+       */
+      var JSONEditor = /*#__PURE__*/ (function (_React$PureComponent) {
+        function JSONEditor(props) {
+          var _this;
+          _this = _React$PureComponent.call(this, props) || this;
+          _this.state = {
+            rootJSONStore: new $store_index__WEBPACK_IMPORTED_MODULE_5__[
+              'default'
+            ](), // 初始化一份rootJSONStore
+          };
+          return _this;
+        }
+        _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+          JSONEditor,
+          _React$PureComponent,
+        );
+        var _proto = JSONEditor.prototype;
+        _proto.render = function render() {
+          var element = this.props.element;
+          var rootJSONStore = this.state.rootJSONStore;
+          var renderContent =
+            /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+              mobx_react__WEBPACK_IMPORTED_MODULE_3__.Provider,
+              {
+                JSONSchemaStore: rootJSONStore.JSONSchemaStore,
+                JSONEditorStore: rootJSONStore.JSONEditorStore,
+              },
+              /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                $components_JSONDataEditor_index__WEBPACK_IMPORTED_MODULE_6__[
+                  'default'
+                ],
+                this.props,
+              ),
+            );
+          if (element) {
+            react_dom__WEBPACK_IMPORTED_MODULE_2___default().render(
+              renderContent,
+              element,
+            ); // 挂载到指定位置
+            return '';
+          }
+          return renderContent; // 直接输出dom元素
         };
-      })(),
-      __webpack_exports__
-    );
+        return JSONEditor;
+      })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+      JSONEditor.propTypes = {
+        viewStyle: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+        wideScreen: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+        onChange: prop_types__WEBPACK_IMPORTED_MODULE_4___default().func,
+        jsonView: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+        schemaData: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+        jsonData: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+        element: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+      };
+    })();
+    /******/ return __webpack_exports__;
+    /******/
   })();
 });

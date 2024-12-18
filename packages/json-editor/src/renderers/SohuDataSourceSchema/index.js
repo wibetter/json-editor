@@ -114,12 +114,6 @@ class SohuDataSourceSchema extends React.PureComponent {
                         currentJsonKey
                       ],
                     );
-                    console.log(
-                      'mainConfigJsonData:',
-                      currentSchemaData,
-                      currentJsonKey,
-                      mainConfigJsonData,
-                    );
                     /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
                     const curType = currentSchemaData.type;
                     /** 5. 获取当前元素的id，用于做唯一标识 */

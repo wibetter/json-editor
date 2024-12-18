@@ -1,7 +1,1434 @@
 /*!
- * @wibetter/json-editor v5.0.2
+ * @wibetter/json-editor v5.0.4
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Dec 17 2024 16:03:49 GMT+0800 (中国标准时间)
+ * build time: Wed Dec 18 2024 16:24:11 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
- */.json-view-box{position:relative}.json-view-box .json-view-ace{width:100%}.json-view-box .readOnly-btn{color:#ad6800;position:absolute;right:8px;top:0;z-index:100}.array-schema-box{border:1px solid rgba(0,0,0,.1);border-radius:5px 5px 0 0;margin-bottom:12px}.array-schema-box>.element-title{background-color:#fff;border-radius:5px 5px 0 0;color:#232321;cursor:pointer;font-family:PingFangSC-Regular;font-size:14px;line-height:38px;padding-left:15px}.array-schema-box>.element-title .array-add-child-btn{display:inline-block;float:right;line-height:0;margin:12px 12px 0 0}.array-schema-box>.element-title .array-add-child-btn:hover{color:#1890ff}.array-schema-box .array-content{background-color:#fafafa;position:relative;-webkit-transition:.4s;transition:.4s}.array-schema-box .array-content>.array-item{border-bottom:1px solid #e5e7f0}.array-schema-box .array-content>.array-item .array-item-header{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-box-pack:justify;-moz-box-pack:justify;-ms-flex-pack:justify;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;background:#f5f6fa;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;color:#232321;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;font-family:PingFangSC-Regular;font-size:14px;height:40px;-webkit-justify-content:space-between;justify-content:space-between;line-height:40px;padding:0 12px 0 15px;width:100%}.array-schema-box .array-content>.array-item .array-item-header .array-title-text{-webkit-box-flex:1;-moz-box-flex:1;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;overflow:hidden;text-align:left;text-overflow:ellipsis;white-space:nowrap;width:100%}.array-schema-box .array-content>.array-item .array-item-header .array-operate-box{-webkit-box-flex:0;-moz-box-flex:0;-webkit-flex:0 0 120px;-ms-flex:0 0 120px;flex:0 0 120px;text-align:right;-webkit-transition:all .2s ease;transition:all .2s ease;visibility:hidden}.array-schema-box .array-content>.array-item .array-item-header .array-operate-box .array-operate-btn{cursor:pointer;float:right;height:16px;margin-left:8px}.array-schema-box .array-content>.array-item .array-item-header .array-operate-box .array-operate-btn:hover{color:#1890ff}.array-schema-box .array-content>.array-item .array-item-header .array-operate-box .close-operate-btn,.array-schema-box .array-content>.array-item .array-item-header:hover .array-operate-box{visibility:visible}.array-schema-box .array-content>.array-item .array-item-content{background-color:#fff;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;overflow:hidden;padding:12px 15px;position:relative;-webkit-transition:all .2s ease;transition:all .2s ease;width:100%}.array-schema-box .array-content>.array-item .array-item-content.closed{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;height:0;padding:0}.array-schema-box .array-content>.array-item .array-item-content.open{height:auto}.array-schema-box .array-content>.array-item:last-child{border-bottom:none}.array-schema-box .array-content.json-view-array{min-width:230px;padding:0;-webkit-transition:.4s;transition:.4s}.array-schema-box .array-content.closed{height:0;overflow:hidden;padding:0}.mobile-screen-view .array-title-text{max-width:160px}.object-schema-warp .object-content.json-view-array{min-width:230px;padding:0;-webkit-transition:.4s;transition:.4s}.object-schema-warp .object-content.closed{height:0;overflow:hidden;padding:0}.url-editor-box{display:inline-block;position:relative}.url-editor-box .filter-url-btn{position:absolute;right:-28px;top:9px;z-index:100}.url-editor-box .filter-url-btn svg{color:#595959;cursor:pointer;height:20px;width:20px}.url-editor-box .filter-url-btn svg:hover{color:#1890ff}.ace-editor-box{position:relative}.ace-editor-box .filter-btn{position:absolute;right:6px;top:6px;z-index:100}.ace-editor-box .filter-btn svg{color:#595959;cursor:pointer;height:20px;width:20px}.ace-editor-box .filter-btn svg:hover{color:#1890ff}.remote-dynamic-data-schema{position:relative;-webkit-transition:.4s;transition:.4s}.remote-dynamic-data-schema .data-route-select,.remote-dynamic-data-schema .dynamic-data-select{display:block;width:100%}.remote-dynamic-data-schema .warning-text{color:#fa8c16}.remote-dynamic-data-schema .filter-func-box{padding:0}.remote-dynamic-data-schema.json-view{padding:0;-webkit-transition:.4s;transition:.4s}.remote-dynamic-data-schema.closed{height:0;overflow:hidden;padding:0}.dynamic-data-schema{position:relative;-webkit-transition:.4s;transition:.4s}.dynamic-data-schema .dynamic-data-tab-radio-box{display:block;position:relative;text-align:center;z-index:10}.dynamic-data-schema .dynamic-data-tab-radio-box .dynamic-data-tab-radio{-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;background-color:#fff;border:1px solid #1890ff;border-radius:18px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:-webkit-inline-box;display:-webkit-inline-flex;display:-moz-inline-box;display:-ms-inline-flexbox;display:inline-flex;height:30px;line-height:30px;margin:0 auto!important;position:relative;top:15px}.dynamic-data-schema .dynamic-data-tab-radio-box .dynamic-data-tab-radio .tab-radio{-webkit-box-flex:1;-moz-box-flex:1;-webkit-box-pack:center;-moz-box-pack:center;-ms-flex-pack:center;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-flex:1 1 120px;-ms-flex:1 1 120px;flex:1 1 120px;height:28px;-webkit-justify-content:center;justify-content:center;line-height:28px;padding:0 12px}.dynamic-data-schema .dynamic-data-tab-radio-box .dynamic-data-tab-radio .tab-radio-active{background-color:#1890ff;border-radius:18px;color:#fff}.dynamic-data-schema .dynamic-dat-tabPane{display:none;-webkit-transition:.4s;transition:.4s}.dynamic-data-schema .dynamic-dat-tabPane-active{display:block}.dynamic-data-schema .data-route-select,.dynamic-data-schema .dynamic-data-select{display:block;width:100%}.dynamic-data-schema .warning-text{color:#fa8c16}.dynamic-data-schema .json-form-box{border:1px solid #81d3f8;border-radius:15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:25px 15px 10px;position:relative}.dynamic-data-schema .json-form-box .filter-btn{position:absolute;right:35px;top:75px;z-index:100}.dynamic-data-schema .json-form-box .filter-btn svg{color:#595959;cursor:pointer;height:20px;width:20px}.dynamic-data-schema .json-form-box .filter-btn svg:hover{color:#1890ff}.dynamic-data-schema .filter-func-box{padding:0}.dynamic-data-schema.json-view{padding:0;-webkit-transition:.4s;transition:.4s}.dynamic-data-schema.closed{height:0;overflow:hidden;padding:0}.data-operate-btn{color:#8c8c8c;cursor:pointer}.data-operate-btn svg{height:20px;width:20px}.layout-box-style-container{background-color:#fff;border:1px solid #e5e7f0;border-radius:10px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;height:220px;margin:0 auto;position:relative;width:220px}.layout-box-style-container>.center-box{-webkit-box-pack:center;-moz-box-pack:center;-ms-flex-pack:center;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;background-color:#f5f6fa;border-radius:4px;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:70px;-webkit-justify-content:center;justify-content:center;left:75px;position:absolute;top:75px;width:70px}.layout-box-style-container>.center-box>.lock-icon{background-image:url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCI+PHBhdGggZD0iTTU4OC40NSA3MzkuNThjNi4xNSAwIDEyLjI1LS4xOCAxOC4zMS0uNTUtMi45MyAzLjMtNS45OSA2LjU0LTkuMTYgOS43MUw0ODQuNDMgODYxLjkyYy04OC40IDg4LjQtMjMxLjczIDg4LjQtMzIwLjEyIDAtODguNC04OC40LTg4LjQtMjMxLjcyIDAtMzIwLjEybDExMy4xOC0xMTMuMThjMy4xNy0zLjE2IDYuNC02LjIyIDkuNy05LjE2IDY5LjM4LTYxLjc2IDE2Ny42NC03My40NSAyNDcuOTUtMzUuMDkgMjIuNTggMTAuNzkgNDMuNzcgMjUuNTQgNjIuNDcgNDQuMjUgMTguNzIgMTguNzEgMzMuNDUgMzkuODggNDQuMjUgNjIuNDctMTMuNjUgMTMuNjgtMzIuNTUgMjIuMTQtNTMuNCAyMi4xNC03LjcgMC0xNS4xNC0xLjE1LTIyLjE0LTMuMy02LjEtOS45NS0xMy40NS0xOS4zNC0yMi4wNS0yNy45NWExNTIuMTQ4IDE1Mi4xNDggMCAwIDAtMjcuOTYtMjIuMDZjLTU4LjEyLTM1LjYyLTEzNS4xNC0yOC4yNy0xODUuNDYgMjIuMDZsLTMzLjk3IDMzLjk4LTc5LjIxIDc5LjJjLTU4LjkzIDU4LjkzLTU4LjkzIDE1NC40OCAwIDIxMy40MyA1OC45NCA1OC45MyAxNTQuNDkgNTguOTMgMjEzLjQyIDBsNzkuMi03OS4yMWMyNC45MiA2LjY1IDUxLjE0IDEwLjIgNzguMTYgMTAuMnptMjczLjI0LTU3NS4wNmMtODguNC04OC4zOS0yMzEuNzItODguMzktMzIwLjEyIDBMNDI4LjM5IDI3Ny43Yy0zLjE3IDMuMTctNi4yMiA2LjQtOS4xNiA5LjcxIDYuMDYtLjM3IDEyLjE2LS41NSAxOC4zMS0uNTUgMjcuMDMgMCA1My4yNCAzLjU2IDc4LjE3IDEwLjIybDc5LjItNzkuMmM1OC45NS01OC45NCAxNTQuNS01OC45NCAyMTMuNDMgMCA1OC45MyA1OC45MyA1OC45MyAxNTQuNDggMCAyMTMuNDJsLTc5LjIxIDc5LjItMzMuOTcgMzMuOThjLTUwLjMzIDUwLjMxLTEyNy4zNSA1Ny42Ni0xODUuNDcgMjIuMDUtOS45NS02LjEtMTkuMzMtMTMuNDUtMjcuOTUtMjIuMDVhMTUxLjY2NCAxNTEuNjY0IDAgMCAxLTIyLjA1LTI3Ljk2Yy03LTIuMTUtMTQuNDQtMy4zMS0yMi4xNC0zLjMxLTIwLjg2IDAtMzkuNzQgOC40Ni01My40IDIyLjE1IDEwLjc5IDIyLjU4IDI1LjU0IDQzLjc1IDQ0LjI1IDYyLjQ3IDE4LjcxIDE4LjcgMzkuODcgMzMuNDUgNjIuNDYgNDQuMjUgODAuMzIgMzguMzcgMTc4LjU4IDI2LjY3IDI0Ny45NS0zNS4wOSAzLjMyLTIuOTUgNi41NC01Ljk5IDkuNzEtOS4xNkw4NjEuNyA0ODQuNjVjODguNC04OC40MSA4OC40LTIzMS43Mi0uMDEtMzIwLjEzeiIgZmlsbD0iIzA0MDAwMCIvPjwvc3ZnPg==);background-size:contain;-webkit-box-shadow:none;box-shadow:none;cursor:pointer;height:32px;width:32px}.layout-box-style-container>.center-box>.lock-icon.unlock{background-image:url(img/unlink.9059276.svg)}.layout-box-style-container .layout-input-number{border-width:0 0 1px;margin-left:6px;text-align:right;width:100px}.layout-box-style-container .layout-input-number .ant-input-number-handler-wrap{display:none}.layout-box-style-container .layout-item{height:40px;line-height:40px;margin:0;position:relative;width:50px}.layout-box-style-container .layout-item .ant-input-number-input{color:#bec2c6;font-family:PingFangSC-Regular;font-size:14px;height:40px;line-height:40px}.layout-box-style-container .px-quantity-box:after{color:#232321;content:"px";position:absolute;right:0;top:0}.layout-box-style-container .rem-quantity-box:after{color:#232321;content:"rem";position:absolute;right:0;top:0}.layout-box-style-container .em-quantity-box:after{color:#232321;content:"em";position:absolute;right:0;top:0}.layout-box-style-container .percent-quantity-box:after{color:#232321;content:"%";position:absolute;right:0;top:0}.layout-box-style-container>.layout-item-top{left:85px;position:absolute;top:15px}.layout-box-style-container>.layout-item-right{position:absolute;right:15px;top:85px}.layout-box-style-container>.layout-item-bottom{bottom:15px;left:85px;position:absolute}.layout-box-style-container>.layout-item-left{left:15px;position:absolute;top:85px}.text-editor-box{position:relative}.text-editor-box .element-title{cursor:pointer}.text-editor-box .element-title>.close-operate-btn{margin-right:0!important}.text-editor-box .content-item{border:1px solid rgba(0,0,0,.1);-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}.text-editor-box .content-item .bf-container{width:100%}.text-editor-box .content-item .bf-container.fullscreen{height:auto!important}.text-editor-box .content-item .bf-container.fullscreen .bf-content{max-height:inherit}.text-editor-box .content-item .bf-controlbar .bf-font-size-dropdown,.text-editor-box .content-item .bf-controlbar .bf-letter-spacing-dropdown,.text-editor-box .content-item .bf-controlbar .headings-dropdown{min-width:65px}.text-editor-box .content-item .bf-controlbar .braft-color-picker input,.text-editor-box .content-item .bf-controlbar .braft-color-picker label{height:30px!important;padding:0!important;text-align:center!important}.text-editor-box .content-item .bf-content{font-size:16px;height:auto;max-height:300px;overflow:auto;padding-bottom:10px}.text-editor-box .content-item.closed{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;height:46px;overflow:hidden;padding:0}.text-editor-box table{border-left:1px solid #f0f0f0;border-top:1px solid #f0f0f0}.text-editor-box table td{border-bottom:1px solid #f0f0f0;border-right:1px solid #f0f0f0;padding:5px 8px;-webkit-transition:background .3s;transition:background .3s}.text-editor-box .bf-content *{line-height:inherit}.input-number-wrap{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-box-pack:start;-moz-box-pack:start;-ms-flex-pack:start;-webkit-align-items:center;align-items:center;background:#fff;border:1px solid #dcdfe6;border-radius:16px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;height:32px;-webkit-justify-content:flex-start;justify-content:flex-start;margin-right:24px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:141px}.input-number-wrap .number-cont{-webkit-box-flex:1;-moz-box-flex:1;border-left:1px solid #e6e9f2;border-right:1px solid #e6e9f2;-webkit-flex:1;-ms-flex:1;flex:1}.input-number-wrap .number-cont input{text-align:center}.input-number-wrap .number-btn{-webkit-box-flex:0;-moz-box-flex:0;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-box-pack:center;-moz-box-pack:center;-ms-flex-pack:center;-webkit-align-items:center;align-items:center;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;color:#a1a6b3;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-flex:0 0 36px;-ms-flex:0 0 36px;flex:0 0 36px;font-size:16px;height:32px;-webkit-justify-content:center;justify-content:center}.input-number-wrap .number-btn:hover{background-color:#1890ff;border:1px solid #e6e9f2;color:#fff}.input-number-wrap .plus{border-radius:0 16px 16px 0}.input-number-wrap .plus:hover{border-left:none}.input-number-wrap .minus{border-radius:16px 0 0 16px}.input-number-wrap .minus:hover{border-right:none}.form-item-box .ant-input-number-handler-wrap{display:none}.content-item>.form-item-box{position:relative}.content-item>.form-item-box .color-item-form{min-width:30px}.content-item>.form-item-box .color-btn-wrap{-webkit-box-pack:justify;-moz-box-pack:justify;-ms-flex-pack:justify;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;border:1px solid rgba(0,0,0,.15);border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;height:30px;-webkit-justify-content:space-between;justify-content:space-between;min-width:30px;padding:5px;-webkit-transition:.3s;transition:.3s}.content-item>.form-item-box .color-btn-wrap .color-btn{border:none;height:18px;outline:none;width:18px}.content-item>.form-item-box .color-btn-wrap .delete-bgColor-btn{display:none;margin-left:10px}.content-item>.form-item-box .color-btn-wrap .delete-bgColor-btn svg{height:18px}.content-item>.form-item-box .color-btn-wrap .delete-bgColor-btn:hover{color:red}.content-item>.form-item-box .color-btn-wrap:hover{width:70px}.content-item>.form-item-box .color-btn-wrap .delete-bgColor-btn:hover,.content-item>.form-item-box .color-btn-wrap:hover .delete-bgColor-btn{display:inline}.content-item>.form-item-box .color-btn-wrap .arrow{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAICAYAAADN5B7xAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAP8A/wD/oL2nkwAAAHFJREFUGNON0OsKgCAMBeCl3dOHqF8RVFBR0eX9X6sjTAiR7MAHNseMERFpqCicEpQ51HBx4av5hMZ8RNDDDpmnOeW7AYQtSphggfjVbOozk+6kBFYYeZLgqRu/4k0OB3TQ8n8XoW2YTdxM088ou0I3DwMbBQ0tPc5LAAAAAElFTkSuQmCCDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMTU1NzM5MTk3NjIzODQ1OTkxMDg1MjU2LS0NCg==) no-repeat;background-size:12px 8px;height:8px;margin-left:5px;width:12px}.content-item>.form-item-box .color-btn-wrap.selected{border-color:#2c63ff}.content-item>.form-item-box .color-btn-wrap.selected .arrow{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAICAYAAADN5B7xAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAP8A/wD/oL2nkwAAAMJJREFUGNNjYMACdNP+6xqm/9dnIAaAFOok//+ok/L/s27Kf2P8irP/ywMVPgMqXALE84D4pW7mfyWsii2T/wsBFVwH4t3Gaf9ZHRr+s+gm/98GNOC2Ye5/UVTFhf85gRJHgfi8ddl/Xpi4Xsl/bqCm00Dxk0BDuMCCoav+MwNN3QCUuG+a9V8C3Wa9jP9iQA13gPJbQLYyABnNQE++0cv8r47Lb0DTlYHqXgE1tjLoZ/w3NEr5r0ko9AzS/6sCNegBAOeTXSExy4DrAAAAAElFTkSuQmCCDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMzQ1MDA1MzYzMDU2NDk2Mjc5NjI2NDkyLS0NCg==) no-repeat;background-size:12px 8px}.content-item>.form-item-box .color-picker-container{left:-65px;position:absolute;top:40px;z-index:20}.content-item>.form-item-box .color-picker-container .color-sketch-picker{background-color:#fff;left:0;position:absolute;top:0;z-index:2000}.content-item>.form-item-box .color-picker-container .color-picker-bg{background-color:rgba(0,0,0,.35);bottom:0;left:0;position:fixed;right:0;top:0;z-index:1999}.select-box .ant-select-single{min-width:150px}.sohu-event-container .title-text{font-weight:700}.sohu-event-container .form-item-box{margin-bottom:8px}.sohu-event-container .ant-empty{margin:8px auto}.tabs-schema-box .ant-tabs-tab:nth-last-child(2){margin-right:0!important}.json-editor-container{padding:8px 10px;position:relative}.json-editor-container .mobile-screen-element-warp,.json-editor-container .small-screen-element-warp{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;line-height:38px;margin-bottom:12px;position:relative}.json-editor-container .mobile-screen-element-warp>.element-title,.json-editor-container .small-screen-element-warp>.element-title{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:block;line-height:38px;margin-right:12px;overflow:hidden;text-align:left;text-overflow:ellipsis;white-space:nowrap;word-break:keep-all}.json-editor-container .mobile-screen-element-warp>.content-item,.json-editor-container .small-screen-element-warp>.content-item{position:relative}.json-editor-container .mobile-screen-element-warp>.content-item>.form-item-box>.ant-picker,.json-editor-container .mobile-screen-element-warp>.content-item>.form-item-box>input,.json-editor-container .mobile-screen-element-warp>.content-item>.form-item-box>textarea,.json-editor-container .small-screen-element-warp>.content-item>.form-item-box>.ant-picker,.json-editor-container .small-screen-element-warp>.content-item>.form-item-box>input,.json-editor-container .small-screen-element-warp>.content-item>.form-item-box>textarea{border-radius:16px}.json-editor-container .mobile-screen-element-warp>.content-item>.form-item-box>.ant-input-group-wrapper input,.json-editor-container .small-screen-element-warp>.content-item>.form-item-box>.ant-input-group-wrapper input{border-radius:16px 0 0 16px}.json-editor-container .mobile-screen-element-warp>.content-item>.form-item-box>.ant-input-group-wrapper .ant-input-group-addon,.json-editor-container .small-screen-element-warp>.content-item>.form-item-box>.ant-input-group-wrapper .ant-input-group-addon{background-color:#1890ff;border-radius:0 16px 16px 0;color:#fff}.json-editor-container .wide-screen-element-warp{-webkit-box-pack:start;-moz-box-pack:start;-ms-flex-pack:start;-webkit-box-align:start;-moz-box-align:start;-ms-flex-align:start;-webkit-align-items:flex-start;align-items:flex-start;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-justify-content:flex-start;justify-content:flex-start;line-height:38px;margin-bottom:12px;min-width:380px;position:relative}.json-editor-container .wide-screen-element-warp>.element-title{-webkit-box-flex:0;-moz-box-flex:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-flex:0 0 120px;-ms-flex:0 0 120px;flex:0 0 120px;line-height:38px;margin-right:12px;overflow:hidden;padding-left:12px;text-align:right;text-overflow:ellipsis;white-space:nowrap;word-break:keep-all}.json-editor-container .wide-screen-element-warp>.content-item{-webkit-box-flex:1;-moz-box-flex:1;-webkit-flex:1 1 200px;-ms-flex:1 1 200px;flex:1 1 200px}.json-editor-container .two-col-element-warp{-webkit-box-pack:start;-moz-box-pack:start;-ms-flex-pack:start;-webkit-box-align:start;-moz-box-align:start;-ms-flex-align:start;-webkit-align-items:flex-start;align-items:flex-start;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-justify-content:flex-start;justify-content:flex-start}.json-editor-container .two-col-element-warp>.element-title{-webkit-box-flex:0;-moz-box-flex:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-flex:0 0 85px;-ms-flex:0 0 85px;flex:0 0 85px;margin-right:7px;overflow:hidden;padding-left:0;text-align:left;text-overflow:ellipsis;white-space:nowrap;word-break:keep-all}.json-editor-container .two-col-element-warp>.content-item{-webkit-box-flex:1;-moz-box-flex:1;-webkit-flex:1 1 200px;-ms-flex:1 1 200px;flex:1 1 200px}.json-editor-container .element-title-card-warp{display:block}.json-editor-container .element-title-card-warp>.element-title{background-color:#fafafa;border:1px solid rgba(0,0,0,.1);border-bottom:none;border-radius:5px 5px 0 0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;cursor:pointer;padding-left:12px;text-align:left}.json-editor-container .wide-screen-element-warp.container-warp{-webkit-box-pack:start;-moz-box-pack:start;-ms-flex-pack:start;-webkit-box-align:start;-moz-box-align:start;-ms-flex-align:start;-webkit-align-items:flex-start;align-items:flex-start;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-justify-content:flex-start;justify-content:flex-start;line-height:38px;margin-bottom:12px;min-width:380px;position:relative}.json-editor-container .wide-screen-element-warp.container-warp>.element-title{-webkit-box-flex:0;-moz-box-flex:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-flex:0 0 120px;-ms-flex:0 0 120px;flex:0 0 120px;line-height:38px;margin-right:12px;overflow:hidden;padding-left:12px;text-align:right;text-overflow:ellipsis;white-space:nowrap;word-break:keep-all}.json-editor-container .wide-screen-element-warp.container-warp>.content-item{-webkit-box-flex:1;-moz-box-flex:1;-webkit-flex:1 1 200px;-ms-flex:1 1 200px;flex:1 1 200px}.json-editor-container .object-content{border:1px solid rgba(0,0,0,.1);display:block;height:auto;padding:8px 15px 20px;position:relative;-webkit-transition:.4s;transition:.4s}.json-editor-container .element-title{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;display:block;width:100%}.json-editor-container .element-title .warning-text{color:#fa8c16}.json-editor-container .element-title .add-operate-btn,.json-editor-container .element-title .close-operate-btn,.json-editor-container .element-title .display-source-btn{display:inline-block;float:right;line-height:0;margin:9px 12px 0 0}.json-editor-container .element-title .add-operate-btn:hover{color:#1890ff}.json-editor-container .element-title .display-source-btn{cursor:pointer}.json-editor-container .element-title .display-source-btn svg{color:#676767;width:20px}.json-editor-container .element-title .display-source-btn svg:hover{color:#1890ff}.json-editor-container .element-title .close-operate-btn{color:#8c8c8c}.json-editor-container .element-title .close-operate-btn svg{height:14px;margin-top:4px;width:14px}.json-editor-container .element-title .info-icon{cursor:pointer;margin-left:5px}.json-editor-container .element-title .info-icon.active{color:#1890ff}.json-editor-container .code-area-item{min-width:230px}.json-editor-container .warning-box{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-box-pack:start;-moz-box-pack:start;-ms-flex-pack:start;-ms-flex-align:center;background-color:#feeceb;color:red;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;font-size:12px;-webkit-justify-content:flex-start;justify-content:flex-start;padding:8px 0;-webkit-transition-duration:.2s;transition-duration:.2s;-webkit-transition-timing-function:cubic-bezier(0,1,.5,1);transition-timing-function:cubic-bezier(0,1,.5,1);width:100%}.json-editor-container .warning-box,.json-editor-container .warning-box .warning-img{-webkit-box-align:center;-moz-box-align:center;-webkit-align-items:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.json-editor-container .warning-box .warning-img{-webkit-box-flex:0;-moz-box-flex:0;-webkit-box-pack:center;-moz-box-pack:center;-ms-flex-pack:center;-ms-flex-align:center;-webkit-flex:0 1 60px;-ms-flex:0 1 60px;flex:0 1 60px;-webkit-justify-content:center;justify-content:center}.json-editor-container .warning-box .warning-text{-webkit-box-flex:1;-moz-box-flex:1;-webkit-box-pack:start;-moz-box-pack:start;-ms-flex-pack:start;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-flex:1 1 160px;-ms-flex:1 1 160px;flex:1 1 160px;-webkit-justify-content:flex-start;justify-content:flex-start}.json-editor-container .json-editor-empty{height:50px;line-height:50px;position:relative}.json-editor-container .ant-tabs{overflow:visible}.json-editor-container .ant-collapse-borderless{background-color:#fff;border:0}.json-editor-container .ant-collapse-content-active{border-top:1px solid #f0f0f0!important}.json-editor-container .ant-collapse-content{padding:10px 0 20px}.json-editor-container .form-item-box{-webkit-box-pack:stretch;-moz-box-pack:stretch;-ms-flex-pack:stretch;-webkit-box-align:center;-moz-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex;-webkit-justify-content:stretch;justify-content:stretch;min-height:38px}.json-editor-container .ant-collapse-borderless>.ant-collapse-item:last-child{border-bottom:none}
+ */
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.json-view-box {
+  position: relative;
+}
+.json-view-box .json-view-ace {
+  width: 100%;
+}
+.json-view-box .readOnly-btn {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  color: #ad6800;
+  z-index: 100;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ArraySchema/index.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+/* 数组类型元素样式 */
+.array-schema-box {
+  border-radius: 5px 5px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  /* 头部样式 */
+  /* 内容区域样式 */
+}
+.array-schema-box > .element-title {
+  line-height: 38px;
+  background-color: #fff;
+  padding-left: 15px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: rgb(35, 35, 33);
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  /* 新增数组项 */
+}
+.array-schema-box > .element-title .array-add-child-btn {
+  float: right;
+  display: inline-block;
+  line-height: 0;
+  margin: 12px 12px 0 0;
+}
+.array-schema-box > .element-title .array-add-child-btn:hover {
+  color: #1890ff;
+}
+.array-schema-box .array-content {
+  background-color: #fafafa;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+  /* 数组项 */
+}
+.array-schema-box .array-content > .array-item {
+  border-bottom: 1px solid rgb(229, 231, 240);
+  /* 数组项头部 */
+  /* 数组项内容区 */
+}
+.array-schema-box .array-content > .array-item .array-item-header {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 12px 0 15px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: rgb(35, 35, 33);
+  background: rgb(245, 246, 250);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* hover时才展示操作按钮 */
+}
+.array-schema-box .array-content > .array-item .array-item-header .array-title-text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.array-schema-box .array-content > .array-item .array-item-header .array-operate-box {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 120px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 120px;
+          flex: 0 0 120px;
+  text-align: right;
+  visibility: hidden;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+.array-schema-box .array-content > .array-item .array-item-header .array-operate-box .array-operate-btn {
+  float: right;
+  margin-left: 8px;
+  height: 16px;
+  cursor: pointer;
+}
+.array-schema-box .array-content > .array-item .array-item-header .array-operate-box .array-operate-btn:hover {
+  color: #1890ff;
+}
+.array-schema-box .array-content > .array-item .array-item-header .array-operate-box .close-operate-btn {
+  visibility: visible;
+}
+.array-schema-box .array-content > .array-item .array-item-header:hover .array-operate-box {
+  visibility: visible;
+}
+.array-schema-box .array-content > .array-item .array-item-content {
+  position: relative;
+  width: 100%;
+  padding: 12px 15px;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+.array-schema-box .array-content > .array-item .array-item-content.closed {
+  height: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.array-schema-box .array-content > .array-item .array-item-content.open {
+  height: auto;
+}
+.array-schema-box .array-content > .array-item:last-child {
+  border-bottom: none;
+}
+.array-schema-box .array-content.json-view-array {
+  padding: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  min-width: 230px;
+}
+.array-schema-box .array-content.closed {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 小屏模式 */
+.mobile-screen-view .array-title-text {
+  max-width: 160px;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ObjectSchema/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.object-schema-warp .object-content.json-view-array {
+  padding: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  min-width: 230px;
+}
+.object-schema-warp .object-content.closed {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DataSourceSchema/index.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.url-editor-box {
+  position: relative;
+  display: inline-block;
+}
+.url-editor-box .filter-url-btn {
+  position: absolute;
+  top: 9px;
+  right: -28px;
+  z-index: 100;
+}
+.url-editor-box .filter-url-btn svg {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: #595959;
+}
+.url-editor-box .filter-url-btn svg:hover {
+  color: #1890ff;
+}
+
+.ace-editor-box {
+  position: relative;
+}
+.ace-editor-box .filter-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 100;
+}
+.ace-editor-box .filter-btn svg {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: #595959;
+}
+.ace-editor-box .filter-btn svg:hover {
+  color: #1890ff;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/RemoteDynamicDataSchema/index.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.remote-dynamic-data-schema {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+}
+.remote-dynamic-data-schema .dynamic-data-select,
+.remote-dynamic-data-schema .data-route-select {
+  display: block;
+  width: 100%;
+}
+.remote-dynamic-data-schema .warning-text {
+  color: #fa8c16;
+}
+.remote-dynamic-data-schema .filter-func-box {
+  padding: 0;
+}
+
+.remote-dynamic-data-schema.json-view {
+  padding: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.remote-dynamic-data-schema.closed {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DynamicDataSchema/index.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.dynamic-data-schema {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  position: relative;
+}
+.dynamic-data-schema .dynamic-data-tab-radio-box {
+  position: relative;
+  display: block;
+  text-align: center;
+  z-index: 10;
+}
+.dynamic-data-schema .dynamic-data-tab-radio-box .dynamic-data-tab-radio {
+  margin: 0 auto !important;
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  top: 15px;
+  height: 30px;
+  line-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid rgb(24, 144, 255);
+  border-radius: 18px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+}
+.dynamic-data-schema .dynamic-data-tab-radio-box .dynamic-data-tab-radio .tab-radio {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 120px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 120px;
+          flex: 1 1 120px;
+  padding: 0 12px;
+  height: 28px;
+  line-height: 28px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.dynamic-data-schema .dynamic-data-tab-radio-box .dynamic-data-tab-radio .tab-radio-active {
+  color: #fff;
+  border-radius: 18px;
+  background-color: rgb(24, 144, 255);
+}
+.dynamic-data-schema .dynamic-dat-tabPane {
+  display: none;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.dynamic-data-schema .dynamic-dat-tabPane-active {
+  display: block;
+}
+.dynamic-data-schema .dynamic-data-select,
+.dynamic-data-schema .data-route-select {
+  display: block;
+  width: 100%;
+}
+.dynamic-data-schema .warning-text {
+  color: #fa8c16;
+}
+.dynamic-data-schema .json-form-box {
+  position: relative;
+  padding: 25px 15px 10px 15px;
+  border: 1px solid rgb(129, 211, 248);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 15px;
+}
+.dynamic-data-schema .json-form-box .filter-btn {
+  position: absolute;
+  top: 75px;
+  right: 35px;
+  z-index: 100;
+}
+.dynamic-data-schema .json-form-box .filter-btn svg {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: #595959;
+}
+.dynamic-data-schema .json-form-box .filter-btn svg:hover {
+  color: #1890ff;
+}
+.dynamic-data-schema .filter-func-box {
+  padding: 0;
+}
+
+.dynamic-data-schema.json-view {
+  padding: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.dynamic-data-schema.closed {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.data-operate-btn {
+  cursor: pointer;
+  color: #8c8c8c;
+}
+.data-operate-btn svg {
+  width: 20px;
+  height: 20px;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/BoxStyleSchema/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+/* 容器元素样式 */
+/* 盒子模型-margin和padding的设置相关样式 */
+.layout-box-style-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  background-color: #fff;
+  border: 1px solid rgb(229, 231, 240);
+  border-radius: 10px;
+}
+.layout-box-style-container > .center-box {
+  position: absolute;
+  top: 75px;
+  left: 75px;
+  width: 70px;
+  height: 70px;
+  background-color: #f5f6fa;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.layout-box-style-container > .center-box > .lock-icon {
+  width: 32px;
+  height: 32px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: pointer;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNjE5NDE2MTk3MDI5IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjY0NDciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48L3N0eWxlPjwvZGVmcz48cGF0aCBkPSJNNTg4LjQ1IDczOS41OGM2LjE1IDAgMTIuMjUtMC4xOCAxOC4zMS0wLjU1LTIuOTMgMy4zLTUuOTkgNi41NC05LjE2IDkuNzFMNDg0LjQzIDg2MS45MmMtODguNCA4OC40LTIzMS43MyA4OC40LTMyMC4xMiAwLTg4LjQtODguNC04OC40LTIzMS43MiAwLTMyMC4xMmwxMTMuMTgtMTEzLjE4YzMuMTctMy4xNiA2LjQtNi4yMiA5LjctOS4xNiA2OS4zOC02MS43NiAxNjcuNjQtNzMuNDUgMjQ3Ljk1LTM1LjA5IDIyLjU4IDEwLjc5IDQzLjc3IDI1LjU0IDYyLjQ3IDQ0LjI1IDE4LjcyIDE4LjcxIDMzLjQ1IDM5Ljg4IDQ0LjI1IDYyLjQ3LTEzLjY1IDEzLjY4LTMyLjU1IDIyLjE0LTUzLjQgMjIuMTQtNy43IDAtMTUuMTQtMS4xNS0yMi4xNC0zLjMtNi4xLTkuOTUtMTMuNDUtMTkuMzQtMjIuMDUtMjcuOTVhMTUyLjE0OCAxNTIuMTQ4IDAgMCAwLTI3Ljk2LTIyLjA2Yy01OC4xMi0zNS42Mi0xMzUuMTQtMjguMjctMTg1LjQ2IDIyLjA2bC0zMy45NyAzMy45OC03OS4yMSA3OS4yYy01OC45MyA1OC45My01OC45MyAxNTQuNDggMCAyMTMuNDMgNTguOTQgNTguOTMgMTU0LjQ5IDU4LjkzIDIxMy40MiAwbDc5LjItNzkuMjFjMjQuOTIgNi42NSA1MS4xNCAxMC4yIDc4LjE2IDEwLjJ6IG0yNzMuMjQtNTc1LjA2Yy04OC40LTg4LjM5LTIzMS43Mi04OC4zOS0zMjAuMTIgMEw0MjguMzkgMjc3LjdjLTMuMTcgMy4xNy02LjIyIDYuNC05LjE2IDkuNzEgNi4wNi0wLjM3IDEyLjE2LTAuNTUgMTguMzEtMC41NSAyNy4wMyAwIDUzLjI0IDMuNTYgNzguMTcgMTAuMjJsNzkuMi03OS4yYzU4Ljk1LTU4Ljk0IDE1NC41LTU4Ljk0IDIxMy40MyAwIDU4LjkzIDU4LjkzIDU4LjkzIDE1NC40OCAwIDIxMy40MmwtNzkuMjEgNzkuMi0zMy45NyAzMy45OGMtNTAuMzMgNTAuMzEtMTI3LjM1IDU3LjY2LTE4NS40NyAyMi4wNS05Ljk1LTYuMS0xOS4zMy0xMy40NS0yNy45NS0yMi4wNWExNTEuNjY0IDE1MS42NjQgMCAwIDEtMjIuMDUtMjcuOTZjLTctMi4xNS0xNC40NC0zLjMxLTIyLjE0LTMuMzEtMjAuODYgMC0zOS43NCA4LjQ2LTUzLjQgMjIuMTUgMTAuNzkgMjIuNTggMjUuNTQgNDMuNzUgNDQuMjUgNjIuNDcgMTguNzEgMTguNyAzOS44NyAzMy40NSA2Mi40NiA0NC4yNSA4MC4zMiAzOC4zNyAxNzguNTggMjYuNjcgMjQ3Ljk1LTM1LjA5IDMuMzItMi45NSA2LjU0LTUuOTkgOS43MS05LjE2TDg2MS43IDQ4NC42NWM4OC40LTg4LjQxIDg4LjQtMjMxLjcyLTAuMDEtMzIwLjEzeiIgZmlsbD0iIzA0MDAwMCIgcC1pZD0iNjQ0OCI+PC9wYXRoPjwvc3ZnPg==);
+  background-size: contain;
+}
+.layout-box-style-container > .center-box > .lock-icon.unlock {
+  background-image: url(img/unlink.9059276.svg);
+}
+.layout-box-style-container .layout-input-number {
+  width: 100px;
+  margin-left: 6px;
+  text-align: right;
+  border-width: 0 0 1px 0;
+}
+.layout-box-style-container .layout-input-number .ant-input-number-handler-wrap {
+  display: none;
+}
+.layout-box-style-container .layout-item {
+  position: relative;
+  width: 50px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+}
+.layout-box-style-container .layout-item .ant-input-number-input {
+  line-height: 40px;
+  height: 40px;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #bec2c6;
+}
+.layout-box-style-container .px-quantity-box:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #232321;
+  content: "px";
+}
+.layout-box-style-container .rem-quantity-box:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #232321;
+  content: "rem";
+}
+.layout-box-style-container .em-quantity-box:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #232321;
+  content: "em";
+}
+.layout-box-style-container .percent-quantity-box:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #232321;
+  content: "%";
+}
+.layout-box-style-container > .layout-item-top {
+  position: absolute;
+  top: 15px;
+  left: 85px;
+}
+.layout-box-style-container > .layout-item-right {
+  position: absolute;
+  right: 15px;
+  top: 85px;
+}
+.layout-box-style-container > .layout-item-bottom {
+  position: absolute;
+  bottom: 15px;
+  left: 85px;
+}
+.layout-box-style-container > .layout-item-left {
+  position: absolute;
+  left: 15px;
+  top: 85px;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/TextEditorSchema/index.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.text-editor-box {
+  position: relative;
+}
+.text-editor-box .element-title {
+  cursor: pointer;
+}
+.text-editor-box .element-title > .close-operate-btn {
+  margin-right: 0 !important;
+}
+.text-editor-box .content-item {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.text-editor-box .content-item .bf-container {
+  width: 100%;
+}
+.text-editor-box .content-item .bf-container.fullscreen {
+  height: auto !important;
+}
+.text-editor-box .content-item .bf-container.fullscreen .bf-content {
+  max-height: inherit;
+}
+.text-editor-box .content-item .bf-controlbar .bf-font-size-dropdown,
+.text-editor-box .content-item .bf-controlbar .bf-letter-spacing-dropdown,
+.text-editor-box .content-item .bf-controlbar .headings-dropdown {
+  min-width: 65px;
+}
+.text-editor-box .content-item .bf-controlbar .braft-color-picker input,
+.text-editor-box .content-item .bf-controlbar .braft-color-picker label {
+  height: 30px !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.text-editor-box .content-item .bf-content {
+  height: auto;
+  max-height: 300px;
+  padding-bottom: 10px;
+  overflow: auto;
+  font-size: 16px;
+}
+.text-editor-box .content-item.closed {
+  padding: 0;
+  height: 46px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+.text-editor-box table {
+  border-top: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
+}
+.text-editor-box table td {
+  padding: 5px 8px;
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.text-editor-box .bf-content * {
+  line-height: inherit;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/NumberFormSchema/index.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.input-number-wrap {
+  margin-right: 24px;
+  width: 141px;
+  height: 32px;
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid rgb(220, 223, 230);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.input-number-wrap .number-cont {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-left: 1px solid rgb(230, 233, 242);
+  border-right: 1px solid rgb(230, 233, 242);
+}
+.input-number-wrap .number-cont input {
+  text-align: center;
+}
+.input-number-wrap .number-btn {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 36px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 36px;
+          flex: 0 0 36px;
+  height: 32px;
+  font-size: 16px;
+  color: #a1a6b3;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.input-number-wrap .number-btn:hover {
+  color: #fff;
+  background-color: rgb(24, 144, 255);
+  border: 1px solid rgb(230, 233, 242);
+}
+.input-number-wrap .plus {
+  border-radius: 0 16px 16px 0;
+}
+.input-number-wrap .plus:hover {
+  border-left: none;
+}
+.input-number-wrap .minus {
+  border-radius: 16px 0 0 16px;
+}
+.input-number-wrap .minus:hover {
+  border-right: none;
+}
+
+.form-item-box .ant-input-number-handler-wrap {
+  display: none;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ColorFormSchemaV3/index.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.content-item > .form-item-box {
+  position: relative;
+}
+.content-item > .form-item-box .color-item-form {
+  min-width: 30px;
+}
+.content-item > .form-item-box .color-btn-wrap {
+  min-width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.content-item > .form-item-box .color-btn-wrap .color-btn {
+  width: 18px;
+  height: 18px;
+  outline: none;
+  border: none;
+}
+.content-item > .form-item-box .color-btn-wrap .delete-bgColor-btn {
+  display: none;
+  margin-left: 10px;
+}
+.content-item > .form-item-box .color-btn-wrap .delete-bgColor-btn svg {
+  height: 18px;
+}
+.content-item > .form-item-box .color-btn-wrap .delete-bgColor-btn:hover {
+  color: red;
+}
+.content-item > .form-item-box .color-btn-wrap:hover {
+  width: 70px;
+}
+.content-item > .form-item-box .color-btn-wrap:hover .delete-bgColor-btn,
+.content-item > .form-item-box .color-btn-wrap .delete-bgColor-btn:hover {
+  display: inline;
+}
+.content-item > .form-item-box .color-btn-wrap .arrow {
+  width: 12px;
+  height: 8px;
+  margin-left: 5px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAICAYAAADN5B7xAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAP8A/wD/oL2nkwAAAHFJREFUGNON0OsKgCAMBeCl3dOHqF8RVFBR0eX9X6sjTAiR7MAHNseMERFpqCicEpQ51HBx4av5hMZ8RNDDDpmnOeW7AYQtSphggfjVbOozk+6kBFYYeZLgqRu/4k0OB3TQ8n8XoW2YTdxM088ou0I3DwMbBQ0tPc5LAAAAAElFTkSuQmCCDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMTU1NzM5MTk3NjIzODQ1OTkxMDg1MjU2LS0NCg==) no-repeat;
+  background-size: 12px 8px;
+}
+.content-item > .form-item-box .color-btn-wrap.selected {
+  border-color: rgb(44, 99, 255);
+}
+.content-item > .form-item-box .color-btn-wrap.selected .arrow {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAICAYAAADN5B7xAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZiS0dEAP8A/wD/oL2nkwAAAMJJREFUGNNjYMACdNP+6xqm/9dnIAaAFOok//+ok/L/s27Kf2P8irP/ywMVPgMqXALE84D4pW7mfyWsii2T/wsBFVwH4t3Gaf9ZHRr+s+gm/98GNOC2Ye5/UVTFhf85gRJHgfi8ddl/Xpi4Xsl/bqCm00Dxk0BDuMCCoav+MwNN3QCUuG+a9V8C3Wa9jP9iQA13gPJbQLYyABnNQE++0cv8r47Lb0DTlYHqXgE1tjLoZ/w3NEr5r0ko9AzS/6sCNegBAOeTXSExy4DrAAAAAElFTkSuQmCCDQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tMzQ1MDA1MzYzMDU2NDk2Mjc5NjI2NDkyLS0NCg==) no-repeat;
+  background-size: 12px 8px;
+}
+.content-item > .form-item-box .color-picker-container {
+  position: absolute;
+  top: 40px;
+  left: -65px;
+  z-index: 20;
+}
+.content-item > .form-item-box .color-picker-container .color-sketch-picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  background-color: #fff;
+}
+.content-item > .form-item-box .color-picker-container .color-picker-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1999;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SelectSchema/index.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.select-box .ant-select-single {
+  min-width: 150px;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/SohuEventSchema/index.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.sohu-event-container .title-text {
+  font-weight: bold;
+}
+.sohu-event-container .form-item-box {
+  margin-bottom: 8px;
+}
+.sohu-event-container .ant-empty {
+  margin: 8px auto;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JSONDataEditor/index.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.tabs-schema-box .ant-tabs-tab:nth-last-child(2) {
+  margin-right: 0 !important;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/main.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.json-editor-container {
+  position: relative;
+  padding: 8px 10px;
+  /* 移动端的展示样式：块级展示
+     呈现：screen-element-warp以块级元素模式展示，element-title 和 content-item 分别以上下行块级元素模式展示
+   */
+  /* 默认为宽屏的展示样式：行内展示
+     呈现：element-title 和 content-item 在同一行展示
+   */
+  /* 左右两栏布局，比较适合固定宽度的元素，
+     比如：boolean、date、date-time、time、number、color、quantity
+     呈现：element-title 和 content-item 在同一行展示
+   */
+  /*
+    特殊类型组件以块级模式进行展示(优先级比wide-screen-element-warp高)
+    灰底、圆角边框的element-title
+   */
+  /*
+    特殊类型组件在通栏模式下以通栏布局模式展示(优先级比element-title-card-warp高)
+    比如：image、textarea
+   */
+}
+.json-editor-container .small-screen-element-warp,
+.json-editor-container .mobile-screen-element-warp {
+  position: relative;
+  margin-bottom: 12px;
+  line-height: 38px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .small-screen-element-warp > .element-title,
+.json-editor-container .mobile-screen-element-warp > .element-title {
+  display: block;
+  line-height: 38px;
+  word-break: keep-all;
+  margin-right: 12px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .small-screen-element-warp > .content-item,
+.json-editor-container .mobile-screen-element-warp > .content-item {
+  position: relative;
+}
+.json-editor-container .small-screen-element-warp > .content-item > .form-item-box > input,
+.json-editor-container .small-screen-element-warp > .content-item > .form-item-box > textarea,
+.json-editor-container .small-screen-element-warp > .content-item > .form-item-box > .ant-picker,
+.json-editor-container .mobile-screen-element-warp > .content-item > .form-item-box > input,
+.json-editor-container .mobile-screen-element-warp > .content-item > .form-item-box > textarea,
+.json-editor-container .mobile-screen-element-warp > .content-item > .form-item-box > .ant-picker {
+  border-radius: 16px;
+}
+.json-editor-container .small-screen-element-warp > .content-item > .form-item-box > .ant-input-group-wrapper input,
+.json-editor-container .mobile-screen-element-warp > .content-item > .form-item-box > .ant-input-group-wrapper input {
+  border-radius: 16px 0 0 16px;
+}
+.json-editor-container .small-screen-element-warp > .content-item > .form-item-box > .ant-input-group-wrapper .ant-input-group-addon,
+.json-editor-container .mobile-screen-element-warp > .content-item > .form-item-box > .ant-input-group-wrapper .ant-input-group-addon {
+  color: #fff;
+  background-color: rgb(24, 144, 255);
+  border-radius: 0 16px 16px 0;
+}
+.json-editor-container .wide-screen-element-warp {
+  position: relative;
+  line-height: 38px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 380px;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.json-editor-container .wide-screen-element-warp > .element-title {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 120px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 120px;
+          flex: 0 0 120px;
+  line-height: 38px;
+  word-break: keep-all;
+  margin-right: 12px;
+  padding-left: 12px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .wide-screen-element-warp > .content-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+}
+.json-editor-container .two-col-element-warp {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.json-editor-container .two-col-element-warp > .element-title {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 85px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 85px;
+          flex: 0 0 85px;
+  word-break: keep-all;
+  margin-right: 7px;
+  padding-left: 0;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .two-col-element-warp > .content-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+}
+.json-editor-container .element-title-card-warp {
+  display: block;
+}
+.json-editor-container .element-title-card-warp > .element-title {
+  padding-left: 12px;
+  text-align: left;
+  background-color: #fafafa;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .wide-screen-element-warp.container-warp {
+  position: relative;
+  line-height: 38px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 380px;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.json-editor-container .wide-screen-element-warp.container-warp > .element-title {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 120px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 120px;
+          flex: 0 0 120px;
+  line-height: 38px;
+  word-break: keep-all;
+  margin-right: 12px;
+  padding-left: 12px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .wide-screen-element-warp.container-warp > .content-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+}
+.json-editor-container .object-content {
+  display: block;
+  position: relative;
+  height: auto;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  padding: 8px 15px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.json-editor-container .element-title {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.json-editor-container .element-title .warning-text {
+  color: #fa8c16;
+}
+.json-editor-container .element-title .add-operate-btn,
+.json-editor-container .element-title .display-source-btn,
+.json-editor-container .element-title .close-operate-btn {
+  float: right;
+  display: inline-block;
+  line-height: 0;
+  margin: 9px 12px 0 0;
+}
+.json-editor-container .element-title .add-operate-btn:hover {
+  color: #1890ff;
+}
+.json-editor-container .element-title .display-source-btn {
+  cursor: pointer;
+}
+.json-editor-container .element-title .display-source-btn svg {
+  width: 20px;
+  color: #676767;
+}
+.json-editor-container .element-title .display-source-btn svg:hover {
+  color: #1890ff;
+}
+.json-editor-container .element-title .close-operate-btn {
+  color: #8c8c8c;
+}
+.json-editor-container .element-title .close-operate-btn svg {
+  margin-top: 4px;
+  width: 14px;
+  height: 14px;
+}
+.json-editor-container .element-title .info-icon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.json-editor-container .element-title .info-icon.active {
+  color: #1890ff;
+}
+.json-editor-container .code-area-item {
+  min-width: 230px;
+}
+.json-editor-container .warning-box {
+  width: 100%;
+  padding: 8px 0;
+  color: red;
+  font-size: 12px;
+  background-color: rgb(254, 236, 235);
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+          transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.json-editor-container .warning-box .warning-img {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 60px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 60px;
+          flex: 0 1 60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.json-editor-container .warning-box .warning-text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 160px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 160px;
+          flex: 1 1 160px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.json-editor-container .json-editor-empty {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+.json-editor-container .ant-tabs {
+  overflow: visible;
+}
+.json-editor-container .ant-collapse-borderless {
+  background-color: #fff;
+  border: 0;
+}
+.json-editor-container .ant-collapse-content-active {
+  border-top: 1px solid #f0f0f0 !important;
+}
+.json-editor-container .ant-collapse-content {
+  padding: 10px 0 20px;
+}
+.json-editor-container .form-item-box {
+  min-height: 38px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: stretch;
+  -webkit-justify-content: stretch;
+     -moz-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.json-editor-container .ant-collapse-borderless > .ant-collapse-item:last-child {
+  border-bottom: none;
+}

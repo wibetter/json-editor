@@ -64,12 +64,33 @@ module.exports = {
     output: {
       filename: '[name].js',
     },
-    NODE_ENV: 'production',
+    NODE_ENV: 'development', // development、production
     libraryName: 'JSONEditor', // 构建第三方功能包时最后导出的引用变量名
     assetsRoot: resolve('./lib'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '', // 资源引用二级路径
     ignoreNodeModules: true,
+    additionalModuleDirs: ['../../node_modules'], // ignoreNodeModules开启后生效
+    productionSourceMap: false,
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css', 'json'],
+    bundleAnalyzerReport: false,
+  },
+  build2lib2: {
+    // 用于打包sdk文件
+    entry: {
+      index: './src/main.js',
+    },
+    output: {
+      filename: 'index.js',
+    },
+    NODE_ENV: 'development', // development、production
+    libraryName: 'JSONEditor', // 构建第三方功能包时最后导出的引用变量名
+    assetsRoot: resolve('./sdk'), // 打包后的文件绝对路径（物理路径）
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '', // 资源引用二级路径
+    ignoreNodeModules: false,
+    externals: ['react'],
     additionalModuleDirs: ['../../node_modules'], // ignoreNodeModules开启后生效
     productionSourceMap: false,
     productionGzip: false,
