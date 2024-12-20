@@ -296,8 +296,8 @@
           N,
           I,
           k,
-          K,
           w,
+          K,
           P,
           J,
           D,
@@ -395,16 +395,16 @@
             e),
           Ie = require('@wibetter/json-utils'),
           ke = Ie.TypeDataList.jsonschema,
-          Ke = Ie.TypeDataList.input,
-          we = {
+          we = Ie.TypeDataList.input,
+          Ke = {
             jsonSchemaStore:
               ((O = x.action.bound),
               (R = x.action.bound),
               (N = x.action.bound),
               (I = x.action.bound),
               (k = x.action.bound),
-              (K = x.action.bound),
               (w = x.action.bound),
+              (K = x.action.bound),
               (P = x.action.bound),
               (J = x.action.bound),
               (D = x.action.bound),
@@ -530,6 +530,12 @@
                           t +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
                         ),
+                      t &&
+                        t.indexOf('-') > -1 &&
+                        b.message.warning(
+                          t +
+                            '含特殊字符（‘-’），会影响后续数据获取和更新，建议您换一个数值。',
+                        ),
                       !1)
                     );
                   }),
@@ -544,7 +550,7 @@
                     if ((0, Ie.isContainerSchema)(n)) {
                       var o = this.getNewJsonKeyIndex(n);
                       n.propertyOrder.push(o),
-                        (n.properties[o] = Ke),
+                        (n.properties[o] = we),
                         this.jsonSchemaChange(t);
                     } else b.message.warning('非对象类型字段不允许插入子元素');
                   }),
@@ -580,7 +586,7 @@
                     var t = (0, Ie.getParentIndexRoute)(e),
                       n = (0, Ie.getSchemaByIndexRoute)(t, this.jsonSchema),
                       o = this.getNewJsonKeyIndex(n);
-                    this.insertJsonData(e, o, Ke);
+                    this.insertJsonData(e, o, we);
                   }),
                   (t.insertJsonData = function (e, t, n, o, a) {
                     var r = (0, Ie.getParentIndexRoute_CurIndex)(e),
@@ -903,7 +909,7 @@
               v()(
                 ge.prototype,
                 'indexRoute2keyRoute',
-                [K],
+                [w],
                 Object.getOwnPropertyDescriptor(
                   ge.prototype,
                   'indexRoute2keyRoute',
@@ -913,7 +919,7 @@
               v()(
                 ge.prototype,
                 'keyRoute2indexRoute',
-                [w],
+                [K],
                 Object.getOwnPropertyDescriptor(
                   ge.prototype,
                   'keyRoute2indexRoute',
@@ -3791,7 +3797,7 @@
               var n;
               return (
                 ((n = e.call(this, t) || this).state = {
-                  jsonSchemaStore: new we.jsonSchemaStore(),
+                  jsonSchemaStore: new Ke.jsonSchemaStore(),
                 }),
                 n
               );

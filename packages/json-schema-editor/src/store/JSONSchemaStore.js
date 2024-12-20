@@ -161,6 +161,11 @@ export default class JSONSchemaStore {
         `${jsonKey}是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。`,
       );
     }
+    if (jsonKey && jsonKey.indexOf('-') > -1) {
+      message.warning(
+        `${jsonKey}含特殊字符（‘-’），会影响后续数据获取和更新，建议您换一个数值。`,
+      );
+    }
     return false;
   }
 

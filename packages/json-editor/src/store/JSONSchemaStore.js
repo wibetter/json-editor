@@ -86,7 +86,7 @@ export default class JSONSchemaStore {
       /** 更新当前的jsonData */
       this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
       this.state.rootJSONStore.JSONEditorStore.initJsonData =
-        objClone(curJsonData); // 备份过滤钱的数据对象
+        objClone(curJsonData); // 备份此前的数据对象
       /** jsonSchema变动的时候触发一次jsonDataChange
        * jsonSchema变动意味着jsonData也需要进行对应的结构更新
        * */

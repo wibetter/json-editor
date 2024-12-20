@@ -10,7 +10,6 @@
     "json",
     "json可视化工具"
   ],
-  "private": "true",
   "author": "wibetter",
   "license": "MIT",
   "scripts": {

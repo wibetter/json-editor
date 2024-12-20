@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.4
+ * @wibetter/json-editor v5.0.5
  * author: wibetter
  * build tool: AKFun
- * build time: Wed Dec 18 2024 16:24:11 GMT+0800 (中国标准时间)
+ * build time: Fri Dec 20 2024 23:28:02 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -4399,7 +4399,6 @@
                 pageScreen = _this$props.pageScreen,
                 targetJsonSchema = _this$props.targetJsonSchema,
                 isArrayItem = _this$props.isArrayItem,
-                arrIndex = _this$props.arrIndex,
                 isStructuredSchema = _this$props.isStructuredSchema,
                 getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
                 keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
@@ -4416,7 +4415,7 @@
                 null
                   ? _targetJsonSchema$sho
                   : true; // 从jsonData中获取对应的数值
-              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
               var curNodeKey =
                 nodeKey + '-' + curJsonData.type + '-' + curJsonData.valueType;
 
@@ -9057,12 +9056,6 @@
                             targetJsonSchema.properties['mainConfig']
                               .properties[currentJsonKey],
                           );
-                          console.log(
-                            'mainConfigJsonData:',
-                            currentSchemaData,
-                            currentJsonKey,
-                            mainConfigJsonData,
-                          );
                           /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
                           var curType = currentSchemaData.type;
                           /** 5. 获取当前元素的id，用于做唯一标识 */
@@ -12074,7 +12067,7 @@
                   this.state.rootJSONStore.JSONEditorStore.initJsonData = (0,
                   _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
                     curJsonData,
-                  ); // 备份过滤钱的数据对象
+                  ); // 备份此前的数据对象
                   /** jsonSchema变动的时候触发一次jsonDataChange
                    * jsonSchema变动意味着jsonData也需要进行对应的结构更新
                    * */

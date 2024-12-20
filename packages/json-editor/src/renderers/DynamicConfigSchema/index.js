@@ -58,7 +58,6 @@ class ObjectSchema extends React.PureComponent {
       pageScreen,
       targetJsonSchema,
       isArrayItem,
-      arrIndex,
       isStructuredSchema,
       getJSONDataByKeyRoute,
       keyRoute2indexRoute,
@@ -70,7 +69,7 @@ class ObjectSchema extends React.PureComponent {
     const isStructured = isStructuredSchema;
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true; // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
     const curNodeKey = `${nodeKey}-${curJsonData.type}-${curJsonData.valueType}`;
 
     // 内容Meta数据
