@@ -1535,7 +1535,7 @@
           r = !!n(a) && a;
           break;
         case 'number':
-          r = n(a) ? a : 1;
+          r = n(a) ? a : void 0;
           break;
         case 'json':
           var o = '';
@@ -1555,7 +1555,7 @@
               ? a || e.default
               : n(a)
                 ? a
-                : '';
+                : void 0;
       }
       return r;
     }

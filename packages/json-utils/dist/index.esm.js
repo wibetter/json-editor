@@ -6965,7 +6965,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
       curJsonData = hasProperties(curValue) ? curValue : false;
       break;
     case 'number':
-      curJsonData = hasProperties(curValue) ? curValue : 1;
+      curJsonData = hasProperties(curValue) ? curValue : undefined;
       break;
     case 'json':
       /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */
@@ -6995,7 +6995,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
         // 兼容处理：解决box-style默认值丢失问题
         curJsonData = curValue ? curValue : jsonSchema.default;
       } else {
-        curJsonData = hasProperties(curValue) ? curValue : '';
+        curJsonData = hasProperties(curValue) ? curValue : undefined;
       }
   }
   return curJsonData;

@@ -81,8 +81,15 @@ export default class JSONSchemaStore {
         this.jsonSchema = newJSONSchema;
       }
       const curJsonData = this.state.rootJSONStore.JSONEditorStore.jsonData;
+      let newJsonData = {};
       /** 根据jsonSchema生成对应的最新jsonData */
-      const newJsonData = schema2json(this.jsonSchema, curJsonData);
+      if (this.jsonSchema.reset) {
+        // schema 变动不保留旧版 jsonData 数据
+        newJsonData = schema2json(this.jsonSchema, {});
+      } else {
+        // 默认保留旧版jsonData数据
+        newJsonData = schema2json(this.jsonSchema, curJsonData);
+      }
       /** 更新当前的jsonData */
       this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
       this.state.rootJSONStore.JSONEditorStore.initJsonData =
