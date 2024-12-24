@@ -99,8 +99,9 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
     let oldValue = jsonData;
     if (
       hasProperties(oldValue) &&
-      hasProperties(jsonItem.default) &&
-      typeof oldValue !== typeof jsonItem.default
+      ((hasProperties(jsonItem.default) &&
+        typeof oldValue !== typeof jsonSchema.default) ||
+        !isObject(oldValue))
     ) {
       // 表示当前数据类型发生变化，则丢弃旧版数据
       oldValue = undefined;
@@ -262,8 +263,9 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
     let oldValue = jsonData;
     if (
       hasProperties(oldValue) &&
-      hasProperties(jsonSchema.default) &&
-      typeof oldValue !== typeof jsonSchema.default
+      ((hasProperties(jsonSchema.default) &&
+        typeof oldValue !== typeof jsonSchema.default) ||
+        !isArray(oldValue))
     ) {
       // 表示当前数据类型发生变化，则丢弃旧版数据
       oldValue = undefined;

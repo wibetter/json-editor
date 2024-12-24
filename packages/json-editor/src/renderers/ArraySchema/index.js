@@ -196,6 +196,7 @@ class ArraySchema extends React.PureComponent {
           <div
             className="element-title"
             onClick={(event) => {
+              console.log('isClosed:', this.state.isClosed);
               this.setState({
                 isClosed: !isClosed,
               });

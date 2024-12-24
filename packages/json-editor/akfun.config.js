@@ -52,7 +52,7 @@ module.exports = {
     NODE_ENV: 'development',
     port: 80,
     autoOpenBrowser: true,
-    https: true,
+    // https: true,
     proxyTable: {
       '/commons/upload': {
         target: 'https://mp.sohuno.com',

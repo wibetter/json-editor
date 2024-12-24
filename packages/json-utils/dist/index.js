@@ -472,7 +472,6 @@
           type: 'array',
           title: '数组Array',
           description: '',
-          default: [],
           items: {
             type: 'object',
             title: '数组项',
@@ -1573,7 +1572,9 @@
       if (R(e) && 'object' === L(e.type)) {
         var o = e,
           l = t;
-        a(l) && a(o.default) && typeof l != typeof o.default && (l = void 0);
+        a(l) &&
+          ((a(o.default) && typeof l != typeof e.default) || !R(l)) &&
+          (l = void 0);
         var p = a(l) ? l : o.default;
         'dynamic-data' === n
           ? ((r = i(b)),
@@ -1642,7 +1643,9 @@
       var r = [];
       if (e && 'array' === L(e.type)) {
         var i = t;
-        a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
+        a(i) &&
+          ((a(e.default) && typeof i != typeof e.default) || !D(i)) &&
+          (i = void 0);
         var n = a(i) ? i : e.default;
         if ('array' === L(e.type))
           if (D(n))

@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.7
+ * @wibetter/json-editor v5.0.8
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Dec 24 2024 14:45:50 GMT+0800 (中国标准时间)
+ * build time: Tue Dec 24 2024 17:42:16 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1597,6 +1597,7 @@
                     {
                       className: 'element-title',
                       onClick: function onClick(event) {
+                        console.log('isClosed:', _this2.state.isClosed);
                         _this2.setState({
                           isClosed: !isClosed,
                         });
@@ -6555,11 +6556,18 @@
                   loading: false,
                 });
               };
+              _this.handleDeleteChange = function () {
+                var _this$props2 = _this.props,
+                  keyRoute = _this$props2.keyRoute,
+                  updateFormValueData = _this$props2.updateFormValueData;
+                updateFormValueData(keyRoute, '');
+              };
               _this.state = {
                 loading: false,
               };
               // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
               _this.handleImageChange = _this.handleImageChange.bind(_this);
+              _this.handleDeleteChange = _this.handleDeleteChange.bind(_this);
               return _this;
             }
 
@@ -6588,13 +6596,13 @@
               };
             _proto.render = function render() {
               var _targetJsonSchema$lis;
-              var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema,
+                pageScreen = _this$props3.pageScreen,
+                getJSONDataByKeyRoute = _this$props3.getJSONDataByKeyRoute;
               var options = this.props.options || {};
               var loading = this.state.loading;
               // 从jsonData中获取对应的数值
@@ -6621,6 +6629,7 @@
                     targetJsonSchema.authorization || 'authorization-content',
                 },
                 onChange: this.handleImageChange,
+                onRemove: this.handleDeleteChange,
               };
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
