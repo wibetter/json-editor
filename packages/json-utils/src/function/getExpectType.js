@@ -16,6 +16,7 @@ const valExpectType = {
   input: 'string',
   json: 'string',
   number: 'number',
+  'input-image': 'string',
   object: 'object',
   quantity: 'object',
   radio: 'string',

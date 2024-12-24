@@ -12,6 +12,7 @@ export const BASE_TYPE = [
   'date',
   'date-time',
   'time',
+  'input-image',
 ];
 
 // 固有容器类型

@@ -16,6 +16,7 @@ export * from './initSchemaEntity/Time';
 export * from './initSchemaEntity/Color';
 export * from './initSchemaEntity/URL';
 export * from './initSchemaEntity/IMG';
+export * from './initSchemaEntity/InputImage';
 
 export * from './initSchemaEntity/Array';
 export * from './initSchemaEntity/Object';

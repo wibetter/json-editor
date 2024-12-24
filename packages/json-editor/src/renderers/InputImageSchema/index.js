@@ -1,0 +1,177 @@
+import * as React from 'react';
+import { inject, observer } from 'mobx-react';
+import PropTypes from 'prop-types';
+import { Tooltip, message, Upload } from 'antd';
+import {
+  InfoCircleOutlined,
+  LoadingOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
+import { truncate } from '@wibetter/json-utils';
+import { catchJsonDataByWebCache } from '$mixins/index';
+
+class InputImageSchema extends React.PureComponent {
+  static propTypes = {
+    parentType: PropTypes.any,
+    jsonKey: PropTypes.string,
+    indexRoute: PropTypes.any,
+    keyRoute: PropTypes.any,
+    nodeKey: PropTypes.string,
+    targetJsonSchema: PropTypes.any,
+    onChange: PropTypes.any,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+    this.handleImageChange = this.handleImageChange.bind(this);
+  }
+
+  // 方式1：在class组件中声明静态属性static，且必须是contextType，确保当前组件可以使用全局context中的数据（this.context不为空）
+  // static contextType = ThemeContext;
+
+  componentWillMount() {
+    // 从web缓存中获取数值
+    catchJsonDataByWebCache.call(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.keyRoute !== this.props.keyRoute) {
+      /** 当key值路径发生变化时重新从web缓存中获取数值 */
+      catchJsonDataByWebCache.call(this, nextProps.keyRoute);
+    }
+  }
+
+  handleImageChange = (fileInfo) => {
+    const { keyRoute, updateFormValueData } = this.props;
+    if (fileInfo.file.status === 'uploading') {
+      this.setState({
+        loading: true,
+      });
+      return;
+    }
+
+    if (fileInfo.file.status === 'done') {
+      const responseData = fileInfo.file.response || {};
+      if (responseData.url) {
+        updateFormValueData(keyRoute, responseData.url);
+      }
+    } else if (fileInfo.file.status === 'error') {
+      message.error(`${fileInfo.file.name} 图片上传失败。`);
+    }
+    this.setState({
+      loading: false,
+    });
+  };
+
+  render() {
+    const {
+      nodeKey,
+      jsonKey,
+      keyRoute,
+      targetJsonSchema,
+      pageScreen,
+      getJSONDataByKeyRoute,
+    } = this.props;
+    const options = this.props.options || {};
+    const { loading } = this.state;
+    // 从jsonData中获取对应的数值
+    const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+
+    const uploadProps = {
+      name: 'file', // targetJsonSchema.name || jsonKey || 'imgFile',
+      action: targetJsonSchema.uploadAction || options.uploadAction,
+      accept: targetJsonSchema.accept || options.uploadAccept,
+      // multiple: targetJsonSchema.multiple ?? false,
+      maxCount: targetJsonSchema.multiple ? targetJsonSchema.maxCount || 1 : 1,
+      // showUploadList: false,
+      listType: targetJsonSchema.listType ?? 'picture-card',
+      headers: {
+        authorization:
+          targetJsonSchema.authorization || 'authorization-content',
+      },
+      onChange: this.handleImageChange,
+    };
+
+    return (
+      <div
+        className={
+          pageScreen === 'wideScreen'
+            ? 'wide-screen-element-warp'
+            : 'mobile-screen-element-warp'
+        }
+        key={nodeKey}
+        id={nodeKey}
+      >
+        <div className="element-title">
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+            }
+            placement="top"
+          >
+            <span
+              className="title-text"
+              title={
+                pageScreen === 'wideScreen' &&
+                targetJsonSchema.title &&
+                targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                  ? targetJsonSchema.title
+                  : ''
+              }
+            >
+              {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
+            </span>
+          </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
+        </div>
+        <div className="content-item">
+          <div className="form-item-box">
+            <Upload {...uploadProps}>
+              <button
+                style={{
+                  border: 0,
+                  background: 'none',
+                  cursor: 'pointer',
+                }}
+                type="button"
+              >
+                {loading ? <LoadingOutlined /> : <PlusOutlined />}
+                <div
+                  style={{
+                    marginTop: 8,
+                  }}
+                >
+                  上传图片
+                </div>
+              </button>
+            </Upload>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default inject((stores) => ({
+  pageScreen: stores.JSONSchemaStore.pageScreen,
+  options: stores.JSONEditorStore.options,
+  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+}))(observer(InputImageSchema));

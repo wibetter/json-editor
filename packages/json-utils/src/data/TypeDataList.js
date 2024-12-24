@@ -15,6 +15,7 @@ import {
   initNumberData,
   initColorData,
   initIMGData,
+  initInputImageData,
   /* 9种特殊类型 */
   initQuantityData,
   initBoxStyleData,
@@ -49,6 +50,7 @@ export const TypeDataList = {
   color: initColorData,
   image: initIMGData,
   number: initNumberData,
+  'input-image': initInputImageData,
   json: initJsonData,
   codearea: initCodeAreaData,
   htmlarea: initHtmlAreaData,

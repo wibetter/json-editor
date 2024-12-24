@@ -52,6 +52,14 @@ module.exports = {
     NODE_ENV: 'development',
     port: 80,
     autoOpenBrowser: true,
+    https: true,
+    proxyTable: {
+      '/commons/upload': {
+        target: 'https://mp.sohuno.com',
+        ws: true,
+        changeOrigin: true,
+      },
+    },
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
     hostname: 'localhost',

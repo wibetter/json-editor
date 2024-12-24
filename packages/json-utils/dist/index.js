@@ -46,7 +46,7 @@
           return oe;
         },
         dynamicDataAnalyzer: function () {
-          return ne;
+          return ae;
         },
         getCurPosition: function () {
           return Y;
@@ -82,7 +82,7 @@
           return u;
         },
         hasProperties: function () {
-          return n;
+          return a;
         },
         indexRoute2keyRoute: function () {
           return c;
@@ -109,7 +109,7 @@
           return V;
         },
         isEqual: function () {
-          return a;
+          return n;
         },
         isFunction: function () {
           return F;
@@ -178,7 +178,7 @@
           return ie;
         },
         schemaMetaList: function () {
-          return ae;
+          return ne;
         },
         truncate: function () {
           return o;
@@ -188,10 +188,10 @@
     function i(e) {
       return (0, r.cloneDeep)(e);
     }
-    function a(e, t) {
+    function n(e, t) {
       return (0, r.isEqual)(e, t);
     }
-    function n(e) {
+    function a(e) {
       var t = !1;
       return null != e && (t = !0), t;
     }
@@ -199,54 +199,54 @@
       return (0, r.truncate)(e, t);
     }
     function l(e, t, r) {
-      var a = t;
-      if ((r && (a = i(t)), e))
-        for (var n = e.split('-'), o = 0, l = n.length; o < l; o++) {
-          var p = n[o];
-          p && (a = a && a[p]);
+      var n = t;
+      if ((r && (n = i(t)), e))
+        for (var a = e.split('-'), o = 0, l = a.length; o < l; o++) {
+          var p = a[o];
+          p && (n = n && n[p]);
         }
-      return a;
+      return n;
     }
     function p(e, t, r) {
-      var a = t;
-      if ((r && (a = i(t)), e))
-        for (var n = e.split('-'), o = 0, l = n.length; o < l; o++) {
-          var p = n[o];
+      var n = t;
+      if ((r && (n = i(t)), e))
+        for (var a = e.split('-'), o = 0, l = a.length; o < l; o++) {
+          var p = a[o];
           if (
             '0' !== p ||
-            ('array' !== a.type &&
-              'radio' !== a.type &&
-              'select' !== a.type &&
-              'checkboxes' !== a.type) ||
-            (!a.options && !a.items)
+            ('array' !== n.type &&
+              'radio' !== n.type &&
+              'select' !== n.type &&
+              'checkboxes' !== n.type) ||
+            (!n.options && !n.items)
           ) {
             if (p) {
               var u = '0';
-              a.propertyOrder
-                ? (u = a.propertyOrder[p])
-                : a.properties && (u = Object.keys(a.properties)[p]),
-                (a = a.properties[u]);
+              n.propertyOrder
+                ? (u = n.propertyOrder[p])
+                : n.properties && (u = Object.keys(n.properties)[p]),
+                (n = n.properties[u]);
             }
-          } else a = a.options || a.items;
+          } else n = n.options || n.items;
         }
-      return a;
+      return n;
     }
     function u(e, t, r) {
-      var a = t;
-      if ((r && (a = i(t)), e && a))
-        for (var n = e.split('-'), o = 0, l = n.length; o < l; o++) {
-          var p = n[o];
-          p && a.properties && (a = a.properties[p]);
+      var n = t;
+      if ((r && (n = i(t)), e && n))
+        for (var a = e.split('-'), o = 0, l = a.length; o < l; o++) {
+          var p = a[o];
+          p && n.properties && (n = n.properties[p]);
         }
-      return a;
+      return n;
     }
     function c(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
-        n < o;
-        n++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var l = a[n];
+        var l = n[a];
         if ('0' === l && r.items)
           (r = r.items), (i = i ? i + '-items' : 'items');
         else if ('0' === l && r.options)
@@ -264,11 +264,11 @@
     }
     function s(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
-        n < o;
-        n++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var l = a[n];
+        var l = n[a];
         if (l) {
           var p = -1;
           r.propertyOrder
@@ -543,6 +543,13 @@
           minimum: 0,
           maximum: 1e3,
           description: '',
+        },
+        'input-image': {
+          title: '图片',
+          type: 'input-image',
+          description: '',
+          accept: '.jpeg,.jpg,.png',
+          multiple: !0,
         },
         json: {
           title: 'json数据',
@@ -1209,10 +1216,10 @@
                     if (E(e)) {
                       (t = i(v.select)).items.enum = e;
                       var r = t.items.enumextra.length,
-                        a = e.length;
-                      if (a > r)
-                        for (var n = r, o = a; n < o; n++)
-                          t.items.enumextra.push('选项' + e(n));
+                        n = e.length;
+                      if (n > r)
+                        for (var a = r, o = n; a < o; a++)
+                          t.items.enumextra.push('选项' + e(a));
                     } else {
                       t = i(v['empty-array']);
                       var l = w(e[0]);
@@ -1259,16 +1266,16 @@
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
-        var a = e.type;
-        'object' === a || 'func' === a || 'style' === a || 'data' === a
+        var n = e.type;
+        'object' === n || 'func' === n || 'style' === n || 'data' === n
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
             (i = I(e, i)))
-          : 'array' === a
+          : 'array' === n
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
               (i = I((e = e.items), i)))
-            : !r && i[a]
-              ? (i[a] += 1)
-              : r || (i[a] = 1);
+            : !r && i[n]
+              ? (i[n] += 1)
+              : r || (i[n] = 1);
       }
       return i;
     }
@@ -1282,7 +1289,7 @@
           'datasource' !== t.type &&
           'event' !== t.type &&
           'object' !== t.type) ||
-          !n(t.default) ||
+          !a(t.default) ||
           delete t.default,
         'radio' === t.type &&
           ((t.type = 'string'),
@@ -1298,12 +1305,12 @@
         'quantity' === t.type)
       ) {
         var r = t.properties,
-          a = i(v.quantity);
+          n = i(v.quantity);
         if (r.quantity && R(r.quantity) && r.quantity.default) {
           var o = r.quantity.default;
-          a.properties.quantity.default = 'percent' === o ? '%' : o;
+          n.properties.quantity.default = 'percent' === o ? '%' : o;
         }
-        t = a;
+        t = n;
       }
       if ('datasource' === t.type) {
         var l = t.properties,
@@ -1354,7 +1361,7 @@
           'datasource' !== t.type &&
           'event' !== t.type &&
           'object' !== t.type) ||
-          !n(t.default) ||
+          !a(t.default) ||
           delete t.default,
         ('radio' !== t.type &&
           'checkboxes' !== t.type &&
@@ -1396,6 +1403,7 @@
           input: 'string',
           json: 'string',
           number: 'number',
+          'input-image': 'string',
           object: 'object',
           quantity: 'object',
           radio: 'string',
@@ -1471,14 +1479,14 @@
       for (
         var r = e.split('-'),
           i = t.split('-'),
-          a = 'before',
-          n = 0,
+          n = 'before',
+          a = 0,
           o = (r.length > i.length ? i : r).length;
-        n < o;
-        n += 1
+        a < o;
+        a += 1
       )
-        Number(r[n]) > Number(i[n]) && (a = 'after');
-      return a;
+        Number(r[a]) > Number(i[a]) && (n = 'after');
+      return n;
     }
     function W(e) {
       var t = e.split('-');
@@ -1517,33 +1525,33 @@
     function ee(e, t) {
       var r = '',
         i = t;
-      n(i) && n(e.default) && typeof i != typeof e.default && (i = void 0);
-      var a = n(i) ? i : e.default;
+      a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
+      var n = a(i) ? i : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          r = a || G(e);
+          r = n || G(e);
           break;
         case 'checkboxes':
-          r = a || G(e, !0);
+          r = n || G(e, !0);
           break;
         case 'color':
-          ('#fff' !== a && '#FFF' !== a) || (a = '#ffffff'),
-            (r = n(a) ? a : '#ffffff');
+          ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
+            (r = a(n) ? n : '#ffffff');
           break;
         case 'boolean':
-          r = !!n(a) && a;
+          r = !!a(n) && n;
           break;
         case 'number':
-          r = n(a) ? a : void 0;
+          r = a(n) ? n : void 0;
           break;
         case 'json':
           var o = '';
-          if (R(a) || D(a)) o = a;
-          else if (F(a) || '' === a) o = {};
+          if (R(n) || D(n)) o = n;
+          else if (F(n) || '' === n) o = {};
           else
             try {
-              o = JSON.parse(a);
+              o = JSON.parse(n);
             } catch (e) {
               o = {};
             }
@@ -1552,28 +1560,28 @@
         default:
           r =
             'input' === e.type && '0' === e.default
-              ? a || e.default
-              : n(a)
-                ? a
+              ? n || e.default
+              : a(n)
+                ? n
                 : void 0;
       }
       return r;
     }
     function te(e, t) {
       var r = {},
-        a = e.type;
+        n = e.type;
       if (R(e) && 'object' === L(e.type)) {
         var o = e,
           l = t;
-        n(l) && n(o.default) && typeof l != typeof o.default && (l = void 0);
-        var p = n(l) ? l : o.default;
-        'dynamic-data' === a
+        a(l) && a(o.default) && typeof l != typeof o.default && (l = void 0);
+        var p = a(l) ? l : o.default;
+        'dynamic-data' === n
           ? ((r = i(b)),
             p &&
               R(p) &&
               '{}' !== JSON.stringify(p) &&
               (r = Object.assign(r, p)))
-          : 'datasource' === a
+          : 'datasource' === n
             ? o.properties &&
               o.properties.type &&
               o.properties.type.default &&
@@ -1586,7 +1594,7 @@
                 p && p.data && (r.data = p.data),
                 p && p.filter && (r.filter = p.filter),
                 '{}' === r.data && (r.data = 'http://xxx'))
-            : 'event' === a
+            : 'event' === n
               ? o.properties &&
                 o.properties.type &&
                 o.properties.type.default &&
@@ -1614,17 +1622,17 @@
                     ? e.propertyOrder
                     : Object.keys(e.properties)
                   ).map(function (i) {
-                    var a = e.properties[i],
-                      n = t && t[i];
-                    switch (L(a.type)) {
+                    var n = e.properties[i],
+                      a = t && t[i];
+                    switch (L(n.type)) {
                       case 'array':
-                        r[i] = re(a, n);
+                        r[i] = re(n, a);
                         break;
                       case 'object':
-                        r[i] = te(a, n);
+                        r[i] = te(n, a);
                         break;
                       default:
-                        r[i] = ee(a, n);
+                        r[i] = ee(n, a);
                     }
                   });
       }
@@ -1634,19 +1642,19 @@
       var r = [];
       if (e && 'array' === L(e.type)) {
         var i = t;
-        n(i) && n(e.default) && typeof i != typeof e.default && (i = void 0);
-        var a = n(i) ? i : e.default;
+        a(i) && a(e.default) && typeof i != typeof e.default && (i = void 0);
+        var n = a(i) ? i : e.default;
         if ('array' === L(e.type))
-          if (D(a))
-            a.map(function (t) {
+          if (D(n))
+            n.map(function (t) {
               r.push(te(e.items, t));
             });
-          else if (a) r = a;
+          else if (n) r = n;
           else {
-            var o = te(e.items, a);
+            var o = te(e.items, n);
             r.push(o);
           }
-        else r = n(a) ? a : [];
+        else r = a(n) ? n : [];
       }
       return r;
     }
@@ -1657,8 +1665,8 @@
           ? re(e, t)
           : ee(e, t);
     }
-    var ae = v;
-    function ne(e, t) {
+    var ne = v;
+    function ae(e, t) {
       var r = t || [];
       if (e && '{}' !== JSON.stringify(e))
         if (R(e))
@@ -1668,8 +1676,8 @@
             e.config &&
             R(e.config) &&
             e.config.dataName &&
-            n(e.localFilter) &&
-            n(e.data)
+            a(e.localFilter) &&
+            a(e.data)
           ) {
             var i = e.config.body;
             if (i && !R(i))
@@ -1681,12 +1689,12 @@
             r.push({ id: e.config.id, dataName: e.config.dataName, body: i });
           } else
             Object.keys(e).map(function (t) {
-              ne(e[t], r);
+              ae(e[t], r);
             });
         else
           D(e) &&
             e.map(function (e) {
-              ne(e, r);
+              ae(e, r);
             });
       return r;
     }
@@ -1704,19 +1712,19 @@
       return (
         R(e)
           ? Object.keys(e).map(function (i) {
-              var a = e[i],
-                n = t ? t + '-' + i : i;
-              R(a) || D(a)
-                ? r.push({ title: i, value: n, key: n, children: le(a, n) })
-                : r.push({ title: i, value: n, key: n });
+              var n = e[i],
+                a = t ? t + '-' + i : i;
+              R(n) || D(n)
+                ? r.push({ title: i, value: a, key: a, children: le(n, a) })
+                : r.push({ title: i, value: a, key: a });
             })
           : D(e) &&
             e.map(function (e, i) {
-              var a = i.toString(),
-                n = t ? t + '-' + i : a;
+              var n = i.toString(),
+                a = t ? t + '-' + i : n;
               R(e) || D(e)
-                ? r.push({ title: a, value: n, key: n, children: le(e, n) })
-                : r.push({ title: a, value: n, key: n });
+                ? r.push({ title: n, value: a, key: a, children: le(e, a) })
+                : r.push({ title: n, value: a, key: a });
             }),
         r
       );

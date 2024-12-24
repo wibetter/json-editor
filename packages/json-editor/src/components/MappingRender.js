@@ -22,6 +22,7 @@ import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import HtmlAreaFormSchema from '$renderers/HtmlAreaFormSchema/index';
 import SelectSchema from '$renderers/SelectSchema/index';
+import InputImageSchema from '$renderers/InputImageSchema/index';
 import DynamicConfigSchema from '$renderers/DynamicConfigSchema/index';
 import SohuDataSourceSchema from '$renderers/SohuDataSourceSchema/index';
 import SohuEventSchema from '$renderers/SohuEventSchema/index';
@@ -117,6 +118,8 @@ const MappingRender = (props) => {
       return <URLFormSchema {...newProps} key={curNodeKey} />;
     case 'color':
       return <ColorFormSchema {...newProps} key={curNodeKey} />;
+    case 'input-image':
+      return <InputImageSchema {...newProps} key={curNodeKey} />;
     case 'json':
       return <JsonFormSchema {...newProps} key={curNodeKey} />;
     case 'codearea':

@@ -34,6 +34,21 @@ class IndexDemo extends React.PureComponent {
                 description: '',
                 placeholder: '',
               },
+              imgUrl: {
+                title: '组件预览图1',
+                type: 'input-image',
+                accept: '.jpeg,.jpg,.png',
+                multiple: true,
+                description: '',
+                placeholder: '',
+              },
+              imgUrl2: {
+                title: '组件预览图2',
+                type: 'image',
+                multiple: true,
+                description: '',
+                placeholder: '',
+              },
               description: {
                 title: '组件描述',
                 type: 'input',
@@ -229,6 +244,8 @@ class IndexDemo extends React.PureComponent {
             },
             propertyOrder: [
               'name',
+              'imgUrl',
+              'imgUrl2',
               'description',
               'renderMethod',
               'firstChannel1',
@@ -1091,6 +1108,7 @@ class IndexDemo extends React.PureComponent {
           },
         ],
         globalMetaConfig: [],
+        uploadAction: '/commons/upload/file',
       },
       wideScreen: false,
       jsonView: false,
