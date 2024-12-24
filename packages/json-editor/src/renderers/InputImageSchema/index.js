@@ -28,6 +28,7 @@ class InputImageSchema extends React.PureComponent {
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleImageChange = this.handleImageChange.bind(this);
+    this.handleDeleteChange = this.handleDeleteChange.bind(this);
   }
 
   // 方式1：在class组件中声明静态属性static，且必须是contextType，确保当前组件可以使用全局context中的数据（this.context不为空）
@@ -67,6 +68,11 @@ class InputImageSchema extends React.PureComponent {
     });
   };
 
+  handleDeleteChange = () => {
+    const { keyRoute, updateFormValueData } = this.props;
+    updateFormValueData(keyRoute, '');
+  };
+
   render() {
     const {
       nodeKey,
@@ -96,6 +102,7 @@ class InputImageSchema extends React.PureComponent {
           targetJsonSchema.authorization || 'authorization-content',
       },
       onChange: this.handleImageChange,
+      onRemove: this.handleDeleteChange,
     };
 
     return (
