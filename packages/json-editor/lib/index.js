@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.5
+ * @wibetter/json-editor v5.0.7
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Dec 20 2024 23:28:02 GMT+0800 (中国标准时间)
+ * build time: Tue Dec 24 2024 14:45:50 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -787,15 +787,19 @@
             __webpack_require__(
               /*! $renderers/SelectSchema/index */ './src/renderers/SelectSchema/index.js',
             );
-          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+            __webpack_require__(
+              /*! $renderers/InputImageSchema/index */ './src/renderers/InputImageSchema/index.js',
+            );
+          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
             __webpack_require__(
               /*! $renderers/DynamicConfigSchema/index */ './src/renderers/DynamicConfigSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
+          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
             __webpack_require__(
               /*! $renderers/SohuDataSourceSchema/index */ './src/renderers/SohuDataSourceSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
+          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
             __webpack_require__(
               /*! $renderers/SohuEventSchema/index */ './src/renderers/SohuEventSchema/index.js',
             );
@@ -866,7 +870,7 @@
                 );
               case 'dynamic-config':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_25__[
+                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_26__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -879,7 +883,7 @@
                 );
               case 'sohu-source':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_26__[
+                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_27__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -892,7 +896,7 @@
                 );
               case 'sohu-event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_27__[
+                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_28__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1129,6 +1133,19 @@
               case 'color':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_20__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'input-image':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_25__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -6441,6 +6458,318 @@
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
               InputFormSchema,
+            ),
+          );
+
+          /***/
+        },
+
+      /***/ './src/renderers/InputImageSchema/index.js':
+        /*!*************************************************!*\
+  !*** ./src/renderers/InputImageSchema/index.js ***!
+  \*************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+
+          var InputImageSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function InputImageSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.handleImageChange = function (fileInfo) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  updateFormValueData = _this$props.updateFormValueData;
+                if (fileInfo.file.status === 'uploading') {
+                  _this.setState({
+                    loading: true,
+                  });
+                  return;
+                }
+                if (fileInfo.file.status === 'done') {
+                  var responseData = fileInfo.file.response || {};
+                  if (responseData.url) {
+                    updateFormValueData(keyRoute, responseData.url);
+                  }
+                } else if (fileInfo.file.status === 'error') {
+                  antd__WEBPACK_IMPORTED_MODULE_4__.message.error(
+                    fileInfo.file.name +
+                      ' \u56FE\u7247\u4E0A\u4F20\u5931\u8D25\u3002',
+                  );
+                }
+                _this.setState({
+                  loading: false,
+                });
+              };
+              _this.state = {
+                loading: false,
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.handleImageChange = _this.handleImageChange.bind(_this);
+              return _this;
+            }
+
+            // 方式1：在class组件中声明静态属性static，且必须是contextType，确保当前组件可以使用全局context中的数据（this.context不为空）
+            // static contextType = ThemeContext;
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              InputImageSchema,
+              _React$PureComponent,
+            );
+            var _proto = InputImageSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$lis;
+              var _this$props2 = this.props,
+                nodeKey = _this$props2.nodeKey,
+                jsonKey = _this$props2.jsonKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                pageScreen = _this$props2.pageScreen,
+                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+              var options = this.props.options || {};
+              var loading = this.state.loading;
+              // 从jsonData中获取对应的数值
+              var curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+              var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+
+              var uploadProps = {
+                name: 'file',
+                // targetJsonSchema.name || jsonKey || 'imgFile',
+                action: targetJsonSchema.uploadAction || options.uploadAction,
+                accept: targetJsonSchema.accept || options.uploadAccept,
+                // multiple: targetJsonSchema.multiple ?? false,
+                maxCount: targetJsonSchema.multiple
+                  ? targetJsonSchema.maxCount || 1
+                  : 1,
+                // showUploadList: false,
+                listType:
+                  (_targetJsonSchema$lis = targetJsonSchema.listType) != null
+                    ? _targetJsonSchema$lis
+                    : 'picture-card',
+                headers: {
+                  authorization:
+                    targetJsonSchema.authorization || 'authorization-content',
+                },
+                onChange: this.handleImageChange,
+              };
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  key: nodeKey,
+                  id: nodeKey,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_4__.Upload,
+                      uploadProps,
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'button',
+                        {
+                          style: {
+                            border: 0,
+                            background: 'none',
+                            cursor: 'pointer',
+                          },
+                          type: 'button',
+                        },
+                        loading
+                          ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.LoadingOutlined,
+                              null,
+                            )
+                          : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.PlusOutlined,
+                              null,
+                            ),
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            style: {
+                              marginTop: 8,
+                            },
+                          },
+                          '\u4E0A\u4F20\u56FE\u7247',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            };
+            return InputImageSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          InputImageSchema.propTypes = {
+            parentType: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              pageScreen: stores.JSONSchemaStore.pageScreen,
+              options: stores.JSONEditorStore.options,
+              getJSONDataByKeyRoute:
+                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute:
+                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              InputImageSchema,
             ),
           );
 
@@ -12055,12 +12384,23 @@
                   }
                   var curJsonData =
                     this.state.rootJSONStore.JSONEditorStore.jsonData;
+                  var newJsonData = {};
                   /** 根据jsonSchema生成对应的最新jsonData */
-                  var newJsonData = (0,
-                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
-                    this.jsonSchema,
-                    curJsonData,
-                  );
+                  if (this.jsonSchema.reset) {
+                    // schema 变动不保留旧版 jsonData 数据
+                    newJsonData = (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
+                      this.jsonSchema,
+                      {},
+                    );
+                  } else {
+                    // 默认保留旧版jsonData数据
+                    newJsonData = (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
+                      this.jsonSchema,
+                      curJsonData,
+                    );
+                  }
                   /** 更新当前的jsonData */
                   this.state.rootJSONStore.JSONEditorStore.jsonData =
                     newJsonData;

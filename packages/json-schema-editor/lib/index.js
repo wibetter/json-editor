@@ -355,6 +355,7 @@
             'date',
             'date-time',
             'time',
+            'input-image',
           ],
           Ce = ['object'].concat([
             'datasource',
@@ -387,6 +388,7 @@
                 'date',
                 'date-time',
                 'time',
+                'input-image',
               ],
               radio: Re,
               select: Re,

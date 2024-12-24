@@ -56,6 +56,7 @@ export const OBJECT_TYPE = [
   'date',
   'date-time',
   'time',
+  'input-image',
   'text-editor',
   'checkboxes',
   'object',
@@ -73,6 +74,7 @@ export const ARRAY_ITEM_TYPE = [
   'date',
   'date-time',
   'time',
+  'input-image',
 ];
 
 // radio单选类型可选项

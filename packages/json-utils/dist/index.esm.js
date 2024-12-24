@@ -601,7 +601,7 @@ var initIMGData = {
  *  readOnly：字段项可设置是否可编辑
  * */
 var initInputImageData = {
-  title: '图片',
+  title: '图片地址',
   type: 'input-image',
   description: '',
   // 字段项的说明和描述

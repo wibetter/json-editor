@@ -42,13 +42,6 @@ class IndexDemo extends React.PureComponent {
                 description: '',
                 placeholder: '',
               },
-              imgUrl2: {
-                title: '组件预览图2',
-                type: 'image',
-                multiple: true,
-                description: '',
-                placeholder: '',
-              },
               description: {
                 title: '组件描述',
                 type: 'input',
@@ -245,7 +238,6 @@ class IndexDemo extends React.PureComponent {
             propertyOrder: [
               'name',
               'imgUrl',
-              'imgUrl2',
               'description',
               'renderMethod',
               'firstChannel1',

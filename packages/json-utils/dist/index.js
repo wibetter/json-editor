@@ -545,7 +545,7 @@
           description: '',
         },
         'input-image': {
-          title: '图片',
+          title: '图片地址',
           type: 'input-image',
           description: '',
           accept: '.jpeg,.jpg,.png',
