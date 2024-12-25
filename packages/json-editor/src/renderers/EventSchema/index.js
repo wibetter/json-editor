@@ -48,14 +48,10 @@ class EventSchema extends React.PureComponent {
   }
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      indexRoute,
-      targetJsonSchema,
-      pageScreen,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
+      this.props;
     const curType = targetJsonSchema.type;
     const { jsonView, isClosed } = this.state;
 
@@ -214,9 +210,6 @@ class EventSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  triggerChange: stores.JSONEditorStore.triggerChange,
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(EventSchema));

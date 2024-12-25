@@ -34,34 +34,39 @@ class JSONDataEditor extends React.PureComponent {
       jsonView: props.jsonView || false, // 是否显示code模式，默认不显示code模式
       viewStyle: this.catchViewStyle(props.viewStyle), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
     };
+
+    const { initJSONSchemaData, setPageScreen } = this.props.schemaStore || {};
+    const { initJSONData, initOnChange, setDynamicDataList, setOptions } =
+      this.props.jsonStore || {};
+
     // 根据props.schemaData对jsonSchema进行初始化
     if (props.schemaData) {
-      this.props.initJSONSchemaData(props.schemaData);
+      initJSONSchemaData(props.schemaData);
       // 根据props.jsonData对jsonData进行初始化
-      this.props.initJSONData(props.jsonData);
+      initJSONData(props.jsonData);
     } else if (props.jsonData) {
       // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
       const jsonSchema = json2schema(props.jsonData); // 通过json转换schema
-      this.props.initJSONSchemaData(jsonSchema);
+      initJSONSchemaData(jsonSchema);
       // 根据props.jsonData对jsonData进行初始化
-      this.props.initJSONData(props.jsonData);
+      initJSONData(props.jsonData);
     }
     // 读取宽屏和小屏的配置
     if (props.wideScreen) {
-      this.props.setPageScreen(props.wideScreen);
+      setPageScreen(props.wideScreen);
     }
     // 记录onChange事件
     if (props.onChange) {
-      this.props.initOnChange(props.onChange);
+      initOnChange(props.onChange);
     }
 
     // 获取dynamicDataList（动态数据源）
     if (props.dynamicDataList) {
-      this.props.setDynamicDataList(props.dynamicDataList);
+      setDynamicDataList(props.dynamicDataList);
     }
     // 配置类数据
     if (props.options) {
-      this.props.setOptions(props.options);
+      setOptions(props.options);
     }
   }
 
@@ -78,13 +83,16 @@ class JSONDataEditor extends React.PureComponent {
   };
 
   componentWillReceiveProps(nextProps) {
+    const { JSONSchemaChange, setPageScreen } = this.props.schemaStore || {};
+    const { initJSONData, initOnChange, setDynamicDataList, setOptions } =
+      this.props.jsonStore || {};
     /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
     if (!isEqual(nextProps.schemaData, this.props.schemaData)) {
-      this.props.JSONSchemaChange(nextProps.schemaData);
+      JSONSchemaChange(nextProps.schemaData);
     }
     /** 2. 初始化jsonData */
     if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
-      this.props.initJSONData(nextProps.jsonData);
+      initJSONData(nextProps.jsonData);
     }
     // 读取code模式配置
     if (!isEqual(nextProps.jsonView, this.props.jsonView)) {
@@ -99,20 +107,20 @@ class JSONDataEditor extends React.PureComponent {
       });
     }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
-      this.props.setPageScreen(nextProps.wideScreen);
+      setPageScreen(nextProps.wideScreen);
     }
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
-      this.props.initOnChange(nextProps.onChange);
+      initOnChange(nextProps.onChange);
     }
 
     // 获取dynamicDataList（动态数据源）
     if (!isEqual(nextProps.dynamicDataList, this.props.dynamicDataList)) {
-      this.props.setDynamicDataList(nextProps.dynamicDataList);
+      setDynamicDataList(nextProps.dynamicDataList);
     }
 
     if (!isEqual(nextProps.options, this.props.options)) {
-      this.props.setOptions(nextProps.options);
+      setOptions(nextProps.options);
     }
   }
 
@@ -131,14 +139,9 @@ class JSONDataEditor extends React.PureComponent {
   };
 
   render() {
-    const {
-      jsonSchema,
-      lastUpdateTime,
-      jsonLastUpdateTime,
-      getJSONDataByKeyRoute,
-      keyRoute2indexRoute,
-      updateFormValueData,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { jsonSchema, lastUpdateTime } = schemaStore || {};
+    const { lastUpdateTime: jsonLastUpdateTime } = jsonStore || {};
     const { jsonView, viewStyle } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isStructured = isStructuredSchema(jsonSchema); // 判断是否是结构化的schema数据
@@ -195,9 +198,8 @@ class JSONDataEditor extends React.PureComponent {
                               nodeKey,
                               targetJsonSchema: currentSchemaData,
                               isStructuredSchema: isStructured,
-                              getJSONDataByKeyRoute,
-                              keyRoute2indexRoute,
-                              updateFormValueData,
+                              schemaStore,
+                              jsonStore,
                             })}
                           </Panel>
                         );
@@ -249,9 +251,8 @@ class JSONDataEditor extends React.PureComponent {
                               nodeKey,
                               targetJsonSchema: currentSchemaData,
                               isStructuredSchema: isStructured,
-                              getJSONDataByKeyRoute,
-                              keyRoute2indexRoute,
-                              updateFormValueData,
+                              schemaStore,
+                              jsonStore,
                             })}
                           </TabPane>
                         );
@@ -272,9 +273,8 @@ class JSONDataEditor extends React.PureComponent {
                   keyRoute: '',
                   nodeKey: '',
                   targetJsonSchema: jsonSchema,
-                  getJSONDataByKeyRoute,
-                  keyRoute2indexRoute,
-                  updateFormValueData,
+                  schemaStore,
+                  jsonStore,
                 })}
               </>
             )}
@@ -295,17 +295,6 @@ class JSONDataEditor extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  jsonSchema: stores.JSONSchemaStore.jsonSchema,
-  lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
-  jsonLastUpdateTime: stores.JSONEditorStore.lastUpdateTime,
-  initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
-  JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
-  initJSONData: stores.JSONEditorStore.initJSONData,
-  initOnChange: stores.JSONEditorStore.initOnChange,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  keyRoute2indexRoute: stores.JSONSchemaStore.keyRoute2indexRoute,
-  setDynamicDataList: stores.JSONEditorStore.setDynamicDataList,
-  setOptions: stores.JSONEditorStore.setOptions,
-  setPageScreen: stores.JSONSchemaStore.setPageScreen,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(JSONDataEditor));

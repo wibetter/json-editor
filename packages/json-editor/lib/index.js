@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.8
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Dec 24 2024 17:42:16 GMT+0800 (中国标准时间)
+ * build time: Wed Dec 25 2024 13:23:18 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -697,112 +697,122 @@
             /*#__PURE__*/ __webpack_require__.n(
               react__WEBPACK_IMPORTED_MODULE_1__,
             );
-          /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ =
-            __webpack_require__(/*! ../utils */ './src/utils/index.js');
-          /* harmony import */ var $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(
               /*! $renderers/ArraySchema/index */ './src/renderers/ArraySchema/index.js',
             );
-          /* harmony import */ var $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(
               /*! $renderers/ObjectSchema/index */ './src/renderers/ObjectSchema/index.js',
             );
-          /* harmony import */ var $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! $renderers/DataSourceSchema/index */ './src/renderers/DataSourceSchema/index.js',
             );
-          /* harmony import */ var $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! $renderers/DynamicDataSchema/index */ './src/renderers/DynamicDataSchema/index.js',
             );
-          /* harmony import */ var $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $renderers/EventSchema/index */ './src/renderers/EventSchema/index.js',
             );
-          /* harmony import */ var $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $renderers/QuantitySchema/index */ './src/renderers/QuantitySchema/index.js',
             );
-          /* harmony import */ var $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! $renderers/BoxStyleSchema/index */ './src/renderers/BoxStyleSchema/index.js',
             );
-          /* harmony import */ var $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! $renderers/RadioSchema/index */ './src/renderers/RadioSchema/index.js',
             );
-          /* harmony import */ var $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! $renderers/CheckboxSchema/index */ './src/renderers/CheckboxSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(
               /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! $renderers/TextAreaFormSchema/index */ './src/renderers/TextAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_14__ =
+          /* harmony import */ var $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(
               /*! $renderers/TextEditorSchema/index */ './src/renderers/TextEditorSchema/index.js',
             );
-          /* harmony import */ var $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_15__ =
+          /* harmony import */ var $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_16__ =
             __webpack_require__(
               /*! $renderers/NumberFormSchema/index */ './src/renderers/NumberFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_16__ =
+          /* harmony import */ var $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_17__ =
             __webpack_require__(
               /*! $renderers/BooleanFormSchema/index */ './src/renderers/BooleanFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_17__ =
+          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
             __webpack_require__(
               /*! $renderers/DateTimeFormSchema/index */ './src/renderers/DateTimeFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
+          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
             __webpack_require__(
               /*! $renderers/TimeFormSchema/index */ './src/renderers/TimeFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
+          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_20__ =
             __webpack_require__(
               /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_20__ =
+          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_21__ =
             __webpack_require__(
               /*! $renderers/ColorFormSchemaV3/index */ './src/renderers/ColorFormSchemaV3/index.js',
             );
-          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_21__ =
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
             __webpack_require__(
               /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
             __webpack_require__(
               /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
+          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_24__ =
             __webpack_require__(
               /*! $renderers/HtmlAreaFormSchema/index */ './src/renderers/HtmlAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_24__ =
+          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
             __webpack_require__(
               /*! $renderers/SelectSchema/index */ './src/renderers/SelectSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
             __webpack_require__(
               /*! $renderers/InputImageSchema/index */ './src/renderers/InputImageSchema/index.js',
             );
-          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
+          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
             __webpack_require__(
               /*! $renderers/DynamicConfigSchema/index */ './src/renderers/DynamicConfigSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
+          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
             __webpack_require__(
               /*! $renderers/SohuDataSourceSchema/index */ './src/renderers/SohuDataSourceSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
+          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_29__ =
             __webpack_require__(
               /*! $renderers/SohuEventSchema/index */ './src/renderers/SohuEventSchema/index.js',
             );
+
+          // import {omit} from 'lodash';
 
           /** 根据当前类型选择对应的组件进行渲染 */
           var MappingRender = function MappingRender(props) {
@@ -811,39 +821,35 @@
               keyRoute = props.keyRoute,
               targetJsonSchema = props.targetJsonSchema,
               getJSONDataByKeyRoute = props.getJSONDataByKeyRoute,
-              keyRoute2indexRoute = props.keyRoute2indexRoute,
-              updateFormValueData = props.updateFormValueData;
+              keyRoute2indexRoute = props.keyRoute2indexRoute;
             var curType = targetJsonSchema.type;
-
-            // 获取当前字段的条件规则
-            var hiddenRule = {};
-            if (targetJsonSchema.hiddenRule) {
-              hiddenRule = targetJsonSchema.hiddenRule;
-            }
             var curConditionValue = '';
             var curNodeKey = nodeKey;
 
-            // 隐藏条件成立则直接返回
+            // 支持显隐属性表达式
+            var parentKeyRoute = (0,
+            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.getParentKeyRoute)(
+              keyRoute,
+            );
+            var curData = getJSONDataByKeyRoute(parentKeyRoute) || {}; // 获取当前父级数据域
             if (
-              hiddenRule.conditionProp &&
-              (0, _utils__WEBPACK_IMPORTED_MODULE_2__.hasProperties)(
-                hiddenRule.conditionValue,
-              )
+              ((0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
+                targetJsonSchema.onShow,
+              ) &&
+                !targetJsonSchema.onShow) ||
+              ((0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isString)(
+                targetJsonSchema.onShow,
+              ) &&
+                !(0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.expressionOn)(
+                  targetJsonSchema.onShow,
+                  curData,
+                  jsonKey,
+                ))
             ) {
-              var curConditionProp = hiddenRule.conditionProp;
-              var needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
-              var curConditionKeyRoute = curConditionProp.keyRoute; // 条件字段的key值
-
-              // 获取条件字段的数值
-              curConditionValue = getJSONDataByKeyRoute(curConditionKeyRoute);
-              if (needConditionValue === curConditionValue) {
-                if (targetJsonSchema.clearValueOnHidden) {
-                  // 删除掉隐藏的表单项数值
-                  updateFormValueData(keyRoute, undefined);
-                }
-                return;
-              }
+              return;
             }
+
             // 将条件字段的数值作为key的一部分
             curNodeKey = nodeKey + '-' + curConditionValue;
             var newProps =
@@ -857,7 +863,7 @@
             switch (curType) {
               case 'object':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_4__[
+                  $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_5__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -870,7 +876,7 @@
                 );
               case 'dynamic-config':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_26__[
+                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_27__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -883,7 +889,7 @@
                 );
               case 'sohu-source':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_27__[
+                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_28__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -896,7 +902,7 @@
                 );
               case 'sohu-event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_28__[
+                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_29__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -909,7 +915,7 @@
                 );
               case 'array':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_3__[
+                  $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_4__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -922,7 +928,7 @@
                 );
               case 'dynamic-data':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_6__[
+                  $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_7__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -935,7 +941,7 @@
                 );
               case 'datasource':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_5__[
+                  $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_6__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -948,7 +954,7 @@
                 );
               case 'event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_7__[
+                  $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_8__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -961,7 +967,7 @@
                 );
               case 'quantity':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                  $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_9__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -974,7 +980,7 @@
                 );
               case 'box-style':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                  $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -987,7 +993,7 @@
                 );
               case 'radio':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                  $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1000,7 +1006,7 @@
                 );
               case 'select':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_24__[
+                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_25__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1014,7 +1020,7 @@
               case 'checkboxes':
                 // 多选
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_11__[
+                  $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_12__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1027,7 +1033,7 @@
                 );
               case 'input':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_12__[
+                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1040,7 +1046,7 @@
                 );
               case 'textarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
+                  $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_14__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1053,7 +1059,7 @@
                 );
               case 'text-editor':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_14__[
+                  $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_15__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1066,7 +1072,7 @@
                 );
               case 'number':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_15__[
+                  $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_16__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1079,7 +1085,7 @@
                 );
               case 'boolean':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_16__[
+                  $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1093,7 +1099,7 @@
               case 'date':
               case 'date-time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
+                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1106,7 +1112,7 @@
                 );
               case 'time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__[
+                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_19__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1119,7 +1125,7 @@
                 );
               case 'url':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_19__[
+                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_20__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1132,7 +1138,7 @@
                 );
               case 'color':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_20__[
+                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_21__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1145,7 +1151,7 @@
                 );
               case 'input-image':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_25__[
+                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_26__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1158,7 +1164,7 @@
                 );
               case 'json':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_21__[
+                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1171,7 +1177,7 @@
                 );
               case 'codearea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
+                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1184,7 +1190,7 @@
                 );
               case 'htmlarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
+                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_24__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1197,7 +1203,7 @@
                 );
               default:
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_12__[
+                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1597,7 +1603,6 @@
                     {
                       className: 'element-title',
                       onClick: function onClick(event) {
-                        console.log('isClosed:', _this2.state.isClosed);
                         _this2.setState({
                           isClosed: !isClosed,
                         });
@@ -12704,15 +12709,33 @@
             },
             /* harmony export */
           });
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__,
+            );
+
           /** js对象数据深拷贝，避免数据联动 */
           function objClone(targetObj) {
-            var newObj = JSON.stringify(targetObj);
-            return JSON.parse(newObj);
+            // const newObj = JSON.stringify(targetObj);
+            // return JSON.parse(newObj);
+            return (0,
+            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.objClone)(
+              targetObj,
+            );
           }
 
           /** 对比两个json数据是否相等 */
           function isEqual(targetObj, nextTargetObj) {
-            return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
+            // return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
+            return (0,
+            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isEqual)(
+              targetObj,
+              nextTargetObj,
+            );
           }
 
           /** 判断当前属性是否存在

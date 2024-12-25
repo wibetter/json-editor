@@ -25,15 +25,16 @@ class JsonView extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (newJsonData) => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     if (newJsonData) {
       updateFormValueData(keyRoute, newJsonData); // 更新数值
     }
   };
 
   render() {
-    const { nodeKey, keyRoute, targetJsonSchema, getJSONDataByKeyRoute } =
-      this.props;
+    const { getJSONDataByKeyRoute } = this.props.jsonStore || {};
+    const { nodeKey, keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
 
@@ -77,7 +78,6 @@ class JsonView extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(JsonView));

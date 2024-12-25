@@ -43,19 +43,16 @@ class DateTimeFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (event, dateString) => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, dateString); // 更新数值
   };
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const curType = targetJsonSchema.type;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
@@ -121,8 +118,6 @@ class DateTimeFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(DateTimeFormSchema));

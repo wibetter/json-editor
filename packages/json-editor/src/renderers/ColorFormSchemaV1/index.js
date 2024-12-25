@@ -41,27 +41,26 @@ class ColorFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
+
     const { value } = event.target;
-    const { keyRoute, updateFormValueData } = this.props;
     updateFormValueData(keyRoute, value); // 更新数值
   };
 
   /** color清除事件处理器 */
   deleteColor = () => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, 'initial'); // 更新数值
     message.success('已移除当前设置的颜色值');
   };
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
@@ -121,8 +120,6 @@ class ColorFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(ColorFormSchema));

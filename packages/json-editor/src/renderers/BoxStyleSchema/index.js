@@ -45,7 +45,9 @@ class BoxStyleSchema extends React.PureComponent {
 
   /** 初始化boxStyle的数值 */
   initBoxStyle = () => {
-    const { keyRoute, targetJsonSchema, getJSONDataByKeyRoute } = this.props;
+    const { jsonStore } = this.props;
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     /** 获取quantity中的数值对象（默认第一个就是数值对象） */
@@ -162,7 +164,8 @@ class BoxStyleSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   updateBoxStyleState = () => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     const { renderAction } = this.state;
     /** 获取布局容器的盒子模型数值 */
     const boxStyleUnit = `${this.layoutStyleObj.top} ${this.layoutStyleObj.right} ${this.layoutStyleObj.bottom} ${this.layoutStyleObj.left}`;
@@ -174,7 +177,9 @@ class BoxStyleSchema extends React.PureComponent {
   };
 
   render() {
-    const { nodeKey, jsonKey, targetJsonSchema, pageScreen } = this.props;
+    const { nodeKey, jsonKey, targetJsonSchema } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
     const { renderAction, layoutStyleLock } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
@@ -307,8 +312,6 @@ class BoxStyleSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(BoxStyleSchema));

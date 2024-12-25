@@ -47,7 +47,8 @@ class InputImageSchema extends React.PureComponent {
   }
 
   handleImageChange = (fileInfo) => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     if (fileInfo.file.status === 'uploading') {
       this.setState({
         loading: true,
@@ -69,19 +70,16 @@ class InputImageSchema extends React.PureComponent {
   };
 
   handleDeleteChange = () => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, '');
   };
 
   render() {
-    const {
-      nodeKey,
-      jsonKey,
-      keyRoute,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     const options = this.props.options || {};
     const { loading } = this.state;
     // 从jsonData中获取对应的数值
@@ -176,9 +174,6 @@ class InputImageSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  options: stores.JSONEditorStore.options,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(InputImageSchema));

@@ -41,7 +41,9 @@ class NumberFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (newVal) => {
-    const { keyRoute, targetJsonSchema, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
+    const { targetJsonSchema } = this.props;
     if (newVal < targetJsonSchema.minimum) {
       message.warning(
         `小于设定的最小数值${targetJsonSchema.minimum}，请重新输入。`,
@@ -74,14 +76,10 @@ class NumberFormSchema extends React.PureComponent {
   };
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { renderTime } = this.state;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -180,8 +178,6 @@ class NumberFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(NumberFormSchema));

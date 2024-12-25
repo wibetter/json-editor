@@ -50,21 +50,20 @@ class ObjectSchema extends React.PureComponent {
   }
 
   render() {
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { options: _options, getJSONDataByKeyRoute } = jsonStore || {};
     const {
       indexRoute,
       jsonKey,
       nodeKey,
       keyRoute,
-      pageScreen,
       targetJsonSchema,
       isArrayItem,
       isStructuredSchema,
-      getJSONDataByKeyRoute,
-      keyRoute2indexRoute,
-      updateFormValueData,
     } = this.props;
     const { jsonView, isClosed } = this.state;
-    const options = this.props.options || {};
+    const options = _options || {};
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
     const isStructured = isStructuredSchema;
     // 是否显示源码切换按钮
@@ -257,9 +256,8 @@ class ObjectSchema extends React.PureComponent {
                     keyRoute: currentKeyRoute,
                     nodeKey: childNodeKey,
                     targetJsonSchema: currentSchemaData,
-                    getJSONDataByKeyRoute,
-                    keyRoute2indexRoute,
-                    updateFormValueData,
+                    schemaStore,
+                    jsonStore,
                   });
                 }
               })}
@@ -272,9 +270,6 @@ class ObjectSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  options: stores.JSONEditorStore.options,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(ObjectSchema));

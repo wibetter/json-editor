@@ -28,12 +28,13 @@ class InputFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
     if (this.props.onChange) {
       // 如果有监听数据变动函数则优先触发
       this.props.onChange(value);
     } else {
-      const { keyRoute, updateFormValueData } = this.props;
       updateFormValueData(keyRoute, value); // 更新数值
     }
   };
@@ -51,14 +52,10 @@ class InputFormSchema extends React.PureComponent {
   }
 
   render() {
-    const {
-      nodeKey,
-      jsonKey,
-      keyRoute,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -128,8 +125,6 @@ class InputFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(InputFormSchema));

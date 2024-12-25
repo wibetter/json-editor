@@ -49,19 +49,18 @@ class ObjectSchema extends React.PureComponent {
   }
 
   render() {
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+
     const {
       indexRoute,
       jsonKey,
       nodeKey,
       keyRoute,
-      pageScreen,
       targetJsonSchema,
       isArrayItem,
       arrIndex,
       isStructuredSchema,
-      getJSONDataByKeyRoute,
-      keyRoute2indexRoute,
-      updateFormValueData,
     } = this.props;
     const { jsonView, isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
@@ -170,9 +169,8 @@ class ObjectSchema extends React.PureComponent {
                   keyRoute: currentKeyRoute,
                   nodeKey: childNodeKey,
                   targetJsonSchema: currentSchemaData,
-                  getJSONDataByKeyRoute,
-                  keyRoute2indexRoute,
-                  updateFormValueData,
+                  schemaStore,
+                  jsonStore,
                 });
               })}
             {jsonView && <JsonView {...this.props} />}
@@ -184,8 +182,6 @@ class ObjectSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(ObjectSchema));

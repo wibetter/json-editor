@@ -5,6 +5,7 @@ import {
   isString,
   isBoolean,
 } from '@wibetter/json-utils';
+// import {omit} from 'lodash';
 import { hasProperties } from '$utils/index';
 import ArraySchema from '$renderers/ArraySchema/index';
 import ObjectSchema from '$renderers/ObjectSchema/index';
@@ -35,14 +36,11 @@ import SohuEventSchema from '$renderers/SohuEventSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
-  const {
-    nodeKey,
-    jsonKey,
-    keyRoute,
-    targetJsonSchema,
-    getJSONDataByKeyRoute,
-    keyRoute2indexRoute,
-  } = props;
+  const { pageScreen } = props.schemaStore || {};
+  const { getJSONDataByKeyRoute } = props.jsonStore || {};
+
+  const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = props;
+
   const curType = targetJsonSchema.type;
 
   let curConditionValue = '';
@@ -50,7 +48,7 @@ const MappingRender = (props) => {
 
   // 支持显隐属性表达式
   const parentKeyRoute = getParentKeyRoute(keyRoute);
-  const curData = getJSONDataByKeyRoute(parentKeyRoute); // 获取当前父级数据域
+  const curData = getJSONDataByKeyRoute(parentKeyRoute) || {}; // 获取当前父级数据域
   if (
     (isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
     (isString(targetJsonSchema.onShow) &&
@@ -58,6 +56,8 @@ const MappingRender = (props) => {
   ) {
     return;
   }
+
+  // 收集当前为条件字段的子元素
 
   // 将条件字段的数值作为key的一部分
   curNodeKey = `${nodeKey}-${curConditionValue}`;

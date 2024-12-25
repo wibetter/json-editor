@@ -6,7 +6,6 @@ import { json2treeData, isObject } from '@wibetter/json-utils';
 
 class TreeSelectFromSchema extends React.PureComponent {
   static propTypes = {
-    pageScreen: PropTypes.any,
     mockData: PropTypes.any, // 接口mock数据
     dataRoute: PropTypes.any, // 数据路径
     onChange: PropTypes.func, // 数据路径值变动后触发
@@ -14,7 +13,10 @@ class TreeSelectFromSchema extends React.PureComponent {
   };
 
   render() {
-    const { pageScreen, mockData, dataRoute, nodeKey, onChange } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { mockData, dataRoute, nodeKey, onChange } = this.props;
     let treeData = [];
     if (mockData && JSON.stringify(mockData) !== '{}') {
       let mockObj = mockData;
@@ -59,5 +61,5 @@ class TreeSelectFromSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
+  schemaStore: stores.JSONSchemaStore,
 }))(observer(TreeSelectFromSchema));

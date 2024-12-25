@@ -214,9 +214,7 @@ class AdvanceConfig extends React.PureComponent {
           >
             <div className="element-title">
               <Tooltip
-                title={
-                  '当前属性设置为条件字段后，其他字段可以根据其数值做对应的联动'
-                }
+                title={'设置为条件字段后，其他字段可根据其数值变化进行实时联动'}
                 placement="top"
               >
                 <span className="title-text">条件字段</span>
@@ -564,6 +562,35 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </>
         )}
+        <div className="wide-screen-element-warp" key={`${nodeKey}-onShow`}>
+          <div className="element-title">
+            <Tooltip
+              title={
+                '用于设置显隐表达式（onShow），比如设置 "dataType === 1"，则表示当数据域中 dataType 为 1 时显示当前配置项。'
+              }
+              placement="top"
+            >
+              <span className="title-text">显隐表达式</span>
+            </Tooltip>
+          </div>
+          <div className="content-item">
+            <div className="form-item-box">
+              <Input
+                style={{ display: 'inline-block' }}
+                placeholder={'请输入显隐表达式'}
+                defaultValue={targetJsonSchema.onShow}
+                onPressEnter={(event) => {
+                  const { value } = event.target;
+                  this.handleValueChange('onShow', value);
+                }}
+                onBlur={(event) => {
+                  const { value } = event.target;
+                  this.handleValueChange('onShow', value);
+                }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

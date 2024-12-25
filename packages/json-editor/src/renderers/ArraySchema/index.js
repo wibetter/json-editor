@@ -76,21 +76,23 @@ class ArraySchema extends React.PureComponent {
 
   /** 添加数组项 */
   addArrayItem = (keyRoute, curArr, curArrIndex) => {
+    const { addArrayItem } = this.props.jsonStore || {};
     const maximumChild = this.props.targetJsonSchema['maximum-child'];
     if (curArr && maximumChild && curArr.length >= maximumChild) {
       message.warning(`添加失败，最多可添加${maximumChild}个子项`);
     } else {
-      this.props.addArrayItem(keyRoute, curArrIndex);
+      addArrayItem(keyRoute, curArrIndex);
     }
   };
 
   /** 删除数组项 */
   deleteArrItem = (keyRoute, arrIndex, curArr) => {
+    const { deleteArrayIndex } = this.props.jsonStore || {};
     const minimumChild = this.props.targetJsonSchema['minimum-child'];
     if (curArr && minimumChild && curArr.length <= minimumChild) {
       message.warning(`删除失败，至少需要保留${minimumChild}个子项`);
     } else {
-      this.props.deleteArrayIndex(keyRoute, arrIndex);
+      deleteArrayIndex(keyRoute, arrIndex);
     }
   };
 
@@ -145,17 +147,12 @@ class ArraySchema extends React.PureComponent {
   };
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      pageScreen,
-      indexRoute,
-      targetJsonSchema,
-      getJSONDataByKeyRoute,
-      keyRoute2indexRoute,
-      updateFormValueData,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute, sortArrayItem } = jsonStore || {};
+
+    const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
+      this.props;
     const { jsonView, isClosed, hoverIndex, currentActiveArrIndex } =
       this.state;
     const curType = targetJsonSchema.type;
@@ -339,11 +336,7 @@ class ArraySchema extends React.PureComponent {
                             <ArrowUpOutlined
                               className="array-operate-btn"
                               onClick={(event) => {
-                                this.props.sortArrayItem(
-                                  keyRoute,
-                                  arrIndex,
-                                  'up',
-                                );
+                                sortArrayItem(keyRoute, arrIndex, 'up');
                                 event.preventDefault();
                                 event.stopPropagation();
                               }}
@@ -355,11 +348,7 @@ class ArraySchema extends React.PureComponent {
                             <ArrowDownOutlined
                               className="array-operate-btn"
                               onClick={(event) => {
-                                this.props.sortArrayItem(
-                                  keyRoute,
-                                  arrIndex,
-                                  'down',
-                                );
+                                sortArrayItem(keyRoute, arrIndex, 'down');
                                 event.preventDefault();
                                 event.stopPropagation();
                               }}
@@ -384,9 +373,8 @@ class ArraySchema extends React.PureComponent {
                         targetJsonSchema={arrayItemsDataObj}
                         isArrayItem={true}
                         arrIndex={arrIndex}
-                        getJSONDataByKeyRoute={getJSONDataByKeyRoute}
-                        keyRoute2indexRoute={keyRoute2indexRoute}
-                        updateFormValueData={updateFormValueData}
+                        schemaStore={schemaStore}
+                        jsonStore={jsonStore}
                       />
                     </div>
                   </div>
@@ -401,13 +389,6 @@ class ArraySchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  triggerChange: stores.JSONEditorStore.triggerChange,
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
-  addArrayItem: stores.JSONEditorStore.addArrayItem,
-  sortArrayItem: stores.JSONEditorStore.sortArrayItem,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(ArraySchema));

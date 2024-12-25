@@ -43,8 +43,13 @@ class SohuEventSchema extends React.PureComponent {
   }
 
   handleEventTitleChange = (eventCode, inputEvent) => {
+    const { keyRoute, jsonStore } = this.props;
+    const {
+      updateFormValueData,
+      getJSONDataByKeyRoute,
+      options: _options,
+    } = jsonStore || {};
     const { value: newTitle } = inputEvent.target;
-    const { keyRoute, updateFormValueData, getJSONDataByKeyRoute } = this.props;
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
     let globalEventMap = Object.assign({}, toJS(curJsonData.globalEventMap));
     const curKeyRout = `${keyRoute}-globalEventMap`;
@@ -53,8 +58,13 @@ class SohuEventSchema extends React.PureComponent {
   };
 
   handleSelectEventChange = (eventName, newEventCode) => {
-    const { keyRoute, updateFormValueData, getJSONDataByKeyRoute } = this.props;
-    const options = this.props.options || {};
+    const { keyRoute, jsonStore } = this.props;
+    const {
+      updateFormValueData,
+      getJSONDataByKeyRoute,
+      options: _options,
+    } = jsonStore || {};
+    const options = _options || {};
     const curKeyRout = `${keyRoute}-event`;
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
     let curEvent = [];
@@ -83,18 +93,13 @@ class SohuEventSchema extends React.PureComponent {
   };
 
   render() {
-    const {
-      indexRoute,
-      jsonKey,
-      nodeKey,
-      keyRoute,
-      pageScreen,
-      targetJsonSchema,
-      getJSONDataByKeyRoute,
-      keyRoute2indexRoute,
-      updateFormValueData,
-    } = this.props;
-    const options = this.props.options || {};
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute, options: _options } = jsonStore || {};
+
+    const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
+      this.props;
+    const options = options || {};
 
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const globalEventMap = curJsonData.globalEventMap || {}; // 全局事件列表
@@ -236,9 +241,6 @@ class SohuEventSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  options: stores.JSONEditorStore.options,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(SohuEventSchema));

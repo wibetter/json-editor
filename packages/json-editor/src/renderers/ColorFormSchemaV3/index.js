@@ -46,9 +46,10 @@ class ColorFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (color) => {
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     const { rgb } = color; // hex,
     const rgbaVal = `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`;
-    const { keyRoute, updateFormValueData } = this.props;
     // updateFormValueData(keyRoute, hex); // 更新数值(#ffffff数据格式)
     updateFormValueData(keyRoute, rgbaVal); // 更新数值: rgba(255,255,255,100)
     // 主动触发更新的状态数据
@@ -59,7 +60,8 @@ class ColorFormSchema extends React.PureComponent {
 
   /** color清除事件处理器 */
   deleteColor = () => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, 'initial'); // 更新数值
     message.success('已移除当前设置的颜色值');
     // 主动触发更新的状态数据
@@ -69,14 +71,10 @@ class ColorFormSchema extends React.PureComponent {
   };
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { renderState, displayColorPicker } = this.state;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -163,8 +161,6 @@ class ColorFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(ColorFormSchema));

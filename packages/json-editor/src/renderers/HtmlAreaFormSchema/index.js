@@ -45,19 +45,16 @@ class HtmlAreaFormSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (newJsonData) => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, newJsonData); // 更新数值
   };
 
   render() {
-    const {
-      nodeKey,
-      jsonKey,
-      keyRoute,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     const { isShowWarn, warnText } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
@@ -170,8 +167,6 @@ class HtmlAreaFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(HtmlAreaFormSchema));

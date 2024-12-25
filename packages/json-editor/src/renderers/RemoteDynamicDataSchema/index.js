@@ -73,16 +73,15 @@ class RemoteDynamicDataSchema extends React.PureComponent {
   };
 
   render() {
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
     const {
-      pageScreen,
-      curConfigData,
-      nodeKey,
-      keyRoute,
+      getJSONDataByKeyRoute,
+      dynamicDataApiScopeList,
       dynamicDataList,
       dynamicDataObj,
-      dynamicDataApiScopeList,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    } = jsonStore || {};
+    const { curConfigData, nodeKey, keyRoute } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
@@ -239,9 +238,6 @@ class RemoteDynamicDataSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  dynamicDataList: stores.JSONEditorStore.dynamicDataList,
-  dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
-  dynamicDataApiScopeList: stores.JSONEditorStore.dynamicDataApiScopeList,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(RemoteDynamicDataSchema));

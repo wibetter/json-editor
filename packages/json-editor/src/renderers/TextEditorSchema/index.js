@@ -95,9 +95,10 @@ class TextEditorSchema extends React.PureComponent {
   }
 
   componentWillMount() {
+    const { pageScreen } = this.props.schemaStore || {};
     // 从web缓存中获取数值
     catchJsonDataByWebCache.call(this);
-    if (this.props.pageScreen && this.props.pageScreen === 'wideScreen') {
+    if (pageScreen && pageScreen === 'wideScreen') {
       // 大屏幕时默认展开富文本编辑器
       this.setState({
         isClosed: false,
@@ -109,8 +110,13 @@ class TextEditorSchema extends React.PureComponent {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
-    } else if (nextProps.pageScreen !== this.props.pageScreen) {
-      if (nextProps.pageScreen && nextProps.pageScreen === 'wideScreen') {
+    } else if (
+      nextProps.schemaStore.pageScreen !== this.props.schemaStore.pageScreen
+    ) {
+      if (
+        nextProps.schemaStore.pageScreen &&
+        nextProps.schemaStore.pageScreen === 'wideScreen'
+      ) {
         // 大屏幕时默认展开富文本编辑器
         this.setState({
           isClosed: false,
@@ -121,19 +127,16 @@ class TextEditorSchema extends React.PureComponent {
 
   /** 富文本内容变动事件处理器 */
   handleEditorChange = (editorState) => {
-    const { keyRoute, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
   };
 
   render() {
-    const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      targetJsonSchema,
-      pageScreen,
-      getJSONDataByKeyRoute,
-    } = this.props;
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { isClosed } = this.state;
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
     const editorState = BraftEditor.createEditorState(curJsonData); // 将html字符串转换成editorState
@@ -225,8 +228,6 @@ class TextEditorSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(TextEditorSchema));

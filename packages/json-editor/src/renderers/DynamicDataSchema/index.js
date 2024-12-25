@@ -54,7 +54,7 @@ class DynamicDataSchema extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (curKeyRoute, value) => {
-    const { updateFormValueData } = this.props;
+    const { updateFormValueData } = this.props.jsonStore || {};
     updateFormValueData(curKeyRoute, value); // 更新数值
   };
 
@@ -68,7 +68,8 @@ class DynamicDataSchema extends React.PureComponent {
 
   // 面板展示内容切换（本地数据/接口数据）
   tabChange = (value) => {
-    const { keyRoute, triggerChangeAction } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { triggerChangeAction } = jsonStore || {};
     this.handleValueChange(`${keyRoute}-type`, value);
     setTimeout(() => {
       triggerChangeAction();
@@ -76,7 +77,8 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   dynamicDataChange = (dynamicDataName) => {
-    const { keyRoute, dynamicDataObj, triggerChangeAction } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { triggerChangeAction, dynamicDataObj } = jsonStore || {};
     const curDynamicData = objClone(toJS(dynamicDataObj[dynamicDataName]));
     if (curDynamicData) {
       const newCurDynamicData = {
@@ -99,7 +101,8 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   dataRouteChange = (newDataRoute) => {
-    const { keyRoute, triggerChangeAction, updateFormValueData } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { triggerChangeAction, updateFormValueData } = jsonStore || {};
     if (newDataRoute) {
       updateFormValueData(`${keyRoute}-config-dataRoute`, newDataRoute, true);
       const dataPath = dataRoute2dataPath(newDataRoute);
@@ -120,7 +123,8 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   paramsConfigChange = (paramsKey, newParamsConfig) => {
-    const { keyRoute, triggerChangeAction, getJSONDataByKeyRoute } = this.props;
+    const { keyRoute, jsonStore } = this.props;
+    const { triggerChangeAction, getJSONDataByKeyRoute } = jsonStore || {};
     const curParamsConfigData =
       getJSONDataByKeyRoute(`${keyRoute}-config-body-${paramsKey}`) || {};
     this.handleValueChange(
@@ -133,6 +137,9 @@ class DynamicDataSchema extends React.PureComponent {
   };
 
   render() {
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const {
       keyRoute,
       jsonKey,
@@ -142,8 +149,6 @@ class DynamicDataSchema extends React.PureComponent {
       dynamicDataList,
       dynamicDataObj,
       dynamicDataApiScopeList,
-      getJSONDataByKeyRoute,
-      pageScreen,
     } = this.props;
     const { isShowFilter } = this.state;
     const curType = targetJsonSchema.type;
@@ -423,13 +428,6 @@ class DynamicDataSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  triggerChange: stores.JSONEditorStore.triggerChange,
-  triggerChangeAction: stores.JSONEditorStore.triggerChangeAction,
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  dynamicDataList: stores.JSONEditorStore.dynamicDataList,
-  dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
-  dynamicDataApiScopeList: stores.JSONEditorStore.dynamicDataApiScopeList,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(DynamicDataSchema));

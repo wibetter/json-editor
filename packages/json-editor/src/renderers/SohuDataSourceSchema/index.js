@@ -42,17 +42,11 @@ class SohuDataSourceSchema extends React.PureComponent {
   }
 
   render() {
-    const {
-      indexRoute,
-      jsonKey,
-      nodeKey,
-      keyRoute,
-      pageScreen,
-      targetJsonSchema,
-      getJSONDataByKeyRoute,
-      keyRoute2indexRoute,
-      updateFormValueData,
-    } = this.props;
+    const { pageScreen } = this.props.schemaStore || {};
+    const { options: _options, getJSONDataByKeyRoute } =
+      this.props.jsonStore || {};
+    const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
+      this.props;
 
     return (
       <div
@@ -151,9 +145,8 @@ class SohuDataSourceSchema extends React.PureComponent {
                         nodeKey: childNodeKey,
                         targetJsonSchema: currentSchemaData,
                         isArrayItem: true,
-                        getJSONDataByKeyRoute,
-                        keyRoute2indexRoute,
-                        updateFormValueData,
+                        schemaStore,
+                        jsonStore,
                       });
                     }
                   },
@@ -196,9 +189,8 @@ class SohuDataSourceSchema extends React.PureComponent {
                       nodeKey: childNodeKey,
                       targetJsonSchema: currentSchemaData,
                       isArrayItem: true,
-                      getJSONDataByKeyRoute,
-                      keyRoute2indexRoute,
-                      updateFormValueData,
+                      schemaStore,
+                      jsonStore,
                     })}
                   </Panel>
                 );
@@ -212,8 +204,6 @@ class SohuDataSourceSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  pageScreen: stores.JSONSchemaStore.pageScreen,
-  getJSONDataByKeyRoute: stores.JSONEditorStore.getJSONDataByKeyRoute,
-  updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-  getInitJsonDataByKeyRoute: stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(SohuDataSourceSchema));
