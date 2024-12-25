@@ -38,6 +38,17 @@ function truncate(str, paramConfig) {
 }
 
 /**
+ * 支持属性表达式
+ */
+function expressionOn(expressionStr, data) {
+  var expressionFunc = new Function(
+    'data',
+    'with(data) { return (' + expressionStr + ');}',
+  );
+  return expressionFunc(data);
+}
+
+/**
  * getJSONDataByKeyRoute: 根据key值路径获取对应的json数据
  * 【方法参数说明】
  * keyRoute: key值索引路径
@@ -7529,6 +7540,7 @@ export {
   TypeDataList,
   dataRoute2dataPath,
   dynamicDataAnalyzer,
+  expressionOn,
   getCurPosition,
   getDefaultOptionVal,
   getExpectType$1 as getExpectType,

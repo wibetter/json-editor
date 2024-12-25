@@ -14,7 +14,6 @@ import {
 } from 'antd';
 const { TextArea } = Input;
 const { Option } = Select;
-import ConditionValueSchema from '$components/ConditionValueSchema'; // 条件数值选择器
 import {
   isNeedDefaultOption,
   isNeedPlaceholderOption,
@@ -36,9 +35,6 @@ class AdvanceConfig extends React.PureComponent {
     indexRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
-    checkConditionProp: PropTypes.any,
-    addConditionProp: PropTypes.any,
-    removeConditionProp: PropTypes.any,
     jsonSchema: PropTypes.any,
   };
 
@@ -188,79 +184,11 @@ class AdvanceConfig extends React.PureComponent {
     );
   };
 
-  /** 条件字段开关变动事件处理器 */
-  curConditionPropChange = (isConditionProp, keyRoute) => {
-    const {
-      indexRoute,
-      jsonKey,
-      targetJsonSchema,
-      addConditionProp,
-      removeConditionProp,
-      indexRoute2keyRoute,
-    } = this.props;
-    const curKeyRoute = keyRoute || indexRoute2keyRoute(indexRoute);
-    if (isConditionProp) {
-      // 将当前字段添加为条件字段
-      addConditionProp({
-        key: jsonKey,
-        keyRoute: curKeyRoute,
-        title: targetJsonSchema.title,
-        format: targetJsonSchema.type,
-        type: targetJsonSchema.type,
-      });
-      // 增加条件字段标记
-      this.handleValueChange('isConditionProp', true);
-    } else {
-      // 将当前字段改为非条件字段
-      removeConditionProp(curKeyRoute);
-      // 取消条件字段标记
-      this.handleValueChange('isConditionProp', false);
-    }
-  };
-
-  // 删除隐藏规则
-  deleteHiddenRule = () => {
-    const { indexRoute, deleteSchemaProp } = this.props;
-    deleteSchemaProp(indexRoute, 'hiddenRule');
-  };
-
-  // 添加隐藏规则
-  addHiddenRule = () => {
-    // 获取当前字段的条件规则
-    const hiddenRule = {}; // 暂无对应的条件字段
-    this.handleValueChange('hiddenRule', hiddenRule);
-  };
-
-  // 隐藏规则条件字段变动
-  hiddenRuleConditionChange = (conditionPropItem) => {
-    const { targetJsonSchema } = this.props;
-    // 获取当前字段的条件规则
-    let hiddenRule = {};
-    if (targetJsonSchema.hiddenRule) {
-      hiddenRule = toJS(targetJsonSchema.hiddenRule);
-    }
-    hiddenRule.conditionProp = conditionPropItem;
-    this.handleValueChange('hiddenRule', hiddenRule);
-  };
-
-  // 隐藏规则条件数值变动
-  hiddenRuleConditionValueChange = (value) => {
-    const { targetJsonSchema } = this.props;
-    // 获取当前字段的条件规则
-    let hiddenRule = {};
-    if (targetJsonSchema.hiddenRule) {
-      hiddenRule = toJS(targetJsonSchema.hiddenRule);
-    }
-    hiddenRule.conditionValue = value;
-    this.handleValueChange('hiddenRule', hiddenRule);
-  };
-
   render() {
     const {
       nodeKey,
       indexRoute,
       targetJsonSchema,
-      checkConditionProp,
       jsonSchema,
       indexRoute2keyRoute,
     } = this.props;
@@ -268,27 +196,7 @@ class AdvanceConfig extends React.PureComponent {
     // 获取对应的keyRoute
     const curKeyRoute = indexRoute2keyRoute(indexRoute);
     // 判断当前是否是条件字段
-    let isConditionProp = false;
-    if (hasProperties(targetJsonSchema.isConditionProp)) {
-      isConditionProp = targetJsonSchema.isConditionProp;
-    } else {
-      isConditionProp = checkConditionProp(curKeyRoute);
-    }
-
-    // 获取全局的条件字段
-    let conditionProps = {};
-    if (jsonSchema.conditionProps) {
-      // 首次添加条件字段时
-      // conditionProps = toJS(jsonSchema.conditionProps);
-      conditionProps = jsonSchema.conditionProps;
-    }
-    const conditionPropKeys = Object.keys(conditionProps);
-
-    // 获取当前字段的条件规则
-    let hiddenRule = {};
-    if (targetJsonSchema.hiddenRule) {
-      hiddenRule = targetJsonSchema.hiddenRule;
-    }
+    let isConditionProp = targetJsonSchema.isConditionProp;
 
     /** 默认值需要进行细分
      *  输入形式的基础类型组件（input、boolean、 date、date-time、 time、 url、number），以input表单形式让用户填充；
@@ -302,7 +210,7 @@ class AdvanceConfig extends React.PureComponent {
         {isNeedConditionOption(curType) && (
           <div
             className="wide-screen-element-warp"
-            key={`${nodeKey}-isConditionProp-${isConditionProp}`}
+            key={`${nodeKey}-isConditionProp`}
           >
             <div className="element-title">
               <Tooltip
@@ -317,7 +225,7 @@ class AdvanceConfig extends React.PureComponent {
             <div className="content-item">
               <div
                 className="form-item-box"
-                key={`${nodeKey}-isConditionProp-switch-${isConditionProp}`}
+                key={`${nodeKey}-isConditionProp-switch`}
               >
                 <Switch
                   style={{ display: 'inline-block' }}
@@ -325,7 +233,7 @@ class AdvanceConfig extends React.PureComponent {
                   checkedChildren="是"
                   unCheckedChildren="否"
                   onChange={(checked) => {
-                    this.curConditionPropChange(checked, curKeyRoute);
+                    this.handleValueChange('isConditionProp', checked);
                   }}
                 />
               </div>
@@ -656,104 +564,6 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </>
         )}
-        {!targetJsonSchema.hiddenRule && (
-          <div className="wide-screen-element-warp">
-            <div className="element-title">
-              <span className="title-text">隐藏规则</span>
-            </div>
-            <div className="content-item">
-              <Button
-                size="small"
-                className="add-rule-condition-btn"
-                onClick={this.addHiddenRule}
-              >
-                添加隐藏规则
-              </Button>
-            </div>
-          </div>
-        )}
-        {targetJsonSchema.hiddenRule && (
-          <div
-            className="wide-screen-element-warp"
-            key={`${nodeKey}-clearValueOnHidden-${targetJsonSchema.clearValueOnHidden}`}
-          >
-            <div className="element-title">
-              <Tooltip
-                title={
-                  '默认隐藏表单项时，会保留其对应的表单项数值。如需隐藏时删除表单项数值，请开启以下配置项。'
-                }
-                placement="top"
-              >
-                <span className="title-text">隐藏时删除</span>
-              </Tooltip>
-            </div>
-            <div className="content-item">
-              <div className="form-item-box">
-                <Switch
-                  style={{ display: 'inline-block' }}
-                  defaultChecked={targetJsonSchema.clearValueOnHidden}
-                  checkedChildren="true"
-                  unCheckedChildren="false"
-                  onChange={(checked) => {
-                    this.handleValueChange('clearValueOnHidden', checked);
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-        {targetJsonSchema.hiddenRule && (
-          <div className="hidden-rule-box">
-            <div className="rule-title">
-              <div className="title">隐藏规则：</div>
-              <div className="btn-box">
-                <Button size="small" onClick={this.deleteHiddenRule}>
-                  删除规则
-                </Button>
-              </div>
-            </div>
-            <div className="rule-condition-box">
-              <div className="condition-title">隐藏条件：</div>
-              <div className="condition-prop">
-                <Select
-                  showSearch
-                  defaultValue={
-                    hiddenRule.conditionProp
-                      ? hiddenRule.conditionProp.keyRoute
-                      : null
-                  }
-                  style={{ width: 150 }}
-                  onChange={(conditionKey) => {
-                    const conditionItem = conditionProps[conditionKey];
-                    this.hiddenRuleConditionChange(conditionItem);
-                  }}
-                >
-                  {conditionPropKeys.map((propKey) => {
-                    const conditionItem = conditionProps[propKey];
-                    return (
-                      <Option
-                        key={conditionItem.keyRoute}
-                        value={conditionItem.keyRoute}
-                        disabled={curKeyRoute === conditionItem.keyRoute}
-                      >
-                        {conditionItem.title}({conditionItem.key})
-                      </Option>
-                    );
-                  })}
-                </Select>
-              </div>
-              <div className="condition-equal">等于</div>
-              <div className="condition-value">
-                <ConditionValueSchema
-                  conditionRule={hiddenRule}
-                  hiddenRuleConditionValueChange={
-                    this.hiddenRuleConditionValueChange
-                  }
-                />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     );
   }
@@ -762,10 +572,6 @@ class AdvanceConfig extends React.PureComponent {
 export default inject((stores) => ({
   getSchemaByIndexRoute: stores.jsonSchemaStore.getSchemaByIndexRoute,
   editSchemaData: stores.jsonSchemaStore.editSchemaData,
-  checkConditionProp: stores.jsonSchemaStore.checkConditionProp,
-  addConditionProp: stores.jsonSchemaStore.addConditionProp,
   indexRoute2keyRoute: stores.jsonSchemaStore.indexRoute2keyRoute,
-  removeConditionProp: stores.jsonSchemaStore.removeConditionProp,
-  deleteSchemaProp: stores.jsonSchemaStore.deleteSchemaProp,
   jsonSchema: stores.jsonSchemaStore.jsonSchema,
 }))(observer(AdvanceConfig));

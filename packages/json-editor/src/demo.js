@@ -832,6 +832,7 @@ class IndexDemo extends React.PureComponent {
                       type: {
                         type: 'select',
                         title: '数据源类型',
+                        isConditionProp: true,
                         options: [
                           {
                             label: '模板直接设置',
@@ -848,6 +849,7 @@ class IndexDemo extends React.PureComponent {
                         type: 'object',
                         title: '广告规则',
                         description: '',
+                        onShow: 'type === "DevDefaults"',
                         properties: {
                           id: {
                             title: '广告ID',
@@ -1139,6 +1141,7 @@ class IndexDemo extends React.PureComponent {
                         type: 'array',
                         title: '广告规则列表',
                         description: '',
+                        onShow: 'type === "ResourceCenter"',
                         items: {
                           type: 'object',
                           title: '数组项',

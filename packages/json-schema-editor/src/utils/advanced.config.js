@@ -51,6 +51,7 @@ export function isNeedConditionOption(curType) {
     'date',
     'date-time',
     'time',
+    'input-image',
   ];
   return supportedTypeList.indexOf(curType) > -1;
 }

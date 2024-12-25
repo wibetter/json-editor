@@ -1,12 +1,19 @@
+import {
+  objClone as _objClone,
+  isEqual as _isEqual,
+} from '@wibetter/json-utils';
+
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {
-  const newObj = JSON.stringify(targetObj);
-  return JSON.parse(newObj);
+  // const newObj = JSON.stringify(targetObj);
+  // return JSON.parse(newObj);
+  return _objClone(targetObj);
 }
 
 /** 对比两个json数据是否相等 */
 export function isEqual(targetObj, nextTargetObj) {
-  return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
+  // return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
+  return _isEqual(targetObj, nextTargetObj);
 }
 
 /** 判断当前属性是否存在

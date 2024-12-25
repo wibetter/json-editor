@@ -1,4 +1,10 @@
 import React, { Suspense } from 'react';
+import {
+  expressionOn,
+  getParentKeyRoute,
+  isString,
+  isBoolean,
+} from '@wibetter/json-utils';
 import { hasProperties } from '../utils';
 import InputFormSchema from '$renderers/InputFormSchema/index';
 import ObjectSchema from '$renderers/ObjectSchema/index';
@@ -65,27 +71,21 @@ const MappingRenderV2 = (props) => {
     keyRoute2indexRoute,
   } = props;
   const curType = targetJsonSchema.type;
-  // 获取当前字段的条件规则
-  let hiddenRule = {};
-  if (targetJsonSchema.hiddenRule) {
-    hiddenRule = targetJsonSchema.hiddenRule;
-  }
 
   let curConditionValue = '';
   let curNodeKey = nodeKey;
 
-  // 隐藏条件成立则直接返回
-  if (hiddenRule.conditionProp && hasProperties(hiddenRule.conditionValue)) {
-    const curConditionProp = hiddenRule.conditionProp;
-    const needConditionValue = hiddenRule.conditionValue; // 条件字段成立的条件值
-    const keyRoute = curConditionProp.keyRoute; // 条件字段的key值
-
-    // 获取条件字段的数值
-    curConditionValue = getJSONDataByKeyRoute(keyRoute);
-    if (needConditionValue === curConditionValue) {
-      return '';
-    }
+  // 支持显隐属性表达式
+  const parentKeyRoute = getParentKeyRoute(keyRoute);
+  const curData = getJSONDataByKeyRoute(parentKeyRoute); // 获取当前父级数据域
+  if (
+    (isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
+    (isString(targetJsonSchema.onShow) &&
+      !expressionOn(targetJsonSchema.onShow, curData))
+  ) {
+    return;
   }
+
   // 将条件字段的数值作为key的一部分
   curNodeKey = `${nodeKey}-${curConditionValue}`;
   props.nodeKey = curNodeKey;

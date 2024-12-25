@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Tree, message } from 'antd';
 import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
 import MappingRender from '$schemaRenderer/MappingRender';
-import ConditionPropsSchema from '$components/ConditionPropsSchema/index';
 import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
 import {
   getParentIndexRoute,
@@ -213,7 +212,6 @@ class JSONSchema extends React.PureComponent {
       <div className="json-schema-container">
         {!isEmpty && (
           <>
-            <ConditionPropsSchema />
             <Tree
               draggable={true}
               selectable={false}

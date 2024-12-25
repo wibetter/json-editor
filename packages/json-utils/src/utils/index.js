@@ -36,3 +36,14 @@ export function truncate(str, paramConfig) {
   }
   return truncateStr(str, paramConfig);
 }
+
+/**
+ * 支持属性表达式
+ */
+export function expressionOn(expressionStr, data) {
+  const expressionFunc = new Function(
+    'data',
+    `with(data) { return (${expressionStr});}`,
+  );
+  return expressionFunc(data);
+}
