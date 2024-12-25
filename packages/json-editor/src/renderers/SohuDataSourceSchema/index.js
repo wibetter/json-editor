@@ -42,9 +42,9 @@ class SohuDataSourceSchema extends React.PureComponent {
   }
 
   render() {
-    const { pageScreen } = this.props.schemaStore || {};
-    const { options: _options, getJSONDataByKeyRoute } =
-      this.props.jsonStore || {};
+    const { schemaStore, jsonStore } = this.props;
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
       this.props;
 

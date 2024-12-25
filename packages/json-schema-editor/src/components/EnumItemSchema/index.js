@@ -28,8 +28,8 @@ class EnumItemSchema extends React.PureComponent {
   /** jsonKey类型输入值变动事件处理器 */
   handleEnumKeyChange = (event) => {
     const { value } = event.target;
-    const { indexRoute, enumIndex, enumKey, isExitEnumKey, updateEnumKey } =
-      this.props;
+    const { indexRoute, enumIndex, enumKey } = this.props;
+    const { isExitEnumKey, updateEnumKey } = this.props.schemaStore || {};
     if (value !== enumKey) {
       if (isExitEnumKey(indexRoute, enumIndex, value)) {
         message.warning('对不起，存在相同的key值，请重新编辑。');
@@ -42,7 +42,8 @@ class EnumItemSchema extends React.PureComponent {
   /** enumText类型输入值变动事件处理器 */
   handleEnumTextChange = (event) => {
     const { value } = event.target;
-    const { indexRoute, enumIndex, enumText, updateEnumText } = this.props;
+    const { indexRoute, enumIndex, enumText } = this.props;
+    const { updateEnumText } = this.props.schemaStore || {};
     if (value !== enumText) {
       updateEnumText(indexRoute, enumIndex, value); // 更新枚举值
     }
@@ -50,20 +51,23 @@ class EnumItemSchema extends React.PureComponent {
 
   /** 新增选择项 */
   onAddBtnEvent = () => {
-    const { indexRoute, enumIndex, addEnumItem } = this.props;
+    const { indexRoute, enumIndex } = this.props;
+    const { addEnumItem } = this.props.schemaStore || {};
     addEnumItem(indexRoute, enumIndex); // 新增枚举值
   };
 
   /** 复制功能 */
   onCopyBtnEvent = () => {
-    const { indexRoute, enumIndex, copyEnumItem } = this.props;
+    const { indexRoute, enumIndex } = this.props;
+    const { copyEnumItem } = this.props.schemaStore || {};
     copyEnumItem(indexRoute, enumIndex); // copy枚举值
   };
 
   /** 删除字段项 */
   onDeleteBtnEvent = () => {
-    const { indexRoute, enumIndex, getSchemaByIndexRoute, deleteEnumItem } =
-      this.props;
+    const { getSchemaByIndexRoute, deleteEnumItem } =
+      this.props.schemaStore || {};
+    const { indexRoute, enumIndex } = this.props;
     const itemJSONObj = getSchemaByIndexRoute(indexRoute);
     if (itemJSONObj.enum && itemJSONObj.enum.length > 1) {
       deleteEnumItem(indexRoute, enumIndex); // 删除指定位置的枚举值
@@ -124,11 +128,5 @@ class EnumItemSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  getSchemaByIndexRoute: stores.jsonSchemaStore.getSchemaByIndexRoute,
-  updateEnumKey: stores.jsonSchemaStore.updateEnumKey,
-  updateEnumText: stores.jsonSchemaStore.updateEnumText,
-  isExitEnumKey: stores.jsonSchemaStore.isExitEnumKey,
-  deleteEnumItem: stores.jsonSchemaStore.deleteEnumItem,
-  addEnumItem: stores.jsonSchemaStore.addEnumItem,
-  copyEnumItem: stores.jsonSchemaStore.copyEnumItem,
+  schemaStore: stores.schemaStore,
 }))(observer(EnumItemSchema));

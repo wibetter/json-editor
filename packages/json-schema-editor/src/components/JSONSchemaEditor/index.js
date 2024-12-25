@@ -23,31 +23,36 @@ class JSONSchema extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
+      this.props.schemaStore || {};
+
     // 根据props.data对jsonSchema进行初始化
     if (props.data) {
-      this.props.initJSONSchemaData(props.data);
+      initJSONSchemaData(props.data);
     }
     // 记录onChange事件
     if (props.onChange) {
-      this.props.initOnChange(props.onChange);
+      initOnChange(props.onChange);
     }
     // 重置TypeList
     if (props.typeList) {
-      this.props.initSchemaTypeList(props.typeList);
+      initSchemaTypeList(props.typeList);
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
+      this.props.schemaStore || {};
     if (!isEqual(nextProps.data, this.props.data)) {
-      this.props.initJSONSchemaData(nextProps.data);
+      initJSONSchemaData(nextProps.data);
     }
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
-      this.props.initOnChange(nextProps.onChange);
+      initOnChange(nextProps.onChange);
     }
     // 重置TypeList
     if (!isEqual(nextProps.typeList, this.props.typeList)) {
-      this.props.initSchemaTypeList(nextProps.typeList);
+      initSchemaTypeList(nextProps.typeList);
     }
   }
 
@@ -55,7 +60,7 @@ class JSONSchema extends React.PureComponent {
    * 拖拽相关方法：开始拖动时触发的事件
    */
   onDragStart = (eventData) => {
-    const { getSchemaByIndexRoute } = this.props;
+    const { getSchemaByIndexRoute } = this.props.schemaStore || {};
     const { node } = eventData;
     const curIndexRoute = node.indexRoute;
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
@@ -81,7 +86,7 @@ class JSONSchema extends React.PureComponent {
       deleteJsonByIndex,
       isExitJsonKey,
       isSupportCurType,
-    } = this.props;
+    } = this.props.schemaStore || {};
 
     // 拖动的元素key
     const curIndexRoute = dragNode.indexRoute;
@@ -200,7 +205,7 @@ class JSONSchema extends React.PureComponent {
   };
 
   render() {
-    const { jsonSchema } = this.props;
+    const { jsonSchema } = this.props.schemaStore || {};
     const isEmpty = isEmptySchema(jsonSchema);
     const curType = jsonSchema.type;
     /**
@@ -254,15 +259,5 @@ class JSONSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  jsonSchema: stores.jsonSchemaStore.jsonSchema,
-  initJSONSchemaData: stores.jsonSchemaStore.initJSONSchemaData,
-  initOnChange: stores.jsonSchemaStore.initOnChange,
-  initSchemaTypeList: stores.jsonSchemaStore.initSchemaTypeList,
-  setPageScreen: stores.jsonSchemaStore.setPageScreen,
-  getSchemaByIndexRoute: stores.jsonSchemaStore.getSchemaByIndexRoute,
-  indexRoute2keyRoute: stores.jsonSchemaStore.indexRoute2keyRoute,
-  insertJsonData: stores.jsonSchemaStore.insertJsonData,
-  deleteJsonByIndex: stores.jsonSchemaStore.deleteJsonByIndex,
-  isExitJsonKey: stores.jsonSchemaStore.isExitJsonKey,
-  isSupportCurType: stores.jsonSchemaStore.isSupportCurType,
+  schemaStore: stores.schemaStore,
 }))(observer(JSONSchema));

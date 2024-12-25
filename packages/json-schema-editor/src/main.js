@@ -23,16 +23,16 @@ export default class JSONSchemaEditor extends React.PureComponent {
     super(props);
 
     this.state = {
-      jsonSchemaStore: new JSONStore.jsonSchemaStore(), // 初始化一份schemaStore
+      schemaStore: new JSONStore.schemaStore(), // 初始化一份schemaStore
     };
   }
 
   render() {
     const { data, typeList, onChange, element, wideScreen } = this.props;
-    const { jsonSchemaStore } = this.state;
+    const { schemaStore } = this.state;
 
     const renderContent = (
-      <Provider jsonSchemaStore={jsonSchemaStore}>
+      <Provider schemaStore={schemaStore}>
         <JSONSchema
           data={data}
           typeList={typeList}

@@ -36,7 +36,6 @@ import SohuEventSchema from '$renderers/SohuEventSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
-  const { pageScreen } = props.schemaStore || {};
   const { getJSONDataByKeyRoute } = props.jsonStore || {};
 
   const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = props;

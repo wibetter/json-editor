@@ -30,14 +30,9 @@ class SelectFormSchema extends React.PureComponent {
 
   /** 数据源类型变动事件处理器 */
   typeChange = (newType) => {
-    const {
-      indexRoute,
-      jsonKey,
-      targetJsonSchema,
-      typeSelectData,
-      editSchemaData,
-      updateSchemaData,
-    } = this.props;
+    const { editSchemaData, updateSchemaData } = this.props.schemaStore || {};
+    const { indexRoute, jsonKey, targetJsonSchema, typeSelectData } =
+      this.props;
     if (targetJsonSchema.default === newType) return; // default值未改变则直接跳出
     editSchemaData(indexRoute, jsonKey, {
       default: newType,
@@ -101,6 +96,5 @@ class SelectFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  editSchemaData: stores.jsonSchemaStore.editSchemaData,
-  updateSchemaData: stores.jsonSchemaStore.updateSchemaData,
+  schemaStore: stores.schemaStore,
 }))(observer(SelectFormSchema));

@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.8
  * author: wibetter
  * build tool: AKFun
- * build time: Wed Dec 25 2024 13:23:18 GMT+0800 (中国标准时间)
+ * build time: Wed Dec 25 2024 17:18:47 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -309,37 +309,46 @@
                 // 是否显示code模式，默认不显示code模式
                 viewStyle: _this.catchViewStyle(props.viewStyle), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
               };
+              var _ref = _this.props.schemaStore || {},
+                initJSONSchemaData = _ref.initJSONSchemaData,
+                setPageScreen = _ref.setPageScreen;
+              var _ref2 = _this.props.jsonStore || {},
+                initJSONData = _ref2.initJSONData,
+                initOnChange = _ref2.initOnChange,
+                setDynamicDataList = _ref2.setDynamicDataList,
+                setOptions = _ref2.setOptions;
+
               // 根据props.schemaData对jsonSchema进行初始化
               if (props.schemaData) {
-                _this.props.initJSONSchemaData(props.schemaData);
+                initJSONSchemaData(props.schemaData);
                 // 根据props.jsonData对jsonData进行初始化
-                _this.props.initJSONData(props.jsonData);
+                initJSONData(props.jsonData);
               } else if (props.jsonData) {
                 // schemaData为空，jsonData不为空时，尝试通过jsonData转jsonSchema
                 var jsonSchema = (0,
                 _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.json2schema)(
                   props.jsonData,
                 ); // 通过json转换schema
-                _this.props.initJSONSchemaData(jsonSchema);
+                initJSONSchemaData(jsonSchema);
                 // 根据props.jsonData对jsonData进行初始化
-                _this.props.initJSONData(props.jsonData);
+                initJSONData(props.jsonData);
               }
               // 读取宽屏和小屏的配置
               if (props.wideScreen) {
-                _this.props.setPageScreen(props.wideScreen);
+                setPageScreen(props.wideScreen);
               }
               // 记录onChange事件
               if (props.onChange) {
-                _this.props.initOnChange(props.onChange);
+                initOnChange(props.onChange);
               }
 
               // 获取dynamicDataList（动态数据源）
               if (props.dynamicDataList) {
-                _this.props.setDynamicDataList(props.dynamicDataList);
+                setDynamicDataList(props.dynamicDataList);
               }
               // 配置类数据
               if (props.options) {
-                _this.props.setOptions(props.options);
+                setOptions(props.options);
               }
               return _this;
             }
@@ -350,6 +359,14 @@
             var _proto = JSONDataEditor.prototype;
             _proto.componentWillReceiveProps =
               function componentWillReceiveProps(nextProps) {
+                var _ref3 = this.props.schemaStore || {},
+                  JSONSchemaChange = _ref3.JSONSchemaChange,
+                  setPageScreen = _ref3.setPageScreen;
+                var _ref4 = this.props.jsonStore || {},
+                  initJSONData = _ref4.initJSONData,
+                  initOnChange = _ref4.initOnChange,
+                  setDynamicDataList = _ref4.setDynamicDataList,
+                  setOptions = _ref4.setOptions;
                 /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
                 if (
                   !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
@@ -357,7 +374,7 @@
                     this.props.schemaData,
                   )
                 ) {
-                  this.props.JSONSchemaChange(nextProps.schemaData);
+                  JSONSchemaChange(nextProps.schemaData);
                 }
                 /** 2. 初始化jsonData */
                 if (
@@ -366,7 +383,7 @@
                     this.props.jsonData,
                   )
                 ) {
-                  this.props.initJSONData(nextProps.jsonData);
+                  initJSONData(nextProps.jsonData);
                 }
                 // 读取code模式配置
                 if (
@@ -396,7 +413,7 @@
                     this.props.wideScreen,
                   )
                 ) {
-                  this.props.setPageScreen(nextProps.wideScreen);
+                  setPageScreen(nextProps.wideScreen);
                 }
                 // 记录onChange事件
                 if (
@@ -405,7 +422,7 @@
                     this.props.onChange,
                   )
                 ) {
-                  this.props.initOnChange(nextProps.onChange);
+                  initOnChange(nextProps.onChange);
                 }
 
                 // 获取dynamicDataList（动态数据源）
@@ -415,7 +432,7 @@
                     this.props.dynamicDataList,
                   )
                 ) {
-                  this.props.setDynamicDataList(nextProps.dynamicDataList);
+                  setDynamicDataList(nextProps.dynamicDataList);
                 }
                 if (
                   !(0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.isEqual)(
@@ -423,18 +440,19 @@
                     this.props.options,
                   )
                 ) {
-                  this.props.setOptions(nextProps.options);
+                  setOptions(nextProps.options);
                 }
               };
             _proto.render = function render() {
               var _this2 = this;
               var _this$props = this.props,
-                jsonSchema = _this$props.jsonSchema,
-                lastUpdateTime = _this$props.lastUpdateTime,
-                jsonLastUpdateTime = _this$props.jsonLastUpdateTime,
-                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
-                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
-                updateFormValueData = _this$props.updateFormValueData;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref5 = schemaStore || {},
+                jsonSchema = _ref5.jsonSchema,
+                lastUpdateTime = _ref5.lastUpdateTime;
+              var _ref6 = jsonStore || {},
+                jsonLastUpdateTime = _ref6.lastUpdateTime;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
                 viewStyle = _this$state.viewStyle;
@@ -522,10 +540,8 @@
                                     nodeKey: nodeKey,
                                     targetJsonSchema: currentSchemaData,
                                     isStructuredSchema: isStructured,
-                                    getJSONDataByKeyRoute:
-                                      getJSONDataByKeyRoute,
-                                    keyRoute2indexRoute: keyRoute2indexRoute,
-                                    updateFormValueData: updateFormValueData,
+                                    schemaStore: schemaStore,
+                                    jsonStore: jsonStore,
                                   }),
                                 );
                               }
@@ -586,10 +602,8 @@
                                     nodeKey: nodeKey,
                                     targetJsonSchema: currentSchemaData,
                                     isStructuredSchema: isStructured,
-                                    getJSONDataByKeyRoute:
-                                      getJSONDataByKeyRoute,
-                                    keyRoute2indexRoute: keyRoute2indexRoute,
-                                    updateFormValueData: updateFormValueData,
+                                    schemaStore: schemaStore,
+                                    jsonStore: jsonStore,
                                   }),
                                 );
                               }
@@ -611,9 +625,8 @@
                           keyRoute: '',
                           nodeKey: '',
                           targetJsonSchema: jsonSchema,
-                          getJSONDataByKeyRoute: getJSONDataByKeyRoute,
-                          keyRoute2indexRoute: keyRoute2indexRoute,
-                          updateFormValueData: updateFormValueData,
+                          schemaStore: schemaStore,
+                          jsonStore: jsonStore,
                         }),
                       ),
                   ),
@@ -648,20 +661,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              jsonSchema: stores.JSONSchemaStore.jsonSchema,
-              lastUpdateTime: stores.JSONSchemaStore.lastUpdateTime,
-              jsonLastUpdateTime: stores.JSONEditorStore.lastUpdateTime,
-              initJSONSchemaData: stores.JSONSchemaStore.initJSONSchemaData,
-              JSONSchemaChange: stores.JSONSchemaStore.JSONSchemaChange,
-              initJSONData: stores.JSONEditorStore.initJSONData,
-              initOnChange: stores.JSONEditorStore.initOnChange,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              keyRoute2indexRoute: stores.JSONSchemaStore.keyRoute2indexRoute,
-              setDynamicDataList: stores.JSONEditorStore.setDynamicDataList,
-              setOptions: stores.JSONEditorStore.setOptions,
-              setPageScreen: stores.JSONSchemaStore.setPageScreen,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -816,12 +817,12 @@
 
           /** 根据当前类型选择对应的组件进行渲染 */
           var MappingRender = function MappingRender(props) {
+            var _ref = props.jsonStore || {},
+              getJSONDataByKeyRoute = _ref.getJSONDataByKeyRoute;
             var nodeKey = props.nodeKey,
               jsonKey = props.jsonKey,
               keyRoute = props.keyRoute,
-              targetJsonSchema = props.targetJsonSchema,
-              getJSONDataByKeyRoute = props.getJSONDataByKeyRoute,
-              keyRoute2indexRoute = props.keyRoute2indexRoute;
+              targetJsonSchema = props.targetJsonSchema;
             var curType = targetJsonSchema.type;
             var curConditionValue = '';
             var curNodeKey = nodeKey;
@@ -844,11 +845,12 @@
                 _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.expressionOn)(
                   targetJsonSchema.onShow,
                   curData,
-                  jsonKey,
                 ))
             ) {
               return;
             }
+
+            // 收集当前为条件字段的子元素
 
             // 将条件字段的数值作为key的一部分
             curNodeKey = nodeKey + '-' + curConditionValue;
@@ -1248,11 +1250,11 @@
            * getJSONDataByKeyRoute、getInitJsonDataByKeyRoute
            * */
           function catchJsonDataByWebCache(curKeyRoute) {
-            var _this$props = this.props,
-              targetJsonSchema = _this$props.targetJsonSchema,
-              getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute = _this$props.getInitJsonDataByKeyRoute,
-              updateFormValueData = _this$props.updateFormValueData;
+            var targetJsonSchema = this.props.targetJsonSchema;
+            var _ref = this.props.jsonStore || {},
+              getJSONDataByKeyRoute = _ref.getJSONDataByKeyRoute,
+              getInitJsonDataByKeyRoute = _ref.getInitJsonDataByKeyRoute,
+              updateFormValueData = _ref.updateFormValueData;
             var curType = targetJsonSchema.type;
             var keyRoute = curKeyRoute || this.props.keyRoute;
             var backUpKeyRoute = (0,
@@ -1383,6 +1385,8 @@
               _this = _React$PureComponent.call(this, props) || this;
               /** 添加数组项 */
               _this.addArrayItem = function (keyRoute, curArr, curArrIndex) {
+                var _ref = _this.props.jsonStore || {},
+                  addArrayItem = _ref.addArrayItem;
                 var maximumChild =
                   _this.props.targetJsonSchema['maximum-child'];
                 if (curArr && maximumChild && curArr.length >= maximumChild) {
@@ -1392,11 +1396,13 @@
                       '\u4E2A\u5B50\u9879',
                   );
                 } else {
-                  _this.props.addArrayItem(keyRoute, curArrIndex);
+                  addArrayItem(keyRoute, curArrIndex);
                 }
               };
               /** 删除数组项 */
               _this.deleteArrItem = function (keyRoute, arrIndex, curArr) {
+                var _ref2 = _this.props.jsonStore || {},
+                  deleteArrayIndex = _ref2.deleteArrayIndex;
                 var minimumChild =
                   _this.props.targetJsonSchema['minimum-child'];
                 if (curArr && minimumChild && curArr.length <= minimumChild) {
@@ -1406,7 +1412,7 @@
                       '\u4E2A\u5B50\u9879',
                   );
                 } else {
-                  _this.props.deleteArrayIndex(keyRoute, arrIndex);
+                  deleteArrayIndex(keyRoute, arrIndex);
                 }
               };
               /**
@@ -1519,15 +1525,19 @@
               var _targetJsonSchema$sho,
                 _this2 = this;
               var _this$props = this.props,
-                keyRoute = _this$props.keyRoute,
-                jsonKey = _this$props.jsonKey,
-                nodeKey = _this$props.nodeKey,
-                pageScreen = _this$props.pageScreen,
-                indexRoute = _this$props.indexRoute,
-                targetJsonSchema = _this$props.targetJsonSchema,
-                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
-                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
-                updateFormValueData = _this$props.updateFormValueData;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref3 = schemaStore || {},
+                pageScreen = _ref3.pageScreen;
+              var _ref4 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute,
+                sortArrayItem = _ref4.sortArrayItem;
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                indexRoute = _this$props2.indexRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
                 isClosed = _this$state.isClosed,
@@ -1852,11 +1862,7 @@
                                     {
                                       className: 'array-operate-btn',
                                       onClick: function onClick(event) {
-                                        _this2.props.sortArrayItem(
-                                          keyRoute,
-                                          arrIndex,
-                                          'up',
-                                        );
+                                        sortArrayItem(keyRoute, arrIndex, 'up');
                                         event.preventDefault();
                                         event.stopPropagation();
                                       },
@@ -1874,7 +1880,7 @@
                                     {
                                       className: 'array-operate-btn',
                                       onClick: function onClick(event) {
-                                        _this2.props.sortArrayItem(
+                                        sortArrayItem(
                                           keyRoute,
                                           arrIndex,
                                           'down',
@@ -1911,9 +1917,8 @@
                                 targetJsonSchema: arrayItemsDataObj,
                                 isArrayItem: true,
                                 arrIndex: arrIndex,
-                                getJSONDataByKeyRoute: getJSONDataByKeyRoute,
-                                keyRoute2indexRoute: keyRoute2indexRoute,
-                                updateFormValueData: updateFormValueData,
+                                schemaStore: schemaStore,
+                                jsonStore: jsonStore,
                               },
                             ),
                           ),
@@ -1946,17 +1951,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              triggerChange: stores.JSONEditorStore.triggerChange,
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              deleteArrayIndex: stores.JSONEditorStore.deleteArrayIndex,
-              addArrayItem: stores.JSONEditorStore.addArrayItem,
-              sortArrayItem: stores.JSONEditorStore.sortArrayItem,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(ArraySchema),
@@ -2032,7 +2028,9 @@
               _this.handleValueChange = function (checked) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, checked); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -2061,12 +2059,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var isNeedTwoCol = (0,
@@ -2170,12 +2173,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -2260,10 +2259,12 @@
               };
               /** 初始化boxStyle的数值 */
               _this.initBoxStyle = function () {
+                var jsonStore = _this.props.jsonStore;
+                var _ref = jsonStore || {},
+                  getJSONDataByKeyRoute = _ref.getJSONDataByKeyRoute;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  targetJsonSchema = _this$props.targetJsonSchema,
-                  getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute;
+                  targetJsonSchema = _this$props.targetJsonSchema;
                 // 从jsonData中获取对应的数值
                 var curJsonData = getJSONDataByKeyRoute(keyRoute);
                 /** 获取quantity中的数值对象（默认第一个就是数值对象） */
@@ -2383,7 +2384,9 @@
               _this.updateBoxStyleState = function () {
                 var _this$props2 = _this.props,
                   keyRoute = _this$props2.keyRoute,
-                  updateFormValueData = _this$props2.updateFormValueData;
+                  jsonStore = _this$props2.jsonStore;
+                var _ref2 = jsonStore || {},
+                  updateFormValueData = _ref2.updateFormValueData;
                 var renderAction = _this.state.renderAction;
                 /** 获取布局容器的盒子模型数值 */
                 var boxStyleUnit =
@@ -2427,8 +2430,12 @@
               var _this$props3 = this.props,
                 nodeKey = _this$props3.nodeKey,
                 jsonKey = _this$props3.jsonKey,
-                targetJsonSchema = _this$props3.targetJsonSchema,
-                pageScreen = _this$props3.pageScreen;
+                targetJsonSchema = _this$props3.targetJsonSchema;
+              var _this$props4 = this.props,
+                schemaStore = _this$props4.schemaStore,
+                jsonStore = _this$props4.jsonStore;
+              var _ref3 = schemaStore || {},
+                pageScreen = _ref3.pageScreen;
               var _this$state = this.state,
                 renderAction = _this$state.renderAction,
                 layoutStyleLock = _this$state.layoutStyleLock;
@@ -2661,12 +2668,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -2746,7 +2749,9 @@
               _this.handleValueChange = function (checkedValue) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, checkedValue); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -2775,12 +2780,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var options = targetJsonSchema.options;
@@ -2907,12 +2917,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -3018,7 +3024,9 @@
               _this.handleValueChange = function (newJsonData) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, newJsonData); // 更新数值
               };
               _this.state = {
@@ -3054,14 +3062,19 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props2 = this.props,
-                isReadOnly = _this$props2.isReadOnly,
-                jsonKey = _this$props2.jsonKey,
-                isIgnoreWarn = _this$props2.isIgnoreWarn,
-                nodeKey = _this$props2.nodeKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                isReadOnly = _this$props3.isReadOnly,
+                jsonKey = _this$props3.jsonKey,
+                isIgnoreWarn = _this$props3.isIgnoreWarn,
+                nodeKey = _this$props3.nodeKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               var _this$state = this.state,
                 isShowWarn = _this$state.isShowWarn,
                 warnText = _this$state.warnText;
@@ -3248,12 +3261,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -3349,6 +3358,11 @@
               _this = _React$PureComponent.call(this, props) || this;
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (color) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 var rgb = color.rgb; // hex,
                 var rgbaVal =
                   'rgba(' +
@@ -3360,9 +3374,6 @@
                   ',' +
                   rgb.a +
                   ')';
-                var _this$props = _this.props,
-                  keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
                 // updateFormValueData(keyRoute, hex); // 更新数值(#ffffff数据格式)
                 updateFormValueData(keyRoute, rgbaVal); // 更新数值: rgba(255,255,255,100)
                 // 主动触发更新的状态数据
@@ -3374,7 +3385,9 @@
               _this.deleteColor = function () {
                 var _this$props2 = _this.props,
                   keyRoute = _this$props2.keyRoute,
-                  updateFormValueData = _this$props2.updateFormValueData;
+                  jsonStore = _this$props2.jsonStore;
+                var _ref2 = jsonStore || {},
+                  updateFormValueData = _ref2.updateFormValueData;
                 updateFormValueData(keyRoute, 'initial'); // 更新数值
                 antd__WEBPACK_IMPORTED_MODULE_4__.message.success(
                   '已移除当前设置的颜色值',
@@ -3417,12 +3430,17 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props3 = this.props,
-                keyRoute = _this$props3.keyRoute,
-                jsonKey = _this$props3.jsonKey,
-                nodeKey = _this$props3.nodeKey,
-                targetJsonSchema = _this$props3.targetJsonSchema,
-                pageScreen = _this$props3.pageScreen,
-                getJSONDataByKeyRoute = _this$props3.getJSONDataByKeyRoute;
+                schemaStore = _this$props3.schemaStore,
+                jsonStore = _this$props3.jsonStore;
+              var _ref3 = schemaStore || {},
+                pageScreen = _ref3.pageScreen;
+              var _ref4 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute;
+              var _this$props4 = this.props,
+                keyRoute = _this$props4.keyRoute,
+                jsonKey = _this$props4.jsonKey,
+                nodeKey = _this$props4.nodeKey,
+                targetJsonSchema = _this$props4.targetJsonSchema;
               var _this$state = this.state,
                 renderState = _this$state.renderState,
                 displayColorPicker = _this$state.displayColorPicker;
@@ -3577,12 +3595,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -3730,12 +3744,16 @@
               var _targetJsonSchema$sho,
                 _this2 = this;
               var _this$props = this.props,
-                keyRoute = _this$props.keyRoute,
-                jsonKey = _this$props.jsonKey,
-                nodeKey = _this$props.nodeKey,
-                indexRoute = _this$props.indexRoute,
-                targetJsonSchema = _this$props.targetJsonSchema,
-                pageScreen = _this$props.pageScreen;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                indexRoute = _this$props2.indexRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
                 isClosed = _this$state.isClosed,
@@ -4032,13 +4050,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              triggerChange: stores.JSONEditorStore.triggerChange,
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -4127,7 +4140,9 @@
               _this.handleValueChange = function (event, dateString) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, dateString); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -4156,12 +4171,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               var curType = targetJsonSchema.type;
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
@@ -4283,12 +4303,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -4415,21 +4431,25 @@
               var _targetJsonSchema$sho,
                 _this2 = this;
               var _this$props = this.props,
-                indexRoute = _this$props.indexRoute,
-                jsonKey = _this$props.jsonKey,
-                nodeKey = _this$props.nodeKey,
-                keyRoute = _this$props.keyRoute,
-                pageScreen = _this$props.pageScreen,
-                targetJsonSchema = _this$props.targetJsonSchema,
-                isArrayItem = _this$props.isArrayItem,
-                isStructuredSchema = _this$props.isStructuredSchema,
-                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
-                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
-                updateFormValueData = _this$props.updateFormValueData;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _ref2 = jsonStore || {},
+                _options = _ref2.options,
+                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
+              var _this$props2 = this.props,
+                indexRoute = _this$props2.indexRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                isArrayItem = _this$props2.isArrayItem,
+                isStructuredSchema = _this$props2.isStructuredSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
                 isClosed = _this$state.isClosed;
-              var options = this.props.options || {};
+              var options = _options || {};
               // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
               var isStructured = isStructuredSchema;
               // 是否显示源码切换按钮
@@ -4700,9 +4720,8 @@
                             keyRoute: currentKeyRoute,
                             nodeKey: childNodeKey,
                             targetJsonSchema: currentSchemaData,
-                            getJSONDataByKeyRoute: getJSONDataByKeyRoute,
-                            keyRoute2indexRoute: keyRoute2indexRoute,
-                            updateFormValueData: updateFormValueData,
+                            schemaStore: schemaStore,
+                            jsonStore: jsonStore,
                           });
                         }
                       }),
@@ -4738,13 +4757,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              options: stores.JSONEditorStore.options,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(ObjectSchema),
@@ -4861,7 +4875,8 @@
               _this = _React$PureComponent.call(this, props) || this;
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (curKeyRoute, value) {
-                var updateFormValueData = _this.props.updateFormValueData;
+                var _ref = _this.props.jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(curKeyRoute, value); // 更新数值
               };
               // 显示和隐藏数据过滤器
@@ -4875,7 +4890,9 @@
               _this.tabChange = function (value) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  triggerChangeAction = _this$props.triggerChangeAction;
+                  jsonStore = _this$props.jsonStore;
+                var _ref2 = jsonStore || {},
+                  triggerChangeAction = _ref2.triggerChangeAction;
                 _this.handleValueChange(keyRoute + '-type', value);
                 setTimeout(function () {
                   triggerChangeAction();
@@ -4884,8 +4901,10 @@
               _this.dynamicDataChange = function (dynamicDataName) {
                 var _this$props2 = _this.props,
                   keyRoute = _this$props2.keyRoute,
-                  dynamicDataObj = _this$props2.dynamicDataObj,
-                  triggerChangeAction = _this$props2.triggerChangeAction;
+                  jsonStore = _this$props2.jsonStore;
+                var _ref3 = jsonStore || {},
+                  triggerChangeAction = _ref3.triggerChangeAction,
+                  dynamicDataObj = _ref3.dynamicDataObj;
                 var curDynamicData = (0,
                 $utils_index__WEBPACK_IMPORTED_MODULE_14__.objClone)(
                   (0, mobx__WEBPACK_IMPORTED_MODULE_16__.toJS)(
@@ -4917,8 +4936,10 @@
               _this.dataRouteChange = function (newDataRoute) {
                 var _this$props3 = _this.props,
                   keyRoute = _this$props3.keyRoute,
-                  triggerChangeAction = _this$props3.triggerChangeAction,
-                  updateFormValueData = _this$props3.updateFormValueData;
+                  jsonStore = _this$props3.jsonStore;
+                var _ref4 = jsonStore || {},
+                  triggerChangeAction = _ref4.triggerChangeAction,
+                  updateFormValueData = _ref4.updateFormValueData;
                 if (newDataRoute) {
                   updateFormValueData(
                     keyRoute + '-config-dataRoute',
@@ -4950,8 +4971,10 @@
               _this.paramsConfigChange = function (paramsKey, newParamsConfig) {
                 var _this$props4 = _this.props,
                   keyRoute = _this$props4.keyRoute,
-                  triggerChangeAction = _this$props4.triggerChangeAction,
-                  getJSONDataByKeyRoute = _this$props4.getJSONDataByKeyRoute;
+                  jsonStore = _this$props4.jsonStore;
+                var _ref5 = jsonStore || {},
+                  triggerChangeAction = _ref5.triggerChangeAction,
+                  getJSONDataByKeyRoute = _ref5.getJSONDataByKeyRoute;
                 var curParamsConfigData =
                   getJSONDataByKeyRoute(
                     keyRoute + '-config-body-' + paramsKey,
@@ -4995,16 +5018,21 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props5 = this.props,
-                keyRoute = _this$props5.keyRoute,
-                jsonKey = _this$props5.jsonKey,
-                nodeKey = _this$props5.nodeKey,
-                indexRoute = _this$props5.indexRoute,
-                targetJsonSchema = _this$props5.targetJsonSchema,
-                dynamicDataList = _this$props5.dynamicDataList,
-                dynamicDataObj = _this$props5.dynamicDataObj,
-                dynamicDataApiScopeList = _this$props5.dynamicDataApiScopeList,
-                getJSONDataByKeyRoute = _this$props5.getJSONDataByKeyRoute,
-                pageScreen = _this$props5.pageScreen;
+                schemaStore = _this$props5.schemaStore,
+                jsonStore = _this$props5.jsonStore;
+              var _ref6 = schemaStore || {},
+                pageScreen = _ref6.pageScreen;
+              var _ref7 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref7.getJSONDataByKeyRoute;
+              var _this$props6 = this.props,
+                keyRoute = _this$props6.keyRoute,
+                jsonKey = _this$props6.jsonKey,
+                nodeKey = _this$props6.nodeKey,
+                indexRoute = _this$props6.indexRoute,
+                targetJsonSchema = _this$props6.targetJsonSchema,
+                dynamicDataList = _this$props6.dynamicDataList,
+                dynamicDataObj = _this$props6.dynamicDataObj,
+                dynamicDataApiScopeList = _this$props6.dynamicDataApiScopeList;
               var isShowFilter = this.state.isShowFilter;
               var curType = targetJsonSchema.type;
               // 从jsonData中获取对应的数值
@@ -5460,18 +5488,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              triggerChange: stores.JSONEditorStore.triggerChange,
-              triggerChangeAction: stores.JSONEditorStore.triggerChangeAction,
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              dynamicDataList: stores.JSONEditorStore.dynamicDataList,
-              dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
-              dynamicDataApiScopeList:
-                stores.JSONEditorStore.dynamicDataApiScopeList,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -5598,12 +5616,16 @@
               var _targetJsonSchema$sho,
                 _this2 = this;
               var _this$props = this.props,
-                keyRoute = _this$props.keyRoute,
-                jsonKey = _this$props.jsonKey,
-                nodeKey = _this$props.nodeKey,
-                indexRoute = _this$props.indexRoute,
-                targetJsonSchema = _this$props.targetJsonSchema,
-                pageScreen = _this$props.pageScreen;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _this$props2 = this.props,
+                keyRoute = _this$props2.keyRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                indexRoute = _this$props2.indexRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema;
               var curType = targetJsonSchema.type;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
@@ -5866,13 +5888,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              triggerChange: stores.JSONEditorStore.triggerChange,
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(EventSchema),
@@ -5976,7 +5993,9 @@
               _this.handleValueChange = function (newJsonData) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, newJsonData); // 更新数值
               };
               _this.state = {
@@ -6012,12 +6031,17 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               var _this$state = this.state,
                 isShowWarn = _this$state.isShowWarn,
                 warnText = _this$state.warnText;
@@ -6201,12 +6225,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -6286,14 +6306,16 @@
               // static contextType = ThemeContext;
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (event) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 var value = event.target.value;
                 if (_this.props.onChange) {
                   // 如果有监听数据变动函数则优先触发
                   _this.props.onChange(value);
                 } else {
-                  var _this$props = _this.props,
-                    keyRoute = _this$props.keyRoute,
-                    updateFormValueData = _this$props.updateFormValueData;
                   updateFormValueData(keyRoute, value); // 更新数值
                 }
               };
@@ -6323,12 +6345,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -6454,12 +6481,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -6539,7 +6562,9 @@
               _this.handleImageChange = function (fileInfo) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 if (fileInfo.file.status === 'uploading') {
                   _this.setState({
                     loading: true,
@@ -6564,7 +6589,9 @@
               _this.handleDeleteChange = function () {
                 var _this$props2 = _this.props,
                   keyRoute = _this$props2.keyRoute,
-                  updateFormValueData = _this$props2.updateFormValueData;
+                  jsonStore = _this$props2.jsonStore;
+                var _ref2 = jsonStore || {},
+                  updateFormValueData = _ref2.updateFormValueData;
                 updateFormValueData(keyRoute, '');
               };
               _this.state = {
@@ -6602,12 +6629,17 @@
             _proto.render = function render() {
               var _targetJsonSchema$lis;
               var _this$props3 = this.props,
-                nodeKey = _this$props3.nodeKey,
-                jsonKey = _this$props3.jsonKey,
-                keyRoute = _this$props3.keyRoute,
-                targetJsonSchema = _this$props3.targetJsonSchema,
-                pageScreen = _this$props3.pageScreen,
-                getJSONDataByKeyRoute = _this$props3.getJSONDataByKeyRoute;
+                schemaStore = _this$props3.schemaStore,
+                jsonStore = _this$props3.jsonStore;
+              var _ref3 = schemaStore || {},
+                pageScreen = _ref3.pageScreen;
+              var _ref4 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute;
+              var _this$props4 = this.props,
+                nodeKey = _this$props4.nodeKey,
+                jsonKey = _this$props4.jsonKey,
+                keyRoute = _this$props4.keyRoute,
+                targetJsonSchema = _this$props4.targetJsonSchema;
               var options = this.props.options || {};
               var loading = this.state.loading;
               // 从jsonData中获取对应的数值
@@ -6773,13 +6805,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              options: stores.JSONEditorStore.options,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -6887,7 +6914,9 @@
               _this.handleValueChange = function (newJsonData) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 if (newJsonData) {
                   updateFormValueData(keyRoute, newJsonData); // 更新数值
                 }
@@ -6927,12 +6956,17 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               var _this$state = this.state,
                 isShowWarn = _this$state.isShowWarn,
                 warnText = _this$state.warnText,
@@ -7115,13 +7149,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
-              indexRoute2keyRoute: stores.JSONSchemaStore.indexRoute2keyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -7213,7 +7242,9 @@
               _this.handleValueChange = function (newJsonData) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 if (newJsonData) {
                   updateFormValueData(keyRoute, newJsonData); // 更新数值
                 }
@@ -7227,11 +7258,12 @@
             );
             var _proto = JsonView.prototype;
             _proto.render = function render() {
+              var _ref2 = this.props.jsonStore || {},
+                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
               var _this$props2 = this.props,
                 nodeKey = _this$props2.nodeKey,
                 keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                targetJsonSchema = _this$props2.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
 
@@ -7307,11 +7339,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })((0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(JsonView));
 
@@ -7392,8 +7421,10 @@
               _this.handleValueChange = function (newVal) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  targetJsonSchema = _this$props.targetJsonSchema,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
+                var targetJsonSchema = _this.props.targetJsonSchema;
                 if (newVal < targetJsonSchema.minimum) {
                   antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
                     '\u5C0F\u4E8E\u8BBE\u5B9A\u7684\u6700\u5C0F\u6570\u503C' +
@@ -7458,12 +7489,17 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               var renderTime = this.state.renderTime;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -7628,12 +7664,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -7760,18 +7792,19 @@
               var _targetJsonSchema$sho,
                 _this2 = this;
               var _this$props = this.props,
-                indexRoute = _this$props.indexRoute,
-                jsonKey = _this$props.jsonKey,
-                nodeKey = _this$props.nodeKey,
-                keyRoute = _this$props.keyRoute,
-                pageScreen = _this$props.pageScreen,
-                targetJsonSchema = _this$props.targetJsonSchema,
-                isArrayItem = _this$props.isArrayItem,
-                arrIndex = _this$props.arrIndex,
-                isStructuredSchema = _this$props.isStructuredSchema,
-                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
-                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
-                updateFormValueData = _this$props.updateFormValueData;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _this$props2 = this.props,
+                indexRoute = _this$props2.indexRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema,
+                isArrayItem = _this$props2.isArrayItem,
+                arrIndex = _this$props2.arrIndex,
+                isStructuredSchema = _this$props2.isStructuredSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
                 isClosed = _this$state.isClosed;
@@ -7947,9 +7980,8 @@
                           keyRoute: currentKeyRoute,
                           nodeKey: childNodeKey,
                           targetJsonSchema: currentSchemaData,
-                          getJSONDataByKeyRoute: getJSONDataByKeyRoute,
-                          keyRoute2indexRoute: keyRoute2indexRoute,
-                          updateFormValueData: updateFormValueData,
+                          schemaStore: schemaStore,
+                          jsonStore: jsonStore,
                         });
                       }),
                     jsonView &&
@@ -7984,12 +8016,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(ObjectSchema),
@@ -8061,10 +8089,12 @@
               // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (event) {
-                var value = event.target.value;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
+                var value = event.target.value;
                 var curKeyRoute = keyRoute ? keyRoute + '-unit' : 'unit';
                 updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
               };
@@ -8094,12 +8124,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -8224,12 +8259,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -8307,10 +8338,12 @@
               // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (event) {
-                var value = event.target.value;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
+                var value = event.target.value;
                 updateFormValueData(keyRoute, value); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -8339,12 +8372,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var options = targetJsonSchema.options;
@@ -8470,12 +8508,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(RadioSchema),
@@ -8639,14 +8673,19 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props = this.props,
-                pageScreen = _this$props.pageScreen,
-                curConfigData = _this$props.curConfigData,
-                nodeKey = _this$props.nodeKey,
-                keyRoute = _this$props.keyRoute,
-                dynamicDataList = _this$props.dynamicDataList,
-                dynamicDataObj = _this$props.dynamicDataObj,
-                dynamicDataApiScopeList = _this$props.dynamicDataApiScopeList,
-                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _ref2 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute,
+                dynamicDataApiScopeList = _ref2.dynamicDataApiScopeList,
+                dynamicDataList = _ref2.dynamicDataList,
+                dynamicDataObj = _ref2.dynamicDataObj;
+              var _this$props2 = this.props,
+                curConfigData = _this$props2.curConfigData,
+                nodeKey = _this$props2.nodeKey,
+                keyRoute = _this$props2.keyRoute;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
               var dataName = curConfigData.dataName; // 数据源名称
@@ -8906,13 +8945,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              dynamicDataList: stores.JSONEditorStore.dynamicDataList,
-              dynamicDataObj: stores.JSONEditorStore.dynamicDataObj,
-              dynamicDataApiScopeList:
-                stores.JSONEditorStore.dynamicDataApiScopeList,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -9007,7 +9041,9 @@
               _this.handleValueChange = function (value) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, value); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -9036,12 +9072,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var options = targetJsonSchema.options;
@@ -9179,12 +9220,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(SelectSchema),
@@ -9295,15 +9332,18 @@
               };
             _proto.render = function render() {
               var _this$props = this.props,
-                indexRoute = _this$props.indexRoute,
-                jsonKey = _this$props.jsonKey,
-                nodeKey = _this$props.nodeKey,
-                keyRoute = _this$props.keyRoute,
-                pageScreen = _this$props.pageScreen,
-                targetJsonSchema = _this$props.targetJsonSchema,
-                getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute,
-                keyRoute2indexRoute = _this$props.keyRoute2indexRoute,
-                updateFormValueData = _this$props.updateFormValueData;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _ref2 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
+              var _this$props2 = this.props,
+                indexRoute = _this$props2.indexRoute,
+                jsonKey = _this$props2.jsonKey,
+                nodeKey = _this$props2.nodeKey,
+                keyRoute = _this$props2.keyRoute,
+                targetJsonSchema = _this$props2.targetJsonSchema;
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -9438,9 +9478,8 @@
                               nodeKey: childNodeKey,
                               targetJsonSchema: currentSchemaData,
                               isArrayItem: true,
-                              getJSONDataByKeyRoute: getJSONDataByKeyRoute,
-                              keyRoute2indexRoute: keyRoute2indexRoute,
-                              updateFormValueData: updateFormValueData,
+                              schemaStore: schemaStore,
+                              jsonStore: jsonStore,
                             });
                           }
                         }),
@@ -9489,9 +9528,8 @@
                             nodeKey: childNodeKey,
                             targetJsonSchema: currentSchemaData,
                             isArrayItem: true,
-                            getJSONDataByKeyRoute: getJSONDataByKeyRoute,
-                            keyRoute2indexRoute: keyRoute2indexRoute,
-                            updateFormValueData: updateFormValueData,
+                            schemaStore: schemaStore,
+                            jsonStore: jsonStore,
                           }),
                         );
                       }
@@ -9519,12 +9557,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -9611,11 +9645,14 @@
               var _this;
               _this = _React$PureComponent.call(this, props) || this;
               _this.handleEventTitleChange = function (eventCode, inputEvent) {
-                var newTitle = inputEvent.target.value;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData,
-                  getJSONDataByKeyRoute = _this$props.getJSONDataByKeyRoute;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData,
+                  getJSONDataByKeyRoute = _ref.getJSONDataByKeyRoute,
+                  _options = _ref.options;
+                var newTitle = inputEvent.target.value;
                 var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
                 var globalEventMap = Object.assign(
                   {},
@@ -9633,9 +9670,12 @@
               ) {
                 var _this$props2 = _this.props,
                   keyRoute = _this$props2.keyRoute,
-                  updateFormValueData = _this$props2.updateFormValueData,
-                  getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
-                var options = _this.props.options || {};
+                  jsonStore = _this$props2.jsonStore;
+                var _ref2 = jsonStore || {},
+                  updateFormValueData = _ref2.updateFormValueData,
+                  getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute,
+                  _options = _ref2.options;
+                var options = _options || {};
                 var curKeyRout = keyRoute + '-event';
                 var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
                 var curEvent = [];
@@ -9694,16 +9734,20 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props3 = this.props,
-                indexRoute = _this$props3.indexRoute,
-                jsonKey = _this$props3.jsonKey,
-                nodeKey = _this$props3.nodeKey,
-                keyRoute = _this$props3.keyRoute,
-                pageScreen = _this$props3.pageScreen,
-                targetJsonSchema = _this$props3.targetJsonSchema,
-                getJSONDataByKeyRoute = _this$props3.getJSONDataByKeyRoute,
-                keyRoute2indexRoute = _this$props3.keyRoute2indexRoute,
-                updateFormValueData = _this$props3.updateFormValueData;
-              var options = this.props.options || {};
+                schemaStore = _this$props3.schemaStore,
+                jsonStore = _this$props3.jsonStore;
+              var _ref3 = schemaStore || {},
+                pageScreen = _ref3.pageScreen;
+              var _ref4 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute,
+                _options = _ref4.options;
+              var _this$props4 = this.props,
+                indexRoute = _this$props4.indexRoute,
+                jsonKey = _this$props4.jsonKey,
+                nodeKey = _this$props4.nodeKey,
+                keyRoute = _this$props4.keyRoute,
+                targetJsonSchema = _this$props4.targetJsonSchema;
+              var options = options || {};
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var globalEventMap = curJsonData.globalEventMap || {}; // 全局事件列表
               var curEventList = curJsonData.event || []; // 当前组件事件列表
@@ -9983,13 +10027,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              options: stores.JSONEditorStore.options,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -10071,10 +10110,12 @@
               // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (event) {
-                var value = event.target.value;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
+                var value = event.target.value;
                 updateFormValueData(keyRoute, value); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -10103,12 +10144,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -10236,12 +10282,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -10410,7 +10452,9 @@
               _this.handleEditorChange = function (editorState) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
               };
               _this.state = {
@@ -10472,14 +10516,13 @@
             );
             var _proto = TextEditorSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
+              var _ref2 = this.props.schemaStore || {},
+                pageScreen = _ref2.pageScreen;
               // 从web缓存中获取数值
               $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
                 this,
               );
-              if (
-                this.props.pageScreen &&
-                this.props.pageScreen === 'wideScreen'
-              ) {
+              if (pageScreen && pageScreen === 'wideScreen') {
                 // 大屏幕时默认展开富文本编辑器
                 this.setState({
                   isClosed: false,
@@ -10494,10 +10537,13 @@
                     this,
                     nextProps.keyRoute,
                   );
-                } else if (nextProps.pageScreen !== this.props.pageScreen) {
+                } else if (
+                  nextProps.schemaStore.pageScreen !==
+                  this.props.schemaStore.pageScreen
+                ) {
                   if (
-                    nextProps.pageScreen &&
-                    nextProps.pageScreen === 'wideScreen'
+                    nextProps.schemaStore.pageScreen &&
+                    nextProps.schemaStore.pageScreen === 'wideScreen'
                   ) {
                     // 大屏幕时默认展开富文本编辑器
                     this.setState({
@@ -10509,12 +10555,17 @@
             _proto.render = function render() {
               var _this2 = this;
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref3 = schemaStore || {},
+                pageScreen = _ref3.pageScreen;
+              var _ref4 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               var isClosed = this.state.isClosed;
               var curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
               var editorState =
@@ -10666,12 +10717,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -10753,7 +10800,9 @@
               _this.handleValueChange = function (event, dateString) {
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
                 updateFormValueData(keyRoute, dateString); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -10782,12 +10831,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                jsonKey = _this$props2.jsonKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var defaultTime = curJsonData || targetJsonSchema.default;
@@ -10905,12 +10959,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -10986,11 +11036,17 @@
             var _proto = TreeSelectFromSchema.prototype;
             _proto.render = function render() {
               var _this$props = this.props,
-                pageScreen = _this$props.pageScreen,
-                mockData = _this$props.mockData,
-                dataRoute = _this$props.dataRoute,
-                nodeKey = _this$props.nodeKey,
-                onChange = _this$props.onChange;
+                schemaStore = _this$props.schemaStore,
+                jsonStore = _this$props.jsonStore;
+              var _ref = schemaStore || {},
+                pageScreen = _ref.pageScreen;
+              var _ref2 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
+              var _this$props2 = this.props,
+                mockData = _this$props2.mockData,
+                dataRoute = _this$props2.dataRoute,
+                nodeKey = _this$props2.nodeKey,
+                onChange = _this$props2.onChange;
               var treeData = [];
               if (mockData && JSON.stringify(mockData) !== '{}') {
                 var mockObj = mockData;
@@ -11060,7 +11116,6 @@
             return TreeSelectFromSchema;
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           TreeSelectFromSchema.propTypes = {
-            pageScreen: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
             mockData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
             // 接口mock数据
             dataRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
@@ -11072,7 +11127,7 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
+              schemaStore: stores.JSONSchemaStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
@@ -11150,10 +11205,12 @@
               // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (event) {
-                var value = event.target.value;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
-                  updateFormValueData = _this$props.updateFormValueData;
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
+                var value = event.target.value;
                 updateFormValueData(keyRoute, value); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -11182,12 +11239,17 @@
               };
             _proto.render = function render() {
               var _this$props2 = this.props,
-                keyRoute = _this$props2.keyRoute,
-                jsonKey = _this$props2.jsonKey,
-                nodeKey = _this$props2.nodeKey,
-                targetJsonSchema = _this$props2.targetJsonSchema,
-                pageScreen = _this$props2.pageScreen,
-                getJSONDataByKeyRoute = _this$props2.getJSONDataByKeyRoute;
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                keyRoute = _this$props3.keyRoute,
+                jsonKey = _this$props3.jsonKey,
+                nodeKey = _this$props3.nodeKey,
+                targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -11314,12 +11376,8 @@
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
             return {
-              pageScreen: stores.JSONSchemaStore.pageScreen,
-              getJSONDataByKeyRoute:
-                stores.JSONEditorStore.getJSONDataByKeyRoute,
-              updateFormValueData: stores.JSONEditorStore.updateFormValueData,
-              getInitJsonDataByKeyRoute:
-                stores.JSONEditorStore.getInitJsonDataByKeyRoute,
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
             };
           })(
             (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(

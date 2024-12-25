@@ -27,14 +27,10 @@ class OptionSchema extends React.PureComponent {
 
   /** 选项Label变动事件处理器 */
   handleLabelChange = (event) => {
+    const { isExitOptionLabel, updateOptionLabel } =
+      this.props.schemaStore || {};
     const { value } = event.target;
-    const {
-      indexRoute,
-      optionIndex,
-      optionLabel,
-      isExitOptionLabel,
-      updateOptionLabel,
-    } = this.props;
+    const { indexRoute, optionIndex, optionLabel } = this.props;
     if (value !== optionLabel) {
       if (isExitOptionLabel(indexRoute, value)) {
         message.warning('对不起，存在相同的Label值，请重新设置。');
@@ -46,9 +42,9 @@ class OptionSchema extends React.PureComponent {
 
   /** 选项数值变动事件处理器 */
   handleValueChange = (event) => {
+    const { updateOptionValue } = this.props.schemaStore || {};
     const { value } = event.target;
-    const { indexRoute, optionIndex, optionValue, updateOptionValue } =
-      this.props;
+    const { indexRoute, optionIndex, optionValue } = this.props;
     if (value !== optionValue) {
       updateOptionValue(indexRoute, optionIndex, value);
     }
@@ -56,20 +52,23 @@ class OptionSchema extends React.PureComponent {
 
   /** 新增选择项 */
   onAddBtnEvent = () => {
-    const { indexRoute, optionIndex, addOptionItem } = this.props;
+    const { addOptionItem } = this.props.schemaStore || {};
+    const { indexRoute, optionIndex } = this.props;
     addOptionItem(indexRoute, optionIndex); // 新增枚举值
   };
 
   /** 复制功能 */
   onCopyBtnEvent = () => {
-    const { indexRoute, optionIndex, copyOptionItem } = this.props;
+    const { copyOptionItem } = this.props.schemaStore || {};
+    const { indexRoute, optionIndex } = this.props;
     copyOptionItem(indexRoute, optionIndex); // copy枚举值
   };
 
   /** 删除字段项 */
   onDeleteBtnEvent = () => {
-    const { indexRoute, optionIndex, getSchemaByIndexRoute, deleteOptionItem } =
-      this.props;
+    const { getSchemaByIndexRoute, deleteOptionItem } =
+      this.props.schemaStore || {};
+    const { indexRoute, optionIndex } = this.props;
     const itemJSONObj = getSchemaByIndexRoute(indexRoute);
     if (itemJSONObj.options && itemJSONObj.options.length > 1) {
       deleteOptionItem(indexRoute, optionIndex); // 删除指定位置的枚举值
@@ -130,11 +129,5 @@ class OptionSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  getSchemaByIndexRoute: stores.jsonSchemaStore.getSchemaByIndexRoute,
-  updateOptionLabel: stores.jsonSchemaStore.updateOptionLabel,
-  updateOptionValue: stores.jsonSchemaStore.updateOptionValue,
-  isExitOptionLabel: stores.jsonSchemaStore.isExitOptionLabel,
-  deleteOptionItem: stores.jsonSchemaStore.deleteOptionItem,
-  addOptionItem: stores.jsonSchemaStore.addOptionItem,
-  copyOptionItem: stores.jsonSchemaStore.copyOptionItem,
+  schemaStore: stores.schemaStore,
 }))(observer(OptionSchema));

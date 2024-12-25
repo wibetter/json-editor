@@ -6,12 +6,12 @@ import { getWebCacheData, deleteWebCacheData } from '$utils/index';
  * getJSONDataByKeyRoute、getInitJsonDataByKeyRoute
  * */
 export function catchJsonDataByWebCache(curKeyRoute) {
+  const { targetJsonSchema } = this.props;
   const {
-    targetJsonSchema,
     getJSONDataByKeyRoute,
     getInitJsonDataByKeyRoute,
     updateFormValueData,
-  } = this.props;
+  } = this.props.jsonStore || {};
   const curType = targetJsonSchema.type;
   const keyRoute = curKeyRoute || this.props.keyRoute;
   const backUpKeyRoute = getWebCacheData(`${keyRoute}-${curType}`);

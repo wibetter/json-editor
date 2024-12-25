@@ -35,7 +35,6 @@ class AdvanceConfig extends React.PureComponent {
     indexRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
-    jsonSchema: PropTypes.any,
   };
 
   constructor(props) {
@@ -46,8 +45,8 @@ class AdvanceConfig extends React.PureComponent {
 
   /** 数值变动事件处理器 */
   handleValueChange = (curKey, newVal) => {
-    const { indexRoute, jsonKey, targetJsonSchema, editSchemaData } =
-      this.props;
+    const { editSchemaData } = this.props.schemaStore || {};
+    const { indexRoute, jsonKey, targetJsonSchema } = this.props;
     if (targetJsonSchema[curKey] === newVal) return; // title值未改变则直接跳出
     const newSchemaData = {};
     newSchemaData[curKey] = newVal;
@@ -185,13 +184,8 @@ class AdvanceConfig extends React.PureComponent {
   };
 
   render() {
-    const {
-      nodeKey,
-      indexRoute,
-      targetJsonSchema,
-      jsonSchema,
-      indexRoute2keyRoute,
-    } = this.props;
+    const { indexRoute2keyRoute } = this.props.schemaStore || {};
+    const { nodeKey, indexRoute, targetJsonSchema } = this.props;
     const curType = targetJsonSchema.type;
     // 获取对应的keyRoute
     const curKeyRoute = indexRoute2keyRoute(indexRoute);
@@ -597,8 +591,5 @@ class AdvanceConfig extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  getSchemaByIndexRoute: stores.jsonSchemaStore.getSchemaByIndexRoute,
-  editSchemaData: stores.jsonSchemaStore.editSchemaData,
-  indexRoute2keyRoute: stores.jsonSchemaStore.indexRoute2keyRoute,
-  jsonSchema: stores.jsonSchemaStore.jsonSchema,
+  schemaStore: stores.schemaStore,
 }))(observer(AdvanceConfig));

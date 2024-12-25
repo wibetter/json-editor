@@ -63,7 +63,8 @@ class BaseFormSchema extends React.PureComponent {
 
   /** select类型变动事件处理器 */
   selectHandleChange = (newType) => {
-    const { indexRoute, jsonKey, changeType, targetJsonSchema } = this.props;
+    const { changeType } = this.props.schemaStore || {};
+    const { indexRoute, jsonKey, targetJsonSchema } = this.props;
     if (targetJsonSchema.type === newType) return; // format值未改变则直接跳出
 
     // 根据当前新的类型获取初始化的对象数据
@@ -73,8 +74,9 @@ class BaseFormSchema extends React.PureComponent {
 
   /** jsonKey类型输入值变动事件处理器 */
   handleJsonKeyChange = (event) => {
+    const { editJsonKey, isExitJsonKey } = this.props.schemaStore || {};
     const { value } = event.target;
-    const { indexRoute, jsonKey, editJsonKey, isExitJsonKey } = this.props;
+    const { indexRoute, jsonKey } = this.props;
     if (jsonKey === value) return; // jsonKey值未改变则直接跳出
     if (isExitJsonKey(indexRoute, value)) {
       message.warning('当前key已存在，请换一个吧。');
@@ -85,9 +87,9 @@ class BaseFormSchema extends React.PureComponent {
 
   /** title类型输入值变动事件处理器 */
   handleTitleChange = (event) => {
+    const { editSchemaData } = this.props.schemaStore || {};
     const { value } = event.target;
-    const { indexRoute, jsonKey, editSchemaData, targetJsonSchema } =
-      this.props;
+    const { indexRoute, jsonKey, targetJsonSchema } = this.props;
     if (targetJsonSchema.title === value) return; // title值未改变则直接跳出
     editSchemaData(indexRoute, jsonKey, {
       title: value,
@@ -97,7 +99,7 @@ class BaseFormSchema extends React.PureComponent {
   /** 获取当前字段的类型清单
    *  根据父元素的类型决定当前字段的类型可选择范围，如果父类型为空则默认使用全新的可选择类型 */
   getCurrentTypeList = (parentType) => {
-    const { SchemaTypeList } = this.props;
+    const { SchemaTypeList } = this.props.schemaStore || {};
     const myParentType = parentType || 'all';
     let typeList = SchemaTypeList[myParentType];
     if (!typeList || typeList.length === 0) {
@@ -109,8 +111,8 @@ class BaseFormSchema extends React.PureComponent {
   /** 新增字段项
    *  备注：如果当前字段是容器类型，则为其添加子字段项，如果是基本类型则为其添加兄弟节点字段项 */
   onAddBtnEvent = () => {
-    const { indexRoute, targetJsonSchema, addChildJson, addNextJsonData } =
-      this.props;
+    const { addChildJson, addNextJsonData } = this.props.schemaStore || {};
+    const { indexRoute, targetJsonSchema } = this.props;
 
     if (isContainerSchema(targetJsonSchema)) {
       // 表示当前是容器类型字段
@@ -124,15 +126,13 @@ class BaseFormSchema extends React.PureComponent {
   /** 复制功能
    *  备注：需要自动生成一个key值 */
   onCopyBtnEvent = () => {
+    const { indexRoute, targetJsonSchema, jsonKey } = this.props;
     const {
-      indexRoute,
-      targetJsonSchema,
       getSchemaByIndexRoute,
       indexRoute2keyRoute,
-      jsonKey,
       insertJsonData,
       getNewJsonKeyIndex,
-    } = this.props;
+    } = this.props.schemaStore || {};
     const newJsonData = objClone(targetJsonSchema);
     // 1.获取父元素
     const parentIndexRoute = getParentIndexRoute(indexRoute);
@@ -151,7 +151,8 @@ class BaseFormSchema extends React.PureComponent {
 
   /** 删除字段项 */
   onDeleteBtnEvent = () => {
-    const { jsonKey, indexRoute, deleteJsonByIndex_CurKey } = this.props;
+    const { jsonKey, indexRoute } = this.props;
+    const { deleteJsonByIndex_CurKey } = this.props.schemaStore || {};
     deleteJsonByIndex_CurKey(indexRoute, jsonKey); // 删除对应的json数据对象
   };
 
@@ -163,19 +164,15 @@ class BaseFormSchema extends React.PureComponent {
 
   /** 数据项排序功能 */
   childElemSort = () => {
-    const { indexRoute, childElemSort } = this.props;
+    const { indexRoute } = this.props;
+    const { childElemSort } = this.props.schemaStore || {};
     childElemSort(indexRoute);
   };
 
   render() {
-    const {
-      parentType,
-      indexRoute,
-      jsonKey,
-      nodeKey,
-      targetJsonSchema,
-      getSchemaByIndexRoute,
-    } = this.props;
+    const { getSchemaByIndexRoute } = this.props.schemaStore || {};
+    const { parentType, indexRoute, jsonKey, nodeKey, targetJsonSchema } =
+      this.props;
     const { showAdvanceConfig } = this.state;
     // 获取父元素
     const parentIndexRoute = indexRoute ? getParentIndexRoute(indexRoute) : '';
@@ -362,17 +359,5 @@ class BaseFormSchema extends React.PureComponent {
 }
 
 export default inject((stores) => ({
-  SchemaTypeList: stores.jsonSchemaStore.SchemaTypeList,
-  getNewJsonKeyIndex: stores.jsonSchemaStore.getNewJsonKeyIndex,
-  deleteJsonByIndex_CurKey: stores.jsonSchemaStore.deleteJsonByIndex_CurKey,
-  getSchemaByIndexRoute: stores.jsonSchemaStore.getSchemaByIndexRoute,
-  indexRoute2keyRoute: stores.jsonSchemaStore.indexRoute2keyRoute,
-  addChildJson: stores.jsonSchemaStore.addChildJson,
-  addNextJsonData: stores.jsonSchemaStore.addNextJsonData,
-  insertJsonData: stores.jsonSchemaStore.insertJsonData,
-  childElemSort: stores.jsonSchemaStore.childElemSort,
-  editSchemaData: stores.jsonSchemaStore.editSchemaData,
-  editJsonKey: stores.jsonSchemaStore.editJsonKey,
-  changeType: stores.jsonSchemaStore.changeType,
-  isExitJsonKey: stores.jsonSchemaStore.isExitJsonKey,
+  schemaStore: stores.schemaStore,
 }))(observer(BaseFormSchema));
