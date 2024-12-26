@@ -1585,6 +1585,7 @@ var initAdConfigSchema = {
         rule: {
           type: 'radio',
           title: '规则类型',
+          isConditionProp: true,
           options: [
             {
               label: '固定位置',
@@ -1607,6 +1608,7 @@ var initAdConfigSchema = {
           title: '固定位置',
           default: 1,
           description: '',
+          onShow: 'rule === 1 || rule === 3',
           options: [
             {
               label: '1',
@@ -1817,6 +1819,7 @@ var initAdConfigSchema = {
           minimum: '1',
           maximum: '50',
           description: '',
+          onShow: 'rule === 2 || rule === 3',
         },
         turn: {
           type: 'number',
@@ -1825,6 +1828,7 @@ var initAdConfigSchema = {
           minimum: '1',
           maximum: '50',
           description: '',
+          onShow: 'rule === 2 || rule === 3',
         },
         number: {
           type: 'number',
@@ -1833,6 +1837,7 @@ var initAdConfigSchema = {
           minimum: '1',
           maximum: '50',
           description: '',
+          onShow: 'rule === 2 || rule === 3',
         },
         mergeType: {
           type: 'radio',
@@ -1881,6 +1886,7 @@ var initAdConfigSchema = {
           rule: {
             type: 'radio',
             title: '规则类型',
+            isConditionProp: true,
             options: [
               {
                 label: '固定位置',
@@ -1903,6 +1909,7 @@ var initAdConfigSchema = {
             title: '固定位置',
             default: 1,
             description: '',
+            onShow: 'rule === 1 || rule === 3',
             options: [
               {
                 label: '1',
@@ -2113,6 +2120,7 @@ var initAdConfigSchema = {
             minimum: '1',
             maximum: '50',
             description: '',
+            onShow: 'rule === 2 || rule === 3',
           },
           turn: {
             type: 'number',
@@ -2121,6 +2129,7 @@ var initAdConfigSchema = {
             minimum: '1',
             maximum: '50',
             description: '',
+            onShow: 'rule === 2 || rule === 3',
           },
           number: {
             type: 'number',
@@ -2129,6 +2138,7 @@ var initAdConfigSchema = {
             minimum: '1',
             maximum: '50',
             description: '',
+            onShow: 'rule === 2 || rule === 3',
           },
           mergeType: {
             type: 'radio',

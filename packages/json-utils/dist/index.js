@@ -91,7 +91,7 @@
           return s;
         },
         isArray: function () {
-          return R;
+          return w;
         },
         isBoolean: function () {
           return S;
@@ -133,7 +133,7 @@
           return Y;
         },
         isSelect: function () {
-          return w;
+          return R;
         },
         isString: function () {
           return C;
@@ -1138,6 +1138,7 @@
                 rule: {
                   type: 'radio',
                   title: '规则类型',
+                  isConditionProp: !0,
                   options: [
                     { label: '固定位置', value: 1 },
                     { label: '隔几出几', value: 2 },
@@ -1151,6 +1152,7 @@
                   title: '固定位置',
                   default: 1,
                   description: '',
+                  onShow: 'rule === 1 || rule === 3',
                   options: [
                     { label: '1', value: 1 },
                     { label: '2', value: 2 },
@@ -1211,6 +1213,7 @@
                   minimum: '1',
                   maximum: '50',
                   description: '',
+                  onShow: 'rule === 2 || rule === 3',
                 },
                 turn: {
                   type: 'number',
@@ -1219,6 +1222,7 @@
                   minimum: '1',
                   maximum: '50',
                   description: '',
+                  onShow: 'rule === 2 || rule === 3',
                 },
                 number: {
                   type: 'number',
@@ -1227,6 +1231,7 @@
                   minimum: '1',
                   maximum: '50',
                   description: '',
+                  onShow: 'rule === 2 || rule === 3',
                 },
                 mergeType: {
                   type: 'radio',
@@ -1269,6 +1274,7 @@
                   rule: {
                     type: 'radio',
                     title: '规则类型',
+                    isConditionProp: !0,
                     options: [
                       { label: '固定位置', value: 1 },
                       { label: '隔几出几', value: 2 },
@@ -1282,6 +1288,7 @@
                     title: '固定位置',
                     default: 1,
                     description: '',
+                    onShow: 'rule === 1 || rule === 3',
                     options: [
                       { label: '1', value: 1 },
                       { label: '2', value: 2 },
@@ -1342,6 +1349,7 @@
                     minimum: '1',
                     maximum: '50',
                     description: '',
+                    onShow: 'rule === 2 || rule === 3',
                   },
                   turn: {
                     type: 'number',
@@ -1350,6 +1358,7 @@
                     minimum: '1',
                     maximum: '50',
                     description: '',
+                    onShow: 'rule === 2 || rule === 3',
                   },
                   number: {
                     type: 'number',
@@ -1358,6 +1367,7 @@
                     minimum: '1',
                     maximum: '50',
                     description: '',
+                    onShow: 'rule === 2 || rule === 3',
                   },
                   mergeType: {
                     type: 'radio',
@@ -1446,15 +1456,15 @@
     function N(e) {
       return /^\d{2}:\d{2}:\d{2}$/.test(e) || /^\d{2}:\d{2}$/.test(e);
     }
-    function R(e) {
+    function w(e) {
       var t = !1;
       return (
         'Array' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
         t
       );
     }
-    function w(e) {
-      if (!R(e)) return !1;
+    function R(e) {
+      if (!w(e)) return !1;
       for (var t = 0, r = e.length; t < r; t++) if (!C(e[t])) return !1;
       return !0;
     }
@@ -1490,7 +1500,7 @@
                 if (E(e)) {
                   var r = Object.keys(e);
                   e.data && e.filter && 2 === r.length
-                    ? (t = R(e.data) || E(e.data) ? a(O.local) : a(O.remote))
+                    ? (t = w(e.data) || E(e.data) ? a(O.local) : a(O.remote))
                     : e.trigger && e.eventData && 2 === r.length
                       ? (t = a(h.emit))
                       : e.register && e.actionFunc && 2 === r.length
@@ -1505,11 +1515,11 @@
                 }
                 return t;
               })(e)
-            : e && R(e)
+            : e && w(e)
               ? (function (e) {
                   var t;
-                  if (e && R(e))
-                    if (w(e)) {
+                  if (e && w(e))
+                    if (R(e)) {
                       (t = a(g.select)).items.enum = e;
                       var r = t.items.enumextra.length,
                         i = e.length;
@@ -1843,7 +1853,7 @@
           break;
         case 'json':
           var n = '';
-          if (E(i) || R(i)) n = i;
+          if (E(i) || w(i)) n = i;
           else if (F(i) || '' === i) n = {};
           else
             try {
@@ -1941,11 +1951,11 @@
       if (e && 'array' === L(e.type)) {
         var a = t;
         l(a) &&
-          ((l(e.default) && typeof a != typeof e.default) || !R(a)) &&
+          ((l(e.default) && typeof a != typeof e.default) || !w(a)) &&
           (a = void 0);
         var i = l(a) ? a : e.default;
         if ('array' === L(e.type))
-          if (R(i))
+          if (w(i))
             i.map(function (t) {
               r.push(re(e.items, t));
             });
@@ -1992,7 +2002,7 @@
               ne(e[t], r);
             });
         else
-          R(e) &&
+          w(e) &&
             e.map(function (e) {
               ne(e, r);
             });
@@ -2014,15 +2024,15 @@
           ? Object.keys(e).map(function (a) {
               var i = e[a],
                 l = t ? t + '-' + a : a;
-              E(i) || R(i)
+              E(i) || w(i)
                 ? r.push({ title: a, value: l, key: l, children: pe(i, l) })
                 : r.push({ title: a, value: l, key: l });
             })
-          : R(e) &&
+          : w(e) &&
             e.map(function (e, a) {
               var i = a.toString(),
                 l = t ? t + '-' + a : i;
-              E(e) || R(e)
+              E(e) || w(e)
                 ? r.push({ title: i, value: l, key: l, children: pe(e, l) })
                 : r.push({ title: i, value: l, key: l });
             }),

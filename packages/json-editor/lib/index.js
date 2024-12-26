@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.9
+ * @wibetter/json-editor v5.0.10
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Dec 26 2024 15:24:16 GMT+0800 (中国标准时间)
+ * build time: Thu Dec 26 2024 16:27:06 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1184,35 +1184,39 @@
             /*#__PURE__*/ __webpack_require__.n(
               _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! $utils/webCache */ './src/utils/webCache.js',
+            );
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
             );
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/ArraySchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_11__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_12__,
             );
-          /* harmony import */ var $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(
               /*! $assets/img/delete.svg */ './src/assets/img/delete.svg',
             );
-          /* harmony import */ var $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! $assets/img/addElem.svg */ './src/assets/img/addElem.svg',
             );
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__ =
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
@@ -1291,7 +1295,7 @@
               _this.getArrItemTitle = function (arrItem) {
                 if (
                   arrItem &&
-                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isObject)(
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isObject)(
                     arrItem,
                   )
                 ) {
@@ -1305,19 +1309,20 @@
                     // 只有不为空时才赋值（忽略URL类型数值）
                     if (
                       itemVal &&
-                      ((0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isNumber)(
+                      ((0,
+                      $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isNumber)(
                         itemVal,
                       ) ||
                         ((0,
-                        $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isString)(
+                        $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isString)(
                           itemVal,
                         ) &&
                           !(0,
-                          $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isURL)(
+                          $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isURL)(
                             itemVal,
                           ) &&
                           !(0,
-                          $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isColor)(
+                          $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isColor)(
                             itemVal,
                           )))
                     ) {
@@ -1343,6 +1348,7 @@
               _this.deleteArrItem = _this.deleteArrItem.bind(_this);
               _this.elemHoverEnterEvent = _this.elemHoverEnterEvent.bind(_this);
               _this.elemHoverLeaveEvent = _this.elemHoverLeaveEvent.bind(_this);
+              _this.collapseChange = _this.collapseChange.bind(_this);
               return _this;
             }
             _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1352,7 +1358,7 @@
             var _proto = ArraySchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -1360,12 +1366,49 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
                 }
               };
+            _proto.collapseChange = function collapseChange(event) {
+              var keyRoute = this.props.keyRoute;
+              var isClosed = this.state.isClosed;
+              this.setState({
+                isClosed: !isClosed,
+              });
+              event.preventDefault();
+              event.stopPropagation();
+
+              // 缓存当前折叠状态
+              (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.saveJSONEditorCache)(
+                keyRoute,
+                !isClosed,
+              );
+            };
+            _proto.arrayCollapseChange = function arrayCollapseChange(
+              event,
+              arrIndex,
+            ) {
+              var keyRoute = this.props.keyRoute;
+              var currentActiveArrIndex = this.state.currentActiveArrIndex;
+              var newArrIndex =
+                currentActiveArrIndex === arrIndex ? -1 : arrIndex;
+              this.setState({
+                currentActiveArrIndex: newArrIndex,
+              });
+              event.preventDefault();
+              event.stopPropagation();
+
+              // 缓存当前折叠状态
+              (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.saveJSONEditorCache)(
+                keyRoute + '-activeArrIndex',
+                newArrIndex,
+              );
+            };
             _proto.render = function render() {
               var _targetJsonSchema$sho,
                 _this2 = this;
@@ -1386,9 +1429,9 @@
                 targetJsonSchema = _this$props2.targetJsonSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
-                isClosed = _this$state.isClosed,
+                _isClosed = _this$state.isClosed,
                 hoverIndex = _this$state.hoverIndex,
-                currentActiveArrIndex = _this$state.currentActiveArrIndex;
+                _currentActiveArrIndex = _this$state.currentActiveArrIndex;
               var curType = targetJsonSchema.type;
               // 是否显示源码切换按钮
               var showCodeViewBtn =
@@ -1400,6 +1443,23 @@
               var curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
               var arrayItemsDataObj = targetJsonSchema.items; // schema数据
 
+              // 获取前端缓存中的折叠数据
+              var isClosed = _isClosed;
+              var collapseCacheData = (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.getJSONEditorCache)(
+                keyRoute,
+              );
+              if (collapseCacheData !== undefined) {
+                isClosed = collapseCacheData;
+              }
+              var currentActiveArrIndex = _currentActiveArrIndex;
+              var activeArrIndexCache = (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.getJSONEditorCache)(
+                keyRoute + '-activeArrIndex',
+              );
+              if (activeArrIndexCache !== undefined) {
+                currentActiveArrIndex = activeArrIndexCache;
+              }
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -1458,13 +1518,7 @@
                     'div',
                     {
                       className: 'element-title',
-                      onClick: function onClick(event) {
-                        _this2.setState({
-                          isClosed: !isClosed,
-                        });
-                        event.preventDefault();
-                        event.stopPropagation();
-                      },
+                      onClick: this.collapseChange,
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                       'span',
@@ -1505,7 +1559,7 @@
                             title: jsonView ? '关闭源码模式' : '开启源码模式',
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__[
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_15__[
                               'default'
                             ],
                             {
@@ -1545,7 +1599,7 @@
                         (isClosed ? 'closed' : ''),
                     },
                     !jsonView &&
-                      (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isArray)(
+                      (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isArray)(
                         curJsonData,
                       ) &&
                       curJsonData.map(function (arrItem, arrIndex) {
@@ -1572,13 +1626,8 @@
                             'div',
                             {
                               className: 'array-item-header',
-                              onClick: function onClick() {
-                                _this2.setState({
-                                  currentActiveArrIndex:
-                                    currentActiveArrIndex === arrIndex
-                                      ? -1
-                                      : arrIndex,
-                                });
+                              onClick: function onClick(event) {
+                                _this2.arrayCollapseChange(event, arrIndex);
                               },
                               onMouseMove: function onMouseMove(event) {
                                 _this2.elemHoverEnterEvent(event, arrIndex);
@@ -1654,7 +1703,7 @@
                                     cancelText: '\u53D6\u6D88',
                                   },
                                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                    $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_12__[
+                                    $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_13__[
                                       'default'
                                     ],
                                     // <img src={deleteIcon}
@@ -1679,7 +1728,7 @@
                                     (arrIndex + 1),
                                 },
                                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_13__[
+                                  $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_14__[
                                     'default'
                                   ],
                                   // <img src={addElemIcon}
@@ -1751,7 +1800,7 @@
                               id: curNodeKey,
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
+                              $components_MappingRender__WEBPACK_IMPORTED_MODULE_8__[
                                 'default'
                               ],
                               {
@@ -1772,7 +1821,7 @@
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__[
                           'default'
                         ],
                         this.props,
