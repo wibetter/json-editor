@@ -62,6 +62,7 @@ class ArraySchema extends React.PureComponent {
     this.elemHoverEnterEvent = this.elemHoverEnterEvent.bind(this);
     this.elemHoverLeaveEvent = this.elemHoverLeaveEvent.bind(this);
     this.collapseChange = this.collapseChange.bind(this);
+    this.arrayCollapseChange = this.arrayCollapseChange.bind(this);
   }
 
   componentWillMount() {

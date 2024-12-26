@@ -1577,7 +1577,7 @@ var initAdConfigSchema = {
       properties: {
         id: {
           title: '广告ID',
-          type: 'input',
+          type: 'number',
           default: '',
           description: '',
           placeholder: '',
@@ -1606,8 +1606,9 @@ var initAdConfigSchema = {
         fixArray: {
           type: 'select',
           title: '固定位置',
-          default: 1,
+          default: [1],
           description: '',
+          multiple: true,
           onShow: 'rule === 1 || rule === 3',
           options: [
             {
@@ -1876,13 +1877,6 @@ var initAdConfigSchema = {
         title: '数组项',
         description: '',
         properties: {
-          id: {
-            title: '广告ID',
-            type: 'input',
-            default: '',
-            description: '',
-            placeholder: '',
-          },
           rule: {
             type: 'radio',
             title: '规则类型',
@@ -1907,9 +1901,10 @@ var initAdConfigSchema = {
           fixArray: {
             type: 'select',
             title: '固定位置',
-            default: 1,
+            default: [1],
             description: '',
             onShow: 'rule === 1 || rule === 3',
+            multiple: true,
             options: [
               {
                 label: '1',
@@ -2158,7 +2153,6 @@ var initAdConfigSchema = {
           },
         },
         propertyOrder: [
-          'id',
           'rule',
           'fixArray',
           'begin',

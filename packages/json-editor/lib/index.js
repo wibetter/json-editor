@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.10
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Dec 26 2024 16:27:06 GMT+0800 (中国标准时间)
+ * build time: Thu Dec 26 2024 17:05:55 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1349,6 +1349,7 @@
               _this.elemHoverEnterEvent = _this.elemHoverEnterEvent.bind(_this);
               _this.elemHoverLeaveEvent = _this.elemHoverLeaveEvent.bind(_this);
               _this.collapseChange = _this.collapseChange.bind(_this);
+              _this.arrayCollapseChange = _this.arrayCollapseChange.bind(_this);
               return _this;
             }
             _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
