@@ -149,7 +149,8 @@ class ArraySchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute, sortArrayItem } = jsonStore || {};
+    const { getJSONDataByKeyRoute, sortArrayItem, triggerChange } =
+      jsonStore || {};
 
     const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
       this.props;
@@ -169,7 +170,7 @@ class ArraySchema extends React.PureComponent {
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
         }
-        key={nodeKey}
+        key={`${nodeKey}-${triggerChange}`}
         id={nodeKey}
       >
         <div className="element-title">

@@ -4,9 +4,10 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Collapse, Tooltip } from 'antd';
 const { Panel } = Collapse;
-import { truncate } from '@wibetter/json-utils';
+import { truncate, isArray } from '@wibetter/json-utils';
 import MappingRender from '$components/MappingRender';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 
 class SohuDataSourceSchema extends React.PureComponent {
   static propTypes = {
@@ -27,6 +28,8 @@ class SohuDataSourceSchema extends React.PureComponent {
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
     };
+
+    this.collapseChange = this.collapseChange.bind(this);
   }
 
   componentWillMount() {
@@ -41,12 +44,24 @@ class SohuDataSourceSchema extends React.PureComponent {
     }
   }
 
+  collapseChange(collapseData) {
+    const { keyRoute } = this.props;
+    // 缓存当前折叠状态
+    saveJSONEditorCache(keyRoute, collapseData);
+  }
+
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
       this.props;
+    // 获取前端缓存中的折叠数据
+    let collapseData = ['mainConfig'];
+    const collapseCacheData = getJSONEditorCache(keyRoute);
+    if (collapseCacheData && isArray(collapseCacheData)) {
+      collapseData = collapseCacheData;
+    }
 
     return (
       <div
@@ -55,7 +70,7 @@ class SohuDataSourceSchema extends React.PureComponent {
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
         }`}
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
       >
         <div className="element-title">
@@ -77,10 +92,11 @@ class SohuDataSourceSchema extends React.PureComponent {
         </div>
         <div className="array-schema-box">
           <Collapse
-            defaultActiveKey={['mainConfig']}
+            defaultActiveKey={collapseData}
             expandIconPosition="right"
             bordered={false}
             accordion
+            onChange={this.collapseChange}
           >
             {targetJsonSchema.properties['mainConfig'] && (
               <Panel
@@ -173,7 +189,7 @@ class SohuDataSourceSchema extends React.PureComponent {
               /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
               const curType = currentSchemaData.type;
               /** 5. 获取当前元素的id，用于做唯一标识 */
-              const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
+              let childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
               if (
                 currentSchemaData.propertyOrder &&

@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.8
  * author: wibetter
  * build tool: AKFun
- * build time: Wed Dec 25 2024 17:18:47 GMT+0800 (中国标准时间)
+ * build time: Wed Dec 25 2024 18:29:35 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -817,8 +817,10 @@
 
           /** 根据当前类型选择对应的组件进行渲染 */
           var MappingRender = function MappingRender(props) {
-            var _ref = props.jsonStore || {},
-              getJSONDataByKeyRoute = _ref.getJSONDataByKeyRoute;
+            var _ref = props.schemaStore || {},
+              getSchemaByKeyRoute = _ref.getSchemaByKeyRoute;
+            var _ref2 = props.jsonStore || {},
+              getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
             var nodeKey = props.nodeKey,
               jsonKey = props.jsonKey,
               keyRoute = props.keyRoute,
@@ -850,10 +852,18 @@
               return;
             }
 
-            // 收集当前为条件字段的子元素
+            // 收集当前所有条件子字段
+            var parentSchema = getSchemaByKeyRoute(parentKeyRoute);
+            curConditionValue = (0,
+            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.schema2conditionValue)(
+              parentSchema,
+              curData,
+            );
 
             // 将条件字段的数值作为key的一部分
-            curNodeKey = nodeKey + '-' + curConditionValue;
+            if (curConditionValue) {
+              curNodeKey = nodeKey + '-' + curConditionValue;
+            }
             var newProps =
               _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
                 {},
@@ -11738,7 +11748,6 @@
                 newVal,
                 ignoreChange,
               ) {
-                var _this = this;
                 if (keyRoute !== '') {
                   // 1. 获取父级key路径和最近的有一个key
                   var parentKeyRoute_CurKey = (0,
@@ -11758,33 +11767,6 @@
                 } else {
                   // 当keyRoute为空时直接修改当前schemaData
                   this.jsonData = newVal;
-                }
-                if (
-                  this.state.rootJSONStore.JSONSchemaStore &&
-                  this.state.rootJSONStore.JSONSchemaStore.jsonSchema
-                ) {
-                  // 获取当前schema的条件字段
-                  var curJsonSchema =
-                    this.state.rootJSONStore.JSONSchemaStore.jsonSchema;
-                  var conditionProps = curJsonSchema.conditionProps;
-                  // 备注：数组类型通过keyRoute获取schema对象会有异常
-                  var curElemSchema =
-                    this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
-                      keyRoute,
-                    );
-                  if (curElemSchema && curElemSchema.isConditionProp) {
-                    // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
-                    this.updateLastTime();
-                  } else if (conditionProps) {
-                    // 判断当前字段是否为条件字段
-                    Object.keys(conditionProps).map(function (propKey) {
-                      var conditionItem = conditionProps[propKey];
-                      if (conditionItem.keyRoute === keyRoute) {
-                        // 更新LastInitTime
-                        _this.updateLastTime();
-                      }
-                    });
-                  }
                 }
                 if (!ignoreChange) {
                   // 4. 触发onChange事件

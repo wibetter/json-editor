@@ -2,6 +2,11 @@ import {
   objClone as _objClone,
   isEqual as _isEqual,
 } from '@wibetter/json-utils';
+import {
+  saveJSONEditorCache,
+  getJSONEditorCache,
+  deleteJSONEditorCache,
+} from './webCache.js';
 
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {
@@ -147,27 +152,21 @@ export function getURLParam(key) {
 
 /**
  *  将数据缓存到sessionStorage中
- * */
-export function saveWebCacheData(cacheKey, targetSourceIndex) {
-  if (window.sessionStorage) {
-    window.sessionStorage.setItem(cacheKey, targetSourceIndex);
-  }
+ */
+export function saveWebCacheData(valueKey, value) {
+  saveJSONEditorCache(valueKey, value, 'json-editor-formData');
 }
 
 /**
  *  从sessionStorage中读取此前缓存的数据
- * */
-export function getWebCacheData(cacheKey) {
-  if (window.sessionStorage) {
-    return window.sessionStorage.getItem(cacheKey);
-  }
+ */
+export function getWebCacheData(valueKey) {
+  return getJSONEditorCache(valueKey, 'json-editor-formData');
 }
 
 /**
  *  从sessionStorage中删除此前缓存的数据
- * */
-export function deleteWebCacheData(cacheKey) {
-  if (window.sessionStorage) {
-    return window.sessionStorage.removeItem(cacheKey);
-  }
+ */
+export function deleteWebCacheData(valueKey) {
+  deleteJSONEditorCache(valueKey, 'json-editor-formData');
 }

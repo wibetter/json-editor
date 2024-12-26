@@ -70,6 +70,7 @@ export * from './function/schemaMetaList';
 export * from './function/dynamicDataAnalyzer';
 export * from './function/json2treeData';
 export * from './function/getExpectType';
+export * from './function/schema2conditionValue';
 
 //【其他较小的json工具方法】
 export * from './utils/index'; // 纯工具方法

@@ -7485,6 +7485,39 @@ function json2treeData(mockData, parentDataRoute) {
 }
 
 /**
+ * 收集当前schema中的所有条件子字段，根据其数值拼接成对应的 conditionValue
+ */
+function schema2conditionValue(jsonSchema, jsonData) {
+  var conditionValue = '';
+  if (getExpectType$1(jsonSchema.type) === 'object' && jsonSchema.properties) {
+    var curPropertyOrder = [];
+    if (jsonSchema.propertyOrder) {
+      curPropertyOrder = jsonSchema.propertyOrder;
+    } else {
+      curPropertyOrder = Object.keys(jsonSchema.properties);
+    }
+    curPropertyOrder.map(function (jsonKey) {
+      var curJsonItem = jsonSchema.properties[jsonKey];
+      var curConditionValue = jsonData[jsonKey];
+      if (
+        getExpectType$1(curJsonItem.type) !== 'array' ||
+        getExpectType$1(curJsonItem.type) !== 'object'
+      ) {
+        if (curConditionValue && curJsonItem.isConditionProp) {
+          // 仅记录条件字段数值
+          if (conditionValue.indexOf('-') > 0) {
+            conditionValue += '-' + curConditionValue;
+          } else {
+            conditionValue = curConditionValue;
+          }
+        }
+      }
+    });
+  }
+  return conditionValue;
+}
+
+/**
  * 获取父元素的key路径值
  */
 function getParentKeyRoute(curKeyRoute) {
@@ -7583,6 +7616,7 @@ export {
   oldSchemaToNewSchema,
   oldSchemaToNewSchemaV1,
   registerExpectType,
+  schema2conditionValue,
   schema2json,
   schemaMetaList,
   truncate,

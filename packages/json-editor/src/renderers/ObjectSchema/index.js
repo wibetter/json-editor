@@ -11,6 +11,7 @@ import { truncate } from '@wibetter/json-utils';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 import CodeIcon from '$assets/img/code.svg';
 import './index.scss';
 
@@ -34,6 +35,8 @@ class ObjectSchema extends React.PureComponent {
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
     };
+
+    this.collapseChange = this.collapseChange.bind(this);
   }
 
   componentWillMount() {
@@ -46,6 +49,20 @@ class ObjectSchema extends React.PureComponent {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
     }
+  }
+
+  collapseChange(event) {
+    const { keyRoute } = this.props;
+    const { isClosed } = this.state;
+
+    this.setState({
+      isClosed: !isClosed,
+    });
+    event.preventDefault();
+    event.stopPropagation();
+
+    // 缓存当前折叠状态
+    saveJSONEditorCache(keyRoute, !isClosed);
   }
 
   render() {
@@ -62,11 +79,18 @@ class ObjectSchema extends React.PureComponent {
       arrIndex,
       isStructuredSchema,
     } = this.props;
-    const { jsonView, isClosed } = this.state;
+    const { jsonView, isClosed: _isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
     const isStructured = isStructuredSchema;
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
+
+    // 获取前端缓存中的折叠数据
+    let isClosed = _isClosed;
+    const collapseCacheData = getJSONEditorCache(keyRoute);
+    if (collapseCacheData !== undefined) {
+      isClosed = collapseCacheData;
+    }
 
     return (
       <div
@@ -100,16 +124,7 @@ class ObjectSchema extends React.PureComponent {
         )}
         <div className="element-title-card-warp content-item">
           {!isStructured && !isArrayItem && (
-            <div
-              className="element-title"
-              onClick={(event) => {
-                this.setState({
-                  isClosed: !isClosed,
-                });
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            >
+            <div className="element-title" onClick={this.collapseChange}>
               <span className="title-text">对象配置</span>
               {isClosed ? (
                 <RightOutlined className="close-operate-btn" />

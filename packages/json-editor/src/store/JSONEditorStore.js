@@ -197,28 +197,14 @@ export default class JSONEditorStore {
       this.jsonData = newVal;
     }
 
-    if (
-      this.state.rootJSONStore.JSONSchemaStore &&
-      this.state.rootJSONStore.JSONSchemaStore.jsonSchema
-    ) {
-      // 获取当前schema的条件字段
-      const curJsonSchema = this.state.rootJSONStore.JSONSchemaStore.jsonSchema;
-      const conditionProps = curJsonSchema.conditionProps;
+    if (this.state.rootJSONStore.JSONSchemaStore) {
       // 备注：数组类型通过keyRoute获取schema对象会有异常
       const curElemSchema =
         this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
       if (curElemSchema && curElemSchema.isConditionProp) {
         // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
         this.updateLastTime();
-      } else if (conditionProps) {
-        // 判断当前字段是否为条件字段
-        Object.keys(conditionProps).map((propKey) => {
-          const conditionItem = conditionProps[propKey];
-          if (conditionItem.keyRoute === keyRoute) {
-            // 更新LastInitTime
-            this.updateLastTime();
-          }
-        });
+        // this.triggerChangeAction(); // 用于主动触发组件更新
       }
     }
 

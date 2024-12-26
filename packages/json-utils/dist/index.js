@@ -37,7 +37,7 @@
           return h;
         },
         KeyWordList: function () {
-          return se;
+          return de;
         },
         TypeDataList: function () {
           return g;
@@ -73,10 +73,10 @@
           return H;
         },
         getParentKeyRoute: function () {
-          return ue;
+          return ce;
         },
         getParentKeyRoute_CurKey: function () {
-          return ce;
+          return se;
         },
         getSchemaByIndexRoute: function () {
           return u;
@@ -157,7 +157,7 @@
           return d;
         },
         metaElemAnalyzer: function () {
-          return P;
+          return M;
         },
         moveBackward: function () {
           return G;
@@ -176,6 +176,9 @@
         },
         registerExpectType: function () {
           return V;
+        },
+        schema2conditionValue: function () {
+          return ue;
         },
         schema2json: function () {
           return ne;
@@ -1252,7 +1255,7 @@
         t
       );
     }
-    function M(e, t) {
+    function P(e, t) {
       var r = t || {};
       return (
         k(e) &&
@@ -1261,23 +1264,23 @@
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (t) {
               var i = e.properties[t];
-              r = P(i, r);
+              r = M(i, r);
             },
           ),
         r
       );
     }
-    function P(e, t) {
+    function M(e, t) {
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
         var n = e.type;
         'object' === n || 'func' === n || 'style' === n || 'data' === n
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
-            (i = M(e, i)))
+            (i = P(e, i)))
           : 'array' === n
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
-              (i = M((e = e.items), i)))
+              (i = P((e = e.items), i)))
             : !r && i[n]
               ? (i[n] += 1)
               : r || (i[n] = 1);
@@ -1738,16 +1741,34 @@
         r
       );
     }
-    function ue(e) {
+    function ue(e, t) {
+      var r = '';
+      return (
+        'object' === A(e.type) &&
+          e.properties &&
+          (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
+            function (i) {
+              var n = e.properties[i],
+                a = t[i];
+              ('array' === A(n.type) && 'object' === A(n.type)) ||
+                (a &&
+                  n.isConditionProp &&
+                  (r.indexOf('-') > 0 ? (r += '-' + a) : (r = a)));
+            },
+          ),
+        r
+      );
+    }
+    function ce(e) {
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function ce(e) {
+    function se(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    var se = [
+    var de = [
       'key',
       'enum',
       'enumextra',

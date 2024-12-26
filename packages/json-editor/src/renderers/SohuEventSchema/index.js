@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import { Collapse, Tooltip, List, Input, Select, Empty } from 'antd';
 const { Option } = Select;
 const { Panel } = Collapse;
-import { truncate } from '@wibetter/json-utils';
+import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 import './index.scss';
 
 class SohuEventSchema extends React.PureComponent {
@@ -28,6 +29,8 @@ class SohuEventSchema extends React.PureComponent {
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
     };
+
+    this.collapseChange = this.collapseChange.bind(this);
   }
 
   componentWillMount() {
@@ -40,6 +43,12 @@ class SohuEventSchema extends React.PureComponent {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
     }
+  }
+
+  collapseChange(collapseData) {
+    const { keyRoute } = this.props;
+    // 缓存当前折叠状态
+    saveJSONEditorCache(keyRoute, collapseData);
   }
 
   handleEventTitleChange = (eventCode, inputEvent) => {
@@ -116,6 +125,13 @@ class SohuEventSchema extends React.PureComponent {
       eventEmitConfig.length === 0 &&
       eventListenConfig.length === 0;
 
+    // 获取前端缓存中的折叠数据
+    let collapseData = [];
+    const collapseCacheData = getJSONEditorCache(keyRoute);
+    if (collapseCacheData && isArray(collapseCacheData)) {
+      collapseData = collapseCacheData;
+    }
+
     return (
       <div
         className={`${
@@ -127,9 +143,10 @@ class SohuEventSchema extends React.PureComponent {
         id={nodeKey}
       >
         <Collapse
-          defaultActiveKey={['mainConfig']}
+          defaultActiveKey={collapseData}
           expandIconPosition="right"
           bordered={false}
+          onChange={this.collapseChange}
           // accordion
         >
           {eventListenConfig && eventListenConfig.length > 0 && (
