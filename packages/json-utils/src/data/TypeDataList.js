@@ -33,6 +33,7 @@ import {
   initDynamicData,
   initDynamicConfig,
   initSohuSourceData,
+  initAdConfigSchema,
   initSohuEventConfig,
 } from '$data/index';
 
@@ -69,6 +70,7 @@ export const TypeDataList = {
   'dynamic-config': initDynamicConfig,
   'sohu-source': initSohuSourceData,
   'sohu-event': initSohuEventConfig,
+  'sohu-ad': initAdConfigSchema,
 };
 
 // 事件类型数据

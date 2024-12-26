@@ -131,16 +131,7 @@ class ObjectSchema extends React.PureComponent {
         )}
         <div className="element-title-card-warp content-item">
           {!isStructured && !isArrayItem && (
-            <div
-              className="element-title"
-              onClick={(event) => {
-                this.setState({
-                  isClosed: !isClosed,
-                });
-                event.preventDefault();
-                event.stopPropagation();
-              }}
-            >
+            <div className="element-title" onClick={this.collapseChange}>
               <span className="title-text">动态配置</span>
               {isClosed ? (
                 <RightOutlined className="close-operate-btn" />
@@ -194,27 +185,14 @@ class ObjectSchema extends React.PureComponent {
                 /** 5. 获取当前元素的id，用于做唯一标识 */
                 const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
-                let visibleOn = [
-                  'description',
-                  'valueType',
-                  'range',
-                  'value',
-                ].includes(currentJsonKey)
-                  ? false
-                  : true; // 是否显示当前元素
-
                 // 补充动态配置类型相关显隐逻辑【定制逻辑】
                 if (
-                  (currentJsonKey === 'description' ||
-                    currentJsonKey === 'valueType') &&
+                  currentJsonKey === 'valueType' &&
                   (curJsonData.type === 'ContentStaticConfig' ||
                     curJsonData.type === 'ResourceCenter')
                 ) {
-                  // 资源中心配置、mp后台配置 时显示 description（属性名称）、valueType（配置方式）配置项
-                  visibleOn = true;
                   const valueSchema = targetJsonSchema.properties['value'];
                   if (
-                    currentJsonKey === 'valueType' &&
                     !['select', 'radio', 'checkboxes'].includes(
                       valueSchema.type,
                     )
@@ -225,15 +203,13 @@ class ObjectSchema extends React.PureComponent {
                     currentSchemaData.description =
                       '当前数值没有可选项，不支持设置。';
                   }
-                } else if (currentJsonKey === 'range') {
+                }
+                if (currentJsonKey === 'range') {
                   if (
                     curJsonData.valueType === 'select' &&
                     (curJsonData.type === 'ContentStaticConfig' ||
                       curJsonData.type === 'ResourceCenter')
                   ) {
-                    visibleOn = true;
-                  }
-                  if (visibleOn) {
                     const valueSchema = targetJsonSchema.properties['value'];
                     if (
                       ['select', 'radio', 'checkboxes'].includes(
@@ -246,16 +222,7 @@ class ObjectSchema extends React.PureComponent {
                       currentSchemaData.options = objClone(valueSchema.options);
                     }
                   }
-                } else if (
-                  currentJsonKey === 'value' &&
-                  (curJsonData.type === 'DevDefaults' ||
-                    curJsonData.type === 'RuntimeConst' ||
-                    curJsonData.type === 'Content')
-                ) {
-                  // 全局配置数据、内容Meta数据 显示 数据值 配置项
-                  visibleOn = true;
                 }
-
                 if (
                   currentJsonKey === 'value' &&
                   curJsonData.type === 'Content'
@@ -272,18 +239,16 @@ class ObjectSchema extends React.PureComponent {
                   currentSchemaData.options = objClone(globalMetaConfig);
                 }
 
-                if (visibleOn) {
-                  return MappingRender({
-                    parentType: curType,
-                    jsonKey: currentJsonKey,
-                    indexRoute: currentIndexRoute,
-                    keyRoute: currentKeyRoute,
-                    nodeKey: childNodeKey,
-                    targetJsonSchema: currentSchemaData,
-                    schemaStore,
-                    jsonStore,
-                  });
-                }
+                return MappingRender({
+                  parentType: curType,
+                  jsonKey: currentJsonKey,
+                  indexRoute: currentIndexRoute,
+                  keyRoute: currentKeyRoute,
+                  nodeKey: childNodeKey,
+                  targetJsonSchema: currentSchemaData,
+                  schemaStore,
+                  jsonStore,
+                });
               })}
             {jsonView && <JsonView {...this.props} />}
           </div>

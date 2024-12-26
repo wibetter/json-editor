@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.8
  * author: wibetter
  * build tool: AKFun
- * build time: Wed Dec 25 2024 18:29:35 GMT+0800 (中国标准时间)
+ * build time: Thu Dec 26 2024 13:18:12 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -826,7 +826,6 @@
               keyRoute = props.keyRoute,
               targetJsonSchema = props.targetJsonSchema;
             var curType = targetJsonSchema.type;
-            var curConditionValue = '';
             var curNodeKey = nodeKey;
 
             // 支持显隐属性表达式
@@ -834,7 +833,7 @@
             _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.getParentKeyRoute)(
               keyRoute,
             );
-            var curData = getJSONDataByKeyRoute(parentKeyRoute) || {}; // 获取当前父级数据域
+            var parentData = getJSONDataByKeyRoute(parentKeyRoute) || {}; // 获取当前父级数据域
             if (
               ((0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
                 targetJsonSchema.onShow,
@@ -846,24 +845,22 @@
                 !(0,
                 _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.expressionOn)(
                   targetJsonSchema.onShow,
-                  curData,
+                  parentData,
                 ))
             ) {
               return;
             }
 
             // 收集当前所有条件子字段
-            var parentSchema = getSchemaByKeyRoute(parentKeyRoute);
-            curConditionValue = (0,
-            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.schema2conditionValue)(
-              parentSchema,
-              curData,
-            );
+            /*
+  const curData = getJSONDataByKeyRoute(keyRoute) || {};
+  const curConditionValue = schema2conditionValue(targetJsonSchema, curData);
+  // 将条件字段的数值作为key的一部分
+  if (curConditionValue) {
+    curNodeKey = `${nodeKey}-${curConditionValue}`;
+  }
+  */
 
-            // 将条件字段的数值作为key的一部分
-            if (curConditionValue) {
-              curNodeKey = nodeKey + '-' + curConditionValue;
-            }
             var newProps =
               _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
                 {},
@@ -878,156 +875,84 @@
                   $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_5__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'dynamic-config':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_27__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'sohu-source':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_28__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'sohu-event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_29__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'array':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_4__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'dynamic-data':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_7__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'datasource':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_6__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_8__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'quantity':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_9__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'box-style':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'radio':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'select':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_25__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'checkboxes':
                 // 多选
@@ -1035,78 +960,42 @@
                   $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_12__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'input':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'textarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_14__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'text-editor':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_15__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'number':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_16__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'boolean':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'date':
               case 'date-time':
@@ -1114,117 +1003,63 @@
                   $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_19__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'url':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_20__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'color':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_21__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'input-image':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_26__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'json':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'codearea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               case 'htmlarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_24__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
               default:
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
-                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
-                    {},
-                    newProps,
-                    {
-                      key: curNodeKey,
-                    },
-                  ),
+                  newProps,
                 );
             }
           };
@@ -1541,7 +1376,8 @@
                 pageScreen = _ref3.pageScreen;
               var _ref4 = jsonStore || {},
                 getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute,
-                sortArrayItem = _ref4.sortArrayItem;
+                sortArrayItem = _ref4.sortArrayItem,
+                triggerChange = _ref4.triggerChange;
               var _this$props2 = this.props,
                 keyRoute = _this$props2.keyRoute,
                 jsonKey = _this$props2.jsonKey,
@@ -1571,7 +1407,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  key: nodeKey + '-' + triggerChange,
                   id: nodeKey,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -4400,7 +4236,11 @@
             );
           /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(
+              /*! $utils/webCache */ './src/utils/webCache.js',
+            );
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
@@ -4414,6 +4254,7 @@
                 // 是否显示code模式
                 isClosed: false, // 是否为关闭状态，默认是开启状态
               };
+              _this.collapseChange = _this.collapseChange.bind(_this);
               return _this;
             }
             _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -4437,6 +4278,22 @@
                   );
                 }
               };
+            _proto.collapseChange = function collapseChange(event) {
+              var keyRoute = this.props.keyRoute;
+              var isClosed = this.state.isClosed;
+              this.setState({
+                isClosed: !isClosed,
+              });
+              event.preventDefault();
+              event.stopPropagation();
+
+              // 缓存当前折叠状态
+              (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_12__.saveJSONEditorCache)(
+                keyRoute,
+                !isClosed,
+              );
+            };
             _proto.render = function render() {
               var _targetJsonSchema$sho,
                 _this2 = this;
@@ -4458,7 +4315,7 @@
                 isStructuredSchema = _this$props2.isStructuredSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
-                isClosed = _this$state.isClosed;
+                _isClosed = _this$state.isClosed;
               var options = _options || {};
               // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
               var isStructured = isStructuredSchema;
@@ -4475,6 +4332,16 @@
               // 内容Meta数据
               var metaContentKeyList = options.metaContentKeyList || [];
               var globalMetaConfig = options.globalMetaConfig || [];
+
+              // 获取前端缓存中的折叠数据
+              var isClosed = _isClosed;
+              var collapseCacheData = (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_12__.getJSONEditorCache)(
+                keyRoute,
+              );
+              if (collapseCacheData !== undefined) {
+                isClosed = collapseCacheData;
+              }
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -4538,13 +4405,7 @@
                       'div',
                       {
                         className: 'element-title',
-                        onClick: function onClick(event) {
-                          _this2.setState({
-                            isClosed: !isClosed,
-                          });
-                          event.preventDefault();
-                          event.stopPropagation();
-                        },
+                        onClick: this.collapseChange,
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                         'span',
@@ -4585,7 +4446,7 @@
                               title: jsonView ? '关闭源码模式' : '开启源码模式',
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
+                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_13__[
                                 'default'
                               ],
                               {
@@ -4632,28 +4493,16 @@
                         /** 5. 获取当前元素的id，用于做唯一标识 */
                         var childNodeKey =
                           nodeKey + '-' + curType + '-' + currentJsonKey;
-                        var visibleOn = [
-                          'description',
-                          'valueType',
-                          'range',
-                          'value',
-                        ].includes(currentJsonKey)
-                          ? false
-                          : true; // 是否显示当前元素
 
                         // 补充动态配置类型相关显隐逻辑【定制逻辑】
                         if (
-                          (currentJsonKey === 'description' ||
-                            currentJsonKey === 'valueType') &&
+                          currentJsonKey === 'valueType' &&
                           (curJsonData.type === 'ContentStaticConfig' ||
                             curJsonData.type === 'ResourceCenter')
                         ) {
-                          // 资源中心配置、mp后台配置 时显示 description（属性名称）、valueType（配置方式）配置项
-                          visibleOn = true;
                           var valueSchema =
                             targetJsonSchema.properties['value'];
                           if (
-                            currentJsonKey === 'valueType' &&
                             !['select', 'radio', 'checkboxes'].includes(
                               valueSchema.type,
                             )
@@ -4664,15 +4513,13 @@
                             currentSchemaData.description =
                               '当前数值没有可选项，不支持设置。';
                           }
-                        } else if (currentJsonKey === 'range') {
+                        }
+                        if (currentJsonKey === 'range') {
                           if (
                             curJsonData.valueType === 'select' &&
                             (curJsonData.type === 'ContentStaticConfig' ||
                               curJsonData.type === 'ResourceCenter')
                           ) {
-                            visibleOn = true;
-                          }
-                          if (visibleOn) {
                             var _valueSchema =
                               targetJsonSchema.properties['value'];
                             if (
@@ -4689,14 +4536,6 @@
                               );
                             }
                           }
-                        } else if (
-                          currentJsonKey === 'value' &&
-                          (curJsonData.type === 'DevDefaults' ||
-                            curJsonData.type === 'RuntimeConst' ||
-                            curJsonData.type === 'Content')
-                        ) {
-                          // 全局配置数据、内容Meta数据 显示 数据值 配置项
-                          visibleOn = true;
                         }
                         if (
                           currentJsonKey === 'value' &&
@@ -4719,21 +4558,19 @@
                             globalMetaConfig,
                           );
                         }
-                        if (visibleOn) {
-                          return (0,
-                          $components_MappingRender__WEBPACK_IMPORTED_MODULE_9__[
-                            'default'
-                          ])({
-                            parentType: curType,
-                            jsonKey: currentJsonKey,
-                            indexRoute: currentIndexRoute,
-                            keyRoute: currentKeyRoute,
-                            nodeKey: childNodeKey,
-                            targetJsonSchema: currentSchemaData,
-                            schemaStore: schemaStore,
-                            jsonStore: jsonStore,
-                          });
-                        }
+                        return (0,
+                        $components_MappingRender__WEBPACK_IMPORTED_MODULE_9__[
+                          'default'
+                        ])({
+                          parentType: curType,
+                          jsonKey: currentJsonKey,
+                          indexRoute: currentIndexRoute,
+                          keyRoute: currentKeyRoute,
+                          nodeKey: childNodeKey,
+                          targetJsonSchema: currentSchemaData,
+                          schemaStore: schemaStore,
+                          jsonStore: jsonStore,
+                        });
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
@@ -7753,17 +7590,21 @@
             );
           /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! $utils/webCache */ './src/utils/webCache.js',
+            );
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/ObjectSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_11__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_12__,
             );
 
           var ObjectSchema = /*#__PURE__*/ (function (_React$PureComponent) {
@@ -7775,6 +7616,7 @@
                 // 是否显示code模式
                 isClosed: false, // 是否为关闭状态，默认是开启状态
               };
+              _this.collapseChange = _this.collapseChange.bind(_this);
               return _this;
             }
             _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -7798,6 +7640,22 @@
                   );
                 }
               };
+            _proto.collapseChange = function collapseChange(event) {
+              var keyRoute = this.props.keyRoute;
+              var isClosed = this.state.isClosed;
+              this.setState({
+                isClosed: !isClosed,
+              });
+              event.preventDefault();
+              event.stopPropagation();
+
+              // 缓存当前折叠状态
+              (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_10__.saveJSONEditorCache)(
+                keyRoute,
+                !isClosed,
+              );
+            };
             _proto.render = function render() {
               var _targetJsonSchema$sho,
                 _this2 = this;
@@ -7817,7 +7675,7 @@
                 isStructuredSchema = _this$props2.isStructuredSchema;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
-                isClosed = _this$state.isClosed;
+                _isClosed = _this$state.isClosed;
               // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
               var isStructured = isStructuredSchema;
               // 是否显示源码切换按钮
@@ -7826,6 +7684,16 @@
                 null
                   ? _targetJsonSchema$sho
                   : true;
+
+              // 获取前端缓存中的折叠数据
+              var isClosed = _isClosed;
+              var collapseCacheData = (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_10__.getJSONEditorCache)(
+                keyRoute,
+              );
+              if (collapseCacheData !== undefined) {
+                isClosed = collapseCacheData;
+              }
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -7888,13 +7756,7 @@
                       'div',
                       {
                         className: 'element-title',
-                        onClick: function onClick(event) {
-                          _this2.setState({
-                            isClosed: !isClosed,
-                          });
-                          event.preventDefault();
-                          event.stopPropagation();
-                        },
+                        onClick: this.collapseChange,
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                         'span',
@@ -7935,7 +7797,7 @@
                               title: jsonView ? '关闭源码模式' : '开启源码模式',
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_10__[
+                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_11__[
                                 'default'
                               ],
                               {
@@ -9303,6 +9165,10 @@
             );
           /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(
+              /*! $utils/webCache */ './src/utils/webCache.js',
+            );
 
           var Panel = antd__WEBPACK_IMPORTED_MODULE_5__.Collapse.Panel;
 
@@ -9317,6 +9183,7 @@
                 // 是否显示code模式
                 isClosed: false, // 是否为关闭状态，默认是开启状态
               };
+              _this.collapseChange = _this.collapseChange.bind(_this);
               return _this;
             }
             _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -9340,20 +9207,42 @@
                   );
                 }
               };
+            _proto.collapseChange = function collapseChange(collapseData) {
+              var keyRoute = this.props.keyRoute;
+              // 缓存当前折叠状态
+              (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_9__.saveJSONEditorCache)(
+                keyRoute,
+                collapseData,
+              );
+            };
             _proto.render = function render() {
               var _this$props = this.props,
                 schemaStore = _this$props.schemaStore,
                 jsonStore = _this$props.jsonStore;
               var _ref = schemaStore || {},
                 pageScreen = _ref.pageScreen;
-              var _ref2 = jsonStore || {},
-                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
+              // const { getJSONDataByKeyRoute } = jsonStore || {};
               var _this$props2 = this.props,
                 indexRoute = _this$props2.indexRoute,
                 jsonKey = _this$props2.jsonKey,
                 nodeKey = _this$props2.nodeKey,
                 keyRoute = _this$props2.keyRoute,
                 targetJsonSchema = _this$props2.targetJsonSchema;
+              // 获取前端缓存中的折叠数据
+              var collapseData = ['mainConfig'];
+              var collapseCacheData = (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_9__.getJSONEditorCache)(
+                keyRoute,
+              );
+              if (
+                collapseCacheData &&
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isArray)(
+                  collapseCacheData,
+                )
+              ) {
+                collapseData = collapseCacheData;
+              }
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -9362,7 +9251,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
@@ -9412,92 +9301,13 @@
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                     antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
                     {
-                      defaultActiveKey: ['mainConfig'],
+                      defaultActiveKey: collapseData,
                       expandIconPosition: 'right',
                       bordered: false,
                       accordion: true,
+                      onChange: this.collapseChange,
                     },
-                    targetJsonSchema.properties['mainConfig'] &&
-                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                        Panel,
-                        {
-                          header:
-                            targetJsonSchema.properties['mainConfig'].title,
-                          key: 'mainConfig',
-                        },
-                        targetJsonSchema.properties[
-                          'mainConfig'
-                        ].propertyOrder.map(function (key, index) {
-                          /** 1. 获取当前元素的路径值 */
-                          var currentIndexRoute = indexRoute
-                            ? indexRoute + '-0-' + index
-                            : '0-' + index;
-                          var currentKeyRoute = keyRoute
-                            ? keyRoute + '-mainConfig-' + key
-                            : 'mainConfig-' + key; // key路径值，后续用于从jsonData中提取当前元素的数值
-                          var mainConfigJsonData =
-                            getJSONDataByKeyRoute(
-                              keyRoute
-                                ? keyRoute + '-mainConfig'
-                                : 'mainConfig',
-                            ) || {};
-                          /** 2. 获取当前元素的key值 */
-                          var currentJsonKey = key;
-                          /** 3. 获取当前元素的json结构对象 */
-                          var currentSchemaData = (0,
-                          mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
-                            targetJsonSchema.properties['mainConfig']
-                              .properties[currentJsonKey],
-                          );
-                          /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                          var curType = currentSchemaData.type;
-                          /** 5. 获取当前元素的id，用于做唯一标识 */
-                          var childNodeKey =
-                            nodeKey + '-' + curType + '-' + currentJsonKey;
-                          var visibleOn = [
-                            'description',
-                            'CONTENTID',
-                            'CONTENTTYPE',
-                          ].includes(currentJsonKey)
-                            ? false
-                            : true; // 是否显示当前元素
-
-                          // 补充动态配置类型相关显隐逻辑【定制逻辑】
-                          if (
-                            currentJsonKey === 'description' &&
-                            mainConfigJsonData.type === 'ContentStaticConfig'
-                          ) {
-                            // mp后台配置 时显示 description（属性名称）
-                            visibleOn = true;
-                          } else if (
-                            (currentJsonKey === 'CONTENTID' ||
-                              currentJsonKey === 'CONTENTTYPE') &&
-                            mainConfigJsonData.type === 'RuntimeDataSelfDefine'
-                          ) {
-                            visibleOn = true;
-                          }
-                          if (visibleOn) {
-                            return (0,
-                            $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
-                              'default'
-                            ])({
-                              parentType: curType,
-                              jsonKey: currentJsonKey,
-                              indexRoute: currentIndexRoute,
-                              keyRoute: currentKeyRoute,
-                              nodeKey: childNodeKey,
-                              targetJsonSchema: currentSchemaData,
-                              isArrayItem: true,
-                              schemaStore: schemaStore,
-                              jsonStore: jsonStore,
-                            });
-                          }
-                        }),
-                      ),
                     targetJsonSchema.propertyOrder.map(function (key, index) {
-                      if (key === 'mainConfig') {
-                        return;
-                      }
                       /** 1. 获取当前元素的路径值 */
                       var currentIndexRoute = indexRoute
                         ? indexRoute + '-' + index
@@ -9638,13 +9448,17 @@
             );
           /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! $utils/webCache */ './src/utils/webCache.js',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/SohuEventSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_9__,
             );
 
           var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
@@ -9718,6 +9532,7 @@
                 // 是否显示code模式
                 isClosed: false, // 是否为关闭状态，默认是开启状态
               };
+              _this.collapseChange = _this.collapseChange.bind(_this);
               return _this;
             }
             _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -9741,6 +9556,15 @@
                   );
                 }
               };
+            _proto.collapseChange = function collapseChange(collapseData) {
+              var keyRoute = this.props.keyRoute;
+              // 缓存当前折叠状态
+              (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_8__.saveJSONEditorCache)(
+                keyRoute,
+                collapseData,
+              );
+            };
             _proto.render = function render() {
               var _this2 = this;
               var _this$props3 = this.props,
@@ -9771,6 +9595,21 @@
                 widgetType !== 'page' &&
                 eventEmitConfig.length === 0 &&
                 eventListenConfig.length === 0;
+
+              // 获取前端缓存中的折叠数据
+              var collapseData = [];
+              var collapseCacheData = (0,
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_8__.getJSONEditorCache)(
+                keyRoute,
+              );
+              if (
+                collapseCacheData &&
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isArray)(
+                  collapseCacheData,
+                )
+              ) {
+                collapseData = collapseCacheData;
+              }
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -9785,9 +9624,10 @@
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
                   {
-                    defaultActiveKey: ['mainConfig'],
+                    defaultActiveKey: collapseData,
                     expandIconPosition: 'right',
                     bordered: false,
+                    onChange: this.collapseChange,
                     // accordion
                   },
                   eventListenConfig &&
@@ -11768,6 +11608,18 @@
                   // 当keyRoute为空时直接修改当前schemaData
                   this.jsonData = newVal;
                 }
+                if (this.state.rootJSONStore.JSONSchemaStore) {
+                  // 备注：数组类型通过keyRoute获取schema对象会有异常
+                  var curElemSchema =
+                    this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
+                      keyRoute,
+                    );
+                  if (curElemSchema && curElemSchema.isConditionProp) {
+                    // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
+                    this.updateLastTime();
+                    // this.triggerChangeAction(); // 用于主动触发组件更新
+                  }
+                }
                 if (!ignoreChange) {
                   // 4. 触发onChange事件
                   this.jsonDataChange();
@@ -12757,6 +12609,8 @@
             /*#__PURE__*/ __webpack_require__.n(
               _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__,
             );
+          /* harmony import */ var _webCache_js__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! ./webCache.js */ './src/utils/webCache.js');
 
           /** js对象数据深拷贝，避免数据联动 */
           function objClone(targetObj) {
@@ -12909,29 +12763,35 @@
 
           /**
            *  将数据缓存到sessionStorage中
-           * */
-          function saveWebCacheData(cacheKey, targetSourceIndex) {
-            if (window.sessionStorage) {
-              window.sessionStorage.setItem(cacheKey, targetSourceIndex);
-            }
+           */
+          function saveWebCacheData(valueKey, value) {
+            (0, _webCache_js__WEBPACK_IMPORTED_MODULE_1__.saveJSONEditorCache)(
+              valueKey,
+              value,
+              'json-editor-formData',
+            );
           }
 
           /**
            *  从sessionStorage中读取此前缓存的数据
-           * */
-          function getWebCacheData(cacheKey) {
-            if (window.sessionStorage) {
-              return window.sessionStorage.getItem(cacheKey);
-            }
+           */
+          function getWebCacheData(valueKey) {
+            return (0,
+            _webCache_js__WEBPACK_IMPORTED_MODULE_1__.getJSONEditorCache)(
+              valueKey,
+              'json-editor-formData',
+            );
           }
 
           /**
            *  从sessionStorage中删除此前缓存的数据
-           * */
-          function deleteWebCacheData(cacheKey) {
-            if (window.sessionStorage) {
-              return window.sessionStorage.removeItem(cacheKey);
-            }
+           */
+          function deleteWebCacheData(valueKey) {
+            (0,
+            _webCache_js__WEBPACK_IMPORTED_MODULE_1__.deleteJSONEditorCache)(
+              valueKey,
+              'json-editor-formData',
+            );
           }
 
           /***/
@@ -13117,6 +12977,95 @@
               isFunction = true;
             }
             return isFunction;
+          }
+
+          /***/
+        },
+
+      /***/ './src/utils/webCache.js':
+        /*!*******************************!*\
+  !*** ./src/utils/webCache.js ***!
+  \*******************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ deleteJSONEditorCache: function () {
+              return /* binding */ deleteJSONEditorCache;
+            },
+            /* harmony export */ getJSONEditorCache: function () {
+              return /* binding */ getJSONEditorCache;
+            },
+            /* harmony export */ saveJSONEditorCache: function () {
+              return /* binding */ saveJSONEditorCache;
+            },
+            /* harmony export */
+          });
+          /**
+           *  将数据缓存到sessionStorage中
+           * */
+          function saveJSONEditorCache(key, value, cacheMark) {
+            if (cacheMark === void 0) {
+              cacheMark = 'json-editor-cache';
+            }
+            if (window.sessionStorage) {
+              var cacheData = {};
+              var cacheDataStr = window.sessionStorage.getItem(cacheMark);
+              if (cacheDataStr) {
+                cacheData = JSON.parse(cacheDataStr);
+              }
+              if (key) {
+                cacheData[key] = value;
+              }
+              window.sessionStorage.setItem(
+                cacheMark,
+                JSON.stringify(cacheData),
+              );
+            }
+          }
+
+          /**
+           *  从sessionStorage中读取此前缓存的数据
+           * */
+          function getJSONEditorCache(valueKey, cacheMark) {
+            if (cacheMark === void 0) {
+              cacheMark = 'json-editor-cache';
+            }
+            var curKeyValue;
+            if (window.sessionStorage) {
+              var cacheData = {};
+              var cacheDataStr = window.sessionStorage.getItem(cacheMark);
+              if (cacheDataStr) {
+                cacheData = JSON.parse(cacheDataStr);
+              }
+              if (valueKey) {
+                curKeyValue = cacheData[valueKey];
+              }
+            }
+            return curKeyValue;
+          }
+
+          /**
+           *  从sessionStorage中删除此前缓存的数据
+           * */
+          function deleteJSONEditorCache(valueKey, cacheMark) {
+            if (cacheMark === void 0) {
+              cacheMark = 'json-editor-cache';
+            }
+            if (window.sessionStorage) {
+              var cacheData = {};
+              var cacheDataStr = window.sessionStorage.getItem(cacheMark);
+              if (cacheDataStr) {
+                cacheData = JSON.parse(cacheDataStr);
+              }
+              if (valueKey) {
+                cacheData[valueKey] = undefined;
+              }
+            }
           }
 
           /***/

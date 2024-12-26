@@ -53,7 +53,7 @@ class SohuDataSourceSchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
+    // const { getJSONDataByKeyRoute } = jsonStore || {};
     const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
       this.props;
     // 获取前端缓存中的折叠数据
@@ -98,81 +98,7 @@ class SohuDataSourceSchema extends React.PureComponent {
             accordion
             onChange={this.collapseChange}
           >
-            {targetJsonSchema.properties['mainConfig'] && (
-              <Panel
-                header={targetJsonSchema.properties['mainConfig'].title}
-                key="mainConfig"
-              >
-                {targetJsonSchema.properties['mainConfig'].propertyOrder.map(
-                  (key, index) => {
-                    /** 1. 获取当前元素的路径值 */
-                    const currentIndexRoute = indexRoute
-                      ? `${indexRoute}-0-${index}`
-                      : `0-${index}`;
-                    const currentKeyRoute = keyRoute
-                      ? `${keyRoute}-mainConfig-${key}`
-                      : `mainConfig-${key}`; // key路径值，后续用于从jsonData中提取当前元素的数值
-                    const mainConfigJsonData =
-                      getJSONDataByKeyRoute(
-                        keyRoute ? `${keyRoute}-mainConfig` : 'mainConfig',
-                      ) || {};
-                    /** 2. 获取当前元素的key值 */
-                    const currentJsonKey = key;
-                    /** 3. 获取当前元素的json结构对象 */
-                    const currentSchemaData = toJS(
-                      targetJsonSchema.properties['mainConfig'].properties[
-                        currentJsonKey
-                      ],
-                    );
-                    /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                    const curType = currentSchemaData.type;
-                    /** 5. 获取当前元素的id，用于做唯一标识 */
-                    const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
-
-                    let visibleOn = [
-                      'description',
-                      'CONTENTID',
-                      'CONTENTTYPE',
-                    ].includes(currentJsonKey)
-                      ? false
-                      : true; // 是否显示当前元素
-
-                    // 补充动态配置类型相关显隐逻辑【定制逻辑】
-                    if (
-                      currentJsonKey === 'description' &&
-                      mainConfigJsonData.type === 'ContentStaticConfig'
-                    ) {
-                      // mp后台配置 时显示 description（属性名称）
-                      visibleOn = true;
-                    } else if (
-                      (currentJsonKey === 'CONTENTID' ||
-                        currentJsonKey === 'CONTENTTYPE') &&
-                      mainConfigJsonData.type === 'RuntimeDataSelfDefine'
-                    ) {
-                      visibleOn = true;
-                    }
-
-                    if (visibleOn) {
-                      return MappingRender({
-                        parentType: curType,
-                        jsonKey: currentJsonKey,
-                        indexRoute: currentIndexRoute,
-                        keyRoute: currentKeyRoute,
-                        nodeKey: childNodeKey,
-                        targetJsonSchema: currentSchemaData,
-                        isArrayItem: true,
-                        schemaStore,
-                        jsonStore,
-                      });
-                    }
-                  },
-                )}
-              </Panel>
-            )}
             {targetJsonSchema.propertyOrder.map((key, index) => {
-              if (key === 'mainConfig') {
-                return;
-              }
               /** 1. 获取当前元素的路径值 */
               const currentIndexRoute = indexRoute
                 ? `${indexRoute}-${index}`

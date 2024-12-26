@@ -35,6 +35,14 @@ class IndexDemo extends React.PureComponent {
                 description: '',
                 placeholder: '',
               },
+              imgUrl: {
+                title: '组件预览图1',
+                type: 'input-image',
+                accept: '.jpeg,.jpg,.png',
+                multiple: true,
+                description: '',
+                placeholder: '',
+              },
               description: {
                 title: '组件描述',
                 type: 'input',
@@ -59,7 +67,7 @@ class IndexDemo extends React.PureComponent {
                 ],
                 default: 'client',
               },
-              firstChannel1: {
+              field_1: {
                 type: 'dynamic-config',
                 title: '动态配置',
                 description: '',
@@ -101,6 +109,8 @@ class IndexDemo extends React.PureComponent {
                     default: '',
                     description: '',
                     placeholder: '',
+                    onShow:
+                      'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
                   },
                   description: {
                     title: '属性名称',
@@ -108,6 +118,8 @@ class IndexDemo extends React.PureComponent {
                     default: '',
                     description: '',
                     placeholder: '',
+                    onShow:
+                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
                   },
                   valueType: {
                     type: 'radio',
@@ -125,96 +137,16 @@ class IndexDemo extends React.PureComponent {
                     default: 'string',
                     isConditionProp: true,
                     description: '',
+                    onShow:
+                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
                   },
                   range: {
                     type: 'select',
                     title: '可选项',
                     multiple: true,
                     options: [],
-                    description: '这里会使用value中的配置选项作为options',
-                  },
-                },
-                propertyOrder: [
-                  'type',
-                  'value',
-                  'description',
-                  'valueType',
-                  'range',
-                ],
-                showCodeViewBtn: false,
-              },
-              firstChannel: {
-                type: 'object',
-                title: '一级标题',
-                description: '',
-                isContainer: false,
-                properties: {
-                  type: {
-                    type: 'select',
-                    title: '数据来源',
-                    options: [
-                      {
-                        label: '模板直接设置',
-                        value: 'DevDefaults',
-                      },
-                      {
-                        label: 'mp后台配置',
-                        value: 'ContentStaticConfig',
-                      },
-                      {
-                        label: '内容Meta数据',
-                        value: 'Content',
-                      },
-                      {
-                        label: '全局配置数据',
-                        value: 'RuntimeConst',
-                      },
-                      {
-                        label: '资源中心配置',
-                        value: 'ResourceCenter',
-                      },
-                    ],
-                    default: 'DevDefaults',
-                    isConditionProp: true,
-                    description:
-                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                  },
-                  value: {
-                    title: '数据值',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  description: {
-                    title: '属性名称',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  valueType: {
-                    type: 'radio',
-                    title: '配置方式',
-                    options: [
-                      {
-                        label: '填写',
-                        value: 'string',
-                      },
-                      {
-                        label: '选择',
-                        value: 'select',
-                      },
-                    ],
-                    default: 'string',
-                    isConditionProp: true,
-                    description: '',
-                  },
-                  range: {
-                    type: 'select',
-                    title: '可选项',
-                    multiple: true,
-                    options: [],
+                    onShow:
+                      '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
                     description: '这里会使用value中的配置选项作为options',
                   },
                 },
@@ -230,10 +162,10 @@ class IndexDemo extends React.PureComponent {
             },
             propertyOrder: [
               'name',
+              'imgUrl',
               'description',
               'renderMethod',
-              'firstChannel1',
-              'firstChannel',
+              'field_1',
             ],
           },
           style: {
@@ -520,7 +452,7 @@ class IndexDemo extends React.PureComponent {
             title: '数据',
             isFixed: true,
             properties: {
-              sohuDataSource: {
+              field_2: {
                 type: 'sohu-source',
                 title: '组件动态数据',
                 description: '',
@@ -563,6 +495,7 @@ class IndexDemo extends React.PureComponent {
                         default: '',
                         description: '',
                         placeholder: '',
+                        onShow: 'type === "ContentStaticConfig"',
                       },
                       dataType: {
                         type: 'radio',
@@ -589,6 +522,7 @@ class IndexDemo extends React.PureComponent {
                         default: '',
                         description: '',
                         placeholder: '',
+                        onShow: 'type === "RuntimeDataSelfDefine"',
                       },
                       CONTENTTYPE: {
                         type: 'select',
@@ -608,6 +542,7 @@ class IndexDemo extends React.PureComponent {
                           },
                         ],
                         description: '',
+                        onShow: 'type === "RuntimeDataSelfDefine"',
                       },
                     },
                     propertyOrder: [
@@ -817,12 +752,630 @@ class IndexDemo extends React.PureComponent {
                     propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],
                     showCodeViewBtn: false,
                   },
+                  adConfig: {
+                    type: 'object',
+                    title: '广告配置',
+                    description: '',
+                    properties: {
+                      type: {
+                        type: 'select',
+                        title: '数据源类型',
+                        isConditionProp: true,
+                        options: [
+                          {
+                            label: '模板直接设置',
+                            value: 'DevDefaults',
+                          },
+                          {
+                            label: '资源中心配置',
+                            value: 'ResourceCenter',
+                          },
+                        ],
+                        description: '',
+                      },
+                      value: {
+                        type: 'object',
+                        title: '广告规则',
+                        description: '',
+                        onShow: 'type === "DevDefaults"',
+                        properties: {
+                          id: {
+                            title: '广告ID',
+                            type: 'input',
+                            default: '',
+                            description: '',
+                            placeholder: '',
+                          },
+                          rule: {
+                            type: 'radio',
+                            title: '规则类型',
+                            options: [
+                              {
+                                label: '固定位置',
+                                value: 1,
+                              },
+                              {
+                                label: '隔几出几',
+                                value: 2,
+                              },
+                              {
+                                label: '固定位置隔几出几',
+                                value: 3,
+                              },
+                            ],
+                            default: 1,
+                            description: '',
+                          },
+                          fixArray: {
+                            type: 'select',
+                            title: '固定位置',
+                            default: 1,
+                            description: '',
+                            options: [
+                              {
+                                label: '1',
+                                value: 1,
+                              },
+                              {
+                                label: '2',
+                                value: 2,
+                              },
+                              {
+                                label: '3',
+                                value: 3,
+                              },
+                              {
+                                label: '4',
+                                value: 4,
+                              },
+                              {
+                                label: '5',
+                                value: 5,
+                              },
+                              {
+                                label: '6',
+                                value: 6,
+                              },
+                              {
+                                label: '7',
+                                value: 7,
+                              },
+                              {
+                                label: '8',
+                                value: 8,
+                              },
+                              {
+                                label: '9',
+                                value: 9,
+                              },
+                              {
+                                label: '10',
+                                value: 10,
+                              },
+                              {
+                                label: '11',
+                                value: 11,
+                              },
+                              {
+                                label: '12',
+                                value: 12,
+                              },
+                              {
+                                label: '13',
+                                value: 13,
+                              },
+                              {
+                                label: '14',
+                                value: 14,
+                              },
+                              {
+                                label: '15',
+                                value: 15,
+                              },
+                              {
+                                label: '16',
+                                value: 16,
+                              },
+                              {
+                                label: '17',
+                                value: 17,
+                              },
+                              {
+                                label: '18',
+                                value: 18,
+                              },
+                              {
+                                label: '19',
+                                value: 19,
+                              },
+                              {
+                                label: '20',
+                                value: 20,
+                              },
+                              {
+                                label: '21',
+                                value: 21,
+                              },
+                              {
+                                label: '22',
+                                value: 22,
+                              },
+                              {
+                                label: '23',
+                                value: 23,
+                              },
+                              {
+                                label: '24',
+                                value: 24,
+                              },
+                              {
+                                label: '25',
+                                value: 25,
+                              },
+                              {
+                                label: '26',
+                                value: 26,
+                              },
+                              {
+                                label: '27',
+                                value: 27,
+                              },
+                              {
+                                label: '28',
+                                value: 28,
+                              },
+                              {
+                                label: '29',
+                                value: 29,
+                              },
+                              {
+                                label: '30',
+                                value: 30,
+                              },
+                              {
+                                label: '31',
+                                value: 31,
+                              },
+                              {
+                                label: '32',
+                                value: 32,
+                              },
+                              {
+                                label: '33',
+                                value: 33,
+                              },
+                              {
+                                label: '34',
+                                value: 34,
+                              },
+                              {
+                                label: '35',
+                                value: 35,
+                              },
+                              {
+                                label: '36',
+                                value: 36,
+                              },
+                              {
+                                label: '37',
+                                value: 37,
+                              },
+                              {
+                                label: '38',
+                                value: 38,
+                              },
+                              {
+                                label: '39',
+                                value: 39,
+                              },
+                              {
+                                label: '40',
+                                value: 40,
+                              },
+                              {
+                                label: '41',
+                                value: 41,
+                              },
+                              {
+                                label: '42',
+                                value: 42,
+                              },
+                              {
+                                label: '43',
+                                value: 43,
+                              },
+                              {
+                                label: '44',
+                                value: 44,
+                              },
+                              {
+                                label: '45',
+                                value: 45,
+                              },
+                              {
+                                label: '46',
+                                value: 46,
+                              },
+                              {
+                                label: '47',
+                                value: 47,
+                              },
+                              {
+                                label: '48',
+                                value: 48,
+                              },
+                              {
+                                label: '49',
+                                value: 49,
+                              },
+                              {
+                                label: '50',
+                                value: 50,
+                              },
+                            ],
+                          },
+                          begin: {
+                            type: 'number',
+                            title: '开始位置',
+                            default: 1,
+                            minimum: '1',
+                            maximum: '50',
+                            description: '',
+                          },
+                          turn: {
+                            type: 'number',
+                            title: '间隔/隔',
+                            default: 1,
+                            minimum: '1',
+                            maximum: '50',
+                            description: '',
+                          },
+                          number: {
+                            type: 'number',
+                            title: '间隔/出',
+                            default: 1,
+                            minimum: '1',
+                            maximum: '50',
+                            description: '',
+                          },
+                          mergeType: {
+                            type: 'radio',
+                            title: '插入规则',
+                            options: [
+                              {
+                                label: '覆盖',
+                                value: 0,
+                              },
+                              {
+                                label: '插入',
+                                value: 1,
+                              },
+                            ],
+                            default: 0,
+                            description: '',
+                          },
+                        },
+                        propertyOrder: [
+                          'id',
+                          'rule',
+                          'fixArray',
+                          'begin',
+                          'turn',
+                          'number',
+                          'mergeType',
+                        ],
+                      },
+                      range: {
+                        type: 'array',
+                        title: '广告规则列表',
+                        description: '',
+                        onShow: 'type === "ResourceCenter"',
+                        items: {
+                          type: 'object',
+                          title: '数组项',
+                          description: '',
+                          properties: {
+                            id: {
+                              title: '广告ID',
+                              type: 'input',
+                              default: '',
+                              description: '',
+                              placeholder: '',
+                            },
+                            rule: {
+                              type: 'radio',
+                              title: '规则类型',
+                              options: [
+                                {
+                                  label: '固定位置',
+                                  value: 1,
+                                },
+                                {
+                                  label: '隔几出几',
+                                  value: 2,
+                                },
+                                {
+                                  label: '固定位置隔几出几',
+                                  value: 3,
+                                },
+                              ],
+                              default: 1,
+                              description: '',
+                            },
+                            fixArray: {
+                              type: 'select',
+                              title: '固定位置',
+                              default: 1,
+                              description: '',
+                              options: [
+                                {
+                                  label: '1',
+                                  value: 1,
+                                },
+                                {
+                                  label: '2',
+                                  value: 2,
+                                },
+                                {
+                                  label: '3',
+                                  value: 3,
+                                },
+                                {
+                                  label: '4',
+                                  value: 4,
+                                },
+                                {
+                                  label: '5',
+                                  value: 5,
+                                },
+                                {
+                                  label: '6',
+                                  value: 6,
+                                },
+                                {
+                                  label: '7',
+                                  value: 7,
+                                },
+                                {
+                                  label: '8',
+                                  value: 8,
+                                },
+                                {
+                                  label: '9',
+                                  value: 9,
+                                },
+                                {
+                                  label: '10',
+                                  value: 10,
+                                },
+                                {
+                                  label: '11',
+                                  value: 11,
+                                },
+                                {
+                                  label: '12',
+                                  value: 12,
+                                },
+                                {
+                                  label: '13',
+                                  value: 13,
+                                },
+                                {
+                                  label: '14',
+                                  value: 14,
+                                },
+                                {
+                                  label: '15',
+                                  value: 15,
+                                },
+                                {
+                                  label: '16',
+                                  value: 16,
+                                },
+                                {
+                                  label: '17',
+                                  value: 17,
+                                },
+                                {
+                                  label: '18',
+                                  value: 18,
+                                },
+                                {
+                                  label: '19',
+                                  value: 19,
+                                },
+                                {
+                                  label: '20',
+                                  value: 20,
+                                },
+                                {
+                                  label: '21',
+                                  value: 21,
+                                },
+                                {
+                                  label: '22',
+                                  value: 22,
+                                },
+                                {
+                                  label: '23',
+                                  value: 23,
+                                },
+                                {
+                                  label: '24',
+                                  value: 24,
+                                },
+                                {
+                                  label: '25',
+                                  value: 25,
+                                },
+                                {
+                                  label: '26',
+                                  value: 26,
+                                },
+                                {
+                                  label: '27',
+                                  value: 27,
+                                },
+                                {
+                                  label: '28',
+                                  value: 28,
+                                },
+                                {
+                                  label: '29',
+                                  value: 29,
+                                },
+                                {
+                                  label: '30',
+                                  value: 30,
+                                },
+                                {
+                                  label: '31',
+                                  value: 31,
+                                },
+                                {
+                                  label: '32',
+                                  value: 32,
+                                },
+                                {
+                                  label: '33',
+                                  value: 33,
+                                },
+                                {
+                                  label: '34',
+                                  value: 34,
+                                },
+                                {
+                                  label: '35',
+                                  value: 35,
+                                },
+                                {
+                                  label: '36',
+                                  value: 36,
+                                },
+                                {
+                                  label: '37',
+                                  value: 37,
+                                },
+                                {
+                                  label: '38',
+                                  value: 38,
+                                },
+                                {
+                                  label: '39',
+                                  value: 39,
+                                },
+                                {
+                                  label: '40',
+                                  value: 40,
+                                },
+                                {
+                                  label: '41',
+                                  value: 41,
+                                },
+                                {
+                                  label: '42',
+                                  value: 42,
+                                },
+                                {
+                                  label: '43',
+                                  value: 43,
+                                },
+                                {
+                                  label: '44',
+                                  value: 44,
+                                },
+                                {
+                                  label: '45',
+                                  value: 45,
+                                },
+                                {
+                                  label: '46',
+                                  value: 46,
+                                },
+                                {
+                                  label: '47',
+                                  value: 47,
+                                },
+                                {
+                                  label: '48',
+                                  value: 48,
+                                },
+                                {
+                                  label: '49',
+                                  value: 49,
+                                },
+                                {
+                                  label: '50',
+                                  value: 50,
+                                },
+                              ],
+                            },
+                            begin: {
+                              type: 'number',
+                              title: '开始位置',
+                              default: 1,
+                              minimum: '1',
+                              maximum: '50',
+                              description: '',
+                            },
+                            turn: {
+                              type: 'number',
+                              title: '间隔/隔',
+                              default: 1,
+                              minimum: '1',
+                              maximum: '50',
+                              description: '',
+                            },
+                            number: {
+                              type: 'number',
+                              title: '间隔/出',
+                              default: 1,
+                              minimum: '1',
+                              maximum: '50',
+                              description: '',
+                            },
+                            mergeType: {
+                              type: 'radio',
+                              title: '插入规则',
+                              options: [
+                                {
+                                  label: '覆盖',
+                                  value: 0,
+                                },
+                                {
+                                  label: '插入',
+                                  value: 1,
+                                },
+                              ],
+                              default: 0,
+                              description: '',
+                            },
+                          },
+                          propertyOrder: [
+                            'id',
+                            'rule',
+                            'fixArray',
+                            'begin',
+                            'turn',
+                            'number',
+                            'mergeType',
+                          ],
+                        },
+                      },
+                    },
+                    propertyOrder: ['type', 'value', 'range'],
+                  },
                 },
-                propertyOrder: ['mainConfig', 'otherConfig', 'outConfig'],
+                propertyOrder: [
+                  'mainConfig',
+                  'otherConfig',
+                  'outConfig',
+                  'adConfig',
+                ],
                 showCodeViewBtn: false,
               },
             },
-            propertyOrder: ['sohuDataSource'],
+            propertyOrder: ['field_2'],
           },
           event: {
             type: 'object',
@@ -894,535 +1447,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
         propertyOrder: ['props', 'data', 'style', 'event'],
-        lastUpdateTime: '2024-12-16T09:11:14.153Z',
-      },
-      jsonSchema1: {
-        type: 'object',
-        name: 'TPLSearch',
-        title: '头部组件',
-        properties: {
-          props: {
-            type: 'object',
-            title: '属性',
-            isFixed: true,
-            properties: {
-              name: {
-                title: '组件名称',
-                type: 'input',
-                default: 'x',
-                description: '',
-                placeholder: '',
-              },
-              description: {
-                title: '组件描述',
-                type: 'input',
-                default: 'x',
-                description: '组件的描述，该值会外显至mp后台',
-                placeholder: '',
-              },
-              renderMethod: {
-                title: '渲染方式',
-                type: 'radio',
-                description:
-                  '组件的渲染方式，支持客户端和服务端。首屏内容选择服务端，非首屏内容选择客户端',
-                options: [
-                  {
-                    label: '客户端',
-                    value: 'client',
-                  },
-                  {
-                    label: '服务端',
-                    value: 'server',
-                  },
-                ],
-                default: 'client',
-              },
-              firstChannel1: {
-                type: 'dynamic-config',
-                title: '动态配置',
-                description: '',
-                isContainer: false,
-                properties: {
-                  type: {
-                    type: 'select',
-                    title: '数据来源',
-                    options: [
-                      {
-                        label: '模板直接设置',
-                        value: 'DevDefaults',
-                      },
-                      {
-                        label: 'mp后台配置',
-                        value: 'ContentStaticConfig',
-                      },
-                      {
-                        label: '内容Meta数据',
-                        value: 'Content',
-                      },
-                      {
-                        label: '全局配置数据',
-                        value: 'RuntimeConst',
-                      },
-                      {
-                        label: '资源中心配置',
-                        value: 'ResourceCenter',
-                      },
-                    ],
-                    default: 'DevDefaults',
-                    isConditionProp: true,
-                    description:
-                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                  },
-                  value: {
-                    title: '数据值',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  description: {
-                    title: '属性名称',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  valueType: {
-                    type: 'radio',
-                    title: '配置方式',
-                    options: [
-                      {
-                        label: '填写',
-                        value: 'string',
-                      },
-                      {
-                        label: '选择',
-                        value: 'select',
-                      },
-                    ],
-                    default: 'string',
-                    isConditionProp: true,
-                    description: '',
-                  },
-                  range: {
-                    type: 'select',
-                    title: '可选项',
-                    multiple: true,
-                    options: [],
-                    description: '这里会使用value中的配置选项作为options',
-                  },
-                },
-                propertyOrder: [
-                  'type',
-                  'value',
-                  'description',
-                  'valueType',
-                  'range',
-                ],
-                showCodeViewBtn: false,
-              },
-            },
-            propertyOrder: [
-              'name',
-              'description',
-              'renderMethod',
-              'firstChannel1',
-            ],
-          },
-          style: {
-            type: 'object',
-            title: '样式',
-            isFixed: true,
-            properties: {
-              margin: {
-                type: 'box-style',
-                title: '外边距',
-                isContainer: false,
-                properties: {
-                  unit: {
-                    type: 'string',
-                    title: '单位数值',
-                    default: '15px',
-                    description: '',
-                  },
-                  quantity: {
-                    type: 'select',
-                    default: 'px',
-                    options: [
-                      {
-                        label: 'px',
-                        value: 'px',
-                      },
-                      {
-                        label: 'rem',
-                        value: 'rem',
-                      },
-                      {
-                        label: 'em',
-                        value: 'em',
-                      },
-                      {
-                        label: '%',
-                        value: '%',
-                      },
-                    ],
-                    title: '单位类型',
-                  },
-                },
-                propertyOrder: ['unit', 'quantity'],
-              },
-              width: {
-                type: 'quantity',
-                title: '宽',
-                isContainer: false,
-                properties: {
-                  unit: {
-                    type: 'number',
-                    title: '单位数值',
-                    default: 220,
-                    minimum: 0,
-                    maximum: '10000',
-                    description: '',
-                  },
-                  quantity: {
-                    type: 'select',
-                    default: 'px',
-                    options: [
-                      {
-                        label: 'px',
-                        value: 'px',
-                      },
-                      {
-                        label: 'rem',
-                        value: 'rem',
-                      },
-                      {
-                        label: 'em',
-                        value: 'em',
-                      },
-                      {
-                        label: '%',
-                        value: '%',
-                      },
-                    ],
-                    title: '单位类型',
-                  },
-                },
-                propertyOrder: ['unit', 'quantity'],
-              },
-              padding: {
-                type: 'box-style',
-                title: '内边距',
-                isContainer: false,
-                properties: {
-                  unit: {
-                    type: 'string',
-                    title: '单位数值',
-                    default: '15px',
-                    description: '',
-                  },
-                  quantity: {
-                    type: 'select',
-                    default: 'px',
-                    options: [
-                      {
-                        label: 'px',
-                        value: 'px',
-                      },
-                      {
-                        label: 'rem',
-                        value: 'rem',
-                      },
-                      {
-                        label: 'em',
-                        value: 'em',
-                      },
-                      {
-                        label: '%',
-                        value: '%',
-                      },
-                    ],
-                    title: '单位类型',
-                  },
-                },
-                propertyOrder: ['unit', 'quantity'],
-              },
-              padding2: {
-                title: '内边距',
-                type: 'select',
-                options: [
-                  {
-                    label: '无间距',
-                    value: '',
-                  },
-                  {
-                    label: '上下左右（间距-4,8px）',
-                    value: '$Spacing-4,$Spacing-4,$Spacing-4,$Spacing-4',
-                  },
-                  {
-                    label: '上下左右（间距-8,20px）',
-                    value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8',
-                  },
-                  {
-                    label: '上（间距-8,20px）',
-                    value: '$Spacing-8,0,0,0',
-                  },
-                  {
-                    label: '上（间距-12,40x）',
-                    value: '$Spacing-12,0,0,0',
-                  },
-                  {
-                    label: '上（间距-13,48px）',
-                    value: '$Spacing-13,0,0,0',
-                  },
-                  {
-                    label: '右（间距-15,60px）',
-                    value: '0,$Spacing-15,0,0',
-                  },
-                  {
-                    label: '右（间距-18,80px）',
-                    value: '0,$Spacing-18,0,0',
-                  },
-                  {
-                    label: '下（间距-12,40px）',
-                    value: '0,0,$Spacing-12,0',
-                  },
-                  {
-                    label: '左（间距-15,60）',
-                    value: '0,0,0,$Spacing-15',
-                  },
-                ],
-              },
-              margin2: {
-                title: '外边距',
-                type: 'select',
-                options: [
-                  {
-                    label: '无间距',
-                    value: '',
-                  },
-                  {
-                    label: '上下0，左右居中',
-                    value: '0,auto,0,auto',
-                  },
-                  {
-                    label: '上下左右（间距-8,20px） 20px',
-                    value: '$Spacing-8,$Spacing-8,$Spacing-8,$Spacing-8',
-                  },
-                  {
-                    label: '上（间距-12,40px）',
-                    value: '$Spacing-12,0,0,0',
-                  },
-                  {
-                    label: '上（间距-13,48px）',
-                    value: '$Spacing-13,0,0,0',
-                  },
-                  {
-                    label: '右（间距-15,60px）',
-                    value: '0,$Spacing-15,0,0',
-                  },
-                  {
-                    label: '右（间距-18,80px）',
-                    value: '0,$Spacing-18,0,0',
-                  },
-                  {
-                    label: '下（间距-12,40px）',
-                    value: '0,0,$Spacing-12,0',
-                  },
-                  {
-                    label: '左（间距-15,60px）',
-                    value: '0,0,0,$Spacing-15',
-                  },
-                ],
-              },
-              mianAlignment: {
-                title: '主轴对齐',
-                type: 'select',
-                options: [
-                  {
-                    label: '无',
-                    value: '',
-                  },
-                  {
-                    label: '起始位置开始排列',
-                    value: 'start',
-                  },
-                  {
-                    label: '结束位置开始排列',
-                    value: 'end',
-                  },
-                  {
-                    label: '居中对齐',
-                    value: 'center',
-                  },
-                  {
-                    label: '拉伸以适应容器的尺寸',
-                    value: 'stretch',
-                  },
-                  {
-                    label: '以基线对齐',
-                    value: 'baseline',
-                  },
-                ],
-                default: 'start',
-              },
-              crossAlignment: {
-                title: '交叉轴对齐',
-                type: 'select',
-                options: [
-                  {
-                    label: '无',
-                    value: '',
-                  },
-                  {
-                    label: '起始位置开始排列',
-                    value: 'start',
-                  },
-                  {
-                    label: '结束位置开始排列',
-                    value: 'end',
-                  },
-                  {
-                    label: '居中对齐',
-                    value: 'center',
-                  },
-                  {
-                    label: '均匀分布，首尾不留白',
-                    value: 'space-between',
-                  },
-                  {
-                    label: '均匀分布，两侧间隔相等',
-                    value: 'space-around',
-                  },
-                ],
-                default: 'start',
-              },
-            },
-            propertyOrder: [
-              'width',
-              'margin',
-              'padding',
-              'margin2',
-              'padding2',
-              'mianAlignment',
-              'crossAlignment',
-            ],
-          },
-          data: {
-            type: 'object',
-            title: '数据',
-            isFixed: true,
-            properties: {
-              chartDataList: {
-                type: 'dynamic-data',
-                title: '图表数据',
-                isContainer: false,
-                properties: {
-                  type: {
-                    default: 'local',
-                    type: 'select',
-                    options: [
-                      {
-                        label: '本地数据',
-                        value: 'local',
-                      },
-                      {
-                        label: '接口数据',
-                        value: 'remote',
-                      },
-                    ],
-                    title: '数据类型',
-                  },
-                  config: {
-                    type: 'object',
-                    title: '接口配置',
-                    description: '用于存放接口的配置数据(url、请求参数等)',
-                    isRequired: true,
-                    properties: {
-                      dataName: {
-                        default: 'local',
-                        type: 'select',
-                        options: [
-                          {
-                            label: '本地数据',
-                            value: 'local',
-                          },
-                          {
-                            label: '接口数据',
-                            value: 'remote',
-                          },
-                        ],
-                        title: '数据类型',
-                      },
-                      body: {
-                        type: 'object',
-                        title: '请求参数配置',
-                        description: '用于配置当前接口的请求参数数值',
-                        isRequired: true,
-                        properties: {},
-                        propertyOrder: [],
-                      },
-                      filter: {
-                        title: '过滤器函数体',
-                        type: 'codearea',
-                        default: 'return data;',
-                        description: '用于定义过滤接口数据',
-                        isRequired: true,
-                      },
-                    },
-                    propertyOrder: ['dataName', 'body', 'filter'],
-                  },
-                  data: {
-                    title: '数据内容',
-                    type: 'json',
-                    default: '{}',
-                    description: '用于存放DynamicData的数据内容',
-                    isRequired: true,
-                  },
-                  localFilter: {
-                    title: '过滤器',
-                    type: 'codearea',
-                    default: 'return data;',
-                    description: '用于定义过滤本地数据',
-                    isRequired: true,
-                  },
-                },
-                propertyOrder: ['type', 'config', 'data', 'localFilter'],
-              },
-              xAxis: {
-                title: 'x轴字段',
-                type: 'input',
-                default: 'x',
-                description: '',
-                placeholder: '',
-              },
-              yAxis: {
-                title: 'y轴字段',
-                type: 'input',
-                default: 'y',
-                description: '',
-                placeholder: '',
-              },
-              legend: {
-                title: '图例字段',
-                type: 'input',
-                default: 'type',
-                description: '',
-                placeholder: '',
-              },
-            },
-            propertyOrder: ['chartDataList', 'xAxis', 'yAxis', 'legend'],
-          },
-          event: {
-            type: 'object',
-            title: '事件',
-            isFixed: true,
-            properties: {},
-            propertyOrder: [],
-          },
-        },
-        propertyOrder: ['props', 'data', 'style', 'event'],
-        lastUpdateTime: '2021-03-29T02:08:03.551Z',
+        lastUpdateTime: '2024-12-26T05:19:23.958Z',
       },
       jsonSchema2: {
         type: 'object',

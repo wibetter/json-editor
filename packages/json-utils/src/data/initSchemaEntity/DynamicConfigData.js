@@ -48,6 +48,8 @@ export const initDynamicConfig = {
       default: '',
       description: '',
       placeholder: '',
+      onShow:
+        'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
     },
     description: {
       title: '属性名称',
@@ -55,6 +57,7 @@ export const initDynamicConfig = {
       default: '',
       description: '',
       placeholder: '',
+      onShow: 'type === "ContentStaticConfig" || type === "ResourceCenter"',
     },
     valueType: {
       type: 'radio',
@@ -72,12 +75,15 @@ export const initDynamicConfig = {
       default: 'string',
       isConditionProp: true,
       description: '',
+      onShow: 'type === "ContentStaticConfig" || type === "ResourceCenter"',
     },
     range: {
       type: 'select',
       title: '可选项',
       multiple: true,
       options: [],
+      onShow:
+        '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
       description: '这里会使用value中的配置选项作为options',
     },
   },
