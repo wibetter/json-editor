@@ -7,7 +7,7 @@ import {
   LoadingOutlined,
   PlusOutlined,
 } from '@ant-design/icons';
-import { truncate } from '@wibetter/json-utils';
+import { truncate, isArray, isString } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
 class InputImageSchema extends React.PureComponent {
@@ -86,6 +86,12 @@ class InputImageSchema extends React.PureComponent {
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+    let defaultFileList = [];
+    if (curJsonData && isArray(curJsonData)) {
+      defaultFileList = curJsonData;
+    } else if (curJsonData && isString(curJsonData)) {
+      defaultFileList.push(curJsonData);
+    }
 
     const uploadProps = {
       name: 'file', // targetJsonSchema.name || jsonKey || 'imgFile',
@@ -93,6 +99,7 @@ class InputImageSchema extends React.PureComponent {
       accept: targetJsonSchema.accept || options.uploadAccept,
       // multiple: targetJsonSchema.multiple ?? false,
       maxCount: targetJsonSchema.multiple ? targetJsonSchema.maxCount || 1 : 1,
+      defaultFileList,
       // showUploadList: false,
       listType: targetJsonSchema.listType ?? 'picture-card',
       headers: {
