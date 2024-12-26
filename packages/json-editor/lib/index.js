@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.8
+ * @wibetter/json-editor v5.0.9
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Dec 26 2024 13:18:12 GMT+0800 (中国标准时间)
+ * build time: Thu Dec 26 2024 15:24:16 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -6493,7 +6493,22 @@
               var curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
-
+              var defaultFileList = [];
+              if (
+                curJsonData &&
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isArray)(
+                  curJsonData,
+                )
+              ) {
+                defaultFileList = curJsonData;
+              } else if (
+                curJsonData &&
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isString)(
+                  curJsonData,
+                )
+              ) {
+                defaultFileList.push(curJsonData);
+              }
               var uploadProps = {
                 name: 'file',
                 // targetJsonSchema.name || jsonKey || 'imgFile',
@@ -6503,6 +6518,7 @@
                 maxCount: targetJsonSchema.multiple
                   ? targetJsonSchema.maxCount || 1
                   : 1,
+                defaultFileList: defaultFileList,
                 // showUploadList: false,
                 listType:
                   (_targetJsonSchema$lis = targetJsonSchema.listType) != null

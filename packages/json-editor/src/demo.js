@@ -788,6 +788,7 @@ class IndexDemo extends React.PureComponent {
                           rule: {
                             type: 'radio',
                             title: '规则类型',
+                            isConditionProp: true,
                             options: [
                               {
                                 label: '固定位置',
@@ -810,6 +811,7 @@ class IndexDemo extends React.PureComponent {
                             title: '固定位置',
                             default: 1,
                             description: '',
+                            onShow: 'rule === 1 || rule === 3',
                             options: [
                               {
                                 label: '1',
@@ -1020,6 +1022,7 @@ class IndexDemo extends React.PureComponent {
                             minimum: '1',
                             maximum: '50',
                             description: '',
+                            onShow: 'rule === 2 || rule === 3',
                           },
                           turn: {
                             type: 'number',
@@ -1028,6 +1031,7 @@ class IndexDemo extends React.PureComponent {
                             minimum: '1',
                             maximum: '50',
                             description: '',
+                            onShow: 'rule === 2 || rule === 3',
                           },
                           number: {
                             type: 'number',
@@ -1036,6 +1040,7 @@ class IndexDemo extends React.PureComponent {
                             minimum: '1',
                             maximum: '50',
                             description: '',
+                            onShow: 'rule === 2 || rule === 3',
                           },
                           mergeType: {
                             type: 'radio',
@@ -1084,6 +1089,7 @@ class IndexDemo extends React.PureComponent {
                             rule: {
                               type: 'radio',
                               title: '规则类型',
+                              isConditionProp: true,
                               options: [
                                 {
                                   label: '固定位置',
@@ -1101,11 +1107,13 @@ class IndexDemo extends React.PureComponent {
                               default: 1,
                               description: '',
                             },
+
                             fixArray: {
                               type: 'select',
                               title: '固定位置',
                               default: 1,
                               description: '',
+                              onShow: 'rule === 1 || rule === 3',
                               options: [
                                 {
                                   label: '1',
@@ -1316,6 +1324,7 @@ class IndexDemo extends React.PureComponent {
                               minimum: '1',
                               maximum: '50',
                               description: '',
+                              onShow: 'rule === 2 || rule === 3',
                             },
                             turn: {
                               type: 'number',
@@ -1324,6 +1333,7 @@ class IndexDemo extends React.PureComponent {
                               minimum: '1',
                               maximum: '50',
                               description: '',
+                              onShow: 'rule === 2 || rule === 3',
                             },
                             number: {
                               type: 'number',
@@ -1332,6 +1342,7 @@ class IndexDemo extends React.PureComponent {
                               minimum: '1',
                               maximum: '50',
                               description: '',
+                              onShow: 'rule === 2 || rule === 3',
                             },
                             mergeType: {
                               type: 'radio',

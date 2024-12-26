@@ -11,6 +11,7 @@ import {
   ArrowDownOutlined,
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
+import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 // import ObjectSchema from '$renderers/ObjectSchema/index';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
@@ -60,6 +61,7 @@ class ArraySchema extends React.PureComponent {
     this.deleteArrItem = this.deleteArrItem.bind(this);
     this.elemHoverEnterEvent = this.elemHoverEnterEvent.bind(this);
     this.elemHoverLeaveEvent = this.elemHoverLeaveEvent.bind(this);
+    this.collapseChange = this.collapseChange.bind(this);
   }
 
   componentWillMount() {
@@ -146,6 +148,35 @@ class ArraySchema extends React.PureComponent {
     return '';
   };
 
+  collapseChange(event) {
+    const { keyRoute } = this.props;
+    const { isClosed } = this.state;
+
+    this.setState({
+      isClosed: !isClosed,
+    });
+    event.preventDefault();
+    event.stopPropagation();
+
+    // 缓存当前折叠状态
+    saveJSONEditorCache(keyRoute, !isClosed);
+  }
+
+  arrayCollapseChange(event, arrIndex) {
+    const { keyRoute } = this.props;
+    const { currentActiveArrIndex } = this.state;
+    const newArrIndex = currentActiveArrIndex === arrIndex ? -1 : arrIndex;
+
+    this.setState({
+      currentActiveArrIndex: newArrIndex,
+    });
+    event.preventDefault();
+    event.stopPropagation();
+
+    // 缓存当前折叠状态
+    saveJSONEditorCache(`${keyRoute}-activeArrIndex`, newArrIndex);
+  }
+
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
@@ -154,14 +185,32 @@ class ArraySchema extends React.PureComponent {
 
     const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
       this.props;
-    const { jsonView, isClosed, hoverIndex, currentActiveArrIndex } =
-      this.state;
+    const {
+      jsonView,
+      isClosed: _isClosed,
+      hoverIndex,
+      currentActiveArrIndex: _currentActiveArrIndex,
+    } = this.state;
     const curType = targetJsonSchema.type;
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
     const arrayItemsDataObj = targetJsonSchema.items; // schema数据
+
+    // 获取前端缓存中的折叠数据
+    let isClosed = _isClosed;
+    const collapseCacheData = getJSONEditorCache(keyRoute);
+    if (collapseCacheData !== undefined) {
+      isClosed = collapseCacheData;
+    }
+    let currentActiveArrIndex = _currentActiveArrIndex;
+    const activeArrIndexCache = getJSONEditorCache(
+      `${keyRoute}-activeArrIndex`,
+    );
+    if (activeArrIndexCache !== undefined) {
+      currentActiveArrIndex = activeArrIndexCache;
+    }
 
     return (
       <div
@@ -191,16 +240,7 @@ class ArraySchema extends React.PureComponent {
           </Tooltip>
         </div>
         <div className="array-schema-box content-item">
-          <div
-            className="element-title"
-            onClick={(event) => {
-              this.setState({
-                isClosed: !isClosed,
-              });
-              event.preventDefault();
-              event.stopPropagation();
-            }}
-          >
+          <div className="element-title" onClick={this.collapseChange}>
             <span className="title-text">数组配置</span>
             {isClosed ? (
               <RightOutlined className="close-operate-btn" />
@@ -257,11 +297,8 @@ class ArraySchema extends React.PureComponent {
                   <div className="array-item" key={curKeyRoute}>
                     <div
                       className="array-item-header"
-                      onClick={() => {
-                        this.setState({
-                          currentActiveArrIndex:
-                            currentActiveArrIndex === arrIndex ? -1 : arrIndex,
-                        });
+                      onClick={(event) => {
+                        this.arrayCollapseChange(event, arrIndex);
                       }}
                       onMouseMove={(event) => {
                         this.elemHoverEnterEvent(event, arrIndex);
