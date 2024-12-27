@@ -2,6 +2,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
+import { urlParse } from '@wibetter/json-utils';
 import JSONEditor from './main';
 // import JSONEditor from '../lib/index';
 import AceEditor from 'react-ace';
@@ -16,6 +17,7 @@ import '../../../index.scss';
 class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
+    const urlParams = urlParse();
     this.state = {
       jsonSchema: {
         type: 'object',
@@ -1651,9 +1653,9 @@ class IndexDemo extends React.PureComponent {
         uploadAction: '/commons/upload/file',
       },
       wideScreen: false,
-      jsonView: false,
+      jsonView: urlParams['jsonView'] === 'true',
       schemaCodeView: false, // schema源码模式
-      viewStyle: 'tabs', // 默认折叠模式
+      viewStyle: urlParams['viewStyle'] ?? 'tabs', // 默认折叠模式
       curTypeList: {},
     };
   }

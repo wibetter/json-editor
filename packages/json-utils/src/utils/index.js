@@ -3,6 +3,32 @@ import {
   isEqual as _isEqual,
   truncate as truncateStr,
 } from 'lodash';
+import queryString from 'query-string';
+
+/**
+ * 获取 URL 上的所有参数
+ * 例如：比如当前页面的地址为 xx?a1=123 则 urlParse() => {a1: 123}
+ */
+export function urlParse() {
+  let urlParams = {};
+  if (location.search) {
+    urlParams = queryString.parse(location.search);
+  }
+  return urlParams;
+}
+
+/**
+ * 转换成 URL 上的参数字符串
+ * @param {*} urlParams
+ * 例如：{a1: 123} => a1=123
+ */
+export function urlStringify(urlParams) {
+  let urlStr = '';
+  if (url) {
+    urlStr = queryString.stringify(urlParams);
+  }
+  return urlStr;
+}
 
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {
