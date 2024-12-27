@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-utils",
-  "version": "5.0.14",
+  "version": "5.0.15",
   "description": "提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等",
   "keywords": [
     "json工具包",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "query-string": "^9.1.1"
+    "qs": "^6.13.1"
   },
   "devDependencies": {
     "akfun": "^5.0.1"

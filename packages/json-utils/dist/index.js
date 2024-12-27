@@ -208,11 +208,13 @@
         },
       });
     var r = require('lodash'),
-      a = require('query-string'),
+      a = require('qs'),
       i = e.n(a);
     function l() {
       var e = {};
-      return location.search && (e = i().parse(location.search)), e;
+      return (
+        location.search && (e = i().parse(location.search.substring(1))), e
+      );
     }
     function n(e) {
       var t = '';

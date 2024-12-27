@@ -18,6 +18,7 @@ class IndexDemo extends React.PureComponent {
   constructor(props) {
     super(props);
     const urlParams = urlParse();
+    console.log('urlParams:', urlParams);
 
     this.state = {
       jsonSchema: {

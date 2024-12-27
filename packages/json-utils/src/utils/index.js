@@ -3,7 +3,7 @@ import {
   isEqual as _isEqual,
   truncate as truncateStr,
 } from 'lodash';
-import queryString from 'query-string';
+import qs from 'qs';
 
 /**
  * 获取 URL 上的所有参数
@@ -12,7 +12,7 @@ import queryString from 'query-string';
 export function urlParse() {
   let urlParams = {};
   if (location.search) {
-    urlParams = queryString.parse(location.search);
+    urlParams = qs.parse(location.search.substring(1));
   }
   return urlParams;
 }
@@ -25,7 +25,7 @@ export function urlParse() {
 export function urlStringify(urlParams) {
   let urlStr = '';
   if (url) {
-    urlStr = queryString.stringify(urlParams);
+    urlStr = qs.stringify(urlParams);
   }
   return urlStr;
 }
