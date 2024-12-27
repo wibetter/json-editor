@@ -494,7 +494,7 @@ class IndexDemo extends React.PureComponent {
                       'type === "ContentStaticConfig" || type === "ResourceCenter"',
                   },
                 },
-                propertyOrder: ['type', 'value'],
+                propertyOrder: ['type', 'value', 'description'],
                 showCodeViewBtn: false,
                 showKey: true,
               },
