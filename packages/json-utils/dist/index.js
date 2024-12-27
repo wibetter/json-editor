@@ -232,7 +232,16 @@
       return (0, r.truncate)(e, t);
     }
     function s(e, t) {
-      return new Function('data', 'with(data) { return (' + e + ');}')(t);
+      var r = t || {};
+      if (!e) return !1;
+      var a = new Function('data', 'with(data) { return (' + e + ');}'),
+        i = '';
+      try {
+        i = a(r);
+      } catch (t) {
+        return console.warn('表达式运算出错: ' + e + '，报错信息：', t), i;
+      }
+      return i;
     }
     function d(e, t, r) {
       var a = t;

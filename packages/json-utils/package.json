@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-utils",
-  "version": "5.0.13",
+  "version": "5.0.14",
   "description": "提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等",
   "keywords": [
     "json工具包",

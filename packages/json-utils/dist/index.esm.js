@@ -67,11 +67,25 @@ function truncate(str, paramConfig) {
  * 支持属性表达式
  */
 function expressionOn(expressionStr, data) {
+  var curData = data || {};
+  if (!expressionStr) return false;
   var expressionFunc = new Function(
     'data',
     'with(data) { return (' + expressionStr + ');}',
   );
-  return expressionFunc(data);
+  var expressionResult = '';
+  try {
+    expressionResult = expressionFunc(curData);
+  } catch (error) {
+    console.warn(
+      '\u8868\u8FBE\u5F0F\u8FD0\u7B97\u51FA\u9519: ' +
+        expressionStr +
+        '\uFF0C\u62A5\u9519\u4FE1\u606F\uFF1A',
+      error,
+    );
+    return expressionResult;
+  }
+  return expressionResult;
 }
 
 /**

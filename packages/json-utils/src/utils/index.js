@@ -67,9 +67,19 @@ export function truncate(str, paramConfig) {
  * 支持属性表达式
  */
 export function expressionOn(expressionStr, data) {
+  const curData = data || {};
+  if (!expressionStr) return false;
   const expressionFunc = new Function(
     'data',
     `with(data) { return (${expressionStr});}`,
   );
-  return expressionFunc(data);
+  let expressionResult = '';
+  try {
+    expressionResult = expressionFunc(curData);
+  } catch (error) {
+    console.warn(`表达式运算出错: ${expressionStr}，报错信息：`, error);
+    return expressionResult;
+  }
+
+  return expressionResult;
 }
