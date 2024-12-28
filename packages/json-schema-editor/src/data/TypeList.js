@@ -69,6 +69,7 @@ export const ARRAY_ITEM_TYPE = [
   'object',
   'input',
   'number',
+  'select',
   'color',
   'url',
   'date',

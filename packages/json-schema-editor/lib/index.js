@@ -370,6 +370,7 @@
                 'object',
                 'input',
                 'number',
+                'select',
                 'color',
                 'url',
                 'date',

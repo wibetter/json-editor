@@ -843,7 +843,7 @@
                 targetJsonSchema.onShow,
               ) &&
                 !(0,
-                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.expressionOn)(
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.evalExpression)(
                   targetJsonSchema.onShow,
                   parentData,
                 ))

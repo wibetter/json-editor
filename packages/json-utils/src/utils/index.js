@@ -66,7 +66,7 @@ export function truncate(str, paramConfig) {
 /**
  * 支持属性表达式
  */
-export function expressionOn(expressionStr, data) {
+export function evalExpression(expressionStr, data) {
   const curData = data || {};
   if (!expressionStr) return false;
   const expressionFunc = new Function(

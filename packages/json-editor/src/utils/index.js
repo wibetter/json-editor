@@ -1,6 +1,7 @@
 import {
   objClone as _objClone,
   isEqual as _isEqual,
+  evalExpression,
 } from '@wibetter/json-utils';
 import {
   saveJSONEditorCache,
@@ -169,4 +170,34 @@ export function getWebCacheData(valueKey) {
  */
 export function deleteWebCacheData(valueKey) {
   deleteJSONEditorCache(valueKey, 'json-editor-formData');
+}
+
+/**
+ * 处理 Props 数据，所有以 On 或者 Expr 结尾的 prop 都进行一次计算
+ *
+ * xxxOn
+ * xxxExpr
+ */
+export function getExprProperties(schema, data, ignoreList = ['name']) {
+  Object.getOwnPropertyNames(schema).forEach((key) => {
+    if (ignoreList && ~ignoreList.indexOf(key)) {
+      return;
+    }
+
+    let parts = /^(.*)(On|Expr)$/.exec(key) || [];
+    const type = parts[2];
+    let value = schema[key];
+
+    if (
+      value &&
+      typeof value === 'string' &&
+      parts[1] &&
+      (type === 'On' || type === 'Expr')
+    ) {
+      key = parts[1];
+      schema[key] = evalExpression(value, data || {});
+    }
+  });
+
+  return schema;
 }

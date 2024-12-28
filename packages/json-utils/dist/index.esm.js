@@ -66,7 +66,7 @@ function truncate(str, paramConfig) {
 /**
  * 支持属性表达式
  */
-function expressionOn(expressionStr, data) {
+function evalExpression(expressionStr, data) {
   var curData = data || {};
   if (!expressionStr) return false;
   var expressionFunc = new Function(
@@ -7831,6 +7831,12 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       JSON.stringify(curValue) !== '{}'
     ) {
       curJsonData = Object.assign(curJsonData, curValue);
+    } else if (
+      oldValue === undefined &&
+      jsonItem.default &&
+      isObject$1(jsonItem.default)
+    ) {
+      curJsonData = jsonItem.default;
     } else if (jsonSchema.properties) {
       var curPropertyOrder = [];
       if (jsonSchema.propertyOrder) {
@@ -8240,7 +8246,7 @@ export {
   TypeDataList,
   dataRoute2dataPath,
   dynamicDataAnalyzer,
-  expressionOn,
+  evalExpression,
   getCurPosition,
   getDefaultOptionVal,
   getExpectType$1 as getExpectType,

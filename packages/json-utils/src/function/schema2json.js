@@ -212,6 +212,12 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
       JSON.stringify(curValue) !== '{}'
     ) {
       curJsonData = Object.assign(curJsonData, curValue);
+    } else if (
+      oldValue === undefined &&
+      jsonItem.default &&
+      isObject(jsonItem.default)
+    ) {
+      curJsonData = jsonItem.default;
     } else if (jsonSchema.properties) {
       let curPropertyOrder = [];
       if (jsonSchema.propertyOrder) {

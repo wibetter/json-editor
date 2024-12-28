@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import {
-  expressionOn,
+  evalExpression,
   getParentKeyRoute,
   isString,
   isBoolean,
@@ -81,7 +81,7 @@ const MappingRenderV2 = (props) => {
   if (
     (isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
     (isString(targetJsonSchema.onShow) &&
-      !expressionOn(targetJsonSchema.onShow, curData))
+      !evalExpression(targetJsonSchema.onShow, curData))
   ) {
     return;
   }

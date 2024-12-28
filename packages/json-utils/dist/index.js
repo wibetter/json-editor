@@ -59,7 +59,7 @@
         dynamicDataAnalyzer: function () {
           return ce;
         },
-        expressionOn: function () {
+        evalExpression: function () {
           return s;
         },
         getCurPosition: function () {
@@ -117,7 +117,7 @@
           return R;
         },
         isDateTimeStr: function () {
-          return q;
+          return E;
         },
         isEmptySchema: function () {
           return Y;
@@ -153,7 +153,7 @@
           return z;
         },
         isTimeStr: function () {
-          return E;
+          return q;
         },
         isURL: function () {
           return T;
@@ -1479,13 +1479,13 @@
     function R(e) {
       return /^\d{4}-\d{2}-\d{2}$/.test(e);
     }
-    function q(e) {
+    function E(e) {
       return (
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(e) ||
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(e)
       );
     }
-    function E(e) {
+    function q(e) {
       return /^\d{2}:\d{2}:\d{2}$/.test(e) || /^\d{2}:\d{2}$/.test(e);
     }
     function k(e) {
@@ -1571,8 +1571,8 @@
                   else if (N(e)) t = o(C.number);
                   else if (T(e)) t = o(C.url);
                   else if (R(e)) t = o(C.date);
-                  else if (q(e)) t = o(C['date-time']);
-                  else if (E(e)) t = o(C.time);
+                  else if (E(e)) t = o(C['date-time']);
+                  else if (q(e)) t = o(C.time);
                   else if (M(e)) t = o(C.color);
                   else
                     try {
@@ -1957,24 +1957,26 @@
                     n && n.actionFunc && (r.actionFunc = n.actionFunc))
               : !1 === e.isContainer && n && P(n) && '{}' !== JSON.stringify(n)
                 ? (r = Object.assign(r, n))
-                : e.properties &&
-                  (e.propertyOrder
-                    ? e.propertyOrder
-                    : Object.keys(e.properties)
-                  ).map(function (a) {
-                    var i = e.properties[a],
-                      l = t && t[a];
-                    switch (U(i.type)) {
-                      case 'array':
-                        r[a] = oe(i, l);
-                        break;
-                      case 'object':
-                        r[a] = ne(i, l);
-                        break;
-                      default:
-                        r[a] = le(i, l);
-                    }
-                  });
+                : void 0 === l && i.default && P(i.default)
+                  ? (r = i.default)
+                  : e.properties &&
+                    (e.propertyOrder
+                      ? e.propertyOrder
+                      : Object.keys(e.properties)
+                    ).map(function (a) {
+                      var i = e.properties[a],
+                        l = t && t[a];
+                      switch (U(i.type)) {
+                        case 'array':
+                          r[a] = oe(i, l);
+                          break;
+                        case 'object':
+                          r[a] = ne(i, l);
+                          break;
+                        default:
+                          r[a] = le(i, l);
+                      }
+                    });
       }
       return r;
     }

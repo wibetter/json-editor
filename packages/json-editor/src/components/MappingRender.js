@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  expressionOn,
+  evalExpression,
   getParentKeyRoute,
   isString,
   isBoolean,
@@ -38,22 +38,28 @@ import SohuEventSchema from '$renderers/SohuEventSchema/index';
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
   const { getSchemaByKeyRoute } = props.schemaStore || {};
-  const { getJSONDataByKeyRoute } = props.jsonStore || {};
+  const { getJSONDataByKeyRoute, JSONEditorObj } = props.jsonStore || {};
   const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = props;
-
-  const curType = targetJsonSchema.type;
-  let curNodeKey = nodeKey;
 
   // 支持显隐属性表达式
   const parentKeyRoute = getParentKeyRoute(keyRoute);
-  const parentData = getJSONDataByKeyRoute(parentKeyRoute) || {}; // 获取当前父级数据域
+  const parentData = parentKeyRoute
+    ? getJSONDataByKeyRoute(parentKeyRoute) || {}
+    : {}; // 获取当前父级数据域
+  const curData = Object.assign({}, JSONEditorObj, parentData);
+
   if (
     (isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
     (isString(targetJsonSchema.onShow) &&
-      !expressionOn(targetJsonSchema.onShow, parentData))
+      !evalExpression(targetJsonSchema.onShow, curData))
   ) {
     return;
   }
+
+  const curType = targetJsonSchema.typeOn
+    ? evalExpression(targetJsonSchema.typeOn, curData)
+    : targetJsonSchema.type;
+  let curNodeKey = nodeKey;
 
   // 收集当前所有条件子字段
   /*
