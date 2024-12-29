@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.10
+ * @wibetter/json-editor v5.0.16
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Dec 26 2024 17:05:55 GMT+0800 (中国标准时间)
+ * build time: Sun Dec 29 2024 13:35:05 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -820,20 +820,22 @@
             var _ref = props.schemaStore || {},
               getSchemaByKeyRoute = _ref.getSchemaByKeyRoute;
             var _ref2 = props.jsonStore || {},
-              getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
+              getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute,
+              JSONEditorObj = _ref2.JSONEditorObj;
             var nodeKey = props.nodeKey,
               jsonKey = props.jsonKey,
               keyRoute = props.keyRoute,
               targetJsonSchema = props.targetJsonSchema;
-            var curType = targetJsonSchema.type;
-            var curNodeKey = nodeKey;
 
             // 支持显隐属性表达式
             var parentKeyRoute = (0,
             _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.getParentKeyRoute)(
               keyRoute,
             );
-            var parentData = getJSONDataByKeyRoute(parentKeyRoute) || {}; // 获取当前父级数据域
+            var parentData = parentKeyRoute
+              ? getJSONDataByKeyRoute(parentKeyRoute) || {}
+              : {}; // 获取当前父级数据域
+            var curData = Object.assign({}, JSONEditorObj, parentData);
             if (
               ((0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
                 targetJsonSchema.onShow,
@@ -845,11 +847,19 @@
                 !(0,
                 _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.evalExpression)(
                   targetJsonSchema.onShow,
-                  parentData,
+                  curData,
                 ))
             ) {
               return;
             }
+            var curType = targetJsonSchema.typeOn
+              ? (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.evalExpression)(
+                  targetJsonSchema.typeOn,
+                  curData,
+                )
+              : targetJsonSchema.type;
+            var curNodeKey = nodeKey;
 
             // 收集当前所有条件子字段
             /*
@@ -12632,6 +12642,9 @@
             /* harmony export */ deleteWebCacheData: function () {
               return /* binding */ deleteWebCacheData;
             },
+            /* harmony export */ getExprProperties: function () {
+              return /* binding */ getExprProperties;
+            },
             /* harmony export */ getParams: function () {
               return /* binding */ getParams;
             },
@@ -12858,6 +12871,40 @@
               valueKey,
               'json-editor-formData',
             );
+          }
+
+          /**
+           * 处理 Props 数据，所有以 On 或者 Expr 结尾的 prop 都进行一次计算
+           *
+           * xxxOn
+           * xxxExpr
+           */
+          function getExprProperties(schema, data, ignoreList) {
+            if (ignoreList === void 0) {
+              ignoreList = ['name'];
+            }
+            Object.getOwnPropertyNames(schema).forEach(function (key) {
+              if (ignoreList && ~ignoreList.indexOf(key)) {
+                return;
+              }
+              var parts = /^(.*)(On|Expr)$/.exec(key) || [];
+              var type = parts[2];
+              var value = schema[key];
+              if (
+                value &&
+                typeof value === 'string' &&
+                parts[1] &&
+                (type === 'On' || type === 'Expr')
+              ) {
+                key = parts[1];
+                schema[key] = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.evalExpression)(
+                  value,
+                  data || {},
+                );
+              }
+            });
+            return schema;
           }
 
           /***/

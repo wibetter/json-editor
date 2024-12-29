@@ -287,6 +287,7 @@ class IndexDemo extends React.PureComponent {
                           default: '',
                           description: '',
                           placeholder: '',
+                          onShow: "props.themeSource.type === 'DevDefaults'",
                         },
                       },
                       propertyOrder: ['attr', 'description', 'type', 'value'],
