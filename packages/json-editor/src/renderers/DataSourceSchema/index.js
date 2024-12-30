@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import {
@@ -14,6 +15,7 @@ import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import URLFormSchema from '$renderers/URLFormSchema/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { buildStyle } from '$utils/index';
 import CodeIcon from '$assets/img/code.svg';
 import './index.scss';
 
@@ -76,6 +78,16 @@ class DataSourceSchema extends React.PureComponent {
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={`${
@@ -85,8 +97,9 @@ class DataSourceSchema extends React.PureComponent {
         }`}
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span
             className="title-text"
             title={
@@ -106,7 +119,10 @@ class DataSourceSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="element-title-card-warp content-item">
+        <div
+          className="element-title-card-warp content-item"
+          style={contentStyle}
+        >
           <div
             className="element-title"
             onClick={(event) => {

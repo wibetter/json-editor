@@ -8,6 +8,7 @@ const { Panel } = Collapse;
 import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
+import { buildStyle } from '$utils/index';
 import './index.scss';
 
 class SohuEventSchema extends React.PureComponent {
@@ -108,7 +109,7 @@ class SohuEventSchema extends React.PureComponent {
 
     const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
       this.props;
-    const options = options || {};
+    const options = _options || {};
 
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const globalEventMap = curJsonData.globalEventMap || {}; // 全局事件列表
@@ -132,6 +133,10 @@ class SohuEventSchema extends React.PureComponent {
       collapseData = collapseCacheData;
     }
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+
     return (
       <div
         className={`${
@@ -141,6 +146,7 @@ class SohuEventSchema extends React.PureComponent {
         }`}
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
         <Collapse
           defaultActiveKey={collapseData}

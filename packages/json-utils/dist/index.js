@@ -917,7 +917,7 @@
                   type: 'select',
                   title: '数据源类型',
                   options: [
-                    { label: 'channle', value: 'channle' },
+                    { label: 'channel', value: 'channel' },
                     { label: 'topic', value: 'topic' },
                     { label: 'block', value: 'block' },
                   ],

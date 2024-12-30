@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { DatePicker, Tooltip } from 'antd';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { isNeedTwoColWarpStyle } from '$utils/index';
+import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 
 const DateTypeList = {
   'date-time': 'YYYY-MM-DD HH:mm',
@@ -62,6 +63,16 @@ class DateTimeFormSchema extends React.PureComponent {
     const defaultTime = curJsonData || targetJsonSchema.default;
     const isNeedTwoCol = isNeedTwoColWarpStyle(curType); // 是否需要设置成两栏布局
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -73,8 +84,9 @@ class DateTimeFormSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
@@ -95,7 +107,7 @@ class DateTimeFormSchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
             <DatePicker
               style={{ display: 'inline-block' }}

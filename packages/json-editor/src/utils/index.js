@@ -3,11 +3,27 @@ import {
   isEqual as _isEqual,
   evalExpression,
 } from '@wibetter/json-utils';
+import camelCase from 'lodash/camelCase';
 import {
   saveJSONEditorCache,
   getJSONEditorCache,
   deleteJSONEditorCache,
 } from './webCache.js';
+
+export function buildStyle(style) {
+  const curStyle = {};
+  if (style) {
+    Object.keys(style).forEach((styleKey) => {
+      // 将属性短横线命名转换为驼峰命名，如 background-color => backgroundColor
+      if (styleKey.indexOf('-') > 0) {
+        curStyle[camelCase(styleKey)] = style[styleKey];
+      } else {
+        curStyle[styleKey] = style[styleKey];
+      }
+    });
+  }
+  return curStyle;
+}
 
 /** js对象数据深拷贝，避免数据联动 */
 export function objClone(targetObj) {

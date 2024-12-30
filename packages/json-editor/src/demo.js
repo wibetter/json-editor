@@ -36,6 +36,11 @@ class IndexDemo extends React.PureComponent {
                 default: 'x',
                 description: '',
                 placeholder: '',
+                style: {
+                  'font-weight': 600,
+                },
+                titleStyle: {},
+                contentStyle: {},
               },
               imgUrl: {
                 title: '组件预览图1',
@@ -902,8 +907,8 @@ class IndexDemo extends React.PureComponent {
                         title: '数据源类型',
                         options: [
                           {
-                            label: 'channle',
-                            value: 'channle',
+                            label: 'channel',
+                            value: 'channel',
                           },
                           {
                             label: 'topic',
@@ -1966,7 +1971,7 @@ class IndexDemo extends React.PureComponent {
         },
       ],
       options: {
-        widgetType: 'page', // 组件类型 comp / page
+        widgetType: 'comp', // 组件类型 comp / page
         eventListenConfig: [
           {
             name: 'changeTab',

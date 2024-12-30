@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { InputNumber, message, Tooltip } from 'antd';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { isNeedTwoColWarpStyle, hasProperties } from '$utils/index';
+import { isNeedTwoColWarpStyle, hasProperties, buildStyle } from '$utils/index';
 import './index.scss';
 
 class NumberFormSchema extends React.PureComponent {
@@ -87,6 +88,16 @@ class NumberFormSchema extends React.PureComponent {
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -98,8 +109,9 @@ class NumberFormSchema extends React.PureComponent {
         }
         key={`${nodeKey}-${renderTime}`}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
@@ -120,7 +132,7 @@ class NumberFormSchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
             <div className="input-number-wrap">
               <div

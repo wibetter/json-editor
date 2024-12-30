@@ -13,6 +13,7 @@ import { objClone } from '$utils/index';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
+import { buildStyle } from '$utils/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 import CodeIcon from '$assets/img/code.svg';
 
@@ -99,6 +100,16 @@ class ObjectSchema extends React.PureComponent {
       isClosed = collapseCacheData;
     }
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={`${
@@ -108,9 +119,10 @@ class ObjectSchema extends React.PureComponent {
         }`}
         key={curNodeKey}
         id={nodeKey}
+        style={style}
       >
         {!isStructured && !isArrayItem && (
-          <div className="element-title">
+          <div className="element-title" style={titleStyle}>
             <Tooltip title={targetJsonSchema.description} placement="top">
               <span
                 className="title-text"
@@ -129,7 +141,10 @@ class ObjectSchema extends React.PureComponent {
             </Tooltip>
           </div>
         )}
-        <div className="element-title-card-warp content-item">
+        <div
+          className="element-title-card-warp content-item"
+          style={contentStyle}
+        >
           {!isStructured && !isArrayItem && (
             <div className="element-title" onClick={this.collapseChange}>
               <span className="title-text">动态配置</span>

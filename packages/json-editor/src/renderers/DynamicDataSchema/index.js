@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Select, Tooltip } from 'antd';
 const { Option } = Select;
@@ -13,9 +14,8 @@ import RemoteDynamicDataSchema from '$renderers/RemoteDynamicDataSchema/index';
 import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
-import { objClone } from '$utils/index';
+import { objClone, buildStyle } from '$utils/index';
 import './index.scss';
-import { toJS } from 'mobx';
 
 class DynamicDataSchema extends React.PureComponent {
   static propTypes = {
@@ -174,6 +174,16 @@ class DynamicDataSchema extends React.PureComponent {
     const curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
     const dataObj = targetJsonSchema.properties.data || {}; // schema中的数据对象
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className1="mobile-screen-element-warp dynamic-data-schema"
@@ -184,8 +194,9 @@ class DynamicDataSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span className="title-text">
             {targetJsonSchema.title}
             {targetJsonSchema.showKey && (
@@ -198,7 +209,7 @@ class DynamicDataSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="dynamic-data-tab-radio-box">
             <div className="dynamic-data-tab-radio">
               <div

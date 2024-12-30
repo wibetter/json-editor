@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Checkbox, Tooltip } from 'antd';
+import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { truncate } from '@wibetter/json-utils';
+import { buildStyle } from '$utils/index';
 
 class CheckboxSchema extends React.PureComponent {
   static propTypes = {
@@ -50,6 +52,16 @@ class CheckboxSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -59,8 +71,9 @@ class CheckboxSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <Tooltip
             title={
               pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
@@ -87,7 +100,7 @@ class CheckboxSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
             <Checkbox.Group
               style={{ display: 'inline-block' }}

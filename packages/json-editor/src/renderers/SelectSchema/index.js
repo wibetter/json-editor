@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { truncate } from '@wibetter/json-utils';
 import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { isNeedTwoColWarpStyle } from '$utils/index';
+import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 import './index.scss';
 
 /**
@@ -57,6 +58,16 @@ class SelectSchema extends React.PureComponent {
     const options = targetJsonSchema.options;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -68,8 +79,9 @@ class SelectSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <Tooltip
             title={
               pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
@@ -96,7 +108,7 @@ class SelectSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box select-box">
             <Select
               showSearch

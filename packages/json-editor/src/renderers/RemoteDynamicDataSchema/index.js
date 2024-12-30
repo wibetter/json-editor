@@ -9,7 +9,7 @@ import InputFormSchema from '$renderers/InputFormSchema/index';
 import TreeSelectFromSchema from '$renderers/TreeSelectFromSchema/index';
 import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { isArray, isObject } from '$utils/typeof';
-import { objClone } from '$utils/index';
+import { objClone, buildStyle } from '$utils/index';
 import './index.scss';
 
 class RemoteDynamicDataSchema extends React.PureComponent {
@@ -98,6 +98,16 @@ class RemoteDynamicDataSchema extends React.PureComponent {
     }
     const curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={`${
@@ -107,9 +117,13 @@ class RemoteDynamicDataSchema extends React.PureComponent {
         }`}
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">{`${curConfigData.title} (接口下发）`}</div>
-        <div className="content-item object-content">
+        <div
+          className="element-title"
+          style={titleStyle}
+        >{`${curConfigData.title} (接口下发）`}</div>
+        <div className="content-item object-content" style={contentStyle}>
           <div
             className="remote-dynamic-data-schema"
             key={`${nodeKey}-remote-dynamic-data`}

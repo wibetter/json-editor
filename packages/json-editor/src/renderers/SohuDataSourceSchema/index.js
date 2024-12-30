@@ -8,6 +8,7 @@ import { truncate, isArray } from '@wibetter/json-utils';
 import MappingRender from '$components/MappingRender';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
+import { buildStyle } from '$utils/index';
 
 class SohuDataSourceSchema extends React.PureComponent {
   static propTypes = {
@@ -63,6 +64,16 @@ class SohuDataSourceSchema extends React.PureComponent {
       collapseData = collapseCacheData;
     }
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={`${
@@ -72,8 +83,9 @@ class SohuDataSourceSchema extends React.PureComponent {
         }`}
         // key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
@@ -90,7 +102,7 @@ class SohuDataSourceSchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="array-schema-box">
+        <div className="array-schema-box" style={contentStyle}>
           <Collapse
             defaultActiveKey={collapseData}
             expandIconPosition="right"

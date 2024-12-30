@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Switch, Tooltip } from 'antd';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { isNeedTwoColWarpStyle } from '$utils/index';
+import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 
 class BooleanFormSchema extends React.PureComponent {
   static propTypes = {
@@ -51,6 +52,16 @@ class BooleanFormSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -62,8 +73,9 @@ class BooleanFormSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
@@ -81,7 +93,7 @@ class BooleanFormSchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
             <Switch
               style={{ display: 'inline-block' }}

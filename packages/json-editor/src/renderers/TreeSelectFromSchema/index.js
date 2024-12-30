@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { TreeSelect } from 'antd';
 import { json2treeData, isObject } from '@wibetter/json-utils';
+import { buildStyle } from '$utils/index';
 
 class TreeSelectFromSchema extends React.PureComponent {
   static propTypes = {
@@ -31,6 +33,16 @@ class TreeSelectFromSchema extends React.PureComponent {
       treeData = json2treeData(mockObj);
     }
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -40,9 +52,12 @@ class TreeSelectFromSchema extends React.PureComponent {
         }
         key={`${nodeKey}-dataRoute-select`}
         id={`${nodeKey}-dataRoute-select`}
+        style={style}
       >
-        <div className="element-title">数据路径选择</div>
-        <div className="content-item">
+        <div className="element-title" style={titleStyle}>
+          数据路径选择
+        </div>
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
             <TreeSelect
               className="data-route-select"

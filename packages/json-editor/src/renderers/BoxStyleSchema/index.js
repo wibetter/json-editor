@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Input, InputNumber, Tooltip } from 'antd';
 import { truncate } from '@wibetter/json-utils';
+import { buildStyle } from '$utils/index';
 import './index.scss';
 
 class BoxStyleSchema extends React.PureComponent {
@@ -183,6 +185,16 @@ class BoxStyleSchema extends React.PureComponent {
     const { renderAction, layoutStyleLock } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={`${
@@ -191,8 +203,9 @@ class BoxStyleSchema extends React.PureComponent {
             : `mobile-screen-element-warp`
         } ${renderAction ? 'render-mark' : ''}`}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
@@ -213,7 +226,10 @@ class BoxStyleSchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className={`content-item layout-box-style-container`}>
+        <div
+          className={`content-item layout-box-style-container`}
+          style={contentStyle}
+        >
           <div className="center-box">
             <Tooltip
               placement="top"

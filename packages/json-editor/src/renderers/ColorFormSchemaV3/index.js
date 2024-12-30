@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip, message, Popover } from 'antd';
 import { SketchPicker } from 'react-color';
@@ -80,6 +81,16 @@ class ColorFormSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     const SketchPickerContent = (
       <SketchPicker
         className="color-sketch-picker"
@@ -100,8 +111,9 @@ class ColorFormSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
@@ -119,7 +131,7 @@ class ColorFormSchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className={`form-item-box render-dom-${renderState}`}>
             <div
               className={`color-btn-wrap color-item-form ${

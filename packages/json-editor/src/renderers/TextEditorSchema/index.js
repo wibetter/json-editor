@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import { truncate } from '@wibetter/json-utils';
@@ -9,6 +10,7 @@ import {
   InfoCircleOutlined,
   RightOutlined,
 } from '@ant-design/icons';
+import { buildStyle } from '$utils/index';
 // 引入编辑器组件
 import BraftEditor from 'braft-editor';
 // 引入字体取色器样式
@@ -143,6 +145,16 @@ class TextEditorSchema extends React.PureComponent {
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -152,6 +164,7 @@ class TextEditorSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
         <div
           className="element-title"
@@ -162,6 +175,7 @@ class TextEditorSchema extends React.PureComponent {
             event.preventDefault();
             event.stopPropagation();
           }}
+          style={titleStyle}
         >
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
@@ -192,7 +206,10 @@ class TextEditorSchema extends React.PureComponent {
             <DownOutlined className="close-operate-btn" />
           )}
         </div>
-        <div className={`content-item ${isClosed ? 'closed' : ''}`}>
+        <div
+          className={`content-item ${isClosed ? 'closed' : ''}`}
+          style={contentStyle}
+        >
           <div className="form-item-box">
             <BraftEditor
               key={`${nodeKey}-textEditor`}

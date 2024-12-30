@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { message, Tooltip, Popconfirm } from 'antd';
 import {
@@ -26,6 +27,7 @@ import {
   isDateTimeStr,
   isTimeStr,
 } from '$utils/typeof';
+import { buildStyle } from '$utils/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
 import DeleteIcon from '$assets/img/delete.svg';
@@ -213,6 +215,16 @@ class ArraySchema extends React.PureComponent {
       currentActiveArrIndex = activeArrIndexCache;
     }
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -222,8 +234,9 @@ class ArraySchema extends React.PureComponent {
         }
         key={`${nodeKey}-${triggerChange}`}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
@@ -240,7 +253,7 @@ class ArraySchema extends React.PureComponent {
             </span>
           </Tooltip>
         </div>
-        <div className="array-schema-box content-item">
+        <div className="array-schema-box content-item" style={contentStyle}>
           <div className="element-title" onClick={this.collapseChange}>
             <span className="title-text">数组配置</span>
             {isClosed ? (

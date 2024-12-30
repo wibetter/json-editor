@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.16
+ * @wibetter/json-editor v5.0.19
  * author: wibetter
  * build tool: AKFun
- * build time: Sun Dec 29 2024 13:35:05 GMT+0800 (中国标准时间)
+ * build time: Mon Dec 30 2024 18:23:14 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1168,65 +1168,73 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $utils/webCache */ './src/utils/webCache.js',
             );
-          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
             );
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_12__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/ArraySchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_12__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_14__,
             );
-          /* harmony import */ var $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(
               /*! $assets/img/delete.svg */ './src/assets/img/delete.svg',
             );
-          /* harmony import */ var $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_14__ =
+          /* harmony import */ var $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_16__ =
             __webpack_require__(
               /*! $assets/img/addElem.svg */ './src/assets/img/addElem.svg',
             );
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_15__ =
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_17__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
@@ -1249,7 +1257,7 @@
                 var maximumChild =
                   _this.props.targetJsonSchema['maximum-child'];
                 if (curArr && maximumChild && curArr.length >= maximumChild) {
-                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
                     '\u6DFB\u52A0\u5931\u8D25\uFF0C\u6700\u591A\u53EF\u6DFB\u52A0' +
                       maximumChild +
                       '\u4E2A\u5B50\u9879',
@@ -1265,7 +1273,7 @@
                 var minimumChild =
                   _this.props.targetJsonSchema['minimum-child'];
                 if (curArr && minimumChild && curArr.length <= minimumChild) {
-                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
                     '\u5220\u9664\u5931\u8D25\uFF0C\u81F3\u5C11\u9700\u8981\u4FDD\u7559' +
                       minimumChild +
                       '\u4E2A\u5B50\u9879',
@@ -1305,7 +1313,7 @@
               _this.getArrItemTitle = function (arrItem) {
                 if (
                   arrItem &&
-                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isObject)(
+                  (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isObject)(
                     arrItem,
                   )
                 ) {
@@ -1320,19 +1328,19 @@
                     if (
                       itemVal &&
                       ((0,
-                      $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isNumber)(
+                      $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isNumber)(
                         itemVal,
                       ) ||
                         ((0,
-                        $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isString)(
+                        $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isString)(
                           itemVal,
                         ) &&
                           !(0,
-                          $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isURL)(
+                          $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isURL)(
                             itemVal,
                           ) &&
                           !(0,
-                          $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isColor)(
+                          $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isColor)(
                             itemVal,
                           )))
                     ) {
@@ -1369,7 +1377,7 @@
             var _proto = ArraySchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_13__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -1377,7 +1385,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_13__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -1394,7 +1402,7 @@
 
               // 缓存当前折叠状态
               (0,
-              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.saveJSONEditorCache)(
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_8__.saveJSONEditorCache)(
                 keyRoute,
                 !isClosed,
               );
@@ -1415,7 +1423,7 @@
 
               // 缓存当前折叠状态
               (0,
-              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.saveJSONEditorCache)(
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_8__.saveJSONEditorCache)(
                 keyRoute + '-activeArrIndex',
                 newArrIndex,
               );
@@ -1457,7 +1465,7 @@
               // 获取前端缓存中的折叠数据
               var isClosed = _isClosed;
               var collapseCacheData = (0,
-              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.getJSONEditorCache)(
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_8__.getJSONEditorCache)(
                 keyRoute,
               );
               if (collapseCacheData !== undefined) {
@@ -1465,12 +1473,33 @@
               }
               var currentActiveArrIndex = _currentActiveArrIndex;
               var activeArrIndexCache = (0,
-              $utils_webCache__WEBPACK_IMPORTED_MODULE_7__.getJSONEditorCache)(
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_8__.getJSONEditorCache)(
                 keyRoute + '-activeArrIndex',
               );
               if (activeArrIndexCache !== undefined) {
                 currentActiveArrIndex = activeArrIndexCache;
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_12__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_12__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_12__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -1480,14 +1509,16 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey + '-' + triggerChange,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -1509,7 +1540,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -1524,6 +1555,7 @@
                   'div',
                   {
                     className: 'array-schema-box content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -1540,13 +1572,13 @@
                     ),
                     isClosed
                       ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.RightOutlined,
                           {
                             className: 'close-operate-btn',
                           },
                         )
                       : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.DownOutlined,
                           {
                             className: 'close-operate-btn',
                           },
@@ -1565,12 +1597,12 @@
                           },
                         },
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                          antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                           {
                             title: jsonView ? '关闭源码模式' : '开启源码模式',
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_15__[
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_17__[
                               'default'
                             ],
                             {
@@ -1582,12 +1614,12 @@
                         ),
                       ),
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: '\u6DFB\u52A0\u6570\u636E\u9879',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.PlusOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.PlusOutlined,
                         // src={addElemIcon}
                         {
                           className: 'array-add-child-btn',
@@ -1610,7 +1642,7 @@
                         (isClosed ? 'closed' : ''),
                     },
                     !jsonView &&
-                      (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isArray)(
+                      (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isArray)(
                         curJsonData,
                       ) &&
                       curJsonData.map(function (arrItem, arrIndex) {
@@ -1665,21 +1697,21 @@
                               },
                               currentActiveArrIndex !== arrIndex
                                 ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.RightOutlined,
                                     {
                                       className:
                                         'close-operate-btn array-operate-btn',
                                     },
                                   )
                                 : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.DownOutlined,
                                     {
                                       className:
                                         'close-operate-btn array-operate-btn',
                                     },
                                   ),
                               /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                                 {
                                   title:
                                     '\u5220\u9664' +
@@ -1688,7 +1720,7 @@
                                     (arrIndex + 1),
                                 },
                                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  antd__WEBPACK_IMPORTED_MODULE_4__.Popconfirm,
+                                  antd__WEBPACK_IMPORTED_MODULE_5__.Popconfirm,
                                   {
                                     placement: 'top',
                                     title:
@@ -1714,7 +1746,7 @@
                                     cancelText: '\u53D6\u6D88',
                                   },
                                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                    $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_13__[
+                                    $assets_img_delete_svg__WEBPACK_IMPORTED_MODULE_15__[
                                       'default'
                                     ],
                                     // <img src={deleteIcon}
@@ -1730,7 +1762,7 @@
                                 ),
                               ),
                               /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                                 {
                                   title:
                                     '\u590D\u5236' +
@@ -1739,7 +1771,7 @@
                                     (arrIndex + 1),
                                 },
                                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_14__[
+                                  $assets_img_addElem_svg__WEBPACK_IMPORTED_MODULE_16__[
                                     'default'
                                   ],
                                   // <img src={addElemIcon}
@@ -1759,12 +1791,12 @@
                               ),
                               arrIndex !== 0 &&
                                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                  antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                                   {
                                     title: '\u5411\u4E0A\u79FB\u52A8',
                                   },
                                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.ArrowUpOutlined,
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.ArrowUpOutlined,
                                     {
                                       className: 'array-operate-btn',
                                       onClick: function onClick(event) {
@@ -1777,12 +1809,12 @@
                                 ),
                               arrIndex !== curJsonData.length - 1 &&
                                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                                  antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                                   {
                                     title: '\u5411\u4E0B\u79FB\u52A8',
                                   },
                                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.ArrowDownOutlined,
+                                    _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.ArrowDownOutlined,
                                     {
                                       className: 'array-operate-btn',
                                       onClick: function onClick(event) {
@@ -1811,7 +1843,7 @@
                               id: curNodeKey,
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              $components_MappingRender__WEBPACK_IMPORTED_MODULE_8__[
+                              $components_MappingRender__WEBPACK_IMPORTED_MODULE_9__[
                                 'default'
                               ],
                               {
@@ -1832,7 +1864,7 @@
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__[
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__[
                           'default'
                         ],
                         this.props,
@@ -1845,14 +1877,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           ArraySchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -1898,29 +1930,35 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var BooleanFormSchema = /*#__PURE__*/ (function (
@@ -1949,7 +1987,7 @@
             var _proto = BooleanFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -1957,7 +1995,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -1979,10 +2017,31 @@
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_7__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
                 targetJsonSchema.type,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -1993,14 +2052,16 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -2022,7 +2083,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -2037,6 +2098,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -2044,7 +2106,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Switch,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Switch,
                       {
                         style: {
                           display: 'inline-block',
@@ -2067,14 +2129,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           BooleanFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -2122,33 +2184,41 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/BoxStyleSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_6__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
             );
 
           var BoxStyleSchema = /*#__PURE__*/ (function (_React$PureComponent) {
@@ -2347,6 +2417,27 @@
                 layoutStyleLock = _this$state.layoutStyleLock;
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -2357,11 +2448,13 @@
                     ' ' +
                     (renderAction ? 'render-mark' : ''),
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -2371,7 +2464,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -2393,7 +2486,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -2408,6 +2501,7 @@
                   'div',
                   {
                     className: 'content-item layout-box-style-container',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -2415,7 +2509,7 @@
                       className: 'center-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         placement: 'top',
                         title: layoutStyleLock ? '点击解锁联动' : '点击联动',
@@ -2436,7 +2530,7 @@
                     ),
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.InputNumber,
                     {
                       name: 'layoutPaddingTop',
                       className:
@@ -2466,7 +2560,7 @@
                     },
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.InputNumber,
                     {
                       name: 'layoutPaddingRight',
                       className:
@@ -2496,7 +2590,7 @@
                     },
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.InputNumber,
                     {
                       name: 'layoutPaddingBottom',
                       className:
@@ -2526,7 +2620,7 @@
                     },
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.InputNumber,
                     {
                       name: 'layoutPaddingLeft',
                       className:
@@ -2562,14 +2656,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           BoxStyleSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -2617,34 +2711,42 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_5__ =
-            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
-            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
-            );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var CheckboxSchema = /*#__PURE__*/ (function (_React$PureComponent) {
             function CheckboxSchema(props) {
@@ -2670,7 +2772,7 @@
             var _proto = CheckboxSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_5__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -2678,7 +2780,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_5__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -2700,6 +2802,27 @@
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var options = targetJsonSchema.options;
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -2709,14 +2832,16 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -2741,7 +2866,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -2754,13 +2879,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -2771,6 +2896,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -2778,7 +2904,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Checkbox.Group,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Checkbox.Group,
                       {
                         style: {
                           display: 'inline-block',
@@ -2794,7 +2920,7 @@
                           var optionNodeKey =
                             nodeKey + '-select-' + optionLabel;
                           return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            antd__WEBPACK_IMPORTED_MODULE_4__.Checkbox,
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Checkbox,
                             {
                               value: item.value,
                               key: optionNodeKey,
@@ -2811,14 +2937,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           CheckboxSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -2866,58 +2992,66 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! react-ace */ 'react-ace');
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              react_ace__WEBPACK_IMPORTED_MODULE_5__,
+              react_ace__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__,
             );
-          /* harmony import */ var ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! ace-builds/src-noconflict/mode-javascript */ 'ace-builds/src-noconflict/mode-javascript',
             );
-          /* harmony import */ var ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_9___default =
             /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_7__,
+              ace_builds_src_noconflict_mode_javascript__WEBPACK_IMPORTED_MODULE_9__,
             );
-          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! ace-builds/src-noconflict/theme-monokai */ 'ace-builds/src-noconflict/theme-monokai',
             );
-          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8___default =
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_10___default =
             /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__,
+              ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_10__,
             );
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__ =
-            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__,
-            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var CodeAreaFormSchema = /*#__PURE__*/ (function (
             _React$PureComponent,
@@ -2951,7 +3085,7 @@
             var _proto = CodeAreaFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -2959,7 +3093,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -2995,12 +3129,33 @@
                   : targetJsonSchema.default || '() => {}';
               // 判断当前jsonData是否是对象类型
               if (
-                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isObject)(
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isObject)(
                   curJsonData,
                 )
               ) {
                 curJsonData = JSON.stringify(curJsonData, null, 2);
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -3011,11 +3166,13 @@
                       : 'mobile-screen-element-warp'), //  element-title-card-warp
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -3025,7 +3182,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -3051,7 +3208,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -3064,13 +3221,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -3081,6 +3238,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   !isIgnoreWarn &&
                     isShowWarn &&
@@ -3105,7 +3263,7 @@
                       ),
                     ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    react_ace__WEBPACK_IMPORTED_MODULE_6___default(),
                     {
                       id: 'code_area_ace',
                       key: nodeKey + '-ace',
@@ -3152,17 +3310,17 @@
             return CodeAreaFormSchema;
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           CodeAreaFormSchema.propTypes = {
-            isIgnoreWarn: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            isReadOnly: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            isIgnoreWarn: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            isReadOnly: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -3210,49 +3368,55 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! react-color */ 'react-color');
-          /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var react_color__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              react_color__WEBPACK_IMPORTED_MODULE_5__,
+              react_color__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/ColorFormSchemaV3/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_10__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_11__,
             );
 
           /**
@@ -3295,7 +3459,7 @@
                 var _ref2 = jsonStore || {},
                   updateFormValueData = _ref2.updateFormValueData;
                 updateFormValueData(keyRoute, 'initial'); // 更新数值
-                antd__WEBPACK_IMPORTED_MODULE_4__.message.success(
+                antd__WEBPACK_IMPORTED_MODULE_5__.message.success(
                   '已移除当前设置的颜色值',
                 );
                 // 主动触发更新的状态数据
@@ -3319,7 +3483,7 @@
             var _proto = ColorFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_9__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -3327,7 +3491,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_9__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -3353,13 +3517,34 @@
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_9__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_10__.isNeedTwoColWarpStyle)(
                 targetJsonSchema.type,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? buildStyle(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? buildStyle(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? buildStyle(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               var SketchPickerContent =
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                  react_color__WEBPACK_IMPORTED_MODULE_5__.SketchPicker,
+                  react_color__WEBPACK_IMPORTED_MODULE_6__.SketchPicker,
                   {
                     className: 'color-sketch-picker',
                     key: nodeKey + '-SketchPicker',
@@ -3377,14 +3562,16 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -3406,7 +3593,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -3421,6 +3608,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -3440,7 +3628,7 @@
                         },
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        antd__WEBPACK_IMPORTED_MODULE_4__.Popover,
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
                         {
                           content: SketchPickerContent,
                           title: '\u989C\u8272\u9009\u62E9\u5668',
@@ -3458,14 +3646,14 @@
                         ),
                       ),
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                         {
                           title:
                             '\u70B9\u51FB\u79FB\u9664\u5F53\u524D\u989C\u8272\u503C',
                           placement: 'top',
                         },
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.CloseOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.CloseOutlined,
                           {
                             className: 'delete-bgColor-btn',
                             onClick: function onClick() {
@@ -3489,14 +3677,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           ColorFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -3544,61 +3732,69 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
             );
-          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/DataSourceSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_13___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_15___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_13__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_15__,
             );
 
           var DataSourceSchema = /*#__PURE__*/ (function (
@@ -3632,7 +3828,7 @@
             var _proto = DataSourceSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -3640,7 +3836,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -3678,6 +3874,27 @@
                 null
                   ? _targetJsonSchema$sho
                   : true;
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -3688,11 +3905,13 @@
                       : 'mobile-screen-element-warp'),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -3711,7 +3930,7 @@
                         null,
                         '\uFF08',
                         (0,
-                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                           jsonKey,
                           {
                             length: 15,
@@ -3722,13 +3941,13 @@
                   ),
                   targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -3739,6 +3958,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -3761,13 +3981,13 @@
                     ),
                     isClosed
                       ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.RightOutlined,
                           {
                             className: 'close-operate-btn',
                           },
                         )
                       : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.DownOutlined,
                           {
                             className: 'close-operate-btn',
                           },
@@ -3786,12 +4006,12 @@
                           },
                         },
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                          antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                           {
                             title: jsonView ? '关闭源码模式' : '开启源码模式',
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__[
                               'default'
                             ],
                             {
@@ -3823,7 +4043,7 @@
                             className: 'ace-editor-box code-area-item',
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                             {
                               title: isShowFilter
                                 ? '点击隐藏数据过滤器'
@@ -3831,7 +4051,7 @@
                               placement: 'top',
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.FilterOutlined,
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.FilterOutlined,
                               {
                                 className: 'filter-btn',
                                 onClick: this.switchFilterBtn,
@@ -3839,7 +4059,7 @@
                             ),
                           ),
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                            $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
                               'default'
                             ],
                             {
@@ -3855,7 +4075,7 @@
                         ),
                         isShowFilter &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                               'default'
                             ],
                             {
@@ -3882,7 +4102,7 @@
                             className: 'url-editor-box',
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                            $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                               'default'
                             ],
                             {
@@ -3896,14 +4116,14 @@
                             },
                           ),
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                             {
                               title:
                                 '\u70B9\u51FB\u8BBE\u7F6E\u6570\u636E\u8FC7\u6EE4\u5668',
                               placement: 'top',
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.FilterOutlined,
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.FilterOutlined,
                               {
                                 className: 'filter-url-btn',
                                 onClick: this.switchFilterBtn,
@@ -3913,7 +4133,7 @@
                         ),
                         isShowFilter &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                               'default'
                             ],
                             {
@@ -3931,7 +4151,7 @@
                       ),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__[
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
                           'default'
                         ],
                         this.props,
@@ -3944,14 +4164,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           DataSourceSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -3999,35 +4219,41 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! moment */ 'moment');
-          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              moment__WEBPACK_IMPORTED_MODULE_4__,
+              moment__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_5__,
+              antd__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var DateTypeList = {
@@ -4061,7 +4287,7 @@
             var _proto = DateTimeFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -4069,7 +4295,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -4096,10 +4322,31 @@
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var defaultTime = curJsonData || targetJsonSchema.default;
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_9__.isNeedTwoColWarpStyle)(
                 curType,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -4110,11 +4357,13 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -4124,7 +4373,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_6__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -4146,7 +4395,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -4161,6 +4410,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -4168,7 +4418,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_5__.DatePicker,
+                      antd__WEBPACK_IMPORTED_MODULE_6__.DatePicker,
                       {
                         style: {
                           display: 'inline-block',
@@ -4182,7 +4432,7 @@
                           '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
                         defaultValue:
                           defaultTime &&
-                          moment__WEBPACK_IMPORTED_MODULE_4___default()(
+                          moment__WEBPACK_IMPORTED_MODULE_5___default()(
                             defaultTime,
                             timeFormat,
                           ),
@@ -4197,14 +4447,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           DateTimeFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -4402,6 +4652,27 @@
               if (collapseCacheData !== undefined) {
                 isClosed = collapseCacheData;
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -4412,6 +4683,7 @@
                       : 'object-schema-warp mobile-screen-element-warp'),
                   key: curNodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 !isStructured &&
                   !isArrayItem &&
@@ -4419,6 +4691,7 @@
                     'div',
                     {
                       className: 'element-title',
+                      style: titleStyle,
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                       antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
@@ -4458,6 +4731,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
+                    style: contentStyle,
                   },
                   !isStructured &&
                     !isArrayItem &&
@@ -4705,74 +4979,74 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! $renderers/TreeSelectFromSchema/index */ './src/renderers/TreeSelectFromSchema/index.js',
             );
-          /* harmony import */ var $renderers_RemoteDynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $renderers_RemoteDynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! $renderers/RemoteDynamicDataSchema/index */ './src/renderers/RemoteDynamicDataSchema/index.js',
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_14__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_15__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_16__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/DynamicDataSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_15___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_16___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_15__,
-            );
-          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_16__ =
-            __webpack_require__(/*! mobx */ 'mobx');
-          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_16___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              mobx__WEBPACK_IMPORTED_MODULE_16__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_16__,
             );
 
-          var Option = antd__WEBPACK_IMPORTED_MODULE_4__.Select.Option;
+          var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
 
           var DynamicDataSchema = /*#__PURE__*/ (function (
             _React$PureComponent,
@@ -4813,8 +5087,8 @@
                   triggerChangeAction = _ref3.triggerChangeAction,
                   dynamicDataObj = _ref3.dynamicDataObj;
                 var curDynamicData = (0,
-                $utils_index__WEBPACK_IMPORTED_MODULE_14__.objClone)(
-                  (0, mobx__WEBPACK_IMPORTED_MODULE_16__.toJS)(
+                $utils_index__WEBPACK_IMPORTED_MODULE_15__.objClone)(
+                  (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
                     dynamicDataObj[dynamicDataName],
                   ),
                 );
@@ -4854,7 +5128,7 @@
                     true,
                   );
                   var dataPath = (0,
-                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.dataRoute2dataPath)(
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.dataRoute2dataPath)(
                     newDataRoute,
                   );
                   // 自动填充当前filter
@@ -4908,7 +5182,7 @@
             var _proto = DynamicDataSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_13__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -4916,7 +5190,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_13__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -4954,7 +5228,7 @@
               var dataRoute = configDataObj.dataRoute; // 接口数据路径
               var apiParams = configDataObj.body || {}; // 动态数据/请求参数
               if (
-                !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_13__.isObject)(
+                !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_14__.isObject)(
                   apiParams,
                 ) &&
                 apiParams !== ''
@@ -4969,6 +5243,27 @@
               var curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
               var dataObj = targetJsonSchema.properties.data || {}; // schema中的数据对象
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_15__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_15__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_15__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -4979,11 +5274,13 @@
                       : 'dynamic-data-schema mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -4997,7 +5294,7 @@
                         null,
                         '\uFF08',
                         (0,
-                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                           jsonKey,
                           {
                             length: 15,
@@ -5008,13 +5305,13 @@
                   ),
                   targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -5025,6 +5322,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -5077,7 +5375,7 @@
                         className: 'json-form-box',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                         {
                           title: isShowFilter
                             ? '点击隐藏数据过滤器'
@@ -5085,7 +5383,7 @@
                           placement: 'top',
                         },
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.FilterOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.FilterOutlined,
                           {
                             className: 'filter-btn',
                             onClick: this.switchFilterBtn,
@@ -5093,7 +5391,7 @@
                         ),
                       ),
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_7__[
+                        $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
                           'default'
                         ],
                         {
@@ -5113,7 +5411,7 @@
                         },
                         isShowFilter &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
                               'default'
                             ],
                             {
@@ -5176,7 +5474,7 @@
                               className: 'form-item-box',
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              antd__WEBPACK_IMPORTED_MODULE_4__.Select,
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Select,
                               {
                                 className: 'dynamic-data-select',
                                 defaultValue: dataName,
@@ -5184,7 +5482,7 @@
                               },
                               dynamicDataList &&
                                 (0,
-                                $utils_typeof__WEBPACK_IMPORTED_MODULE_13__.isArray)(
+                                $utils_typeof__WEBPACK_IMPORTED_MODULE_14__.isArray)(
                                   dynamicDataList,
                                 ) &&
                                 dynamicDataList.map(function (dynamicData) {
@@ -5229,7 +5527,7 @@
                             },
                             Object.keys(apiParams).map(function (paramKey) {
                               var paramItam = (0,
-                              $utils_index__WEBPACK_IMPORTED_MODULE_14__.objClone)(
+                              $utils_index__WEBPACK_IMPORTED_MODULE_15__.objClone)(
                                 apiParams[paramKey],
                               );
                               paramItam.readOnly =
@@ -5249,7 +5547,7 @@
                               }
                               if (paramItam.scope !== 'dynamic') {
                                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                                     'default'
                                   ],
                                   {
@@ -5270,7 +5568,7 @@
                                   '-params-' +
                                   paramKey;
                                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                                  $renderers_RemoteDynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_11__[
+                                  $renderers_RemoteDynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_12__[
                                     'default'
                                   ],
                                   {
@@ -5332,7 +5630,7 @@
                         ),
                       dataName &&
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                          $renderers_TreeSelectFromSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                             'default'
                           ],
                           {
@@ -5345,7 +5643,7 @@
                         ),
                       dataName &&
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                          $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
                             'default'
                           ],
                           {
@@ -5377,20 +5675,20 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           DynamicDataSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             dynamicDataList:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().array,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().array,
             dynamicDataObj:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().object,
             dynamicDataApiScopeList:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().object,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -5438,51 +5736,59 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
             );
-          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
@@ -5505,7 +5811,7 @@
             var _proto = EventSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -5513,7 +5819,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -5554,6 +5860,27 @@
                 null
                   ? _targetJsonSchema$sho
                   : true;
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -5564,11 +5891,13 @@
                       : 'mobile-screen-element-warp'),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -5587,7 +5916,7 @@
                         null,
                         '\uFF08',
                         (0,
-                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                           jsonKey,
                           {
                             length: 15,
@@ -5598,13 +5927,13 @@
                   ),
                   targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -5615,6 +5944,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -5637,13 +5967,13 @@
                     ),
                     isClosed
                       ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.RightOutlined,
                           {
                             className: 'close-operate-btn',
                           },
                         )
                       : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                          _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.DownOutlined,
                           {
                             className: 'close-operate-btn',
                           },
@@ -5662,12 +5992,12 @@
                           },
                         },
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                          antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                          antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                           {
                             title: jsonView ? '关闭源码模式' : '开启源码模式',
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
+                            $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_14__[
                               'default'
                             ],
                             {
@@ -5695,7 +6025,7 @@
                         null,
                         registerJsonObj &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                            $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                               'default'
                             ],
                             {
@@ -5712,7 +6042,7 @@
                           ),
                         actionFuncJsonObj &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
+                            $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                               'default'
                             ],
                             {
@@ -5735,7 +6065,7 @@
                         null,
                         triggerJsonObj &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_10__[
+                            $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                               'default'
                             ],
                             {
@@ -5752,7 +6082,7 @@
                           ),
                         eventDataJsonObj &&
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_8__[
+                            $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_9__[
                               'default'
                             ],
                             {
@@ -5770,7 +6100,7 @@
                       ),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_7__[
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
                           'default'
                         ],
                         this.props,
@@ -5783,14 +6113,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           EventSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -5836,58 +6166,66 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! react-ace */ 'react-ace');
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              react_ace__WEBPACK_IMPORTED_MODULE_5__,
+              react_ace__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__,
             );
-          /* harmony import */ var ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! ace-builds/src-noconflict/mode-html */ 'ace-builds/src-noconflict/mode-html',
             );
-          /* harmony import */ var ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_9___default =
             /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_7__,
+              ace_builds_src_noconflict_mode_html__WEBPACK_IMPORTED_MODULE_9__,
             );
-          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! ace-builds/src-noconflict/theme-monokai */ 'ace-builds/src-noconflict/theme-monokai',
             );
-          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8___default =
+          /* harmony import */ var ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_10___default =
             /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_8__,
+              ace_builds_src_noconflict_theme_monokai__WEBPACK_IMPORTED_MODULE_10__,
             );
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__ =
-            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_11___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__,
-            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var HtmlAreaFormSchema = /*#__PURE__*/ (function (
             _React$PureComponent,
@@ -5921,7 +6259,7 @@
             var _proto = HtmlAreaFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -5929,7 +6267,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_12__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -5963,12 +6301,33 @@
                   : targetJsonSchema.default || '<p>hello</p>';
               // 判断当前jsonData是否是对象类型
               if (
-                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_9__.isObject)(
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isObject)(
                   curJsonData,
                 )
               ) {
                 curJsonData = JSON.stringify(curJsonData, null, 2);
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -5979,11 +6338,13 @@
                       : 'mobile-screen-element-warp'),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -5993,7 +6354,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -6019,7 +6380,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -6032,13 +6393,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_11__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -6049,6 +6410,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   isShowWarn &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -6072,7 +6434,7 @@
                       ),
                     ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    react_ace__WEBPACK_IMPORTED_MODULE_6___default(),
                     {
                       id: 'code_area_ace',
                       key: nodeKey + '-ace',
@@ -6120,14 +6482,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           HtmlAreaFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -6175,34 +6537,42 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var InputFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
             function InputFormSchema(props) {
@@ -6236,7 +6606,7 @@
             var _proto = InputFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -6244,7 +6614,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -6268,6 +6638,27 @@
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -6277,11 +6668,13 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -6291,7 +6684,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -6317,7 +6710,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -6330,13 +6723,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -6347,6 +6740,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -6354,7 +6748,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Input,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Input,
                       {
                         style: {
                           display: 'inline-block',
@@ -6376,14 +6770,14 @@
             return InputFormSchema;
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           InputFormSchema.propTypes = {
-            parentType: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            parentType: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -6431,34 +6825,42 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var InputImageSchema = /*#__PURE__*/ (function (
             _React$PureComponent,
@@ -6484,7 +6886,7 @@
                     updateFormValueData(keyRoute, responseData.url);
                   }
                 } else if (fileInfo.file.status === 'error') {
-                  antd__WEBPACK_IMPORTED_MODULE_4__.message.error(
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.error(
                     fileInfo.file.name +
                       ' \u56FE\u7247\u4E0A\u4F20\u5931\u8D25\u3002',
                   );
@@ -6519,7 +6921,7 @@
             var _proto = InputImageSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -6527,7 +6929,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -6556,14 +6958,14 @@
               var defaultFileList = [];
               if (
                 curJsonData &&
-                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isArray)(
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.isArray)(
                   curJsonData,
                 )
               ) {
                 defaultFileList = curJsonData;
               } else if (
                 curJsonData &&
-                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isString)(
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.isString)(
                   curJsonData,
                 )
               ) {
@@ -6591,6 +6993,27 @@
                 onChange: this.handleImageChange,
                 onRemove: this.handleDeleteChange,
               };
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -6600,11 +7023,13 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -6614,7 +7039,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -6640,7 +7065,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -6653,13 +7078,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -6670,6 +7095,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -6677,7 +7103,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Upload,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Upload,
                       uploadProps,
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                         'button',
@@ -6691,11 +7117,11 @@
                         },
                         loading
                           ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.LoadingOutlined,
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.LoadingOutlined,
                               null,
                             )
                           : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.PlusOutlined,
+                              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.PlusOutlined,
                               null,
                             ),
                         /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -6716,14 +7142,14 @@
             return InputImageSchema;
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           InputImageSchema.propTypes = {
-            parentType: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            parentType: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -6771,60 +7197,66 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! react-ace */ 'react-ace');
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              react_ace__WEBPACK_IMPORTED_MODULE_5__,
+              react_ace__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__,
             );
-          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! ace-builds/src-noconflict/mode-json */ 'ace-builds/src-noconflict/mode-json',
             );
-          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_9___default =
             /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_7__,
+              ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_9__,
             );
-          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! ace-builds/src-noconflict/theme-solarized_light */ 'ace-builds/src-noconflict/theme-solarized_light',
             );
-          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_8___default =
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_10___default =
             /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_8__,
+              ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_10__,
             );
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__ =
-            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_12___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__,
-            );
 
           // ace-builds
 
@@ -6862,7 +7294,7 @@
             var _proto = JsonFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_13__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -6870,7 +7302,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_11__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_13__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -6906,15 +7338,36 @@
                   : targetJsonSchema.default || '{}';
               // 判断当前jsonData是否是对象类型
               if (
-                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isObject)(
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_12__.isObject)(
                   curJsonData,
                 ) ||
-                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_10__.isArray)(
+                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_12__.isArray)(
                   curJsonData,
                 )
               ) {
                 curJsonData = JSON.stringify(curJsonData, null, 2);
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_11__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_11__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_11__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -6925,11 +7378,13 @@
                       : 'mobile-screen-element-warp'),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -6955,7 +7410,7 @@
                         null,
                         '\uFF08',
                         (0,
-                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_8__.truncate)(
                           jsonKey,
                           {
                             length: 15,
@@ -6966,13 +7421,13 @@
                   ),
                   targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_12__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -6983,6 +7438,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   isShowWarn &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -7006,11 +7462,11 @@
                       ),
                     ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    react_ace__WEBPACK_IMPORTED_MODULE_5___default(),
+                    react_ace__WEBPACK_IMPORTED_MODULE_6___default(),
                     {
                       id: 'json_area_ace',
                       value: (0,
-                      $utils_index__WEBPACK_IMPORTED_MODULE_9__.hasProperties)(
+                      $utils_index__WEBPACK_IMPORTED_MODULE_11__.hasProperties)(
                         curJSONDataTemp,
                       )
                         ? curJSONDataTemp
@@ -7060,14 +7516,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           JsonFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -7301,37 +7757,43 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/NumberFormSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_9__,
             );
 
           var NumberFormSchema = /*#__PURE__*/ (function (
@@ -7349,13 +7811,13 @@
                   updateFormValueData = _ref.updateFormValueData;
                 var targetJsonSchema = _this.props.targetJsonSchema;
                 if (newVal < targetJsonSchema.minimum) {
-                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
                     '\u5C0F\u4E8E\u8BBE\u5B9A\u7684\u6700\u5C0F\u6570\u503C' +
                       targetJsonSchema.minimum +
                       '\uFF0C\u8BF7\u91CD\u65B0\u8F93\u5165\u3002',
                   );
                 } else if (newVal > targetJsonSchema.maximum) {
-                  antd__WEBPACK_IMPORTED_MODULE_4__.message.warning(
+                  antd__WEBPACK_IMPORTED_MODULE_5__.message.warning(
                     '\u8D85\u8FC7\u8BBE\u5B9A\u7684\u6700\u5927\u6570\u503C' +
                       targetJsonSchema.maximum +
                       '\uFF0C\u8BF7\u91CD\u65B0\u8F93\u5165\u3002',
@@ -7395,7 +7857,7 @@
             var _proto = NumberFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -7403,7 +7865,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -7429,10 +7891,31 @@
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_7__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
                 targetJsonSchema.type,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -7443,11 +7926,13 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey + '-' + renderTime,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -7457,7 +7942,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -7479,7 +7964,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -7494,6 +7979,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -7514,7 +8000,7 @@
                             _this2.numberChange(
                               'minus',
                               (0,
-                              $utils_index__WEBPACK_IMPORTED_MODULE_7__.hasProperties)(
+                              $utils_index__WEBPACK_IMPORTED_MODULE_8__.hasProperties)(
                                 curJsonData,
                               )
                                 ? curJsonData
@@ -7525,7 +8011,7 @@
                         '-',
                       ),
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                        antd__WEBPACK_IMPORTED_MODULE_5__.InputNumber,
                         {
                           className: 'number-cont',
                           style: {
@@ -7539,7 +8025,7 @@
                           min: targetJsonSchema.minimum || 0,
                           max: targetJsonSchema.maximum || 1000000,
                           defaultValue: (0,
-                          $utils_index__WEBPACK_IMPORTED_MODULE_7__.hasProperties)(
+                          $utils_index__WEBPACK_IMPORTED_MODULE_8__.hasProperties)(
                             curJsonData,
                           )
                             ? curJsonData
@@ -7556,7 +8042,7 @@
                             _this2.numberChange(
                               'plus',
                               (0,
-                              $utils_index__WEBPACK_IMPORTED_MODULE_7__.hasProperties)(
+                              $utils_index__WEBPACK_IMPORTED_MODULE_8__.hasProperties)(
                                 curJsonData,
                               )
                                 ? curJsonData
@@ -7575,14 +8061,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           NumberFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -7630,57 +8116,65 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $components_MappingRender__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
               /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $utils_webCache__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! $utils/webCache */ './src/utils/webCache.js',
             );
-          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! $assets/img/code.svg */ './src/assets/img/code.svg',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_13__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/ObjectSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_12__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_14__,
             );
 
           var ObjectSchema = /*#__PURE__*/ (function (_React$PureComponent) {
@@ -7702,7 +8196,7 @@
             var _proto = ObjectSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_9__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -7710,7 +8204,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_9__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_10__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -7727,7 +8221,7 @@
 
               // 缓存当前折叠状态
               (0,
-              $utils_webCache__WEBPACK_IMPORTED_MODULE_10__.saveJSONEditorCache)(
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_11__.saveJSONEditorCache)(
                 keyRoute,
                 !isClosed,
               );
@@ -7764,12 +8258,33 @@
               // 获取前端缓存中的折叠数据
               var isClosed = _isClosed;
               var collapseCacheData = (0,
-              $utils_webCache__WEBPACK_IMPORTED_MODULE_10__.getJSONEditorCache)(
+              $utils_webCache__WEBPACK_IMPORTED_MODULE_11__.getJSONEditorCache)(
                 keyRoute,
               );
               if (collapseCacheData !== undefined) {
                 isClosed = collapseCacheData;
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -7779,6 +8294,7 @@
                       : 'object-schema-warp mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 !isStructured &&
                   !isArrayItem &&
@@ -7786,9 +8302,10 @@
                     'div',
                     {
                       className: 'element-title',
+                      style: titleStyle,
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
@@ -7810,7 +8327,7 @@
                             null,
                             '\uFF08',
                             (0,
-                            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                               jsonKey,
                               {
                                 length: 15,
@@ -7825,6 +8342,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
+                    style: contentStyle,
                   },
                   !isStructured &&
                     !isArrayItem &&
@@ -7843,13 +8361,13 @@
                       ),
                       isClosed
                         ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.RightOutlined,
+                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.RightOutlined,
                             {
                               className: 'close-operate-btn',
                             },
                           )
                         : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__.DownOutlined,
+                            _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.DownOutlined,
                             {
                               className: 'close-operate-btn',
                             },
@@ -7868,12 +8386,12 @@
                             },
                           },
                           /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                            antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                             {
                               title: jsonView ? '关闭源码模式' : '开启源码模式',
                             },
                             /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_11__[
+                              $assets_img_code_svg__WEBPACK_IMPORTED_MODULE_12__[
                                 'default'
                               ],
                               {
@@ -7919,7 +8437,7 @@
                         var childNodeKey =
                           nodeKey + '-' + curType + '-' + currentJsonKey;
                         return (0,
-                        $components_MappingRender__WEBPACK_IMPORTED_MODULE_7__[
+                        $components_MappingRender__WEBPACK_IMPORTED_MODULE_8__[
                           'default'
                         ])({
                           parentType: curType,
@@ -7934,7 +8452,7 @@
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
+                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__[
                           'default'
                         ],
                         this.props,
@@ -7946,20 +8464,20 @@
             return ObjectSchema;
           })(react__WEBPACK_IMPORTED_MODULE_1___default().PureComponent);
           ObjectSchema.propTypes = {
-            isArrayItem: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            isArrayItem: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             // 如果是数组项，title会进行特殊显示
-            arrIndex: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            arrIndex: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             // 当前数组项
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             isStructuredSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -8005,29 +8523,35 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var QuantitySchema = /*#__PURE__*/ (function (_React$PureComponent) {
@@ -8056,7 +8580,7 @@
             var _proto = QuantitySchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -8064,7 +8588,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -8096,10 +8620,31 @@
                   curQuantity === 'percent' ? '%' : curQuantity,
                 );
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_7__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
                 targetJsonSchema.type,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -8110,11 +8655,13 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -8124,7 +8671,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -8146,7 +8693,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -8161,6 +8708,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -8168,7 +8716,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.InputNumber,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.InputNumber,
                       {
                         style: {
                           display: 'inline-block',
@@ -8195,14 +8743,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           QuantitySchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -8250,34 +8798,42 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
-            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
-            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var RadioSchema = /*#__PURE__*/ (function (_React$PureComponent) {
             function RadioSchema(props) {
@@ -8304,7 +8860,7 @@
             var _proto = RadioSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -8312,7 +8868,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -8334,6 +8890,27 @@
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var options = targetJsonSchema.options;
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -8343,14 +8920,16 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -8375,7 +8954,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -8388,13 +8967,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -8405,6 +8984,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -8412,7 +8992,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Radio.Group,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Radio.Group,
                       {
                         style: {
                           display: 'inline-block',
@@ -8427,7 +9007,7 @@
                           var optionLabel = item.label || item.name;
                           var optionNodeKey = nodeKey + '-radio-' + optionLabel;
                           return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                            antd__WEBPACK_IMPORTED_MODULE_4__.Radio,
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Radio,
                             {
                               value: item.value,
                               key: optionNodeKey,
@@ -8444,14 +9024,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           RadioSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -8654,6 +9234,27 @@
               }
               var curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_11__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_11__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_11__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -8664,11 +9265,13 @@
                       : 'mobile-screen-element-warp'),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   curConfigData.title + ' (\u63A5\u53E3\u4E0B\u53D1\uFF09',
                 ),
@@ -8676,6 +9279,7 @@
                   'div',
                   {
                     className: 'content-item object-content',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -8936,46 +9540,52 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
-            __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_5__,
+              antd__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__,
             );
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/SelectSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_9__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_10__,
             );
 
-          var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
+          var Option = antd__WEBPACK_IMPORTED_MODULE_6__.Select.Option;
 
           /**
            * select下拉选择类型
@@ -9004,7 +9614,7 @@
             var _proto = SelectSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -9012,7 +9622,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -9035,10 +9645,31 @@
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var options = targetJsonSchema.options;
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_9__.isNeedTwoColWarpStyle)(
                 targetJsonSchema.type,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -9049,14 +9680,16 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_6__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -9081,7 +9714,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -9094,13 +9727,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_6__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -9111,6 +9744,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -9118,7 +9752,7 @@
                       className: 'form-item-box select-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_5__.Select,
+                      antd__WEBPACK_IMPORTED_MODULE_6__.Select,
                       {
                         showSearch: true,
                         mode: targetJsonSchema.multiple
@@ -9156,14 +9790,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           SelectSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -9245,6 +9879,8 @@
             __webpack_require__(
               /*! $utils/webCache */ './src/utils/webCache.js',
             );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var Panel = antd__WEBPACK_IMPORTED_MODULE_5__.Collapse.Panel;
 
@@ -9319,6 +9955,27 @@
               ) {
                 collapseData = collapseCacheData;
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_10__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_10__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_10__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -9329,11 +9986,13 @@
                       : 'mobile-screen-element-warp'),
                   // key={nodeKey}
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                     antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
@@ -9373,6 +10032,7 @@
                   'div',
                   {
                     className: 'array-schema-box',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                     antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
@@ -9528,13 +10188,15 @@
             __webpack_require__(
               /*! $utils/webCache */ './src/utils/webCache.js',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/SohuEventSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_9___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_9__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_10__,
             );
 
           var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
@@ -9657,7 +10319,7 @@
                 nodeKey = _this$props4.nodeKey,
                 keyRoute = _this$props4.keyRoute,
                 targetJsonSchema = _this$props4.targetJsonSchema;
-              var options = options || {};
+              var options = _options || {};
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
               var globalEventMap = curJsonData.globalEventMap || {}; // 全局事件列表
               var curEventList = curJsonData.event || []; // 当前组件事件列表
@@ -9686,6 +10348,13 @@
               ) {
                 collapseData = collapseCacheData;
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                 'div',
                 {
@@ -9696,6 +10365,7 @@
                       : 'sohu-event-container array-schema-box mobile-screen-element-warp'),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
@@ -9996,36 +10666,44 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
-            __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
-            __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_5__,
-            );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
-            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
             );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_7__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
-          var TextArea = antd__WEBPACK_IMPORTED_MODULE_5__.Input.TextArea;
+          var TextArea = antd__WEBPACK_IMPORTED_MODULE_7__.Input.TextArea;
 
           var TextAreaFormSchema = /*#__PURE__*/ (function (
             _React$PureComponent,
@@ -10054,7 +10732,7 @@
             var _proto = TextAreaFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -10062,7 +10740,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -10086,6 +10764,27 @@
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -10095,11 +10794,13 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -10109,7 +10810,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_7__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -10135,7 +10836,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_4__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -10148,13 +10849,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_7__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -10165,6 +10866,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -10196,14 +10898,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           TextAreaFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -10251,87 +10953,95 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__,
             );
-          /* harmony import */ var braft_editor__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var braft_editor__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(/*! braft-editor */ 'braft-editor');
-          /* harmony import */ var braft_editor__WEBPACK_IMPORTED_MODULE_8___default =
+          /* harmony import */ var braft_editor__WEBPACK_IMPORTED_MODULE_10___default =
             /*#__PURE__*/ __webpack_require__.n(
-              braft_editor__WEBPACK_IMPORTED_MODULE_8__,
+              braft_editor__WEBPACK_IMPORTED_MODULE_10__,
             );
-          /* harmony import */ var braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(
               /*! braft-extensions/dist/color-picker */ 'braft-extensions/dist/color-picker',
             );
-          /* harmony import */ var braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9___default =
+          /* harmony import */ var braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_11___default =
             /*#__PURE__*/ __webpack_require__.n(
-              braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9__,
+              braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_11__,
             );
-          /* harmony import */ var braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! braft-extensions/dist/color-picker.css */ 'braft-extensions/dist/color-picker.css',
             );
-          /* harmony import */ var braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_10___default =
+          /* harmony import */ var braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_12___default =
             /*#__PURE__*/ __webpack_require__.n(
-              braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_10__,
+              braft_extensions_dist_color_picker_css__WEBPACK_IMPORTED_MODULE_12__,
             );
-          /* harmony import */ var braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(
               /*! braft-extensions/dist/table */ 'braft-extensions/dist/table',
             );
-          /* harmony import */ var braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11___default =
+          /* harmony import */ var braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_13___default =
             /*#__PURE__*/ __webpack_require__.n(
-              braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11__,
+              braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_13__,
             );
-          /* harmony import */ var braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! braft-extensions/dist/table.css */ 'braft-extensions/dist/table.css',
             );
-          /* harmony import */ var braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_12___default =
+          /* harmony import */ var braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_14___default =
             /*#__PURE__*/ __webpack_require__.n(
-              braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_12__,
+              braft_extensions_dist_table_css__WEBPACK_IMPORTED_MODULE_14__,
             );
-          /* harmony import */ var braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(
               /*! braft-editor/dist/index.css */ 'braft-editor/dist/index.css',
             );
-          /* harmony import */ var braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_13___default =
+          /* harmony import */ var braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_15___default =
             /*#__PURE__*/ __webpack_require__.n(
-              braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_13__,
+              braft_editor_dist_index_css__WEBPACK_IMPORTED_MODULE_15__,
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14__ =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_16__ =
             __webpack_require__(
               /*! ./index.scss */ './src/renderers/TextEditorSchema/index.scss',
             );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_14___default =
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_16___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_14__,
+              _index_scss__WEBPACK_IMPORTED_MODULE_16__,
             );
 
           // 引入编辑器组件
@@ -10345,8 +11055,8 @@
           var colorOptions = {
             theme: 'light', // 指定取色器样式主题，支持dark和light两种样式
           };
-          braft_editor__WEBPACK_IMPORTED_MODULE_8___default().use([
-            braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_9___default()(
+          braft_editor__WEBPACK_IMPORTED_MODULE_10___default().use([
+            braft_extensions_dist_color_picker__WEBPACK_IMPORTED_MODULE_11___default()(
               colorOptions,
             ),
           ]);
@@ -10363,8 +11073,8 @@
             // 是否允许拖动调整列宽，默认false
             exportAttrString: 'border="1" style="border-collapse: collapse"', // 指定输出HTML时附加到table标签上的属性字符串
           };
-          braft_editor__WEBPACK_IMPORTED_MODULE_8___default().use(
-            braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_11___default()(
+          braft_editor__WEBPACK_IMPORTED_MODULE_10___default().use(
+            braft_extensions_dist_table__WEBPACK_IMPORTED_MODULE_13___default()(
               tableOptions,
             ),
           );
@@ -10445,7 +11155,7 @@
               var _ref2 = this.props.schemaStore || {},
                 pageScreen = _ref2.pageScreen;
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                 this,
               );
               if (pageScreen && pageScreen === 'wideScreen') {
@@ -10459,7 +11169,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -10495,12 +11205,33 @@
               var isClosed = this.state.isClosed;
               var curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
               var editorState =
-                braft_editor__WEBPACK_IMPORTED_MODULE_8___default().createEditorState(
+                braft_editor__WEBPACK_IMPORTED_MODULE_10___default().createEditorState(
                   curJsonData,
                 ); // 将html字符串转换成editorState
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -10510,6 +11241,7 @@
                       : 'text-editor-box mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
@@ -10522,6 +11254,7 @@
                       event.preventDefault();
                       event.stopPropagation();
                     },
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -10548,7 +11281,7 @@
                         null,
                         '\uFF08',
                         (0,
-                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                        _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
                           jsonKey,
                           {
                             length: 15,
@@ -10559,13 +11292,13 @@
                   ),
                   targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -10573,13 +11306,13 @@
                     ),
                   isClosed
                     ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.RightOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__.RightOutlined,
                         {
                           className: 'close-operate-btn',
                         },
                       )
                     : /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.DownOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__.DownOutlined,
                         {
                           className: 'close-operate-btn',
                         },
@@ -10589,6 +11322,7 @@
                   'div',
                   {
                     className: 'content-item ' + (isClosed ? 'closed' : ''),
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -10596,7 +11330,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      braft_editor__WEBPACK_IMPORTED_MODULE_8___default(),
+                      braft_editor__WEBPACK_IMPORTED_MODULE_10___default(),
                       {
                         key: nodeKey + '-textEditor',
                         controls:
@@ -10630,15 +11364,15 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           TextEditorSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-            pageScreen: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+            pageScreen: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -10686,35 +11420,41 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(/*! moment */ 'moment');
-          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              moment__WEBPACK_IMPORTED_MODULE_5__,
+              moment__WEBPACK_IMPORTED_MODULE_6__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var TimeFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
@@ -10741,7 +11481,7 @@
             var _proto = TimeFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -10749,7 +11489,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -10774,10 +11514,31 @@
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
               var isNeedTwoCol = (0,
-              $utils_index__WEBPACK_IMPORTED_MODULE_8__.isNeedTwoColWarpStyle)(
+              $utils_index__WEBPACK_IMPORTED_MODULE_9__.isNeedTwoColWarpStyle)(
                 targetJsonSchema.type,
               ); // 是否需要设置成两栏布局
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -10788,11 +11549,13 @@
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -10802,7 +11565,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
                       placement: 'top',
@@ -10824,7 +11587,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -10839,6 +11602,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -10846,7 +11610,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.TimePicker,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.TimePicker,
                       {
                         style: {
                           display: 'inline-block',
@@ -10858,7 +11622,7 @@
                           '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
                         defaultValue:
                           defaultTime &&
-                          moment__WEBPACK_IMPORTED_MODULE_5___default()(
+                          moment__WEBPACK_IMPORTED_MODULE_6___default()(
                             defaultTime,
                             'HH:mm',
                           ),
@@ -10873,14 +11637,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           TimeFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -10928,26 +11692,34 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
             );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var TreeSelectFromSchema = /*#__PURE__*/ (function (
             _React$PureComponent,
@@ -10978,7 +11750,7 @@
                 var mockObj = mockData;
                 if (
                   !(0,
-                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isObject)(
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isObject)(
                     mockData,
                   ) &&
                   mockData !== ''
@@ -10991,10 +11763,31 @@
                   }
                 }
                 treeData = (0,
-                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.json2treeData)(
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.json2treeData)(
                   mockObj,
                 );
               }
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -11004,11 +11797,13 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey + '-dataRoute-select',
                   id: nodeKey + '-dataRoute-select',
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   '\u6570\u636E\u8DEF\u5F84\u9009\u62E9',
                 ),
@@ -11016,6 +11811,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -11023,7 +11819,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.TreeSelect,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.TreeSelect,
                       {
                         className: 'data-route-select',
                         defaultValue: dataRoute,
@@ -11042,13 +11838,13 @@
             return TreeSelectFromSchema;
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           TreeSelectFromSchema.propTypes = {
-            mockData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            mockData: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             // 接口mock数据
-            dataRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            dataRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
             // 数据路径
-            onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().func,
+            onChange: prop_types__WEBPACK_IMPORTED_MODULE_4___default().func,
             // 数据路径值变动后触发
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -11095,34 +11891,42 @@
             /*#__PURE__*/ __webpack_require__.n(
               mobx_react__WEBPACK_IMPORTED_MODULE_2__,
             );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
             __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
             /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
             );
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
             __webpack_require__(/*! antd */ 'antd');
-          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default =
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
             /*#__PURE__*/ __webpack_require__.n(
-              antd__WEBPACK_IMPORTED_MODULE_4__,
+              antd__WEBPACK_IMPORTED_MODULE_5__,
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(
               /*! @wibetter/json-utils */ '@wibetter/json-utils',
             );
-          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7___default =
             /*#__PURE__*/ __webpack_require__.n(
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__ =
-            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
-          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_7___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__,
-            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
 
           var URLFormSchema = /*#__PURE__*/ (function (_React$PureComponent) {
             function URLFormSchema(props) {
@@ -11149,7 +11953,7 @@
             var _proto = URLFormSchema.prototype;
             _proto.componentWillMount = function componentWillMount() {
               // 从web缓存中获取数值
-              $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+              $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                 this,
               );
             };
@@ -11157,7 +11961,7 @@
               function componentWillReceiveProps(nextProps) {
                 if (nextProps.keyRoute !== this.props.keyRoute) {
                   /** 当key值路径发生变化时重新从web缓存中获取数值 */
-                  $mixins_index__WEBPACK_IMPORTED_MODULE_6__.catchJsonDataByWebCache.call(
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_8__.catchJsonDataByWebCache.call(
                     this,
                     nextProps.keyRoute,
                   );
@@ -11181,6 +11985,27 @@
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
@@ -11190,11 +12015,13 @@
                       : 'mobile-screen-element-warp',
                   key: nodeKey,
                   id: nodeKey,
+                  style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                   'div',
                   {
                     className: 'element-title',
+                    style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'span',
@@ -11204,7 +12031,7 @@
                     readOnly ? '[只读]' : '',
                   ),
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title:
                         pageScreen === 'wideScreen'
@@ -11230,7 +12057,7 @@
                           null,
                           '\uFF08',
                           (0,
-                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__.truncate)(
                             jsonKey,
                             {
                               length: 15,
@@ -11243,13 +12070,13 @@
                   pageScreen === 'mobileScreen' &&
                     targetJsonSchema.description &&
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Tooltip,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                       {
                         title: targetJsonSchema.description,
                         placement: 'top',
                       },
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_7__.InfoCircleOutlined,
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_6__.InfoCircleOutlined,
                         {
                           className: 'info-icon',
                         },
@@ -11260,6 +12087,7 @@
                   'div',
                   {
                     className: 'content-item',
+                    style: contentStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     'div',
@@ -11267,7 +12095,7 @@
                       className: 'form-item-box',
                     },
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                      antd__WEBPACK_IMPORTED_MODULE_4__.Input,
+                      antd__WEBPACK_IMPORTED_MODULE_5__.Input,
                       {
                         style: {
                           display: 'inline-block',
@@ -11290,14 +12118,14 @@
           })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
           URLFormSchema.propTypes = {
             parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
             targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
           };
           /* harmony default export */ __webpack_exports__['default'] = (0,
           mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
@@ -12639,6 +13467,9 @@
           'use strict';
           __webpack_require__.r(__webpack_exports__);
           /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+            /* harmony export */ buildStyle: function () {
+              return /* binding */ buildStyle;
+            },
             /* harmony export */ deleteWebCacheData: function () {
               return /* binding */ deleteWebCacheData;
             },
@@ -12688,8 +13519,33 @@
             /*#__PURE__*/ __webpack_require__.n(
               _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__,
             );
-          /* harmony import */ var _webCache_js__WEBPACK_IMPORTED_MODULE_1__ =
+          /* harmony import */ var lodash_camelCase__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! lodash/camelCase */ 'lodash/camelCase');
+          /* harmony import */ var lodash_camelCase__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              lodash_camelCase__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var _webCache_js__WEBPACK_IMPORTED_MODULE_2__ =
             __webpack_require__(/*! ./webCache.js */ './src/utils/webCache.js');
+
+          function buildStyle(style) {
+            var curStyle = {};
+            if (style) {
+              Object.keys(style).forEach(function (styleKey) {
+                // 将属性短横线命名转换为驼峰命名，如 background-color => backgroundColor
+                if (styleKey.indexOf('-') > 0) {
+                  curStyle[
+                    lodash_camelCase__WEBPACK_IMPORTED_MODULE_1___default()(
+                      styleKey,
+                    )
+                  ] = style[styleKey];
+                } else {
+                  curStyle[styleKey] = style[styleKey];
+                }
+              });
+            }
+            return curStyle;
+          }
 
           /** js对象数据深拷贝，避免数据联动 */
           function objClone(targetObj) {
@@ -12844,7 +13700,7 @@
            *  将数据缓存到sessionStorage中
            */
           function saveWebCacheData(valueKey, value) {
-            (0, _webCache_js__WEBPACK_IMPORTED_MODULE_1__.saveJSONEditorCache)(
+            (0, _webCache_js__WEBPACK_IMPORTED_MODULE_2__.saveJSONEditorCache)(
               valueKey,
               value,
               'json-editor-formData',
@@ -12856,7 +13712,7 @@
            */
           function getWebCacheData(valueKey) {
             return (0,
-            _webCache_js__WEBPACK_IMPORTED_MODULE_1__.getJSONEditorCache)(
+            _webCache_js__WEBPACK_IMPORTED_MODULE_2__.getJSONEditorCache)(
               valueKey,
               'json-editor-formData',
             );
@@ -12867,7 +13723,7 @@
            */
           function deleteWebCacheData(valueKey) {
             (0,
-            _webCache_js__WEBPACK_IMPORTED_MODULE_1__.deleteJSONEditorCache)(
+            _webCache_js__WEBPACK_IMPORTED_MODULE_2__.deleteJSONEditorCache)(
               valueKey,
               'json-editor-formData',
             );
@@ -14217,6 +15073,17 @@ type StyleObjectPart = {
         /***/ function (module) {
           'use strict';
           module.exports = require('braft-extensions/dist/table.css');
+
+          /***/
+        },
+
+      /***/ 'lodash/camelCase':
+        /*!***********************************!*\
+  !*** external "lodash/camelCase" ***!
+  \***********************************/
+        /***/ function (module) {
+          'use strict';
+          module.exports = require('lodash/camelCase');
 
           /***/
         },

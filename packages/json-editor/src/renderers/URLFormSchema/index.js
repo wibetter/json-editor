@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Input, Tooltip } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { InfoCircleOutlined } from '@ant-design/icons';
+import { buildStyle } from '$utils/index';
 
 class URLFormSchema extends React.PureComponent {
   static propTypes = {
@@ -52,6 +54,16 @@ class URLFormSchema extends React.PureComponent {
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={
@@ -61,8 +73,9 @@ class URLFormSchema extends React.PureComponent {
         }
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
@@ -94,7 +107,7 @@ class URLFormSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
             <Input
               style={{ display: 'inline-block' }}

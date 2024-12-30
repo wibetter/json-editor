@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
 import AceEditor from 'react-ace';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import { hasProperties } from '$utils/index';
+import { hasProperties, buildStyle } from '$utils/index';
 import { isObject, isArray } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { InfoCircleOutlined } from '@ant-design/icons';
 
 class JsonFormSchema extends React.PureComponent {
   static propTypes = {
@@ -75,6 +76,16 @@ class JsonFormSchema extends React.PureComponent {
       curJsonData = JSON.stringify(curJsonData, null, 2);
     }
 
+    const style = targetJsonSchema.style
+      ? buildStyle(toJS(targetJsonSchema.style))
+      : {};
+    const titleStyle = targetJsonSchema.titleStyle
+      ? buildStyle(toJS(targetJsonSchema.titleStyle))
+      : {};
+    const contentStyle = targetJsonSchema.contentStyle
+      ? buildStyle(toJS(targetJsonSchema.contentStyle))
+      : {};
+
     return (
       <div
         className={`${
@@ -84,8 +95,9 @@ class JsonFormSchema extends React.PureComponent {
         }`}
         key={nodeKey}
         id={nodeKey}
+        style={style}
       >
-        <div className="element-title">
+        <div className="element-title" style={titleStyle}>
           <span className="title-text warning-text">
             {readOnly ? '[只读]' : ''}
           </span>
@@ -109,7 +121,7 @@ class JsonFormSchema extends React.PureComponent {
             </Tooltip>
           )}
         </div>
-        <div className="content-item">
+        <div className="content-item" style={contentStyle}>
           {isShowWarn && (
             <div className="warning-box code-area-item">
               <div className="warning-img">X</div>
