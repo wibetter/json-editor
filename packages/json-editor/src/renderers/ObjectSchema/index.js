@@ -111,7 +111,7 @@ class ObjectSchema extends React.PureComponent {
             ? 'object-schema-warp wide-screen-element-warp'
             : 'object-schema-warp mobile-screen-element-warp'
         }
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >

@@ -232,7 +232,7 @@ class ArraySchema extends React.PureComponent {
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
         }
-        key={`${nodeKey}-${triggerChange}`}
+        // key={`${nodeKey}-${triggerChange}`}
         id={nodeKey}
         style={style}
       >

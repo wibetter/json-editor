@@ -144,7 +144,7 @@ class SohuEventSchema extends React.PureComponent {
             ? 'sohu-event-container array-schema-box wide-screen-element-warp'
             : 'sohu-event-container array-schema-box mobile-screen-element-warp'
         }`}
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >
@@ -250,6 +250,7 @@ class SohuEventSchema extends React.PureComponent {
                       description={truncate(event.code || event.desc, {
                         length: 30,
                       })}
+                      key={`${nodeKey}-page-AllEmitEventList-${index}`}
                     />
                   </List.Item>
                 )}

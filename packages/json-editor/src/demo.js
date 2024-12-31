@@ -46,6 +46,7 @@ class IndexDemo extends React.PureComponent {
                 title: '组件预览图1',
                 type: 'input-image',
                 accept: '.jpeg,.jpg,.png',
+                default: 'https://statics.itc.cn/static/sohu_login_logo.png',
                 multiple: true,
                 description: '',
                 placeholder: '',

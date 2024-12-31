@@ -34,6 +34,10 @@ class IndexDemo extends React.PureComponent {
                 default: 'x',
                 description: '',
                 placeholder: '',
+                titleStyle: {
+                  "font-weight": 600,
+                  color: '#070c14'
+                }
               },
               imgUrl: {
                 title: '组件预览图1',

@@ -71,7 +71,7 @@ class BooleanFormSchema extends React.PureComponent {
                 isNeedTwoCol ? 'two-col-element-warp' : ''
               }`
         }
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >

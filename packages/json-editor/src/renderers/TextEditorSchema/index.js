@@ -162,7 +162,7 @@ class TextEditorSchema extends React.PureComponent {
             ? 'text-editor-box wide-screen-element-warp'
             : 'text-editor-box mobile-screen-element-warp'
         }
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >

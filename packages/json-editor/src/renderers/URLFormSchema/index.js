@@ -71,7 +71,7 @@ class URLFormSchema extends React.PureComponent {
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
         }
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >

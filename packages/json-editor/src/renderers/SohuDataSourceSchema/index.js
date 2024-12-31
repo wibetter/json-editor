@@ -105,7 +105,7 @@ class SohuDataSourceSchema extends React.PureComponent {
         <div className="array-schema-box" style={contentStyle}>
           <Collapse
             defaultActiveKey={collapseData}
-            expandIconPosition="right"
+            expandIconPosition="end"
             bordered={false}
             accordion
             onChange={this.collapseChange}

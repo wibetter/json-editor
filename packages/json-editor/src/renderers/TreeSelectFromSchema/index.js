@@ -50,7 +50,7 @@ class TreeSelectFromSchema extends React.PureComponent {
             ? 'wide-screen-element-warp'
             : 'mobile-screen-element-warp'
         }
-        key={`${nodeKey}-dataRoute-select`}
+        // key={`${nodeKey}-dataRoute-select`}
         id={`${nodeKey}-dataRoute-select`}
         style={style}
       >

@@ -98,7 +98,7 @@ class CodeAreaFormSchema extends React.PureComponent {
             ? 'wide-screen-element-warp container-warp'
             : 'mobile-screen-element-warp'
         }`} //  element-title-card-warp
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >

@@ -49,7 +49,7 @@ class JsonView extends React.PureComponent {
     }
 
     return (
-      <div className="json-view-box" key={nodeKey} id={nodeKey}>
+      <div className="json-view-box" id={nodeKey}>
         <div className="readOnly-btn">[只读]</div>
         <AceEditor
           id="json_area_ace"

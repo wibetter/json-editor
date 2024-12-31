@@ -192,7 +192,7 @@ class DynamicDataSchema extends React.PureComponent {
             ? 'dynamic-data-schema wide-screen-element-warp'
             : 'dynamic-data-schema mobile-screen-element-warp'
         }
-        key={nodeKey}
+        // key={nodeKey}
         id={nodeKey}
         style={style}
       >
