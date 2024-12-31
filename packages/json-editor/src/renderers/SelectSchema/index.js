@@ -111,12 +111,13 @@ class SelectSchema extends React.PureComponent {
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box select-box">
             <Select
-              showSearch
+              showSearch={targetJsonSchema.showSearch ?? true}
               mode={targetJsonSchema.multiple ? 'multiple' : undefined}
               style={{ display: 'inline-block', minWidth: '120px' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
               disabled={targetJsonSchema.readOnly}
+              allowClear={targetJsonSchema.allowClear ?? true}
             >
               {options &&
                 options.length > 0 &&

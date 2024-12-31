@@ -129,7 +129,7 @@ class JsonFormSchema extends React.PureComponent {
             </div>
           )}
           <AceEditor
-            id="json_area_ace"
+            id={`${nodeKey}-json_area_ace`}
             value={
               hasProperties(curJSONDataTemp) ? curJSONDataTemp : curJsonData
             }

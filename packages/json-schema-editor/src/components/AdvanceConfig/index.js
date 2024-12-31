@@ -23,6 +23,9 @@ import {
   isNeedCodeViewOption,
 } from '$utils/advanced.config';
 import { hasProperties, getExpectType } from '@wibetter/json-utils';
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import './index.scss';
 
 /**
@@ -39,6 +42,13 @@ class AdvanceConfig extends React.PureComponent {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isShowWarn: false, // 用于判断是否显示错误信息
+      warnText: '', // 错误内容
+      curJSONDataTemp: undefined, // 用于记录当前不合规范的json数据
+    };
+
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
   }
@@ -186,6 +196,7 @@ class AdvanceConfig extends React.PureComponent {
   render() {
     const { indexRoute2keyRoute } = this.props.schemaStore || {};
     const { nodeKey, indexRoute, targetJsonSchema } = this.props;
+    const { isShowWarn, warnText, curJSONDataTemp } = this.state;
     const curType = targetJsonSchema.type;
     // 获取对应的keyRoute
     const curKeyRoute = indexRoute2keyRoute(indexRoute);
@@ -232,7 +243,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {curType === 'select' && (
+        {(curType === 'select' || curType === 'cascader') && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-selectConfig`}
@@ -332,6 +343,72 @@ class AdvanceConfig extends React.PureComponent {
               <div className="form-item-box">
                 {this.renderDefaultContent(curType, targetJsonSchema, nodeKey)}
               </div>
+            </div>
+          </div>
+        )}
+        {curType === 'cascader' && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-cascader-options`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'用于添加 级联选择 组件的 options 数据。'}
+                placement="top"
+              >
+                <span className="title-text">options 配置</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              {isShowWarn && (
+                <div className="warning-box code-area-item">
+                  <div className="warning-img">X</div>
+                  <div className="warning-text">{warnText}</div>
+                </div>
+              )}
+              <AceEditor
+                id={`${nodeKey}-json_area_ace`}
+                value={
+                  hasProperties(curJSONDataTemp)
+                    ? curJSONDataTemp
+                    : JSON.stringify(targetJsonSchema.options, null, 2)
+                }
+                className="json-view-ace"
+                mode="json"
+                theme="solarized_light"
+                name="JSON_CODE_EDIT"
+                fontSize={14}
+                showPrintMargin={true}
+                showGutter={true}
+                highlightActiveLine={true}
+                readOnly={false}
+                minLines={3}
+                maxLines={6}
+                width={'100%'}
+                onChange={(newJsonData) => {
+                  try {
+                    const newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                    // 更新jsonData
+                    this.handleValueChange('options', newJsonDataTemp);
+                    this.setState({
+                      isShowWarn: false,
+                      curJSONDataTemp: undefined, // 重置
+                    });
+                  } catch (err) {
+                    // 更新jsonData
+                    this.setState({
+                      curJSONDataTemp: newJsonData, // 记录当前格式不正确的json数据
+                      warnText: err.message,
+                      isShowWarn: true,
+                    });
+                  }
+                }}
+                setOptions={{
+                  useWorker: false,
+                  showLineNumbers: true,
+                  tabSize: 2,
+                }}
+              />
             </div>
           </div>
         )}

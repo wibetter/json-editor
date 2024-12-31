@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.19
  * author: wibetter
  * build tool: AKFun
- * build time: Mon Dec 30 2024 18:23:14 GMT+0800 (中国标准时间)
+ * build time: Tue Dec 31 2024 16:16:31 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -764,51 +764,55 @@
             __webpack_require__(
               /*! $renderers/BooleanFormSchema/index */ './src/renderers/BooleanFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
-            __webpack_require__(
-              /*! $renderers/DateTimeFormSchema/index */ './src/renderers/DateTimeFormSchema/index.js',
-            );
-          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
-            __webpack_require__(
-              /*! $renderers/TimeFormSchema/index */ './src/renderers/TimeFormSchema/index.js',
-            );
-          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_20__ =
-            __webpack_require__(
-              /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
-            );
-          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_21__ =
-            __webpack_require__(
-              /*! $renderers/ColorFormSchemaV3/index */ './src/renderers/ColorFormSchemaV3/index.js',
-            );
-          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
-            __webpack_require__(
-              /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
-            );
-          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
-            __webpack_require__(
-              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
-            );
-          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_24__ =
-            __webpack_require__(
-              /*! $renderers/HtmlAreaFormSchema/index */ './src/renderers/HtmlAreaFormSchema/index.js',
-            );
-          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
             __webpack_require__(
               /*! $renderers/SelectSchema/index */ './src/renderers/SelectSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
+          /* harmony import */ var $renderers_CascaderSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
+            __webpack_require__(
+              /*! $renderers/CascaderSchema/index */ './src/renderers/CascaderSchema/index.js',
+            );
+          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_20__ =
             __webpack_require__(
               /*! $renderers/InputImageSchema/index */ './src/renderers/InputImageSchema/index.js',
             );
-          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
+          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_21__ =
+            __webpack_require__(
+              /*! $renderers/DateTimeFormSchema/index */ './src/renderers/DateTimeFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
+            __webpack_require__(
+              /*! $renderers/TimeFormSchema/index */ './src/renderers/TimeFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
+            __webpack_require__(
+              /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_24__ =
+            __webpack_require__(
+              /*! $renderers/ColorFormSchemaV3/index */ './src/renderers/ColorFormSchemaV3/index.js',
+            );
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+            __webpack_require__(
+              /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
+            __webpack_require__(
+              /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
+            __webpack_require__(
+              /*! $renderers/HtmlAreaFormSchema/index */ './src/renderers/HtmlAreaFormSchema/index.js',
+            );
+          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
             __webpack_require__(
               /*! $renderers/DynamicConfigSchema/index */ './src/renderers/DynamicConfigSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
+          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_29__ =
             __webpack_require__(
               /*! $renderers/SohuDataSourceSchema/index */ './src/renderers/SohuDataSourceSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_29__ =
+          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_30__ =
             __webpack_require__(
               /*! $renderers/SohuEventSchema/index */ './src/renderers/SohuEventSchema/index.js',
             );
@@ -885,84 +889,169 @@
                   $renderers_ObjectSchema_index__WEBPACK_IMPORTED_MODULE_5__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'dynamic-config':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_27__[
+                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_28__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'sohu-source':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_28__[
+                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_29__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'sohu-event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_29__[
+                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_30__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'array':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_ArraySchema_index__WEBPACK_IMPORTED_MODULE_4__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'dynamic-data':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_DynamicDataSchema_index__WEBPACK_IMPORTED_MODULE_7__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'datasource':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_DataSourceSchema_index__WEBPACK_IMPORTED_MODULE_6__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_EventSchema_index__WEBPACK_IMPORTED_MODULE_8__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'quantity':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_QuantitySchema_index__WEBPACK_IMPORTED_MODULE_9__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'box-style':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_BoxStyleSchema_index__WEBPACK_IMPORTED_MODULE_10__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'radio':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_11__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'select':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_25__[
+                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_18__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
+              case 'cascader':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_CascaderSchema_index__WEBPACK_IMPORTED_MODULE_19__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'checkboxes':
                 // 多选
@@ -970,106 +1059,196 @@
                   $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_12__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'input':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'textarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_14__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'text-editor':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_15__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'number':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_16__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'boolean':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'date':
               case 'date-time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_18__[
+                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_21__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_19__[
+                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'url':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_20__[
+                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'color':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_21__[
+                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_24__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'input-image':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_26__[
+                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_20__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'json':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
+                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_25__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'codearea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
+                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_26__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               case 'htmlarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_24__[
+                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_27__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
               default:
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
-                  newProps,
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
                 );
             }
           };
@@ -1507,7 +1686,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey + '-' + triggerChange,
+                  // key={`${nodeKey}-${triggerChange}`}
                   id: nodeKey,
                   style: style,
                 },
@@ -2050,7 +2229,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -2448,6 +2627,7 @@
                     ' ' +
                     (renderAction ? 'render-mark' : ''),
                   id: nodeKey,
+                  // key={nodeKey}
                   style: style,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -2680,6 +2860,310 @@
           /***/
         },
 
+      /***/ './src/renderers/CascaderSchema/index.js':
+        /*!***********************************************!*\
+  !*** ./src/renderers/CascaderSchema/index.js ***!
+  \***********************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(/*! @ant-design/icons */ '@ant-design/icons');
+          /* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_9__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/CascaderSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_10___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_10__,
+            );
+
+          /**
+           * Cascader 级联选择
+           * 文档地址：https://ant-design.antgroup.com/components/cascader-cn
+           */
+          var CascaderSchema = /*#__PURE__*/ (function (_React$PureComponent) {
+            function CascaderSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              /** 数值变动事件处理器 */
+              _this.handleValueChange = function (value) {
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  jsonStore = _this$props.jsonStore;
+                var _ref = jsonStore || {},
+                  updateFormValueData = _ref.updateFormValueData;
+                updateFormValueData(keyRoute, value); // 更新数值
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              CascaderSchema,
+              _React$PureComponent,
+            );
+            var _proto = CascaderSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              // 从web缓存中获取数值
+              $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                this,
+              );
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                if (nextProps.keyRoute !== this.props.keyRoute) {
+                  /** 当key值路径发生变化时重新从web缓存中获取数值 */
+                  $mixins_index__WEBPACK_IMPORTED_MODULE_7__.catchJsonDataByWebCache.call(
+                    this,
+                    nextProps.keyRoute,
+                  );
+                }
+              };
+            _proto.render = function render() {
+              var _targetJsonSchema$sho,
+                _targetJsonSchema$all,
+                _targetJsonSchema$mul;
+              var _this$props2 = this.props,
+                schemaStore = _this$props2.schemaStore,
+                jsonStore = _this$props2.jsonStore;
+              var _ref2 = schemaStore || {},
+                pageScreen = _ref2.pageScreen;
+              var _ref3 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref3.getJSONDataByKeyRoute;
+              var _this$props3 = this.props,
+                nodeKey = _this$props3.nodeKey,
+                jsonKey = _this$props3.jsonKey,
+                keyRoute = _this$props3.keyRoute,
+                targetJsonSchema = _this$props3.targetJsonSchema;
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute);
+              var options = targetJsonSchema.options || [];
+              var isNeedTwoCol = (0,
+              $utils_index__WEBPACK_IMPORTED_MODULE_9__.isNeedTwoColWarpStyle)(
+                targetJsonSchema.type,
+              ); // 是否需要设置成两栏布局
+
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp ' +
+                        (isNeedTwoCol ? 'two-col-element-warp' : ''),
+                  // key={nodeKey}
+                  id: nodeKey,
+                  style: style,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                    style: titleStyle,
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_6__.Tooltip,
+                    {
+                      title:
+                        pageScreen === 'wideScreen'
+                          ? targetJsonSchema.description
+                          : '',
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > 6
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                  pageScreen === 'mobileScreen' &&
+                    targetJsonSchema.description &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_6__.Tooltip,
+                      {
+                        title: targetJsonSchema.description,
+                        placement: 'top',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        _ant_design_icons__WEBPACK_IMPORTED_MODULE_8__.InfoCircleOutlined,
+                        {
+                          className: 'info-icon',
+                        },
+                      ),
+                    ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item',
+                    style: contentStyle,
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'form-item-box select-box',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      antd__WEBPACK_IMPORTED_MODULE_6__.Cascader,
+                      {
+                        showSearch:
+                          (_targetJsonSchema$sho =
+                            targetJsonSchema.showSearch) != null
+                            ? _targetJsonSchema$sho
+                            : true,
+                        style: {
+                          display: 'inline-block',
+                          minWidth: '120px',
+                        },
+                        options: options,
+                        onChange: this.handleValueChange,
+                        defaultValue: curJsonData || targetJsonSchema.default,
+                        disabled: targetJsonSchema.readOnly,
+                        allowClear:
+                          (_targetJsonSchema$all =
+                            targetJsonSchema.allowClear) != null
+                            ? _targetJsonSchema$all
+                            : true,
+                        multiple:
+                          (_targetJsonSchema$mul = targetJsonSchema.multiple) !=
+                          null
+                            ? _targetJsonSchema$mul
+                            : false,
+                      },
+                    ),
+                  ),
+                ),
+              );
+            };
+            return CascaderSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          CascaderSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              CascaderSchema,
+            ),
+          );
+
+          /***/
+        },
+
       /***/ './src/renderers/CheckboxSchema/index.js':
         /*!***********************************************!*\
   !*** ./src/renderers/CheckboxSchema/index.js ***!
@@ -2830,7 +3314,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -3164,7 +3648,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp container-warp'
                       : 'mobile-screen-element-warp'), //  element-title-card-warp
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -3560,7 +4044,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -3903,7 +4387,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -4355,7 +4839,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -4681,7 +5165,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'object-schema-warp wide-screen-element-warp'
                       : 'object-schema-warp mobile-screen-element-warp'),
-                  key: curNodeKey,
+                  // key={curNodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -4876,7 +5360,7 @@
                           curJsonData.type === 'Content'
                         ) {
                           // 内容Meta数据
-                          currentSchemaData.type = 'select'; // 改用下拉列表
+                          currentSchemaData.type = 'select'; // 改用 下拉列表
                           currentSchemaData.options = (0,
                           $utils_index__WEBPACK_IMPORTED_MODULE_8__.objClone)(
                             metaContentKeyList,
@@ -4886,7 +5370,7 @@
                           curJsonData.type === 'RuntimeConst'
                         ) {
                           // 全局配置数据
-                          currentSchemaData.type = 'select'; // 改用下拉列表
+                          currentSchemaData.type = 'cascader'; // 改用 级联选择
                           currentSchemaData.options = (0,
                           $utils_index__WEBPACK_IMPORTED_MODULE_8__.objClone)(
                             globalMetaConfig,
@@ -5272,7 +5756,7 @@
                     pageScreen === 'wideScreen'
                       ? 'dynamic-data-schema wide-screen-element-warp'
                       : 'dynamic-data-schema mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -5889,7 +6373,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -6336,7 +6820,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp container-warp'
                       : 'mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -6666,7 +7150,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -7021,7 +7505,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -7376,7 +7860,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp container-warp'
                       : 'mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -7464,7 +7948,7 @@
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     react_ace__WEBPACK_IMPORTED_MODULE_6___default(),
                     {
-                      id: 'json_area_ace',
+                      id: nodeKey + '-json_area_ace',
                       value: (0,
                       $utils_index__WEBPACK_IMPORTED_MODULE_11__.hasProperties)(
                         curJSONDataTemp,
@@ -7666,7 +8150,6 @@
                 'div',
                 {
                   className: 'json-view-box',
-                  key: nodeKey,
                   id: nodeKey,
                 },
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -8292,7 +8775,7 @@
                     pageScreen === 'wideScreen'
                       ? 'object-schema-warp wide-screen-element-warp'
                       : 'object-schema-warp mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -8653,7 +9136,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -8918,7 +9401,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -9263,7 +9746,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -9629,6 +10112,7 @@
                 }
               };
             _proto.render = function render() {
+              var _targetJsonSchema$sho, _targetJsonSchema$all;
               var _this$props2 = this.props,
                 schemaStore = _this$props2.schemaStore,
                 jsonStore = _this$props2.jsonStore;
@@ -9678,7 +10162,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -9754,7 +10238,11 @@
                     /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                       antd__WEBPACK_IMPORTED_MODULE_6__.Select,
                       {
-                        showSearch: true,
+                        showSearch:
+                          (_targetJsonSchema$sho =
+                            targetJsonSchema.showSearch) != null
+                            ? _targetJsonSchema$sho
+                            : true,
                         mode: targetJsonSchema.multiple
                           ? 'multiple'
                           : undefined,
@@ -9765,6 +10253,11 @@
                         onChange: this.handleValueChange,
                         defaultValue: curJsonData || targetJsonSchema.default,
                         disabled: targetJsonSchema.readOnly,
+                        allowClear:
+                          (_targetJsonSchema$all =
+                            targetJsonSchema.allowClear) != null
+                            ? _targetJsonSchema$all
+                            : true,
                       },
                       options &&
                         options.length > 0 &&
@@ -10038,7 +10531,7 @@
                     antd__WEBPACK_IMPORTED_MODULE_5__.Collapse,
                     {
                       defaultActiveKey: collapseData,
-                      expandIconPosition: 'right',
+                      expandIconPosition: 'end',
                       bordered: false,
                       accordion: true,
                       onChange: this.collapseChange,
@@ -10363,7 +10856,7 @@
                     (pageScreen === 'wideScreen'
                       ? 'sohu-event-container array-schema-box wide-screen-element-warp'
                       : 'sohu-event-container array-schema-box mobile-screen-element-warp'),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -10587,6 +11080,8 @@
                                       length: 30,
                                     },
                                   ),
+                                  key:
+                                    nodeKey + '-page-AllEmitEventList-' + index,
                                 },
                               ),
                             );
@@ -10792,7 +11287,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp container-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -11239,7 +11734,7 @@
                     pageScreen === 'wideScreen'
                       ? 'text-editor-box wide-screen-element-warp'
                       : 'text-editor-box mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -11547,7 +12042,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (isNeedTwoCol ? 'two-col-element-warp' : ''),
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -11795,7 +12290,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey + '-dataRoute-select',
+                  // key={`${nodeKey}-dataRoute-select`}
                   id: nodeKey + '-dataRoute-select',
                   style: style,
                 },
@@ -12013,7 +12508,7 @@
                     pageScreen === 'wideScreen'
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  key: nodeKey,
+                  // key={nodeKey}
                   id: nodeKey,
                   style: style,
                 },
@@ -14076,6 +14571,15 @@
           /***/
         },
 
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/CascaderSchema/index.scss':
+        /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/CascaderSchema/index.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
       /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ColorFormSchemaV3/index.scss':
         /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/ColorFormSchemaV3/index.scss ***!
@@ -14263,6 +14767,32 @@
             /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
           )['default'];
           var update = add('31b3938e', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/CascaderSchema/index.scss':
+        /*!*************************************************!*\
+  !*** ./src/renderers/CascaderSchema/index.scss ***!
+  \*************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/CascaderSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('4f50bcf6', content, false, { sourceMap: false });
           // Hot Module Replacement
           if (false) {
           }

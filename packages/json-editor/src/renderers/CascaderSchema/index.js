@@ -111,13 +111,14 @@ class CascaderSchema extends React.PureComponent {
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box select-box">
             <Cascader
-              showSearch
+              showSearch={targetJsonSchema.showSearch ?? true}
               style={{ display: 'inline-block', minWidth: '120px' }}
               options={options}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
               disabled={targetJsonSchema.readOnly}
-              allowClear
+              allowClear={targetJsonSchema.allowClear ?? true}
+              multiple={targetJsonSchema.multiple ?? false}
             />
           </div>
         </div>

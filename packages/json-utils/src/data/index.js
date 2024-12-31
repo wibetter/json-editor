@@ -8,6 +8,7 @@ export * from './initSchemaEntity/Number';
 export * from './initSchemaEntity/Radio';
 export * from './initSchemaEntity/Select'; // 下拉选择
 export * from './initSchemaEntity/Checkbox';
+export * from './initSchemaEntity/Cascader';
 
 export * from './initSchemaEntity/DateTime';
 export * from './initSchemaEntity/Date';
