@@ -22,6 +22,9 @@ import TextAreaFormSchema from '$renderers/TextAreaFormSchema/index';
 import TextEditorSchema from '$renderers/TextEditorSchema/index';
 import NumberFormSchema from '$renderers/NumberFormSchema/index';
 import BooleanFormSchema from '$renderers/BooleanFormSchema/index';
+import SelectSchema from '$renderers/SelectSchema/index';
+import CascaderSchema from '$renderers/CascaderSchema/index';
+import InputImageSchema from '$renderers/InputImageSchema/index';
 import DateTimeFormSchema from '$renderers/DateTimeFormSchema/index';
 import TimeFormSchema from '$renderers/TimeFormSchema/index';
 import URLFormSchema from '$renderers/URLFormSchema/index';
@@ -29,8 +32,6 @@ import ColorFormSchema from '$renderers/ColorFormSchemaV3/index';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import HtmlAreaFormSchema from '$renderers/HtmlAreaFormSchema/index';
-import SelectSchema from '$renderers/SelectSchema/index';
-import InputImageSchema from '$renderers/InputImageSchema/index';
 import DynamicConfigSchema from '$renderers/DynamicConfigSchema/index';
 import SohuDataSourceSchema from '$renderers/SohuDataSourceSchema/index';
 import SohuEventSchema from '$renderers/SohuEventSchema/index';
@@ -101,6 +102,8 @@ const MappingRender = (props) => {
       return <RadioSchema {...newProps} key={curNodeKey} />;
     case 'select':
       return <SelectSchema {...newProps} key={curNodeKey} />;
+    case 'cascader':
+      return <CascaderSchema {...newProps} key={curNodeKey} />;
     case 'checkboxes': // 多选
       return <CheckboxSchema {...newProps} key={curNodeKey} />;
     case 'input':

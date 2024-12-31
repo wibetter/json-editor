@@ -243,14 +243,14 @@ class ObjectSchema extends React.PureComponent {
                   curJsonData.type === 'Content'
                 ) {
                   // 内容Meta数据
-                  currentSchemaData.type = 'select'; // 改用下拉列表
+                  currentSchemaData.type = 'select'; // 改用 下拉列表
                   currentSchemaData.options = objClone(metaContentKeyList);
                 } else if (
                   currentJsonKey === 'value' &&
                   curJsonData.type === 'RuntimeConst'
                 ) {
                   // 全局配置数据
-                  currentSchemaData.type = 'select'; // 改用下拉列表
+                  currentSchemaData.type = 'cascader'; // 改用 级联选择
                   currentSchemaData.options = objClone(globalMetaConfig);
                 }
 

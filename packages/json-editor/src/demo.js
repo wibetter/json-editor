@@ -2027,7 +2027,40 @@ class IndexDemo extends React.PureComponent {
             value: 'newsMeta',
           },
         ],
-        globalMetaConfig: [],
+        globalMetaConfig: [
+          {
+            value: 'zhejiang',
+            label: 'Zhejiang',
+            children: [
+              {
+                value: 'hangzhou',
+                label: 'Hangzhou',
+                children: [
+                  {
+                    value: 'xihu',
+                    label: 'West Lake',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            value: 'jiangsu',
+            label: 'Jiangsu',
+            children: [
+              {
+                value: 'nanjing',
+                label: 'Nanjing',
+                children: [
+                  {
+                    value: 'zhonghuamen',
+                    label: 'Zhong Hua Men',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
         uploadAction: '/commons/upload/file',
       },
       wideScreen: false,
