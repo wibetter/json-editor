@@ -1893,49 +1893,55 @@
       );
     }
     function ie(e, t) {
-      var r = '',
-        a = t;
-      p(a) && p(e.default) && typeof a != typeof e.default && (a = void 0);
-      var l = p(a) ? a : e.default;
+      var r,
+        a,
+        l = '',
+        i = t;
+      p(i) &&
+        p(e.default) &&
+        (typeof i != typeof e.default ||
+          ((r = i), (a = e.default), P(r) + '-' + q(r) != P(a) + '-' + q(a))) &&
+        (i = void 0);
+      var n = p(i) ? i : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          r = l || le(e);
+          l = n || le(e);
           break;
         case 'checkboxes':
-          r = l || le(e, !0);
+          l = n || le(e, !0);
           break;
         case 'color':
-          ('#fff' !== l && '#FFF' !== l) || (l = '#ffffff'),
-            (r = p(l) ? l : '#ffffff');
+          ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
+            (l = p(n) ? n : '#ffffff');
           break;
         case 'boolean':
-          r = !!p(l) && l;
+          l = !!p(n) && n;
           break;
         case 'number':
-          r = p(l) ? l : void 0;
+          l = p(n) ? n : void 0;
           break;
         case 'json':
-          var i = '';
-          if (P(l) || q(l)) i = l;
-          else if (_(l) || '' === l) i = {};
+          var o = '';
+          if (P(n) || q(n)) o = n;
+          else if (_(n) || '' === n) o = {};
           else
             try {
-              i = JSON.parse(l);
+              o = JSON.parse(n);
             } catch (e) {
-              i = {};
+              o = {};
             }
-          r = i;
+          l = o;
           break;
         default:
-          r =
+          l =
             'input' === e.type && '0' === e.default
-              ? l || e.default
-              : p(l)
-                ? l
+              ? n || e.default
+              : p(n)
+                ? n
                 : void 0;
       }
-      return r;
+      return l;
     }
     function ne(e, t) {
       var r = {},

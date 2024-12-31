@@ -13,6 +13,14 @@ import { objClone } from '$utils';
 import { getDefaultOptionVal } from '$utils/jsonSchema';
 import { getExpectType } from '$function/getExpectType';
 
+// 用于区分 对象 和 数组 类型
+function isEqualByType(value1, value2) {
+  return (
+    `${isObject(value1)}-${isArray(value1)}` ===
+    `${isObject(value2)}-${isArray(value2)}`
+  );
+}
+
 /**
  * 基础类型的schema转jsonData
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
@@ -25,7 +33,8 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   if (
     hasProperties(oldValue) &&
     hasProperties(jsonSchema.default) &&
-    typeof oldValue !== typeof jsonSchema.default
+    (typeof oldValue !== typeof jsonSchema.default ||
+      !isEqualByType(oldValue, jsonSchema.default))
   ) {
     // 表示当前数据类型发生变化，则丢弃旧版数据
     oldValue = undefined;

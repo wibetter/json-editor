@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.19
+ * @wibetter/json-editor v5.0.21
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Dec 31 2024 16:16:31 GMT+0800 (中国标准时间)
+ * build time: Tue Dec 31 2024 17:31:43 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5688,16 +5688,17 @@
               var _ref6 = schemaStore || {},
                 pageScreen = _ref6.pageScreen;
               var _ref7 = jsonStore || {},
-                getJSONDataByKeyRoute = _ref7.getJSONDataByKeyRoute;
+                getJSONDataByKeyRoute = _ref7.getJSONDataByKeyRoute,
+                dynamicDataList = _ref7.dynamicDataList,
+                dynamicDataObj = _ref7.dynamicDataObj,
+                dynamicDataApiScopeList = _ref7.dynamicDataApiScopeList,
+                triggerChange = _ref7.triggerChange;
               var _this$props6 = this.props,
                 keyRoute = _this$props6.keyRoute,
                 jsonKey = _this$props6.jsonKey,
                 nodeKey = _this$props6.nodeKey,
                 indexRoute = _this$props6.indexRoute,
-                targetJsonSchema = _this$props6.targetJsonSchema,
-                dynamicDataList = _this$props6.dynamicDataList,
-                dynamicDataObj = _this$props6.dynamicDataObj,
-                dynamicDataApiScopeList = _this$props6.dynamicDataApiScopeList;
+                targetJsonSchema = _this$props6.targetJsonSchema;
               var isShowFilter = this.state.isShowFilter;
               var curType = targetJsonSchema.type;
               // 从jsonData中获取对应的数值
@@ -5751,12 +5752,9 @@
               return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                 'div',
                 {
-                  className1: 'mobile-screen-element-warp dynamic-data-schema',
-                  className:
-                    pageScreen === 'wideScreen'
-                      ? 'dynamic-data-schema wide-screen-element-warp'
-                      : 'dynamic-data-schema mobile-screen-element-warp',
+                  className: 'mobile-screen-element-warp dynamic-data-schema',
                   // key={nodeKey}
+                  key: nodeKey + '-' + triggerChange,
                   id: nodeKey,
                   style: style,
                 },

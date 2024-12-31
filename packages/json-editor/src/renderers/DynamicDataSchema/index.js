@@ -139,17 +139,15 @@ class DynamicDataSchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
     const {
-      keyRoute,
-      jsonKey,
-      nodeKey,
-      indexRoute,
-      targetJsonSchema,
+      getJSONDataByKeyRoute,
       dynamicDataList,
       dynamicDataObj,
       dynamicDataApiScopeList,
-    } = this.props;
+      triggerChange,
+    } = jsonStore || {};
+    const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
+      this.props;
     const { isShowFilter } = this.state;
     const curType = targetJsonSchema.type;
     // 从jsonData中获取对应的数值
@@ -186,13 +184,9 @@ class DynamicDataSchema extends React.PureComponent {
 
     return (
       <div
-        className1="mobile-screen-element-warp dynamic-data-schema"
-        className={
-          pageScreen === 'wideScreen'
-            ? 'dynamic-data-schema wide-screen-element-warp'
-            : 'dynamic-data-schema mobile-screen-element-warp'
-        }
+        className="mobile-screen-element-warp dynamic-data-schema"
         // key={nodeKey}
+        key={`${nodeKey}-${triggerChange}`}
         id={nodeKey}
         style={style}
       >
