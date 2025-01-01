@@ -34,6 +34,53 @@ class IndexDemo extends React.PureComponent {
                 default: 'x',
                 description: '',
                 placeholder: '',
+                showSearch: true,
+                titleStyle: {
+                  "font-weight": 600,
+                  color: '#070c14'
+                }
+              },
+              select1: {
+                title: 'cascader',
+                type: 'cascader',
+                description: '',
+                placeholder: '',
+                showSearch: true,
+                allowClear: true,
+                options: [
+                  {
+                    value: 'zhejiang',
+                    label: 'Zhejiang',
+                    children: [
+                      {
+                        value: 'hangzhou',
+                        label: 'Hangzhou',
+                        children: [
+                          {
+                            value: 'xihu',
+                            label: 'West Lake',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    value: 'jiangsu',
+                    label: 'Jiangsu',
+                    children: [
+                      {
+                        value: 'nanjing',
+                        label: 'Nanjing',
+                        children: [
+                          {
+                            value: 'zhonghuamen',
+                            label: 'Zhong Hua Men',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
                 titleStyle: {
                   "font-weight": 600,
                   color: '#070c14'
@@ -531,6 +578,7 @@ class IndexDemo extends React.PureComponent {
               },
             },
             propertyOrder: [
+              'select1',
               'themeSource',
               'globalMetaTabList',
               'pagebgimg',

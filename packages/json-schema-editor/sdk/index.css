@@ -1,0 +1,742 @@
+/*!
+ * @wibetter/json-schema-editor v5.0.21
+ * author: wibetter
+ * build tool: AKFun
+ * build time: Wed Jan 01 2025 17:18:28 GMT+0800 (中国标准时间)
+ * build tool info: https://github.com/wibetter/akfun
+ */
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/AdvanceConfig/index.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.advance-config-model {
+  position: relative;
+  padding: 8px 10px;
+  text-align: center;
+}
+.advance-config-model .small-screen-element-warp,
+.advance-config-model .mobile-screen-element-warp {
+  position: relative;
+  margin-bottom: 12px;
+  line-height: 38px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 280px;
+}
+.advance-config-model .small-screen-element-warp .element-title,
+.advance-config-model .mobile-screen-element-warp .element-title {
+  display: block;
+  word-break: keep-all;
+  margin-right: 12px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.advance-config-model .small-screen-element-warp .content-item,
+.advance-config-model .mobile-screen-element-warp .content-item {
+  position: relative;
+  text-align: left;
+}
+.advance-config-model .small-screen-element-warp .content-item > .small-screen-element-warp,
+.advance-config-model .small-screen-element-warp .content-item > .mobile-screen-element-warp,
+.advance-config-model .mobile-screen-element-warp .content-item > .small-screen-element-warp,
+.advance-config-model .mobile-screen-element-warp .content-item > .mobile-screen-element-warp {
+  min-width: 230px;
+}
+.advance-config-model .small-screen-element-warp .content-item .color-item-form,
+.advance-config-model .mobile-screen-element-warp .content-item .color-item-form {
+  width: 60px;
+}
+.advance-config-model .small-screen-element-warp .content-item .add-rule-condition-btn,
+.advance-config-model .mobile-screen-element-warp .content-item .add-rule-condition-btn {
+  margin: 3px 0;
+}
+.advance-config-model .wide-screen-element-warp {
+  position: relative;
+  line-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  min-width: 350px;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+     -moz-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.advance-config-model .wide-screen-element-warp .element-title {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 100px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 100px;
+          flex: 0 1 100px;
+  word-break: keep-all;
+  max-width: 100px;
+  margin-right: 12px;
+  padding-left: 12px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.advance-config-model .wide-screen-element-warp .content-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+  text-align: left;
+}
+.advance-config-model .wide-screen-element-warp .content-item .color-item-form {
+  width: 60px;
+}
+.advance-config-model .wide-screen-element-warp .content-item .add-rule-condition-btn {
+  margin: 3px 0;
+}
+.advance-config-model .code-area-item {
+  min-width: 230px;
+  max-width: 600px;
+}
+.advance-config-model .hidden-rule-box {
+  margin: 10px auto 0 auto;
+  width: 450px;
+  padding: 8px 15px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: solid 1px #ccc;
+}
+.advance-config-model .hidden-rule-box .rule-title {
+  line-height: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+     -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.advance-config-model .hidden-rule-box .rule-condition-box {
+  position: relative;
+  background-color: #f8f8f8;
+  padding: 8px 10px;
+  min-height: 30px;
+  line-height: 30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.advance-config-model .hidden-rule-box .rule-condition-box .condition-title {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 70px;
+          flex: 0 0 70px;
+  text-align: center;
+}
+.advance-config-model .hidden-rule-box .rule-condition-box .condition-equal {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 40px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 40px;
+          flex: 0 0 40px;
+  text-align: center;
+}
+.advance-config-model .hidden-rule-box .rule-condition-box .condition-prop {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 100px;
+  text-align: left;
+}
+.advance-config-model .hidden-rule-box .rule-condition-box .condition-value {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 100px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 100px;
+  text-align: left;
+}
+.advance-config-model .hidden-rule-box .rule-condition-box .ant-select-single {
+  max-width: 145px;
+}
+.advance-config-model .warning-box {
+  width: 100%;
+  padding: 8px 0;
+  color: red;
+  font-size: 12px;
+  background-color: rgb(254, 236, 235);
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+          transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.advance-config-model .warning-box .warning-img {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 60px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 60px;
+          flex: 0 1 60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.advance-config-model .warning-box .warning-text {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 160px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 160px;
+          flex: 1 1 160px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 20px;
+}
+.advance-config-model .form-item-box {
+  min-height: 30px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: stretch;
+  -webkit-justify-content: stretch;
+     -moz-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/BaseFormSchema/index.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.base-schema-box {
+  position: relative;
+  min-height: 35px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.base-schema-box .warn-text {
+  width: 100%;
+  color: #ad4e00;
+}
+.base-schema-box .key-input-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+  padding-right: 8px;
+}
+.base-schema-box .type-select-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 120px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 120px;
+          flex: 0 1 120px;
+  padding-right: 8px;
+}
+.base-schema-box .title-input-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 200px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 200px;
+          flex: 0 1 200px;
+}
+.base-schema-box .operate-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 110px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 110px;
+          flex: 0 1 110px;
+  padding-left: 10px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.base-schema-box .operate-item .operate-btn {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 15px;
+  margin-right: 8px;
+  color: #2395f1;
+  cursor: pointer !important;
+}
+.base-schema-box .operate-item .delete-operate {
+  color: #ff561b;
+}
+.base-schema-box .operate-item .drag-btn {
+  color: #8a8a8a;
+}
+.base-schema-box .operate-item .drag-btn:hover {
+  color: #2395f1;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/SelectFormSchema/index.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.typeSelect-schema-box {
+  position: relative;
+  min-height: 35px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.typeSelect-schema-box .key-input-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+  padding-right: 8px;
+}
+.typeSelect-schema-box .key-input-item .ant-select {
+  display: block;
+}
+.typeSelect-schema-box .type-select-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 120px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 120px;
+          flex: 0 1 120px;
+  padding-right: 8px;
+}
+.typeSelect-schema-box .title-input-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 200px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 200px;
+          flex: 0 1 200px;
+}
+.typeSelect-schema-box .operate-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 110px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 110px;
+          flex: 0 1 110px;
+  padding-left: 10px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.typeSelect-schema-box .operate-item .operate-btn {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 15px;
+  margin-right: 8px;
+  color: #2395f1;
+  cursor: pointer !important;
+}
+.typeSelect-schema-box .operate-item .delete-operate {
+  color: #ff561b;
+}
+.typeSelect-schema-box .operate-item .drag-btn {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  color: #8a8a8a;
+  background-image: url("//storage.jd.local/cdnnpm/jdw-web/img/drag-default.svg");
+  background-size: contain;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/OptionSchema/index.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.option-schema-box {
+  position: relative;
+  min-height: 35px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.option-schema-box .key-input-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 200px;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 200px;
+          flex: 1 1 200px;
+  padding-right: 8px;
+}
+.option-schema-box .type-select-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 120px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 120px;
+          flex: 0 1 120px;
+  padding-right: 8px;
+}
+.option-schema-box .title-input-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 200px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 200px;
+          flex: 0 1 200px;
+}
+.option-schema-box .operate-item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 110px;
+     -moz-box-flex: 0;
+      -ms-flex: 0 1 110px;
+          flex: 0 1 110px;
+  padding-left: 10px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.option-schema-box .operate-item .operate-btn {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 15px;
+  margin-right: 8px;
+  color: #2395f1;
+  cursor: pointer !important;
+}
+.option-schema-box .operate-item .delete-operate {
+  color: #ff561b;
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JSONSchemaEditor/index.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* 公共的自定义函数 */
+/* 头部细线 */
+/* 底部细线 */
+/* 统一的内边距 */
+/* 统一的左内边距 */
+/* 统一的右内边距 */
+/* 统一的底部边框样式 */
+/* 统一的上边框样式 */
+/* 统一的Item高度 */
+/* 设置行高样式 */
+/* 统一的Item样式 */
+/* 统一的弹性盒子样式 */
+/* 统一的Title样式 */
+/* 统一的内容样式 */
+/* 底部导航盒子样式 */
+.json-schema-container {
+  position: relative;
+  padding: 8px 10px;
+}
+.json-schema-container .schema-item-form {
+  position: relative;
+  min-height: 35px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.json-schema-empty {
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* 重置antd的样式 */
+.ant-tree-list-holder-inner {
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+     -moz-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.ant-tree-switcher {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+     -moz-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.ant-tree-node-content-wrapper {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+     -moz-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.ant-tree .ant-tree-switcher {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ant-modal-close-x {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
