@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.21
+ * @wibetter/json-editor v5.0.23
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Dec 31 2024 17:31:43 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 02 2025 10:20:42 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -13685,8 +13685,9 @@
                     );
                     this.jsonSchema = newJSONSchema;
                   }
-                  var curJsonData =
-                    this.state.rootJSONStore.JSONEditorStore.jsonData;
+                  var JSONEditorStore =
+                    this.state.rootJSONStore.JSONEditorStore;
+                  var curJsonData = JSONEditorStore.jsonData;
                   var newJsonData = {};
                   /** 根据jsonSchema生成对应的最新jsonData */
                   if (this.jsonSchema.reset) {
@@ -13714,7 +13715,7 @@
                   /** jsonSchema变动的时候触发一次jsonDataChange
                    * jsonSchema变动意味着jsonData也需要进行对应的结构更新
                    * */
-                  this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+                  // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
                 }
               };
               /** 根据索引路径获取对应的key值路径 */
