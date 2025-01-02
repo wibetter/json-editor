@@ -80,7 +80,8 @@ export default class JSONSchemaStore {
         const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
         this.jsonSchema = newJSONSchema;
       }
-      const curJsonData = this.state.rootJSONStore.JSONEditorStore.jsonData;
+      const JSONEditorStore = this.state.rootJSONStore.JSONEditorStore;
+      const curJsonData = JSONEditorStore.jsonData;
       let newJsonData = {};
       /** 根据jsonSchema生成对应的最新jsonData */
       if (this.jsonSchema.reset) {
@@ -97,7 +98,7 @@ export default class JSONSchemaStore {
       /** jsonSchema变动的时候触发一次jsonDataChange
        * jsonSchema变动意味着jsonData也需要进行对应的结构更新
        * */
-      this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+      // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
     }
   }
 
