@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.25
+ * @wibetter/json-editor v5.0.26
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 02 2025 15:12:02 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 02 2025 17:13:11 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -841,18 +841,23 @@
               : {}; // 获取当前父级数据域
             var curData = Object.assign({}, JSONEditorObj, parentData);
             if (
-              ((0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
+              targetJsonSchema.onShow !== undefined &&
+              targetJsonSchema.onShow !== null &&
+              targetJsonSchema.onShow !== '' &&
+              (((0,
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
                 targetJsonSchema.onShow,
               ) &&
                 !targetJsonSchema.onShow) ||
-              ((0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isString)(
-                targetJsonSchema.onShow,
-              ) &&
-                !(0,
-                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.evalExpression)(
+                ((0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isString)(
                   targetJsonSchema.onShow,
-                  curData,
-                ))
+                ) &&
+                  !(0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.evalExpression)(
+                    targetJsonSchema.onShow,
+                    curData,
+                  )))
             ) {
               return;
             }

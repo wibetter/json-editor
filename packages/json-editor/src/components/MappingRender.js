@@ -50,9 +50,11 @@ const MappingRender = (props) => {
   const curData = Object.assign({}, JSONEditorObj, parentData);
 
   if (
-    (isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
-    (isString(targetJsonSchema.onShow) &&
-      !evalExpression(targetJsonSchema.onShow, curData))
+    hasProperties(targetJsonSchema.onShow) &&
+    targetJsonSchema.onShow !== '' &&
+    ((isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
+      (isString(targetJsonSchema.onShow) &&
+        !evalExpression(targetJsonSchema.onShow, curData)))
   ) {
     return;
   }
