@@ -61,10 +61,19 @@ class SohuEventSchema extends React.PureComponent {
     } = jsonStore || {};
     const { value: newTitle } = inputEvent.target;
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+    const eventData = Object.assign([], toJS(curJsonData.event));
     let globalEventMap = Object.assign({}, toJS(curJsonData.globalEventMap));
-    const curKeyRout = `${keyRoute}-globalEventMap`;
     globalEventMap[eventCode] = newTitle;
-    updateFormValueData(curKeyRout, globalEventMap);
+    eventData.forEach((event) => {
+      if (event.code === eventCode && event.desc !== undefined) {
+        event.desc = newTitle;
+      }
+    });
+    // const curKeyRout = `${keyRoute}-globalEventMap`;
+    updateFormValueData(keyRoute, {
+      event: eventData,
+      globalEventMap,
+    });
   };
 
   handleSelectEventChange = (eventName, newEventCode) => {

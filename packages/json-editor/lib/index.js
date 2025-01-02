@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.23
+ * @wibetter/json-editor v5.0.25
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 02 2025 10:20:42 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 02 2025 15:12:02 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -10707,15 +10707,29 @@
                   _options = _ref.options;
                 var newTitle = inputEvent.target.value;
                 var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+                var eventData = Object.assign(
+                  [],
+                  (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                    curJsonData.event,
+                  ),
+                );
                 var globalEventMap = Object.assign(
                   {},
                   (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
                     curJsonData.globalEventMap,
                   ),
                 );
-                var curKeyRout = keyRoute + '-globalEventMap';
                 globalEventMap[eventCode] = newTitle;
-                updateFormValueData(curKeyRout, globalEventMap);
+                eventData.forEach(function (event) {
+                  if (event.code === eventCode && event.desc !== undefined) {
+                    event.desc = newTitle;
+                  }
+                });
+                // const curKeyRout = `${keyRoute}-globalEventMap`;
+                updateFormValueData(keyRoute, {
+                  event: eventData,
+                  globalEventMap: globalEventMap,
+                });
               };
               _this.handleSelectEventChange = function (
                 eventName,
