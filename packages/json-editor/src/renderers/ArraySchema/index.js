@@ -198,7 +198,11 @@ class ArraySchema extends React.PureComponent {
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
+    let curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
+    if (!curJsonData || curJsonData.length === 0) {
+      // 添加一个默认的数组数据
+      curJsonData = [{}];
+    }
     const arrayItemsDataObj = targetJsonSchema.items; // schema数据
 
     // 获取前端缓存中的折叠数据

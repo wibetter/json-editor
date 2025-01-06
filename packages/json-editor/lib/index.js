@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.0.27
  * author: wibetter
  * build tool: AKFun
- * build time: Mon Jan 06 2025 17:09:22 GMT+0800 (中国标准时间)
+ * build time: Mon Jan 06 2025 17:49:01 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1645,6 +1645,10 @@
                   : true;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
+              if (!curJsonData || curJsonData.length === 0) {
+                // 添加一个默认的数组数据
+                curJsonData = [{}];
+              }
               var arrayItemsDataObj = targetJsonSchema.items; // schema数据
 
               // 获取前端缓存中的折叠数据

@@ -488,6 +488,7 @@ class IndexDemo extends React.PureComponent {
                   value: {
                     type: 'array',
                     title: 'Tab配置',
+                    default: [{}],
                     description: '',
                     items: {
                       type: 'object',
