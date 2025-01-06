@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.26
+ * @wibetter/json-editor v5.0.27
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 02 2025 17:13:11 GMT+0800 (中国标准时间)
+ * build time: Mon Jan 06 2025 17:09:22 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -841,8 +841,9 @@
               : {}; // 获取当前父级数据域
             var curData = Object.assign({}, JSONEditorObj, parentData);
             if (
-              targetJsonSchema.onShow !== undefined &&
-              targetJsonSchema.onShow !== null &&
+              (0, $utils_index__WEBPACK_IMPORTED_MODULE_3__.hasProperties)(
+                targetJsonSchema.onShow,
+              ) &&
               targetJsonSchema.onShow !== '' &&
               (((0,
               _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
@@ -13019,7 +13020,17 @@
                     this.jsonData,
                   );
                   // 3. 数值更新
-                  parentJsonDataObj[curKey] = newVal;
+                  if (parentJsonDataObj) {
+                    parentJsonDataObj[curKey] = newVal;
+                  } else {
+                    var _this$updateFormValue;
+                    this.updateFormValueData(
+                      parentKeyRoute,
+                      ((_this$updateFormValue = {}),
+                      (_this$updateFormValue[curKey] = newVal),
+                      _this$updateFormValue),
+                    );
+                  }
                 } else {
                   // 当keyRoute为空时直接修改当前schemaData
                   this.jsonData = newVal;

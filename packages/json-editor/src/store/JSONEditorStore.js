@@ -191,7 +191,13 @@ export default class JSONEditorStore {
         this.jsonData,
       );
       // 3. 数值更新
-      parentJsonDataObj[curKey] = newVal;
+      if (parentJsonDataObj) {
+        parentJsonDataObj[curKey] = newVal;
+      } else {
+        this.updateFormValueData(parentKeyRoute, {
+          [curKey]: newVal,
+        });
+      }
     } else {
       // 当keyRoute为空时直接修改当前schemaData
       this.jsonData = newVal;
