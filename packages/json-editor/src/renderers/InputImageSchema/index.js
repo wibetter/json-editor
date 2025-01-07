@@ -80,9 +80,9 @@ class InputImageSchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { getJSONDataByKeyRoute, options: _options } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
-    const options = this.props.options || {};
+    const options = _options || {};
     const { loading } = this.state;
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
