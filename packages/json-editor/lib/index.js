@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.27
+ * @wibetter/json-editor v5.0.28
  * author: wibetter
  * build tool: AKFun
- * build time: Mon Jan 06 2025 17:49:01 GMT+0800 (中国标准时间)
+ * build time: Tue Jan 07 2025 14:49:17 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -7435,13 +7435,14 @@
               var _ref3 = schemaStore || {},
                 pageScreen = _ref3.pageScreen;
               var _ref4 = jsonStore || {},
-                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute;
+                getJSONDataByKeyRoute = _ref4.getJSONDataByKeyRoute,
+                _options = _ref4.options;
               var _this$props4 = this.props,
                 nodeKey = _this$props4.nodeKey,
                 jsonKey = _this$props4.jsonKey,
                 keyRoute = _this$props4.keyRoute,
                 targetJsonSchema = _this$props4.targetJsonSchema;
-              var options = this.props.options || {};
+              var options = _options || {};
               var loading = this.state.loading;
               // 从jsonData中获取对应的数值
               var curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
