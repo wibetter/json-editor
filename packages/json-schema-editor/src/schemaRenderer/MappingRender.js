@@ -20,6 +20,7 @@ const MappingRender = (props) => {
     case 'dynamic-config':
     case 'sohu-source':
     case 'sohu-event':
+    case 'padding-margin':
       return ObjectSchema(props);
       break;
     case 'array':

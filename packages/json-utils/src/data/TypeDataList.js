@@ -20,6 +20,7 @@ import {
   /* 9种特殊类型 */
   initQuantityData,
   initBoxStyleData,
+  initPaddingMarginData,
   initJsonData,
   initCodeAreaData,
   initHtmlAreaData,
@@ -62,6 +63,7 @@ export const TypeDataList = {
   time: initTimeData,
   quantity: initQuantityData,
   'box-style': initBoxStyleData,
+  'padding-margin': initPaddingMarginData,
   radio: initRadioData,
   select: initSelectData,
   cascader: initCascaderSchema,

@@ -15,6 +15,7 @@ import DynamicDataSchema from '$renderers/DynamicDataSchema/index';
 import EventSchema from '$renderers/EventSchema/index';
 import QuantitySchema from '$renderers/QuantitySchema/index';
 import BoxStyleSchema from '$renderers/BoxStyleSchema/index';
+import PaddingAndMarginSchema from '$renderers/PaddingAndMarginSchema/index';
 import RadioSchema from '$renderers/RadioSchema/index';
 import CheckboxSchema from '$renderers/CheckboxSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
@@ -100,6 +101,8 @@ const MappingRender = (props) => {
       return <QuantitySchema {...newProps} key={curNodeKey} />;
     case 'box-style':
       return <BoxStyleSchema {...newProps} key={curNodeKey} />;
+    case 'padding-margin':
+      return <PaddingAndMarginSchema {...newProps} key={curNodeKey} />;
     case 'radio':
       return <RadioSchema {...newProps} key={curNodeKey} />;
     case 'select':

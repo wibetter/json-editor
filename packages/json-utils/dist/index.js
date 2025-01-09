@@ -102,7 +102,7 @@
           return b;
         },
         isArray: function () {
-          return q;
+          return k;
         },
         isBoolean: function () {
           return w;
@@ -117,7 +117,7 @@
           return R;
         },
         isDateTimeStr: function () {
-          return E;
+          return q;
         },
         isEmptySchema: function () {
           return W;
@@ -153,7 +153,7 @@
           return Z;
         },
         isTimeStr: function () {
-          return k;
+          return E;
         },
         isURL: function () {
           return T;
@@ -332,7 +332,7 @@
       return a;
     }
     var m,
-      h = {
+      g = {
         type: 'event',
         title: '事件',
         isContainer: !1,
@@ -362,7 +362,7 @@
         },
         propertyOrder: ['type', 'trigger', 'eventData'],
       },
-      g = {
+      h = {
         type: 'datasource',
         title: '数据源',
         isContainer: !1,
@@ -440,7 +440,6 @@
             func: {
               type: 'object',
               title: '功能设置',
-              isContainer: !1,
               properties: {
                 a: {
                   title: '单文本框',
@@ -456,7 +455,6 @@
             style: {
               type: 'object',
               title: '样式设置',
-              isContainer: !1,
               properties: {
                 b: {
                   title: '单文本框',
@@ -471,7 +469,6 @@
             data: {
               type: 'data',
               title: '数据设置',
-              isContainer: !1,
               properties: {
                 c: {
                   title: '单文本框',
@@ -697,6 +694,37 @@
           },
           propertyOrder: ['unit', 'quantity'],
         },
+        'padding-margin': {
+          type: 'padding-margin',
+          title: '边距设置',
+          isContainer: !1,
+          properties: {
+            margin: {
+              title: '外边距',
+              type: 'input',
+              default: '0',
+              description: '',
+            },
+            padding: {
+              title: '内边距',
+              type: 'input',
+              default: '0',
+              description: '',
+            },
+            quantity: {
+              type: 'select',
+              default: 'px',
+              options: [
+                { label: 'px', value: 'px' },
+                { label: 'rem', value: 'rem' },
+                { label: 'em', value: 'em' },
+                { label: '%', value: '%' },
+              ],
+              title: '单位类型',
+            },
+          },
+          propertyOrder: ['margin', 'padding', 'quantity'],
+        },
         radio: {
           type: 'radio',
           title: '单选',
@@ -824,8 +852,8 @@
           },
           propertyOrder: ['type', 'config', 'data', 'localFilter'],
         },
-        datasource: g,
-        event: h,
+        datasource: h,
+        event: g,
         'dynamic-config': {
           type: 'dynamic-config',
           title: '动态配置',
@@ -1490,9 +1518,9 @@
           },
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
-        emit: h,
+        emit: g,
       },
-      S = { local: g, remote: j };
+      S = { local: h, remote: j };
     function T(e) {
       return /^http[s]?:\/\/.*/.test(e);
     }
@@ -1511,16 +1539,16 @@
     function R(e) {
       return /^\d{4}-\d{2}-\d{2}$/.test(e);
     }
-    function E(e) {
+    function q(e) {
       return (
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(e) ||
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(e)
       );
     }
-    function k(e) {
+    function E(e) {
       return /^\d{2}:\d{2}:\d{2}$/.test(e) || /^\d{2}:\d{2}$/.test(e);
     }
-    function q(e) {
+    function k(e) {
       var t = !1;
       return (
         'Array' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
@@ -1528,7 +1556,7 @@
       );
     }
     function F(e) {
-      if (!q(e)) return !1;
+      if (!k(e)) return !1;
       for (var t = 0, r = e.length; t < r; t++) if (!D(e[t])) return !1;
       return !0;
     }
@@ -1564,7 +1592,7 @@
                 if (P(e)) {
                   var r = Object.keys(e);
                   e.data && e.filter && 2 === r.length
-                    ? (t = q(e.data) || P(e.data) ? o(S.local) : o(S.remote))
+                    ? (t = k(e.data) || P(e.data) ? o(S.local) : o(S.remote))
                     : e.trigger && e.eventData && 2 === r.length
                       ? (t = o(x.emit))
                       : e.register && e.actionFunc && 2 === r.length
@@ -1579,10 +1607,10 @@
                 }
                 return t;
               })(e)
-            : e && q(e)
+            : e && k(e)
               ? (function (e) {
                   var t;
-                  if (e && q(e))
+                  if (e && k(e))
                     if (F(e)) {
                       (t = o(C.select)).items.enum = e;
                       var r = t.items.enumextra.length,
@@ -1603,8 +1631,8 @@
                   else if (N(e)) t = o(C.number);
                   else if (T(e)) t = o(C.url);
                   else if (R(e)) t = o(C.date);
-                  else if (E(e)) t = o(C['date-time']);
-                  else if (k(e)) t = o(C.time);
+                  else if (q(e)) t = o(C['date-time']);
+                  else if (E(e)) t = o(C.time);
                   else if (M(e)) t = o(C.color);
                   else
                     try {
@@ -1760,6 +1788,7 @@
           array: 'array',
           boolean: 'boolean',
           'box-style': 'object',
+          'padding-margin': 'object',
           codearea: 'string',
           color: 'string',
           datasource: 'object',
@@ -1900,7 +1929,7 @@
       p(i) &&
         p(e.default) &&
         (typeof i != typeof e.default ||
-          ((r = i), (a = e.default), P(r) + '-' + q(r) != P(a) + '-' + q(a))) &&
+          ((r = i), (a = e.default), P(r) + '-' + k(r) != P(a) + '-' + k(a))) &&
         (i = void 0);
       var n = p(i) ? i : e.default;
       switch (e.type) {
@@ -1923,7 +1952,7 @@
           break;
         case 'json':
           var o = '';
-          if (P(n) || q(n)) o = n;
+          if (P(n) || k(n)) o = n;
           else if (_(n) || '' === n) o = {};
           else
             try {
@@ -2023,11 +2052,11 @@
       if (e && 'array' === z(e.type)) {
         var a = t;
         p(a) &&
-          ((p(e.default) && typeof a != typeof e.default) || !q(a)) &&
+          ((p(e.default) && typeof a != typeof e.default) || !k(a)) &&
           (a = void 0);
         var l = p(a) ? a : e.default;
         if ('array' === z(e.type))
-          if (q(l))
+          if (k(l))
             l.map(function (t) {
               r.push(ne(e.items, t));
             });
@@ -2074,7 +2103,7 @@
               ce(e[t], r);
             });
         else
-          q(e) &&
+          k(e) &&
             e.map(function (e) {
               ce(e, r);
             });
@@ -2096,15 +2125,15 @@
           ? Object.keys(e).map(function (a) {
               var l = e[a],
                 i = t ? t + '-' + a : a;
-              P(l) || q(l)
+              P(l) || k(l)
                 ? r.push({ title: a, value: i, key: i, children: de(l, i) })
                 : r.push({ title: a, value: i, key: i });
             })
-          : q(e) &&
+          : k(e) &&
             e.map(function (e, a) {
               var l = a.toString(),
                 i = t ? t + '-' + a : l;
-              P(e) || q(e)
+              P(e) || k(e)
                 ? r.push({ title: l, value: i, key: i, children: de(e, i) })
                 : r.push({ title: l, value: i, key: i });
             }),

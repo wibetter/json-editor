@@ -33,6 +33,7 @@ export const CONTAINER_TYPE = ['object', ...Fixed_CONTAINER_TYPE];
 export const HIGH_TYPE = [
   'quantity',
   'box-style',
+  'padding-margin',
   'text-editor',
   'json',
   'codearea',
@@ -64,6 +65,7 @@ export const OBJECT_TYPE = [
   'object',
   'array',
   'box-style',
+  'padding-margin',
 ];
 
 // 数组类型可用子项类型

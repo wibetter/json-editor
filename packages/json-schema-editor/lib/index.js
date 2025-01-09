@@ -356,6 +356,7 @@
           xe = [
             'quantity',
             'box-style',
+            'padding-margin',
             'text-editor',
             'json',
             'codearea',
@@ -2835,6 +2836,7 @@
               case 'dynamic-config':
               case 'sohu-source':
               case 'sohu-event':
+              case 'padding-margin':
                 return st(e);
               case 'array':
                 return Le(e);

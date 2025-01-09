@@ -3,6 +3,7 @@ const valExpectType = {
   array: 'array',
   boolean: 'boolean',
   'box-style': 'object',
+  'padding-margin': 'object',
   codearea: 'string',
   color: 'string',
   datasource: 'object',

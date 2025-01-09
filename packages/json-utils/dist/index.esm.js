@@ -282,7 +282,6 @@ var initJSONSchemaData = {
     func: {
       type: 'object',
       title: '功能设置',
-      isContainer: false,
       properties: {
         a: {
           title: '单文本框',
@@ -301,7 +300,6 @@ var initJSONSchemaData = {
     style: {
       type: 'object',
       title: '样式设置',
-      isContainer: false,
       properties: {
         b: {
           title: '单文本框',
@@ -318,7 +316,6 @@ var initJSONSchemaData = {
     data: {
       type: 'data',
       title: '数据设置',
-      isContainer: false,
       properties: {
         c: {
           title: '单文本框',
@@ -897,6 +894,61 @@ var initBoxStyleData = {
     },
   },
   propertyOrder: ['unit', 'quantity'],
+};
+
+/** padding-margin 字段项
+ * 【字段属性说明】
+ *  title：字段项的label值
+ *  properties：存放所有的子字段数据内容
+ *  type：用于标识字段项的展示类型（input、date、data-time、url、textarea 等）
+ *  readOnly：字段项可设置是否可编辑
+ *  required：存放所有子字段的key值，用于验证子字段项是否存在，同时required可充当排序功能
+ *  propertyOrder：按序存放所有子字段的key值（排序功能）
+ * */
+var initPaddingMarginData = {
+  type: 'padding-margin',
+  title: '边距设置',
+  isContainer: false,
+  properties: {
+    margin: {
+      title: '外边距',
+      type: 'input',
+      default: '0',
+      // 默认值为'0'：'0px 0px 0px 0px'；为'5px': '5px 5px 5px 5px'
+      description: '',
+    },
+    padding: {
+      title: '内边距',
+      type: 'input',
+      default: '0',
+      description: '',
+    },
+    quantity: {
+      type: 'select',
+      // 选择列表
+      default: 'px',
+      options: [
+        {
+          label: 'px',
+          value: 'px',
+        },
+        {
+          label: 'rem',
+          value: 'rem',
+        },
+        {
+          label: 'em',
+          value: 'em',
+        },
+        {
+          label: '%',
+          value: '%',
+        },
+      ],
+      title: '单位类型',
+    },
+  },
+  propertyOrder: ['margin', 'padding', 'quantity'],
 };
 
 /* json类型字段
@@ -2360,6 +2412,7 @@ var TypeDataList = {
   time: initTimeData,
   quantity: initQuantityData,
   'box-style': initBoxStyleData,
+  'padding-margin': initPaddingMarginData,
   radio: initRadioData,
   select: initSelectData,
   cascader: initCascaderSchema,
@@ -7419,6 +7472,7 @@ var valExpectType =
     array: 'array',
     boolean: 'boolean',
     'box-style': 'object',
+    'padding-margin': 'object',
     codearea: 'string',
     color: 'string',
     datasource: 'object',

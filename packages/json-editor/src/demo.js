@@ -22,6 +22,57 @@ class IndexDemo extends React.PureComponent {
     this.state = {
       jsonSchema: {
         type: 'object',
+        title: 'jsonSchemaObject',
+        properties: {
+          func: {
+            type: 'object',
+            title: '功能设置',
+            properties: {
+              a: {
+                title: '单文本框',
+                type: 'input',
+                default: '', // 默认值
+                description: '', // 字段项的说明和描述
+                placeholder: '', // 输入提示
+                isRequired: false,
+              },
+            },
+            propertyOrder: ['a'],
+          },
+          style: {
+            type: 'object',
+            title: '样式设置',
+            properties: {
+              b: {
+                title: '单文本框',
+                type: 'input',
+                default: '', // 默认值
+                description: '', // 字段项的说明和描述
+                placeholder: '', // 输入提示
+              },
+            },
+            propertyOrder: ['b'],
+          },
+          data: {
+            type: 'data',
+            title: '数据设置',
+            properties: {
+              c: {
+                title: '单文本框',
+                type: 'input',
+                default: '', // 默认值
+                description: '', // 字段项的说明和描述
+                placeholder: '', // 输入提示
+                isRequired: false,
+              },
+            },
+            propertyOrder: ['c'],
+          },
+        },
+        propertyOrder: ['func', 'style', 'data'],
+      },
+      jsonSchema1: {
+        type: 'object',
         name: 'TPLSearch',
         title: '头部组件',
         properties: {

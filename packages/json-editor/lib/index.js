@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.28
+ * @wibetter/json-editor v5.0.29
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Jan 07 2025 14:49:17 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 09 2025 10:47:27 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -736,83 +736,87 @@
             __webpack_require__(
               /*! $renderers/BoxStyleSchema/index */ './src/renderers/BoxStyleSchema/index.js',
             );
-          /* harmony import */ var $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
+          /* harmony import */ var $renderers_PaddingAndMarginSchema_index__WEBPACK_IMPORTED_MODULE_11__ =
+            __webpack_require__(
+              /*! $renderers/PaddingAndMarginSchema/index */ './src/renderers/PaddingAndMarginSchema/index.js',
+            );
+          /* harmony import */ var $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_12__ =
             __webpack_require__(
               /*! $renderers/RadioSchema/index */ './src/renderers/RadioSchema/index.js',
             );
-          /* harmony import */ var $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_12__ =
+          /* harmony import */ var $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_13__ =
             __webpack_require__(
               /*! $renderers/CheckboxSchema/index */ './src/renderers/CheckboxSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__ =
+          /* harmony import */ var $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_14__ =
             __webpack_require__(
               /*! $renderers/InputFormSchema/index */ './src/renderers/InputFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_14__ =
+          /* harmony import */ var $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_15__ =
             __webpack_require__(
               /*! $renderers/TextAreaFormSchema/index */ './src/renderers/TextAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_15__ =
+          /* harmony import */ var $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_16__ =
             __webpack_require__(
               /*! $renderers/TextEditorSchema/index */ './src/renderers/TextEditorSchema/index.js',
             );
-          /* harmony import */ var $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_16__ =
+          /* harmony import */ var $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_17__ =
             __webpack_require__(
               /*! $renderers/NumberFormSchema/index */ './src/renderers/NumberFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_17__ =
+          /* harmony import */ var $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
             __webpack_require__(
               /*! $renderers/BooleanFormSchema/index */ './src/renderers/BooleanFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_18__ =
+          /* harmony import */ var $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
             __webpack_require__(
               /*! $renderers/SelectSchema/index */ './src/renderers/SelectSchema/index.js',
             );
-          /* harmony import */ var $renderers_CascaderSchema_index__WEBPACK_IMPORTED_MODULE_19__ =
+          /* harmony import */ var $renderers_CascaderSchema_index__WEBPACK_IMPORTED_MODULE_20__ =
             __webpack_require__(
               /*! $renderers/CascaderSchema/index */ './src/renderers/CascaderSchema/index.js',
             );
-          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_20__ =
+          /* harmony import */ var $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_21__ =
             __webpack_require__(
               /*! $renderers/InputImageSchema/index */ './src/renderers/InputImageSchema/index.js',
             );
-          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_21__ =
+          /* harmony import */ var $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
             __webpack_require__(
               /*! $renderers/DateTimeFormSchema/index */ './src/renderers/DateTimeFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_22__ =
+          /* harmony import */ var $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
             __webpack_require__(
               /*! $renderers/TimeFormSchema/index */ './src/renderers/TimeFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_23__ =
+          /* harmony import */ var $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_24__ =
             __webpack_require__(
               /*! $renderers/URLFormSchema/index */ './src/renderers/URLFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_24__ =
+          /* harmony import */ var $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_25__ =
             __webpack_require__(
               /*! $renderers/ColorFormSchemaV3/index */ './src/renderers/ColorFormSchemaV3/index.js',
             );
-          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_25__ =
+          /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
             __webpack_require__(
               /*! $renderers/JsonFormSchema/index */ './src/renderers/JsonFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_26__ =
+          /* harmony import */ var $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
             __webpack_require__(
               /*! $renderers/CodeAreaFormSchema/index */ './src/renderers/CodeAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_27__ =
+          /* harmony import */ var $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
             __webpack_require__(
               /*! $renderers/HtmlAreaFormSchema/index */ './src/renderers/HtmlAreaFormSchema/index.js',
             );
-          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_28__ =
+          /* harmony import */ var $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_29__ =
             __webpack_require__(
               /*! $renderers/DynamicConfigSchema/index */ './src/renderers/DynamicConfigSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_29__ =
+          /* harmony import */ var $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_30__ =
             __webpack_require__(
               /*! $renderers/SohuDataSourceSchema/index */ './src/renderers/SohuDataSourceSchema/index.js',
             );
-          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_30__ =
+          /* harmony import */ var $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_31__ =
             __webpack_require__(
               /*! $renderers/SohuEventSchema/index */ './src/renderers/SohuEventSchema/index.js',
             );
@@ -905,7 +909,7 @@
                 );
               case 'dynamic-config':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_28__[
+                  $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_29__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -918,7 +922,7 @@
                 );
               case 'sohu-source':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_29__[
+                  $renderers_SohuDataSourceSchema_index__WEBPACK_IMPORTED_MODULE_30__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -931,7 +935,7 @@
                 );
               case 'sohu-event':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_30__[
+                  $renderers_SohuEventSchema_index__WEBPACK_IMPORTED_MODULE_31__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1020,9 +1024,22 @@
                     },
                   ),
                 );
+              case 'padding-margin':
+                return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
+                  $renderers_PaddingAndMarginSchema_index__WEBPACK_IMPORTED_MODULE_11__[
+                    'default'
+                  ],
+                  _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
+                    {},
+                    newProps,
+                    {
+                      key: curNodeKey,
+                    },
+                  ),
+                );
               case 'radio':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_11__[
+                  $renderers_RadioSchema_index__WEBPACK_IMPORTED_MODULE_12__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1035,7 +1052,7 @@
                 );
               case 'select':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_18__[
+                  $renderers_SelectSchema_index__WEBPACK_IMPORTED_MODULE_19__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1048,7 +1065,7 @@
                 );
               case 'cascader':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_CascaderSchema_index__WEBPACK_IMPORTED_MODULE_19__[
+                  $renderers_CascaderSchema_index__WEBPACK_IMPORTED_MODULE_20__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1062,7 +1079,7 @@
               case 'checkboxes':
                 // 多选
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_12__[
+                  $renderers_CheckboxSchema_index__WEBPACK_IMPORTED_MODULE_13__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1075,7 +1092,7 @@
                 );
               case 'input':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
+                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_14__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1088,7 +1105,7 @@
                 );
               case 'textarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_14__[
+                  $renderers_TextAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_15__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1101,7 +1118,7 @@
                 );
               case 'text-editor':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_15__[
+                  $renderers_TextEditorSchema_index__WEBPACK_IMPORTED_MODULE_16__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1114,7 +1131,7 @@
                 );
               case 'number':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_16__[
+                  $renderers_NumberFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1127,7 +1144,7 @@
                 );
               case 'boolean':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_17__[
+                  $renderers_BooleanFormSchema_index__WEBPACK_IMPORTED_MODULE_18__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1141,7 +1158,7 @@
               case 'date':
               case 'date-time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_21__[
+                  $renderers_DateTimeFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1154,7 +1171,7 @@
                 );
               case 'time':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_22__[
+                  $renderers_TimeFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1167,7 +1184,7 @@
                 );
               case 'url':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_23__[
+                  $renderers_URLFormSchema_index__WEBPACK_IMPORTED_MODULE_24__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1180,7 +1197,7 @@
                 );
               case 'color':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_24__[
+                  $renderers_ColorFormSchemaV3_index__WEBPACK_IMPORTED_MODULE_25__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1193,7 +1210,7 @@
                 );
               case 'input-image':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_20__[
+                  $renderers_InputImageSchema_index__WEBPACK_IMPORTED_MODULE_21__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1206,7 +1223,7 @@
                 );
               case 'json':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_25__[
+                  $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_26__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1219,7 +1236,7 @@
                 );
               case 'codearea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_26__[
+                  $renderers_CodeAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_27__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1232,7 +1249,7 @@
                 );
               case 'htmlarea':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_27__[
+                  $renderers_HtmlAreaFormSchema_index__WEBPACK_IMPORTED_MODULE_28__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -1245,7 +1262,7 @@
                 );
               default:
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_13__[
+                  $renderers_InputFormSchema_index__WEBPACK_IMPORTED_MODULE_14__[
                     'default'
                   ],
                   _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()(
@@ -2432,9 +2449,7 @@
                   targetJsonSchema = _this$props.targetJsonSchema;
                 // 从jsonData中获取对应的数值
                 var curJsonData = getJSONDataByKeyRoute(keyRoute);
-                /** 获取quantity中的数值对象（默认第一个就是数值对象） */
-                var unitJsonKey = targetJsonSchema.propertyOrder[0];
-                var unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
+                var unitJsonSchema = targetJsonSchema.properties['unit'];
                 var quantity = curJsonData.quantity; // 获取数值单位
                 var unitStr = curJsonData.unit || unitJsonSchema.default; // 获取数值
                 // 重置数值
@@ -2443,7 +2458,7 @@
                   right: '',
                   bottom: '',
                   left: '',
-                  quantity: quantity, // 设置单位值
+                  quantity: quantity,
                 };
                 // 设置盒子模型数值
                 if (unitStr) {
@@ -8984,6 +8999,933 @@
           /***/
         },
 
+      /***/ './src/renderers/PaddingAndMarginSchema/index.js':
+        /*!*******************************************************!*\
+  !*** ./src/renderers/PaddingAndMarginSchema/index.js ***!
+  \*******************************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! mobx-react */ 'mobx-react');
+          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! mobx */ 'mobx');
+          /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              mobx__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(/*! antd */ 'antd');
+          /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              antd__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(/*! $utils/index */ './src/utils/index.js');
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/renderers/PaddingAndMarginSchema/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
+            );
+
+          var Option = antd__WEBPACK_IMPORTED_MODULE_5__.Select.Option;
+
+          var PaddingAndMarginSchema = /*#__PURE__*/ (function (
+            _React$PureComponent,
+          ) {
+            function PaddingAndMarginSchema(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              // 记录box-style的数值（无需实时响应）
+              _this.boxStyle = {
+                margin: {
+                  top: '',
+                  right: '',
+                  bottom: '',
+                  left: '',
+                },
+                padding: {
+                  top: '',
+                  right: '',
+                  bottom: '',
+                  left: '',
+                },
+                quantity: 'px',
+              };
+              /** 初始化boxStyle的数值 */
+              _this.initBoxStyle = function () {
+                var jsonStore = _this.props.jsonStore;
+                var _ref = jsonStore || {},
+                  getJSONDataByKeyRoute = _ref.getJSONDataByKeyRoute;
+                var _this$props = _this.props,
+                  keyRoute = _this$props.keyRoute,
+                  targetJsonSchema = _this$props.targetJsonSchema;
+                // 从jsonData中获取对应的数值
+                var curJsonData = getJSONDataByKeyRoute(keyRoute);
+                var marginSchema = targetJsonSchema.properties['margin'];
+                var paddingSchema = targetJsonSchema.properties['padding'];
+                var quantitySchema = targetJsonSchema.properties['quantity'];
+                var quantity = curJsonData.quantity || quantitySchema.default; // 获取数值单位
+                var marginValue = curJsonData.margin || marginSchema.default;
+                var paddingValue = curJsonData.padding || paddingSchema.default;
+                marginValue = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isNumber)(
+                  marginValue,
+                )
+                  ? marginValue.toString()
+                  : marginValue || 'auto';
+                paddingValue = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isNumber)(
+                  paddingValue,
+                )
+                  ? paddingValue.toString()
+                  : paddingValue || 'auto';
+
+                // 重置数值
+                _this.boxStyle.quantity = quantity;
+                var marginValueArr = marginValue.split(' ');
+                _this.boxStyle.margin.top = _this.getStyleValText(
+                  marginValueArr[0],
+                );
+                _this.boxStyle.margin.right = _this.getStyleValText(
+                  marginValueArr[1],
+                  paddingValue,
+                );
+                _this.boxStyle.margin.bottom = _this.getStyleValText(
+                  marginValueArr[2] || marginValueArr[0],
+                );
+                _this.boxStyle.margin.left = _this.getStyleValText(
+                  marginValueArr[3] || marginValueArr[1],
+                  paddingValue,
+                );
+                var paddingValueArr = paddingValue.split(' ');
+                _this.boxStyle.padding.top = _this.getStyleValText(
+                  paddingValueArr[0],
+                );
+                _this.boxStyle.padding.right = _this.getStyleValText(
+                  paddingValueArr[1],
+                  paddingValue,
+                );
+                _this.boxStyle.padding.bottom = _this.getStyleValText(
+                  paddingValueArr[2] || paddingValueArr[0],
+                );
+                _this.boxStyle.padding.left = _this.getStyleValText(
+                  paddingValueArr[3] || paddingValueArr[1],
+                  paddingValue,
+                );
+              };
+              _this.getStyleValText = function (valStr, defaultValue) {
+                var curValue = 'auto';
+                if (
+                  valStr === 'auto' ||
+                  valStr === 0 ||
+                  valStr === '' ||
+                  valStr === '0'
+                ) {
+                  curValue = valStr;
+                } else if (valStr) {
+                  curValue = parseInt(valStr);
+                  curValue = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isNumber)(
+                    curValue,
+                  )
+                    ? curValue
+                    : 'auto';
+                } else if (defaultValue !== undefined) {
+                  curValue = defaultValue;
+                }
+                return curValue;
+              };
+              _this.getStyleVal = function (valStr) {
+                var curValue = '';
+                if (valStr === 'auto' || valStr === 0) {
+                  curValue = valStr;
+                } else if (valStr === '') {
+                  curValue = 'auto';
+                } else if (valStr) {
+                  curValue = parseInt(valStr);
+                  curValue = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isNumber)(
+                    curValue,
+                  )
+                    ? curValue
+                    : 'auto';
+                }
+                if (curValue === 'auto' || curValue === 0) {
+                  return curValue;
+                }
+                return '' + curValue + _this.boxStyle.quantity;
+              };
+              /** 设置布局容器的盒子模型数值 */
+              _this.setLayoutBoxStyle = function (
+                newVal,
+                layoutStyleLock,
+                styleKey,
+                propKey,
+              ) {
+                if (layoutStyleLock) {
+                  _this.linkLayoutBoxStyle(newVal, styleKey);
+                } else {
+                  var curValue = _this.getStyleValText(newVal);
+                  if (curValue !== undefined) {
+                    _this.boxStyle[styleKey][propKey] = curValue;
+                  } else {
+                    _this.boxStyle[styleKey][propKey] = '';
+                  }
+                  _this.updateBoxStyleState();
+                }
+              };
+              /** 布局容器的盒子模型数值联动设值 */
+              _this.linkLayoutBoxStyle = function (newVal, styleKey) {
+                var curValue = _this.getStyleValText(newVal);
+                if (curValue !== undefined) {
+                  _this.boxStyle[styleKey]['top'] = curValue;
+                  _this.boxStyle[styleKey]['right'] = curValue;
+                  _this.boxStyle[styleKey]['bottom'] = curValue;
+                  _this.boxStyle[styleKey]['left'] = curValue;
+                } else {
+                  _this.boxStyle[styleKey]['top'] = '';
+                  _this.boxStyle[styleKey]['right'] = '';
+                  _this.boxStyle[styleKey]['bottom'] = '';
+                  _this.boxStyle[styleKey]['left'] = '';
+                }
+                _this.updateBoxStyleState();
+              };
+              /** 数值变动事件处理器 */
+              _this.updateBoxStyleState = function () {
+                var _this$props2 = _this.props,
+                  keyRoute = _this$props2.keyRoute,
+                  jsonStore = _this$props2.jsonStore;
+                var _ref2 = jsonStore || {},
+                  updateFormValueData = _ref2.updateFormValueData;
+                var renderAction = _this.state.renderAction;
+                /** 获取布局容器的盒子模型数值 */
+                var curBoxValue = {
+                  margin: _this.getMarginValue(),
+                  padding: _this.getPaddingValue(),
+                  quantity: _this.boxStyle.quantity,
+                };
+                updateFormValueData(keyRoute, curBoxValue); // 更新单位数值
+                _this.setState({
+                  renderAction: !renderAction,
+                });
+              };
+              _this.getSelectAfter = function (curJsonData) {
+                var targetJsonSchema = _this.props.targetJsonSchema;
+                var quantitySchema = targetJsonSchema.properties['quantity'];
+                var quantity = curJsonData.quantity || quantitySchema.default;
+
+                /*
+      // 暂时不支持单位切换
+      const selectAfter = (
+        <Select defaultValue={quantity} onChange={this.quantityChange}>
+          {quantitySchema.options &&
+            quantitySchema.options.length > 0 &&
+            quantitySchema.options.map((option) => (
+              <Option value={option.value}>{option.label}</Option>
+            ))}
+        </Select>
+      );
+      */
+                var selectAfter =
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    null,
+                    quantity,
+                  );
+                return selectAfter;
+              };
+              _this.quantityChange = function (newVal) {
+                var _this$props3 = _this.props,
+                  keyRoute = _this$props3.keyRoute,
+                  jsonStore = _this$props3.jsonStore;
+                var _ref3 = jsonStore || {},
+                  updateFormValueData = _ref3.updateFormValueData;
+                var curBoxValue = {
+                  margin: _this.getMarginValue(),
+                  padding: _this.getPaddingValue(),
+                  quantity: newVal,
+                };
+                updateFormValueData(keyRoute, curBoxValue);
+              };
+              _this.setType = function (newVal) {
+                _this.setState({
+                  type: newVal,
+                });
+              };
+              _this.getMarginValue = function () {
+                return (
+                  _this.getStyleVal(_this.boxStyle.margin.top) +
+                  ' ' +
+                  _this.getStyleVal(_this.boxStyle.margin.right) +
+                  ' ' +
+                  _this.getStyleVal(_this.boxStyle.margin.bottom) +
+                  ' ' +
+                  _this.getStyleVal(_this.boxStyle.margin.left)
+                );
+              };
+              _this.getPaddingValue = function () {
+                return (
+                  _this.getStyleVal(_this.boxStyle.padding.top) +
+                  ' ' +
+                  _this.getStyleVal(_this.boxStyle.padding.right) +
+                  ' ' +
+                  _this.getStyleVal(_this.boxStyle.padding.bottom) +
+                  ' ' +
+                  _this.getStyleVal(_this.boxStyle.padding.left)
+                );
+              };
+              _this.state = {
+                type: 'all',
+                // 设置类型，支持 自定义设值（custom）、统一设值（all）
+                layoutStyleLock: false,
+                // 是否锁住容器数值值的设置，默认为false，设置为true后4个数值同时联动
+                renderAction: false, // 用于主动触发render的临时变量
+              };
+              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+              _this.updateBoxStyleState = _this.updateBoxStyleState.bind(_this);
+              _this.initBoxStyle = _this.initBoxStyle.bind(_this);
+              _this.getStyleValText = _this.getStyleValText.bind(_this);
+              _this.getSelectAfter = _this.getSelectAfter.bind(_this);
+              _this.setLayoutBoxStyle = _this.setLayoutBoxStyle.bind(_this);
+              _this.linkLayoutBoxStyle = _this.linkLayoutBoxStyle.bind(_this);
+              _this.getSelectAfter = _this.getSelectAfter.bind(_this);
+              _this.quantityChange = _this.quantityChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              PaddingAndMarginSchema,
+              _React$PureComponent,
+            );
+            var _proto = PaddingAndMarginSchema.prototype;
+            _proto.componentWillMount = function componentWillMount() {
+              this.initBoxStyle();
+            };
+            _proto.componentWillReceiveProps =
+              function componentWillReceiveProps(nextProps) {
+                this.initBoxStyle();
+              };
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props4 = this.props,
+                nodeKey = _this$props4.nodeKey,
+                jsonKey = _this$props4.jsonKey,
+                targetJsonSchema = _this$props4.targetJsonSchema,
+                keyRoute = _this$props4.keyRoute;
+              var _this$props5 = this.props,
+                schemaStore = _this$props5.schemaStore,
+                jsonStore = _this$props5.jsonStore;
+              var _ref4 = schemaStore || {},
+                pageScreen = _ref4.pageScreen;
+              var _ref5 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref5.getJSONDataByKeyRoute;
+              var _this$state = this.state,
+                renderAction = _this$state.renderAction,
+                layoutStyleLock = _this$state.layoutStyleLock,
+                type = _this$state.type;
+              var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+
+              // 从jsonData中获取对应的数值
+              var curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+              var style = targetJsonSchema.style
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.style,
+                    ),
+                  )
+                : {};
+              var titleStyle = targetJsonSchema.titleStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.titleStyle,
+                    ),
+                  )
+                : {};
+              var contentStyle = targetJsonSchema.contentStyle
+                ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_7__.buildStyle)(
+                    (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
+                      targetJsonSchema.contentStyle,
+                    ),
+                  )
+                : {};
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className:
+                    (pageScreen === 'wideScreen'
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp') +
+                    ' ' +
+                    (renderAction ? 'render-mark' : ''),
+                  id: nodeKey,
+                  key: nodeKey,
+                  style: style,
+                },
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'element-title',
+                    style: titleStyle,
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
+                    {
+                      title: targetJsonSchema.description,
+                      placement: 'top',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'span',
+                      {
+                        className: 'title-text',
+                        title:
+                          pageScreen === 'wideScreen' &&
+                          targetJsonSchema.title.length > (readOnly ? 4 : 6)
+                            ? targetJsonSchema.title
+                            : '',
+                      },
+                      targetJsonSchema.title,
+                      targetJsonSchema.showKey &&
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'span',
+                          null,
+                          '\uFF08',
+                          (0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(
+                            jsonKey,
+                            {
+                              length: 15,
+                            },
+                          ),
+                          '\uFF09',
+                        ),
+                    ),
+                  ),
+                ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  'div',
+                  {
+                    className: 'content-item Style-PaddingAndMargin',
+                    style: contentStyle,
+                  },
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'Style-PaddingAndMargin-inner',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className:
+                          'Style-PaddingAndMargin-label Style-PaddingAndMargin-label--custom',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            '\n                  Style-PaddingAndMargin-label-all\n                  ' +
+                            (type === 'all'
+                              ? 'Style-PaddingAndMargin-label-all--active'
+                              : ''),
+                          onClick: function onClick() {
+                            return _this2.setType('all');
+                          },
+                        },
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        'div',
+                        {
+                          className:
+                            '\n                Style-PaddingAndMargin-label-custom\n                ' +
+                            (type === 'custom'
+                              ? 'Style-PaddingAndMargin-label-custom--active'
+                              : ''),
+                          onClick: function onClick() {
+                            return _this2.setType('custom');
+                          },
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          null,
+                        ),
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          null,
+                        ),
+                      ),
+                    ),
+                    type === 'all' &&
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        react__WEBPACK_IMPORTED_MODULE_1__.Fragment,
+                        null,
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'Style-PaddingAndMargin-input',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                            {
+                              name: 'layoutMargin',
+                              addonAfter: this.getSelectAfter(curJsonData),
+                              className: 'layout-item-margin',
+                              size: 'small',
+                              defaultValue: this.boxStyle['margin'].top,
+                              onChange: function onChange(event) {
+                                var newVal = event.target.value;
+                                _this2.setLayoutBoxStyle(
+                                  newVal,
+                                  true,
+                                  'margin',
+                                );
+                              },
+                            },
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            {
+                              className: 'Style-PaddingAndMargin-input-label',
+                            },
+                            '\u5916\u8FB9\u8DDD',
+                          ),
+                        ),
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className: 'Style-PaddingAndMargin-input',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                            {
+                              name: 'layoutPadding',
+                              addonAfter: this.getSelectAfter(curJsonData),
+                              className: 'layout-item-padding',
+                              size: 'small',
+                              defaultValue: this.boxStyle['padding'].top,
+                              onChange: function onChange(event) {
+                                var newVal = event.target.value;
+                                _this2.setLayoutBoxStyle(
+                                  newVal,
+                                  true,
+                                  'padding',
+                                );
+                              },
+                            },
+                          ),
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            {
+                              className: 'Style-PaddingAndMargin-input-label',
+                            },
+                            '\u5185\u8FB9\u8DDD',
+                          ),
+                        ),
+                      ),
+                  ),
+                  type !== 'all' &&
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className:
+                          'Style-PaddingAndMargin-custom Style-PaddingAndMargin-custom--padding Style-PaddingAndMargin-custom--margin',
+                      },
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutPaddingTop',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-padding',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['padding'].top,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'padding',
+                                    'top',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-paddingTop',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['padding'].top) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutPaddingTop',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-padding',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['padding'].right,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'padding',
+                                    'right',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-paddingRight',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['padding'].right) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutPaddingBottom',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-padding',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['padding'].bottom,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'padding',
+                                    'bottom',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-paddingBottom',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['padding'].bottom) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutPaddingLeft',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-padding',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['padding'].left,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'padding',
+                                    'left',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-paddingLeft',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['padding'].left) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutMarginTop',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-margin',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['margin'].top,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'margin',
+                                    'top',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-marginTop',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['margin'].top) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutMarginRight',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-margin',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['margin'].right,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'margin',
+                                    'right',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-marginRight',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['margin'].right) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutMarginBottom',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-margin',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['margin'].bottom,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'margin',
+                                    'bottom',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-marginBottom',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['margin'].bottom) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                      /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                        antd__WEBPACK_IMPORTED_MODULE_5__.Popover,
+                        {
+                          content: function content() {
+                            return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                              antd__WEBPACK_IMPORTED_MODULE_5__.Input,
+                              {
+                                name: 'layoutMarginLeft',
+                                addonAfter: _this2.getSelectAfter(curJsonData),
+                                className: 'layout-item-margin',
+                                size: 'small',
+                                defaultValue: _this2.boxStyle['margin'].left,
+                                onChange: function onChange(event) {
+                                  var newVal = event.target.value;
+                                  _this2.setLayoutBoxStyle(
+                                    newVal,
+                                    false,
+                                    'margin',
+                                    'left',
+                                  );
+                                },
+                              },
+                            );
+                          },
+                          title: '',
+                        },
+                        /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                          'div',
+                          {
+                            className:
+                              'Style-PaddingAndMargin-custom-marginLeft',
+                          },
+                          /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                            'div',
+                            null,
+                            this.getStyleVal(this.boxStyle['margin'].left) ||
+                              '-',
+                          ),
+                        ),
+                      ),
+                    ),
+                ),
+              );
+            };
+            return PaddingAndMarginSchema;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          PaddingAndMarginSchema.propTypes = {
+            parentType:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            indexRoute:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_4___default().string,
+            targetJsonSchema:
+              prop_types__WEBPACK_IMPORTED_MODULE_4___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] = (0,
+          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
+            return {
+              schemaStore: stores.JSONSchemaStore,
+              jsonStore: stores.JSONEditorStore,
+            };
+          })(
+            (0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(
+              PaddingAndMarginSchema,
+            ),
+          );
+
+          /***/
+        },
+
       /***/ './src/renderers/QuantitySchema/index.js':
         /*!***********************************************!*\
   !*** ./src/renderers/QuantitySchema/index.js ***!
@@ -14668,6 +15610,15 @@
           /***/
         },
 
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/PaddingAndMarginSchema/index.scss':
+        /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/PaddingAndMarginSchema/index.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
       /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/RemoteDynamicDataSchema/index.scss':
         /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/RemoteDynamicDataSchema/index.scss ***!
@@ -14983,6 +15934,32 @@
             /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
           )['default'];
           var update = add('91732ad6', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/renderers/PaddingAndMarginSchema/index.scss':
+        /*!*********************************************************!*\
+  !*** ./src/renderers/PaddingAndMarginSchema/index.scss ***!
+  \*********************************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/PaddingAndMarginSchema/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('6e510ca0', content, false, { sourceMap: false });
           // Hot Module Replacement
           if (false) {
           }

@@ -52,9 +52,7 @@ class BoxStyleSchema extends React.PureComponent {
     const { keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    /** 获取quantity中的数值对象（默认第一个就是数值对象） */
-    const unitJsonKey = targetJsonSchema.propertyOrder[0];
-    const unitJsonSchema = targetJsonSchema.properties[unitJsonKey];
+    const unitJsonSchema = targetJsonSchema.properties['unit'];
     const quantity = curJsonData.quantity; // 获取数值单位
     const unitStr = curJsonData.unit || unitJsonSchema.default; // 获取数值
     // 重置数值
@@ -63,7 +61,7 @@ class BoxStyleSchema extends React.PureComponent {
       right: '',
       bottom: '',
       left: '',
-      quantity: quantity, // 设置单位值
+      quantity: quantity,
     };
     // 设置盒子模型数值
     if (unitStr) {
