@@ -195,7 +195,7 @@ class BaseFormSchema extends React.PureComponent {
       this.props.titleIsFixed !== undefined ? this.props.titleIsFixed : isFixed; // title是否为不可编辑的属性
     const hideOperaBtn = this.props.hideOperaBtn || !parentIsContainer; // 是否隐藏操作类按钮
 
-    const showAdvanceBtn = hideOperaBtn ? this.props.showAdvanceBtn : false; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
+    const showAdvanceBtn = this.props.showAdvanceBtn ?? true; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
     const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
     const curType = targetJsonSchema.type;
     const isContainerElem = isContainerSchema(targetJsonSchema); // 判断是否是容器类型元素

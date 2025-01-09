@@ -117,6 +117,9 @@ class PaddingAndMarginSchema extends React.PureComponent {
     let curValue = 'auto';
     if (valStr === 'auto' || valStr === 0 || valStr === '' || valStr === '0') {
       curValue = valStr;
+    } else if (/^\$/.test(valStr)) {
+      // 识别特殊字符串数值: 保留以 $ 开头的数值
+      curValue = valStr;
     } else if (valStr) {
       curValue = parseInt(valStr);
       curValue = isNumber(curValue) ? curValue : 'auto';
@@ -130,6 +133,9 @@ class PaddingAndMarginSchema extends React.PureComponent {
     let curValue = '';
     if (valStr === 'auto' || valStr === 0) {
       curValue = valStr;
+    } else if (/^\$/.test(valStr)) {
+      // 识别特殊字符串数值: 保留以 $ 开头的数值
+      return valStr;
     } else if (valStr === '') {
       curValue = 'auto';
     } else if (valStr) {

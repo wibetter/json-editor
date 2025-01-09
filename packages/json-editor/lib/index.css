@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.29
+ * @wibetter/json-editor v5.1.1
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 09 2025 10:47:27 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 09 2025 11:33:48 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -919,7 +919,8 @@
   left: 2px;
 }
 
-.layout-item-padding .ant-input-wrapper, .layout-item-margin .ant-input-wrapper {
+.layout-item-padding .ant-input-wrapper,
+.layout-item-margin .ant-input-wrapper {
   position: relative;
   height: 32px;
   display: -webkit-box;
@@ -934,10 +935,12 @@
           align-items: stretch;
   background-color: #fff;
 }
-.layout-item-padding .ant-select-selector, .layout-item-margin .ant-select-selector {
+.layout-item-padding .ant-select-selector,
+.layout-item-margin .ant-select-selector {
   padding: 0 8px !important;
 }
-.layout-item-padding .ant-input-group-addon, .layout-item-margin .ant-input-group-addon {
+.layout-item-padding .ant-input-group-addon,
+.layout-item-margin .ant-input-group-addon {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

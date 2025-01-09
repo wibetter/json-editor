@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.0.29
+ * @wibetter/json-editor v5.1.1
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 09 2025 10:47:27 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 09 2025 11:33:48 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -9162,6 +9162,9 @@
                   valStr === '0'
                 ) {
                   curValue = valStr;
+                } else if (/^\$/.test(valStr)) {
+                  // 识别特殊字符串数值: 保留以 $ 开头的数值
+                  curValue = valStr;
                 } else if (valStr) {
                   curValue = parseInt(valStr);
                   curValue = (0,
@@ -9179,6 +9182,9 @@
                 var curValue = '';
                 if (valStr === 'auto' || valStr === 0) {
                   curValue = valStr;
+                } else if (/^\$/.test(valStr)) {
+                  // 识别特殊字符串数值: 保留以 $ 开头的数值
+                  return valStr;
                 } else if (valStr === '') {
                   curValue = 'auto';
                 } else if (valStr) {
@@ -11378,13 +11384,16 @@
                 jsonStore = _this$props.jsonStore;
               var _ref = schemaStore || {},
                 pageScreen = _ref.pageScreen;
-              // const { getJSONDataByKeyRoute } = jsonStore || {};
+              var _ref2 = jsonStore || {},
+                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute,
+                JSONEditorObj = _ref2.JSONEditorObj;
               var _this$props2 = this.props,
                 indexRoute = _this$props2.indexRoute,
                 jsonKey = _this$props2.jsonKey,
                 nodeKey = _this$props2.nodeKey,
                 keyRoute = _this$props2.keyRoute,
                 targetJsonSchema = _this$props2.targetJsonSchema;
+
               // 获取前端缓存中的折叠数据
               var collapseData = ['mainConfig'];
               var collapseCacheData = (0,
@@ -11399,6 +11408,8 @@
               ) {
                 collapseData = collapseCacheData;
               }
+              var curData = getJSONDataByKeyRoute(keyRoute) || {};
+              curData = Object.assign({}, JSONEditorObj, curData);
               var style = targetJsonSchema.style
                 ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_10__.buildStyle)(
                     (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
@@ -11511,6 +11522,29 @@
                         currentSchemaData.propertyOrder &&
                         currentSchemaData.propertyOrder.length > 0
                       ) {
+                        if (
+                          (0,
+                          $utils_index__WEBPACK_IMPORTED_MODULE_10__.hasProperties)(
+                            currentSchemaData.onShow,
+                          ) &&
+                          currentSchemaData.onShow !== '' &&
+                          (((0,
+                          _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isBoolean)(
+                            currentSchemaData.onShow,
+                          ) &&
+                            !currentSchemaData.onShow) ||
+                            ((0,
+                            _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isString)(
+                              currentSchemaData.onShow,
+                            ) &&
+                              !(0,
+                              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.evalExpression)(
+                                currentSchemaData.onShow,
+                                curData,
+                              )))
+                        ) {
+                          return;
+                        }
                         return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                           Panel,
                           {

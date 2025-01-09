@@ -4,11 +4,17 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Collapse, Tooltip } from 'antd';
 const { Panel } = Collapse;
-import { truncate, isArray } from '@wibetter/json-utils';
+import {
+  truncate,
+  isArray,
+  evalExpression,
+  isString,
+  isBoolean,
+} from '@wibetter/json-utils';
 import MappingRender from '$components/MappingRender';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
-import { buildStyle } from '$utils/index';
+import { buildStyle, hasProperties } from '$utils/index';
 
 class SohuDataSourceSchema extends React.PureComponent {
   static propTypes = {
@@ -54,15 +60,19 @@ class SohuDataSourceSchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    // const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { getJSONDataByKeyRoute, JSONEditorObj } = jsonStore || {};
     const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
       this.props;
+
     // 获取前端缓存中的折叠数据
     let collapseData = ['mainConfig'];
     const collapseCacheData = getJSONEditorCache(keyRoute);
     if (collapseCacheData && isArray(collapseCacheData)) {
       collapseData = collapseCacheData;
     }
+
+    let curData = getJSONDataByKeyRoute(keyRoute) || {};
+    curData = Object.assign({}, JSONEditorObj, curData);
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -133,6 +143,17 @@ class SohuDataSourceSchema extends React.PureComponent {
                 currentSchemaData.propertyOrder &&
                 currentSchemaData.propertyOrder.length > 0
               ) {
+                if (
+                  hasProperties(currentSchemaData.onShow) &&
+                  currentSchemaData.onShow !== '' &&
+                  ((isBoolean(currentSchemaData.onShow) &&
+                    !currentSchemaData.onShow) ||
+                    (isString(currentSchemaData.onShow) &&
+                      !evalExpression(currentSchemaData.onShow, curData)))
+                ) {
+                  return;
+                }
+
                 return (
                   <Panel header={currentSchemaData.title} key={currentJsonKey}>
                     {MappingRender({

@@ -2229,44 +2229,45 @@
               o()(t, e),
               (t.prototype.render = function () {
                 var e,
-                  t = this,
-                  n = (this.props.schemaStore || {}).getSchemaByIndexRoute,
-                  a = this.props,
-                  o = a.parentType,
-                  i = a.indexRoute,
-                  s = a.jsonKey,
-                  c = a.nodeKey,
-                  l = a.targetJsonSchema,
-                  p = this.state.showAdvanceConfig,
-                  d = i ? (0, Oe.getParentIndexRoute)(i) : '',
-                  m = d ? n(d) : {},
-                  u = null == (e = m && m.isContainer) || e,
-                  h = l.isFixed || this.props.isFixed || !1,
-                  y =
-                    (this.props.readOnly || l.readOnly,
+                  t,
+                  n = this,
+                  a = (this.props.schemaStore || {}).getSchemaByIndexRoute,
+                  o = this.props,
+                  i = o.parentType,
+                  s = o.indexRoute,
+                  c = o.jsonKey,
+                  l = o.nodeKey,
+                  p = o.targetJsonSchema,
+                  d = this.state.showAdvanceConfig,
+                  m = s ? (0, Oe.getParentIndexRoute)(s) : '',
+                  u = m ? a(m) : {},
+                  h = null == (e = u && u.isContainer) || e,
+                  y = p.isFixed || this.props.isFixed || !1,
+                  g =
+                    (this.props.readOnly || p.readOnly,
                     void 0 !== this.props.keyIsFixed
                       ? this.props.keyIsFixed
-                      : !u || h),
-                  g =
+                      : !h || y),
+                  f =
                     void 0 !== this.props.typeIsFixed
                       ? this.props.typeIsFixed
-                      : h,
-                  f =
+                      : y,
+                  v =
                     void 0 !== this.props.titleIsFixed
                       ? this.props.titleIsFixed
-                      : h,
-                  v = this.props.hideOperaBtn || !u,
-                  x = !!v && this.props.showAdvanceBtn,
-                  b = this.getCurrentTypeList(o),
-                  E = l.type,
-                  O = (0, Oe.isContainerSchema)(l);
+                      : y,
+                  x = this.props.hideOperaBtn || !h,
+                  b = null == (t = this.props.showAdvanceBtn) || t,
+                  E = this.getCurrentTypeList(i),
+                  O = p.type,
+                  C = (0, Oe.isContainerSchema)(p);
                 return r.createElement(
                   r.Fragment,
                   null,
-                  l &&
+                  p &&
                     r.createElement(
                       'div',
-                      { className: 'base-schema-box', id: c },
+                      { className: 'base-schema-box', id: l },
                       r.createElement(
                         'div',
                         {
@@ -2275,8 +2276,8 @@
                           onDragStart: this.ignoreDragEvent,
                         },
                         r.createElement(S.Input, {
-                          defaultValue: s || 'key值不存在',
-                          disabled: y,
+                          defaultValue: c || 'key值不存在',
+                          disabled: g,
                           onPressEnter: this.handleJsonKeyChange,
                           onBlur: this.handleJsonKeyChange,
                         }),
@@ -2292,12 +2293,12 @@
                           S.Select,
                           {
                             showSearch: !0,
-                            defaultValue: E,
+                            defaultValue: O,
                             style: { width: 150 },
                             onChange: this.selectHandleChange,
-                            disabled: g,
+                            disabled: f,
                           },
-                          b.map(function (e) {
+                          E.map(function (e) {
                             return r.createElement(Je, { key: e, value: e }, e);
                           }),
                         ),
@@ -2310,17 +2311,17 @@
                           onDragStart: this.ignoreDragEvent,
                         },
                         r.createElement(S.Input, {
-                          defaultValue: l.title,
-                          disabled: f,
+                          defaultValue: p.title,
+                          disabled: v,
                           onPressEnter: this.handleTitleChange,
                           onBlur: this.handleTitleChange,
                         }),
                       ),
-                      !v &&
+                      !x &&
                         r.createElement(
                           'div',
                           { className: 'operate-item' },
-                          !h &&
+                          !y &&
                             r.createElement(
                               S.Tooltip,
                               { title: '删除' },
@@ -2331,13 +2332,13 @@
                             ),
                           r.createElement(
                             S.Tooltip,
-                            { title: O ? '新增子元素' : '新增同级元素' },
+                            { title: C ? '新增子元素' : '新增同级元素' },
                             r.createElement(we.PlusOutlined, {
                               className: 'operate-btn',
                               onClick: this.onAddBtnEvent,
                             }),
                           ),
-                          O &&
+                          C &&
                             r.createElement(
                               S.Tooltip,
                               { title: '数据项排序' },
@@ -2346,7 +2347,7 @@
                                 onClick: this.childElemSort,
                               }),
                             ),
-                          !h &&
+                          !y &&
                             r.createElement(
                               r.Fragment,
                               null,
@@ -2364,7 +2365,7 @@
                                 r.createElement(we.SettingOutlined, {
                                   className: 'operate-btn',
                                   onClick: function () {
-                                    t.setState({ showAdvanceConfig: !0 });
+                                    n.setState({ showAdvanceConfig: !0 });
                                   },
                                 }),
                               ),
@@ -2377,7 +2378,7 @@
                               ),
                             ),
                         ),
-                      x &&
+                      b &&
                         r.createElement(
                           'div',
                           { className: 'operate-item' },
@@ -2387,20 +2388,20 @@
                             r.createElement(we.SettingOutlined, {
                               className: 'operate-btn',
                               onClick: function () {
-                                t.setState({ showAdvanceConfig: !0 });
+                                n.setState({ showAdvanceConfig: !0 });
                               },
                             }),
                           ),
                         ),
-                      p &&
+                      d &&
                         r.createElement(
                           S.Modal,
                           {
                             visible: !0,
                             title:
-                              '高级设置 / 当前字段：' + l.title + '(' + s + ')',
+                              '高级设置 / 当前字段：' + p.title + '(' + c + ')',
                             onCancel: function () {
-                              t.setState({ showAdvanceConfig: !1 });
+                              n.setState({ showAdvanceConfig: !1 });
                             },
                             footer: [
                               r.createElement(
@@ -2409,7 +2410,7 @@
                                   key: 'submit',
                                   type: 'primary',
                                   onClick: function () {
-                                    t.setState({ showAdvanceConfig: !1 });
+                                    n.setState({ showAdvanceConfig: !1 });
                                   },
                                 },
                                 '保存并关闭',
@@ -2417,20 +2418,20 @@
                             ],
                           },
                           r.createElement(Te, {
-                            indexRoute: i,
-                            jsonKey: s,
-                            targetJsonSchema: l,
+                            indexRoute: s,
+                            jsonKey: c,
+                            targetJsonSchema: p,
                           }),
                         ),
                     ),
-                  !l &&
+                  !p &&
                     r.createElement(
                       'div',
                       { className: 'base-schema-box' },
                       r.createElement(
                         'div',
                         { className: 'warn-text' },
-                        s,
+                        c,
                         '：数据元素为空',
                       ),
                     ),
