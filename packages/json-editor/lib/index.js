@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.5
+ * @wibetter/json-editor v5.1.6
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 10 2025 18:21:54 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 10 2025 22:53:25 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1632,6 +1632,7 @@
             };
             _proto.render = function render() {
               var _targetJsonSchema$sho,
+                _targetJsonSchema$box,
                 _this2 = this;
               var _this$props = this.props,
                 schemaStore = _this$props.schemaStore,
@@ -1685,6 +1686,10 @@
               if (activeArrIndexCache !== undefined) {
                 currentActiveArrIndex = activeArrIndexCache;
               }
+              var boxTitle =
+                (_targetJsonSchema$box = targetJsonSchema.boxTitle) != null
+                  ? _targetJsonSchema$box
+                  : '数据配置';
               var style = targetJsonSchema.style
                 ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_12__.buildStyle)(
                     (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
@@ -1788,7 +1793,7 @@
                       {
                         className: 'title-text',
                       },
-                      '\u6570\u7EC4\u914D\u7F6E',
+                      boxTitle,
                     ),
                     isClosed
                       ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -5200,6 +5205,7 @@
             };
             _proto.render = function render() {
               var _targetJsonSchema$sho,
+                _targetJsonSchema$box,
                 _this2 = this;
               var _this$props = this.props,
                 schemaStore = _this$props.schemaStore,
@@ -5246,6 +5252,10 @@
               if (collapseCacheData !== undefined) {
                 isClosed = collapseCacheData;
               }
+              var boxTitle =
+                (_targetJsonSchema$box = targetJsonSchema.boxTitle) != null
+                  ? _targetJsonSchema$box
+                  : '动态配置';
               var style = targetJsonSchema.style
                 ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_8__.buildStyle)(
                     (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
@@ -5354,7 +5364,7 @@
                         {
                           className: 'title-text',
                         },
-                        '\u52A8\u6001\u914D\u7F6E',
+                        boxTitle,
                       ),
                       isClosed
                         ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
@@ -8844,6 +8854,7 @@
             };
             _proto.render = function render() {
               var _targetJsonSchema$sho,
+                _targetJsonSchema$box,
                 _this2 = this;
               var _this$props = this.props,
                 schemaStore = _this$props.schemaStore,
@@ -8880,6 +8891,10 @@
               if (collapseCacheData !== undefined) {
                 isClosed = collapseCacheData;
               }
+              var boxTitle =
+                (_targetJsonSchema$box = targetJsonSchema.boxTitle) != null
+                  ? _targetJsonSchema$box
+                  : '对象配置';
               var style = targetJsonSchema.style
                 ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_13__.buildStyle)(
                     (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
@@ -8987,7 +9002,7 @@
                         {
                           className: 'title-text',
                         },
-                        '\u5BF9\u8C61\u914D\u7F6E',
+                        boxTitle,
                       ),
                       isClosed
                         ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(

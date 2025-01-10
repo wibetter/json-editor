@@ -100,6 +100,8 @@ class ObjectSchema extends React.PureComponent {
       isClosed = collapseCacheData;
     }
 
+    const boxTitle = targetJsonSchema.boxTitle ?? '动态配置';
+
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
       : {};
@@ -149,7 +151,7 @@ class ObjectSchema extends React.PureComponent {
         >
           {!isStructured && !isArrayItem && (
             <div className="element-title" onClick={this.collapseChange}>
-              <span className="title-text">动态配置</span>
+              <span className="title-text">{boxTitle}</span>
               {isClosed ? (
                 <RightOutlined className="close-operate-btn" />
               ) : (

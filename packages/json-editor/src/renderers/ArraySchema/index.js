@@ -219,6 +219,8 @@ class ArraySchema extends React.PureComponent {
       currentActiveArrIndex = activeArrIndexCache;
     }
 
+    const boxTitle = targetJsonSchema.boxTitle ?? '数据配置';
+
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
       : {};
@@ -262,7 +264,7 @@ class ArraySchema extends React.PureComponent {
         </div>
         <div className="array-schema-box content-item" style={contentStyle}>
           <div className="element-title" onClick={this.collapseChange}>
-            <span className="title-text">数组配置</span>
+            <span className="title-text">{boxTitle}</span>
             {isClosed ? (
               <RightOutlined className="close-operate-btn" />
             ) : (
