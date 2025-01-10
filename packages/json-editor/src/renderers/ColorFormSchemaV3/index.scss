@@ -40,7 +40,7 @@
       }
     }
 
-    &:hover {
+    &:hover:not(.disabled) {
       width: 70px;
     }
 

@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Input, InputNumber, Tooltip } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
 import './index.scss';
@@ -181,7 +182,7 @@ class BoxStyleSchema extends React.PureComponent {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { renderAction, layoutStyleLock } = this.state;
-    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -205,25 +206,24 @@ class BoxStyleSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <Tooltip title={targetJsonSchema.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' &&
-                targetJsonSchema.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonSchema.title
-                  : ''
-              }
-            >
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+            }
+            placement="top"
+          >
+            <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
                 <span>（{truncate(jsonKey, { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div
           className={`content-item layout-box-style-container`}

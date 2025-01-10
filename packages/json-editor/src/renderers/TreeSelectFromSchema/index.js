@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { TreeSelect } from 'antd';
 import { json2treeData, isObject } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';

@@ -82,25 +82,13 @@ class URLFormSchema extends React.PureComponent {
             }
             placement="top"
           >
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' &&
-                targetJsonSchema.title &&
-                targetJsonSchema.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonSchema.title
-                  : ''
-              }
-            >
+            <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
                 <span>（{truncate(jsonKey, { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />

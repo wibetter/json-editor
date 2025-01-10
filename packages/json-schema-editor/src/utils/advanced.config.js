@@ -65,8 +65,6 @@ export function isNeedReadOnlyOption(curType) {
     ...BASE_TYPE,
     'quantity',
     'text-editor',
-    'box-style',
-    'padding-margin',
     'json',
     'codearea',
     'htmlarea',

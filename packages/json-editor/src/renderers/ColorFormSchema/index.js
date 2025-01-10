@@ -4,7 +4,7 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip, message, Popover } from 'antd';
 import { SketchPicker } from 'react-color';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
@@ -116,22 +116,24 @@ class ColorFormSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <Tooltip title={targetJsonSchema.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                (isNeedTwoCol || pageScreen === 'wideScreen') &&
-                targetJsonSchema.title.length > 6
-                  ? targetJsonSchema.title
-                  : ''
-              }
-            >
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+            }
+            placement="top"
+          >
+            <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
                 <span>（{truncate(jsonKey, { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item" style={contentStyle}>
           <div className={`form-item-box`}>

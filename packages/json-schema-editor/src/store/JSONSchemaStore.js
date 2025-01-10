@@ -534,7 +534,7 @@ export default class JSONSchemaStore {
     if (itemJSONObj.options) {
       if (
         itemJSONObj.options.find(
-          (item) => item.label === optionLabel || item.name === optionLabel,
+          (item) => item.label === optionLabel, //  || item.name === optionLabel
         )
       ) {
         isExit = true;

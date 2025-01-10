@@ -123,22 +123,24 @@ class ObjectSchema extends React.PureComponent {
       >
         {!isStructured && !isArrayItem && (
           <div className="element-title" style={titleStyle}>
-            <Tooltip title={targetJsonSchema.description} placement="top">
-              <span
-                className="title-text"
-                title={
-                  pageScreen === 'wideScreen' &&
-                  targetJsonSchema.title.length > 6
-                    ? targetJsonSchema.title
-                    : ''
-                }
-              >
+            <Tooltip
+              title={
+                pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+              }
+              placement="top"
+            >
+              <span className="title-text" title={targetJsonSchema.title}>
                 {targetJsonSchema.title}
                 {targetJsonSchema.showKey && (
                   <span>（{truncate(jsonKey, { length: 15 })}）</span>
                 )}
               </span>
             </Tooltip>
+            {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+              <Tooltip title={targetJsonSchema.description} placement="top">
+                <InfoCircleOutlined className="info-icon" />
+              </Tooltip>
+            )}
           </div>
         )}
         <div

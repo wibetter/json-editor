@@ -2,6 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { Input, InputNumber, Tooltip, Popover, Select } from 'antd';
 const { Option } = Select;
 import { truncate, isNumber } from '@wibetter/json-utils';
@@ -250,7 +251,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { renderAction, type } = this.state;
-    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
@@ -277,25 +278,24 @@ class PaddingAndMarginSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <Tooltip title={targetJsonSchema.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' &&
-                targetJsonSchema.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonSchema.title
-                  : ''
-              }
-            >
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+            }
+            placement="top"
+          >
+            <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
                 <span>（{truncate(jsonKey, { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div
           className={`content-item Style-PaddingAndMargin`}

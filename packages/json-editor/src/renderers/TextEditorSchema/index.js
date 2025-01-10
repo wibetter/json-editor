@@ -177,25 +177,20 @@ class TextEditorSchema extends React.PureComponent {
           }}
           style={titleStyle}
         >
-          <span
-            className="title-text"
+          <Tooltip
             title={
-              pageScreen === 'wideScreen' &&
-              targetJsonSchema.title &&
-              targetJsonSchema.title.length > (readOnly ? 4 : 6)
-                ? targetJsonSchema.title
-                : ''
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
+            placement="top"
           >
-            {targetJsonSchema.title}
-            {targetJsonSchema.showKey && (
-              <span>（{truncate(jsonKey, { length: 15 })}）</span>
-            )}
-          </span>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
-          {targetJsonSchema.description && (
+            <span className="title-text" title={targetJsonSchema.title}>
+              {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
+            </span>
+          </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>

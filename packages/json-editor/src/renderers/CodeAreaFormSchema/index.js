@@ -103,33 +103,19 @@ class CodeAreaFormSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          {/*宽屏模式：Title hover时显示描述信息*/}
           <Tooltip
             title={
               pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
             placement="top"
           >
-            <span
-              className="title-text"
-              title={
-                pageScreen === 'wideScreen' &&
-                targetJsonSchema.title &&
-                targetJsonSchema.title.length > (readOnly ? 4 : 6)
-                  ? targetJsonSchema.title
-                  : ''
-              }
-            >
+            <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
                 <span>（{truncate(jsonKey, { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
-          {/*小屏模式*/}
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />

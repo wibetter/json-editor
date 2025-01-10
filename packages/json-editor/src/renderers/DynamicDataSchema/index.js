@@ -191,13 +191,20 @@ class DynamicDataSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text">
-            {targetJsonSchema.title}
-            {targetJsonSchema.showKey && (
-              <span>（{truncate(jsonKey, { length: 15 })}）</span>
-            )}
-          </span>
-          {targetJsonSchema.description && (
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+            }
+            placement="top"
+          >
+            <span className="title-text" title={targetJsonSchema.title}>
+              {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
+            </span>
+          </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>

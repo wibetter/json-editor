@@ -4,7 +4,7 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip, message, Popover } from 'antd';
 import { SketchPicker } from 'react-color';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle } from '$utils/index';
@@ -115,59 +115,73 @@ class ColorFormSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <Tooltip title={targetJsonSchema.description} placement="top">
-            <span
-              className="title-text"
-              title={
-                (isNeedTwoCol || pageScreen === 'wideScreen') &&
-                targetJsonSchema.title.length > 6
-                  ? targetJsonSchema.title
-                  : ''
-              }
-            >
+          <Tooltip
+            title={
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
+            }
+            placement="top"
+          >
+            <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
                 <span>（{truncate(jsonKey, { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
+            <Tooltip title={targetJsonSchema.description} placement="top">
+              <InfoCircleOutlined className="info-icon" />
+            </Tooltip>
+          )}
         </div>
         <div className="content-item" style={contentStyle}>
           <div className={`form-item-box render-dom-${renderState}`}>
             <div
               className={`color-btn-wrap color-item-form ${
                 displayColorPicker ? 'selected' : ''
-              }`}
+              } ${readOnly ? 'disabled' : ''}`}
               onClick={() => {
+                if (readOnly) return;
                 this.setState({
                   displayColorPicker: !displayColorPicker,
                 });
               }}
             >
-              <Popover
-                content={SketchPickerContent}
-                title="颜色选择器"
-                trigger="click"
-              >
+              {readOnly && (
                 <button
                   className="ant-input color-btn"
                   style={{
                     backgroundColor: curJsonData || targetJsonSchema.default,
                   }}
                 ></button>
-              </Popover>
-              <Tooltip title={`点击移除当前颜色值`} placement="top">
-                <CloseOutlined
-                  className="delete-bgColor-btn"
-                  onClick={() => {
-                    this.deleteColor();
-                  }}
-                />
-              </Tooltip>
-              <span className="arrow"></span>
+              )}
+
+              {!readOnly && (
+                <>
+                  <Popover
+                    content={SketchPickerContent}
+                    title="颜色选择器"
+                    trigger="click"
+                  >
+                    <button
+                      className="ant-input color-btn"
+                      style={{
+                        backgroundColor:
+                          curJsonData || targetJsonSchema.default,
+                      }}
+                    ></button>
+                  </Popover>
+                  <Tooltip title={`点击移除当前颜色值`} placement="top">
+                    <CloseOutlined
+                      className="delete-bgColor-btn"
+                      onClick={() => {
+                        this.deleteColor();
+                      }}
+                    />
+                  </Tooltip>
+                  <span className="arrow"></span>
+                </>
+              )}
             </div>
           </div>
         </div>

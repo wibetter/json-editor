@@ -101,20 +101,20 @@ class DataSourceSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span
-            className="title-text"
+          <Tooltip
             title={
-              pageScreen === 'wideScreen' && targetJsonSchema.title.length > 6
-                ? targetJsonSchema.title
-                : ''
+              pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
             }
+            placement="top"
           >
-            {targetJsonSchema.title}
-            {targetJsonSchema.showKey && (
-              <span>（{truncate(jsonKey, { length: 15 })}）</span>
-            )}
-          </span>
-          {targetJsonSchema.description && (
+            <span className="title-text" title={targetJsonSchema.title}>
+              {targetJsonSchema.title}
+              {targetJsonSchema.showKey && (
+                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+              )}
+            </span>
+          </Tooltip>
+          {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />
             </Tooltip>

@@ -29,15 +29,318 @@ class IndexDemo extends React.PureComponent {
             title: '功能设置',
             properties: {
               a: {
-                title: '单文本框',
-                type: 'input',
-                default: '', // 默认值
-                description: '', // 字段项的说明和描述
-                placeholder: '', // 输入提示
-                isRequired: false,
+                type: 'boolean',
+                title: '布尔值',
+                default: false,
+                description: '123',
+                readOnly: true,
+              },
+              field_1: {
+                type: 'number',
+                title: '数量number',
+                default: 1,
+                minimum: 0,
+                maximum: 1000,
+                description: '123',
+                readOnly: true,
+              },
+              field_2: {
+                type: 'color',
+                title: '颜色color',
+                default: '#ffffff',
+                description: '123',
+                readOnly: true,
+              },
+              field_3: {
+                type: 'url',
+                title: '链接地址url',
+                default: '',
+                description: '111',
+                placeholder: '',
+                readOnly: true,
+              },
+              field_4: {
+                type: 'textarea',
+                title: '多行文本框',
+                default: '',
+                description: '111',
+                placeholder: '',
+                readOnly: true,
+              },
+              field_5: {
+                type: 'radio',
+                title: '单选',
+                options: [
+                  {
+                    label: '选项a',
+                    value: 'a',
+                  },
+                  {
+                    label: '选项b',
+                    value: 'b',
+                  },
+                  {
+                    label: '选项c',
+                    value: 'c',
+                  },
+                ],
+                default: 'a',
+                description: '111',
+                readOnly: true,
+              },
+              field_6: {
+                type: 'select',
+                title: '下拉选择',
+                options: [
+                  {
+                    label: '选项a',
+                    value: 'a',
+                  },
+                  {
+                    label: '选项b',
+                    value: 'b',
+                  },
+                  {
+                    label: '选项c',
+                    value: 'c',
+                  },
+                ],
+                default: 'a',
+                description: '111',
+                readOnly: true,
+              },
+              field_7: {
+                type: 'cascader',
+                title: '级联选择',
+                options: [
+                  {
+                    value: 'zhejiang',
+                    label: 'Zhejiang',
+                    children: [
+                      {
+                        value: 'hangzhou',
+                        label: 'Hangzhou',
+                        children: [
+                          {
+                            value: 'xihu',
+                            label: 'West Lake',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    value: 'jiangsu',
+                    label: 'Jiangsu',
+                    children: [
+                      {
+                        value: 'nanjing',
+                        label: 'Nanjing',
+                        children: [
+                          {
+                            value: 'zhonghuamen',
+                            label: 'Zhong Hua Men',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+                default: 'a',
+                description: '111',
+                showSearch: true,
+                allowClear: true,
+                readOnly: true,
+              },
+              field_8: {
+                type: 'checkboxes',
+                title: '多选',
+                options: [
+                  {
+                    label: '选项a',
+                    value: 'a',
+                  },
+                  {
+                    label: '选项b',
+                    value: 'b',
+                  },
+                  {
+                    label: '选项c',
+                    value: 'c',
+                  },
+                ],
+                default: ['a'],
+                description: '111',
+                readOnly: true,
+              },
+              field_9: {
+                type: 'date',
+                title: '日期Date',
+                default: '',
+                description: '111',
+                placeholder: '',
+                readOnly: true,
+              },
+              field_10: {
+                type: 'date-time',
+                title: '日期时间',
+                default: '',
+                description: '111',
+                placeholder: '',
+                readOnly: true,
+              },
+              field_11: {
+                type: 'time',
+                title: '时间Time',
+                default: '',
+                description: '1111',
+                placeholder: '',
+                readOnly: true,
+              },
+              field_12: {
+                title: '图片地址',
+                type: 'input-image',
+                description: '1111',
+                accept: '.jpeg,.jpg,.png',
+                multiple: true,
+                readOnly: true,
+                default: '',
+              },
+              field_13: {
+                type: 'quantity',
+                title: '单位计量',
+                isContainer: false,
+                properties: {
+                  unit: {
+                    type: 'number',
+                    title: '单位数值',
+                    default: 50,
+                    minimum: 0,
+                    maximum: 1000,
+                    description: '',
+                  },
+                  quantity: {
+                    type: 'select',
+                    default: 'px',
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
+                    title: '单位类型',
+                  },
+                },
+                propertyOrder: ['unit', 'quantity'],
+                readOnly: true,
+                onShow: '',
+                description: '111',
+              },
+              field_14: {
+                type: 'box-style',
+                title: '盒子模型',
+                isContainer: false,
+                properties: {
+                  unit: {
+                    title: '单位数值',
+                    type: 'input',
+                    default: '0',
+                    description: '',
+                  },
+                  quantity: {
+                    type: 'select',
+                    default: 'px',
+                    options: [
+                      {
+                        label: 'px',
+                        value: 'px',
+                      },
+                      {
+                        label: 'rem',
+                        value: 'rem',
+                      },
+                      {
+                        label: 'em',
+                        value: 'em',
+                      },
+                      {
+                        label: '%',
+                        value: '%',
+                      },
+                    ],
+                    title: '单位类型',
+                  },
+                },
+                propertyOrder: ['unit', 'quantity'],
+                readOnly: true,
+                onShow: '1111',
+                description: '111',
+              },
+              field_15: {
+                type: 'text-editor',
+                title: '富文本',
+                default: '',
+                description: '111',
+                placeholder: '',
+                readOnly: true,
+              },
+              field_16: {
+                title: 'json数据',
+                type: 'json',
+                default: '{}',
+                description: '111',
+                readOnly: true,
+              },
+              field_17: {
+                type: 'codearea',
+                title: '函数类型',
+                placeholder: '请输入函数方法',
+                default: 'function func() { console.log("hello, world!"); }',
+                description: '用于定义函数方法',
+                readOnly: true,
+              },
+              field_18: {
+                title: '富文本',
+                type: 'htmlarea',
+                placeholder: '请输入html代码片段',
+                default: '<p>hello,world!</p>',
+                description: '用于放置html代码片段',
+                readOnly: true,
               },
             },
-            propertyOrder: ['a'],
+            propertyOrder: [
+              'a',
+              'field_1',
+              'field_2',
+              'field_3',
+              'field_4',
+              'field_5',
+              'field_6',
+              'field_7',
+              'field_8',
+              'field_9',
+              'field_10',
+              'field_11',
+              'field_12',
+              'field_13',
+              'field_14',
+              'field_15',
+              'field_16',
+              'field_17',
+              'field_18',
+            ],
           },
           style: {
             type: 'object',
@@ -46,9 +349,9 @@ class IndexDemo extends React.PureComponent {
               b: {
                 title: '单文本框',
                 type: 'input',
-                default: '', // 默认值
-                description: '', // 字段项的说明和描述
-                placeholder: '', // 输入提示
+                default: '',
+                description: '',
+                placeholder: '',
               },
             },
             propertyOrder: ['b'],
@@ -60,9 +363,9 @@ class IndexDemo extends React.PureComponent {
               c: {
                 title: '单文本框',
                 type: 'input',
-                default: '', // 默认值
-                description: '', // 字段项的说明和描述
-                placeholder: '', // 输入提示
+                default: '',
+                description: '',
+                placeholder: '',
                 isRequired: false,
               },
             },
@@ -70,6 +373,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
         propertyOrder: ['func', 'style', 'data'],
+        lastUpdateTime: '2025-01-10T06:49:54.179Z',
       },
       jsonSchema1: {
         type: 'object',

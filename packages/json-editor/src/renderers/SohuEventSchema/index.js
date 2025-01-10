@@ -2,6 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { Collapse, Tooltip, List, Input, Select, Empty } from 'antd';
 const { Option } = Select;
 const { Panel } = Collapse;
