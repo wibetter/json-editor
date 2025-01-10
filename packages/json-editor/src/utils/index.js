@@ -2,6 +2,9 @@ import {
   objClone as _objClone,
   isEqual as _isEqual,
   evalExpression,
+  isArray,
+  isObject,
+  isString,
 } from '@wibetter/json-utils';
 import camelCase from 'lodash/camelCase';
 import {
@@ -216,4 +219,90 @@ export function getExprProperties(schema, data, ignoreList = ['name']) {
   });
 
   return schema;
+}
+
+// options 异常格式 处理，自动转成可用列表格式
+export function formatOptions(options) {
+  let curOptions = [];
+  let optionValue = {}; // 记录对象类型的value
+  if (isArray(options)) {
+    // curOptions = options;
+    options.forEach((option) => {
+      if (isObject(option.value)) {
+        const valueStr = JSON.stringify(option.value);
+        curOptions.push({
+          label: option.label || option.name,
+          value: valueStr,
+        });
+        optionValue[valueStr] = option.value;
+      } else {
+        curOptions.push(option);
+      }
+    });
+  } else if (isString(options)) {
+    try {
+      curOptions = JSON.parse(options);
+      const formatResult = formatOptions(curOptions);
+      curOptions = formatResult.options;
+      optionValue = formatResult.optionValue;
+    } catch (error) {
+      console.warn('options 异常数据格式转换失败：', options);
+    }
+  }
+  return {
+    options: curOptions,
+    optionValue,
+  };
+}
+
+export function formatOptions1(options) {
+  let curOptions = [];
+  let optionValue = {}; // 记录对象类型的value
+  if (isArray(options)) {
+    // curOptions = options;
+    options.forEach((option) => {
+      if (isObject(option)) {
+        if (isObject(option.value)) {
+          const valueStr = JSON.stringify(option.value);
+          curOptions.push({
+            label: option.label || option.name,
+            value: valueStr,
+          });
+          optionValue[valueStr] = option.value;
+        } else {
+          curOptions.push(option);
+        }
+      } else if (isString(option)) {
+        // 兼容异常 option 数据
+        try {
+          const curOption = JSON.parse(option);
+          if (isObject(curOption.value)) {
+            const valueStr = JSON.stringify(curOption.value);
+            curOptions.push({
+              label: curOption.label || curOption.name,
+              value: valueStr,
+            });
+            optionValue[valueStr] = curOption.value;
+          } else {
+            curOptions.push(curOption);
+          }
+        } catch (error) {
+          console.warn('option 异常数据格式转换失败：', option);
+        }
+      }
+    });
+  } else if (isString(options)) {
+    try {
+      curOptions = JSON.parse(options);
+      const formatResult = formatOptions(curOptions);
+      curOptions = formatResult.options;
+      optionValue = formatResult.optionValue;
+    } catch (error) {
+      console.warn('options 异常数据格式转换失败：', options);
+    }
+  }
+  return {
+    options: curOptions,
+    optionValue,
+  };
 }

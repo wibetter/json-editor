@@ -7,7 +7,7 @@ import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
+import { isNeedTwoColWarpStyle, buildStyle, formatOptions } from '$utils/index';
 import './index.scss';
 
 /**
@@ -22,6 +22,8 @@ class SelectSchema extends React.PureComponent {
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
   };
+
+  optionValue = {}; // 记录options中对象类型的value
 
   constructor(props) {
     super(props);
@@ -45,7 +47,8 @@ class SelectSchema extends React.PureComponent {
   handleValueChange = (value) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, value); // 更新数值
+    const curValue = this.optionValue[value] ?? value;
+    updateFormValueData(keyRoute, curValue); // 更新数值
   };
 
   render() {
@@ -56,8 +59,12 @@ class SelectSchema extends React.PureComponent {
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const options = targetJsonSchema.options;
+    let options = targetJsonSchema.options;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
+
+    const optionsFormat = formatOptions(toJS(options));
+    options = optionsFormat.options;
+    this.optionValue = optionsFormat.optionValue;
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -110,7 +117,7 @@ class SelectSchema extends React.PureComponent {
               style={{ display: 'inline-block', minWidth: '120px' }}
               onChange={this.handleValueChange}
               defaultValue={curJsonData || targetJsonSchema.default}
-              disabled={targetJsonSchema.readOnly}
+              disabled={readOnly}
               allowClear={targetJsonSchema.allowClear ?? true}
             >
               {options &&

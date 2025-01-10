@@ -700,7 +700,7 @@
                     return (
                       a.options &&
                         a.options.find(function (e) {
-                          return e.label === t || e.name === t;
+                          return e.label === t;
                         }) &&
                         (n = !0),
                       Oe.KeyWordList &&
@@ -1489,8 +1489,6 @@
                           .concat(fe, [
                             'quantity',
                             'text-editor',
-                            'box-style',
-                            'padding-margin',
                             'json',
                             'codearea',
                             'htmlarea',
@@ -2693,8 +2691,18 @@
                     a = e.target.value,
                     o = n.props,
                     r = o.indexRoute,
-                    i = o.optionIndex;
-                  a !== o.optionValue && t(r, i, a);
+                    i = o.optionIndex,
+                    s = o.optionValue;
+                  if (a !== s) {
+                    var c = a;
+                    if ((0, Oe.isObject)(s) && (0, Oe.isString)(c))
+                      try {
+                        c = JSON.parse(c);
+                      } catch (e) {
+                        console.warn('option 数值转换失败：', c), (c = s);
+                      }
+                    t(r, i, c);
+                  }
                 }),
                 (n.onAddBtnEvent = function () {
                   var e = (n.props.schemaStore || {}).addOptionItem,
@@ -2731,9 +2739,11 @@
               (t.prototype.render = function () {
                 var e = this.props,
                   t = e.optionLabel,
-                  n = e.optionValue;
+                  n = e.optionValue,
+                  a = (e.optionNodeKey, n);
                 return (
-                  e.optionNodeKey,
+                  ((0, Oe.isObject)(n) || (0, Oe.isArray)(n)) &&
+                    (a = JSON.stringify(n)),
                   r.createElement(
                     'div',
                     { className: 'option-schema-box', id: t },
@@ -2741,7 +2751,7 @@
                       'div',
                       { className: 'key-input-item' },
                       r.createElement(S.Input, {
-                        defaultValue: n,
+                        defaultValue: a,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
                       }),

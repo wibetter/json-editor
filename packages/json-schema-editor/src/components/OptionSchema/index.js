@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Input, message, Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { PlusOutlined, CloseOutlined, CopyOutlined } from '@ant-design/icons';
+import { isArray, isObject, isString } from '@wibetter/json-utils';
 import './index.scss';
 
 class OptionSchema extends React.PureComponent {
@@ -46,7 +47,16 @@ class OptionSchema extends React.PureComponent {
     const { value } = event.target;
     const { indexRoute, optionIndex, optionValue } = this.props;
     if (value !== optionValue) {
-      updateOptionValue(indexRoute, optionIndex, value);
+      let curValue = value;
+      if (isObject(optionValue) && isString(curValue)) {
+        try {
+          curValue = JSON.parse(curValue);
+        } catch (error) {
+          console.warn('option 数值转换失败：', curValue);
+          curValue = optionValue;
+        }
+      }
+      updateOptionValue(indexRoute, optionIndex, curValue);
     }
   };
 
@@ -80,11 +90,16 @@ class OptionSchema extends React.PureComponent {
   render() {
     const { optionLabel, optionValue, optionNodeKey } = this.props;
 
+    let curOptionValue = optionValue;
+    if (isObject(optionValue) || isArray(optionValue)) {
+      curOptionValue = JSON.stringify(optionValue);
+    }
+
     return (
       <div className="option-schema-box" id={optionLabel}>
         <div className="key-input-item">
           <Input
-            defaultValue={optionValue}
+            defaultValue={curOptionValue}
             onPressEnter={this.handleValueChange}
             onBlur={this.handleValueChange}
           />

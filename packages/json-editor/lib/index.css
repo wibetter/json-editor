@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.1
+ * @wibetter/json-editor v5.1.2
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 10 2025 10:56:35 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 10 2025 16:28:46 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -1267,7 +1267,7 @@
 .content-item > .form-item-box .color-btn-wrap .delete-bgColor-btn:hover {
   color: red;
 }
-.content-item > .form-item-box .color-btn-wrap:hover {
+.content-item > .form-item-box .color-btn-wrap:hover:not(.disabled) {
   width: 70px;
 }
 .content-item > .form-item-box .color-btn-wrap:hover .delete-bgColor-btn,
@@ -1618,6 +1618,7 @@
 }
 .json-editor-container .element-title .warning-text {
   color: #fa8c16;
+  display: none;
 }
 .json-editor-container .element-title .add-operate-btn,
 .json-editor-container .element-title .display-source-btn,
