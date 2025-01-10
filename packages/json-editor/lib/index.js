@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.2
+ * @wibetter/json-editor v5.1.5
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 10 2025 16:28:46 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 10 2025 18:21:54 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -11183,16 +11183,46 @@
               _this.optionValue = {};
               /** 数值变动事件处理器 */
               _this.handleValueChange = function (value) {
-                var _this$optionValue$val;
                 var _this$props = _this.props,
                   keyRoute = _this$props.keyRoute,
                   jsonStore = _this$props.jsonStore;
                 var _ref = jsonStore || {},
                   updateFormValueData = _ref.updateFormValueData;
-                var curValue =
-                  (_this$optionValue$val = _this.optionValue[value]) != null
-                    ? _this$optionValue$val
-                    : value;
+                var curValue = value;
+                if (
+                  (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isArray)(
+                    value,
+                  )
+                ) {
+                  var valueArray = [];
+                  value.forEach(function (valItem) {
+                    var _this$optionValue$val;
+                    var valueStr = valItem;
+                    if (
+                      (0,
+                      _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isObject)(
+                        valueStr,
+                      )
+                    ) {
+                      valueStr = JSON.stringify(valItem);
+                      valueStr.replaceAll(' ', '');
+                    }
+                    valueArray.push(
+                      (_this$optionValue$val = _this.optionValue[valueStr]) !=
+                        null
+                        ? _this$optionValue$val
+                        : valItem,
+                    );
+                  });
+                  curValue = valueArray;
+                } else {
+                  var _this$optionValue$val2;
+                  curValue =
+                    (_this$optionValue$val2 = _this.optionValue[value]) != null
+                      ? _this$optionValue$val2
+                      : value;
+                }
                 updateFormValueData(keyRoute, curValue); // 更新数值
               };
               _this.handleValueChange = _this.handleValueChange.bind(_this);
@@ -11248,6 +11278,26 @@
               );
               options = optionsFormat.options;
               this.optionValue = optionsFormat.optionValue;
+              if (
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isArray)(
+                  curJsonData,
+                )
+              ) {
+                var valueArray = [];
+                curJsonData.forEach(function (valItem) {
+                  var valueStr = valItem;
+                  if (
+                    (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isObject)(
+                      valueStr,
+                    )
+                  ) {
+                    valueStr = JSON.stringify(valItem);
+                  }
+                  valueArray.push(valueStr);
+                });
+                curJsonData = valueArray;
+              }
               var style = targetJsonSchema.style
                 ? (0, $utils_index__WEBPACK_IMPORTED_MODULE_9__.buildStyle)(
                     (0, mobx__WEBPACK_IMPORTED_MODULE_3__.toJS)(
@@ -15517,6 +15567,7 @@
                     )
                   ) {
                     var valueStr = JSON.stringify(option.value);
+                    valueStr.replaceAll(' ', '');
                     curOptions.push({
                       label: option.label || option.name,
                       value: valueStr,
@@ -15541,6 +15592,7 @@
                       )
                     ) {
                       var _valueStr = JSON.stringify(curOption.value);
+                      _valueStr.replaceAll(' ', '');
                       curOptions.push({
                         label: curOption.label || curOption.name,
                         value: _valueStr,

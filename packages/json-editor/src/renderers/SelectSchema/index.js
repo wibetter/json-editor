@@ -2,7 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
-import { truncate } from '@wibetter/json-utils';
+import { truncate, isArray, isObject } from '@wibetter/json-utils';
 import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -47,7 +47,21 @@ class SelectSchema extends React.PureComponent {
   handleValueChange = (value) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    const curValue = this.optionValue[value] ?? value;
+    let curValue = value;
+    if (isArray(value)) {
+      const valueArray = [];
+      value.forEach((valItem) => {
+        let valueStr = valItem;
+        if (isObject(valueStr)) {
+          valueStr = JSON.stringify(valItem);
+          valueStr.replaceAll(' ', '');
+        }
+        valueArray.push(this.optionValue[valueStr] ?? valItem);
+      });
+      curValue = valueArray;
+    } else {
+      curValue = this.optionValue[value] ?? value;
+    }
     updateFormValueData(keyRoute, curValue); // 更新数值
   };
 
@@ -58,13 +72,25 @@ class SelectSchema extends React.PureComponent {
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    let curJsonData = getJSONDataByKeyRoute(keyRoute);
     let options = targetJsonSchema.options;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     const optionsFormat = formatOptions(toJS(options));
     options = optionsFormat.options;
     this.optionValue = optionsFormat.optionValue;
+
+    if (isArray(curJsonData)) {
+      const valueArray = [];
+      curJsonData.forEach((valItem) => {
+        let valueStr = valItem;
+        if (isObject(valueStr)) {
+          valueStr = JSON.stringify(valItem);
+        }
+        valueArray.push(valueStr);
+      });
+      curJsonData = valueArray;
+    }
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))

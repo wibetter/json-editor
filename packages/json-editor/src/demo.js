@@ -22,6 +22,74 @@ class IndexDemo extends React.PureComponent {
     this.state = {
       jsonSchema: {
         type: 'object',
+        title: 'jsonSchemaObject',
+        properties: {
+          func: {
+            type: 'object',
+            title: '功能设置',
+            properties: {
+              a: {
+                type: 'select',
+                title: '下拉选择',
+                options: [
+                  {
+                    label: '选项a',
+                    value: {
+                      t1: 123,
+                      t2: 'hello',
+                    },
+                  },
+                  {
+                    label: '选项b',
+                    value: "{ test1: '111', value: '222'}",
+                  },
+                  {
+                    label: '选项c',
+                    value: 'c',
+                  },
+                ],
+                default: 'a',
+                description: '',
+                multiple: true,
+              },
+            },
+            propertyOrder: ['a'],
+          },
+          style: {
+            type: 'object',
+            title: '样式设置',
+            properties: {
+              b: {
+                title: '单文本框',
+                type: 'input',
+                default: '',
+                description: '',
+                placeholder: '',
+              },
+            },
+            propertyOrder: ['b'],
+          },
+          data: {
+            type: 'data',
+            title: '数据设置',
+            properties: {
+              c: {
+                title: '单文本框',
+                type: 'input',
+                default: '',
+                description: '',
+                placeholder: '',
+                isRequired: false,
+              },
+            },
+            propertyOrder: ['c'],
+          },
+        },
+        propertyOrder: ['func', 'style', 'data'],
+        lastUpdateTime: '2025-01-10T09:48:49.274Z',
+      },
+      jsonSchema1: {
+        type: 'object',
         name: 'TPLSearch',
         title: '头部组件',
         properties: {

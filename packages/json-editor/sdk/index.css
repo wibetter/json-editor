@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.2
+ * @wibetter/json-editor v5.1.5
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 10 2025 16:29:43 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 10 2025 18:21:39 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -1187,6 +1187,9 @@
 /* 底部导航盒子样式 */
 .select-box .ant-select-single {
   min-width: 150px;
+}
+.select-box .ant-select-selection-item-content {
+  max-width: 100px;
 }
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/CascaderSchema/index.scss ***!

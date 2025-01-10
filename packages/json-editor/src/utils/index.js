@@ -263,7 +263,8 @@ export function formatOptions1(options) {
     options.forEach((option) => {
       if (isObject(option)) {
         if (isObject(option.value)) {
-          const valueStr = JSON.stringify(option.value);
+          let valueStr = JSON.stringify(option.value);
+          valueStr.replaceAll(' ', '');
           curOptions.push({
             label: option.label || option.name,
             value: valueStr,
@@ -277,7 +278,8 @@ export function formatOptions1(options) {
         try {
           const curOption = JSON.parse(option);
           if (isObject(curOption.value)) {
-            const valueStr = JSON.stringify(curOption.value);
+            let valueStr = JSON.stringify(curOption.value);
+            valueStr.replaceAll(' ', '');
             curOptions.push({
               label: curOption.label || curOption.name,
               value: valueStr,
