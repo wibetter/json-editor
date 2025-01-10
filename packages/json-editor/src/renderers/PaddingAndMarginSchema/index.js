@@ -22,7 +22,6 @@ class PaddingAndMarginSchema extends React.PureComponent {
     super(props);
     this.state = {
       type: 'all', // 设置类型，支持 自定义设值（custom）、统一设值（all）
-      layoutStyleLock: false, // 是否锁住容器数值值的设置，默认为false，设置为true后4个数值同时联动
       renderAction: false, // 用于主动触发render的临时变量
     };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
@@ -250,7 +249,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
-    const { renderAction, layoutStyleLock, type } = this.state;
+    const { renderAction, type } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     // 从jsonData中获取对应的数值
@@ -278,9 +277,6 @@ class PaddingAndMarginSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
           <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
@@ -297,6 +293,9 @@ class PaddingAndMarginSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
         </div>
         <div
           className={`content-item Style-PaddingAndMargin`}

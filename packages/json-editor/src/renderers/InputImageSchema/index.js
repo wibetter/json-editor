@@ -134,9 +134,6 @@ class InputImageSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
           <Tooltip
             title={
               pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
@@ -159,6 +156,9 @@ class InputImageSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />

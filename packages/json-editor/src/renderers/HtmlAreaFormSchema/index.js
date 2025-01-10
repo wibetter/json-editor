@@ -94,10 +94,6 @@ class HtmlAreaFormSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
-          {/*宽屏模式：Title hover时显示描述信息*/}
           <Tooltip
             title={
               pageScreen === 'wideScreen' ? targetJsonSchema.description : ''
@@ -120,6 +116,9 @@ class HtmlAreaFormSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
           {/*小屏模式*/}
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">

@@ -68,6 +68,7 @@ class DataSourceSchema extends React.PureComponent {
       this.props;
     const { jsonView, isClosed, isShowFilter } = this.state;
     const curType = targetJsonSchema.type;
+    // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     // 获取DataSource中各类数据对象
     const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote

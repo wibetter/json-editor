@@ -84,9 +84,6 @@ class QuantitySchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
           <Tooltip title={targetJsonSchema.description} placement="top">
             <span
               className="title-text"
@@ -103,6 +100,9 @@ class QuantitySchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
         </div>
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box">

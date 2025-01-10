@@ -247,61 +247,50 @@ class BaseFormSchema extends React.PureComponent {
                 onBlur={this.handleTitleChange}
               />
             </div>
-            {!hideOperaBtn && (
-              <div className="operate-item">
-                {!isFixed && (
-                  <Tooltip title="删除">
-                    <CloseOutlined
-                      className="operate-btn delete-operate"
-                      onClick={this.onDeleteBtnEvent}
-                    />
-                  </Tooltip>
-                )}
-                <Tooltip
-                  title={isContainerElem ? '新增子元素' : '新增同级元素'}
-                >
-                  <PlusOutlined
-                    className="operate-btn"
-                    onClick={this.onAddBtnEvent}
-                  />
-                </Tooltip>
-                {/* 自动排序功能 */}
-                {isContainerElem && (
-                  <Tooltip title={'数据项排序'}>
-                    <SortAscendingOutlined
+            <div className="operate-item">
+              {!hideOperaBtn && (
+                <>
+                  {!isFixed && (
+                    <Tooltip title="删除">
+                      <CloseOutlined
+                        className="operate-btn delete-operate"
+                        onClick={this.onDeleteBtnEvent}
+                      />
+                    </Tooltip>
+                  )}
+                  <Tooltip
+                    title={isContainerElem ? '新增子元素' : '新增同级元素'}
+                  >
+                    <PlusOutlined
                       className="operate-btn"
-                      onClick={this.childElemSort}
+                      onClick={this.onAddBtnEvent}
                     />
                   </Tooltip>
-                )}
-
-                {!isFixed && (
-                  <>
-                    <Tooltip title="复制">
-                      <CopyOutlined
+                  {/* 自动排序功能 */}
+                  {isContainerElem && (
+                    <Tooltip title={'数据项排序'}>
+                      <SortAscendingOutlined
                         className="operate-btn"
-                        onClick={this.onCopyBtnEvent}
+                        onClick={this.childElemSort}
                       />
                     </Tooltip>
-                    <Tooltip title="高级设置">
-                      <SettingOutlined
-                        className="operate-btn"
-                        onClick={() => {
-                          this.setState({
-                            showAdvanceConfig: true,
-                          });
-                        }}
-                      />
-                    </Tooltip>
-                    <Tooltip title="按住进行拖拽">
-                      <DragOutlined className="operate-btn drag-btn" />
-                    </Tooltip>
-                  </>
-                )}
-              </div>
-            )}
-            {showAdvanceBtn && (
-              <div className="operate-item">
+                  )}
+                  {!isFixed && (
+                    <>
+                      <Tooltip title="复制">
+                        <CopyOutlined
+                          className="operate-btn"
+                          onClick={this.onCopyBtnEvent}
+                        />
+                      </Tooltip>
+                      <Tooltip title="按住进行拖拽">
+                        <DragOutlined className="operate-btn drag-btn" />
+                      </Tooltip>
+                    </>
+                  )}
+                </>
+              )}
+              {showAdvanceBtn && (
                 <Tooltip title="高级设置">
                   <SettingOutlined
                     className="operate-btn"
@@ -312,8 +301,8 @@ class BaseFormSchema extends React.PureComponent {
                     }}
                   />
                 </Tooltip>
-              </div>
-            )}
+              )}
+            </div>
             {showAdvanceConfig && (
               <Modal
                 visible={true}

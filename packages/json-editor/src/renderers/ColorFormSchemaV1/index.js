@@ -62,6 +62,7 @@ class ColorFormSchema extends React.PureComponent {
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
@@ -106,6 +107,9 @@ class ColorFormSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
         </div>
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box">

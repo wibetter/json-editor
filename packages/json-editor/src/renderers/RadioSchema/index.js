@@ -49,6 +49,7 @@ class RadioSchema extends React.PureComponent {
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
@@ -95,6 +96,9 @@ class RadioSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />

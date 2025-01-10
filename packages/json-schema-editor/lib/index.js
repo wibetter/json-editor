@@ -1489,6 +1489,8 @@
                           .concat(fe, [
                             'quantity',
                             'text-editor',
+                            'box-style',
+                            'padding-margin',
                             'json',
                             'codearea',
                             'htmlarea',
@@ -2317,71 +2319,61 @@
                           onBlur: this.handleTitleChange,
                         }),
                       ),
-                      !x &&
-                        r.createElement(
-                          'div',
-                          { className: 'operate-item' },
-                          !y &&
-                            r.createElement(
-                              S.Tooltip,
-                              { title: '删除' },
-                              r.createElement(we.CloseOutlined, {
-                                className: 'operate-btn delete-operate',
-                                onClick: this.onDeleteBtnEvent,
-                              }),
-                            ),
+                      r.createElement(
+                        'div',
+                        { className: 'operate-item' },
+                        !x &&
                           r.createElement(
-                            S.Tooltip,
-                            { title: C ? '新增子元素' : '新增同级元素' },
-                            r.createElement(we.PlusOutlined, {
-                              className: 'operate-btn',
-                              onClick: this.onAddBtnEvent,
-                            }),
-                          ),
-                          C &&
+                            r.Fragment,
+                            null,
+                            !y &&
+                              r.createElement(
+                                S.Tooltip,
+                                { title: '删除' },
+                                r.createElement(we.CloseOutlined, {
+                                  className: 'operate-btn delete-operate',
+                                  onClick: this.onDeleteBtnEvent,
+                                }),
+                              ),
                             r.createElement(
                               S.Tooltip,
-                              { title: '数据项排序' },
-                              r.createElement(we.SortAscendingOutlined, {
+                              { title: C ? '新增子元素' : '新增同级元素' },
+                              r.createElement(we.PlusOutlined, {
                                 className: 'operate-btn',
-                                onClick: this.childElemSort,
+                                onClick: this.onAddBtnEvent,
                               }),
                             ),
-                          !y &&
-                            r.createElement(
-                              r.Fragment,
-                              null,
+                            C &&
                               r.createElement(
                                 S.Tooltip,
-                                { title: '复制' },
-                                r.createElement(we.CopyOutlined, {
+                                { title: '数据项排序' },
+                                r.createElement(we.SortAscendingOutlined, {
                                   className: 'operate-btn',
-                                  onClick: this.onCopyBtnEvent,
+                                  onClick: this.childElemSort,
                                 }),
                               ),
+                            !y &&
                               r.createElement(
-                                S.Tooltip,
-                                { title: '高级设置' },
-                                r.createElement(we.SettingOutlined, {
-                                  className: 'operate-btn',
-                                  onClick: function () {
-                                    n.setState({ showAdvanceConfig: !0 });
-                                  },
-                                }),
+                                r.Fragment,
+                                null,
+                                r.createElement(
+                                  S.Tooltip,
+                                  { title: '复制' },
+                                  r.createElement(we.CopyOutlined, {
+                                    className: 'operate-btn',
+                                    onClick: this.onCopyBtnEvent,
+                                  }),
+                                ),
+                                r.createElement(
+                                  S.Tooltip,
+                                  { title: '按住进行拖拽' },
+                                  r.createElement(we.DragOutlined, {
+                                    className: 'operate-btn drag-btn',
+                                  }),
+                                ),
                               ),
-                              r.createElement(
-                                S.Tooltip,
-                                { title: '按住进行拖拽' },
-                                r.createElement(we.DragOutlined, {
-                                  className: 'operate-btn drag-btn',
-                                }),
-                              ),
-                            ),
-                        ),
-                      b &&
-                        r.createElement(
-                          'div',
-                          { className: 'operate-item' },
+                          ),
+                        b &&
                           r.createElement(
                             S.Tooltip,
                             { title: '高级设置' },
@@ -2392,7 +2384,7 @@
                               },
                             }),
                           ),
-                        ),
+                      ),
                       d &&
                         r.createElement(
                           S.Modal,

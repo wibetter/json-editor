@@ -57,6 +57,7 @@ class CascaderSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options || [];
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -102,6 +103,9 @@ class CascaderSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
               <InfoCircleOutlined className="info-icon" />

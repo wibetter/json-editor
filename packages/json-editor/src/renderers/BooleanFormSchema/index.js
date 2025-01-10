@@ -51,6 +51,7 @@ class BooleanFormSchema extends React.PureComponent {
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -92,6 +93,9 @@ class BooleanFormSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
         </div>
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box">

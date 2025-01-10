@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.1.1
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 09 2025 11:33:48 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 10 2025 10:56:35 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -2662,13 +2662,6 @@
                     style: titleStyle,
                   },
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    'span',
-                    {
-                      className: 'title-text warning-text',
-                    },
-                    readOnly ? '[只读]' : '',
-                  ),
-                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
                     antd__WEBPACK_IMPORTED_MODULE_5__.Tooltip,
                     {
                       title: targetJsonSchema.description,
@@ -2700,6 +2693,13 @@
                           '\uFF09',
                         ),
                     ),
+                  ),
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'span',
+                    {
+                      className: 'title-text warning-text',
+                    },
+                    readOnly ? '[只读]' : '',
                   ),
                 ),
                 /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(

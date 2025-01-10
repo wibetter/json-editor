@@ -53,7 +53,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
   },
-  build2lib1: {
+  build2lib: {
     entry: {
       index: './src/main.js',
     },
@@ -72,7 +72,7 @@ module.exports = {
     productionGzipExtensions: ['js', 'css', 'json'],
     bundleAnalyzerReport: false,
   },
-  build2lib: {
+  build2lib2: {
     // 用于打包sdk文件
     entry: {
       index: './src/main.js',

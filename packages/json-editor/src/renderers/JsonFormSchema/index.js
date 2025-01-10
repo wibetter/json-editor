@@ -98,9 +98,6 @@ class JsonFormSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
           <span
             className="title-text"
             title={
@@ -114,6 +111,9 @@ class JsonFormSchema extends React.PureComponent {
             {targetJsonSchema.showKey && (
               <span>（{truncate(jsonKey, { length: 15 })}）</span>
             )}
+          </span>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
           </span>
           {targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">

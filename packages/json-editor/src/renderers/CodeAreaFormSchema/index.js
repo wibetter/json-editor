@@ -68,7 +68,7 @@ class CodeAreaFormSchema extends React.PureComponent {
     } = this.props;
     const { isShowWarn, warnText } = this.state;
     const readOnly = isReadOnly || targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
-    // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
@@ -103,9 +103,6 @@ class CodeAreaFormSchema extends React.PureComponent {
         style={style}
       >
         <div className="element-title" style={titleStyle}>
-          <span className="title-text warning-text">
-            {readOnly ? '[只读]' : ''}
-          </span>
           {/*宽屏模式：Title hover时显示描述信息*/}
           <Tooltip
             title={
@@ -129,6 +126,9 @@ class CodeAreaFormSchema extends React.PureComponent {
               )}
             </span>
           </Tooltip>
+          <span className="title-text warning-text">
+            {readOnly ? '[只读]' : ''}
+          </span>
           {/*小屏模式*/}
           {pageScreen === 'mobileScreen' && targetJsonSchema.description && (
             <Tooltip title={targetJsonSchema.description} placement="top">
