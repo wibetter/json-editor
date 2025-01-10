@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.6
+ * @wibetter/json-editor v5.1.7
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 10 2025 22:53:25 GMT+0800 (中国标准时间)
+ * build time: Sat Jan 11 2025 00:01:06 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1794,6 +1794,7 @@
                         className: 'title-text',
                       },
                       boxTitle,
+                      '\xA0',
                     ),
                     isClosed
                       ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
@@ -5365,6 +5366,7 @@
                           className: 'title-text',
                         },
                         boxTitle,
+                        '\xA0',
                       ),
                       isClosed
                         ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
@@ -9003,6 +9005,7 @@
                           className: 'title-text',
                         },
                         boxTitle,
+                        '\xA0',
                       ),
                       isClosed
                         ? /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(

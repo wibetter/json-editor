@@ -264,7 +264,7 @@ class ArraySchema extends React.PureComponent {
         </div>
         <div className="array-schema-box content-item" style={contentStyle}>
           <div className="element-title" onClick={this.collapseChange}>
-            <span className="title-text">{boxTitle}</span>
+            <span className="title-text">{boxTitle}&nbsp;</span>
             {isClosed ? (
               <RightOutlined className="close-operate-btn" />
             ) : (
