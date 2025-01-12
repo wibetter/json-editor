@@ -92,6 +92,11 @@ class SelectSchema extends React.PureComponent {
       curJsonData = valueArray;
     }
 
+    let curValue = curJsonData || targetJsonSchema.default;
+    if (isObject(curValue)) {
+      curValue = JSON.stringify(curValue);
+    }
+
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
       : {};
@@ -142,7 +147,7 @@ class SelectSchema extends React.PureComponent {
               mode={targetJsonSchema.multiple ? 'multiple' : undefined}
               style={{ display: 'inline-block', minWidth: '120px' }}
               onChange={this.handleValueChange}
-              defaultValue={curJsonData || targetJsonSchema.default}
+              defaultValue={curValue}
               disabled={readOnly}
               allowClear={targetJsonSchema.allowClear ?? true}
             >

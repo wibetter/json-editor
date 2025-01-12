@@ -209,103 +209,27 @@ class IndexDemo extends React.PureComponent {
                 showKey: true,
               },
               themeSource: {
-                type: 'object',
-                title: '主题包',
-                description: '',
-                properties: {
-                  type: {
-                    type: 'select',
-                    title: '数据来源',
-                    options: [
-                      {
-                        label: '模板直接设置',
-                        value: 'DevDefaults',
-                      },
-                      {
-                        label: 'mp后台配置',
-                        value: 'ContentStaticConfig',
-                      },
-                      {
-                        label: '资源中心配置',
-                        value: 'ResourceCenter',
-                      },
-                    ],
-                    default: 'DevDefaults',
-                    isConditionProp: true,
-                    description:
-                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                  },
-                  description: {
-                    title: '自定义配置名称',
-                    type: 'input',
-                    default: '主题包配置',
-                    description: '',
-                    placeholder: '',
-                    onShow:
-                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                  },
-                  attrs: {
-                    type: 'array',
-                    title: '属性列表',
-                    description: '可用于设置需要配置的属性Key、描述和类型',
-                    items: {
-                      type: 'object',
-                      title: '数组项',
-                      description: '',
-                      properties: {
-                        attr: {
-                          type: 'input',
-                          title: '属性Key',
-                          default: '',
-                          description: '',
-                          placeholder: '',
-                        },
-                        description: {
-                          title: '描述',
-                          type: 'input',
-                          default: '',
-                          description: '',
-                          placeholder: '',
-                        },
-                        type: {
-                          type: 'select',
-                          title: '属性类型',
-                          options: [
-                            {
-                              label: '图片类型',
-                              value: 'image',
-                            },
-                            {
-                              label: '字符串',
-                              value: 'string',
-                            },
-                            {
-                              label: '数字',
-                              value: 'number',
-                            },
-                          ],
-                          default: 'string',
-                          description: '',
-                        },
-                        value: {
-                          title: '数值',
-                          typeOn:
-                            "type === 'image' ? 'input-image' : type === 'number' ? 'number' : 'input'",
-                          default: '',
-                          description: '',
-                          placeholder: '',
-                          onShow: "props.themeSource.type === 'DevDefaults'",
-                        },
-                      },
-                      propertyOrder: ['attr', 'description', 'type', 'value'],
+                type: 'select',
+                title: '下拉选择',
+                options: [
+                  {
+                    label: '选项a',
+                    value: {
+                      t1: 111,
+                      t2: 22,
                     },
-                    'minimum-child': 1,
-                    showCodeViewBtn: false,
                   },
-                },
-                propertyOrder: ['type', 'description', 'attrs'],
-                showCodeViewBtn: false,
-                showKey: true,
+                  {
+                    label: '选项b',
+                    value: 'b',
+                  },
+                  {
+                    label: '选项c',
+                    value: 'c',
+                  },
+                ],
+                default: 'a',
+                description: '',
               },
               globalTheme: {
                 type: 'object',
@@ -1832,7 +1756,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
         propertyOrder: ['props', 'data', 'style', 'event'],
-        lastUpdateTime: '2024-12-28T15:50:23.659Z',
+        lastUpdateTime: '2025-01-12T12:44:07.630Z',
       },
       jsonData: {
         event: {
