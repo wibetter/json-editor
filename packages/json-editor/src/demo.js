@@ -221,7 +221,10 @@ class IndexDemo extends React.PureComponent {
                   },
                   {
                     label: '选项b',
-                    value: 'b',
+                    value: {
+                      t1: 333,
+                      t2: 111,
+                    },
                   },
                   {
                     label: '选项c',

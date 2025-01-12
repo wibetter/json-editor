@@ -902,7 +902,7 @@
               ],
               default: 'string',
               isConditionProp: !0,
-              description: '',
+              description: '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
               onShow:
                 'type === "ContentStaticConfig" || type === "ResourceCenter"',
             },
@@ -1105,7 +1105,7 @@
                   default: 1,
                   minimum: 0,
                   maximum: 1e3,
-                  description: '',
+                  description: '该位置区块需要的内容条数',
                 },
                 TITLE: {
                   title: '标题',

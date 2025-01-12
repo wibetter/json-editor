@@ -227,7 +227,7 @@ export const initSohuSourceData = {
           default: 1,
           minimum: 0,
           maximum: 1000,
-          description: '',
+          description: '该位置区块需要的内容条数',
         },
         TITLE: {
           title: '标题',

@@ -74,7 +74,7 @@ export const initDynamicConfig = {
       ],
       default: 'string',
       isConditionProp: true,
-      description: '',
+      description: '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
       onShow: 'type === "ContentStaticConfig" || type === "ResourceCenter"',
     },
     range: {
