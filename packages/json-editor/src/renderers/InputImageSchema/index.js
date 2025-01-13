@@ -98,15 +98,17 @@ class InputImageSchema extends React.PureComponent {
     const uploadProps = {
       name: 'file', // targetJsonSchema.name || jsonKey || 'imgFile',
       action: targetJsonSchema.uploadAction || options.uploadAction,
-      accept: targetJsonSchema.accept || options.uploadAccept,
+      accept:
+        targetJsonSchema.accept || options.uploadAccept || '.jpeg,.jpg,.png',
       // multiple: targetJsonSchema.multiple ?? false,
       maxCount: targetJsonSchema.multiple ? targetJsonSchema.maxCount || 1 : 1,
       defaultFileList,
       // showUploadList: false,
       listType: targetJsonSchema.listType ?? 'picture-card',
+      withCredentials: true,
+      method: targetJsonSchema.uploadMethod || options.uploadMethod || 'POST',
       headers: {
-        authorization:
-          targetJsonSchema.authorization || 'authorization-content',
+        // authorization: targetJsonSchema.authorization || 'authorization-content', // 会影响默认的图片上传
       },
       onChange: this.handleImageChange,
       onRemove: this.handleDeleteChange,

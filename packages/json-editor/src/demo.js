@@ -1990,7 +1990,7 @@ class IndexDemo extends React.PureComponent {
             ],
           },
         ],
-        uploadAction: '/commons/upload/file',
+        uploadAction: 'https://mp.sohuno.com/commons/upload/file',
       },
       wideScreen: false,
       jsonView: urlParams['jsonView'] === 'true',
