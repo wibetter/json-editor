@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.8
+ * @wibetter/json-editor v5.1.9
  * author: wibetter
  * build tool: AKFun
- * build time: Sun Jan 12 2025 20:46:54 GMT+0800 (中国标准时间)
+ * build time: Mon Jan 13 2025 19:32:30 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -7597,7 +7597,10 @@
                 name: 'file',
                 // targetJsonSchema.name || jsonKey || 'imgFile',
                 action: targetJsonSchema.uploadAction || options.uploadAction,
-                accept: targetJsonSchema.accept || options.uploadAccept,
+                accept:
+                  targetJsonSchema.accept ||
+                  options.uploadAccept ||
+                  '.jpeg,.jpg,.png',
                 // multiple: targetJsonSchema.multiple ?? false,
                 maxCount: targetJsonSchema.multiple
                   ? targetJsonSchema.maxCount || 1
@@ -7608,9 +7611,13 @@
                   (_targetJsonSchema$lis = targetJsonSchema.listType) != null
                     ? _targetJsonSchema$lis
                     : 'picture-card',
+                withCredentials: true,
+                method:
+                  targetJsonSchema.uploadMethod ||
+                  options.uploadMethod ||
+                  'POST',
                 headers: {
-                  authorization:
-                    targetJsonSchema.authorization || 'authorization-content',
+                  // authorization: targetJsonSchema.authorization || 'authorization-content', // 会影响默认的图片上传
                 },
                 onChange: this.handleImageChange,
                 onRemove: this.handleDeleteChange,
