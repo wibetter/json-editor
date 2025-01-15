@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-schema-editor",
-  "version": "5.1.8",
+  "version": "5.1.9",
   "description": "JSON数据可视化/JSONSchema，以表单的形式编辑 json schema，可用于在线设计组件的配置面板",
   "keywords": [
     "json",
@@ -35,7 +35,8 @@
     "prop-types": "^15.8.1",
     "react": "^16.8.6",
     "react-ace": "^12.0.0",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "akfun": "^5.0.0",

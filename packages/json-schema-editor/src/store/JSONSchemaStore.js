@@ -1,5 +1,6 @@
 import { observable, computed, action, toJS } from 'mobx'; // mobx 5.0 写法
 import { message } from 'antd';
+import { pick } from 'lodash';
 import { isEqual, objClone, isFunction } from '$utils/index';
 import { TypeList } from '$data/TypeList';
 import {
@@ -204,17 +205,36 @@ export default class JSONSchemaStore {
    *  备注：主要用于变更对应的type属性值
    * */
   @action.bound
-  changeType(curIndexRoute, jsonKey, newSchemaData, ignoreOnChange) {
+  changeType(
+    curIndexRoute,
+    jsonKey,
+    newSchemaData,
+    targetJsonSchema,
+    ignoreOnChange,
+  ) {
     const parentIndexRoute = getParentIndexRoute(curIndexRoute);
     const parentSchemaData = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
     );
+    // 保留已有的配置数据（）
+    const curNewSchemaData = Object.assign(
+      {},
+      newSchemaData,
+      pick(targetJsonSchema, [
+        'title',
+        'description',
+        'isConditionProp',
+        'showKey',
+        'showCodeViewBtn',
+        'onShow',
+      ]),
+    );
     if (parentSchemaData.properties && parentSchemaData.properties[jsonKey]) {
-      parentSchemaData.properties[jsonKey] = objClone(newSchemaData);
+      parentSchemaData.properties[jsonKey] = objClone(curNewSchemaData);
     } else if (parentSchemaData[jsonKey]) {
       // 支持Array/items 类型切换
-      parentSchemaData[jsonKey] = objClone(newSchemaData);
+      parentSchemaData[jsonKey] = objClone(curNewSchemaData);
     }
 
     // 触发onChange事件

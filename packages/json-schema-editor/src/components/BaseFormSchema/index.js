@@ -57,19 +57,19 @@ class BaseFormSchema extends React.PureComponent {
     this.onDeleteBtnEvent = this.onDeleteBtnEvent.bind(this);
     this.handleJsonKeyChange = this.handleJsonKeyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.selectHandleChange = this.selectHandleChange.bind(this);
+    this.handleTypeChange = this.handleTypeChange.bind(this);
     this.childElemSort = this.childElemSort.bind(this);
   }
 
   /** select类型变动事件处理器 */
-  selectHandleChange = (newType) => {
+  handleTypeChange = (newType) => {
     const { changeType } = this.props.schemaStore || {};
     const { indexRoute, jsonKey, targetJsonSchema } = this.props;
     if (targetJsonSchema.type === newType) return; // format值未改变则直接跳出
 
     // 根据当前新的类型获取初始化的对象数据
     const newTypeData = TypeDataList[newType];
-    changeType(indexRoute, jsonKey, newTypeData);
+    changeType(indexRoute, jsonKey, newTypeData, targetJsonSchema);
   };
 
   /** jsonKey类型输入值变动事件处理器 */
@@ -225,7 +225,7 @@ class BaseFormSchema extends React.PureComponent {
                 showSearch
                 defaultValue={curType}
                 style={{ width: 150 }}
-                onChange={this.selectHandleChange}
+                onChange={this.handleTypeChange}
                 disabled={typeIsFixed}
               >
                 {currentTypeList.map((item) => (
