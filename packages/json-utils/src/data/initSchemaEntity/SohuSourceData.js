@@ -39,7 +39,6 @@ export const initSohuSourceData = {
         description: {
           title: '数据源名称',
           type: 'input',
-          default: '',
           description: '',
           placeholder: '',
           onShow: 'type === "ContentStaticConfig"',
@@ -66,7 +65,6 @@ export const initSohuSourceData = {
         CONTENTID: {
           title: '数据源ID',
           type: 'input',
-          default: '',
           description: '',
           placeholder: '',
           onShow: 'type === "RuntimeDataSelfDefine"',
@@ -201,7 +199,6 @@ export const initSohuSourceData = {
         CONTENTPARAMS: {
           title: '动态参数',
           type: 'json',
-          default: '{}',
           description: '请填写JSON格式的参数',
           placeholder: '',
         },
@@ -224,7 +221,6 @@ export const initSohuSourceData = {
         SIZE: {
           type: 'number',
           title: '容量',
-          default: 1,
           minimum: 0,
           maximum: 1000,
           description: '该位置区块需要的内容条数',
@@ -232,21 +228,18 @@ export const initSohuSourceData = {
         TITLE: {
           title: '标题',
           type: 'input',
-          default: '',
           description: '',
           placeholder: '',
         },
         CODE: {
           title: 'Code参数',
           type: 'input',
-          default: '',
           description: '',
           placeholder: '',
         },
         URL: {
           type: 'url',
           title: '跳转链接',
-          default: '',
           description: '',
           placeholder: '',
         },
@@ -289,7 +282,6 @@ export const initAdConfigSchema = {
         id: {
           title: '广告ID',
           type: 'number',
-          default: '',
           description: '',
           placeholder: '',
         },
@@ -311,13 +303,11 @@ export const initAdConfigSchema = {
               value: 3,
             },
           ],
-          default: 1,
           description: '',
         },
         fixArray: {
           type: 'select',
           title: '固定位置',
-          default: [1],
           description: '',
           multiple: true,
           onShow: 'rule === 1 || rule === 3',
@@ -527,7 +517,6 @@ export const initAdConfigSchema = {
         begin: {
           type: 'number',
           title: '开始位置',
-          default: 1,
           minimum: '1',
           maximum: '50',
           description: '',
@@ -536,7 +525,6 @@ export const initAdConfigSchema = {
         turn: {
           type: 'number',
           title: '间隔/隔',
-          default: 1,
           minimum: '1',
           maximum: '50',
           description: '',
@@ -545,7 +533,6 @@ export const initAdConfigSchema = {
         number: {
           type: 'number',
           title: '间隔/出',
-          default: 1,
           minimum: '1',
           maximum: '50',
           description: '',
@@ -564,7 +551,6 @@ export const initAdConfigSchema = {
               value: 1,
             },
           ],
-          default: 0,
           description: '',
         },
       },
@@ -606,13 +592,11 @@ export const initAdConfigSchema = {
                 value: 3,
               },
             ],
-            default: 1,
             description: '',
           },
           fixArray: {
             type: 'select',
             title: '固定位置',
-            default: [1],
             description: '',
             onShow: 'rule === 1 || rule === 3',
             multiple: true,
@@ -822,7 +806,6 @@ export const initAdConfigSchema = {
           begin: {
             type: 'number',
             title: '开始位置',
-            default: 1,
             minimum: '1',
             maximum: '50',
             description: '',
@@ -831,7 +814,6 @@ export const initAdConfigSchema = {
           turn: {
             type: 'number',
             title: '间隔/隔',
-            default: 1,
             minimum: '1',
             maximum: '50',
             description: '',
@@ -840,7 +822,6 @@ export const initAdConfigSchema = {
           number: {
             type: 'number',
             title: '间隔/出',
-            default: 1,
             minimum: '1',
             maximum: '50',
             description: '',
@@ -859,7 +840,6 @@ export const initAdConfigSchema = {
                 value: 1,
               },
             ],
-            default: 0,
             description: '',
           },
         },
