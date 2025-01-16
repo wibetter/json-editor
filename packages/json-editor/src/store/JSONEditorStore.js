@@ -246,7 +246,12 @@ export default class JSONEditorStore {
   @action.bound
   addArrayItem(keyRoute, curArrIndex) {
     // 1. 获取数组数据对象
-    const arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    let arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
+    /*
+    if (!isArray(arrJsonData)) {
+      arrJsonData = [];
+    }
+    */
     // const _arrJsonData = toJS(arrJsonData);
     if (isArray(arrJsonData)) {
       // 2. 获取数组的第一个数据项

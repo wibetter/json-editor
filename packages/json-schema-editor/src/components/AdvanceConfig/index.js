@@ -44,9 +44,13 @@ class AdvanceConfig extends React.PureComponent {
     super(props);
 
     this.state = {
-      isShowWarn: false, // 用于判断是否显示错误信息
-      warnText: '', // 错误内容
-      curJSONDataTemp: undefined, // 用于记录当前不合规范的json数据
+      optionsWarn: false, // 用于判断是否显示错误信息
+      optionsWarnText: '', // 错误内容
+      optionsTemp: undefined, // 用于记录当前不合规范的json数据
+
+      titleStyleTemp: undefined,
+      titleStyleWarn: false,
+      titleStyleWarnText: true,
     };
 
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
@@ -196,7 +200,9 @@ class AdvanceConfig extends React.PureComponent {
   render() {
     const { indexRoute2keyRoute } = this.props.schemaStore || {};
     const { nodeKey, indexRoute, targetJsonSchema } = this.props;
-    const { isShowWarn, warnText, curJSONDataTemp } = this.state;
+
+    const { optionsWarn, optionsWarnText, optionsTemp } = this.state;
+    const { titleStyleTemp, titleStyleWarn, titleStyleWarnText } = this.state;
     const curType = targetJsonSchema.type;
     // 获取对应的keyRoute
     const curKeyRoute = indexRoute2keyRoute(indexRoute);
@@ -360,17 +366,17 @@ class AdvanceConfig extends React.PureComponent {
               </Tooltip>
             </div>
             <div className="content-item">
-              {isShowWarn && (
+              {optionsWarn && (
                 <div className="warning-box code-area-item">
                   <div className="warning-img">X</div>
-                  <div className="warning-text">{warnText}</div>
+                  <div className="warning-text">{optionsWarnText}</div>
                 </div>
               )}
               <AceEditor
                 id={`${nodeKey}-json_area_ace`}
                 value={
-                  hasProperties(curJSONDataTemp)
-                    ? curJSONDataTemp
+                  hasProperties(optionsTemp)
+                    ? optionsTemp
                     : JSON.stringify(targetJsonSchema.options, null, 2)
                 }
                 className="json-view-ace"
@@ -391,15 +397,15 @@ class AdvanceConfig extends React.PureComponent {
                     // 更新jsonData
                     this.handleValueChange('options', newJsonDataTemp);
                     this.setState({
-                      isShowWarn: false,
-                      curJSONDataTemp: undefined, // 重置
+                      optionsWarn: false,
+                      optionsTemp: undefined, // 重置
                     });
                   } catch (err) {
                     // 更新jsonData
                     this.setState({
-                      curJSONDataTemp: newJsonData, // 记录当前格式不正确的json数据
-                      warnText: err.message,
-                      isShowWarn: true,
+                      optionsTemp: newJsonData, // 记录当前格式不正确的json数据
+                      optionsWarnText: err.message,
+                      optionsWarn: true,
                     });
                   }
                 }}
@@ -660,6 +666,63 @@ class AdvanceConfig extends React.PureComponent {
                 }}
               />
             </div>
+          </div>
+        </div>
+
+        <div className="wide-screen-element-warp" key={`${nodeKey}-titleStyle`}>
+          <div className="element-title">
+            <Tooltip title={'可用于设置标题展示样式。'} placement="top">
+              <span className="title-text">标题样式</span>
+            </Tooltip>
+          </div>
+          <div className="content-item">
+            {titleStyleWarn && (
+              <div className="warning-box code-area-item">
+                <div className="warning-img">X</div>
+                <div className="warning-text">{titleStyleWarnText}</div>
+              </div>
+            )}
+            <AceEditor
+              id={`${nodeKey}-json_area_ace`}
+              value={
+                hasProperties(titleStyleTemp)
+                  ? titleStyleTemp
+                  : JSON.stringify(targetJsonSchema.titleStyle, null, 2)
+              }
+              className="json-view-ace"
+              mode="json"
+              theme="solarized_light"
+              name="JSON_CODE_EDIT"
+              fontSize={14}
+              showPrintMargin={true}
+              showGutter={true}
+              highlightActiveLine={true}
+              readOnly={false}
+              minLines={3}
+              maxLines={6}
+              width={'100%'}
+              onChange={(newJsonData) => {
+                try {
+                  const newTitleStyleTemp = JSON.parse(newJsonData);
+                  this.handleValueChange('titleStyle', newTitleStyleTemp);
+                  this.setState({
+                    titleStyleWarn: false,
+                    titleStyleTemp: undefined,
+                  });
+                } catch (err) {
+                  this.setState({
+                    titleStyleTemp: newJsonData, // 记录当前格式不正确的json数据
+                    titleStyleWarnText: err.message,
+                    titleStyleWarn: true,
+                  });
+                }
+              }}
+              setOptions={{
+                useWorker: false,
+                showLineNumbers: true,
+                tabSize: 2,
+              }}
+            />
           </div>
         </div>
       </div>

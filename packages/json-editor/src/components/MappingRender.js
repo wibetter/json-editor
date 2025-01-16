@@ -53,7 +53,8 @@ const MappingRender = (props) => {
   if (
     hasProperties(targetJsonSchema.onShow) &&
     targetJsonSchema.onShow !== '' &&
-    ((isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
+    (targetJsonSchema.onShow === 'false' ||
+      (isBoolean(targetJsonSchema.onShow) && !targetJsonSchema.onShow) ||
       (isString(targetJsonSchema.onShow) &&
         !evalExpression(targetJsonSchema.onShow, curData)))
   ) {
@@ -84,6 +85,8 @@ const MappingRender = (props) => {
     case 'object':
       return <ObjectSchema {...newProps} key={curNodeKey} />;
     case 'dynamic-config':
+    case 'dynamic-object':
+    case 'dynamic-array':
       return <DynamicConfigSchema {...newProps} key={curNodeKey} />;
     case 'sohu-source':
       return <SohuDataSourceSchema {...newProps} key={curNodeKey} />;

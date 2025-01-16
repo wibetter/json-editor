@@ -139,8 +139,9 @@ class ArraySchema extends React.PureComponent {
         // 只有不为空时才赋值（忽略URL类型数值）
         if (
           itemVal &&
-          (isNumber(itemVal) ||
-            (isString(itemVal) && !isURL(itemVal) && !isColor(itemVal)))
+          isString(itemVal) &&
+          !isURL(itemVal) &&
+          !isColor(itemVal)
         ) {
           return itemVal;
         }
@@ -199,7 +200,7 @@ class ArraySchema extends React.PureComponent {
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
     // 从jsonData中获取对应的数值
     let curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
-    if (!curJsonData || curJsonData.length === 0) {
+    if (!curJsonData || curJsonData.length === 0 || !isArray(curJsonData)) {
       // 添加一个默认的数组数据
       curJsonData = [{}];
     }

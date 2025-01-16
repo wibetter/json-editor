@@ -146,11 +146,11 @@
             if (u) {
               var o = c++;
               (a = s || (s = g())),
-                (t = b.bind(null, a, o, !1)),
-                (n = b.bind(null, a, o, !0));
+                (t = S.bind(null, a, o, !1)),
+                (n = S.bind(null, a, o, !0));
             } else
               (a = g()),
-                (t = S.bind(null, a)),
+                (t = b.bind(null, a)),
                 (n = function () {
                   a.parentNode.removeChild(a);
                 });
@@ -175,7 +175,7 @@
               function (e, t) {
                 return (v[e] = t), v.filter(Boolean).join('\n');
               });
-          function b(e, t, n, a) {
+          function S(e, t, n, a) {
             var o = n ? '' : a.css;
             if (e.styleSheet) e.styleSheet.cssText = x(t, o);
             else {
@@ -185,7 +185,7 @@
                 i.length ? e.insertBefore(r, i[t]) : e.appendChild(r);
             }
           }
-          function S(e, t) {
+          function b(e, t) {
             var n = t.css,
               a = t.media,
               o = t.sourceMap;
@@ -269,10 +269,10 @@
           f = n.n(g),
           v = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
           x = n.n(v),
-          b =
+          S =
             (require('@babel/runtime/helpers/initializerWarningHelper'),
             require('mobx')),
-          S = require('antd'),
+          b = require('antd'),
           E = require('lodash');
         function O(e) {
           var t = JSON.stringify(e);
@@ -299,15 +299,15 @@
           L,
           F,
           q,
-          A,
           _,
-          M,
+          A,
           W,
+          M,
           z,
           G,
           U,
-          H,
           X,
+          H,
           Q,
           Y,
           Z,
@@ -351,10 +351,12 @@
             'event',
             'dynamic-data',
             'dynamic-config',
+            'dynamic-object',
+            'dynamic-array',
             'sohu-source',
             'sohu-event',
           ]),
-          be = [
+          Se = [
             'quantity',
             'box-style',
             'padding-margin',
@@ -364,11 +366,11 @@
             'htmlarea',
             'array',
           ].concat(xe),
-          Se = [].concat(ve, be),
+          be = [].concat(ve, Se),
           Ee = ['string'],
           Oe =
             (((e = {
-              object: Se,
+              object: be,
               array: [
                 'object',
                 'input',
@@ -385,53 +387,53 @@
               radio: Ee,
               select: Ee,
             }).select = ['string']),
-            (e.all = Se),
+            (e.all = be),
             e),
           Ce = require('@wibetter/json-utils'),
           Ne = Ce.TypeDataList.jsonschema,
           je = Ce.TypeDataList.input,
           we = {
             schemaStore:
-              ((j = b.action.bound),
-              (w = b.action.bound),
-              (I = b.action.bound),
-              (R = b.action.bound),
-              (K = b.action.bound),
-              (k = b.action.bound),
-              (T = b.action.bound),
-              (J = b.action.bound),
-              (D = b.action.bound),
-              (B = b.action.bound),
-              (P = b.action.bound),
-              (V = b.action.bound),
-              (L = b.action.bound),
-              (F = b.action.bound),
-              (q = b.action.bound),
-              (A = b.action.bound),
-              (_ = b.action.bound),
-              (M = b.action.bound),
-              (W = b.action.bound),
-              (z = b.action.bound),
-              (G = b.action.bound),
-              (U = b.action.bound),
-              (H = b.action.bound),
-              (X = b.action.bound),
-              (Q = b.action.bound),
-              (Y = b.action.bound),
-              (Z = b.action.bound),
-              ($ = b.action.bound),
-              (ee = b.action.bound),
-              (te = b.action.bound),
-              (ne = b.action.bound),
-              (ae = b.action.bound),
-              (oe = b.action.bound),
-              (re = b.action.bound),
-              (ie = b.action.bound),
-              (se = b.action.bound),
-              (ce = b.action.bound),
-              (le = b.action.bound),
-              (pe = b.action.bound),
-              (de = b.action.bound),
+              ((j = S.action.bound),
+              (w = S.action.bound),
+              (I = S.action.bound),
+              (R = S.action.bound),
+              (K = S.action.bound),
+              (k = S.action.bound),
+              (T = S.action.bound),
+              (J = S.action.bound),
+              (D = S.action.bound),
+              (B = S.action.bound),
+              (P = S.action.bound),
+              (V = S.action.bound),
+              (L = S.action.bound),
+              (F = S.action.bound),
+              (q = S.action.bound),
+              (_ = S.action.bound),
+              (A = S.action.bound),
+              (W = S.action.bound),
+              (M = S.action.bound),
+              (z = S.action.bound),
+              (G = S.action.bound),
+              (U = S.action.bound),
+              (X = S.action.bound),
+              (H = S.action.bound),
+              (Q = S.action.bound),
+              (Y = S.action.bound),
+              (Z = S.action.bound),
+              ($ = S.action.bound),
+              (ee = S.action.bound),
+              (te = S.action.bound),
+              (ne = S.action.bound),
+              (ae = S.action.bound),
+              (oe = S.action.bound),
+              (re = S.action.bound),
+              (ie = S.action.bound),
+              (se = S.action.bound),
+              (ce = S.action.bound),
+              (le = S.action.bound),
+              (pe = S.action.bound),
+              (de = S.action.bound),
               (me = (function () {
                 function e() {
                   (this.curJsonKeyIndex = 1),
@@ -515,13 +517,13 @@
                       !!(a.propertyOrder && a.propertyOrder.indexOf(t) >= 0) ||
                       (Ce.KeyWordList &&
                         Ce.KeyWordList.indexOf(t) >= 0 &&
-                        S.message.warning(
+                        b.message.warning(
                           t +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
                         ),
                       t &&
                         t.indexOf('-') > -1 &&
-                        S.message.warning(
+                        b.message.warning(
                           t +
                             '含特殊字符（‘-’），会影响后续数据获取和更新，建议您换一个数值。',
                         ),
@@ -541,7 +543,7 @@
                       n.propertyOrder.push(a),
                         (n.properties[a] = je),
                         this.jsonSchemaChange(t);
-                    } else S.message.warning('非对象类型字段不允许插入子元素');
+                    } else b.message.warning('非对象类型字段不允许插入子元素');
                   }),
                   (t.changeType = function (e, t, n, a, o) {
                     var r = (0, Ce.getParentIndexRoute)(e),
@@ -636,7 +638,7 @@
                     return (
                       Ce.KeyWordList &&
                         Ce.KeyWordList.indexOf(n) >= 0 &&
-                        S.message.warning(
+                        b.message.warning(
                           n +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
                         ),
@@ -718,7 +720,7 @@
                         (n = !0),
                       Ce.KeyWordList &&
                         Ce.KeyWordList.indexOf(t) >= 0 &&
-                        S.message.warning(
+                        b.message.warning(
                           t + '是JSONSchema的保留关键字，建议您换一个名称。',
                         ),
                       n
@@ -776,13 +778,13 @@
                     {
                       key: 'JSONSchemaObj',
                       get: function () {
-                        return (0, b.toJS)(this.jsonSchema);
+                        return (0, S.toJS)(this.jsonSchema);
                       },
                     },
                   ])
                 );
               })()),
-              (ue = x()(me.prototype, 'triggerChange', [b.observable], {
+              (ue = x()(me.prototype, 'triggerChange', [S.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -790,7 +792,7 @@
                   return !1;
                 },
               })),
-              (he = x()(me.prototype, 'jsonSchema', [b.observable], {
+              (he = x()(me.prototype, 'jsonSchema', [S.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -798,7 +800,7 @@
                   return {};
                 },
               })),
-              (ye = x()(me.prototype, 'SchemaTypeList', [b.observable], {
+              (ye = x()(me.prototype, 'SchemaTypeList', [S.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -806,7 +808,7 @@
                   return Oe;
                 },
               })),
-              (ge = x()(me.prototype, 'onChange', [b.observable], {
+              (ge = x()(me.prototype, 'onChange', [S.observable], {
                 configurable: !0,
                 enumerable: !0,
                 writable: !0,
@@ -847,7 +849,7 @@
               x()(
                 me.prototype,
                 'JSONSchemaObj',
-                [b.computed],
+                [S.computed],
                 Object.getOwnPropertyDescriptor(me.prototype, 'JSONSchemaObj'),
                 me.prototype,
               ),
@@ -962,21 +964,21 @@
               x()(
                 me.prototype,
                 'editSchemaData',
-                [A],
+                [_],
                 Object.getOwnPropertyDescriptor(me.prototype, 'editSchemaData'),
                 me.prototype,
               ),
               x()(
                 me.prototype,
                 'editJsonKey',
-                [_],
+                [A],
                 Object.getOwnPropertyDescriptor(me.prototype, 'editJsonKey'),
                 me.prototype,
               ),
               x()(
                 me.prototype,
                 'addNextJsonData',
-                [M],
+                [W],
                 Object.getOwnPropertyDescriptor(
                   me.prototype,
                   'addNextJsonData',
@@ -986,7 +988,7 @@
               x()(
                 me.prototype,
                 'insertJsonData',
-                [W],
+                [M],
                 Object.getOwnPropertyDescriptor(me.prototype, 'insertJsonData'),
                 me.prototype,
               ),
@@ -1020,14 +1022,14 @@
               x()(
                 me.prototype,
                 'isExitEnumKey',
-                [H],
+                [X],
                 Object.getOwnPropertyDescriptor(me.prototype, 'isExitEnumKey'),
                 me.prototype,
               ),
               x()(
                 me.prototype,
                 'updateEnumKey',
-                [X],
+                [H],
                 Object.getOwnPropertyDescriptor(me.prototype, 'updateEnumKey'),
                 me.prototype,
               ),
@@ -1232,9 +1234,9 @@
             (require('ace-builds/src-noconflict/mode-json'),
             require('ace-builds/src-noconflict/theme-solarized_light'),
             n(975),
-            S.Input.TextArea),
+            b.Input.TextArea),
           Te =
-            (S.Select.Option,
+            (b.Select.Option,
             (function (e) {
               function t(t) {
                 var n;
@@ -1254,7 +1256,7 @@
                   }),
                   (n.renderDefaultContent = function (e, t, a) {
                     if ('boolean' === e)
-                      return r.createElement(S.Switch, {
+                      return r.createElement(b.Switch, {
                         style: { display: 'inline-block' },
                         defaultChecked: t.default,
                         checkedChildren: 'true',
@@ -1266,7 +1268,7 @@
                     if ('checkboxes' === e || ('select' === e && t.multiple)) {
                       var o = t.options;
                       return r.createElement(
-                        S.Checkbox.Group,
+                        b.Checkbox.Group,
                         {
                           style: { display: 'inline-block' },
                           onChange: function (e) {
@@ -1279,7 +1281,7 @@
                           o.map(function (e, t) {
                             var n = a + '-options-' + t;
                             return r.createElement(
-                              S.Checkbox,
+                              b.Checkbox,
                               { value: e.value, key: n },
                               e.label || e.name,
                             );
@@ -1289,7 +1291,7 @@
                     if ('radio' === e || 'select' === e) {
                       var i = t.options;
                       return r.createElement(
-                        S.Radio.Group,
+                        b.Radio.Group,
                         {
                           style: { display: 'inline-block' },
                           defaultValue: t.default,
@@ -1303,7 +1305,7 @@
                           i.map(function (e, t) {
                             var n = a + '-options-' + t;
                             return r.createElement(
-                              S.Radio,
+                              b.Radio,
                               { value: e.value, key: n },
                               e.label || e.name,
                             );
@@ -1311,7 +1313,7 @@
                       );
                     }
                     return 'color' === e
-                      ? r.createElement(S.Input, {
+                      ? r.createElement(b.Input, {
                           style: { display: 'inline-block' },
                           className: 'color-item-form',
                           type: 'color',
@@ -1340,7 +1342,7 @@
                             },
                           })
                         : 'number' === e
-                          ? r.createElement(S.InputNumber, {
+                          ? r.createElement(b.InputNumber, {
                               style: { display: 'inline-block' },
                               placeholder: '请输入' + t.title + '的默认值',
                               defaultValue: t.default,
@@ -1348,7 +1350,7 @@
                                 n.handleValueChange('default', e);
                               },
                             })
-                          : r.createElement(S.Input, {
+                          : r.createElement(b.Input, {
                               style: { display: 'inline-block' },
                               placeholder: '请输入' + t.title + '的默认值',
                               defaultValue: t.default,
@@ -1363,9 +1365,12 @@
                             });
                   }),
                   (n.state = {
-                    isShowWarn: !1,
-                    warnText: '',
-                    curJSONDataTemp: void 0,
+                    optionsWarn: !1,
+                    optionsWarnText: '',
+                    optionsTemp: void 0,
+                    titleStyleTemp: void 0,
+                    titleStyleWarn: !1,
+                    titleStyleWarnText: !0,
                   }),
                   (n.handleValueChange = n.handleValueChange.bind(n)),
                   n
@@ -1382,11 +1387,15 @@
                     i = a.indexRoute,
                     s = a.targetJsonSchema,
                     c = this.state,
-                    l = c.isShowWarn,
-                    p = c.warnText,
-                    d = c.curJSONDataTemp,
-                    m = s.type,
-                    u = (n(i), s.isConditionProp);
+                    l = c.optionsWarn,
+                    p = c.optionsWarnText,
+                    d = c.optionsTemp,
+                    m = this.state,
+                    u = m.titleStyleTemp,
+                    h = m.titleStyleWarn,
+                    y = m.titleStyleWarnText,
+                    g = s.type,
+                    f = (n(i), s.isConditionProp);
                   return r.createElement(
                     'div',
                     { className: 'advance-config-model' },
@@ -1406,7 +1415,7 @@
                           'input-image',
                         ].indexOf(e) > -1
                       );
-                    })(m) &&
+                    })(g) &&
                       r.createElement(
                         'div',
                         {
@@ -1417,7 +1426,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title:
                                 '设置为条件字段后，其他字段可根据其数值变化进行实时联动',
@@ -1439,9 +1448,9 @@
                               className: 'form-item-box',
                               key: o + '-isConditionProp-switch',
                             },
-                            r.createElement(S.Switch, {
+                            r.createElement(b.Switch, {
                               style: { display: 'inline-block' },
-                              defaultChecked: u,
+                              defaultChecked: f,
                               checkedChildren: '是',
                               unCheckedChildren: '否',
                               onChange: function (e) {
@@ -1451,7 +1460,7 @@
                           ),
                         ),
                       ),
-                    ('select' === m || 'cascader' === m) &&
+                    ('select' === g || 'cascader' === g) &&
                       r.createElement(
                         'div',
                         {
@@ -1462,7 +1471,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title:
                                 '开启多选后，select下拉列表支持选择多个选项。',
@@ -1484,7 +1493,7 @@
                               className: 'form-item-box',
                               key: o + '-selectConfig-multiple',
                             },
-                            r.createElement(S.Switch, {
+                            r.createElement(b.Switch, {
                               style: { display: 'inline-block' },
                               defaultChecked: s.multiple,
                               checkedChildren: '多选',
@@ -1508,7 +1517,7 @@
                           ])
                           .indexOf(e) > -1
                       );
-                    })(m) &&
+                    })(g) &&
                       r.createElement(
                         'div',
                         {
@@ -1519,7 +1528,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title:
                                 '当前属性设置为只读后，用户不能对其进行任何编辑操作',
@@ -1538,7 +1547,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Switch, {
+                            r.createElement(b.Switch, {
                               style: { display: 'inline-block' },
                               defaultChecked: s.readOnly,
                               checkedChildren: 'true',
@@ -1562,7 +1571,7 @@
                           ])
                           .indexOf(e) > -1
                       );
-                    })(m) &&
+                    })(g) &&
                       r.createElement(
                         'div',
                         {
@@ -1573,7 +1582,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title:
                                 '当前属性设置为必填项后，如果用户没有给其设置数值，则会进行标红提示。',
@@ -1592,7 +1601,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Switch, {
+                            r.createElement(b.Switch, {
                               style: { display: 'inline-block' },
                               defaultChecked: s.isRequired,
                               checkedChildren: 'true',
@@ -1610,7 +1619,7 @@
                           .concat(ve, ['json', 'codearea', 'htmlarea'])
                           .indexOf(e) > -1
                       );
-                    })(m) &&
+                    })(g) &&
                       r.createElement(
                         'div',
                         {
@@ -1621,7 +1630,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             { placement: 'top' },
                             r.createElement(
                               'span',
@@ -1636,11 +1645,11 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            this.renderDefaultContent(m, s, o),
+                            this.renderDefaultContent(g, s, o),
                           ),
                         ),
                       ),
-                    'cascader' === m &&
+                    'cascader' === g &&
                       r.createElement(
                         'div',
                         {
@@ -1651,7 +1660,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title: '用于添加 级联选择 组件的 options 数据。',
                               placement: 'top',
@@ -1703,14 +1712,14 @@
                                 var n = JSON.parse(e);
                                 t.handleValueChange('options', n),
                                   t.setState({
-                                    isShowWarn: !1,
-                                    curJSONDataTemp: void 0,
+                                    optionsWarn: !1,
+                                    optionsTemp: void 0,
                                   });
                               } catch (n) {
                                 t.setState({
-                                  curJSONDataTemp: e,
-                                  warnText: n.message,
-                                  isShowWarn: !0,
+                                  optionsTemp: e,
+                                  optionsWarnText: n.message,
+                                  optionsWarn: !0,
                                 });
                               }
                             },
@@ -1732,7 +1741,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          b.Tooltip,
                           {
                             title:
                               '字段描述内容将作为Title的补充信息提供给用户',
@@ -1751,7 +1760,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(S.Input, {
+                          r.createElement(b.Input, {
                             style: { display: 'inline-block' },
                             placeholder: '请输入' + s.title + '的字段描述',
                             defaultValue: s.description,
@@ -1777,7 +1786,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          b.Tooltip,
                           {
                             title:
                               '开启后，在JSONEditor端会展示当前Key值，以便增加辨识度。',
@@ -1796,7 +1805,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(S.Switch, {
+                          r.createElement(b.Switch, {
                             style: { display: 'inline-block' },
                             defaultChecked: s.showKey,
                             checkedChildren: 'true',
@@ -1823,7 +1832,7 @@
                           'htmlarea',
                         ].indexOf(e) > -1
                       );
-                    })(m) &&
+                    })(g) &&
                       r.createElement(
                         'div',
                         {
@@ -1834,7 +1843,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title:
                                 '输入提示内容将作为输入区域的提示信息展示给用户',
@@ -1853,7 +1862,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Input, {
+                            r.createElement(b.Input, {
                               style: { display: 'inline-block' },
                               placeholder: '请输入' + s.title + '的输入提示',
                               defaultValue: s.placeholder,
@@ -1871,7 +1880,7 @@
                       ),
                     (function (e) {
                       return [].concat(xe, ['array']).indexOf(e) > -1;
-                    })(m) &&
+                    })(g) &&
                       r.createElement(
                         'div',
                         {
@@ -1882,7 +1891,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             {
                               title:
                                 '用于控制是否显示源码模式切换按钮，默认显示',
@@ -1901,7 +1910,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Switch, {
+                            r.createElement(b.Switch, {
                               style: { display: 'inline-block' },
                               defaultChecked:
                                 null == (e = s.showCodeViewBtn) || e,
@@ -1914,7 +1923,7 @@
                           ),
                         ),
                       ),
-                    'number' === (0, Ce.getExpectType)(m) &&
+                    'number' === (0, Ce.getExpectType)(g) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -1928,7 +1937,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              b.Tooltip,
                               {
                                 title:
                                   '设置最小值后，用户输入的数值必须大于当前最小值',
@@ -1947,7 +1956,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(b.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: s.minimum,
                                 onPressEnter: function (e) {
@@ -1972,7 +1981,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              b.Tooltip,
                               {
                                 title:
                                   '设置最大值后，用户输入的数值必须大于当前最大值',
@@ -1991,7 +2000,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(b.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: s.maximum,
                                 onPressEnter: function (e) {
@@ -2007,7 +2016,7 @@
                           ),
                         ),
                       ),
-                    'array' === (0, Ce.getExpectType)(m) &&
+                    'array' === (0, Ce.getExpectType)(g) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2021,7 +2030,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              b.Tooltip,
                               {
                                 title: '用于限制数据项最小个数',
                                 placement: 'top',
@@ -2039,7 +2048,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(b.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: s['minimum-child'],
                                 onChange: function (e) {
@@ -2059,7 +2068,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              b.Tooltip,
                               {
                                 title: '用于限制数据项最多个数',
                                 placement: 'top',
@@ -2077,7 +2086,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(b.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: s['maximum-child'],
                                 onChange: function (e) {
@@ -2098,7 +2107,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          b.Tooltip,
                           {
                             title:
                               '用于设置显隐表达式（onShow），比如设置 "dataType === 1"，则表示当数据域中 dataType 为 1 时显示当前配置项。',
@@ -2117,7 +2126,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(S.Input, {
+                          r.createElement(b.Input, {
                             style: { display: 'inline-block' },
                             placeholder: '请输入显隐表达式',
                             defaultValue: s.onShow,
@@ -2131,6 +2140,87 @@
                             },
                           }),
                         ),
+                      ),
+                    ),
+                    r.createElement(
+                      'div',
+                      {
+                        className: 'wide-screen-element-warp',
+                        key: o + '-titleStyle',
+                      },
+                      r.createElement(
+                        'div',
+                        { className: 'element-title' },
+                        r.createElement(
+                          b.Tooltip,
+                          {
+                            title: '可用于设置标题展示样式。',
+                            placement: 'top',
+                          },
+                          r.createElement(
+                            'span',
+                            { className: 'title-text' },
+                            '标题样式',
+                          ),
+                        ),
+                      ),
+                      r.createElement(
+                        'div',
+                        { className: 'content-item' },
+                        h &&
+                          r.createElement(
+                            'div',
+                            { className: 'warning-box code-area-item' },
+                            r.createElement(
+                              'div',
+                              { className: 'warning-img' },
+                              'X',
+                            ),
+                            r.createElement(
+                              'div',
+                              { className: 'warning-text' },
+                              y,
+                            ),
+                          ),
+                        r.createElement(Ke(), {
+                          id: o + '-json_area_ace',
+                          value: (0, Ce.hasProperties)(u)
+                            ? u
+                            : JSON.stringify(s.titleStyle, null, 2),
+                          className: 'json-view-ace',
+                          mode: 'json',
+                          theme: 'solarized_light',
+                          name: 'JSON_CODE_EDIT',
+                          fontSize: 14,
+                          showPrintMargin: !0,
+                          showGutter: !0,
+                          highlightActiveLine: !0,
+                          readOnly: !1,
+                          minLines: 3,
+                          maxLines: 6,
+                          width: '100%',
+                          onChange: function (e) {
+                            try {
+                              var n = JSON.parse(e);
+                              t.handleValueChange('titleStyle', n),
+                                t.setState({
+                                  titleStyleWarn: !1,
+                                  titleStyleTemp: void 0,
+                                });
+                            } catch (n) {
+                              t.setState({
+                                titleStyleTemp: e,
+                                titleStyleWarnText: n.message,
+                                titleStyleWarn: !0,
+                              });
+                            }
+                          },
+                          setOptions: {
+                            useWorker: !1,
+                            showLineNumbers: !0,
+                            tabSize: 2,
+                          },
+                        }),
                       ),
                     ),
                   );
@@ -2147,7 +2237,7 @@
         var Je = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
           })((0, l.observer)(Te)),
-          De = (n(915), S.Select.Option),
+          De = (n(915), b.Select.Option),
           Be = (function (e) {
             function t(t) {
               var n;
@@ -2169,7 +2259,7 @@
                     s = i.indexRoute;
                   i.jsonKey !== r &&
                     (o(s, r)
-                      ? S.message.warning('当前key已存在，请换一个吧。')
+                      ? b.message.warning('当前key已存在，请换一个吧。')
                       : a(s, r));
                 }),
                 (n.handleTitleChange = function (e) {
@@ -2269,7 +2359,7 @@
                       ? this.props.titleIsFixed
                       : y,
                   x = this.props.hideOperaBtn || !h,
-                  b = null == (t = this.props.showAdvanceBtn) || t,
+                  S = null == (t = this.props.showAdvanceBtn) || t,
                   E = this.getCurrentTypeList(i),
                   O = p.type,
                   C = (0, Ce.isContainerSchema)(p);
@@ -2287,7 +2377,7 @@
                           draggable: 'true',
                           onDragStart: this.ignoreDragEvent,
                         },
-                        r.createElement(S.Input, {
+                        r.createElement(b.Input, {
                           defaultValue: c || 'key值不存在',
                           disabled: g,
                           onPressEnter: this.handleJsonKeyChange,
@@ -2302,7 +2392,7 @@
                           onDragStart: this.ignoreDragEvent,
                         },
                         r.createElement(
-                          S.Select,
+                          b.Select,
                           {
                             showSearch: !0,
                             defaultValue: O,
@@ -2322,7 +2412,7 @@
                           draggable: 'true',
                           onDragStart: this.ignoreDragEvent,
                         },
-                        r.createElement(S.Input, {
+                        r.createElement(b.Input, {
                           defaultValue: p.title,
                           disabled: v,
                           onPressEnter: this.handleTitleChange,
@@ -2338,7 +2428,7 @@
                             null,
                             !y &&
                               r.createElement(
-                                S.Tooltip,
+                                b.Tooltip,
                                 { title: '删除' },
                                 r.createElement(Ie.CloseOutlined, {
                                   className: 'operate-btn delete-operate',
@@ -2346,7 +2436,7 @@
                                 }),
                               ),
                             r.createElement(
-                              S.Tooltip,
+                              b.Tooltip,
                               { title: C ? '新增子元素' : '新增同级元素' },
                               r.createElement(Ie.PlusOutlined, {
                                 className: 'operate-btn',
@@ -2355,7 +2445,7 @@
                             ),
                             C &&
                               r.createElement(
-                                S.Tooltip,
+                                b.Tooltip,
                                 { title: '数据项排序' },
                                 r.createElement(Ie.SortAscendingOutlined, {
                                   className: 'operate-btn',
@@ -2367,7 +2457,7 @@
                                 r.Fragment,
                                 null,
                                 r.createElement(
-                                  S.Tooltip,
+                                  b.Tooltip,
                                   { title: '复制' },
                                   r.createElement(Ie.CopyOutlined, {
                                     className: 'operate-btn',
@@ -2375,7 +2465,7 @@
                                   }),
                                 ),
                                 r.createElement(
-                                  S.Tooltip,
+                                  b.Tooltip,
                                   { title: '按住进行拖拽' },
                                   r.createElement(Ie.DragOutlined, {
                                     className: 'operate-btn drag-btn',
@@ -2383,9 +2473,9 @@
                                 ),
                               ),
                           ),
-                        b &&
+                        S &&
                           r.createElement(
-                            S.Tooltip,
+                            b.Tooltip,
                             { title: '高级设置' },
                             r.createElement(Ie.SettingOutlined, {
                               className: 'operate-btn',
@@ -2397,7 +2487,7 @@
                       ),
                       d &&
                         r.createElement(
-                          S.Modal,
+                          b.Modal,
                           {
                             visible: !0,
                             title:
@@ -2407,7 +2497,7 @@
                             },
                             footer: [
                               r.createElement(
-                                S.Button,
+                                b.Button,
                                 {
                                   key: 'submit',
                                   type: 'primary',
@@ -2458,7 +2548,7 @@
         var Pe = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
           })((0, l.observer)(Be)),
-          Ve = S.Tree.TreeNode,
+          Ve = b.Tree.TreeNode,
           Le = function (e) {
             return i().createElement(Pe, e);
           },
@@ -2545,8 +2635,8 @@
               }),
             );
           },
-          qe = (n(790), S.Select.Option),
-          Ae = (function (e) {
+          qe = (n(790), b.Select.Option),
+          _e = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2593,7 +2683,7 @@
                     'div',
                     { className: 'key-input-item' },
                     r.createElement(
-                      S.Select,
+                      b.Select,
                       {
                         defaultValue: n.default || 'local',
                         onChange: this.typeChange,
@@ -2611,7 +2701,7 @@
                     'div',
                     { className: 'type-select-item' },
                     r.createElement(
-                      S.Select,
+                      b.Select,
                       { defaultValue: a, style: { width: 120 }, disabled: !0 },
                       r.createElement(qe, { key: a, value: a }, a),
                     ),
@@ -2619,7 +2709,7 @@
                   r.createElement(
                     'div',
                     { className: 'title-input-item' },
-                    r.createElement(S.Input, {
+                    r.createElement(b.Input, {
                       defaultValue: n.title,
                       disabled: !0,
                     }),
@@ -2630,7 +2720,7 @@
               t
             );
           })(r.PureComponent);
-        Ae.propTypes = {
+        _e.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
@@ -2639,11 +2729,11 @@
           typeSelectData: d().any,
           isFixed: d().any,
         };
-        var _e = (0, l.inject)(function (e) {
+        var Ae = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(Ae)),
-          Me = S.Tree.TreeNode,
-          We = function (e) {
+          })((0, l.observer)(_e)),
+          We = b.Tree.TreeNode,
+          Me = function (e) {
             return i().createElement(Pe, e);
           },
           ze = {
@@ -2664,19 +2754,19 @@
               description: '用于设置获取元素数据的请求地址',
             },
           },
-          Ge = S.Tree.TreeNode,
+          Ge = b.Tree.TreeNode,
           Ue = function (e) {
             return i().createElement(Pe, e);
           },
-          He = S.Tree.TreeNode,
-          Xe = function (e) {
+          Xe = b.Tree.TreeNode,
+          He = function (e) {
             return i().createElement(Pe, e);
           },
-          Qe = S.Tree.TreeNode,
+          Qe = b.Tree.TreeNode,
           Ye = function (e) {
             return i().createElement(Pe, e);
           },
-          Ze = (n(617), S.Select.Option),
+          Ze = (n(617), b.Select.Option),
           $e = (function (e) {
             function t(t) {
               var n;
@@ -2693,7 +2783,7 @@
                     c = i.optionIndex;
                   r !== i.optionLabel &&
                     (a(s, r)
-                      ? S.message.warning(
+                      ? b.message.warning(
                           '对不起，存在相同的Label值，请重新设置。',
                         )
                       : o(s, c, r));
@@ -2736,7 +2826,7 @@
                     s = t(r);
                   s.options && s.options.length > 1
                     ? a(r, i)
-                    : S.message.warning('删除失败，至少保留一个可选项。');
+                    : b.message.warning('删除失败，至少保留一个可选项。');
                 }),
                 (n.onAddBtnEvent = n.onAddBtnEvent.bind(n)),
                 (n.onCopyBtnEvent = n.onCopyBtnEvent.bind(n)),
@@ -2762,7 +2852,7 @@
                     r.createElement(
                       'div',
                       { className: 'key-input-item' },
-                      r.createElement(S.Input, {
+                      r.createElement(b.Input, {
                         defaultValue: a,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
@@ -2772,7 +2862,7 @@
                       'div',
                       { className: 'type-select-item' },
                       r.createElement(
-                        S.Select,
+                        b.Select,
                         { defaultValue: 'string', style: { width: 120 } },
                         r.createElement(
                           Ze,
@@ -2784,7 +2874,7 @@
                     r.createElement(
                       'div',
                       { className: 'title-input-item' },
-                      r.createElement(S.Input, {
+                      r.createElement(b.Input, {
                         defaultValue: t,
                         onPressEnter: this.handleLabelChange,
                         onBlur: this.handleLabelChange,
@@ -2794,7 +2884,7 @@
                       'div',
                       { className: 'operate-item' },
                       r.createElement(
-                        S.Tooltip,
+                        b.Tooltip,
                         { title: '删除' },
                         r.createElement(Ie.CloseOutlined, {
                           className: 'operate-btn delete-operate',
@@ -2802,7 +2892,7 @@
                         }),
                       ),
                       r.createElement(
-                        S.Tooltip,
+                        b.Tooltip,
                         { title: '新增可选项' },
                         r.createElement(Ie.PlusOutlined, {
                           className: 'operate-btn',
@@ -2810,7 +2900,7 @@
                         }),
                       ),
                       r.createElement(
-                        S.Tooltip,
+                        b.Tooltip,
                         { title: '复制' },
                         r.createElement(Ie.CopyOutlined, {
                           className: 'operate-btn',
@@ -2834,11 +2924,11 @@
         var et = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
           })((0, l.observer)($e)),
-          tt = S.Tree.TreeNode,
+          tt = b.Tree.TreeNode,
           nt = function (e) {
             return i().createElement(et, e);
           },
-          at = S.Tree.TreeNode,
+          at = b.Tree.TreeNode,
           ot = function (e) {
             return i().createElement(Pe, e);
           },
@@ -2849,6 +2939,8 @@
               case 'style':
               case 'data':
               case 'dynamic-config':
+              case 'dynamic-object':
+              case 'dynamic-array':
               case 'sohu-source':
               case 'sohu-event':
               case 'padding-margin':
@@ -2865,16 +2957,16 @@
                     s = r.type,
                     c = r.properties.data || {};
                   return i().createElement(
-                    Me,
+                    We,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: We(u()({}, e)),
+                      title: Me(u()({}, e)),
                     },
-                    i().createElement(Me, {
+                    i().createElement(We, {
                       className: 'dataSource-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -2890,16 +2982,16 @@
                           nodeKey: o + '-type',
                           typeSelectData: ze,
                         }),
-                        i().createElement(_e, t)),
+                        i().createElement(Ae, t)),
                     }),
-                    i().createElement(Me, {
+                    i().createElement(We, {
                       className: 'dataSource-data-item-schema schema-item-form',
                       id: o + '-data-' + c.type,
                       key: o + '-data-' + c.type,
                       indexRoute: a ? a + '-1' : '1',
                       jsonKey: 'data',
                       disabled: !0,
-                      title: We({
+                      title: Me({
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'data',
                         targetJsonSchema: c,
@@ -2910,7 +3002,7 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement(Me, {
+                    i().createElement(We, {
                       className:
                         'dataSource-filter-item-schema schema-item-form',
                       id: o + '-filter',
@@ -2918,7 +3010,7 @@
                       indexRoute: a ? a + '-2' : '2',
                       jsonKey: 'filter',
                       disabled: !0,
-                      title: We({
+                      title: Me({
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'filter',
                         targetJsonSchema: r.properties.filter,
@@ -2966,7 +3058,7 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(_e, t)),
+                        i().createElement(Ae, t)),
                     }),
                     i().createElement(Ge, {
                       className:
@@ -3021,16 +3113,16 @@
                     d = r.properties.trigger || {},
                     m = r.properties.eventData || {};
                   return i().createElement(
-                    He,
+                    Xe,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: Xe(u()({}, e)),
+                      title: He(u()({}, e)),
                     },
-                    i().createElement(He, {
+                    i().createElement(Xe, {
                       className: 'event-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3045,11 +3137,11 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(_e, t)),
+                        i().createElement(Ae, t)),
                     }),
                     'on' === c.default &&
                       l &&
-                      i().createElement(He, {
+                      i().createElement(Xe, {
                         className:
                           'event-register-item-schema schema-item-form',
                         id: o + '-register-' + c.default,
@@ -3057,7 +3149,7 @@
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'register',
                         disabled: !0,
-                        title: Xe({
+                        title: He({
                           indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'register',
                           targetJsonSchema: l,
@@ -3070,7 +3162,7 @@
                       }),
                     'on' === c.default &&
                       p &&
-                      i().createElement(He, {
+                      i().createElement(Xe, {
                         className:
                           'event-actionFunc-item-schema schema-item-form',
                         id: o + '-actionFunc-' + c.default,
@@ -3078,7 +3170,7 @@
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'actionFunc',
                         disabled: !0,
-                        title: Xe({
+                        title: He({
                           indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'actionFunc',
                           targetJsonSchema: p,
@@ -3091,14 +3183,14 @@
                       }),
                     'emit' === c.default &&
                       d &&
-                      i().createElement(He, {
+                      i().createElement(Xe, {
                         className: 'event-trigger-item-schema schema-item-form',
                         id: o + '-trigger-' + c.default,
                         key: o + '-trigger-' + c.default,
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'trigger',
                         disabled: !0,
-                        title: Xe({
+                        title: He({
                           indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'trigger',
                           targetJsonSchema: d,
@@ -3111,7 +3203,7 @@
                       }),
                     'emit' === c.default &&
                       m &&
-                      i().createElement(He, {
+                      i().createElement(Xe, {
                         className:
                           'event-eventData-item-schema schema-item-form',
                         id: o + '-eventData-' + c.default,
@@ -3119,7 +3211,7 @@
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'eventData',
                         disabled: !0,
-                        title: Xe({
+                        title: He({
                           indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'eventData',
                           targetJsonSchema: m,
@@ -3187,7 +3279,7 @@
                           parentType: s,
                           nodeKey: o + '-quantity',
                         }),
-                        i().createElement(_e, t)),
+                        i().createElement(Ae, t)),
                     }),
                   );
                 })(e);
@@ -3253,7 +3345,7 @@
                 })(e);
             }
           },
-          it = S.Tree.TreeNode,
+          it = b.Tree.TreeNode,
           st = function (e) {
             return i().createElement(Pe, e);
           },
@@ -3321,7 +3413,7 @@
                 ((n = e.call(this, t) || this).onDragStart = function (e) {
                   (0, (n.props.schemaStore || {}).getSchemaByIndexRoute)(
                     e.node.indexRoute,
-                  ).isFixed && S.message.warning('当前元素不支持拖拽哦。');
+                  ).isFixed && b.message.warning('当前元素不支持拖拽哦。');
                 }),
                   (n.onDrop = function (e) {
                     var t = e.dragNode,
@@ -3348,21 +3440,21 @@
                             : (a.dragOver || a.dragOverGapBottom) && s(h, m, u);
                       else {
                         if (l(h, m))
-                          return void S.message.warning(
+                          return void b.message.warning(
                             '目标位置中有重名的元素',
                           );
                         var f = u.type;
                         if (!p(h, f))
-                          return void S.message.warning(
+                          return void b.message.warning(
                             '目标位置不支持' + f + '类型元素',
                           );
                         var v = i(d),
                           x = (0, Ce.getParentIndexRoute)(h),
-                          b = (function (e) {
+                          S = (function (e) {
                             if (window.sessionStorage)
                               return window.sessionStorage.getItem(e);
                           })(v + '-' + f);
-                        N(i(x) + '-' + m + '-' + f, b || v),
+                        N(i(x) + '-' + m + '-' + f, S || v),
                           a.dragOverGapTop
                             ? 'after' === g
                               ? (c(d, !0), s(h, m, u, 'before'))
@@ -3423,7 +3515,7 @@
                         r.Fragment,
                         null,
                         r.createElement(
-                          S.Tree,
+                          b.Tree,
                           {
                             draggable: !0,
                             selectable: !1,

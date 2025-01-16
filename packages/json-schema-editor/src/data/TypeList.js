@@ -22,6 +22,8 @@ export const Fixed_CONTAINER_TYPE = [
   'event',
   'dynamic-data',
   'dynamic-config',
+  'dynamic-object',
+  'dynamic-array',
   'sohu-source',
   'sohu-event',
 ];

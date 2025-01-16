@@ -28,6 +28,8 @@ const valExpectType = {
   time: 'string',
   url: 'string',
   'dynamic-config': 'object',
+  'dynamic-object': 'object',
+  'dynamic-array': 'object',
   'sohu-source': 'object',
   'sohu-event': 'object',
 };

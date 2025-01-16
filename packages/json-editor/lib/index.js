@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.9
+ * @wibetter/json-editor v5.1.10
  * author: wibetter
  * build tool: AKFun
- * build time: Mon Jan 13 2025 19:32:30 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 16 2025 14:22:51 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -849,11 +849,12 @@
                 targetJsonSchema.onShow,
               ) &&
               targetJsonSchema.onShow !== '' &&
-              (((0,
-              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
-                targetJsonSchema.onShow,
-              ) &&
-                !targetJsonSchema.onShow) ||
+              (targetJsonSchema.onShow === 'false' ||
+                ((0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isBoolean)(
+                  targetJsonSchema.onShow,
+                ) &&
+                  !targetJsonSchema.onShow) ||
                 ((0,
                 _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_2__.isString)(
                   targetJsonSchema.onShow,
@@ -908,6 +909,8 @@
                   ),
                 );
               case 'dynamic-config':
+              case 'dynamic-object':
+              case 'dynamic-array':
                 return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
                   $renderers_DynamicConfigSchema_index__WEBPACK_IMPORTED_MODULE_29__[
                     'default'
@@ -1529,22 +1532,15 @@
                     // 只有不为空时才赋值（忽略URL类型数值）
                     if (
                       itemVal &&
-                      ((0,
-                      $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isNumber)(
+                      (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isString)(
                         itemVal,
-                      ) ||
-                        ((0,
-                        $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isString)(
-                          itemVal,
-                        ) &&
-                          !(0,
-                          $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isURL)(
-                            itemVal,
-                          ) &&
-                          !(0,
-                          $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isColor)(
-                            itemVal,
-                          )))
+                      ) &&
+                      !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isURL)(
+                        itemVal,
+                      ) &&
+                      !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isColor)(
+                        itemVal,
+                      )
                     ) {
                       return itemVal;
                     }
@@ -1663,7 +1659,13 @@
                   : true;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute); // json内容数据
-              if (!curJsonData || curJsonData.length === 0) {
+              if (
+                !curJsonData ||
+                curJsonData.length === 0 ||
+                !(0, $utils_typeof__WEBPACK_IMPORTED_MODULE_11__.isArray)(
+                  curJsonData,
+                )
+              ) {
                 // 添加一个默认的数组数据
                 curJsonData = [{}];
               }
@@ -14336,6 +14338,11 @@
                   keyRoute,
                   this.jsonData,
                 );
+                /*
+    if (!isArray(arrJsonData)) {
+      arrJsonData = [];
+    }
+    */
                 // const _arrJsonData = toJS(arrJsonData);
                 if (
                   (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_8__.isArray)(

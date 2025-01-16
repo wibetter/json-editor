@@ -67,7 +67,7 @@ module.exports = {
     hostname: 'localhost',
     cssSourceMap: false,
   },
-  build2lib1: {
+  build2lib: {
     entry: {
       index: './src/main.js',
     },
