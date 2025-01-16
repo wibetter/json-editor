@@ -15,6 +15,11 @@ export function isNeedDefaultOption(curType) {
   return supportedTypeList.indexOf(curType) > -1;
 }
 
+export function hasOptions(curType) {
+  const supportedTypeList = ['select', 'radio'];
+  return supportedTypeList.indexOf(curType) > -1;
+}
+
 /** 输入提示（placeholder）
  *  根据 type 判断是否显示输入提示配置项
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持

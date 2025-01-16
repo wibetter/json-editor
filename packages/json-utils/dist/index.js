@@ -135,7 +135,7 @@
           return D;
         },
         isObject: function () {
-          return F;
+          return P;
         },
         isQuantity: function () {
           return I;
@@ -144,7 +144,7 @@
           return H;
         },
         isSelect: function () {
-          return P;
+          return F;
         },
         isString: function () {
           return T;
@@ -159,7 +159,7 @@
           return w;
         },
         json2schema: function () {
-          return B;
+          return A;
         },
         json2treeData: function () {
           return de;
@@ -168,7 +168,7 @@
           return v;
         },
         metaElemAnalyzer: function () {
-          return A;
+          return V;
         },
         moveBackward: function () {
           return ae;
@@ -1758,12 +1758,12 @@
         t
       );
     }
-    function P(e) {
+    function F(e) {
       if (!k(e)) return !1;
       for (var t = 0, r = e.length; t < r; t++) if (!T(e[t])) return !1;
       return !0;
     }
-    function F(e) {
+    function P(e) {
       var t = !1;
       return (
         'Object' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
@@ -1785,17 +1785,17 @@
         t
       );
     }
-    function B(e) {
+    function A(e) {
       var t;
       return (
         (t =
-          e && F(e)
+          e && P(e)
             ? (function (e) {
                 var t;
-                if (F(e)) {
+                if (P(e)) {
                   var r = Object.keys(e);
                   e.data && e.filter && 2 === r.length
-                    ? (t = k(e.data) || F(e.data) ? o(x.local) : o(x.remote))
+                    ? (t = k(e.data) || P(e.data) ? o(x.local) : o(x.remote))
                     : e.trigger && e.eventData && 2 === r.length
                       ? (t = o(S.emit))
                       : e.register && e.actionFunc && 2 === r.length
@@ -1805,7 +1805,7 @@
                           : ((t = o(O['empty-object'])),
                             Object.keys(e).map(function (r) {
                               var a = e[r];
-                              t.properties[r] = B(a);
+                              t.properties[r] = A(a);
                             }));
                 }
                 return t;
@@ -1814,7 +1814,7 @@
               ? (function (e) {
                   var t;
                   if (e && k(e))
-                    if (P(e)) {
+                    if (F(e)) {
                       (t = o(O.select)).items.enum = e;
                       var r = t.items.enumextra.length,
                         a = e.length;
@@ -1823,7 +1823,7 @@
                           t.items.enumextra.push('选项' + e(i));
                     } else {
                       t = o(O['empty-array']);
-                      var n = B(e[0]);
+                      var n = A(e[0]);
                       t.items.properties = n.properties;
                     }
                   return t;
@@ -1848,32 +1848,32 @@
         t
       );
     }
-    function V(e, t) {
+    function B(e, t) {
       var r = t || {};
       return (
-        F(e) &&
+        P(e) &&
           'object' === getExpectType(e.type) &&
           e.properties &&
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (t) {
               var a = e.properties[t];
-              r = A(a, r);
+              r = V(a, r);
             },
           ),
         r
       );
     }
-    function A(e, t) {
+    function V(e, t) {
       var r = !t,
         a = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
         var i = e.type;
         'object' === i || 'func' === i || 'style' === i || 'data' === i
           ? (!r && a.object ? (a.object += 1) : r || (a.object = 1),
-            (a = V(e, a)))
+            (a = B(e, a)))
           : 'array' === i
             ? (!r && a.array ? (a.array += 1) : r || (a.array = 1),
-              (a = V((e = e.items), a)))
+              (a = B((e = e.items), a)))
             : !r && a[i]
               ? (a[i] += 1)
               : r || (a[i] = 1);
@@ -1907,7 +1907,7 @@
       ) {
         var r = t.properties,
           a = o(O.quantity);
-        if (r.quantity && F(r.quantity) && r.quantity.default) {
+        if (r.quantity && P(r.quantity) && r.quantity.default) {
           var i = r.quantity.default;
           a.properties.quantity.default = 'percent' === i ? '%' : i;
         }
@@ -1932,13 +1932,13 @@
           var y = (s.filter && s.filter.default) || '() => {}';
           (t = o(S.on)),
             s.actionFunc &&
-              F(s.actionFunc) &&
+              P(s.actionFunc) &&
               (t.properties.actionFunc.default = s.actionFunc.default || o(y));
         } else {
           var f = (s.filter && s.filter.default) || '{}';
           (t = o(S.emit)),
             s.eventData &&
-              F(s.eventData) &&
+              P(s.eventData) &&
               (t.properties.eventData.default = s.eventData.default || o(f));
         }
       }
@@ -2120,11 +2120,12 @@
     function ie(e, t) {
       var r = '',
         a = !1;
-      return (
-        e.options && e.options[0] && ((r = e.options[0].value), (a = !0)),
-        (t || e.multiple) && (r = a ? [r] : []),
-        r
-      );
+      if (!1 !== e.defaultActiveFirstOption && e.defaultActiveFirstOption)
+        return (
+          e.options && e.options[0] && ((r = e.options[0].value), (a = !0)),
+          (t || e.multiple) && (r = a ? [r] : []),
+          r
+        );
     }
     function le(e, t) {
       var r,
@@ -2134,7 +2135,7 @@
       u(l) &&
         u(e.default) &&
         (typeof l != typeof e.default ||
-          ((r = l), (a = e.default), F(r) + '-' + k(r) != F(a) + '-' + k(a))) &&
+          ((r = l), (a = e.default), P(r) + '-' + k(r) != P(a) + '-' + k(a))) &&
         (l = void 0);
       var n = u(l) ? l : e.default;
       switch (e.type) {
@@ -2157,7 +2158,7 @@
           break;
         case 'json':
           var o = '';
-          if (F(n) || k(n)) o = n;
+          if (P(n) || k(n)) o = n;
           else if (_(n) || '' === n) o = {};
           else
             try {
@@ -2180,17 +2181,17 @@
     function ne(e, t) {
       var r = {},
         a = e.type;
-      if (F(e) && 'object' === z(e.type)) {
+      if (P(e) && 'object' === z(e.type)) {
         var i = e,
           l = t;
         u(l) &&
-          ((u(i.default) && typeof l != typeof e.default) || !F(l)) &&
+          ((u(i.default) && typeof l != typeof e.default) || !P(l)) &&
           (l = void 0);
         var n = u(l) ? l : i.default;
         'dynamic-data' === a
           ? ((r = o(j)),
             n &&
-              F(n) &&
+              P(n) &&
               '{}' !== JSON.stringify(n) &&
               (r = Object.assign(r, n)))
           : 'datasource' === a
@@ -2227,9 +2228,9 @@
                   : ((r = { register: 'eventName', actionFunc: '() => {}' }),
                     n && n.register && (r.register = n.register),
                     n && n.actionFunc && (r.actionFunc = n.actionFunc))
-              : !1 === e.isContainer && n && F(n) && '{}' !== JSON.stringify(n)
+              : !1 === e.isContainer && n && P(n) && '{}' !== JSON.stringify(n)
                 ? (r = Object.assign(r, n))
-                : void 0 === l && i.default && F(i.default)
+                : void 0 === l && i.default && P(i.default)
                   ? (r = i.default)
                   : e.properties &&
                     (e.propertyOrder
@@ -2285,18 +2286,18 @@
     function ce(e, t) {
       var r = t || [];
       if (e && '{}' !== JSON.stringify(e))
-        if (F(e))
+        if (P(e))
           if (
             e.type &&
             'remote' === e.type &&
             e.config &&
-            F(e.config) &&
+            P(e.config) &&
             e.config.dataName &&
             u(e.localFilter) &&
             u(e.data)
           ) {
             var a = e.config.body;
-            if (a && !F(a))
+            if (a && !P(a))
               try {
                 a = JSON.parse(a);
               } catch (e) {
@@ -2326,11 +2327,11 @@
     function de(e, t) {
       var r = [];
       return (
-        F(e)
+        P(e)
           ? Object.keys(e).map(function (a) {
               var i = e[a],
                 l = t ? t + '-' + a : a;
-              F(i) || k(i)
+              P(i) || k(i)
                 ? r.push({ title: a, value: l, key: l, children: de(i, l) })
                 : r.push({ title: a, value: l, key: l });
             })
@@ -2338,7 +2339,7 @@
             e.map(function (e, a) {
               var i = a.toString(),
                 l = t ? t + '-' + a : i;
-              F(e) || k(e)
+              P(e) || k(e)
                 ? r.push({ title: i, value: l, key: l, children: de(e, l) })
                 : r.push({ title: i, value: l, key: l });
             }),

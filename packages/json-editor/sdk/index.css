@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.9
+ * @wibetter/json-editor v5.1.11
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 16 2025 09:46:28 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 16 2025 17:05:40 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -1187,6 +1187,9 @@
 /* 底部导航盒子样式 */
 .select-box .ant-select-single {
   min-width: 150px;
+}
+.select-box .ant-select-selection-item {
+  max-width: 120px;
 }
 .select-box .ant-select-selection-item-content {
   max-width: 100px;

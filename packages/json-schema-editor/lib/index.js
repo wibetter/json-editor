@@ -299,8 +299,8 @@
           L,
           F,
           q,
-          _,
           A,
+          _,
           W,
           M,
           z,
@@ -409,8 +409,8 @@
               (L = S.action.bound),
               (F = S.action.bound),
               (q = S.action.bound),
-              (_ = S.action.bound),
               (A = S.action.bound),
+              (_ = S.action.bound),
               (W = S.action.bound),
               (M = S.action.bound),
               (z = S.action.bound),
@@ -964,14 +964,14 @@
               x()(
                 me.prototype,
                 'editSchemaData',
-                [_],
+                [A],
                 Object.getOwnPropertyDescriptor(me.prototype, 'editSchemaData'),
                 me.prototype,
               ),
               x()(
                 me.prototype,
                 'editJsonKey',
-                [A],
+                [_],
                 Object.getOwnPropertyDescriptor(me.prototype, 'editJsonKey'),
                 me.prototype,
               ),
@@ -1500,6 +1500,55 @@
                               unCheckedChildren: '单选',
                               onChange: function (e) {
                                 t.handleValueChange('multiple', e);
+                              },
+                            }),
+                          ),
+                        ),
+                      ),
+                    (function (e) {
+                      return ['select', 'radio'].indexOf(e) > -1;
+                    })(g) &&
+                      r.createElement(
+                        'div',
+                        {
+                          className: 'wide-screen-element-warp',
+                          key: o + '-defaultActiveFirstOption',
+                        },
+                        r.createElement(
+                          'div',
+                          { className: 'element-title' },
+                          r.createElement(
+                            b.Tooltip,
+                            {
+                              title: '是否默认高亮第一个选项。',
+                              placement: 'top',
+                            },
+                            r.createElement(
+                              'span',
+                              { className: 'title-text' },
+                              '选中第一项',
+                            ),
+                          ),
+                        ),
+                        r.createElement(
+                          'div',
+                          { className: 'content-item' },
+                          r.createElement(
+                            'div',
+                            {
+                              className: 'form-item-box',
+                              key: o + '-selectConfig-defaultActiveFirstOption',
+                            },
+                            r.createElement(b.Switch, {
+                              style: { display: 'inline-block' },
+                              defaultChecked: s.defaultActiveFirstOption,
+                              checkedChildren: '开启',
+                              unCheckedChildren: '关闭',
+                              onChange: function (e) {
+                                t.handleValueChange(
+                                  'defaultActiveFirstOption',
+                                  e,
+                                );
                               },
                             }),
                           ),
@@ -2636,7 +2685,7 @@
             );
           },
           qe = (n(790), b.Select.Option),
-          _e = (function (e) {
+          Ae = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2720,7 +2769,7 @@
               t
             );
           })(r.PureComponent);
-        _e.propTypes = {
+        Ae.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
@@ -2729,9 +2778,9 @@
           typeSelectData: d().any,
           isFixed: d().any,
         };
-        var Ae = (0, l.inject)(function (e) {
+        var _e = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(_e)),
+          })((0, l.observer)(Ae)),
           We = b.Tree.TreeNode,
           Me = function (e) {
             return i().createElement(Pe, e);
@@ -2982,7 +3031,7 @@
                           nodeKey: o + '-type',
                           typeSelectData: ze,
                         }),
-                        i().createElement(Ae, t)),
+                        i().createElement(_e, t)),
                     }),
                     i().createElement(We, {
                       className: 'dataSource-data-item-schema schema-item-form',
@@ -3058,7 +3107,7 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(Ae, t)),
+                        i().createElement(_e, t)),
                     }),
                     i().createElement(Ge, {
                       className:
@@ -3137,7 +3186,7 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(Ae, t)),
+                        i().createElement(_e, t)),
                     }),
                     'on' === c.default &&
                       l &&
@@ -3279,7 +3328,7 @@
                           parentType: s,
                           nodeKey: o + '-quantity',
                         }),
-                        i().createElement(Ae, t)),
+                        i().createElement(_e, t)),
                     }),
                   );
                 })(e);

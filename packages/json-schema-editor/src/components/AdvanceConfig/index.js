@@ -21,6 +21,7 @@ import {
   isNeedConditionOption,
   isNeedIsRequiredOption,
   isNeedCodeViewOption,
+  hasOptions,
 } from '$utils/advanced.config';
 import { hasProperties, getExpectType } from '@wibetter/json-utils';
 import AceEditor from 'react-ace';
@@ -274,6 +275,34 @@ class AdvanceConfig extends React.PureComponent {
                   unCheckedChildren="单选"
                   onChange={(checked) => {
                     this.handleValueChange('multiple', checked);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {hasOptions(curType) && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-defaultActiveFirstOption`}
+          >
+            <div className="element-title">
+              <Tooltip title={'是否默认高亮第一个选项。'} placement="top">
+                <span className="title-text">选中第一项</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div
+                className="form-item-box"
+                key={`${nodeKey}-selectConfig-defaultActiveFirstOption`}
+              >
+                <Switch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.defaultActiveFirstOption}
+                  checkedChildren="开启"
+                  unCheckedChildren="关闭"
+                  onChange={(checked) => {
+                    this.handleValueChange('defaultActiveFirstOption', checked);
                   }}
                 />
               </div>

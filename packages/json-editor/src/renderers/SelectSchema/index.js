@@ -145,6 +145,9 @@ class SelectSchema extends React.PureComponent {
             <Select
               showSearch={targetJsonSchema.showSearch ?? true}
               mode={targetJsonSchema.multiple ? 'multiple' : undefined}
+              defaultActiveFirstOption={
+                targetJsonSchema.defaultActiveFirstOption ?? false
+              } // 默认不选中第一条
               style={{ display: 'inline-block', minWidth: '120px' }}
               onChange={this.handleValueChange}
               defaultValue={curValue}

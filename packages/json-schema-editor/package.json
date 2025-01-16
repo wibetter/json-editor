@@ -1,6 +1,6 @@
 {
   "name": "@wibetter/json-schema-editor",
-  "version": "5.1.10",
+  "version": "5.1.11",
   "description": "JSON数据可视化/JSONSchema，以表单的形式编辑 json schema，可用于在线设计组件的配置面板",
   "keywords": [
     "json",

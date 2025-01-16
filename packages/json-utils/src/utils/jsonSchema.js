@@ -193,6 +193,13 @@ export function moveBackward(curIndexRoute) {
 export function getDefaultOptionVal(jsonSchema, multiple) {
   let defaultVal = '';
   let hasOptions = false;
+  if (
+    jsonSchema.defaultActiveFirstOption === false ||
+    !jsonSchema.defaultActiveFirstOption
+  ) {
+    // 当默认不选择第一个数据项时，则不自动生成数值
+    return undefined;
+  }
   if (jsonSchema.options && jsonSchema.options[0]) {
     defaultVal = jsonSchema.options[0].value;
     hasOptions = true;

@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.10
+ * @wibetter/json-editor v5.1.11
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 16 2025 14:22:51 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 16 2025 17:05:08 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -11277,7 +11277,9 @@
                 }
               };
             _proto.render = function render() {
-              var _targetJsonSchema$sho, _targetJsonSchema$all;
+              var _targetJsonSchema$sho,
+                _targetJsonSchema$def,
+                _targetJsonSchema$all;
               var _this$props2 = this.props,
                 schemaStore = _this$props2.schemaStore,
                 jsonStore = _this$props2.jsonStore;
@@ -11442,6 +11444,11 @@
                         mode: targetJsonSchema.multiple
                           ? 'multiple'
                           : undefined,
+                        defaultActiveFirstOption:
+                          (_targetJsonSchema$def =
+                            targetJsonSchema.defaultActiveFirstOption) != null
+                            ? _targetJsonSchema$def
+                            : false, // 默认不选中第一条
                         style: {
                           display: 'inline-block',
                           minWidth: '120px',
