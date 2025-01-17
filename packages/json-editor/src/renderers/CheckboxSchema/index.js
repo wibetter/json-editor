@@ -99,7 +99,7 @@ class CheckboxSchema extends React.PureComponent {
             <Checkbox.Group
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
-              defaultValue={curJsonData || targetJsonSchema.default}
+              defaultValue={curJsonData ?? targetJsonSchema.default}
               disabled={targetJsonSchema.readOnly}
             >
               {options &&

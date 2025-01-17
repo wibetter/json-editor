@@ -140,7 +140,7 @@ class ColorFormSchema extends React.PureComponent {
               <button
                 className="ant-input color-btn"
                 style={{
-                  backgroundColor: curJsonData || targetJsonSchema.default,
+                  backgroundColor: curJsonData ?? targetJsonSchema.default,
                 }}
               ></button>
               <Tooltip title={`点击移除当前颜色值`} placement="top">
@@ -166,7 +166,7 @@ class ColorFormSchema extends React.PureComponent {
                 <SketchPicker
                   className="color-sketch-picker"
                   key={`${nodeKey}-SketchPicker`}
-                  color={curJsonData || targetJsonSchema.default}
+                  color={curJsonData ?? targetJsonSchema.default}
                   onChange={this.handleValueChange}
                 />
               </div>

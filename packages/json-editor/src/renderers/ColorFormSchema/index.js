@@ -97,7 +97,7 @@ class ColorFormSchema extends React.PureComponent {
       <SketchPicker
         className="color-sketch-picker"
         key={`${nodeKey}-SketchPicker`}
-        color={curJsonData || targetJsonSchema.default}
+        color={curJsonData ?? targetJsonSchema.default}
         onChange={this.handleValueChange}
       />
     );
@@ -155,7 +155,7 @@ class ColorFormSchema extends React.PureComponent {
                 <button
                   className={`ant-input color-btn render-dom-${renderState}`}
                   style={{
-                    backgroundColor: curJsonData || targetJsonSchema.default,
+                    backgroundColor: curJsonData ?? targetJsonSchema.default,
                   }}
                 ></button>
               </Popover>

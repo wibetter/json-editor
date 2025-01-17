@@ -109,7 +109,7 @@ class CascaderSchema extends React.PureComponent {
               style={{ display: 'inline-block', minWidth: '120px' }}
               options={options}
               onChange={this.handleValueChange}
-              defaultValue={curJsonData || targetJsonSchema.default}
+              defaultValue={curJsonData ?? targetJsonSchema.default}
               disabled={targetJsonSchema.readOnly}
               allowClear={targetJsonSchema.allowClear ?? true}
               multiple={targetJsonSchema.multiple ?? false}

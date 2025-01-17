@@ -116,7 +116,7 @@ class ColorFormSchema extends React.PureComponent {
               style={{ display: 'inline-block' }}
               className="color-item-form"
               type={'color'}
-              defaultValue={curJsonData || targetJsonSchema.default}
+              defaultValue={curJsonData ?? targetJsonSchema.default}
               onChange={this.handleValueChange}
             />
             <Tooltip title={`点击移除当前颜色值`} placement="top">

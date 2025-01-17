@@ -114,7 +114,7 @@ class InputFormSchema extends React.PureComponent {
                 targetJsonSchema.placeholder ||
                 `请输入${targetJsonSchema.title}`
               }
-              defaultValue={curJsonData || targetJsonSchema.default}
+              defaultValue={curJsonData ?? targetJsonSchema.default}
               onPressEnter={this.handleValueChange}
               onBlur={this.handleValueChange}
             />

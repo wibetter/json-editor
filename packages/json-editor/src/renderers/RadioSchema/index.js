@@ -100,7 +100,7 @@ class RadioSchema extends React.PureComponent {
             <Radio.Group
               style={{ display: 'inline-block' }}
               onChange={this.handleValueChange}
-              defaultValue={curJsonData || targetJsonSchema.default}
+              defaultValue={curJsonData ?? targetJsonSchema.default}
               disabled={targetJsonSchema.readOnly}
             >
               {options &&

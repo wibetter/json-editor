@@ -61,7 +61,7 @@ class DateTimeFormSchema extends React.PureComponent {
     const timeFormat = DateTypeList[curType] || DateTypeList[0];
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const defaultTime = curJsonData || targetJsonSchema.default;
+    const defaultTime = curJsonData ?? targetJsonSchema.default;
     const isNeedTwoCol = isNeedTwoColWarpStyle(curType); // 是否需要设置成两栏布局
 
     const style = targetJsonSchema.style

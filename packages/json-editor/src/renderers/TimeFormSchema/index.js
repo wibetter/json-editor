@@ -51,7 +51,7 @@ class TimeFormSchema extends React.PureComponent {
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
-    const defaultTime = curJsonData || targetJsonSchema.default;
+    const defaultTime = curJsonData ?? targetJsonSchema.default;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局

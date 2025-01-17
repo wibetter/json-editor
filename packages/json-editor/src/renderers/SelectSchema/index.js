@@ -92,7 +92,7 @@ class SelectSchema extends React.PureComponent {
       curJsonData = valueArray;
     }
 
-    let curValue = curJsonData || targetJsonSchema.default;
+    let curValue = curJsonData ?? targetJsonSchema.default;
     if (isObject(curValue)) {
       curValue = JSON.stringify(curValue);
     }
