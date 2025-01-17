@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.11
+ * @wibetter/json-editor v5.1.12
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 16 2025 17:05:08 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 17 2025 15:43:17 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -3196,7 +3196,10 @@
                         },
                         options: options,
                         onChange: this.handleValueChange,
-                        defaultValue: curJsonData || targetJsonSchema.default,
+                        defaultValue:
+                          curJsonData != null
+                            ? curJsonData
+                            : targetJsonSchema.default,
                         disabled: targetJsonSchema.readOnly,
                         allowClear:
                           (_targetJsonSchema$all =
@@ -3469,7 +3472,10 @@
                           display: 'inline-block',
                         },
                         onChange: this.handleValueChange,
-                        defaultValue: curJsonData || targetJsonSchema.default,
+                        defaultValue:
+                          curJsonData != null
+                            ? curJsonData
+                            : targetJsonSchema.default,
                         disabled: targetJsonSchema.readOnly,
                       },
                       options &&
@@ -4096,7 +4102,10 @@
                   {
                     className: 'color-sketch-picker',
                     key: nodeKey + '-SketchPicker',
-                    color: curJsonData || targetJsonSchema.default,
+                    color:
+                      curJsonData != null
+                        ? curJsonData
+                        : targetJsonSchema.default,
                     onChange: this.handleValueChange,
                   },
                 );
@@ -4199,7 +4208,9 @@
                             className: 'ant-input color-btn',
                             style: {
                               backgroundColor:
-                                curJsonData || targetJsonSchema.default,
+                                curJsonData != null
+                                  ? curJsonData
+                                  : targetJsonSchema.default,
                             },
                           },
                         ),
@@ -4220,7 +4231,9 @@
                                 className: 'ant-input color-btn',
                                 style: {
                                   backgroundColor:
-                                    curJsonData || targetJsonSchema.default,
+                                    curJsonData != null
+                                      ? curJsonData
+                                      : targetJsonSchema.default,
                                 },
                               },
                             ),
@@ -4915,7 +4928,8 @@
               var timeFormat = DateTypeList[curType] || DateTypeList[0];
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
-              var defaultTime = curJsonData || targetJsonSchema.default;
+              var defaultTime =
+                curJsonData != null ? curJsonData : targetJsonSchema.default;
               var isNeedTwoCol = (0,
               $utils_index__WEBPACK_IMPORTED_MODULE_10__.isNeedTwoColWarpStyle)(
                 curType,
@@ -7373,7 +7387,10 @@
                         placeholder:
                           targetJsonSchema.placeholder ||
                           '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
-                        defaultValue: curJsonData || targetJsonSchema.default,
+                        defaultValue:
+                          curJsonData != null
+                            ? curJsonData
+                            : targetJsonSchema.default,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
                       },
@@ -10608,7 +10625,10 @@
                           display: 'inline-block',
                         },
                         onChange: this.handleValueChange,
-                        defaultValue: curJsonData || targetJsonSchema.default,
+                        defaultValue:
+                          curJsonData != null
+                            ? curJsonData
+                            : targetJsonSchema.default,
                         disabled: targetJsonSchema.readOnly,
                       },
                       options &&
@@ -11277,7 +11297,8 @@
                 }
               };
             _proto.render = function render() {
-              var _targetJsonSchema$sho,
+              var _curJsonData,
+                _targetJsonSchema$sho,
                 _targetJsonSchema$def,
                 _targetJsonSchema$all;
               var _this$props2 = this.props,
@@ -11327,7 +11348,10 @@
                 });
                 curJsonData = valueArray;
               }
-              var curValue = curJsonData || targetJsonSchema.default;
+              var curValue =
+                (_curJsonData = curJsonData) != null
+                  ? _curJsonData
+                  : targetJsonSchema.default;
               if (
                 (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isObject)(
                   curValue,
@@ -12639,7 +12663,10 @@
                         placeholder:
                           targetJsonSchema.placeholder ||
                           '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
-                        defaultValue: curJsonData || targetJsonSchema.default,
+                        defaultValue:
+                          curJsonData != null
+                            ? curJsonData
+                            : targetJsonSchema.default,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
                       },
@@ -13269,7 +13296,8 @@
                 targetJsonSchema = _this$props3.targetJsonSchema;
               // 从jsonData中获取对应的数值
               var curJsonData = getJSONDataByKeyRoute(keyRoute);
-              var defaultTime = curJsonData || targetJsonSchema.default;
+              var defaultTime =
+                curJsonData != null ? curJsonData : targetJsonSchema.default;
               var readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
               var isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
               var isNeedTwoCol = (0,
@@ -13865,7 +13893,10 @@
                         placeholder:
                           targetJsonSchema.placeholder ||
                           '\u8BF7\u8F93\u5165' + targetJsonSchema.title,
-                        defaultValue: curJsonData || targetJsonSchema.default,
+                        defaultValue:
+                          curJsonData != null
+                            ? curJsonData
+                            : targetJsonSchema.default,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
                       },
