@@ -24,6 +24,6 @@ export const initRadioData = {
       value: 'c',
     },
   ],
-  default: 'a',
+  // default: 'a',
   description: '',
 };

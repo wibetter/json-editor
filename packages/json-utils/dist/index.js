@@ -733,7 +733,6 @@
             { label: '选项b', value: 'b' },
             { label: '选项c', value: 'c' },
           ],
-          default: 'a',
           description: '',
         },
         select: {
@@ -744,7 +743,6 @@
             { label: '选项b', value: 'b' },
             { label: '选项c', value: 'c' },
           ],
-          default: 'a',
           description: '',
         },
         cascader: {
@@ -1139,7 +1137,10 @@
                   title: '数据来源',
                   isConditionProp: !0,
                   options: [
-                    { label: '模板直接配置', value: 'RuntimeDataSelfDefine' },
+                    {
+                      label: '模板自定义数据源',
+                      value: 'RuntimeDataSelfDefine',
+                    },
                     { label: 'mp后台配置', value: 'ContentStaticConfig' },
                     {
                       label: '请求当前页面数据',
@@ -1147,7 +1148,7 @@
                     },
                     { label: '资源中心配置', value: 'ResourceCenter' },
                   ],
-                  default: 'ContentStaticConfig',
+                  default: 'RuntimeDataSelfDefine',
                   description: '',
                 },
                 description: {
@@ -1312,17 +1313,18 @@
                   description: '',
                   placeholder: '',
                 },
-                CODE: {
-                  title: 'Code参数',
-                  type: 'input',
-                  description: '',
-                  placeholder: '',
-                },
                 URL: {
                   type: 'url',
                   title: '跳转链接',
                   description: '',
                   placeholder: '',
+                },
+                CODE: {
+                  title: 'Code参数',
+                  type: 'input',
+                  description: '',
+                  placeholder: '',
+                  onShow: !1,
                 },
               },
               propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],

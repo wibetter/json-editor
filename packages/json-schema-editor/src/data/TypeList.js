@@ -73,6 +73,7 @@ export const OBJECT_TYPE = [
 // 数组类型可用子项类型
 export const ARRAY_ITEM_TYPE = [
   'object',
+  'array',
   'input',
   'number',
   'select',

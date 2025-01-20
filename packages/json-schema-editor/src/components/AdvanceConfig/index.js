@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
-import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import {
   Input,
@@ -24,9 +23,7 @@ import {
   hasOptions,
 } from '$utils/advanced.config';
 import { hasProperties, getExpectType } from '@wibetter/json-utils';
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
+import JsonView from '$components/JsonView';
 import './index.scss';
 
 /**
@@ -43,16 +40,6 @@ class AdvanceConfig extends React.PureComponent {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      optionsWarn: false, // 用于判断是否显示错误信息
-      optionsWarnText: '', // 错误内容
-      optionsTemp: undefined, // 用于记录当前不合规范的json数据
-
-      titleStyleTemp: undefined,
-      titleStyleWarn: false,
-      titleStyleWarnText: true,
-    };
 
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -201,9 +188,6 @@ class AdvanceConfig extends React.PureComponent {
   render() {
     const { indexRoute2keyRoute } = this.props.schemaStore || {};
     const { nodeKey, indexRoute, targetJsonSchema } = this.props;
-
-    const { optionsWarn, optionsWarnText, optionsTemp } = this.state;
-    const { titleStyleTemp, titleStyleWarn, titleStyleWarnText } = this.state;
     const curType = targetJsonSchema.type;
     // 获取对应的keyRoute
     const curKeyRoute = indexRoute2keyRoute(indexRoute);
@@ -395,53 +379,10 @@ class AdvanceConfig extends React.PureComponent {
               </Tooltip>
             </div>
             <div className="content-item">
-              {optionsWarn && (
-                <div className="warning-box code-area-item">
-                  <div className="warning-img">X</div>
-                  <div className="warning-text">{optionsWarnText}</div>
-                </div>
-              )}
-              <AceEditor
-                id={`${nodeKey}-json_area_ace`}
-                value={
-                  hasProperties(optionsTemp)
-                    ? optionsTemp
-                    : JSON.stringify(targetJsonSchema.options, null, 2)
-                }
-                className="json-view-ace"
-                mode="json"
-                theme="solarized_light"
-                name="JSON_CODE_EDIT"
-                fontSize={14}
-                showPrintMargin={true}
-                showGutter={true}
-                highlightActiveLine={true}
-                readOnly={false}
-                minLines={3}
-                maxLines={6}
-                width={'100%'}
+              <JsonView
+                jsonData={targetJsonSchema.options}
                 onChange={(newJsonData) => {
-                  try {
-                    const newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
-                    // 更新jsonData
-                    this.handleValueChange('options', newJsonDataTemp);
-                    this.setState({
-                      optionsWarn: false,
-                      optionsTemp: undefined, // 重置
-                    });
-                  } catch (err) {
-                    // 更新jsonData
-                    this.setState({
-                      optionsTemp: newJsonData, // 记录当前格式不正确的json数据
-                      optionsWarnText: err.message,
-                      optionsWarn: true,
-                    });
-                  }
-                }}
-                setOptions={{
-                  useWorker: false,
-                  showLineNumbers: true,
-                  tabSize: 2,
+                  this.handleValueChange('options', newJsonData);
                 }}
               />
             </div>
@@ -705,51 +646,10 @@ class AdvanceConfig extends React.PureComponent {
             </Tooltip>
           </div>
           <div className="content-item">
-            {titleStyleWarn && (
-              <div className="warning-box code-area-item">
-                <div className="warning-img">X</div>
-                <div className="warning-text">{titleStyleWarnText}</div>
-              </div>
-            )}
-            <AceEditor
-              id={`${nodeKey}-json_area_ace`}
-              value={
-                hasProperties(titleStyleTemp)
-                  ? titleStyleTemp
-                  : JSON.stringify(targetJsonSchema.titleStyle, null, 2)
-              }
-              className="json-view-ace"
-              mode="json"
-              theme="solarized_light"
-              name="JSON_CODE_EDIT"
-              fontSize={14}
-              showPrintMargin={true}
-              showGutter={true}
-              highlightActiveLine={true}
-              readOnly={false}
-              minLines={3}
-              maxLines={6}
-              width={'100%'}
+            <JsonView
+              jsonData={targetJsonSchema.titleStyle}
               onChange={(newJsonData) => {
-                try {
-                  const newTitleStyleTemp = JSON.parse(newJsonData);
-                  this.handleValueChange('titleStyle', newTitleStyleTemp);
-                  this.setState({
-                    titleStyleWarn: false,
-                    titleStyleTemp: undefined,
-                  });
-                } catch (err) {
-                  this.setState({
-                    titleStyleTemp: newJsonData, // 记录当前格式不正确的json数据
-                    titleStyleWarnText: err.message,
-                    titleStyleWarn: true,
-                  });
-                }
-              }}
-              setOptions={{
-                useWorker: false,
-                showLineNumbers: true,
-                tabSize: 2,
+                this.handleValueChange('titleStyle', newJsonData);
               }}
             />
           </div>

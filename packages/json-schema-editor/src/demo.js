@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
 import JSONEditor from '@wibetter/json-editor';
 import JSONSchemaEditor from './main';
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import '@wibetter/json-editor/lib/index.css';
 import '../../../index.scss';
 
@@ -227,40 +224,16 @@ class IndexDemo extends React.PureComponent {
         </div>
         <div className="json-action-container">
           <div className="json-schema-box">
-            {!schemaCodeView && (
-              <JSONSchemaEditor
-                data={jsonSchema}
-                typeList={curTypeList}
-                onChange={(newJsonSchema) => {
-                  this.setState({
-                    jsonSchema: newJsonSchema,
-                  });
-                }}
-              />
-            )}
-            {schemaCodeView && (
-              <AceEditor
-                id="json_area_ace"
-                value={JSON.stringify(jsonSchema, null, 2)}
-                className="json-view-ace"
-                mode="json"
-                theme="solarized_light"
-                name="JSON_CODE_EDIT"
-                fontSize={14}
-                showPrintMargin={true}
-                showGutter={true}
-                highlightActiveLine={true}
-                readOnly={false}
-                minLines={5}
-                maxLines={33}
-                width={'100%'}
-                setOptions={{
-                  useWorker: false,
-                  showLineNumbers: true,
-                  tabSize: 2,
-                }}
-              />
-            )}
+            <JSONSchemaEditor
+              data={jsonSchema}
+              typeList={curTypeList}
+              jsonView={schemaCodeView}
+              onChange={(newJsonSchema) => {
+                this.setState({
+                  jsonSchema: newJsonSchema,
+                });
+              }}
+            />
           </div>
           <div
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}

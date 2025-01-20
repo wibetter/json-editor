@@ -24,6 +24,6 @@ export const initSelectData = {
       value: 'c',
     },
   ],
-  default: 'a',
+  // default: 'a',
   description: '',
 };

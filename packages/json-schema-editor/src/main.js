@@ -17,6 +17,7 @@ export default class JSONSchemaEditor extends React.PureComponent {
     data: PropTypes.any,
     typeList: PropTypes.any,
     element: PropTypes.any,
+    jsonView: PropTypes.any,
   };
 
   constructor(props) {
@@ -33,12 +34,7 @@ export default class JSONSchemaEditor extends React.PureComponent {
 
     const renderContent = (
       <Provider schemaStore={schemaStore}>
-        <JSONSchema
-          data={data}
-          typeList={typeList}
-          onChange={onChange}
-          wideScreen={wideScreen}
-        />
+        <JSONSchema {...this.props} />
       </Provider>
     );
 

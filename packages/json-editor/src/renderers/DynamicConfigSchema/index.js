@@ -226,9 +226,12 @@ class ObjectSchema extends React.PureComponent {
                 if (currentJsonKey === 'range') {
                   if (
                     curJsonData.valueType === 'select' &&
+                    (!currentSchemaData.options ||
+                      currentSchemaData.options.length === 0) &&
                     (curJsonData.type === 'ContentStaticConfig' ||
                       curJsonData.type === 'ResourceCenter')
                   ) {
+                    // 如果 range 没有可选项则从 value 中获取可选项
                     const valueSchema = targetJsonSchema.properties['value'];
                     if (
                       ['select', 'radio', 'checkboxes'].includes(

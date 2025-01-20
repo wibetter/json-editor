@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.12
+ * @wibetter/json-editor v5.1.13
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 17 2025 15:43:17 GMT+0800 (中国标准时间)
+ * build time: Mon Jan 20 2025 16:58:20 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5487,9 +5487,12 @@
                         if (currentJsonKey === 'range') {
                           if (
                             curJsonData.valueType === 'select' &&
+                            (!currentSchemaData.options ||
+                              currentSchemaData.options.length === 0) &&
                             (curJsonData.type === 'ContentStaticConfig' ||
                               curJsonData.type === 'ResourceCenter')
                           ) {
+                            // 如果 range 没有可选项则从 value 中获取可选项
                             var _valueSchema =
                               targetJsonSchema.properties['value'];
                             if (

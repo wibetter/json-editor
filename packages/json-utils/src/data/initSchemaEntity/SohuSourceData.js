@@ -15,9 +15,14 @@ export const initSohuSourceData = {
           title: '数据来源',
           isConditionProp: true,
           options: [
+            /*
             {
               label: '模板直接配置',
-              // value: "DevDefaults",
+              value: "DevDefaults",
+            },
+            */
+            {
+              label: '模板自定义数据源',
               value: 'RuntimeDataSelfDefine',
             },
             {
@@ -33,7 +38,7 @@ export const initSohuSourceData = {
               value: 'ResourceCenter',
             },
           ],
-          default: 'ContentStaticConfig',
+          default: 'RuntimeDataSelfDefine',
           description: '',
         },
         description: {
@@ -231,17 +236,18 @@ export const initSohuSourceData = {
           description: '',
           placeholder: '',
         },
-        CODE: {
-          title: 'Code参数',
-          type: 'input',
-          description: '',
-          placeholder: '',
-        },
         URL: {
           type: 'url',
           title: '跳转链接',
           description: '',
           placeholder: '',
+        },
+        CODE: {
+          title: 'Code参数',
+          type: 'input',
+          description: '',
+          placeholder: '',
+          onShow: false,
         },
       },
       propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],
