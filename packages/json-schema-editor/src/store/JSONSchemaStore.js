@@ -96,6 +96,12 @@ export default class JSONSchemaStore {
     }
   }
 
+  @action.bound
+  schemaChange(newSchemaData) {
+    this.jsonSchema = newSchemaData;
+    this.jsonSchemaChange();
+  }
+
   /** 触发onChange  */
   @action.bound
   jsonSchemaChange(ignore) {

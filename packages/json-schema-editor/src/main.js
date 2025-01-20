@@ -18,6 +18,7 @@ export default class JSONSchemaEditor extends React.PureComponent {
     typeList: PropTypes.any,
     element: PropTypes.any,
     jsonView: PropTypes.any,
+    jsonViewReadOnly: PropTypes.any,
   };
 
   constructor(props) {

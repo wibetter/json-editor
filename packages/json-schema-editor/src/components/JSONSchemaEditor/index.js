@@ -21,6 +21,7 @@ class JSONSchema extends React.PureComponent {
     data: PropTypes.object,
     typeList: PropTypes.object,
     jsonView: PropTypes.any,
+    jsonViewReadOnly: PropTypes.bool,
   };
 
   constructor(props) {
@@ -207,8 +208,8 @@ class JSONSchema extends React.PureComponent {
   };
 
   render() {
-    const { jsonView } = this.props;
-    const { jsonSchema } = this.props.schemaStore || {};
+    const { jsonView, jsonViewReadOnly } = this.props;
+    const { jsonSchema, schemaChange } = this.props.schemaStore || {};
     const isEmpty = isEmptySchema(jsonSchema);
     const curType = jsonSchema.type;
     /**
@@ -254,7 +255,11 @@ class JSONSchema extends React.PureComponent {
           </>
         )}
         {!isEmpty && jsonView && (
-          <JsonView jsonData={jsonSchema} readOnly={true} />
+          <JsonView
+            jsonData={jsonSchema}
+            readOnly={jsonViewReadOnly ?? true}
+            onChange={schemaChange}
+          />
         )}
         {isEmpty && (
           <p className="json-schema-empty">当前jsonSchema没有数据内容</p>

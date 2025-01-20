@@ -228,6 +228,7 @@ class IndexDemo extends React.PureComponent {
               data={jsonSchema}
               typeList={curTypeList}
               jsonView={schemaCodeView}
+              // jsonViewReadOnly={false}
               onChange={(newJsonSchema) => {
                 this.setState({
                   jsonSchema: newJsonSchema,
