@@ -5,6 +5,8 @@ import {
   isArray,
   isObject,
   isString,
+  isURL,
+  isColor,
 } from '@wibetter/json-utils';
 import camelCase from 'lodash/camelCase';
 import {
@@ -307,4 +309,50 @@ export function formatOptions1(options) {
     options: curOptions,
     optionValue,
   };
+}
+
+export function getObjectTitle(objItem) {
+  if (objItem && isObject(objItem)) {
+    let curObjectTitle =
+      objItem.label || objItem.title || objItem.description || objItem.desc;
+    if (curObjectTitle) {
+      return curObjectTitle;
+    }
+    const objItemKeys = Object.keys(objItem);
+    for (let index = 0, size = objItemKeys.length; index < size; index++) {
+      const itemVal = objItem[objItemKeys[index]];
+      if (
+        itemVal &&
+        isString(itemVal) &&
+        !isURL(itemVal) &&
+        !isColor(itemVal)
+      ) {
+        return itemVal;
+      }
+    }
+  } else {
+    return objItem;
+  }
+}
+
+/**
+ * options 数据处理
+ * 将 options 列表中的普通 option 自动包裹一层：
+ * 比如：[{label: 'xxLabel', value: 123}] => [{label: 'xxLabel', value: {label: 'xxLabel', value: 123}}]
+ */
+export function getWrapOptions(options) {
+  let curOptions = [];
+  if (isArray(options)) {
+    options.forEach((option) => {
+      if (isObject(option)) {
+        curOptions.push({
+          label: getObjectTitle(option),
+          value: isObject(option.value) ? option.value : option,
+        });
+      } else {
+        curOptions.push(option);
+      }
+    });
+  }
+  return curOptions;
 }

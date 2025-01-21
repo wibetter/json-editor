@@ -9,7 +9,7 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
-import { objClone } from '$utils/index';
+import { objClone, getWrapOptions } from '$utils/index';
 import MappingRender from '$components/MappingRender';
 import JsonView from '$renderers/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -241,7 +241,9 @@ class ObjectSchema extends React.PureComponent {
                       valueSchema.options.length > 0
                     ) {
                       // range 和 value 复用 options
-                      currentSchemaData.options = objClone(valueSchema.options);
+                      currentSchemaData.options = getWrapOptions(
+                        valueSchema.options,
+                      );
                     }
                   }
                 }

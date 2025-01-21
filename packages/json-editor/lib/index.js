@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.13
+ * @wibetter/json-editor v5.1.16
  * author: wibetter
  * build tool: AKFun
- * build time: Mon Jan 20 2025 16:58:20 GMT+0800 (中国标准时间)
+ * build time: Tue Jan 21 2025 18:00:43 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5504,7 +5504,7 @@
                             ) {
                               // range 和 value 复用 options
                               currentSchemaData.options = (0,
-                              $utils_index__WEBPACK_IMPORTED_MODULE_8__.objClone)(
+                              $utils_index__WEBPACK_IMPORTED_MODULE_8__.getWrapOptions)(
                                 _valueSchema.options,
                               );
                             }
@@ -15292,6 +15292,9 @@
             /* harmony export */ getExprProperties: function () {
               return /* binding */ getExprProperties;
             },
+            /* harmony export */ getObjectTitle: function () {
+              return /* binding */ getObjectTitle;
+            },
             /* harmony export */ getParams: function () {
               return /* binding */ getParams;
             },
@@ -15300,6 +15303,9 @@
             },
             /* harmony export */ getWebCacheData: function () {
               return /* binding */ getWebCacheData;
+            },
+            /* harmony export */ getWrapOptions: function () {
+              return /* binding */ getWrapOptions;
             },
             /* harmony export */ hasProperties: function () {
               return /* binding */ hasProperties;
@@ -15705,6 +15711,84 @@
               options: curOptions,
               optionValue: optionValue,
             };
+          }
+          function getObjectTitle(objItem) {
+            if (
+              objItem &&
+              (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isObject)(
+                objItem,
+              )
+            ) {
+              var curObjectTitle =
+                objItem.label ||
+                objItem.title ||
+                objItem.description ||
+                objItem.desc;
+              if (curObjectTitle) {
+                return curObjectTitle;
+              }
+              var objItemKeys = Object.keys(objItem);
+              for (
+                var index = 0, size = objItemKeys.length;
+                index < size;
+                index++
+              ) {
+                var itemVal = objItem[objItemKeys[index]];
+                if (
+                  itemVal &&
+                  (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isString)(
+                    itemVal,
+                  ) &&
+                  !(0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isURL)(
+                    itemVal,
+                  ) &&
+                  !(0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isColor)(
+                    itemVal,
+                  )
+                ) {
+                  return itemVal;
+                }
+              }
+            } else {
+              return objItem;
+            }
+          }
+          /**
+           * options 数据处理
+           * 将 options 列表中的普通 option 自动包裹一层：
+           * 比如：[{label: 'xxLabel', value: 123}] => [{label: 'xxLabel', value: {label: 'xxLabel', value: 123}}]
+           */
+          function getWrapOptions(options) {
+            var curOptions = [];
+            if (
+              (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isArray)(
+                options,
+              )
+            ) {
+              options.forEach(function (option) {
+                if (
+                  (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isObject)(
+                    option,
+                  )
+                ) {
+                  curOptions.push({
+                    label: getObjectTitle(option),
+                    value: (0,
+                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isObject)(
+                      option.value,
+                    )
+                      ? option.value
+                      : option,
+                  });
+                } else {
+                  curOptions.push(option);
+                }
+              });
+            }
+            return curOptions;
           }
 
           /***/

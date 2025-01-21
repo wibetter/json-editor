@@ -43,7 +43,7 @@ class IndexDemo extends React.PureComponent {
               description: {
                 title: '组件描述',
                 type: 'input',
-                default: '复合组件-大图+文字链组件',
+                default: '',
                 description: '',
                 placeholder: '',
                 titleStyle: {
@@ -64,291 +64,22 @@ class IndexDemo extends React.PureComponent {
                     value: 'server',
                   },
                 ],
+                default: 'client',
                 description: '',
                 titleStyle: {
                   'font-weight': 500,
                   color: '#070c14',
                 },
               },
-              field_1: {
-                type: 'select',
-                title: '单文本框',
-                options: [
-                  {
-                    label: '选项a',
-                    value: 'a',
-                  },
-                  {
-                    label: '选项b',
-                    value: 'b',
-                  },
-                  {
-                    label: '选项c',
-                    value: 'c',
-                  },
-                ],
-                description: '',
-              },
             },
-            propertyOrder: ['name', 'description', 'renderMethod', 'field_1'],
+            propertyOrder: ['name', 'description', 'renderMethod'],
           },
           props: {
             type: 'object',
             title: '属性',
             isFixed: true,
             properties: {
-              size: {
-                type: 'dynamic-config',
-                title: '容量',
-                description: '',
-                isContainer: false,
-                properties: {
-                  type: {
-                    type: 'select',
-                    title: '数据来源',
-                    options: [
-                      {
-                        label: '模板直接设置',
-                        value: 'DevDefaults',
-                      },
-                      {
-                        label: 'mp后台配置',
-                        value: 'ContentStaticConfig',
-                      },
-                      {
-                        label: '内容Meta数据',
-                        value: 'Content',
-                      },
-                      {
-                        label: '全局配置数据',
-                        value: 'RuntimeConst',
-                      },
-                      {
-                        label: '资源中心配置',
-                        value: 'ResourceCenter',
-                      },
-                    ],
-                    default: 'DevDefaults',
-                    isConditionProp: true,
-                    description:
-                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                  },
-                  value: {
-                    title: '数据值',
-                    type: 'select',
-                    default: 'tpl-cover-box-size-pc',
-                    description: '',
-                    placeholder: '',
-                    onShow:
-                      'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                    options: [
-                      {
-                        name: '6条内容',
-                        value: 6,
-                        id: '3ef',
-                      },
-                      {
-                        name: '4条内容',
-                        value: 4,
-                        id: 'b89',
-                      },
-                    ],
-                  },
-                  description: {
-                    title: '属性名称',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    onShow:
-                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                  },
-                  valueType: {
-                    type: 'radio',
-                    title: '配置方式',
-                    options: [
-                      {
-                        label: '填写',
-                        value: 'string',
-                      },
-                      {
-                        label: '选择',
-                        value: 'select',
-                      },
-                    ],
-                    default: 'string',
-                    isConditionProp: true,
-                    description:
-                      '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                    onShow:
-                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                  },
-                  range: {
-                    type: 'select',
-                    title: '可选项',
-                    multiple: true,
-                    options: [],
-                    onShow:
-                      '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                    description: '这里会使用value中的配置选项作为options',
-                  },
-                },
-                propertyOrder: [
-                  'type',
-                  'value',
-                  'description',
-                  'valueType',
-                  'range',
-                ],
-                showCodeViewBtn: false,
-                default: {
-                  description: '容量',
-                  disabled: false,
-                  isOptional: false,
-                  type: 'ContentStaticConfig',
-                  allSetting_attrType: 'select',
-                  dataType: '',
-                  value: 'tpl-cover-box-size-pc',
-                  range: [
-                    '{"label":"4","value":4}',
-                    '{"label":"5","value":5}',
-                    '{"label":"6","value":6}',
-                  ],
-                  valueType: 'number',
-                },
-                showKey: true,
-                titleStyle: {
-                  'font-weight': 500,
-                  color: '#070c14',
-                },
-                boxTitle: '',
-              },
-              titleStyle: {
-                type: 'dynamic-config',
-                title: '大标题样式',
-                description: '',
-                isContainer: false,
-                properties: {
-                  type: {
-                    type: 'select',
-                    title: '数据来源',
-                    options: [
-                      {
-                        label: '模板直接设置',
-                        value: 'DevDefaults',
-                      },
-                      {
-                        label: 'mp后台配置',
-                        value: 'ContentStaticConfig',
-                      },
-                      {
-                        label: '内容Meta数据',
-                        value: 'Content',
-                      },
-                      {
-                        label: '全局配置数据',
-                        value: 'RuntimeConst',
-                      },
-                      {
-                        label: '资源中心配置',
-                        value: 'ResourceCenter',
-                      },
-                    ],
-                    default: 'DevDefaults',
-                    isConditionProp: true,
-                    description:
-                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                  },
-                  value: {
-                    title: '数据值',
-                    type: 'select',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    onShow:
-                      'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                    options: [
-                      {
-                        name: '默认样式',
-                        value: '',
-                        id: 'c57',
-                      },
-                      {
-                        name: '下划线样式',
-                        value: 'line',
-                        id: '588',
-                      },
-                    ],
-                  },
-                  description: {
-                    title: '属性名称',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                    onShow:
-                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                  },
-                  valueType: {
-                    type: 'radio',
-                    title: '配置方式',
-                    options: [
-                      {
-                        label: '填写',
-                        value: 'string',
-                      },
-                      {
-                        label: '选择',
-                        value: 'select',
-                      },
-                    ],
-                    default: 'string',
-                    isConditionProp: true,
-                    description:
-                      '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                    onShow:
-                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                  },
-                  range: {
-                    type: 'select',
-                    title: '可选项',
-                    multiple: true,
-                    options: [],
-                    onShow:
-                      '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                    description: '这里会使用value中的配置选项作为options',
-                  },
-                },
-                propertyOrder: [
-                  'type',
-                  'value',
-                  'description',
-                  'valueType',
-                  'range',
-                ],
-                showCodeViewBtn: false,
-                default: {
-                  description: '大标题样式',
-                  disabled: false,
-                  isOptional: false,
-                  type: 'ResourceCenter',
-                  allSetting_attrType: 'select',
-                  dataType: '',
-                  value: '',
-                  range: [
-                    '{"label":"大字大标题","value":"default"}',
-                    '{"label":"黑线大标题","value":"line"}',
-                  ],
-                  valueType: 'string',
-                },
-                showKey: true,
-                titleStyle: {
-                  'font-weight': 500,
-                  color: '#070c14',
-                },
-                boxTitle: '',
-              },
-              title: {
+              test1: {
                 type: 'dynamic-config',
                 title: '标题',
                 description: '',
@@ -387,7 +118,7 @@ class IndexDemo extends React.PureComponent {
                   value: {
                     title: '数据值',
                     type: 'select',
-                    default: 'tpl-cover-box-title-pc',
+                    default: '',
                     description: '',
                     placeholder: '',
                     onShow:
@@ -395,12 +126,12 @@ class IndexDemo extends React.PureComponent {
                     options: [
                       {
                         name: '默认标题',
-                        value: '网红探店',
+                        value: "{label: 'xxlabel1', value: 123}",
                         id: '365',
                       },
                       {
                         name: '无标题',
-                        value: '',
+                        value: "{label: 'xxlabel2', value: 333}",
                         id: 'f71',
                       },
                     ],
@@ -454,13 +185,11 @@ class IndexDemo extends React.PureComponent {
                 showCodeViewBtn: false,
                 default: {
                   description: '标题',
-                  disabled: false,
-                  isOptional: false,
-                  type: 'ContentStaticConfig',
-                  allSetting_attrType: 'string',
-                  dataType: '',
-                  value: 'tpl-cover-box-title-pc',
+                  type: 'DevDefaults',
                   valueType: 'string',
+                  dataType: false,
+                  attrType: '',
+                  value: '',
                 },
                 showKey: true,
                 titleStyle: {
@@ -469,9 +198,9 @@ class IndexDemo extends React.PureComponent {
                 },
                 boxTitle: '',
               },
-              url: {
+              test2: {
                 type: 'dynamic-config',
-                title: '更多跳转链接',
+                title: '标题',
                 description: '',
                 isContainer: false,
                 properties: {
@@ -508,22 +237,27 @@ class IndexDemo extends React.PureComponent {
                   value: {
                     title: '数据值',
                     type: 'select',
-                    default: 'tpl-cover-box-url-pc',
+                    default: '',
                     description: '',
                     placeholder: '',
                     onShow:
                       'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
                     options: [
                       {
-                        name: '跳转线上美食餐厅',
-                        value:
-                          'https://www.sohu.com/xchannel/tag?key=%E7%BE%8E%E9%A3%9F-%E7%BD%91%E7%BA%A2%E9%A4%90%E5%8E%85',
-                        id: 'a34',
+                        name: '默认标题',
+                        value: {
+                          label: 'label1',
+                          value: 111,
+                        },
+                        id: '365',
                       },
                       {
-                        name: '无跳转',
-                        value: '',
-                        id: '274',
+                        name: '无标题',
+                        value: {
+                          label: 'label2',
+                          value: 222,
+                        },
+                        id: 'f71',
                       },
                     ],
                   },
@@ -575,14 +309,129 @@ class IndexDemo extends React.PureComponent {
                 ],
                 showCodeViewBtn: false,
                 default: {
-                  description: '更多跳转链接',
-                  disabled: false,
-                  isOptional: false,
-                  type: 'ContentStaticConfig',
-                  allSetting_attrType: 'string',
-                  dataType: '',
-                  value: 'tpl-cover-box-url-pc',
+                  description: '标题',
+                  type: 'DevDefaults',
                   valueType: 'string',
+                  dataType: false,
+                  attrType: '',
+                  value: '',
+                },
+                showKey: true,
+                titleStyle: {
+                  'font-weight': 500,
+                  color: '#070c14',
+                },
+                boxTitle: '',
+              },
+              test3: {
+                type: 'dynamic-config',
+                title: '标题',
+                description: '',
+                isContainer: false,
+                properties: {
+                  type: {
+                    type: 'select',
+                    title: '数据来源',
+                    options: [
+                      {
+                        label: '模板直接设置',
+                        value: 'DevDefaults',
+                      },
+                      {
+                        label: 'mp后台配置',
+                        value: 'ContentStaticConfig',
+                      },
+                      {
+                        label: '内容Meta数据',
+                        value: 'Content',
+                      },
+                      {
+                        label: '全局配置数据',
+                        value: 'RuntimeConst',
+                      },
+                      {
+                        label: '资源中心配置',
+                        value: 'ResourceCenter',
+                      },
+                    ],
+                    default: 'DevDefaults',
+                    isConditionProp: true,
+                    description:
+                      '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
+                  },
+                  value: {
+                    title: '数据值',
+                    type: 'select',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    onShow:
+                      'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
+                    options: [
+                      {
+                        label: '默认标题',
+                        value: 111,
+                      },
+                      {
+                        name: '无标题',
+                        value: 222,
+                      },
+                    ],
+                  },
+                  description: {
+                    title: '属性名称',
+                    type: 'input',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                    onShow:
+                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
+                  },
+                  valueType: {
+                    type: 'radio',
+                    title: '配置方式',
+                    options: [
+                      {
+                        label: '填写',
+                        value: 'string',
+                      },
+                      {
+                        label: '选择',
+                        value: 'select',
+                      },
+                    ],
+                    default: 'string',
+                    isConditionProp: true,
+                    description:
+                      '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
+                    onShow:
+                      'type === "ContentStaticConfig" || type === "ResourceCenter"',
+                  },
+                  range: {
+                    type: 'select',
+                    title: '可选项',
+                    multiple: true,
+                    options: [],
+                    onShow:
+                      '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
+                    description: '这里会使用value中的配置选项作为options',
+                  },
+                },
+                propertyOrder: [
+                  'type',
+                  'value',
+                  'description',
+                  'valueType',
+                  'range',
+                ],
+                showCodeViewBtn: false,
+                default: {
+                  description: '标题',
+                  type: 'DevDefaults',
+                  valueType: 'string',
+                  dataType: false,
+                  attrType: '',
+                  value: '',
                 },
                 showKey: true,
                 titleStyle: {
@@ -592,7 +441,7 @@ class IndexDemo extends React.PureComponent {
                 boxTitle: '',
               },
             },
-            propertyOrder: ['size', 'titleStyle', 'title', 'url'],
+            propertyOrder: ['test1', 'test2', 'test3'],
           },
           style: {
             type: 'object',
@@ -607,9 +456,6 @@ class IndexDemo extends React.PureComponent {
                   unit: {
                     type: 'number',
                     title: '单位数值',
-                    default: {
-                      quantity: 'px',
-                    },
                     minimum: 0,
                     maximum: 1000,
                     description: '',
@@ -700,2746 +546,6 @@ class IndexDemo extends React.PureComponent {
             title: '数据',
             isFixed: true,
             properties: {
-              navData: {
-                type: 'sohu-source',
-                title: '组件动态数据',
-                description: '',
-                isContainer: false,
-                properties: {
-                  mainConfig: {
-                    type: 'object',
-                    title: '主要配置',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      type: {
-                        type: 'select',
-                        title: '数据来源',
-                        isConditionProp: true,
-                        options: [
-                          {
-                            label: '模板直接配置',
-                            value: 'RuntimeDataSelfDefine',
-                          },
-                          {
-                            label: 'mp后台配置',
-                            value: 'ContentStaticConfig',
-                          },
-                          {
-                            label: '请求当前页面数据',
-                            value: 'RuntimeDataSelfContent',
-                          },
-                          {
-                            label: '资源中心配置',
-                            value: 'ResourceCenter',
-                          },
-                        ],
-                        default: 'ContentStaticConfig',
-                        description: '',
-                      },
-                      description: {
-                        title: '数据源名称',
-                        type: 'input',
-                        default: '标题导航',
-                        description: '',
-                        placeholder: '',
-                        onShow: 'type === "ContentStaticConfig"',
-                      },
-                      dataType: {
-                        type: 'radio',
-                        title: '请求方式',
-                        options: [
-                          {
-                            label: '批量请求',
-                            value: 'FROMCIS',
-                          },
-                          {
-                            label: '组件内部请求',
-                            value: 'FROMCOMPCIS',
-                          },
-                          {
-                            label: '不请求',
-                            value: 'false',
-                          },
-                        ],
-                        description: '',
-                        default: 'FROMCIS',
-                      },
-                      CONTENTID: {
-                        title: '数据源ID',
-                        type: 'input',
-                        description: '',
-                        placeholder: '',
-                        onShow: 'type === "RuntimeDataSelfDefine"',
-                      },
-                      CONTENTTYPE: {
-                        type: 'select',
-                        title: '数据源类型',
-                        options: [
-                          {
-                            label: 'channel',
-                            value: 'channel',
-                          },
-                          {
-                            label: 'topic',
-                            value: 'topic',
-                          },
-                          {
-                            label: 'block',
-                            value: 'block',
-                          },
-                        ],
-                        description: '',
-                        onShow: 'type === "RuntimeDataSelfDefine"',
-                        default: 'channel',
-                      },
-                    },
-                    propertyOrder: [
-                      'type',
-                      'description',
-                      'dataType',
-                      'CONTENTID',
-                      'CONTENTTYPE',
-                    ],
-                    showCodeViewBtn: false,
-                  },
-                  outConfig: {
-                    type: 'object',
-                    title: '出流配置',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      PRO: {
-                        type: 'select',
-                        title: '内容类型',
-                        options: [
-                          {
-                            label: '置顶+加精',
-                            value: '4',
-                          },
-                          {
-                            label: '长效置顶',
-                            value: '5',
-                          },
-                        ],
-                        description: '',
-                        default: '4',
-                      },
-                      FEEDTYPE: {
-                        type: 'select',
-                        title: '排序类型',
-                        options: [
-                          {
-                            label: '综合',
-                            value: 'XTOPIC_SYNTHETICAL',
-                          },
-                          {
-                            label: '最新',
-                            value: 'XTOPIC_LATEST',
-                          },
-                          {
-                            label: '相关',
-                            value: 'XTOPIC_RELATED',
-                          },
-                        ],
-                        description: '',
-                        default: 'XTOPIC_SYNTHETICAL',
-                      },
-                      VIEW: {
-                        type: 'select',
-                        title: '数据裁剪',
-                        options: [
-                          {
-                            label: '相关推荐模式',
-                            value: 'articleFeedMode',
-                          },
-                          {
-                            label: '文字链裁剪方式',
-                            value: 'textMode',
-                          },
-                          {
-                            label: '短内容摘录方式',
-                            value: 'excerptMode',
-                          },
-                          {
-                            label: '互动（点赞/评论）裁剪方式',
-                            value: 'interactMode',
-                          },
-                          {
-                            label: '评论文字链裁剪方式',
-                            value: 'commentTextMode',
-                          },
-                          {
-                            label: '摘录方式（无点赞）',
-                            value: 'excerptCommentMode',
-                          },
-                          {
-                            label: '无限流卡片模式',
-                            value: 'dynamicFeedMode',
-                          },
-                          {
-                            label: '时间线模式',
-                            value: 'timeLineMode',
-                          },
-                          {
-                            label: '复合内容流模式',
-                            value: 'multiFeedMode',
-                          },
-                          {
-                            label: '搜狐号推荐模式',
-                            value: 'recommendFeedMode',
-                          },
-                          {
-                            label: '作者页内容流模式',
-                            value: 'operateFeedMode',
-                          },
-                          {
-                            label: '标签内容流模式',
-                            value: 'tagsFeedMode',
-                          },
-                          {
-                            label: '评论链裁剪方式',
-                            value: 'commentMode',
-                          },
-                          {
-                            label: '标签摘录方式',
-                            value: 'excerptTagsMode',
-                          },
-                          {
-                            label: '内容流模式',
-                            value: 'feedMode',
-                          },
-                        ],
-                        description: '',
-                        default: 'articleFeedMode',
-                      },
-                      CONTENTCONTEXT: {
-                        type: 'select',
-                        title: 'mKey参数',
-                        options: [
-                          {
-                            label: '作者ID+栏目ID',
-                            value: 'authorColumnId_${#authorColumnId}',
-                          },
-                          {
-                            label: '账号ID',
-                            value: 'accountId_${#contentData_account_id}',
-                          },
-                          {
-                            label: 'mkeyID',
-                            value: 'mid_${#mkeyConst_mid}',
-                          },
-                          {
-                            label: 'mkey名称',
-                            value: 'mname_${#mkeyConst_mname}',
-                          },
-                          {
-                            label: '城市Code码',
-                            value: 'cityCode_${#cityInfo_cityCode}',
-                          },
-                          {
-                            label: '城市名称',
-                            value: 'cityName_${#cityInfo_cityName}',
-                          },
-                          {
-                            label: '焦点城市Code码',
-                            value: 'focusCityCode_${#focusCityInfo_cityCode}',
-                          },
-                        ],
-                        description: '',
-                        default: 'authorColumnId_${#authorColumnId}',
-                      },
-                      CONTENTPARAMS: {
-                        title: '动态参数',
-                        type: 'json',
-                        default: {},
-                        description: '请填写JSON格式的参数',
-                        placeholder: '',
-                      },
-                    },
-                    propertyOrder: [
-                      'PRO',
-                      'FEEDTYPE',
-                      'VIEW',
-                      'CONTENTCONTEXT',
-                      'CONTENTPARAMS',
-                    ],
-                    showCodeViewBtn: false,
-                  },
-                  otherConfig: {
-                    type: 'object',
-                    title: '选配内容',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      SIZE: {
-                        type: 'dynamic-config',
-                        title: '容量',
-                        boxTitle: '',
-                        description: '该位置区块需要的内容条数',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'select',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: false,
-                            default: 'select',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: '容量',
-                          type: 'ContentStaticConfig',
-                          valueType: 'select',
-                        },
-                      },
-                      TITLE: {
-                        type: 'dynamic-config',
-                        title: '标题',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: '标题',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                      CODE: {
-                        type: 'dynamic-config',
-                        title: 'CODE',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: 'CODE',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                      URL: {
-                        type: 'dynamic-config',
-                        title: 'URL',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: 'URL',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                    },
-                    propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],
-                    showCodeViewBtn: false,
-                  },
-                },
-                propertyOrder: ['mainConfig', 'otherConfig', 'outConfig'],
-                showCodeViewBtn: false,
-                showKey: true,
-                titleStyle: {
-                  'font-weight': 500,
-                  color: '#070c14',
-                },
-              },
-              data2: {
-                type: 'sohu-source',
-                title: '组件动态数据',
-                description: '',
-                isContainer: false,
-                properties: {
-                  mainConfig: {
-                    type: 'object',
-                    title: '主要配置',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      type: {
-                        type: 'select',
-                        title: '数据来源',
-                        isConditionProp: true,
-                        options: [
-                          {
-                            label: '模板直接配置',
-                            value: 'RuntimeDataSelfDefine',
-                          },
-                          {
-                            label: 'mp后台配置',
-                            value: 'ContentStaticConfig',
-                          },
-                          {
-                            label: '请求当前页面数据',
-                            value: 'RuntimeDataSelfContent',
-                          },
-                          {
-                            label: '资源中心配置',
-                            value: 'ResourceCenter',
-                          },
-                        ],
-                        default: 'ContentStaticConfig',
-                        description: '',
-                      },
-                      description: {
-                        title: '数据源名称',
-                        type: 'input',
-                        default: '区块2',
-                        description: '',
-                        placeholder: '',
-                        onShow: 'type === "ContentStaticConfig"',
-                      },
-                      dataType: {
-                        type: 'radio',
-                        title: '请求方式',
-                        options: [
-                          {
-                            label: '批量请求',
-                            value: 'FROMCIS',
-                          },
-                          {
-                            label: '组件内部请求',
-                            value: 'FROMCOMPCIS',
-                          },
-                          {
-                            label: '不请求',
-                            value: 'false',
-                          },
-                        ],
-                        description: '',
-                        default: 'FROMCIS',
-                      },
-                      CONTENTID: {
-                        title: '数据源ID',
-                        type: 'input',
-                        description: '',
-                        placeholder: '',
-                        onShow: 'type === "RuntimeDataSelfDefine"',
-                      },
-                      CONTENTTYPE: {
-                        type: 'select',
-                        title: '数据源类型',
-                        options: [
-                          {
-                            label: 'channel',
-                            value: 'channel',
-                          },
-                          {
-                            label: 'topic',
-                            value: 'topic',
-                          },
-                          {
-                            label: 'block',
-                            value: 'block',
-                          },
-                        ],
-                        description: '',
-                        onShow: 'type === "RuntimeDataSelfDefine"',
-                        default: 'channel',
-                      },
-                    },
-                    propertyOrder: [
-                      'type',
-                      'description',
-                      'dataType',
-                      'CONTENTID',
-                      'CONTENTTYPE',
-                    ],
-                    showCodeViewBtn: false,
-                  },
-                  outConfig: {
-                    type: 'object',
-                    title: '出流配置',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      PRO: {
-                        type: 'select',
-                        title: '内容类型',
-                        options: [
-                          {
-                            label: '置顶+加精',
-                            value: '4',
-                          },
-                          {
-                            label: '长效置顶',
-                            value: '5',
-                          },
-                        ],
-                        description: '',
-                      },
-                      FEEDTYPE: {
-                        type: 'select',
-                        title: '排序类型',
-                        options: [
-                          {
-                            label: '综合',
-                            value: 'XTOPIC_SYNTHETICAL',
-                          },
-                          {
-                            label: '最新',
-                            value: 'XTOPIC_LATEST',
-                          },
-                          {
-                            label: '相关',
-                            value: 'XTOPIC_RELATED',
-                          },
-                        ],
-                        description: '',
-                      },
-                      VIEW: {
-                        type: 'select',
-                        title: '数据裁剪',
-                        options: [
-                          {
-                            label: '相关推荐模式',
-                            value: 'articleFeedMode',
-                          },
-                          {
-                            label: '文字链裁剪方式',
-                            value: 'textMode',
-                          },
-                          {
-                            label: '短内容摘录方式',
-                            value: 'excerptMode',
-                          },
-                          {
-                            label: '互动（点赞/评论）裁剪方式',
-                            value: 'interactMode',
-                          },
-                          {
-                            label: '评论文字链裁剪方式',
-                            value: 'commentTextMode',
-                          },
-                          {
-                            label: '摘录方式（无点赞）',
-                            value: 'excerptCommentMode',
-                          },
-                          {
-                            label: '无限流卡片模式',
-                            value: 'dynamicFeedMode',
-                          },
-                          {
-                            label: '时间线模式',
-                            value: 'timeLineMode',
-                          },
-                          {
-                            label: '复合内容流模式',
-                            value: 'multiFeedMode',
-                          },
-                          {
-                            label: '搜狐号推荐模式',
-                            value: 'recommendFeedMode',
-                          },
-                          {
-                            label: '作者页内容流模式',
-                            value: 'operateFeedMode',
-                          },
-                          {
-                            label: '标签内容流模式',
-                            value: 'tagsFeedMode',
-                          },
-                          {
-                            label: '评论链裁剪方式',
-                            value: 'commentMode',
-                          },
-                          {
-                            label: '标签摘录方式',
-                            value: 'excerptTagsMode',
-                          },
-                          {
-                            label: '内容流模式',
-                            value: 'feedMode',
-                          },
-                        ],
-                        description: '',
-                      },
-                      CONTENTCONTEXT: {
-                        type: 'select',
-                        title: 'mKey参数',
-                        options: [
-                          {
-                            label: '作者ID+栏目ID',
-                            value: 'authorColumnId_${#authorColumnId}',
-                          },
-                          {
-                            label: '账号ID',
-                            value: 'accountId_${#contentData_account_id}',
-                          },
-                          {
-                            label: 'mkeyID',
-                            value: 'mid_${#mkeyConst_mid}',
-                          },
-                          {
-                            label: 'mkey名称',
-                            value: 'mname_${#mkeyConst_mname}',
-                          },
-                          {
-                            label: '城市Code码',
-                            value: 'cityCode_${#cityInfo_cityCode}',
-                          },
-                          {
-                            label: '城市名称',
-                            value: 'cityName_${#cityInfo_cityName}',
-                          },
-                          {
-                            label: '焦点城市Code码',
-                            value: 'focusCityCode_${#focusCityInfo_cityCode}',
-                          },
-                        ],
-                        description: '',
-                      },
-                      CONTENTPARAMS: {
-                        title: '动态参数',
-                        type: 'json',
-                        default: {},
-                        description: '请填写JSON格式的参数',
-                        placeholder: '',
-                      },
-                    },
-                    propertyOrder: [
-                      'PRO',
-                      'FEEDTYPE',
-                      'VIEW',
-                      'CONTENTCONTEXT',
-                      'CONTENTPARAMS',
-                    ],
-                    showCodeViewBtn: false,
-                  },
-                  otherConfig: {
-                    type: 'object',
-                    title: '选配内容',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      SIZE: {
-                        type: 'dynamic-config',
-                        title: '容量',
-                        boxTitle: '',
-                        description: '该位置区块需要的内容条数',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'select',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: false,
-                            default: 'select',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: '容量',
-                          type: 'ContentStaticConfig',
-                          valueType: 'select',
-                        },
-                      },
-                      TITLE: {
-                        type: 'dynamic-config',
-                        title: '标题',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: '标题',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                      CODE: {
-                        type: 'dynamic-config',
-                        title: 'CODE',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: 'CODE',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                      URL: {
-                        type: 'dynamic-config',
-                        title: 'URL',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: 'URL',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                    },
-                    propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],
-                    showCodeViewBtn: false,
-                  },
-                  adConfig: {
-                    type: 'object',
-                    title: '广告配置',
-                    description: '',
-                    properties: {
-                      type: {
-                        type: 'select',
-                        title: '数据源类型',
-                        isConditionProp: true,
-                        options: [
-                          {
-                            label: '模板直接设置',
-                            value: 'DevDefaults',
-                          },
-                          {
-                            label: '资源中心配置',
-                            value: 'ResourceCenter',
-                          },
-                        ],
-                        description: '',
-                        default: 'ResourceCenter',
-                      },
-                      value: {
-                        type: 'object',
-                        title: '广告规则',
-                        description: '',
-                        onShow: 'type === "DevDefaults"',
-                        properties: {
-                          id: {
-                            title: '广告ID',
-                            type: 'number',
-                            default: '',
-                            description: '',
-                            placeholder: '',
-                          },
-                          rule: {
-                            type: 'radio',
-                            title: '规则类型',
-                            isConditionProp: true,
-                            options: [
-                              {
-                                label: '固定位置',
-                                value: 1,
-                              },
-                              {
-                                label: '隔几出几',
-                                value: 2,
-                              },
-                              {
-                                label: '固定位置隔几出几',
-                                value: 3,
-                              },
-                            ],
-                            default: 1,
-                            description: '',
-                          },
-                          fixArray: {
-                            type: 'select',
-                            title: '固定位置',
-                            default: [1],
-                            description: '',
-                            multiple: true,
-                            onShow: 'rule === 1 || rule === 3',
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                          },
-                          begin: {
-                            type: 'number',
-                            title: '开始位置',
-                            default: 1,
-                            minimum: '1',
-                            maximum: '50',
-                            description: '',
-                            onShow: 'rule === 2 || rule === 3',
-                          },
-                          turn: {
-                            type: 'number',
-                            title: '间隔/隔',
-                            default: 1,
-                            minimum: '1',
-                            maximum: '50',
-                            description: '',
-                            onShow: 'rule === 2 || rule === 3',
-                          },
-                          number: {
-                            type: 'number',
-                            title: '间隔/出',
-                            default: 1,
-                            minimum: '1',
-                            maximum: '50',
-                            description: '',
-                            onShow: 'rule === 2 || rule === 3',
-                          },
-                          mergeType: {
-                            type: 'radio',
-                            title: '插入规则',
-                            options: [
-                              {
-                                label: '覆盖',
-                                value: 0,
-                              },
-                              {
-                                label: '插入',
-                                value: 1,
-                              },
-                            ],
-                            default: 0,
-                            description: '',
-                          },
-                        },
-                        propertyOrder: [
-                          'id',
-                          'rule',
-                          'fixArray',
-                          'begin',
-                          'turn',
-                          'number',
-                          'mergeType',
-                        ],
-                      },
-                      range: {
-                        type: 'array',
-                        title: '广告规则列表',
-                        description: '',
-                        onShow: 'type === "ResourceCenter"',
-                        items: {
-                          type: 'object',
-                          title: '数组项',
-                          description: '',
-                          properties: {
-                            rule: {
-                              type: 'radio',
-                              title: '规则类型',
-                              isConditionProp: true,
-                              options: [
-                                {
-                                  label: '固定位置',
-                                  value: 1,
-                                },
-                                {
-                                  label: '隔几出几',
-                                  value: 2,
-                                },
-                                {
-                                  label: '固定位置隔几出几',
-                                  value: 3,
-                                },
-                              ],
-                              default: 1,
-                              description: '',
-                            },
-                            fixArray: {
-                              type: 'select',
-                              title: '固定位置',
-                              default: [1],
-                              description: '',
-                              onShow: 'rule === 1 || rule === 3',
-                              multiple: true,
-                              options: [
-                                {
-                                  label: '1',
-                                  value: 1,
-                                },
-                                {
-                                  label: '2',
-                                  value: 2,
-                                },
-                                {
-                                  label: '3',
-                                  value: 3,
-                                },
-                                {
-                                  label: '4',
-                                  value: 4,
-                                },
-                                {
-                                  label: '5',
-                                  value: 5,
-                                },
-                                {
-                                  label: '6',
-                                  value: 6,
-                                },
-                                {
-                                  label: '7',
-                                  value: 7,
-                                },
-                                {
-                                  label: '8',
-                                  value: 8,
-                                },
-                                {
-                                  label: '9',
-                                  value: 9,
-                                },
-                                {
-                                  label: '10',
-                                  value: 10,
-                                },
-                                {
-                                  label: '11',
-                                  value: 11,
-                                },
-                                {
-                                  label: '12',
-                                  value: 12,
-                                },
-                                {
-                                  label: '13',
-                                  value: 13,
-                                },
-                                {
-                                  label: '14',
-                                  value: 14,
-                                },
-                                {
-                                  label: '15',
-                                  value: 15,
-                                },
-                                {
-                                  label: '16',
-                                  value: 16,
-                                },
-                                {
-                                  label: '17',
-                                  value: 17,
-                                },
-                                {
-                                  label: '18',
-                                  value: 18,
-                                },
-                                {
-                                  label: '19',
-                                  value: 19,
-                                },
-                                {
-                                  label: '20',
-                                  value: 20,
-                                },
-                                {
-                                  label: '21',
-                                  value: 21,
-                                },
-                                {
-                                  label: '22',
-                                  value: 22,
-                                },
-                                {
-                                  label: '23',
-                                  value: 23,
-                                },
-                                {
-                                  label: '24',
-                                  value: 24,
-                                },
-                                {
-                                  label: '25',
-                                  value: 25,
-                                },
-                                {
-                                  label: '26',
-                                  value: 26,
-                                },
-                                {
-                                  label: '27',
-                                  value: 27,
-                                },
-                                {
-                                  label: '28',
-                                  value: 28,
-                                },
-                                {
-                                  label: '29',
-                                  value: 29,
-                                },
-                                {
-                                  label: '30',
-                                  value: 30,
-                                },
-                                {
-                                  label: '31',
-                                  value: 31,
-                                },
-                                {
-                                  label: '32',
-                                  value: 32,
-                                },
-                                {
-                                  label: '33',
-                                  value: 33,
-                                },
-                                {
-                                  label: '34',
-                                  value: 34,
-                                },
-                                {
-                                  label: '35',
-                                  value: 35,
-                                },
-                                {
-                                  label: '36',
-                                  value: 36,
-                                },
-                                {
-                                  label: '37',
-                                  value: 37,
-                                },
-                                {
-                                  label: '38',
-                                  value: 38,
-                                },
-                                {
-                                  label: '39',
-                                  value: 39,
-                                },
-                                {
-                                  label: '40',
-                                  value: 40,
-                                },
-                                {
-                                  label: '41',
-                                  value: 41,
-                                },
-                                {
-                                  label: '42',
-                                  value: 42,
-                                },
-                                {
-                                  label: '43',
-                                  value: 43,
-                                },
-                                {
-                                  label: '44',
-                                  value: 44,
-                                },
-                                {
-                                  label: '45',
-                                  value: 45,
-                                },
-                                {
-                                  label: '46',
-                                  value: 46,
-                                },
-                                {
-                                  label: '47',
-                                  value: 47,
-                                },
-                                {
-                                  label: '48',
-                                  value: 48,
-                                },
-                                {
-                                  label: '49',
-                                  value: 49,
-                                },
-                                {
-                                  label: '50',
-                                  value: 50,
-                                },
-                              ],
-                            },
-                            begin: {
-                              type: 'number',
-                              title: '开始位置',
-                              default: 1,
-                              minimum: '1',
-                              maximum: '50',
-                              description: '',
-                              onShow: 'rule === 2 || rule === 3',
-                            },
-                            turn: {
-                              type: 'number',
-                              title: '间隔/隔',
-                              default: 1,
-                              minimum: '1',
-                              maximum: '50',
-                              description: '',
-                              onShow: 'rule === 2 || rule === 3',
-                            },
-                            number: {
-                              type: 'number',
-                              title: '间隔/出',
-                              default: 1,
-                              minimum: '1',
-                              maximum: '50',
-                              description: '',
-                              onShow: 'rule === 2 || rule === 3',
-                            },
-                            mergeType: {
-                              type: 'radio',
-                              title: '插入规则',
-                              options: [
-                                {
-                                  label: '覆盖',
-                                  value: 0,
-                                },
-                                {
-                                  label: '插入',
-                                  value: 1,
-                                },
-                              ],
-                              default: 0,
-                              description: '',
-                            },
-                          },
-                          propertyOrder: [
-                            'rule',
-                            'fixArray',
-                            'begin',
-                            'turn',
-                            'number',
-                            'mergeType',
-                          ],
-                        },
-                        default: [
-                          {
-                            label: '',
-                            value: {
-                              label: '固定5位置',
-                              value: {
-                                rule: 1,
-                                fixArray: [5],
-                              },
-                            },
-                          },
-                        ],
-                      },
-                    },
-                    propertyOrder: ['type', 'value', 'range'],
-                    default: {
-                      description: '第二个流广告位规则',
-                      disabled: false,
-                      isOptional: false,
-                      type: 'ResourceCenter',
-                      allSetting_attrType: 'select',
-                      dataType: '',
-                      value: {},
-                      range: [
-                        {
-                          label: '',
-                          value: {
-                            label: '',
-                            value: {
-                              label: '固定5位置',
-                              value: {
-                                rule: 1,
-                                fixArray: [5],
-                              },
-                            },
-                          },
-                        },
-                      ],
-                      valueType: 'select',
-                    },
-                    ADRULEKey: 'ADRULE-data2',
-                    ADIDKey: 'ADID-data2',
-                  },
-                },
-                propertyOrder: [
-                  'mainConfig',
-                  'otherConfig',
-                  'outConfig',
-                  'adConfig',
-                ],
-                showCodeViewBtn: false,
-                showKey: true,
-                titleStyle: {
-                  'font-weight': 500,
-                  color: '#070c14',
-                },
-              },
               data3: {
                 type: 'sohu-source',
                 title: '组件动态数据',
@@ -3458,7 +564,7 @@ class IndexDemo extends React.PureComponent {
                         isConditionProp: true,
                         options: [
                           {
-                            label: '模板直接配置',
+                            label: '模板自定义数据源',
                             value: 'RuntimeDataSelfDefine',
                           },
                           {
@@ -3474,16 +580,16 @@ class IndexDemo extends React.PureComponent {
                             value: 'ResourceCenter',
                           },
                         ],
-                        default: 'ContentStaticConfig',
+                        default: 'RuntimeDataSelfDefine',
                         description: '',
                       },
                       description: {
                         title: '数据源名称',
                         type: 'input',
-                        default: '区块3',
                         description: '',
                         placeholder: '',
                         onShow: 'type === "ContentStaticConfig"',
+                        default: '数据源3',
                       },
                       dataType: {
                         type: 'radio',
@@ -3531,7 +637,6 @@ class IndexDemo extends React.PureComponent {
                         ],
                         description: '',
                         onShow: 'type === "RuntimeDataSelfDefine"',
-                        default: 'channel',
                       },
                     },
                     propertyOrder: [
@@ -3563,7 +668,6 @@ class IndexDemo extends React.PureComponent {
                           },
                         ],
                         description: '',
-                        default: '4',
                       },
                       FEEDTYPE: {
                         type: 'select',
@@ -3583,7 +687,6 @@ class IndexDemo extends React.PureComponent {
                           },
                         ],
                         description: '',
-                        default: 'XTOPIC_SYNTHETICAL',
                       },
                       VIEW: {
                         type: 'select',
@@ -3651,7 +754,6 @@ class IndexDemo extends React.PureComponent {
                           },
                         ],
                         description: '',
-                        default: 'articleFeedMode',
                       },
                       CONTENTCONTEXT: {
                         type: 'select',
@@ -3687,12 +789,10 @@ class IndexDemo extends React.PureComponent {
                           },
                         ],
                         description: '',
-                        default: 'authorColumnId_${#authorColumnId}',
                       },
                       CONTENTPARAMS: {
                         title: '动态参数',
                         type: 'json',
-                        default: {},
                         description: '请填写JSON格式的参数',
                         placeholder: '',
                       },
@@ -3724,15 +824,15 @@ class IndexDemo extends React.PureComponent {
                             title: '数据来源',
                             options: [
                               {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
+                                label: '模板自定义数据源',
+                                value: 'RuntimeDataSelfDefine',
                               },
                               {
                                 label: 'mp后台配置',
                                 value: 'ContentStaticConfig',
                               },
                             ],
-                            default: 'DevDefaults',
+                            default: 'RuntimeDataSelfDefine',
                             isConditionProp: true,
                             description:
                               '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
@@ -3743,7 +843,7 @@ class IndexDemo extends React.PureComponent {
                             description: '',
                             placeholder: '',
                             onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
+                              'type === "RuntimeDataSelfDefine" || type === "Content" || type === "RuntimeConst"',
                             options: [
                               {
                                 label: '1',
@@ -4200,8 +1300,8 @@ class IndexDemo extends React.PureComponent {
                         showCodeViewBtn: false,
                         default: {
                           description: '容量',
-                          type: 'ContentStaticConfig',
                           valueType: 'select',
+                          type: 'RuntimeDataSelfDefine',
                         },
                       },
                       TITLE: {
@@ -4216,15 +1316,15 @@ class IndexDemo extends React.PureComponent {
                             title: '数据来源',
                             options: [
                               {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
+                                label: '模板自定义数据源',
+                                value: 'RuntimeDataSelfDefine',
                               },
                               {
                                 label: 'mp后台配置',
                                 value: 'ContentStaticConfig',
                               },
                             ],
-                            default: 'DevDefaults',
+                            default: 'RuntimeDataSelfDefine',
                             isConditionProp: true,
                             description:
                               '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
@@ -4235,7 +1335,7 @@ class IndexDemo extends React.PureComponent {
                             description: '',
                             placeholder: '',
                             onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
+                              'type === "RuntimeDataSelfDefine" || type === "Content" || type === "RuntimeConst"',
                           },
                           description: {
                             title: '属性名称',
@@ -4289,7 +1389,7 @@ class IndexDemo extends React.PureComponent {
                         showCodeViewBtn: false,
                         default: {
                           description: '标题',
-                          type: 'ContentStaticConfig',
+                          type: 'RuntimeDataSelfDefine',
                         },
                       },
                       CODE: {
@@ -4304,15 +1404,15 @@ class IndexDemo extends React.PureComponent {
                             title: '数据来源',
                             options: [
                               {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
+                                label: '模板自定义数据源',
+                                value: 'RuntimeDataSelfDefine',
                               },
                               {
                                 label: 'mp后台配置',
                                 value: 'ContentStaticConfig',
                               },
                             ],
-                            default: 'DevDefaults',
+                            default: 'RuntimeDataSelfDefine',
                             isConditionProp: true,
                             description:
                               '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
@@ -4323,7 +1423,7 @@ class IndexDemo extends React.PureComponent {
                             description: '',
                             placeholder: '',
                             onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
+                              'type === "RuntimeDataSelfDefine" || type === "Content" || type === "RuntimeConst"',
                           },
                           description: {
                             title: '属性名称',
@@ -4377,8 +1477,9 @@ class IndexDemo extends React.PureComponent {
                         showCodeViewBtn: false,
                         default: {
                           description: 'CODE',
-                          type: 'ContentStaticConfig',
+                          type: 'RuntimeDataSelfDefine',
                         },
+                        onShow: false,
                       },
                       URL: {
                         type: 'dynamic-config',
@@ -4392,15 +1493,15 @@ class IndexDemo extends React.PureComponent {
                             title: '数据来源',
                             options: [
                               {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
+                                label: '模板自定义数据源',
+                                value: 'RuntimeDataSelfDefine',
                               },
                               {
                                 label: 'mp后台配置',
                                 value: 'ContentStaticConfig',
                               },
                             ],
-                            default: 'DevDefaults',
+                            default: 'RuntimeDataSelfDefine',
                             isConditionProp: true,
                             description:
                               '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
@@ -4411,7 +1512,7 @@ class IndexDemo extends React.PureComponent {
                             description: '',
                             placeholder: '',
                             onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
+                              'type === "RuntimeDataSelfDefine" || type === "Content" || type === "RuntimeConst"',
                           },
                           description: {
                             title: '属性名称',
@@ -4465,1048 +1566,7 @@ class IndexDemo extends React.PureComponent {
                         showCodeViewBtn: false,
                         default: {
                           description: 'URL',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                    },
-                    propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],
-                    showCodeViewBtn: false,
-                  },
-                },
-                propertyOrder: ['mainConfig', 'otherConfig', 'outConfig'],
-                showCodeViewBtn: false,
-                showKey: true,
-                titleStyle: {
-                  'font-weight': 500,
-                  color: '#070c14',
-                },
-              },
-              data1: {
-                type: 'sohu-source',
-                title: '组件动态数据',
-                description: '',
-                isContainer: false,
-                properties: {
-                  mainConfig: {
-                    type: 'object',
-                    title: '主要配置',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      type: {
-                        type: 'select',
-                        title: '数据来源',
-                        isConditionProp: true,
-                        options: [
-                          {
-                            label: '模板直接配置',
-                            value: 'RuntimeDataSelfDefine',
-                          },
-                          {
-                            label: 'mp后台配置',
-                            value: 'ContentStaticConfig',
-                          },
-                          {
-                            label: '请求当前页面数据',
-                            value: 'RuntimeDataSelfContent',
-                          },
-                          {
-                            label: '资源中心配置',
-                            value: 'ResourceCenter',
-                          },
-                        ],
-                        default: 'ContentStaticConfig',
-                        description: '',
-                      },
-                      description: {
-                        title: '数据源名称',
-                        type: 'input',
-                        default: '区块1',
-                        description: '',
-                        placeholder: '',
-                        onShow: 'type === "ContentStaticConfig"',
-                      },
-                      dataType: {
-                        type: 'radio',
-                        title: '请求方式',
-                        options: [
-                          {
-                            label: '批量请求',
-                            value: 'FROMCIS',
-                          },
-                          {
-                            label: '组件内部请求',
-                            value: 'FROMCOMPCIS',
-                          },
-                          {
-                            label: '不请求',
-                            value: 'false',
-                          },
-                        ],
-                        description: '',
-                        default: 'FROMCIS',
-                      },
-                      CONTENTID: {
-                        title: '数据源ID',
-                        type: 'input',
-                        description: '',
-                        placeholder: '',
-                        onShow: 'type === "RuntimeDataSelfDefine"',
-                      },
-                      CONTENTTYPE: {
-                        type: 'select',
-                        title: '数据源类型',
-                        options: [
-                          {
-                            label: 'channel',
-                            value: 'channel',
-                          },
-                          {
-                            label: 'topic',
-                            value: 'topic',
-                          },
-                          {
-                            label: 'block',
-                            value: 'block',
-                          },
-                        ],
-                        description: '',
-                        onShow: 'type === "RuntimeDataSelfDefine"',
-                        default: 'channel',
-                      },
-                    },
-                    propertyOrder: [
-                      'type',
-                      'description',
-                      'dataType',
-                      'CONTENTID',
-                      'CONTENTTYPE',
-                    ],
-                    showCodeViewBtn: false,
-                  },
-                  outConfig: {
-                    type: 'object',
-                    title: '出流配置',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      PRO: {
-                        type: 'select',
-                        title: '内容类型',
-                        options: [
-                          {
-                            label: '置顶+加精',
-                            value: '4',
-                          },
-                          {
-                            label: '长效置顶',
-                            value: '5',
-                          },
-                        ],
-                        description: '',
-                        default: '4',
-                      },
-                      FEEDTYPE: {
-                        type: 'select',
-                        title: '排序类型',
-                        options: [
-                          {
-                            label: '综合',
-                            value: 'XTOPIC_SYNTHETICAL',
-                          },
-                          {
-                            label: '最新',
-                            value: 'XTOPIC_LATEST',
-                          },
-                          {
-                            label: '相关',
-                            value: 'XTOPIC_RELATED',
-                          },
-                        ],
-                        description: '',
-                        default: 'XTOPIC_SYNTHETICAL',
-                      },
-                      VIEW: {
-                        type: 'select',
-                        title: '数据裁剪',
-                        options: [
-                          {
-                            label: '相关推荐模式',
-                            value: 'articleFeedMode',
-                          },
-                          {
-                            label: '文字链裁剪方式',
-                            value: 'textMode',
-                          },
-                          {
-                            label: '短内容摘录方式',
-                            value: 'excerptMode',
-                          },
-                          {
-                            label: '互动（点赞/评论）裁剪方式',
-                            value: 'interactMode',
-                          },
-                          {
-                            label: '评论文字链裁剪方式',
-                            value: 'commentTextMode',
-                          },
-                          {
-                            label: '摘录方式（无点赞）',
-                            value: 'excerptCommentMode',
-                          },
-                          {
-                            label: '无限流卡片模式',
-                            value: 'dynamicFeedMode',
-                          },
-                          {
-                            label: '时间线模式',
-                            value: 'timeLineMode',
-                          },
-                          {
-                            label: '复合内容流模式',
-                            value: 'multiFeedMode',
-                          },
-                          {
-                            label: '搜狐号推荐模式',
-                            value: 'recommendFeedMode',
-                          },
-                          {
-                            label: '作者页内容流模式',
-                            value: 'operateFeedMode',
-                          },
-                          {
-                            label: '标签内容流模式',
-                            value: 'tagsFeedMode',
-                          },
-                          {
-                            label: '评论链裁剪方式',
-                            value: 'commentMode',
-                          },
-                          {
-                            label: '标签摘录方式',
-                            value: 'excerptTagsMode',
-                          },
-                          {
-                            label: '内容流模式',
-                            value: 'feedMode',
-                          },
-                        ],
-                        description: '',
-                        default: 'articleFeedMode',
-                      },
-                      CONTENTCONTEXT: {
-                        type: 'select',
-                        title: 'mKey参数',
-                        options: [
-                          {
-                            label: '作者ID+栏目ID',
-                            value: 'authorColumnId_${#authorColumnId}',
-                          },
-                          {
-                            label: '账号ID',
-                            value: 'accountId_${#contentData_account_id}',
-                          },
-                          {
-                            label: 'mkeyID',
-                            value: 'mid_${#mkeyConst_mid}',
-                          },
-                          {
-                            label: 'mkey名称',
-                            value: 'mname_${#mkeyConst_mname}',
-                          },
-                          {
-                            label: '城市Code码',
-                            value: 'cityCode_${#cityInfo_cityCode}',
-                          },
-                          {
-                            label: '城市名称',
-                            value: 'cityName_${#cityInfo_cityName}',
-                          },
-                          {
-                            label: '焦点城市Code码',
-                            value: 'focusCityCode_${#focusCityInfo_cityCode}',
-                          },
-                        ],
-                        description: '',
-                        default: 'authorColumnId_${#authorColumnId}',
-                      },
-                      CONTENTPARAMS: {
-                        title: '动态参数',
-                        type: 'json',
-                        default: {},
-                        description: '请填写JSON格式的参数',
-                        placeholder: '',
-                      },
-                    },
-                    propertyOrder: [
-                      'PRO',
-                      'FEEDTYPE',
-                      'VIEW',
-                      'CONTENTCONTEXT',
-                      'CONTENTPARAMS',
-                    ],
-                    showCodeViewBtn: false,
-                  },
-                  otherConfig: {
-                    type: 'object',
-                    title: '选配内容',
-                    description: '',
-                    isContainer: false,
-                    properties: {
-                      SIZE: {
-                        type: 'dynamic-config',
-                        title: '容量',
-                        boxTitle: '',
-                        description: '该位置区块需要的内容条数',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'select',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: false,
-                            default: 'select',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [
-                              {
-                                label: '1',
-                                value: 1,
-                              },
-                              {
-                                label: '2',
-                                value: 2,
-                              },
-                              {
-                                label: '3',
-                                value: 3,
-                              },
-                              {
-                                label: '4',
-                                value: 4,
-                              },
-                              {
-                                label: '5',
-                                value: 5,
-                              },
-                              {
-                                label: '6',
-                                value: 6,
-                              },
-                              {
-                                label: '7',
-                                value: 7,
-                              },
-                              {
-                                label: '8',
-                                value: 8,
-                              },
-                              {
-                                label: '9',
-                                value: 9,
-                              },
-                              {
-                                label: '10',
-                                value: 10,
-                              },
-                              {
-                                label: '11',
-                                value: 11,
-                              },
-                              {
-                                label: '12',
-                                value: 12,
-                              },
-                              {
-                                label: '13',
-                                value: 13,
-                              },
-                              {
-                                label: '14',
-                                value: 14,
-                              },
-                              {
-                                label: '15',
-                                value: 15,
-                              },
-                              {
-                                label: '16',
-                                value: 16,
-                              },
-                              {
-                                label: '17',
-                                value: 17,
-                              },
-                              {
-                                label: '18',
-                                value: 18,
-                              },
-                              {
-                                label: '19',
-                                value: 19,
-                              },
-                              {
-                                label: '20',
-                                value: 20,
-                              },
-                              {
-                                label: '21',
-                                value: 21,
-                              },
-                              {
-                                label: '22',
-                                value: 22,
-                              },
-                              {
-                                label: '23',
-                                value: 23,
-                              },
-                              {
-                                label: '24',
-                                value: 24,
-                              },
-                              {
-                                label: '25',
-                                value: 25,
-                              },
-                              {
-                                label: '26',
-                                value: 26,
-                              },
-                              {
-                                label: '27',
-                                value: 27,
-                              },
-                              {
-                                label: '28',
-                                value: 28,
-                              },
-                              {
-                                label: '29',
-                                value: 29,
-                              },
-                              {
-                                label: '30',
-                                value: 30,
-                              },
-                              {
-                                label: '31',
-                                value: 31,
-                              },
-                              {
-                                label: '32',
-                                value: 32,
-                              },
-                              {
-                                label: '33',
-                                value: 33,
-                              },
-                              {
-                                label: '34',
-                                value: 34,
-                              },
-                              {
-                                label: '35',
-                                value: 35,
-                              },
-                              {
-                                label: '36',
-                                value: 36,
-                              },
-                              {
-                                label: '37',
-                                value: 37,
-                              },
-                              {
-                                label: '38',
-                                value: 38,
-                              },
-                              {
-                                label: '39',
-                                value: 39,
-                              },
-                              {
-                                label: '40',
-                                value: 40,
-                              },
-                              {
-                                label: '41',
-                                value: 41,
-                              },
-                              {
-                                label: '42',
-                                value: 42,
-                              },
-                              {
-                                label: '43',
-                                value: 43,
-                              },
-                              {
-                                label: '44',
-                                value: 44,
-                              },
-                              {
-                                label: '45',
-                                value: 45,
-                              },
-                              {
-                                label: '46',
-                                value: 46,
-                              },
-                              {
-                                label: '47',
-                                value: 47,
-                              },
-                              {
-                                label: '48',
-                                value: 48,
-                              },
-                              {
-                                label: '49',
-                                value: 49,
-                              },
-                              {
-                                label: '50',
-                                value: 50,
-                              },
-                            ],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: '容量',
-                          type: 'ContentStaticConfig',
-                          valueType: 'select',
-                        },
-                      },
-                      TITLE: {
-                        type: 'dynamic-config',
-                        title: '标题',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: '标题',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                      CODE: {
-                        type: 'dynamic-config',
-                        title: 'CODE',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: 'CODE',
-                          type: 'ContentStaticConfig',
-                        },
-                      },
-                      URL: {
-                        type: 'dynamic-config',
-                        title: 'URL',
-                        boxTitle: '',
-                        description: '',
-                        isContainer: false,
-                        properties: {
-                          type: {
-                            type: 'select',
-                            title: '数据来源',
-                            options: [
-                              {
-                                label: '模板直接设置',
-                                value: 'DevDefaults',
-                              },
-                              {
-                                label: 'mp后台配置',
-                                value: 'ContentStaticConfig',
-                              },
-                            ],
-                            default: 'DevDefaults',
-                            isConditionProp: true,
-                            description:
-                              '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-                          },
-                          value: {
-                            title: '数据值',
-                            type: 'input',
-                            description: '',
-                            placeholder: '',
-                            onShow:
-                              'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-                          },
-                          description: {
-                            title: '属性名称',
-                            type: 'input',
-                            default: '',
-                            description:
-                              '在MP后台或资源中心配置时的提示语，默认都是"容量"',
-                            placeholder: '',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          valueType: {
-                            type: 'radio',
-                            title: '配置方式',
-                            options: [
-                              {
-                                label: '填写',
-                                value: 'string',
-                              },
-                              {
-                                label: '选择',
-                                value: 'select',
-                              },
-                            ],
-                            disabled: true,
-                            default: 'string',
-                            isConditionProp: true,
-                            description:
-                              '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-                            onShow:
-                              'type === "ContentStaticConfig" || type === "ResourceCenter"',
-                          },
-                          range: {
-                            type: 'select',
-                            title: '可选项',
-                            multiple: true,
-                            options: [],
-                            onShow:
-                              '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-                            description:
-                              '这里会使用value中的配置选项作为options',
-                          },
-                        },
-                        propertyOrder: [
-                          'type',
-                          'value',
-                          'description',
-                          'valueType',
-                          'range',
-                        ],
-                        showCodeViewBtn: false,
-                        default: {
-                          description: 'URL',
-                          type: 'ContentStaticConfig',
+                          type: 'RuntimeDataSelfDefine',
                         },
                       },
                     },
@@ -5523,7 +1583,7 @@ class IndexDemo extends React.PureComponent {
                 },
               },
             },
-            propertyOrder: ['navData', 'data2', 'data3', 'data1'],
+            propertyOrder: ['data3'],
           },
           event: {
             type: 'object',
@@ -5608,7 +1668,7 @@ class IndexDemo extends React.PureComponent {
           },
         },
         propertyOrder: ['base', 'props', 'data', 'style', 'event'],
-        lastUpdateTime: '2025-01-16T08:33:40.342Z',
+        lastUpdateTime: '2025-01-21T09:51:42.149Z',
         reset: true,
       },
       jsonSchema1: {
