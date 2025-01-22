@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.16
+ * @wibetter/json-editor v5.1.18
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Jan 21 2025 18:00:43 GMT+0800 (中国标准时间)
+ * build time: Wed Jan 22 2025 12:03:17 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -15755,6 +15755,7 @@
               return objItem;
             }
           }
+
           /**
            * options 数据处理
            * 将 options 列表中的普通 option 自动包裹一层：
@@ -15768,24 +15769,20 @@
               )
             ) {
               options.forEach(function (option) {
-                if (
-                  (0,
-                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isObject)(
-                    option,
-                  )
-                ) {
-                  curOptions.push({
-                    label: getObjectTitle(option),
-                    value: (0,
-                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_0__.isObject)(
-                      option.value,
-                    )
-                      ? option.value
-                      : option,
-                  });
-                } else {
-                  curOptions.push(option);
-                }
+                curOptions.push({
+                  label: getObjectTitle(option),
+                  value: option, // isObject(option.value) ? option.value : option,
+                });
+                /*
+      if (isObject(option)) {
+        curOptions.push({
+          label: getObjectTitle(option),
+          value: option // isObject(option.value) ? option.value : option,
+        });
+      } else {
+        curOptions.push(option);
+      }
+      */
               });
             }
             return curOptions;

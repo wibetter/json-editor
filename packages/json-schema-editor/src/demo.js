@@ -138,6 +138,7 @@ class IndexDemo extends React.PureComponent {
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
       curTypeList: {},
+      jsonViewReadOnly: true,
     };
   }
 
@@ -151,19 +152,19 @@ class IndexDemo extends React.PureComponent {
       jsonView,
       viewStyle,
       curTypeList,
+      jsonViewReadOnly,
     } = this.state;
     return (
       <>
         <div className="title-container">
           <div className="title1-box">
             <p>
-              <b className="title-name">JSONSchema</b>:
-              提供可视化界面编辑json格式/结构；
-              <br />
-              用于可视化模型设置（定义可配置项）。
+              <b className="title-name">json-schema-editor</b>:
+              JSON数据可视化/JSONSchema，以表单的形式编辑 json
+              schema。可用于在线设计组件的配置面板。
             </p>
             <div>
-              <b>自定义展示</b>: &nbsp;&nbsp;
+              <b>开启源码模式</b>: &nbsp;&nbsp;
               <Switch
                 style={{ display: 'inline-block' }}
                 defaultChecked={schemaCodeView}
@@ -175,6 +176,23 @@ class IndexDemo extends React.PureComponent {
                   });
                 }}
               />
+              {schemaCodeView && (
+                <>
+                  &nbsp;&nbsp;
+                  <b>开启编辑模式</b>: &nbsp;&nbsp;
+                  <Switch
+                    style={{ display: 'inline-block' }}
+                    defaultChecked={!jsonViewReadOnly}
+                    checkedChildren="false"
+                    unCheckedChildren="true"
+                    onChange={(checked) => {
+                      this.setState({
+                        jsonViewReadOnly: !checked,
+                      });
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
           <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
@@ -228,7 +246,7 @@ class IndexDemo extends React.PureComponent {
               data={jsonSchema}
               typeList={curTypeList}
               jsonView={schemaCodeView}
-              // jsonViewReadOnly={false}
+              jsonViewReadOnly={jsonViewReadOnly}
               onChange={(newJsonSchema) => {
                 this.setState({
                   jsonSchema: newJsonSchema,

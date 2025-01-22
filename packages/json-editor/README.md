@@ -11,11 +11,13 @@ React/Mobx/Ant Design
 ### 特点
 1. 弹性布局，提供大屏和小屏两种展示模式
 2. 支持字段联动
-3. 支持12种基础类型组件（input、boolean、 date、date-time、 time、 url、
- textarea、number、color、radio、 checkboxes、select）
-4. 支持11个特殊类型组件（object、array、json、datasource、dynamic-data、event、
-codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style）
+3. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
+ textarea、number、color、radio、 checkboxes、select、cascader、input-image）
+4. 支持12个特殊类型组件（object、array、json、datasource、dynamic-data、event、
+codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style、padding-margin）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
+6. 支持通过表达式设置数据联动（支持两种数据域：全局数据域、当前局部数据域）
+7. 支持源码模式切换（）
 
 ***
 
@@ -52,6 +54,7 @@ class IndexDemo extends React.PureComponent {
           <div className="json-editor-box">
             <JSONEditor
               wideScreen={wideScreen} // 宽屏和小屏的配置项
+              jsonView={false} // 开启后展示当前json数据
               schemaData={jsonSchema}
               jsonData={jsonData}
               onChange={(newJsonData) => {

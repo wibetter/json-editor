@@ -344,14 +344,20 @@ export function getWrapOptions(options) {
   let curOptions = [];
   if (isArray(options)) {
     options.forEach((option) => {
+      curOptions.push({
+        label: getObjectTitle(option),
+        value: option, // isObject(option.value) ? option.value : option,
+      });
+      /*
       if (isObject(option)) {
         curOptions.push({
           label: getObjectTitle(option),
-          value: isObject(option.value) ? option.value : option,
+          value: option // isObject(option.value) ? option.value : option,
         });
       } else {
         curOptions.push(option);
       }
+      */
     });
   }
   return curOptions;

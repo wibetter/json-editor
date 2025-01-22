@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
 import JSONSchemaEditor from './packages/json-schema-editor/lib/index';
 import JSONEditor from './packages/json-editor/lib/index';
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import './packages/json-schema-editor/lib/index.css';
 import './packages/json-editor/lib/index.css';
 import './index.scss';
@@ -36,9 +33,9 @@ class IndexDemo extends React.PureComponent {
                 placeholder: '',
                 showSearch: true,
                 titleStyle: {
-                  "font-weight": 600,
-                  color: '#070c14'
-                }
+                  'font-weight': 600,
+                  color: '#070c14',
+                },
               },
               select1: {
                 title: 'cascader',
@@ -82,9 +79,9 @@ class IndexDemo extends React.PureComponent {
                   },
                 ],
                 titleStyle: {
-                  "font-weight": 600,
-                  color: '#070c14'
-                }
+                  'font-weight': 600,
+                  color: '#070c14',
+                },
               },
               imgUrl: {
                 title: '组件预览图1',
@@ -336,7 +333,7 @@ class IndexDemo extends React.PureComponent {
                           default: '',
                           description: '',
                           placeholder: '',
-                          onShow: "props.themeSource.type === 'DevDefaults'"
+                          onShow: "props.themeSource.type === 'DevDefaults'",
                         },
                       },
                       propertyOrder: ['attr', 'description', 'type', 'value'],
@@ -2389,6 +2386,7 @@ class IndexDemo extends React.PureComponent {
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
       curTypeList: {},
+      jsonViewReadOnly: true,
     };
   }
 
@@ -2403,6 +2401,7 @@ class IndexDemo extends React.PureComponent {
       viewStyle,
       curTypeList,
       options,
+      jsonViewReadOnly,
     } = this.state;
 
     return (
@@ -2427,6 +2426,23 @@ class IndexDemo extends React.PureComponent {
                   });
                 }}
               />
+              {schemaCodeView && (
+                <>
+                  &nbsp;&nbsp;
+                  <b>开启编辑模式</b>: &nbsp;&nbsp;
+                  <Switch
+                    style={{ display: 'inline-block' }}
+                    defaultChecked={!jsonViewReadOnly}
+                    checkedChildren="false"
+                    unCheckedChildren="true"
+                    onChange={(checked) => {
+                      this.setState({
+                        jsonViewReadOnly: !checked,
+                      });
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
           <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
@@ -2477,41 +2493,18 @@ class IndexDemo extends React.PureComponent {
         </div>
         <div className="json-action-container">
           <div className="json-schema-box">
-            {!schemaCodeView && (
-              <JSONSchemaEditor
-                data={jsonSchema}
-                typeList={curTypeList}
-                onChange={(newJsonSchema) => {
-                  console.log('newJsonSchema', newJsonSchema);
-                  this.setState({
-                    jsonSchema: newJsonSchema,
-                  });
-                }}
-              />
-            )}
-            {schemaCodeView && (
-              <AceEditor
-                id="json_area_ace"
-                value={JSON.stringify(jsonSchema, null, 2)}
-                className="json-view-ace"
-                mode="json"
-                theme="solarized_light"
-                name="JSON_CODE_EDIT"
-                fontSize={14}
-                showPrintMargin={true}
-                showGutter={true}
-                highlightActiveLine={true}
-                readOnly={false}
-                minLines={5}
-                maxLines={33}
-                width={'100%'}
-                setOptions={{
-                  useWorker: false,
-                  showLineNumbers: true,
-                  tabSize: 2,
-                }}
-              />
-            )}
+            <JSONSchemaEditor
+              jsonView={schemaCodeView}
+              jsonViewReadOnly={jsonViewReadOnly}
+              data={jsonSchema}
+              typeList={curTypeList}
+              onChange={(newJsonSchema) => {
+                console.log('newJsonSchema', newJsonSchema);
+                this.setState({
+                  jsonSchema: newJsonSchema,
+                });
+              }}
+            />
           </div>
           <div
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}

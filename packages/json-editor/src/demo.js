@@ -5,9 +5,6 @@ import JSONSchemaEditor from '@wibetter/json-schema-editor';
 import { urlParse } from '@wibetter/json-utils';
 import JSONEditor from './main';
 // import JSONEditor from '../lib/index';
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
 import '@wibetter/json-schema-editor/lib/index.css';
 import '../../../index.scss';
 
@@ -4313,6 +4310,7 @@ class IndexDemo extends React.PureComponent {
       schemaCodeView: false, // schema源码模式
       viewStyle: urlParams['viewStyle'] ?? 'tabs', // 默认折叠模式
       curTypeList: {},
+      jsonViewReadOnly: true, // schema数据是否只读
     };
   }
 
@@ -4327,6 +4325,7 @@ class IndexDemo extends React.PureComponent {
       viewStyle,
       curTypeList,
       options,
+      jsonViewReadOnly,
     } = this.state;
 
     return (
@@ -4351,6 +4350,23 @@ class IndexDemo extends React.PureComponent {
                   });
                 }}
               />
+              {schemaCodeView && (
+                <>
+                  &nbsp;&nbsp;
+                  <b>开启编辑模式</b>: &nbsp;&nbsp;
+                  <Switch
+                    style={{ display: 'inline-block' }}
+                    defaultChecked={!jsonViewReadOnly}
+                    checkedChildren="false"
+                    unCheckedChildren="true"
+                    onChange={(checked) => {
+                      this.setState({
+                        jsonViewReadOnly: !checked,
+                      });
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
           <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
@@ -4401,40 +4417,17 @@ class IndexDemo extends React.PureComponent {
         </div>
         <div className="json-action-container">
           <div className="json-schema-box">
-            {!schemaCodeView && (
-              <JSONSchemaEditor
-                data={jsonSchema}
-                typeList={curTypeList}
-                onChange={(newJsonSchema) => {
-                  this.setState({
-                    jsonSchema: newJsonSchema,
-                  });
-                }}
-              />
-            )}
-            {schemaCodeView && (
-              <AceEditor
-                id="json_area_ace"
-                value={JSON.stringify(jsonSchema, null, 2)}
-                className="json-view-ace"
-                mode="json"
-                theme="solarized_light"
-                name="JSON_CODE_EDIT"
-                fontSize={14}
-                showPrintMargin={true}
-                showGutter={true}
-                highlightActiveLine={true}
-                readOnly={false}
-                minLines={5}
-                maxLines={33}
-                width={'100%'}
-                setOptions={{
-                  useWorker: false,
-                  showLineNumbers: true,
-                  tabSize: 2,
-                }}
-              />
-            )}
+            <JSONSchemaEditor
+              jsonView={schemaCodeView}
+              jsonViewReadOnly={jsonViewReadOnly}
+              data={jsonSchema}
+              typeList={curTypeList}
+              onChange={(newJsonSchema) => {
+                this.setState({
+                  jsonSchema: newJsonSchema,
+                });
+              }}
+            />
           </div>
           <div
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
