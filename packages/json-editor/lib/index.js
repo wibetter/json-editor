@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.18
+ * @wibetter/json-editor v5.1.20
  * author: wibetter
  * build tool: AKFun
- * build time: Wed Jan 22 2025 12:03:17 GMT+0800 (中国标准时间)
+ * build time: Thu Jan 23 2025 18:39:21 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -5486,7 +5486,6 @@
                         }
                         if (currentJsonKey === 'range') {
                           if (
-                            curJsonData.valueType === 'select' &&
                             (!currentSchemaData.options ||
                               currentSchemaData.options.length === 0) &&
                             (curJsonData.type === 'ContentStaticConfig' ||
@@ -11300,8 +11299,7 @@
                 }
               };
             _proto.render = function render() {
-              var _curJsonData,
-                _targetJsonSchema$sho,
+              var _targetJsonSchema$sho,
                 _targetJsonSchema$def,
                 _targetJsonSchema$all;
               var _this$props2 = this.props,
@@ -11352,9 +11350,7 @@
                 curJsonData = valueArray;
               }
               var curValue =
-                (_curJsonData = curJsonData) != null
-                  ? _curJsonData
-                  : targetJsonSchema.default;
+                curJsonData != null ? curJsonData : targetJsonSchema.default;
               if (
                 (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isObject)(
                   curValue,

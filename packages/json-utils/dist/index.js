@@ -1161,10 +1161,11 @@
                 dataType: {
                   type: 'radio',
                   title: '请求方式',
+                  default: !1,
                   options: [
                     { label: '批量请求', value: 'FROMCIS' },
                     { label: '组件内部请求', value: 'FROMCOMPCIS' },
-                    { label: '不请求', value: 'false' },
+                    { label: '不请求', value: !1 },
                   ],
                   description: '',
                 },
@@ -2112,53 +2113,55 @@
     function le(e, t) {
       var r,
         i,
-        a = '',
-        l = t;
-      u(l) &&
+        a,
+        l,
+        n = void 0,
+        o = t;
+      u(o) &&
         u(e.default) &&
-        (typeof l != typeof e.default ||
-          ((r = l), (i = e.default), P(r) + '-' + k(r) != P(i) + '-' + k(i))) &&
-        (l = void 0);
-      var n = u(l) ? l : e.default;
+        (typeof o != typeof e.default ||
+          ((a = o), (l = e.default), P(a) + '-' + k(a) != P(l) + '-' + k(l))) &&
+        (o = void 0);
+      var p = u(o) ? o : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          a = n || ae(e);
+          n = null != (r = p) ? r : ae(e);
           break;
         case 'checkboxes':
-          a = n || ae(e, !0);
+          n = null != (i = p) ? i : ae(e, !0);
           break;
         case 'color':
-          ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
-            (a = u(n) ? n : '#ffffff');
+          ('#fff' !== p && '#FFF' !== p) || (p = '#ffffff'),
+            (n = u(p) ? p : '#ffffff');
           break;
         case 'boolean':
-          a = !!u(n) && n;
+          n = !!u(p) && p;
           break;
         case 'number':
-          a = u(n) ? n : void 0;
+          n = u(p) ? p : void 0;
           break;
         case 'json':
-          var o = '';
-          if (P(n) || k(n)) o = n;
-          else if (_(n) || '' === n) o = {};
+          var c = '';
+          if (P(p) || k(p)) c = p;
+          else if (_(p) || '' === p) c = {};
           else
             try {
-              o = JSON.parse(n);
+              c = JSON.parse(p);
             } catch (e) {
-              o = {};
+              c = {};
             }
-          a = o;
+          n = c;
           break;
         default:
-          a =
+          n =
             'input' === e.type && '0' === e.default
-              ? n || e.default
-              : u(n)
-                ? n
+              ? p || e.default
+              : u(p)
+                ? p
                 : void 0;
       }
-      return a;
+      return n;
     }
     function ne(e, t) {
       var r = {},

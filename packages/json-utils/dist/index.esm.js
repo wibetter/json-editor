@@ -1690,6 +1690,7 @@ var initSohuSourceData = {
         dataType: {
           type: 'radio',
           title: '请求方式',
+          default: false,
           options: [
             {
               label: '批量请求',
@@ -1701,7 +1702,7 @@ var initSohuSourceData = {
             },
             {
               label: '不请求',
-              value: 'false',
+              value: false,
             },
           ],
           description: '',
@@ -7995,7 +7996,8 @@ function isEqualByType(value1, value2) {
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
 function baseSchema2JsonData(jsonSchema, jsonData) {
-  var curJsonData = '';
+  var _curValue, _curValue2;
+  var curJsonData = undefined;
   var oldValue = jsonData;
   if (
     hasProperties(oldValue) &&
@@ -8011,10 +8013,16 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
   switch (jsonSchema.type) {
     case 'select':
     case 'radio':
-      curJsonData = curValue || getDefaultOptionVal(jsonSchema);
+      curJsonData =
+        (_curValue = curValue) != null
+          ? _curValue
+          : getDefaultOptionVal(jsonSchema);
       break;
     case 'checkboxes':
-      curJsonData = curValue || getDefaultOptionVal(jsonSchema, true);
+      curJsonData =
+        (_curValue2 = curValue) != null
+          ? _curValue2
+          : getDefaultOptionVal(jsonSchema, true);
       break;
     case 'color':
       if (curValue === '#fff' || curValue === '#FFF') {

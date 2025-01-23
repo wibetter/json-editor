@@ -225,7 +225,6 @@ class ObjectSchema extends React.PureComponent {
                 }
                 if (currentJsonKey === 'range') {
                   if (
-                    curJsonData.valueType === 'select' &&
                     (!currentSchemaData.options ||
                       currentSchemaData.options.length === 0) &&
                     (curJsonData.type === 'ContentStaticConfig' ||

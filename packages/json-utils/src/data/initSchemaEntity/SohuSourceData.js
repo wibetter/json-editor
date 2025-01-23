@@ -51,6 +51,7 @@ export const initSohuSourceData = {
         dataType: {
           type: 'radio',
           title: '请求方式',
+          default: false,
           options: [
             {
               label: '批量请求',
@@ -62,7 +63,7 @@ export const initSohuSourceData = {
             },
             {
               label: '不请求',
-              value: 'false',
+              value: false,
             },
           ],
           description: '',
