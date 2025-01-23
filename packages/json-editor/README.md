@@ -17,7 +17,7 @@ React/Mobx/Ant Design
 codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style、padding-margin）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 6. 支持通过表达式设置数据联动（支持两种数据域：全局数据域、当前局部数据域）
-7. 支持源码模式切换（）
+7. 支持源码模式切换（开启源码模式后可以开启编辑模式）
 
 ***
 
