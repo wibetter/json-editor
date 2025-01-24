@@ -6,14 +6,15 @@
 React/Mobx/Ant Design
 
 ### 特点
-3. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
+1. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
  textarea、number、color、radio、 checkboxes、select、cascader、input-image）
-4. 支持12个特殊类型组件（object、array、json、datasource、dynamic-data、event、
+2. 支持12个特殊类型组件（object、array、json、datasource、dynamic-data、event、
 codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style、padding-margin）
 3. 支持拖拽排序
 4. 支持删除、复制、高级配置等功能
 5. 支持复杂嵌套
-7. 支持通过表达式进行配置联动
+6. 支持通过表达式进行配置联动
+7. 支持源码模式切换（开启源码模式后可以开启编辑模式）
 
 ### 特别说明
 JSONSchema仅用于生成结构化的json数据，需要配合JSONEditor（[git地址](https://github.com/wibetter/json-editor)）渲染其内容。

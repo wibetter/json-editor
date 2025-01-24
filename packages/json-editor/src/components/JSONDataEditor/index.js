@@ -287,6 +287,7 @@ class JSONDataEditor extends React.PureComponent {
         )}
         {!isEmpty && jsonView && (
           <JsonView
+            key={`${lastUpdateTime}-${jsonLastUpdateTime}-jsonView`}
             jsonData={JSONEditorObj}
             readOnly={jsonViewReadOnly ?? true}
             onChange={jsonChange}

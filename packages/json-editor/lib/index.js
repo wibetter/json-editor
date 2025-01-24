@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.25
+ * @wibetter/json-editor v5.1.27
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 24 2025 18:27:16 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 24 2025 23:22:17 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -640,6 +640,8 @@
                       'default'
                     ],
                     {
+                      key:
+                        lastUpdateTime + '-' + jsonLastUpdateTime + '-jsonView',
                       jsonData: JSONEditorObj,
                       readOnly:
                         jsonViewReadOnly != null ? jsonViewReadOnly : true,
@@ -14231,11 +14233,13 @@
                   ); // 备份过滤钱的数据对象
                   // 判断当前schema是否为空
                   if (jsonSchema) {
-                    this.jsonData = (0,
+                    var newJsonData = (0,
                     _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.schema2json)(
                       jsonSchema,
                       jsonData || {},
                     );
+                    this.jsonData = Object.assign({}, jsonData, newJsonData);
+                    // this.jsonData = newJsonData;
                     // 记录当前初始化的时间
                     this.updateLastTime();
                   }

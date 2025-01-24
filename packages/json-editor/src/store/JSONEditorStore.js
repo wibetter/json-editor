@@ -112,7 +112,9 @@ export default class JSONEditorStore {
       this.initJsonData = objClone(this.jsonData); // 备份过滤钱的数据对象
       // 判断当前schema是否为空
       if (jsonSchema) {
-        this.jsonData = schema2json(jsonSchema, jsonData || {});
+        const newJsonData = schema2json(jsonSchema, jsonData || {});
+        this.jsonData = Object.assign({}, jsonData, newJsonData);
+        // this.jsonData = newJsonData;
         // 记录当前初始化的时间
         this.updateLastTime();
       }
