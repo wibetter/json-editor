@@ -6,7 +6,7 @@ const { Panel } = Collapse;
 const { TabPane } = Tabs;
 import MappingRender from '$components/MappingRender'; // 普通模式
 // import MappingRender from '$components/MappingRenderV2'; // 按需加载模式
-import JsonView from '$renderers/JsonView/index';
+import JsonView from '$components/JsonView/index';
 import { isEqual } from '$utils/index';
 import {
   isEmptySchema,
@@ -20,7 +20,8 @@ class JSONDataEditor extends React.PureComponent {
     viewStyle: PropTypes.any,
     wideScreen: PropTypes.any,
     onChange: PropTypes.func,
-    jsonView: PropTypes.any,
+    jsonView: PropTypes.bool,
+    jsonViewReadOnly: PropTypes.bool,
     schemaData: PropTypes.object,
     jsonData: PropTypes.object,
     dynamicDataList: PropTypes.any,
@@ -139,9 +140,13 @@ class JSONDataEditor extends React.PureComponent {
   };
 
   render() {
-    const { schemaStore, jsonStore } = this.props;
+    const { schemaStore, jsonStore, jsonViewReadOnly } = this.props;
     const { jsonSchema, lastUpdateTime } = schemaStore || {};
-    const { lastUpdateTime: jsonLastUpdateTime } = jsonStore || {};
+    const {
+      JSONEditorObj,
+      lastUpdateTime: jsonLastUpdateTime,
+      jsonChange,
+    } = jsonStore || {};
     const { jsonView, viewStyle } = this.state;
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isStructured = isStructuredSchema(jsonSchema); // 判断是否是结构化的schema数据
@@ -282,11 +287,9 @@ class JSONDataEditor extends React.PureComponent {
         )}
         {!isEmpty && jsonView && (
           <JsonView
-            {...{
-              nodeKey: 'jsonView',
-              keyRoute: '',
-              targetJsonSchema: jsonSchema,
-            }}
+            jsonData={JSONEditorObj}
+            readOnly={jsonViewReadOnly ?? true}
+            onChange={jsonChange}
           />
         )}
       </div>

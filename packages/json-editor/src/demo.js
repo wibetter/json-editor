@@ -4310,7 +4310,8 @@ class IndexDemo extends React.PureComponent {
       schemaCodeView: false, // schema源码模式
       viewStyle: urlParams['viewStyle'] ?? 'tabs', // 默认折叠模式
       curTypeList: {},
-      jsonViewReadOnly: true, // schema数据是否只读
+      schemaViewReadOnly: true, // schema数据是否只读
+      jsonViewReadOnly: true, // json数据是否只读
     };
   }
 
@@ -4325,6 +4326,7 @@ class IndexDemo extends React.PureComponent {
       viewStyle,
       curTypeList,
       options,
+      schemaViewReadOnly,
       jsonViewReadOnly,
     } = this.state;
 
@@ -4356,12 +4358,12 @@ class IndexDemo extends React.PureComponent {
                   <b>开启编辑模式</b>: &nbsp;&nbsp;
                   <Switch
                     style={{ display: 'inline-block' }}
-                    defaultChecked={!jsonViewReadOnly}
+                    defaultChecked={!schemaViewReadOnly}
                     checkedChildren="false"
                     unCheckedChildren="true"
                     onChange={(checked) => {
                       this.setState({
-                        jsonViewReadOnly: !checked,
+                        schemaViewReadOnly: !checked,
                       });
                     }}
                   />
@@ -4412,6 +4414,23 @@ class IndexDemo extends React.PureComponent {
                   });
                 }}
               />
+              {jsonView && (
+                <>
+                  &nbsp;&nbsp;
+                  <b>开启编辑模式</b>: &nbsp;&nbsp;
+                  <Switch
+                    style={{ display: 'inline-block' }}
+                    defaultChecked={!jsonViewReadOnly}
+                    checkedChildren="false"
+                    unCheckedChildren="true"
+                    onChange={(checked) => {
+                      this.setState({
+                        jsonViewReadOnly: !checked,
+                      });
+                    }}
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -4419,7 +4438,7 @@ class IndexDemo extends React.PureComponent {
           <div className="json-schema-box">
             <JSONSchemaEditor
               jsonView={schemaCodeView}
-              jsonViewReadOnly={jsonViewReadOnly}
+              jsonViewReadOnly={schemaViewReadOnly}
               data={jsonSchema}
               typeList={curTypeList}
               onChange={(newJsonSchema) => {
@@ -4435,6 +4454,7 @@ class IndexDemo extends React.PureComponent {
             <JSONEditor
               viewStyle={viewStyle}
               jsonView={jsonView} // code模式
+              jsonViewReadOnly={jsonViewReadOnly}
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}

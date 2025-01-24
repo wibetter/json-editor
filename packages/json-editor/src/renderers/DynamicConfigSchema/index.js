@@ -11,7 +11,7 @@ import {
 import { truncate } from '@wibetter/json-utils';
 import { objClone, getWrapOptions } from '$utils/index';
 import MappingRender from '$components/MappingRender';
-import JsonView from '$renderers/JsonView/index';
+import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
@@ -218,9 +218,8 @@ class ObjectSchema extends React.PureComponent {
                   ) {
                     // 当value选择input、select、checkboxes，才可设置「配置方式」，其他默认都是 "填写"
                     currentSchemaData.default = 'string';
-                    currentSchemaData.readOnly = true;
-                    currentSchemaData.description =
-                      '当前数值没有可选项，不支持设置。';
+                    // currentSchemaData.readOnly = true;
+                    // currentSchemaData.description = '当前数值没有可选项，不支持设置。';
                   }
                 }
                 if (currentJsonKey === 'range') {

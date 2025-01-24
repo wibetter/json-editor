@@ -15,7 +15,7 @@ import { truncate } from '@wibetter/json-utils';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 // import ObjectSchema from '$renderers/ObjectSchema/index';
 import MappingRender from '$components/MappingRender';
-import JsonView from '$renderers/JsonView/index';
+import JsonView from '$components/JsonView/index';
 import {
   isArray,
   isString,

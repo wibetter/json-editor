@@ -10,7 +10,7 @@ import {
   FilterOutlined,
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
-import JsonView from '$renderers/JsonView/index';
+import JsonView from '$components/JsonView/index';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';

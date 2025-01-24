@@ -1,8 +1,8 @@
 /*!
- * @wibetter/json-editor v5.1.20
+ * @wibetter/json-editor v5.1.25
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Jan 23 2025 18:39:21 GMT+0800 (中国标准时间)
+ * build time: Fri Jan 24 2025 18:27:16 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -248,9 +248,9 @@
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_6__ =
+          /* harmony import */ var $components_JsonView_index__WEBPACK_IMPORTED_MODULE_6__ =
             __webpack_require__(
-              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+              /*! $components/JsonView/index */ './src/components/JsonView/index.js',
             );
           /* harmony import */ var $utils_index__WEBPACK_IMPORTED_MODULE_7__ =
             __webpack_require__(/*! $utils/index */ './src/utils/index.js');
@@ -447,12 +447,15 @@
               var _this2 = this;
               var _this$props = this.props,
                 schemaStore = _this$props.schemaStore,
-                jsonStore = _this$props.jsonStore;
+                jsonStore = _this$props.jsonStore,
+                jsonViewReadOnly = _this$props.jsonViewReadOnly;
               var _ref5 = schemaStore || {},
                 jsonSchema = _ref5.jsonSchema,
                 lastUpdateTime = _ref5.lastUpdateTime;
               var _ref6 = jsonStore || {},
-                jsonLastUpdateTime = _ref6.lastUpdateTime;
+                JSONEditorObj = _ref6.JSONEditorObj,
+                jsonLastUpdateTime = _ref6.lastUpdateTime,
+                jsonChange = _ref6.jsonChange;
               var _this$state = this.state,
                 jsonView = _this$state.jsonView,
                 viewStyle = _this$state.viewStyle;
@@ -633,13 +636,14 @@
                 !isEmpty &&
                   jsonView &&
                   /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                    $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_6__[
+                    $components_JsonView_index__WEBPACK_IMPORTED_MODULE_6__[
                       'default'
                     ],
                     {
-                      nodeKey: 'jsonView',
-                      keyRoute: '',
-                      targetJsonSchema: jsonSchema,
+                      jsonData: JSONEditorObj,
+                      readOnly:
+                        jsonViewReadOnly != null ? jsonViewReadOnly : true,
+                      onChange: jsonChange,
                     },
                   ),
               );
@@ -650,7 +654,9 @@
             viewStyle: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
             wideScreen: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
             onChange: prop_types__WEBPACK_IMPORTED_MODULE_3___default().func,
-            jsonView: prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
+            jsonView: prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool,
+            jsonViewReadOnly:
+              prop_types__WEBPACK_IMPORTED_MODULE_3___default().bool,
             schemaData:
               prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
             jsonData: prop_types__WEBPACK_IMPORTED_MODULE_3___default().object,
@@ -669,6 +675,225 @@
               JSONDataEditor,
             ),
           );
+
+          /***/
+        },
+
+      /***/ './src/components/JsonView/index.js':
+        /*!******************************************!*\
+  !*** ./src/components/JsonView/index.js ***!
+  \******************************************/
+        /***/ function (
+          __unused_webpack_module,
+          __webpack_exports__,
+          __webpack_require__,
+        ) {
+          'use strict';
+          __webpack_require__.r(__webpack_exports__);
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
+            __webpack_require__(
+              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
+            );
+          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
+            );
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
+            __webpack_require__(/*! react */ 'react');
+          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react__WEBPACK_IMPORTED_MODULE_1__,
+            );
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ =
+            __webpack_require__(/*! prop-types */ 'prop-types');
+          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              prop_types__WEBPACK_IMPORTED_MODULE_2__,
+            );
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_3__ =
+            __webpack_require__(/*! react-ace */ 'react-ace');
+          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_3___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              react_ace__WEBPACK_IMPORTED_MODULE_3__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_4__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/mode-json */ 'ace-builds/src-noconflict/mode-json',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_4___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_4__,
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_5__ =
+            __webpack_require__(
+              /*! ace-builds/src-noconflict/theme-solarized_light */ 'ace-builds/src-noconflict/theme-solarized_light',
+            );
+          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_5___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_5__,
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__ =
+            __webpack_require__(
+              /*! @wibetter/json-utils */ '@wibetter/json-utils',
+            );
+          /* harmony import */ var _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__,
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7__ =
+            __webpack_require__(
+              /*! ./index.scss */ './src/components/JsonView/index.scss',
+            );
+          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_7___default =
+            /*#__PURE__*/ __webpack_require__.n(
+              _index_scss__WEBPACK_IMPORTED_MODULE_7__,
+            );
+
+          // ace-builds
+
+          var JsonView = /*#__PURE__*/ (function (_React$PureComponent) {
+            function JsonView(props) {
+              var _this;
+              _this = _React$PureComponent.call(this, props) || this;
+              _this.handleValueChange = function (newJsonData) {
+                if (
+                  _this.props.onChange &&
+                  (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isFunction)(
+                    _this.props.onChange,
+                  )
+                ) {
+                  _this.props.onChange(newJsonData);
+                }
+              };
+              _this.state = {
+                isShowWarn: false,
+                // 用于判断是否显示错误信息
+                warnText: '',
+                // 错误内容
+                curJSONDataTemp: undefined, // 用于记录当前不合规范的json数据
+              };
+              _this.handleValueChange = _this.handleValueChange.bind(_this);
+              return _this;
+            }
+            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
+              JsonView,
+              _React$PureComponent,
+            );
+            var _proto = JsonView.prototype;
+            _proto.render = function render() {
+              var _this2 = this;
+              var _this$props = this.props,
+                jsonData = _this$props.jsonData,
+                _readOnly = _this$props.readOnly;
+              var curJsonData = jsonData || {};
+              var _this$state = this.state,
+                isShowWarn = _this$state.isShowWarn,
+                warnText = _this$state.warnText,
+                curJSONDataTemp = _this$state.curJSONDataTemp;
+              var readOnly = _readOnly || false;
+
+              // 格式化JSON数据
+              curJsonData =
+                curJsonData !== undefined ? curJsonData : curJsonData || '{}';
+              // 判断当前jsonData是否是对象类型
+              if (
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isObject)(
+                  curJsonData,
+                ) ||
+                (0, _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_6__.isArray)(
+                  curJsonData,
+                )
+              ) {
+                curJsonData = JSON.stringify(curJsonData, null, 2);
+              }
+              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                'div',
+                {
+                  className: 'json-view-box',
+                },
+                readOnly &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'readOnly-btn',
+                    },
+                    '[\u53EA\u8BFB]',
+                  ),
+                isShowWarn &&
+                  /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                    'div',
+                    {
+                      className: 'warning-box code-area-item',
+                    },
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'warning-img',
+                      },
+                      'X',
+                    ),
+                    /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                      'div',
+                      {
+                        className: 'warning-text',
+                      },
+                      warnText,
+                    ),
+                  ),
+                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
+                  react_ace__WEBPACK_IMPORTED_MODULE_3___default(),
+                  {
+                    id: 'json_area_ace',
+                    defaultValue: curJsonData,
+                    // value={hasProperties(curJSONDataTemp) ? curJSONDataTemp : curJsonData}
+                    className: 'json-view-ace',
+                    mode: 'json',
+                    theme: 'solarized_light',
+                    name: 'JSON_CODE_EDIT',
+                    fontSize: 14,
+                    showPrintMargin: true,
+                    showGutter: true,
+                    highlightActiveLine: true,
+                    readOnly: readOnly,
+                    minLines: 5,
+                    maxLines: 33,
+                    width: '100%',
+                    setOptions: {
+                      useWorker: false,
+                      showLineNumbers: true,
+                      tabSize: 2,
+                    },
+                    onChange: function onChange(newJsonData) {
+                      try {
+                        var newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
+                        // 更新jsonData
+                        _this2.handleValueChange(newJsonDataTemp);
+                        _this2.setState({
+                          isShowWarn: false,
+                          curJSONDataTemp: undefined, // 重置
+                        });
+                      } catch (err) {
+                        // 更新jsonData
+                        _this2.setState({
+                          curJSONDataTemp: newJsonData,
+                          // 记录当前格式不正确的json数据
+                          warnText: err.message,
+                          isShowWarn: true,
+                        });
+                      }
+                    },
+                  },
+                ),
+              );
+            };
+            return JsonView;
+          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
+          JsonView.propTypes = {
+            jsonData: prop_types__WEBPACK_IMPORTED_MODULE_2___default().any,
+          };
+          /* harmony default export */ __webpack_exports__['default'] =
+            JsonView;
 
           /***/
         },
@@ -1413,9 +1638,9 @@
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $components_JsonView_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
-              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+              /*! $components/JsonView/index */ './src/components/JsonView/index.js',
             );
           /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
@@ -2092,7 +2317,7 @@
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__[
+                        $components_JsonView_index__WEBPACK_IMPORTED_MODULE_10__[
                           'default'
                         ],
                         this.props,
@@ -4358,9 +4583,9 @@
             /*#__PURE__*/ __webpack_require__.n(
               _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $components_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
-              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+              /*! $components/JsonView/index */ './src/components/JsonView/index.js',
             );
           /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
@@ -4753,7 +4978,7 @@
                       ),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
+                        $components_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
                           'default'
                         ],
                         this.props,
@@ -5156,9 +5381,9 @@
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__ =
+          /* harmony import */ var $components_JsonView_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(
-              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+              /*! $components/JsonView/index */ './src/components/JsonView/index.js',
             );
           /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_11__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
@@ -5479,9 +5704,8 @@
                           ) {
                             // 当value选择input、select、checkboxes，才可设置「配置方式」，其他默认都是 "填写"
                             currentSchemaData.default = 'string';
-                            currentSchemaData.readOnly = true;
-                            currentSchemaData.description =
-                              '当前数值没有可选项，不支持设置。';
+                            // currentSchemaData.readOnly = true;
+                            // currentSchemaData.description = '当前数值没有可选项，不支持设置。';
                           }
                         }
                         if (currentJsonKey === 'range') {
@@ -5546,7 +5770,7 @@
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_10__[
+                        $components_JsonView_index__WEBPACK_IMPORTED_MODULE_10__[
                           'default'
                         ],
                         this.props,
@@ -6416,9 +6640,9 @@
             /*#__PURE__*/ __webpack_require__.n(
               _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_7__,
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
+          /* harmony import */ var $components_JsonView_index__WEBPACK_IMPORTED_MODULE_8__ =
             __webpack_require__(
-              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+              /*! $components/JsonView/index */ './src/components/JsonView/index.js',
             );
           /* harmony import */ var $renderers_JsonFormSchema_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
@@ -6755,7 +6979,7 @@
                       ),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
+                        $components_JsonView_index__WEBPACK_IMPORTED_MODULE_8__[
                           'default'
                         ],
                         this.props,
@@ -8184,191 +8408,6 @@
           /***/
         },
 
-      /***/ './src/renderers/JsonView/index.js':
-        /*!*****************************************!*\
-  !*** ./src/renderers/JsonView/index.js ***!
-  \*****************************************/
-        /***/ function (
-          __unused_webpack_module,
-          __webpack_exports__,
-          __webpack_require__,
-        ) {
-          'use strict';
-          __webpack_require__.r(__webpack_exports__);
-          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ =
-            __webpack_require__(
-              /*! @babel/runtime/helpers/inheritsLoose */ '@babel/runtime/helpers/inheritsLoose',
-            );
-          /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__,
-            );
-          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ =
-            __webpack_require__(/*! react */ 'react');
-          /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              react__WEBPACK_IMPORTED_MODULE_1__,
-            );
-          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ =
-            __webpack_require__(/*! mobx-react */ 'mobx-react');
-          /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              mobx_react__WEBPACK_IMPORTED_MODULE_2__,
-            );
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ =
-            __webpack_require__(/*! prop-types */ 'prop-types');
-          /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              prop_types__WEBPACK_IMPORTED_MODULE_3__,
-            );
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_4__ =
-            __webpack_require__(/*! react-ace */ 'react-ace');
-          /* harmony import */ var react_ace__WEBPACK_IMPORTED_MODULE_4___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              react_ace__WEBPACK_IMPORTED_MODULE_4__,
-            );
-          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_5__ =
-            __webpack_require__(
-              /*! ace-builds/src-noconflict/mode-json */ 'ace-builds/src-noconflict/mode-json',
-            );
-          /* harmony import */ var ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_5___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_mode_json__WEBPACK_IMPORTED_MODULE_5__,
-            );
-          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_6__ =
-            __webpack_require__(
-              /*! ace-builds/src-noconflict/theme-solarized_light */ 'ace-builds/src-noconflict/theme-solarized_light',
-            );
-          /* harmony import */ var ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_6___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              ace_builds_src_noconflict_theme_solarized_light__WEBPACK_IMPORTED_MODULE_6__,
-            );
-          /* harmony import */ var $utils_typeof__WEBPACK_IMPORTED_MODULE_7__ =
-            __webpack_require__(/*! $utils/typeof */ './src/utils/typeof.js');
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8__ =
-            __webpack_require__(
-              /*! ./index.scss */ './src/renderers/JsonView/index.scss',
-            );
-          /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_8___default =
-            /*#__PURE__*/ __webpack_require__.n(
-              _index_scss__WEBPACK_IMPORTED_MODULE_8__,
-            );
-
-          // ace-builds
-
-          var JsonView = /*#__PURE__*/ (function (_React$PureComponent) {
-            function JsonView(props) {
-              var _this;
-              _this = _React$PureComponent.call(this, props) || this;
-              // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-              /** 数值变动事件处理器 */
-              _this.handleValueChange = function (newJsonData) {
-                var _this$props = _this.props,
-                  keyRoute = _this$props.keyRoute,
-                  jsonStore = _this$props.jsonStore;
-                var _ref = jsonStore || {},
-                  updateFormValueData = _ref.updateFormValueData;
-                if (newJsonData) {
-                  updateFormValueData(keyRoute, newJsonData); // 更新数值
-                }
-              };
-              _this.handleValueChange = _this.handleValueChange.bind(_this);
-              return _this;
-            }
-            _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_0___default()(
-              JsonView,
-              _React$PureComponent,
-            );
-            var _proto = JsonView.prototype;
-            _proto.render = function render() {
-              var _ref2 = this.props.jsonStore || {},
-                getJSONDataByKeyRoute = _ref2.getJSONDataByKeyRoute;
-              var _this$props2 = this.props,
-                nodeKey = _this$props2.nodeKey,
-                keyRoute = _this$props2.keyRoute,
-                targetJsonSchema = _this$props2.targetJsonSchema;
-              // 从jsonData中获取对应的数值
-              var curJsonData = getJSONDataByKeyRoute(keyRoute);
-
-              // 格式化JSON数据
-              curJsonData =
-                curJsonData !== undefined
-                  ? curJsonData
-                  : targetJsonSchema.default || '{}';
-              // 判断当前jsonData是否是对象类型
-              if (
-                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_7__.isObject)(
-                  curJsonData,
-                ) ||
-                (0, $utils_typeof__WEBPACK_IMPORTED_MODULE_7__.isArray)(
-                  curJsonData,
-                )
-              ) {
-                curJsonData = JSON.stringify(curJsonData, null, 2);
-              }
-              return /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                'div',
-                {
-                  className: 'json-view-box',
-                  id: nodeKey,
-                },
-                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                  'div',
-                  {
-                    className: 'readOnly-btn',
-                  },
-                  '[\u53EA\u8BFB]',
-                ),
-                /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1__.createElement(
-                  react_ace__WEBPACK_IMPORTED_MODULE_4___default(),
-                  {
-                    id: 'json_area_ace',
-                    value: curJsonData,
-                    className: 'json-view-ace',
-                    mode: 'json',
-                    theme: 'solarized_light',
-                    name: 'JSON_CODE_EDIT',
-                    fontSize: 14,
-                    showPrintMargin: true,
-                    showGutter: true,
-                    highlightActiveLine: true,
-                    readOnly: true,
-                    minLines: 5,
-                    maxLines: 33,
-                    width: '100%',
-                    setOptions: {
-                      useWorker: false,
-                      showLineNumbers: true,
-                      tabSize: 2,
-                    },
-                  },
-                ),
-              );
-            };
-            return JsonView;
-          })(react__WEBPACK_IMPORTED_MODULE_1__.PureComponent);
-          JsonView.propTypes = {
-            parentType:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            jsonKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            indexRoute:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            keyRoute: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            nodeKey: prop_types__WEBPACK_IMPORTED_MODULE_3___default().string,
-            targetJsonSchema:
-              prop_types__WEBPACK_IMPORTED_MODULE_3___default().any,
-          };
-          /* harmony default export */ __webpack_exports__['default'] = (0,
-          mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)(function (stores) {
-            return {
-              schemaStore: stores.JSONSchemaStore,
-              jsonStore: stores.JSONEditorStore,
-            };
-          })((0, mobx_react__WEBPACK_IMPORTED_MODULE_2__.observer)(JsonView));
-
-          /***/
-        },
-
       /***/ './src/renderers/NumberFormSchema/index.js':
         /*!*************************************************!*\
   !*** ./src/renderers/NumberFormSchema/index.js ***!
@@ -8808,9 +8847,9 @@
             __webpack_require__(
               /*! $components/MappingRender */ './src/components/MappingRender.js',
             );
-          /* harmony import */ var $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__ =
+          /* harmony import */ var $components_JsonView_index__WEBPACK_IMPORTED_MODULE_9__ =
             __webpack_require__(
-              /*! $renderers/JsonView/index */ './src/renderers/JsonView/index.js',
+              /*! $components/JsonView/index */ './src/components/JsonView/index.js',
             );
           /* harmony import */ var $mixins_index__WEBPACK_IMPORTED_MODULE_10__ =
             __webpack_require__(/*! $mixins/index */ './src/mixins/index.js');
@@ -9128,7 +9167,7 @@
                       }),
                     jsonView &&
                       /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createElement(
-                        $renderers_JsonView_index__WEBPACK_IMPORTED_MODULE_9__[
+                        $components_JsonView_index__WEBPACK_IMPORTED_MODULE_9__[
                           'default'
                         ],
                         this.props,
@@ -14019,6 +14058,7 @@
             _dec11,
             _dec12,
             _dec13,
+            _dec14,
             _class,
             _descriptor,
             _descriptor2,
@@ -14048,6 +14088,7 @@
             (_dec11 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
             (_dec12 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
             (_dec13 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
+            (_dec14 = mobx__WEBPACK_IMPORTED_MODULE_4__.action.bound),
             (_class = /*#__PURE__*/ (function () {
               // 构造函数
               function JSONEditorStore(rootJSONStore) {
@@ -14243,6 +14284,11 @@
               /** 触发onChange  */
               _proto.jsonDataChange = function jsonDataChange() {
                 this.onChange(this.JSONEditorObj);
+              };
+              _proto.jsonChange = function jsonChange(newJsonData) {
+                console.log('newJsonData:', newJsonData);
+                this.jsonData = newJsonData;
+                this.jsonDataChange();
               };
 
               /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
@@ -14732,8 +14778,15 @@
             ),
             _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
               _class.prototype,
-              'getJSONDataByKeyRoute',
+              'jsonChange',
               [_dec8],
+              Object.getOwnPropertyDescriptor(_class.prototype, 'jsonChange'),
+              _class.prototype,
+            ),
+            _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
+              _class.prototype,
+              'getJSONDataByKeyRoute',
+              [_dec9],
               Object.getOwnPropertyDescriptor(
                 _class.prototype,
                 'getJSONDataByKeyRoute',
@@ -14743,7 +14796,7 @@
             _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
               _class.prototype,
               'getInitJsonDataByKeyRoute',
-              [_dec9],
+              [_dec10],
               Object.getOwnPropertyDescriptor(
                 _class.prototype,
                 'getInitJsonDataByKeyRoute',
@@ -14753,7 +14806,7 @@
             _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
               _class.prototype,
               'updateFormValueData',
-              [_dec10],
+              [_dec11],
               Object.getOwnPropertyDescriptor(
                 _class.prototype,
                 'updateFormValueData',
@@ -14763,7 +14816,7 @@
             _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
               _class.prototype,
               'deleteArrayIndex',
-              [_dec11],
+              [_dec12],
               Object.getOwnPropertyDescriptor(
                 _class.prototype,
                 'deleteArrayIndex',
@@ -14773,14 +14826,14 @@
             _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
               _class.prototype,
               'addArrayItem',
-              [_dec12],
+              [_dec13],
               Object.getOwnPropertyDescriptor(_class.prototype, 'addArrayItem'),
               _class.prototype,
             ),
             _babel_runtime_helpers_applyDecoratedDescriptor__WEBPACK_IMPORTED_MODULE_2___default()(
               _class.prototype,
               'sortArrayItem',
-              [_dec13],
+              [_dec14],
               Object.getOwnPropertyDescriptor(
                 _class.prototype,
                 'sortArrayItem',
@@ -16070,6 +16123,15 @@
           /***/
         },
 
+      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JsonView/index.scss':
+        /*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JsonView/index.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+        /***/ function () {
+          // extracted by mini-css-extract-plugin
+          /***/
+        },
+
       /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/main.scss':
         /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/main.scss ***!
@@ -16128,15 +16190,6 @@
         /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/DynamicDataSchema/index.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-        /***/ function () {
-          // extracted by mini-css-extract-plugin
-          /***/
-        },
-
-      /***/ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss':
-        /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
         /***/ function () {
           // extracted by mini-css-extract-plugin
           /***/
@@ -16224,6 +16277,32 @@
             /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
           )['default'];
           var update = add('1fb1d0ec', content, false, { sourceMap: false });
+          // Hot Module Replacement
+          if (false) {
+          }
+
+          /***/
+        },
+
+      /***/ './src/components/JsonView/index.scss':
+        /*!********************************************!*\
+  !*** ./src/components/JsonView/index.scss ***!
+  \********************************************/
+        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
+          // style-loader: Adds some css to the DOM by adding a <style> tag
+
+          // load the styles
+          var content = __webpack_require__(
+            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/components/JsonView/index.scss',
+          );
+          if (content.__esModule) content = content.default;
+          if (typeof content === 'string') content = [[module.id, content, '']];
+          if (content.locals) module.exports = content.locals;
+          // add the styles to the DOM
+          var add = __webpack_require__(
+            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
+          )['default'];
+          var update = add('5c4a563c', content, false, { sourceMap: false });
           // Hot Module Replacement
           if (false) {
           }
@@ -16406,32 +16485,6 @@
             /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
           )['default'];
           var update = add('754f9197', content, false, { sourceMap: false });
-          // Hot Module Replacement
-          if (false) {
-          }
-
-          /***/
-        },
-
-      /***/ './src/renderers/JsonView/index.scss':
-        /*!*******************************************!*\
-  !*** ./src/renderers/JsonView/index.scss ***!
-  \*******************************************/
-        /***/ function (module, __unused_webpack_exports, __webpack_require__) {
-          // style-loader: Adds some css to the DOM by adding a <style> tag
-
-          // load the styles
-          var content = __webpack_require__(
-            /*! !!../../../../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../../../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../../../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./index.scss */ '../../node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-11.use[1]!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-11.use[2]!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-11.use[3]!../../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-11.use[4]!../../node_modules/sass-resources-loader/lib/loader.js??clonedRuleSet-11.use[5]!./src/renderers/JsonView/index.scss',
-          );
-          if (content.__esModule) content = content.default;
-          if (typeof content === 'string') content = [[module.id, content, '']];
-          if (content.locals) module.exports = content.locals;
-          // add the styles to the DOM
-          var add = __webpack_require__(
-            /*! !../../../../../node_modules/vue-style-loader/lib/addStylesClient.js */ '../../node_modules/vue-style-loader/lib/addStylesClient.js',
-          )['default'];
-          var update = add('4ad618f0', content, false, { sourceMap: false });
           // Hot Module Replacement
           if (false) {
           }

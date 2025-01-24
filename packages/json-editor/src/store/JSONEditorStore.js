@@ -158,6 +158,13 @@ export default class JSONEditorStore {
     this.onChange(this.JSONEditorObj);
   }
 
+  @action.bound
+  jsonChange(newJsonData) {
+    console.log('newJsonData:', newJsonData);
+    this.jsonData = newJsonData;
+    this.jsonDataChange();
+  }
+
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
   getJSONDataByKeyRoute(keyRoute, jsonDataParam) {

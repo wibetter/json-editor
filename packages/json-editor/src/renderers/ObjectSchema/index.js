@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import MappingRender from '$components/MappingRender';
-import JsonView from '$renderers/JsonView/index';
+import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 import CodeIcon from '$assets/img/code.svg';
