@@ -63,43 +63,43 @@ export default class JSONSchemaStore {
         this.jsonSchema = newJSONSchema;
       }
     }
+    console.info('[json-editor]initJSONSchemaData:', this.jsonSchema);
   }
 
   /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
   JSONSchemaChange(jsonSchemaData) {
-    if (!isEqual(jsonSchemaData, this.JSONSchemaObj)) {
-      if (!jsonSchemaData || JSON.stringify(jsonSchemaData) === '{}') {
-        // 使用默认的jsonschema数据进行初始化
-        this.jsonSchema = objClone(initJSONSchemaData);
-      } else if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
-        /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
-        this.jsonSchema = jsonSchemaData;
-      } else {
-        // 进行一次转换，以便兼容旧版数据
-        const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
-        this.jsonSchema = newJSONSchema;
-      }
-      const JSONEditorStore = this.state.rootJSONStore.JSONEditorStore;
-      const curJsonData = JSONEditorStore.jsonData;
-      let newJsonData = {};
-      /** 根据jsonSchema生成对应的最新jsonData */
-      if (this.jsonSchema.reset) {
-        // schema 变动不保留旧版 jsonData 数据
-        newJsonData = schema2json(this.jsonSchema, {});
-      } else {
-        // 默认保留旧版jsonData数据
-        newJsonData = schema2json(this.jsonSchema, curJsonData);
-      }
-      /** 更新当前的jsonData */
-      this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
-      this.state.rootJSONStore.JSONEditorStore.initJsonData =
-        objClone(curJsonData); // 备份此前的数据对象
-      /** jsonSchema变动的时候触发一次jsonDataChange
-       * jsonSchema变动意味着jsonData也需要进行对应的结构更新
-       * */
-      // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+    if (!jsonSchemaData || JSON.stringify(jsonSchemaData) === '{}') {
+      // 使用默认的jsonschema数据进行初始化
+      this.jsonSchema = objClone(initJSONSchemaData);
+    } else if (jsonSchemaData && isNewSchemaData(jsonSchemaData)) {
+      /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
+      this.jsonSchema = jsonSchemaData;
+    } else {
+      // 进行一次转换，以便兼容旧版数据
+      const newJSONSchema = oldSchemaToNewSchema(jsonSchemaData);
+      this.jsonSchema = newJSONSchema;
     }
+    const JSONEditorStore = this.state.rootJSONStore.JSONEditorStore;
+    const curJsonData = JSONEditorStore.jsonData;
+    let newJsonData = {};
+    /** 根据jsonSchema生成对应的最新jsonData */
+    if (this.jsonSchema.reset) {
+      // schema 变动不保留旧版 jsonData 数据
+      newJsonData = schema2json(this.jsonSchema, {});
+    } else {
+      // 默认保留旧版jsonData数据
+      newJsonData = schema2json(this.jsonSchema, curJsonData);
+    }
+    /** 更新当前的jsonData */
+    this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
+    this.state.rootJSONStore.JSONEditorStore.initJsonData =
+      objClone(curJsonData); // 备份此前的数据对象
+    /** jsonSchema变动的时候触发一次jsonDataChange
+     * jsonSchema变动意味着jsonData也需要进行对应的结构更新
+     * */
+    // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+    console.info('[json-editor]JSONSchemaChange:', this.jsonSchema);
   }
 
   @computed get JSONSchemaObj() {

@@ -7996,7 +7996,6 @@ function isEqualByType(value1, value2) {
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
 function baseSchema2JsonData(jsonSchema, jsonData) {
-  var _curValue, _curValue2;
   var curJsonData = undefined;
   var oldValue = jsonData;
   if (
@@ -8014,15 +8013,11 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
     case 'select':
     case 'radio':
       curJsonData =
-        (_curValue = curValue) != null
-          ? _curValue
-          : getDefaultOptionVal(jsonSchema);
+        curValue != null ? curValue : getDefaultOptionVal(jsonSchema);
       break;
     case 'checkboxes':
       curJsonData =
-        (_curValue2 = curValue) != null
-          ? _curValue2
-          : getDefaultOptionVal(jsonSchema, true);
+        curValue != null ? curValue : getDefaultOptionVal(jsonSchema, true);
       break;
     case 'color':
       if (curValue === '#fff' || curValue === '#FFF') {

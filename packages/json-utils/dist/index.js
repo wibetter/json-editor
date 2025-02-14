@@ -2113,55 +2113,53 @@
     function le(e, t) {
       var r,
         i,
-        a,
-        l,
-        n = void 0,
-        o = t;
-      u(o) &&
+        a = void 0,
+        l = t;
+      u(l) &&
         u(e.default) &&
-        (typeof o != typeof e.default ||
-          ((a = o), (l = e.default), P(a) + '-' + k(a) != P(l) + '-' + k(l))) &&
-        (o = void 0);
-      var p = u(o) ? o : e.default;
+        (typeof l != typeof e.default ||
+          ((r = l), (i = e.default), P(r) + '-' + k(r) != P(i) + '-' + k(i))) &&
+        (l = void 0);
+      var n = u(l) ? l : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          n = null != (r = p) ? r : ae(e);
+          a = null != n ? n : ae(e);
           break;
         case 'checkboxes':
-          n = null != (i = p) ? i : ae(e, !0);
+          a = null != n ? n : ae(e, !0);
           break;
         case 'color':
-          ('#fff' !== p && '#FFF' !== p) || (p = '#ffffff'),
-            (n = u(p) ? p : '#ffffff');
+          ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
+            (a = u(n) ? n : '#ffffff');
           break;
         case 'boolean':
-          n = !!u(p) && p;
+          a = !!u(n) && n;
           break;
         case 'number':
-          n = u(p) ? p : void 0;
+          a = u(n) ? n : void 0;
           break;
         case 'json':
-          var c = '';
-          if (P(p) || k(p)) c = p;
-          else if (_(p) || '' === p) c = {};
+          var o = '';
+          if (P(n) || k(n)) o = n;
+          else if (_(n) || '' === n) o = {};
           else
             try {
-              c = JSON.parse(p);
+              o = JSON.parse(n);
             } catch (e) {
-              c = {};
+              o = {};
             }
-          n = c;
+          a = o;
           break;
         default:
-          n =
+          a =
             'input' === e.type && '0' === e.default
-              ? p || e.default
-              : u(p)
-                ? p
+              ? n || e.default
+              : u(n)
+                ? n
                 : void 0;
       }
-      return n;
+      return a;
     }
     function ne(e, t) {
       var r = {},

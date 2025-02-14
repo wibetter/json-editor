@@ -2,7 +2,7 @@
  * @wibetter/json-editor v5.1.27
  * author: wibetter
  * build tool: AKFun
- * build time: Fri Jan 24 2025 23:22:17 GMT+0800 (中国标准时间)
+ * build time: Fri Feb 14 2025 21:37:10 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -14244,6 +14244,7 @@
                     this.updateLastTime();
                   }
                 }
+                console.info('[json-editor]initJSONData:', this.jsonData);
               };
 
               /** 初始化jsonData  */
@@ -15015,6 +15016,10 @@
                     this.jsonSchema = newJSONSchema;
                   }
                 }
+                console.info(
+                  '[json-editor]initJSONSchemaData:',
+                  this.jsonSchema,
+                );
               };
 
               /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
@@ -15022,70 +15027,61 @@
                 jsonSchemaData,
               ) {
                 if (
-                  !(0,
-                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isEqual)(
+                  !jsonSchemaData ||
+                  JSON.stringify(jsonSchemaData) === '{}'
+                ) {
+                  // 使用默认的jsonschema数据进行初始化
+                  this.jsonSchema = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
+                    _initJSONSchemaData,
+                  );
+                } else if (
+                  jsonSchemaData &&
+                  (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isNewSchemaData)(
                     jsonSchemaData,
-                    this.JSONSchemaObj,
                   )
                 ) {
-                  if (
-                    !jsonSchemaData ||
-                    JSON.stringify(jsonSchemaData) === '{}'
-                  ) {
-                    // 使用默认的jsonschema数据进行初始化
-                    this.jsonSchema = (0,
-                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
-                      _initJSONSchemaData,
-                    );
-                  } else if (
-                    jsonSchemaData &&
-                    (0,
-                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.isNewSchemaData)(
-                      jsonSchemaData,
-                    )
-                  ) {
-                    /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
-                    this.jsonSchema = jsonSchemaData;
-                  } else {
-                    // 进行一次转换，以便兼容旧版数据
-                    var newJSONSchema = (0,
-                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.oldSchemaToNewSchema)(
-                      jsonSchemaData,
-                    );
-                    this.jsonSchema = newJSONSchema;
-                  }
-                  var JSONEditorStore =
-                    this.state.rootJSONStore.JSONEditorStore;
-                  var curJsonData = JSONEditorStore.jsonData;
-                  var newJsonData = {};
-                  /** 根据jsonSchema生成对应的最新jsonData */
-                  if (this.jsonSchema.reset) {
-                    // schema 变动不保留旧版 jsonData 数据
-                    newJsonData = (0,
-                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
-                      this.jsonSchema,
-                      {},
-                    );
-                  } else {
-                    // 默认保留旧版jsonData数据
-                    newJsonData = (0,
-                    _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
-                      this.jsonSchema,
-                      curJsonData,
-                    );
-                  }
-                  /** 更新当前的jsonData */
-                  this.state.rootJSONStore.JSONEditorStore.jsonData =
-                    newJsonData;
-                  this.state.rootJSONStore.JSONEditorStore.initJsonData = (0,
-                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
-                    curJsonData,
-                  ); // 备份此前的数据对象
-                  /** jsonSchema变动的时候触发一次jsonDataChange
-                   * jsonSchema变动意味着jsonData也需要进行对应的结构更新
-                   * */
-                  // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+                  /** 如果有lastUpdateTime则说明是新版jsonSchema数据，无需转换直接进行赋值 */
+                  this.jsonSchema = jsonSchemaData;
+                } else {
+                  // 进行一次转换，以便兼容旧版数据
+                  var newJSONSchema = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.oldSchemaToNewSchema)(
+                    jsonSchemaData,
+                  );
+                  this.jsonSchema = newJSONSchema;
                 }
+                var JSONEditorStore = this.state.rootJSONStore.JSONEditorStore;
+                var curJsonData = JSONEditorStore.jsonData;
+                var newJsonData = {};
+                /** 根据jsonSchema生成对应的最新jsonData */
+                if (this.jsonSchema.reset) {
+                  // schema 变动不保留旧版 jsonData 数据
+                  newJsonData = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
+                    this.jsonSchema,
+                    {},
+                  );
+                } else {
+                  // 默认保留旧版jsonData数据
+                  newJsonData = (0,
+                  _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.schema2json)(
+                    this.jsonSchema,
+                    curJsonData,
+                  );
+                }
+                /** 更新当前的jsonData */
+                this.state.rootJSONStore.JSONEditorStore.jsonData = newJsonData;
+                this.state.rootJSONStore.JSONEditorStore.initJsonData = (0,
+                _wibetter_json_utils__WEBPACK_IMPORTED_MODULE_5__.objClone)(
+                  curJsonData,
+                ); // 备份此前的数据对象
+                /** jsonSchema变动的时候触发一次jsonDataChange
+                 * jsonSchema变动意味着jsonData也需要进行对应的结构更新
+                 * */
+                // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
+                console.info('[json-editor]JSONSchemaChange:', this.jsonSchema);
               };
               /** 根据索引路径获取对应的key值路径 */
               _proto.indexRoute2keyRoute = function indexRoute2keyRoute(

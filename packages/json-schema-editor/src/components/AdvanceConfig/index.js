@@ -223,7 +223,7 @@ class AdvanceConfig extends React.PureComponent {
               >
                 <Switch
                   style={{ display: 'inline-block' }}
-                  defaultChecked={isConditionProp}
+                  defaultChecked={isConditionProp ?? false}
                   checkedChildren="是"
                   unCheckedChildren="否"
                   onChange={(checked) => {
@@ -254,7 +254,7 @@ class AdvanceConfig extends React.PureComponent {
               >
                 <Switch
                   style={{ display: 'inline-block' }}
-                  defaultChecked={targetJsonSchema.multiple}
+                  defaultChecked={targetJsonSchema.multiple ?? false}
                   checkedChildren="多选"
                   unCheckedChildren="单选"
                   onChange={(checked) => {
@@ -282,7 +282,9 @@ class AdvanceConfig extends React.PureComponent {
               >
                 <Switch
                   style={{ display: 'inline-block' }}
-                  defaultChecked={targetJsonSchema.defaultActiveFirstOption}
+                  defaultChecked={
+                    targetJsonSchema.defaultActiveFirstOption ?? false
+                  }
                   checkedChildren="开启"
                   unCheckedChildren="关闭"
                   onChange={(checked) => {
@@ -310,7 +312,7 @@ class AdvanceConfig extends React.PureComponent {
               <div className="form-item-box">
                 <Switch
                   style={{ display: 'inline-block' }}
-                  defaultChecked={targetJsonSchema.readOnly}
+                  defaultChecked={targetJsonSchema.readOnly ?? false}
                   checkedChildren="true"
                   unCheckedChildren="false"
                   onChange={(checked) => {
@@ -340,7 +342,7 @@ class AdvanceConfig extends React.PureComponent {
               <div className="form-item-box">
                 <Switch
                   style={{ display: 'inline-block' }}
-                  defaultChecked={targetJsonSchema.isRequired}
+                  defaultChecked={targetJsonSchema.isRequired ?? false}
                   checkedChildren="true"
                   unCheckedChildren="false"
                   onChange={(checked) => {
@@ -431,7 +433,7 @@ class AdvanceConfig extends React.PureComponent {
             <div className="form-item-box">
               <Switch
                 style={{ display: 'inline-block' }}
-                defaultChecked={targetJsonSchema.showKey}
+                defaultChecked={targetJsonSchema.showKey ?? false}
                 checkedChildren="true"
                 unCheckedChildren="false"
                 onChange={(checked) => {

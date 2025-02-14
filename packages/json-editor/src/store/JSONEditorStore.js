@@ -119,6 +119,7 @@ export default class JSONEditorStore {
         this.updateLastTime();
       }
     }
+    console.info('[json-editor]initJSONData:', this.jsonData);
   }
 
   /** 初始化jsonData  */
