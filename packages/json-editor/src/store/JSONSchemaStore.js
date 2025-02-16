@@ -63,7 +63,7 @@ export default class JSONSchemaStore {
         this.jsonSchema = newJSONSchema;
       }
     }
-    console.info('[json-editor]initJSONSchemaData:', this.jsonSchema);
+    // console.info('[json-editor]initJSONSchemaData:', toJS(this.jsonSchema));
   }
 
   /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
@@ -99,7 +99,7 @@ export default class JSONSchemaStore {
      * jsonSchema变动意味着jsonData也需要进行对应的结构更新
      * */
     // this.state.rootJSONStore.JSONEditorStore.jsonDataChange();
-    console.info('[json-editor]JSONSchemaChange:', this.jsonSchema);
+    // console.info('[json-editor]JSONSchemaChange:', toJS(this.jsonSchema));
   }
 
   @computed get JSONSchemaObj() {

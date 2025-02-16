@@ -158,7 +158,7 @@
                 (n = b.bind(null, a, o, !0));
             } else
               (a = g()),
-                (t = S.bind(null, a)),
+                (t = E.bind(null, a)),
                 (n = function () {
                   a.parentNode.removeChild(a);
                 });
@@ -193,7 +193,7 @@
                 i.length ? e.insertBefore(r, i[t]) : e.appendChild(r);
             }
           }
-          function S(e, t) {
+          function E(e, t) {
             var n = t.css,
               a = t.media,
               o = t.sourceMap;
@@ -256,7 +256,7 @@
         n.r(a),
           n.d(a, {
             default: function () {
-              return ht;
+              return gt;
             },
           });
         var e,
@@ -280,8 +280,8 @@
           b =
             (require('@babel/runtime/helpers/initializerWarningHelper'),
             require('mobx')),
-          S = require('antd'),
-          E = require('lodash'),
+          E = require('antd'),
+          S = require('lodash'),
           O = require('@wibetter/json-utils');
         function C(e) {
           return (0, O.objClone)(e);
@@ -355,7 +355,7 @@
             'time',
             'input-image',
           ],
-          Se = ['object'].concat([
+          Ee = ['object'].concat([
             'datasource',
             'event',
             'dynamic-data',
@@ -365,7 +365,7 @@
             'sohu-source',
             'sohu-event',
           ]),
-          Ee = [
+          Se = [
             'quantity',
             'box-style',
             'padding-margin',
@@ -374,8 +374,8 @@
             'codearea',
             'htmlarea',
             'array',
-          ].concat(Se),
-          Oe = [].concat(be, Ee),
+          ].concat(Ee),
+          Oe = [].concat(be, Se),
           Ce = ['string'],
           je =
             (((e = {
@@ -477,7 +477,6 @@
                           this.jsonSchema = t;
                         }
                     } else this.jsonSchema = C(Ne);
-                    console.info('[json-schema-editor]initJSONSchemaData:', Ne);
                   }),
                   (t.initOnChange = function (e) {
                     var t, n;
@@ -526,13 +525,13 @@
                       !!(a.propertyOrder && a.propertyOrder.indexOf(t) >= 0) ||
                       (O.KeyWordList &&
                         O.KeyWordList.indexOf(t) >= 0 &&
-                        S.message.warning(
+                        E.message.warning(
                           t +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
                         ),
                       t &&
                         t.indexOf('-') > -1 &&
-                        S.message.warning(
+                        E.message.warning(
                           t +
                             '含特殊字符（‘-’），会影响后续数据获取和更新，建议您换一个数值。',
                         ),
@@ -552,7 +551,7 @@
                       n.propertyOrder.push(a),
                         (n.properties[a] = we),
                         this.jsonSchemaChange(t);
-                    } else S.message.warning('非对象类型字段不允许插入子元素');
+                    } else E.message.warning('非对象类型字段不允许插入子元素');
                   }),
                   (t.changeType = function (e, t, n, a, o) {
                     var r = (0, O.getParentIndexRoute)(e),
@@ -560,7 +559,7 @@
                       s = Object.assign(
                         {},
                         n,
-                        (0, E.pick)(a, [
+                        (0, S.pick)(a, [
                           'title',
                           'description',
                           'isConditionProp',
@@ -647,7 +646,7 @@
                     return (
                       O.KeyWordList &&
                         O.KeyWordList.indexOf(n) >= 0 &&
-                        S.message.warning(
+                        E.message.warning(
                           n +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
                         ),
@@ -729,7 +728,7 @@
                         (n = !0),
                       O.KeyWordList &&
                         O.KeyWordList.indexOf(t) >= 0 &&
-                        S.message.warning(
+                        E.message.warning(
                           t + '是JSONSchema的保留关键字，建议您换一个名称。',
                         ),
                       n
@@ -1244,9 +1243,11 @@
               he),
           },
           Re = require('@ant-design/icons'),
-          Ke = require('react-ace'),
+          Ke = require('rc-switch'),
           ke = n.n(Ke),
-          Te =
+          Te = require('react-ace'),
+          De = n.n(Te),
+          Je =
             (require('ace-builds/src-noconflict/mode-json'),
             require('ace-builds/src-noconflict/theme-solarized_light'),
             n(40),
@@ -1310,7 +1311,7 @@
                             c,
                           ),
                         ),
-                      r.createElement(ke(), {
+                      r.createElement(De(), {
                         id: 'json_area_ace',
                         defaultValue: o,
                         className: 'json-view-ace',
@@ -1353,11 +1354,12 @@
                 t
               );
             })(r.PureComponent));
-        Te.propTypes = { jsonData: d().any };
-        var De = Te,
-          Je = (n(975), S.Input.TextArea),
-          Be =
-            (S.Select.Option,
+        Je.propTypes = { jsonData: d().any };
+        var Be = Je,
+          Pe =
+            (require('rc-switch/assets/index.css'), n(975), E.Input.TextArea),
+          Ve =
+            (E.Select.Option,
             (function (e) {
               function t(t) {
                 var n;
@@ -1377,7 +1379,7 @@
                   }),
                   (n.renderDefaultContent = function (e, t, a) {
                     if ('boolean' === e)
-                      return r.createElement(S.Switch, {
+                      return r.createElement(ke(), {
                         style: { display: 'inline-block' },
                         defaultChecked: t.default,
                         checkedChildren: 'true',
@@ -1389,7 +1391,7 @@
                     if ('checkboxes' === e || ('select' === e && t.multiple)) {
                       var o = t.options;
                       return r.createElement(
-                        S.Checkbox.Group,
+                        E.Checkbox.Group,
                         {
                           style: { display: 'inline-block' },
                           onChange: function (e) {
@@ -1402,7 +1404,7 @@
                           o.map(function (e, t) {
                             var n = a + '-options-' + t;
                             return r.createElement(
-                              S.Checkbox,
+                              E.Checkbox,
                               { value: e.value, key: n },
                               e.label || e.name,
                             );
@@ -1412,7 +1414,7 @@
                     if ('radio' === e || 'select' === e) {
                       var i = t.options;
                       return r.createElement(
-                        S.Radio.Group,
+                        E.Radio.Group,
                         {
                           style: { display: 'inline-block' },
                           defaultValue: t.default,
@@ -1426,7 +1428,7 @@
                           i.map(function (e, t) {
                             var n = a + '-options-' + t;
                             return r.createElement(
-                              S.Radio,
+                              E.Radio,
                               { value: e.value, key: n },
                               e.label || e.name,
                             );
@@ -1434,7 +1436,7 @@
                       );
                     }
                     return 'color' === e
-                      ? r.createElement(S.Input, {
+                      ? r.createElement(E.Input, {
                           style: { display: 'inline-block' },
                           className: 'color-item-form',
                           type: 'color',
@@ -1448,7 +1450,7 @@
                           'codearea' === e ||
                           'htmlarea' === e ||
                           'json' === e
-                        ? r.createElement(Je, {
+                        ? r.createElement(Pe, {
                             style: { display: 'inline-block' },
                             rows: 4,
                             placeholder: '请输入' + t.title + '的默认值',
@@ -1463,7 +1465,7 @@
                             },
                           })
                         : 'number' === e
-                          ? r.createElement(S.InputNumber, {
+                          ? r.createElement(E.InputNumber, {
                               style: { display: 'inline-block' },
                               placeholder: '请输入' + t.title + '的默认值',
                               defaultValue: t.default,
@@ -1471,7 +1473,7 @@
                                 n.handleValueChange('default', e);
                               },
                             })
-                          : r.createElement(S.Input, {
+                          : r.createElement(E.Input, {
                               style: { display: 'inline-block' },
                               placeholder: '请输入' + t.title + '的默认值',
                               defaultValue: t.default,
@@ -1536,7 +1538,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title:
                                 '设置为条件字段后，其他字段可根据其数值变化进行实时联动',
@@ -1558,7 +1560,7 @@
                               className: 'form-item-box',
                               key: p + '-isConditionProp-switch',
                             },
-                            r.createElement(S.Switch, {
+                            r.createElement(ke(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != h && h,
                               checkedChildren: '是',
@@ -1581,7 +1583,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title:
                                 '开启多选后，select下拉列表支持选择多个选项。',
@@ -1603,7 +1605,7 @@
                               className: 'form-item-box',
                               key: p + '-selectConfig-multiple',
                             },
-                            r.createElement(S.Switch, {
+                            r.createElement(ke(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != (e = m.multiple) && e,
                               checkedChildren: '多选',
@@ -1628,7 +1630,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title: '是否默认高亮第一个选项。',
                               placement: 'top',
@@ -1649,7 +1651,7 @@
                               className: 'form-item-box',
                               key: p + '-selectConfig-defaultActiveFirstOption',
                             },
-                            r.createElement(S.Switch, {
+                            r.createElement(ke(), {
                               style: { display: 'inline-block' },
                               defaultChecked:
                                 null != (t = m.defaultActiveFirstOption) && t,
@@ -1688,7 +1690,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title:
                                 '当前属性设置为只读后，用户不能对其进行任何编辑操作',
@@ -1707,7 +1709,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Switch, {
+                            r.createElement(ke(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != (n = m.readOnly) && n,
                               checkedChildren: 'true',
@@ -1742,7 +1744,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title:
                                 '当前属性设置为必填项后，如果用户没有给其设置数值，则会进行标红提示。',
@@ -1761,7 +1763,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Switch, {
+                            r.createElement(ke(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != (a = m.isRequired) && a,
                               checkedChildren: 'true',
@@ -1790,7 +1792,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             { placement: 'top' },
                             r.createElement(
                               'span',
@@ -1820,7 +1822,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title: '用于添加 级联选择 组件的 options 数据。',
                               placement: 'top',
@@ -1835,7 +1837,7 @@
                         r.createElement(
                           'div',
                           { className: 'content-item' },
-                          r.createElement(De, {
+                          r.createElement(Be, {
                             jsonData: m.options,
                             onChange: function (e) {
                               s.handleValueChange('options', e);
@@ -1853,7 +1855,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          E.Tooltip,
                           {
                             title:
                               '字段描述内容将作为Title的补充信息提供给用户',
@@ -1872,7 +1874,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(S.Input, {
+                          r.createElement(E.Input, {
                             style: { display: 'inline-block' },
                             placeholder: '请输入' + m.title + '的字段描述',
                             defaultValue: m.description,
@@ -1898,7 +1900,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          E.Tooltip,
                           {
                             title:
                               '开启后，在JSONEditor端会展示当前Key值，以便增加辨识度。',
@@ -1917,7 +1919,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(S.Switch, {
+                          r.createElement(ke(), {
                             style: { display: 'inline-block' },
                             defaultChecked: null != (o = m.showKey) && o,
                             checkedChildren: 'true',
@@ -1955,7 +1957,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title:
                                 '输入提示内容将作为输入区域的提示信息展示给用户',
@@ -1974,7 +1976,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Input, {
+                            r.createElement(E.Input, {
                               style: { display: 'inline-block' },
                               placeholder: '请输入' + m.title + '的输入提示',
                               defaultValue: m.placeholder,
@@ -1991,7 +1993,7 @@
                         ),
                       ),
                     (function (e) {
-                      return [].concat(Se, ['array']).indexOf(e) > -1;
+                      return [].concat(Ee, ['array']).indexOf(e) > -1;
                     })(u) &&
                       r.createElement(
                         'div',
@@ -2003,7 +2005,7 @@
                           'div',
                           { className: 'element-title' },
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             {
                               title:
                                 '用于控制是否显示源码模式切换按钮，默认显示',
@@ -2022,7 +2024,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(S.Switch, {
+                            r.createElement(ke(), {
                               style: { display: 'inline-block' },
                               defaultChecked:
                                 null == (i = m.showCodeViewBtn) || i,
@@ -2049,7 +2051,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              E.Tooltip,
                               {
                                 title:
                                   '设置最小值后，用户输入的数值必须大于当前最小值',
@@ -2068,7 +2070,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: m.minimum,
                                 onPressEnter: function (e) {
@@ -2093,7 +2095,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              E.Tooltip,
                               {
                                 title:
                                   '设置最大值后，用户输入的数值必须大于当前最大值',
@@ -2112,7 +2114,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: m.maximum,
                                 onPressEnter: function (e) {
@@ -2142,7 +2144,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              E.Tooltip,
                               {
                                 title: '用于限制数据项最小个数',
                                 placement: 'top',
@@ -2160,7 +2162,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: m['minimum-child'],
                                 onChange: function (e) {
@@ -2180,7 +2182,7 @@
                             'div',
                             { className: 'element-title' },
                             r.createElement(
-                              S.Tooltip,
+                              E.Tooltip,
                               {
                                 title: '用于限制数据项最多个数',
                                 placement: 'top',
@@ -2198,7 +2200,7 @@
                             r.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              r.createElement(S.InputNumber, {
+                              r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
                                 defaultValue: m['maximum-child'],
                                 onChange: function (e) {
@@ -2219,7 +2221,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          E.Tooltip,
                           {
                             title:
                               '用于设置显隐表达式（onShow），比如设置 "dataType === 1"，则表示当数据域中 dataType 为 1 时显示当前配置项。',
@@ -2238,7 +2240,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(S.Input, {
+                          r.createElement(E.Input, {
                             style: { display: 'inline-block' },
                             placeholder: '请输入显隐表达式',
                             defaultValue: m.onShow,
@@ -2264,7 +2266,7 @@
                         'div',
                         { className: 'element-title' },
                         r.createElement(
-                          S.Tooltip,
+                          E.Tooltip,
                           {
                             title: '可用于设置标题展示样式。',
                             placement: 'top',
@@ -2279,7 +2281,7 @@
                       r.createElement(
                         'div',
                         { className: 'content-item' },
-                        r.createElement(De, {
+                        r.createElement(Be, {
                           jsonData: m.titleStyle,
                           onChange: function (e) {
                             s.handleValueChange('titleStyle', e);
@@ -2292,17 +2294,17 @@
                 t
               );
             })(r.PureComponent));
-        Be.propTypes = {
+        Ve.propTypes = {
           jsonKey: d().string,
           indexRoute: d().string,
           nodeKey: d().string,
           targetJsonSchema: d().any,
         };
-        var Pe = (0, l.inject)(function (e) {
+        var Le = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(Be)),
-          Ve = (n(915), S.Select.Option),
-          Le = (function (e) {
+          })((0, l.observer)(Ve)),
+          Fe = (n(915), E.Select.Option),
+          qe = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2323,7 +2325,7 @@
                     s = i.indexRoute;
                   i.jsonKey !== r &&
                     (o(s, r)
-                      ? S.message.warning('当前key已存在，请换一个吧。')
+                      ? E.message.warning('当前key已存在，请换一个吧。')
                       : a(s, r));
                 }),
                 (n.handleTitleChange = function (e) {
@@ -2424,7 +2426,7 @@
                       : y,
                   x = this.props.hideOperaBtn || !h,
                   b = null == (t = this.props.showAdvanceBtn) || t,
-                  E = this.getCurrentTypeList(i),
+                  S = this.getCurrentTypeList(i),
                   C = p.type,
                   j = (0, O.isContainerSchema)(p);
                 return r.createElement(
@@ -2441,7 +2443,7 @@
                           draggable: 'true',
                           onDragStart: this.ignoreDragEvent,
                         },
-                        r.createElement(S.Input, {
+                        r.createElement(E.Input, {
                           defaultValue: c || 'key值不存在',
                           disabled: g,
                           onPressEnter: this.handleJsonKeyChange,
@@ -2456,7 +2458,7 @@
                           onDragStart: this.ignoreDragEvent,
                         },
                         r.createElement(
-                          S.Select,
+                          E.Select,
                           {
                             showSearch: !0,
                             defaultValue: C,
@@ -2464,8 +2466,8 @@
                             onChange: this.handleTypeChange,
                             disabled: f,
                           },
-                          E.map(function (e) {
-                            return r.createElement(Ve, { key: e, value: e }, e);
+                          S.map(function (e) {
+                            return r.createElement(Fe, { key: e, value: e }, e);
                           }),
                         ),
                       ),
@@ -2476,7 +2478,7 @@
                           draggable: 'true',
                           onDragStart: this.ignoreDragEvent,
                         },
-                        r.createElement(S.Input, {
+                        r.createElement(E.Input, {
                           defaultValue: p.title,
                           disabled: v,
                           onPressEnter: this.handleTitleChange,
@@ -2492,7 +2494,7 @@
                             null,
                             !y &&
                               r.createElement(
-                                S.Tooltip,
+                                E.Tooltip,
                                 { title: '删除' },
                                 r.createElement(Re.CloseOutlined, {
                                   className: 'operate-btn delete-operate',
@@ -2500,7 +2502,7 @@
                                 }),
                               ),
                             r.createElement(
-                              S.Tooltip,
+                              E.Tooltip,
                               { title: j ? '新增子元素' : '新增同级元素' },
                               r.createElement(Re.PlusOutlined, {
                                 className: 'operate-btn',
@@ -2509,7 +2511,7 @@
                             ),
                             j &&
                               r.createElement(
-                                S.Tooltip,
+                                E.Tooltip,
                                 { title: '数据项排序' },
                                 r.createElement(Re.SortAscendingOutlined, {
                                   className: 'operate-btn',
@@ -2521,7 +2523,7 @@
                                 r.Fragment,
                                 null,
                                 r.createElement(
-                                  S.Tooltip,
+                                  E.Tooltip,
                                   { title: '复制' },
                                   r.createElement(Re.CopyOutlined, {
                                     className: 'operate-btn',
@@ -2529,7 +2531,7 @@
                                   }),
                                 ),
                                 r.createElement(
-                                  S.Tooltip,
+                                  E.Tooltip,
                                   { title: '按住进行拖拽' },
                                   r.createElement(Re.DragOutlined, {
                                     className: 'operate-btn drag-btn',
@@ -2539,7 +2541,7 @@
                           ),
                         b &&
                           r.createElement(
-                            S.Tooltip,
+                            E.Tooltip,
                             { title: '高级设置' },
                             r.createElement(Re.SettingOutlined, {
                               className: 'operate-btn',
@@ -2551,7 +2553,7 @@
                       ),
                       d &&
                         r.createElement(
-                          S.Modal,
+                          E.Modal,
                           {
                             visible: !0,
                             title:
@@ -2561,7 +2563,7 @@
                             },
                             footer: [
                               r.createElement(
-                                S.Button,
+                                E.Button,
                                 {
                                   key: 'submit',
                                   type: 'primary',
@@ -2573,7 +2575,7 @@
                               ),
                             ],
                           },
-                          r.createElement(Pe, {
+                          r.createElement(Le, {
                             indexRoute: s,
                             jsonKey: c,
                             targetJsonSchema: p,
@@ -2596,7 +2598,7 @@
               t
             );
           })(r.PureComponent);
-        Le.propTypes = {
+        qe.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
@@ -2609,14 +2611,14 @@
           typeIsFixed: d().bool,
           titleIsFixed: d().bool,
         };
-        var Fe = (0, l.inject)(function (e) {
+        var Ae = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(Le)),
-          qe = S.Tree.TreeNode,
-          Ae = function (e) {
-            return i().createElement(Fe, e);
+          })((0, l.observer)(qe)),
+          _e = E.Tree.TreeNode,
+          Me = function (e) {
+            return i().createElement(Ae, e);
           },
-          _e = function (e) {
+          We = function (e) {
             var t = e.jsonKey,
               n = e.indexRoute,
               a = e.nodeKey,
@@ -2627,14 +2629,14 @@
               l = a ? a + '-' + c : c,
               p = o[c] || {};
             return i().createElement(
-              qe,
+              _e,
               {
                 className: r + '-schema schema-item-form',
                 id: a,
                 key: a,
                 indexRoute: n,
                 jsonKey: t,
-                title: Ae(u()({}, e)),
+                title: Me(u()({}, e)),
               },
               (function (e) {
                 var t = e.parentType,
@@ -2643,7 +2645,7 @@
                   o = e.nodeKey,
                   r = e.targetJsonSchema;
                 return i().createElement(
-                  qe,
+                  _e,
                   {
                     className: 'array-item-schema schema-item-form',
                     id: o,
@@ -2651,7 +2653,7 @@
                     indexRoute: a,
                     jsonKey: n,
                     disabled: !0,
-                    title: Ae({
+                    title: Me({
                       indexRoute: a,
                       jsonKey: n,
                       targetJsonSchema: r,
@@ -2673,7 +2675,7 @@
                           c = t[s],
                           l = c.type,
                           p = (a ? a + '-' : '') + l + '-' + s;
-                        return ct({
+                        return pt({
                           parentType: o,
                           jsonKey: s,
                           indexRoute: i,
@@ -2699,8 +2701,8 @@
               }),
             );
           },
-          Me = (n(790), S.Select.Option),
-          We = (function (e) {
+          ze = (n(790), E.Select.Option),
+          Ge = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2747,14 +2749,14 @@
                     'div',
                     { className: 'key-input-item' },
                     r.createElement(
-                      S.Select,
+                      E.Select,
                       {
                         defaultValue: n.default || 'local',
                         onChange: this.typeChange,
                       },
                       o.map(function (e, t) {
                         return r.createElement(
-                          Me,
+                          ze,
                           { key: t, value: e.value },
                           e.label || e.name,
                         );
@@ -2765,15 +2767,15 @@
                     'div',
                     { className: 'type-select-item' },
                     r.createElement(
-                      S.Select,
+                      E.Select,
                       { defaultValue: a, style: { width: 120 }, disabled: !0 },
-                      r.createElement(Me, { key: a, value: a }, a),
+                      r.createElement(ze, { key: a, value: a }, a),
                     ),
                   ),
                   r.createElement(
                     'div',
                     { className: 'title-input-item' },
-                    r.createElement(S.Input, {
+                    r.createElement(E.Input, {
                       defaultValue: n.title,
                       disabled: !0,
                     }),
@@ -2784,7 +2786,7 @@
               t
             );
           })(r.PureComponent);
-        We.propTypes = {
+        Ge.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
@@ -2793,14 +2795,14 @@
           typeSelectData: d().any,
           isFixed: d().any,
         };
-        var ze = (0, l.inject)(function (e) {
+        var Ue = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(We)),
-          Ge = S.Tree.TreeNode,
-          Ue = function (e) {
-            return i().createElement(Fe, e);
+          })((0, l.observer)(Ge)),
+          He = E.Tree.TreeNode,
+          Xe = function (e) {
+            return i().createElement(Ae, e);
           },
-          He = {
+          Qe = {
             local: {
               type: 'json',
               title: '本地json数据',
@@ -2818,20 +2820,20 @@
               description: '用于设置获取元素数据的请求地址',
             },
           },
-          Xe = S.Tree.TreeNode,
-          Qe = function (e) {
-            return i().createElement(Fe, e);
-          },
-          Ye = S.Tree.TreeNode,
+          Ye = E.Tree.TreeNode,
           Ze = function (e) {
-            return i().createElement(Fe, e);
+            return i().createElement(Ae, e);
           },
-          $e = S.Tree.TreeNode,
+          $e = E.Tree.TreeNode,
           et = function (e) {
-            return i().createElement(Fe, e);
+            return i().createElement(Ae, e);
           },
-          tt = (n(617), S.Select.Option),
-          nt = (function (e) {
+          tt = E.Tree.TreeNode,
+          nt = function (e) {
+            return i().createElement(Ae, e);
+          },
+          at = (n(617), E.Select.Option),
+          ot = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2847,7 +2849,7 @@
                     c = i.optionIndex;
                   r !== i.optionLabel &&
                     (a(s, r)
-                      ? S.message.warning(
+                      ? E.message.warning(
                           '对不起，存在相同的Label值，请重新设置。',
                         )
                       : o(s, c, r));
@@ -2890,7 +2892,7 @@
                     s = t(r);
                   s.options && s.options.length > 1
                     ? a(r, i)
-                    : S.message.warning('删除失败，至少保留一个可选项。');
+                    : E.message.warning('删除失败，至少保留一个可选项。');
                 }),
                 (n.onAddBtnEvent = n.onAddBtnEvent.bind(n)),
                 (n.onCopyBtnEvent = n.onCopyBtnEvent.bind(n)),
@@ -2916,7 +2918,7 @@
                     r.createElement(
                       'div',
                       { className: 'key-input-item' },
-                      r.createElement(S.Input, {
+                      r.createElement(E.Input, {
                         defaultValue: a,
                         onPressEnter: this.handleValueChange,
                         onBlur: this.handleValueChange,
@@ -2926,10 +2928,10 @@
                       'div',
                       { className: 'type-select-item' },
                       r.createElement(
-                        S.Select,
+                        E.Select,
                         { defaultValue: 'string', style: { width: 120 } },
                         r.createElement(
-                          tt,
+                          at,
                           { key: 'string', value: 'string' },
                           'string',
                         ),
@@ -2938,7 +2940,7 @@
                     r.createElement(
                       'div',
                       { className: 'title-input-item' },
-                      r.createElement(S.Input, {
+                      r.createElement(E.Input, {
                         defaultValue: t,
                         onPressEnter: this.handleLabelChange,
                         onBlur: this.handleLabelChange,
@@ -2948,7 +2950,7 @@
                       'div',
                       { className: 'operate-item' },
                       r.createElement(
-                        S.Tooltip,
+                        E.Tooltip,
                         { title: '删除' },
                         r.createElement(Re.CloseOutlined, {
                           className: 'operate-btn delete-operate',
@@ -2956,7 +2958,7 @@
                         }),
                       ),
                       r.createElement(
-                        S.Tooltip,
+                        E.Tooltip,
                         { title: '新增可选项' },
                         r.createElement(Re.PlusOutlined, {
                           className: 'operate-btn',
@@ -2964,7 +2966,7 @@
                         }),
                       ),
                       r.createElement(
-                        S.Tooltip,
+                        E.Tooltip,
                         { title: '复制' },
                         r.createElement(Re.CopyOutlined, {
                           className: 'operate-btn',
@@ -2978,25 +2980,25 @@
               t
             );
           })(r.PureComponent);
-        nt.propTypes = {
+        ot.propTypes = {
           indexRoute: d().string,
           optionIndex: d().any,
           optionLabel: d().string,
           optionValue: d().string,
           optionNodeKey: d().string,
         };
-        var at = (0, l.inject)(function (e) {
+        var rt = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(nt)),
-          ot = S.Tree.TreeNode,
-          rt = function (e) {
-            return i().createElement(at, e);
-          },
-          it = S.Tree.TreeNode,
+          })((0, l.observer)(ot)),
+          it = E.Tree.TreeNode,
           st = function (e) {
-            return i().createElement(Fe, e);
+            return i().createElement(rt, e);
           },
-          ct = function (e) {
+          ct = E.Tree.TreeNode,
+          lt = function (e) {
+            return i().createElement(Ae, e);
+          },
+          pt = function (e) {
             switch (e.targetJsonSchema.type) {
               case 'object':
               case 'func':
@@ -3008,9 +3010,9 @@
               case 'sohu-source':
               case 'sohu-event':
               case 'padding-margin':
-                return dt(e);
+                return ut(e);
               case 'array':
-                return _e(e);
+                return We(e);
               case 'datasource':
                 return (function (e) {
                   var t,
@@ -3021,16 +3023,16 @@
                     s = r.type,
                     c = r.properties.data || {};
                   return i().createElement(
-                    Ge,
+                    He,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: Ue(u()({}, e)),
+                      title: Xe(u()({}, e)),
                     },
-                    i().createElement(Ge, {
+                    i().createElement(He, {
                       className: 'dataSource-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3044,18 +3046,18 @@
                           targetJsonSchema: r.properties.type,
                           parentType: s,
                           nodeKey: o + '-type',
-                          typeSelectData: He,
+                          typeSelectData: Qe,
                         }),
-                        i().createElement(ze, t)),
+                        i().createElement(Ue, t)),
                     }),
-                    i().createElement(Ge, {
+                    i().createElement(He, {
                       className: 'dataSource-data-item-schema schema-item-form',
                       id: o + '-data-' + c.type,
                       key: o + '-data-' + c.type,
                       indexRoute: a ? a + '-1' : '1',
                       jsonKey: 'data',
                       disabled: !0,
-                      title: Ue({
+                      title: Xe({
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'data',
                         targetJsonSchema: c,
@@ -3066,7 +3068,7 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement(Ge, {
+                    i().createElement(He, {
                       className:
                         'dataSource-filter-item-schema schema-item-form',
                       id: o + '-filter',
@@ -3074,7 +3076,7 @@
                       indexRoute: a ? a + '-2' : '2',
                       jsonKey: 'filter',
                       disabled: !0,
-                      title: Ue({
+                      title: Xe({
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'filter',
                         targetJsonSchema: r.properties.filter,
@@ -3098,16 +3100,16 @@
                     c = r.properties.config || {},
                     l = r.properties.data || {};
                   return i().createElement(
-                    Xe,
+                    Ye,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: Qe(u()({}, e)),
+                      title: Ze(u()({}, e)),
                     },
-                    i().createElement(Xe, {
+                    i().createElement(Ye, {
                       className: 'dataSource-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3122,9 +3124,9 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(ze, t)),
+                        i().createElement(Ue, t)),
                     }),
-                    i().createElement(Xe, {
+                    i().createElement(Ye, {
                       className:
                         'dataSource-config-item-schema schema-item-form',
                       id: o + '-config-' + l.type,
@@ -3132,7 +3134,7 @@
                       indexRoute: a ? a + '-1' : '1',
                       jsonKey: 'config',
                       disabled: !0,
-                      title: Qe({
+                      title: Ze({
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'config',
                         targetJsonSchema: c,
@@ -3143,14 +3145,14 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement(Xe, {
+                    i().createElement(Ye, {
                       className: 'dataSource-data-item-schema schema-item-form',
                       id: o + '-data-' + l.type,
                       key: o + '-data-' + l.type,
                       indexRoute: a ? a + '-2' : '2',
                       jsonKey: 'data',
                       disabled: !0,
-                      title: Qe({
+                      title: Ze({
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'data',
                         targetJsonSchema: l,
@@ -3177,16 +3179,16 @@
                     d = r.properties.trigger || {},
                     m = r.properties.eventData || {};
                   return i().createElement(
-                    Ye,
+                    $e,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: Ze(u()({}, e)),
+                      title: et(u()({}, e)),
                     },
-                    i().createElement(Ye, {
+                    i().createElement($e, {
                       className: 'event-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3201,11 +3203,11 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(ze, t)),
+                        i().createElement(Ue, t)),
                     }),
                     'on' === c.default &&
                       l &&
-                      i().createElement(Ye, {
+                      i().createElement($e, {
                         className:
                           'event-register-item-schema schema-item-form',
                         id: o + '-register-' + c.default,
@@ -3213,7 +3215,7 @@
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'register',
                         disabled: !0,
-                        title: Ze({
+                        title: et({
                           indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'register',
                           targetJsonSchema: l,
@@ -3226,7 +3228,7 @@
                       }),
                     'on' === c.default &&
                       p &&
-                      i().createElement(Ye, {
+                      i().createElement($e, {
                         className:
                           'event-actionFunc-item-schema schema-item-form',
                         id: o + '-actionFunc-' + c.default,
@@ -3234,7 +3236,7 @@
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'actionFunc',
                         disabled: !0,
-                        title: Ze({
+                        title: et({
                           indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'actionFunc',
                           targetJsonSchema: p,
@@ -3247,14 +3249,14 @@
                       }),
                     'emit' === c.default &&
                       d &&
-                      i().createElement(Ye, {
+                      i().createElement($e, {
                         className: 'event-trigger-item-schema schema-item-form',
                         id: o + '-trigger-' + c.default,
                         key: o + '-trigger-' + c.default,
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'trigger',
                         disabled: !0,
-                        title: Ze({
+                        title: et({
                           indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'trigger',
                           targetJsonSchema: d,
@@ -3267,7 +3269,7 @@
                       }),
                     'emit' === c.default &&
                       m &&
-                      i().createElement(Ye, {
+                      i().createElement($e, {
                         className:
                           'event-eventData-item-schema schema-item-form',
                         id: o + '-eventData-' + c.default,
@@ -3275,7 +3277,7 @@
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'eventData',
                         disabled: !0,
-                        title: Ze({
+                        title: et({
                           indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'eventData',
                           targetJsonSchema: m,
@@ -3300,23 +3302,23 @@
                     c = r.propertyOrder[0],
                     l = r.properties[c];
                   return i().createElement(
-                    $e,
+                    tt,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: et(u()({}, e)),
+                      title: nt(u()({}, e)),
                     },
-                    i().createElement($e, {
+                    i().createElement(tt, {
                       className: 'quantity-unit-item-schema schema-item-form',
                       id: o + '-' + c,
                       key: o + '-' + c,
                       indexRoute: a ? a + '-0' : '0',
                       jsonKey: c,
                       disabled: !0,
-                      title: et({
+                      title: nt({
                         indexRoute: a ? a + '-0' : '0',
                         jsonKey: c,
                         targetJsonSchema: l,
@@ -3327,7 +3329,7 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement($e, {
+                    i().createElement(tt, {
                       className:
                         'quantity-typeSelect-item-schema schema-item-form',
                       id: o + '-quantity',
@@ -3343,7 +3345,7 @@
                           parentType: s,
                           nodeKey: o + '-quantity',
                         }),
-                        i().createElement(ze, t)),
+                        i().createElement(Ue, t)),
                     }),
                   );
                 })(e);
@@ -3360,14 +3362,14 @@
                     c = r.options,
                     l = a || '0';
                   return i().createElement(
-                    ot,
+                    it,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: ((t = u()({}, e)), i().createElement(Fe, t)),
+                      title: ((t = u()({}, e)), i().createElement(Ae, t)),
                     },
                     c &&
                       c.length > 0 &&
@@ -3375,13 +3377,13 @@
                         var n = e.label || e.name,
                           a = e.value,
                           r = '' + o + s + '-' + n;
-                        return i().createElement(ot, {
+                        return i().createElement(it, {
                           className: 'enum-item-schema schema-item-form',
                           id: r,
                           key: r,
                           indexRoute: l,
                           disabled: !0,
-                          title: rt({
+                          title: st({
                             indexRoute: l,
                             optionIndex: t,
                             optionLabel: n,
@@ -3398,22 +3400,22 @@
                     n = e.indexRoute,
                     a = e.nodeKey,
                     o = e.targetJsonSchema.type;
-                  return i().createElement(it, {
+                  return i().createElement(ct, {
                     className: o + '-schema schema-item-form',
                     id: a,
                     key: a,
                     indexRoute: n,
                     jsonKey: t,
-                    title: st(e),
+                    title: lt(e),
                   });
                 })(e);
             }
           },
-          lt = S.Tree.TreeNode,
-          pt = function (e) {
-            return i().createElement(Fe, e);
+          dt = E.Tree.TreeNode,
+          mt = function (e) {
+            return i().createElement(Ae, e);
           },
-          dt = function (e) {
+          ut = function (e) {
             var t,
               n,
               a,
@@ -3445,7 +3447,7 @@
                     c = n[s],
                     l = c.type,
                     p = (o ? o + '-' : '') + l + '-' + s;
-                  return ct({
+                  return pt({
                     parentType: r,
                     jsonKey: s,
                     indexRoute: i,
@@ -3455,7 +3457,7 @@
                   });
                 })),
               g = i().createElement(
-                lt,
+                dt,
                 {
                   className: m + '-schema schema-item-form',
                   id: l,
@@ -3463,13 +3465,13 @@
                   indexRoute: c,
                   jsonKey: s,
                   disabled: h,
-                  title: pt(u()({}, e)),
+                  title: mt(u()({}, e)),
                 },
                 y,
               );
             return d ? y : g;
           },
-          mt =
+          ht =
             (n(23),
             (function (e) {
               function t(t) {
@@ -3477,7 +3479,7 @@
                 ((n = e.call(this, t) || this).onDragStart = function (e) {
                   (0, (n.props.schemaStore || {}).getSchemaByIndexRoute)(
                     e.node.indexRoute,
-                  ).isFixed && S.message.warning('当前元素不支持拖拽哦。');
+                  ).isFixed && E.message.warning('当前元素不支持拖拽哦。');
                 }),
                   (n.onDrop = function (e) {
                     var t = e.dragNode,
@@ -3504,12 +3506,12 @@
                             : (a.dragOver || a.dragOverGapBottom) && s(h, m, u);
                       else {
                         if (l(h, m))
-                          return void S.message.warning(
+                          return void E.message.warning(
                             '目标位置中有重名的元素',
                           );
                         var f = u.type;
                         if (!p(h, f))
-                          return void S.message.warning(
+                          return void E.message.warning(
                             '目标位置不支持' + f + '类型元素',
                           );
                         var v = i(d),
@@ -3585,7 +3587,7 @@
                         r.Fragment,
                         null,
                         r.createElement(
-                          S.Tree,
+                          E.Tree,
                           {
                             draggable: !0,
                             selectable: !1,
@@ -3597,7 +3599,7 @@
                                 : this.catchExpandedKeys(o),
                           },
                           'object' === c &&
-                            dt({
+                            ut({
                               parentType: '',
                               jsonKey: '',
                               indexRoute: '',
@@ -3606,7 +3608,7 @@
                               isOnlyShowChild: !0,
                             }),
                           'object' !== c &&
-                            ct({
+                            pt({
                               parentType: '',
                               jsonKey: '',
                               indexRoute: '',
@@ -3619,7 +3621,7 @@
                       ),
                     !s &&
                       t &&
-                      r.createElement(De, {
+                      r.createElement(Be, {
                         jsonData: o,
                         readOnly: null == n || n,
                         onChange: i,
@@ -3635,17 +3637,17 @@
                 t
               );
             })(r.PureComponent));
-        mt.propTypes = {
+        ht.propTypes = {
           onChange: d().func,
           data: d().object,
           typeList: d().object,
           jsonView: d().any,
           jsonViewReadOnly: d().bool,
         };
-        var ut = (0, l.inject)(function (e) {
+        var yt = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(mt)),
-          ht = (function (e) {
+          })((0, l.observer)(ht)),
+          gt = (function (e) {
             function t(t) {
               var n;
               return (
@@ -3664,14 +3666,14 @@
                   a = r.createElement(
                     l.Provider,
                     { schemaStore: n },
-                    r.createElement(ut, this.props),
+                    r.createElement(yt, this.props),
                   );
                 return t ? (c().render(a, t), '') : a;
               }),
               t
             );
           })(r.PureComponent);
-        ht.propTypes = {
+        gt.propTypes = {
           wideScreen: d().any,
           onChange: d().func,
           data: d().any,

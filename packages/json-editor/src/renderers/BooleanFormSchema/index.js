@@ -4,9 +4,12 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Switch, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import RcSwitch from 'rc-switch';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
+import 'rc-switch/assets/index.css';
+import './index.scss';
 
 class BooleanFormSchema extends React.PureComponent {
   static propTypes = {
@@ -68,8 +71,8 @@ class BooleanFormSchema extends React.PureComponent {
       <div
         className={
           pageScreen === 'wideScreen'
-            ? 'wide-screen-element-warp'
-            : `mobile-screen-element-warp ${
+            ? 'boolean-form-item wide-screen-element-warp'
+            : `boolean-form-item mobile-screen-element-warp ${
                 isNeedTwoCol ? 'two-col-element-warp' : ''
               }`
         }
@@ -99,7 +102,7 @@ class BooleanFormSchema extends React.PureComponent {
         </div>
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
-            <Switch
+            <RcSwitch
               style={{ display: 'inline-block' }}
               defaultChecked={
                 curJsonData !== undefined

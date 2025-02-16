@@ -82,7 +82,7 @@ export default class JSONSchemaStore {
         this.jsonSchema = newJSONSchema;
       }
     }
-    console.info('[json-schema-editor]initJSONSchemaData:', initJSONSchemaData);
+    // console.info('[json-schema-editor]initJSONSchemaData:', toJS(initJSONSchemaData));
   }
 
   @computed get JSONSchemaObj() {

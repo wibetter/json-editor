@@ -80,7 +80,7 @@ module.exports = {
     output: {
       filename: 'index.js',
     },
-    NODE_ENV: 'development', // development、production
+    NODE_ENV: 'production', // development、production
     libraryName: 'JSONSchemaEditor', // 构建第三方功能包时最后导出的引用变量名
     assetsRoot: resolve('./sdk'), // 打包后的文件绝对路径（物理路径）
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）

@@ -13,6 +13,7 @@ import {
 } from 'antd';
 const { TextArea } = Input;
 const { Option } = Select;
+import RcSwitch from 'rc-switch';
 import {
   isNeedDefaultOption,
   isNeedPlaceholderOption,
@@ -24,6 +25,7 @@ import {
 } from '$utils/advanced.config';
 import { hasProperties, getExpectType } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView';
+import 'rc-switch/assets/index.css';
 import './index.scss';
 
 /**
@@ -60,7 +62,7 @@ class AdvanceConfig extends React.PureComponent {
   renderDefaultContent = (curType, targetJsonSchema, nodeKey) => {
     if (curType === 'boolean') {
       return (
-        <Switch
+        <RcSwitch
           style={{ display: 'inline-block' }}
           defaultChecked={targetJsonSchema.default}
           checkedChildren="true"
@@ -221,7 +223,7 @@ class AdvanceConfig extends React.PureComponent {
                 className="form-item-box"
                 key={`${nodeKey}-isConditionProp-switch`}
               >
-                <Switch
+                <RcSwitch
                   style={{ display: 'inline-block' }}
                   defaultChecked={isConditionProp ?? false}
                   checkedChildren="是"
@@ -252,7 +254,7 @@ class AdvanceConfig extends React.PureComponent {
                 className="form-item-box"
                 key={`${nodeKey}-selectConfig-multiple`}
               >
-                <Switch
+                <RcSwitch
                   style={{ display: 'inline-block' }}
                   defaultChecked={targetJsonSchema.multiple ?? false}
                   checkedChildren="多选"
@@ -280,7 +282,7 @@ class AdvanceConfig extends React.PureComponent {
                 className="form-item-box"
                 key={`${nodeKey}-selectConfig-defaultActiveFirstOption`}
               >
-                <Switch
+                <RcSwitch
                   style={{ display: 'inline-block' }}
                   defaultChecked={
                     targetJsonSchema.defaultActiveFirstOption ?? false
@@ -310,7 +312,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
             <div className="content-item">
               <div className="form-item-box">
-                <Switch
+                <RcSwitch
                   style={{ display: 'inline-block' }}
                   defaultChecked={targetJsonSchema.readOnly ?? false}
                   checkedChildren="true"
@@ -340,7 +342,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
             <div className="content-item">
               <div className="form-item-box">
-                <Switch
+                <RcSwitch
                   style={{ display: 'inline-block' }}
                   defaultChecked={targetJsonSchema.isRequired ?? false}
                   checkedChildren="true"
@@ -431,7 +433,7 @@ class AdvanceConfig extends React.PureComponent {
           </div>
           <div className="content-item">
             <div className="form-item-box">
-              <Switch
+              <RcSwitch
                 style={{ display: 'inline-block' }}
                 defaultChecked={targetJsonSchema.showKey ?? false}
                 checkedChildren="true"
@@ -490,7 +492,7 @@ class AdvanceConfig extends React.PureComponent {
             </div>
             <div className="content-item">
               <div className="form-item-box">
-                <Switch
+                <RcSwitch
                   style={{ display: 'inline-block' }}
                   defaultChecked={targetJsonSchema.showCodeViewBtn ?? true}
                   checkedChildren="true"
