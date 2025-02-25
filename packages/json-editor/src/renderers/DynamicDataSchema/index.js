@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
+// import { inject, observer } from 'mobx-react';
+import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
+import TreeSelectFrom from '$components/TreeSelectFrom/index';
+import RemoteDynamicDataEditor from '$components/RemoteDynamicDataEditor/index';
 import JsonFormSchema from '$renderers/JsonFormSchema/index';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
-import TreeSelectFromSchema from '$renderers/TreeSelectFromSchema/index';
-import RemoteDynamicDataSchema from '$renderers/RemoteDynamicDataSchema/index';
 import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
@@ -362,7 +363,7 @@ class DynamicDataSchema extends React.PureComponent {
                       } else {
                         const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
                         return (
-                          <RemoteDynamicDataSchema
+                          <RemoteDynamicDataEditor
                             {...{
                               pageScreen: pageScreen, // 默认使用宽屏模式
                               nodeKey: curNodeKay,
@@ -402,7 +403,7 @@ class DynamicDataSchema extends React.PureComponent {
                 </div>
               )}
               {dataName && (
-                <TreeSelectFromSchema
+                <TreeSelectFrom
                   {...{
                     nodeKey: `${nodeKey}-config-dataRoute-${dataRoute}`,
                     mockData: curDynamicData.respMock,
@@ -439,7 +440,10 @@ class DynamicDataSchema extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(DynamicDataSchema));
+// 注册成一个json-editor渲染器
+registerRenderer({
+  type: 'dynamic-data',
+  component: DynamicDataSchema,
+});
+
+export default DynamicDataSchema;

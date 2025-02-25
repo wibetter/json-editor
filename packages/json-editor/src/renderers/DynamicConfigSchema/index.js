@@ -1,5 +1,6 @@
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+// import { inject, observer } from 'mobx-react';
+import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip } from 'antd';
@@ -17,7 +18,7 @@ import { buildStyle } from '$utils/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 import CodeIcon from '$assets/img/code.svg';
 
-class ObjectSchema extends React.PureComponent {
+class DynamicConfigSchema extends React.PureComponent {
   static propTypes = {
     isArrayItem: PropTypes.any, // 如果是数组项，title会进行特殊显示
     arrIndex: PropTypes.any, // 当前数组项
@@ -280,7 +281,19 @@ class ObjectSchema extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(ObjectSchema));
+// 注册成一个json-editor渲染器
+registerRenderer({
+  type: 'dynamic-array',
+  component: DynamicConfigSchema,
+});
+
+registerRenderer({
+  type: 'dynamic-object',
+  component: DynamicConfigSchema,
+});
+registerRenderer({
+  type: 'dynamic-config',
+  component: DynamicConfigSchema,
+});
+
+export default DynamicConfigSchema;

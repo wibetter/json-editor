@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+// import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -7,7 +8,7 @@ import { TreeSelect } from 'antd';
 import { json2treeData, isObject } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
 
-class TreeSelectFromSchema extends React.PureComponent {
+class TreeSelectFrom extends React.PureComponent {
   static propTypes = {
     mockData: PropTypes.any, // 接口mock数据
     dataRoute: PropTypes.any, // 数据路径
@@ -78,4 +79,4 @@ class TreeSelectFromSchema extends React.PureComponent {
 
 export default inject((stores) => ({
   schemaStore: stores.JSONSchemaStore,
-}))(observer(TreeSelectFromSchema));
+}))(observer(TreeSelectFrom));

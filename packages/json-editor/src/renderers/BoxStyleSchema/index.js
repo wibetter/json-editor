@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
+// import { inject, observer } from 'mobx-react';
+import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Input, InputNumber, Tooltip } from 'antd';
@@ -326,7 +327,10 @@ class BoxStyleSchema extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(BoxStyleSchema));
+// 注册成一个json-editor渲染器
+registerRenderer({
+  type: 'box-style',
+  component: BoxStyleSchema,
+});
+
+export default BoxStyleSchema;
