@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
+// import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
 const { Option } = Select;
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
-import TreeSelectFromSchema from '$renderers/TreeSelectFromSchema/index';
+import TreeSelectFrom from '$components/TreeSelectFrom/index';
 import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { isArray, isObject } from '$utils/typeof';
 import { objClone, buildStyle } from '$utils/index';
@@ -218,7 +219,7 @@ class RemoteDynamicDataSchema extends React.PureComponent {
               </div>
             )}
             {dataName && (
-              <TreeSelectFromSchema
+              <TreeSelectFrom
                 {...{
                   nodeKey: `${nodeKey}-dataRoute`,
                   mockData: curDynamicData.respMock,

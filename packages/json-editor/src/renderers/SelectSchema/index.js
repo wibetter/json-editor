@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { inject, observer } from 'mobx-react';
+// import { inject, observer } from 'mobx-react';
+import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { truncate, isArray, isObject } from '@wibetter/json-utils';
@@ -173,7 +174,10 @@ class SelectSchema extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(SelectSchema));
+// 注册成一个json-editor渲染器
+registerRenderer({
+  type: 'select',
+  component: SelectSchema,
+});
+
+export default SelectSchema;

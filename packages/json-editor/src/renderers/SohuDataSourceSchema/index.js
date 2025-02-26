@@ -1,5 +1,6 @@
 import React from 'react';
-import { inject, observer } from 'mobx-react';
+// import { inject, observer } from 'mobx-react';
+import { registerRenderer } from '$components/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -182,7 +183,10 @@ class SohuDataSourceSchema extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(SohuDataSourceSchema));
+// 注册成一个json-editor渲染器
+registerRenderer({
+  type: 'sohu-source',
+  component: SohuDataSourceSchema,
+});
+
+export default SohuDataSourceSchema;
