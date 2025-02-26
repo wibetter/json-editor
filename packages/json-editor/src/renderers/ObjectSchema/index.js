@@ -10,7 +10,6 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
-import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
@@ -81,6 +80,7 @@ class ObjectSchema extends React.PureComponent {
       isArrayItem,
       arrIndex,
       isStructuredSchema,
+      renderChild,
     } = this.props;
     const { jsonView, isClosed: _isClosed } = this.state;
     // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
@@ -198,7 +198,7 @@ class ObjectSchema extends React.PureComponent {
                 /** 5. 获取当前元素的id，用于做唯一标识 */
                 const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
-                return MappingRender({
+                return renderChild({
                   parentType: curType,
                   jsonKey: currentJsonKey,
                   indexRoute: currentIndexRoute,

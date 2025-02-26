@@ -1,5 +1,5 @@
-import { inject, observer } from 'mobx-react';
 import { isObject } from '$utils/typeof';
+import withStore from '$components/withStore';
 
 // 存放 json-editor 渲染器
 export const renderersMap = {};
@@ -38,10 +38,7 @@ export function registerRenderer(widgetConfig) {
   }
 
   // 注入 store
-  const witchStoreRenderer = inject((stores) => ({
-    schemaStore: stores.JSONSchemaStore,
-    jsonStore: stores.JSONEditorStore,
-  }))(observer(widgetConfig.component));
+  const witchStoreRenderer = withStore(widgetConfig.component);
 
   renderersMap[widgetConfig.type] = witchStoreRenderer;
   return widgetConfig;

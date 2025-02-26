@@ -14,8 +14,6 @@ import {
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
-// import ObjectSchema from '$renderers/ObjectSchema/index';
-import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import {
   isArray,
@@ -188,8 +186,14 @@ class ArraySchema extends React.PureComponent {
     const { getJSONDataByKeyRoute, sortArrayItem, triggerChange } =
       jsonStore || {};
 
-    const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
-      this.props;
+    const {
+      keyRoute,
+      jsonKey,
+      nodeKey,
+      indexRoute,
+      targetJsonSchema,
+      renderChild,
+    } = this.props;
     const {
       jsonView,
       isClosed: _isClosed,
@@ -427,18 +431,18 @@ class ArraySchema extends React.PureComponent {
                       key={curNodeKey}
                       id={curNodeKey}
                     >
-                      <MappingRender
-                        parentType={curType}
-                        jsonKey={'items'}
-                        indexRoute={curIndexRoute}
-                        keyRoute={curKeyRoute}
-                        nodeKey={curNodeKey}
-                        targetJsonSchema={arrayItemsDataObj}
-                        isArrayItem={true}
-                        arrIndex={arrIndex}
-                        schemaStore={schemaStore}
-                        jsonStore={jsonStore}
-                      />
+                      {renderChild({
+                        parentType: curType,
+                        jsonKey: 'items',
+                        indexRoute: curIndexRoute,
+                        keyRoute: curKeyRoute,
+                        nodeKey: curNodeKey,
+                        targetJsonSchema: arrayItemsDataObj,
+                        isArrayItem: true,
+                        arrIndex: arrIndex,
+                        schemaStore,
+                        jsonStore,
+                      })}
                     </div>
                   </div>
                 );

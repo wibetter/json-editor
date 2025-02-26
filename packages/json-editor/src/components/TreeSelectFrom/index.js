@@ -35,16 +35,6 @@ class TreeSelectFrom extends React.PureComponent {
       treeData = json2treeData(mockObj);
     }
 
-    const style = targetJsonSchema.style
-      ? buildStyle(toJS(targetJsonSchema.style))
-      : {};
-    const titleStyle = targetJsonSchema.titleStyle
-      ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {};
-    const contentStyle = targetJsonSchema.contentStyle
-      ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {};
-
     return (
       <div
         className={
@@ -54,12 +44,9 @@ class TreeSelectFrom extends React.PureComponent {
         }
         // key={`${nodeKey}-dataRoute-select`}
         id={`${nodeKey}-dataRoute-select`}
-        style={style}
       >
-        <div className="element-title" style={titleStyle}>
-          数据路径选择
-        </div>
-        <div className="content-item" style={contentStyle}>
+        <div className="element-title">数据路径选择</div>
+        <div className="content-item">
           <div className="form-item-box">
             <TreeSelect
               className="data-route-select"
@@ -79,4 +66,5 @@ class TreeSelectFrom extends React.PureComponent {
 
 export default inject((stores) => ({
   schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
 }))(observer(TreeSelectFrom));

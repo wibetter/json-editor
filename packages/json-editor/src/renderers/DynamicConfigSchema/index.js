@@ -11,7 +11,6 @@ import {
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { objClone, getWrapOptions } from '$utils/index';
-import MappingRender from '$components/MappingRender';
 import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
@@ -80,6 +79,7 @@ class DynamicConfigSchema extends React.PureComponent {
       targetJsonSchema,
       isArrayItem,
       isStructuredSchema,
+      renderChild,
     } = this.props;
     const { jsonView, isClosed: _isClosed } = this.state;
     const options = _options || {};
@@ -262,7 +262,7 @@ class DynamicConfigSchema extends React.PureComponent {
                   currentSchemaData.options = objClone(globalMetaConfig);
                 }
 
-                return MappingRender({
+                return renderChild({
                   parentType: curType,
                   jsonKey: currentJsonKey,
                   indexRoute: currentIndexRoute,

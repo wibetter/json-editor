@@ -12,9 +12,6 @@ import {
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView/index';
-import JsonFormSchema from '$renderers/JsonFormSchema/index';
-import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
-import URLFormSchema from '$renderers/URLFormSchema/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 import CodeIcon from '$assets/img/code.svg';
@@ -63,7 +60,7 @@ class DataSourceSchema extends React.PureComponent {
   };
 
   render() {
-    const { schemaStore, jsonStore } = this.props;
+    const { schemaStore, jsonStore, renderChild } = this.props;
     const { pageScreen } = schemaStore || {};
     const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
       this.props;
@@ -178,47 +175,47 @@ class DataSourceSchema extends React.PureComponent {
                       onClick={this.switchFilterBtn}
                     />
                   </Tooltip>
-                  <JsonFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'data',
-                      indexRoute: indexRoute ? `${indexRoute}-1` : '1',
-                      keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
-                      nodeKey: `${nodeKey}-data`,
-                      targetJsonSchema: dataObj,
-                    }}
-                    key={`${nodeKey}-data`}
-                  />
+                  {renderChild({
+                    rendererType: 'json',
+                    parentType: curType,
+                    jsonKey: 'data',
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                    keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
+                    nodeKey: `${nodeKey}-data`,
+                    targetJsonSchema: dataObj,
+                    key: `${nodeKey}-data`,
+                    schemaStore,
+                    jsonStore,
+                  })}
                 </div>
-                {isShowFilter && (
-                  <CodeAreaFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'filter',
-                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                      keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
-                      nodeKey: `${nodeKey}-filter`,
-                      targetJsonSchema: filterDataObj,
-                    }}
-                    key={`${nodeKey}-filter`}
-                  />
-                )}
+                {isShowFilter &&
+                  renderChild({
+                    rendererType: 'codearea',
+                    parentType: curType,
+                    jsonKey: 'filter',
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                    keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
+                    nodeKey: `${nodeKey}-filter`,
+                    targetJsonSchema: filterDataObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
               </>
             )}
             {!jsonView && dataType === 'remote' && (
               <>
                 <div className="url-editor-box">
-                  <URLFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'data',
-                      indexRoute: indexRoute ? `${indexRoute}-1` : '1',
-                      keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
-                      nodeKey: `${nodeKey}-data`,
-                      targetJsonSchema: dataObj,
-                    }}
-                    key={`${nodeKey}-data`}
-                  />
+                  {renderChild({
+                    rendererType: 'url',
+                    parentType: curType,
+                    jsonKey: 'data',
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                    keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
+                    nodeKey: `${nodeKey}-data`,
+                    targetJsonSchema: dataObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
                   <Tooltip title="点击设置数据过滤器" placement="top">
                     <FilterOutlined
                       className="filter-url-btn"
@@ -226,19 +223,18 @@ class DataSourceSchema extends React.PureComponent {
                     />
                   </Tooltip>
                 </div>
-                {isShowFilter && (
-                  <CodeAreaFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'filter',
-                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                      keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
-                      nodeKey: `${nodeKey}-filter`,
-                      targetJsonSchema: filterDataObj,
-                    }}
-                    key={`${nodeKey}-filter`}
-                  />
-                )}
+                {isShowFilter &&
+                  renderChild({
+                    rendererType: 'codearea',
+                    parentType: curType,
+                    jsonKey: 'filter',
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                    keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
+                    nodeKey: `${nodeKey}-filter`,
+                    targetJsonSchema: filterDataObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
               </>
             )}
             {jsonView && <JsonView {...this.props} />}

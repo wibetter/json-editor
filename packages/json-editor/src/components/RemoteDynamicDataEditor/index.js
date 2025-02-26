@@ -5,6 +5,7 @@ import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
 const { Option } = Select;
+import MappingRender from '$components/MappingRender';
 import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
 import InputFormSchema from '$renderers/InputFormSchema/index';
 import TreeSelectFrom from '$components/TreeSelectFrom/index';
@@ -45,9 +46,8 @@ class RemoteDynamicDataSchema extends React.PureComponent {
   };
 
   dynamicDataChange = (dynamicDataName) => {
-    const curDynamicData = objClone(
-      toJS(this.props.dynamicDataObj[dynamicDataName]),
-    );
+    const { dynamicDataObj } = this.props.jsonStore || {};
+    const curDynamicData = objClone(toJS(dynamicDataObj[dynamicDataName]));
     if (curDynamicData) {
       // 从jsonData中获取对应的数值
       const newCurDynamicData = {
@@ -61,7 +61,8 @@ class RemoteDynamicDataSchema extends React.PureComponent {
         data: curDynamicData.data,
         filter: curDynamicData.filter,
       };
-      this.props.configDataChange(newCurDynamicData); // 更新整个config数值
+      // 待完善
+      // this.props.configDataChange(newCurDynamicData); // 更新整个config数值
     }
   };
 
@@ -70,7 +71,8 @@ class RemoteDynamicDataSchema extends React.PureComponent {
     curConfigData['dataRoute'] = newDataRoute;
     const dataPath = dataRoute2dataPath(newDataRoute);
     curConfigData['filter'] = `return ${dataPath};`;
-    this.props.configDataChange(curConfigData); // 更新数值
+    // 待完善
+    // this.props.configDataChange(curConfigData); // 更新数值
   };
 
   render() {
@@ -99,16 +101,6 @@ class RemoteDynamicDataSchema extends React.PureComponent {
     }
     const curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
 
-    const style = targetJsonSchema.style
-      ? buildStyle(toJS(targetJsonSchema.style))
-      : {};
-    const titleStyle = targetJsonSchema.titleStyle
-      ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {};
-    const contentStyle = targetJsonSchema.contentStyle
-      ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {};
-
     return (
       <div
         className={`${
@@ -118,13 +110,9 @@ class RemoteDynamicDataSchema extends React.PureComponent {
         }`}
         // key={nodeKey}
         id={nodeKey}
-        style={style}
       >
-        <div
-          className="element-title"
-          style={titleStyle}
-        >{`${curConfigData.title} (接口下发）`}</div>
-        <div className="content-item object-content" style={contentStyle}>
+        <div className="element-title">{`${curConfigData.title} (接口下发）`}</div>
+        <div className="content-item object-content">
           <div
             className="remote-dynamic-data-schema"
             key={`${nodeKey}-remote-dynamic-data`}
@@ -170,27 +158,28 @@ class RemoteDynamicDataSchema extends React.PureComponent {
                 key={`${nodeKey}-${dataName}-params`}
                 id={`${nodeKey}-${dataName}-params`}
               >
-                <div className="element-title">请求参数配置</div>
+                <div className="element-title">请求参数配置2</div>
                 <div className="content-item object-content">
                   {Object.keys(apiParams).map((paramKey) => {
-                    const paramItam = apiParams[paramKey];
-                    paramItam.readOnly =
-                      paramItam.scope && paramItam.scope === 'static'
+                    const paramItem = apiParams[paramKey];
+                    paramItem.readOnly =
+                      paramItem.scope && paramItem.scope === 'static'
                         ? true
                         : false;
                     const curNodeKey = `${nodeKey}-body-${paramKey}`;
-                    const scopeTitle = dynamicDataApiScopeList[paramItam.scope];
-                    if (scopeTitle && paramItam.title.indexOf(scopeTitle) < 0) {
-                      paramItam.title = `${paramItam.title}（${scopeTitle}）`;
+                    const scopeTitle = dynamicDataApiScopeList[paramItem.scope];
+                    if (scopeTitle && paramItem.title.indexOf(scopeTitle) < 0) {
+                      paramItem.title = `${paramItem.title}（${scopeTitle}）`;
                     }
-                    paramItam.default = paramItam.value; // 将当前参数值保存在schema的default，以便展示
+                    paramItem.default = paramItem.value; // 将当前参数值保存在schema的default，以便展示
                     return (
-                      <InputFormSchema
+                      <MappingRender
                         {...{
+                          rendererType: 'input',
                           pageScreen: pageScreen, // 默认使用宽屏模式
                           jsonKey: paramKey,
                           nodeKey: curNodeKey,
-                          targetJsonSchema: paramItam,
+                          targetJsonSchema: paramItem,
                           onChange: (newVal) => {
                             this.paramsValueChange(paramKey, newVal);
                           },
@@ -230,8 +219,9 @@ class RemoteDynamicDataSchema extends React.PureComponent {
               />
             )}
             {dataName && (
-              <CodeAreaFormSchema
+              <MappingRender
                 {...{
+                  rendererType: 'codearea',
                   isReadOnly: true,
                   isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
                   jsonKey: 'filter',
@@ -241,6 +231,8 @@ class RemoteDynamicDataSchema extends React.PureComponent {
                     title: '过滤器函数体',
                     default: 'return data;',
                   },
+                  schemaStore,
+                  jsonStore,
                 }}
                 key={`${nodeKey}-filter`}
               />

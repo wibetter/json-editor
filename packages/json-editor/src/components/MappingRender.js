@@ -17,10 +17,10 @@ import InputFormSchema from '$renderers/InputFormSchema';
 const MappingRender = (props) => {
   const { getSchemaByKeyRoute } = props.schemaStore || {};
   const { getJSONDataByKeyRoute, JSONEditorObj } = props.jsonStore || {};
-  const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = props;
+  const { nodeKey, jsonKey, keyRoute, targetJsonSchema, rendererType } = props;
 
   // 支持显隐属性表达式
-  const parentKeyRoute = getParentKeyRoute(keyRoute);
+  const parentKeyRoute = keyRoute && getParentKeyRoute(keyRoute);
   const parentData = parentKeyRoute
     ? getJSONDataByKeyRoute(parentKeyRoute) || {}
     : {}; // 获取当前父级数据域
@@ -37,9 +37,11 @@ const MappingRender = (props) => {
     return;
   }
 
-  const curType = targetJsonSchema.typeOn
-    ? evalExpression(targetJsonSchema.typeOn, curData)
-    : targetJsonSchema.type;
+  const curType =
+    rendererType ||
+    (targetJsonSchema.typeOn
+      ? evalExpression(targetJsonSchema.typeOn, curData)
+      : targetJsonSchema.type);
   let curNodeKey = nodeKey;
 
   // 收集当前所有条件子字段

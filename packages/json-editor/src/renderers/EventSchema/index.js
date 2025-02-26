@@ -12,9 +12,6 @@ import {
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView/index';
-import JsonFormSchema from '$renderers/JsonFormSchema/index';
-import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
-import InputFormSchema from '$renderers/InputFormSchema/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 import CodeIcon from '$assets/img/code.svg';
@@ -53,8 +50,14 @@ class EventSchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
-      this.props;
+    const {
+      keyRoute,
+      jsonKey,
+      nodeKey,
+      indexRoute,
+      targetJsonSchema,
+      renderChild,
+    } = this.props;
     const curType = targetJsonSchema.type;
     const { jsonView, isClosed } = this.state;
 
@@ -156,66 +159,60 @@ class EventSchema extends React.PureComponent {
           >
             {!jsonView && dataType === 'on' && (
               <>
-                {registerJsonObj && (
-                  <InputFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'register',
-                      indexRoute: indexRoute ? `${indexRoute}-1` : '1',
-                      keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
-                      nodeKey: `${nodeKey}-register`,
-                      targetJsonSchema: registerJsonObj,
-                    }}
-                    key={`${nodeKey}-register`}
-                  />
-                )}
-                {actionFuncJsonObj && (
-                  <CodeAreaFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'actionFunc',
-                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                      keyRoute: keyRoute
-                        ? `${keyRoute}-actionFunc`
-                        : 'actionFunc',
-                      nodeKey: `${nodeKey}-actionFunc`,
-                      targetJsonSchema: actionFuncJsonObj,
-                    }}
-                    key={`${nodeKey}-actionFunc`}
-                  />
-                )}
+                {registerJsonObj &&
+                  renderChild({
+                    rendererType: 'input',
+                    parentType: curType,
+                    jsonKey: 'register',
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                    keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
+                    nodeKey: `${nodeKey}-register`,
+                    targetJsonSchema: registerJsonObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
+                {actionFuncJsonObj &&
+                  renderChild({
+                    rendererType: 'codearea',
+                    parentType: curType,
+                    jsonKey: 'actionFunc',
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                    keyRoute: keyRoute
+                      ? `${keyRoute}-actionFunc`
+                      : 'actionFunc',
+                    nodeKey: `${nodeKey}-actionFunc`,
+                    targetJsonSchema: actionFuncJsonObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
               </>
             )}
             {!jsonView && dataType === 'emit' && (
               <>
-                {triggerJsonObj && (
-                  <InputFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'trigger',
-                      indexRoute: indexRoute ? `${indexRoute}-1` : '1',
-                      keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
-                      nodeKey: `${nodeKey}-trigger`,
-                      targetJsonSchema: triggerJsonObj,
-                    }}
-                    key={`${nodeKey}-trigger`}
-                  />
-                )}
-                {eventDataJsonObj && (
-                  <JsonFormSchema
-                    {...{
-                      parentType: curType,
-                      jsonKey: 'eventData',
-                      indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                      keyRoute: keyRoute
-                        ? `${keyRoute}-eventData`
-                        : 'eventData',
-                      nodeKey: `${nodeKey}-eventData`,
-                      targetJsonSchema: eventDataJsonObj,
-                    }}
-                    key={`${nodeKey}-eventData`}
-                  />
-                )}
+                {triggerJsonObj &&
+                  renderChild({
+                    rendererType: 'input',
+                    parentType: curType,
+                    jsonKey: 'trigger',
+                    indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                    keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
+                    nodeKey: `${nodeKey}-trigger`,
+                    targetJsonSchema: triggerJsonObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
+                {eventDataJsonObj &&
+                  renderChild({
+                    rendererType: 'json',
+                    parentType: curType,
+                    jsonKey: 'eventData',
+                    indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                    keyRoute: keyRoute ? `${keyRoute}-eventData` : 'eventData',
+                    nodeKey: `${nodeKey}-eventData`,
+                    targetJsonSchema: eventDataJsonObj,
+                    schemaStore,
+                    jsonStore,
+                  })}
               </>
             )}
             {jsonView && <JsonView {...this.props} />}

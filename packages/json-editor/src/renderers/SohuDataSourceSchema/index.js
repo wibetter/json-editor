@@ -13,7 +13,6 @@ import {
   isString,
   isBoolean,
 } from '@wibetter/json-utils';
-import MappingRender from '$components/MappingRender';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
 import { buildStyle, hasProperties } from '$utils/index';
@@ -63,8 +62,14 @@ class SohuDataSourceSchema extends React.PureComponent {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute, JSONEditorObj } = jsonStore || {};
-    const { indexRoute, jsonKey, nodeKey, keyRoute, targetJsonSchema } =
-      this.props;
+    const {
+      indexRoute,
+      jsonKey,
+      nodeKey,
+      keyRoute,
+      targetJsonSchema,
+      renderChild,
+    } = this.props;
 
     // 获取前端缓存中的折叠数据
     let collapseData = ['mainConfig'];
@@ -161,7 +166,7 @@ class SohuDataSourceSchema extends React.PureComponent {
 
                 return (
                   <Panel header={currentSchemaData.title} key={currentJsonKey}>
-                    {MappingRender({
+                    {renderChild({
                       parentType: curType,
                       jsonKey: currentJsonKey,
                       indexRoute: currentIndexRoute,

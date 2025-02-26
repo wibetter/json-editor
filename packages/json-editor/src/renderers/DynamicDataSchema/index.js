@@ -9,9 +9,6 @@ import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import TreeSelectFrom from '$components/TreeSelectFrom/index';
 import RemoteDynamicDataEditor from '$components/RemoteDynamicDataEditor/index';
-import JsonFormSchema from '$renderers/JsonFormSchema/index';
-import CodeAreaFormSchema from '$renderers/CodeAreaFormSchema/index';
-import InputFormSchema from '$renderers/InputFormSchema/index';
 import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isArray, isObject } from '$utils/typeof';
@@ -137,6 +134,21 @@ class DynamicDataSchema extends React.PureComponent {
     }, 100);
   };
 
+  paramsValueChange = (curKey, value) => {
+    const { keyRoute, jsonStore } = this.props;
+    const { triggerChangeAction } = jsonStore || {};
+    // 待完善
+    /*
+    this.handleValueChange(
+      `${keyRoute}-config-body-${curKey}-value`,
+      value,
+    );
+    setTimeout(() => {
+      triggerChangeAction();
+    }, 100);
+    */
+  };
+
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
@@ -147,8 +159,14 @@ class DynamicDataSchema extends React.PureComponent {
       dynamicDataApiScopeList,
       triggerChange,
     } = jsonStore || {};
-    const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
-      this.props;
+    const {
+      keyRoute,
+      jsonKey,
+      nodeKey,
+      indexRoute,
+      targetJsonSchema,
+      renderChild,
+    } = this.props;
     const { isShowFilter } = this.state;
     const curType = targetJsonSchema.type;
     // 从jsonData中获取对应的数值
@@ -253,34 +271,33 @@ class DynamicDataSchema extends React.PureComponent {
                   onClick={this.switchFilterBtn}
                 />
               </Tooltip>
-              <JsonFormSchema
-                {...{
-                  parentType: curType,
-                  jsonKey: 'data',
-                  indexRoute: indexRoute ? `${indexRoute}-2` : '2',
-                  keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
-                  nodeKey: `${nodeKey}-data`,
-                  targetJsonSchema: dataObj,
-                }}
-                key={`${nodeKey}-data`}
-              />
+              {renderChild({
+                rendererType: 'json',
+                parentType: curType,
+                jsonKey: 'data',
+                indexRoute: indexRoute ? `${indexRoute}-2` : '2',
+                keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
+                nodeKey: `${nodeKey}-data`,
+                targetJsonSchema: dataObj,
+                schemaStore,
+                jsonStore,
+              })}
               <div className="filter-func-box">
-                {isShowFilter && (
-                  <CodeAreaFormSchema
-                    {...{
-                      isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                      parentType: curType,
-                      jsonKey: 'localFilter',
-                      indexRoute: indexRoute ? `${indexRoute}-3` : '3',
-                      keyRoute: keyRoute
-                        ? `${keyRoute}-localFilter`
-                        : 'localFilter',
-                      nodeKey: `${nodeKey}-localFilter`,
-                      targetJsonSchema: targetJsonSchema.properties.localFilter,
-                    }}
-                    key={`${nodeKey}-localFilter`}
-                  />
-                )}
+                {isShowFilter &&
+                  renderChild({
+                    rendererType: 'codearea',
+                    isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
+                    parentType: curType,
+                    jsonKey: 'localFilter',
+                    indexRoute: indexRoute ? `${indexRoute}-3` : '3',
+                    keyRoute: keyRoute
+                      ? `${keyRoute}-localFilter`
+                      : 'localFilter',
+                    nodeKey: `${nodeKey}-localFilter`,
+                    targetJsonSchema: targetJsonSchema.properties.localFilter,
+                    schemaStore,
+                    jsonStore,
+                  })}
               </div>
             </div>
           </div>
@@ -333,33 +350,34 @@ class DynamicDataSchema extends React.PureComponent {
                   key={`${nodeKey}-${dataName}-params`}
                   id={`${nodeKey}-${dataName}-params`}
                 >
-                  <div className="element-title">请求参数配置</div>
+                  <div className="element-title">请求参数配置1</div>
                   <div className="content-item object-content">
                     {Object.keys(apiParams).map((paramKey) => {
-                      const paramItam = objClone(apiParams[paramKey]);
-                      paramItam.readOnly =
-                        paramItam.scope && paramItam.scope === 'static'
+                      const paramItem = objClone(apiParams[paramKey]);
+                      paramItem.readOnly =
+                        paramItem.scope && paramItem.scope === 'static'
                           ? true
                           : false;
                       const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
                       const scopeTitle =
-                        dynamicDataApiScopeList[paramItam.scope];
-                      if (scopeTitle && paramItam.scope !== 'dynamic') {
-                        paramItam.title = `${paramItam.title}（${scopeTitle}）`;
+                        dynamicDataApiScopeList[paramItem.scope];
+                      if (scopeTitle && paramItem.scope !== 'dynamic') {
+                        paramItem.title = `${paramItem.title}（${scopeTitle}）`;
                       }
-                      if (paramItam.scope !== 'dynamic') {
-                        return (
-                          <InputFormSchema
-                            {...{
-                              pageScreen: pageScreen, // 默认使用宽屏模式
-                              jsonKey: paramKey,
-                              keyRoute: `${curKeyRoute}-value`,
-                              nodeKey: curKeyRoute,
-                              targetJsonSchema: paramItam,
-                            }}
-                            key={curKeyRoute}
-                          />
-                        );
+                      if (paramItem.scope !== 'dynamic') {
+                        return renderChild({
+                          rendererType: 'input',
+                          pageScreen: pageScreen, // 默认使用宽屏模式
+                          jsonKey: paramKey,
+                          keyRoute: `${curKeyRoute}-value`,
+                          nodeKey: curKeyRoute,
+                          targetJsonSchema: paramItem,
+                          onChange: (newVal) => {
+                            this.paramsValueChange(paramKey, newVal);
+                          },
+                          schemaStore,
+                          jsonStore,
+                        });
                       } else {
                         const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
                         return (
@@ -370,7 +388,7 @@ class DynamicDataSchema extends React.PureComponent {
                               keyRoute: keyRoute
                                 ? `${keyRoute}-config-body-${paramKey}`
                                 : 'config-body-${paramKey}',
-                              curConfigData: paramItam || {},
+                              curConfigData: paramItem || {},
                               configDataChange: (newParamsConfig) => {
                                 this.paramsConfigChange(
                                   paramKey,
@@ -413,25 +431,24 @@ class DynamicDataSchema extends React.PureComponent {
                   key={`${nodeKey}-config-dataRoute`}
                 />
               )}
-              {dataName && (
-                <CodeAreaFormSchema
-                  {...{
-                    isReadOnly: true,
-                    isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                    parentType: curType,
-                    jsonKey: 'filter',
-                    indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
-                    keyRoute: keyRoute
-                      ? `${keyRoute}-config-filter`
-                      : 'config-filter',
-                    nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
-                    targetJsonSchema:
-                      targetJsonSchema.properties.config &&
-                      targetJsonSchema.properties.config.properties.filter,
-                  }}
-                  key={`${nodeKey}-config-filter`}
-                />
-              )}
+              {dataName &&
+                renderChild({
+                  rendererType: 'codearea',
+                  isReadOnly: true,
+                  isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
+                  parentType: curType,
+                  jsonKey: 'filter',
+                  indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
+                  keyRoute: keyRoute
+                    ? `${keyRoute}-config-filter`
+                    : 'config-filter',
+                  nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
+                  targetJsonSchema:
+                    targetJsonSchema.properties.config &&
+                    targetJsonSchema.properties.config.properties.filter,
+                  schemaStore,
+                  jsonStore,
+                })}
             </div>
           </div>
         </div>
