@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
-// import { registerRenderer } from '$components/factory';
+// import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -17,10 +17,7 @@ class TreeSelectFrom extends React.PureComponent {
   };
 
   render() {
-    const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
-    const { mockData, dataRoute, nodeKey, onChange } = this.props;
+    const { pageScreen, mockData, dataRoute, nodeKey, onChange } = this.props;
     let treeData = [];
     if (mockData && JSON.stringify(mockData) !== '{}') {
       let mockObj = mockData;
@@ -35,16 +32,6 @@ class TreeSelectFrom extends React.PureComponent {
       treeData = json2treeData(mockObj);
     }
 
-    const style = targetJsonSchema.style
-      ? buildStyle(toJS(targetJsonSchema.style))
-      : {};
-    const titleStyle = targetJsonSchema.titleStyle
-      ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {};
-    const contentStyle = targetJsonSchema.contentStyle
-      ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {};
-
     return (
       <div
         className={
@@ -54,12 +41,9 @@ class TreeSelectFrom extends React.PureComponent {
         }
         // key={`${nodeKey}-dataRoute-select`}
         id={`${nodeKey}-dataRoute-select`}
-        style={style}
       >
-        <div className="element-title" style={titleStyle}>
-          数据路径选择
-        </div>
-        <div className="content-item" style={contentStyle}>
+        <div className="element-title">数据路径选择</div>
+        <div className="content-item">
           <div className="form-item-box">
             <TreeSelect
               className="data-route-select"
@@ -77,6 +61,4 @@ class TreeSelectFrom extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-}))(observer(TreeSelectFrom));
+export default TreeSelectFrom;

@@ -6,6 +6,25 @@ import RootJSONStore from '$store/index';
 import JSONDataEditor from '$components/JSONDataEditor/index';
 import './main.scss';
 
+import {
+  registerRenderer,
+  Renderer,
+  unRegisterRenderer,
+  loadRenderer,
+} from '$core/factory';
+import { AddJSONCustomRenderer, getJSONCustomRenderer } from '$core/register';
+import withStore from '$core/withStore';
+
+export {
+  Renderer,
+  registerRenderer,
+  unRegisterRenderer,
+  loadRenderer,
+  AddJSONCustomRenderer,
+  getJSONCustomRenderer,
+  withStore,
+};
+
 /**
  * JSONEditor功能组件
  * @param props

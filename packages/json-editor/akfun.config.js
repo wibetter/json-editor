@@ -18,8 +18,10 @@ module.exports = {
       extensions: ['.js', '.jsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
+        $core: resolve('src/core'),
         $components: resolve('src/components'),
         $renderers: resolve('src/renderers'),
+        $customRenderers: resolve('src/customRenderers'),
         $pages: resolve('src/pages'),
         $plugins: resolve('src/plugins'),
         $utils: resolve('src/utils'),

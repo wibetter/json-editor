@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+.dynamic-data-schema {
+  transition: 0.4s;
+  position: relative;
+
+  .dynamic-data-tab-radio-box {
+    position: relative;
+    display: block;
+    text-align: center;
+    z-index: 10;
+
+    .dynamic-data-tab-radio {
+      margin: 0 auto !important;
+      position: relative;
+      display: inline-flex;
+      top: 15px;
+      height: 30px;
+      line-height: 30px;
+      box-sizing: border-box;
+      border: 1px solid rgba(24, 144, 255, 1);
+      border-radius: 18px;
+      align-items: center;
+      background-color: #fff;
+
+      .tab-radio {
+        flex: 1 1 120px;
+        padding: 0 12px;
+        height: 28px;
+        line-height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .tab-radio-active {
+        color: #fff;
+        border-radius: 18px;
+        background-color: rgba(24, 144, 255, 1);
+      }
+    }
+  }
+
+  .dynamic-dat-tabPane {
+    display: none;
+    transition: 0.4s;
+  }
+
+  .dynamic-dat-tabPane-active {
+    display: block;
+  }
+
+  .dynamic-data-select,
+  .data-route-select {
+    display: block;
+    width: 100%;
+  }
+
+  .warning-text {
+    color: #fa8c16;
+  }
+
+  .json-form-box {
+    position: relative;
+    padding: 25px 15px 10px 15px;
+    border: 1px solid rgba(129, 211, 248, 1);
+    box-sizing: border-box;
+    border-radius: 15px;
+    // border-top: none;
+
+    .filter-btn {
+      position: absolute;
+      top: 75px; // 38px + 8px + 12px
+      right: 35px; // 15px + 12px
+      z-index: 100;
+
+      svg {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        color: #595959;
+      }
+
+      svg:hover {
+        color: #1890ff;
+      }
+    }
+  }
+
+  .filter-func-box {
+    padding: 0;
+  }
+}
+
+.dynamic-data-schema.json-view {
+  padding: 0;
+  transition: 0.4s;
+}
+
+.dynamic-data-schema.closed {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.data-operate-btn {
+  cursor: pointer;
+  color: #8c8c8c;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
