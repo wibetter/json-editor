@@ -168,8 +168,6 @@ class EventSchema extends React.PureComponent {
                     keyRoute: keyRoute ? `${keyRoute}-register` : 'register',
                     nodeKey: `${nodeKey}-register`,
                     targetJsonSchema: registerJsonObj,
-                    schemaStore,
-                    jsonStore,
                   })}
                 {actionFuncJsonObj &&
                   renderChild({
@@ -182,8 +180,6 @@ class EventSchema extends React.PureComponent {
                       : 'actionFunc',
                     nodeKey: `${nodeKey}-actionFunc`,
                     targetJsonSchema: actionFuncJsonObj,
-                    schemaStore,
-                    jsonStore,
                   })}
               </>
             )}
@@ -198,8 +194,6 @@ class EventSchema extends React.PureComponent {
                     keyRoute: keyRoute ? `${keyRoute}-trigger` : 'trigger',
                     nodeKey: `${nodeKey}-trigger`,
                     targetJsonSchema: triggerJsonObj,
-                    schemaStore,
-                    jsonStore,
                   })}
                 {eventDataJsonObj &&
                   renderChild({
@@ -210,8 +204,6 @@ class EventSchema extends React.PureComponent {
                     keyRoute: keyRoute ? `${keyRoute}-eventData` : 'eventData',
                     nodeKey: `${nodeKey}-eventData`,
                     targetJsonSchema: eventDataJsonObj,
-                    schemaStore,
-                    jsonStore,
                   })}
               </>
             )}

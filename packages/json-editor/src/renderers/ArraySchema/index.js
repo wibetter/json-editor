@@ -440,8 +440,6 @@ class ArraySchema extends React.PureComponent {
                         targetJsonSchema: arrayItemsDataObj,
                         isArrayItem: true,
                         arrIndex: arrIndex,
-                        schemaStore,
-                        jsonStore,
                       })}
                     </div>
                   </div>

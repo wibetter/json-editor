@@ -174,8 +174,6 @@ class SohuDataSourceSchema extends React.PureComponent {
                       nodeKey: childNodeKey,
                       targetJsonSchema: currentSchemaData,
                       isArrayItem: true,
-                      schemaStore,
-                      jsonStore,
                     })}
                   </Panel>
                 );

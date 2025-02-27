@@ -279,8 +279,6 @@ class DynamicDataSchema extends React.PureComponent {
                 keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                 nodeKey: `${nodeKey}-data`,
                 targetJsonSchema: dataObj,
-                schemaStore,
-                jsonStore,
               })}
               <div className="filter-func-box">
                 {isShowFilter &&
@@ -295,8 +293,6 @@ class DynamicDataSchema extends React.PureComponent {
                       : 'localFilter',
                     nodeKey: `${nodeKey}-localFilter`,
                     targetJsonSchema: targetJsonSchema.properties.localFilter,
-                    schemaStore,
-                    jsonStore,
                   })}
               </div>
             </div>
@@ -375,8 +371,6 @@ class DynamicDataSchema extends React.PureComponent {
                           onChange: (newVal) => {
                             this.paramsValueChange(paramKey, newVal);
                           },
-                          schemaStore,
-                          jsonStore,
                         });
                       } else {
                         const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
@@ -385,6 +379,7 @@ class DynamicDataSchema extends React.PureComponent {
                             {...{
                               pageScreen: pageScreen, // 默认使用宽屏模式
                               nodeKey: curNodeKay,
+                              renderChild,
                               keyRoute: keyRoute
                                 ? `${keyRoute}-config-body-${paramKey}`
                                 : 'config-body-${paramKey}',
@@ -447,8 +442,6 @@ class DynamicDataSchema extends React.PureComponent {
                   targetJsonSchema:
                     targetJsonSchema.properties.config &&
                     targetJsonSchema.properties.config.properties.filter,
-                  schemaStore,
-                  jsonStore,
                 })}
             </div>
           </div>

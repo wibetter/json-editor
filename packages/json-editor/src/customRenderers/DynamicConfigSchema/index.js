@@ -269,8 +269,6 @@ class DynamicConfigSchema extends React.PureComponent {
                   keyRoute: currentKeyRoute,
                   nodeKey: childNodeKey,
                   targetJsonSchema: currentSchemaData,
-                  schemaStore,
-                  jsonStore,
                 });
               })}
             {jsonView && <JsonView {...this.props} />}

@@ -80,9 +80,8 @@ class RemoteDynamicDataSchema extends React.PureComponent {
       dynamicDataApiScopeList,
       dynamicDataList,
       dynamicDataObj,
-      renderChild,
     } = jsonStore || {};
-    const { curConfigData, nodeKey, keyRoute } = this.props;
+    const { curConfigData, nodeKey, keyRoute, renderChild } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
@@ -224,8 +223,6 @@ class RemoteDynamicDataSchema extends React.PureComponent {
                   title: '过滤器函数体',
                   default: 'return data;',
                 },
-                schemaStore,
-                jsonStore,
               })}
           </div>
         </div>

@@ -184,8 +184,6 @@ class DataSourceSchema extends React.PureComponent {
                     nodeKey: `${nodeKey}-data`,
                     targetJsonSchema: dataObj,
                     key: `${nodeKey}-data`,
-                    schemaStore,
-                    jsonStore,
                   })}
                 </div>
                 {isShowFilter &&
@@ -197,8 +195,6 @@ class DataSourceSchema extends React.PureComponent {
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
                     nodeKey: `${nodeKey}-filter`,
                     targetJsonSchema: filterDataObj,
-                    schemaStore,
-                    jsonStore,
                   })}
               </>
             )}
@@ -213,8 +209,6 @@ class DataSourceSchema extends React.PureComponent {
                     keyRoute: keyRoute ? `${keyRoute}-data` : 'data',
                     nodeKey: `${nodeKey}-data`,
                     targetJsonSchema: dataObj,
-                    schemaStore,
-                    jsonStore,
                   })}
                   <Tooltip title="点击设置数据过滤器" placement="top">
                     <FilterOutlined
@@ -232,8 +226,6 @@ class DataSourceSchema extends React.PureComponent {
                     keyRoute: keyRoute ? `${keyRoute}-filter` : 'filter',
                     nodeKey: `${nodeKey}-filter`,
                     targetJsonSchema: filterDataObj,
-                    schemaStore,
-                    jsonStore,
                   })}
               </>
             )}

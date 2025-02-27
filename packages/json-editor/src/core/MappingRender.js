@@ -59,7 +59,12 @@ const MappingRender = (props) => {
     ...props,
     nodeKey: curNodeKey,
     key: curNodeKey,
-    renderChild: MappingRender,
+    renderChild: (thisProps) =>
+      MappingRender({
+        ...thisProps,
+        schemaStore: props.schemaStore,
+        jsonStore: props.jsonStore,
+      }),
   };
 
   const JSONEditorFormSchema = renderersMap[curType] || InputFormSchema;
