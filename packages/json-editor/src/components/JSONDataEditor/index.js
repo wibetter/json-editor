@@ -291,6 +291,7 @@ class JSONDataEditor extends React.PureComponent {
             jsonData={JSONEditorObj}
             readOnly={jsonViewReadOnly ?? true}
             onChange={jsonChange}
+            maxLines={30}
           />
         )}
       </div>

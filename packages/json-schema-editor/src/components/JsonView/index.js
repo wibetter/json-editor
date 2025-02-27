@@ -14,6 +14,8 @@ import './index.scss';
 class JsonView extends React.PureComponent {
   static propTypes = {
     jsonData: PropTypes.any,
+    readOnly: PropTypes.bool,
+    maxLines: PropTypes.number,
   };
 
   constructor(props) {
@@ -35,7 +37,7 @@ class JsonView extends React.PureComponent {
   };
 
   render() {
-    const { jsonData, readOnly: _readOnly } = this.props;
+    const { jsonData, readOnly: _readOnly, maxLines } = this.props;
     let curJsonData = jsonData || {};
     const { isShowWarn, warnText, curJSONDataTemp } = this.state;
     const readOnly = _readOnly || false;
@@ -70,7 +72,7 @@ class JsonView extends React.PureComponent {
           highlightActiveLine={true}
           readOnly={readOnly}
           minLines={5}
-          maxLines={10}
+          maxLines={maxLines || 10}
           width={'100%'}
           setOptions={{
             useWorker: false,

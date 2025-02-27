@@ -258,6 +258,7 @@ class JSONSchema extends React.PureComponent {
           <JsonView
             jsonData={jsonSchema}
             readOnly={jsonViewReadOnly ?? true}
+            maxLines={25}
             onChange={schemaChange}
           />
         )}

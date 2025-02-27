@@ -209,7 +209,7 @@ class ObjectSchema extends React.PureComponent {
                   jsonStore,
                 });
               })}
-            {jsonView && <JsonView {...this.props} />}
+            {jsonView && <JsonView {...this.props} maxLines={10} />}
           </div>
         </div>
       </div>

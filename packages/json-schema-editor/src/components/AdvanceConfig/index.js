@@ -388,6 +388,7 @@ class AdvanceConfig extends React.PureComponent {
                 onChange={(newJsonData) => {
                   this.handleValueChange('options', newJsonData);
                 }}
+                maxLines={10}
               />
             </div>
           </div>
@@ -655,6 +656,7 @@ class AdvanceConfig extends React.PureComponent {
               onChange={(newJsonData) => {
                 this.handleValueChange('titleStyle', newJsonData);
               }}
+              maxLines={10}
             />
           </div>
         </div>
