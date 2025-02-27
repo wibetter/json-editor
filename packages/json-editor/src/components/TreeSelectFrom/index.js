@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
-// import { registerRenderer } from '$components/factory';
+// import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -17,10 +17,7 @@ class TreeSelectFrom extends React.PureComponent {
   };
 
   render() {
-    const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
-    const { mockData, dataRoute, nodeKey, onChange } = this.props;
+    const { pageScreen, mockData, dataRoute, nodeKey, onChange } = this.props;
     let treeData = [];
     if (mockData && JSON.stringify(mockData) !== '{}') {
       let mockObj = mockData;
@@ -64,7 +61,4 @@ class TreeSelectFrom extends React.PureComponent {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(TreeSelectFrom));
+export default TreeSelectFrom;

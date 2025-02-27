@@ -1,6 +1,6 @@
 import * as React from 'react';
 // import { inject, observer } from 'mobx-react';
-import { registerRenderer } from '$components/factory';
+import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { Tooltip, message, Popover } from 'antd';
