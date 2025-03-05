@@ -53813,7 +53813,7 @@
               },
               'sohu-source': {
                 type: 'sohu-source',
-                title: '组件动态数据',
+                title: '数据源',
                 description: '',
                 isContainer: !1,
                 properties: {
@@ -54019,8 +54019,8 @@
                       },
                       URL: {
                         type: 'url',
-                        title: '跳转链接',
-                        description: '',
+                        title: '更多跳转链接',
+                        description: '该区块下点击“更多或箭头图标”后的跳转链接',
                         placeholder: '',
                       },
                       CODE: {
@@ -85526,24 +85526,25 @@
                     t = this.props,
                     r = t.jsonData,
                     o = t.readOnly,
-                    i = r || {},
-                    a = this.state,
-                    s = a.isShowWarn,
-                    l = a.warnText,
-                    c = (a.curJSONDataTemp, o || !1);
+                    i = t.maxLines,
+                    a = r || {},
+                    s = this.state,
+                    l = s.isShowWarn,
+                    c = s.warnText,
+                    u = (s.curJSONDataTemp, o || !1);
                   return (
-                    (fd((i = void 0 !== i ? i : i || '{}')) || hd(i)) &&
-                      (i = JSON.stringify(i, null, 2)),
+                    (fd((a = void 0 !== a ? a : a || '{}')) || hd(a)) &&
+                      (a = JSON.stringify(a, null, 2)),
                     n.createElement(
                       'div',
                       { className: 'json-view-box' },
-                      c &&
+                      u &&
                         n.createElement(
                           'div',
                           { className: 'readOnly-btn' },
                           '[只读]',
                         ),
-                      s &&
+                      l &&
                         n.createElement(
                           'div',
                           { className: 'warning-box code-area-item' },
@@ -85555,12 +85556,12 @@
                           n.createElement(
                             'div',
                             { className: 'warning-text' },
-                            l,
+                            c,
                           ),
                         ),
                       n.createElement(DA.Ay, {
                         id: 'json_area_ace',
-                        defaultValue: i,
+                        defaultValue: a,
                         className: 'json-view-ace',
                         mode: 'json',
                         theme: 'solarized_light',
@@ -85569,9 +85570,9 @@
                         showPrintMargin: !0,
                         showGutter: !0,
                         highlightActiveLine: !0,
-                        readOnly: c,
+                        readOnly: u,
                         minLines: 5,
-                        maxLines: 10,
+                        maxLines: i || 10,
                         width: '100%',
                         setOptions: {
                           useWorker: !1,
@@ -85601,7 +85602,11 @@
                 r
               );
             })(n.PureComponent));
-        PA.propTypes = { jsonData: Xn().any };
+        PA.propTypes = {
+          jsonData: Xn().any,
+          readOnly: Xn().bool,
+          maxLines: Xn().number,
+        };
         var zA = PA,
           FA = (i(789), i(975), sk.TextArea),
           BA =
@@ -86088,6 +86093,7 @@
                             onChange: function (e) {
                               s.handleValueChange('options', e);
                             },
+                            maxLines: 10,
                           }),
                         ),
                       ),
@@ -86532,6 +86538,7 @@
                           onChange: function (e) {
                             s.handleValueChange('titleStyle', e);
                           },
+                          maxLines: 10,
                         }),
                       ),
                     ),
@@ -87923,6 +87930,7 @@
                       n.createElement(zA, {
                         jsonData: i,
                         readOnly: null == r || r,
+                        maxLines: 25,
                         onChange: a,
                       }),
                     s &&

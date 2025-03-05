@@ -1278,25 +1278,26 @@
                     t = this.props,
                     n = t.jsonData,
                     a = t.readOnly,
-                    o = n || {},
-                    i = this.state,
-                    s = i.isShowWarn,
-                    c = i.warnText,
-                    l = (i.curJSONDataTemp, a || !1);
+                    o = t.maxLines,
+                    i = n || {},
+                    s = this.state,
+                    c = s.isShowWarn,
+                    l = s.warnText,
+                    p = (s.curJSONDataTemp, a || !1);
                   return (
-                    (o = void 0 !== o ? o : o || '{}'),
-                    ((0, O.isObject)(o) || (0, O.isArray)(o)) &&
-                      (o = JSON.stringify(o, null, 2)),
+                    (i = void 0 !== i ? i : i || '{}'),
+                    ((0, O.isObject)(i) || (0, O.isArray)(i)) &&
+                      (i = JSON.stringify(i, null, 2)),
                     r.createElement(
                       'div',
                       { className: 'json-view-box' },
-                      l &&
+                      p &&
                         r.createElement(
                           'div',
                           { className: 'readOnly-btn' },
                           '[只读]',
                         ),
-                      s &&
+                      c &&
                         r.createElement(
                           'div',
                           { className: 'warning-box code-area-item' },
@@ -1308,12 +1309,12 @@
                           r.createElement(
                             'div',
                             { className: 'warning-text' },
-                            c,
+                            l,
                           ),
                         ),
                       r.createElement(De(), {
                         id: 'json_area_ace',
-                        defaultValue: o,
+                        defaultValue: i,
                         className: 'json-view-ace',
                         mode: 'json',
                         theme: 'solarized_light',
@@ -1322,9 +1323,9 @@
                         showPrintMargin: !0,
                         showGutter: !0,
                         highlightActiveLine: !0,
-                        readOnly: l,
+                        readOnly: p,
                         minLines: 5,
-                        maxLines: 10,
+                        maxLines: o || 10,
                         width: '100%',
                         setOptions: {
                           useWorker: !1,
@@ -1354,7 +1355,11 @@
                 t
               );
             })(r.PureComponent));
-        Je.propTypes = { jsonData: d().any };
+        Je.propTypes = {
+          jsonData: d().any,
+          readOnly: d().bool,
+          maxLines: d().number,
+        };
         var Be = Je,
           Pe =
             (require('rc-switch/assets/index.css'), n(975), E.Input.TextArea),
@@ -1842,6 +1847,7 @@
                             onChange: function (e) {
                               s.handleValueChange('options', e);
                             },
+                            maxLines: 10,
                           }),
                         ),
                       ),
@@ -2286,6 +2292,7 @@
                           onChange: function (e) {
                             s.handleValueChange('titleStyle', e);
                           },
+                          maxLines: 10,
                         }),
                       ),
                     ),
@@ -3624,6 +3631,7 @@
                       r.createElement(Be, {
                         jsonData: o,
                         readOnly: null == n || n,
+                        maxLines: 25,
                         onChange: i,
                       }),
                     s &&

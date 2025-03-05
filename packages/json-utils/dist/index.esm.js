@@ -1639,7 +1639,7 @@ var initDynamicArray = {
 
 var initSohuSourceData = {
   type: 'sohu-source',
-  title: '组件动态数据',
+  title: '数据源',
   description: '',
   isContainer: false,
   properties: {
@@ -1923,8 +1923,8 @@ var initSohuSourceData = {
         },
         URL: {
           type: 'url',
-          title: '跳转链接',
-          description: '',
+          title: '更多跳转链接',
+          description: '该区块下点击“更多或箭头图标”后的跳转链接',
           placeholder: '',
         },
         CODE: {
