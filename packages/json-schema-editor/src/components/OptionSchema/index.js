@@ -79,12 +79,16 @@ class OptionSchema extends React.PureComponent {
     const { getSchemaByIndexRoute, deleteOptionItem } =
       this.props.schemaStore || {};
     const { indexRoute, optionIndex } = this.props;
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute);
+    // const itemJSONObj = getSchemaByIndexRoute(indexRoute);
+    deleteOptionItem(indexRoute, optionIndex); // 删除指定位置的枚举值
+
+    /*
     if (itemJSONObj.options && itemJSONObj.options.length > 1) {
       deleteOptionItem(indexRoute, optionIndex); // 删除指定位置的枚举值
     } else {
       message.warning('删除失败，至少保留一个可选项。');
     }
+    */
   };
 
   render() {
