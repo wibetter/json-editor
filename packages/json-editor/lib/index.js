@@ -1078,8 +1078,8 @@
           A = __webpack_require__(2015),
           V = __webpack_require__.n(A),
           B = require('react-dom'),
-          I = __webpack_require__.n(B),
-          L = __webpack_require__(4020),
+          L = __webpack_require__.n(B),
+          I = __webpack_require__(4020),
           q = __webpack_require__(9825),
           W = __webpack_require__.n(q),
           U = require('@babel/runtime/helpers/initializerDefineProperty'),
@@ -4233,16 +4233,16 @@
           Ae = __webpack_require__.n(Me),
           Ve = require('braft-extensions/dist/color-picker'),
           Be = __webpack_require__.n(Ve),
-          Ie =
+          Le =
             (require('braft-extensions/dist/color-picker.css'),
             require('braft-extensions/dist/table')),
-          Le = __webpack_require__.n(Ie);
+          Ie = __webpack_require__.n(Le);
         require('braft-extensions/dist/table.css'),
           require('braft-editor/dist/index.css'),
           __webpack_require__(632),
           Ae().use([Be()({ theme: 'light' })]),
           Ae().use(
-            Le()({
+            Ie()({
               defaultColumns: 3,
               defaultRows: 3,
               withDropdown: !1,
@@ -4758,26 +4758,37 @@
               var n;
               return (
                 ((n = e.call(this, t) || this).optionValue = {}),
-                (n.handleValueChange = function (e) {
-                  var t = n.props,
-                    a = t.keyRoute,
-                    o = (t.jsonStore || {}).updateFormValueData,
-                    r = e;
+                (n.handleValueChange = function (e, t) {
+                  var a = n.props,
+                    o = a.keyRoute,
+                    r = a.jsonStore,
+                    i = a.targetJsonSchema,
+                    l = (r || {}).updateFormValueData,
+                    s = e,
+                    c = i.withLabel;
                   if ((0, Z.isArray)(e)) {
-                    var i = [];
-                    e.forEach(function (e) {
-                      var t,
-                        a = e;
-                      (0, Z.isObject)(a) &&
-                        (a = JSON.stringify(e)).replaceAll(' ', ''),
-                        i.push(null != (t = n.optionValue[a]) ? t : e);
+                    var u = [];
+                    e.forEach(function (e, a) {
+                      var o,
+                        r = e;
+                      (0, Z.isObject)(r) &&
+                        (r = JSON.stringify(e)).replaceAll(' ', '');
+                      var i = null != (o = n.optionValue[r]) ? o : e;
+                      c &&
+                        t &&
+                        (0, Z.isArray)(t) &&
+                        (i = { value: i, label: t[a].children || t[a].label }),
+                        u.push(i);
                     }),
-                      (r = i);
+                      (s = u);
                   } else {
-                    var l;
-                    r = null != (l = n.optionValue[e]) ? l : e;
+                    var p;
+                    (s = null != (p = n.optionValue[e]) ? p : e),
+                      c &&
+                        t &&
+                        (s = { value: s, label: t.children || t.label });
                   }
-                  o(a, r);
+                  l(o, s);
                 }),
                 (n.handleValueChange = n.handleValueChange.bind(n)),
                 n
@@ -4920,6 +4931,7 @@
           keyRoute: W().string,
           nodeKey: W().string,
           targetJsonSchema: W().any,
+          withLabel: W().boolean,
         }),
           (0, le.TS)({ type: 'select', component: Ge }),
           __webpack_require__(3794);
@@ -6391,12 +6403,12 @@
           dynamicDataObj: W().object,
           dynamicDataApiScopeList: W().object,
         };
-        var pt = (0, L.inject)(function (e) {
+        var pt = (0, I.inject)(function (e) {
             return {
               schemaStore: e.JSONSchemaStore,
               jsonStore: e.JSONEditorStore,
             };
-          })((0, L.observer)(ut)),
+          })((0, I.observer)(ut)),
           mt = (__webpack_require__(8678), ee.Select.Option),
           dt = (function (e) {
             function t(t) {
@@ -8013,12 +8025,12 @@
           dynamicDataList: W().any,
           options: W().any,
         };
-        var Rt = (0, L.inject)(function (e) {
+        var Rt = (0, I.inject)(function (e) {
           return {
             schemaStore: e.JSONSchemaStore,
             jsonStore: e.JSONEditorStore,
           };
-        })((0, L.observer)(Ct));
+        })((0, I.observer)(Ct));
         function Nt(e, t) {
           if (
             (window &&
@@ -8095,14 +8107,14 @@
                 var e = this.props.element,
                   t = this.state.rootJSONStore,
                   n = A.createElement(
-                    L.Provider,
+                    I.Provider,
                     {
                       JSONSchemaStore: t.JSONSchemaStore,
                       JSONEditorStore: t.JSONEditorStore,
                     },
                     A.createElement(Rt, this.props),
                   );
-                return e ? (I().render(n, e), '') : n;
+                return e ? (L().render(n, e), '') : n;
               }),
               t
             );

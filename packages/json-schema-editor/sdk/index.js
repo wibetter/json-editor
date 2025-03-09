@@ -85751,14 +85751,15 @@
                     o,
                     i,
                     a,
-                    s = this,
-                    l = (this.props.schemaStore || {}).indexRoute2keyRoute,
-                    c = this.props,
-                    u = c.nodeKey,
-                    d = c.indexRoute,
-                    h = c.targetJsonSchema,
-                    f = h.type,
-                    p = (l(d), h.isConditionProp);
+                    s,
+                    l = this,
+                    c = (this.props.schemaStore || {}).indexRoute2keyRoute,
+                    u = this.props,
+                    d = u.nodeKey,
+                    h = u.indexRoute,
+                    f = u.targetJsonSchema,
+                    p = f.type,
+                    g = (c(h), f.isConditionProp);
                   return n.createElement(
                     'div',
                     { className: 'advance-config-model' },
@@ -85778,12 +85779,12 @@
                           'input-image',
                         ].indexOf(e) > -1
                       );
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-isConditionProp',
+                          key: d + '-isConditionProp',
                         },
                         n.createElement(
                           'div',
@@ -85809,26 +85810,26 @@
                             'div',
                             {
                               className: 'form-item-box',
-                              key: u + '-isConditionProp-switch',
+                              key: d + '-isConditionProp-switch',
                             },
                             n.createElement(jA, {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != p && p,
+                              defaultChecked: null != g && g,
                               checkedChildren: '是',
                               unCheckedChildren: '否',
                               onChange: function (e) {
-                                s.handleValueChange('isConditionProp', e);
+                                l.handleValueChange('isConditionProp', e);
                               },
                             }),
                           ),
                         ),
                       ),
-                    ('select' === f || 'cascader' === f) &&
+                    ('select' === p || 'cascader' === p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-selectConfig',
+                          key: d + '-selectConfig',
                         },
                         n.createElement(
                           'div',
@@ -85854,15 +85855,15 @@
                             'div',
                             {
                               className: 'form-item-box',
-                              key: u + '-selectConfig-multiple',
+                              key: d + '-selectConfig-multiple',
                             },
                             n.createElement(jA, {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != (e = h.multiple) && e,
+                              defaultChecked: null != (e = f.multiple) && e,
                               checkedChildren: '多选',
                               unCheckedChildren: '单选',
                               onChange: function (e) {
-                                s.handleValueChange('multiple', e);
+                                l.handleValueChange('multiple', e);
                               },
                             }),
                           ),
@@ -85870,12 +85871,12 @@
                       ),
                     (function (e) {
                       return ['select', 'radio'].indexOf(e) > -1;
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-defaultActiveFirstOption',
+                          key: d + '-defaultActiveFirstOption',
                         },
                         n.createElement(
                           'div',
@@ -85900,16 +85901,16 @@
                             'div',
                             {
                               className: 'form-item-box',
-                              key: u + '-selectConfig-defaultActiveFirstOption',
+                              key: d + '-selectConfig-defaultActiveFirstOption',
                             },
                             n.createElement(jA, {
                               style: { display: 'inline-block' },
                               defaultChecked:
-                                null != (t = h.defaultActiveFirstOption) && t,
+                                null != (t = f.defaultActiveFirstOption) && t,
                               checkedChildren: '开启',
                               unCheckedChildren: '关闭',
                               onChange: function (e) {
-                                s.handleValueChange(
+                                l.handleValueChange(
                                   'defaultActiveFirstOption',
                                   e,
                                 );
@@ -85930,12 +85931,12 @@
                           ])
                           .indexOf(e) > -1
                       );
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-readOnly-' + h.readOnly,
+                          key: d + '-readOnly-' + f.readOnly,
                         },
                         n.createElement(
                           'div',
@@ -85962,11 +85963,11 @@
                             { className: 'form-item-box' },
                             n.createElement(jA, {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != (r = h.readOnly) && r,
+                              defaultChecked: null != (r = f.readOnly) && r,
                               checkedChildren: 'true',
                               unCheckedChildren: 'false',
                               onChange: function (e) {
-                                s.handleValueChange('readOnly', e);
+                                l.handleValueChange('readOnly', e);
                               },
                             }),
                           ),
@@ -85984,12 +85985,12 @@
                           ])
                           .indexOf(e) > -1
                       );
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-isRequired-' + h.isRequired,
+                          key: d + '-isRequired-' + f.isRequired,
                         },
                         n.createElement(
                           'div',
@@ -86016,11 +86017,11 @@
                             { className: 'form-item-box' },
                             n.createElement(jA, {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != (o = h.isRequired) && o,
+                              defaultChecked: null != (o = f.isRequired) && o,
                               checkedChildren: 'true',
                               unCheckedChildren: 'false',
                               onChange: function (e) {
-                                s.handleValueChange('isRequired', e);
+                                l.handleValueChange('isRequired', e);
                               },
                             }),
                           ),
@@ -86032,12 +86033,12 @@
                           .concat(Up, ['json', 'codearea', 'htmlarea'])
                           .indexOf(e) > -1
                       );
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-default',
+                          key: d + '-default',
                         },
                         n.createElement(
                           'div',
@@ -86058,16 +86059,54 @@
                           n.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            this.renderDefaultContent(f, h, u),
+                            this.renderDefaultContent(p, f, d),
                           ),
                         ),
                       ),
-                    'cascader' === f &&
+                    'select' === p &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-cascader-options',
+                          key: d + '-withLabel',
+                        },
+                        n.createElement(
+                          'div',
+                          { className: 'element-title' },
+                          n.createElement(
+                            zk,
+                            {
+                              title:
+                                '开启后，选中选项时，其数值会带上当前选项的label数值。',
+                              placement: 'top',
+                            },
+                            n.createElement(
+                              'span',
+                              { className: 'title-text' },
+                              '附带label数值',
+                            ),
+                          ),
+                        ),
+                        n.createElement(
+                          'div',
+                          { className: 'content-item' },
+                          n.createElement(jA, {
+                            style: { display: 'inline-block' },
+                            defaultChecked: null != (i = f.withLabel) && i,
+                            checkedChildren: '开启',
+                            unCheckedChildren: '关闭',
+                            onChange: function (e) {
+                              l.handleValueChange('withLabel', e);
+                            },
+                          }),
+                        ),
+                      ),
+                    'cascader' === p &&
+                      n.createElement(
+                        'div',
+                        {
+                          className: 'wide-screen-element-warp',
+                          key: d + '-cascader-options',
                         },
                         n.createElement(
                           'div',
@@ -86089,9 +86128,9 @@
                           'div',
                           { className: 'content-item' },
                           n.createElement(zA, {
-                            jsonData: h.options,
+                            jsonData: f.options,
                             onChange: function (e) {
-                              s.handleValueChange('options', e);
+                              l.handleValueChange('options', e);
                             },
                             maxLines: 10,
                           }),
@@ -86101,7 +86140,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: u + '-description',
+                        key: d + '-description',
                       },
                       n.createElement(
                         'div',
@@ -86128,15 +86167,15 @@
                           { className: 'form-item-box' },
                           n.createElement(sk, {
                             style: { display: 'inline-block' },
-                            placeholder: '请输入' + h.title + '的字段描述',
-                            defaultValue: h.description,
+                            placeholder: '请输入' + f.title + '的字段描述',
+                            defaultValue: f.description,
                             onPressEnter: function (e) {
                               var t = e.target.value;
-                              s.handleValueChange('description', t);
+                              l.handleValueChange('description', t);
                             },
                             onBlur: function (e) {
                               var t = e.target.value;
-                              s.handleValueChange('description', t);
+                              l.handleValueChange('description', t);
                             },
                           }),
                         ),
@@ -86146,7 +86185,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: u + '-showKey',
+                        key: d + '-showKey',
                       },
                       n.createElement(
                         'div',
@@ -86173,11 +86212,11 @@
                           { className: 'form-item-box' },
                           n.createElement(jA, {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (i = h.showKey) && i,
+                            defaultChecked: null != (a = f.showKey) && a,
                             checkedChildren: 'true',
                             unCheckedChildren: 'false',
                             onChange: function (e) {
-                              s.handleValueChange('showKey', e);
+                              l.handleValueChange('showKey', e);
                             },
                           }),
                         ),
@@ -86198,12 +86237,12 @@
                           'htmlarea',
                         ].indexOf(e) > -1
                       );
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-placeholder',
+                          key: d + '-placeholder',
                         },
                         n.createElement(
                           'div',
@@ -86230,15 +86269,15 @@
                             { className: 'form-item-box' },
                             n.createElement(sk, {
                               style: { display: 'inline-block' },
-                              placeholder: '请输入' + h.title + '的输入提示',
-                              defaultValue: h.placeholder,
+                              placeholder: '请输入' + f.title + '的输入提示',
+                              defaultValue: f.placeholder,
                               onPressEnter: function (e) {
                                 var t = e.target.value;
-                                s.handleValueChange('placeholder', t);
+                                l.handleValueChange('placeholder', t);
                               },
                               onBlur: function (e) {
                                 var t = e.target.value;
-                                s.handleValueChange('placeholder', t);
+                                l.handleValueChange('placeholder', t);
                               },
                             }),
                           ),
@@ -86246,12 +86285,12 @@
                       ),
                     (function (e) {
                       return [].concat(Gp, ['array']).indexOf(e) > -1;
-                    })(f) &&
+                    })(p) &&
                       n.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: u + '-showCodeViewBtn-' + h.showCodeViewBtn,
+                          key: d + '-showCodeViewBtn-' + f.showCodeViewBtn,
                         },
                         n.createElement(
                           'div',
@@ -86279,17 +86318,17 @@
                             n.createElement(jA, {
                               style: { display: 'inline-block' },
                               defaultChecked:
-                                null == (a = h.showCodeViewBtn) || a,
+                                null == (s = f.showCodeViewBtn) || s,
                               checkedChildren: 'true',
                               unCheckedChildren: 'false',
                               onChange: function (e) {
-                                s.handleValueChange('showCodeViewBtn', e);
+                                l.handleValueChange('showCodeViewBtn', e);
                               },
                             }),
                           ),
                         ),
                       ),
-                    'number' === Vf(f) &&
+                    'number' === Vf(p) &&
                       n.createElement(
                         n.Fragment,
                         null,
@@ -86297,7 +86336,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: u + '-minimum-' + h.minimum,
+                            key: d + '-minimum-' + f.minimum,
                           },
                           n.createElement(
                             'div',
@@ -86324,14 +86363,14 @@
                               { className: 'form-item-box' },
                               n.createElement(NA, {
                                 style: { display: 'inline-block' },
-                                defaultValue: h.minimum,
+                                defaultValue: f.minimum,
                                 onPressEnter: function (e) {
                                   var t = e.target.value;
-                                  s.handleValueChange('minimum', t);
+                                  l.handleValueChange('minimum', t);
                                 },
                                 onBlur: function (e) {
                                   var t = e.target.value;
-                                  s.handleValueChange('minimum', t);
+                                  l.handleValueChange('minimum', t);
                                 },
                               }),
                             ),
@@ -86341,7 +86380,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: u + '-maximum-' + h.maximum,
+                            key: d + '-maximum-' + f.maximum,
                           },
                           n.createElement(
                             'div',
@@ -86368,21 +86407,21 @@
                               { className: 'form-item-box' },
                               n.createElement(NA, {
                                 style: { display: 'inline-block' },
-                                defaultValue: h.maximum,
+                                defaultValue: f.maximum,
                                 onPressEnter: function (e) {
                                   var t = e.target.value;
-                                  s.handleValueChange('maximum', t);
+                                  l.handleValueChange('maximum', t);
                                 },
                                 onBlur: function (e) {
                                   var t = e.target.value;
-                                  s.handleValueChange('maximum', t);
+                                  l.handleValueChange('maximum', t);
                                 },
                               }),
                             ),
                           ),
                         ),
                       ),
-                    'array' === Vf(f) &&
+                    'array' === Vf(p) &&
                       n.createElement(
                         n.Fragment,
                         null,
@@ -86390,7 +86429,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: u + '-minimum-child',
+                            key: d + '-minimum-child',
                           },
                           n.createElement(
                             'div',
@@ -86416,9 +86455,9 @@
                               { className: 'form-item-box' },
                               n.createElement(NA, {
                                 style: { display: 'inline-block' },
-                                defaultValue: h['minimum-child'],
+                                defaultValue: f['minimum-child'],
                                 onChange: function (e) {
-                                  s.handleValueChange('minimum-child', e);
+                                  l.handleValueChange('minimum-child', e);
                                 },
                               }),
                             ),
@@ -86428,7 +86467,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: u + '-maximum-child',
+                            key: d + '-maximum-child',
                           },
                           n.createElement(
                             'div',
@@ -86454,9 +86493,9 @@
                               { className: 'form-item-box' },
                               n.createElement(NA, {
                                 style: { display: 'inline-block' },
-                                defaultValue: h['maximum-child'],
+                                defaultValue: f['maximum-child'],
                                 onChange: function (e) {
-                                  s.handleValueChange('maximum-child', e);
+                                  l.handleValueChange('maximum-child', e);
                                 },
                               }),
                             ),
@@ -86467,7 +86506,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: u + '-onShow',
+                        key: d + '-onShow',
                       },
                       n.createElement(
                         'div',
@@ -86495,14 +86534,14 @@
                           n.createElement(sk, {
                             style: { display: 'inline-block' },
                             placeholder: '请输入显隐表达式',
-                            defaultValue: h.onShow,
+                            defaultValue: f.onShow,
                             onPressEnter: function (e) {
                               var t = e.target.value;
-                              s.handleValueChange('onShow', t);
+                              l.handleValueChange('onShow', t);
                             },
                             onBlur: function (e) {
                               var t = e.target.value;
-                              s.handleValueChange('onShow', t);
+                              l.handleValueChange('onShow', t);
                             },
                           }),
                         ),
@@ -86512,7 +86551,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: u + '-titleStyle',
+                        key: d + '-titleStyle',
                       },
                       n.createElement(
                         'div',
@@ -86534,9 +86573,9 @@
                         'div',
                         { className: 'content-item' },
                         n.createElement(zA, {
-                          jsonData: h.titleStyle,
+                          jsonData: f.titleStyle,
                           onChange: function (e) {
-                            s.handleValueChange('titleStyle', e);
+                            l.handleValueChange('titleStyle', e);
                           },
                           maxLines: 10,
                         }),
@@ -87146,15 +87185,9 @@
                 }),
                 (n.onDeleteBtnEvent = function () {
                   var e = n.props.schemaStore || {},
-                    t = e.getSchemaByIndexRoute,
-                    r = e.deleteOptionItem,
-                    o = n.props,
-                    i = o.indexRoute,
-                    a = o.optionIndex,
-                    s = t(i);
-                  s.options && s.options.length > 1
-                    ? r(i, a)
-                    : od.warning('删除失败，至少保留一个可选项。');
+                    t = (e.getSchemaByIndexRoute, e.deleteOptionItem),
+                    r = n.props;
+                  t(r.indexRoute, r.optionIndex);
                 }),
                 (n.onAddBtnEvent = n.onAddBtnEvent.bind(n)),
                 (n.onCopyBtnEvent = n.onCopyBtnEvent.bind(n)),

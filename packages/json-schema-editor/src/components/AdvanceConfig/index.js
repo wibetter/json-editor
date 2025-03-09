@@ -369,6 +369,32 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
+        {curType === 'select' && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-withLabel`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'开启后，选中选项时，其数值会带上当前选项的label数值。'}
+                placement="top"
+              >
+                <span className="title-text">附带label数值</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <RcSwitch
+                style={{ display: 'inline-block' }}
+                defaultChecked={targetJsonSchema.withLabel ?? false}
+                checkedChildren="开启"
+                unCheckedChildren="关闭"
+                onChange={(checked) => {
+                  this.handleValueChange('withLabel', checked);
+                }}
+              />
+            </div>
+          </div>
+        )}
         {curType === 'cascader' && (
           <div
             className="wide-screen-element-warp"

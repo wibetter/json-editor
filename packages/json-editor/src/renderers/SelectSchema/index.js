@@ -22,6 +22,7 @@ class SelectSchema extends React.PureComponent {
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
+    withLabel: PropTypes.boolean, // 选择选项时是否带上label的数值
   };
 
   optionValue = {}; // 记录options中对象类型的value
@@ -45,24 +46,43 @@ class SelectSchema extends React.PureComponent {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (value) => {
-    const { keyRoute, jsonStore } = this.props;
+  handleValueChange = (value, option) => {
+    const { keyRoute, jsonStore, targetJsonSchema } = this.props;
     const { updateFormValueData } = jsonStore || {};
     let curValue = value;
+    const withLabel = targetJsonSchema.withLabel;
+
     if (isArray(value)) {
       const valueArray = [];
-      value.forEach((valItem) => {
+      value.forEach((valItem, index) => {
         let valueStr = valItem;
         if (isObject(valueStr)) {
           valueStr = JSON.stringify(valItem);
           valueStr.replaceAll(' ', '');
         }
-        valueArray.push(this.optionValue[valueStr] ?? valItem);
+        let curItem = this.optionValue[valueStr] ?? valItem;
+
+        if (withLabel && option && isArray(option)) {
+          curItem = {
+            value: curItem,
+            label: option[index].children || option[index].label,
+          };
+        }
+
+        valueArray.push(curItem);
       });
       curValue = valueArray;
     } else {
       curValue = this.optionValue[value] ?? value;
+
+      if (withLabel && option) {
+        curValue = {
+          value: curValue,
+          label: option.children || option.label,
+        };
+      }
     }
+
     updateFormValueData(keyRoute, curValue); // 更新数值
   };
 
