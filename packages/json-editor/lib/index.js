@@ -5651,12 +5651,12 @@
                     y = u.readOnly || !1,
                     h = r(l),
                     g = (0, te.y8)(u.type),
-                    S = u.style ? buildStyle((0, Q.toJS)(u.style)) : {},
+                    S = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
                     _ = u.titleStyle
-                      ? buildStyle((0, Q.toJS)(u.titleStyle))
+                      ? (0, te.K8)((0, Q.toJS)(u.titleStyle))
                       : {},
                     f = u.contentStyle
-                      ? buildStyle((0, Q.toJS)(u.contentStyle))
+                      ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
                       : {},
                     v = A.createElement(at.SketchPicker, {
                       className: 'color-sketch-picker',

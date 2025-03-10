@@ -8,7 +8,7 @@ import { SketchPicker } from 'react-color';
 import { CloseOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { isNeedTwoColWarpStyle } from '$utils/index';
+import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 import './index.scss';
 
 /**
