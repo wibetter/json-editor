@@ -23,7 +23,8 @@
       width: 18px;
       height: 18px;
       outline: none;
-      border: none;
+      // border: none;
+      border: 1px solid #efefef;
     }
 
     .delete-bgColor-btn {
@@ -59,7 +60,7 @@
     }
 
     &.selected {
-      border-color: rgba(44, 99, 255, 1);
+      // border-color: rgba(44, 99, 255, 1);
 
       .arrow {
         background: url('../../assets/img/up.png') no-repeat;
