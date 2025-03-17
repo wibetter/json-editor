@@ -282,12 +282,12 @@
             require('mobx')),
           E = require('antd'),
           S = require('lodash'),
-          O = require('@wibetter/json-utils');
-        function C(e) {
-          return (0, O.objClone)(e);
+          C = require('@wibetter/json-utils');
+        function O(e) {
+          return (0, C.objClone)(e);
         }
         function j(e, t) {
-          return (0, O.isEqual)(e, t);
+          return (0, C.isEqual)(e, t);
         }
         function N(e, t) {
           window.sessionStorage && window.sessionStorage.setItem(e, t);
@@ -375,11 +375,11 @@
             'htmlarea',
             'array',
           ].concat(Ee),
-          Oe = [].concat(be, Se),
-          Ce = ['string'],
+          Ce = [].concat(be, Se),
+          Oe = ['string'],
           je =
             (((e = {
-              object: Oe,
+              object: Ce,
               array: [
                 'object',
                 'array',
@@ -394,10 +394,10 @@
                 'time',
                 'input-image',
               ],
-              radio: Ce,
-              select: Ce,
+              radio: Oe,
+              select: Oe,
             }).select = ['string']),
-            (e.all = Oe),
+            (e.all = Ce),
             e),
           Ne = {
             input: '字符串/单行文本',
@@ -432,8 +432,8 @@
             event: '事件(旧版)',
             'dynamic-data': '动态数据源(旧版)',
           },
-          we = O.TypeDataList.jsonschema,
-          Ie = O.TypeDataList.input,
+          we = C.TypeDataList.jsonschema,
+          Ie = C.TypeDataList.input,
           Re = {
             schemaStore:
               ((w = b.action.bound),
@@ -504,12 +504,12 @@
                   (t.initJSONSchemaData = function (e) {
                     if (e && '{}' !== JSON.stringify(e)) {
                       if (!j(e, this.JSONSchemaObj))
-                        if (e && (0, O.isNewSchemaData)(e)) this.jsonSchema = e;
+                        if (e && (0, C.isNewSchemaData)(e)) this.jsonSchema = e;
                         else {
-                          var t = (0, O.oldSchemaToNewSchema)(e);
+                          var t = (0, C.oldSchemaToNewSchema)(e);
                           this.jsonSchema = t;
                         }
-                    } else this.jsonSchema = C(we);
+                    } else this.jsonSchema = O(we);
                   }),
                   (t.initOnChange = function (e) {
                     var t, n;
@@ -530,16 +530,16 @@
                       e || this.onChange(this.JSONSchemaObj);
                   }),
                   (t.indexRoute2keyRoute = function (e) {
-                    return (0, O.indexRoute2keyRoute)(e, this.jsonSchema);
+                    return (0, C.indexRoute2keyRoute)(e, this.jsonSchema);
                   }),
                   (t.keyRoute2indexRoute = function (e) {
-                    return (0, O.keyRoute2indexRoute)(e, this.jsonSchema);
+                    return (0, C.keyRoute2indexRoute)(e, this.jsonSchema);
                   }),
                   (t.getSchemaByIndexRoute = function (e) {
-                    return (0, O.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
+                    return (0, C.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
                   }),
                   (t.getSchemaByKeyRoute = function (e) {
-                    return (0, O.getSchemaByKeyRoute)(e, this.jsonSchema, !0);
+                    return (0, C.getSchemaByKeyRoute)(e, this.jsonSchema, !0);
                   }),
                   (t.getNewJsonKeyIndex = function (e, t) {
                     var n = (t || 'field') + '_' + this.curJsonKeyIndex;
@@ -552,12 +552,12 @@
                     );
                   }),
                   (t.isExitJsonKey = function (e, t) {
-                    var n = (0, O.getParentIndexRoute)(e),
+                    var n = (0, C.getParentIndexRoute)(e),
                       a = this.getSchemaByIndexRoute(n);
                     return (
                       !!(a.propertyOrder && a.propertyOrder.indexOf(t) >= 0) ||
-                      (O.KeyWordList &&
-                        O.KeyWordList.indexOf(t) >= 0 &&
+                      (C.KeyWordList &&
+                        C.KeyWordList.indexOf(t) >= 0 &&
                         E.message.warning(
                           t +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
@@ -572,14 +572,14 @@
                     );
                   }),
                   (t.isSupportCurType = function (e, t) {
-                    var n = (0, O.getParentIndexRoute)(e),
+                    var n = (0, C.getParentIndexRoute)(e),
                       a = this.getSchemaByIndexRoute(n),
                       o = this.SchemaTypeList[a.type];
                     return !!(o && o.indexOf(t) >= 0);
                   }),
                   (t.addChildJson = function (e, t) {
-                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
-                    if ((0, O.isContainerSchema)(n)) {
+                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    if ((0, C.isContainerSchema)(n)) {
                       var a = this.getNewJsonKeyIndex(n);
                       n.propertyOrder.push(a),
                         (n.properties[a] = Ie),
@@ -587,8 +587,8 @@
                     } else E.message.warning('非对象类型字段不允许插入子元素');
                   }),
                   (t.changeType = function (e, t, n, a, o) {
-                    var r = (0, O.getParentIndexRoute)(e),
-                      i = (0, O.getSchemaByIndexRoute)(r, this.jsonSchema),
+                    var r = (0, C.getParentIndexRoute)(e),
+                      i = (0, C.getSchemaByIndexRoute)(r, this.jsonSchema),
                       s = Object.assign(
                         {},
                         n,
@@ -602,22 +602,22 @@
                         ]),
                       );
                     i.properties && i.properties[t]
-                      ? (i.properties[t] = C(s))
-                      : i[t] && (i[t] = C(s)),
+                      ? (i.properties[t] = O(s))
+                      : i[t] && (i[t] = O(s)),
                       this.jsonSchemaChange(o);
                   }),
                   (t.updateSchemaData = function (e, t, n) {
-                    var a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
-                    Object.assign(a, C(t)), this.jsonSchemaChange(n);
+                    var a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    Object.assign(a, O(t)), this.jsonSchemaChange(n);
                   }),
                   (t.editSchemaData = function (e, t, n, a) {
-                    var o = (0, O.getParentIndexRoute)(e),
-                      r = (0, O.getSchemaByIndexRoute)(o, this.jsonSchema);
-                    (r.properties[t] = u()({}, C(r.properties[t]), n)),
+                    var o = (0, C.getParentIndexRoute)(e),
+                      r = (0, C.getSchemaByIndexRoute)(o, this.jsonSchema);
+                    (r.properties[t] = u()({}, O(r.properties[t]), n)),
                       this.jsonSchemaChange(a);
                   }),
                   (t.editJsonKey = function (e, t, n) {
-                    var a = (0, O.getSchemaByIndexRoute)(
+                    var a = (0, C.getSchemaByIndexRoute)(
                       e,
                       this.jsonSchema,
                       !0,
@@ -627,16 +627,16 @@
                       this.jsonSchemaChange(n);
                   }),
                   (t.addNextJsonData = function (e) {
-                    var t = (0, O.getParentIndexRoute)(e),
-                      n = (0, O.getSchemaByIndexRoute)(t, this.jsonSchema),
+                    var t = (0, C.getParentIndexRoute)(e),
+                      n = (0, C.getSchemaByIndexRoute)(t, this.jsonSchema),
                       a = this.getNewJsonKeyIndex(n);
                     this.insertJsonData(e, a, Ie);
                   }),
                   (t.insertJsonData = function (e, t, n, a, o) {
-                    var r = (0, O.getParentIndexRoute_CurIndex)(e),
+                    var r = (0, C.getParentIndexRoute_CurIndex)(e),
                       i = r[0],
                       s = r[1],
-                      c = (0, O.getSchemaByIndexRoute)(i, this.jsonSchema);
+                      c = (0, C.getSchemaByIndexRoute)(i, this.jsonSchema);
                     c.properties[t] = n;
                     var l = c.propertyOrder,
                       p = 'before' === a ? Number(s) : Number(s) + 1,
@@ -646,24 +646,24 @@
                       this.jsonSchemaChange(o);
                   }),
                   (t.deleteJsonByIndex_CurKey = function (e, t, n) {
-                    var a = (0, O.getParentIndexRoute)(e),
-                      o = (0, O.getSchemaByIndexRoute)(a, this.jsonSchema);
+                    var a = (0, C.getParentIndexRoute)(e),
+                      o = (0, C.getSchemaByIndexRoute)(a, this.jsonSchema);
                     delete o.properties[t];
                     var r = o.propertyOrder.indexOf(t);
                     o.propertyOrder.splice(r, 1), this.jsonSchemaChange(n);
                   }),
                   (t.deleteJsonByIndex = function (e, t) {
-                    var n = (0, O.getParentIndexRoute_CurIndex)(e),
+                    var n = (0, C.getParentIndexRoute_CurIndex)(e),
                       a = n[0],
                       o = n[1],
-                      r = (0, O.getSchemaByIndexRoute)(a, this.jsonSchema),
+                      r = (0, C.getSchemaByIndexRoute)(a, this.jsonSchema),
                       i = r.propertyOrder[o];
                     delete r.properties[i];
                     var s = r.propertyOrder.indexOf(i);
                     r.propertyOrder.splice(s, 1), this.jsonSchemaChange(t);
                   }),
                   (t.updateEnumItem = function (e, t, n, a, o) {
-                    var r = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var r = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     r.enum &&
                       r.enumextra &&
                       ((r.enum[t] = n), (r.enumextra[t] = a)),
@@ -671,14 +671,14 @@
                   }),
                   (t.isExitEnumKey = function (e, t, n) {
                     var a = !1,
-                      o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                      o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (o.enum) {
-                      var r = C(o.enum);
+                      var r = O(o.enum);
                       t >= 0 && r.splice(t, 1), r.indexOf(n) >= 0 && (a = !0);
                     }
                     return (
-                      O.KeyWordList &&
-                        O.KeyWordList.indexOf(n) >= 0 &&
+                      C.KeyWordList &&
+                        C.KeyWordList.indexOf(n) >= 0 &&
                         E.message.warning(
                           n +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
@@ -687,23 +687,23 @@
                     );
                   }),
                   (t.updateEnumKey = function (e, t, n, a) {
-                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.enum && (o.enum[t] = n), this.jsonSchemaChange(a);
                   }),
                   (t.updateEnumText = function (e, t, n, a) {
-                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.enumextra && (o.enumextra[t] = n),
                       this.jsonSchemaChange(a);
                   }),
                   (t.deleteEnumItem = function (e, t, n) {
-                    var a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     a.enum &&
                       a.enumextra &&
                       (a.enum.splice(t, 1), a.enumextra.splice(t, 1)),
                       this.jsonSchemaChange(n);
                   }),
                   (t.insertEnumItem = function (e, t, n, a, o, r) {
-                    var i = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var i = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (i.enum && i.enumextra) {
                       var s = 'before' === o ? Number(t) : Number(t) + 1,
                         c = i.enum.slice(0, s),
@@ -726,7 +726,7 @@
                     );
                   }),
                   (t.addEnumItem = function (e, t) {
-                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.enum) {
                       var a = this.getNewEnumIndex(n.enum),
                         o = '选项' + (this.curJsonKeyIndex - 1);
@@ -734,7 +734,7 @@
                     }
                   }),
                   (t.copyEnumItem = function (e, t) {
-                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.enum) {
                       var a = n.enum[t],
                         o = n.enumextra[t],
@@ -744,7 +744,7 @@
                     }
                   }),
                   (t.updateOptionItem = function (e, t, n, a, o) {
-                    var r = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var r = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     r.options &&
                       r.options[t] &&
                       ((r.options[t].label = n), (r.options[t].value = a)),
@@ -752,15 +752,15 @@
                   }),
                   (t.isExitOptionLabel = function (e, t) {
                     var n = !1,
-                      a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                      a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     return (
                       a.options &&
                         a.options.find(function (e) {
                           return e.label === t;
                         }) &&
                         (n = !0),
-                      O.KeyWordList &&
-                        O.KeyWordList.indexOf(t) >= 0 &&
+                      C.KeyWordList &&
+                        C.KeyWordList.indexOf(t) >= 0 &&
                         E.message.warning(
                           t + '是JSONSchema的保留关键字，建议您换一个名称。',
                         ),
@@ -768,22 +768,22 @@
                     );
                   }),
                   (t.updateOptionLabel = function (e, t, n, a) {
-                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.options && o.options[t] && (o.options[t].label = n),
                       this.jsonSchemaChange(a);
                   }),
                   (t.updateOptionValue = function (e, t, n, a) {
-                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.options && o.options[t] && (o.options[t].value = n),
                       this.jsonSchemaChange(a);
                   }),
                   (t.deleteOptionItem = function (e, t, n) {
-                    var a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     a.options && a.options[t] && a.options.splice(t, 1),
                       this.jsonSchemaChange(n);
                   }),
                   (t.insertOption = function (e, t, n, a, o, r) {
-                    var i = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var i = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (i.options) {
                       var s = 'before' === o ? Number(t) : Number(t) + 1,
                         c = i.options.slice(0, s),
@@ -799,7 +799,7 @@
                       : 'value1';
                   }),
                   (t.addOptionItem = function (e, t) {
-                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.options) {
                       var a = this.getNewOptionValue(n.options),
                         o = '选项' + (n.options.length + 1);
@@ -807,7 +807,7 @@
                     }
                   }),
                   (t.copyOptionItem = function (e, t) {
-                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.options) {
                       n.options[t];
                       var a = this.getNewOptionValue(n.options),
@@ -1215,7 +1215,7 @@
                   var e = this;
                   return function (t) {
                     for (
-                      var n = (0, O.getSchemaByIndexRoute)(t, e.jsonSchema),
+                      var n = (0, C.getSchemaByIndexRoute)(t, e.jsonSchema),
                         a = n.propertyOrder,
                         o = [],
                         r = [],
@@ -1292,7 +1292,7 @@
                     e,
                   ) {
                     n.props.onChange &&
-                      (0, O.isFunction)(n.props.onChange) &&
+                      (0, C.isFunction)(n.props.onChange) &&
                       n.props.onChange(e);
                   }),
                   (n.state = {
@@ -1319,7 +1319,7 @@
                     p = (s.curJSONDataTemp, a || !1);
                   return (
                     (i = void 0 !== i ? i : i || '{}'),
-                    ((0, O.isObject)(i) || (0, O.isArray)(i)) &&
+                    ((0, C.isObject)(i) || (0, C.isArray)(i)) &&
                       (i = JSON.stringify(i, null, 2)),
                     r.createElement(
                       'div',
@@ -2115,7 +2115,7 @@
                           ),
                         ),
                       ),
-                    'number' === (0, O.getExpectType)(h) &&
+                    'number' === (0, C.getExpectType)(h) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2208,7 +2208,7 @@
                           ),
                         ),
                       ),
-                    'array' === (0, O.getExpectType)(h) &&
+                    'array' === (0, C.getExpectType)(h) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2393,7 +2393,7 @@
                     o = a.indexRoute,
                     r = a.jsonKey,
                     i = a.targetJsonSchema;
-                  i.type !== e && t(o, r, O.TypeDataList[e], i);
+                  i.type !== e && t(o, r, C.TypeDataList[e], i);
                 }),
                 (n.handleJsonKeyChange = function (e) {
                   var t = n.props.schemaStore || {},
@@ -2427,7 +2427,7 @@
                     o = n.props,
                     r = o.indexRoute,
                     i = o.targetJsonSchema;
-                  (0, O.isContainerSchema)(i) ? t(r) : a(r);
+                  (0, C.isContainerSchema)(i) ? t(r) : a(r);
                 }),
                 (n.onCopyBtnEvent = function () {
                   var e = n.props,
@@ -2439,8 +2439,8 @@
                     s = r.indexRoute2keyRoute,
                     c = r.insertJsonData,
                     l = r.getNewJsonKeyIndex,
-                    p = C(a),
-                    d = (0, O.getParentIndexRoute)(t),
+                    p = O(a),
+                    d = (0, C.getParentIndexRoute)(t),
                     m = l(i(d), o),
                     u = a.type;
                   N(s(d) + '-' + m + '-' + u, s(t)), c(t, m, p);
@@ -2486,7 +2486,7 @@
                   l = o.nodeKey,
                   p = o.targetJsonSchema,
                   d = this.state.showAdvanceConfig,
-                  m = s ? (0, O.getParentIndexRoute)(s) : '',
+                  m = s ? (0, C.getParentIndexRoute)(s) : '',
                   u = m ? a(m) : {},
                   h = null == (e = u && u.isContainer) || e,
                   y = p.isFixed || this.props.isFixed || !1,
@@ -2506,8 +2506,8 @@
                   x = this.props.hideOperaBtn || !h,
                   b = null == (t = this.props.showAdvanceBtn) || t,
                   S = this.getCurrentTypeList(i),
-                  C = p.type,
-                  j = (0, O.isContainerSchema)(p);
+                  O = p.type,
+                  j = (0, C.isContainerSchema)(p);
                 return r.createElement(
                   r.Fragment,
                   null,
@@ -2540,17 +2540,16 @@
                           E.Select,
                           {
                             showSearch: !0,
-                            defaultValue: C,
+                            defaultValue: O,
                             style: { width: 150 },
                             onChange: this.handleTypeChange,
                             disabled: f,
                             filterOption: function (e, t) {
                               if (
-                                (console.log('filterOption:', e, t),
                                 t.value.indexOf(e) > -1 ||
-                                  (t.children && t.children.indexOf(e) > -1))
+                                (t.children && t.children.indexOf(e) > -1)
                               )
-                                return console.log(1222), !0;
+                                return !0;
                             },
                           },
                           S.map(function (e) {
@@ -2811,13 +2810,13 @@
                       var p = l[e];
                       p &&
                         '数据源类型' === c.title &&
-                        a((0, O.getNextIndexRoute)(i), 'data', p);
+                        a((0, C.getNextIndexRoute)(i), 'data', p);
                     }
-                    if (O.EventTypeDataList) {
-                      var d = O.EventTypeDataList[e];
+                    if (C.EventTypeDataList) {
+                      var d = C.EventTypeDataList[e];
                       '事件类型' === c.title &&
                         d &&
-                        o((0, O.getParentIndexRoute)(i), d);
+                        o((0, C.getParentIndexRoute)(i), d);
                     }
                   }
                 }),
@@ -2954,7 +2953,7 @@
                     s = o.optionValue;
                   if (a !== s) {
                     var c = a;
-                    if ((0, O.isObject)(s) && (0, O.isString)(c))
+                    if ((0, C.isObject)(s) && (0, C.isString)(c))
                       try {
                         c = JSON.parse(c);
                       } catch (e) {
@@ -2995,7 +2994,7 @@
                   n = e.optionValue,
                   a = (e.optionNodeKey, n);
                 return (
-                  ((0, O.isObject)(n) || (0, O.isArray)(n)) &&
+                  ((0, C.isObject)(n) || (0, C.isArray)(n)) &&
                     (a = JSON.stringify(n)),
                   r.createElement(
                     'div',
@@ -3581,11 +3580,11 @@
                       u = r(d);
                     if (!u.isFixed) {
                       var h = a.indexRoute,
-                        y = (0, O.isSameParent)(d, h),
-                        g = (0, O.getCurPosition)(d, h);
+                        y = (0, C.isSameParent)(d, h),
+                        g = (0, C.getCurPosition)(d, h);
                       if (y)
                         c(d, !0),
-                          'before' === g && (h = (0, O.moveForward)(h)),
+                          'before' === g && (h = (0, C.moveForward)(h)),
                           a.dragOverGapTop
                             ? s(h, m, u, 'before')
                             : (a.dragOver || a.dragOverGapBottom) && s(h, m, u);
@@ -3600,7 +3599,7 @@
                             '目标位置不支持' + f + '类型元素',
                           );
                         var v = i(d),
-                          x = (0, O.getParentIndexRoute)(h),
+                          x = (0, C.getParentIndexRoute)(h),
                           b = (function (e) {
                             if (window.sessionStorage)
                               return window.sessionStorage.getItem(e);
@@ -3661,7 +3660,7 @@
                     a = this.props.schemaStore || {},
                     o = a.jsonSchema,
                     i = a.schemaChange,
-                    s = (0, O.isEmptySchema)(o),
+                    s = (0, C.isEmptySchema)(o),
                     c = o.type;
                   return r.createElement(
                     'div',
