@@ -1070,8 +1070,15 @@
                     description: '',
                     placeholder: '',
                   },
+                  tipText: {
+                    title: '提示说明',
+                    type: 'textarea',
+                    default: '',
+                    description: '',
+                    placeholder: '',
+                  },
                 },
-                propertyOrder: ['attr', 'description'],
+                propertyOrder: ['attr', 'description', 'tipText'],
               },
               'minimum-child': 1,
               onShow:
