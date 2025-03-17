@@ -18,14 +18,14 @@ export const BASE_TYPE = [
 
 // 固有容器类型
 export const Fixed_CONTAINER_TYPE = [
-  'datasource',
-  'event',
-  'dynamic-data',
   'dynamic-config',
   'dynamic-object',
   'dynamic-array',
   'sohu-source',
   'sohu-event',
+  'datasource',
+  'event',
+  'dynamic-data',
 ];
 
 // 当前容器类型
@@ -100,4 +100,39 @@ export const TypeList = {
   select: RADIO_TYPE,
   select: SELECT_TYPE,
   all: ALL_TYPE,
+};
+
+// 类型说明
+export const TypeInfoList = {
+  input: '字符串/单行文本',
+  boolean: 'Boolean/开关',
+  number: 'Number数值',
+  color: '颜色数值',
+  url: 'URL数值',
+  textarea: '多行文本',
+  radio: '单选',
+  select: '下拉选择/多选',
+  cascader: '级联选择',
+  checkboxes: '多选框',
+  date: '日期',
+  'date-time': '日期时间',
+  time: '时间',
+  'input-image': '图片上传',
+  quantity: '数值单位设置',
+  'box-style': '盒子模型/边距设置',
+  'padding-margin': '边距设置',
+  'text-editor': '富文本内容',
+  json: 'json内容',
+  codearea: 'code内容',
+  htmlarea: 'html内容',
+  object: '对象(Object)',
+  array: '数组(Array)',
+  'dynamic-config': '动态配置(config)',
+  'dynamic-object': '动态对象(object)',
+  'dynamic-array': '动态数组(array)',
+  'sohu-source': '数据源',
+  'sohu-event': '组件事件',
+  datasource: '静态数据源(旧版)',
+  event: '事件(旧版)',
+  'dynamic-data': '动态数据源(旧版)',
 };

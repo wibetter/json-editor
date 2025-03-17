@@ -256,7 +256,7 @@
         n.r(a),
           n.d(a, {
             default: function () {
-              return gt;
+              return ft;
             },
           });
         var e,
@@ -282,12 +282,12 @@
             require('mobx')),
           E = require('antd'),
           S = require('lodash'),
-          C = require('@wibetter/json-utils');
-        function O(e) {
-          return (0, C.objClone)(e);
+          O = require('@wibetter/json-utils');
+        function C(e) {
+          return (0, O.objClone)(e);
         }
         function j(e, t) {
-          return (0, C.isEqual)(e, t);
+          return (0, O.isEqual)(e, t);
         }
         function N(e, t) {
           window.sessionStorage && window.sessionStorage.setItem(e, t);
@@ -356,14 +356,14 @@
             'input-image',
           ],
           Ee = ['object'].concat([
-            'datasource',
-            'event',
-            'dynamic-data',
             'dynamic-config',
             'dynamic-object',
             'dynamic-array',
             'sohu-source',
             'sohu-event',
+            'datasource',
+            'event',
+            'dynamic-data',
           ]),
           Se = [
             'quantity',
@@ -375,11 +375,11 @@
             'htmlarea',
             'array',
           ].concat(Ee),
-          Ce = [].concat(be, Se),
-          Oe = ['string'],
+          Oe = [].concat(be, Se),
+          Ce = ['string'],
           je =
             (((e = {
-              object: Ce,
+              object: Oe,
               array: [
                 'object',
                 'array',
@@ -394,14 +394,47 @@
                 'time',
                 'input-image',
               ],
-              radio: Oe,
-              select: Oe,
+              radio: Ce,
+              select: Ce,
             }).select = ['string']),
-            (e.all = Ce),
+            (e.all = Oe),
             e),
-          Ne = C.TypeDataList.jsonschema,
-          we = C.TypeDataList.input,
-          Ie = {
+          Ne = {
+            input: '字符串/单行文本',
+            boolean: 'Boolean/开关',
+            number: 'Number数值',
+            color: '颜色数值',
+            url: 'URL数值',
+            textarea: '多行文本',
+            radio: '单选',
+            select: '下拉选择/多选',
+            cascader: '级联选择',
+            checkboxes: '多选框',
+            date: '日期',
+            'date-time': '日期时间',
+            time: '时间',
+            'input-image': '图片上传',
+            quantity: '数值单位设置',
+            'box-style': '盒子模型/边距设置',
+            'padding-margin': '边距设置',
+            'text-editor': '富文本内容',
+            json: 'json内容',
+            codearea: 'code内容',
+            htmlarea: 'html内容',
+            object: '对象(Object)',
+            array: '数组(Array)',
+            'dynamic-config': '动态配置(config)',
+            'dynamic-object': '动态对象(object)',
+            'dynamic-array': '动态数组(array)',
+            'sohu-source': '数据源',
+            'sohu-event': '组件事件',
+            datasource: '静态数据源(旧版)',
+            event: '事件(旧版)',
+            'dynamic-data': '动态数据源(旧版)',
+          },
+          we = O.TypeDataList.jsonschema,
+          Ie = O.TypeDataList.input,
+          Re = {
             schemaStore:
               ((w = b.action.bound),
               (I = b.action.bound),
@@ -471,12 +504,12 @@
                   (t.initJSONSchemaData = function (e) {
                     if (e && '{}' !== JSON.stringify(e)) {
                       if (!j(e, this.JSONSchemaObj))
-                        if (e && (0, C.isNewSchemaData)(e)) this.jsonSchema = e;
+                        if (e && (0, O.isNewSchemaData)(e)) this.jsonSchema = e;
                         else {
-                          var t = (0, C.oldSchemaToNewSchema)(e);
+                          var t = (0, O.oldSchemaToNewSchema)(e);
                           this.jsonSchema = t;
                         }
-                    } else this.jsonSchema = O(Ne);
+                    } else this.jsonSchema = C(we);
                   }),
                   (t.initOnChange = function (e) {
                     var t, n;
@@ -497,16 +530,16 @@
                       e || this.onChange(this.JSONSchemaObj);
                   }),
                   (t.indexRoute2keyRoute = function (e) {
-                    return (0, C.indexRoute2keyRoute)(e, this.jsonSchema);
+                    return (0, O.indexRoute2keyRoute)(e, this.jsonSchema);
                   }),
                   (t.keyRoute2indexRoute = function (e) {
-                    return (0, C.keyRoute2indexRoute)(e, this.jsonSchema);
+                    return (0, O.keyRoute2indexRoute)(e, this.jsonSchema);
                   }),
                   (t.getSchemaByIndexRoute = function (e) {
-                    return (0, C.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
+                    return (0, O.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
                   }),
                   (t.getSchemaByKeyRoute = function (e) {
-                    return (0, C.getSchemaByKeyRoute)(e, this.jsonSchema, !0);
+                    return (0, O.getSchemaByKeyRoute)(e, this.jsonSchema, !0);
                   }),
                   (t.getNewJsonKeyIndex = function (e, t) {
                     var n = (t || 'field') + '_' + this.curJsonKeyIndex;
@@ -519,12 +552,12 @@
                     );
                   }),
                   (t.isExitJsonKey = function (e, t) {
-                    var n = (0, C.getParentIndexRoute)(e),
+                    var n = (0, O.getParentIndexRoute)(e),
                       a = this.getSchemaByIndexRoute(n);
                     return (
                       !!(a.propertyOrder && a.propertyOrder.indexOf(t) >= 0) ||
-                      (C.KeyWordList &&
-                        C.KeyWordList.indexOf(t) >= 0 &&
+                      (O.KeyWordList &&
+                        O.KeyWordList.indexOf(t) >= 0 &&
                         E.message.warning(
                           t +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
@@ -539,23 +572,23 @@
                     );
                   }),
                   (t.isSupportCurType = function (e, t) {
-                    var n = (0, C.getParentIndexRoute)(e),
+                    var n = (0, O.getParentIndexRoute)(e),
                       a = this.getSchemaByIndexRoute(n),
                       o = this.SchemaTypeList[a.type];
                     return !!(o && o.indexOf(t) >= 0);
                   }),
                   (t.addChildJson = function (e, t) {
-                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
-                    if ((0, C.isContainerSchema)(n)) {
+                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    if ((0, O.isContainerSchema)(n)) {
                       var a = this.getNewJsonKeyIndex(n);
                       n.propertyOrder.push(a),
-                        (n.properties[a] = we),
+                        (n.properties[a] = Ie),
                         this.jsonSchemaChange(t);
                     } else E.message.warning('非对象类型字段不允许插入子元素');
                   }),
                   (t.changeType = function (e, t, n, a, o) {
-                    var r = (0, C.getParentIndexRoute)(e),
-                      i = (0, C.getSchemaByIndexRoute)(r, this.jsonSchema),
+                    var r = (0, O.getParentIndexRoute)(e),
+                      i = (0, O.getSchemaByIndexRoute)(r, this.jsonSchema),
                       s = Object.assign(
                         {},
                         n,
@@ -569,22 +602,22 @@
                         ]),
                       );
                     i.properties && i.properties[t]
-                      ? (i.properties[t] = O(s))
-                      : i[t] && (i[t] = O(s)),
+                      ? (i.properties[t] = C(s))
+                      : i[t] && (i[t] = C(s)),
                       this.jsonSchemaChange(o);
                   }),
                   (t.updateSchemaData = function (e, t, n) {
-                    var a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
-                    Object.assign(a, O(t)), this.jsonSchemaChange(n);
+                    var a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    Object.assign(a, C(t)), this.jsonSchemaChange(n);
                   }),
                   (t.editSchemaData = function (e, t, n, a) {
-                    var o = (0, C.getParentIndexRoute)(e),
-                      r = (0, C.getSchemaByIndexRoute)(o, this.jsonSchema);
-                    (r.properties[t] = u()({}, O(r.properties[t]), n)),
+                    var o = (0, O.getParentIndexRoute)(e),
+                      r = (0, O.getSchemaByIndexRoute)(o, this.jsonSchema);
+                    (r.properties[t] = u()({}, C(r.properties[t]), n)),
                       this.jsonSchemaChange(a);
                   }),
                   (t.editJsonKey = function (e, t, n) {
-                    var a = (0, C.getSchemaByIndexRoute)(
+                    var a = (0, O.getSchemaByIndexRoute)(
                       e,
                       this.jsonSchema,
                       !0,
@@ -594,16 +627,16 @@
                       this.jsonSchemaChange(n);
                   }),
                   (t.addNextJsonData = function (e) {
-                    var t = (0, C.getParentIndexRoute)(e),
-                      n = (0, C.getSchemaByIndexRoute)(t, this.jsonSchema),
+                    var t = (0, O.getParentIndexRoute)(e),
+                      n = (0, O.getSchemaByIndexRoute)(t, this.jsonSchema),
                       a = this.getNewJsonKeyIndex(n);
-                    this.insertJsonData(e, a, we);
+                    this.insertJsonData(e, a, Ie);
                   }),
                   (t.insertJsonData = function (e, t, n, a, o) {
-                    var r = (0, C.getParentIndexRoute_CurIndex)(e),
+                    var r = (0, O.getParentIndexRoute_CurIndex)(e),
                       i = r[0],
                       s = r[1],
-                      c = (0, C.getSchemaByIndexRoute)(i, this.jsonSchema);
+                      c = (0, O.getSchemaByIndexRoute)(i, this.jsonSchema);
                     c.properties[t] = n;
                     var l = c.propertyOrder,
                       p = 'before' === a ? Number(s) : Number(s) + 1,
@@ -613,24 +646,24 @@
                       this.jsonSchemaChange(o);
                   }),
                   (t.deleteJsonByIndex_CurKey = function (e, t, n) {
-                    var a = (0, C.getParentIndexRoute)(e),
-                      o = (0, C.getSchemaByIndexRoute)(a, this.jsonSchema);
+                    var a = (0, O.getParentIndexRoute)(e),
+                      o = (0, O.getSchemaByIndexRoute)(a, this.jsonSchema);
                     delete o.properties[t];
                     var r = o.propertyOrder.indexOf(t);
                     o.propertyOrder.splice(r, 1), this.jsonSchemaChange(n);
                   }),
                   (t.deleteJsonByIndex = function (e, t) {
-                    var n = (0, C.getParentIndexRoute_CurIndex)(e),
+                    var n = (0, O.getParentIndexRoute_CurIndex)(e),
                       a = n[0],
                       o = n[1],
-                      r = (0, C.getSchemaByIndexRoute)(a, this.jsonSchema),
+                      r = (0, O.getSchemaByIndexRoute)(a, this.jsonSchema),
                       i = r.propertyOrder[o];
                     delete r.properties[i];
                     var s = r.propertyOrder.indexOf(i);
                     r.propertyOrder.splice(s, 1), this.jsonSchemaChange(t);
                   }),
                   (t.updateEnumItem = function (e, t, n, a, o) {
-                    var r = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var r = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     r.enum &&
                       r.enumextra &&
                       ((r.enum[t] = n), (r.enumextra[t] = a)),
@@ -638,14 +671,14 @@
                   }),
                   (t.isExitEnumKey = function (e, t, n) {
                     var a = !1,
-                      o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                      o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (o.enum) {
-                      var r = O(o.enum);
+                      var r = C(o.enum);
                       t >= 0 && r.splice(t, 1), r.indexOf(n) >= 0 && (a = !0);
                     }
                     return (
-                      C.KeyWordList &&
-                        C.KeyWordList.indexOf(n) >= 0 &&
+                      O.KeyWordList &&
+                        O.KeyWordList.indexOf(n) >= 0 &&
                         E.message.warning(
                           n +
                             '是JSONSchema的关键字，建议您换一个，避免后续出现数据异常。',
@@ -654,23 +687,23 @@
                     );
                   }),
                   (t.updateEnumKey = function (e, t, n, a) {
-                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.enum && (o.enum[t] = n), this.jsonSchemaChange(a);
                   }),
                   (t.updateEnumText = function (e, t, n, a) {
-                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.enumextra && (o.enumextra[t] = n),
                       this.jsonSchemaChange(a);
                   }),
                   (t.deleteEnumItem = function (e, t, n) {
-                    var a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     a.enum &&
                       a.enumextra &&
                       (a.enum.splice(t, 1), a.enumextra.splice(t, 1)),
                       this.jsonSchemaChange(n);
                   }),
                   (t.insertEnumItem = function (e, t, n, a, o, r) {
-                    var i = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var i = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (i.enum && i.enumextra) {
                       var s = 'before' === o ? Number(t) : Number(t) + 1,
                         c = i.enum.slice(0, s),
@@ -693,7 +726,7 @@
                     );
                   }),
                   (t.addEnumItem = function (e, t) {
-                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.enum) {
                       var a = this.getNewEnumIndex(n.enum),
                         o = '选项' + (this.curJsonKeyIndex - 1);
@@ -701,7 +734,7 @@
                     }
                   }),
                   (t.copyEnumItem = function (e, t) {
-                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.enum) {
                       var a = n.enum[t],
                         o = n.enumextra[t],
@@ -711,7 +744,7 @@
                     }
                   }),
                   (t.updateOptionItem = function (e, t, n, a, o) {
-                    var r = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var r = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     r.options &&
                       r.options[t] &&
                       ((r.options[t].label = n), (r.options[t].value = a)),
@@ -719,15 +752,15 @@
                   }),
                   (t.isExitOptionLabel = function (e, t) {
                     var n = !1,
-                      a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                      a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     return (
                       a.options &&
                         a.options.find(function (e) {
                           return e.label === t;
                         }) &&
                         (n = !0),
-                      C.KeyWordList &&
-                        C.KeyWordList.indexOf(t) >= 0 &&
+                      O.KeyWordList &&
+                        O.KeyWordList.indexOf(t) >= 0 &&
                         E.message.warning(
                           t + '是JSONSchema的保留关键字，建议您换一个名称。',
                         ),
@@ -735,22 +768,22 @@
                     );
                   }),
                   (t.updateOptionLabel = function (e, t, n, a) {
-                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.options && o.options[t] && (o.options[t].label = n),
                       this.jsonSchemaChange(a);
                   }),
                   (t.updateOptionValue = function (e, t, n, a) {
-                    var o = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var o = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     o.options && o.options[t] && (o.options[t].value = n),
                       this.jsonSchemaChange(a);
                   }),
                   (t.deleteOptionItem = function (e, t, n) {
-                    var a = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var a = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     a.options && a.options[t] && a.options.splice(t, 1),
                       this.jsonSchemaChange(n);
                   }),
                   (t.insertOption = function (e, t, n, a, o, r) {
-                    var i = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var i = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (i.options) {
                       var s = 'before' === o ? Number(t) : Number(t) + 1,
                         c = i.options.slice(0, s),
@@ -766,7 +799,7 @@
                       : 'value1';
                   }),
                   (t.addOptionItem = function (e, t) {
-                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.options) {
                       var a = this.getNewOptionValue(n.options),
                         o = '选项' + (n.options.length + 1);
@@ -774,7 +807,7 @@
                     }
                   }),
                   (t.copyOptionItem = function (e, t) {
-                    var n = (0, C.getSchemaByIndexRoute)(e, this.jsonSchema);
+                    var n = (0, O.getSchemaByIndexRoute)(e, this.jsonSchema);
                     if (n.options) {
                       n.options[t];
                       var a = this.getNewOptionValue(n.options),
@@ -1182,7 +1215,7 @@
                   var e = this;
                   return function (t) {
                     for (
-                      var n = (0, C.getSchemaByIndexRoute)(t, e.jsonSchema),
+                      var n = (0, O.getSchemaByIndexRoute)(t, e.jsonSchema),
                         a = n.propertyOrder,
                         o = [],
                         r = [],
@@ -1242,12 +1275,12 @@
               })),
               he),
           },
-          Re = require('@ant-design/icons'),
-          Ke = require('rc-switch'),
-          ke = n.n(Ke),
-          Te = require('react-ace'),
-          De = n.n(Te),
-          Je =
+          Ke = require('@ant-design/icons'),
+          ke = require('rc-switch'),
+          Te = n.n(ke),
+          De = require('react-ace'),
+          Je = n.n(De),
+          Be =
             (require('ace-builds/src-noconflict/mode-json'),
             require('ace-builds/src-noconflict/theme-solarized_light'),
             n(40),
@@ -1259,7 +1292,7 @@
                     e,
                   ) {
                     n.props.onChange &&
-                      (0, C.isFunction)(n.props.onChange) &&
+                      (0, O.isFunction)(n.props.onChange) &&
                       n.props.onChange(e);
                   }),
                   (n.state = {
@@ -1286,7 +1319,7 @@
                     p = (s.curJSONDataTemp, a || !1);
                   return (
                     (i = void 0 !== i ? i : i || '{}'),
-                    ((0, C.isObject)(i) || (0, C.isArray)(i)) &&
+                    ((0, O.isObject)(i) || (0, O.isArray)(i)) &&
                       (i = JSON.stringify(i, null, 2)),
                     r.createElement(
                       'div',
@@ -1312,7 +1345,7 @@
                             l,
                           ),
                         ),
-                      r.createElement(De(), {
+                      r.createElement(Je(), {
                         id: 'json_area_ace',
                         defaultValue: i,
                         className: 'json-view-ace',
@@ -1355,15 +1388,15 @@
                 t
               );
             })(r.PureComponent));
-        Je.propTypes = {
+        Be.propTypes = {
           jsonData: d().any,
           readOnly: d().bool,
           maxLines: d().number,
         };
-        var Be = Je,
-          Ve =
-            (require('rc-switch/assets/index.css'), n(975), E.Input.TextArea),
+        var Ve = Be,
           Pe =
+            (require('rc-switch/assets/index.css'), n(975), E.Input.TextArea),
+          Le =
             (E.Select.Option,
             (function (e) {
               function t(t) {
@@ -1384,7 +1417,7 @@
                   }),
                   (n.renderDefaultContent = function (e, t, a) {
                     if ('boolean' === e)
-                      return r.createElement(ke(), {
+                      return r.createElement(Te(), {
                         style: { display: 'inline-block' },
                         defaultChecked: t.default,
                         checkedChildren: 'true',
@@ -1455,7 +1488,7 @@
                           'codearea' === e ||
                           'htmlarea' === e ||
                           'json' === e
-                        ? r.createElement(Ve, {
+                        ? r.createElement(Pe, {
                             style: { display: 'inline-block' },
                             rows: 4,
                             placeholder: '请输入' + t.title + '的默认值',
@@ -1566,7 +1599,7 @@
                               className: 'form-item-box',
                               key: d + '-isConditionProp-switch',
                             },
-                            r.createElement(ke(), {
+                            r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != y && y,
                               checkedChildren: '是',
@@ -1611,7 +1644,7 @@
                               className: 'form-item-box',
                               key: d + '-selectConfig-multiple',
                             },
-                            r.createElement(ke(), {
+                            r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != (e = u.multiple) && e,
                               checkedChildren: '多选',
@@ -1657,7 +1690,7 @@
                               className: 'form-item-box',
                               key: d + '-selectConfig-defaultActiveFirstOption',
                             },
-                            r.createElement(ke(), {
+                            r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked:
                                 null != (t = u.defaultActiveFirstOption) && t,
@@ -1715,7 +1748,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(ke(), {
+                            r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != (n = u.readOnly) && n,
                               checkedChildren: 'true',
@@ -1769,7 +1802,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(ke(), {
+                            r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked: null != (a = u.isRequired) && a,
                               checkedChildren: 'true',
@@ -1844,7 +1877,7 @@
                         r.createElement(
                           'div',
                           { className: 'content-item' },
-                          r.createElement(ke(), {
+                          r.createElement(Te(), {
                             style: { display: 'inline-block' },
                             defaultChecked: null != (o = u.withLabel) && o,
                             checkedChildren: '开启',
@@ -1881,7 +1914,7 @@
                         r.createElement(
                           'div',
                           { className: 'content-item' },
-                          r.createElement(Be, {
+                          r.createElement(Ve, {
                             jsonData: u.options,
                             onChange: function (e) {
                               c.handleValueChange('options', e);
@@ -1964,7 +1997,7 @@
                         r.createElement(
                           'div',
                           { className: 'form-item-box' },
-                          r.createElement(ke(), {
+                          r.createElement(Te(), {
                             style: { display: 'inline-block' },
                             defaultChecked: null != (i = u.showKey) && i,
                             checkedChildren: 'true',
@@ -2069,7 +2102,7 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            r.createElement(ke(), {
+                            r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked:
                                 null == (s = u.showCodeViewBtn) || s,
@@ -2082,7 +2115,7 @@
                           ),
                         ),
                       ),
-                    'number' === (0, C.getExpectType)(h) &&
+                    'number' === (0, O.getExpectType)(h) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2175,7 +2208,7 @@
                           ),
                         ),
                       ),
-                    'array' === (0, C.getExpectType)(h) &&
+                    'array' === (0, O.getExpectType)(h) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2326,7 +2359,7 @@
                       r.createElement(
                         'div',
                         { className: 'content-item' },
-                        r.createElement(Be, {
+                        r.createElement(Ve, {
                           jsonData: u.titleStyle,
                           onChange: function (e) {
                             c.handleValueChange('titleStyle', e);
@@ -2340,17 +2373,17 @@
                 t
               );
             })(r.PureComponent));
-        Pe.propTypes = {
+        Le.propTypes = {
           jsonKey: d().string,
           indexRoute: d().string,
           nodeKey: d().string,
           targetJsonSchema: d().any,
         };
-        var Le = (0, l.inject)(function (e) {
+        var Fe = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(Pe)),
-          Fe = (n(915), E.Select.Option),
-          qe = (function (e) {
+          })((0, l.observer)(Le)),
+          qe = (n(915), E.Select.Option),
+          Ae = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2360,7 +2393,7 @@
                     o = a.indexRoute,
                     r = a.jsonKey,
                     i = a.targetJsonSchema;
-                  i.type !== e && t(o, r, C.TypeDataList[e], i);
+                  i.type !== e && t(o, r, O.TypeDataList[e], i);
                 }),
                 (n.handleJsonKeyChange = function (e) {
                   var t = n.props.schemaStore || {},
@@ -2394,7 +2427,7 @@
                     o = n.props,
                     r = o.indexRoute,
                     i = o.targetJsonSchema;
-                  (0, C.isContainerSchema)(i) ? t(r) : a(r);
+                  (0, O.isContainerSchema)(i) ? t(r) : a(r);
                 }),
                 (n.onCopyBtnEvent = function () {
                   var e = n.props,
@@ -2406,8 +2439,8 @@
                     s = r.indexRoute2keyRoute,
                     c = r.insertJsonData,
                     l = r.getNewJsonKeyIndex,
-                    p = O(a),
-                    d = (0, C.getParentIndexRoute)(t),
+                    p = C(a),
+                    d = (0, O.getParentIndexRoute)(t),
                     m = l(i(d), o),
                     u = a.type;
                   N(s(d) + '-' + m + '-' + u, s(t)), c(t, m, p);
@@ -2453,7 +2486,7 @@
                   l = o.nodeKey,
                   p = o.targetJsonSchema,
                   d = this.state.showAdvanceConfig,
-                  m = s ? (0, C.getParentIndexRoute)(s) : '',
+                  m = s ? (0, O.getParentIndexRoute)(s) : '',
                   u = m ? a(m) : {},
                   h = null == (e = u && u.isContainer) || e,
                   y = p.isFixed || this.props.isFixed || !1,
@@ -2473,8 +2506,8 @@
                   x = this.props.hideOperaBtn || !h,
                   b = null == (t = this.props.showAdvanceBtn) || t,
                   S = this.getCurrentTypeList(i),
-                  O = p.type,
-                  j = (0, C.isContainerSchema)(p);
+                  C = p.type,
+                  j = (0, O.isContainerSchema)(p);
                 return r.createElement(
                   r.Fragment,
                   null,
@@ -2507,13 +2540,25 @@
                           E.Select,
                           {
                             showSearch: !0,
-                            defaultValue: O,
+                            defaultValue: C,
                             style: { width: 150 },
                             onChange: this.handleTypeChange,
                             disabled: f,
+                            filterOption: function (e, t) {
+                              if (
+                                (console.log('filterOption:', e, t),
+                                t.value.indexOf(e) > -1 ||
+                                  (t.children && t.children.indexOf(e) > -1))
+                              )
+                                return console.log(1222), !0;
+                            },
                           },
                           S.map(function (e) {
-                            return r.createElement(Fe, { key: e, value: e }, e);
+                            return r.createElement(
+                              qe,
+                              { key: e, value: e },
+                              Ne[e] || e,
+                            );
                           }),
                         ),
                       ),
@@ -2542,7 +2587,7 @@
                               r.createElement(
                                 E.Tooltip,
                                 { title: '删除' },
-                                r.createElement(Re.CloseOutlined, {
+                                r.createElement(Ke.CloseOutlined, {
                                   className: 'operate-btn delete-operate',
                                   onClick: this.onDeleteBtnEvent,
                                 }),
@@ -2550,7 +2595,7 @@
                             r.createElement(
                               E.Tooltip,
                               { title: j ? '新增子元素' : '新增同级元素' },
-                              r.createElement(Re.PlusOutlined, {
+                              r.createElement(Ke.PlusOutlined, {
                                 className: 'operate-btn',
                                 onClick: this.onAddBtnEvent,
                               }),
@@ -2559,7 +2604,7 @@
                               r.createElement(
                                 E.Tooltip,
                                 { title: '数据项排序' },
-                                r.createElement(Re.SortAscendingOutlined, {
+                                r.createElement(Ke.SortAscendingOutlined, {
                                   className: 'operate-btn',
                                   onClick: this.childElemSort,
                                 }),
@@ -2571,7 +2616,7 @@
                                 r.createElement(
                                   E.Tooltip,
                                   { title: '复制' },
-                                  r.createElement(Re.CopyOutlined, {
+                                  r.createElement(Ke.CopyOutlined, {
                                     className: 'operate-btn',
                                     onClick: this.onCopyBtnEvent,
                                   }),
@@ -2579,7 +2624,7 @@
                                 r.createElement(
                                   E.Tooltip,
                                   { title: '按住进行拖拽' },
-                                  r.createElement(Re.DragOutlined, {
+                                  r.createElement(Ke.DragOutlined, {
                                     className: 'operate-btn drag-btn',
                                   }),
                                 ),
@@ -2589,7 +2634,7 @@
                           r.createElement(
                             E.Tooltip,
                             { title: '高级设置' },
-                            r.createElement(Re.SettingOutlined, {
+                            r.createElement(Ke.SettingOutlined, {
                               className: 'operate-btn',
                               onClick: function () {
                                 n.setState({ showAdvanceConfig: !0 });
@@ -2621,7 +2666,7 @@
                               ),
                             ],
                           },
-                          r.createElement(Le, {
+                          r.createElement(Fe, {
                             indexRoute: s,
                             jsonKey: c,
                             targetJsonSchema: p,
@@ -2644,7 +2689,7 @@
               t
             );
           })(r.PureComponent);
-        qe.propTypes = {
+        Ae.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
@@ -2657,14 +2702,14 @@
           typeIsFixed: d().bool,
           titleIsFixed: d().bool,
         };
-        var Ae = (0, l.inject)(function (e) {
+        var _e = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(qe)),
-          _e = E.Tree.TreeNode,
-          Me = function (e) {
-            return i().createElement(Ae, e);
-          },
+          })((0, l.observer)(Ae)),
+          Me = E.Tree.TreeNode,
           We = function (e) {
+            return i().createElement(_e, e);
+          },
+          ze = function (e) {
             var t = e.jsonKey,
               n = e.indexRoute,
               a = e.nodeKey,
@@ -2675,14 +2720,14 @@
               l = a ? a + '-' + c : c,
               p = o[c] || {};
             return i().createElement(
-              _e,
+              Me,
               {
                 className: r + '-schema schema-item-form',
                 id: a,
                 key: a,
                 indexRoute: n,
                 jsonKey: t,
-                title: Me(u()({}, e)),
+                title: We(u()({}, e)),
               },
               (function (e) {
                 var t = e.parentType,
@@ -2691,7 +2736,7 @@
                   o = e.nodeKey,
                   r = e.targetJsonSchema;
                 return i().createElement(
-                  _e,
+                  Me,
                   {
                     className: 'array-item-schema schema-item-form',
                     id: o,
@@ -2699,7 +2744,7 @@
                     indexRoute: a,
                     jsonKey: n,
                     disabled: !0,
-                    title: Me({
+                    title: We({
                       indexRoute: a,
                       jsonKey: n,
                       targetJsonSchema: r,
@@ -2721,7 +2766,7 @@
                           c = t[s],
                           l = c.type,
                           p = (a ? a + '-' : '') + l + '-' + s;
-                        return pt({
+                        return dt({
                           parentType: o,
                           jsonKey: s,
                           indexRoute: i,
@@ -2747,8 +2792,8 @@
               }),
             );
           },
-          ze = (n(790), E.Select.Option),
-          Ge = (function (e) {
+          Ge = (n(790), E.Select.Option),
+          Ue = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2766,13 +2811,13 @@
                       var p = l[e];
                       p &&
                         '数据源类型' === c.title &&
-                        a((0, C.getNextIndexRoute)(i), 'data', p);
+                        a((0, O.getNextIndexRoute)(i), 'data', p);
                     }
-                    if (C.EventTypeDataList) {
-                      var d = C.EventTypeDataList[e];
+                    if (O.EventTypeDataList) {
+                      var d = O.EventTypeDataList[e];
                       '事件类型' === c.title &&
                         d &&
-                        o((0, C.getParentIndexRoute)(i), d);
+                        o((0, O.getParentIndexRoute)(i), d);
                     }
                   }
                 }),
@@ -2802,7 +2847,7 @@
                       },
                       o.map(function (e, t) {
                         return r.createElement(
-                          ze,
+                          Ge,
                           { key: t, value: e.value },
                           e.label || e.name,
                         );
@@ -2815,7 +2860,7 @@
                     r.createElement(
                       E.Select,
                       { defaultValue: a, style: { width: 120 }, disabled: !0 },
-                      r.createElement(ze, { key: a, value: a }, a),
+                      r.createElement(Ge, { key: a, value: a }, a),
                     ),
                   ),
                   r.createElement(
@@ -2832,7 +2877,7 @@
               t
             );
           })(r.PureComponent);
-        Ge.propTypes = {
+        Ue.propTypes = {
           parentType: d().string,
           jsonKey: d().string,
           indexRoute: d().string,
@@ -2841,14 +2886,14 @@
           typeSelectData: d().any,
           isFixed: d().any,
         };
-        var Ue = (0, l.inject)(function (e) {
+        var He = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(Ge)),
-          He = E.Tree.TreeNode,
-          Xe = function (e) {
-            return i().createElement(Ae, e);
+          })((0, l.observer)(Ue)),
+          Xe = E.Tree.TreeNode,
+          Qe = function (e) {
+            return i().createElement(_e, e);
           },
-          Qe = {
+          Ye = {
             local: {
               type: 'json',
               title: '本地json数据',
@@ -2866,20 +2911,20 @@
               description: '用于设置获取元素数据的请求地址',
             },
           },
-          Ye = E.Tree.TreeNode,
-          Ze = function (e) {
-            return i().createElement(Ae, e);
+          Ze = E.Tree.TreeNode,
+          $e = function (e) {
+            return i().createElement(_e, e);
           },
-          $e = E.Tree.TreeNode,
-          et = function (e) {
-            return i().createElement(Ae, e);
+          et = E.Tree.TreeNode,
+          tt = function (e) {
+            return i().createElement(_e, e);
           },
-          tt = E.Tree.TreeNode,
-          nt = function (e) {
-            return i().createElement(Ae, e);
+          nt = E.Tree.TreeNode,
+          at = function (e) {
+            return i().createElement(_e, e);
           },
-          at = (n(617), E.Select.Option),
-          ot = (function (e) {
+          ot = (n(617), E.Select.Option),
+          rt = (function (e) {
             function t(t) {
               var n;
               return (
@@ -2909,7 +2954,7 @@
                     s = o.optionValue;
                   if (a !== s) {
                     var c = a;
-                    if ((0, C.isObject)(s) && (0, C.isString)(c))
+                    if ((0, O.isObject)(s) && (0, O.isString)(c))
                       try {
                         c = JSON.parse(c);
                       } catch (e) {
@@ -2950,7 +2995,7 @@
                   n = e.optionValue,
                   a = (e.optionNodeKey, n);
                 return (
-                  ((0, C.isObject)(n) || (0, C.isArray)(n)) &&
+                  ((0, O.isObject)(n) || (0, O.isArray)(n)) &&
                     (a = JSON.stringify(n)),
                   r.createElement(
                     'div',
@@ -2971,7 +3016,7 @@
                         E.Select,
                         { defaultValue: 'string', style: { width: 120 } },
                         r.createElement(
-                          at,
+                          ot,
                           { key: 'string', value: 'string' },
                           'string',
                         ),
@@ -2992,7 +3037,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '删除' },
-                        r.createElement(Re.CloseOutlined, {
+                        r.createElement(Ke.CloseOutlined, {
                           className: 'operate-btn delete-operate',
                           onClick: this.onDeleteBtnEvent,
                         }),
@@ -3000,7 +3045,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '新增可选项' },
-                        r.createElement(Re.PlusOutlined, {
+                        r.createElement(Ke.PlusOutlined, {
                           className: 'operate-btn',
                           onClick: this.onAddBtnEvent,
                         }),
@@ -3008,7 +3053,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '复制' },
-                        r.createElement(Re.CopyOutlined, {
+                        r.createElement(Ke.CopyOutlined, {
                           className: 'operate-btn',
                           onClick: this.onCopyBtnEvent,
                         }),
@@ -3020,25 +3065,25 @@
               t
             );
           })(r.PureComponent);
-        ot.propTypes = {
+        rt.propTypes = {
           indexRoute: d().string,
           optionIndex: d().any,
           optionLabel: d().string,
           optionValue: d().string,
           optionNodeKey: d().string,
         };
-        var rt = (0, l.inject)(function (e) {
+        var it = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(ot)),
-          it = E.Tree.TreeNode,
-          st = function (e) {
-            return i().createElement(rt, e);
+          })((0, l.observer)(rt)),
+          st = E.Tree.TreeNode,
+          ct = function (e) {
+            return i().createElement(it, e);
           },
-          ct = E.Tree.TreeNode,
-          lt = function (e) {
-            return i().createElement(Ae, e);
-          },
+          lt = E.Tree.TreeNode,
           pt = function (e) {
+            return i().createElement(_e, e);
+          },
+          dt = function (e) {
             switch (e.targetJsonSchema.type) {
               case 'object':
               case 'func':
@@ -3050,9 +3095,9 @@
               case 'sohu-source':
               case 'sohu-event':
               case 'padding-margin':
-                return ut(e);
+                return ht(e);
               case 'array':
-                return We(e);
+                return ze(e);
               case 'datasource':
                 return (function (e) {
                   var t,
@@ -3063,16 +3108,16 @@
                     s = r.type,
                     c = r.properties.data || {};
                   return i().createElement(
-                    He,
+                    Xe,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: Xe(u()({}, e)),
+                      title: Qe(u()({}, e)),
                     },
-                    i().createElement(He, {
+                    i().createElement(Xe, {
                       className: 'dataSource-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3086,18 +3131,18 @@
                           targetJsonSchema: r.properties.type,
                           parentType: s,
                           nodeKey: o + '-type',
-                          typeSelectData: Qe,
+                          typeSelectData: Ye,
                         }),
-                        i().createElement(Ue, t)),
+                        i().createElement(He, t)),
                     }),
-                    i().createElement(He, {
+                    i().createElement(Xe, {
                       className: 'dataSource-data-item-schema schema-item-form',
                       id: o + '-data-' + c.type,
                       key: o + '-data-' + c.type,
                       indexRoute: a ? a + '-1' : '1',
                       jsonKey: 'data',
                       disabled: !0,
-                      title: Xe({
+                      title: Qe({
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'data',
                         targetJsonSchema: c,
@@ -3108,7 +3153,7 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement(He, {
+                    i().createElement(Xe, {
                       className:
                         'dataSource-filter-item-schema schema-item-form',
                       id: o + '-filter',
@@ -3116,7 +3161,7 @@
                       indexRoute: a ? a + '-2' : '2',
                       jsonKey: 'filter',
                       disabled: !0,
-                      title: Xe({
+                      title: Qe({
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'filter',
                         targetJsonSchema: r.properties.filter,
@@ -3140,16 +3185,16 @@
                     c = r.properties.config || {},
                     l = r.properties.data || {};
                   return i().createElement(
-                    Ye,
+                    Ze,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: Ze(u()({}, e)),
+                      title: $e(u()({}, e)),
                     },
-                    i().createElement(Ye, {
+                    i().createElement(Ze, {
                       className: 'dataSource-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3164,9 +3209,9 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(Ue, t)),
+                        i().createElement(He, t)),
                     }),
-                    i().createElement(Ye, {
+                    i().createElement(Ze, {
                       className:
                         'dataSource-config-item-schema schema-item-form',
                       id: o + '-config-' + l.type,
@@ -3174,7 +3219,7 @@
                       indexRoute: a ? a + '-1' : '1',
                       jsonKey: 'config',
                       disabled: !0,
-                      title: Ze({
+                      title: $e({
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'config',
                         targetJsonSchema: c,
@@ -3185,14 +3230,14 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement(Ye, {
+                    i().createElement(Ze, {
                       className: 'dataSource-data-item-schema schema-item-form',
                       id: o + '-data-' + l.type,
                       key: o + '-data-' + l.type,
                       indexRoute: a ? a + '-2' : '2',
                       jsonKey: 'data',
                       disabled: !0,
-                      title: Ze({
+                      title: $e({
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'data',
                         targetJsonSchema: l,
@@ -3219,16 +3264,16 @@
                     d = r.properties.trigger || {},
                     m = r.properties.eventData || {};
                   return i().createElement(
-                    $e,
+                    et,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: et(u()({}, e)),
+                      title: tt(u()({}, e)),
                     },
-                    i().createElement($e, {
+                    i().createElement(et, {
                       className: 'event-type-item-schema schema-item-form',
                       id: o + '-type',
                       key: o + '-type',
@@ -3243,11 +3288,11 @@
                           parentType: s,
                           nodeKey: o + '-type',
                         }),
-                        i().createElement(Ue, t)),
+                        i().createElement(He, t)),
                     }),
                     'on' === c.default &&
                       l &&
-                      i().createElement($e, {
+                      i().createElement(et, {
                         className:
                           'event-register-item-schema schema-item-form',
                         id: o + '-register-' + c.default,
@@ -3255,7 +3300,7 @@
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'register',
                         disabled: !0,
-                        title: et({
+                        title: tt({
                           indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'register',
                           targetJsonSchema: l,
@@ -3268,7 +3313,7 @@
                       }),
                     'on' === c.default &&
                       p &&
-                      i().createElement($e, {
+                      i().createElement(et, {
                         className:
                           'event-actionFunc-item-schema schema-item-form',
                         id: o + '-actionFunc-' + c.default,
@@ -3276,7 +3321,7 @@
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'actionFunc',
                         disabled: !0,
-                        title: et({
+                        title: tt({
                           indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'actionFunc',
                           targetJsonSchema: p,
@@ -3289,14 +3334,14 @@
                       }),
                     'emit' === c.default &&
                       d &&
-                      i().createElement($e, {
+                      i().createElement(et, {
                         className: 'event-trigger-item-schema schema-item-form',
                         id: o + '-trigger-' + c.default,
                         key: o + '-trigger-' + c.default,
                         indexRoute: a ? a + '-1' : '1',
                         jsonKey: 'trigger',
                         disabled: !0,
-                        title: et({
+                        title: tt({
                           indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'trigger',
                           targetJsonSchema: d,
@@ -3309,7 +3354,7 @@
                       }),
                     'emit' === c.default &&
                       m &&
-                      i().createElement($e, {
+                      i().createElement(et, {
                         className:
                           'event-eventData-item-schema schema-item-form',
                         id: o + '-eventData-' + c.default,
@@ -3317,7 +3362,7 @@
                         indexRoute: a ? a + '-2' : '2',
                         jsonKey: 'eventData',
                         disabled: !0,
-                        title: et({
+                        title: tt({
                           indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'eventData',
                           targetJsonSchema: m,
@@ -3342,23 +3387,23 @@
                     c = r.propertyOrder[0],
                     l = r.properties[c];
                   return i().createElement(
-                    tt,
+                    nt,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: nt(u()({}, e)),
+                      title: at(u()({}, e)),
                     },
-                    i().createElement(tt, {
+                    i().createElement(nt, {
                       className: 'quantity-unit-item-schema schema-item-form',
                       id: o + '-' + c,
                       key: o + '-' + c,
                       indexRoute: a ? a + '-0' : '0',
                       jsonKey: c,
                       disabled: !0,
-                      title: nt({
+                      title: at({
                         indexRoute: a ? a + '-0' : '0',
                         jsonKey: c,
                         targetJsonSchema: l,
@@ -3369,7 +3414,7 @@
                         typeIsFixed: !0,
                       }),
                     }),
-                    i().createElement(tt, {
+                    i().createElement(nt, {
                       className:
                         'quantity-typeSelect-item-schema schema-item-form',
                       id: o + '-quantity',
@@ -3385,7 +3430,7 @@
                           parentType: s,
                           nodeKey: o + '-quantity',
                         }),
-                        i().createElement(Ue, t)),
+                        i().createElement(He, t)),
                     }),
                   );
                 })(e);
@@ -3402,14 +3447,14 @@
                     c = r.options,
                     l = a || '0';
                   return i().createElement(
-                    it,
+                    st,
                     {
                       className: s + '-schema schema-item-form',
                       id: o,
                       key: o,
                       indexRoute: a,
                       jsonKey: n,
-                      title: ((t = u()({}, e)), i().createElement(Ae, t)),
+                      title: ((t = u()({}, e)), i().createElement(_e, t)),
                     },
                     c &&
                       c.length > 0 &&
@@ -3417,13 +3462,13 @@
                         var n = e.label || e.name,
                           a = e.value,
                           r = '' + o + s + '-' + n;
-                        return i().createElement(it, {
+                        return i().createElement(st, {
                           className: 'enum-item-schema schema-item-form',
                           id: r,
                           key: r,
                           indexRoute: l,
                           disabled: !0,
-                          title: st({
+                          title: ct({
                             indexRoute: l,
                             optionIndex: t,
                             optionLabel: n,
@@ -3440,22 +3485,22 @@
                     n = e.indexRoute,
                     a = e.nodeKey,
                     o = e.targetJsonSchema.type;
-                  return i().createElement(ct, {
+                  return i().createElement(lt, {
                     className: o + '-schema schema-item-form',
                     id: a,
                     key: a,
                     indexRoute: n,
                     jsonKey: t,
-                    title: lt(e),
+                    title: pt(e),
                   });
                 })(e);
             }
           },
-          dt = E.Tree.TreeNode,
-          mt = function (e) {
-            return i().createElement(Ae, e);
-          },
+          mt = E.Tree.TreeNode,
           ut = function (e) {
+            return i().createElement(_e, e);
+          },
+          ht = function (e) {
             var t,
               n,
               a,
@@ -3487,7 +3532,7 @@
                     c = n[s],
                     l = c.type,
                     p = (o ? o + '-' : '') + l + '-' + s;
-                  return pt({
+                  return dt({
                     parentType: r,
                     jsonKey: s,
                     indexRoute: i,
@@ -3497,7 +3542,7 @@
                   });
                 })),
               g = i().createElement(
-                dt,
+                mt,
                 {
                   className: m + '-schema schema-item-form',
                   id: l,
@@ -3505,13 +3550,13 @@
                   indexRoute: c,
                   jsonKey: s,
                   disabled: h,
-                  title: mt(u()({}, e)),
+                  title: ut(u()({}, e)),
                 },
                 y,
               );
             return d ? y : g;
           },
-          ht =
+          yt =
             (n(23),
             (function (e) {
               function t(t) {
@@ -3536,11 +3581,11 @@
                       u = r(d);
                     if (!u.isFixed) {
                       var h = a.indexRoute,
-                        y = (0, C.isSameParent)(d, h),
-                        g = (0, C.getCurPosition)(d, h);
+                        y = (0, O.isSameParent)(d, h),
+                        g = (0, O.getCurPosition)(d, h);
                       if (y)
                         c(d, !0),
-                          'before' === g && (h = (0, C.moveForward)(h)),
+                          'before' === g && (h = (0, O.moveForward)(h)),
                           a.dragOverGapTop
                             ? s(h, m, u, 'before')
                             : (a.dragOver || a.dragOverGapBottom) && s(h, m, u);
@@ -3555,7 +3600,7 @@
                             '目标位置不支持' + f + '类型元素',
                           );
                         var v = i(d),
-                          x = (0, C.getParentIndexRoute)(h),
+                          x = (0, O.getParentIndexRoute)(h),
                           b = (function (e) {
                             if (window.sessionStorage)
                               return window.sessionStorage.getItem(e);
@@ -3616,7 +3661,7 @@
                     a = this.props.schemaStore || {},
                     o = a.jsonSchema,
                     i = a.schemaChange,
-                    s = (0, C.isEmptySchema)(o),
+                    s = (0, O.isEmptySchema)(o),
                     c = o.type;
                   return r.createElement(
                     'div',
@@ -3639,7 +3684,7 @@
                                 : this.catchExpandedKeys(o),
                           },
                           'object' === c &&
-                            ut({
+                            ht({
                               parentType: '',
                               jsonKey: '',
                               indexRoute: '',
@@ -3648,7 +3693,7 @@
                               isOnlyShowChild: !0,
                             }),
                           'object' !== c &&
-                            pt({
+                            dt({
                               parentType: '',
                               jsonKey: '',
                               indexRoute: '',
@@ -3661,7 +3706,7 @@
                       ),
                     !s &&
                       t &&
-                      r.createElement(Be, {
+                      r.createElement(Ve, {
                         jsonData: o,
                         readOnly: null == n || n,
                         maxLines: 25,
@@ -3678,22 +3723,22 @@
                 t
               );
             })(r.PureComponent));
-        ht.propTypes = {
+        yt.propTypes = {
           onChange: d().func,
           data: d().object,
           typeList: d().object,
           jsonView: d().any,
           jsonViewReadOnly: d().bool,
         };
-        var yt = (0, l.inject)(function (e) {
+        var gt = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(ht)),
-          gt = (function (e) {
+          })((0, l.observer)(yt)),
+          ft = (function (e) {
             function t(t) {
               var n;
               return (
                 ((n = e.call(this, t) || this).state = {
-                  schemaStore: new Ie.schemaStore(),
+                  schemaStore: new Re.schemaStore(),
                 }),
                 n
               );
@@ -3707,14 +3752,14 @@
                   a = r.createElement(
                     l.Provider,
                     { schemaStore: n },
-                    r.createElement(yt, this.props),
+                    r.createElement(gt, this.props),
                   );
                 return t ? (c().render(a, t), '') : a;
               }),
               t
             );
           })(r.PureComponent);
-        gt.propTypes = {
+        ft.propTypes = {
           wideScreen: d().any,
           onChange: d().func,
           data: d().any,

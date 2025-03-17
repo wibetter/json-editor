@@ -22,6 +22,7 @@ import {
   TypeDataList,
 } from '@wibetter/json-utils';
 import { objClone, saveWebCacheData } from '$utils/index';
+import { TypeInfoList } from '$data/TypeList';
 import './index.scss';
 
 /**
@@ -227,10 +228,19 @@ class BaseFormSchema extends React.PureComponent {
                 style={{ width: 150 }}
                 onChange={this.handleTypeChange}
                 disabled={typeIsFixed}
+                filterOption={(inputValue, option) => {
+                  if (
+                    option.value.indexOf(inputValue) > -1 ||
+                    (option.children &&
+                      option.children.indexOf(inputValue) > -1)
+                  ) {
+                    return true;
+                  }
+                }}
               >
                 {currentTypeList.map((item) => (
                   <Option key={item} value={item}>
-                    {item}
+                    {TypeInfoList[item] || item}
                   </Option>
                 ))}
               </Select>
