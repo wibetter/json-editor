@@ -108,7 +108,9 @@ class RadioSchema extends React.PureComponent {
                 options.length > 0 &&
                 options.map((item, optionIndex) => {
                   const optionLabel = item.label || item.name;
-                  const optionNodeKey = `${nodeKey}-radio-${optionLabel}`;
+                  // const optionNodeKey = `${nodeKey}-radio-${optionLabel}`;
+                  const optionNodeKey = `radio-${optionIndex}-${optionLabel}`;
+
                   return (
                     <Radio value={item.value} key={optionNodeKey}>
                       {item.label}

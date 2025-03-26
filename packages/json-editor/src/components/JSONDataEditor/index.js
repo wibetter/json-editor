@@ -7,11 +7,12 @@ const { TabPane } = Tabs;
 import MappingRender from '$core/MappingRender'; // 普通模式
 // import MappingRender from '$core/MappingRenderV2'; // 按需加载模式
 import JsonView from '$components/JsonView/index';
-import { isEqual } from '$utils/index';
 import {
   isEmptySchema,
   isStructuredSchema,
   json2schema,
+  isEqualByIdT,
+  isEqual,
 } from '@wibetter/json-utils';
 import './index.scss';
 
@@ -85,14 +86,19 @@ class JSONDataEditor extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { JSONSchemaChange, setPageScreen } = this.props.schemaStore || {};
-    const { initJSONData, initOnChange, setDynamicDataList, setOptions } =
-      this.props.jsonStore || {};
+    const {
+      JSONEditorObj,
+      initJSONData,
+      initOnChange,
+      setDynamicDataList,
+      setOptions,
+    } = this.props.jsonStore || {};
     /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
-    if (!isEqual(nextProps.schemaData, this.props.schemaData)) {
+    if (!isEqualByIdT(nextProps.schemaData, this.props.schemaData)) {
       JSONSchemaChange(nextProps.schemaData);
     }
     /** 2. 初始化jsonData */
-    if (!isEqual(nextProps.jsonData, this.props.jsonData)) {
+    if (!isEqual(nextProps.jsonData, JSONEditorObj)) {
       initJSONData(nextProps.jsonData);
     }
     // 读取code模式配置
@@ -193,7 +199,8 @@ class JSONDataEditor extends React.PureComponent {
                               currentSchemaData.title ||
                               this.renderHeader(curType)
                             }
-                            key={currentJsonKey}
+                            key={`${key}-${index}`}
+                            // key={currentJsonKey}
                           >
                             {MappingRender({
                               parentType: curType,
@@ -244,7 +251,8 @@ class JSONDataEditor extends React.PureComponent {
                               currentSchemaData.title ||
                               this.renderHeader(curType)
                             }
-                            key={currentJsonKey}
+                            key={`${key}-${index}`}
+                            // key={currentJsonKey}
                             closable={false}
                             className={`tabs-schema-item`}
                           >
@@ -287,7 +295,7 @@ class JSONDataEditor extends React.PureComponent {
         )}
         {!isEmpty && jsonView && (
           <JsonView
-            key={`${lastUpdateTime}-${jsonLastUpdateTime}-jsonView`}
+            // key={`${lastUpdateTime}-${jsonLastUpdateTime}-jsonView`}
             jsonData={JSONEditorObj}
             readOnly={jsonViewReadOnly ?? true}
             onChange={jsonChange}

@@ -165,7 +165,10 @@ class SohuDataSourceSchema extends React.PureComponent {
                 }
 
                 return (
-                  <Panel header={currentSchemaData.title} key={currentJsonKey}>
+                  <Panel
+                    header={currentSchemaData.title}
+                    key={`${key}-${index}`}
+                  >
                     {renderChild({
                       parentType: curType,
                       jsonKey: currentJsonKey,
