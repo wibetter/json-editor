@@ -1309,8 +1309,9 @@
                   var t =
                     this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
                   if (
-                    !(0, te.n4)(e, this.jsonData) &&
-                    ((this.initJsonData = (0, te.bQ)(this.jsonData)), t)
+                    !(0, te.n4)(e, this.JSONEditorObj) &&
+                    ((this.initJsonData = (0, te.bQ)(this.jsonData)),
+                    t && !(0, Z.isEmptySchema)(t))
                   ) {
                     var n = (0, Z.schema2json)(t, e || {});
                     (this.jsonData = Object.assign({}, e, n)),
@@ -1334,12 +1335,11 @@
                   e && (this.options = e);
                 }),
                 (t.jsonDataChange = function () {
-                  this.onChange(this.JSONEditorObj);
+                  (this.jsonData.lastUpdateTime = new Date().getTime()),
+                    this.onChange(this.JSONEditorObj);
                 }),
                 (t.jsonChange = function (e) {
-                  console.log('newJsonData:', e),
-                    (this.jsonData = e),
-                    this.jsonDataChange();
+                  (this.jsonData = e), this.jsonDataChange();
                 }),
                 (t.getJSONDataByKeyRoute = function (e, t) {
                   var n = t || this.jsonData;
@@ -3837,11 +3837,10 @@
                       p &&
                         p.length > 0 &&
                         p.map(function (e, t) {
-                          var n = e.label || e.name,
-                            a = i + '-radio-' + n;
+                          var n = 'radio-' + t + '-' + (e.label || e.name);
                           return A.createElement(
                             ee.Radio,
-                            { value: e.value, key: a },
+                            { value: e.value, key: n },
                             e.label,
                           );
                         }),
@@ -7451,7 +7450,7 @@
                             return;
                           return V().createElement(
                             gt,
-                            { header: r.title, key: o },
+                            { header: r.title, key: e + '-' + t },
                             d({
                               parentType: i,
                               jsonKey: o,
@@ -7850,23 +7849,27 @@
                   n = t.JSONSchemaChange,
                   a = t.setPageScreen,
                   o = this.props.jsonStore || {},
-                  r = o.initJSONData,
-                  i = o.initOnChange,
-                  l = o.setDynamicDataList,
-                  s = o.setOptions;
-                (0, te.n4)(e.schemaData, this.props.schemaData) ||
+                  r = o.JSONEditorObj,
+                  i = o.initJSONData,
+                  l = o.initOnChange,
+                  s = o.setDynamicDataList,
+                  c = o.setOptions;
+                (0, Z.isEqualByIdT)(e.schemaData, this.props.schemaData) ||
                   n(e.schemaData),
-                  (0, te.n4)(e.jsonData, this.props.jsonData) || r(e.jsonData),
-                  (0, te.n4)(e.jsonView, this.props.jsonView) ||
+                  (0, Z.isEqual)(e.jsonData, r) || i(e.jsonData),
+                  (0, Z.isEqual)(e.jsonView, this.props.jsonView) ||
                     this.setState({ jsonView: e.jsonView }),
-                  (0, te.n4)(e.viewStyle, this.props.viewStyle) ||
+                  (0, Z.isEqual)(e.viewStyle, this.props.viewStyle) ||
                     this.setState({ viewStyle: e.viewStyle }),
-                  (0, te.n4)(e.wideScreen, this.props.wideScreen) ||
+                  (0, Z.isEqual)(e.wideScreen, this.props.wideScreen) ||
                     a(e.wideScreen),
-                  (0, te.n4)(e.onChange, this.props.onChange) || i(e.onChange),
-                  (0, te.n4)(e.dynamicDataList, this.props.dynamicDataList) ||
-                    l(e.dynamicDataList),
-                  (0, te.n4)(e.options, this.props.options) || s(e.options);
+                  (0, Z.isEqual)(e.onChange, this.props.onChange) ||
+                    l(e.onChange),
+                  (0, Z.isEqual)(
+                    e.dynamicDataList,
+                    this.props.dynamicDataList,
+                  ) || s(e.dynamicDataList),
+                  (0, Z.isEqual)(e.options, this.props.options) || c(e.options);
               }),
               (n.render = function () {
                 var e = this,
@@ -7925,7 +7928,7 @@
                                       wt,
                                       {
                                         header: p.title || e.renderHeader(m),
-                                        key: c,
+                                        key: t + '-' + o,
                                       },
                                       Et({
                                         parentType: m,
@@ -7964,7 +7967,7 @@
                                       Ot,
                                       {
                                         tab: p.title || e.renderHeader(m),
-                                        key: c,
+                                        key: t + '-' + o,
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
@@ -8003,7 +8006,6 @@
                   !h &&
                     d &&
                     A.createElement(ye, {
-                      key: l + '-' + u + '-jsonView',
                       jsonData: c,
                       readOnly: null == o || o,
                       onChange: p,

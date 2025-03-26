@@ -526,7 +526,7 @@
                     (this.jsonSchema = e), this.jsonSchemaChange();
                   }),
                   (t.jsonSchemaChange = function (e) {
-                    (this.jsonSchema.lastUpdateTime = new Date()),
+                    (this.jsonSchema.lastUpdateTime = new Date().getTime()),
                       e || this.onChange(this.JSONSchemaObj);
                   }),
                   (t.indexRoute2keyRoute = function (e) {

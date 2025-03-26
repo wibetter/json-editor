@@ -5,267 +5,6 @@ import {
 } from 'lodash';
 import qs from 'qs';
 
-/**
- * 获取 URL 上的所有参数
- * 例如：比如当前页面的地址为 xx?a1=123 则 urlParse() => {a1: 123}
- */
-function urlParse() {
-  var urlParams = {};
-  if (location.search) {
-    urlParams = qs.parse(location.search.substring(1));
-  }
-  return urlParams;
-}
-
-/**
- * 转换成 URL 上的参数字符串
- * @param {*} urlParams
- * 例如：{a1: 123} => a1=123
- */
-function urlStringify(urlParams) {
-  var urlStr = '';
-  if (url) {
-    urlStr = qs.stringify(urlParams);
-  }
-  return urlStr;
-}
-
-/** js对象数据深拷贝，避免数据联动 */
-function objClone(targetObj) {
-  // const newObj = JSON.stringify(targetObj);
-  // return JSON.parse(newObj);
-  return cloneDeep(targetObj);
-}
-
-/** 对比两个json数据是否相等 */
-function isEqual(targetObj, nextTargetObj) {
-  // return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
-  return isEqual$1(targetObj, nextTargetObj);
-}
-
-/** 判断当前属性是否存在
- * 备注：要识别boolean类型的数值 */
-function hasProperties(targetProperties) {
-  var hasProperties = false;
-  if (targetProperties !== undefined && targetProperties !== null) {
-    // targetProperties 等于""、0、false时均认为是存在的属性
-    hasProperties = true;
-  }
-  return hasProperties;
-}
-
-// 截断字符串，避免撑开元素
-// https://www.lodashjs.com/docs/lodash.truncate
-function truncate(str, paramConfig) {
-  if (str) {
-    return truncate$1(str, paramConfig);
-  }
-  return truncate$1(str, paramConfig);
-}
-
-/**
- * 支持属性表达式
- */
-function evalExpression(expressionStr, data) {
-  var curData = data || {};
-  if (!expressionStr) return false;
-  var expressionFunc = new Function(
-    'data',
-    'with(data) { return (' + expressionStr + ');}',
-  );
-  var expressionResult = '';
-  try {
-    expressionResult = expressionFunc(curData);
-  } catch (error) {
-    console.warn(
-      '\u8868\u8FBE\u5F0F\u8FD0\u7B97\u51FA\u9519: ' +
-        expressionStr +
-        '\uFF0C\u62A5\u9519\u4FE1\u606F\uFF1A',
-      error,
-    );
-    return expressionResult;
-  }
-  return expressionResult;
-}
-
-/**
- * getJSONDataByKeyRoute: 根据key值路径获取对应的json数据
- * 【方法参数说明】
- * keyRoute: key值索引路径
- * targetJsonDataObj: json数据对象
- * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
- */
-function getJsonDataByKeyRoute(keyRoute, targetJsonDataObj, useObjClone) {
-  var curJsonDataObj = targetJsonDataObj;
-  if (useObjClone) {
-    curJsonDataObj = objClone(targetJsonDataObj); // 进行深拷贝，避免影响原有数据
-  }
-  if (keyRoute) {
-    var keyRouteArr = keyRoute.split('-');
-    for (var index = 0, size = keyRouteArr.length; index < size; index++) {
-      // 1、获取当前的jsonKey值
-      var curKey = keyRouteArr[index];
-      if (curKey) {
-        // 只有curKey不为空的时候才进行赋值
-        // 2、根据key值获取对应的数据对象
-        curJsonDataObj = curJsonDataObj && curJsonDataObj[curKey];
-      }
-    }
-  }
-  return curJsonDataObj;
-}
-
-/**
- * getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
- * 【方法参数说明】
- * indexRoute: index索引路径
- * targetJsonSchemaObj: schema数据对象
- * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
- */
-function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
-  var curJsonSchemaObj = targetJsonSchemaObj;
-  if (useObjClone) {
-    curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
-  }
-  if (indexRoute) {
-    var indexRouteArr = indexRoute.split('-');
-    for (var index = 0, size = indexRouteArr.length; index < size; index++) {
-      // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
-      var curIndex = indexRouteArr[index];
-      if (
-        curIndex === '0' &&
-        (curJsonSchemaObj.type === 'array' ||
-          curJsonSchemaObj.type === 'radio' ||
-          curJsonSchemaObj.type === 'select' ||
-          curJsonSchemaObj.type === 'checkboxes') &&
-        (curJsonSchemaObj.options || curJsonSchemaObj.items)
-      ) {
-        // 从items中获取数据
-        curJsonSchemaObj = curJsonSchemaObj.options || curJsonSchemaObj.items;
-      } else if (curIndex) {
-        var curKeyTemp = '0';
-        // 1、先根据路径值获取key值
-        if (curJsonSchemaObj.propertyOrder) {
-          curKeyTemp = curJsonSchemaObj.propertyOrder[curIndex];
-        } else if (curJsonSchemaObj.properties) {
-          var propertyOrder = Object.keys(curJsonSchemaObj.properties);
-          curKeyTemp = propertyOrder[curIndex];
-        }
-        // 2、根据key值获取对应的json数据对象
-        curJsonSchemaObj = curJsonSchemaObj.properties[curKeyTemp];
-      }
-    }
-  }
-  return curJsonSchemaObj;
-}
-
-/**
- * getSchemaByKeyRoute: 根据key值路径获取对应的schema数据
- * 【方法参数说明】
- * keyRoute: key值路径
- * targetJsonSchemaObj: schema数据对象
- * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
- */
-function getSchemaByKeyRoute(keyRoute, targetJsonSchemaObj, useObjClone) {
-  var curJsonSchemaObj = targetJsonSchemaObj;
-  if (useObjClone) {
-    curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
-  }
-  if (keyRoute && curJsonSchemaObj) {
-    var keyRouteArr = keyRoute.split('-');
-    for (var index = 0, size = keyRouteArr.length; index < size; index++) {
-      // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
-      var curKey = keyRouteArr[index];
-      if (curKey && curJsonSchemaObj.properties) {
-        // 根据key值获取对应的json数据对象
-        curJsonSchemaObj = curJsonSchemaObj.properties[curKey];
-      }
-    }
-  }
-  return curJsonSchemaObj;
-}
-
-/**
- * indexRoute2keyRoute：根据index索引路径获取对应的key值路径
- * 【方法参数说明】
- * indexRoute: index索引路径
- * targetJsonSchemaObj: schema数据对象
- * */
-function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
-  var curJsonSchemaObj = targetJsonSchemaObj;
-  var curKeyRoute = '';
-  var indexRouteArr = indexRoute.split('-');
-  for (var index = 0, size = indexRouteArr.length; index < size; index++) {
-    // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
-    var curIndex = indexRouteArr[index];
-    if (curIndex === '0' && curJsonSchemaObj.items) {
-      // 从items中获取数据
-      curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
-      curKeyRoute = curKeyRoute ? curKeyRoute + '-items' : 'items';
-    } else if (curIndex === '0' && curJsonSchemaObj.options) {
-      // 从options中获取数据
-      curJsonSchemaObj = curJsonSchemaObj.options;
-      curKeyRoute = curKeyRoute ? curKeyRoute + '-options' : 'options';
-    } else if (curIndex) {
-      // 1、先根据路径值获取key值
-      var curKey = '0';
-      // 1、先根据路径值获取key值
-      if (curJsonSchemaObj.propertyOrder) {
-        curKey = curJsonSchemaObj.propertyOrder[curIndex];
-      } else if (curJsonSchemaObj.properties) {
-        var propertyOrder = Object.keys(curJsonSchemaObj.properties);
-        curKey = propertyOrder[curIndex];
-      }
-      // 2、根据key值获取对应的json数据对象
-      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
-      curKeyRoute = curKeyRoute ? curKeyRoute + '-' + curKey : curKey;
-    }
-  }
-  return curKeyRoute;
-}
-
-/**
- * keyRoute2indexRoute：根据key值路径获取对应的index索引路径
- * 【方法参数说明】
- * keyRoute: key值路径
- * targetJsonSchemaObj: schema数据对象
- * */
-function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
-  var curJsonSchemaObj = targetJsonSchemaObj;
-  var curIndexRoute = '';
-  var keyRouteArr = keyRoute.split('-');
-  for (var index = 0, size = keyRouteArr.length; index < size; index++) {
-    var curKey = keyRouteArr[index];
-    if (curKey) {
-      // 1、先根据路径值获取key值
-      var curIndex = -1;
-      // 1、先根据路径值获取key值
-      if (curJsonSchemaObj.propertyOrder) {
-        curIndex = curJsonSchemaObj.propertyOrder.indexOf(curKey);
-        // 2、根据key值获取对应的json数据对象
-        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
-      } else if (curJsonSchemaObj.properties) {
-        var propertyOrder = Object.keys(curJsonSchemaObj.properties);
-        curIndex = propertyOrder.indexOf(curKey);
-        // 2、根据key值获取对应的json数据对象
-        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
-      } else if (curJsonSchemaObj.items) {
-        // 兼容数组类型
-        curIndex = 0; // curKey;
-        curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
-      } else if (curJsonSchemaObj.options) {
-        // 兼容数组类型
-        curIndex = 0;
-        curJsonSchemaObj = curJsonSchemaObj.options;
-      }
-      curIndexRoute = curIndexRoute
-        ? curIndexRoute + '-' + curIndex
-        : curIndex.toString();
-    }
-  }
-  return curIndexRoute;
-}
-
 /** 新版JSONSchema一级字段项
  * 【字段属性说明】
  *  title：字段项的label值
@@ -2791,6 +2530,328 @@ function isFunction(curObj) {
     isFunction = true;
   }
   return isFunction;
+}
+
+/**
+ * 获取 URL 上的所有参数
+ * 例如：比如当前页面的地址为 xx?a1=123 则 urlParse() => {a1: 123}
+ */
+function urlParse() {
+  var urlParams = {};
+  if (location.search) {
+    urlParams = qs.parse(location.search.substring(1));
+  }
+  return urlParams;
+}
+
+/**
+ * 转换成 URL 上的参数字符串
+ * @param {*} urlParams
+ * 例如：{a1: 123} => a1=123
+ */
+function urlStringify(urlParams) {
+  var urlStr = '';
+  if (url) {
+    urlStr = qs.stringify(urlParams);
+  }
+  return urlStr;
+}
+
+/** js对象数据深拷贝，避免数据联动 */
+function objClone(targetObj) {
+  // const newObj = JSON.stringify(targetObj);
+  // return JSON.parse(newObj);
+  return cloneDeep(targetObj);
+}
+
+/** 对比两个json数据是否相等 */
+function isEqual(targetObj, nextTargetObj) {
+  if (
+    (hasProperties(targetObj) && !hasProperties(nextTargetObj)) ||
+    (!hasProperties(targetObj) && hasProperties(nextTargetObj)) ||
+    typeof targetObj !== typeof nextTargetObj
+  ) {
+    return false;
+  }
+  if (
+    isObject$1(targetObj) &&
+    (targetObj.id !== nextTargetObj.id ||
+      targetObj.lastUpdateTime !== nextTargetObj.lastUpdateTime)
+  ) {
+    return false;
+  }
+  var curTime = new Date().getTime();
+  if (
+    isObject$1(targetObj) &&
+    targetObj.lastUpdateTime &&
+    targetObj.lastUpdateTime === nextTargetObj.lastUpdateTime &&
+    curTime - targetObj.lastUpdateTime < 500
+  ) {
+    // 当两个对象的时间戳相同，且和当前时间的时间戳数值相差不到500毫秒，则直接认为两者数据相同
+    return true;
+  }
+  return isEqual$1(targetObj, nextTargetObj);
+}
+
+// 根据 id 或 lastUpdateTime 判断 数据是否相等
+function isEqualByIdT(targetObj, nextTargetObj) {
+  if (
+    (hasProperties(targetObj) && !hasProperties(nextTargetObj)) ||
+    (!hasProperties(targetObj) && hasProperties(nextTargetObj)) ||
+    typeof targetObj !== typeof nextTargetObj
+  ) {
+    return false;
+  }
+  if (
+    isObject$1(targetObj) &&
+    (targetObj.id !== nextTargetObj.id ||
+      targetObj.lastUpdateTime !== nextTargetObj.lastUpdateTime)
+  ) {
+    return false;
+  }
+  var curTime = new Date().getTime();
+  if (
+    isObject$1(targetObj) &&
+    targetObj.lastUpdateTime &&
+    targetObj.lastUpdateTime === nextTargetObj.lastUpdateTime &&
+    curTime - targetObj.lastUpdateTime < 500
+  ) {
+    // 当两个对象的时间戳相同，且和当前时间的时间戳数值相差不到500毫秒，则直接认为两者数据相同
+    return true;
+  }
+  if (
+    isObject$1(targetObj) &&
+    ((hasProperties(targetObj.id) && targetObj.id === nextTargetObj.id) ||
+      (hasProperties(targetObj.lastUpdateTime) &&
+        targetObj.lastUpdateTime === nextTargetObj.lastUpdateTime))
+  ) {
+    return true;
+  } else {
+    return isEqual$1(targetObj, nextTargetObj);
+  }
+}
+
+/** 判断当前属性是否存在
+ * 备注：要识别boolean类型的数值 */
+function hasProperties(targetProperties) {
+  var hasProperties = false;
+  if (targetProperties !== undefined && targetProperties !== null) {
+    // targetProperties 等于""、0、false时均认为是存在的属性
+    hasProperties = true;
+  }
+  return hasProperties;
+}
+
+// 截断字符串，避免撑开元素
+// https://www.lodashjs.com/docs/lodash.truncate
+function truncate(str, paramConfig) {
+  if (str) {
+    return truncate$1(str, paramConfig);
+  }
+  return truncate$1(str, paramConfig);
+}
+
+/**
+ * 支持属性表达式
+ */
+function evalExpression(expressionStr, data) {
+  var curData = data || {};
+  if (!expressionStr) return false;
+  var expressionFunc = new Function(
+    'data',
+    'with(data) { return (' + expressionStr + ');}',
+  );
+  var expressionResult = '';
+  try {
+    expressionResult = expressionFunc(curData);
+  } catch (error) {
+    console.warn(
+      '\u8868\u8FBE\u5F0F\u8FD0\u7B97\u51FA\u9519: ' +
+        expressionStr +
+        '\uFF0C\u62A5\u9519\u4FE1\u606F\uFF1A',
+      error,
+    );
+    return expressionResult;
+  }
+  return expressionResult;
+}
+
+/**
+ * getJSONDataByKeyRoute: 根据key值路径获取对应的json数据
+ * 【方法参数说明】
+ * keyRoute: key值索引路径
+ * targetJsonDataObj: json数据对象
+ * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
+ */
+function getJsonDataByKeyRoute(keyRoute, targetJsonDataObj, useObjClone) {
+  var curJsonDataObj = targetJsonDataObj;
+  if (useObjClone) {
+    curJsonDataObj = objClone(targetJsonDataObj); // 进行深拷贝，避免影响原有数据
+  }
+  if (keyRoute) {
+    var keyRouteArr = keyRoute.split('-');
+    for (var index = 0, size = keyRouteArr.length; index < size; index++) {
+      // 1、获取当前的jsonKey值
+      var curKey = keyRouteArr[index];
+      if (curKey) {
+        // 只有curKey不为空的时候才进行赋值
+        // 2、根据key值获取对应的数据对象
+        curJsonDataObj = curJsonDataObj && curJsonDataObj[curKey];
+      }
+    }
+  }
+  return curJsonDataObj;
+}
+
+/**
+ * getSchemaByIndexRoute: 根据index索引路径获取对应的schema数据
+ * 【方法参数说明】
+ * indexRoute: index索引路径
+ * targetJsonSchemaObj: schema数据对象
+ * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
+ */
+function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
+  var curJsonSchemaObj = targetJsonSchemaObj;
+  if (useObjClone) {
+    curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
+  }
+  if (indexRoute) {
+    var indexRouteArr = indexRoute.split('-');
+    for (var index = 0, size = indexRouteArr.length; index < size; index++) {
+      // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
+      var curIndex = indexRouteArr[index];
+      if (
+        curIndex === '0' &&
+        (curJsonSchemaObj.type === 'array' ||
+          curJsonSchemaObj.type === 'radio' ||
+          curJsonSchemaObj.type === 'select' ||
+          curJsonSchemaObj.type === 'checkboxes') &&
+        (curJsonSchemaObj.options || curJsonSchemaObj.items)
+      ) {
+        // 从items中获取数据
+        curJsonSchemaObj = curJsonSchemaObj.options || curJsonSchemaObj.items;
+      } else if (curIndex) {
+        var curKeyTemp = '0';
+        // 1、先根据路径值获取key值
+        if (curJsonSchemaObj.propertyOrder) {
+          curKeyTemp = curJsonSchemaObj.propertyOrder[curIndex];
+        } else if (curJsonSchemaObj.properties) {
+          var propertyOrder = Object.keys(curJsonSchemaObj.properties);
+          curKeyTemp = propertyOrder[curIndex];
+        }
+        // 2、根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKeyTemp];
+      }
+    }
+  }
+  return curJsonSchemaObj;
+}
+
+/**
+ * getSchemaByKeyRoute: 根据key值路径获取对应的schema数据
+ * 【方法参数说明】
+ * keyRoute: key值路径
+ * targetJsonSchemaObj: schema数据对象
+ * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
+ */
+function getSchemaByKeyRoute(keyRoute, targetJsonSchemaObj, useObjClone) {
+  var curJsonSchemaObj = targetJsonSchemaObj;
+  if (useObjClone) {
+    curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
+  }
+  if (keyRoute && curJsonSchemaObj) {
+    var keyRouteArr = keyRoute.split('-');
+    for (var index = 0, size = keyRouteArr.length; index < size; index++) {
+      // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
+      var curKey = keyRouteArr[index];
+      if (curKey && curJsonSchemaObj.properties) {
+        // 根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey];
+      }
+    }
+  }
+  return curJsonSchemaObj;
+}
+
+/**
+ * indexRoute2keyRoute：根据index索引路径获取对应的key值路径
+ * 【方法参数说明】
+ * indexRoute: index索引路径
+ * targetJsonSchemaObj: schema数据对象
+ * */
+function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
+  var curJsonSchemaObj = targetJsonSchemaObj;
+  var curKeyRoute = '';
+  var indexRouteArr = indexRoute.split('-');
+  for (var index = 0, size = indexRouteArr.length; index < size; index++) {
+    // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
+    var curIndex = indexRouteArr[index];
+    if (curIndex === '0' && curJsonSchemaObj.items) {
+      // 从items中获取数据
+      curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      curKeyRoute = curKeyRoute ? curKeyRoute + '-items' : 'items';
+    } else if (curIndex === '0' && curJsonSchemaObj.options) {
+      // 从options中获取数据
+      curJsonSchemaObj = curJsonSchemaObj.options;
+      curKeyRoute = curKeyRoute ? curKeyRoute + '-options' : 'options';
+    } else if (curIndex) {
+      // 1、先根据路径值获取key值
+      var curKey = '0';
+      // 1、先根据路径值获取key值
+      if (curJsonSchemaObj.propertyOrder) {
+        curKey = curJsonSchemaObj.propertyOrder[curIndex];
+      } else if (curJsonSchemaObj.properties) {
+        var propertyOrder = Object.keys(curJsonSchemaObj.properties);
+        curKey = propertyOrder[curIndex];
+      }
+      // 2、根据key值获取对应的json数据对象
+      curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      curKeyRoute = curKeyRoute ? curKeyRoute + '-' + curKey : curKey;
+    }
+  }
+  return curKeyRoute;
+}
+
+/**
+ * keyRoute2indexRoute：根据key值路径获取对应的index索引路径
+ * 【方法参数说明】
+ * keyRoute: key值路径
+ * targetJsonSchemaObj: schema数据对象
+ * */
+function keyRoute2indexRoute(keyRoute, targetJsonSchemaObj) {
+  var curJsonSchemaObj = targetJsonSchemaObj;
+  var curIndexRoute = '';
+  var keyRouteArr = keyRoute.split('-');
+  for (var index = 0, size = keyRouteArr.length; index < size; index++) {
+    var curKey = keyRouteArr[index];
+    if (curKey) {
+      // 1、先根据路径值获取key值
+      var curIndex = -1;
+      // 1、先根据路径值获取key值
+      if (curJsonSchemaObj.propertyOrder) {
+        curIndex = curJsonSchemaObj.propertyOrder.indexOf(curKey);
+        // 2、根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      } else if (curJsonSchemaObj.properties) {
+        var propertyOrder = Object.keys(curJsonSchemaObj.properties);
+        curIndex = propertyOrder.indexOf(curKey);
+        // 2、根据key值获取对应的json数据对象
+        curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
+      } else if (curJsonSchemaObj.items) {
+        // 兼容数组类型
+        curIndex = 0; // curKey;
+        curJsonSchemaObj = curJsonSchemaObj.items; // 对象类型数据引用
+      } else if (curJsonSchemaObj.options) {
+        // 兼容数组类型
+        curIndex = 0;
+        curJsonSchemaObj = curJsonSchemaObj.options;
+      }
+      curIndexRoute = curIndexRoute
+        ? curIndexRoute + '-' + curIndex
+        : curIndex.toString();
+    }
+  }
+  return curIndexRoute;
 }
 
 /**
@@ -8641,6 +8702,7 @@ export {
   isDateTimeStr,
   isEmptySchema,
   isEqual,
+  isEqualByIdT,
   isFunction,
   isNewSchemaData,
   isNumber,

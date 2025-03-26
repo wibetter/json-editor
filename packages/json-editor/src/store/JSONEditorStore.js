@@ -4,6 +4,7 @@ import {
   schema2json,
   getJsonDataByKeyRoute,
   getParentKeyRoute_CurKey,
+  isEmptySchema,
 } from '@wibetter/json-utils';
 import { isEqual, objClone } from '$utils/index';
 import { isArray, isFunction, isObject } from '$utils/typeof';
@@ -106,12 +107,10 @@ export default class JSONEditorStore {
     const jsonSchema =
       this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
     // 过滤jsonData内部数据变动时触发initJSONData的事件
-    if (!isEqual(jsonData, this.jsonData)) {
+    if (!isEqual(jsonData, this.JSONEditorObj)) {
+      this.initJsonData = objClone(this.jsonData); // 备份过滤前的数据对象
       // 根据jsonSchema生成一份对应的jsonData
-      /** 1、根据jsonSchema生成对应的jsonData */
-      this.initJsonData = objClone(this.jsonData); // 备份过滤钱的数据对象
-      // 判断当前schema是否为空
-      if (jsonSchema) {
+      if (jsonSchema && !isEmptySchema(jsonSchema)) {
         const newJsonData = schema2json(jsonSchema, jsonData || {});
         this.jsonData = Object.assign({}, jsonData, newJsonData);
         // this.jsonData = newJsonData;
@@ -158,12 +157,12 @@ export default class JSONEditorStore {
   /** 触发onChange  */
   @action.bound
   jsonDataChange() {
-    this.onChange(this.JSONEditorObj);
+    (this.jsonData.lastUpdateTime = new Date().getTime()), // 记录当前更新时间戳
+      this.onChange(this.JSONEditorObj);
   }
 
   @action.bound
   jsonChange(newJsonData) {
-    console.log('newJsonData:', newJsonData);
     this.jsonData = newJsonData;
     this.jsonDataChange();
   }

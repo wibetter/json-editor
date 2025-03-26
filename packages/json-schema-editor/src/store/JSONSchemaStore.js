@@ -107,7 +107,7 @@ export default class JSONSchemaStore {
   @action.bound
   jsonSchemaChange(ignore) {
     // 更新jsonSchema数据的更新时间
-    this.jsonSchema.lastUpdateTime = new Date();
+    this.jsonSchema.lastUpdateTime = new Date().getTime();
     // 如果ignore为true则跳过，避免重复触发onChange
     if (!ignore) {
       this.onChange(this.JSONSchemaObj);
