@@ -84,6 +84,9 @@ export const ARRAY_ITEM_TYPE = [
   'date-time',
   'time',
   'input-image',
+  'dynamic-config',
+  'dynamic-object',
+  'dynamic-array',
 ];
 
 // radio单选类型可选项

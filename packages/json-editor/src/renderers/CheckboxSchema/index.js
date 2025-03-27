@@ -107,7 +107,8 @@ class CheckboxSchema extends React.PureComponent {
                 options.length > 0 &&
                 options.map((item, optionIndex) => {
                   const optionLabel = item.label || item.name;
-                  const optionNodeKey = `${nodeKey}-select-${optionLabel}`;
+                  // const optionNodeKey = `${nodeKey}-select-${optionLabel}`;
+                  const optionNodeKey = `select-${optionIndex}-${optionLabel}`;
                   return (
                     <Checkbox value={item.value} key={optionNodeKey}>
                       {optionLabel}

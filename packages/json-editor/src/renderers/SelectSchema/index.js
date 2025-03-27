@@ -22,7 +22,7 @@ class SelectSchema extends React.PureComponent {
     keyRoute: PropTypes.string,
     nodeKey: PropTypes.string,
     targetJsonSchema: PropTypes.any,
-    withLabel: PropTypes.boolean, // 选择选项时是否带上label的数值
+    withLabel: PropTypes.any, // 选择选项时是否带上label的数值
   };
 
   optionValue = {}; // 记录options中对象类型的value

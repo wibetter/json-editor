@@ -275,7 +275,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
             : `mobile-screen-element-warp`
         } ${renderAction ? 'render-mark' : ''}`}
         id={nodeKey}
-        key={nodeKey}
+        // key={nodeKey}
         style={style}
       >
         <div className="element-title" style={titleStyle}>

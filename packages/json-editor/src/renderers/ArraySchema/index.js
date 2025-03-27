@@ -428,8 +428,8 @@ class ArraySchema extends React.PureComponent {
                       className={`array-item-content ${
                         currentActiveArrIndex === arrIndex ? 'open' : 'closed'
                       }`}
-                      key={curNodeKey}
-                      id={curNodeKey}
+                      // key={curNodeKey}
+                      // id={curNodeKey}
                     >
                       {renderChild({
                         parentType: curType,

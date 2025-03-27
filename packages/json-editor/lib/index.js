@@ -1078,8 +1078,8 @@
           A = __webpack_require__(2015),
           V = __webpack_require__.n(A),
           B = require('react-dom'),
-          L = __webpack_require__.n(B),
-          I = __webpack_require__(4020),
+          I = __webpack_require__.n(B),
+          L = __webpack_require__(4020),
           q = __webpack_require__(9825),
           W = __webpack_require__.n(q),
           U = require('@babel/runtime/helpers/initializerDefineProperty'),
@@ -2226,8 +2226,6 @@
                                 className:
                                   'array-item-content ' +
                                   (N === t ? 'open' : 'closed'),
-                                key: a,
-                                id: a,
                               },
                               g({
                                 parentType: b,
@@ -3340,7 +3338,6 @@
                     ' ' +
                     (m ? 'render-mark' : ''),
                   id: n,
-                  key: n,
                   style: h,
                 },
                 A.createElement(
@@ -3962,7 +3959,7 @@
                         p.length > 0 &&
                         p.map(function (e, t) {
                           var n = e.label || e.name,
-                            a = i + '-select-' + n;
+                            a = 'select-' + t + '-' + n;
                           return A.createElement(
                             ee.Checkbox,
                             { value: e.value, key: a },
@@ -4232,16 +4229,16 @@
           Ae = __webpack_require__.n(Me),
           Ve = require('braft-extensions/dist/color-picker'),
           Be = __webpack_require__.n(Ve),
-          Le =
+          Ie =
             (require('braft-extensions/dist/color-picker.css'),
             require('braft-extensions/dist/table')),
-          Ie = __webpack_require__.n(Le);
+          Le = __webpack_require__.n(Ie);
         require('braft-extensions/dist/table.css'),
           require('braft-editor/dist/index.css'),
           __webpack_require__(632),
           Ae().use([Be()({ theme: 'light' })]),
           Ae().use(
-            Ie()({
+            Le()({
               defaultColumns: 3,
               defaultRows: 3,
               withDropdown: !1,
@@ -4472,11 +4469,14 @@
                     : o(a, e);
               }),
               (n.numberChange = function (e, t) {
-                var a = 0;
-                t && (a = t),
-                  'plus' === e ? (a += 1) : 'minus' === e && (a -= 1),
-                  n.handleValueChange(a),
+                var a = n.props.keyRoute,
+                  o = 0;
+                t && (o = t),
+                  'plus' === e ? (o += 1) : 'minus' === e && (o -= 1),
+                  n.handleValueChange(o),
                   n.setState({ renderTime: new Date().getTime() });
+                var r = document.getElementById('inputNumber-' + a);
+                r && (r.value = o);
               }),
               (n.state = { renderTime: new Date().getTime() }),
               (n.handleValueChange = n.handleValueChange.bind(n)),
@@ -4502,17 +4502,16 @@
                 i = this.props,
                 l = i.keyRoute,
                 s = i.jsonKey,
-                c = i.nodeKey,
-                u = i.targetJsonSchema,
-                p = this.state.renderTime,
-                m = r(l),
-                d = u.readOnly || !1,
-                y = u.isRequired || !1,
-                h = (0, te.y8)(u.type),
-                g = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
-                S = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
-                _ = u.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
+                c = (i.nodeKey, i.targetJsonSchema),
+                u = this.state.renderTime,
+                p = r(l),
+                m = c.readOnly || !1,
+                d = c.isRequired || !1,
+                y = (0, te.y8)(c.type),
+                h = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
+                g = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                S = c.contentStyle
+                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                   : {};
               return A.createElement(
                 'div',
@@ -4521,25 +4520,23 @@
                     'wideScreen' === o
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
-                        (h ? 'two-col-element-warp' : ''),
-                  key: c + '-' + p,
-                  id: c,
-                  style: g,
+                        (y ? 'two-col-element-warp' : ''),
+                  style: h,
                 },
                 A.createElement(
                   'div',
-                  { className: 'element-title', style: S },
+                  { className: 'element-title', style: g },
                   A.createElement(
                     ee.Tooltip,
                     {
-                      title: 'wideScreen' === o ? u.description : '',
+                      title: 'wideScreen' === o ? c.description : '',
                       placement: 'top',
                     },
                     A.createElement(
                       'span',
-                      { className: 'title-text', title: u.title },
-                      u.title,
-                      u.showKey &&
+                      { className: 'title-text', title: c.title },
+                      c.title,
+                      c.showKey &&
                         A.createElement(
                           'span',
                           null,
@@ -4550,10 +4547,10 @@
                     ),
                   ),
                   'mobileScreen' === o &&
-                    u.description &&
+                    c.description &&
                     A.createElement(
                       ee.Tooltip,
-                      { title: u.description, placement: 'top' },
+                      { title: c.description, placement: 'top' },
                       A.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
@@ -4561,7 +4558,7 @@
                 ),
                 A.createElement(
                   'div',
-                  { className: 'content-item', style: _ },
+                  { className: 'content-item', style: S },
                   A.createElement(
                     'div',
                     { className: 'form-item-box' },
@@ -4576,21 +4573,23 @@
                           onClick: function () {
                             e.numberChange(
                               'minus',
-                              (0, te.GT)(m) ? m : u.default,
+                              (0, te.GT)(p) ? p : c.default,
                             );
                           },
                         },
                         '-',
                       ),
                       A.createElement(ee.InputNumber, {
+                        key: 'inputNumber-' + u,
+                        id: 'inputNumber-' + l,
                         className: 'number-cont',
                         style: { display: 'inline-block' },
-                        disabled: d,
-                        required: y,
-                        placeholder: u.placeholder || '请输入' + u.title,
-                        min: u.minimum || 0,
-                        max: u.maximum || 1e6,
-                        defaultValue: (0, te.GT)(m) ? m : u.default,
+                        disabled: m,
+                        required: d,
+                        placeholder: c.placeholder || '请输入' + c.title,
+                        min: c.minimum || 0,
+                        max: c.maximum || 1e6,
+                        defaultValue: (0, te.GT)(p) ? p : c.default,
                         onChange: this.handleValueChange,
                       }),
                       A.createElement(
@@ -4601,7 +4600,7 @@
                           onClick: function () {
                             e.numberChange(
                               'plus',
-                              (0, te.GT)(m) ? m : u.default,
+                              (0, te.GT)(p) ? p : c.default,
                             );
                           },
                         },
@@ -4930,7 +4929,7 @@
           keyRoute: W().string,
           nodeKey: W().string,
           targetJsonSchema: W().any,
-          withLabel: W().boolean,
+          withLabel: W().any,
         }),
           (0, le.TS)({ type: 'select', component: Ge }),
           __webpack_require__(3794);
@@ -6402,12 +6401,12 @@
           dynamicDataObj: W().object,
           dynamicDataApiScopeList: W().object,
         };
-        var pt = (0, I.inject)(function (e) {
+        var pt = (0, L.inject)(function (e) {
             return {
               schemaStore: e.JSONSchemaStore,
               jsonStore: e.JSONEditorStore,
             };
-          })((0, I.observer)(ut)),
+          })((0, L.observer)(ut)),
           mt = (__webpack_require__(8678), ee.Select.Option),
           dt = (function (e) {
             function t(t) {
@@ -8027,12 +8026,12 @@
           dynamicDataList: W().any,
           options: W().any,
         };
-        var Rt = (0, I.inject)(function (e) {
+        var Rt = (0, L.inject)(function (e) {
           return {
             schemaStore: e.JSONSchemaStore,
             jsonStore: e.JSONEditorStore,
           };
-        })((0, I.observer)(Ct));
+        })((0, L.observer)(Ct));
         function Nt(e, t) {
           if (
             (window &&
@@ -8109,14 +8108,14 @@
                 var e = this.props.element,
                   t = this.state.rootJSONStore,
                   n = A.createElement(
-                    I.Provider,
+                    L.Provider,
                     {
                       JSONSchemaStore: t.JSONSchemaStore,
                       JSONEditorStore: t.JSONEditorStore,
                     },
                     A.createElement(Rt, this.props),
                   );
-                return e ? (L().render(n, e), '') : n;
+                return e ? (I().render(n, e), '') : n;
               }),
               t
             );

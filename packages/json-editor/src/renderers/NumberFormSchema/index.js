@@ -62,6 +62,7 @@ class NumberFormSchema extends React.PureComponent {
 
   /** 数值加减按钮事件处理器 */
   numberChange = (type, curValue) => {
+    const { keyRoute } = this.props;
     let curNum = 0;
     if (curValue) {
       curNum = curValue;
@@ -76,6 +77,11 @@ class NumberFormSchema extends React.PureComponent {
     this.setState({
       renderTime: new Date().getTime(),
     });
+    const curInputDom = document.getElementById(`inputNumber-${keyRoute}`);
+    if (curInputDom) {
+      curInputDom.value = curNum;
+      // curInputDom.style.color = "#f00";
+    }
   };
 
   render() {
@@ -109,8 +115,8 @@ class NumberFormSchema extends React.PureComponent {
                 isNeedTwoCol ? 'two-col-element-warp' : ''
               }`
         }
-        key={`${nodeKey}-${renderTime}`}
-        id={nodeKey}
+        // key={`${nodeKey}-${renderTime}`}
+        // id={nodeKey}
         style={style}
       >
         <div className="element-title" style={titleStyle}>
@@ -151,6 +157,9 @@ class NumberFormSchema extends React.PureComponent {
                 -
               </div>
               <InputNumber
+                key={`inputNumber-${renderTime}`}
+                id={`inputNumber-${keyRoute}`}
+                // ref="inputNumber"
                 className="number-cont"
                 style={{ display: 'inline-block' }}
                 disabled={readOnly}
