@@ -1466,15 +1466,15 @@ var initSohuSourceData = {
           options: [
             {
               label: 'channel',
-              value: 'channel',
+              value: 13,
             },
             {
               label: 'topic',
-              value: 'topic',
+              value: 15,
             },
             {
               label: 'block',
-              value: 'block',
+              value: 14,
             },
           ],
           description: '',

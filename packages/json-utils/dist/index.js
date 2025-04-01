@@ -45,19 +45,19 @@
           return d;
         },
         EventTypeDataList: function () {
-          return s;
+          return c;
         },
         KeyWordList: function () {
           return ve;
         },
         TypeDataList: function () {
-          return c;
+          return s;
         },
         dataRoute2dataPath: function () {
           return de;
         },
         dynamicDataAnalyzer: function () {
-          return se;
+          return ce;
         },
         evalExpression: function () {
           return F;
@@ -198,7 +198,7 @@
           return ue;
         },
         schemaMetaList: function () {
-          return ce;
+          return se;
         },
         truncate: function () {
           return k;
@@ -314,7 +314,7 @@
         data: '{}',
         localFilter: 'return data;',
       },
-      c = {
+      s = {
         jsonschema: {
           type: 'object',
           title: 'jsonSchemaObject',
@@ -1069,9 +1069,9 @@
                   type: 'select',
                   title: '数据源类型',
                   options: [
-                    { label: 'channel', value: 'channel' },
-                    { label: 'topic', value: 'topic' },
-                    { label: 'block', value: 'block' },
+                    { label: 'channel', value: 13 },
+                    { label: 'topic', value: 15 },
+                    { label: 'block', value: 14 },
                   ],
                   description: '',
                   onShow: 'type === "RuntimeDataSelfDefine"',
@@ -1562,7 +1562,7 @@
           propertyOrder: ['type', 'value', 'range'],
         },
       },
-      s = {
+      c = {
         on: {
           type: 'event',
           title: '事件',
@@ -1644,7 +1644,7 @@
     }
     function S(e) {
       var t = !1;
-      return c.quantity.properties.quantity.enum.indexOf(e) >= 0 && (t = !0), t;
+      return s.quantity.properties.quantity.enum.indexOf(e) >= 0 && (t = !0), t;
     }
     function x(e) {
       return /^#[0-9a-f]{6}$/.test(e) || /^#[0-9a-f]{3}$/.test(e);
@@ -1823,12 +1823,12 @@
                   e.data && e.filter && 2 === r.length
                     ? (t = C(e.data) || O(e.data) ? N(d.local) : N(d.remote))
                     : e.trigger && e.eventData && 2 === r.length
-                      ? (t = N(s.emit))
+                      ? (t = N(c.emit))
                       : e.register && e.actionFunc && 2 === r.length
-                        ? (t = N(s.on))
+                        ? (t = N(c.on))
                         : e.quantity && S(e.quantity) && 2 === r.length
-                          ? (t = N(c.quantity))
-                          : ((t = N(c['empty-object'])),
+                          ? (t = N(s.quantity))
+                          : ((t = N(s['empty-object'])),
                             Object.keys(e).map(function (r) {
                               var i = e[r];
                               t.properties[r] = B(i);
@@ -1841,14 +1841,14 @@
                   var t;
                   if (e && C(e))
                     if (j(e)) {
-                      (t = N(c.select)).items.enum = e;
+                      (t = N(s.select)).items.enum = e;
                       var r = t.items.enumextra.length,
                         i = e.length;
                       if (i > r)
                         for (var a = r, l = i; a < l; a++)
                           t.items.enumextra.push('选项' + e(a));
                     } else {
-                      t = N(c['empty-array']);
+                      t = N(s['empty-array']);
                       var n = B(e[0]);
                       t.items.properties = n.properties;
                     }
@@ -1856,18 +1856,18 @@
                 })(e)
               : (function (e) {
                   var t = '';
-                  if (m(e)) t = N(c.boolean);
-                  else if (b(e)) t = N(c.number);
-                  else if (y(e)) t = N(c.url);
-                  else if (v(e)) t = N(c.date);
-                  else if (h(e)) t = N(c['date-time']);
-                  else if (g(e)) t = N(c.time);
-                  else if (x(e)) t = N(c.color);
+                  if (m(e)) t = N(s.boolean);
+                  else if (b(e)) t = N(s.number);
+                  else if (y(e)) t = N(s.url);
+                  else if (v(e)) t = N(s.date);
+                  else if (h(e)) t = N(s['date-time']);
+                  else if (g(e)) t = N(s.time);
+                  else if (x(e)) t = N(s.color);
                   else
                     try {
-                      t = b(JSON.parse(e)) ? N(c.input) : N(c.json);
+                      t = b(JSON.parse(e)) ? N(s.input) : N(s.json);
                     } catch (r) {
-                      t = e && e.length > 30 ? N(c.textarea) : N(c.input);
+                      t = e && e.length > 30 ? N(s.textarea) : N(s.input);
                     }
                   return t;
                 })(e)),
@@ -1932,7 +1932,7 @@
         'quantity' === t.type)
       ) {
         var r = t.properties,
-          i = N(c.quantity);
+          i = N(s.quantity);
         if (r.quantity && O(r.quantity) && r.quantity.default) {
           var a = r.quantity.default;
           i.properties.quantity.default = 'percent' === a ? '%' : a;
@@ -1956,13 +1956,13 @@
           y = u.type && u.type.default;
         if ('in' === y || 'on' === y) {
           var f = (u.filter && u.filter.default) || '() => {}';
-          (t = N(s.on)),
+          (t = N(c.on)),
             u.actionFunc &&
               O(u.actionFunc) &&
               (t.properties.actionFunc.default = u.actionFunc.default || N(f));
         } else {
           var b = (u.filter && u.filter.default) || '{}';
-          (t = N(s.emit)),
+          (t = N(c.emit)),
             u.eventData &&
               O(u.eventData) &&
               (t.properties.eventData.default = u.eventData.default || N(b));
@@ -2308,8 +2308,8 @@
           ? pe(e, t)
           : ne(e, t);
     }
-    var ce = c;
-    function se(e, t) {
+    var se = s;
+    function ce(e, t) {
       var r = t || [];
       if (e && '{}' !== JSON.stringify(e))
         if (O(e))
@@ -2332,12 +2332,12 @@
             r.push({ id: e.config.id, dataName: e.config.dataName, body: i });
           } else
             Object.keys(e).map(function (t) {
-              se(e[t], r);
+              ce(e[t], r);
             });
         else
           C(e) &&
             e.map(function (e) {
-              se(e, r);
+              ce(e, r);
             });
       return r;
     }

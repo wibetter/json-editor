@@ -1,7 +1,7 @@
 /*!
- * @wibetter/json-utils v5.2.9
+ * @wibetter/json-utils v5.2.10
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Mar 27 2025 17:53:10 GMT+0800 (中国标准时间)
+ * build time: Tue Apr 01 2025 15:32:31 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
