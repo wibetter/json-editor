@@ -53851,9 +53851,9 @@
                         type: 'select',
                         title: '数据源类型',
                         options: [
-                          { label: 'channel', value: 'channel' },
-                          { label: 'topic', value: 'topic' },
-                          { label: 'block', value: 'block' },
+                          { label: 'channel', value: 13 },
+                          { label: 'topic', value: 15 },
+                          { label: 'block', value: 14 },
                         ],
                         description: '',
                         onShow: 'type === "RuntimeDataSelfDefine"',
