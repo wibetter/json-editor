@@ -7,8 +7,11 @@
   ],
   "description": "JSON可视化工具，含json-schema-editor、json-editor和json-utils。",
   "keywords": [
-    "json",
-    "json可视化工具"
+    "jsonEditor",
+    "schemaEditor",
+    "json可视化工具",
+    "schema可视化工具",
+    "配置可视化工具"
   ],
   "author": "wibetter",
   "license": "MIT",
