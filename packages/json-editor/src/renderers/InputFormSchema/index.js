@@ -3,7 +3,7 @@ import * as React from 'react';
 import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
-import { Input, Tooltip } from 'antd';
+import { Input, Tooltip, AutoComplete } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -23,6 +23,7 @@ class InputFormSchema extends React.PureComponent {
   constructor(props) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleValueChange = this.handleValueChange.bind(this);
   }
 
@@ -30,10 +31,14 @@ class InputFormSchema extends React.PureComponent {
   // static contextType = ThemeContext;
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
+  handleInputChange = (event) => {
+    const { value } = event.target;
+    this.handleValueChange(value);
+  };
+
+  handleValueChange = (value) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    const { value } = event.target;
     if (this.props.onChange) {
       // 如果有监听数据变动函数则优先触发
       this.props.onChange(value);
@@ -63,6 +68,8 @@ class InputFormSchema extends React.PureComponent {
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+    const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
+    const options = targetJsonSchema.options || []; // 是否支持可选项
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -107,18 +114,37 @@ class InputFormSchema extends React.PureComponent {
         </div>
         <div className="content-item" style={contentStyle}>
           <div className="form-item-box">
-            <Input
-              style={{ display: 'inline-block' }}
-              disabled={readOnly}
-              required={isRequired}
-              placeholder={
-                targetJsonSchema.placeholder ||
-                `请输入${targetJsonSchema.title}`
-              }
-              defaultValue={curJsonData ?? targetJsonSchema.default}
-              onPressEnter={this.handleValueChange}
-              onBlur={this.handleValueChange}
-            />
+            {autoComplete && (
+              <AutoComplete
+                className="ant-input"
+                style={{ display: 'inline-block' }}
+                options={options}
+                disabled={readOnly}
+                required={isRequired}
+                allowClear={false}
+                placeholder={
+                  targetJsonSchema.placeholder ||
+                  `请输入${targetJsonSchema.title}`
+                }
+                defaultValue={curJsonData ?? targetJsonSchema.default}
+                onChange={this.handleValueChange}
+              />
+            )}
+            {!autoComplete && (
+              <Input
+                style={{ display: 'inline-block' }}
+                disabled={readOnly}
+                required={isRequired}
+                allowClear={false}
+                placeholder={
+                  targetJsonSchema.placeholder ||
+                  `请输入${targetJsonSchema.title}`
+                }
+                defaultValue={curJsonData ?? targetJsonSchema.default}
+                onPressEnter={this.handleInputChange}
+                onBlur={this.handleInputChange}
+              />
+            )}
           </div>
         </div>
       </div>

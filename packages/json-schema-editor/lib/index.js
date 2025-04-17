@@ -295,8 +295,8 @@
         var w,
           I,
           R,
-          K,
           k,
+          K,
           T,
           D,
           J,
@@ -442,8 +442,8 @@
               ((w = b.action.bound),
               (I = b.action.bound),
               (R = b.action.bound),
-              (K = b.action.bound),
               (k = b.action.bound),
+              (K = b.action.bound),
               (T = b.action.bound),
               (D = b.action.bound),
               (J = b.action.bound),
@@ -900,14 +900,14 @@
               x()(
                 he.prototype,
                 'initOnChange',
-                [K],
+                [k],
                 Object.getOwnPropertyDescriptor(he.prototype, 'initOnChange'),
                 he.prototype,
               ),
               x()(
                 he.prototype,
                 'schemaChange',
-                [k],
+                [K],
                 Object.getOwnPropertyDescriptor(he.prototype, 'schemaChange'),
                 he.prototype,
               ),
@@ -1278,9 +1278,9 @@
               })),
               he),
           },
-          Ke = require('@ant-design/icons'),
-          ke = require('rc-switch'),
-          Te = n.n(ke),
+          ke = require('@ant-design/icons'),
+          Ke = require('rc-switch'),
+          Te = n.n(Ke),
           De = require('react-ace'),
           Je = n.n(De),
           Be =
@@ -1542,14 +1542,15 @@
                     o,
                     i,
                     s,
-                    c = this,
-                    l = (this.props.schemaStore || {}).indexRoute2keyRoute,
-                    p = this.props,
-                    d = p.nodeKey,
-                    m = p.indexRoute,
-                    u = p.targetJsonSchema,
-                    h = u.type,
-                    y = (l(m), u.isConditionProp);
+                    c,
+                    l = this,
+                    p = (this.props.schemaStore || {}).indexRoute2keyRoute,
+                    d = this.props,
+                    m = d.nodeKey,
+                    u = d.indexRoute,
+                    h = d.targetJsonSchema,
+                    y = h.type,
+                    g = (p(u), h.isConditionProp);
                   return r.createElement(
                     'div',
                     { className: 'advance-config-model' },
@@ -1569,12 +1570,12 @@
                           'input-image',
                         ].indexOf(e) > -1
                       );
-                    })(h) &&
+                    })(y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-isConditionProp',
+                          key: m + '-isConditionProp',
                         },
                         r.createElement(
                           'div',
@@ -1600,26 +1601,26 @@
                             'div',
                             {
                               className: 'form-item-box',
-                              key: d + '-isConditionProp-switch',
+                              key: m + '-isConditionProp-switch',
                             },
                             r.createElement(Te(), {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != y && y,
+                              defaultChecked: null != g && g,
                               checkedChildren: '是',
                               unCheckedChildren: '否',
                               onChange: function (e) {
-                                c.handleValueChange('isConditionProp', e);
+                                l.handleValueChange('isConditionProp', e);
                               },
                             }),
                           ),
                         ),
                       ),
-                    ('select' === h || 'cascader' === h) &&
+                    ('select' === y || 'cascader' === y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-selectConfig',
+                          key: m + '-selectConfig',
                         },
                         r.createElement(
                           'div',
@@ -1645,15 +1646,15 @@
                             'div',
                             {
                               className: 'form-item-box',
-                              key: d + '-selectConfig-multiple',
+                              key: m + '-selectConfig-multiple',
                             },
                             r.createElement(Te(), {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != (e = u.multiple) && e,
+                              defaultChecked: null != (e = h.multiple) && e,
                               checkedChildren: '多选',
                               unCheckedChildren: '单选',
                               onChange: function (e) {
-                                c.handleValueChange('multiple', e);
+                                l.handleValueChange('multiple', e);
                               },
                             }),
                           ),
@@ -1661,12 +1662,12 @@
                       ),
                     (function (e) {
                       return ['select', 'radio'].indexOf(e) > -1;
-                    })(h) &&
+                    })(y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-defaultActiveFirstOption',
+                          key: m + '-defaultActiveFirstOption',
                         },
                         r.createElement(
                           'div',
@@ -1691,16 +1692,16 @@
                             'div',
                             {
                               className: 'form-item-box',
-                              key: d + '-selectConfig-defaultActiveFirstOption',
+                              key: m + '-selectConfig-defaultActiveFirstOption',
                             },
                             r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked:
-                                null != (t = u.defaultActiveFirstOption) && t,
+                                null != (t = h.defaultActiveFirstOption) && t,
                               checkedChildren: '开启',
                               unCheckedChildren: '关闭',
                               onChange: function (e) {
-                                c.handleValueChange(
+                                l.handleValueChange(
                                   'defaultActiveFirstOption',
                                   e,
                                 );
@@ -1721,12 +1722,12 @@
                           ])
                           .indexOf(e) > -1
                       );
-                    })(h) &&
+                    })(y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-readOnly-' + u.readOnly,
+                          key: m + '-readOnly-' + h.readOnly,
                         },
                         r.createElement(
                           'div',
@@ -1753,11 +1754,11 @@
                             { className: 'form-item-box' },
                             r.createElement(Te(), {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != (n = u.readOnly) && n,
+                              defaultChecked: null != (n = h.readOnly) && n,
                               checkedChildren: 'true',
                               unCheckedChildren: 'false',
                               onChange: function (e) {
-                                c.handleValueChange('readOnly', e);
+                                l.handleValueChange('readOnly', e);
                               },
                             }),
                           ),
@@ -1775,12 +1776,12 @@
                           ])
                           .indexOf(e) > -1
                       );
-                    })(h) &&
+                    })(y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-isRequired-' + u.isRequired,
+                          key: m + '-isRequired-' + h.isRequired,
                         },
                         r.createElement(
                           'div',
@@ -1807,11 +1808,11 @@
                             { className: 'form-item-box' },
                             r.createElement(Te(), {
                               style: { display: 'inline-block' },
-                              defaultChecked: null != (a = u.isRequired) && a,
+                              defaultChecked: null != (a = h.isRequired) && a,
                               checkedChildren: 'true',
                               unCheckedChildren: 'false',
                               onChange: function (e) {
-                                c.handleValueChange('isRequired', e);
+                                l.handleValueChange('isRequired', e);
                               },
                             }),
                           ),
@@ -1823,12 +1824,12 @@
                           .concat(be, ['json', 'codearea', 'htmlarea'])
                           .indexOf(e) > -1
                       );
-                    })(h) &&
+                    })(y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-default',
+                          key: m + '-default',
                         },
                         r.createElement(
                           'div',
@@ -1849,16 +1850,16 @@
                           r.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            this.renderDefaultContent(h, u, d),
+                            this.renderDefaultContent(y, h, m),
                           ),
                         ),
                       ),
-                    'select' === h &&
+                    'select' === y &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-withLabel',
+                          key: m + '-withLabel',
                         },
                         r.createElement(
                           'div',
@@ -1882,21 +1883,21 @@
                           { className: 'content-item' },
                           r.createElement(Te(), {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (o = u.withLabel) && o,
+                            defaultChecked: null != (o = h.withLabel) && o,
                             checkedChildren: '开启',
                             unCheckedChildren: '关闭',
                             onChange: function (e) {
-                              c.handleValueChange('withLabel', e);
+                              l.handleValueChange('withLabel', e);
                             },
                           }),
                         ),
                       ),
-                    'cascader' === h &&
+                    'cascader' === y &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-cascader-options',
+                          key: m + '-cascader-options',
                         },
                         r.createElement(
                           'div',
@@ -1918,9 +1919,9 @@
                           'div',
                           { className: 'content-item' },
                           r.createElement(Ve, {
-                            jsonData: u.options,
+                            jsonData: h.options,
                             onChange: function (e) {
-                              c.handleValueChange('options', e);
+                              l.handleValueChange('options', e);
                             },
                             maxLines: 10,
                           }),
@@ -1930,7 +1931,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: d + '-description',
+                        key: m + '-description',
                       },
                       r.createElement(
                         'div',
@@ -1957,15 +1958,15 @@
                           { className: 'form-item-box' },
                           r.createElement(E.Input, {
                             style: { display: 'inline-block' },
-                            placeholder: '请输入' + u.title + '的字段描述',
-                            defaultValue: u.description,
+                            placeholder: '请输入' + h.title + '的字段描述',
+                            defaultValue: h.description,
                             onPressEnter: function (e) {
                               var t = e.target.value;
-                              c.handleValueChange('description', t);
+                              l.handleValueChange('description', t);
                             },
                             onBlur: function (e) {
                               var t = e.target.value;
-                              c.handleValueChange('description', t);
+                              l.handleValueChange('description', t);
                             },
                           }),
                         ),
@@ -1975,7 +1976,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: d + '-showKey',
+                        key: m + '-showKey',
                       },
                       r.createElement(
                         'div',
@@ -2002,11 +2003,11 @@
                           { className: 'form-item-box' },
                           r.createElement(Te(), {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (i = u.showKey) && i,
+                            defaultChecked: null != (i = h.showKey) && i,
                             checkedChildren: 'true',
                             unCheckedChildren: 'false',
                             onChange: function (e) {
-                              c.handleValueChange('showKey', e);
+                              l.handleValueChange('showKey', e);
                             },
                           }),
                         ),
@@ -2027,12 +2028,12 @@
                           'htmlarea',
                         ].indexOf(e) > -1
                       );
-                    })(h) &&
+                    })(y) &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-placeholder',
+                          key: m + '-placeholder',
                         },
                         r.createElement(
                           'div',
@@ -2059,28 +2060,98 @@
                             { className: 'form-item-box' },
                             r.createElement(E.Input, {
                               style: { display: 'inline-block' },
-                              placeholder: '请输入' + u.title + '的输入提示',
-                              defaultValue: u.placeholder,
+                              placeholder: '请输入' + h.title + '的输入提示',
+                              defaultValue: h.placeholder,
                               onPressEnter: function (e) {
                                 var t = e.target.value;
-                                c.handleValueChange('placeholder', t);
+                                l.handleValueChange('placeholder', t);
                               },
                               onBlur: function (e) {
                                 var t = e.target.value;
-                                c.handleValueChange('placeholder', t);
+                                l.handleValueChange('placeholder', t);
                               },
                             }),
                           ),
                         ),
                       ),
-                    (function (e) {
-                      return [].concat(Ee, ['array']).indexOf(e) > -1;
-                    })(h) &&
+                    'input' === y &&
                       r.createElement(
                         'div',
                         {
                           className: 'wide-screen-element-warp',
-                          key: d + '-showCodeViewBtn-' + u.showCodeViewBtn,
+                          key: m + '-autoComplete',
+                        },
+                        r.createElement(
+                          'div',
+                          { className: 'element-title' },
+                          r.createElement(
+                            E.Tooltip,
+                            {
+                              title:
+                                '开启后支持添加可选项，并支持 autoComplete。',
+                              placement: 'top',
+                            },
+                            r.createElement(
+                              'span',
+                              { className: 'title-text' },
+                              '开启可选项',
+                            ),
+                          ),
+                        ),
+                        r.createElement(
+                          'div',
+                          { className: 'content-item' },
+                          r.createElement(
+                            'div',
+                            { className: 'form-item-box' },
+                            r.createElement(Te(), {
+                              style: { display: 'inline-block' },
+                              defaultChecked: null != (s = h.autoComplete) && s,
+                              checkedChildren: '开启',
+                              unCheckedChildren: '关闭',
+                              onChange: function (e) {
+                                l.handleValueChange('autoComplete', e);
+                              },
+                            }),
+                          ),
+                        ),
+                      ),
+                    h.autoComplete &&
+                      r.createElement(
+                        'div',
+                        {
+                          className: 'wide-screen-element-warp',
+                          key: m + '-autoComplete-options',
+                        },
+                        r.createElement(
+                          'div',
+                          { className: 'element-title' },
+                          r.createElement(
+                            'span',
+                            { className: 'title-text' },
+                            '可选项',
+                          ),
+                        ),
+                        r.createElement(
+                          'div',
+                          { className: 'content-item' },
+                          r.createElement(Ve, {
+                            jsonData: h.options || [],
+                            onChange: function (e) {
+                              l.handleValueChange('options', e);
+                            },
+                            maxLines: 10,
+                          }),
+                        ),
+                      ),
+                    (function (e) {
+                      return [].concat(Ee, ['array']).indexOf(e) > -1;
+                    })(y) &&
+                      r.createElement(
+                        'div',
+                        {
+                          className: 'wide-screen-element-warp',
+                          key: m + '-showCodeViewBtn-' + h.showCodeViewBtn,
                         },
                         r.createElement(
                           'div',
@@ -2108,17 +2179,17 @@
                             r.createElement(Te(), {
                               style: { display: 'inline-block' },
                               defaultChecked:
-                                null == (s = u.showCodeViewBtn) || s,
+                                null == (c = h.showCodeViewBtn) || c,
                               checkedChildren: 'true',
                               unCheckedChildren: 'false',
                               onChange: function (e) {
-                                c.handleValueChange('showCodeViewBtn', e);
+                                l.handleValueChange('showCodeViewBtn', e);
                               },
                             }),
                           ),
                         ),
                       ),
-                    'number' === (0, C.getExpectType)(h) &&
+                    'number' === (0, C.getExpectType)(y) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2126,7 +2197,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: d + '-minimum-' + u.minimum,
+                            key: m + '-minimum-' + h.minimum,
                           },
                           r.createElement(
                             'div',
@@ -2153,14 +2224,14 @@
                               { className: 'form-item-box' },
                               r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
-                                defaultValue: u.minimum,
+                                defaultValue: h.minimum,
                                 onPressEnter: function (e) {
                                   var t = e.target.value;
-                                  c.handleValueChange('minimum', t);
+                                  l.handleValueChange('minimum', t);
                                 },
                                 onBlur: function (e) {
                                   var t = e.target.value;
-                                  c.handleValueChange('minimum', t);
+                                  l.handleValueChange('minimum', t);
                                 },
                               }),
                             ),
@@ -2170,7 +2241,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: d + '-maximum-' + u.maximum,
+                            key: m + '-maximum-' + h.maximum,
                           },
                           r.createElement(
                             'div',
@@ -2197,21 +2268,21 @@
                               { className: 'form-item-box' },
                               r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
-                                defaultValue: u.maximum,
+                                defaultValue: h.maximum,
                                 onPressEnter: function (e) {
                                   var t = e.target.value;
-                                  c.handleValueChange('maximum', t);
+                                  l.handleValueChange('maximum', t);
                                 },
                                 onBlur: function (e) {
                                   var t = e.target.value;
-                                  c.handleValueChange('maximum', t);
+                                  l.handleValueChange('maximum', t);
                                 },
                               }),
                             ),
                           ),
                         ),
                       ),
-                    'array' === (0, C.getExpectType)(h) &&
+                    'array' === (0, C.getExpectType)(y) &&
                       r.createElement(
                         r.Fragment,
                         null,
@@ -2219,7 +2290,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: d + '-minimum-child',
+                            key: m + '-minimum-child',
                           },
                           r.createElement(
                             'div',
@@ -2245,9 +2316,9 @@
                               { className: 'form-item-box' },
                               r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
-                                defaultValue: u['minimum-child'],
+                                defaultValue: h['minimum-child'],
                                 onChange: function (e) {
-                                  c.handleValueChange('minimum-child', e);
+                                  l.handleValueChange('minimum-child', e);
                                 },
                               }),
                             ),
@@ -2257,7 +2328,7 @@
                           'div',
                           {
                             className: 'wide-screen-element-warp',
-                            key: d + '-maximum-child',
+                            key: m + '-maximum-child',
                           },
                           r.createElement(
                             'div',
@@ -2283,9 +2354,9 @@
                               { className: 'form-item-box' },
                               r.createElement(E.InputNumber, {
                                 style: { display: 'inline-block' },
-                                defaultValue: u['maximum-child'],
+                                defaultValue: h['maximum-child'],
                                 onChange: function (e) {
-                                  c.handleValueChange('maximum-child', e);
+                                  l.handleValueChange('maximum-child', e);
                                 },
                               }),
                             ),
@@ -2296,7 +2367,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: d + '-onShow',
+                        key: m + '-onShow',
                       },
                       r.createElement(
                         'div',
@@ -2324,14 +2395,14 @@
                           r.createElement(E.Input, {
                             style: { display: 'inline-block' },
                             placeholder: '请输入显隐表达式',
-                            defaultValue: u.onShow,
+                            defaultValue: h.onShow,
                             onPressEnter: function (e) {
                               var t = e.target.value;
-                              c.handleValueChange('onShow', t);
+                              l.handleValueChange('onShow', t);
                             },
                             onBlur: function (e) {
                               var t = e.target.value;
-                              c.handleValueChange('onShow', t);
+                              l.handleValueChange('onShow', t);
                             },
                           }),
                         ),
@@ -2341,7 +2412,7 @@
                       'div',
                       {
                         className: 'wide-screen-element-warp',
-                        key: d + '-titleStyle',
+                        key: m + '-titleStyle',
                       },
                       r.createElement(
                         'div',
@@ -2363,9 +2434,9 @@
                         'div',
                         { className: 'content-item' },
                         r.createElement(Ve, {
-                          jsonData: u.titleStyle,
+                          jsonData: h.titleStyle,
                           onChange: function (e) {
-                            c.handleValueChange('titleStyle', e);
+                            l.handleValueChange('titleStyle', e);
                           },
                           maxLines: 10,
                         }),
@@ -2589,7 +2660,7 @@
                               r.createElement(
                                 E.Tooltip,
                                 { title: '删除' },
-                                r.createElement(Ke.CloseOutlined, {
+                                r.createElement(ke.CloseOutlined, {
                                   className: 'operate-btn delete-operate',
                                   onClick: this.onDeleteBtnEvent,
                                 }),
@@ -2597,7 +2668,7 @@
                             r.createElement(
                               E.Tooltip,
                               { title: j ? '新增子元素' : '新增同级元素' },
-                              r.createElement(Ke.PlusOutlined, {
+                              r.createElement(ke.PlusOutlined, {
                                 className: 'operate-btn',
                                 onClick: this.onAddBtnEvent,
                               }),
@@ -2606,7 +2677,7 @@
                               r.createElement(
                                 E.Tooltip,
                                 { title: '数据项排序' },
-                                r.createElement(Ke.SortAscendingOutlined, {
+                                r.createElement(ke.SortAscendingOutlined, {
                                   className: 'operate-btn',
                                   onClick: this.childElemSort,
                                 }),
@@ -2618,7 +2689,7 @@
                                 r.createElement(
                                   E.Tooltip,
                                   { title: '复制' },
-                                  r.createElement(Ke.CopyOutlined, {
+                                  r.createElement(ke.CopyOutlined, {
                                     className: 'operate-btn',
                                     onClick: this.onCopyBtnEvent,
                                   }),
@@ -2626,7 +2697,7 @@
                                 r.createElement(
                                   E.Tooltip,
                                   { title: '按住进行拖拽' },
-                                  r.createElement(Ke.DragOutlined, {
+                                  r.createElement(ke.DragOutlined, {
                                     className: 'operate-btn drag-btn',
                                   }),
                                 ),
@@ -2636,7 +2707,7 @@
                           r.createElement(
                             E.Tooltip,
                             { title: '高级设置' },
-                            r.createElement(Ke.SettingOutlined, {
+                            r.createElement(ke.SettingOutlined, {
                               className: 'operate-btn',
                               onClick: function () {
                                 n.setState({ showAdvanceConfig: !0 });
@@ -3039,7 +3110,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '删除' },
-                        r.createElement(Ke.CloseOutlined, {
+                        r.createElement(ke.CloseOutlined, {
                           className: 'operate-btn delete-operate',
                           onClick: this.onDeleteBtnEvent,
                         }),
@@ -3047,7 +3118,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '新增可选项' },
-                        r.createElement(Ke.PlusOutlined, {
+                        r.createElement(ke.PlusOutlined, {
                           className: 'operate-btn',
                           onClick: this.onAddBtnEvent,
                         }),
@@ -3055,7 +3126,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '复制' },
-                        r.createElement(Ke.CopyOutlined, {
+                        r.createElement(ke.CopyOutlined, {
                           className: 'operate-btn',
                           onClick: this.onCopyBtnEvent,
                         }),
