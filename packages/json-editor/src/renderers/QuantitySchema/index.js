@@ -130,7 +130,7 @@ class QuantitySchema extends React.PureComponent {
             {autoComplete && (
               <>
                 <AutoComplete
-                  className="ant-input"
+                  className="ant-input autoComplete-unit"
                   style={{ display: 'inline-block' }}
                   options={options}
                   disabled={readOnly}
@@ -145,6 +145,7 @@ class QuantitySchema extends React.PureComponent {
                   onChange={this.handleValueChange}
                 />
                 <Select
+                  className="autoComplete-unit-suffix"
                   style={{ display: 'inline-block' }}
                   defaultValue={unit || 'px'}
                 >
