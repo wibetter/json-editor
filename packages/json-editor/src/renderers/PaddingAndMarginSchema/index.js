@@ -4,7 +4,14 @@ import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { Input, InputNumber, Tooltip, Popover, Select } from 'antd';
+import {
+  Input,
+  InputNumber,
+  Tooltip,
+  Popover,
+  Select,
+  AutoComplete,
+} from 'antd';
 const { Option } = Select;
 import { truncate, isNumber } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
@@ -200,11 +207,9 @@ class PaddingAndMarginSchema extends React.PureComponent {
     });
   };
 
-  getSelectAfter = (curJsonData) => {
+  getQuantity = (curJsonData) => {
     const { targetJsonSchema } = this.props;
     const quantitySchema = targetJsonSchema.properties['quantity'];
-    const quantity = curJsonData.quantity || quantitySchema.default;
-
     /*
     // 暂时不支持单位切换
     const selectAfter = (
@@ -217,8 +222,11 @@ class PaddingAndMarginSchema extends React.PureComponent {
       </Select>
     );
     */
-    const selectAfter = <span>{quantity}</span>;
-    return selectAfter;
+    return curJsonData.quantity || quantitySchema.default;
+  };
+
+  getSelectAfter = (curJsonData) => {
+    return <span>{this.getQuantity(curJsonData)}</span>;
   };
 
   quantityChange = (newVal) => {
@@ -256,6 +264,10 @@ class PaddingAndMarginSchema extends React.PureComponent {
 
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
+
+    const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
+    const options = targetJsonSchema.options || [];
+    const curQuantity = this.getQuantity(curJsonData);
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -321,40 +333,86 @@ class PaddingAndMarginSchema extends React.PureComponent {
               </div>
             </div>
             {type === 'all' && (
-              <>
+              <div style={{ display: 'flex', marginTop: '5px' }}>
                 <div className="Style-PaddingAndMargin-input">
-                  <Input
-                    name="layoutMargin"
-                    addonAfter={this.getSelectAfter(curJsonData)}
-                    className="layout-item-margin"
-                    size="small"
-                    defaultValue={this.boxStyle['margin'].top}
-                    onChange={(event) => {
-                      const newVal = event.target.value;
-                      this.setLayoutBoxStyle(newVal, true, 'margin');
-                    }}
-                  />
+                  {autoComplete && (
+                    <div style={{ display: 'flex' }}>
+                      <AutoComplete
+                        className="ant-input layout-item-margin autoComplete-unit"
+                        style={{ display: 'inline-block' }}
+                        options={options}
+                        allowClear={true}
+                        defaultValue={this.boxStyle['margin'].top}
+                        onChange={(value) => {
+                          this.setLayoutBoxStyle(value, true, 'margin');
+                        }}
+                      />
+                      <Select
+                        className="autoComplete-unit-suffix"
+                        style={{ display: 'inline-block' }}
+                        defaultValue={curQuantity || 'px'}
+                      >
+                        <Option value={curQuantity}>{curQuantity}</Option>
+                      </Select>
+                    </div>
+                  )}
+                  {!autoComplete && (
+                    <Input
+                      name="layoutMargin"
+                      addonAfter={this.getSelectAfter(curJsonData)}
+                      className="layout-item-margin"
+                      size="small"
+                      defaultValue={this.boxStyle['margin'].top}
+                      onChange={(event) => {
+                        const newVal = event.target.value;
+                        this.setLayoutBoxStyle(newVal, true, 'margin');
+                      }}
+                    />
+                  )}
                   <div className="Style-PaddingAndMargin-input-label">
                     外边距
                   </div>
                 </div>
                 <div className="Style-PaddingAndMargin-input">
-                  <Input
-                    name="layoutPadding"
-                    addonAfter={this.getSelectAfter(curJsonData)}
-                    className="layout-item-padding"
-                    size="small"
-                    defaultValue={this.boxStyle['padding'].top}
-                    onChange={(event) => {
-                      const newVal = event.target.value;
-                      this.setLayoutBoxStyle(newVal, true, 'padding');
-                    }}
-                  />
+                  {autoComplete && (
+                    <div style={{ display: 'flex' }}>
+                      <AutoComplete
+                        className="ant-input layout-item-padding autoComplete-unit"
+                        style={{ display: 'inline-block' }}
+                        options={options}
+                        allowClear={true}
+                        defaultValue={this.boxStyle['padding'].top}
+                        onChange={(value) => {
+                          this.setLayoutBoxStyle(value, true, 'padding');
+                        }}
+                      />
+                      <Select
+                        className="autoComplete-unit-suffix"
+                        style={{ display: 'inline-block' }}
+                        defaultValue={curQuantity || 'px'}
+                      >
+                        <Option value={curQuantity}>{curQuantity}</Option>
+                      </Select>
+                    </div>
+                  )}
+                  {!autoComplete && (
+                    <Input
+                      name="layoutPadding"
+                      addonAfter={this.getSelectAfter(curJsonData)}
+                      className="layout-item-padding"
+                      size="small"
+                      defaultValue={this.boxStyle['padding'].top}
+                      onChange={(event) => {
+                        const newVal = event.target.value;
+                        this.setLayoutBoxStyle(newVal, true, 'padding');
+                      }}
+                    />
+                  )}
                   <div className="Style-PaddingAndMargin-input-label">
                     内边距
                   </div>
                 </div>
-              </>
+              </div>
             )}
           </div>
           {type !== 'all' && (
@@ -362,23 +420,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutPaddingTop"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-padding"
-                      size="small"
-                      defaultValue={this.boxStyle['padding'].top}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(newVal, false, 'padding', 'top');
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-padding autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['padding'].top}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'padding',
+                                'top',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutPaddingTop"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-padding"
+                          size="small"
+                          defaultValue={this.boxStyle['padding'].top}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'padding',
+                              'top',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-paddingTop">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['padding'].top) || '-'}
                   </div>
                 </div>
@@ -387,28 +480,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutPaddingTop"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-padding"
-                      size="small"
-                      defaultValue={this.boxStyle['padding'].right}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(
-                          newVal,
-                          false,
-                          'padding',
-                          'right',
-                        );
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-padding autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['padding'].right}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'padding',
+                                'right',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutPaddingTop"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-padding"
+                          size="small"
+                          defaultValue={this.boxStyle['padding'].right}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'padding',
+                              'right',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-paddingRight">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['padding'].right) || '-'}
                   </div>
                 </div>
@@ -417,28 +540,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutPaddingBottom"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-padding"
-                      size="small"
-                      defaultValue={this.boxStyle['padding'].bottom}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(
-                          newVal,
-                          false,
-                          'padding',
-                          'bottom',
-                        );
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-padding autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['padding'].bottom}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'padding',
+                                'bottom',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutPaddingBottom"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-padding"
+                          size="small"
+                          defaultValue={this.boxStyle['padding'].bottom}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'padding',
+                              'bottom',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-paddingBottom">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['padding'].bottom) || '-'}
                   </div>
                 </div>
@@ -447,28 +600,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutPaddingLeft"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-padding"
-                      size="small"
-                      defaultValue={this.boxStyle['padding'].left}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(
-                          newVal,
-                          false,
-                          'padding',
-                          'left',
-                        );
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-padding autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['padding'].left}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'padding',
+                                'left',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutPaddingLeft"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-padding"
+                          size="small"
+                          defaultValue={this.boxStyle['padding'].left}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'padding',
+                              'left',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-paddingLeft">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['padding'].left) || '-'}
                   </div>
                 </div>
@@ -477,23 +660,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutMarginTop"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-margin"
-                      size="small"
-                      defaultValue={this.boxStyle['margin'].top}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(newVal, false, 'margin', 'top');
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-margin autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['margin'].top}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'margin',
+                                'top',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutMarginTop"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-margin"
+                          size="small"
+                          defaultValue={this.boxStyle['margin'].top}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'margin',
+                              'top',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-marginTop">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['margin'].top) || '-'}
                   </div>
                 </div>
@@ -502,28 +720,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutMarginRight"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-margin"
-                      size="small"
-                      defaultValue={this.boxStyle['margin'].right}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(
-                          newVal,
-                          false,
-                          'margin',
-                          'right',
-                        );
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-margin autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['margin'].right}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'margin',
+                                'right',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutMarginRight"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-margin"
+                          size="small"
+                          defaultValue={this.boxStyle['margin'].right}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'margin',
+                              'right',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-marginRight">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['margin'].right) || '-'}
                   </div>
                 </div>
@@ -532,28 +780,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutMarginBottom"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-margin"
-                      size="small"
-                      defaultValue={this.boxStyle['margin'].bottom}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(
-                          newVal,
-                          false,
-                          'margin',
-                          'bottom',
-                        );
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-margin autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['margin'].bottom}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'margin',
+                                'bottom',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutMarginBottom"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-margin"
+                          size="small"
+                          defaultValue={this.boxStyle['margin'].bottom}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'margin',
+                              'bottom',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-marginBottom">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['margin'].bottom) || '-'}
                   </div>
                 </div>
@@ -562,23 +840,58 @@ class PaddingAndMarginSchema extends React.PureComponent {
               <Popover
                 content={() => {
                   return (
-                    <Input
-                      name="layoutMarginLeft"
-                      addonAfter={this.getSelectAfter(curJsonData)}
-                      className="layout-item-margin"
-                      size="small"
-                      defaultValue={this.boxStyle['margin'].left}
-                      onChange={(event) => {
-                        const newVal = event.target.value;
-                        this.setLayoutBoxStyle(newVal, false, 'margin', 'left');
-                      }}
-                    />
+                    <>
+                      {autoComplete && (
+                        <div style={{ display: 'flex', minWidth: '160px' }}>
+                          <AutoComplete
+                            className="ant-input layout-item-margin autoComplete-unit"
+                            style={{ display: 'inline-block' }}
+                            options={options}
+                            allowClear={true}
+                            defaultValue={this.boxStyle['margin'].left}
+                            onChange={(value) => {
+                              this.setLayoutBoxStyle(
+                                value,
+                                false,
+                                'margin',
+                                'left',
+                              );
+                            }}
+                          />
+                          <Select
+                            className="autoComplete-unit-suffix"
+                            style={{ display: 'inline-block' }}
+                            defaultValue={curQuantity || 'px'}
+                          >
+                            <Option value={curQuantity}>{curQuantity}</Option>
+                          </Select>
+                        </div>
+                      )}
+                      {!autoComplete && (
+                        <Input
+                          name="layoutMarginLeft"
+                          addonAfter={this.getSelectAfter(curJsonData)}
+                          className="layout-item-margin"
+                          size="small"
+                          defaultValue={this.boxStyle['margin'].left}
+                          onChange={(event) => {
+                            const newVal = event.target.value;
+                            this.setLayoutBoxStyle(
+                              newVal,
+                              false,
+                              'margin',
+                              'left',
+                            );
+                          }}
+                        />
+                      )}
+                    </>
                   );
                 }}
                 title=""
               >
                 <div className="Style-PaddingAndMargin-custom-marginLeft">
-                  <div>
+                  <div className="Style-PaddingAndMargin-value">
                     {this.getStyleVal(this.boxStyle['margin'].left) || '-'}
                   </div>
                 </div>

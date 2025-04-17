@@ -80,7 +80,7 @@ class QuantitySchema extends React.PureComponent {
     const unitSuffix = <span>{unit}</span>;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
-    const options = targetJsonSchema.options || []; // 是否支持可选项
+    const options = targetJsonSchema.options || [];
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))

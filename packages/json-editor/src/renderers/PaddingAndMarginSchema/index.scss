@@ -1,6 +1,7 @@
 .Style-PaddingAndMargin {
   &-inner {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 
     .Style-select {
@@ -16,6 +17,7 @@
 
     &-label {
       font-size: 12px;
+      line-height: 20px;
       color: #5c5f66;
       text-align: center;
     }
@@ -215,6 +217,12 @@
       top: 50%;
       transform: translateY(-50%);
       width: 40px;
+    }
+
+    .Style-PaddingAndMargin-value {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &-popover {
