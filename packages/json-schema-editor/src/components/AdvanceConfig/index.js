@@ -504,6 +504,53 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
+        {curType === 'input' && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-autoComplete`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'开启后支持添加可选项，并支持 autoComplete。'}
+                placement="top"
+              >
+                <span className="title-text">开启可选项</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div className="form-item-box">
+                <RcSwitch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.autoComplete ?? false}
+                  checkedChildren="开启"
+                  unCheckedChildren="关闭"
+                  onChange={(checked) => {
+                    this.handleValueChange('autoComplete', checked);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {targetJsonSchema.autoComplete && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-autoComplete-options`}
+          >
+            <div className="element-title">
+              <span className="title-text">可选项</span>
+            </div>
+            <div className="content-item">
+              <JsonView
+                jsonData={targetJsonSchema.options || []}
+                onChange={(newJsonData) => {
+                  this.handleValueChange('options', newJsonData);
+                }}
+                maxLines={10}
+              />
+            </div>
+          </div>
+        )}
         {isNeedCodeViewOption(curType) && (
           <div
             className="wide-screen-element-warp"
