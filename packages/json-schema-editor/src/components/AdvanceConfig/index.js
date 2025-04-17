@@ -10,6 +10,7 @@ import {
   Tooltip,
   Button,
   Select,
+  message,
 } from 'antd';
 const { TextArea } = Input;
 const { Option } = Select;
@@ -23,7 +24,7 @@ import {
   isNeedCodeViewOption,
   hasOptions,
 } from '$utils/advanced.config';
-import { hasProperties, getExpectType } from '@wibetter/json-utils';
+import { hasProperties, getExpectType, isArray } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView';
 import 'rc-switch/assets/index.css';
 import './index.scss';
@@ -504,7 +505,9 @@ class AdvanceConfig extends React.PureComponent {
             </div>
           </div>
         )}
-        {curType === 'input' && (
+        {(curType === 'input' ||
+          curType === 'quantity' ||
+          curType === 'padding-margin') && (
           <div
             className="wide-screen-element-warp"
             key={`${nodeKey}-autoComplete`}
@@ -544,6 +547,12 @@ class AdvanceConfig extends React.PureComponent {
               <JsonView
                 jsonData={targetJsonSchema.options || []}
                 onChange={(newJsonData) => {
+                  if (!isArray(newJsonData)) {
+                    message.warning(
+                      '可选项数据格式不正确，可选项数据格式必须为数组格式。',
+                    );
+                    return;
+                  }
                   this.handleValueChange('options', newJsonData);
                 }}
                 maxLines={10}

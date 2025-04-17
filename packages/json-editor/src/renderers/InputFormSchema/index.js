@@ -121,7 +121,7 @@ class InputFormSchema extends React.PureComponent {
                 options={options}
                 disabled={readOnly}
                 required={isRequired}
-                allowClear={false}
+                allowClear={true}
                 placeholder={
                   targetJsonSchema.placeholder ||
                   `请输入${targetJsonSchema.title}`
@@ -132,10 +132,10 @@ class InputFormSchema extends React.PureComponent {
             )}
             {!autoComplete && (
               <Input
-                style={{ display: 'inline-block' }}
+                style={{ display: 'inline-flex' }}
                 disabled={readOnly}
                 required={isRequired}
-                allowClear={false}
+                allowClear={true}
                 placeholder={
                   targetJsonSchema.placeholder ||
                   `请输入${targetJsonSchema.title}`

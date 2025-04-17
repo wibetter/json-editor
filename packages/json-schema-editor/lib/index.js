@@ -2074,7 +2074,9 @@
                           ),
                         ),
                       ),
-                    'input' === y &&
+                    ('input' === y ||
+                      'quantity' === y ||
+                      'padding-margin' === y) &&
                       r.createElement(
                         'div',
                         {
@@ -2138,7 +2140,11 @@
                           r.createElement(Ve, {
                             jsonData: h.options || [],
                             onChange: function (e) {
-                              l.handleValueChange('options', e);
+                              (0, C.isArray)(e)
+                                ? l.handleValueChange('options', e)
+                                : E.message.warning(
+                                    '可选项数据格式不正确，可选项数据格式必须为数组格式。',
+                                  );
                             },
                             maxLines: 10,
                           }),
