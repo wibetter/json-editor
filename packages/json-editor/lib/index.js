@@ -1014,16 +1014,16 @@
         __webpack_require__.r(__webpack_exports__),
           __webpack_require__.d(__webpack_exports__, {
             AddJSONCustomRenderer: function () {
-              return Nt;
+              return kt;
             },
             Renderer: function () {
               return le.A4;
             },
             default: function () {
-              return kt;
+              return Kt;
             },
             getJSONCustomRenderer: function () {
-              return xt;
+              return jt;
             },
             loadRenderer: function () {
               return le.Sd;
@@ -1035,7 +1035,7 @@
               return le.A$;
             },
             withStore: function () {
-              return jt.A;
+              return Dt.A;
             },
           });
         var e,
@@ -1062,32 +1062,32 @@
           b,
           E,
           w,
-          O,
           C,
-          R,
-          N,
+          O,
           x,
-          j,
+          N,
+          R,
           k,
+          j,
           D,
           K,
           T,
-          J,
-          P = __webpack_require__(5820),
-          M = __webpack_require__.n(P),
-          A = __webpack_require__(2015),
-          V = __webpack_require__.n(A),
+          P,
+          J = __webpack_require__(5820),
+          A = __webpack_require__.n(J),
+          M = __webpack_require__(2015),
+          V = __webpack_require__.n(M),
           B = require('react-dom'),
           I = __webpack_require__.n(B),
           L = __webpack_require__(4020),
           q = __webpack_require__(9825),
           W = __webpack_require__.n(q),
-          U = require('@babel/runtime/helpers/initializerDefineProperty'),
-          F = __webpack_require__.n(U),
+          F = require('@babel/runtime/helpers/initializerDefineProperty'),
+          U = __webpack_require__.n(F),
           z = require('@babel/runtime/helpers/createClass'),
-          $ = __webpack_require__.n(z),
-          G = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
-          H = __webpack_require__.n(G),
+          G = __webpack_require__.n(z),
+          $ = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
+          H = __webpack_require__.n($),
           Q =
             (require('@babel/runtime/helpers/initializerWarningHelper'),
             __webpack_require__(7222)),
@@ -1103,8 +1103,8 @@
             (i = Q.action.bound),
             (l = (function () {
               function e(e) {
-                F()(this, 'pageScreen', s, this),
-                  F()(this, 'jsonSchema', c, this),
+                U()(this, 'pageScreen', s, this),
+                  U()(this, 'jsonSchema', c, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -1153,7 +1153,7 @@
                   var t = this.keyRoute2indexRoute(e);
                   return (0, Z.getSchemaByIndexRoute)(t, this.jsonSchema, !0);
                 }),
-                $()(e, [
+                G()(e, [
                   {
                     key: 'JSONSchemaObj',
                     get: function () {
@@ -1283,18 +1283,18 @@
             (b = Q.action.bound),
             (E = Q.action.bound),
             (w = Q.action.bound),
-            (O = (function () {
+            (C = (function () {
               function e(e) {
-                F()(this, 'rootJSONStore', C, this),
-                  F()(this, 'triggerChange', R, this),
-                  F()(this, 'lastUpdateTime', N, this),
-                  F()(this, 'jsonData', x, this),
-                  F()(this, 'initJsonData', j, this),
-                  F()(this, 'dynamicDataList', k, this),
-                  F()(this, 'dynamicDataObj', D, this),
-                  F()(this, 'options', K, this),
-                  F()(this, 'dynamicDataApiScopeList', T, this),
-                  F()(this, 'onChange', J, this),
+                U()(this, 'rootJSONStore', O, this),
+                  U()(this, 'triggerChange', x, this),
+                  U()(this, 'lastUpdateTime', N, this),
+                  U()(this, 'jsonData', R, this),
+                  U()(this, 'initJsonData', k, this),
+                  U()(this, 'dynamicDataList', j, this),
+                  U()(this, 'dynamicDataObj', D, this),
+                  U()(this, 'options', K, this),
+                  U()(this, 'dynamicDataApiScopeList', T, this),
+                  U()(this, 'onChange', P, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -1434,7 +1434,7 @@
                   } else
                     ee.message.warning('数据操作异常：当前元素不是数组类型。');
                 }),
-                $()(e, [
+                G()(e, [
                   {
                     key: 'JSONEditorObj',
                     get: function () {
@@ -1444,7 +1444,7 @@
                 ])
               );
             })()),
-            (C = H()(O.prototype, 'rootJSONStore', [Q.observable], {
+            (O = H()(C.prototype, 'rootJSONStore', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1452,7 +1452,7 @@
                 return {};
               },
             })),
-            (R = H()(O.prototype, 'triggerChange', [Q.observable], {
+            (x = H()(C.prototype, 'triggerChange', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1460,7 +1460,7 @@
                 return !1;
               },
             })),
-            (N = H()(O.prototype, 'lastUpdateTime', [Q.observable], {
+            (N = H()(C.prototype, 'lastUpdateTime', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1468,7 +1468,7 @@
                 return new Date().getTime();
               },
             })),
-            (x = H()(O.prototype, 'jsonData', [Q.observable], {
+            (R = H()(C.prototype, 'jsonData', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1476,7 +1476,7 @@
                 return null;
               },
             })),
-            (j = H()(O.prototype, 'initJsonData', [Q.observable], {
+            (k = H()(C.prototype, 'initJsonData', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1484,7 +1484,7 @@
                 return {};
               },
             })),
-            (k = H()(O.prototype, 'dynamicDataList', [Q.observable], {
+            (j = H()(C.prototype, 'dynamicDataList', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1492,7 +1492,7 @@
                 return [];
               },
             })),
-            (D = H()(O.prototype, 'dynamicDataObj', [Q.observable], {
+            (D = H()(C.prototype, 'dynamicDataObj', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1500,7 +1500,7 @@
                 return {};
               },
             })),
-            (K = H()(O.prototype, 'options', [Q.observable], {
+            (K = H()(C.prototype, 'options', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1508,7 +1508,7 @@
                 return {};
               },
             })),
-            (T = H()(O.prototype, 'dynamicDataApiScopeList', [Q.observable], {
+            (T = H()(C.prototype, 'dynamicDataApiScopeList', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1524,7 +1524,7 @@
                 };
               },
             })),
-            (J = H()(O.prototype, 'onChange', [Q.observable], {
+            (P = H()(C.prototype, 'onChange', [Q.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1533,126 +1533,126 @@
               },
             })),
             H()(
-              O.prototype,
+              C.prototype,
               'updateLastTime',
               [u],
-              Object.getOwnPropertyDescriptor(O.prototype, 'updateLastTime'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'updateLastTime'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'triggerChangeAction',
               [p],
               Object.getOwnPropertyDescriptor(
-                O.prototype,
+                C.prototype,
                 'triggerChangeAction',
               ),
-              O.prototype,
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'initJSONData',
               [m],
-              Object.getOwnPropertyDescriptor(O.prototype, 'initJSONData'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'initJSONData'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'initOnChange',
               [d],
-              Object.getOwnPropertyDescriptor(O.prototype, 'initOnChange'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'initOnChange'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'setDynamicDataList',
               [y],
               Object.getOwnPropertyDescriptor(
-                O.prototype,
+                C.prototype,
                 'setDynamicDataList',
               ),
-              O.prototype,
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'setOptions',
               [h],
-              Object.getOwnPropertyDescriptor(O.prototype, 'setOptions'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'setOptions'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'JSONEditorObj',
               [Q.computed],
-              Object.getOwnPropertyDescriptor(O.prototype, 'JSONEditorObj'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'JSONEditorObj'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'jsonDataChange',
               [g],
-              Object.getOwnPropertyDescriptor(O.prototype, 'jsonDataChange'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'jsonDataChange'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'jsonChange',
               [S],
-              Object.getOwnPropertyDescriptor(O.prototype, 'jsonChange'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'jsonChange'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'getJSONDataByKeyRoute',
               [_],
               Object.getOwnPropertyDescriptor(
-                O.prototype,
+                C.prototype,
                 'getJSONDataByKeyRoute',
               ),
-              O.prototype,
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'getInitJsonDataByKeyRoute',
               [f],
               Object.getOwnPropertyDescriptor(
-                O.prototype,
+                C.prototype,
                 'getInitJsonDataByKeyRoute',
               ),
-              O.prototype,
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'updateFormValueData',
               [v],
               Object.getOwnPropertyDescriptor(
-                O.prototype,
+                C.prototype,
                 'updateFormValueData',
               ),
-              O.prototype,
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'deleteArrayIndex',
               [b],
-              Object.getOwnPropertyDescriptor(O.prototype, 'deleteArrayIndex'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'deleteArrayIndex'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'addArrayItem',
               [E],
-              Object.getOwnPropertyDescriptor(O.prototype, 'addArrayItem'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'addArrayItem'),
+              C.prototype,
             ),
             H()(
-              O.prototype,
+              C.prototype,
               'sortArrayItem',
               [w],
-              Object.getOwnPropertyDescriptor(O.prototype, 'sortArrayItem'),
-              O.prototype,
+              Object.getOwnPropertyDescriptor(C.prototype, 'sortArrayItem'),
+              C.prototype,
             ),
-            O),
+            C),
           oe = function () {
             (this.JSONSchemaStore = new X(this)),
               (this.JSONEditorStore = new ae(this));
@@ -1689,7 +1689,7 @@
                 );
               }
               return (
-                M()(t, e),
+                A()(t, e),
                 (t.prototype.render = function () {
                   var e = this,
                     t = this.props,
@@ -1705,31 +1705,31 @@
                     (r = void 0 !== r ? r : r || '{}'),
                     ((0, Z.isObject)(r) || (0, Z.isArray)(r)) &&
                       (r = JSON.stringify(r, null, 2)),
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'json-view-box' },
                       c &&
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'readOnly-btn' },
                           '[只读]',
                         ),
                       l &&
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'warning-box code-area-item' },
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'warning-img' },
                             'X',
                           ),
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'warning-text' },
                             s,
                           ),
                         ),
-                      A.createElement(pe(), {
+                      M.createElement(pe(), {
                         id: 'json_area_ace',
                         defaultValue: r,
                         className: 'json-view-ace',
@@ -1771,7 +1771,7 @@
                 }),
                 t
               );
-            })(A.PureComponent));
+            })(M.PureComponent));
         me.propTypes = {
           jsonData: W().any,
           readOnly: W().bool,
@@ -1798,14 +1798,14 @@
         __webpack_require__(2595);
         var Se,
           _e = function (e) {
-            return A.createElement(
+            return M.createElement(
               'svg',
               ge(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
               de ||
-                (de = A.createElement('path', {
+                (de = M.createElement('path', {
                   d: 'M15.5 2a.5.5 0 0 1 .09.992L15.5 3H14v10.6a2.4 2.4 0 0 1-2.4 2.4H4.4A2.4 2.4 0 0 1 2 13.6V3H.5a.5.5 0 0 1-.09-.992L.5 2h15ZM13 3H3v10.6a1.4 1.4 0 0 0 1.265 1.394L4.4 15h7.2a1.4 1.4 0 0 0 1.394-1.265L13 13.6V3ZM6 6a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L5.5 11.5v-5A.5.5 0 0 1 6 6Zm4 0a.5.5 0 0 1 .492.41l.008.09v5a.5.5 0 0 1-.992.09L9.5 11.5v-5A.5.5 0 0 1 10 6Zm.5-6a.5.5 0 0 1 .09.992L10.5 1h-5a.5.5 0 0 1-.09-.992L5.5 0h5Z',
                   fill: 'currentColor',
                   fillRule: 'evenodd',
@@ -1829,14 +1829,14 @@
         }
         var ve,
           be = function (e) {
-            return A.createElement(
+            return M.createElement(
               'svg',
               fe(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
               Se ||
-                (Se = A.createElement('path', {
+                (Se = M.createElement('path', {
                   d: 'M10.286 4C11.232 4 12 4.768 12 5.714v8.572c0 .946-.768 1.714-1.714 1.714H1.714A1.714 1.714 0 0 1 0 14.286V5.714C0 4.768.768 4 1.714 4h8.572Zm-.12 1H1.834A.833.833 0 0 0 1 5.833v8.334c0 .46.373.833.833.833h8.334c.46 0 .833-.373.833-.833V5.833A.833.833 0 0 0 10.167 5ZM6 7.429c.237 0 .429.191.429.428l-.001 1.714h1.715a.429.429 0 0 1 0 .858H6.428v1.714a.429.429 0 1 1-.857 0v-1.714H3.857a.429.429 0 1 1 0-.858h1.714V7.857c0-.237.192-.428.429-.428ZM14.286 0C15.232 0 16 .768 16 1.714v8.572c0 .946-.768 1.714-1.714 1.714H13v-1h1.167c.46 0 .833-.373.833-.833V1.833A.833.833 0 0 0 14.167 1H5.833A.833.833 0 0 0 5 1.833V3H4V1.714C4 .768 4.768 0 5.714 0h8.572Z',
                   fill: 'currentColor',
                   fillRule: 'evenodd',
@@ -1859,7 +1859,7 @@
           );
         }
         var we = function (e) {
-            return A.createElement(
+            return M.createElement(
               'svg',
               Ee(
                 {
@@ -1869,13 +1869,13 @@
                 e,
               ),
               ve ||
-                (ve = A.createElement('path', {
+                (ve = M.createElement('path', {
                   d: 'M293.069 755.2c-12.083 0-24.269-4.25-33.997-12.902L0 512l273.46-243.098c21.094-18.688 53.452-16.896 72.242 4.25 18.79 21.146 16.896 53.504-4.25 72.294L154.113 512l172.954 153.702c21.145 18.79 23.04 51.15 4.25 72.295-10.087 11.417-24.167 17.203-38.247 17.203zm457.984-.102L1024.512 512 765.44 281.702c-21.146-18.79-53.504-16.896-72.243 4.25-18.79 21.146-16.896 53.504 4.25 72.294L870.4 512 683.06 678.502c-21.146 18.79-23.04 51.15-4.25 72.295C688.896 762.214 702.976 768 717.056 768c12.083 0 24.269-4.25 33.997-12.902zm-239.514 72.55 102.4-614.4c4.66-27.904-14.182-54.272-42.086-58.931-28.007-4.71-54.323 14.182-58.88 42.086l-102.4 614.4c-4.66 27.904 14.182 54.272 42.086 58.931a52.65 52.65 0 0 0 8.448.666c24.576 0 46.285-17.766 50.432-42.752z',
                   fill: 'currentColor',
                 })),
             );
           },
-          Oe = (function (e) {
+          Ce = (function (e) {
             function t(t) {
               var n;
               return (
@@ -1935,7 +1935,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -1987,20 +1987,20 @@
                   E = null == (e = h.showCodeViewBtn) || e,
                   w = s(p);
                 (w && 0 !== w.length && (0, ne.cy)(w)) || (w = [{}]);
-                var O = h.items,
-                  C = f,
-                  R = (0, ce.Gz)(p);
-                void 0 !== R && (C = R);
+                var C = h.items,
+                  O = f,
+                  x = (0, ce.Gz)(p);
+                void 0 !== x && (O = x);
                 var N = v,
-                  x = (0, ce.Gz)(p + '-activeArrIndex');
-                void 0 !== x && (N = x);
-                var j = null != (t = h.boxTitle) ? t : '数据配置',
-                  k = h.style ? (0, te.K8)((0, Q.toJS)(h.style)) : {},
+                  R = (0, ce.Gz)(p + '-activeArrIndex');
+                void 0 !== R && (N = R);
+                var k = null != (t = h.boxTitle) ? t : '数据配置',
+                  j = h.style ? (0, te.K8)((0, Q.toJS)(h.style)) : {},
                   D = h.titleStyle ? (0, te.K8)((0, Q.toJS)(h.titleStyle)) : {},
                   K = h.contentStyle
                     ? (0, te.K8)((0, Q.toJS)(h.contentStyle))
                     : {};
-                return A.createElement(
+                return M.createElement(
                   'div',
                   {
                     className:
@@ -2008,23 +2008,23 @@
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
                     id: d,
-                    style: k,
+                    style: j,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'element-title', style: D },
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       {
                         title: 'wideScreen' === i ? h.description : '',
                         placement: 'top',
                       },
-                      A.createElement(
+                      M.createElement(
                         'span',
                         { className: 'title-text', title: h.title },
                         h.title,
                         h.showKey &&
-                          A.createElement(
+                          M.createElement(
                             'span',
                             null,
                             '（',
@@ -2035,38 +2035,38 @@
                     ),
                     'mobileScreen' === i &&
                       h.description &&
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         { title: h.description, placement: 'top' },
-                        A.createElement(se.InfoCircleOutlined, {
+                        M.createElement(se.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'array-schema-box content-item', style: K },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       {
                         className: 'element-title',
                         onClick: this.collapseChange,
                       },
-                      A.createElement(
+                      M.createElement(
                         'span',
                         { className: 'title-text' },
-                        j,
+                        k,
                         ' ',
                       ),
-                      C
-                        ? A.createElement(se.RightOutlined, {
+                      O
+                        ? M.createElement(se.RightOutlined, {
                             className: 'close-operate-btn',
                           })
-                        : A.createElement(se.DownOutlined, {
+                        : M.createElement(se.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
                       E &&
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className: 'display-source-btn',
@@ -2076,18 +2076,18 @@
                                 e.stopPropagation();
                             },
                           },
-                          A.createElement(
+                          M.createElement(
                             ee.Tooltip,
                             { title: _ ? '关闭源码模式' : '开启源码模式' },
-                            A.createElement(we, {
+                            M.createElement(we, {
                               className: _ ? 'info-icon active' : 'info-icon',
                             }),
                           ),
                         ),
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         { title: '添加数据项' },
-                        A.createElement(se.PlusOutlined, {
+                        M.createElement(se.PlusOutlined, {
                           className: 'array-add-child-btn',
                           onClick: function (e) {
                             n.addArrayItem(p, w),
@@ -2097,14 +2097,14 @@
                         }),
                       ),
                     ),
-                    A.createElement(
+                    M.createElement(
                       'div',
                       {
                         className:
                           'array-content ' +
                           (_ ? 'json-view-array' : '') +
                           ' ' +
-                          (C ? 'closed' : ''),
+                          (O ? 'closed' : ''),
                       },
                       !_ &&
                         (0, ne.cy)(w) &&
@@ -2113,10 +2113,10 @@
                             o = y ? y + '-0' : '0',
                             r = p ? p + '-' + t : '' + t,
                             i = n.getArrItemTitle(e);
-                          return A.createElement(
+                          return M.createElement(
                             'div',
                             { className: 'array-item', key: r },
-                            A.createElement(
+                            M.createElement(
                               'div',
                               {
                                 className: 'array-item-header',
@@ -2130,33 +2130,33 @@
                                   n.elemHoverLeaveEvent(e, t);
                                 },
                               },
-                              A.createElement(
+                              M.createElement(
                                 'div',
                                 { className: 'array-title-text' },
-                                i || O.title + '/' + (t + 1),
+                                i || C.title + '/' + (t + 1),
                               ),
-                              A.createElement(
+                              M.createElement(
                                 'div',
                                 { className: 'array-operate-box' },
                                 N !== t
-                                  ? A.createElement(se.RightOutlined, {
+                                  ? M.createElement(se.RightOutlined, {
                                       className:
                                         'close-operate-btn array-operate-btn',
                                     })
-                                  : A.createElement(se.DownOutlined, {
+                                  : M.createElement(se.DownOutlined, {
                                       className:
                                         'close-operate-btn array-operate-btn',
                                     }),
-                                A.createElement(
+                                M.createElement(
                                   ee.Tooltip,
-                                  { title: '删除' + O.title + '/' + (t + 1) },
-                                  A.createElement(
+                                  { title: '删除' + C.title + '/' + (t + 1) },
+                                  M.createElement(
                                     ee.Popconfirm,
                                     {
                                       placement: 'top',
                                       title:
                                         '确定要删除' +
-                                        O.title +
+                                        C.title +
                                         '/' +
                                         (t + 1) +
                                         '吗？',
@@ -2171,7 +2171,7 @@
                                       okText: '确定',
                                       cancelText: '取消',
                                     },
-                                    A.createElement(_e, {
+                                    M.createElement(_e, {
                                       className:
                                         'delete-operate-btn array-operate-btn',
                                       onClick: function (e) {
@@ -2180,10 +2180,10 @@
                                     }),
                                   ),
                                 ),
-                                A.createElement(
+                                M.createElement(
                                   ee.Tooltip,
-                                  { title: '复制' + O.title + '/' + (t + 1) },
-                                  A.createElement(be, {
+                                  { title: '复制' + C.title + '/' + (t + 1) },
+                                  M.createElement(be, {
                                     className: 'array-operate-btn',
                                     onClick: function (e) {
                                       n.addArrayItem(p, w, t),
@@ -2193,10 +2193,10 @@
                                   }),
                                 ),
                                 0 !== t &&
-                                  A.createElement(
+                                  M.createElement(
                                     ee.Tooltip,
                                     { title: '向上移动' },
-                                    A.createElement(se.ArrowUpOutlined, {
+                                    M.createElement(se.ArrowUpOutlined, {
                                       className: 'array-operate-btn',
                                       onClick: function (e) {
                                         c(p, t, 'up'),
@@ -2206,10 +2206,10 @@
                                     }),
                                   ),
                                 t !== w.length - 1 &&
-                                  A.createElement(
+                                  M.createElement(
                                     ee.Tooltip,
                                     { title: '向下移动' },
-                                    A.createElement(se.ArrowDownOutlined, {
+                                    M.createElement(se.ArrowDownOutlined, {
                                       className: 'array-operate-btn',
                                       onClick: function (e) {
                                         c(p, t, 'down'),
@@ -2220,7 +2220,7 @@
                                   ),
                               ),
                             ),
-                            A.createElement(
+                            M.createElement(
                               'div',
                               {
                                 className:
@@ -2233,22 +2233,22 @@
                                 indexRoute: o,
                                 keyRoute: r,
                                 nodeKey: a,
-                                targetJsonSchema: O,
+                                targetJsonSchema: C,
                                 isArrayItem: !0,
                                 arrIndex: t,
                               }),
                             ),
                           );
                         }),
-                      _ && A.createElement(ye, this.props),
+                      _ && M.createElement(ye, this.props),
                     ),
                   ),
                 );
               }),
               t
             );
-          })(A.PureComponent);
-        (Oe.propTypes = {
+          })(M.PureComponent);
+        (Ce.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -2256,9 +2256,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'array', component: Oe }),
+          (0, le.TS)({ type: 'array', component: Ce }),
           __webpack_require__(2657);
-        var Ce = (function (e) {
+        var Oe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -2270,7 +2270,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -2313,8 +2313,8 @@
               void 0 !== b && (v = b);
               var E = null != (t = p.boxTitle) ? t : '对象配置',
                 w = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
-                O = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                C = p.contentStyle
+                C = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
+                O = p.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
                   : {};
               return V().createElement(
@@ -2331,7 +2331,7 @@
                   !m &&
                   V().createElement(
                     'div',
-                    { className: 'element-title', style: O },
+                    { className: 'element-title', style: C },
                     V().createElement(
                       ee.Tooltip,
                       {
@@ -2366,7 +2366,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: C,
+                    style: O,
                   },
                   !_ &&
                     !m &&
@@ -2449,7 +2449,7 @@
             t
           );
         })(V().PureComponent);
-        (Ce.propTypes = {
+        (Oe.propTypes = {
           isArrayItem: W().any,
           arrIndex: W().any,
           parentType: W().string,
@@ -2460,9 +2460,9 @@
           targetJsonSchema: W().any,
           isStructuredSchema: W().bool,
         }),
-          (0, le.TS)({ type: 'object', component: Ce }),
+          (0, le.TS)({ type: 'object', component: Oe }),
           __webpack_require__(8819);
-        var Re = (function (e) {
+        var xe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -2475,7 +2475,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -2509,10 +2509,10 @@
                 b = null == (e = p.showCodeViewBtn) || e,
                 E = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
                 w = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                O = p.contentStyle
+                C = p.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -2522,21 +2522,21 @@
                   id: c,
                   style: E,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: w },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === r ? p.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: p.title },
                       p.title,
                       p.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -2547,21 +2547,21 @@
                   ),
                   'mobileScreen' === r &&
                     p.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: p.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: O,
+                    style: C,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     {
                       className: 'element-title',
@@ -2571,20 +2571,20 @@
                           e.stopPropagation();
                       },
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text' },
                       '数据源配置',
                     ),
                     y
-                      ? A.createElement(se.RightOutlined, {
+                      ? M.createElement(se.RightOutlined, {
                           className: 'close-operate-btn',
                         })
-                      : A.createElement(se.DownOutlined, {
+                      : M.createElement(se.DownOutlined, {
                           className: 'close-operate-btn',
                         }),
                     b &&
-                      A.createElement(
+                      M.createElement(
                         'div',
                         {
                           className: 'display-source-btn',
@@ -2594,16 +2594,16 @@
                               e.stopPropagation();
                           },
                         },
-                        A.createElement(
+                        M.createElement(
                           ee.Tooltip,
                           { title: d ? '关闭源码模式' : '开启源码模式' },
-                          A.createElement(we, {
+                          M.createElement(we, {
                             className: d ? 'info-icon active' : 'info-icon',
                           }),
                         ),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     {
                       className:
@@ -2614,13 +2614,13 @@
                     },
                     !d &&
                       'local' === v &&
-                      A.createElement(
-                        A.Fragment,
+                      M.createElement(
+                        M.Fragment,
                         null,
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'ace-editor-box code-area-item' },
-                          A.createElement(
+                          M.createElement(
                             ee.Tooltip,
                             {
                               title: h
@@ -2628,7 +2628,7 @@
                                 : '点击显示数据过滤器',
                               placement: 'top',
                             },
-                            A.createElement(se.FilterOutlined, {
+                            M.createElement(se.FilterOutlined, {
                               className: 'filter-btn',
                               onClick: this.switchFilterBtn,
                             }),
@@ -2657,10 +2657,10 @@
                       ),
                     !d &&
                       'remote' === v &&
-                      A.createElement(
-                        A.Fragment,
+                      M.createElement(
+                        M.Fragment,
                         null,
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'url-editor-box' },
                           o({
@@ -2672,10 +2672,10 @@
                             nodeKey: c + '-data',
                             targetJsonSchema: _,
                           }),
-                          A.createElement(
+                          M.createElement(
                             ee.Tooltip,
                             { title: '点击设置数据过滤器', placement: 'top' },
-                            A.createElement(se.FilterOutlined, {
+                            M.createElement(se.FilterOutlined, {
                               className: 'filter-url-btn',
                               onClick: this.switchFilterBtn,
                             }),
@@ -2692,14 +2692,193 @@
                             targetJsonSchema: f,
                           }),
                       ),
-                    d && A.createElement(ye, this.props),
+                    d && M.createElement(ye, this.props),
                   ),
                 ),
               );
             }),
             t
           );
-        })(A.PureComponent);
+        })(M.PureComponent);
+        (xe.propTypes = {
+          parentType: W().string,
+          jsonKey: W().string,
+          indexRoute: W().string,
+          keyRoute: W().string,
+          nodeKey: W().string,
+          targetJsonSchema: W().any,
+        }),
+          (0, le.TS)({ type: 'datasource', component: xe });
+        var Ne = ee.Select.Option,
+          Re = (function (e) {
+            function t(t) {
+              var n;
+              return (
+                ((n = e.call(this, t) || this).handleInputChangeV1 = function (
+                  e,
+                ) {
+                  var t = n.props,
+                    a = t.keyRoute,
+                    o = (t.jsonStore || {}).updateFormValueData,
+                    r = e.target.value;
+                  o(a ? a + '-unit' : 'unit', Number(r));
+                }),
+                (n.handleInputChange = function (e) {
+                  var t = e.target.value;
+                  n.handleValueChange(t);
+                }),
+                (n.handleValueChange = function (e) {
+                  var t = n.props,
+                    a = t.keyRoute,
+                    o = (t.jsonStore || {}).updateFormValueData,
+                    r = a ? a + '-unit' : 'unit';
+                  n.props.onChange ? n.props.onChange(e) : o(r, e);
+                }),
+                (n.handleInputChange = n.handleInputChange.bind(n)),
+                n
+              );
+            }
+            A()(t, e);
+            var n = t.prototype;
+            return (
+              (n.componentWillMount = function () {
+                he.x.call(this);
+              }),
+              (n.componentWillReceiveProps = function (e) {
+                e.keyRoute !== this.props.keyRoute &&
+                  he.x.call(this, e.keyRoute);
+              }),
+              (n.render = function () {
+                var e = this.props,
+                  t = e.schemaStore,
+                  n = e.jsonStore,
+                  a = (t || {}).pageScreen,
+                  o = n || {},
+                  r = o.options,
+                  i = o.getJSONDataByKeyRoute,
+                  l = this.props,
+                  s = l.keyRoute,
+                  c = l.jsonKey,
+                  u = l.nodeKey,
+                  p = l.targetJsonSchema,
+                  m = i(s),
+                  d = p.readOnly || !1,
+                  y = p.properties.unit,
+                  h = m.quantity,
+                  g = 'percent' === h ? '%' : h,
+                  S = M.createElement('span', null, g),
+                  _ = (0, te.y8)(p.type),
+                  f = p.autoComplete || !1,
+                  v = r || {},
+                  b = [];
+                v.GlobalOptions &&
+                  (0, Z.isArray)(v.GlobalOptions) &&
+                  (b = v.GlobalOptions);
+                var E = p.options || b,
+                  w = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
+                  C = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
+                  O = p.contentStyle
+                    ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
+                    : {};
+                return M.createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === a
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp ' +
+                          (_ ? 'two-col-element-warp' : ''),
+                    id: u,
+                    style: w,
+                  },
+                  M.createElement(
+                    'div',
+                    { className: 'element-title', style: C },
+                    M.createElement(
+                      ee.Tooltip,
+                      {
+                        title: 'wideScreen' === a ? p.description : '',
+                        placement: 'top',
+                      },
+                      M.createElement(
+                        'span',
+                        { className: 'title-text', title: p.title },
+                        p.title,
+                        p.showKey &&
+                          M.createElement(
+                            'span',
+                            null,
+                            '（',
+                            (0, Z.truncate)(c, { length: 15 }),
+                            '）',
+                          ),
+                      ),
+                    ),
+                    'mobileScreen' === a &&
+                      p.description &&
+                      M.createElement(
+                        ee.Tooltip,
+                        { title: p.description, placement: 'top' },
+                        M.createElement(se.InfoCircleOutlined, {
+                          className: 'info-icon',
+                        }),
+                      ),
+                  ),
+                  M.createElement(
+                    'div',
+                    { className: 'content-item', style: O },
+                    M.createElement(
+                      'div',
+                      { className: 'form-item-box' },
+                      f &&
+                        M.createElement(
+                          M.Fragment,
+                          null,
+                          M.createElement(ee.AutoComplete, {
+                            className: 'ant-input autoComplete-unit',
+                            style: { display: 'inline-block' },
+                            options: E,
+                            disabled: d,
+                            allowClear: !0,
+                            placeholder:
+                              y.placeholder ||
+                              p.placeholder ||
+                              '请输入' + y.title ||
+                              0,
+                            defaultValue: m.unit || y.default,
+                            onChange: this.handleValueChange,
+                          }),
+                          M.createElement(
+                            ee.Select,
+                            {
+                              className: 'autoComplete-unit-suffix',
+                              style: { display: 'inline-block' },
+                              defaultValue: g || 'px',
+                            },
+                            M.createElement(Ne, { value: g, key: g }, g),
+                          ),
+                        ),
+                      !f &&
+                        M.createElement(ee.InputNumber, {
+                          style: { display: 'inline-block', width: '120px' },
+                          addonAfter: S,
+                          disabled: d,
+                          placeholder:
+                            y.placeholder ||
+                            p.placeholder ||
+                            '请输入' + y.title ||
+                            0,
+                          defaultValue: m.unit || y.default,
+                          onPressEnter: this.handleInputChange,
+                          onBlur: this.handleInputChange,
+                        }),
+                    ),
+                  ),
+                );
+              }),
+              t
+            );
+          })(M.PureComponent);
         (Re.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
@@ -2708,134 +2887,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'datasource', component: Re });
-        var Ne = (function (e) {
-          function t(t) {
-            var n;
-            return (
-              ((n = e.call(this, t) || this).handleValueChange = function (e) {
-                var t = n.props,
-                  a = t.keyRoute,
-                  o = (t.jsonStore || {}).updateFormValueData,
-                  r = e.target.value;
-                o(a ? a + '-unit' : 'unit', Number(r));
-              }),
-              (n.handleValueChange = n.handleValueChange.bind(n)),
-              n
-            );
-          }
-          M()(t, e);
-          var n = t.prototype;
-          return (
-            (n.componentWillMount = function () {
-              he.x.call(this);
-            }),
-            (n.componentWillReceiveProps = function (e) {
-              e.keyRoute !== this.props.keyRoute && he.x.call(this, e.keyRoute);
-            }),
-            (n.render = function () {
-              var e = this.props,
-                t = e.schemaStore,
-                n = e.jsonStore,
-                a = (t || {}).pageScreen,
-                o = (n || {}).getJSONDataByKeyRoute,
-                r = this.props,
-                i = r.keyRoute,
-                l = r.jsonKey,
-                s = r.nodeKey,
-                c = r.targetJsonSchema,
-                u = o(i),
-                p = c.readOnly || !1,
-                m = c.properties.unit,
-                d = u.quantity,
-                y = A.createElement('span', null, 'percent' === d ? '%' : d),
-                h = (0, te.y8)(c.type),
-                g = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                S = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
-                _ = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
-                  : {};
-              return A.createElement(
-                'div',
-                {
-                  className:
-                    'wideScreen' === a
-                      ? 'wide-screen-element-warp'
-                      : 'mobile-screen-element-warp ' +
-                        (h ? 'two-col-element-warp' : ''),
-                  id: s,
-                  style: g,
-                },
-                A.createElement(
-                  'div',
-                  { className: 'element-title', style: S },
-                  A.createElement(
-                    ee.Tooltip,
-                    {
-                      title: 'wideScreen' === a ? c.description : '',
-                      placement: 'top',
-                    },
-                    A.createElement(
-                      'span',
-                      { className: 'title-text', title: c.title },
-                      c.title,
-                      c.showKey &&
-                        A.createElement(
-                          'span',
-                          null,
-                          '（',
-                          (0, Z.truncate)(l, { length: 15 }),
-                          '）',
-                        ),
-                    ),
-                  ),
-                  'mobileScreen' === a &&
-                    c.description &&
-                    A.createElement(
-                      ee.Tooltip,
-                      { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
-                        className: 'info-icon',
-                      }),
-                    ),
-                ),
-                A.createElement(
-                  'div',
-                  { className: 'content-item', style: _ },
-                  A.createElement(
-                    'div',
-                    { className: 'form-item-box' },
-                    A.createElement(ee.InputNumber, {
-                      style: { display: 'inline-block', width: '120px' },
-                      addonAfter: y,
-                      disabled: p,
-                      placeholder:
-                        m.placeholder ||
-                        c.placeholder ||
-                        '请输入' + m.title ||
-                        0,
-                      defaultValue: u.unit || m.default,
-                      onPressEnter: this.handleValueChange,
-                      onBlur: this.handleValueChange,
-                    }),
-                  ),
-                ),
-              );
-            }),
-            t
-          );
-        })(A.PureComponent);
-        (Ne.propTypes = {
-          parentType: W().string,
-          jsonKey: W().string,
-          indexRoute: W().string,
-          keyRoute: W().string,
-          nodeKey: W().string,
-          targetJsonSchema: W().any,
-        }),
-          (0, le.TS)({ type: 'quantity', component: Ne }),
+          (0, le.TS)({ type: 'quantity', component: Re }),
           __webpack_require__(9928);
-        var xe = (function (e) {
+        var ke = (function (e) {
           function t(t) {
             var n;
             return (
@@ -2958,7 +3012,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -2984,7 +3038,7 @@
                 d = o.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(o.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -2996,21 +3050,21 @@
                   id: n,
                   style: p,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: m },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === l ? o.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: o.title },
                       o.title,
                       o.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -3021,30 +3075,30 @@
                   ),
                   'mobileScreen' === l &&
                     o.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: o.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   {
                     className: 'content-item layout-box-style-container',
                     style: d,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'center-box' },
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       {
                         placement: 'top',
                         title: u ? '点击解锁联动' : '点击联动',
                       },
-                      A.createElement('div', {
+                      M.createElement('div', {
                         className: u ? 'lock-icon' : 'lock-icon unlock',
                         onClick: function () {
                           e.setState({ layoutStyleLock: !u });
@@ -3052,7 +3106,7 @@
                       }),
                     ),
                   ),
-                  A.createElement(ee.InputNumber, {
+                  M.createElement(ee.InputNumber, {
                     name: 'layoutPaddingTop',
                     className:
                       'layout-input-number layout-item layout-item-top\n            ' +
@@ -3071,7 +3125,7 @@
                       e.setLayoutBoxStyle(n, u, 'top');
                     },
                   }),
-                  A.createElement(ee.InputNumber, {
+                  M.createElement(ee.InputNumber, {
                     name: 'layoutPaddingRight',
                     className:
                       'layout-input-number layout-item layout-item-right\n            ' +
@@ -3090,7 +3144,7 @@
                       e.setLayoutBoxStyle(n, u, 'right');
                     },
                   }),
-                  A.createElement(ee.InputNumber, {
+                  M.createElement(ee.InputNumber, {
                     name: 'layoutPaddingBottom',
                     className:
                       'layout-input-number layout-item layout-item-bottom\n            ' +
@@ -3109,7 +3163,7 @@
                       e.setLayoutBoxStyle(n, u, 'bottom');
                     },
                   }),
-                  A.createElement(ee.InputNumber, {
+                  M.createElement(ee.InputNumber, {
                     name: 'layoutPaddingLeft',
                     className:
                       'layout-input-number layout-item layout-item-left\n            ' +
@@ -3133,8 +3187,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (xe.propTypes = {
+        })(M.PureComponent);
+        (ke.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -3142,590 +3196,1029 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'box-style', component: xe }),
-          __webpack_require__(9346),
-          ee.Select.Option;
-        var je = (function (e) {
-          function t(t) {
-            var n;
-            return (
-              ((n = e.call(this, t) || this).boxStyle = {
-                margin: { top: '', right: '', bottom: '', left: '' },
-                padding: { top: '', right: '', bottom: '', left: '' },
-                quantity: 'px',
-              }),
-              (n.initBoxStyle = function () {
-                var e = (n.props.jsonStore || {}).getJSONDataByKeyRoute,
-                  t = n.props,
-                  a = t.keyRoute,
-                  o = t.targetJsonSchema,
-                  r = e(a),
-                  i = o.properties.margin,
-                  l = o.properties.padding,
-                  s = o.properties.quantity,
-                  c = r.quantity || s.default,
-                  u = r.margin || i.default,
-                  p = r.padding || l.default;
-                (u = (0, Z.isNumber)(u) ? u.toString() : u || 'auto'),
-                  (p = (0, Z.isNumber)(p) ? p.toString() : p || 'auto'),
-                  (n.boxStyle.quantity = c);
-                var m = u.split(' ');
-                (n.boxStyle.margin.top = n.getStyleValText(m[0])),
-                  (n.boxStyle.margin.right = n.getStyleValText(m[1], p)),
-                  (n.boxStyle.margin.bottom = n.getStyleValText(m[2] || m[0])),
-                  (n.boxStyle.margin.left = n.getStyleValText(m[3] || m[1], p));
-                var d = p.split(' ');
-                (n.boxStyle.padding.top = n.getStyleValText(d[0])),
-                  (n.boxStyle.padding.right = n.getStyleValText(d[1], p)),
-                  (n.boxStyle.padding.bottom = n.getStyleValText(d[2] || d[0])),
-                  (n.boxStyle.padding.left = n.getStyleValText(
-                    d[3] || d[1],
-                    p,
-                  ));
-              }),
-              (n.getStyleValText = function (e, t) {
-                var n = 'auto';
-                return (
-                  'auto' === e ||
-                  0 === e ||
-                  '' === e ||
-                  '0' === e ||
-                  /^\$/.test(e)
-                    ? (n = e)
-                    : e
-                      ? ((n = parseInt(e)),
-                        (n = (0, Z.isNumber)(n) ? n : 'auto'))
-                      : void 0 !== t && (n = t),
-                  n
-                );
-              }),
-              (n.getStyleVal = function (e) {
-                var t = '';
-                if ('auto' === e || 0 === e) t = e;
-                else {
-                  if (/^\$/.test(e)) return e;
-                  '' === e
-                    ? (t = 'auto')
-                    : e &&
-                      ((t = parseInt(e)),
-                      (t = (0, Z.isNumber)(t) ? t : 'auto'));
-                }
-                return 'auto' === t || 0 === t
-                  ? t
-                  : '' + t + n.boxStyle.quantity;
-              }),
-              (n.setLayoutBoxStyle = function (e, t, a, o) {
-                if (t) n.linkLayoutBoxStyle(e, a);
-                else {
-                  var r = n.getStyleValText(e);
-                  (n.boxStyle[a][o] = void 0 !== r ? r : ''),
-                    n.updateBoxStyleState();
-                }
-              }),
-              (n.linkLayoutBoxStyle = function (e, t) {
-                var a = n.getStyleValText(e);
-                void 0 !== a
-                  ? ((n.boxStyle[t].top = a),
-                    (n.boxStyle[t].right = a),
-                    (n.boxStyle[t].bottom = a),
-                    (n.boxStyle[t].left = a))
-                  : ((n.boxStyle[t].top = ''),
-                    (n.boxStyle[t].right = ''),
-                    (n.boxStyle[t].bottom = ''),
-                    (n.boxStyle[t].left = '')),
-                  n.updateBoxStyleState();
-              }),
-              (n.updateBoxStyleState = function () {
-                var e = n.props,
-                  t = e.keyRoute,
-                  a = (e.jsonStore || {}).updateFormValueData,
-                  o = n.state.renderAction;
-                a(t, {
-                  margin: n.getMarginValue(),
-                  padding: n.getPaddingValue(),
-                  quantity: n.boxStyle.quantity,
+          (0, le.TS)({ type: 'box-style', component: ke }),
+          __webpack_require__(9346);
+        var je = ee.Select.Option,
+          De = (function (e) {
+            function t(t) {
+              var n;
+              return (
+                ((n = e.call(this, t) || this).boxStyle = {
+                  margin: { top: '', right: '', bottom: '', left: '' },
+                  padding: { top: '', right: '', bottom: '', left: '' },
+                  quantity: 'px',
                 }),
-                  n.setState({ renderAction: !o });
-              }),
-              (n.getSelectAfter = function (e) {
-                var t = n.props.targetJsonSchema.properties.quantity,
-                  a = e.quantity || t.default;
-                return A.createElement('span', null, a);
-              }),
-              (n.quantityChange = function (e) {
-                var t = n.props,
-                  a = t.keyRoute;
-                (0, (t.jsonStore || {}).updateFormValueData)(a, {
-                  margin: n.getMarginValue(),
-                  padding: n.getPaddingValue(),
-                  quantity: e,
-                });
-              }),
-              (n.setType = function (e) {
-                n.setState({ type: e });
-              }),
-              (n.getMarginValue = function () {
-                return (
-                  n.getStyleVal(n.boxStyle.margin.top) +
-                  ' ' +
-                  n.getStyleVal(n.boxStyle.margin.right) +
-                  ' ' +
-                  n.getStyleVal(n.boxStyle.margin.bottom) +
-                  ' ' +
-                  n.getStyleVal(n.boxStyle.margin.left)
-                );
-              }),
-              (n.getPaddingValue = function () {
-                return (
-                  n.getStyleVal(n.boxStyle.padding.top) +
-                  ' ' +
-                  n.getStyleVal(n.boxStyle.padding.right) +
-                  ' ' +
-                  n.getStyleVal(n.boxStyle.padding.bottom) +
-                  ' ' +
-                  n.getStyleVal(n.boxStyle.padding.left)
-                );
-              }),
-              (n.state = { type: 'all', renderAction: !1 }),
-              (n.updateBoxStyleState = n.updateBoxStyleState.bind(n)),
-              (n.initBoxStyle = n.initBoxStyle.bind(n)),
-              (n.getStyleValText = n.getStyleValText.bind(n)),
-              (n.getSelectAfter = n.getSelectAfter.bind(n)),
-              (n.setLayoutBoxStyle = n.setLayoutBoxStyle.bind(n)),
-              (n.linkLayoutBoxStyle = n.linkLayoutBoxStyle.bind(n)),
-              (n.getSelectAfter = n.getSelectAfter.bind(n)),
-              (n.quantityChange = n.quantityChange.bind(n)),
-              n
-            );
-          }
-          M()(t, e);
-          var n = t.prototype;
-          return (
-            (n.componentWillMount = function () {
-              this.initBoxStyle();
-            }),
-            (n.componentWillReceiveProps = function (e) {
-              this.initBoxStyle();
-            }),
-            (n.render = function () {
-              var e = this,
-                t = this.props,
-                n = t.nodeKey,
-                a = t.jsonKey,
-                o = t.targetJsonSchema,
-                r = t.keyRoute,
-                i = this.props,
-                l = i.schemaStore,
-                s = i.jsonStore,
-                c = (l || {}).pageScreen,
-                u = (s || {}).getJSONDataByKeyRoute,
-                p = this.state,
-                m = p.renderAction,
-                d = p.type,
-                y = u(r) || {},
-                h = o.style ? (0, te.K8)((0, Q.toJS)(o.style)) : {},
-                g = o.titleStyle ? (0, te.K8)((0, Q.toJS)(o.titleStyle)) : {},
-                S = o.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(o.contentStyle))
-                  : {};
-              return A.createElement(
-                'div',
-                {
-                  className:
-                    ('wideScreen' === c
-                      ? 'wide-screen-element-warp'
-                      : 'mobile-screen-element-warp') +
+                (n.initBoxStyle = function () {
+                  var e = (n.props.jsonStore || {}).getJSONDataByKeyRoute,
+                    t = n.props,
+                    a = t.keyRoute,
+                    o = t.targetJsonSchema,
+                    r = e(a),
+                    i = o.properties.margin,
+                    l = o.properties.padding,
+                    s = o.properties.quantity,
+                    c = r.quantity || s.default,
+                    u = r.margin || i.default,
+                    p = r.padding || l.default;
+                  (u = (0, Z.isNumber)(u) ? u.toString() : u || 'auto'),
+                    (p = (0, Z.isNumber)(p) ? p.toString() : p || 'auto'),
+                    (n.boxStyle.quantity = c);
+                  var m = u.split(' ');
+                  (n.boxStyle.margin.top = n.getStyleValText(m[0])),
+                    (n.boxStyle.margin.right = n.getStyleValText(m[1], p)),
+                    (n.boxStyle.margin.bottom = n.getStyleValText(
+                      m[2] || m[0],
+                    )),
+                    (n.boxStyle.margin.left = n.getStyleValText(
+                      m[3] || m[1],
+                      p,
+                    ));
+                  var d = p.split(' ');
+                  (n.boxStyle.padding.top = n.getStyleValText(d[0])),
+                    (n.boxStyle.padding.right = n.getStyleValText(d[1], p)),
+                    (n.boxStyle.padding.bottom = n.getStyleValText(
+                      d[2] || d[0],
+                    )),
+                    (n.boxStyle.padding.left = n.getStyleValText(
+                      d[3] || d[1],
+                      p,
+                    ));
+                }),
+                (n.getStyleValText = function (e, t) {
+                  var n = 'auto';
+                  return (
+                    'auto' === e ||
+                    0 === e ||
+                    '' === e ||
+                    '0' === e ||
+                    /^\$/.test(e)
+                      ? (n = e)
+                      : e
+                        ? ((n = parseInt(e)),
+                          (n = (0, Z.isNumber)(n) ? n : 'auto'))
+                        : void 0 !== t && (n = t),
+                    n
+                  );
+                }),
+                (n.getStyleVal = function (e) {
+                  var t = '';
+                  if ('auto' === e || 0 === e) t = e;
+                  else {
+                    if (/^\$/.test(e)) return e;
+                    '' === e
+                      ? (t = 'auto')
+                      : e &&
+                        ((t = parseInt(e)),
+                        (t = (0, Z.isNumber)(t) ? t : 'auto'));
+                  }
+                  return 'auto' === t || 0 === t
+                    ? t
+                    : '' + t + n.boxStyle.quantity;
+                }),
+                (n.setLayoutBoxStyle = function (e, t, a, o) {
+                  if (t) n.linkLayoutBoxStyle(e, a);
+                  else {
+                    var r = n.getStyleValText(e);
+                    (n.boxStyle[a][o] = void 0 !== r ? r : ''),
+                      n.updateBoxStyleState();
+                  }
+                }),
+                (n.linkLayoutBoxStyle = function (e, t) {
+                  var a = n.getStyleValText(e);
+                  void 0 !== a
+                    ? ((n.boxStyle[t].top = a),
+                      (n.boxStyle[t].right = a),
+                      (n.boxStyle[t].bottom = a),
+                      (n.boxStyle[t].left = a))
+                    : ((n.boxStyle[t].top = ''),
+                      (n.boxStyle[t].right = ''),
+                      (n.boxStyle[t].bottom = ''),
+                      (n.boxStyle[t].left = '')),
+                    n.updateBoxStyleState();
+                }),
+                (n.updateBoxStyleState = function () {
+                  var e = n.props,
+                    t = e.keyRoute,
+                    a = (e.jsonStore || {}).updateFormValueData,
+                    o = n.state.renderAction;
+                  a(t, {
+                    margin: n.getMarginValue(),
+                    padding: n.getPaddingValue(),
+                    quantity: n.boxStyle.quantity,
+                  }),
+                    n.setState({ renderAction: !o });
+                }),
+                (n.getQuantity = function (e) {
+                  var t = n.props.targetJsonSchema.properties.quantity;
+                  return e.quantity || t.default;
+                }),
+                (n.getSelectAfter = function (e) {
+                  return M.createElement('span', null, n.getQuantity(e));
+                }),
+                (n.quantityChange = function (e) {
+                  var t = n.props,
+                    a = t.keyRoute;
+                  (0, (t.jsonStore || {}).updateFormValueData)(a, {
+                    margin: n.getMarginValue(),
+                    padding: n.getPaddingValue(),
+                    quantity: e,
+                  });
+                }),
+                (n.setType = function (e) {
+                  n.setState({ type: e });
+                }),
+                (n.getMarginValue = function () {
+                  return (
+                    n.getStyleVal(n.boxStyle.margin.top) +
                     ' ' +
-                    (m ? 'render-mark' : ''),
-                  id: n,
-                  style: h,
-                },
-                A.createElement(
-                  'div',
-                  { className: 'element-title', style: g },
-                  A.createElement(
-                    ee.Tooltip,
-                    {
-                      title: 'wideScreen' === c ? o.description : '',
-                      placement: 'top',
-                    },
-                    A.createElement(
-                      'span',
-                      { className: 'title-text', title: o.title },
-                      o.title,
-                      o.showKey &&
-                        A.createElement(
-                          'span',
-                          null,
-                          '（',
-                          (0, Z.truncate)(a, { length: 15 }),
-                          '）',
-                        ),
-                    ),
-                  ),
-                  'mobileScreen' === c &&
-                    o.description &&
-                    A.createElement(
-                      ee.Tooltip,
-                      { title: o.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
-                        className: 'info-icon',
-                      }),
-                    ),
-                ),
-                A.createElement(
+                    n.getStyleVal(n.boxStyle.margin.right) +
+                    ' ' +
+                    n.getStyleVal(n.boxStyle.margin.bottom) +
+                    ' ' +
+                    n.getStyleVal(n.boxStyle.margin.left)
+                  );
+                }),
+                (n.getPaddingValue = function () {
+                  return (
+                    n.getStyleVal(n.boxStyle.padding.top) +
+                    ' ' +
+                    n.getStyleVal(n.boxStyle.padding.right) +
+                    ' ' +
+                    n.getStyleVal(n.boxStyle.padding.bottom) +
+                    ' ' +
+                    n.getStyleVal(n.boxStyle.padding.left)
+                  );
+                }),
+                (n.state = { type: 'all', renderAction: !1 }),
+                (n.updateBoxStyleState = n.updateBoxStyleState.bind(n)),
+                (n.initBoxStyle = n.initBoxStyle.bind(n)),
+                (n.getStyleValText = n.getStyleValText.bind(n)),
+                (n.getSelectAfter = n.getSelectAfter.bind(n)),
+                (n.setLayoutBoxStyle = n.setLayoutBoxStyle.bind(n)),
+                (n.linkLayoutBoxStyle = n.linkLayoutBoxStyle.bind(n)),
+                (n.getSelectAfter = n.getSelectAfter.bind(n)),
+                (n.quantityChange = n.quantityChange.bind(n)),
+                n
+              );
+            }
+            A()(t, e);
+            var n = t.prototype;
+            return (
+              (n.componentWillMount = function () {
+                this.initBoxStyle();
+              }),
+              (n.componentWillReceiveProps = function (e) {
+                this.initBoxStyle();
+              }),
+              (n.render = function () {
+                var e = this,
+                  t = this.props,
+                  n = t.nodeKey,
+                  a = t.jsonKey,
+                  o = t.targetJsonSchema,
+                  r = t.keyRoute,
+                  i = this.props,
+                  l = i.schemaStore,
+                  s = i.jsonStore,
+                  c = (l || {}).pageScreen,
+                  u = s || {},
+                  p = u.options,
+                  m = u.getJSONDataByKeyRoute,
+                  d = this.state,
+                  y = d.renderAction,
+                  h = d.type,
+                  g = m(r) || {},
+                  S = o.autoComplete || !1,
+                  _ = this.getQuantity(g),
+                  f = p || {},
+                  v = [];
+                f.GlobalOptions &&
+                  (0, Z.isArray)(f.GlobalOptions) &&
+                  (v = f.GlobalOptions);
+                var b = o.options || v,
+                  E = o.style ? (0, te.K8)((0, Q.toJS)(o.style)) : {},
+                  w = o.titleStyle ? (0, te.K8)((0, Q.toJS)(o.titleStyle)) : {},
+                  C = o.contentStyle
+                    ? (0, te.K8)((0, Q.toJS)(o.contentStyle))
+                    : {};
+                return M.createElement(
                   'div',
                   {
-                    className: 'content-item Style-PaddingAndMargin',
-                    style: S,
+                    className:
+                      ('wideScreen' === c
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp') +
+                      ' ' +
+                      (y ? 'render-mark' : ''),
+                    id: n,
+                    style: E,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
-                    { className: 'Style-PaddingAndMargin-inner' },
-                    A.createElement(
-                      'div',
+                    { className: 'element-title', style: w },
+                    M.createElement(
+                      ee.Tooltip,
                       {
-                        className:
-                          'Style-PaddingAndMargin-label Style-PaddingAndMargin-label--custom',
+                        title: 'wideScreen' === c ? o.description : '',
+                        placement: 'top',
                       },
-                      A.createElement('div', {
-                        className:
-                          '\n                  Style-PaddingAndMargin-label-all\n                  ' +
-                          ('all' === d
-                            ? 'Style-PaddingAndMargin-label-all--active'
-                            : ''),
-                        onClick: function () {
-                          return e.setType('all');
-                        },
-                      }),
-                      A.createElement(
+                      M.createElement(
+                        'span',
+                        { className: 'title-text', title: o.title },
+                        o.title,
+                        o.showKey &&
+                          M.createElement(
+                            'span',
+                            null,
+                            '（',
+                            (0, Z.truncate)(a, { length: 15 }),
+                            '）',
+                          ),
+                      ),
+                    ),
+                    'mobileScreen' === c &&
+                      o.description &&
+                      M.createElement(
+                        ee.Tooltip,
+                        { title: o.description, placement: 'top' },
+                        M.createElement(se.InfoCircleOutlined, {
+                          className: 'info-icon',
+                        }),
+                      ),
+                  ),
+                  M.createElement(
+                    'div',
+                    {
+                      className: 'content-item Style-PaddingAndMargin',
+                      style: C,
+                    },
+                    M.createElement(
+                      'div',
+                      { className: 'Style-PaddingAndMargin-inner' },
+                      M.createElement(
                         'div',
                         {
                           className:
-                            '\n                Style-PaddingAndMargin-label-custom\n                ' +
-                            ('custom' === d
-                              ? 'Style-PaddingAndMargin-label-custom--active'
+                            'Style-PaddingAndMargin-label Style-PaddingAndMargin-label--custom',
+                        },
+                        M.createElement('div', {
+                          className:
+                            '\n                  Style-PaddingAndMargin-label-all\n                  ' +
+                            ('all' === h
+                              ? 'Style-PaddingAndMargin-label-all--active'
                               : ''),
                           onClick: function () {
-                            return e.setType('custom');
+                            return e.setType('all');
                           },
-                        },
-                        A.createElement('div', null),
-                        A.createElement('div', null),
-                      ),
-                    ),
-                    'all' === d &&
-                      A.createElement(
-                        A.Fragment,
-                        null,
-                        A.createElement(
+                        }),
+                        M.createElement(
                           'div',
-                          { className: 'Style-PaddingAndMargin-input' },
-                          A.createElement(ee.Input, {
-                            name: 'layoutMargin',
-                            addonAfter: this.getSelectAfter(y),
-                            className: 'layout-item-margin',
-                            size: 'small',
-                            defaultValue: this.boxStyle.margin.top,
-                            onChange: function (t) {
-                              var n = t.target.value;
-                              e.setLayoutBoxStyle(n, !0, 'margin');
+                          {
+                            className:
+                              '\n                Style-PaddingAndMargin-label-custom\n                ' +
+                              ('custom' === h
+                                ? 'Style-PaddingAndMargin-label-custom--active'
+                                : ''),
+                            onClick: function () {
+                              return e.setType('custom');
                             },
-                          }),
-                          A.createElement(
+                          },
+                          M.createElement('div', null),
+                          M.createElement('div', null),
+                        ),
+                      ),
+                      'all' === h &&
+                        M.createElement(
+                          'div',
+                          { style: { display: 'flex', marginTop: '5px' } },
+                          M.createElement(
                             'div',
-                            { className: 'Style-PaddingAndMargin-input-label' },
-                            '外边距',
+                            { className: 'Style-PaddingAndMargin-input' },
+                            S &&
+                              M.createElement(
+                                'div',
+                                { style: { display: 'flex' } },
+                                M.createElement(ee.AutoComplete, {
+                                  className:
+                                    'ant-input layout-item-margin autoComplete-unit',
+                                  style: { display: 'inline-block' },
+                                  options: b,
+                                  allowClear: !0,
+                                  defaultValue: this.boxStyle.margin.top,
+                                  onChange: function (t) {
+                                    e.setLayoutBoxStyle(t, !0, 'margin');
+                                  },
+                                }),
+                                M.createElement(
+                                  ee.Select,
+                                  {
+                                    className: 'autoComplete-unit-suffix',
+                                    style: { display: 'inline-block' },
+                                    defaultValue: _ || 'px',
+                                  },
+                                  M.createElement(je, { value: _ }, _),
+                                ),
+                              ),
+                            !S &&
+                              M.createElement(ee.Input, {
+                                name: 'layoutMargin',
+                                addonAfter: this.getSelectAfter(g),
+                                className: 'layout-item-margin',
+                                size: 'small',
+                                defaultValue: this.boxStyle.margin.top,
+                                onChange: function (t) {
+                                  var n = t.target.value;
+                                  e.setLayoutBoxStyle(n, !0, 'margin');
+                                },
+                              }),
+                            M.createElement(
+                              'div',
+                              {
+                                className: 'Style-PaddingAndMargin-input-label',
+                              },
+                              '外边距',
+                            ),
+                          ),
+                          M.createElement(
+                            'div',
+                            { className: 'Style-PaddingAndMargin-input' },
+                            S &&
+                              M.createElement(
+                                'div',
+                                { style: { display: 'flex' } },
+                                M.createElement(ee.AutoComplete, {
+                                  className:
+                                    'ant-input layout-item-padding autoComplete-unit',
+                                  style: { display: 'inline-block' },
+                                  options: b,
+                                  allowClear: !0,
+                                  defaultValue: this.boxStyle.padding.top,
+                                  onChange: function (t) {
+                                    e.setLayoutBoxStyle(t, !0, 'padding');
+                                  },
+                                }),
+                                M.createElement(
+                                  ee.Select,
+                                  {
+                                    className: 'autoComplete-unit-suffix',
+                                    style: { display: 'inline-block' },
+                                    defaultValue: _ || 'px',
+                                  },
+                                  M.createElement(je, { value: _ }, _),
+                                ),
+                              ),
+                            !S &&
+                              M.createElement(ee.Input, {
+                                name: 'layoutPadding',
+                                addonAfter: this.getSelectAfter(g),
+                                className: 'layout-item-padding',
+                                size: 'small',
+                                defaultValue: this.boxStyle.padding.top,
+                                onChange: function (t) {
+                                  var n = t.target.value;
+                                  e.setLayoutBoxStyle(n, !0, 'padding');
+                                },
+                              }),
+                            M.createElement(
+                              'div',
+                              {
+                                className: 'Style-PaddingAndMargin-input-label',
+                              },
+                              '内边距',
+                            ),
                           ),
                         ),
-                        A.createElement(
-                          'div',
-                          { className: 'Style-PaddingAndMargin-input' },
-                          A.createElement(ee.Input, {
-                            name: 'layoutPadding',
-                            addonAfter: this.getSelectAfter(y),
-                            className: 'layout-item-padding',
-                            size: 'small',
-                            defaultValue: this.boxStyle.padding.top,
-                            onChange: function (t) {
-                              var n = t.target.value;
-                              e.setLayoutBoxStyle(n, !0, 'padding');
+                    ),
+                    'all' !== h &&
+                      M.createElement(
+                        'div',
+                        {
+                          className:
+                            'Style-PaddingAndMargin-custom Style-PaddingAndMargin-custom--padding Style-PaddingAndMargin-custom--margin',
+                        },
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-padding autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.padding.top,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'padding',
+                                          'top',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutPaddingTop',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-padding',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.padding.top,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'padding',
+                                        'top',
+                                      );
+                                    },
+                                  }),
+                              );
                             },
-                          }),
-                          A.createElement(
+                            title: '',
+                          },
+                          M.createElement(
                             'div',
-                            { className: 'Style-PaddingAndMargin-input-label' },
-                            '内边距',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-paddingTop',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.padding.top) ||
+                                '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-padding autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.padding.right,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'padding',
+                                          'right',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutPaddingTop',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-padding',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.padding.right,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'padding',
+                                        'right',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-paddingRight',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.padding.right) ||
+                                '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-padding autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.padding.bottom,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'padding',
+                                          'bottom',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutPaddingBottom',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-padding',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.padding.bottom,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'padding',
+                                        'bottom',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-paddingBottom',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.padding.bottom) ||
+                                '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-padding autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.padding.left,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'padding',
+                                          'left',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutPaddingLeft',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-padding',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.padding.left,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'padding',
+                                        'left',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-paddingLeft',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.padding.left) ||
+                                '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-margin autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.margin.top,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'margin',
+                                          'top',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutMarginTop',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-margin',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.margin.top,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'margin',
+                                        'top',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-marginTop',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.margin.top) || '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-margin autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.margin.right,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'margin',
+                                          'right',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutMarginRight',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-margin',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.margin.right,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'margin',
+                                        'right',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-marginRight',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.margin.right) ||
+                                '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-margin autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.margin.bottom,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'margin',
+                                          'bottom',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutMarginBottom',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-margin',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.margin.bottom,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'margin',
+                                        'bottom',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-marginBottom',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.margin.bottom) ||
+                                '-',
+                            ),
+                          ),
+                        ),
+                        M.createElement(
+                          ee.Popover,
+                          {
+                            content: function () {
+                              return M.createElement(
+                                M.Fragment,
+                                null,
+                                S &&
+                                  M.createElement(
+                                    'div',
+                                    {
+                                      style: {
+                                        display: 'flex',
+                                        minWidth: '160px',
+                                      },
+                                    },
+                                    M.createElement(ee.AutoComplete, {
+                                      className:
+                                        'ant-input layout-item-margin autoComplete-unit',
+                                      style: { display: 'inline-block' },
+                                      options: b,
+                                      allowClear: !0,
+                                      defaultValue: e.boxStyle.margin.left,
+                                      onChange: function (t) {
+                                        e.setLayoutBoxStyle(
+                                          t,
+                                          !1,
+                                          'margin',
+                                          'left',
+                                        );
+                                      },
+                                    }),
+                                    M.createElement(
+                                      ee.Select,
+                                      {
+                                        className: 'autoComplete-unit-suffix',
+                                        style: { display: 'inline-block' },
+                                        defaultValue: _ || 'px',
+                                      },
+                                      M.createElement(je, { value: _ }, _),
+                                    ),
+                                  ),
+                                !S &&
+                                  M.createElement(ee.Input, {
+                                    name: 'layoutMarginLeft',
+                                    addonAfter: e.getSelectAfter(g),
+                                    className: 'layout-item-margin',
+                                    size: 'small',
+                                    defaultValue: e.boxStyle.margin.left,
+                                    onChange: function (t) {
+                                      var n = t.target.value;
+                                      e.setLayoutBoxStyle(
+                                        n,
+                                        !1,
+                                        'margin',
+                                        'left',
+                                      );
+                                    },
+                                  }),
+                              );
+                            },
+                            title: '',
+                          },
+                          M.createElement(
+                            'div',
+                            {
+                              className:
+                                'Style-PaddingAndMargin-custom-marginLeft',
+                            },
+                            M.createElement(
+                              'div',
+                              { className: 'Style-PaddingAndMargin-value' },
+                              this.getStyleVal(this.boxStyle.margin.left) ||
+                                '-',
+                            ),
                           ),
                         ),
                       ),
                   ),
-                  'all' !== d &&
-                    A.createElement(
-                      'div',
-                      {
-                        className:
-                          'Style-PaddingAndMargin-custom Style-PaddingAndMargin-custom--padding Style-PaddingAndMargin-custom--margin',
-                      },
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutPaddingTop',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-padding',
-                              size: 'small',
-                              defaultValue: e.boxStyle.padding.top,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'padding', 'top');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-paddingTop',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.padding.top) || '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutPaddingTop',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-padding',
-                              size: 'small',
-                              defaultValue: e.boxStyle.padding.right,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'padding', 'right');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-paddingRight',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.padding.right) ||
-                              '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutPaddingBottom',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-padding',
-                              size: 'small',
-                              defaultValue: e.boxStyle.padding.bottom,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'padding', 'bottom');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-paddingBottom',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.padding.bottom) ||
-                              '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutPaddingLeft',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-padding',
-                              size: 'small',
-                              defaultValue: e.boxStyle.padding.left,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'padding', 'left');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-paddingLeft',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.padding.left) || '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutMarginTop',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-margin',
-                              size: 'small',
-                              defaultValue: e.boxStyle.margin.top,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'margin', 'top');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-marginTop',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.margin.top) || '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutMarginRight',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-margin',
-                              size: 'small',
-                              defaultValue: e.boxStyle.margin.right,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'margin', 'right');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-marginRight',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.margin.right) || '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutMarginBottom',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-margin',
-                              size: 'small',
-                              defaultValue: e.boxStyle.margin.bottom,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'margin', 'bottom');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-marginBottom',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.margin.bottom) ||
-                              '-',
-                          ),
-                        ),
-                      ),
-                      A.createElement(
-                        ee.Popover,
-                        {
-                          content: function () {
-                            return A.createElement(ee.Input, {
-                              name: 'layoutMarginLeft',
-                              addonAfter: e.getSelectAfter(y),
-                              className: 'layout-item-margin',
-                              size: 'small',
-                              defaultValue: e.boxStyle.margin.left,
-                              onChange: function (t) {
-                                var n = t.target.value;
-                                e.setLayoutBoxStyle(n, !1, 'margin', 'left');
-                              },
-                            });
-                          },
-                          title: '',
-                        },
-                        A.createElement(
-                          'div',
-                          {
-                            className:
-                              'Style-PaddingAndMargin-custom-marginLeft',
-                          },
-                          A.createElement(
-                            'div',
-                            null,
-                            this.getStyleVal(this.boxStyle.margin.left) || '-',
-                          ),
-                        ),
-                      ),
-                    ),
-                ),
-              );
-            }),
-            t
-          );
-        })(A.PureComponent);
-        (je.propTypes = {
+                );
+              }),
+              t
+            );
+          })(M.PureComponent);
+        (De.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -3733,8 +4226,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'padding-margin', component: je });
-        var ke = (function (e) {
+          (0, le.TS)({ type: 'padding-margin', component: De });
+        var Ke = (function (e) {
           function t(t) {
             var n;
             return (
@@ -3747,7 +4240,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -3774,7 +4267,7 @@
                 y = c.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -3784,21 +4277,21 @@
                   id: i,
                   style: m,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: d },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === a ? c.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: c.title },
                       c.title,
                       c.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -3809,21 +4302,21 @@
                   ),
                   'mobileScreen' === a &&
                     c.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: y },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(
+                    M.createElement(
                       ee.Radio.Group,
                       {
                         style: { display: 'inline-block' },
@@ -3835,7 +4328,7 @@
                         p.length > 0 &&
                         p.map(function (e, t) {
                           var n = 'radio-' + t + '-' + (e.label || e.name);
-                          return A.createElement(
+                          return M.createElement(
                             ee.Radio,
                             { value: e.value, key: n },
                             e.label,
@@ -3848,8 +4341,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (ke.propTypes = {
+        })(M.PureComponent);
+        (Ke.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -3857,8 +4350,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'radio', component: ke });
-        var De = (function (e) {
+          (0, le.TS)({ type: 'radio', component: Ke });
+        var Te = (function (e) {
           function t(t) {
             var n;
             return (
@@ -3871,7 +4364,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -3898,7 +4391,7 @@
                 y = c.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -3908,21 +4401,21 @@
                   id: i,
                   style: m,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: d },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === a ? c.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: c.title },
                       c.title,
                       c.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -3933,21 +4426,21 @@
                   ),
                   'mobileScreen' === a &&
                     c.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: y },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(
+                    M.createElement(
                       ee.Checkbox.Group,
                       {
                         style: { display: 'inline-block' },
@@ -3960,7 +4453,7 @@
                         p.map(function (e, t) {
                           var n = e.label || e.name,
                             a = 'select-' + t + '-' + n;
-                          return A.createElement(
+                          return M.createElement(
                             ee.Checkbox,
                             { value: e.value, key: a },
                             n,
@@ -3973,8 +4466,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (De.propTypes = {
+        })(M.PureComponent);
+        (Te.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -3982,23 +4475,27 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'checkboxes', component: De });
-        var Ke = (function (e) {
+          (0, le.TS)({ type: 'checkboxes', component: Te });
+        var Pe = (function (e) {
           function t(t) {
             var n;
             return (
-              ((n = e.call(this, t) || this).handleValueChange = function (e) {
+              ((n = e.call(this, t) || this).handleInputChange = function (e) {
+                var t = e.target.value;
+                n.handleValueChange(t);
+              }),
+              (n.handleValueChange = function (e) {
                 var t = n.props,
                   a = t.keyRoute,
-                  o = (t.jsonStore || {}).updateFormValueData,
-                  r = e.target.value;
-                n.props.onChange ? n.props.onChange(r) : o(a, r);
+                  o = (t.jsonStore || {}).updateFormValueData;
+                n.props.onChange ? n.props.onChange(e) : o(a, e);
               }),
+              (n.handleInputChange = n.handleInputChange.bind(n)),
               (n.handleValueChange = n.handleValueChange.bind(n)),
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -4012,86 +4509,109 @@
                 t = e.schemaStore,
                 n = e.jsonStore,
                 a = (t || {}).pageScreen,
-                o = (n || {}).getJSONDataByKeyRoute,
-                r = this.props,
-                i = r.nodeKey,
-                l = r.jsonKey,
-                s = r.keyRoute,
-                c = r.targetJsonSchema,
-                u = s && o(s),
-                p = c.readOnly || !1,
-                m = c.isRequired || !1,
-                d = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                y = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
-                h = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                o = n || {},
+                r = o.options,
+                i = o.getJSONDataByKeyRoute,
+                l = this.props,
+                s = l.nodeKey,
+                c = l.jsonKey,
+                u = l.keyRoute,
+                p = l.targetJsonSchema,
+                m = u && i(u),
+                d = p.readOnly || !1,
+                y = p.isRequired || !1,
+                h = p.autoComplete || !1,
+                g = r || {},
+                S = [];
+              g.GlobalOptions &&
+                (0, Z.isArray)(g.GlobalOptions) &&
+                (S = g.GlobalOptions);
+              var _ = p.options || S,
+                f = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
+                v = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
+                b = p.contentStyle
+                  ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
                     'wideScreen' === a
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  id: i,
-                  style: d,
+                  id: s,
+                  style: f,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
-                  { className: 'element-title', style: y },
-                  A.createElement(
+                  { className: 'element-title', style: v },
+                  M.createElement(
                     ee.Tooltip,
                     {
-                      title: 'wideScreen' === a ? c.description : '',
+                      title: 'wideScreen' === a ? p.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
-                      { className: 'title-text', title: c.title },
-                      c.title,
-                      c.showKey &&
-                        A.createElement(
+                      { className: 'title-text', title: p.title },
+                      p.title,
+                      p.showKey &&
+                        M.createElement(
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(l, { length: 15 }),
+                          (0, Z.truncate)(c, { length: 15 }),
                           '）',
                         ),
                     ),
                   ),
                   'mobileScreen' === a &&
-                    c.description &&
-                    A.createElement(
+                    p.description &&
+                    M.createElement(
                       ee.Tooltip,
-                      { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      { title: p.description, placement: 'top' },
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
-                  { className: 'content-item', style: h },
-                  A.createElement(
+                  { className: 'content-item', style: b },
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(ee.Input, {
-                      style: { display: 'inline-block' },
-                      disabled: p,
-                      required: m,
-                      placeholder: c.placeholder || '请输入' + c.title,
-                      defaultValue: null != u ? u : c.default,
-                      onPressEnter: this.handleValueChange,
-                      onBlur: this.handleValueChange,
-                    }),
+                    h &&
+                      M.createElement(ee.AutoComplete, {
+                        className: 'ant-input',
+                        style: { display: 'inline-block' },
+                        options: _,
+                        disabled: d,
+                        required: y,
+                        allowClear: !0,
+                        placeholder: p.placeholder || '请输入' + p.title,
+                        defaultValue: null != m ? m : p.default,
+                        onChange: this.handleValueChange,
+                      }),
+                    !h &&
+                      M.createElement(ee.Input, {
+                        style: { display: 'inline-flex' },
+                        disabled: d,
+                        required: y,
+                        allowClear: !0,
+                        placeholder: p.placeholder || '请输入' + p.title,
+                        defaultValue: null != m ? m : p.default,
+                        onPressEnter: this.handleInputChange,
+                        onBlur: this.handleInputChange,
+                      }),
                   ),
                 ),
               );
             }),
             t
           );
-        })(A.PureComponent);
-        (Ke.propTypes = {
+        })(M.PureComponent);
+        (Pe.propTypes = {
           parentType: W().any,
           jsonKey: W().string,
           indexRoute: W().any,
@@ -4100,10 +4620,10 @@
           targetJsonSchema: W().any,
           onChange: W().any,
         }),
-          (0, le.TS)({ type: 'input', component: Ke });
-        var Te = Ke,
-          Je = ee.Input.TextArea,
-          Pe = (function (e) {
+          (0, le.TS)({ type: 'input', component: Pe });
+        var Je = Pe,
+          Ae = ee.Input.TextArea,
+          Me = (function (e) {
             function t(t) {
               var n;
               return (
@@ -4121,7 +4641,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -4150,7 +4670,7 @@
                   h = c.contentStyle
                     ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                     : {};
-                return A.createElement(
+                return M.createElement(
                   'div',
                   {
                     className:
@@ -4160,21 +4680,21 @@
                     id: s,
                     style: d,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'element-title', style: y },
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       {
                         title: 'wideScreen' === a ? c.description : '',
                         placement: 'top',
                       },
-                      A.createElement(
+                      M.createElement(
                         'span',
                         { className: 'title-text', title: c.title },
                         c.title,
                         c.showKey &&
-                          A.createElement(
+                          M.createElement(
                             'span',
                             null,
                             '（',
@@ -4185,21 +4705,21 @@
                     ),
                     'mobileScreen' === a &&
                       c.description &&
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         { title: c.description, placement: 'top' },
-                        A.createElement(se.InfoCircleOutlined, {
+                        M.createElement(se.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'content-item', style: h },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      A.createElement(Je, {
+                      M.createElement(Ae, {
                         style: { display: 'inline-block' },
                         rows: 4,
                         disabled: p,
@@ -4215,8 +4735,8 @@
               }),
               t
             );
-          })(A.PureComponent);
-        (Pe.propTypes = {
+          })(M.PureComponent);
+        (Me.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4224,21 +4744,21 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'textarea', component: Pe });
-        var Me = require('braft-editor'),
-          Ae = __webpack_require__.n(Me),
-          Ve = require('braft-extensions/dist/color-picker'),
+          (0, le.TS)({ type: 'textarea', component: Me });
+        var Ve = require('braft-editor'),
           Be = __webpack_require__.n(Ve),
-          Ie =
+          Ie = require('braft-extensions/dist/color-picker'),
+          Le = __webpack_require__.n(Ie),
+          qe =
             (require('braft-extensions/dist/color-picker.css'),
             require('braft-extensions/dist/table')),
-          Le = __webpack_require__.n(Ie);
+          We = __webpack_require__.n(qe);
         require('braft-extensions/dist/table.css'),
           require('braft-editor/dist/index.css'),
           __webpack_require__(632),
-          Ae().use([Be()({ theme: 'light' })]),
-          Ae().use(
-            Le()({
+          Be().use([Le()({ theme: 'light' })]),
+          Be().use(
+            We()({
               defaultColumns: 3,
               defaultRows: 3,
               withDropdown: !1,
@@ -4246,7 +4766,7 @@
               exportAttrString: 'border="1" style="border-collapse: collapse"',
             }),
           );
-        var qe = (function (e) {
+        var Fe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4304,7 +4824,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -4335,14 +4855,14 @@
                 u = i.targetJsonSchema,
                 p = this.state.isClosed,
                 m = r(l),
-                d = Ae().createEditorState(m),
+                d = Be().createEditorState(m),
                 y = u.readOnly || !1,
                 h = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
                 g = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
                 S = u.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -4352,7 +4872,7 @@
                   id: c,
                   style: h,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   {
                     className: 'element-title',
@@ -4363,18 +4883,18 @@
                     },
                     style: g,
                   },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === o ? u.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: u.title },
                       u.title,
                       u.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -4385,31 +4905,31 @@
                   ),
                   'mobileScreen' === o &&
                     u.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: u.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                   p
-                    ? A.createElement(se.RightOutlined, {
+                    ? M.createElement(se.RightOutlined, {
                         className: 'close-operate-btn',
                       })
-                    : A.createElement(se.DownOutlined, {
+                    : M.createElement(se.DownOutlined, {
                         className: 'close-operate-btn',
                       }),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   {
                     className: 'content-item ' + (p ? 'closed' : ''),
                     style: S,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(Ae(), {
+                    M.createElement(Be(), {
                       key: c + '-textEditor',
                       controls:
                         'wideScreen' === o
@@ -4437,8 +4957,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (qe.propTypes = {
+        })(M.PureComponent);
+        (Fe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4447,9 +4967,9 @@
           targetJsonSchema: W().any,
           pageScreen: W().any,
         }),
-          (0, le.TS)({ type: 'text-editor', component: qe }),
+          (0, le.TS)({ type: 'text-editor', component: Fe }),
           __webpack_require__(9741);
-        var We = (function (e) {
+        var Ue = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4483,7 +5003,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -4513,7 +5033,7 @@
                 S = c.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -4523,21 +5043,21 @@
                         (y ? 'two-col-element-warp' : ''),
                   style: h,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: g },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === o ? c.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: c.title },
                       c.title,
                       c.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -4548,24 +5068,24 @@
                   ),
                   'mobileScreen' === o &&
                     c.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: S },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'input-number-wrap' },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         {
                           className: 'number-btn minus',
@@ -4579,7 +5099,7 @@
                         },
                         '-',
                       ),
-                      A.createElement(ee.InputNumber, {
+                      M.createElement(ee.InputNumber, {
                         key: 'inputNumber-' + u,
                         id: 'inputNumber-' + l,
                         className: 'number-cont',
@@ -4592,7 +5112,7 @@
                         defaultValue: (0, te.GT)(p) ? p : c.default,
                         onChange: this.handleValueChange,
                       }),
-                      A.createElement(
+                      M.createElement(
                         'div',
                         {
                           className: 'number-btn plus',
@@ -4613,8 +5133,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (We.propTypes = {
+        })(M.PureComponent);
+        (Ue.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4622,10 +5142,10 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'number', component: We });
-        var Ue = require('rc-switch'),
-          Fe = __webpack_require__.n(Ue),
-          ze =
+          (0, le.TS)({ type: 'number', component: Ue });
+        var ze = require('rc-switch'),
+          Ge = __webpack_require__.n(ze),
+          $e =
             (require('rc-switch/assets/index.css'),
             __webpack_require__(3512),
             (function (e) {
@@ -4643,7 +5163,7 @@
                   n
                 );
               }
-              M()(t, e);
+              A()(t, e);
               var n = t.prototype;
               return (
                 (n.componentWillMount = function () {
@@ -4675,7 +5195,7 @@
                     y = c.contentStyle
                       ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                       : {};
-                  return A.createElement(
+                  return M.createElement(
                     'div',
                     {
                       className:
@@ -4686,21 +5206,21 @@
                       id: s,
                       style: m,
                     },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'element-title', style: d },
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         {
                           title: 'wideScreen' === a ? c.description : '',
                           placement: 'top',
                         },
-                        A.createElement(
+                        M.createElement(
                           'span',
                           { className: 'title-text', title: c.title },
                           c.title,
                           c.showKey &&
-                            A.createElement(
+                            M.createElement(
                               'span',
                               null,
                               '（',
@@ -4711,21 +5231,21 @@
                       ),
                       'mobileScreen' === a &&
                         c.description &&
-                        A.createElement(
+                        M.createElement(
                           ee.Tooltip,
                           { title: c.description, placement: 'top' },
-                          A.createElement(se.InfoCircleOutlined, {
+                          M.createElement(se.InfoCircleOutlined, {
                             className: 'info-icon',
                           }),
                         ),
                     ),
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'content-item', style: y },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         { className: 'form-item-box' },
-                        A.createElement(Fe(), {
+                        M.createElement(Ge(), {
                           style: { display: 'inline-block' },
                           defaultChecked: void 0 !== u ? u : c.default,
                           checkedChildren: 'true',
@@ -4739,8 +5259,8 @@
                 }),
                 t
               );
-            })(A.PureComponent));
-        (ze.propTypes = {
+            })(M.PureComponent));
+        ($e.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4748,10 +5268,10 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'boolean', component: ze }),
+          (0, le.TS)({ type: 'boolean', component: $e }),
           __webpack_require__(7546);
-        var $e = ee.Select.Option,
-          Ge = (function (e) {
+        var He = ee.Select.Option,
+          Qe = (function (e) {
             function t(t) {
               var n;
               return (
@@ -4792,7 +5312,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -4840,7 +5360,7 @@
                   E = m.contentStyle
                     ? (0, te.K8)((0, Q.toJS)(m.contentStyle))
                     : {};
-                return A.createElement(
+                return M.createElement(
                   'div',
                   {
                     className:
@@ -4851,21 +5371,21 @@
                     id: c,
                     style: v,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'element-title', style: b },
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       {
                         title: 'wideScreen' === i ? m.description : '',
                         placement: 'top',
                       },
-                      A.createElement(
+                      M.createElement(
                         'span',
                         { className: 'title-text', title: m.title },
                         m.title,
                         m.showKey &&
-                          A.createElement(
+                          M.createElement(
                             'span',
                             null,
                             '（',
@@ -4876,21 +5396,21 @@
                     ),
                     'mobileScreen' === i &&
                       m.description &&
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         { title: m.description, placement: 'top' },
-                        A.createElement(se.InfoCircleOutlined, {
+                        M.createElement(se.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'content-item', style: E },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'form-item-box select-box' },
-                      A.createElement(
+                      M.createElement(
                         ee.Select,
                         {
                           showSearch: null == (e = m.showSearch) || e,
@@ -4908,8 +5428,8 @@
                           h.map(function (e, t) {
                             var n = e.label || e.name,
                               a = c + '-select-' + n;
-                            return A.createElement(
-                              $e,
+                            return M.createElement(
+                              He,
                               { value: e.value, key: a },
                               n,
                             );
@@ -4921,8 +5441,8 @@
               }),
               t
             );
-          })(A.PureComponent);
-        (Ge.propTypes = {
+          })(M.PureComponent);
+        (Qe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4931,9 +5451,9 @@
           targetJsonSchema: W().any,
           withLabel: W().any,
         }),
-          (0, le.TS)({ type: 'select', component: Ge }),
+          (0, le.TS)({ type: 'select', component: Qe }),
           __webpack_require__(3794);
-        var He = (function (e) {
+        var Ze = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4946,7 +5466,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -4978,7 +5498,7 @@
                 _ = m.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(m.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -4989,21 +5509,21 @@
                   id: c,
                   style: g,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: S },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === i ? m.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: m.title },
                       m.title,
                       m.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -5014,21 +5534,21 @@
                   ),
                   'mobileScreen' === i &&
                     m.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: m.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: _ },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box select-box' },
-                    A.createElement(ee.Cascader, {
+                    M.createElement(ee.Cascader, {
                       showSearch: null == (e = m.showSearch) || e,
                       style: { display: 'inline-block', minWidth: '120px' },
                       options: y,
@@ -5044,8 +5564,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (He.propTypes = {
+        })(M.PureComponent);
+        (Ze.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5053,8 +5573,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'cascader', component: He });
-        var Qe = (function (e) {
+          (0, le.TS)({ type: 'cascader', component: Ze });
+        var Ye = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5083,7 +5603,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -5132,7 +5652,7 @@
                 b = m.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(m.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -5142,21 +5662,21 @@
                   id: c,
                   style: f,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: v },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === o ? m.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: m.title },
                       m.title,
                       m.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -5167,24 +5687,24 @@
                   ),
                   'mobileScreen' === o &&
                     m.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: m.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: b },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(
+                    M.createElement(
                       ee.Upload,
                       ie()({}, _, { disabled: g }),
-                      A.createElement(
+                      M.createElement(
                         'button',
                         {
                           style: {
@@ -5195,9 +5715,9 @@
                           type: 'button',
                         },
                         y
-                          ? A.createElement(se.LoadingOutlined, null)
-                          : A.createElement(se.PlusOutlined, null),
-                        A.createElement(
+                          ? M.createElement(se.LoadingOutlined, null)
+                          : M.createElement(se.PlusOutlined, null),
+                        M.createElement(
                           'div',
                           { style: { marginTop: 8 } },
                           '上传图片',
@@ -5210,8 +5730,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (Qe.propTypes = {
+        })(M.PureComponent);
+        (Ye.propTypes = {
           parentType: W().any,
           jsonKey: W().string,
           indexRoute: W().any,
@@ -5220,15 +5740,15 @@
           targetJsonSchema: W().any,
           onChange: W().any,
         }),
-          (0, le.TS)({ type: 'input-image', component: Qe });
-        var Ze = require('moment'),
-          Ye = __webpack_require__.n(Ze),
-          Xe = {
+          (0, le.TS)({ type: 'input-image', component: Ye });
+        var Xe = require('moment'),
+          et = __webpack_require__.n(Xe),
+          tt = {
             'date-time': 'YYYY-MM-DD HH:mm',
             date: 'YYYY-MM-DD',
             time: 'HH:mm',
           },
-          et = (function (e) {
+          nt = (function (e) {
             function t(t) {
               var n;
               return (
@@ -5244,7 +5764,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -5268,7 +5788,7 @@
                   u = c.type,
                   p = c.readOnly || !1,
                   m = c.isRequired || !1,
-                  d = Xe[u] || Xe[0],
+                  d = tt[u] || tt[0],
                   y = o(i),
                   h = null != y ? y : c.default,
                   g = (0, te.y8)(u),
@@ -5277,7 +5797,7 @@
                   f = c.contentStyle
                     ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                     : {};
-                return A.createElement(
+                return M.createElement(
                   'div',
                   {
                     className:
@@ -5288,21 +5808,21 @@
                     id: s,
                     style: S,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'element-title', style: _ },
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       {
                         title: 'wideScreen' === a ? c.description : '',
                         placement: 'top',
                       },
-                      A.createElement(
+                      M.createElement(
                         'span',
                         { className: 'title-text', title: c.title },
                         c.title,
                         c.showKey &&
-                          A.createElement(
+                          M.createElement(
                             'span',
                             null,
                             '（',
@@ -5313,28 +5833,28 @@
                     ),
                     'mobileScreen' === a &&
                       c.description &&
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         { title: c.description, placement: 'top' },
-                        A.createElement(se.InfoCircleOutlined, {
+                        M.createElement(se.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'content-item', style: f },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      A.createElement(ee.DatePicker, {
+                      M.createElement(ee.DatePicker, {
                         style: { display: 'inline-block' },
                         disabled: p,
                         required: m,
                         showTime: 'date-time' === u,
                         format: d,
                         placeholder: c.placeholder || '请输入' + c.title,
-                        defaultValue: h && Ye()(h, d),
+                        defaultValue: h && et()(h, d),
                         onChange: this.handleValueChange,
                       }),
                     ),
@@ -5343,8 +5863,8 @@
               }),
               t
             );
-          })(A.PureComponent);
-        (et.propTypes = {
+          })(M.PureComponent);
+        (nt.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5352,9 +5872,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'date', component: et }),
-          (0, le.TS)({ type: 'date-time', component: et });
-        var tt = (function (e) {
+          (0, le.TS)({ type: 'date', component: nt }),
+          (0, le.TS)({ type: 'date-time', component: nt });
+        var at = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5370,7 +5890,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -5400,7 +5920,7 @@
                 S = c.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -5411,21 +5931,21 @@
                   id: i,
                   style: h,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: g },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === a ? c.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: c.title },
                       c.title,
                       c.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -5436,26 +5956,26 @@
                   ),
                   'mobileScreen' === a &&
                     c.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: S },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(ee.TimePicker, {
+                    M.createElement(ee.TimePicker, {
                       style: { display: 'inline-block' },
                       disabled: m,
                       required: d,
                       placeholder: c.placeholder || '请输入' + c.title,
-                      defaultValue: p && Ye()(p, 'HH:mm'),
+                      defaultValue: p && et()(p, 'HH:mm'),
                       onChange: this.handleValueChange,
                     }),
                   ),
@@ -5464,8 +5984,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (tt.propTypes = {
+        })(M.PureComponent);
+        (at.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5473,8 +5993,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'time', component: tt });
-        var nt = (function (e) {
+          (0, le.TS)({ type: 'time', component: at });
+        var ot = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5487,7 +6007,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -5515,7 +6035,7 @@
                 h = c.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -5525,21 +6045,21 @@
                   id: s,
                   style: d,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: y },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === a ? c.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: c.title },
                       c.title,
                       c.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -5550,21 +6070,21 @@
                   ),
                   'mobileScreen' === a &&
                     c.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: c.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: h },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(ee.Input, {
+                    M.createElement(ee.Input, {
                       style: { display: 'inline-block' },
                       disabled: p,
                       required: m,
@@ -5579,8 +6099,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (nt.propTypes = {
+        })(M.PureComponent);
+        (ot.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5588,9 +6108,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'url', component: nt });
-        var at = require('react-color'),
-          ot =
+          (0, le.TS)({ type: 'url', component: ot });
+        var rt = require('react-color'),
+          it =
             (__webpack_require__(6220),
             (function (e) {
               function t(t) {
@@ -5621,7 +6141,7 @@
                   n
                 );
               }
-              M()(t, e);
+              A()(t, e);
               var n = t.prototype;
               return (
                 (n.componentWillMount = function () {
@@ -5656,13 +6176,13 @@
                     f = u.contentStyle
                       ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
                       : {},
-                    v = A.createElement(at.SketchPicker, {
+                    v = M.createElement(rt.SketchPicker, {
                       className: 'color-sketch-picker',
                       key: c + '-SketchPicker',
                       color: null != h ? h : u.default,
                       onChange: this.handleValueChange,
                     });
-                  return A.createElement(
+                  return M.createElement(
                     'div',
                     {
                       className:
@@ -5673,21 +6193,21 @@
                       id: c,
                       style: S,
                     },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'element-title', style: _ },
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         {
                           title: 'wideScreen' === o ? u.description : '',
                           placement: 'top',
                         },
-                        A.createElement(
+                        M.createElement(
                           'span',
                           { className: 'title-text', title: u.title },
                           u.title,
                           u.showKey &&
-                            A.createElement(
+                            M.createElement(
                               'span',
                               null,
                               '（',
@@ -5698,21 +6218,21 @@
                       ),
                       'mobileScreen' === o &&
                         u.description &&
-                        A.createElement(
+                        M.createElement(
                           ee.Tooltip,
                           { title: u.description, placement: 'top' },
-                          A.createElement(se.InfoCircleOutlined, {
+                          M.createElement(se.InfoCircleOutlined, {
                             className: 'info-icon',
                           }),
                         ),
                     ),
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'content-item', style: f },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         { className: 'form-item-box render-dom-' + m },
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className:
@@ -5725,44 +6245,44 @@
                             },
                           },
                           y &&
-                            A.createElement('button', {
+                            M.createElement('button', {
                               className: 'ant-input color-btn',
                               style: {
                                 backgroundColor: null != h ? h : u.default,
                               },
                             }),
                           !y &&
-                            A.createElement(
-                              A.Fragment,
+                            M.createElement(
+                              M.Fragment,
                               null,
-                              A.createElement(
+                              M.createElement(
                                 ee.Popover,
                                 {
                                   content: v,
                                   title: '颜色选择器',
                                   trigger: 'click',
                                 },
-                                A.createElement('button', {
+                                M.createElement('button', {
                                   className: 'ant-input color-btn',
                                   style: {
                                     backgroundColor: null != h ? h : u.default,
                                   },
                                 }),
                               ),
-                              A.createElement(
+                              M.createElement(
                                 ee.Tooltip,
                                 {
                                   title: '点击移除当前颜色值',
                                   placement: 'top',
                                 },
-                                A.createElement(se.CloseOutlined, {
+                                M.createElement(se.CloseOutlined, {
                                   className: 'delete-bgColor-btn',
                                   onClick: function () {
                                     e.deleteColor();
                                   },
                                 }),
                               ),
-                              A.createElement('span', { className: 'arrow' }),
+                              M.createElement('span', { className: 'arrow' }),
                             ),
                         ),
                       ),
@@ -5771,8 +6291,8 @@
                 }),
                 t
               );
-            })(A.PureComponent));
-        (ot.propTypes = {
+            })(M.PureComponent));
+        (it.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5780,8 +6300,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'color', component: ot });
-        var rt = (function (e) {
+          (0, le.TS)({ type: 'color', component: it });
+        var lt = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5800,7 +6320,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -5835,7 +6355,7 @@
                 f = u.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -5845,21 +6365,21 @@
                   id: l,
                   style: S,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: _ },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === o ? u.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: u.title },
                       u.title,
                       u.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -5870,25 +6390,25 @@
                   ),
                   'mobileScreen' === o &&
                     u.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: u.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: f },
                   m &&
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'warning-box code-area-item' },
-                      A.createElement('div', { className: 'warning-img' }, 'X'),
-                      A.createElement('div', { className: 'warning-text' }, d),
+                      M.createElement('div', { className: 'warning-img' }, 'X'),
+                      M.createElement('div', { className: 'warning-text' }, d),
                     ),
-                  A.createElement(pe(), {
+                  M.createElement(pe(), {
                     id: l + '-json_area_ace',
                     value: (0, te.GT)(y) ? y : g,
                     className: 'code-area-item',
@@ -5930,8 +6450,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (rt.propTypes = {
+        })(M.PureComponent);
+        (lt.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5939,11 +6459,11 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'json', component: rt }),
+          (0, le.TS)({ type: 'json', component: lt }),
           __webpack_require__(9566),
           require('ace-builds/src-noconflict/mode-html'),
           __webpack_require__(6953);
-        var it = (function (e) {
+        var st = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5957,7 +6477,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -5990,7 +6510,7 @@
                 _ = u.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -6000,21 +6520,21 @@
                   id: l,
                   style: g,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title', style: S },
-                  A.createElement(
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === o ? u.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: u.title },
                       u.title,
                       u.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -6025,25 +6545,25 @@
                   ),
                   'mobileScreen' === o &&
                     u.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: u.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item', style: _ },
                   m &&
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'warning-box code-area-item' },
-                      A.createElement('div', { className: 'warning-img' }, 'X'),
-                      A.createElement('div', { className: 'warning-text' }, d),
+                      M.createElement('div', { className: 'warning-img' }, 'X'),
+                      M.createElement('div', { className: 'warning-text' }, d),
                     ),
-                  A.createElement(pe(), {
+                  M.createElement(pe(), {
                     id: 'code_area_ace',
                     key: l + '-ace',
                     className: 'code-area-item',
@@ -6078,8 +6598,8 @@
             }),
             t
           );
-        })(A.PureComponent);
-        (it.propTypes = {
+        })(M.PureComponent);
+        (st.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -6087,13 +6607,13 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'htmlarea', component: it });
-        var lt = (function (e) {
+          (0, le.TS)({ type: 'htmlarea', component: st });
+        var ct = (function (e) {
           function t() {
             return e.apply(this, arguments) || this;
           }
           return (
-            M()(t, e),
+            A()(t, e),
             (t.prototype.render = function () {
               var e = this.props,
                 t = e.pageScreen,
@@ -6112,7 +6632,7 @@
                   }
                 i = (0, Z.json2treeData)(l);
               }
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -6121,18 +6641,18 @@
                       : 'mobile-screen-element-warp',
                   id: o + '-dataRoute-select',
                 },
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'element-title' },
                   '数据路径选择',
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   { className: 'content-item' },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'form-item-box' },
-                    A.createElement(ee.TreeSelect, {
+                    M.createElement(ee.TreeSelect, {
                       className: 'data-route-select',
                       defaultValue: a,
                       treeData: i,
@@ -6147,16 +6667,16 @@
             }),
             t
           );
-        })(A.PureComponent);
-        lt.propTypes = {
+        })(M.PureComponent);
+        ct.propTypes = {
           mockData: W().any,
           dataRoute: W().any,
           onChange: W().func,
           nodeKey: W().string,
         };
-        var st = lt,
-          ct = (__webpack_require__(1147), ee.Select.Option),
-          ut = (function (e) {
+        var ut = ct,
+          pt = (__webpack_require__(1147), ee.Select.Option),
+          mt = (function (e) {
             function t(t) {
               var n;
               return (
@@ -6196,7 +6716,7 @@
               );
             }
             return (
-              M()(t, e),
+              A()(t, e),
               (t.prototype.render = function () {
                 var e = this,
                   t = this.props,
@@ -6223,7 +6743,7 @@
                     console.log('当前数据源的请求参数格式异常'), (S = {});
                   }
                 var _ = c[h] || {};
-                return A.createElement(
+                return M.createElement(
                   'div',
                   {
                     className:
@@ -6232,22 +6752,22 @@
                         : 'mobile-screen-element-warp',
                     id: m,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'element-title' },
                     p.title + ' (接口下发）',
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'content-item object-content' },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       {
                         className: 'remote-dynamic-data-schema',
                         key: m + '-remote-dynamic-data',
                         id: m + '-remote-dynamic-data',
                       },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         {
                           className:
@@ -6257,18 +6777,18 @@
                           key: m + '-' + h,
                           id: m + '-' + h,
                         },
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'element-title' },
                           '数据源列表',
                         ),
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'content-item' },
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'form-item-box' },
-                            A.createElement(
+                            M.createElement(
                               ee.Select,
                               {
                                 className: 'dynamic-data-select',
@@ -6278,8 +6798,8 @@
                               s &&
                                 (0, ne.cy)(s) &&
                                 s.map(function (e) {
-                                  return A.createElement(
-                                    ct,
+                                  return M.createElement(
+                                    pt,
                                     { value: e.name, key: e.id },
                                     e.title,
                                   );
@@ -6291,7 +6811,7 @@
                       h &&
                         S &&
                         Object.keys(S).length > 0 &&
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className:
@@ -6302,12 +6822,12 @@
                             key: m + '-' + h + '-params',
                             id: m + '-' + h + '-params',
                           },
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'element-title' },
                             '请求参数配置2',
                           ),
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'content-item object-content' },
                             Object.keys(S).map(function (t) {
@@ -6337,7 +6857,7 @@
                       h &&
                         S &&
                         0 === Object.keys(S).length &&
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className:
@@ -6347,15 +6867,15 @@
                             key: m + '-' + h + '-empty',
                             id: m + '-' + h + '-empty',
                           },
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'element-title' },
                             '请求参数配置',
                           ),
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'content-item' },
-                            A.createElement(
+                            M.createElement(
                               'span',
                               { className: 'warning-text' },
                               '无可配置的请求参数',
@@ -6363,7 +6883,7 @@
                           ),
                         ),
                       h &&
-                        A.createElement(st, {
+                        M.createElement(ut, {
                           pageScreen: o,
                           nodeKey: m + '-dataRoute',
                           mockData: _.respMock,
@@ -6390,8 +6910,8 @@
               }),
               t
             );
-          })(A.PureComponent);
-        ut.propTypes = {
+          })(M.PureComponent);
+        mt.propTypes = {
           pageScreen: W().any,
           keyRoute: W().any,
           nodeKey: W().string,
@@ -6401,14 +6921,14 @@
           dynamicDataObj: W().object,
           dynamicDataApiScopeList: W().object,
         };
-        var pt = (0, L.inject)(function (e) {
+        var dt = (0, L.inject)(function (e) {
             return {
               schemaStore: e.JSONSchemaStore,
               jsonStore: e.JSONEditorStore,
             };
-          })((0, L.observer)(ut)),
-          mt = (__webpack_require__(8678), ee.Select.Option),
-          dt = (function (e) {
+          })((0, L.observer)(mt)),
+          yt = (__webpack_require__(8678), ee.Select.Option),
+          ht = (function (e) {
             function t(t) {
               var n;
               return (
@@ -6502,7 +7022,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -6537,45 +7057,45 @@
                   b = g.properties.type || {},
                   E = v.type || b.default,
                   w = v.config || {},
-                  O = w.dataName,
-                  C = w.dataRoute,
-                  R = w.body || {};
-                if (!(0, ne.Gv)(R) && '' !== R)
+                  C = w.dataName,
+                  O = w.dataRoute,
+                  x = w.body || {};
+                if (!(0, ne.Gv)(x) && '' !== x)
                   try {
-                    R = JSON.parse(R);
+                    x = JSON.parse(x);
                   } catch (e) {
-                    console.log('当前数据源的请求参数格式异常'), (R = {});
+                    console.log('当前数据源的请求参数格式异常'), (x = {});
                   }
-                var N = s[O] || {},
-                  x = g.properties.data || {},
-                  j = g.style ? (0, te.K8)((0, Q.toJS)(g.style)) : {},
-                  k = g.titleStyle ? (0, te.K8)((0, Q.toJS)(g.titleStyle)) : {},
+                var N = s[C] || {},
+                  R = g.properties.data || {},
+                  k = g.style ? (0, te.K8)((0, Q.toJS)(g.style)) : {},
+                  j = g.titleStyle ? (0, te.K8)((0, Q.toJS)(g.titleStyle)) : {},
                   D = g.contentStyle
                     ? (0, te.K8)((0, Q.toJS)(g.contentStyle))
                     : {};
-                return A.createElement(
+                return M.createElement(
                   'div',
                   {
                     className: 'mobile-screen-element-warp dynamic-data-schema',
                     key: y + '-' + u,
                     id: y,
-                    style: j,
+                    style: k,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
-                    { className: 'element-title', style: k },
-                    A.createElement(
+                    { className: 'element-title', style: j },
+                    M.createElement(
                       ee.Tooltip,
                       {
                         title: 'wideScreen' === o ? g.description : '',
                         placement: 'top',
                       },
-                      A.createElement(
+                      M.createElement(
                         'span',
                         { className: 'title-text', title: g.title },
                         g.title,
                         g.showKey &&
-                          A.createElement(
+                          M.createElement(
                             'span',
                             null,
                             '（',
@@ -6586,24 +7106,24 @@
                     ),
                     'mobileScreen' === o &&
                       g.description &&
-                      A.createElement(
+                      M.createElement(
                         ee.Tooltip,
                         { title: g.description, placement: 'top' },
-                        A.createElement(se.InfoCircleOutlined, {
+                        M.createElement(se.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     { className: 'content-item', style: D },
-                    A.createElement(
+                    M.createElement(
                       'div',
                       { className: 'dynamic-data-tab-radio-box' },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         { className: 'dynamic-data-tab-radio' },
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className:
@@ -6615,7 +7135,7 @@
                           },
                           '本地数据',
                         ),
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className:
@@ -6629,17 +7149,17 @@
                         ),
                       ),
                     ),
-                    A.createElement(
+                    M.createElement(
                       'div',
                       {
                         className:
                           'dynamic-dat-tabPane ' +
                           ('local' === E ? 'dynamic-dat-tabPane-active' : ''),
                       },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         { className: 'json-form-box' },
-                        A.createElement(
+                        M.createElement(
                           ee.Tooltip,
                           {
                             title: _
@@ -6647,7 +7167,7 @@
                               : '点击显示数据过滤器',
                             placement: 'top',
                           },
-                          A.createElement(se.FilterOutlined, {
+                          M.createElement(se.FilterOutlined, {
                             className: 'filter-btn',
                             onClick: this.switchFilterBtn,
                           }),
@@ -6659,9 +7179,9 @@
                           indexRoute: h ? h + '-2' : '2',
                           keyRoute: m ? m + '-data' : 'data',
                           nodeKey: y + '-data',
-                          targetJsonSchema: x,
+                          targetJsonSchema: R,
                         }),
-                        A.createElement(
+                        M.createElement(
                           'div',
                           { className: 'filter-func-box' },
                           _ &&
@@ -6678,49 +7198,49 @@
                         ),
                       ),
                     ),
-                    A.createElement(
+                    M.createElement(
                       'div',
                       {
                         className:
                           'dynamic-dat-tabPane ' +
                           ('remote' === E ? 'dynamic-dat-tabPane-active' : ''),
                       },
-                      A.createElement(
+                      M.createElement(
                         'div',
                         { className: 'json-form-box' },
-                        A.createElement(
+                        M.createElement(
                           'div',
                           {
                             className:
                               'wideScreen' === o
                                 ? 'wide-screen-element-warp'
                                 : 'mobile-screen-element-warp',
-                            key: y + '-' + O,
-                            id: y + '-' + O,
+                            key: y + '-' + C,
+                            id: y + '-' + C,
                           },
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'element-title' },
                             '数据源列表',
                           ),
-                          A.createElement(
+                          M.createElement(
                             'div',
                             { className: 'content-item' },
-                            A.createElement(
+                            M.createElement(
                               'div',
                               { className: 'form-item-box' },
-                              A.createElement(
+                              M.createElement(
                                 ee.Select,
                                 {
                                   className: 'dynamic-data-select',
-                                  defaultValue: O,
+                                  defaultValue: C,
                                   onSelect: this.dynamicDataChange,
                                 },
                                 l &&
                                   (0, ne.cy)(l) &&
                                   l.map(function (e) {
-                                    return A.createElement(
-                                      mt,
+                                    return M.createElement(
+                                      yt,
                                       { value: e.name, key: e.id },
                                       e.title,
                                     );
@@ -6729,10 +7249,10 @@
                             ),
                           ),
                         ),
-                        O &&
-                          R &&
-                          Object.keys(R).length > 0 &&
-                          A.createElement(
+                        C &&
+                          x &&
+                          Object.keys(x).length > 0 &&
+                          M.createElement(
                             'div',
                             {
                               className:
@@ -6740,19 +7260,19 @@
                                   ? 'wide-screen-element-warp'
                                   : 'mobile-screen-element-warp') +
                                 ' element-title-card-warp',
-                              key: y + '-' + O + '-params',
-                              id: y + '-' + O + '-params',
+                              key: y + '-' + C + '-params',
+                              id: y + '-' + C + '-params',
                             },
-                            A.createElement(
+                            M.createElement(
                               'div',
                               { className: 'element-title' },
                               '请求参数配置1',
                             ),
-                            A.createElement(
+                            M.createElement(
                               'div',
                               { className: 'content-item object-content' },
-                              Object.keys(R).map(function (t) {
-                                var n = (0, te.bQ)(R[t]);
+                              Object.keys(x).map(function (t) {
+                                var n = (0, te.bQ)(x[t]);
                                 n.readOnly = !(
                                   !n.scope || 'static' !== n.scope
                                 );
@@ -6775,8 +7295,8 @@
                                       e.paramsValueChange(t, n);
                                     },
                                   });
-                                var i = y + '-' + O + '-params-' + t;
-                                return A.createElement(pt, {
+                                var i = y + '-' + C + '-params-' + t;
+                                return M.createElement(dt, {
                                   pageScreen: o,
                                   nodeKey: i,
                                   renderChild: S,
@@ -6792,44 +7312,44 @@
                               }),
                             ),
                           ),
-                        O &&
-                          R &&
-                          0 === Object.keys(R).length &&
-                          A.createElement(
+                        C &&
+                          x &&
+                          0 === Object.keys(x).length &&
+                          M.createElement(
                             'div',
                             {
                               className:
                                 'wideScreen' === o
                                   ? 'wide-screen-element-warp'
                                   : 'mobile-screen-element-warp',
-                              key: y + '-' + O + '-empty',
-                              id: y + '-' + O + '-empty',
+                              key: y + '-' + C + '-empty',
+                              id: y + '-' + C + '-empty',
                             },
-                            A.createElement(
+                            M.createElement(
                               'div',
                               { className: 'element-title' },
                               '请求参数配置',
                             ),
-                            A.createElement(
+                            M.createElement(
                               'div',
                               { className: 'content-item' },
-                              A.createElement(
+                              M.createElement(
                                 'span',
                                 { className: 'warning-text' },
                                 '无可配置的请求参数',
                               ),
                             ),
                           ),
-                        O &&
-                          A.createElement(st, {
+                        C &&
+                          M.createElement(ut, {
                             pageScreen: o,
-                            nodeKey: y + '-config-dataRoute-' + C,
+                            nodeKey: y + '-config-dataRoute-' + O,
                             mockData: N.respMock,
-                            dataRoute: C,
+                            dataRoute: O,
                             onChange: this.dataRouteChange,
                             key: y + '-config-dataRoute',
                           }),
-                        O &&
+                        C &&
                           S({
                             rendererType: 'codearea',
                             isReadOnly: !0,
@@ -6840,7 +7360,7 @@
                             keyRoute: m
                               ? m + '-config-filter'
                               : 'config-filter',
-                            nodeKey: y + '-config-filter-' + C,
+                            nodeKey: y + '-config-filter-' + O,
                             targetJsonSchema:
                               g.properties.config &&
                               g.properties.config.properties.filter,
@@ -6852,8 +7372,8 @@
               }),
               t
             );
-          })(A.PureComponent);
-        (dt.propTypes = {
+          })(M.PureComponent);
+        (ht.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -6864,8 +7384,8 @@
           dynamicDataObj: W().object,
           dynamicDataApiScopeList: W().object,
         }),
-          (0, le.TS)({ type: 'dynamic-data', component: dt });
-        var yt = (function (e) {
+          (0, le.TS)({ type: 'dynamic-data', component: ht });
+        var gt = (function (e) {
           function t(t) {
             var n;
             return (
@@ -6876,7 +7396,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -6910,11 +7430,11 @@
                 b = g.default,
                 E = null == (e = u.showCodeViewBtn) || e,
                 w = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
-                O = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
-                C = u.contentStyle
+                C = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
+                O = u.contentStyle
                   ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
                   : {};
-              return A.createElement(
+              return M.createElement(
                 'div',
                 {
                   className:
@@ -6924,21 +7444,21 @@
                   id: s,
                   style: w,
                 },
-                A.createElement(
+                M.createElement(
                   'div',
-                  { className: 'element-title', style: O },
-                  A.createElement(
+                  { className: 'element-title', style: C },
+                  M.createElement(
                     ee.Tooltip,
                     {
                       title: 'wideScreen' === o ? u.description : '',
                       placement: 'top',
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text', title: u.title },
                       u.title,
                       u.showKey &&
-                        A.createElement(
+                        M.createElement(
                           'span',
                           null,
                           '（',
@@ -6949,21 +7469,21 @@
                   ),
                   'mobileScreen' === o &&
                     u.description &&
-                    A.createElement(
+                    M.createElement(
                       ee.Tooltip,
                       { title: u.description, placement: 'top' },
-                      A.createElement(se.InfoCircleOutlined, {
+                      M.createElement(se.InfoCircleOutlined, {
                         className: 'info-icon',
                       }),
                     ),
                 ),
-                A.createElement(
+                M.createElement(
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: C,
+                    style: O,
                   },
-                  A.createElement(
+                  M.createElement(
                     'div',
                     {
                       className: 'element-title',
@@ -6973,20 +7493,20 @@
                           e.stopPropagation();
                       },
                     },
-                    A.createElement(
+                    M.createElement(
                       'span',
                       { className: 'title-text' },
                       '事件配置',
                     ),
                     h
-                      ? A.createElement(se.RightOutlined, {
+                      ? M.createElement(se.RightOutlined, {
                           className: 'close-operate-btn',
                         })
-                      : A.createElement(se.DownOutlined, {
+                      : M.createElement(se.DownOutlined, {
                           className: 'close-operate-btn',
                         }),
                     E &&
-                      A.createElement(
+                      M.createElement(
                         'div',
                         {
                           className: 'display-source-btn',
@@ -6996,16 +7516,16 @@
                               e.stopPropagation();
                           },
                         },
-                        A.createElement(
+                        M.createElement(
                           ee.Tooltip,
                           { title: y ? '关闭源码模式' : '开启源码模式' },
-                          A.createElement(we, {
+                          M.createElement(we, {
                             className: y ? 'info-icon active' : 'info-icon',
                           }),
                         ),
                       ),
                   ),
-                  A.createElement(
+                  M.createElement(
                     'div',
                     {
                       className:
@@ -7016,8 +7536,8 @@
                     },
                     !y &&
                       'on' === b &&
-                      A.createElement(
-                        A.Fragment,
+                      M.createElement(
+                        M.Fragment,
                         null,
                         S &&
                           p({
@@ -7042,8 +7562,8 @@
                       ),
                     !y &&
                       'emit' === b &&
-                      A.createElement(
-                        A.Fragment,
+                      M.createElement(
+                        M.Fragment,
                         null,
                         f &&
                           p({
@@ -7066,15 +7586,15 @@
                             targetJsonSchema: v,
                           }),
                       ),
-                    y && A.createElement(ye, this.props),
+                    y && M.createElement(ye, this.props),
                   ),
                 ),
               );
             }),
             t
           );
-        })(A.PureComponent);
-        (yt.propTypes = {
+        })(M.PureComponent);
+        (gt.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -7082,8 +7602,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'event', component: yt });
-        var ht = (function (e) {
+          (0, le.TS)({ type: 'event', component: gt });
+        var St = (function (e) {
           function t(t) {
             var n;
             return (
@@ -7095,7 +7615,7 @@
               n
             );
           }
-          M()(t, e);
+          A()(t, e);
           var n = t.prototype;
           return (
             (n.componentWillMount = function () {
@@ -7137,14 +7657,14 @@
                 b = f.isClosed,
                 E = s || {},
                 w = S,
-                O = null == (e = h.showCodeViewBtn) || e,
-                C = c(y) || {},
-                R = (C.type, C.valueType, E.metaContentKeyList || []),
+                C = null == (e = h.showCodeViewBtn) || e,
+                O = c(y) || {},
+                x = (O.type, O.valueType, E.metaContentKeyList || []),
                 N = E.globalMetaConfig || [],
-                x = b,
-                j = (0, ce.Gz)(y);
-              void 0 !== j && (x = j);
-              var k = null != (t = h.boxTitle) ? t : '动态配置',
+                R = b,
+                k = (0, ce.Gz)(y);
+              void 0 !== k && (R = k);
+              var j = null != (t = h.boxTitle) ? t : '动态配置',
                 D = h.style ? (0, te.K8)((0, Q.toJS)(h.style)) : {},
                 K = h.titleStyle ? (0, te.K8)((0, Q.toJS)(h.titleStyle)) : {},
                 T = h.contentStyle
@@ -7212,17 +7732,17 @@
                       V().createElement(
                         'span',
                         { className: 'title-text' },
-                        k,
+                        j,
                         ' ',
                       ),
-                      x
+                      R
                         ? V().createElement(se.RightOutlined, {
                             className: 'close-operate-btn',
                           })
                         : V().createElement(se.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
-                      O &&
+                      C &&
                         V().createElement(
                           'div',
                           {
@@ -7251,7 +7771,7 @@
                         ' ' +
                         (v ? 'json-view-array' : '') +
                         ' ' +
-                        (x ? 'closed' : ''),
+                        (R ? 'closed' : ''),
                     },
                     !v &&
                       h.propertyOrder &&
@@ -7264,8 +7784,8 @@
                           l = d + '-' + i + '-' + o;
                         if (
                           'valueType' === o &&
-                          ('ContentStaticConfig' === C.type ||
-                            'ResourceCenter' === C.type)
+                          ('ContentStaticConfig' === O.type ||
+                            'ResourceCenter' === O.type)
                         ) {
                           var s = h.properties.value;
                           ['select', 'radio', 'checkboxes'].includes(s.type) ||
@@ -7275,8 +7795,8 @@
                           'range' === o &&
                           !(
                             (r.options && 0 !== r.options.length) ||
-                            ('ContentStaticConfig' !== C.type &&
-                              'ResourceCenter' !== C.type)
+                            ('ContentStaticConfig' !== O.type &&
+                              'ResourceCenter' !== O.type)
                           )
                         ) {
                           var c = h.properties.value;
@@ -7286,10 +7806,10 @@
                             (r.options = (0, te.n2)(c.options));
                         }
                         return (
-                          'value' === o && 'Content' === C.type
-                            ? ((r.type = 'select'), (r.options = (0, te.bQ)(R)))
+                          'value' === o && 'Content' === O.type
+                            ? ((r.type = 'select'), (r.options = (0, te.bQ)(x)))
                             : 'value' === o &&
-                              'RuntimeConst' === C.type &&
+                              'RuntimeConst' === O.type &&
                               ((r.type = 'cascader'),
                               (r.options = (0, te.bQ)(N))),
                           _({
@@ -7310,7 +7830,7 @@
             t
           );
         })(V().PureComponent);
-        (ht.propTypes = {
+        (St.propTypes = {
           isArrayItem: W().any,
           arrIndex: W().any,
           parentType: W().string,
@@ -7321,11 +7841,11 @@
           targetJsonSchema: W().any,
           isStructuredSchema: W().bool,
         }),
-          (0, le.TS)({ type: 'dynamic-array', component: ht }),
-          (0, le.TS)({ type: 'dynamic-object', component: ht }),
-          (0, le.TS)({ type: 'dynamic-config', component: ht });
-        var gt = ee.Collapse.Panel,
-          St = (function (e) {
+          (0, le.TS)({ type: 'dynamic-array', component: St }),
+          (0, le.TS)({ type: 'dynamic-object', component: St }),
+          (0, le.TS)({ type: 'dynamic-config', component: St });
+        var _t = ee.Collapse.Panel,
+          ft = (function (e) {
             function t(t) {
               var n;
               return (
@@ -7337,7 +7857,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -7448,7 +7968,7 @@
                           )
                             return;
                           return V().createElement(
-                            gt,
+                            _t,
                             { header: r.title, key: e + '-' + t },
                             d({
                               parentType: i,
@@ -7469,7 +7989,7 @@
               t
             );
           })(V().PureComponent);
-        (St.propTypes = {
+        (ft.propTypes = {
           isArrayItem: W().any,
           parentType: W().string,
           jsonKey: W().string,
@@ -7479,11 +7999,11 @@
           targetJsonSchema: W().any,
           isStructuredSchema: W().bool,
         }),
-          (0, le.TS)({ type: 'sohu-source', component: St }),
+          (0, le.TS)({ type: 'sohu-source', component: ft }),
           __webpack_require__(9612);
-        var _t = ee.Select.Option,
-          ft = ee.Collapse.Panel,
-          vt = (function (e) {
+        var vt = ee.Select.Option,
+          bt = ee.Collapse.Panel,
+          Et = (function (e) {
             function t(t) {
               var n;
               return (
@@ -7531,7 +8051,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillMount = function () {
@@ -7592,7 +8112,7 @@
                     _ &&
                       _.length > 0 &&
                       V().createElement(
-                        ft,
+                        bt,
                         { header: '监听的事件', key: 'eventListenConfig' },
                         _.map(function (t, n) {
                           var a = c + '-eventListen-' + t.code,
@@ -7631,7 +8151,7 @@
                                   var t = y[e.code] || e.desc || e.name,
                                     n = c + '-allEmitEvent-' + t;
                                   return V().createElement(
-                                    _t,
+                                    vt,
                                     { value: e.code, key: n },
                                     t,
                                   );
@@ -7644,7 +8164,7 @@
                     S &&
                       S.length > 0 &&
                       V().createElement(
-                        ft,
+                        bt,
                         { header: '触发的事件', key: 'eventEmitConfig' },
                         S.map(function (t, n) {
                           var a = c + '-eventEmit-' + t.code,
@@ -7707,7 +8227,7 @@
                       ),
                     'page' === g &&
                       V().createElement(
-                        ft,
+                        bt,
                         { header: '事件列表', key: 'AllEmitEventList' },
                         V().createElement(ee.List, {
                           itemLayout: 'horizontal',
@@ -7737,7 +8257,7 @@
               t
             );
           })(V().PureComponent);
-        (vt.propTypes = {
+        (Et.propTypes = {
           isArrayItem: W().any,
           parentType: W().string,
           jsonKey: W().string,
@@ -7747,8 +8267,8 @@
           targetJsonSchema: W().any,
           isStructuredSchema: W().bool,
         }),
-          (0, le.TS)({ type: 'sohu-event', component: vt });
-        var bt = function (e) {
+          (0, le.TS)({ type: 'sohu-event', component: Et });
+        var wt = function (e) {
             (e.schemaStore || {}).getSchemaByKeyRoute;
             var t = e.jsonStore || {},
               n = t.getJSONDataByKeyRoute,
@@ -7777,7 +8297,7 @@
                   nodeKey: m,
                   key: m,
                   renderChild: function (t) {
-                    return bt(
+                    return wt(
                       ie()({}, t, {
                         schemaStore: e.schemaStore,
                         jsonStore: e.jsonStore,
@@ -7785,14 +8305,14 @@
                     );
                   },
                 }),
-                y = le.Jd[p] || Te;
+                y = le.Jd[p] || Je;
               return V().createElement(y, d);
             }
           },
-          Et = bt,
-          wt = (__webpack_require__(8104), ee.Collapse.Panel),
-          Ot = ee.Tabs.TabPane,
-          Ct = (function (e) {
+          Ct = wt,
+          Ot = (__webpack_require__(8104), ee.Collapse.Panel),
+          xt = ee.Tabs.TabPane,
+          Nt = (function (e) {
             function t(t) {
               var n;
               ((n = e.call(this, t) || this).catchViewStyle = function (e) {
@@ -7840,7 +8360,7 @@
                 n
               );
             }
-            M()(t, e);
+            A()(t, e);
             var n = t.prototype;
             return (
               (n.componentWillReceiveProps = function (e) {
@@ -7888,26 +8408,26 @@
                   y = m.viewStyle,
                   h = (0, Z.isEmptySchema)(i),
                   g = (0, Z.isStructuredSchema)(i);
-                return A.createElement(
+                return M.createElement(
                   'div',
                   { className: 'json-editor-container' },
                   h &&
-                    A.createElement(
+                    M.createElement(
                       'p',
                       { className: 'json-editor-empty' },
                       '当前jsonSchema没有数据内容',
                     ),
                   !h &&
                     !d &&
-                    A.createElement(
-                      A.Fragment,
+                    M.createElement(
+                      M.Fragment,
                       null,
                       g &&
-                        A.createElement(
-                          A.Fragment,
+                        M.createElement(
+                          M.Fragment,
                           null,
                           'fold' === y &&
-                            A.createElement(
+                            M.createElement(
                               ee.Collapse,
                               {
                                 defaultActiveKey: i.propertyOrder,
@@ -7923,13 +8443,13 @@
                                   d = l + '-' + u + '-' + m + '-' + c;
                                 return p.propertyOrder &&
                                   p.propertyOrder.length > 0
-                                  ? A.createElement(
-                                      wt,
+                                  ? M.createElement(
+                                      Ot,
                                       {
                                         header: p.title || e.renderHeader(m),
                                         key: t + '-' + o,
                                       },
-                                      Et({
+                                      Ct({
                                         parentType: m,
                                         jsonKey: c,
                                         indexRoute: r,
@@ -7945,7 +8465,7 @@
                               }),
                             ),
                           'tabs' === y &&
-                            A.createElement(
+                            M.createElement(
                               ee.Tabs,
                               {
                                 className: 'tabs-schema-box',
@@ -7962,15 +8482,15 @@
                                   d = l + '-' + u + '-' + m + '-' + c;
                                 return p.propertyOrder &&
                                   p.propertyOrder.length > 0
-                                  ? A.createElement(
-                                      Ot,
+                                  ? M.createElement(
+                                      xt,
                                       {
                                         tab: p.title || e.renderHeader(m),
                                         key: t + '-' + o,
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
-                                      Et({
+                                      Ct({
                                         parentType: m,
                                         jsonKey: c,
                                         indexRoute: r,
@@ -7987,10 +8507,10 @@
                             ),
                         ),
                       !g &&
-                        A.createElement(
-                          A.Fragment,
+                        M.createElement(
+                          M.Fragment,
                           null,
-                          Et({
+                          Ct({
                             parentType: '',
                             jsonKey: '',
                             indexRoute: '',
@@ -8004,7 +8524,7 @@
                     ),
                   !h &&
                     d &&
-                    A.createElement(ye, {
+                    M.createElement(ye, {
                       jsonData: c,
                       readOnly: null == o || o,
                       onChange: p,
@@ -8014,8 +8534,8 @@
               }),
               t
             );
-          })(A.PureComponent);
-        Ct.propTypes = {
+          })(M.PureComponent);
+        Nt.propTypes = {
           viewStyle: W().any,
           wideScreen: W().any,
           onChange: W().func,
@@ -8031,8 +8551,8 @@
             schemaStore: e.JSONSchemaStore,
             jsonStore: e.JSONEditorStore,
           };
-        })((0, L.observer)(Ct));
-        function Nt(e, t) {
+        })((0, L.observer)(Nt));
+        function kt(e, t) {
           if (
             (window &&
               !window.JSONEditorCustomRenderers &&
@@ -8044,7 +8564,7 @@
             '[json-editor]：注册渲染器失败，存在重名渲染器(' + e + ')。',
           );
         }
-        function xt(e) {
+        function jt(e) {
           if (
             window &&
             window.JSONEditorCustomRenderers &&
@@ -8084,15 +8604,15 @@
                   );
                 else {
                   console.info('[json-editor]: 响应动态注册渲染器事件：', t);
-                  var n = xt(t);
+                  var n = jt(t);
                   (0, le.TS)({ type: t, component: n });
                 }
               }
             },
             !1,
           );
-        var jt = __webpack_require__(252),
-          kt = (function (e) {
+        var Dt = __webpack_require__(252),
+          Kt = (function (e) {
             function t(t) {
               var n;
               return (
@@ -8103,24 +8623,24 @@
               );
             }
             return (
-              M()(t, e),
+              A()(t, e),
               (t.prototype.render = function () {
                 var e = this.props.element,
                   t = this.state.rootJSONStore,
-                  n = A.createElement(
+                  n = M.createElement(
                     L.Provider,
                     {
                       JSONSchemaStore: t.JSONSchemaStore,
                       JSONEditorStore: t.JSONEditorStore,
                     },
-                    A.createElement(Rt, this.props),
+                    M.createElement(Rt, this.props),
                   );
                 return e ? (I().render(n, e), '') : n;
               }),
               t
             );
-          })(A.PureComponent);
-        kt.propTypes = {
+          })(M.PureComponent);
+        Kt.propTypes = {
           viewStyle: W().any,
           wideScreen: W().any,
           onChange: W().func,

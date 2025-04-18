@@ -19,10 +19,10 @@ object-assign
 */
 
 /*!
- * @wibetter/json-editor v5.2.10
+ * @wibetter/json-editor v5.3.1
  * author: wibetter
  * build tool: AKFun
- * build time: Tue Apr 01 2025 16:08:47 GMT+0800 (中国标准时间)
+ * build time: Fri Apr 18 2025 10:37:17 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */
 

@@ -13,7 +13,7 @@ import {
   AutoComplete,
 } from 'antd';
 const { Option } = Select;
-import { truncate, isNumber } from '@wibetter/json-utils';
+import { truncate, isNumber, isArray } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
 import './index.scss';
 
@@ -258,7 +258,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
     const { nodeKey, jsonKey, targetJsonSchema, keyRoute } = this.props;
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
     const { renderAction, type } = this.state;
     // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
@@ -266,8 +266,14 @@ class PaddingAndMarginSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
-    const options = targetJsonSchema.options || [];
     const curQuantity = this.getQuantity(curJsonData);
+
+    const editorOptions = _editorOptions || {};
+    let defaultOptions = [];
+    if (editorOptions.GlobalOptions && isArray(editorOptions.GlobalOptions)) {
+      defaultOptions = editorOptions.GlobalOptions;
+    }
+    const options = targetJsonSchema.options || defaultOptions; // 是否支持可选项
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))

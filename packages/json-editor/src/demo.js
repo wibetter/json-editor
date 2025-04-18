@@ -1987,6 +1987,11 @@ class IndexDemo extends React.PureComponent {
             ],
           },
         ],
+        GlobalOptions: [
+          { value: '$Spacing-112' },
+          { value: '$Spacing-23' },
+          { value: '$Spacing-3' },
+        ],
         uploadAction: 'https://mp.sohuno.com/commons/upload/file',
       },
       wideScreen: false,

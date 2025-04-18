@@ -1,7 +1,7 @@
 /*!
- * @wibetter/json-schema-editor v5.2.10
+ * @wibetter/json-schema-editor v5.3.1
  * author: wibetter
  * build tool: AKFun
- * build time: Thu Apr 17 2025 19:28:48 GMT+0800 (中国标准时间)
+ * build time: Fri Apr 18 2025 10:36:14 GMT+0800 (中国标准时间)
  * build tool info: https://github.com/wibetter/akfun
  */

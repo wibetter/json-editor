@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Input, InputNumber, Tooltip, AutoComplete, Select } from 'antd';
 const { Option } = Select;
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { truncate } from '@wibetter/json-utils';
+import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 
@@ -68,7 +68,7 @@ class QuantitySchema extends React.PureComponent {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { getJSONDataByKeyRoute } = jsonStore || {};
+    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -80,7 +80,13 @@ class QuantitySchema extends React.PureComponent {
     const unitSuffix = <span>{unit}</span>;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
-    const options = targetJsonSchema.options || [];
+
+    const editorOptions = _editorOptions || {};
+    let defaultOptions = [];
+    if (editorOptions.GlobalOptions && isArray(editorOptions.GlobalOptions)) {
+      defaultOptions = editorOptions.GlobalOptions;
+    }
+    const options = targetJsonSchema.options || defaultOptions; // 是否支持可选项
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
