@@ -2380,6 +2380,11 @@ class IndexDemo extends React.PureComponent {
           },
         ],
         globalMetaConfig: [],
+        GlobalOptions: [
+          { value: '$Spacing-112' },
+          { value: '$Spacing-23' },
+          { value: '$Spacing-3' },
+        ]
       },
       wideScreen: false,
       jsonView: false,
