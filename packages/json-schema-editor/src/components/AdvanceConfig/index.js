@@ -10,6 +10,7 @@ import {
   Tooltip,
   Button,
   Select,
+  message,
 } from 'antd';
 const { TextArea } = Input;
 const { Option } = Select;
@@ -23,7 +24,7 @@ import {
   isNeedCodeViewOption,
   hasOptions,
 } from '$utils/advanced.config';
-import { hasProperties, getExpectType } from '@wibetter/json-utils';
+import { hasProperties, getExpectType, isArray } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView';
 import 'rc-switch/assets/index.css';
 import './index.scss';
@@ -501,6 +502,61 @@ class AdvanceConfig extends React.PureComponent {
                   }}
                 />
               </div>
+            </div>
+          </div>
+        )}
+        {(curType === 'input' ||
+          curType === 'quantity' ||
+          curType === 'padding-margin') && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-autoComplete`}
+          >
+            <div className="element-title">
+              <Tooltip
+                title={'开启后支持添加可选项，并支持 autoComplete。'}
+                placement="top"
+              >
+                <span className="title-text">开启可选项</span>
+              </Tooltip>
+            </div>
+            <div className="content-item">
+              <div className="form-item-box">
+                <RcSwitch
+                  style={{ display: 'inline-block' }}
+                  defaultChecked={targetJsonSchema.autoComplete ?? false}
+                  checkedChildren="开启"
+                  unCheckedChildren="关闭"
+                  onChange={(checked) => {
+                    this.handleValueChange('autoComplete', checked);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {targetJsonSchema.autoComplete && (
+          <div
+            className="wide-screen-element-warp"
+            key={`${nodeKey}-autoComplete-options`}
+          >
+            <div className="element-title">
+              <span className="title-text">可选项</span>
+            </div>
+            <div className="content-item">
+              <JsonView
+                jsonData={targetJsonSchema.options || []}
+                onChange={(newJsonData) => {
+                  if (!isArray(newJsonData)) {
+                    message.warning(
+                      '可选项数据格式不正确，可选项数据格式必须为数组格式。',
+                    );
+                    return;
+                  }
+                  this.handleValueChange('options', newJsonData);
+                }}
+                maxLines={10}
+              />
             </div>
           </div>
         )}

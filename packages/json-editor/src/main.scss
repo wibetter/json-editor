@@ -303,3 +303,23 @@
     border-bottom: none;
   }
 }
+
+// 覆盖antd默认的样式
+.ant-select-item {
+  font-size: 12px !important;
+  padding: 3px 8px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.autoComplete-unit .ant-select-selector {
+  border-radius: 6px 0 0 6px !important;
+}
+
+.autoComplete-unit-suffix .ant-select-selector {
+  border-left: 0 !important;
+  border-radius: 0 6px 6px 0 !important;
+  background-color: #fbfbfb !important;
+  padding: 0 8px !important;
+}
