@@ -65,6 +65,57 @@ class QuantitySchema extends React.PureComponent {
     }
   };
 
+  handleUnitChange = (value) => {
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
+    const curKeyRoute = keyRoute ? `${keyRoute}-quantity` : 'quantity';
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    } else {
+      updateFormValueData(curKeyRoute, value);
+    }
+  };
+
+  // 单位切换
+  getUnitSelect = () => {
+    const { targetJsonSchema } = this.props;
+    let quantitySchema = {};
+    let options = [
+      {
+        label: 'px',
+        value: 'px',
+      },
+    ];
+    if (
+      targetJsonSchema &&
+      targetJsonSchema.properties &&
+      targetJsonSchema.properties.quantity
+    ) {
+      quantitySchema = targetJsonSchema.properties.quantity;
+    }
+    if (quantitySchema.options) {
+      options = quantitySchema.options;
+    }
+
+    return (
+      <Select
+        className="autoComplete-unit-suffix"
+        style={{ display: 'inline-block' }}
+        defaultValue={quantitySchema.default || 'px'}
+        onChange={this.handleUnitChange}
+      >
+        {options.map((option) => {
+          return (
+            <Option value={option.value} key={option.value}>
+              {option.label}
+            </Option>
+          );
+        })}
+      </Select>
+    );
+  };
+
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
@@ -150,21 +201,13 @@ class QuantitySchema extends React.PureComponent {
                   defaultValue={curJsonData.unit || unitJsonSchema.default}
                   onChange={this.handleValueChange}
                 />
-                <Select
-                  className="autoComplete-unit-suffix"
-                  style={{ display: 'inline-block' }}
-                  defaultValue={unit || 'px'}
-                >
-                  <Option value={unit} key={unit}>
-                    {unit}
-                  </Option>
-                </Select>
+                {this.getUnitSelect()}
               </>
             )}
             {!autoComplete && (
               <InputNumber
                 style={{ display: 'inline-block', width: '120px' }}
-                addonAfter={unitSuffix}
+                addonAfter={this.getUnitSelect()}
                 disabled={readOnly}
                 placeholder={
                   unitJsonSchema.placeholder ||
