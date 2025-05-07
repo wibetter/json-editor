@@ -43,8 +43,10 @@ export function isEqual(targetObj, nextTargetObj) {
   return _isEqual(targetObj, nextTargetObj);
 }
 
-/** 判断当前属性是否存在
- * 备注：要识别boolean类型的数值 */
+/*
+ * 判断当前属性是否存在
+ * 备注：要识别boolean类型的数值
+ */
 export function hasProperties(targetPropertie) {
   let hasProperties = false;
   if (targetPropertie !== undefined && targetPropertie !== null) {

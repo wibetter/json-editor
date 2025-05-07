@@ -121,6 +121,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
     );
   };
 
+  // 处理用户输入的数值（支持默认值设置）
   getStyleValText = (valStr, defaultValue) => {
     let curValue = 'auto';
     if (valStr === 'auto' || valStr === 0 || valStr === '' || valStr === '0') {
@@ -137,6 +138,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
     return curValue;
   };
 
+  // 获取单位设置（含单位）
   getStyleVal = (valStr) => {
     let curValue = '';
     if (valStr === 'auto' || valStr === 0) {
@@ -190,38 +192,30 @@ class PaddingAndMarginSchema extends React.PureComponent {
     this.updateBoxStyleState();
   };
 
-  /** 数值变动事件处理器 */
+  /** 数值变动事件处理器: 更新到 jsonData 中 */
   updateBoxStyleState = () => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const { renderAction } = this.state;
+
     /** 获取布局容器的盒子模型数值 */
     const curBoxValue = {
       margin: this.getMarginValue(),
       padding: this.getPaddingValue(),
       quantity: this.boxStyle.quantity,
     };
+
     updateFormValueData(keyRoute, curBoxValue); // 更新单位数值
+
     this.setState({
       renderAction: !renderAction,
     });
   };
 
+  // 固定单位
   getQuantity = (curJsonData) => {
     const { targetJsonSchema } = this.props;
     const quantitySchema = targetJsonSchema.properties['quantity'];
-    /*
-    // 暂时不支持单位切换
-    const selectAfter = (
-      <Select defaultValue={quantity} onChange={this.quantityChange}>
-        {quantitySchema.options &&
-          quantitySchema.options.length > 0 &&
-          quantitySchema.options.map((option) => (
-            <Option value={option.value}>{option.label}</Option>
-          ))}
-      </Select>
-    );
-    */
     return curJsonData.quantity || quantitySchema.default;
   };
 
@@ -229,6 +223,7 @@ class PaddingAndMarginSchema extends React.PureComponent {
     return <span>{this.getQuantity(curJsonData)}</span>;
   };
 
+  // 暂未使用
   quantityChange = (newVal) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};

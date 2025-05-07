@@ -80,20 +80,13 @@ class QuantitySchema extends React.PureComponent {
   // 单位切换
   getUnitSelect = () => {
     const { targetJsonSchema } = this.props;
-    let quantitySchema = {};
+    const quantitySchema = targetJsonSchema.properties['quantity'];
     let options = [
       {
         label: 'px',
         value: 'px',
       },
     ];
-    if (
-      targetJsonSchema &&
-      targetJsonSchema.properties &&
-      targetJsonSchema.properties.quantity
-    ) {
-      quantitySchema = targetJsonSchema.properties.quantity;
-    }
     if (quantitySchema.options) {
       options = quantitySchema.options;
     }
@@ -126,9 +119,9 @@ class QuantitySchema extends React.PureComponent {
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     /** 获取quantity中的数值对象（默认第一个就是数值对象） */
     const unitJsonSchema = targetJsonSchema.properties['unit'];
-    const curQuantity = curJsonData.quantity;
-    const unit = curQuantity === 'percent' ? '%' : curQuantity;
-    const unitSuffix = <span>{unit}</span>;
+    // const curQuantity = curJsonData.quantity;
+    // const unit = curQuantity === 'percent' ? '%' : curQuantity;
+    // const unitSuffix = <span>{unit}</span>;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
 
