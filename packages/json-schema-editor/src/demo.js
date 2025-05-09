@@ -73,7 +73,7 @@ class IndexDemo extends React.PureComponent {
         },
         propertyOrder: ['data', 'props', 'style', 'event'],
         lastUpdateTime: '2024-10-13T02:08:03.551Z',
-      }, // 用于组件配置的schema
+      },
       jsonData: {},
       dynamicDataList: [
         {

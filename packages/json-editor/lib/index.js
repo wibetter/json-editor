@@ -1082,8 +1082,8 @@
           L = __webpack_require__(4020),
           q = __webpack_require__(9825),
           W = __webpack_require__.n(q),
-          F = require('@babel/runtime/helpers/initializerDefineProperty'),
-          U = __webpack_require__.n(F),
+          U = require('@babel/runtime/helpers/initializerDefineProperty'),
+          F = __webpack_require__.n(U),
           z = require('@babel/runtime/helpers/createClass'),
           G = __webpack_require__.n(z),
           $ = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
@@ -1103,8 +1103,8 @@
             (i = Q.action.bound),
             (l = (function () {
               function e(e) {
-                U()(this, 'pageScreen', s, this),
-                  U()(this, 'jsonSchema', c, this),
+                F()(this, 'pageScreen', s, this),
+                  F()(this, 'jsonSchema', c, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -1285,16 +1285,16 @@
             (w = Q.action.bound),
             (C = (function () {
               function e(e) {
-                U()(this, 'rootJSONStore', O, this),
-                  U()(this, 'triggerChange', x, this),
-                  U()(this, 'lastUpdateTime', N, this),
-                  U()(this, 'jsonData', R, this),
-                  U()(this, 'initJsonData', k, this),
-                  U()(this, 'dynamicDataList', j, this),
-                  U()(this, 'dynamicDataObj', D, this),
-                  U()(this, 'options', K, this),
-                  U()(this, 'dynamicDataApiScopeList', T, this),
-                  U()(this, 'onChange', P, this),
+                F()(this, 'rootJSONStore', O, this),
+                  F()(this, 'triggerChange', x, this),
+                  F()(this, 'lastUpdateTime', N, this),
+                  F()(this, 'jsonData', R, this),
+                  F()(this, 'initJsonData', k, this),
+                  F()(this, 'dynamicDataList', j, this),
+                  F()(this, 'dynamicDataObj', D, this),
+                  F()(this, 'options', K, this),
+                  F()(this, 'dynamicDataApiScopeList', T, this),
+                  F()(this, 'onChange', P, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -2734,6 +2734,36 @@
                     r = a ? a + '-unit' : 'unit';
                   n.props.onChange ? n.props.onChange(e) : o(r, e);
                 }),
+                (n.handleUnitChange = function (e) {
+                  var t = n.props,
+                    a = t.keyRoute,
+                    o = (t.jsonStore || {}).updateFormValueData,
+                    r = a ? a + '-quantity' : 'quantity';
+                  n.props.onChange ? n.props.onChange(e) : o(r, e);
+                }),
+                (n.getUnitSelect = function () {
+                  var e = n.props.targetJsonSchema.properties.quantity,
+                    t = [{ label: 'px', value: 'px' }];
+                  return (
+                    e.options && (t = e.options),
+                    M.createElement(
+                      ee.Select,
+                      {
+                        className: 'autoComplete-unit-suffix',
+                        style: { display: 'inline-block' },
+                        defaultValue: e.default || 'px',
+                        onChange: n.handleUnitChange,
+                      },
+                      t.map(function (e) {
+                        return M.createElement(
+                          Ne,
+                          { value: e.value, key: e.value },
+                          e.label,
+                        );
+                      }),
+                    )
+                  );
+                }),
                 (n.handleInputChange = n.handleInputChange.bind(n)),
                 n
               );
@@ -2764,20 +2794,17 @@
                   m = i(s),
                   d = p.readOnly || !1,
                   y = p.properties.unit,
-                  h = m.quantity,
-                  g = 'percent' === h ? '%' : h,
-                  S = M.createElement('span', null, g),
-                  _ = (0, te.y8)(p.type),
-                  f = p.autoComplete || !1,
-                  v = r || {},
-                  b = [];
-                v.GlobalOptions &&
-                  (0, Z.isArray)(v.GlobalOptions) &&
-                  (b = v.GlobalOptions);
-                var E = p.options || b,
-                  w = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
-                  C = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                  O = p.contentStyle
+                  h = (0, te.y8)(p.type),
+                  g = p.autoComplete || !1,
+                  S = r || {},
+                  _ = [];
+                S.GlobalOptions &&
+                  (0, Z.isArray)(S.GlobalOptions) &&
+                  (_ = S.GlobalOptions);
+                var f = p.options || _,
+                  v = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
+                  b = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
+                  E = p.contentStyle
                     ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
                     : {};
                 return M.createElement(
@@ -2787,13 +2814,13 @@
                       'wideScreen' === a
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp ' +
-                          (_ ? 'two-col-element-warp' : ''),
+                          (h ? 'two-col-element-warp' : ''),
                     id: u,
-                    style: w,
+                    style: v,
                   },
                   M.createElement(
                     'div',
-                    { className: 'element-title', style: C },
+                    { className: 'element-title', style: b },
                     M.createElement(
                       ee.Tooltip,
                       {
@@ -2826,18 +2853,18 @@
                   ),
                   M.createElement(
                     'div',
-                    { className: 'content-item', style: O },
+                    { className: 'content-item', style: E },
                     M.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      f &&
+                      g &&
                         M.createElement(
                           M.Fragment,
                           null,
                           M.createElement(ee.AutoComplete, {
                             className: 'ant-input autoComplete-unit',
                             style: { display: 'inline-block' },
-                            options: E,
+                            options: f,
                             disabled: d,
                             allowClear: !0,
                             placeholder:
@@ -2848,20 +2875,12 @@
                             defaultValue: m.unit || y.default,
                             onChange: this.handleValueChange,
                           }),
-                          M.createElement(
-                            ee.Select,
-                            {
-                              className: 'autoComplete-unit-suffix',
-                              style: { display: 'inline-block' },
-                              defaultValue: g || 'px',
-                            },
-                            M.createElement(Ne, { value: g, key: g }, g),
-                          ),
+                          this.getUnitSelect(),
                         ),
-                      !f &&
+                      !g &&
                         M.createElement(ee.InputNumber, {
                           style: { display: 'inline-block', width: '120px' },
-                          addonAfter: S,
+                          addonAfter: this.getUnitSelect(),
                           disabled: d,
                           placeholder:
                             y.placeholder ||
@@ -4766,7 +4785,7 @@
               exportAttrString: 'border="1" style="border-collapse: collapse"',
             }),
           );
-        var Fe = (function (e) {
+        var Ue = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4958,7 +4977,7 @@
             t
           );
         })(M.PureComponent);
-        (Fe.propTypes = {
+        (Ue.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4967,9 +4986,9 @@
           targetJsonSchema: W().any,
           pageScreen: W().any,
         }),
-          (0, le.TS)({ type: 'text-editor', component: Fe }),
+          (0, le.TS)({ type: 'text-editor', component: Ue }),
           __webpack_require__(9741);
-        var Ue = (function (e) {
+        var Fe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5134,7 +5153,7 @@
             t
           );
         })(M.PureComponent);
-        (Ue.propTypes = {
+        (Fe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5142,7 +5161,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'number', component: Ue });
+          (0, le.TS)({ type: 'number', component: Fe });
         var ze = require('rc-switch'),
           Ge = __webpack_require__.n(ze),
           $e =

@@ -317,9 +317,14 @@
   border-radius: 6px 0 0 6px !important;
 }
 
-.autoComplete-unit-suffix .ant-select-selector {
-  border-left: 0 !important;
-  border-radius: 0 6px 6px 0 !important;
-  background-color: #fbfbfb !important;
-  padding: 0 8px !important;
+.autoComplete-unit-suffix {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  .ant-select-selector {
+    border-left: 0 !important;
+    border-radius: 0 6px 6px 0 !important;
+    background-color: #fbfbfb !important;
+    padding: 0 8px !important;
+  }
 }

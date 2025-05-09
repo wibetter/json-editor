@@ -65,6 +65,50 @@ class QuantitySchema extends React.PureComponent {
     }
   };
 
+  handleUnitChange = (value) => {
+    const { keyRoute, jsonStore } = this.props;
+    const { updateFormValueData } = jsonStore || {};
+    const curKeyRoute = keyRoute ? `${keyRoute}-quantity` : 'quantity';
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    } else {
+      updateFormValueData(curKeyRoute, value);
+    }
+  };
+
+  // 单位切换
+  getUnitSelect = () => {
+    const { targetJsonSchema } = this.props;
+    const quantitySchema = targetJsonSchema.properties['quantity'];
+    let options = [
+      {
+        label: 'px',
+        value: 'px',
+      },
+    ];
+    if (quantitySchema.options) {
+      options = quantitySchema.options;
+    }
+
+    return (
+      <Select
+        className="autoComplete-unit-suffix"
+        style={{ display: 'inline-block' }}
+        defaultValue={quantitySchema.default || 'px'}
+        onChange={this.handleUnitChange}
+      >
+        {options.map((option) => {
+          return (
+            <Option value={option.value} key={option.value}>
+              {option.label}
+            </Option>
+          );
+        })}
+      </Select>
+    );
+  };
+
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
@@ -75,9 +119,9 @@ class QuantitySchema extends React.PureComponent {
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     /** 获取quantity中的数值对象（默认第一个就是数值对象） */
     const unitJsonSchema = targetJsonSchema.properties['unit'];
-    const curQuantity = curJsonData.quantity;
-    const unit = curQuantity === 'percent' ? '%' : curQuantity;
-    const unitSuffix = <span>{unit}</span>;
+    // const curQuantity = curJsonData.quantity;
+    // const unit = curQuantity === 'percent' ? '%' : curQuantity;
+    // const unitSuffix = <span>{unit}</span>;
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
 
@@ -150,21 +194,13 @@ class QuantitySchema extends React.PureComponent {
                   defaultValue={curJsonData.unit || unitJsonSchema.default}
                   onChange={this.handleValueChange}
                 />
-                <Select
-                  className="autoComplete-unit-suffix"
-                  style={{ display: 'inline-block' }}
-                  defaultValue={unit || 'px'}
-                >
-                  <Option value={unit} key={unit}>
-                    {unit}
-                  </Option>
-                </Select>
+                {this.getUnitSelect()}
               </>
             )}
             {!autoComplete && (
               <InputNumber
                 style={{ display: 'inline-block', width: '120px' }}
-                addonAfter={unitSuffix}
+                addonAfter={this.getUnitSelect()}
                 disabled={readOnly}
                 placeholder={
                   unitJsonSchema.placeholder ||
