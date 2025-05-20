@@ -17,16 +17,7 @@ export const BASE_TYPE = [
 ];
 
 // 固有容器类型
-export const Fixed_CONTAINER_TYPE = [
-  'dynamic-config',
-  'dynamic-object',
-  'dynamic-array',
-  'sohu-source',
-  'sohu-event',
-  'datasource',
-  'event',
-  'dynamic-data',
-];
+export const Fixed_CONTAINER_TYPE = ['datasource', 'event', 'dynamic-data'];
 
 // 当前容器类型
 export const CONTAINER_TYPE = ['object', ...Fixed_CONTAINER_TYPE];
@@ -84,9 +75,6 @@ export const ARRAY_ITEM_TYPE = [
   'date-time',
   'time',
   'input-image',
-  'dynamic-config',
-  'dynamic-object',
-  'dynamic-array',
 ];
 
 // radio单选类型可选项
@@ -130,11 +118,6 @@ export const TypeInfoList = {
   htmlarea: 'html内容',
   object: '对象(Object)',
   array: '数组(Array)',
-  'dynamic-config': '动态配置(config)',
-  'dynamic-object': '动态对象(object)',
-  'dynamic-array': '动态数组(array)',
-  'sohu-source': '数据源',
-  'sohu-event': '组件事件',
   datasource: '静态数据源(旧版)',
   event: '事件(旧版)',
   'dynamic-data': '动态数据源(旧版)',

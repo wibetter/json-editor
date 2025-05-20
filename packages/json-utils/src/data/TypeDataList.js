@@ -33,12 +33,6 @@ import {
   initDataSourceData,
   initDataSourceDataV2,
   initDynamicData,
-  initDynamicObject,
-  initDynamicArray,
-  initDynamicConfig,
-  initSohuSourceData,
-  initAdConfigSchema,
-  initSohuEventConfig,
 } from '$data/index';
 
 // 类型数据清单
@@ -73,12 +67,6 @@ export const TypeDataList = {
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
   event: initEventData,
-  'dynamic-config': initDynamicConfig,
-  'dynamic-object': initDynamicObject,
-  'dynamic-array': initDynamicArray,
-  'sohu-source': initSohuSourceData,
-  'sohu-event': initSohuEventConfig,
-  'sohu-ad': initAdConfigSchema,
 };
 
 // 事件类型数据

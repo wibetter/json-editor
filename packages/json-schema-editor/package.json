@@ -29,7 +29,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
     "@babel/polyfill": "^7.12.1",
-    "@wibetter/json-utils": "^5.1.20",
+    "@wibetter/json-utils": "^6.0.1",
     "ace-builds": "^1.35.4",
     "antd": "^5.20.1",
     "mobx": "^5.15.4",
@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "akfun": "^5.0.0",
-    "@wibetter/json-editor": "^5.1.20"
+    "@wibetter/json-editor": "^6.0.1"
   },
   "engines": {
     "node": ">= 10.13.0",

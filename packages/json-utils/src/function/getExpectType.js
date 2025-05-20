@@ -27,11 +27,6 @@ const valExpectType = {
   'text-editor': 'string',
   time: 'string',
   url: 'string',
-  'dynamic-config': 'object',
-  'dynamic-object': 'object',
-  'dynamic-array': 'object',
-  'sohu-source': 'object',
-  'sohu-event': 'object',
 };
 
 // 根据type获取对应元素的期望类型值

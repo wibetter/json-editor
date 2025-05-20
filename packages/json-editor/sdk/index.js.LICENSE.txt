@@ -22,7 +22,7 @@ object-assign
  * @wibetter/json-editor v6.0.1
  * author: wibetter
  * build tool: AKFun
- * build time: Fri May 09 2025 23:39:12 GMT+0800 (中国标准时间)
+ * build time: Tue May 20 2025 15:24:31 GMT+0800 (China Standard Time)
  * build tool info: https://github.com/wibetter/akfun
  */
 
@@ -41,7 +41,7 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
 
 /**
  * @license
