@@ -28,7 +28,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
     "ace-builds": "^1.35.4",
-    "@wibetter/json-utils": "^5.1.20",
+    "@wibetter/json-utils": "^6.0.1",
     "antd": "^5.20.1",
     "braft-editor": "^2.3.9",
     "braft-extensions": "^0.1.1",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "akfun": "^5.0.0",
-    "@wibetter/json-schema-editor": "^5.1.20"
+    "@wibetter/json-schema-editor": "^6.0.1"
   },
   "engines": {
     "node": ">= 10.13.0",

@@ -152,7 +152,7 @@ class IndexDemo extends React.PureComponent {
                   "quantity"
                 ]
               },
-              "paddingMagin": {
+              "paddingMargin": {
                 "type": "padding-margin",
                 "title": "边距设置",
                 "isContainer": false,
@@ -204,7 +204,7 @@ class IndexDemo extends React.PureComponent {
             "propertyOrder": [
               "width",
               "height",
-              "paddingMagin"
+              "paddingMargin"
             ]
           },
           "data": {

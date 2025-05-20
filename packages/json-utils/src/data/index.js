@@ -33,8 +33,3 @@ export * from './initSchemaEntity/HtmlArea';
 export * from './initSchemaEntity/Event';
 export * from './initSchemaEntity/DataSource';
 export * from './initSchemaEntity/DynamicData';
-export * from './initSchemaEntity/DynamicConfigData';
-export * from './initSchemaEntity/DynamicObject';
-export * from './initSchemaEntity/DynamicArray';
-export * from './initSchemaEntity/SohuSourceData';
-export * from './initSchemaEntity/SohuEventData';

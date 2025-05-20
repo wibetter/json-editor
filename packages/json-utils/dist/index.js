@@ -45,31 +45,31 @@
           return d;
         },
         EventTypeDataList: function () {
-          return c;
+          return s;
         },
         KeyWordList: function () {
-          return ve;
+          return be;
         },
         TypeDataList: function () {
-          return s;
+          return c;
         },
         dataRoute2dataPath: function () {
           return de;
         },
         dynamicDataAnalyzer: function () {
-          return ce;
+          return se;
         },
         evalExpression: function () {
-          return F;
+          return U;
         },
         getCurPosition: function () {
-          return G;
+          return Y;
         },
         getDefaultOptionVal: function () {
-          return le;
+          return ae;
         },
         getExpectType: function () {
-          return z;
+          return H;
         },
         getJsonDataByKeyRoute: function () {
           return P;
@@ -84,137 +84,137 @@
           return re;
         },
         getParentKeyRoute: function () {
-          return be;
-        },
-        getParentKeyRoute_CurKey: function () {
           return me;
         },
+        getParentKeyRoute_CurKey: function () {
+          return ve;
+        },
         getSchemaByIndexRoute: function () {
-          return I;
-        },
-        getSchemaByKeyRoute: function () {
-          return M;
-        },
-        hasProperties: function () {
           return E;
         },
+        getSchemaByKeyRoute: function () {
+          return J;
+        },
+        hasProperties: function () {
+          return w;
+        },
         indexRoute2keyRoute: function () {
-          return _;
+          return A;
         },
         isArray: function () {
-          return C;
+          return j;
         },
         isBoolean: function () {
-          return m;
-        },
-        isColor: function () {
-          return x;
-        },
-        isContainerSchema: function () {
-          return Z;
-        },
-        isDateStr: function () {
           return v;
         },
+        isColor: function () {
+          return S;
+        },
+        isContainerSchema: function () {
+          return Q;
+        },
+        isDateStr: function () {
+          return b;
+        },
         isDateTimeStr: function () {
-          return h;
+          return g;
         },
         isEmptySchema: function () {
-          return X;
+          return W;
         },
         isEqual: function () {
           return R;
         },
         isEqualByIdT: function () {
-          return q;
+          return F;
         },
         isFunction: function () {
-          return T;
+          return k;
         },
         isNewSchemaData: function () {
-          return Y;
+          return Z;
         },
         isNumber: function () {
-          return b;
+          return m;
         },
         isObject: function () {
-          return O;
+          return x;
         },
         isQuantity: function () {
-          return S;
+          return q;
         },
         isSameParent: function () {
-          return Q;
+          return X;
         },
         isSelect: function () {
-          return j;
+          return O;
         },
         isString: function () {
-          return f;
+          return y;
         },
         isStructuredSchema: function () {
-          return H;
+          return G;
         },
         isTimeStr: function () {
-          return g;
+          return h;
         },
         isURL: function () {
-          return y;
+          return f;
         },
         json2schema: function () {
           return B;
         },
         json2treeData: function () {
-          return ye;
+          return fe;
         },
         keyRoute2indexRoute: function () {
-          return U;
+          return $;
         },
         metaElemAnalyzer: function () {
-          return V;
+          return z;
         },
         moveBackward: function () {
-          return ae;
+          return ne;
         },
         moveForward: function () {
           return ie;
         },
         objClone: function () {
-          return N;
+          return D;
         },
         oldSchemaToNewSchema: function () {
-          return $;
+          return K;
         },
         oldSchemaToNewSchemaV1: function () {
-          return L;
+          return I;
         },
         registerExpectType: function () {
-          return W;
+          return V;
         },
         schema2conditionValue: function () {
-          return fe;
+          return ye;
         },
         schema2json: function () {
-          return ue;
+          return le;
         },
         schemaMetaList: function () {
-          return se;
+          return ce;
         },
         truncate: function () {
-          return k;
+          return C;
         },
         urlParse: function () {
-          return w;
+          return T;
         },
         urlStringify: function () {
-          return D;
+          return N;
         },
       });
     var r,
       i = require('lodash'),
-      a = require('qs'),
-      l = e.n(a),
-      n = {
+      n = require('qs'),
+      a = e.n(n),
+      o = {
         type: 'event',
         title: '事件',
         isContainer: !1,
@@ -244,7 +244,7 @@
         },
         propertyOrder: ['type', 'trigger', 'eventData'],
       },
-      o = {
+      p = {
         type: 'datasource',
         title: '数据源',
         isContainer: !1,
@@ -276,7 +276,7 @@
         },
         propertyOrder: ['type', 'data', 'filter'],
       },
-      p =
+      u =
         (((r = { type: 'object' }).type = 'datasource'),
         (r.title = '数据源'),
         (r.isContainer = !1),
@@ -308,13 +308,13 @@
         }),
         (r.propertyOrder = ['type', 'data', 'filter']),
         r),
-      u = {
+      l = {
         type: 'local',
         config: { dataName: '', body: {}, filter: 'return data;' },
         data: '{}',
         localFilter: 'return data;',
       },
-      s = {
+      c = {
         jsonschema: {
           type: 'object',
           title: 'jsonSchemaObject',
@@ -732,837 +732,10 @@
           },
           propertyOrder: ['type', 'config', 'data', 'localFilter'],
         },
-        datasource: o,
-        event: n,
-        'dynamic-config': {
-          type: 'dynamic-config',
-          title: '动态配置',
-          description: '',
-          isContainer: !1,
-          properties: {
-            type: {
-              type: 'select',
-              title: '数据来源',
-              options: [
-                { label: '模板直接设置', value: 'DevDefaults' },
-                { label: 'mp后台配置', value: 'ContentStaticConfig' },
-                { label: '内容Meta数据', value: 'Content' },
-                { label: '全局配置数据', value: 'RuntimeConst' },
-                { label: '资源中心配置', value: 'ResourceCenter' },
-              ],
-              default: 'DevDefaults',
-              isConditionProp: !0,
-              description:
-                '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-            },
-            value: {
-              title: '数据值',
-              type: 'input',
-              default: '',
-              description: '',
-              placeholder: '',
-              onShow:
-                'type === "DevDefaults" || type === "Content" || type === "RuntimeConst"',
-            },
-            description: {
-              title: '属性名称',
-              type: 'input',
-              default: '',
-              description: '',
-              placeholder: '',
-              onShow:
-                'type === "ContentStaticConfig" || type === "ResourceCenter"',
-            },
-            valueType: {
-              type: 'radio',
-              title: '配置方式',
-              options: [
-                { label: '填写', value: 'string' },
-                { label: '选择', value: 'select' },
-              ],
-              default: 'string',
-              isConditionProp: !0,
-              description: '在MP后台或资源中心配置时的交互方式，推荐使用"选择"',
-              onShow:
-                'type === "ContentStaticConfig" || type === "ResourceCenter"',
-            },
-            range: {
-              type: 'select',
-              title: '可选项',
-              multiple: !0,
-              options: [],
-              onShow:
-                '(type === "ContentStaticConfig" || type === "ResourceCenter") && valueType === "select"',
-              description: '这里会使用value中的配置选项作为options',
-            },
-          },
-          propertyOrder: ['type', 'value', 'description', 'valueType', 'range'],
-          showCodeViewBtn: !1,
-        },
-        'dynamic-object': {
-          type: 'dynamic-object',
-          title: '动态配置',
-          description: '',
-          isContainer: !1,
-          properties: {
-            type: {
-              type: 'select',
-              title: '数据来源',
-              options: [
-                { label: '模板直接设置', value: 'DevDefaults' },
-                { label: 'mp后台配置', value: 'ContentStaticConfig' },
-                { label: '内容Meta数据', value: 'Content' },
-                { label: '全局配置数据', value: 'RuntimeConst' },
-                { label: '资源中心配置', value: 'ResourceCenter' },
-              ],
-              default: 'DevDefaults',
-              isConditionProp: !0,
-              description:
-                '目前支持的数据来源包括： 1)模版直接设置: 在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置: 选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据: 支持内容meta数据的获取，页面meta数据。 4)全局配置数据: 目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-            },
-            value: {
-              title: '数据值',
-              type: 'input',
-              default: '',
-              description: '',
-              placeholder: '',
-              onShow: 'type === "Content" || type === "RuntimeConst"',
-            },
-            description: {
-              title: '自定义配置名称',
-              type: 'input',
-              default: '主题包配置',
-              description: '',
-              placeholder: '',
-              onShow:
-                'type === "ContentStaticConfig" || type === "ResourceCenter"',
-            },
-            attrs: {
-              type: 'array',
-              title: '属性列表',
-              description: 'Tab需要配置的属性',
-              items: {
-                type: 'object',
-                title: '数组项',
-                description: '',
-                properties: {
-                  attr: {
-                    type: 'input',
-                    title: '属性Key',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  description: {
-                    title: '描述',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  value: {
-                    title: '数值',
-                    typeOn:
-                      "type === 'image' ? 'input-image' : type === 'number' ? 'number' : 'input'",
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  type: {
-                    type: 'select',
-                    title: '属性类型',
-                    options: [
-                      { label: '图片类型', value: 'image' },
-                      { label: '字符串', value: 'string' },
-                      { label: '数字', value: 'number' },
-                    ],
-                    default: 'string',
-                    description: '',
-                  },
-                },
-                propertyOrder: ['attr', 'description', 'type', 'value'],
-              },
-              'minimum-child': 1,
-              showCodeViewBtn: !1,
-              onShow:
-                'type === "DevDefaults" || type === "ContentStaticConfig" || type === "ResourceCenter"',
-            },
-          },
-          propertyOrder: ['type', 'description', 'attrs', 'value'],
-          showCodeViewBtn: !1,
-          showKey: !0,
-        },
-        'dynamic-array': {
-          type: 'dynamic-array',
-          title: '动态数组',
-          description: '',
-          isContainer: !1,
-          properties: {
-            type: {
-              type: 'select',
-              title: '数据来源',
-              options: [
-                { label: '模板直接设置', value: 'DevDefaults' },
-                { label: 'mp后台配置', value: 'ContentStaticConfig' },
-                { label: '资源中心配置', value: 'ResourceCenter' },
-              ],
-              default: 'DevDefaults',
-              isConditionProp: !0,
-              description:
-                '目前支持的数据来源包括： 1)模版直接设置:在模版配置直接生效，支持直接输入或图片上传。 2)mp后台配置:选择mp后台配置后，属性会出现在mp后台中，支持属性描述的输入。 3)内容meta数据:支持内容meta数据的获取，页面meta数据。 4)全局配置数据:目前支持的全局配置包括：全局Tab配置及主题包配置。相关属性会挂载至：window.globalConst',
-            },
-            description: {
-              title: '自定义配置名称',
-              type: 'input',
-              default: 'Tab全局配置',
-              description: '',
-              placeholder: '',
-              onShow:
-                'type === "ContentStaticConfig" || type === "ResourceCenter"',
-            },
-            tabNums: {
-              title: 'Tab配置数',
-              type: 'number',
-              default: 1,
-              description: '需要配置的Tab数量',
-              placeholder: '',
-              onShow:
-                "type === 'ContentStaticConfig' || type === 'ResourceCenter'",
-            },
-            attrs: {
-              type: 'array',
-              title: 'Tab属性',
-              description: 'Tab需要配置的属性',
-              items: {
-                type: 'object',
-                title: '数组项',
-                description: '',
-                properties: {
-                  attr: {
-                    type: 'input',
-                    title: '属性Key',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  description: {
-                    title: '描述',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  tipText: {
-                    title: '提示说明',
-                    type: 'textarea',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                },
-                propertyOrder: ['attr', 'description', 'tipText'],
-              },
-              'minimum-child': 1,
-              onShow:
-                "type === 'ContentStaticConfig' || type === 'ResourceCenter'",
-              showCodeViewBtn: !1,
-            },
-            value: {
-              type: 'array',
-              title: 'Tab配置',
-              description: '',
-              items: {
-                type: 'object',
-                title: '数组项',
-                description: '',
-                properties: {
-                  title: {
-                    type: 'input',
-                    title: '名称',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  id: {
-                    title: 'id',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  value: {
-                    title: '数值',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                },
-                propertyOrder: ['title', 'value', 'id'],
-              },
-              'minimum-child': 1,
-              onShow: "type === 'DevDefaults'",
-              showCodeViewBtn: !1,
-            },
-          },
-          propertyOrder: ['type', 'value', 'description', 'tabNums', 'attrs'],
-          showCodeViewBtn: !1,
-          showKey: !0,
-        },
-        'sohu-source': {
-          type: 'sohu-source',
-          title: '数据源',
-          description: '',
-          isContainer: !1,
-          properties: {
-            mainConfig: {
-              type: 'object',
-              title: '主要配置',
-              description: '',
-              isContainer: !1,
-              properties: {
-                type: {
-                  type: 'select',
-                  title: '数据来源',
-                  isConditionProp: !0,
-                  options: [
-                    {
-                      label: '模板自定义数据源',
-                      value: 'RuntimeDataSelfDefine',
-                    },
-                    { label: 'mp后台配置', value: 'ContentStaticConfig' },
-                    {
-                      label: '请求当前页面数据',
-                      value: 'RuntimeDataSelfContent',
-                    },
-                    { label: '资源中心配置', value: 'ResourceCenter' },
-                  ],
-                  default: 'RuntimeDataSelfDefine',
-                  description: '',
-                },
-                description: {
-                  title: '数据源名称',
-                  type: 'input',
-                  description: '',
-                  placeholder: '',
-                  onShow: 'type === "ContentStaticConfig"',
-                },
-                dataType: {
-                  type: 'radio',
-                  title: '请求方式',
-                  default: !1,
-                  options: [
-                    { label: '批量请求', value: 'FROMCIS' },
-                    { label: '组件内部请求', value: 'FROMCOMPCIS' },
-                    { label: '不请求', value: !1 },
-                  ],
-                  description: '',
-                },
-                CONTENTID: {
-                  title: '数据源ID',
-                  type: 'input',
-                  description: '',
-                  placeholder: '',
-                  onShow: 'type === "RuntimeDataSelfDefine"',
-                },
-                CONTENTTYPE: {
-                  type: 'select',
-                  title: '数据源类型',
-                  options: [
-                    { label: 'channel', value: 13 },
-                    { label: 'topic', value: 15 },
-                    { label: 'block', value: 14 },
-                  ],
-                  description: '',
-                  onShow: 'type === "RuntimeDataSelfDefine"',
-                },
-              },
-              propertyOrder: [
-                'type',
-                'description',
-                'dataType',
-                'CONTENTID',
-                'CONTENTTYPE',
-              ],
-              showCodeViewBtn: !1,
-            },
-            outConfig: {
-              type: 'object',
-              title: '出流配置',
-              description: '',
-              isContainer: !1,
-              properties: {
-                PRO: {
-                  type: 'select',
-                  title: '内容类型',
-                  options: [
-                    { label: '置顶+加精', value: '4' },
-                    { label: '长效置顶', value: '5' },
-                  ],
-                  description: '',
-                },
-                FEEDTYPE: {
-                  type: 'select',
-                  title: '排序类型',
-                  options: [
-                    { label: '综合', value: 'XTOPIC_SYNTHETICAL' },
-                    { label: '最新', value: 'XTOPIC_LATEST' },
-                    { label: '相关', value: 'XTOPIC_RELATED' },
-                  ],
-                  description: '',
-                },
-                VIEW: {
-                  type: 'select',
-                  title: '数据裁剪',
-                  options: [
-                    { label: '相关推荐模式', value: 'articleFeedMode' },
-                    { label: '文字链裁剪方式', value: 'textMode' },
-                    { label: '短内容摘录方式', value: 'excerptMode' },
-                    {
-                      label: '互动（点赞/评论）裁剪方式',
-                      value: 'interactMode',
-                    },
-                    { label: '评论文字链裁剪方式', value: 'commentTextMode' },
-                    {
-                      label: '摘录方式（无点赞）',
-                      value: 'excerptCommentMode',
-                    },
-                    { label: '无限流卡片模式', value: 'dynamicFeedMode' },
-                    { label: '时间线模式', value: 'timeLineMode' },
-                    { label: '复合内容流模式', value: 'multiFeedMode' },
-                    { label: '搜狐号推荐模式', value: 'recommendFeedMode' },
-                    { label: '作者页内容流模式', value: 'operateFeedMode' },
-                    { label: '标签内容流模式', value: 'tagsFeedMode' },
-                    { label: '评论链裁剪方式', value: 'commentMode' },
-                    { label: '标签摘录方式', value: 'excerptTagsMode' },
-                    { label: '内容流模式', value: 'feedMode' },
-                  ],
-                  description: '',
-                },
-                CONTENTCONTEXT: {
-                  type: 'select',
-                  title: 'mKey参数',
-                  options: [
-                    {
-                      label: '作者ID+栏目ID',
-                      value: 'authorColumnId_${#authorColumnId}',
-                    },
-                    {
-                      label: '账号ID',
-                      value: 'accountId_${#contentData_account_id}',
-                    },
-                    { label: 'mkeyID', value: 'mid_${#mkeyConst_mid}' },
-                    { label: 'mkey名称', value: 'mname_${#mkeyConst_mname}' },
-                    {
-                      label: '城市Code码',
-                      value: 'cityCode_${#cityInfo_cityCode}',
-                    },
-                    {
-                      label: '城市名称',
-                      value: 'cityName_${#cityInfo_cityName}',
-                    },
-                    {
-                      label: '焦点城市Code码',
-                      value: 'focusCityCode_${#focusCityInfo_cityCode}',
-                    },
-                  ],
-                  description: '',
-                },
-                CONTENTPARAMS: {
-                  title: '动态参数',
-                  type: 'json',
-                  description: '请填写JSON格式的参数',
-                  placeholder: '',
-                },
-              },
-              propertyOrder: [
-                'PRO',
-                'FEEDTYPE',
-                'VIEW',
-                'CONTENTCONTEXT',
-                'CONTENTPARAMS',
-              ],
-              showCodeViewBtn: !1,
-            },
-            otherConfig: {
-              type: 'object',
-              title: '选配内容',
-              description: '',
-              isContainer: !1,
-              properties: {
-                SIZE: {
-                  type: 'number',
-                  title: '容量',
-                  minimum: 0,
-                  maximum: 1e3,
-                  description: '该位置区块需要的内容条数',
-                },
-                TITLE: {
-                  title: '标题',
-                  type: 'input',
-                  description: '',
-                  placeholder: '',
-                },
-                URL: {
-                  type: 'url',
-                  title: '更多跳转链接',
-                  description: '该区块下点击“更多或箭头图标”后的跳转链接',
-                  placeholder: '',
-                },
-                CODE: {
-                  title: 'Code参数',
-                  type: 'input',
-                  description: '',
-                  placeholder: '',
-                  onShow: !1,
-                },
-              },
-              propertyOrder: ['SIZE', 'TITLE', 'URL', 'CODE'],
-              showCodeViewBtn: !1,
-            },
-          },
-          propertyOrder: ['mainConfig', 'otherConfig', 'outConfig'],
-          showCodeViewBtn: !1,
-        },
-        'sohu-event': {
-          type: 'sohu-event',
-          title: 'sohu组件事件',
-          showCodeViewBtn: !1,
-          isContainer: !1,
-          properties: {
-            globalEventMap: {
-              type: 'object',
-              title: '全局事件Map',
-              description: '',
-              properties: {
-                eventCode: {
-                  type: 'input',
-                  title: '事件名称',
-                  default: '',
-                  description: '',
-                  placeholder: '',
-                  readOnly: !0,
-                },
-              },
-              propertyOrder: ['eventCode'],
-              showCodeViewBtn: !1,
-            },
-            event: {
-              type: 'array',
-              title: '监听事件',
-              description: '当前组件监听事件列表',
-              default: [],
-              items: {
-                type: 'object',
-                title: '数组项',
-                description: '',
-                properties: {
-                  name: {
-                    type: 'input',
-                    title: '事件',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  code: {
-                    title: '事件code',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  listenName: {
-                    title: '事件名称',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                  desc: {
-                    title: '事件描述',
-                    type: 'input',
-                    default: '',
-                    description: '',
-                    placeholder: '',
-                  },
-                },
-                propertyOrder: ['name', 'code', 'listenName', 'desc'],
-              },
-              showCodeViewBtn: !1,
-            },
-          },
-          propertyOrder: ['globalEventMap', 'event'],
-        },
-        'sohu-ad': {
-          type: 'object',
-          title: '广告配置',
-          description: '',
-          properties: {
-            type: {
-              type: 'select',
-              title: '数据源类型',
-              isConditionProp: !0,
-              options: [
-                { label: '模板直接设置', value: 'DevDefaults' },
-                { label: '资源中心配置', value: 'ResourceCenter' },
-              ],
-              description: '',
-            },
-            value: {
-              type: 'object',
-              title: '广告规则',
-              description: '',
-              onShow: 'type === "DevDefaults"',
-              properties: {
-                id: {
-                  title: '广告ID',
-                  type: 'number',
-                  description: '',
-                  placeholder: '',
-                },
-                rule: {
-                  type: 'radio',
-                  title: '规则类型',
-                  isConditionProp: !0,
-                  options: [
-                    { label: '固定位置', value: 1 },
-                    { label: '隔几出几', value: 2 },
-                    { label: '固定位置隔几出几', value: 3 },
-                  ],
-                  description: '',
-                },
-                fixArray: {
-                  type: 'select',
-                  title: '固定位置',
-                  description: '',
-                  multiple: !0,
-                  onShow: 'rule === 1 || rule === 3',
-                  options: [
-                    { label: '1', value: 1 },
-                    { label: '2', value: 2 },
-                    { label: '3', value: 3 },
-                    { label: '4', value: 4 },
-                    { label: '5', value: 5 },
-                    { label: '6', value: 6 },
-                    { label: '7', value: 7 },
-                    { label: '8', value: 8 },
-                    { label: '9', value: 9 },
-                    { label: '10', value: 10 },
-                    { label: '11', value: 11 },
-                    { label: '12', value: 12 },
-                    { label: '13', value: 13 },
-                    { label: '14', value: 14 },
-                    { label: '15', value: 15 },
-                    { label: '16', value: 16 },
-                    { label: '17', value: 17 },
-                    { label: '18', value: 18 },
-                    { label: '19', value: 19 },
-                    { label: '20', value: 20 },
-                    { label: '21', value: 21 },
-                    { label: '22', value: 22 },
-                    { label: '23', value: 23 },
-                    { label: '24', value: 24 },
-                    { label: '25', value: 25 },
-                    { label: '26', value: 26 },
-                    { label: '27', value: 27 },
-                    { label: '28', value: 28 },
-                    { label: '29', value: 29 },
-                    { label: '30', value: 30 },
-                    { label: '31', value: 31 },
-                    { label: '32', value: 32 },
-                    { label: '33', value: 33 },
-                    { label: '34', value: 34 },
-                    { label: '35', value: 35 },
-                    { label: '36', value: 36 },
-                    { label: '37', value: 37 },
-                    { label: '38', value: 38 },
-                    { label: '39', value: 39 },
-                    { label: '40', value: 40 },
-                    { label: '41', value: 41 },
-                    { label: '42', value: 42 },
-                    { label: '43', value: 43 },
-                    { label: '44', value: 44 },
-                    { label: '45', value: 45 },
-                    { label: '46', value: 46 },
-                    { label: '47', value: 47 },
-                    { label: '48', value: 48 },
-                    { label: '49', value: 49 },
-                    { label: '50', value: 50 },
-                  ],
-                },
-                begin: {
-                  type: 'number',
-                  title: '开始位置',
-                  minimum: '1',
-                  maximum: '50',
-                  description: '',
-                  onShow: 'rule === 2 || rule === 3',
-                },
-                turn: {
-                  type: 'number',
-                  title: '间隔/隔',
-                  minimum: '1',
-                  maximum: '50',
-                  description: '',
-                  onShow: 'rule === 2 || rule === 3',
-                },
-                number: {
-                  type: 'number',
-                  title: '间隔/出',
-                  minimum: '1',
-                  maximum: '50',
-                  description: '',
-                  onShow: 'rule === 2 || rule === 3',
-                },
-                mergeType: {
-                  type: 'radio',
-                  title: '插入规则',
-                  options: [
-                    { label: '覆盖', value: 0 },
-                    { label: '插入', value: 1 },
-                  ],
-                  description: '',
-                },
-              },
-              propertyOrder: [
-                'id',
-                'rule',
-                'fixArray',
-                'begin',
-                'turn',
-                'number',
-                'mergeType',
-              ],
-            },
-            range: {
-              type: 'array',
-              title: '广告规则列表',
-              description: '',
-              onShow: 'type === "ResourceCenter"',
-              items: {
-                type: 'object',
-                title: '数组项',
-                description: '',
-                properties: {
-                  rule: {
-                    type: 'radio',
-                    title: '规则类型',
-                    isConditionProp: !0,
-                    options: [
-                      { label: '固定位置', value: 1 },
-                      { label: '隔几出几', value: 2 },
-                      { label: '固定位置隔几出几', value: 3 },
-                    ],
-                    description: '',
-                  },
-                  fixArray: {
-                    type: 'select',
-                    title: '固定位置',
-                    description: '',
-                    onShow: 'rule === 1 || rule === 3',
-                    multiple: !0,
-                    options: [
-                      { label: '1', value: 1 },
-                      { label: '2', value: 2 },
-                      { label: '3', value: 3 },
-                      { label: '4', value: 4 },
-                      { label: '5', value: 5 },
-                      { label: '6', value: 6 },
-                      { label: '7', value: 7 },
-                      { label: '8', value: 8 },
-                      { label: '9', value: 9 },
-                      { label: '10', value: 10 },
-                      { label: '11', value: 11 },
-                      { label: '12', value: 12 },
-                      { label: '13', value: 13 },
-                      { label: '14', value: 14 },
-                      { label: '15', value: 15 },
-                      { label: '16', value: 16 },
-                      { label: '17', value: 17 },
-                      { label: '18', value: 18 },
-                      { label: '19', value: 19 },
-                      { label: '20', value: 20 },
-                      { label: '21', value: 21 },
-                      { label: '22', value: 22 },
-                      { label: '23', value: 23 },
-                      { label: '24', value: 24 },
-                      { label: '25', value: 25 },
-                      { label: '26', value: 26 },
-                      { label: '27', value: 27 },
-                      { label: '28', value: 28 },
-                      { label: '29', value: 29 },
-                      { label: '30', value: 30 },
-                      { label: '31', value: 31 },
-                      { label: '32', value: 32 },
-                      { label: '33', value: 33 },
-                      { label: '34', value: 34 },
-                      { label: '35', value: 35 },
-                      { label: '36', value: 36 },
-                      { label: '37', value: 37 },
-                      { label: '38', value: 38 },
-                      { label: '39', value: 39 },
-                      { label: '40', value: 40 },
-                      { label: '41', value: 41 },
-                      { label: '42', value: 42 },
-                      { label: '43', value: 43 },
-                      { label: '44', value: 44 },
-                      { label: '45', value: 45 },
-                      { label: '46', value: 46 },
-                      { label: '47', value: 47 },
-                      { label: '48', value: 48 },
-                      { label: '49', value: 49 },
-                      { label: '50', value: 50 },
-                    ],
-                  },
-                  begin: {
-                    type: 'number',
-                    title: '开始位置',
-                    minimum: '1',
-                    maximum: '50',
-                    description: '',
-                    onShow: 'rule === 2 || rule === 3',
-                  },
-                  turn: {
-                    type: 'number',
-                    title: '间隔/隔',
-                    minimum: '1',
-                    maximum: '50',
-                    description: '',
-                    onShow: 'rule === 2 || rule === 3',
-                  },
-                  number: {
-                    type: 'number',
-                    title: '间隔/出',
-                    minimum: '1',
-                    maximum: '50',
-                    description: '',
-                    onShow: 'rule === 2 || rule === 3',
-                  },
-                  mergeType: {
-                    type: 'radio',
-                    title: '插入规则',
-                    options: [
-                      { label: '覆盖', value: 0 },
-                      { label: '插入', value: 1 },
-                    ],
-                    description: '',
-                  },
-                },
-                propertyOrder: [
-                  'rule',
-                  'fixArray',
-                  'begin',
-                  'turn',
-                  'number',
-                  'mergeType',
-                ],
-              },
-            },
-          },
-          propertyOrder: ['type', 'value', 'range'],
-        },
+        datasource: p,
+        event: o,
       },
-      c = {
+      s = {
         on: {
           type: 'event',
           title: '事件',
@@ -1593,63 +766,63 @@
           },
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
-        emit: n,
+        emit: o,
       },
-      d = { local: o, remote: p };
-    function y(e) {
+      d = { local: p, remote: u };
+    function f(e) {
       return /^http[s]?:\/\/.*/.test(e);
     }
-    function f(e) {
+    function y(e) {
       return 'String' === Object.prototype.toString.call(e).slice(8, -1);
     }
-    function b(e) {
+    function m(e) {
       return (
         'number' == typeof e ||
         '[object Number]' === Object.prototype.toString.call(e)
       );
     }
-    function m(e) {
+    function v(e) {
       return 'Boolean' === Object.prototype.toString.call(e).slice(8, -1);
     }
-    function v(e) {
+    function b(e) {
       return /^\d{4}-\d{2}-\d{2}$/.test(e);
     }
-    function h(e) {
+    function g(e) {
       return (
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/.test(e) ||
         /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}$/.test(e)
       );
     }
-    function g(e) {
+    function h(e) {
       return /^\d{2}:\d{2}:\d{2}$/.test(e) || /^\d{2}:\d{2}$/.test(e);
     }
-    function C(e) {
+    function j(e) {
       var t = !1;
       return (
         'Array' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
         t
       );
     }
-    function j(e) {
-      if (!C(e)) return !1;
-      for (var t = 0, r = e.length; t < r; t++) if (!f(e[t])) return !1;
+    function O(e) {
+      if (!j(e)) return !1;
+      for (var t = 0, r = e.length; t < r; t++) if (!y(e[t])) return !1;
       return !0;
     }
-    function O(e) {
+    function x(e) {
       var t = !1;
       return (
         'Object' === Object.prototype.toString.call(e).slice(8, -1) && (t = !0),
         t
       );
     }
-    function S(e) {
+    function q(e) {
       var t = !1;
-      return s.quantity.properties.quantity.enum.indexOf(e) >= 0 && (t = !0), t;
+      return c.quantity.properties.quantity.enum.indexOf(e) >= 0 && (t = !0), t;
     }
-    function x(e) {
+    function S(e) {
       return /^#[0-9a-f]{6}$/.test(e) || /^#[0-9a-f]{3}$/.test(e);
     }
-    function T(e) {
+    function k(e) {
       var t = !1;
       return (
         'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
@@ -1657,156 +830,156 @@
         t
       );
     }
-    function w() {
+    function T() {
       var e = {};
       return (
-        location.search && (e = l().parse(location.search.substring(1))), e
+        location.search && (e = a().parse(location.search.substring(1))), e
       );
     }
-    function D(e) {
-      var t = '';
-      return url && (t = l().stringify(e)), t;
-    }
     function N(e) {
+      var t = '';
+      return url && (t = a().stringify(e)), t;
+    }
+    function D(e) {
       return (0, i.cloneDeep)(e);
     }
     function R(e, t) {
-      if ((E(e) && !E(t)) || (!E(e) && E(t)) || typeof e != typeof t) return !1;
-      if (O(e) && (e.id !== t.id || e.lastUpdateTime !== t.lastUpdateTime))
+      if ((w(e) && !w(t)) || (!w(e) && w(t)) || typeof e != typeof t) return !1;
+      if (x(e) && (e.id !== t.id || e.lastUpdateTime !== t.lastUpdateTime))
         return !1;
       var r = new Date().getTime();
       return (
         !!(
-          O(e) &&
+          x(e) &&
           e.lastUpdateTime &&
           e.lastUpdateTime === t.lastUpdateTime &&
           r - e.lastUpdateTime < 500
         ) || (0, i.isEqual)(e, t)
       );
     }
-    function q(e, t) {
-      if ((E(e) && !E(t)) || (!E(e) && E(t)) || typeof e != typeof t) return !1;
-      if (O(e) && (e.id !== t.id || e.lastUpdateTime !== t.lastUpdateTime))
+    function F(e, t) {
+      if ((w(e) && !w(t)) || (!w(e) && w(t)) || typeof e != typeof t) return !1;
+      if (x(e) && (e.id !== t.id || e.lastUpdateTime !== t.lastUpdateTime))
         return !1;
       var r = new Date().getTime();
       return (
         !!(
-          O(e) &&
+          x(e) &&
           e.lastUpdateTime &&
           e.lastUpdateTime === t.lastUpdateTime &&
           r - e.lastUpdateTime < 500
         ) ||
         !(
-          !O(e) ||
+          !x(e) ||
           !(
-            (E(e.id) && e.id === t.id) ||
-            (E(e.lastUpdateTime) && e.lastUpdateTime === t.lastUpdateTime)
+            (w(e.id) && e.id === t.id) ||
+            (w(e.lastUpdateTime) && e.lastUpdateTime === t.lastUpdateTime)
           )
         ) ||
         (0, i.isEqual)(e, t)
       );
     }
-    function E(e) {
+    function w(e) {
       var t = !1;
       return null != e && (t = !0), t;
     }
-    function k(e, t) {
+    function C(e, t) {
       return (0, i.truncate)(e, t);
     }
-    function F(e, t) {
+    function U(e, t) {
       var r = t || {};
       if (!e) return !1;
       var i = new Function('data', 'with(data) { return (' + e + ');}'),
-        a = '';
+        n = '';
       try {
-        a = i(r);
+        n = i(r);
       } catch (t) {
-        return console.warn('表达式运算出错: ' + e + '，报错信息：', t), a;
+        return console.warn('表达式运算出错: ' + e + '，报错信息：', t), n;
       }
-      return a;
+      return n;
     }
     function P(e, t, r) {
       var i = t;
-      if ((r && (i = N(t)), e))
-        for (var a = e.split('-'), l = 0, n = a.length; l < n; l++) {
-          var o = a[l];
-          o && (i = i && i[o]);
+      if ((r && (i = D(t)), e))
+        for (var n = e.split('-'), a = 0, o = n.length; a < o; a++) {
+          var p = n[a];
+          p && (i = i && i[p]);
         }
       return i;
     }
-    function I(e, t, r) {
+    function E(e, t, r) {
       var i = t;
-      if ((r && (i = N(t)), e))
-        for (var a = e.split('-'), l = 0, n = a.length; l < n; l++) {
-          var o = a[l];
+      if ((r && (i = D(t)), e))
+        for (var n = e.split('-'), a = 0, o = n.length; a < o; a++) {
+          var p = n[a];
           if (
-            '0' !== o ||
+            '0' !== p ||
             ('array' !== i.type &&
               'radio' !== i.type &&
               'select' !== i.type &&
               'checkboxes' !== i.type) ||
             (!i.options && !i.items)
           ) {
-            if (o) {
-              var p = '0';
+            if (p) {
+              var u = '0';
               i.propertyOrder
-                ? (p = i.propertyOrder[o])
-                : i.properties && (p = Object.keys(i.properties)[o]),
-                (i = i.properties[p]);
+                ? (u = i.propertyOrder[p])
+                : i.properties && (u = Object.keys(i.properties)[p]),
+                (i = i.properties[u]);
             }
           } else i = i.options || i.items;
         }
       return i;
     }
-    function M(e, t, r) {
+    function J(e, t, r) {
       var i = t;
-      if ((r && (i = N(t)), e && i))
-        for (var a = e.split('-'), l = 0, n = a.length; l < n; l++) {
-          var o = a[l];
-          o && i.properties && (i = i.properties[o]);
+      if ((r && (i = D(t)), e && i))
+        for (var n = e.split('-'), a = 0, o = n.length; a < o; a++) {
+          var p = n[a];
+          p && i.properties && (i = i.properties[p]);
         }
       return i;
     }
-    function _(e, t) {
+    function A(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), l = 0, n = a.length;
-        l < n;
-        l++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var o = a[l];
-        if ('0' === o && r.items)
+        var p = n[a];
+        if ('0' === p && r.items)
           (r = r.items), (i = i ? i + '-items' : 'items');
-        else if ('0' === o && r.options)
+        else if ('0' === p && r.options)
           (r = r.options), (i = i ? i + '-options' : 'options');
-        else if (o) {
-          var p = '0';
+        else if (p) {
+          var u = '0';
           r.propertyOrder
-            ? (p = r.propertyOrder[o])
-            : r.properties && (p = Object.keys(r.properties)[o]),
-            (r = r.properties[p]),
-            (i = i ? i + '-' + p : p);
+            ? (u = r.propertyOrder[p])
+            : r.properties && (u = Object.keys(r.properties)[p]),
+            (r = r.properties[u]),
+            (i = i ? i + '-' + u : u);
         }
       }
       return i;
     }
-    function U(e, t) {
+    function $(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), l = 0, n = a.length;
-        l < n;
-        l++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var o = a[l];
-        if (o) {
-          var p = -1;
+        var p = n[a];
+        if (p) {
+          var u = -1;
           r.propertyOrder
-            ? ((p = r.propertyOrder.indexOf(o)), (r = r.properties[o]))
+            ? ((u = r.propertyOrder.indexOf(p)), (r = r.properties[p]))
             : r.properties
-              ? ((p = Object.keys(r.properties).indexOf(o)),
-                (r = r.properties[o]))
+              ? ((u = Object.keys(r.properties).indexOf(p)),
+                (r = r.properties[p]))
               : r.items
-                ? ((p = 0), (r = r.items))
-                : r.options && ((p = 0), (r = r.options)),
-            (i = i ? i + '-' + p : p.toString());
+                ? ((u = 0), (r = r.items))
+                : r.options && ((u = 0), (r = r.options)),
+            (i = i ? i + '-' + u : u.toString());
         }
       }
       return i;
@@ -1815,20 +988,20 @@
       var t;
       return (
         (t =
-          e && O(e)
+          e && x(e)
             ? (function (e) {
                 var t;
-                if (O(e)) {
+                if (x(e)) {
                   var r = Object.keys(e);
                   e.data && e.filter && 2 === r.length
-                    ? (t = C(e.data) || O(e.data) ? N(d.local) : N(d.remote))
+                    ? (t = j(e.data) || x(e.data) ? D(d.local) : D(d.remote))
                     : e.trigger && e.eventData && 2 === r.length
-                      ? (t = N(c.emit))
+                      ? (t = D(s.emit))
                       : e.register && e.actionFunc && 2 === r.length
-                        ? (t = N(c.on))
-                        : e.quantity && S(e.quantity) && 2 === r.length
-                          ? (t = N(s.quantity))
-                          : ((t = N(s['empty-object'])),
+                        ? (t = D(s.on))
+                        : e.quantity && q(e.quantity) && 2 === r.length
+                          ? (t = D(c.quantity))
+                          : ((t = D(c['empty-object'])),
                             Object.keys(e).map(function (r) {
                               var i = e[r];
                               t.properties[r] = B(i);
@@ -1836,78 +1009,78 @@
                 }
                 return t;
               })(e)
-            : e && C(e)
+            : e && j(e)
               ? (function (e) {
                   var t;
-                  if (e && C(e))
-                    if (j(e)) {
-                      (t = N(s.select)).items.enum = e;
+                  if (e && j(e))
+                    if (O(e)) {
+                      (t = D(c.select)).items.enum = e;
                       var r = t.items.enumextra.length,
                         i = e.length;
                       if (i > r)
-                        for (var a = r, l = i; a < l; a++)
-                          t.items.enumextra.push('选项' + e(a));
+                        for (var n = r, a = i; n < a; n++)
+                          t.items.enumextra.push('选项' + e(n));
                     } else {
-                      t = N(s['empty-array']);
-                      var n = B(e[0]);
-                      t.items.properties = n.properties;
+                      t = D(c['empty-array']);
+                      var o = B(e[0]);
+                      t.items.properties = o.properties;
                     }
                   return t;
                 })(e)
               : (function (e) {
                   var t = '';
-                  if (m(e)) t = N(s.boolean);
-                  else if (b(e)) t = N(s.number);
-                  else if (y(e)) t = N(s.url);
-                  else if (v(e)) t = N(s.date);
-                  else if (h(e)) t = N(s['date-time']);
-                  else if (g(e)) t = N(s.time);
-                  else if (x(e)) t = N(s.color);
+                  if (v(e)) t = D(c.boolean);
+                  else if (m(e)) t = D(c.number);
+                  else if (f(e)) t = D(c.url);
+                  else if (b(e)) t = D(c.date);
+                  else if (g(e)) t = D(c['date-time']);
+                  else if (h(e)) t = D(c.time);
+                  else if (S(e)) t = D(c.color);
                   else
                     try {
-                      t = b(JSON.parse(e)) ? N(s.input) : N(s.json);
+                      t = m(JSON.parse(e)) ? D(c.input) : D(c.json);
                     } catch (r) {
-                      t = e && e.length > 30 ? N(s.textarea) : N(s.input);
+                      t = e && e.length > 30 ? D(c.textarea) : D(c.input);
                     }
                   return t;
                 })(e)),
         t
       );
     }
-    function A(e, t) {
+    function L(e, t) {
       var r = t || {};
       return (
-        O(e) &&
+        x(e) &&
           'object' === getExpectType(e.type) &&
           e.properties &&
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (t) {
               var i = e.properties[t];
-              r = V(i, r);
+              r = z(i, r);
             },
           ),
         r
       );
     }
-    function V(e, t) {
+    function z(e, t) {
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
-        var a = e.type;
-        'object' === a || 'func' === a || 'style' === a || 'data' === a
+        var n = e.type;
+        'object' === n || 'func' === n || 'style' === n || 'data' === n
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
-            (i = A(e, i)))
-          : 'array' === a
+            (i = L(e, i)))
+          : 'array' === n
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
-              (i = A((e = e.items), i)))
-            : !r && i[a]
-              ? (i[a] += 1)
-              : r || (i[a] = 1);
+              (i = L((e = e.items), i)))
+            : !r && i[n]
+              ? (i[n] += 1)
+              : r || (i[n] = 1);
       }
       return i;
     }
-    function L(e) {
-      var t = N(e);
+    function I(e) {
+      var t = D(e);
       if (
         (!t.title && t.description && (t.title = t.description),
         t.type || (t.type = t.format),
@@ -1916,7 +1089,7 @@
           'datasource' !== t.type &&
           'event' !== t.type &&
           'object' !== t.type) ||
-          !E(t.default) ||
+          !w(t.default) ||
           delete t.default,
         'radio' === t.type &&
           ((t.type = 'string'),
@@ -1924,62 +1097,62 @@
             t.enumextra &&
             ((t.items = {
               type: 'string',
-              enum: N(t.enum),
-              enumextra: N(t.enumextra),
+              enum: D(t.enum),
+              enumextra: D(t.enumextra),
             }),
             delete t.enum,
             delete t.enumextra)),
         'quantity' === t.type)
       ) {
         var r = t.properties,
-          i = N(s.quantity);
-        if (r.quantity && O(r.quantity) && r.quantity.default) {
-          var a = r.quantity.default;
-          i.properties.quantity.default = 'percent' === a ? '%' : a;
+          i = D(c.quantity);
+        if (r.quantity && x(r.quantity) && r.quantity.default) {
+          var n = r.quantity.default;
+          i.properties.quantity.default = 'percent' === n ? '%' : n;
         }
         t = i;
       }
       if ('datasource' === t.type) {
-        var l = t.properties,
-          n = l.type && l.type.default,
-          o = l.data && l.data.default,
-          p = l.filter && l.filter.default;
-        'local' === n
-          ? ((t = N(d.local)).properties.data.default = o ? N(o) : '{}')
-          : ((t = N(d.remote)).properties.data.default = o
-              ? N(o)
+        var a = t.properties,
+          o = a.type && a.type.default,
+          p = a.data && a.data.default,
+          u = a.filter && a.filter.default;
+        'local' === o
+          ? ((t = D(d.local)).properties.data.default = p ? D(p) : '{}')
+          : ((t = D(d.remote)).properties.data.default = p
+              ? D(p)
               : 'http://xxx'),
-          (t.properties.filter.default = p ? N(p) : '() => {}');
+          (t.properties.filter.default = u ? D(u) : '() => {}');
       }
       if ('event' === t.type) {
-        var u = t.properties,
-          y = u.type && u.type.default;
-        if ('in' === y || 'on' === y) {
-          var f = (u.filter && u.filter.default) || '() => {}';
-          (t = N(c.on)),
-            u.actionFunc &&
-              O(u.actionFunc) &&
-              (t.properties.actionFunc.default = u.actionFunc.default || N(f));
+        var l = t.properties,
+          f = l.type && l.type.default;
+        if ('in' === f || 'on' === f) {
+          var y = (l.filter && l.filter.default) || '() => {}';
+          (t = D(s.on)),
+            l.actionFunc &&
+              x(l.actionFunc) &&
+              (t.properties.actionFunc.default = l.actionFunc.default || D(y));
         } else {
-          var b = (u.filter && u.filter.default) || '{}';
-          (t = N(c.emit)),
-            u.eventData &&
-              O(u.eventData) &&
-              (t.properties.eventData.default = u.eventData.default || N(b));
+          var m = (l.filter && l.filter.default) || '{}';
+          (t = D(s.emit)),
+            l.eventData &&
+              x(l.eventData) &&
+              (t.properties.eventData.default = l.eventData.default || D(m));
         }
       }
       return (
         t.properties &&
           (t.propertyOrder || (t.propertyOrder = Object.keys(t.properties)),
           t.propertyOrder.map(function (e) {
-            t.properties[e] = $(t.properties[e]);
+            t.properties[e] = K(t.properties[e]);
           })),
-        t.items && (t.items = $(t.items)),
+        t.items && (t.items = K(t.items)),
         t
       );
     }
-    function $(e) {
-      var t = N(e);
+    function K(e) {
+      var t = D(e);
       return (
         t.required || delete t.required,
         t.type && t.type && (t.type = t.type),
@@ -1988,7 +1161,7 @@
           'datasource' !== t.type &&
           'event' !== t.type &&
           'object' !== t.type) ||
-          !E(t.default) ||
+          !w(t.default) ||
           delete t.default,
         ('radio' !== t.type &&
           'checkboxes' !== t.type &&
@@ -2004,16 +1177,16 @@
         t.properties &&
           (t.propertyOrder || (t.propertyOrder = Object.keys(t.properties)),
           t.propertyOrder.map(function (e) {
-            t.properties[e] = $(t.properties[e]);
+            t.properties[e] = K(t.properties[e]);
           })),
-        'array' === t.type && t.items && (t.items = $(t.items)),
+        'array' === t.type && t.items && (t.items = K(t.items)),
         t
       );
     }
     require('mobx');
-    var J,
-      K =
-        (((J = {
+    var _,
+      M =
+        (((_ = {
           array: 'array',
           boolean: 'boolean',
           'box-style': 'object',
@@ -2037,25 +1210,20 @@
           radio: 'string',
           select: 'array',
         }).select = 'string'),
-        (J.textarea = 'string'),
-        (J['text-editor'] = 'string'),
-        (J.time = 'string'),
-        (J.url = 'string'),
-        (J['dynamic-config'] = 'object'),
-        (J['dynamic-object'] = 'object'),
-        (J['dynamic-array'] = 'object'),
-        (J['sohu-source'] = 'object'),
-        (J['sohu-event'] = 'object'),
-        J);
-    function z(e) {
-      return K[e] || e;
+        (_.textarea = 'string'),
+        (_['text-editor'] = 'string'),
+        (_.time = 'string'),
+        (_.url = 'string'),
+        _);
+    function H(e) {
+      return M[e] || e;
     }
-    function W(e, t) {
-      K[e]
-        ? console.warn('当前已经存在' + e + '(' + K[e] + ')，暂时不支持覆盖。')
-        : (K[e] = t);
+    function V(e, t) {
+      M[e]
+        ? console.warn('当前已经存在' + e + '(' + M[e] + ')，暂时不支持覆盖。')
+        : (M[e] = t);
     }
-    function X(e) {
+    function W(e) {
       var t = !0;
       if (!e) return t;
       var r = e.type;
@@ -2075,19 +1243,19 @@
         t
       );
     }
-    function Y(e) {
+    function Z(e) {
       var t = !1,
         r = e.lastUpdateTime,
         i = new Date('2024-10-05T00:01:00.691Z').getTime();
       return r && new Date(r).getTime() >= i && (t = !0), t;
     }
-    function Z(e) {
+    function Q(e) {
       var t = !1,
-        r = z(e.type),
+        r = H(e.type),
         i = void 0 === e.isContainer || e.isContainer;
       return 'object' === r && i && (t = !0), t;
     }
-    function H(e) {
+    function G(e) {
       var t = !0;
       return (
         'object' === e.type && e.propertyOrder && e.properties
@@ -2100,23 +1268,23 @@
         t
       );
     }
-    function Q(e, t) {
+    function X(e, t) {
       var r = e.split('-'),
         i = t.split('-');
       return r.pop(), i.pop(), r.join('-') === i.join('-');
     }
-    function G(e, t) {
+    function Y(e, t) {
       for (
         var r = e.split('-'),
           i = t.split('-'),
-          a = 'before',
-          l = 0,
-          n = (r.length > i.length ? i : r).length;
-        l < n;
-        l += 1
+          n = 'before',
+          a = 0,
+          o = (r.length > i.length ? i : r).length;
+        a < o;
+        a += 1
       )
-        Number(r[l]) > Number(i[l]) && (a = 'after');
-      return a;
+        Number(r[a]) > Number(i[a]) && (n = 'after');
+      return n;
     }
     function ee(e) {
       var t = e.split('-');
@@ -2138,12 +1306,12 @@
         r = t.pop();
       return t.push(Number(r) - 1), t.join('-');
     }
-    function ae(e) {
+    function ne(e) {
       var t = e.split('-'),
         r = t.pop();
       return t.push(Number(r) + 1), t.join('-');
     }
-    function le(e, t) {
+    function ae(e, t) {
       var r = '',
         i = !1;
       if (!1 !== e.defaultActiveFirstOption && e.defaultActiveFirstOption)
@@ -2153,177 +1321,177 @@
           r
         );
     }
-    function ne(e, t) {
+    function oe(e, t) {
       var r,
         i,
-        a = void 0,
-        l = t;
-      E(l) &&
-        E(e.default) &&
-        (typeof l != typeof e.default ||
-          ((r = l), (i = e.default), O(r) + '-' + C(r) != O(i) + '-' + C(i))) &&
-        (l = void 0);
-      var n = E(l) ? l : e.default;
+        n = void 0,
+        a = t;
+      w(a) &&
+        w(e.default) &&
+        (typeof a != typeof e.default ||
+          ((r = a), (i = e.default), x(r) + '-' + j(r) != x(i) + '-' + j(i))) &&
+        (a = void 0);
+      var o = w(a) ? a : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          a = null != n ? n : le(e);
+          n = null != o ? o : ae(e);
           break;
         case 'checkboxes':
-          a = null != n ? n : le(e, !0);
+          n = null != o ? o : ae(e, !0);
           break;
         case 'color':
-          ('#fff' !== n && '#FFF' !== n) || (n = '#ffffff'),
-            (a = E(n) ? n : '#ffffff');
+          ('#fff' !== o && '#FFF' !== o) || (o = '#ffffff'),
+            (n = w(o) ? o : '#ffffff');
           break;
         case 'boolean':
-          a = !!E(n) && n;
+          n = !!w(o) && o;
           break;
         case 'number':
-          a = E(n) ? n : void 0;
+          n = w(o) ? o : void 0;
           break;
         case 'json':
-          var o = '';
-          if (O(n) || C(n)) o = n;
-          else if (T(n) || '' === n) o = {};
+          var p = '';
+          if (x(o) || j(o)) p = o;
+          else if (k(o) || '' === o) p = {};
           else
             try {
-              o = JSON.parse(n);
+              p = JSON.parse(o);
             } catch (e) {
-              o = {};
+              p = {};
             }
-          a = o;
+          n = p;
           break;
         default:
-          a =
+          n =
             'input' === e.type && '0' === e.default
-              ? n || e.default
-              : E(n)
-                ? n
+              ? o || e.default
+              : w(o)
+                ? o
                 : void 0;
       }
-      return a;
+      return n;
     }
-    function oe(e, t) {
+    function pe(e, t) {
       var r = {},
         i = e.type;
-      if (O(e) && 'object' === z(e.type)) {
-        var a = e,
-          l = t;
-        E(l) &&
-          ((E(a.default) && typeof l != typeof e.default) || !O(l)) &&
-          (l = void 0);
-        var n = E(l) ? l : a.default;
+      if (x(e) && 'object' === H(e.type)) {
+        var n = e,
+          a = t;
+        w(a) &&
+          ((w(n.default) && typeof a != typeof e.default) || !x(a)) &&
+          (a = void 0);
+        var o = w(a) ? a : n.default;
         'dynamic-data' === i
-          ? ((r = N(u)),
-            n &&
-              O(n) &&
-              '{}' !== JSON.stringify(n) &&
-              (r = Object.assign(r, n)))
+          ? ((r = D(l)),
+            o &&
+              x(o) &&
+              '{}' !== JSON.stringify(o) &&
+              (r = Object.assign(r, o)))
           : 'datasource' === i
-            ? a.properties &&
-              a.properties.type &&
-              a.properties.type.default &&
-              'local' === a.properties.type.default
+            ? n.properties &&
+              n.properties.type &&
+              n.properties.type.default &&
+              'local' === n.properties.type.default
               ? ((r = { data: '{}', filter: '() => {}' }),
-                n && n.data && (r.data = n.data),
-                n && n.filter && (r.filter = n.filter),
+                o && o.data && (r.data = o.data),
+                o && o.filter && (r.filter = o.filter),
                 'http://xxx' === r.data && (r.data = '{}'))
               : ((r = { data: 'http://xxx', filter: '() => {}' }),
-                n && n.data && (r.data = n.data),
-                n && n.filter && (r.filter = n.filter),
+                o && o.data && (r.data = o.data),
+                o && o.filter && (r.filter = o.filter),
                 '{}' === r.data && (r.data = 'http://xxx'))
             : 'event' === i
-              ? a.properties &&
-                a.properties.type &&
-                a.properties.type.default &&
-                'emit' === a.properties.type.default
-                ? n && 'out' === n.type
+              ? n.properties &&
+                n.properties.type &&
+                n.properties.type.default &&
+                'emit' === n.properties.type.default
+                ? o && 'out' === o.type
                   ? (r = {
-                      trigger: (n && n.filter) || 'eventName',
+                      trigger: (o && o.filter) || 'eventName',
                       eventData: '{}',
                     })
                   : ((r = { trigger: 'eventName', eventData: '{}' }),
-                    n && n.trigger && (r.trigger = n.trigger),
-                    n && n.eventData && (r.eventData = n.eventData))
-                : n && 'in' === n.type
+                    o && o.trigger && (r.trigger = o.trigger),
+                    o && o.eventData && (r.eventData = o.eventData))
+                : o && 'in' === o.type
                   ? (r = {
                       register: 'eventName',
-                      actionFunc: (n && n.filter) || '() => {}',
+                      actionFunc: (o && o.filter) || '() => {}',
                     })
                   : ((r = { register: 'eventName', actionFunc: '() => {}' }),
-                    n && n.register && (r.register = n.register),
-                    n && n.actionFunc && (r.actionFunc = n.actionFunc))
-              : !1 === e.isContainer && n && O(n) && '{}' !== JSON.stringify(n)
-                ? (r = Object.assign(r, n))
-                : void 0 === l && a.default && O(a.default)
-                  ? (r = a.default)
+                    o && o.register && (r.register = o.register),
+                    o && o.actionFunc && (r.actionFunc = o.actionFunc))
+              : !1 === e.isContainer && o && x(o) && '{}' !== JSON.stringify(o)
+                ? (r = Object.assign(r, o))
+                : void 0 === a && n.default && x(n.default)
+                  ? (r = n.default)
                   : e.properties &&
                     (e.propertyOrder
                       ? e.propertyOrder
                       : Object.keys(e.properties)
                     ).map(function (i) {
-                      var a = e.properties[i],
-                        l = t && t[i];
-                      switch (z(a.type)) {
+                      var n = e.properties[i],
+                        a = t && t[i];
+                      switch (H(n.type)) {
                         case 'array':
-                          r[i] = pe(a, l);
+                          r[i] = ue(n, a);
                           break;
                         case 'object':
-                          r[i] = oe(a, l);
+                          r[i] = pe(n, a);
                           break;
                         default:
-                          r[i] = ne(a, l);
+                          r[i] = oe(n, a);
                       }
                     });
       }
       return r;
     }
-    function pe(e, t) {
+    function ue(e, t) {
       var r = [];
-      if (e && 'array' === z(e.type)) {
+      if (e && 'array' === H(e.type)) {
         var i = t;
-        E(i) &&
-          ((E(e.default) && typeof i != typeof e.default) || !C(i)) &&
+        w(i) &&
+          ((w(e.default) && typeof i != typeof e.default) || !j(i)) &&
           (i = void 0);
-        var a = E(i) ? i : e.default;
-        if ('array' === z(e.type))
-          if (C(a))
-            a.map(function (t) {
-              r.push(oe(e.items, t));
+        var n = w(i) ? i : e.default;
+        if ('array' === H(e.type))
+          if (j(n))
+            n.map(function (t) {
+              r.push(pe(e.items, t));
             });
-          else if (a) r = a;
+          else if (n) r = n;
           else {
-            var l = oe(e.items, a);
-            r.push(l);
+            var a = pe(e.items, n);
+            r.push(a);
           }
-        else r = E(a) ? a : [];
+        else r = w(n) ? n : [];
       }
       return r;
     }
-    function ue(e, t) {
-      return 'object' === z(e.type)
-        ? oe(e, t)
-        : 'array' === z(e.type)
-          ? pe(e, t)
-          : ne(e, t);
+    function le(e, t) {
+      return 'object' === H(e.type)
+        ? pe(e, t)
+        : 'array' === H(e.type)
+          ? ue(e, t)
+          : oe(e, t);
     }
-    var se = s;
-    function ce(e, t) {
+    var ce = c;
+    function se(e, t) {
       var r = t || [];
       if (e && '{}' !== JSON.stringify(e))
-        if (O(e))
+        if (x(e))
           if (
             e.type &&
             'remote' === e.type &&
             e.config &&
-            O(e.config) &&
+            x(e.config) &&
             e.config.dataName &&
-            E(e.localFilter) &&
-            E(e.data)
+            w(e.localFilter) &&
+            w(e.data)
           ) {
             var i = e.config.body;
-            if (i && !O(i))
+            if (i && !x(i))
               try {
                 i = JSON.parse(i);
               } catch (e) {
@@ -2332,12 +1500,12 @@
             r.push({ id: e.config.id, dataName: e.config.dataName, body: i });
           } else
             Object.keys(e).map(function (t) {
-              ce(e[t], r);
+              se(e[t], r);
             });
         else
-          C(e) &&
+          j(e) &&
             e.map(function (e) {
-              ce(e, r);
+              se(e, r);
             });
       return r;
     }
@@ -2350,56 +1518,56 @@
         r
       );
     }
-    function ye(e, t) {
+    function fe(e, t) {
       var r = [];
       return (
-        O(e)
+        x(e)
           ? Object.keys(e).map(function (i) {
-              var a = e[i],
-                l = t ? t + '-' + i : i;
-              O(a) || C(a)
-                ? r.push({ title: i, value: l, key: l, children: ye(a, l) })
-                : r.push({ title: i, value: l, key: l });
+              var n = e[i],
+                a = t ? t + '-' + i : i;
+              x(n) || j(n)
+                ? r.push({ title: i, value: a, key: a, children: fe(n, a) })
+                : r.push({ title: i, value: a, key: a });
             })
-          : C(e) &&
+          : j(e) &&
             e.map(function (e, i) {
-              var a = i.toString(),
-                l = t ? t + '-' + i : a;
-              O(e) || C(e)
-                ? r.push({ title: a, value: l, key: l, children: ye(e, l) })
-                : r.push({ title: a, value: l, key: l });
+              var n = i.toString(),
+                a = t ? t + '-' + i : n;
+              x(e) || j(e)
+                ? r.push({ title: n, value: a, key: a, children: fe(e, a) })
+                : r.push({ title: n, value: a, key: a });
             }),
         r
       );
     }
-    function fe(e, t) {
+    function ye(e, t) {
       var r = '';
       return (
-        'object' === z(e.type) &&
+        'object' === H(e.type) &&
           e.properties &&
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (i) {
-              var a = e.properties[i],
-                l = t[i];
-              ('array' === z(a.type) && 'object' === z(a.type)) ||
-                (l &&
-                  a.isConditionProp &&
-                  (r.indexOf('-') > 0 ? (r += '-' + l) : (r = l)));
+              var n = e.properties[i],
+                a = t[i];
+              ('array' === H(n.type) && 'object' === H(n.type)) ||
+                (a &&
+                  n.isConditionProp &&
+                  (r.indexOf('-') > 0 ? (r += '-' + a) : (r = a)));
             },
           ),
         r
       );
     }
-    function be(e) {
+    function me(e) {
       var t = e.split('-');
       return t.pop(), t.join('-');
     }
-    function me(e) {
+    function ve(e) {
       var t = e.split('-'),
         r = t.pop();
       return [t.join('-'), r];
     }
-    var ve = [
+    var be = [
       'key',
       'enum',
       'enumextra',

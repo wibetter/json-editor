@@ -10,26 +10,6 @@
 })(this, function () {
   return (function () {
     var e = {
-        264: function () {},
-        286: function () {},
-        382: function () {},
-        961: function () {},
-        80: function () {},
-        707: function () {},
-        975: function (e, t, n) {
-          var a = n(264);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('b8de86ae', a, !1, { sourceMap: !1 });
-        },
-        915: function (e, t, n) {
-          var a = n(286);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('5e9c0933', a, !1, { sourceMap: !1 });
-        },
         23: function (e, t, n) {
           var a = n(382);
           a.__esModule && (a = a.default),
@@ -44,20 +24,10 @@
             a.locals && (e.exports = a.locals),
             (0, n(611).A)('405d88dc', a, !1, { sourceMap: !1 });
         },
-        617: function (e, t, n) {
-          var a = n(80);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('9c82b91a', a, !1, { sourceMap: !1 });
-        },
-        790: function (e, t, n) {
-          var a = n(707);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('2b121068', a, !1, { sourceMap: !1 });
-        },
+        80: function () {},
+        264: function () {},
+        286: function () {},
+        382: function () {},
         611: function (e, t, n) {
           'use strict';
           function a(e, t) {
@@ -215,6 +185,36 @@
             }
           }
         },
+        617: function (e, t, n) {
+          var a = n(80);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('9c82b91a', a, !1, { sourceMap: !1 });
+        },
+        707: function () {},
+        790: function (e, t, n) {
+          var a = n(707);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('2b121068', a, !1, { sourceMap: !1 });
+        },
+        915: function (e, t, n) {
+          var a = n(286);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('5e9c0933', a, !1, { sourceMap: !1 });
+        },
+        961: function () {},
+        975: function (e, t, n) {
+          var a = n(264);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('b8de86ae', a, !1, { sourceMap: !1 });
+        },
       },
       t = {};
     function n(a) {
@@ -355,16 +355,7 @@
             'time',
             'input-image',
           ],
-          Ee = ['object'].concat([
-            'dynamic-config',
-            'dynamic-object',
-            'dynamic-array',
-            'sohu-source',
-            'sohu-event',
-            'datasource',
-            'event',
-            'dynamic-data',
-          ]),
+          Ee = ['object'].concat(['datasource', 'event', 'dynamic-data']),
           Se = [
             'quantity',
             'box-style',
@@ -393,9 +384,6 @@
                 'date-time',
                 'time',
                 'input-image',
-                'dynamic-config',
-                'dynamic-object',
-                'dynamic-array',
               ],
               radio: Oe,
               select: Oe,
@@ -426,11 +414,6 @@
             htmlarea: 'html内容',
             object: '对象(Object)',
             array: '数组(Array)',
-            'dynamic-config': '动态配置(config)',
-            'dynamic-object': '动态对象(object)',
-            'dynamic-array': '动态数组(array)',
-            'sohu-source': '数据源',
-            'sohu-event': '组件事件',
             datasource: '静态数据源(旧版)',
             event: '事件(旧版)',
             'dynamic-data': '动态数据源(旧版)',
@@ -3168,11 +3151,6 @@
               case 'func':
               case 'style':
               case 'data':
-              case 'dynamic-config':
-              case 'dynamic-object':
-              case 'dynamic-array':
-              case 'sohu-source':
-              case 'sohu-event':
               case 'padding-margin':
                 return ht(e);
               case 'array':

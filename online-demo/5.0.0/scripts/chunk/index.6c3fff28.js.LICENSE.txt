@@ -1,0 +1,9 @@
+/*!
+ * json-editor vundefined
+ * author: wibetter
+ * build tool: AKFun
+ * build time: Tue May 20 2025 15:26:24 GMT+0800 (China Standard Time)
+ * build tool info: https://github.com/wibetter/akfun
+ */
+
+/*! For license information please see index.js.LICENSE.txt */
