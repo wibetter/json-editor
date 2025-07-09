@@ -8,6 +8,7 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
+import { ThemeContext } from '../../test/reactContext';
 
 class InputFormSchema extends React.PureComponent {
   static propTypes = {
@@ -28,7 +29,7 @@ class InputFormSchema extends React.PureComponent {
   }
 
   // 方式1：在class组件中声明静态属性static，且必须是contextType，确保当前组件可以使用全局context中的数据（this.context不为空）
-  // static contextType = ThemeContext;
+  static contextType = ThemeContext;
 
   /** 数值变动事件处理器 */
   handleInputChange = (event) => {
@@ -86,6 +87,8 @@ class InputFormSchema extends React.PureComponent {
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
       : {};
+
+    console.log('InputFormSchema-render:', this.context);
 
     return (
       <div

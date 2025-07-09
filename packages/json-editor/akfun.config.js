@@ -47,7 +47,7 @@ module.exports = {
       resolve('./src/assets/css/mixin.scss'),
     ],
   },
-  dev: {
+  dev1: {
     entry: {
       index: './src/demo.js',
     },
@@ -64,6 +64,20 @@ module.exports = {
       },
     },
     */
+    assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
+    assetsSubDirectory: '',
+    hostname: 'localhost',
+    cssSourceMap: false,
+  },
+  dev: {
+    entry: {
+      // webpack构建入口
+      index: './src/test/contextDemo.js', // 调试模式的入口
+    },
+    // 用于开启本地调试模式的相关配置信息
+    NODE_ENV: 'development',
+    port: 80,
+    autoOpenBrowser: true,
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
     hostname: 'localhost',
