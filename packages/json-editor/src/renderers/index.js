@@ -22,3 +22,4 @@ import '$renderers/ColorFormSchemaV3/index';
 import '$renderers/JsonFormSchema/index';
 import '$renderers/CodeAreaFormSchema/index';
 import '$renderers/HtmlAreaFormSchema/index';
+import '$renderers/ApiSchema/index';

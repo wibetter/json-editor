@@ -1,4 +1,4 @@
-const { keyRoute2indexRoute } = require('../dist/index.umd');
+const { keyRoute2indexRoute } = require('../dist/index.js');
 const jsonSchema = {
   type: 'object',
   title: 'empty object',

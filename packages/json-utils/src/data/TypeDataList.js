@@ -33,6 +33,7 @@ import {
   initDataSourceData,
   initDataSourceDataV2,
   initDynamicData,
+  initApiData,
 } from '$data/index';
 
 // 类型数据清单
@@ -67,6 +68,7 @@ export const TypeDataList = {
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
   event: initEventData,
+  api: initApiData,
 };
 
 // 事件类型数据

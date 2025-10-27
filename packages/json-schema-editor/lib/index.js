@@ -10,6 +10,26 @@
 })(this, function () {
   return (function () {
     var e = {
+        264: function () {},
+        286: function () {},
+        382: function () {},
+        961: function () {},
+        80: function () {},
+        707: function () {},
+        975: function (e, t, n) {
+          var a = n(264);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('b8de86ae', a, !1, { sourceMap: !1 });
+        },
+        915: function (e, t, n) {
+          var a = n(286);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('5e9c0933', a, !1, { sourceMap: !1 });
+        },
         23: function (e, t, n) {
           var a = n(382);
           a.__esModule && (a = a.default),
@@ -24,10 +44,20 @@
             a.locals && (e.exports = a.locals),
             (0, n(611).A)('405d88dc', a, !1, { sourceMap: !1 });
         },
-        80: function () {},
-        264: function () {},
-        286: function () {},
-        382: function () {},
+        617: function (e, t, n) {
+          var a = n(80);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('9c82b91a', a, !1, { sourceMap: !1 });
+        },
+        790: function (e, t, n) {
+          var a = n(707);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('2b121068', a, !1, { sourceMap: !1 });
+        },
         611: function (e, t, n) {
           'use strict';
           function a(e, t) {
@@ -185,36 +215,6 @@
             }
           }
         },
-        617: function (e, t, n) {
-          var a = n(80);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('9c82b91a', a, !1, { sourceMap: !1 });
-        },
-        707: function () {},
-        790: function (e, t, n) {
-          var a = n(707);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('2b121068', a, !1, { sourceMap: !1 });
-        },
-        915: function (e, t, n) {
-          var a = n(286);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('5e9c0933', a, !1, { sourceMap: !1 });
-        },
-        961: function () {},
-        975: function (e, t, n) {
-          var a = n(264);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('b8de86ae', a, !1, { sourceMap: !1 });
-        },
       },
       t = {};
     function n(a) {
@@ -256,7 +256,7 @@
         n.r(a),
           n.d(a, {
             default: function () {
-              return ft;
+              return vt;
             },
           });
         var e,
@@ -295,11 +295,11 @@
         var w,
           I,
           R,
-          k,
           K,
+          k,
           T,
-          D,
           J,
+          D,
           B,
           V,
           P,
@@ -355,7 +355,12 @@
             'time',
             'input-image',
           ],
-          Ee = ['object'].concat(['datasource', 'event', 'dynamic-data']),
+          Ee = ['object'].concat([
+            'datasource',
+            'event',
+            'dynamic-data',
+            'api',
+          ]),
           Se = [
             'quantity',
             'box-style',
@@ -417,6 +422,7 @@
             datasource: '静态数据源(旧版)',
             event: '事件(旧版)',
             'dynamic-data': '动态数据源(旧版)',
+            api: 'API 配置',
           },
           we = C.TypeDataList.jsonschema,
           Ie = C.TypeDataList.input,
@@ -425,11 +431,11 @@
               ((w = b.action.bound),
               (I = b.action.bound),
               (R = b.action.bound),
-              (k = b.action.bound),
               (K = b.action.bound),
+              (k = b.action.bound),
               (T = b.action.bound),
-              (D = b.action.bound),
               (J = b.action.bound),
+              (D = b.action.bound),
               (B = b.action.bound),
               (V = b.action.bound),
               (P = b.action.bound),
@@ -883,14 +889,14 @@
               x()(
                 he.prototype,
                 'initOnChange',
-                [k],
+                [K],
                 Object.getOwnPropertyDescriptor(he.prototype, 'initOnChange'),
                 he.prototype,
               ),
               x()(
                 he.prototype,
                 'schemaChange',
-                [K],
+                [k],
                 Object.getOwnPropertyDescriptor(he.prototype, 'schemaChange'),
                 he.prototype,
               ),
@@ -907,7 +913,7 @@
               x()(
                 he.prototype,
                 'indexRoute2keyRoute',
-                [D],
+                [J],
                 Object.getOwnPropertyDescriptor(
                   he.prototype,
                   'indexRoute2keyRoute',
@@ -917,7 +923,7 @@
               x()(
                 he.prototype,
                 'keyRoute2indexRoute',
-                [J],
+                [D],
                 Object.getOwnPropertyDescriptor(
                   he.prototype,
                   'keyRoute2indexRoute',
@@ -1261,11 +1267,11 @@
               })),
               he),
           },
-          ke = require('@ant-design/icons'),
-          Ke = require('rc-switch'),
-          Te = n.n(Ke),
-          De = require('react-ace'),
-          Je = n.n(De),
+          Ke = require('@ant-design/icons'),
+          ke = require('rc-switch'),
+          Te = n.n(ke),
+          Je = require('react-ace'),
+          De = n.n(Je),
           Be =
             (require('ace-builds/src-noconflict/mode-json'),
             require('ace-builds/src-noconflict/theme-solarized_light'),
@@ -1331,7 +1337,7 @@
                             l,
                           ),
                         ),
-                      r.createElement(Je(), {
+                      r.createElement(De(), {
                         id: 'json_area_ace',
                         defaultValue: i,
                         className: 'json-view-ace',
@@ -2649,7 +2655,7 @@
                               r.createElement(
                                 E.Tooltip,
                                 { title: '删除' },
-                                r.createElement(ke.CloseOutlined, {
+                                r.createElement(Ke.CloseOutlined, {
                                   className: 'operate-btn delete-operate',
                                   onClick: this.onDeleteBtnEvent,
                                 }),
@@ -2657,7 +2663,7 @@
                             r.createElement(
                               E.Tooltip,
                               { title: j ? '新增子元素' : '新增同级元素' },
-                              r.createElement(ke.PlusOutlined, {
+                              r.createElement(Ke.PlusOutlined, {
                                 className: 'operate-btn',
                                 onClick: this.onAddBtnEvent,
                               }),
@@ -2666,7 +2672,7 @@
                               r.createElement(
                                 E.Tooltip,
                                 { title: '数据项排序' },
-                                r.createElement(ke.SortAscendingOutlined, {
+                                r.createElement(Ke.SortAscendingOutlined, {
                                   className: 'operate-btn',
                                   onClick: this.childElemSort,
                                 }),
@@ -2678,7 +2684,7 @@
                                 r.createElement(
                                   E.Tooltip,
                                   { title: '复制' },
-                                  r.createElement(ke.CopyOutlined, {
+                                  r.createElement(Ke.CopyOutlined, {
                                     className: 'operate-btn',
                                     onClick: this.onCopyBtnEvent,
                                   }),
@@ -2686,7 +2692,7 @@
                                 r.createElement(
                                   E.Tooltip,
                                   { title: '按住进行拖拽' },
-                                  r.createElement(ke.DragOutlined, {
+                                  r.createElement(Ke.DragOutlined, {
                                     className: 'operate-btn drag-btn',
                                   }),
                                 ),
@@ -2696,7 +2702,7 @@
                           r.createElement(
                             E.Tooltip,
                             { title: '高级设置' },
-                            r.createElement(ke.SettingOutlined, {
+                            r.createElement(Ke.SettingOutlined, {
                               className: 'operate-btn',
                               onClick: function () {
                                 n.setState({ showAdvanceConfig: !0 });
@@ -2828,7 +2834,7 @@
                           c = t[s],
                           l = c.type,
                           p = (a ? a + '-' : '') + l + '-' + s;
-                        return dt({
+                        return mt({
                           parentType: o,
                           jsonKey: s,
                           indexRoute: i,
@@ -3099,7 +3105,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '删除' },
-                        r.createElement(ke.CloseOutlined, {
+                        r.createElement(Ke.CloseOutlined, {
                           className: 'operate-btn delete-operate',
                           onClick: this.onDeleteBtnEvent,
                         }),
@@ -3107,7 +3113,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '新增可选项' },
-                        r.createElement(ke.PlusOutlined, {
+                        r.createElement(Ke.PlusOutlined, {
                           className: 'operate-btn',
                           onClick: this.onAddBtnEvent,
                         }),
@@ -3115,7 +3121,7 @@
                       r.createElement(
                         E.Tooltip,
                         { title: '复制' },
-                        r.createElement(ke.CopyOutlined, {
+                        r.createElement(Ke.CopyOutlined, {
                           className: 'operate-btn',
                           onClick: this.onCopyBtnEvent,
                         }),
@@ -3145,14 +3151,15 @@
           pt = function (e) {
             return i().createElement(_e, e);
           },
-          dt = function (e) {
+          dt = E.Tree.TreeNode,
+          mt = function (e) {
             switch (e.targetJsonSchema.type) {
               case 'object':
               case 'func':
               case 'style':
               case 'data':
               case 'padding-margin':
-                return ht(e);
+                return yt(e);
               case 'array':
                 return ze(e);
               case 'datasource':
@@ -3536,6 +3543,97 @@
                       }),
                   );
                 })(e);
+              case 'api':
+                return (function (e) {
+                  var t = e.jsonKey,
+                    n = e.indexRoute,
+                    a = e.nodeKey,
+                    o = e.targetJsonSchema,
+                    r = o.type,
+                    s = o.properties.url || {},
+                    c = o.properties.method || {},
+                    l = o.properties.headers || {},
+                    p = o.properties.data || {};
+                  return i().createElement(
+                    dt,
+                    {
+                      className: r + '-schema schema-item-form',
+                      id: a,
+                      key: a,
+                      indexRoute: n,
+                      jsonKey: t,
+                      title: i().createElement(_e, e),
+                    },
+                    i().createElement(dt, {
+                      className: 'api-url-item-schema schema-item-form',
+                      id: a + '-url',
+                      key: a + '-url',
+                      indexRoute: n ? n + '-0' : '0',
+                      jsonKey: 'url',
+                      title: i().createElement(_e, {
+                        indexRoute: n ? n + '-0' : '0',
+                        jsonKey: 'url',
+                        targetJsonSchema: s,
+                        parentType: r,
+                        nodeKey: a + '-url',
+                        hideOperaBtn: !0,
+                        keyIsFixed: !0,
+                        typeIsFixed: !0,
+                      }),
+                    }),
+                    i().createElement(dt, {
+                      className: 'api-method-item-schema schema-item-form',
+                      id: a + '-method',
+                      key: a + '-method',
+                      indexRoute: n ? n + '-1' : '1',
+                      jsonKey: 'method',
+                      title: i().createElement(_e, {
+                        indexRoute: n ? n + '-1' : '1',
+                        jsonKey: 'method',
+                        targetJsonSchema: c,
+                        parentType: r,
+                        nodeKey: a + '-method',
+                        hideOperaBtn: !0,
+                        keyIsFixed: !0,
+                        typeIsFixed: !0,
+                      }),
+                    }),
+                    i().createElement(dt, {
+                      className: 'api-headers-item-schema schema-item-form',
+                      id: a + '-headers',
+                      key: a + '-headers',
+                      indexRoute: n ? n + '-2' : '2',
+                      jsonKey: 'headers',
+                      title: i().createElement(_e, {
+                        indexRoute: n ? n + '-2' : '2',
+                        jsonKey: 'headers',
+                        targetJsonSchema: l,
+                        parentType: r,
+                        nodeKey: a + '-headers',
+                        hideOperaBtn: !0,
+                        keyIsFixed: !0,
+                        typeIsFixed: !0,
+                      }),
+                    }),
+                    i().createElement(dt, {
+                      className: 'api-data-item-schema schema-item-form',
+                      id: a + '-data',
+                      key: a + '-data',
+                      indexRoute: n ? n + '-3' : '3',
+                      jsonKey: 'data',
+                      title: i().createElement(_e, {
+                        indexRoute: n ? n + '-3' : '3',
+                        jsonKey: 'data',
+                        targetJsonSchema: p,
+                        parentType: r,
+                        nodeKey: a + '-data',
+                        hideOperaBtn: !0,
+                        keyIsFixed: !0,
+                        typeIsFixed: !0,
+                      }),
+                    }),
+                  );
+                })(e);
               default:
                 return (function (e) {
                   var t = e.jsonKey,
@@ -3553,11 +3651,11 @@
                 })(e);
             }
           },
-          mt = E.Tree.TreeNode,
-          ut = function (e) {
+          ut = E.Tree.TreeNode,
+          ht = function (e) {
             return i().createElement(_e, e);
           },
-          ht = function (e) {
+          yt = function (e) {
             var t,
               n,
               a,
@@ -3589,7 +3687,7 @@
                     c = n[s],
                     l = c.type,
                     p = (o ? o + '-' : '') + l + '-' + s;
-                  return dt({
+                  return mt({
                     parentType: r,
                     jsonKey: s,
                     indexRoute: i,
@@ -3599,7 +3697,7 @@
                   });
                 })),
               g = i().createElement(
-                mt,
+                ut,
                 {
                   className: m + '-schema schema-item-form',
                   id: l,
@@ -3607,13 +3705,13 @@
                   indexRoute: c,
                   jsonKey: s,
                   disabled: h,
-                  title: ut(u()({}, e)),
+                  title: ht(u()({}, e)),
                 },
                 y,
               );
             return d ? y : g;
           },
-          yt =
+          gt =
             (n(23),
             (function (e) {
               function t(t) {
@@ -3741,7 +3839,7 @@
                                 : this.catchExpandedKeys(o),
                           },
                           'object' === c &&
-                            ht({
+                            yt({
                               parentType: '',
                               jsonKey: '',
                               indexRoute: '',
@@ -3750,7 +3848,7 @@
                               isOnlyShowChild: !0,
                             }),
                           'object' !== c &&
-                            dt({
+                            mt({
                               parentType: '',
                               jsonKey: '',
                               indexRoute: '',
@@ -3780,17 +3878,17 @@
                 t
               );
             })(r.PureComponent));
-        yt.propTypes = {
+        gt.propTypes = {
           onChange: d().func,
           data: d().object,
           typeList: d().object,
           jsonView: d().any,
           jsonViewReadOnly: d().bool,
         };
-        var gt = (0, l.inject)(function (e) {
+        var ft = (0, l.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, l.observer)(yt)),
-          ft = (function (e) {
+          })((0, l.observer)(gt)),
+          vt = (function (e) {
             function t(t) {
               var n;
               return (
@@ -3809,14 +3907,14 @@
                   a = r.createElement(
                     l.Provider,
                     { schemaStore: n },
-                    r.createElement(gt, this.props),
+                    r.createElement(ft, this.props),
                   );
                 return t ? (c().render(a, t), '') : a;
               }),
               t
             );
           })(r.PureComponent);
-        ft.propTypes = {
+        vt.propTypes = {
           wideScreen: d().any,
           onChange: d().func,
           data: d().any,

@@ -964,40 +964,84 @@ var initDynamicData = {
     },
     config: {
       title: '接口配置',
-      type: 'object',
+      type: 'api',
       description: '用于存放接口的配置数据(url、请求参数等)',
       isRequired: true,
       properties: {
-        dataName: {
-          default: 'local',
+        url: {
+          type: 'url',
+          title: '请求地址',
+          default: '',
+          description: 'API 的 URL',
+          isRequired: true,
+        },
+        method: {
           type: 'select',
+          title: '请求方式',
+          default: 'get',
           options: [
             {
-              label: '本地数据',
-              value: 'local',
+              label: 'GET',
+              value: 'get',
             },
             {
-              label: '接口数据',
-              value: 'remote',
+              label: 'POST',
+              value: 'post',
+            },
+            {
+              label: 'PUT',
+              value: 'put',
+            },
+            {
+              label: 'PATCH',
+              value: 'patch',
+            },
+            {
+              label: 'DELETE',
+              value: 'delete',
             },
           ],
-          title: '数据类型',
-        },
-        body: {
-          type: 'object',
-          title: '请求参数配置',
-          description: '用于配置当前接口的请求参数数值',
           isRequired: true,
         },
-        filter: {
-          title: '过滤器函数体',
-          type: 'codearea',
-          default: 'return data;',
-          description: '用于定义过滤接口数据',
-          isRequired: true,
+        headers: {
+          type: 'json',
+          title: '请求头',
+          default: '{}',
+          description: '请求头对象',
+        },
+        data: {
+          type: 'json',
+          title: '请求参数',
+          default: '{}',
+          description: '请求体或查询参数',
+        },
+        dataType: {
+          type: 'select',
+          title: '数据格式',
+          default: 'json',
+          options: [
+            {
+              label: 'JSON',
+              value: 'json',
+            },
+            {
+              label: 'FormData',
+              value: 'form-data',
+            },
+            {
+              label: 'Form',
+              value: 'form',
+            },
+          ],
+        },
+        cache: {
+          type: 'number',
+          title: '缓存时间',
+          default: undefined,
+          description: '缓存时间（ms），不设置则不缓存',
         },
       },
-      propertyOrder: ['dataName', 'body', 'filter'],
+      propertyOrder: ['url', 'method', 'headers', 'data', 'dataType', 'cache'],
     },
     data: {
       title: '数据内容',
@@ -1022,15 +1066,68 @@ var initDynamicData = {
 var EmptyDynamicDataCont = {
   type: 'local',
   config: {
-    dataName: '',
-    // 动态数据源名称
-    body: {},
-    // 请求参数相关
-    filter: 'return data;',
+    url: '',
+    method: 'get',
+    headers: {},
+    data: {},
+    dataType: 'json',
   },
   data: '{}',
   // 用于存储结果数据
   localFilter: 'return data;',
+};
+
+// Define the schema for API configuration
+var initApiData = {
+  type: 'api',
+  title: 'API 配置',
+  isContainer: false,
+  properties: {
+    url: {
+      type: 'url',
+      title: '请求地址',
+      default: '',
+      description: 'API 的 URL',
+      isRequired: true,
+    },
+    method: {
+      type: 'select',
+      title: '请求方式',
+      default: 'get',
+      options: [
+        {
+          label: 'GET',
+          value: 'get',
+        },
+        {
+          label: 'POST',
+          value: 'post',
+        },
+        {
+          label: 'PUT',
+          value: 'put',
+        },
+        {
+          label: 'DELETE',
+          value: 'delete',
+        },
+      ],
+      isRequired: true,
+    },
+    headers: {
+      type: 'json',
+      title: '请求头',
+      default: '{}',
+      description: '请求头对象',
+    },
+    data: {
+      type: 'json',
+      title: '请求参数',
+      default: '{}',
+      description: '请求体或查询参数',
+    },
+  },
+  propertyOrder: ['url', 'method', 'headers', 'data'],
 };
 
 // 类型数据清单
@@ -1065,6 +1162,7 @@ var TypeDataList = {
   'dynamic-data': initDynamicData,
   datasource: initDataSourceData,
   event: initEventData,
+  api: initApiData,
 };
 
 // 事件类型数据

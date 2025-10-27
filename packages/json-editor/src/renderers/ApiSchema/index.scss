@@ -1,0 +1,39 @@
+.api-schema {
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: rgba(35, 35, 33, 0.8);
+  word-break: break-all;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba(24, 144, 255, 0.1);
+    color: #1890ff;
+  }
+}
+
+// 优化 Modal 中的样式
+:global {
+  .ant-modal {
+    .ant-tabs-content-holder {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}

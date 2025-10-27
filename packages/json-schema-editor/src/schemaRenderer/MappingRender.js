@@ -6,6 +6,7 @@ import EventSchema from '$schemaRenderer/EventSchema/index';
 import QuantitySchema from '$schemaRenderer/QuantitySchema/index';
 import SelectSchema from '$schemaRenderer/SelectSchema/index';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
+import ApiSchema from '$schemaRenderer/ApiSchema/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props) => {
@@ -40,6 +41,9 @@ const MappingRender = (props) => {
     case 'checkboxes':
     case 'select': // 下拉选择（单选/多选）
       return SelectSchema(props);
+      break;
+    case 'api':
+      return ApiSchema(props);
       break;
     default:
       return GeneralSchema(props);

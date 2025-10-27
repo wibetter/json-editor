@@ -3,16 +3,11 @@ import * as React from 'react';
 import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import PropTypes from 'prop-types';
-import { Select, Tooltip } from 'antd';
-const { Option } = Select;
+import { Tooltip } from 'antd';
 import { FilterOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
-import TreeSelectFrom from '$components/TreeSelectFrom/index';
-import { dataRoute2dataPath } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
-import { isArray, isObject } from '$utils/typeof';
-import { objClone, buildStyle } from '$utils/index';
-import RemoteDynamicDataEditor from './RemoteDynamicDataEditor/index';
+import { buildStyle } from '$utils/index';
 import './index.scss';
 
 class DynamicDataSchema extends React.PureComponent {
@@ -74,91 +69,20 @@ class DynamicDataSchema extends React.PureComponent {
     }, 100);
   };
 
-  dynamicDataChange = (dynamicDataName) => {
-    const { keyRoute, jsonStore } = this.props;
-    const { triggerChangeAction, dynamicDataObj } = jsonStore || {};
-    const curDynamicData = objClone(toJS(dynamicDataObj[dynamicDataName]));
-    if (curDynamicData) {
-      const newCurDynamicData = {
-        id: curDynamicData.id,
-        url: curDynamicData.url,
-        method: curDynamicData.method,
-        headers: curDynamicData.headers,
-        options: curDynamicData.options,
-        dataName: curDynamicData.name,
-        body: curDynamicData.body,
-        data: curDynamicData.data,
-        filter: 'return data;',
-        dataRoute: '',
-      };
-      this.handleValueChange(`${keyRoute}-config`, newCurDynamicData);
-      setTimeout(() => {
-        triggerChangeAction();
-      }, 100);
-    }
-  };
-
-  dataRouteChange = (newDataRoute) => {
-    const { keyRoute, jsonStore } = this.props;
-    const { triggerChangeAction, updateFormValueData } = jsonStore || {};
-    if (newDataRoute) {
-      updateFormValueData(`${keyRoute}-config-dataRoute`, newDataRoute, true);
-      const dataPath = dataRoute2dataPath(newDataRoute);
-      // 自动填充当前filter
-      this.handleValueChange(
-        `${keyRoute}-config-filter`,
-        `return ${dataPath};`,
-      );
-    } else {
-      // newDataRoute为空时，需要重置dataRoute和filter
-      updateFormValueData(`${keyRoute}-config-dataRoute`, '', true);
-      // 自动填充当前filter
-      this.handleValueChange(`${keyRoute}-config-filter`, `return data;`);
-    }
-    setTimeout(() => {
-      triggerChangeAction();
-    }, 100);
-  };
-
-  paramsConfigChange = (paramsKey, newParamsConfig) => {
-    const { keyRoute, jsonStore } = this.props;
-    const { triggerChangeAction, getJSONDataByKeyRoute } = jsonStore || {};
-    const curParamsConfigData =
-      getJSONDataByKeyRoute(`${keyRoute}-config-body-${paramsKey}`) || {};
-    this.handleValueChange(
-      `${keyRoute}-config-body-${paramsKey}`,
-      Object.assign(curParamsConfigData, newParamsConfig),
-    );
-    setTimeout(() => {
-      triggerChangeAction();
-    }, 100);
-  };
-
-  paramsValueChange = (curKey, value) => {
+  // API 配置变更处理
+  handleApiConfigChange = (apiConfig) => {
     const { keyRoute, jsonStore } = this.props;
     const { triggerChangeAction } = jsonStore || {};
-    // 待完善
-    /*
-    this.handleValueChange(
-      `${keyRoute}-config-body-${curKey}-value`,
-      value,
-    );
+    this.handleValueChange(`${keyRoute}-config`, apiConfig);
     setTimeout(() => {
       triggerChangeAction();
     }, 100);
-    */
   };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const {
-      getJSONDataByKeyRoute,
-      dynamicDataList,
-      dynamicDataObj,
-      dynamicDataApiScopeList,
-      triggerChange,
-    } = jsonStore || {};
+    const { getJSONDataByKeyRoute, triggerChange } = jsonStore || {};
     const {
       keyRoute,
       jsonKey,
@@ -173,23 +97,12 @@ class DynamicDataSchema extends React.PureComponent {
     const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
     // 获取DataSource中各类数据对象
-    const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote// 获取当前数据源类型
+    const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote
     const dataType = curJsonData.type || typeDataObj.default; // local or remote
 
     const configDataObj = curJsonData.config || {}; // 接口数据请求配置对象
-    const dataName = configDataObj.dataName; // 数据源名称
-    const dataRoute = configDataObj.dataRoute; // 接口数据路径
-    let apiParams = configDataObj.body || {}; // 动态数据/请求参数
-    if (!isObject(apiParams) && apiParams !== '') {
-      try {
-        apiParams = JSON.parse(apiParams);
-      } catch (err) {
-        console.log('当前数据源的请求参数格式异常');
-        apiParams = {};
-      }
-    }
-    const curDynamicData = dynamicDataObj[dataName] || {}; // 根据dataName获取最新的数据源对象
     const dataObj = targetJsonSchema.properties.data || {}; // schema中的数据对象
+    const configSchema = targetJsonSchema.properties.config || {}; // config的schema配置
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -303,146 +216,16 @@ class DynamicDataSchema extends React.PureComponent {
             }`}
           >
             <div className="json-form-box">
-              <div
-                className={
-                  pageScreen === 'wideScreen'
-                    ? 'wide-screen-element-warp'
-                    : 'mobile-screen-element-warp'
-                }
-                key={`${nodeKey}-${dataName}`}
-                id={`${nodeKey}-${dataName}`}
-              >
-                <div className="element-title">数据源列表</div>
-                <div className="content-item">
-                  <div className="form-item-box">
-                    <Select
-                      className="dynamic-data-select"
-                      defaultValue={dataName}
-                      onSelect={this.dynamicDataChange}
-                    >
-                      {dynamicDataList &&
-                        isArray(dynamicDataList) &&
-                        dynamicDataList.map((dynamicData) => {
-                          return (
-                            <Option
-                              value={dynamicData.name}
-                              key={dynamicData.id}
-                            >
-                              {dynamicData.title}
-                            </Option>
-                          );
-                        })}
-                    </Select>
-                  </div>
-                </div>
-              </div>
-              {dataName && apiParams && Object.keys(apiParams).length > 0 && (
-                <div
-                  className={`${
-                    pageScreen === 'wideScreen'
-                      ? 'wide-screen-element-warp'
-                      : 'mobile-screen-element-warp'
-                  } element-title-card-warp`}
-                  key={`${nodeKey}-${dataName}-params`}
-                  id={`${nodeKey}-${dataName}-params`}
-                >
-                  <div className="element-title">请求参数配置1</div>
-                  <div className="content-item object-content">
-                    {Object.keys(apiParams).map((paramKey) => {
-                      const paramItem = objClone(apiParams[paramKey]);
-                      paramItem.readOnly =
-                        paramItem.scope && paramItem.scope === 'static'
-                          ? true
-                          : false;
-                      const curKeyRoute = `${keyRoute}-config-body-${paramKey}`;
-                      const scopeTitle =
-                        dynamicDataApiScopeList[paramItem.scope];
-                      if (scopeTitle && paramItem.scope !== 'dynamic') {
-                        paramItem.title = `${paramItem.title}（${scopeTitle}）`;
-                      }
-                      if (paramItem.scope !== 'dynamic') {
-                        return renderChild({
-                          rendererType: 'input',
-                          pageScreen: pageScreen, // 默认使用宽屏模式
-                          jsonKey: paramKey,
-                          keyRoute: `${curKeyRoute}-value`,
-                          nodeKey: curKeyRoute,
-                          targetJsonSchema: paramItem,
-                          onChange: (newVal) => {
-                            this.paramsValueChange(paramKey, newVal);
-                          },
-                        });
-                      } else {
-                        const curNodeKay = `${nodeKey}-${dataName}-params-${paramKey}`;
-                        return (
-                          <RemoteDynamicDataEditor
-                            {...{
-                              pageScreen: pageScreen, // 默认使用宽屏模式
-                              nodeKey: curNodeKay,
-                              renderChild,
-                              keyRoute: keyRoute
-                                ? `${keyRoute}-config-body-${paramKey}`
-                                : 'config-body-${paramKey}',
-                              curConfigData: paramItem || {},
-                              configDataChange: (newParamsConfig) => {
-                                this.paramsConfigChange(
-                                  paramKey,
-                                  newParamsConfig,
-                                );
-                              },
-                            }}
-                            key={curKeyRoute}
-                          />
-                        );
-                      }
-                    })}
-                  </div>
-                </div>
-              )}
-              {dataName && apiParams && Object.keys(apiParams).length === 0 && (
-                <div
-                  className={
-                    pageScreen === 'wideScreen'
-                      ? 'wide-screen-element-warp'
-                      : 'mobile-screen-element-warp'
-                  }
-                  key={`${nodeKey}-${dataName}-empty`}
-                  id={`${nodeKey}-${dataName}-empty`}
-                >
-                  <div className="element-title">请求参数配置</div>
-                  <div className="content-item">
-                    <span className="warning-text">无可配置的请求参数</span>
-                  </div>
-                </div>
-              )}
-              {dataName && (
-                <TreeSelectFrom
-                  {...{
-                    pageScreen,
-                    nodeKey: `${nodeKey}-config-dataRoute-${dataRoute}`,
-                    mockData: curDynamicData.respMock,
-                    dataRoute,
-                    onChange: this.dataRouteChange,
-                  }}
-                  key={`${nodeKey}-config-dataRoute`}
-                />
-              )}
-              {dataName &&
-                renderChild({
-                  rendererType: 'codearea',
-                  isReadOnly: true,
-                  isIgnoreWarn: true, // 当前主要使用方法体(非直接执行函数)
-                  parentType: curType,
-                  jsonKey: 'filter',
-                  indexRoute: indexRoute ? `${indexRoute}-1-2` : '1-2',
-                  keyRoute: keyRoute
-                    ? `${keyRoute}-config-filter`
-                    : 'config-filter',
-                  nodeKey: `${nodeKey}-config-filter-${dataRoute}`,
-                  targetJsonSchema:
-                    targetJsonSchema.properties.config &&
-                    targetJsonSchema.properties.config.properties.filter,
-                })}
+              {renderChild({
+                rendererType: 'api',
+                parentType: curType,
+                jsonKey: 'config',
+                indexRoute: indexRoute ? `${indexRoute}-1` : '1',
+                keyRoute: keyRoute ? `${keyRoute}-config` : 'config',
+                nodeKey: `${nodeKey}-config`,
+                targetJsonSchema: configSchema,
+                onChange: this.handleApiConfigChange,
+              })}
             </div>
           </div>
         </div>

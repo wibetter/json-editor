@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { isArray, isObject } = require('../dist/index.umd');
+const { isArray, isObject } = require('../dist/index.js');
 
 // 写入到到测试文件中
 const writeFile = function (fileDir, curJsonStr) {

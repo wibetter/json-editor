@@ -10,295 +10,6 @@
 })(this, function () {
   return (function () {
     var __webpack_modules__ = {
-        252: function (e, t, n) {
-          'use strict';
-          n.d(t, {
-            A: function () {
-              return o;
-            },
-          });
-          var a = n(4020);
-          function o(e) {
-            return (0, a.inject)(function (e) {
-              return {
-                schemaStore: e.JSONSchemaStore,
-                jsonStore: e.JSONEditorStore,
-              };
-            })((0, a.observer)(e));
-          }
-        },
-        405: function () {},
-        611: function (e, t, n) {
-          'use strict';
-          function a(e, t) {
-            for (var n = [], a = {}, o = 0; o < t.length; o++) {
-              var r = t[o],
-                i = r[0],
-                l = {
-                  id: e + ':' + o,
-                  css: r[1],
-                  media: r[2],
-                  sourceMap: r[3],
-                };
-              a[i]
-                ? a[i].parts.push(l)
-                : n.push((a[i] = { id: i, parts: [l] }));
-            }
-            return n;
-          }
-          n.d(t, {
-            A: function () {
-              return y;
-            },
-          });
-          var o = 'undefined' != typeof document;
-          if ('undefined' != typeof DEBUG && DEBUG && !o)
-            throw new Error(
-              "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
-            );
-          var r = {},
-            i =
-              o && (document.head || document.getElementsByTagName('head')[0]),
-            l = null,
-            s = 0,
-            c = !1,
-            u = function () {},
-            p = null,
-            m = 'data-vue-ssr-id',
-            d =
-              'undefined' != typeof navigator &&
-              /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
-          function y(e, t, n, o) {
-            (c = n), (p = o || {});
-            var i = a(e, t);
-            return (
-              h(i),
-              function (t) {
-                for (var n = [], o = 0; o < i.length; o++) {
-                  var l = i[o];
-                  (s = r[l.id]).refs--, n.push(s);
-                }
-                for (
-                  t ? h((i = a(e, t))) : (i = []), o = 0;
-                  o < n.length;
-                  o++
-                ) {
-                  var s;
-                  if (0 === (s = n[o]).refs) {
-                    for (var c = 0; c < s.parts.length; c++) s.parts[c]();
-                    delete r[s.id];
-                  }
-                }
-              }
-            );
-          }
-          function h(e) {
-            for (var t = 0; t < e.length; t++) {
-              var n = e[t],
-                a = r[n.id];
-              if (a) {
-                a.refs++;
-                for (var o = 0; o < a.parts.length; o++) a.parts[o](n.parts[o]);
-                for (; o < n.parts.length; o++) a.parts.push(S(n.parts[o]));
-                a.parts.length > n.parts.length &&
-                  (a.parts.length = n.parts.length);
-              } else {
-                var i = [];
-                for (o = 0; o < n.parts.length; o++) i.push(S(n.parts[o]));
-                r[n.id] = { id: n.id, refs: 1, parts: i };
-              }
-            }
-          }
-          function g() {
-            var e = document.createElement('style');
-            return (e.type = 'text/css'), i.appendChild(e), e;
-          }
-          function S(e) {
-            var t,
-              n,
-              a = document.querySelector('style[' + m + '~="' + e.id + '"]');
-            if (a) {
-              if (c) return u;
-              a.parentNode.removeChild(a);
-            }
-            if (d) {
-              var o = s++;
-              (a = l || (l = g())),
-                (t = b.bind(null, a, o, !1)),
-                (n = b.bind(null, a, o, !0));
-            } else
-              (a = g()),
-                (t = v.bind(null, a)),
-                (n = function () {
-                  a.parentNode.removeChild(a);
-                });
-            return (
-              t(e),
-              function (a) {
-                if (a) {
-                  if (
-                    a.css === e.css &&
-                    a.media === e.media &&
-                    a.sourceMap === e.sourceMap
-                  )
-                    return;
-                  t((e = a));
-                } else n();
-              }
-            );
-          }
-          var _,
-            f =
-              ((_ = []),
-              function (e, t) {
-                return (_[e] = t), _.filter(Boolean).join('\n');
-              });
-          function b(e, t, n, a) {
-            var o = n ? '' : a.css;
-            if (e.styleSheet) e.styleSheet.cssText = f(t, o);
-            else {
-              var r = document.createTextNode(o),
-                i = e.childNodes;
-              i[t] && e.removeChild(i[t]),
-                i.length ? e.insertBefore(r, i[t]) : e.appendChild(r);
-            }
-          }
-          function v(e, t) {
-            var n = t.css,
-              a = t.media,
-              o = t.sourceMap;
-            if (
-              (a && e.setAttribute('media', a),
-              p.ssrId && e.setAttribute(m, t.id),
-              o &&
-                ((n += '\n/*# sourceURL=' + o.sources[0] + ' */'),
-                (n +=
-                  '\n/*# sourceMappingURL=data:application/json;base64,' +
-                  btoa(unescape(encodeURIComponent(JSON.stringify(o)))) +
-                  ' */')),
-              e.styleSheet)
-            )
-              e.styleSheet.cssText = n;
-            else {
-              for (; e.firstChild; ) e.removeChild(e.firstChild);
-              e.appendChild(document.createTextNode(n));
-            }
-          }
-        },
-        632: function (e, t, n) {
-          var a = n(4396);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('54a7813a', a, !1, { sourceMap: !1 });
-        },
-        641: function () {},
-        1147: function (e, t, n) {
-          var a = n(1422);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('2c3d6896', a, !1, { sourceMap: !1 });
-        },
-        1422: function () {},
-        1635: function (e, t, n) {
-          'use strict';
-          n.d(t, {
-            K8: function () {
-              return l;
-            },
-            CP: function () {
-              return d;
-            },
-            or: function () {
-              return y;
-            },
-            TA: function () {
-              return m;
-            },
-            GT: function () {
-              return u;
-            },
-            n4: function () {
-              return c;
-            },
-            y8: function () {
-              return p;
-            },
-            bQ: function () {
-              return s;
-            },
-          });
-          var a = n(5085),
-            o = require('lodash/camelCase'),
-            r = n.n(o),
-            i = n(8951);
-          function l(e) {
-            var t = {};
-            return (
-              e &&
-                Object.keys(e).forEach(function (n) {
-                  n.indexOf('-') > 0 ? (t[r()(n)] = e[n]) : (t[n] = e[n]);
-                }),
-              t
-            );
-          }
-          function s(e) {
-            return (0, a.objClone)(e);
-          }
-          function c(e, t) {
-            return (0, a.isEqual)(e, t);
-          }
-          function u(e) {
-            var t = !1;
-            return null != e && (t = !0), t;
-          }
-          function p(e) {
-            var t = !1;
-            return (
-              ('boolean' !== e &&
-                'date' !== e &&
-                'date-time' !== e &&
-                'time' !== e &&
-                'number' !== e &&
-                'color' !== e &&
-                'quantity' !== e &&
-                'select' !== e) ||
-                (t = !0),
-              t
-            );
-          }
-          function m(e) {
-            return (0, i.Gz)(e, 'json-editor-formData');
-          }
-          function d(e) {
-            (0, i.tU)(e, 'json-editor-formData');
-          }
-          function y(e) {
-            var t = [],
-              n = {};
-            if ((0, a.isArray)(e))
-              e.forEach(function (e) {
-                if ((0, a.isObject)(e.value)) {
-                  var o = JSON.stringify(e.value);
-                  t.push({ label: e.label || e.name, value: o }),
-                    (n[o] = e.value);
-                } else t.push(e);
-              });
-            else if ((0, a.isString)(e))
-              try {
-                var o = y((t = JSON.parse(e)));
-                (t = o.options), (n = o.optionValue);
-              } catch (t) {
-                console.warn('options 异常数据格式转换失败：', e);
-              }
-            return { options: t, optionValue: n };
-          }
-        },
-        2015: function (e) {
-          'use strict';
-          e.exports = require('react');
-        },
         2187: function (e, t, n) {
           'use strict';
           n.d(t, {
@@ -309,7 +20,7 @@
               return s;
             },
             Jd: function () {
-              return l;
+              return i;
             },
             Sd: function () {
               return p;
@@ -321,8 +32,8 @@
           var a = n(6031),
             o = n.n(a),
             r = n(7102),
-            i = n(252),
-            l = {};
+            l = n(252),
+            i = {};
           function s(e) {
             return function (t) {
               return c(o()({}, e, { component: t })).component;
@@ -335,10 +46,10 @@
                   (e.type &&
                     'string' == typeof e.type &&
                     (e.type = e.type.toLowerCase()),
-                  !l[e.type])
+                  !i[e.type])
                 ) {
-                  var t = (0, i.A)(e.component);
-                  return (l[e.type] = t), e;
+                  var t = (0, l.A)(e.component);
+                  return (i[e.type] = t), e;
                 }
                 console.warn(
                   '[json-editor]：注册渲染器失败，当前存在重名渲染器（' +
@@ -356,7 +67,7 @@
           }
           function u(e) {
             var t = (0, r.Gv)(e) ? e.type : e;
-            delete l[t];
+            delete i[t];
           }
           function p(e, t) {
             return React.createElement(
@@ -372,191 +83,22 @@
             );
           }
         },
-        2347: function (e) {
+        252: function (e, t, n) {
           'use strict';
-          e.exports = require('@ant-design/icons');
-        },
-        2523: function () {},
-        2595: function (e, t, n) {
-          var a = n(7766);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('56ceba47', a, !1, { sourceMap: !1 });
-        },
-        2597: function () {},
-        2657: function (e, t, n) {
-          var a = n(8006);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('91732ad6', a, !1, { sourceMap: !1 });
-        },
-        2813: function (e) {
-          'use strict';
-          e.exports = require('react-ace');
-        },
-        2961: function () {},
-        3512: function (e, t, n) {
-          var a = n(5465);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('07ba8918', a, !1, { sourceMap: !1 });
-        },
-        3794: function (e, t, n) {
-          var a = n(8985);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('4f50bcf6', a, !1, { sourceMap: !1 });
-        },
-        3997: function () {},
-        4020: function (e) {
-          'use strict';
-          e.exports = require('mobx-react');
-        },
-        4396: function () {},
-        4410: function (e, t, n) {
-          var a = n(3997);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('220f768b', a, !1, { sourceMap: !1 });
-        },
-        4505: function () {},
-        5040: function (e, t, n) {
-          var a = n(2961);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('5c4a563c', a, !1, { sourceMap: !1 });
-        },
-        5085: function (e) {
-          'use strict';
-          e.exports = require('@wibetter/json-utils');
-        },
-        5465: function () {},
-        5820: function (e) {
-          'use strict';
-          e.exports = require('@babel/runtime/helpers/inheritsLoose');
-        },
-        6031: function (e) {
-          'use strict';
-          e.exports = require('@babel/runtime/helpers/extends');
-        },
-        6220: function (e, t, n) {
-          var a = n(2597);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('f7862348', a, !1, { sourceMap: !1 });
-        },
-        6375: function (e) {
-          'use strict';
-          e.exports = require('antd');
-        },
-        6953: function (e) {
-          'use strict';
-          e.exports = require('ace-builds/src-noconflict/theme-monokai');
-        },
-        7102: function (e, t, n) {
-          'use strict';
-          function a(e) {
-            return /^http[s]?:\/\/.*/.test(e);
-          }
-          function o(e) {
-            return 'String' === Object.prototype.toString.call(e).slice(8, -1);
-          }
-          function r(e) {
-            var t = !1;
-            return (
-              'Array' === Object.prototype.toString.call(e).slice(8, -1) &&
-                (t = !0),
-              t
-            );
-          }
-          function i(e) {
-            var t = !1;
-            return (
-              'Object' === Object.prototype.toString.call(e).slice(8, -1) &&
-                (t = !0),
-              t
-            );
-          }
-          function l(e) {
-            return /^#[0-9a-f]{3,6}$/.test(e);
-          }
-          function s(e) {
-            var t = !1;
-            return (
-              'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
-                (t = !0),
-              t
-            );
-          }
           n.d(t, {
-            Gv: function () {
-              return i;
-            },
-            Kg: function () {
+            A: function () {
               return o;
             },
-            Tn: function () {
-              return s;
-            },
-            _o: function () {
-              return l;
-            },
-            cy: function () {
-              return r;
-            },
-            mv: function () {
-              return a;
-            },
-          }),
-            n(5085);
-        },
-        7222: function (e) {
-          'use strict';
-          e.exports = require('mobx');
-        },
-        7232: function () {},
-        7258: function () {},
-        7546: function (e, t, n) {
-          var a = n(4505);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('e6602b10', a, !1, { sourceMap: !1 });
-        },
-        7551: function () {},
-        7766: function () {},
-        8006: function () {},
-        8104: function (e, t, n) {
-          var a = n(641);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('1fb1d0ec', a, !1, { sourceMap: !1 });
-        },
-        8426: function (e) {
-          'use strict';
-          e.exports = require('ace-builds/src-noconflict/mode-javascript');
-        },
-        8678: function (e, t, n) {
-          var a = n(7551);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('aed4b9b0', a, !1, { sourceMap: !1 });
-        },
-        8819: function (e, t, n) {
-          var a = n(7232);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('1b6af5a2', a, !1, { sourceMap: !1 });
+          });
+          var a = n(4020);
+          function o(e) {
+            return (0, a.inject)(function (e) {
+              return {
+                schemaStore: e.JSONSchemaStore,
+                jsonStore: e.JSONEditorStore,
+              };
+            })((0, a.observer)(e));
+          }
         },
         8852: function (e, t, n) {
           'use strict';
@@ -571,68 +113,15 @@
               n = this.props.jsonStore || {},
               o = n.getJSONDataByKeyRoute,
               r = n.getInitJsonDataByKeyRoute,
-              i = n.updateFormValueData,
-              l = t.type,
+              l = n.updateFormValueData,
+              i = t.type,
               s = e || this.props.keyRoute,
-              c = (0, a.TA)(s + '-' + l);
+              c = (0, a.TA)(s + '-' + i);
             if (c) {
               var u = o(c);
-              u || (u = r(c)), u && ((0, a.CP)(s + '-' + l), i(s, u));
+              u || (u = r(c)), u && ((0, a.CP)(s + '-' + i), l(s, u));
             }
           }
-        },
-        8951: function (e, t, n) {
-          'use strict';
-          function a(e, t, n) {
-            if (
-              (void 0 === n && (n = 'json-editor-cache'), window.sessionStorage)
-            ) {
-              var a = {},
-                o = window.sessionStorage.getItem(n);
-              o && (a = JSON.parse(o)),
-                e && (a[e] = t),
-                window.sessionStorage.setItem(n, JSON.stringify(a));
-            }
-          }
-          function o(e, t) {
-            var n;
-            if (
-              (void 0 === t && (t = 'json-editor-cache'), window.sessionStorage)
-            ) {
-              var a = {},
-                o = window.sessionStorage.getItem(t);
-              o && (a = JSON.parse(o)), e && (n = a[e]);
-            }
-            return n;
-          }
-          function r(e, t) {
-            if (
-              (void 0 === t && (t = 'json-editor-cache'), window.sessionStorage)
-            ) {
-              var n = {},
-                a = window.sessionStorage.getItem(t);
-              a && (n = JSON.parse(a)), e && (n[e] = void 0);
-            }
-          }
-          n.d(t, {
-            Gz: function () {
-              return o;
-            },
-            PM: function () {
-              return a;
-            },
-            tU: function () {
-              return r;
-            },
-          });
-        },
-        8985: function () {},
-        9346: function (e, t, n) {
-          var a = n(405);
-          a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('6e510ca0', a, !1, { sourceMap: !1 });
         },
         9566: function (
           __unused_webpack_module,
@@ -917,16 +406,266 @@
             });
           var __WEBPACK_DEFAULT_EXPORT__ = CodeAreaFormSchema;
         },
-        9741: function (e, t, n) {
-          var a = n(7258);
+        1635: function (e, t, n) {
+          'use strict';
+          n.d(t, {
+            K8: function () {
+              return i;
+            },
+            CP: function () {
+              return d;
+            },
+            or: function () {
+              return y;
+            },
+            TA: function () {
+              return m;
+            },
+            GT: function () {
+              return u;
+            },
+            n4: function () {
+              return c;
+            },
+            y8: function () {
+              return p;
+            },
+            bQ: function () {
+              return s;
+            },
+          });
+          var a = n(5085),
+            o = require('lodash/camelCase'),
+            r = n.n(o),
+            l = n(8951);
+          function i(e) {
+            var t = {};
+            return (
+              e &&
+                Object.keys(e).forEach(function (n) {
+                  n.indexOf('-') > 0 ? (t[r()(n)] = e[n]) : (t[n] = e[n]);
+                }),
+              t
+            );
+          }
+          function s(e) {
+            return (0, a.objClone)(e);
+          }
+          function c(e, t) {
+            return (0, a.isEqual)(e, t);
+          }
+          function u(e) {
+            var t = !1;
+            return null != e && (t = !0), t;
+          }
+          function p(e) {
+            var t = !1;
+            return (
+              ('boolean' !== e &&
+                'date' !== e &&
+                'date-time' !== e &&
+                'time' !== e &&
+                'number' !== e &&
+                'color' !== e &&
+                'quantity' !== e &&
+                'select' !== e) ||
+                (t = !0),
+              t
+            );
+          }
+          function m(e) {
+            return (0, l.Gz)(e, 'json-editor-formData');
+          }
+          function d(e) {
+            (0, l.tU)(e, 'json-editor-formData');
+          }
+          function y(e) {
+            var t = [],
+              n = {};
+            if ((0, a.isArray)(e))
+              e.forEach(function (e) {
+                if ((0, a.isObject)(e.value)) {
+                  var o = JSON.stringify(e.value);
+                  t.push({ label: e.label || e.name, value: o }),
+                    (n[o] = e.value);
+                } else t.push(e);
+              });
+            else if ((0, a.isString)(e))
+              try {
+                var o = y((t = JSON.parse(e)));
+                (t = o.options), (n = o.optionValue);
+              } catch (t) {
+                console.warn('options 异常数据格式转换失败：', e);
+              }
+            return { options: t, optionValue: n };
+          }
+        },
+        7102: function (e, t, n) {
+          'use strict';
+          function a(e) {
+            return /^http[s]?:\/\/.*/.test(e);
+          }
+          function o(e) {
+            return 'String' === Object.prototype.toString.call(e).slice(8, -1);
+          }
+          function r(e) {
+            var t = !1;
+            return (
+              'Array' === Object.prototype.toString.call(e).slice(8, -1) &&
+                (t = !0),
+              t
+            );
+          }
+          function l(e) {
+            var t = !1;
+            return (
+              'Object' === Object.prototype.toString.call(e).slice(8, -1) &&
+                (t = !0),
+              t
+            );
+          }
+          function i(e) {
+            return /^#[0-9a-f]{3,6}$/.test(e);
+          }
+          function s(e) {
+            var t = !1;
+            return (
+              'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
+                (t = !0),
+              t
+            );
+          }
+          n.d(t, {
+            Gv: function () {
+              return l;
+            },
+            Kg: function () {
+              return o;
+            },
+            Tn: function () {
+              return s;
+            },
+            _o: function () {
+              return i;
+            },
+            cy: function () {
+              return r;
+            },
+            mv: function () {
+              return a;
+            },
+          }),
+            n(5085);
+        },
+        8951: function (e, t, n) {
+          'use strict';
+          function a(e, t, n) {
+            if (
+              (void 0 === n && (n = 'json-editor-cache'), window.sessionStorage)
+            ) {
+              var a = {},
+                o = window.sessionStorage.getItem(n);
+              o && (a = JSON.parse(o)),
+                e && (a[e] = t),
+                window.sessionStorage.setItem(n, JSON.stringify(a));
+            }
+          }
+          function o(e, t) {
+            var n;
+            if (
+              (void 0 === t && (t = 'json-editor-cache'), window.sessionStorage)
+            ) {
+              var a = {},
+                o = window.sessionStorage.getItem(t);
+              o && (a = JSON.parse(o)), e && (n = a[e]);
+            }
+            return n;
+          }
+          function r(e, t) {
+            if (
+              (void 0 === t && (t = 'json-editor-cache'), window.sessionStorage)
+            ) {
+              var n = {},
+                a = window.sessionStorage.getItem(t);
+              a && (n = JSON.parse(a)), e && (n[e] = void 0);
+            }
+          }
+          n.d(t, {
+            Gz: function () {
+              return o;
+            },
+            PM: function () {
+              return a;
+            },
+            tU: function () {
+              return r;
+            },
+          });
+        },
+        641: function () {},
+        2961: function () {},
+        7551: function () {},
+        3997: function () {},
+        2171: function () {},
+        7766: function () {},
+        5465: function () {},
+        2523: function () {},
+        8985: function () {},
+        2597: function () {},
+        7232: function () {},
+        7258: function () {},
+        8006: function () {},
+        405: function () {},
+        4505: function () {},
+        4396: function () {},
+        8104: function (e, t, n) {
+          var a = n(641);
           a.__esModule && (a = a.default),
             'string' == typeof a && (a = [[e.id, a, '']]),
             a.locals && (e.exports = a.locals),
-            (0, n(611).A)('ae856a32', a, !1, { sourceMap: !1 });
+            (0, n(611).A)('1fb1d0ec', a, !1, { sourceMap: !1 });
         },
-        9825: function (e) {
-          'use strict';
-          e.exports = require('prop-types');
+        5040: function (e, t, n) {
+          var a = n(2961);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('5c4a563c', a, !1, { sourceMap: !1 });
+        },
+        8678: function (e, t, n) {
+          var a = n(7551);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('aed4b9b0', a, !1, { sourceMap: !1 });
+        },
+        4410: function (e, t, n) {
+          var a = n(3997);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('220f768b', a, !1, { sourceMap: !1 });
+        },
+        4754: function (e, t, n) {
+          var a = n(2171);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('f3c943b4', a, !1, { sourceMap: !1 });
+        },
+        2595: function (e, t, n) {
+          var a = n(7766);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('56ceba47', a, !1, { sourceMap: !1 });
+        },
+        3512: function (e, t, n) {
+          var a = n(5465);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('07ba8918', a, !1, { sourceMap: !1 });
         },
         9928: function (e, t, n) {
           var a = n(2523);
@@ -934,6 +673,267 @@
             'string' == typeof a && (a = [[e.id, a, '']]),
             a.locals && (e.exports = a.locals),
             (0, n(611).A)('31b3938e', a, !1, { sourceMap: !1 });
+        },
+        3794: function (e, t, n) {
+          var a = n(8985);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('4f50bcf6', a, !1, { sourceMap: !1 });
+        },
+        6220: function (e, t, n) {
+          var a = n(2597);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('f7862348', a, !1, { sourceMap: !1 });
+        },
+        8819: function (e, t, n) {
+          var a = n(7232);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('1b6af5a2', a, !1, { sourceMap: !1 });
+        },
+        9741: function (e, t, n) {
+          var a = n(7258);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('ae856a32', a, !1, { sourceMap: !1 });
+        },
+        2657: function (e, t, n) {
+          var a = n(8006);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('91732ad6', a, !1, { sourceMap: !1 });
+        },
+        9346: function (e, t, n) {
+          var a = n(405);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('6e510ca0', a, !1, { sourceMap: !1 });
+        },
+        7546: function (e, t, n) {
+          var a = n(4505);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('e6602b10', a, !1, { sourceMap: !1 });
+        },
+        632: function (e, t, n) {
+          var a = n(4396);
+          a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('54a7813a', a, !1, { sourceMap: !1 });
+        },
+        611: function (e, t, n) {
+          'use strict';
+          function a(e, t) {
+            for (var n = [], a = {}, o = 0; o < t.length; o++) {
+              var r = t[o],
+                l = r[0],
+                i = {
+                  id: e + ':' + o,
+                  css: r[1],
+                  media: r[2],
+                  sourceMap: r[3],
+                };
+              a[l]
+                ? a[l].parts.push(i)
+                : n.push((a[l] = { id: l, parts: [i] }));
+            }
+            return n;
+          }
+          n.d(t, {
+            A: function () {
+              return y;
+            },
+          });
+          var o = 'undefined' != typeof document;
+          if ('undefined' != typeof DEBUG && DEBUG && !o)
+            throw new Error(
+              "vue-style-loader cannot be used in a non-browser environment. Use { target: 'node' } in your Webpack config to indicate a server-rendering environment.",
+            );
+          var r = {},
+            l =
+              o && (document.head || document.getElementsByTagName('head')[0]),
+            i = null,
+            s = 0,
+            c = !1,
+            u = function () {},
+            p = null,
+            m = 'data-vue-ssr-id',
+            d =
+              'undefined' != typeof navigator &&
+              /msie [6-9]\b/.test(navigator.userAgent.toLowerCase());
+          function y(e, t, n, o) {
+            (c = n), (p = o || {});
+            var l = a(e, t);
+            return (
+              h(l),
+              function (t) {
+                for (var n = [], o = 0; o < l.length; o++) {
+                  var i = l[o];
+                  (s = r[i.id]).refs--, n.push(s);
+                }
+                for (
+                  t ? h((l = a(e, t))) : (l = []), o = 0;
+                  o < n.length;
+                  o++
+                ) {
+                  var s;
+                  if (0 === (s = n[o]).refs) {
+                    for (var c = 0; c < s.parts.length; c++) s.parts[c]();
+                    delete r[s.id];
+                  }
+                }
+              }
+            );
+          }
+          function h(e) {
+            for (var t = 0; t < e.length; t++) {
+              var n = e[t],
+                a = r[n.id];
+              if (a) {
+                a.refs++;
+                for (var o = 0; o < a.parts.length; o++) a.parts[o](n.parts[o]);
+                for (; o < n.parts.length; o++) a.parts.push(S(n.parts[o]));
+                a.parts.length > n.parts.length &&
+                  (a.parts.length = n.parts.length);
+              } else {
+                var l = [];
+                for (o = 0; o < n.parts.length; o++) l.push(S(n.parts[o]));
+                r[n.id] = { id: n.id, refs: 1, parts: l };
+              }
+            }
+          }
+          function g() {
+            var e = document.createElement('style');
+            return (e.type = 'text/css'), l.appendChild(e), e;
+          }
+          function S(e) {
+            var t,
+              n,
+              a = document.querySelector('style[' + m + '~="' + e.id + '"]');
+            if (a) {
+              if (c) return u;
+              a.parentNode.removeChild(a);
+            }
+            if (d) {
+              var o = s++;
+              (a = i || (i = g())),
+                (t = b.bind(null, a, o, !1)),
+                (n = b.bind(null, a, o, !0));
+            } else
+              (a = g()),
+                (t = E.bind(null, a)),
+                (n = function () {
+                  a.parentNode.removeChild(a);
+                });
+            return (
+              t(e),
+              function (a) {
+                if (a) {
+                  if (
+                    a.css === e.css &&
+                    a.media === e.media &&
+                    a.sourceMap === e.sourceMap
+                  )
+                    return;
+                  t((e = a));
+                } else n();
+              }
+            );
+          }
+          var _,
+            f =
+              ((_ = []),
+              function (e, t) {
+                return (_[e] = t), _.filter(Boolean).join('\n');
+              });
+          function b(e, t, n, a) {
+            var o = n ? '' : a.css;
+            if (e.styleSheet) e.styleSheet.cssText = f(t, o);
+            else {
+              var r = document.createTextNode(o),
+                l = e.childNodes;
+              l[t] && e.removeChild(l[t]),
+                l.length ? e.insertBefore(r, l[t]) : e.appendChild(r);
+            }
+          }
+          function E(e, t) {
+            var n = t.css,
+              a = t.media,
+              o = t.sourceMap;
+            if (
+              (a && e.setAttribute('media', a),
+              p.ssrId && e.setAttribute(m, t.id),
+              o &&
+                ((n += '\n/*# sourceURL=' + o.sources[0] + ' */'),
+                (n +=
+                  '\n/*# sourceMappingURL=data:application/json;base64,' +
+                  btoa(unescape(encodeURIComponent(JSON.stringify(o)))) +
+                  ' */')),
+              e.styleSheet)
+            )
+              e.styleSheet.cssText = n;
+            else {
+              for (; e.firstChild; ) e.removeChild(e.firstChild);
+              e.appendChild(document.createTextNode(n));
+            }
+          }
+        },
+        2347: function (e) {
+          'use strict';
+          e.exports = require('@ant-design/icons');
+        },
+        6031: function (e) {
+          'use strict';
+          e.exports = require('@babel/runtime/helpers/extends');
+        },
+        5820: function (e) {
+          'use strict';
+          e.exports = require('@babel/runtime/helpers/inheritsLoose');
+        },
+        5085: function (e) {
+          'use strict';
+          e.exports = require('@wibetter/json-utils');
+        },
+        8426: function (e) {
+          'use strict';
+          e.exports = require('ace-builds/src-noconflict/mode-javascript');
+        },
+        6953: function (e) {
+          'use strict';
+          e.exports = require('ace-builds/src-noconflict/theme-monokai');
+        },
+        6375: function (e) {
+          'use strict';
+          e.exports = require('antd');
+        },
+        7222: function (e) {
+          'use strict';
+          e.exports = require('mobx');
+        },
+        4020: function (e) {
+          'use strict';
+          e.exports = require('mobx-react');
+        },
+        9825: function (e) {
+          'use strict';
+          e.exports = require('prop-types');
+        },
+        2015: function (e) {
+          'use strict';
+          e.exports = require('react');
+        },
+        2813: function (e) {
+          'use strict';
+          e.exports = require('react-ace');
         },
       },
       __webpack_module_cache__ = {};
@@ -981,25 +981,25 @@
               return wt;
             },
             Renderer: function () {
-              return le.A4;
+              return ie.A4;
             },
             default: function () {
               return xt;
             },
             getJSONCustomRenderer: function () {
-              return Ct;
+              return Ot;
             },
             loadRenderer: function () {
-              return le.Sd;
+              return ie.Sd;
             },
             registerRenderer: function () {
-              return le.TS;
+              return ie.TS;
             },
             unRegisterRenderer: function () {
-              return le.A$;
+              return ie.A$;
             },
             withStore: function () {
-              return Ot.A;
+              return Ct.A;
             },
           });
         var e,
@@ -1008,8 +1008,8 @@
           a,
           o,
           r,
-          i,
           l,
+          i,
           s,
           c,
           u,
@@ -1023,19 +1023,19 @@
           _,
           f,
           b,
-          v,
           E,
+          v,
           w,
-          C,
           O,
+          C,
           x,
           N,
           R,
-          j,
           k,
+          j,
           D,
-          K,
           T,
+          K,
           P,
           J = __webpack_require__(5820),
           A = __webpack_require__.n(J),
@@ -1046,29 +1046,29 @@
           L = __webpack_require__(4020),
           q = __webpack_require__(9825),
           W = __webpack_require__.n(q),
-          U = require('@babel/runtime/helpers/initializerDefineProperty'),
-          F = __webpack_require__.n(U),
+          F = require('@babel/runtime/helpers/initializerDefineProperty'),
+          U = __webpack_require__.n(F),
           z = require('@babel/runtime/helpers/createClass'),
           G = __webpack_require__.n(z),
-          $ = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
-          H = __webpack_require__.n($),
-          Q =
+          H = require('@babel/runtime/helpers/applyDecoratedDescriptor'),
+          $ = __webpack_require__.n(H),
+          Z =
             (require('@babel/runtime/helpers/initializerWarningHelper'),
             __webpack_require__(7222)),
-          Z = __webpack_require__(5085),
-          Y = Z.TypeDataList.jsonschema,
+          Q = __webpack_require__(5085),
+          Y = Q.TypeDataList.jsonschema,
           X =
-            ((e = Q.action.bound),
-            (t = Q.action.bound),
-            (n = Q.action.bound),
-            (a = Q.action.bound),
-            (o = Q.action.bound),
-            (r = Q.action.bound),
-            (i = Q.action.bound),
-            (l = (function () {
+            ((e = Z.action.bound),
+            (t = Z.action.bound),
+            (n = Z.action.bound),
+            (a = Z.action.bound),
+            (o = Z.action.bound),
+            (r = Z.action.bound),
+            (l = Z.action.bound),
+            (i = (function () {
               function e(e) {
-                F()(this, 'pageScreen', s, this),
-                  F()(this, 'jsonSchema', c, this),
+                U()(this, 'pageScreen', s, this),
+                  U()(this, 'jsonSchema', c, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -1079,49 +1079,49 @@
                 }),
                 (t.initJSONSchemaData = function (e) {
                   if (e && '{}' !== JSON.stringify(e)) {
-                    if (!(0, Z.isEqual)(e, this.JSONSchemaObj))
-                      if (e && (0, Z.isNewSchemaData)(e)) this.jsonSchema = e;
+                    if (!(0, Q.isEqual)(e, this.JSONSchemaObj))
+                      if (e && (0, Q.isNewSchemaData)(e)) this.jsonSchema = e;
                       else {
-                        var t = (0, Z.oldSchemaToNewSchema)(e);
+                        var t = (0, Q.oldSchemaToNewSchema)(e);
                         this.jsonSchema = t;
                       }
-                  } else this.jsonSchema = (0, Z.objClone)(Y);
+                  } else this.jsonSchema = (0, Q.objClone)(Y);
                 }),
                 (t.JSONSchemaChange = function (e) {
                   if (e && '{}' !== JSON.stringify(e))
-                    if (e && (0, Z.isNewSchemaData)(e)) this.jsonSchema = e;
+                    if (e && (0, Q.isNewSchemaData)(e)) this.jsonSchema = e;
                     else {
-                      var t = (0, Z.oldSchemaToNewSchema)(e);
+                      var t = (0, Q.oldSchemaToNewSchema)(e);
                       this.jsonSchema = t;
                     }
-                  else this.jsonSchema = (0, Z.objClone)(Y);
+                  else this.jsonSchema = (0, Q.objClone)(Y);
                   var n,
                     a = this.state.rootJSONStore.JSONEditorStore.jsonData;
                   (n = this.jsonSchema.reset
-                    ? (0, Z.schema2json)(this.jsonSchema, {})
-                    : (0, Z.schema2json)(this.jsonSchema, a)),
+                    ? (0, Q.schema2json)(this.jsonSchema, {})
+                    : (0, Q.schema2json)(this.jsonSchema, a)),
                     (this.state.rootJSONStore.JSONEditorStore.jsonData = n),
                     (this.state.rootJSONStore.JSONEditorStore.initJsonData = (0,
-                    Z.objClone)(a));
+                    Q.objClone)(a));
                 }),
                 (t.indexRoute2keyRoute = function (e) {
-                  return (0, Z.indexRoute2keyRoute)(e, this.jsonSchema);
+                  return (0, Q.indexRoute2keyRoute)(e, this.jsonSchema);
                 }),
                 (t.keyRoute2indexRoute = function (e) {
-                  return (0, Z.keyRoute2indexRoute)(e, this.jsonSchema);
+                  return (0, Q.keyRoute2indexRoute)(e, this.jsonSchema);
                 }),
                 (t.getSchemaByIndexRoute = function (e) {
-                  return (0, Z.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
+                  return (0, Q.getSchemaByIndexRoute)(e, this.jsonSchema, !0);
                 }),
                 (t.getSchemaByKeyRoute = function (e) {
                   var t = this.keyRoute2indexRoute(e);
-                  return (0, Z.getSchemaByIndexRoute)(t, this.jsonSchema, !0);
+                  return (0, Q.getSchemaByIndexRoute)(t, this.jsonSchema, !0);
                 }),
                 G()(e, [
                   {
                     key: 'JSONSchemaObj',
                     get: function () {
-                      return (0, Q.toJS)(this.jsonSchema);
+                      return (0, Z.toJS)(this.jsonSchema);
                     },
                   },
                   {
@@ -1134,7 +1134,7 @@
                 ])
               );
             })()),
-            (s = H()(l.prototype, 'pageScreen', [Q.observable], {
+            (s = $()(i.prototype, 'pageScreen', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1142,7 +1142,7 @@
                 return 'mobileScreen';
               },
             })),
-            (c = H()(l.prototype, 'jsonSchema', [Q.observable], {
+            (c = $()(i.prototype, 'jsonSchema', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1150,115 +1150,115 @@
                 return {};
               },
             })),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'setPageScreen',
               [e],
-              Object.getOwnPropertyDescriptor(l.prototype, 'setPageScreen'),
-              l.prototype,
+              Object.getOwnPropertyDescriptor(i.prototype, 'setPageScreen'),
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'initJSONSchemaData',
               [t],
               Object.getOwnPropertyDescriptor(
-                l.prototype,
+                i.prototype,
                 'initJSONSchemaData',
               ),
-              l.prototype,
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'JSONSchemaChange',
               [n],
-              Object.getOwnPropertyDescriptor(l.prototype, 'JSONSchemaChange'),
-              l.prototype,
+              Object.getOwnPropertyDescriptor(i.prototype, 'JSONSchemaChange'),
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'JSONSchemaObj',
-              [Q.computed],
-              Object.getOwnPropertyDescriptor(l.prototype, 'JSONSchemaObj'),
-              l.prototype,
+              [Z.computed],
+              Object.getOwnPropertyDescriptor(i.prototype, 'JSONSchemaObj'),
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'lastUpdateTime',
-              [Q.computed],
-              Object.getOwnPropertyDescriptor(l.prototype, 'lastUpdateTime'),
-              l.prototype,
+              [Z.computed],
+              Object.getOwnPropertyDescriptor(i.prototype, 'lastUpdateTime'),
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'indexRoute2keyRoute',
               [a],
               Object.getOwnPropertyDescriptor(
-                l.prototype,
+                i.prototype,
                 'indexRoute2keyRoute',
               ),
-              l.prototype,
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'keyRoute2indexRoute',
               [o],
               Object.getOwnPropertyDescriptor(
-                l.prototype,
+                i.prototype,
                 'keyRoute2indexRoute',
               ),
-              l.prototype,
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'getSchemaByIndexRoute',
               [r],
               Object.getOwnPropertyDescriptor(
-                l.prototype,
+                i.prototype,
                 'getSchemaByIndexRoute',
               ),
-              l.prototype,
+              i.prototype,
             ),
-            H()(
-              l.prototype,
+            $()(
+              i.prototype,
               'getSchemaByKeyRoute',
-              [i],
+              [l],
               Object.getOwnPropertyDescriptor(
-                l.prototype,
+                i.prototype,
                 'getSchemaByKeyRoute',
               ),
-              l.prototype,
+              i.prototype,
             ),
-            l),
+            i),
           ee = __webpack_require__(6375),
           te = __webpack_require__(1635),
           ne = __webpack_require__(7102),
           ae =
-            ((u = Q.action.bound),
-            (p = Q.action.bound),
-            (m = Q.action.bound),
-            (d = Q.action.bound),
-            (y = Q.action.bound),
-            (h = Q.action.bound),
-            (g = Q.action.bound),
-            (S = Q.action.bound),
-            (_ = Q.action.bound),
-            (f = Q.action.bound),
-            (b = Q.action.bound),
-            (v = Q.action.bound),
-            (E = Q.action.bound),
-            (w = Q.action.bound),
-            (C = (function () {
+            ((u = Z.action.bound),
+            (p = Z.action.bound),
+            (m = Z.action.bound),
+            (d = Z.action.bound),
+            (y = Z.action.bound),
+            (h = Z.action.bound),
+            (g = Z.action.bound),
+            (S = Z.action.bound),
+            (_ = Z.action.bound),
+            (f = Z.action.bound),
+            (b = Z.action.bound),
+            (E = Z.action.bound),
+            (v = Z.action.bound),
+            (w = Z.action.bound),
+            (O = (function () {
               function e(e) {
-                F()(this, 'rootJSONStore', O, this),
-                  F()(this, 'triggerChange', x, this),
-                  F()(this, 'lastUpdateTime', N, this),
-                  F()(this, 'jsonData', R, this),
-                  F()(this, 'initJsonData', j, this),
-                  F()(this, 'dynamicDataList', k, this),
-                  F()(this, 'dynamicDataObj', D, this),
-                  F()(this, 'options', K, this),
-                  F()(this, 'dynamicDataApiScopeList', T, this),
-                  F()(this, 'onChange', P, this),
+                U()(this, 'rootJSONStore', C, this),
+                  U()(this, 'triggerChange', x, this),
+                  U()(this, 'lastUpdateTime', N, this),
+                  U()(this, 'jsonData', R, this),
+                  U()(this, 'initJsonData', k, this),
+                  U()(this, 'dynamicDataList', j, this),
+                  U()(this, 'dynamicDataObj', D, this),
+                  U()(this, 'options', T, this),
+                  U()(this, 'dynamicDataApiScopeList', K, this),
+                  U()(this, 'onChange', P, this),
                   (this.state = { rootJSONStore: e });
               }
               var t = e.prototype;
@@ -1275,9 +1275,9 @@
                   if (
                     !(0, te.n4)(e, this.JSONEditorObj) &&
                     ((this.initJsonData = (0, te.bQ)(this.jsonData)),
-                    t && !(0, Z.isEmptySchema)(t))
+                    t && !(0, Q.isEmptySchema)(t))
                   ) {
-                    var n = (0, Z.schema2json)(t, e || {});
+                    var n = (0, Q.schema2json)(t, e || {});
                     (this.jsonData = Object.assign({}, e, n)),
                       this.updateLastTime();
                   }
@@ -1307,22 +1307,22 @@
                 }),
                 (t.getJSONDataByKeyRoute = function (e, t) {
                   var n = t || this.jsonData;
-                  return (0, Z.getJsonDataByKeyRoute)(e, n, !0);
+                  return (0, Q.getJsonDataByKeyRoute)(e, n, !0);
                 }),
                 (t.getInitJsonDataByKeyRoute = function (e, t) {
                   var n = t || this.initJsonData;
-                  return (0, Z.getJsonDataByKeyRoute)(e, n, !0);
+                  return (0, Q.getJsonDataByKeyRoute)(e, n, !0);
                 }),
                 (t.updateFormValueData = function (e, t, n) {
                   if ('' !== e) {
                     var a,
-                      o = (0, Z.getParentKeyRoute_CurKey)(e),
+                      o = (0, Q.getParentKeyRoute_CurKey)(e),
                       r = o[0],
-                      i = o[1],
-                      l = (0, Z.getJsonDataByKeyRoute)(r, this.jsonData);
-                    l
-                      ? (l[i] = t)
-                      : this.updateFormValueData(r, (((a = {})[i] = t), a));
+                      l = o[1],
+                      i = (0, Q.getJsonDataByKeyRoute)(r, this.jsonData);
+                    i
+                      ? (i[l] = t)
+                      : this.updateFormValueData(r, (((a = {})[l] = t), a));
                   } else this.jsonData = t;
                   if (this.state.rootJSONStore.JSONSchemaStore) {
                     var s =
@@ -1334,7 +1334,7 @@
                   n || this.jsonDataChange();
                 }),
                 (t.deleteArrayIndex = function (e, t) {
-                  var n = (0, Z.getJsonDataByKeyRoute)(e, this.jsonData);
+                  var n = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
                   (0, ne.cy)(n) &&
                     (n.length > 0
                       ? (n.splice(t, 1),
@@ -1345,7 +1345,7 @@
                         ));
                 }),
                 (t.addArrayItem = function (e, t) {
-                  var n = (0, Z.getJsonDataByKeyRoute)(e, this.jsonData);
+                  var n = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, ne.cy)(n)) {
                     var a = n[t || 0];
                     if (
@@ -1361,7 +1361,7 @@
                     ee.message.warning('数据操作异常：当前元素不是数组类型。');
                 }),
                 (t.sortArrayItem = function (e, t, n) {
-                  var a = (0, Z.getJsonDataByKeyRoute)(e, this.jsonData);
+                  var a = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
                   if ((0, ne.cy)(a)) {
                     var o = (0, te.bQ)(a[t || 0]),
                       r = t;
@@ -1379,10 +1379,10 @@
                           '数据操作异常：当前数组项已经是最后一个元素了。',
                         );
                     }
-                    var i = (0, te.bQ)(a[r]);
+                    var l = (0, te.bQ)(a[r]);
                     void 0 !== o &&
-                      void 0 !== i &&
-                      ((a[t] = i),
+                      void 0 !== l &&
+                      ((a[t] = l),
                       (a[r] = o),
                       ee.message.success(
                         '原有数据项' +
@@ -1402,13 +1402,13 @@
                   {
                     key: 'JSONEditorObj',
                     get: function () {
-                      return (0, Q.toJS)(this.jsonData);
+                      return (0, Z.toJS)(this.jsonData);
                     },
                   },
                 ])
               );
             })()),
-            (O = H()(C.prototype, 'rootJSONStore', [Q.observable], {
+            (C = $()(O.prototype, 'rootJSONStore', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1416,7 +1416,7 @@
                 return {};
               },
             })),
-            (x = H()(C.prototype, 'triggerChange', [Q.observable], {
+            (x = $()(O.prototype, 'triggerChange', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1424,7 +1424,7 @@
                 return !1;
               },
             })),
-            (N = H()(C.prototype, 'lastUpdateTime', [Q.observable], {
+            (N = $()(O.prototype, 'lastUpdateTime', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1432,7 +1432,7 @@
                 return new Date().getTime();
               },
             })),
-            (R = H()(C.prototype, 'jsonData', [Q.observable], {
+            (R = $()(O.prototype, 'jsonData', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1440,7 +1440,7 @@
                 return null;
               },
             })),
-            (j = H()(C.prototype, 'initJsonData', [Q.observable], {
+            (k = $()(O.prototype, 'initJsonData', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1448,7 +1448,7 @@
                 return {};
               },
             })),
-            (k = H()(C.prototype, 'dynamicDataList', [Q.observable], {
+            (j = $()(O.prototype, 'dynamicDataList', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1456,7 +1456,7 @@
                 return [];
               },
             })),
-            (D = H()(C.prototype, 'dynamicDataObj', [Q.observable], {
+            (D = $()(O.prototype, 'dynamicDataObj', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1464,7 +1464,7 @@
                 return {};
               },
             })),
-            (K = H()(C.prototype, 'options', [Q.observable], {
+            (T = $()(O.prototype, 'options', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1472,7 +1472,7 @@
                 return {};
               },
             })),
-            (T = H()(C.prototype, 'dynamicDataApiScopeList', [Q.observable], {
+            (K = $()(O.prototype, 'dynamicDataApiScopeList', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1488,7 +1488,7 @@
                 };
               },
             })),
-            (P = H()(C.prototype, 'onChange', [Q.observable], {
+            (P = $()(O.prototype, 'onChange', [Z.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -1496,134 +1496,134 @@
                 return function () {};
               },
             })),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'updateLastTime',
               [u],
-              Object.getOwnPropertyDescriptor(C.prototype, 'updateLastTime'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'updateLastTime'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'triggerChangeAction',
               [p],
               Object.getOwnPropertyDescriptor(
-                C.prototype,
+                O.prototype,
                 'triggerChangeAction',
               ),
-              C.prototype,
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'initJSONData',
               [m],
-              Object.getOwnPropertyDescriptor(C.prototype, 'initJSONData'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'initJSONData'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'initOnChange',
               [d],
-              Object.getOwnPropertyDescriptor(C.prototype, 'initOnChange'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'initOnChange'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'setDynamicDataList',
               [y],
               Object.getOwnPropertyDescriptor(
-                C.prototype,
+                O.prototype,
                 'setDynamicDataList',
               ),
-              C.prototype,
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'setOptions',
               [h],
-              Object.getOwnPropertyDescriptor(C.prototype, 'setOptions'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'setOptions'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'JSONEditorObj',
-              [Q.computed],
-              Object.getOwnPropertyDescriptor(C.prototype, 'JSONEditorObj'),
-              C.prototype,
+              [Z.computed],
+              Object.getOwnPropertyDescriptor(O.prototype, 'JSONEditorObj'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'jsonDataChange',
               [g],
-              Object.getOwnPropertyDescriptor(C.prototype, 'jsonDataChange'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'jsonDataChange'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'jsonChange',
               [S],
-              Object.getOwnPropertyDescriptor(C.prototype, 'jsonChange'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'jsonChange'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'getJSONDataByKeyRoute',
               [_],
               Object.getOwnPropertyDescriptor(
-                C.prototype,
+                O.prototype,
                 'getJSONDataByKeyRoute',
               ),
-              C.prototype,
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'getInitJsonDataByKeyRoute',
               [f],
               Object.getOwnPropertyDescriptor(
-                C.prototype,
+                O.prototype,
                 'getInitJsonDataByKeyRoute',
               ),
-              C.prototype,
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'updateFormValueData',
               [b],
               Object.getOwnPropertyDescriptor(
-                C.prototype,
+                O.prototype,
                 'updateFormValueData',
               ),
-              C.prototype,
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
               'deleteArrayIndex',
-              [v],
-              Object.getOwnPropertyDescriptor(C.prototype, 'deleteArrayIndex'),
-              C.prototype,
-            ),
-            H()(
-              C.prototype,
-              'addArrayItem',
               [E],
-              Object.getOwnPropertyDescriptor(C.prototype, 'addArrayItem'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'deleteArrayIndex'),
+              O.prototype,
             ),
-            H()(
-              C.prototype,
+            $()(
+              O.prototype,
+              'addArrayItem',
+              [v],
+              Object.getOwnPropertyDescriptor(O.prototype, 'addArrayItem'),
+              O.prototype,
+            ),
+            $()(
+              O.prototype,
               'sortArrayItem',
               [w],
-              Object.getOwnPropertyDescriptor(C.prototype, 'sortArrayItem'),
-              C.prototype,
+              Object.getOwnPropertyDescriptor(O.prototype, 'sortArrayItem'),
+              O.prototype,
             ),
-            C),
+            O),
           oe = function () {
             (this.JSONSchemaStore = new X(this)),
               (this.JSONEditorStore = new ae(this));
           },
           re = __webpack_require__(6031),
-          ie = __webpack_require__.n(re),
-          le = __webpack_require__(2187),
+          le = __webpack_require__.n(re),
+          ie = __webpack_require__(2187),
           se = __webpack_require__(2347),
           ce = __webpack_require__(8951),
           ue = __webpack_require__(2813),
@@ -1640,7 +1640,7 @@
                     e,
                   ) {
                     n.props.onChange &&
-                      (0, Z.isFunction)(n.props.onChange) &&
+                      (0, Q.isFunction)(n.props.onChange) &&
                       n.props.onChange(e);
                   }),
                   (n.state = {
@@ -1661,13 +1661,13 @@
                     a = t.readOnly,
                     o = t.maxLines,
                     r = n || {},
-                    i = this.state,
-                    l = i.isShowWarn,
-                    s = i.warnText,
-                    c = (i.curJSONDataTemp, a || !1);
+                    l = this.state,
+                    i = l.isShowWarn,
+                    s = l.warnText,
+                    c = (l.curJSONDataTemp, a || !1);
                   return (
                     (r = void 0 !== r ? r : r || '{}'),
-                    ((0, Z.isObject)(r) || (0, Z.isArray)(r)) &&
+                    ((0, Q.isObject)(r) || (0, Q.isArray)(r)) &&
                       (r = JSON.stringify(r, null, 2)),
                     M.createElement(
                       'div',
@@ -1678,7 +1678,7 @@
                           { className: 'readOnly-btn' },
                           '[只读]',
                         ),
-                      l &&
+                      i &&
                         M.createElement(
                           'div',
                           { className: 'warning-box code-area-item' },
@@ -1792,7 +1792,7 @@
           );
         }
         var be,
-          ve = function (e) {
+          Ee = function (e) {
             return M.createElement(
               'svg',
               fe(
@@ -1807,9 +1807,9 @@
                 })),
             );
           };
-        function Ee() {
+        function ve() {
           return (
-            (Ee = Object.assign
+            (ve = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1819,13 +1819,13 @@
                   }
                   return e;
                 }),
-            Ee.apply(null, arguments)
+            ve.apply(null, arguments)
           );
         }
         var we = function (e) {
             return M.createElement(
               'svg',
-              Ee(
+              ve(
                 {
                   viewBox: '0 0 1025 1024',
                   xmlns: 'http://www.w3.org/2000/svg',
@@ -1839,7 +1839,7 @@
                 })),
             );
           },
-          Ce = (function (e) {
+          Oe = (function (e) {
             function t(t) {
               var n;
               return (
@@ -1932,11 +1932,11 @@
                   a = this.props,
                   o = a.schemaStore,
                   r = a.jsonStore,
-                  i = (o || {}).pageScreen,
-                  l = r || {},
-                  s = l.getJSONDataByKeyRoute,
-                  c = l.sortArrayItem,
-                  u = (l.triggerChange, this.props),
+                  l = (o || {}).pageScreen,
+                  i = r || {},
+                  s = i.getJSONDataByKeyRoute,
+                  c = i.sortArrayItem,
+                  u = (i.triggerChange, this.props),
                   p = u.keyRoute,
                   m = u.jsonKey,
                   d = u.nodeKey,
@@ -1947,32 +1947,32 @@
                   _ = S.jsonView,
                   f = S.isClosed,
                   b = (S.hoverIndex, S.currentActiveArrIndex),
-                  v = h.type,
-                  E = null == (e = h.showCodeViewBtn) || e,
+                  E = h.type,
+                  v = null == (e = h.showCodeViewBtn) || e,
                   w = s(p);
                 (w && 0 !== w.length && (0, ne.cy)(w)) || (w = [{}]);
-                var C = h.items,
-                  O = f,
+                var O = h.items,
+                  C = f,
                   x = (0, ce.Gz)(p);
-                void 0 !== x && (O = x);
+                void 0 !== x && (C = x);
                 var N = b,
                   R = (0, ce.Gz)(p + '-activeArrIndex');
                 void 0 !== R && (N = R);
-                var j = null != (t = h.boxTitle) ? t : '数据配置',
-                  k = h.style ? (0, te.K8)((0, Q.toJS)(h.style)) : {},
-                  D = h.titleStyle ? (0, te.K8)((0, Q.toJS)(h.titleStyle)) : {},
-                  K = h.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(h.contentStyle))
+                var k = null != (t = h.boxTitle) ? t : '数据配置',
+                  j = h.style ? (0, te.K8)((0, Z.toJS)(h.style)) : {},
+                  D = h.titleStyle ? (0, te.K8)((0, Z.toJS)(h.titleStyle)) : {},
+                  T = h.contentStyle
+                    ? (0, te.K8)((0, Z.toJS)(h.contentStyle))
                     : {};
                 return M.createElement(
                   'div',
                   {
                     className:
-                      'wideScreen' === i
+                      'wideScreen' === l
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
                     id: d,
-                    style: k,
+                    style: j,
                   },
                   M.createElement(
                     'div',
@@ -1980,7 +1980,7 @@
                     M.createElement(
                       ee.Tooltip,
                       {
-                        title: 'wideScreen' === i ? h.description : '',
+                        title: 'wideScreen' === l ? h.description : '',
                         placement: 'top',
                       },
                       M.createElement(
@@ -1992,12 +1992,12 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(m, { length: 15 }),
+                            (0, Q.truncate)(m, { length: 15 }),
                             '）',
                           ),
                       ),
                     ),
-                    'mobileScreen' === i &&
+                    'mobileScreen' === l &&
                       h.description &&
                       M.createElement(
                         ee.Tooltip,
@@ -2009,7 +2009,7 @@
                   ),
                   M.createElement(
                     'div',
-                    { className: 'array-schema-box content-item', style: K },
+                    { className: 'array-schema-box content-item', style: T },
                     M.createElement(
                       'div',
                       {
@@ -2019,17 +2019,17 @@
                       M.createElement(
                         'span',
                         { className: 'title-text' },
-                        j,
+                        k,
                         ' ',
                       ),
-                      O
+                      C
                         ? M.createElement(se.RightOutlined, {
                             className: 'close-operate-btn',
                           })
                         : M.createElement(se.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
-                      E &&
+                      v &&
                         M.createElement(
                           'div',
                           {
@@ -2068,7 +2068,7 @@
                           'array-content ' +
                           (_ ? 'json-view-array' : '') +
                           ' ' +
-                          (O ? 'closed' : ''),
+                          (C ? 'closed' : ''),
                       },
                       !_ &&
                         (0, ne.cy)(w) &&
@@ -2076,7 +2076,7 @@
                           var a = d + '-array-items-' + w.length + '-' + t,
                             o = y ? y + '-0' : '0',
                             r = p ? p + '-' + t : '' + t,
-                            i = n.getArrItemTitle(e);
+                            l = n.getArrItemTitle(e);
                           return M.createElement(
                             'div',
                             { className: 'array-item', key: r },
@@ -2097,7 +2097,7 @@
                               M.createElement(
                                 'div',
                                 { className: 'array-title-text' },
-                                i || C.title + '/' + (t + 1),
+                                l || O.title + '/' + (t + 1),
                               ),
                               M.createElement(
                                 'div',
@@ -2113,14 +2113,14 @@
                                     }),
                                 M.createElement(
                                   ee.Tooltip,
-                                  { title: '删除' + C.title + '/' + (t + 1) },
+                                  { title: '删除' + O.title + '/' + (t + 1) },
                                   M.createElement(
                                     ee.Popconfirm,
                                     {
                                       placement: 'top',
                                       title:
                                         '确定要删除' +
-                                        C.title +
+                                        O.title +
                                         '/' +
                                         (t + 1) +
                                         '吗？',
@@ -2146,8 +2146,8 @@
                                 ),
                                 M.createElement(
                                   ee.Tooltip,
-                                  { title: '复制' + C.title + '/' + (t + 1) },
-                                  M.createElement(ve, {
+                                  { title: '复制' + O.title + '/' + (t + 1) },
+                                  M.createElement(Ee, {
                                     className: 'array-operate-btn',
                                     onClick: function (e) {
                                       n.addArrayItem(p, w, t),
@@ -2192,12 +2192,12 @@
                                   (N === t ? 'open' : 'closed'),
                               },
                               g({
-                                parentType: v,
+                                parentType: E,
                                 jsonKey: 'items',
                                 indexRoute: o,
                                 keyRoute: r,
                                 nodeKey: a,
-                                targetJsonSchema: C,
+                                targetJsonSchema: O,
                                 isArrayItem: !0,
                                 arrIndex: t,
                               }),
@@ -2212,7 +2212,7 @@
               t
             );
           })(M.PureComponent);
-        (Ce.propTypes = {
+        (Oe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -2220,9 +2220,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'array', component: Ce }),
+          (0, ie.TS)({ type: 'array', component: Oe }),
           __webpack_require__(2657);
-        var Oe = (function (e) {
+        var Ce = (function (e) {
           function t(t) {
             var n;
             return (
@@ -2258,28 +2258,28 @@
                 a = this.props,
                 o = a.schemaStore,
                 r = (a.jsonStore, (o || {}).pageScreen),
-                i = this.props,
-                l = i.indexRoute,
-                s = i.jsonKey,
-                c = i.nodeKey,
-                u = i.keyRoute,
-                p = i.targetJsonSchema,
-                m = i.isArrayItem,
-                d = (i.arrIndex, i.isStructuredSchema),
-                y = i.renderChild,
+                l = this.props,
+                i = l.indexRoute,
+                s = l.jsonKey,
+                c = l.nodeKey,
+                u = l.keyRoute,
+                p = l.targetJsonSchema,
+                m = l.isArrayItem,
+                d = (l.arrIndex, l.isStructuredSchema),
+                y = l.renderChild,
                 h = this.state,
                 g = h.jsonView,
                 S = h.isClosed,
                 _ = d,
                 f = null == (e = p.showCodeViewBtn) || e,
                 b = S,
-                v = (0, ce.Gz)(u);
-              void 0 !== v && (b = v);
-              var E = null != (t = p.boxTitle) ? t : '对象配置',
-                w = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
-                C = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                O = p.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
+                E = (0, ce.Gz)(u);
+              void 0 !== E && (b = E);
+              var v = null != (t = p.boxTitle) ? t : '对象配置',
+                w = p.style ? (0, te.K8)((0, Z.toJS)(p.style)) : {},
+                O = p.titleStyle ? (0, te.K8)((0, Z.toJS)(p.titleStyle)) : {},
+                C = p.contentStyle
+                  ? (0, te.K8)((0, Z.toJS)(p.contentStyle))
                   : {};
               return V().createElement(
                 'div',
@@ -2295,7 +2295,7 @@
                   !m &&
                   V().createElement(
                     'div',
-                    { className: 'element-title', style: C },
+                    { className: 'element-title', style: O },
                     V().createElement(
                       ee.Tooltip,
                       {
@@ -2311,7 +2311,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(s, { length: 15 }),
+                            (0, Q.truncate)(s, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2330,7 +2330,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: O,
+                    style: C,
                   },
                   !_ &&
                     !m &&
@@ -2343,7 +2343,7 @@
                       V().createElement(
                         'span',
                         { className: 'title-text' },
-                        E,
+                        v,
                         ' ',
                       ),
                       b
@@ -2387,24 +2387,24 @@
                     !g &&
                       p.propertyOrder &&
                       p.propertyOrder.map(function (e, t) {
-                        var n = l ? l + '-' + t : '' + t,
+                        var n = i ? i + '-' + t : '' + t,
                           a = u ? u + '-' + e : '' + e,
                           o = e,
                           r = p.properties[o],
-                          i = r.type;
+                          l = r.type;
                         return y({
-                          parentType: i,
+                          parentType: l,
                           jsonKey: o,
                           indexRoute: n,
                           keyRoute: a,
-                          nodeKey: c + '-' + i + '-' + o,
+                          nodeKey: c + '-' + l + '-' + o,
                           targetJsonSchema: r,
                         });
                       }),
                     g &&
                       V().createElement(
                         ye,
-                        ie()({}, this.props, { maxLines: 10 }),
+                        le()({}, this.props, { maxLines: 10 }),
                       ),
                   ),
                 ),
@@ -2413,7 +2413,7 @@
             t
           );
         })(V().PureComponent);
-        (Oe.propTypes = {
+        (Ce.propTypes = {
           isArrayItem: W().any,
           arrIndex: W().any,
           parentType: W().string,
@@ -2424,7 +2424,7 @@
           targetJsonSchema: W().any,
           isStructuredSchema: W().bool,
         }),
-          (0, le.TS)({ type: 'object', component: Oe }),
+          (0, ie.TS)({ type: 'object', component: Ce }),
           __webpack_require__(8819);
         var xe = (function (e) {
           function t(t) {
@@ -2455,12 +2455,12 @@
                 a = n.schemaStore,
                 o = (n.jsonStore, n.renderChild),
                 r = (a || {}).pageScreen,
-                i = this.props,
-                l = i.keyRoute,
-                s = i.jsonKey,
-                c = i.nodeKey,
-                u = i.indexRoute,
-                p = i.targetJsonSchema,
+                l = this.props,
+                i = l.keyRoute,
+                s = l.jsonKey,
+                c = l.nodeKey,
+                u = l.indexRoute,
+                p = l.targetJsonSchema,
                 m = this.state,
                 d = m.jsonView,
                 y = m.isClosed,
@@ -2470,11 +2470,11 @@
                 _ = p.properties.data || {},
                 f = p.properties.filter || {},
                 b = S.default,
-                v = null == (e = p.showCodeViewBtn) || e,
-                E = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
-                w = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                C = p.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
+                E = null == (e = p.showCodeViewBtn) || e,
+                v = p.style ? (0, te.K8)((0, Z.toJS)(p.style)) : {},
+                w = p.titleStyle ? (0, te.K8)((0, Z.toJS)(p.titleStyle)) : {},
+                O = p.contentStyle
+                  ? (0, te.K8)((0, Z.toJS)(p.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -2484,7 +2484,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
                   id: c,
-                  style: E,
+                  style: v,
                 },
                 M.createElement(
                   'div',
@@ -2504,7 +2504,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(s, { length: 15 }),
+                          (0, Q.truncate)(s, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -2523,7 +2523,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: C,
+                    style: O,
                   },
                   M.createElement(
                     'div',
@@ -2547,7 +2547,7 @@
                       : M.createElement(se.DownOutlined, {
                           className: 'close-operate-btn',
                         }),
-                    v &&
+                    E &&
                       M.createElement(
                         'div',
                         {
@@ -2602,7 +2602,7 @@
                             parentType: g,
                             jsonKey: 'data',
                             indexRoute: u ? u + '-1' : '1',
-                            keyRoute: l ? l + '-data' : 'data',
+                            keyRoute: i ? i + '-data' : 'data',
                             nodeKey: c + '-data',
                             targetJsonSchema: _,
                             key: c + '-data',
@@ -2614,7 +2614,7 @@
                             parentType: g,
                             jsonKey: 'filter',
                             indexRoute: u ? u + '-2' : '2',
-                            keyRoute: l ? l + '-filter' : 'filter',
+                            keyRoute: i ? i + '-filter' : 'filter',
                             nodeKey: c + '-filter',
                             targetJsonSchema: f,
                           }),
@@ -2632,7 +2632,7 @@
                             parentType: g,
                             jsonKey: 'data',
                             indexRoute: u ? u + '-1' : '1',
-                            keyRoute: l ? l + '-data' : 'data',
+                            keyRoute: i ? i + '-data' : 'data',
                             nodeKey: c + '-data',
                             targetJsonSchema: _,
                           }),
@@ -2651,7 +2651,7 @@
                             parentType: g,
                             jsonKey: 'filter',
                             indexRoute: u ? u + '-2' : '2',
-                            keyRoute: l ? l + '-filter' : 'filter',
+                            keyRoute: i ? i + '-filter' : 'filter',
                             nodeKey: c + '-filter',
                             targetJsonSchema: f,
                           }),
@@ -2672,7 +2672,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'datasource', component: xe });
+          (0, ie.TS)({ type: 'datasource', component: xe });
         var Ne = ee.Select.Option,
           Re = (function (e) {
             function t(t) {
@@ -2749,13 +2749,13 @@
                   a = (t || {}).pageScreen,
                   o = n || {},
                   r = o.options,
-                  i = o.getJSONDataByKeyRoute,
-                  l = this.props,
-                  s = l.keyRoute,
-                  c = l.jsonKey,
-                  u = l.nodeKey,
-                  p = l.targetJsonSchema,
-                  m = i(s),
+                  l = o.getJSONDataByKeyRoute,
+                  i = this.props,
+                  s = i.keyRoute,
+                  c = i.jsonKey,
+                  u = i.nodeKey,
+                  p = i.targetJsonSchema,
+                  m = l(s),
                   d = p.readOnly || !1,
                   y = p.properties.unit,
                   h = (0, te.y8)(p.type),
@@ -2763,13 +2763,13 @@
                   S = r || {},
                   _ = [];
                 S.GlobalOptions &&
-                  (0, Z.isArray)(S.GlobalOptions) &&
+                  (0, Q.isArray)(S.GlobalOptions) &&
                   (_ = S.GlobalOptions);
                 var f = p.options || _,
-                  b = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
-                  v = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                  E = p.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
+                  b = p.style ? (0, te.K8)((0, Z.toJS)(p.style)) : {},
+                  E = p.titleStyle ? (0, te.K8)((0, Z.toJS)(p.titleStyle)) : {},
+                  v = p.contentStyle
+                    ? (0, te.K8)((0, Z.toJS)(p.contentStyle))
                     : {};
                 return M.createElement(
                   'div',
@@ -2784,7 +2784,7 @@
                   },
                   M.createElement(
                     'div',
-                    { className: 'element-title', style: v },
+                    { className: 'element-title', style: E },
                     M.createElement(
                       ee.Tooltip,
                       {
@@ -2800,7 +2800,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(c, { length: 15 }),
+                            (0, Q.truncate)(c, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -2817,7 +2817,7 @@
                   ),
                   M.createElement(
                     'div',
-                    { className: 'content-item', style: E },
+                    { className: 'content-item', style: v },
                     M.createElement(
                       'div',
                       { className: 'form-item-box' },
@@ -2870,9 +2870,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'quantity', component: Re }),
+          (0, ie.TS)({ type: 'quantity', component: Re }),
           __webpack_require__(9928);
-        var je = (function (e) {
+        var ke = (function (e) {
           function t(t) {
             var n;
             return (
@@ -2889,22 +2889,22 @@
                   a = t.keyRoute,
                   o = t.targetJsonSchema,
                   r = e(a),
-                  i = o.properties.unit,
-                  l = r.quantity,
-                  s = r.unit || i.default;
+                  l = o.properties.unit,
+                  i = r.quantity,
+                  s = r.unit || l.default;
                 if (
                   ((n.layoutStyleObj = {
                     top: '',
                     right: '',
                     bottom: '',
                     left: '',
-                    quantity: l,
+                    quantity: i,
                   }),
                   s)
                 ) {
                   var c = s.split(' ');
                   1 === c.length
-                    ? c[0] && c[0].indexOf(l) >= 0
+                    ? c[0] && c[0].indexOf(i) >= 0
                       ? ((n.layoutStyleObj.top = c[0]),
                         (n.layoutStyleObj.right = c[0]),
                         (n.layoutStyleObj.bottom = c[0]),
@@ -2914,20 +2914,20 @@
                           (n.layoutStyleObj.right = 'auto'),
                           (n.layoutStyleObj.bottom = 'auto'),
                           (n.layoutStyleObj.left = 'auto'))
-                        : ((n.layoutStyleObj.top = '' + c[0] + l),
-                          (n.layoutStyleObj.right = '' + c[0] + l),
-                          (n.layoutStyleObj.bottom = '' + c[0] + l),
-                          (n.layoutStyleObj.left = '' + c[0] + l))
+                        : ((n.layoutStyleObj.top = '' + c[0] + i),
+                          (n.layoutStyleObj.right = '' + c[0] + i),
+                          (n.layoutStyleObj.bottom = '' + c[0] + i),
+                          (n.layoutStyleObj.left = '' + c[0] + i))
                     : ((n.layoutStyleObj.top = c[0]),
                       (n.layoutStyleObj.right = c[1]),
                       (n.layoutStyleObj.bottom = c[2] || c[0]),
                       (n.layoutStyleObj.left = c[3] || c[1]));
                 } else
                   0 === s
-                    ? ((n.layoutStyleObj.top = '' + s + l),
-                      (n.layoutStyleObj.right = '' + s + l),
-                      (n.layoutStyleObj.bottom = '' + s + l),
-                      (n.layoutStyleObj.left = '' + s + l))
+                    ? ((n.layoutStyleObj.top = '' + s + i),
+                      (n.layoutStyleObj.right = '' + s + i),
+                      (n.layoutStyleObj.bottom = '' + s + i),
+                      (n.layoutStyleObj.left = '' + s + i))
                     : ((n.layoutStyleObj.top = 'auto'),
                       (n.layoutStyleObj.right = 'auto'),
                       (n.layoutStyleObj.bottom = 'auto'),
@@ -3011,21 +3011,21 @@
                 a = t.jsonKey,
                 o = t.targetJsonSchema,
                 r = this.props,
-                i = r.schemaStore,
-                l = (r.jsonStore, (i || {}).pageScreen),
+                l = r.schemaStore,
+                i = (r.jsonStore, (l || {}).pageScreen),
                 s = this.state,
                 c = s.renderAction,
                 u = s.layoutStyleLock,
-                p = o.style ? (0, te.K8)((0, Q.toJS)(o.style)) : {},
-                m = o.titleStyle ? (0, te.K8)((0, Q.toJS)(o.titleStyle)) : {},
+                p = o.style ? (0, te.K8)((0, Z.toJS)(o.style)) : {},
+                m = o.titleStyle ? (0, te.K8)((0, Z.toJS)(o.titleStyle)) : {},
                 d = o.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(o.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(o.contentStyle))
                   : {};
               return M.createElement(
                 'div',
                 {
                   className:
-                    ('wideScreen' === l
+                    ('wideScreen' === i
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp') +
                     ' ' +
@@ -3039,7 +3039,7 @@
                   M.createElement(
                     ee.Tooltip,
                     {
-                      title: 'wideScreen' === l ? o.description : '',
+                      title: 'wideScreen' === i ? o.description : '',
                       placement: 'top',
                     },
                     M.createElement(
@@ -3051,12 +3051,12 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(a, { length: 15 }),
+                          (0, Q.truncate)(a, { length: 15 }),
                           '）',
                         ),
                     ),
                   ),
-                  'mobileScreen' === l &&
+                  'mobileScreen' === i &&
                     o.description &&
                     M.createElement(
                       ee.Tooltip,
@@ -3171,7 +3171,7 @@
             t
           );
         })(M.PureComponent);
-        (je.propTypes = {
+        (ke.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -3179,9 +3179,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'box-style', component: je }),
+          (0, ie.TS)({ type: 'box-style', component: ke }),
           __webpack_require__(9346);
-        var ke = ee.Select.Option,
+        var je = ee.Select.Option,
           De = (function (e) {
             function t(t) {
               var n;
@@ -3197,14 +3197,14 @@
                     a = t.keyRoute,
                     o = t.targetJsonSchema,
                     r = e(a),
-                    i = o.properties.margin,
-                    l = o.properties.padding,
+                    l = o.properties.margin,
+                    i = o.properties.padding,
                     s = o.properties.quantity,
                     c = r.quantity || s.default,
-                    u = r.margin || i.default,
-                    p = r.padding || l.default;
-                  (u = (0, Z.isNumber)(u) ? u.toString() : u || 'auto'),
-                    (p = (0, Z.isNumber)(p) ? p.toString() : p || 'auto'),
+                    u = r.margin || l.default,
+                    p = r.padding || i.default;
+                  (u = (0, Q.isNumber)(u) ? u.toString() : u || 'auto'),
+                    (p = (0, Q.isNumber)(p) ? p.toString() : p || 'auto'),
                     (n.boxStyle.quantity = c);
                   var m = u.split(' ');
                   (n.boxStyle.margin.top = n.getStyleValText(m[0])),
@@ -3238,7 +3238,7 @@
                       ? (n = e)
                       : e
                         ? ((n = parseInt(e)),
-                          (n = (0, Z.isNumber)(n) ? n : 'auto'))
+                          (n = (0, Q.isNumber)(n) ? n : 'auto'))
                         : void 0 !== t && (n = t),
                     n
                   );
@@ -3252,7 +3252,7 @@
                       ? (t = 'auto')
                       : e &&
                         ((t = parseInt(e)),
-                        (t = (0, Z.isNumber)(t) ? t : 'auto'));
+                        (t = (0, Q.isNumber)(t) ? t : 'auto'));
                   }
                   return 'auto' === t || 0 === t
                     ? t
@@ -3360,10 +3360,10 @@
                   a = t.jsonKey,
                   o = t.targetJsonSchema,
                   r = t.keyRoute,
-                  i = this.props,
-                  l = i.schemaStore,
-                  s = i.jsonStore,
-                  c = (l || {}).pageScreen,
+                  l = this.props,
+                  i = l.schemaStore,
+                  s = l.jsonStore,
+                  c = (i || {}).pageScreen,
                   u = s || {},
                   p = u.options,
                   m = u.getJSONDataByKeyRoute,
@@ -3376,13 +3376,13 @@
                   f = p || {},
                   b = [];
                 f.GlobalOptions &&
-                  (0, Z.isArray)(f.GlobalOptions) &&
+                  (0, Q.isArray)(f.GlobalOptions) &&
                   (b = f.GlobalOptions);
-                var v = o.options || b,
-                  E = o.style ? (0, te.K8)((0, Q.toJS)(o.style)) : {},
-                  w = o.titleStyle ? (0, te.K8)((0, Q.toJS)(o.titleStyle)) : {},
-                  C = o.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(o.contentStyle))
+                var E = o.options || b,
+                  v = o.style ? (0, te.K8)((0, Z.toJS)(o.style)) : {},
+                  w = o.titleStyle ? (0, te.K8)((0, Z.toJS)(o.titleStyle)) : {},
+                  O = o.contentStyle
+                    ? (0, te.K8)((0, Z.toJS)(o.contentStyle))
                     : {};
                 return M.createElement(
                   'div',
@@ -3394,7 +3394,7 @@
                       ' ' +
                       (y ? 'render-mark' : ''),
                     id: n,
-                    style: E,
+                    style: v,
                   },
                   M.createElement(
                     'div',
@@ -3414,7 +3414,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(a, { length: 15 }),
+                            (0, Q.truncate)(a, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -3433,7 +3433,7 @@
                     'div',
                     {
                       className: 'content-item Style-PaddingAndMargin',
-                      style: C,
+                      style: O,
                     },
                     M.createElement(
                       'div',
@@ -3485,7 +3485,7 @@
                                   className:
                                     'ant-input layout-item-margin autoComplete-unit',
                                   style: { display: 'inline-block' },
-                                  options: v,
+                                  options: E,
                                   allowClear: !0,
                                   defaultValue: this.boxStyle.margin.top,
                                   onChange: function (t) {
@@ -3499,7 +3499,7 @@
                                     style: { display: 'inline-block' },
                                     defaultValue: _ || 'px',
                                   },
-                                  M.createElement(ke, { value: _ }, _),
+                                  M.createElement(je, { value: _ }, _),
                                 ),
                               ),
                             !S &&
@@ -3533,7 +3533,7 @@
                                   className:
                                     'ant-input layout-item-padding autoComplete-unit',
                                   style: { display: 'inline-block' },
-                                  options: v,
+                                  options: E,
                                   allowClear: !0,
                                   defaultValue: this.boxStyle.padding.top,
                                   onChange: function (t) {
@@ -3547,7 +3547,7 @@
                                     style: { display: 'inline-block' },
                                     defaultValue: _ || 'px',
                                   },
-                                  M.createElement(ke, { value: _ }, _),
+                                  M.createElement(je, { value: _ }, _),
                                 ),
                               ),
                             !S &&
@@ -3599,7 +3599,7 @@
                                       className:
                                         'ant-input layout-item-padding autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.padding.top,
                                       onChange: function (t) {
@@ -3618,7 +3618,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -3676,7 +3676,7 @@
                                       className:
                                         'ant-input layout-item-padding autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.padding.right,
                                       onChange: function (t) {
@@ -3695,7 +3695,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -3753,7 +3753,7 @@
                                       className:
                                         'ant-input layout-item-padding autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.padding.bottom,
                                       onChange: function (t) {
@@ -3772,7 +3772,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -3830,7 +3830,7 @@
                                       className:
                                         'ant-input layout-item-padding autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.padding.left,
                                       onChange: function (t) {
@@ -3849,7 +3849,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -3907,7 +3907,7 @@
                                       className:
                                         'ant-input layout-item-margin autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.margin.top,
                                       onChange: function (t) {
@@ -3926,7 +3926,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -3983,7 +3983,7 @@
                                       className:
                                         'ant-input layout-item-margin autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.margin.right,
                                       onChange: function (t) {
@@ -4002,7 +4002,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -4060,7 +4060,7 @@
                                       className:
                                         'ant-input layout-item-margin autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.margin.bottom,
                                       onChange: function (t) {
@@ -4079,7 +4079,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -4137,7 +4137,7 @@
                                       className:
                                         'ant-input layout-item-margin autoComplete-unit',
                                       style: { display: 'inline-block' },
-                                      options: v,
+                                      options: E,
                                       allowClear: !0,
                                       defaultValue: e.boxStyle.margin.left,
                                       onChange: function (t) {
@@ -4156,7 +4156,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: _ || 'px',
                                       },
-                                      M.createElement(ke, { value: _ }, _),
+                                      M.createElement(je, { value: _ }, _),
                                     ),
                                   ),
                                 !S &&
@@ -4209,8 +4209,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'padding-margin', component: De });
-        var Ke = (function (e) {
+          (0, ie.TS)({ type: 'padding-margin', component: De });
+        var Te = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4239,16 +4239,16 @@
                 a = (t || {}).pageScreen,
                 o = (n || {}).getJSONDataByKeyRoute,
                 r = this.props,
-                i = r.nodeKey,
-                l = r.jsonKey,
+                l = r.nodeKey,
+                i = r.jsonKey,
                 s = r.keyRoute,
                 c = r.targetJsonSchema,
                 u = (c.readOnly, o(s)),
                 p = c.options,
-                m = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                d = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                m = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                d = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                 y = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -4257,7 +4257,7 @@
                     'wideScreen' === a
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  id: i,
+                  id: l,
                   style: m,
                 },
                 M.createElement(
@@ -4278,7 +4278,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(l, { length: 15 }),
+                          (0, Q.truncate)(i, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -4325,7 +4325,7 @@
             t
           );
         })(M.PureComponent);
-        (Ke.propTypes = {
+        (Te.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4333,8 +4333,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'radio', component: Ke });
-        var Te = (function (e) {
+          (0, ie.TS)({ type: 'radio', component: Te });
+        var Ke = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4363,16 +4363,16 @@
                 a = (t || {}).pageScreen,
                 o = (n || {}).getJSONDataByKeyRoute,
                 r = this.props,
-                i = r.nodeKey,
-                l = r.jsonKey,
+                l = r.nodeKey,
+                i = r.jsonKey,
                 s = r.keyRoute,
                 c = r.targetJsonSchema,
                 u = (c.readOnly, o(s)),
                 p = c.options,
-                m = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                d = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                m = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                d = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                 y = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -4381,7 +4381,7 @@
                     'wideScreen' === a
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
-                  id: i,
+                  id: l,
                   style: m,
                 },
                 M.createElement(
@@ -4402,7 +4402,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(l, { length: 15 }),
+                          (0, Q.truncate)(i, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -4450,7 +4450,7 @@
             t
           );
         })(M.PureComponent);
-        (Te.propTypes = {
+        (Ke.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4458,7 +4458,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'checkboxes', component: Te });
+          (0, ie.TS)({ type: 'checkboxes', component: Ke });
         var Pe = (function (e) {
           function t(t) {
             var n;
@@ -4494,26 +4494,26 @@
                 a = (t || {}).pageScreen,
                 o = n || {},
                 r = o.options,
-                i = o.getJSONDataByKeyRoute,
-                l = this.props,
-                s = l.nodeKey,
-                c = l.jsonKey,
-                u = l.keyRoute,
-                p = l.targetJsonSchema,
-                m = u && i(u),
+                l = o.getJSONDataByKeyRoute,
+                i = this.props,
+                s = i.nodeKey,
+                c = i.jsonKey,
+                u = i.keyRoute,
+                p = i.targetJsonSchema,
+                m = u && l(u),
                 d = p.readOnly || !1,
                 y = p.isRequired || !1,
                 h = p.autoComplete || !1,
                 g = r || {},
                 S = [];
               g.GlobalOptions &&
-                (0, Z.isArray)(g.GlobalOptions) &&
+                (0, Q.isArray)(g.GlobalOptions) &&
                 (S = g.GlobalOptions);
               var _ = p.options || S,
-                f = p.style ? (0, te.K8)((0, Q.toJS)(p.style)) : {},
-                b = p.titleStyle ? (0, te.K8)((0, Q.toJS)(p.titleStyle)) : {},
-                v = p.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(p.contentStyle))
+                f = p.style ? (0, te.K8)((0, Z.toJS)(p.style)) : {},
+                b = p.titleStyle ? (0, te.K8)((0, Z.toJS)(p.titleStyle)) : {},
+                E = p.contentStyle
+                  ? (0, te.K8)((0, Z.toJS)(p.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -4543,7 +4543,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(c, { length: 15 }),
+                          (0, Q.truncate)(c, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -4560,7 +4560,7 @@
                 ),
                 M.createElement(
                   'div',
-                  { className: 'content-item', style: v },
+                  { className: 'content-item', style: E },
                   M.createElement(
                     'div',
                     { className: 'form-item-box' },
@@ -4603,7 +4603,7 @@
           targetJsonSchema: W().any,
           onChange: W().any,
         }),
-          (0, le.TS)({ type: 'input', component: Pe });
+          (0, ie.TS)({ type: 'input', component: Pe });
         var Je = Pe,
           Ae = ee.Input.TextArea,
           Me = (function (e) {
@@ -4641,17 +4641,17 @@
                   a = (t || {}).pageScreen,
                   o = (n || {}).getJSONDataByKeyRoute,
                   r = this.props,
-                  i = r.keyRoute,
-                  l = r.jsonKey,
+                  l = r.keyRoute,
+                  i = r.jsonKey,
                   s = r.nodeKey,
                   c = r.targetJsonSchema,
-                  u = o(i),
+                  u = o(l),
                   p = c.readOnly || !1,
                   m = c.isRequired || !1,
-                  d = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                  y = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                  d = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                  y = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                   h = c.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                    ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                     : {};
                 return M.createElement(
                   'div',
@@ -4681,7 +4681,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(l, { length: 15 }),
+                            (0, Q.truncate)(i, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -4727,7 +4727,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'textarea', component: Me });
+          (0, ie.TS)({ type: 'textarea', component: Me });
         var Ve = require('braft-editor'),
           Be = __webpack_require__.n(Ve),
           Ie = require('braft-extensions/dist/color-picker'),
@@ -4749,7 +4749,7 @@
               exportAttrString: 'border="1" style="border-collapse: collapse"',
             }),
           );
-        var Ue = (function (e) {
+        var Fe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4831,19 +4831,19 @@
                 a = t.jsonStore,
                 o = (n || {}).pageScreen,
                 r = (a || {}).getJSONDataByKeyRoute,
-                i = this.props,
-                l = i.keyRoute,
-                s = i.jsonKey,
-                c = i.nodeKey,
-                u = i.targetJsonSchema,
+                l = this.props,
+                i = l.keyRoute,
+                s = l.jsonKey,
+                c = l.nodeKey,
+                u = l.targetJsonSchema,
                 p = this.state.isClosed,
-                m = r(l),
+                m = r(i),
                 d = Be().createEditorState(m),
                 y = u.readOnly || !1,
-                h = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
-                g = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
+                h = u.style ? (0, te.K8)((0, Z.toJS)(u.style)) : {},
+                g = u.titleStyle ? (0, te.K8)((0, Z.toJS)(u.titleStyle)) : {},
                 S = u.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(u.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -4881,7 +4881,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(s, { length: 15 }),
+                          (0, Q.truncate)(s, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -4941,7 +4941,7 @@
             t
           );
         })(M.PureComponent);
-        (Ue.propTypes = {
+        (Fe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -4950,9 +4950,9 @@
           targetJsonSchema: W().any,
           pageScreen: W().any,
         }),
-          (0, le.TS)({ type: 'text-editor', component: Ue }),
+          (0, ie.TS)({ type: 'text-editor', component: Fe }),
           __webpack_require__(9741);
-        var Fe = (function (e) {
+        var Ue = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5002,19 +5002,19 @@
                 a = t.jsonStore,
                 o = (n || {}).pageScreen,
                 r = (a || {}).getJSONDataByKeyRoute,
-                i = this.props,
-                l = i.keyRoute,
-                s = i.jsonKey,
-                c = (i.nodeKey, i.targetJsonSchema),
+                l = this.props,
+                i = l.keyRoute,
+                s = l.jsonKey,
+                c = (l.nodeKey, l.targetJsonSchema),
                 u = this.state.renderTime,
-                p = r(l),
+                p = r(i),
                 m = c.readOnly || !1,
                 d = c.isRequired || !1,
                 y = (0, te.y8)(c.type),
-                h = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                g = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                h = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                g = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                 S = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -5044,7 +5044,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(s, { length: 15 }),
+                          (0, Q.truncate)(s, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -5084,7 +5084,7 @@
                       ),
                       M.createElement(ee.InputNumber, {
                         key: 'inputNumber-' + u,
-                        id: 'inputNumber-' + l,
+                        id: 'inputNumber-' + i,
                         className: 'number-cont',
                         style: { display: 'inline-block' },
                         disabled: m,
@@ -5117,7 +5117,7 @@
             t
           );
         })(M.PureComponent);
-        (Fe.propTypes = {
+        (Ue.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5125,10 +5125,10 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'number', component: Fe });
+          (0, ie.TS)({ type: 'number', component: Ue });
         var ze = require('rc-switch'),
           Ge = __webpack_require__.n(ze),
-          $e =
+          He =
             (require('rc-switch/assets/index.css'),
             __webpack_require__(3512),
             (function (e) {
@@ -5163,20 +5163,20 @@
                     a = (t || {}).pageScreen,
                     o = (n || {}).getJSONDataByKeyRoute,
                     r = this.props,
-                    i = r.keyRoute,
-                    l = r.jsonKey,
+                    l = r.keyRoute,
+                    i = r.jsonKey,
                     s = r.nodeKey,
                     c = r.targetJsonSchema,
-                    u = o(i),
+                    u = o(l),
                     p = (0, te.y8)(c.type),
                     m =
                       (c.readOnly,
-                      c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {}),
+                      c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {}),
                     d = c.titleStyle
-                      ? (0, te.K8)((0, Q.toJS)(c.titleStyle))
+                      ? (0, te.K8)((0, Z.toJS)(c.titleStyle))
                       : {},
                     y = c.contentStyle
-                      ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                      ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                       : {};
                   return M.createElement(
                     'div',
@@ -5207,7 +5207,7 @@
                               'span',
                               null,
                               '（',
-                              (0, Z.truncate)(l, { length: 15 }),
+                              (0, Q.truncate)(i, { length: 15 }),
                               '）',
                             ),
                         ),
@@ -5243,7 +5243,7 @@
                 t
               );
             })(M.PureComponent));
-        ($e.propTypes = {
+        (He.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5251,10 +5251,10 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'boolean', component: $e }),
+          (0, ie.TS)({ type: 'boolean', component: He }),
           __webpack_require__(7546);
-        var He = ee.Select.Option,
-          Qe = (function (e) {
+        var $e = ee.Select.Option,
+          Ze = (function (e) {
             function t(t) {
               var n;
               return (
@@ -5263,23 +5263,23 @@
                   var a = n.props,
                     o = a.keyRoute,
                     r = a.jsonStore,
-                    i = a.targetJsonSchema,
-                    l = (r || {}).updateFormValueData,
+                    l = a.targetJsonSchema,
+                    i = (r || {}).updateFormValueData,
                     s = e,
-                    c = i.withLabel;
-                  if ((0, Z.isArray)(e)) {
+                    c = l.withLabel;
+                  if ((0, Q.isArray)(e)) {
                     var u = [];
                     e.forEach(function (e, a) {
                       var o,
                         r = e;
-                      (0, Z.isObject)(r) &&
+                      (0, Q.isObject)(r) &&
                         (r = JSON.stringify(e)).replaceAll(' ', '');
-                      var i = null != (o = n.optionValue[r]) ? o : e;
+                      var l = null != (o = n.optionValue[r]) ? o : e;
                       c &&
                         t &&
-                        (0, Z.isArray)(t) &&
-                        (i = { value: i, label: t[a].children || t[a].label }),
-                        u.push(i);
+                        (0, Q.isArray)(t) &&
+                        (l = { value: l, label: t[a].children || t[a].label }),
+                        u.push(l);
                     }),
                       (s = u);
                   } else {
@@ -5289,7 +5289,7 @@
                         t &&
                         (s = { value: s, label: t.children || t.label });
                   }
-                  l(o, s);
+                  i(o, s);
                 }),
                 (n.handleValueChange = n.handleValueChange.bind(n)),
                 n
@@ -5312,42 +5312,42 @@
                   a = this.props,
                   o = a.schemaStore,
                   r = a.jsonStore,
-                  i = (o || {}).pageScreen,
-                  l = (r || {}).getJSONDataByKeyRoute,
+                  l = (o || {}).pageScreen,
+                  i = (r || {}).getJSONDataByKeyRoute,
                   s = this.props,
                   c = s.nodeKey,
                   u = s.jsonKey,
                   p = s.keyRoute,
                   m = s.targetJsonSchema,
                   d = m.readOnly || !1,
-                  y = l(p),
+                  y = i(p),
                   h = m.options,
                   g = (0, te.y8)(m.type),
-                  S = (0, te.or)((0, Q.toJS)(h));
+                  S = (0, te.or)((0, Z.toJS)(h));
                 if (
                   ((h = S.options),
                   (this.optionValue = S.optionValue),
-                  (0, Z.isArray)(y))
+                  (0, Q.isArray)(y))
                 ) {
                   var _ = [];
                   y.forEach(function (e) {
                     var t = e;
-                    (0, Z.isObject)(t) && (t = JSON.stringify(e)), _.push(t);
+                    (0, Q.isObject)(t) && (t = JSON.stringify(e)), _.push(t);
                   }),
                     (y = _);
                 }
                 var f = null != y ? y : m.default;
-                (0, Z.isObject)(f) && (f = JSON.stringify(f));
-                var b = m.style ? (0, te.K8)((0, Q.toJS)(m.style)) : {},
-                  v = m.titleStyle ? (0, te.K8)((0, Q.toJS)(m.titleStyle)) : {},
-                  E = m.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(m.contentStyle))
+                (0, Q.isObject)(f) && (f = JSON.stringify(f));
+                var b = m.style ? (0, te.K8)((0, Z.toJS)(m.style)) : {},
+                  E = m.titleStyle ? (0, te.K8)((0, Z.toJS)(m.titleStyle)) : {},
+                  v = m.contentStyle
+                    ? (0, te.K8)((0, Z.toJS)(m.contentStyle))
                     : {};
                 return M.createElement(
                   'div',
                   {
                     className:
-                      'wideScreen' === i
+                      'wideScreen' === l
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp ' +
                           (g ? 'two-col-element-warp' : ''),
@@ -5356,11 +5356,11 @@
                   },
                   M.createElement(
                     'div',
-                    { className: 'element-title', style: v },
+                    { className: 'element-title', style: E },
                     M.createElement(
                       ee.Tooltip,
                       {
-                        title: 'wideScreen' === i ? m.description : '',
+                        title: 'wideScreen' === l ? m.description : '',
                         placement: 'top',
                       },
                       M.createElement(
@@ -5372,12 +5372,12 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(u, { length: 15 }),
+                            (0, Q.truncate)(u, { length: 15 }),
                             '）',
                           ),
                       ),
                     ),
-                    'mobileScreen' === i &&
+                    'mobileScreen' === l &&
                       m.description &&
                       M.createElement(
                         ee.Tooltip,
@@ -5389,7 +5389,7 @@
                   ),
                   M.createElement(
                     'div',
-                    { className: 'content-item', style: E },
+                    { className: 'content-item', style: v },
                     M.createElement(
                       'div',
                       { className: 'form-item-box select-box' },
@@ -5412,7 +5412,7 @@
                             var n = e.label || e.name,
                               a = c + '-select-' + n;
                             return M.createElement(
-                              He,
+                              $e,
                               { value: e.value, key: a },
                               n,
                             );
@@ -5425,7 +5425,7 @@
               t
             );
           })(M.PureComponent);
-        (Qe.propTypes = {
+        (Ze.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5434,9 +5434,9 @@
           targetJsonSchema: W().any,
           withLabel: W().any,
         }),
-          (0, le.TS)({ type: 'select', component: Qe }),
+          (0, ie.TS)({ type: 'select', component: Ze }),
           __webpack_require__(3794);
-        var Ze = (function (e) {
+        var Qe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5465,27 +5465,27 @@
                 a = this.props,
                 o = a.schemaStore,
                 r = a.jsonStore,
-                i = (o || {}).pageScreen,
-                l = (r || {}).getJSONDataByKeyRoute,
+                l = (o || {}).pageScreen,
+                i = (r || {}).getJSONDataByKeyRoute,
                 s = this.props,
                 c = s.nodeKey,
                 u = s.jsonKey,
                 p = s.keyRoute,
                 m = s.targetJsonSchema,
-                d = l(p),
+                d = i(p),
                 y = m.options || [],
                 h = (0, te.y8)(m.type),
                 g =
-                  (m.readOnly, m.style ? (0, te.K8)((0, Q.toJS)(m.style)) : {}),
-                S = m.titleStyle ? (0, te.K8)((0, Q.toJS)(m.titleStyle)) : {},
+                  (m.readOnly, m.style ? (0, te.K8)((0, Z.toJS)(m.style)) : {}),
+                S = m.titleStyle ? (0, te.K8)((0, Z.toJS)(m.titleStyle)) : {},
                 _ = m.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(m.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(m.contentStyle))
                   : {};
               return M.createElement(
                 'div',
                 {
                   className:
-                    'wideScreen' === i
+                    'wideScreen' === l
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (h ? 'two-col-element-warp' : ''),
@@ -5498,7 +5498,7 @@
                   M.createElement(
                     ee.Tooltip,
                     {
-                      title: 'wideScreen' === i ? m.description : '',
+                      title: 'wideScreen' === l ? m.description : '',
                       placement: 'top',
                     },
                     M.createElement(
@@ -5510,12 +5510,12 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(u, { length: 15 }),
+                          (0, Q.truncate)(u, { length: 15 }),
                           '）',
                         ),
                     ),
                   ),
-                  'mobileScreen' === i &&
+                  'mobileScreen' === l &&
                     m.description &&
                     M.createElement(
                       ee.Tooltip,
@@ -5548,7 +5548,7 @@
             t
           );
         })(M.PureComponent);
-        (Ze.propTypes = {
+        (Qe.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -5556,7 +5556,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'cascader', component: Ze });
+          (0, ie.TS)({ type: 'cascader', component: Qe });
         var Ye = (function (e) {
           function t(t) {
             var n;
@@ -5602,21 +5602,21 @@
                 a = t.jsonStore,
                 o = (n || {}).pageScreen,
                 r = a || {},
-                i = r.getJSONDataByKeyRoute,
-                l = r.options,
+                l = r.getJSONDataByKeyRoute,
+                i = r.options,
                 s = this.props,
                 c = s.nodeKey,
                 u = s.jsonKey,
                 p = s.keyRoute,
                 m = s.targetJsonSchema,
-                d = l || {},
+                d = i || {},
                 y = this.state.loading,
-                h = p && i(p),
+                h = p && l(p),
                 g = m.readOnly || !1,
                 S = (m.isRequired, []);
-              h && (0, Z.isArray)(h)
+              h && (0, Q.isArray)(h)
                 ? (S = h)
-                : h && (0, Z.isString)(h) && S.push(h);
+                : h && (0, Q.isString)(h) && S.push(h);
               var _ = {
                   name: 'file',
                   action: m.uploadAction || d.uploadAction,
@@ -5630,10 +5630,10 @@
                   onChange: this.handleImageChange,
                   onRemove: this.handleDeleteChange,
                 },
-                f = m.style ? (0, te.K8)((0, Q.toJS)(m.style)) : {},
-                b = m.titleStyle ? (0, te.K8)((0, Q.toJS)(m.titleStyle)) : {},
-                v = m.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(m.contentStyle))
+                f = m.style ? (0, te.K8)((0, Z.toJS)(m.style)) : {},
+                b = m.titleStyle ? (0, te.K8)((0, Z.toJS)(m.titleStyle)) : {},
+                E = m.contentStyle
+                  ? (0, te.K8)((0, Z.toJS)(m.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -5663,7 +5663,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(u, { length: 15 }),
+                          (0, Q.truncate)(u, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -5680,13 +5680,13 @@
                 ),
                 M.createElement(
                   'div',
-                  { className: 'content-item', style: v },
+                  { className: 'content-item', style: E },
                   M.createElement(
                     'div',
                     { className: 'form-item-box' },
                     M.createElement(
                       ee.Upload,
-                      ie()({}, _, { disabled: g }),
+                      le()({}, _, { disabled: g }),
                       M.createElement(
                         'button',
                         {
@@ -5723,7 +5723,7 @@
           targetJsonSchema: W().any,
           onChange: W().any,
         }),
-          (0, le.TS)({ type: 'input-image', component: Ye });
+          (0, ie.TS)({ type: 'input-image', component: Ye });
         var Xe = require('moment'),
           et = __webpack_require__.n(Xe),
           tt = {
@@ -5764,21 +5764,21 @@
                   a = (t || {}).pageScreen,
                   o = (n || {}).getJSONDataByKeyRoute,
                   r = this.props,
-                  i = r.keyRoute,
-                  l = r.jsonKey,
+                  l = r.keyRoute,
+                  i = r.jsonKey,
                   s = r.nodeKey,
                   c = r.targetJsonSchema,
                   u = c.type,
                   p = c.readOnly || !1,
                   m = c.isRequired || !1,
                   d = tt[u] || tt[0],
-                  y = o(i),
+                  y = o(l),
                   h = null != y ? y : c.default,
                   g = (0, te.y8)(u),
-                  S = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                  _ = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                  S = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                  _ = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                   f = c.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                    ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                     : {};
                 return M.createElement(
                   'div',
@@ -5809,7 +5809,7 @@
                             'span',
                             null,
                             '（',
-                            (0, Z.truncate)(l, { length: 15 }),
+                            (0, Q.truncate)(i, { length: 15 }),
                             '）',
                           ),
                       ),
@@ -5855,8 +5855,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'date', component: nt }),
-          (0, le.TS)({ type: 'date-time', component: nt });
+          (0, ie.TS)({ type: 'date', component: nt }),
+          (0, ie.TS)({ type: 'date-time', component: nt });
         var at = (function (e) {
           function t(t) {
             var n;
@@ -5889,8 +5889,8 @@
                 a = (t || {}).pageScreen,
                 o = (n || {}).getJSONDataByKeyRoute,
                 r = this.props,
-                i = r.nodeKey,
-                l = r.jsonKey,
+                l = r.nodeKey,
+                i = r.jsonKey,
                 s = r.keyRoute,
                 c = r.targetJsonSchema,
                 u = o(s),
@@ -5898,10 +5898,10 @@
                 m = c.readOnly || !1,
                 d = c.isRequired || !1,
                 y = (0, te.y8)(c.type),
-                h = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                g = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                h = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                g = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                 S = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -5911,7 +5911,7 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp ' +
                         (y ? 'two-col-element-warp' : ''),
-                  id: i,
+                  id: l,
                   style: h,
                 },
                 M.createElement(
@@ -5932,7 +5932,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(l, { length: 15 }),
+                          (0, Q.truncate)(i, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -5976,7 +5976,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'time', component: at });
+          (0, ie.TS)({ type: 'time', component: at });
         var ot = (function (e) {
           function t(t) {
             var n;
@@ -6006,17 +6006,17 @@
                 a = (t || {}).pageScreen,
                 o = (n || {}).getJSONDataByKeyRoute,
                 r = this.props,
-                i = r.keyRoute,
-                l = r.jsonKey,
+                l = r.keyRoute,
+                i = r.jsonKey,
                 s = r.nodeKey,
                 c = r.targetJsonSchema,
-                u = o(i),
+                u = o(l),
                 p = c.readOnly || !1,
                 m = c.isRequired || !1,
-                d = c.style ? (0, te.K8)((0, Q.toJS)(c.style)) : {},
-                y = c.titleStyle ? (0, te.K8)((0, Q.toJS)(c.titleStyle)) : {},
+                d = c.style ? (0, te.K8)((0, Z.toJS)(c.style)) : {},
+                y = c.titleStyle ? (0, te.K8)((0, Z.toJS)(c.titleStyle)) : {},
                 h = c.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(c.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(c.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -6046,7 +6046,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(l, { length: 15 }),
+                          (0, Q.truncate)(i, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -6091,9 +6091,9 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'url', component: ot });
+          (0, ie.TS)({ type: 'url', component: ot });
         var rt = require('react-color'),
-          it =
+          lt =
             (__webpack_require__(6220),
             (function (e) {
               function t(t) {
@@ -6141,23 +6141,23 @@
                     a = t.jsonStore,
                     o = (n || {}).pageScreen,
                     r = (a || {}).getJSONDataByKeyRoute,
-                    i = this.props,
-                    l = i.keyRoute,
-                    s = i.jsonKey,
-                    c = i.nodeKey,
-                    u = i.targetJsonSchema,
+                    l = this.props,
+                    i = l.keyRoute,
+                    s = l.jsonKey,
+                    c = l.nodeKey,
+                    u = l.targetJsonSchema,
                     p = this.state,
                     m = p.renderState,
                     d = p.displayColorPicker,
                     y = u.readOnly || !1,
-                    h = r(l),
+                    h = r(i),
                     g = (0, te.y8)(u.type),
-                    S = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
+                    S = u.style ? (0, te.K8)((0, Z.toJS)(u.style)) : {},
                     _ = u.titleStyle
-                      ? (0, te.K8)((0, Q.toJS)(u.titleStyle))
+                      ? (0, te.K8)((0, Z.toJS)(u.titleStyle))
                       : {},
                     f = u.contentStyle
-                      ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
+                      ? (0, te.K8)((0, Z.toJS)(u.contentStyle))
                       : {},
                     b = M.createElement(rt.SketchPicker, {
                       className: 'color-sketch-picker',
@@ -6194,7 +6194,7 @@
                               'span',
                               null,
                               '（',
-                              (0, Z.truncate)(s, { length: 15 }),
+                              (0, Q.truncate)(s, { length: 15 }),
                               '）',
                             ),
                         ),
@@ -6275,7 +6275,7 @@
                 t
               );
             })(M.PureComponent));
-        (it.propTypes = {
+        (lt.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -6283,8 +6283,8 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'color', component: it });
-        var lt = (function (e) {
+          (0, ie.TS)({ type: 'color', component: lt });
+        var it = (function (e) {
           function t(t) {
             var n;
             return (
@@ -6319,11 +6319,11 @@
                 a = t.jsonStore,
                 o = (n || {}).pageScreen,
                 r = (a || {}).getJSONDataByKeyRoute,
-                i = this.props,
-                l = i.nodeKey,
-                s = i.jsonKey,
-                c = i.keyRoute,
-                u = i.targetJsonSchema,
+                l = this.props,
+                i = l.nodeKey,
+                s = l.jsonKey,
+                c = l.keyRoute,
+                u = l.targetJsonSchema,
                 p = this.state,
                 m = p.isShowWarn,
                 d = p.warnText,
@@ -6333,10 +6333,10 @@
               (g = void 0 !== g ? g : u.default || '{}'),
                 ((0, ne.Gv)(g) || (0, ne.cy)(g)) &&
                   (g = JSON.stringify(g, null, 2));
-              var S = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
-                _ = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
+              var S = u.style ? (0, te.K8)((0, Z.toJS)(u.style)) : {},
+                _ = u.titleStyle ? (0, te.K8)((0, Z.toJS)(u.titleStyle)) : {},
                 f = u.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(u.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -6345,7 +6345,7 @@
                     'wideScreen' === o
                       ? 'wide-screen-element-warp container-warp'
                       : 'mobile-screen-element-warp',
-                  id: l,
+                  id: i,
                   style: S,
                 },
                 M.createElement(
@@ -6366,7 +6366,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(s, { length: 15 }),
+                          (0, Q.truncate)(s, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -6392,7 +6392,7 @@
                       M.createElement('div', { className: 'warning-text' }, d),
                     ),
                   M.createElement(pe(), {
-                    id: l + '-json_area_ace',
+                    id: i + '-json_area_ace',
                     value: (0, te.GT)(y) ? y : g,
                     className: 'code-area-item',
                     mode: 'json',
@@ -6434,7 +6434,7 @@
             t
           );
         })(M.PureComponent);
-        (lt.propTypes = {
+        (it.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
           indexRoute: W().string,
@@ -6442,7 +6442,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'json', component: lt }),
+          (0, ie.TS)({ type: 'json', component: it }),
           __webpack_require__(9566),
           require('ace-builds/src-noconflict/mode-html'),
           __webpack_require__(6953);
@@ -6476,11 +6476,11 @@
                 a = t.jsonStore,
                 o = (n || {}).pageScreen,
                 r = (a || {}).getJSONDataByKeyRoute,
-                i = this.props,
-                l = i.nodeKey,
-                s = i.jsonKey,
-                c = i.keyRoute,
-                u = i.targetJsonSchema,
+                l = this.props,
+                i = l.nodeKey,
+                s = l.jsonKey,
+                c = l.keyRoute,
+                u = l.targetJsonSchema,
                 p = this.state,
                 m = p.isShowWarn,
                 d = p.warnText,
@@ -6488,10 +6488,10 @@
                 h = r(c);
               (h = void 0 !== h ? h : u.default || '<p>hello</p>'),
                 (0, ne.Gv)(h) && (h = JSON.stringify(h, null, 2));
-              var g = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
-                S = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
+              var g = u.style ? (0, te.K8)((0, Z.toJS)(u.style)) : {},
+                S = u.titleStyle ? (0, te.K8)((0, Z.toJS)(u.titleStyle)) : {},
                 _ = u.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
+                  ? (0, te.K8)((0, Z.toJS)(u.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -6500,7 +6500,7 @@
                     'wideScreen' === o
                       ? 'wide-screen-element-warp container-warp'
                       : 'mobile-screen-element-warp',
-                  id: l,
+                  id: i,
                   style: g,
                 },
                 M.createElement(
@@ -6521,7 +6521,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(s, { length: 15 }),
+                          (0, Q.truncate)(s, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -6548,7 +6548,7 @@
                     ),
                   M.createElement(pe(), {
                     id: 'code_area_ace',
-                    key: l + '-ace',
+                    key: i + '-ace',
                     className: 'code-area-item',
                     value: h,
                     mode: 'html',
@@ -6590,60 +6590,799 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'htmlarea', component: st });
-        var ct = (function (e) {
-          function t() {
-            return e.apply(this, arguments) || this;
+          (0, ie.TS)({ type: 'htmlarea', component: st });
+        var ct = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
+          ut = __webpack_require__.n(ct),
+          pt = (__webpack_require__(4754), ['key', 'name']),
+          mt = ['key', 'name'],
+          dt = ee.Tabs.TabPane,
+          yt = (function (e) {
+            function t(t) {
+              var n;
+              return (
+                ((n = e.call(this, t) || this).showModal = function () {
+                  n.setState({ visible: !0 });
+                }),
+                (n.handleOk = function () {
+                  n.form.validateFields().then(function (e) {
+                    var t = n.props,
+                      a = t.keyRoute,
+                      o = t.jsonStore;
+                    if (e.headers && Array.isArray(e.headers)) {
+                      var r = {};
+                      e.headers.forEach(function (e) {
+                        e.key && (r[e.key] = e.value || '');
+                      }),
+                        (e.headers = r);
+                    } else if ('string' == typeof e.headers)
+                      try {
+                        e.headers = JSON.parse(e.headers || '{}');
+                      } catch (t) {
+                        e.headers = {};
+                      }
+                    if (e.data && Array.isArray(e.data)) {
+                      var l = {};
+                      e.data.forEach(function (e) {
+                        if (e.key)
+                          try {
+                            l[e.key] = JSON.parse(e.value);
+                          } catch (t) {
+                            l[e.key] = e.value;
+                          }
+                      }),
+                        (e.data = l);
+                    } else if ('string' == typeof e.data)
+                      try {
+                        e.data = JSON.parse(e.data || '{}');
+                      } catch (t) {
+                        e.data = {};
+                      }
+                    e.cache ? (e.cache = e.cacheTime || 3e3) : delete e.cache,
+                      delete e.cacheTime,
+                      e.headers &&
+                        0 === Object.keys(e.headers).length &&
+                        delete e.headers,
+                      e.data &&
+                        0 === Object.keys(e.data).length &&
+                        delete e.data,
+                      n.props.onChange
+                        ? n.props.onChange(e)
+                        : o.updateFormValueData(a, e),
+                      n.setState({ visible: !1 });
+                  });
+                }),
+                (n.handleCancel = function () {
+                  n.setState({ visible: !1 });
+                }),
+                (n.state = { visible: !1 }),
+                (n.showModal = n.showModal.bind(n)),
+                (n.handleOk = n.handleOk.bind(n)),
+                (n.handleCancel = n.handleCancel.bind(n)),
+                n
+              );
+            }
+            return (
+              A()(t, e),
+              (t.prototype.render = function () {
+                var e,
+                  t,
+                  n,
+                  a,
+                  o,
+                  r = this,
+                  l = this.props,
+                  i = l.schemaStore,
+                  s = l.jsonStore,
+                  c = (i || {}).pageScreen,
+                  u = this.props,
+                  p = u.keyRoute,
+                  m = u.targetJsonSchema,
+                  d = u.nodeKey,
+                  y = this.state.visible,
+                  h = (p ? s.getJSONDataByKeyRoute(p) : {}) || {},
+                  g = m.properties || {},
+                  S = g.url || {},
+                  _ = g.method || {},
+                  f = g.headers || {},
+                  b = g.data || {},
+                  E = g.dataType || {},
+                  v = g.cache || {},
+                  w = g.cacheTime || {},
+                  O = m.style ? (0, te.K8)((0, Z.toJS)(m.style)) : {},
+                  C = m.titleStyle ? (0, te.K8)((0, Z.toJS)(m.titleStyle)) : {},
+                  x = m.contentStyle
+                    ? (0, te.K8)((0, Z.toJS)(m.contentStyle))
+                    : {},
+                  N =
+                    (null == (e = h.method) ? void 0 : e.toUpperCase()) ||
+                    'GET',
+                  R = ('GET' !== N ? N + ': ' : '') + (h.url || '');
+                return V().createElement(
+                  'div',
+                  {
+                    className:
+                      'wideScreen' === c
+                        ? 'wide-screen-element-warp'
+                        : 'mobile-screen-element-warp',
+                    id: d,
+                    style: O,
+                  },
+                  V().createElement(
+                    'div',
+                    { className: 'element-title', style: C },
+                    V().createElement(
+                      'span',
+                      { className: 'title-text', title: m.title },
+                      m.title,
+                      m.showKey &&
+                        V().createElement('span', null, '（', m.jsonKey, '）'),
+                    ),
+                  ),
+                  V().createElement(
+                    'div',
+                    { className: 'content-item', style: x },
+                    V().createElement(
+                      'div',
+                      {
+                        className: 'api-schema',
+                        onClick: this.showModal,
+                        style: { cursor: 'pointer' },
+                      },
+                      R || '点击配置 API',
+                    ),
+                  ),
+                  V().createElement(
+                    ee.Modal,
+                    {
+                      title: m.title || 'API 配置',
+                      visible: y,
+                      onOk: this.handleOk,
+                      onCancel: this.handleCancel,
+                      width: 800,
+                      okText: '确定',
+                      cancelText: '取消',
+                    },
+                    V().createElement(
+                      ee.Form,
+                      {
+                        ref: function (e) {
+                          return (r.form = e);
+                        },
+                        initialValues: {
+                          url: h.url || '',
+                          method: h.method || 'get',
+                          dataType: h.dataType || 'json',
+                          cache: !!h.cache,
+                          cacheTime: 'number' == typeof h.cache ? h.cache : 3e3,
+                          headers:
+                            ((o = h.headers),
+                            o && 'object' == typeof o
+                              ? Object.keys(o).map(function (e) {
+                                  return {
+                                    key: e,
+                                    value:
+                                      'string' == typeof o[e]
+                                        ? o[e]
+                                        : JSON.stringify(o[e]),
+                                  };
+                                })
+                              : []),
+                          data:
+                            ((a = h.data),
+                            a && 'object' == typeof a
+                              ? Object.keys(a).map(function (e) {
+                                  return {
+                                    key: e,
+                                    value:
+                                      'string' == typeof a[e]
+                                        ? a[e]
+                                        : JSON.stringify(a[e]),
+                                  };
+                                })
+                              : []),
+                        },
+                        layout: 'vertical',
+                      },
+                      V().createElement(
+                        ee.Tabs,
+                        { defaultActiveKey: '1' },
+                        V().createElement(
+                          dt,
+                          {
+                            tab:
+                              (null == (t = m.tabTitles) ? void 0 : t.basic) ||
+                              '接口设置',
+                            key: '1',
+                          },
+                          V().createElement(
+                            ee.Form.Item,
+                            {
+                              name: 'method',
+                              label: _.title || '发送方式',
+                              rules: [{ required: !1 !== _.isRequired }],
+                            },
+                            V().createElement(
+                              ee.Select,
+                              null,
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'get' },
+                                'GET',
+                              ),
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'post' },
+                                'POST',
+                              ),
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'put' },
+                                'PUT',
+                              ),
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'patch' },
+                                'PATCH',
+                              ),
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'delete' },
+                                'DELETE',
+                              ),
+                            ),
+                          ),
+                          V().createElement(
+                            ee.Form.Item,
+                            {
+                              name: 'url',
+                              label: S.title || '接口地址',
+                              rules: [{ required: !1 !== S.isRequired }],
+                            },
+                            V().createElement(ee.Input, {
+                              placeholder: S.placeholder || 'http://',
+                            }),
+                          ),
+                          V().createElement(
+                            ee.Form.Item,
+                            { name: 'dataType', label: E.title || '数据格式' },
+                            V().createElement(
+                              ee.Select,
+                              null,
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'json' },
+                                'JSON',
+                              ),
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'form-data' },
+                                'FormData',
+                              ),
+                              V().createElement(
+                                ee.Select.Option,
+                                { value: 'form' },
+                                'Form',
+                              ),
+                            ),
+                            V().createElement(
+                              ee.Form.Item,
+                              {
+                                noStyle: !0,
+                                shouldUpdate: function (e, t) {
+                                  return e.dataType !== t.dataType;
+                                },
+                              },
+                              function (e) {
+                                var t =
+                                  (0, e.getFieldValue)('dataType') || 'json';
+                                return V().createElement(
+                                  'div',
+                                  {
+                                    style: {
+                                      fontSize: '12px',
+                                      color: '#999',
+                                      marginTop: '4px',
+                                    },
+                                  },
+                                  E.description ||
+                                    '发送体格式为：' +
+                                      {
+                                        json: 'application/json',
+                                        'form-data': 'multipart/form-data',
+                                        form: 'application/x-www-form-urlencoded',
+                                      }[t] +
+                                      '，当发送内容中存在文件时会自动使用 form-data 格式。',
+                                );
+                              },
+                            ),
+                          ),
+                          V().createElement(
+                            ee.Form.Item,
+                            {
+                              name: 'cache',
+                              label: v.title || '是否设置缓存',
+                              valuePropName: 'checked',
+                            },
+                            V().createElement(ee.Switch, null),
+                          ),
+                          V().createElement(
+                            ee.Form.Item,
+                            {
+                              noStyle: !0,
+                              shouldUpdate: function (e, t) {
+                                return e.cache !== t.cache;
+                              },
+                            },
+                            function (e) {
+                              return (0, e.getFieldValue)('cache')
+                                ? V().createElement(
+                                    ee.Form.Item,
+                                    {
+                                      name: 'cacheTime',
+                                      label: w.title || '缓存时间（ms）',
+                                    },
+                                    V().createElement(ee.InputNumber, {
+                                      min: 0,
+                                      step: 500,
+                                      style: { width: '100%' },
+                                    }),
+                                    V().createElement(
+                                      'div',
+                                      {
+                                        style: {
+                                          fontSize: '12px',
+                                          color: '#999',
+                                          marginTop: '4px',
+                                        },
+                                      },
+                                      w.description ||
+                                        '设置该请求缓存有效时间，单位 ms',
+                                    ),
+                                  )
+                                : null;
+                            },
+                          ),
+                        ),
+                        V().createElement(
+                          dt,
+                          {
+                            tab:
+                              (null == (n = m.tabTitles) ? void 0 : n.http) ||
+                              'HTTP配置',
+                            key: '2',
+                          },
+                          V().createElement(
+                            'div',
+                            { style: { marginBottom: '16px' } },
+                            V().createElement(
+                              'h4',
+                              { style: { marginBottom: '12px' } },
+                              f.title || '请求头 (Headers)',
+                            ),
+                            V().createElement(
+                              ee.Form.List,
+                              { name: 'headers' },
+                              function (e, t) {
+                                var n = t.add,
+                                  a = t.remove;
+                                return V().createElement(
+                                  V().Fragment,
+                                  null,
+                                  e.map(function (e) {
+                                    var t = e.key,
+                                      n = e.name,
+                                      o = ut()(e, pt);
+                                    return V().createElement(
+                                      ee.Space,
+                                      {
+                                        key: t,
+                                        style: {
+                                          display: 'flex',
+                                          marginBottom: 8,
+                                        },
+                                        align: 'baseline',
+                                      },
+                                      V().createElement(
+                                        ee.Form.Item,
+                                        le()({}, o, {
+                                          name: [n, 'key'],
+                                          rules: [
+                                            {
+                                              required: !0,
+                                              message: '请输入Key',
+                                            },
+                                          ],
+                                          style: { flex: 1 },
+                                        }),
+                                        V().createElement(ee.Input, {
+                                          placeholder: 'Key',
+                                        }),
+                                      ),
+                                      V().createElement(
+                                        ee.Form.Item,
+                                        le()({}, o, {
+                                          name: [n, 'value'],
+                                          style: { flex: 1 },
+                                        }),
+                                        V().createElement(ee.Input, {
+                                          placeholder: 'Value',
+                                        }),
+                                      ),
+                                      V().createElement(
+                                        se.MinusCircleOutlined,
+                                        {
+                                          onClick: function () {
+                                            return a(n);
+                                          },
+                                        },
+                                      ),
+                                    );
+                                  }),
+                                  V().createElement(
+                                    ee.Form.Item,
+                                    null,
+                                    V().createElement(
+                                      ee.Button,
+                                      {
+                                        type: 'dashed',
+                                        onClick: function () {
+                                          return n();
+                                        },
+                                        block: !0,
+                                        icon: V().createElement(
+                                          se.PlusOutlined,
+                                          null,
+                                        ),
+                                      },
+                                      '添加请求头',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          V().createElement(
+                            'div',
+                            { style: { marginBottom: '16px' } },
+                            V().createElement(
+                              'h4',
+                              { style: { marginBottom: '12px' } },
+                              b.title || '发送数据 (Data)',
+                            ),
+                            V().createElement(
+                              ee.Form.List,
+                              { name: 'data' },
+                              function (e, t) {
+                                var n = t.add,
+                                  a = t.remove;
+                                return V().createElement(
+                                  V().Fragment,
+                                  null,
+                                  e.map(function (e) {
+                                    var t = e.key,
+                                      n = e.name,
+                                      o = ut()(e, mt);
+                                    return V().createElement(
+                                      ee.Space,
+                                      {
+                                        key: t,
+                                        style: {
+                                          display: 'flex',
+                                          marginBottom: 8,
+                                        },
+                                        align: 'baseline',
+                                      },
+                                      V().createElement(
+                                        ee.Form.Item,
+                                        le()({}, o, {
+                                          name: [n, 'key'],
+                                          rules: [
+                                            {
+                                              required: !0,
+                                              message: '请输入Key',
+                                            },
+                                          ],
+                                          style: { flex: 1 },
+                                        }),
+                                        V().createElement(ee.Input, {
+                                          placeholder: 'Key',
+                                        }),
+                                      ),
+                                      V().createElement(
+                                        ee.Form.Item,
+                                        le()({}, o, {
+                                          name: [n, 'value'],
+                                          style: { flex: 1 },
+                                        }),
+                                        V().createElement(ee.Input, {
+                                          placeholder: 'Value (支持JSON)',
+                                        }),
+                                      ),
+                                      V().createElement(
+                                        se.MinusCircleOutlined,
+                                        {
+                                          onClick: function () {
+                                            return a(n);
+                                          },
+                                        },
+                                      ),
+                                    );
+                                  }),
+                                  V().createElement(
+                                    ee.Form.Item,
+                                    null,
+                                    V().createElement(
+                                      ee.Button,
+                                      {
+                                        type: 'dashed',
+                                        onClick: function () {
+                                          return n();
+                                        },
+                                        block: !0,
+                                        icon: V().createElement(
+                                          se.PlusOutlined,
+                                          null,
+                                        ),
+                                      },
+                                      '添加发送数据',
+                                    ),
+                                  ),
+                                  b.description &&
+                                    V().createElement(
+                                      'div',
+                                      {
+                                        style: {
+                                          fontSize: '12px',
+                                          color: '#999',
+                                          marginTop: '8px',
+                                        },
+                                      },
+                                      b.description,
+                                    ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }),
+              t
+            );
+          })(V().PureComponent);
+        (yt.propTypes = {
+          parentType: W().any,
+          jsonKey: W().string,
+          indexRoute: W().any,
+          keyRoute: W().any,
+          nodeKey: W().string,
+          targetJsonSchema: W().any,
+          onChange: W().any,
+        }),
+          (0, ie.TS)({ type: 'api', component: yt }),
+          __webpack_require__(8678);
+        var ht = (function (e) {
+          function t(t) {
+            var n;
+            return (
+              ((n = e.call(this, t) || this).handleValueChange = function (
+                e,
+                t,
+              ) {
+                (0, (n.props.jsonStore || {}).updateFormValueData)(e, t);
+              }),
+              (n.switchFilterBtn = function () {
+                var e = n.state.isShowFilter;
+                n.setState({ isShowFilter: !e });
+              }),
+              (n.tabChange = function (e) {
+                var t = n.props,
+                  a = t.keyRoute,
+                  o = (t.jsonStore || {}).triggerChangeAction;
+                n.handleValueChange(a + '-type', e),
+                  setTimeout(function () {
+                    o();
+                  }, 100);
+              }),
+              (n.handleApiConfigChange = function (e) {
+                var t = n.props,
+                  a = t.keyRoute,
+                  o = (t.jsonStore || {}).triggerChangeAction;
+                n.handleValueChange(a + '-config', e),
+                  setTimeout(function () {
+                    o();
+                  }, 100);
+              }),
+              (n.state = { isShowFilter: !1 }),
+              (n.switchFilterBtn = n.switchFilterBtn.bind(n)),
+              n
+            );
           }
+          A()(t, e);
+          var n = t.prototype;
           return (
-            A()(t, e),
-            (t.prototype.render = function () {
-              var e = this.props,
-                t = e.pageScreen,
-                n = e.mockData,
-                a = e.dataRoute,
-                o = e.nodeKey,
-                r = e.onChange,
-                i = [];
-              if (n && '{}' !== JSON.stringify(n)) {
-                var l = n;
-                if (!(0, Z.isObject)(n) && '' !== n)
-                  try {
-                    l = JSON.parse(n);
-                  } catch (e) {
-                    console.log('当前数据源的请求参数格式异常'), (l = {});
-                  }
-                i = (0, Z.json2treeData)(l);
-              }
+            (n.componentWillMount = function () {
+              he.x.call(this);
+            }),
+            (n.componentWillReceiveProps = function (e) {
+              e.keyRoute !== this.props.keyRoute && he.x.call(this, e.keyRoute);
+            }),
+            (n.render = function () {
+              var e = this,
+                t = this.props,
+                n = t.schemaStore,
+                a = t.jsonStore,
+                o = (n || {}).pageScreen,
+                r = a || {},
+                l = r.getJSONDataByKeyRoute,
+                i = r.triggerChange,
+                s = this.props,
+                c = s.keyRoute,
+                u = s.jsonKey,
+                p = s.nodeKey,
+                m = s.indexRoute,
+                d = s.targetJsonSchema,
+                y = s.renderChild,
+                h = this.state.isShowFilter,
+                g = d.type,
+                S = l(c) || {},
+                _ = d.properties.type || {},
+                f = S.type || _.default,
+                b = (S.config, d.properties.data || {}),
+                E = d.properties.config || {},
+                v = d.style ? (0, te.K8)((0, Z.toJS)(d.style)) : {},
+                w = d.titleStyle ? (0, te.K8)((0, Z.toJS)(d.titleStyle)) : {},
+                O = d.contentStyle
+                  ? (0, te.K8)((0, Z.toJS)(d.contentStyle))
+                  : {};
               return M.createElement(
                 'div',
                 {
-                  className:
-                    'wideScreen' === t
-                      ? 'wide-screen-element-warp'
-                      : 'mobile-screen-element-warp',
-                  id: o + '-dataRoute-select',
+                  className: 'mobile-screen-element-warp dynamic-data-schema',
+                  key: p + '-' + i,
+                  id: p,
+                  style: v,
                 },
                 M.createElement(
                   'div',
-                  { className: 'element-title' },
-                  '数据路径选择',
+                  { className: 'element-title', style: w },
+                  M.createElement(
+                    ee.Tooltip,
+                    {
+                      title: 'wideScreen' === o ? d.description : '',
+                      placement: 'top',
+                    },
+                    M.createElement(
+                      'span',
+                      { className: 'title-text', title: d.title },
+                      d.title,
+                      d.showKey &&
+                        M.createElement(
+                          'span',
+                          null,
+                          '（',
+                          (0, Q.truncate)(u, { length: 15 }),
+                          '）',
+                        ),
+                    ),
+                  ),
+                  'mobileScreen' === o &&
+                    d.description &&
+                    M.createElement(
+                      ee.Tooltip,
+                      { title: d.description, placement: 'top' },
+                      M.createElement(se.InfoCircleOutlined, {
+                        className: 'info-icon',
+                      }),
+                    ),
                 ),
                 M.createElement(
                   'div',
-                  { className: 'content-item' },
+                  { className: 'content-item', style: O },
                   M.createElement(
                     'div',
-                    { className: 'form-item-box' },
-                    M.createElement(ee.TreeSelect, {
-                      className: 'data-route-select',
-                      defaultValue: a,
-                      treeData: i,
-                      allowClear: !0,
-                      placeholder: '请选择要使用的数据节点（数据路径）',
-                      treeDefaultExpandAll: !0,
-                      onChange: r,
-                    }),
+                    { className: 'dynamic-data-tab-radio-box' },
+                    M.createElement(
+                      'div',
+                      { className: 'dynamic-data-tab-radio' },
+                      M.createElement(
+                        'div',
+                        {
+                          className:
+                            'tab-radio ' +
+                            ('local' === f ? 'tab-radio-active' : ''),
+                          onClick: function () {
+                            e.tabChange('local');
+                          },
+                        },
+                        '本地数据',
+                      ),
+                      M.createElement(
+                        'div',
+                        {
+                          className:
+                            'tab-radio ' +
+                            ('remote' === f ? 'tab-radio-active' : ''),
+                          onClick: function () {
+                            e.tabChange('remote');
+                          },
+                        },
+                        '接口数据',
+                      ),
+                    ),
+                  ),
+                  M.createElement(
+                    'div',
+                    {
+                      className:
+                        'dynamic-dat-tabPane ' +
+                        ('local' === f ? 'dynamic-dat-tabPane-active' : ''),
+                    },
+                    M.createElement(
+                      'div',
+                      { className: 'json-form-box' },
+                      M.createElement(
+                        ee.Tooltip,
+                        {
+                          title: h
+                            ? '点击隐藏数据过滤器'
+                            : '点击显示数据过滤器',
+                          placement: 'top',
+                        },
+                        M.createElement(se.FilterOutlined, {
+                          className: 'filter-btn',
+                          onClick: this.switchFilterBtn,
+                        }),
+                      ),
+                      y({
+                        rendererType: 'json',
+                        parentType: g,
+                        jsonKey: 'data',
+                        indexRoute: m ? m + '-2' : '2',
+                        keyRoute: c ? c + '-data' : 'data',
+                        nodeKey: p + '-data',
+                        targetJsonSchema: b,
+                      }),
+                      M.createElement(
+                        'div',
+                        { className: 'filter-func-box' },
+                        h &&
+                          y({
+                            rendererType: 'codearea',
+                            isIgnoreWarn: !0,
+                            parentType: g,
+                            jsonKey: 'localFilter',
+                            indexRoute: m ? m + '-3' : '3',
+                            keyRoute: c ? c + '-localFilter' : 'localFilter',
+                            nodeKey: p + '-localFilter',
+                            targetJsonSchema: d.properties.localFilter,
+                          }),
+                      ),
+                    ),
+                  ),
+                  M.createElement(
+                    'div',
+                    {
+                      className:
+                        'dynamic-dat-tabPane ' +
+                        ('remote' === f ? 'dynamic-dat-tabPane-active' : ''),
+                    },
+                    M.createElement(
+                      'div',
+                      { className: 'json-form-box' },
+                      y({
+                        rendererType: 'api',
+                        parentType: g,
+                        jsonKey: 'config',
+                        indexRoute: m ? m + '-1' : '1',
+                        keyRoute: c ? c + '-config' : 'config',
+                        nodeKey: p + '-config',
+                        targetJsonSchema: E,
+                        onChange: this.handleApiConfigChange,
+                      }),
+                    ),
                   ),
                 ),
               );
@@ -6651,711 +7390,6 @@
             t
           );
         })(M.PureComponent);
-        ct.propTypes = {
-          mockData: W().any,
-          dataRoute: W().any,
-          onChange: W().func,
-          nodeKey: W().string,
-        };
-        var ut = ct,
-          pt = (__webpack_require__(1147), ee.Select.Option),
-          mt = (function (e) {
-            function t(t) {
-              var n;
-              return (
-                ((n = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                  t,
-                ) {
-                  var a = Object.assign({}, n.props.curConfigData);
-                  (a[e] = t), n.props.configDataChange(a);
-                }),
-                (n.paramsValueChange = function (e, t) {
-                  var a = Object.assign({}, n.props.curConfigData);
-                  a.body && a.body[e] && (a.body[e].value = t),
-                    n.props.configDataChange(a);
-                }),
-                (n.dynamicDataChange = function (e) {
-                  var t = (n.props.jsonStore || {}).dynamicDataObj,
-                    a = (0, te.bQ)((0, Q.toJS)(t[e]));
-                  a &&
-                    (a.id,
-                    a.url,
-                    a.method,
-                    a.headers,
-                    a.options,
-                    a.name,
-                    a.body,
-                    a.data,
-                    a.filter);
-                }),
-                (n.dataRouteChange = function (e) {
-                  var t = Object.assign({}, n.props.curConfigData);
-                  t.dataRoute = e;
-                  var a = (0, Z.dataRoute2dataPath)(e);
-                  t.filter = 'return ' + a + ';';
-                }),
-                n
-              );
-            }
-            return (
-              A()(t, e),
-              (t.prototype.render = function () {
-                var e = this,
-                  t = this.props,
-                  n = t.schemaStore,
-                  a = t.jsonStore,
-                  o = (n || {}).pageScreen,
-                  r = a || {},
-                  i = r.getJSONDataByKeyRoute,
-                  l = r.dynamicDataApiScopeList,
-                  s = r.dynamicDataList,
-                  c = r.dynamicDataObj,
-                  u = this.props,
-                  p = u.curConfigData,
-                  m = u.nodeKey,
-                  d = u.keyRoute,
-                  y = u.renderChild,
-                  h = (i(d), p.dataName),
-                  g = p.dataRoute,
-                  S = p.body || {};
-                if (!(0, ne.Gv)(S) && '' !== S)
-                  try {
-                    S = JSON.parse(S);
-                  } catch (e) {
-                    console.log('当前数据源的请求参数格式异常'), (S = {});
-                  }
-                var _ = c[h] || {};
-                return M.createElement(
-                  'div',
-                  {
-                    className:
-                      'wideScreen' === o
-                        ? 'wide-screen-element-warp'
-                        : 'mobile-screen-element-warp',
-                    id: m,
-                  },
-                  M.createElement(
-                    'div',
-                    { className: 'element-title' },
-                    p.title + ' (接口下发）',
-                  ),
-                  M.createElement(
-                    'div',
-                    { className: 'content-item object-content' },
-                    M.createElement(
-                      'div',
-                      {
-                        className: 'remote-dynamic-data-schema',
-                        key: m + '-remote-dynamic-data',
-                        id: m + '-remote-dynamic-data',
-                      },
-                      M.createElement(
-                        'div',
-                        {
-                          className:
-                            'wideScreen' === o
-                              ? 'wide-screen-element-warp'
-                              : 'mobile-screen-element-warp',
-                          key: m + '-' + h,
-                          id: m + '-' + h,
-                        },
-                        M.createElement(
-                          'div',
-                          { className: 'element-title' },
-                          '数据源列表',
-                        ),
-                        M.createElement(
-                          'div',
-                          { className: 'content-item' },
-                          M.createElement(
-                            'div',
-                            { className: 'form-item-box' },
-                            M.createElement(
-                              ee.Select,
-                              {
-                                className: 'dynamic-data-select',
-                                defaultValue: h,
-                                onSelect: this.dynamicDataChange,
-                              },
-                              s &&
-                                (0, ne.cy)(s) &&
-                                s.map(function (e) {
-                                  return M.createElement(
-                                    pt,
-                                    { value: e.name, key: e.id },
-                                    e.title,
-                                  );
-                                }),
-                            ),
-                          ),
-                        ),
-                      ),
-                      h &&
-                        S &&
-                        Object.keys(S).length > 0 &&
-                        M.createElement(
-                          'div',
-                          {
-                            className:
-                              ('wideScreen' === o
-                                ? 'wide-screen-element-warp'
-                                : 'mobile-screen-element-warp') +
-                              ' element-title-card-warp',
-                            key: m + '-' + h + '-params',
-                            id: m + '-' + h + '-params',
-                          },
-                          M.createElement(
-                            'div',
-                            { className: 'element-title' },
-                            '请求参数配置2',
-                          ),
-                          M.createElement(
-                            'div',
-                            { className: 'content-item object-content' },
-                            Object.keys(S).map(function (t) {
-                              var n = S[t];
-                              n.readOnly = !(!n.scope || 'static' !== n.scope);
-                              var a = m + '-body-' + t,
-                                r = l[n.scope];
-                              return (
-                                r &&
-                                  n.title.indexOf(r) < 0 &&
-                                  (n.title = n.title + '（' + r + '）'),
-                                (n.default = n.value),
-                                y({
-                                  rendererType: 'input',
-                                  pageScreen: o,
-                                  jsonKey: t,
-                                  nodeKey: a,
-                                  targetJsonSchema: n,
-                                  onChange: function (n) {
-                                    e.paramsValueChange(t, n);
-                                  },
-                                })
-                              );
-                            }),
-                          ),
-                        ),
-                      h &&
-                        S &&
-                        0 === Object.keys(S).length &&
-                        M.createElement(
-                          'div',
-                          {
-                            className:
-                              'wideScreen' === o
-                                ? 'wide-screen-element-warp'
-                                : 'mobile-screen-element-warp',
-                            key: m + '-' + h + '-empty',
-                            id: m + '-' + h + '-empty',
-                          },
-                          M.createElement(
-                            'div',
-                            { className: 'element-title' },
-                            '请求参数配置',
-                          ),
-                          M.createElement(
-                            'div',
-                            { className: 'content-item' },
-                            M.createElement(
-                              'span',
-                              { className: 'warning-text' },
-                              '无可配置的请求参数',
-                            ),
-                          ),
-                        ),
-                      h &&
-                        M.createElement(ut, {
-                          pageScreen: o,
-                          nodeKey: m + '-dataRoute',
-                          mockData: _.respMock,
-                          dataRoute: g,
-                          onChange: this.dataRouteChange,
-                          key: m + '-dataRoute',
-                        }),
-                      h &&
-                        y({
-                          rendererType: 'codearea',
-                          isReadOnly: !0,
-                          isIgnoreWarn: !0,
-                          jsonKey: 'filter',
-                          nodeKey: m + '-config-params-filter-' + g,
-                          keyRoute: d ? d + '-filter' : 'filter',
-                          targetJsonSchema: {
-                            title: '过滤器函数体',
-                            default: 'return data;',
-                          },
-                        }),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(M.PureComponent);
-        mt.propTypes = {
-          pageScreen: W().any,
-          keyRoute: W().any,
-          nodeKey: W().string,
-          curConfigData: W().object,
-          configDataChange: W().func,
-          dynamicDataList: W().array,
-          dynamicDataObj: W().object,
-          dynamicDataApiScopeList: W().object,
-        };
-        var dt = (0, L.inject)(function (e) {
-            return {
-              schemaStore: e.JSONSchemaStore,
-              jsonStore: e.JSONEditorStore,
-            };
-          })((0, L.observer)(mt)),
-          yt = (__webpack_require__(8678), ee.Select.Option),
-          ht = (function (e) {
-            function t(t) {
-              var n;
-              return (
-                ((n = e.call(this, t) || this).handleValueChange = function (
-                  e,
-                  t,
-                ) {
-                  (0, (n.props.jsonStore || {}).updateFormValueData)(e, t);
-                }),
-                (n.switchFilterBtn = function () {
-                  var e = n.state.isShowFilter;
-                  n.setState({ isShowFilter: !e });
-                }),
-                (n.tabChange = function (e) {
-                  var t = n.props,
-                    a = t.keyRoute,
-                    o = (t.jsonStore || {}).triggerChangeAction;
-                  n.handleValueChange(a + '-type', e),
-                    setTimeout(function () {
-                      o();
-                    }, 100);
-                }),
-                (n.dynamicDataChange = function (e) {
-                  var t = n.props,
-                    a = t.keyRoute,
-                    o = t.jsonStore || {},
-                    r = o.triggerChangeAction,
-                    i = o.dynamicDataObj,
-                    l = (0, te.bQ)((0, Q.toJS)(i[e]));
-                  if (l) {
-                    var s = {
-                      id: l.id,
-                      url: l.url,
-                      method: l.method,
-                      headers: l.headers,
-                      options: l.options,
-                      dataName: l.name,
-                      body: l.body,
-                      data: l.data,
-                      filter: 'return data;',
-                      dataRoute: '',
-                    };
-                    n.handleValueChange(a + '-config', s),
-                      setTimeout(function () {
-                        r();
-                      }, 100);
-                  }
-                }),
-                (n.dataRouteChange = function (e) {
-                  var t = n.props,
-                    a = t.keyRoute,
-                    o = t.jsonStore || {},
-                    r = o.triggerChangeAction,
-                    i = o.updateFormValueData;
-                  if (e) {
-                    i(a + '-config-dataRoute', e, !0);
-                    var l = (0, Z.dataRoute2dataPath)(e);
-                    n.handleValueChange(
-                      a + '-config-filter',
-                      'return ' + l + ';',
-                    );
-                  } else
-                    i(a + '-config-dataRoute', '', !0),
-                      n.handleValueChange(a + '-config-filter', 'return data;');
-                  setTimeout(function () {
-                    r();
-                  }, 100);
-                }),
-                (n.paramsConfigChange = function (e, t) {
-                  var a = n.props,
-                    o = a.keyRoute,
-                    r = a.jsonStore || {},
-                    i = r.triggerChangeAction,
-                    l =
-                      (0, r.getJSONDataByKeyRoute)(o + '-config-body-' + e) ||
-                      {};
-                  n.handleValueChange(
-                    o + '-config-body-' + e,
-                    Object.assign(l, t),
-                  ),
-                    setTimeout(function () {
-                      i();
-                    }, 100);
-                }),
-                (n.paramsValueChange = function (e, t) {
-                  var a = n.props;
-                  a.keyRoute, (a.jsonStore || {}).triggerChangeAction;
-                }),
-                (n.state = { isShowFilter: !1 }),
-                (n.switchFilterBtn = n.switchFilterBtn.bind(n)),
-                n
-              );
-            }
-            A()(t, e);
-            var n = t.prototype;
-            return (
-              (n.componentWillMount = function () {
-                he.x.call(this);
-              }),
-              (n.componentWillReceiveProps = function (e) {
-                e.keyRoute !== this.props.keyRoute &&
-                  he.x.call(this, e.keyRoute);
-              }),
-              (n.render = function () {
-                var e = this,
-                  t = this.props,
-                  n = t.schemaStore,
-                  a = t.jsonStore,
-                  o = (n || {}).pageScreen,
-                  r = a || {},
-                  i = r.getJSONDataByKeyRoute,
-                  l = r.dynamicDataList,
-                  s = r.dynamicDataObj,
-                  c = r.dynamicDataApiScopeList,
-                  u = r.triggerChange,
-                  p = this.props,
-                  m = p.keyRoute,
-                  d = p.jsonKey,
-                  y = p.nodeKey,
-                  h = p.indexRoute,
-                  g = p.targetJsonSchema,
-                  S = p.renderChild,
-                  _ = this.state.isShowFilter,
-                  f = g.type,
-                  b = i(m) || {},
-                  v = g.properties.type || {},
-                  E = b.type || v.default,
-                  w = b.config || {},
-                  C = w.dataName,
-                  O = w.dataRoute,
-                  x = w.body || {};
-                if (!(0, ne.Gv)(x) && '' !== x)
-                  try {
-                    x = JSON.parse(x);
-                  } catch (e) {
-                    console.log('当前数据源的请求参数格式异常'), (x = {});
-                  }
-                var N = s[C] || {},
-                  R = g.properties.data || {},
-                  j = g.style ? (0, te.K8)((0, Q.toJS)(g.style)) : {},
-                  k = g.titleStyle ? (0, te.K8)((0, Q.toJS)(g.titleStyle)) : {},
-                  D = g.contentStyle
-                    ? (0, te.K8)((0, Q.toJS)(g.contentStyle))
-                    : {};
-                return M.createElement(
-                  'div',
-                  {
-                    className: 'mobile-screen-element-warp dynamic-data-schema',
-                    key: y + '-' + u,
-                    id: y,
-                    style: j,
-                  },
-                  M.createElement(
-                    'div',
-                    { className: 'element-title', style: k },
-                    M.createElement(
-                      ee.Tooltip,
-                      {
-                        title: 'wideScreen' === o ? g.description : '',
-                        placement: 'top',
-                      },
-                      M.createElement(
-                        'span',
-                        { className: 'title-text', title: g.title },
-                        g.title,
-                        g.showKey &&
-                          M.createElement(
-                            'span',
-                            null,
-                            '（',
-                            (0, Z.truncate)(d, { length: 15 }),
-                            '）',
-                          ),
-                      ),
-                    ),
-                    'mobileScreen' === o &&
-                      g.description &&
-                      M.createElement(
-                        ee.Tooltip,
-                        { title: g.description, placement: 'top' },
-                        M.createElement(se.InfoCircleOutlined, {
-                          className: 'info-icon',
-                        }),
-                      ),
-                  ),
-                  M.createElement(
-                    'div',
-                    { className: 'content-item', style: D },
-                    M.createElement(
-                      'div',
-                      { className: 'dynamic-data-tab-radio-box' },
-                      M.createElement(
-                        'div',
-                        { className: 'dynamic-data-tab-radio' },
-                        M.createElement(
-                          'div',
-                          {
-                            className:
-                              'tab-radio ' +
-                              ('local' === E ? 'tab-radio-active' : ''),
-                            onClick: function () {
-                              e.tabChange('local');
-                            },
-                          },
-                          '本地数据',
-                        ),
-                        M.createElement(
-                          'div',
-                          {
-                            className:
-                              'tab-radio ' +
-                              ('remote' === E ? 'tab-radio-active' : ''),
-                            onClick: function () {
-                              e.tabChange('remote');
-                            },
-                          },
-                          '接口数据',
-                        ),
-                      ),
-                    ),
-                    M.createElement(
-                      'div',
-                      {
-                        className:
-                          'dynamic-dat-tabPane ' +
-                          ('local' === E ? 'dynamic-dat-tabPane-active' : ''),
-                      },
-                      M.createElement(
-                        'div',
-                        { className: 'json-form-box' },
-                        M.createElement(
-                          ee.Tooltip,
-                          {
-                            title: _
-                              ? '点击隐藏数据过滤器'
-                              : '点击显示数据过滤器',
-                            placement: 'top',
-                          },
-                          M.createElement(se.FilterOutlined, {
-                            className: 'filter-btn',
-                            onClick: this.switchFilterBtn,
-                          }),
-                        ),
-                        S({
-                          rendererType: 'json',
-                          parentType: f,
-                          jsonKey: 'data',
-                          indexRoute: h ? h + '-2' : '2',
-                          keyRoute: m ? m + '-data' : 'data',
-                          nodeKey: y + '-data',
-                          targetJsonSchema: R,
-                        }),
-                        M.createElement(
-                          'div',
-                          { className: 'filter-func-box' },
-                          _ &&
-                            S({
-                              rendererType: 'codearea',
-                              isIgnoreWarn: !0,
-                              parentType: f,
-                              jsonKey: 'localFilter',
-                              indexRoute: h ? h + '-3' : '3',
-                              keyRoute: m ? m + '-localFilter' : 'localFilter',
-                              nodeKey: y + '-localFilter',
-                              targetJsonSchema: g.properties.localFilter,
-                            }),
-                        ),
-                      ),
-                    ),
-                    M.createElement(
-                      'div',
-                      {
-                        className:
-                          'dynamic-dat-tabPane ' +
-                          ('remote' === E ? 'dynamic-dat-tabPane-active' : ''),
-                      },
-                      M.createElement(
-                        'div',
-                        { className: 'json-form-box' },
-                        M.createElement(
-                          'div',
-                          {
-                            className:
-                              'wideScreen' === o
-                                ? 'wide-screen-element-warp'
-                                : 'mobile-screen-element-warp',
-                            key: y + '-' + C,
-                            id: y + '-' + C,
-                          },
-                          M.createElement(
-                            'div',
-                            { className: 'element-title' },
-                            '数据源列表',
-                          ),
-                          M.createElement(
-                            'div',
-                            { className: 'content-item' },
-                            M.createElement(
-                              'div',
-                              { className: 'form-item-box' },
-                              M.createElement(
-                                ee.Select,
-                                {
-                                  className: 'dynamic-data-select',
-                                  defaultValue: C,
-                                  onSelect: this.dynamicDataChange,
-                                },
-                                l &&
-                                  (0, ne.cy)(l) &&
-                                  l.map(function (e) {
-                                    return M.createElement(
-                                      yt,
-                                      { value: e.name, key: e.id },
-                                      e.title,
-                                    );
-                                  }),
-                              ),
-                            ),
-                          ),
-                        ),
-                        C &&
-                          x &&
-                          Object.keys(x).length > 0 &&
-                          M.createElement(
-                            'div',
-                            {
-                              className:
-                                ('wideScreen' === o
-                                  ? 'wide-screen-element-warp'
-                                  : 'mobile-screen-element-warp') +
-                                ' element-title-card-warp',
-                              key: y + '-' + C + '-params',
-                              id: y + '-' + C + '-params',
-                            },
-                            M.createElement(
-                              'div',
-                              { className: 'element-title' },
-                              '请求参数配置1',
-                            ),
-                            M.createElement(
-                              'div',
-                              { className: 'content-item object-content' },
-                              Object.keys(x).map(function (t) {
-                                var n = (0, te.bQ)(x[t]);
-                                n.readOnly = !(
-                                  !n.scope || 'static' !== n.scope
-                                );
-                                var a = m + '-config-body-' + t,
-                                  r = c[n.scope];
-                                if (
-                                  (r &&
-                                    'dynamic' !== n.scope &&
-                                    (n.title = n.title + '（' + r + '）'),
-                                  'dynamic' !== n.scope)
-                                )
-                                  return S({
-                                    rendererType: 'input',
-                                    pageScreen: o,
-                                    jsonKey: t,
-                                    keyRoute: a + '-value',
-                                    nodeKey: a,
-                                    targetJsonSchema: n,
-                                    onChange: function (n) {
-                                      e.paramsValueChange(t, n);
-                                    },
-                                  });
-                                var i = y + '-' + C + '-params-' + t;
-                                return M.createElement(dt, {
-                                  pageScreen: o,
-                                  nodeKey: i,
-                                  renderChild: S,
-                                  keyRoute: m
-                                    ? m + '-config-body-' + t
-                                    : 'config-body-${paramKey}',
-                                  curConfigData: n || {},
-                                  configDataChange: function (n) {
-                                    e.paramsConfigChange(t, n);
-                                  },
-                                  key: a,
-                                });
-                              }),
-                            ),
-                          ),
-                        C &&
-                          x &&
-                          0 === Object.keys(x).length &&
-                          M.createElement(
-                            'div',
-                            {
-                              className:
-                                'wideScreen' === o
-                                  ? 'wide-screen-element-warp'
-                                  : 'mobile-screen-element-warp',
-                              key: y + '-' + C + '-empty',
-                              id: y + '-' + C + '-empty',
-                            },
-                            M.createElement(
-                              'div',
-                              { className: 'element-title' },
-                              '请求参数配置',
-                            ),
-                            M.createElement(
-                              'div',
-                              { className: 'content-item' },
-                              M.createElement(
-                                'span',
-                                { className: 'warning-text' },
-                                '无可配置的请求参数',
-                              ),
-                            ),
-                          ),
-                        C &&
-                          M.createElement(ut, {
-                            pageScreen: o,
-                            nodeKey: y + '-config-dataRoute-' + O,
-                            mockData: N.respMock,
-                            dataRoute: O,
-                            onChange: this.dataRouteChange,
-                            key: y + '-config-dataRoute',
-                          }),
-                        C &&
-                          S({
-                            rendererType: 'codearea',
-                            isReadOnly: !0,
-                            isIgnoreWarn: !0,
-                            parentType: f,
-                            jsonKey: 'filter',
-                            indexRoute: h ? h + '-1-2' : '1-2',
-                            keyRoute: m
-                              ? m + '-config-filter'
-                              : 'config-filter',
-                            nodeKey: y + '-config-filter-' + O,
-                            targetJsonSchema:
-                              g.properties.config &&
-                              g.properties.config.properties.filter,
-                          }),
-                      ),
-                    ),
-                  ),
-                );
-              }),
-              t
-            );
-          })(M.PureComponent);
         (ht.propTypes = {
           parentType: W().string,
           jsonKey: W().string,
@@ -7367,7 +7401,7 @@
           dynamicDataObj: W().object,
           dynamicDataApiScopeList: W().object,
         }),
-          (0, le.TS)({ type: 'dynamic-data', component: ht });
+          (0, ie.TS)({ type: 'dynamic-data', component: ht });
         var gt = (function (e) {
           function t(t) {
             var n;
@@ -7395,8 +7429,8 @@
                 a = n.schemaStore,
                 o = (n.jsonStore, (a || {}).pageScreen),
                 r = this.props,
-                i = r.keyRoute,
-                l = r.jsonKey,
+                l = r.keyRoute,
+                i = r.jsonKey,
                 s = r.nodeKey,
                 c = r.indexRoute,
                 u = r.targetJsonSchema,
@@ -7410,12 +7444,12 @@
                 _ = u.properties.actionFunc || {},
                 f = u.properties.trigger || {},
                 b = u.properties.eventData || {},
-                v = g.default,
-                E = null == (e = u.showCodeViewBtn) || e,
-                w = u.style ? (0, te.K8)((0, Q.toJS)(u.style)) : {},
-                C = u.titleStyle ? (0, te.K8)((0, Q.toJS)(u.titleStyle)) : {},
-                O = u.contentStyle
-                  ? (0, te.K8)((0, Q.toJS)(u.contentStyle))
+                E = g.default,
+                v = null == (e = u.showCodeViewBtn) || e,
+                w = u.style ? (0, te.K8)((0, Z.toJS)(u.style)) : {},
+                O = u.titleStyle ? (0, te.K8)((0, Z.toJS)(u.titleStyle)) : {},
+                C = u.contentStyle
+                  ? (0, te.K8)((0, Z.toJS)(u.contentStyle))
                   : {};
               return M.createElement(
                 'div',
@@ -7429,7 +7463,7 @@
                 },
                 M.createElement(
                   'div',
-                  { className: 'element-title', style: C },
+                  { className: 'element-title', style: O },
                   M.createElement(
                     ee.Tooltip,
                     {
@@ -7445,7 +7479,7 @@
                           'span',
                           null,
                           '（',
-                          (0, Z.truncate)(l, { length: 15 }),
+                          (0, Q.truncate)(i, { length: 15 }),
                           '）',
                         ),
                     ),
@@ -7464,7 +7498,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: O,
+                    style: C,
                   },
                   M.createElement(
                     'div',
@@ -7488,7 +7522,7 @@
                       : M.createElement(se.DownOutlined, {
                           className: 'close-operate-btn',
                         }),
-                    E &&
+                    v &&
                       M.createElement(
                         'div',
                         {
@@ -7518,7 +7552,7 @@
                         (h ? 'closed' : ''),
                     },
                     !y &&
-                      'on' === v &&
+                      'on' === E &&
                       M.createElement(
                         M.Fragment,
                         null,
@@ -7528,7 +7562,7 @@
                             parentType: m,
                             jsonKey: 'register',
                             indexRoute: c ? c + '-1' : '1',
-                            keyRoute: i ? i + '-register' : 'register',
+                            keyRoute: l ? l + '-register' : 'register',
                             nodeKey: s + '-register',
                             targetJsonSchema: S,
                           }),
@@ -7538,13 +7572,13 @@
                             parentType: m,
                             jsonKey: 'actionFunc',
                             indexRoute: c ? c + '-2' : '2',
-                            keyRoute: i ? i + '-actionFunc' : 'actionFunc',
+                            keyRoute: l ? l + '-actionFunc' : 'actionFunc',
                             nodeKey: s + '-actionFunc',
                             targetJsonSchema: _,
                           }),
                       ),
                     !y &&
-                      'emit' === v &&
+                      'emit' === E &&
                       M.createElement(
                         M.Fragment,
                         null,
@@ -7554,7 +7588,7 @@
                             parentType: m,
                             jsonKey: 'trigger',
                             indexRoute: c ? c + '-1' : '1',
-                            keyRoute: i ? i + '-trigger' : 'trigger',
+                            keyRoute: l ? l + '-trigger' : 'trigger',
                             nodeKey: s + '-trigger',
                             targetJsonSchema: f,
                           }),
@@ -7564,7 +7598,7 @@
                             parentType: m,
                             jsonKey: 'eventData',
                             indexRoute: c ? c + '-2' : '2',
-                            keyRoute: i ? i + '-eventData' : 'eventData',
+                            keyRoute: l ? l + '-eventData' : 'eventData',
                             nodeKey: s + '-eventData',
                             targetJsonSchema: b,
                           }),
@@ -7585,7 +7619,7 @@
           nodeKey: W().string,
           targetJsonSchema: W().any,
         }),
-          (0, le.TS)({ type: 'event', component: gt });
+          (0, ie.TS)({ type: 'event', component: gt });
         var St = function (e) {
             (e.schemaStore || {}).getSchemaByKeyRoute;
             var t = e.jsonStore || {},
@@ -7593,44 +7627,44 @@
               a = t.JSONEditorObj,
               o = e.nodeKey,
               r = (e.jsonKey, e.keyRoute),
-              i = e.targetJsonSchema,
-              l = e.rendererType,
-              s = r && (0, Z.getParentKeyRoute)(r),
+              l = e.targetJsonSchema,
+              i = e.rendererType,
+              s = r && (0, Q.getParentKeyRoute)(r),
               c = (s && n(s)) || {},
               u = Object.assign({}, a, c);
             if (
-              !(0, te.GT)(i.onShow) ||
-              '' === i.onShow ||
+              !(0, te.GT)(l.onShow) ||
+              '' === l.onShow ||
               !(
-                'false' === i.onShow ||
-                ((0, Z.isBoolean)(i.onShow) && !i.onShow) ||
-                ((0, Z.isString)(i.onShow) &&
-                  !(0, Z.evalExpression)(i.onShow, u))
+                'false' === l.onShow ||
+                ((0, Q.isBoolean)(l.onShow) && !l.onShow) ||
+                ((0, Q.isString)(l.onShow) &&
+                  !(0, Q.evalExpression)(l.onShow, u))
               )
             ) {
               var p =
-                  l || (i.typeOn ? (0, Z.evalExpression)(i.typeOn, u) : i.type),
+                  i || (l.typeOn ? (0, Q.evalExpression)(l.typeOn, u) : l.type),
                 m = o,
-                d = ie()({}, e, {
+                d = le()({}, e, {
                   nodeKey: m,
                   key: m,
                   renderChild: function (t) {
                     return St(
-                      ie()({}, t, {
+                      le()({}, t, {
                         schemaStore: e.schemaStore,
                         jsonStore: e.jsonStore,
                       }),
                     );
                   },
                 }),
-                y = le.Jd[p] || Je;
+                y = ie.Jd[p] || Je;
               return V().createElement(y, d);
             }
           },
           _t = St,
           ft = (__webpack_require__(8104), ee.Collapse.Panel),
           bt = ee.Tabs.TabPane,
-          vt = (function (e) {
+          Et = (function (e) {
             function t(t) {
               var n;
               ((n = e.call(this, t) || this).catchViewStyle = function (e) {
@@ -7661,16 +7695,16 @@
               var a = n.props.schemaStore || {},
                 o = a.initJSONSchemaData,
                 r = a.setPageScreen,
-                i = n.props.jsonStore || {},
-                l = i.initJSONData,
-                s = i.initOnChange,
-                c = i.setDynamicDataList,
-                u = i.setOptions;
+                l = n.props.jsonStore || {},
+                i = l.initJSONData,
+                s = l.initOnChange,
+                c = l.setDynamicDataList,
+                u = l.setOptions;
               return (
                 t.schemaData
-                  ? (o(t.schemaData), l(t.jsonData))
+                  ? (o(t.schemaData), i(t.jsonData))
                   : t.jsonData &&
-                    (o((0, Z.json2schema)(t.jsonData)), l(t.jsonData)),
+                    (o((0, Q.json2schema)(t.jsonData)), i(t.jsonData)),
                 t.wideScreen && r(t.wideScreen),
                 t.onChange && s(t.onChange),
                 t.dynamicDataList && c(t.dynamicDataList),
@@ -7687,26 +7721,26 @@
                   a = t.setPageScreen,
                   o = this.props.jsonStore || {},
                   r = o.JSONEditorObj,
-                  i = o.initJSONData,
-                  l = o.initOnChange,
+                  l = o.initJSONData,
+                  i = o.initOnChange,
                   s = o.setDynamicDataList,
                   c = o.setOptions;
-                (0, Z.isEqualByIdT)(e.schemaData, this.props.schemaData) ||
+                (0, Q.isEqualByIdT)(e.schemaData, this.props.schemaData) ||
                   n(e.schemaData),
-                  (0, Z.isEqual)(e.jsonData, r) || i(e.jsonData),
-                  (0, Z.isEqual)(e.jsonView, this.props.jsonView) ||
+                  (0, Q.isEqual)(e.jsonData, r) || l(e.jsonData),
+                  (0, Q.isEqual)(e.jsonView, this.props.jsonView) ||
                     this.setState({ jsonView: e.jsonView }),
-                  (0, Z.isEqual)(e.viewStyle, this.props.viewStyle) ||
+                  (0, Q.isEqual)(e.viewStyle, this.props.viewStyle) ||
                     this.setState({ viewStyle: e.viewStyle }),
-                  (0, Z.isEqual)(e.wideScreen, this.props.wideScreen) ||
+                  (0, Q.isEqual)(e.wideScreen, this.props.wideScreen) ||
                     a(e.wideScreen),
-                  (0, Z.isEqual)(e.onChange, this.props.onChange) ||
-                    l(e.onChange),
-                  (0, Z.isEqual)(
+                  (0, Q.isEqual)(e.onChange, this.props.onChange) ||
+                    i(e.onChange),
+                  (0, Q.isEqual)(
                     e.dynamicDataList,
                     this.props.dynamicDataList,
                   ) || s(e.dynamicDataList),
-                  (0, Z.isEqual)(e.options, this.props.options) || c(e.options);
+                  (0, Q.isEqual)(e.options, this.props.options) || c(e.options);
               }),
               (n.render = function () {
                 var e = this,
@@ -7715,8 +7749,8 @@
                   a = t.jsonStore,
                   o = t.jsonViewReadOnly,
                   r = n || {},
-                  i = r.jsonSchema,
-                  l = r.lastUpdateTime,
+                  l = r.jsonSchema,
+                  i = r.lastUpdateTime,
                   s = a || {},
                   c = s.JSONEditorObj,
                   u = s.lastUpdateTime,
@@ -7724,8 +7758,8 @@
                   m = this.state,
                   d = m.jsonView,
                   y = m.viewStyle,
-                  h = (0, Z.isEmptySchema)(i),
-                  g = (0, Z.isStructuredSchema)(i);
+                  h = (0, Q.isEmptySchema)(l),
+                  g = (0, Q.isStructuredSchema)(l);
                 return M.createElement(
                   'div',
                   { className: 'json-editor-container' },
@@ -7748,17 +7782,17 @@
                             M.createElement(
                               ee.Collapse,
                               {
-                                defaultActiveKey: i.propertyOrder,
+                                defaultActiveKey: l.propertyOrder,
                                 expandIconPosition: 'right',
                                 bordered: !1,
                               },
-                              i.propertyOrder.map(function (t, o) {
+                              l.propertyOrder.map(function (t, o) {
                                 var r = o,
                                   s = t,
                                   c = t,
-                                  p = i.properties[c],
+                                  p = l.properties[c],
                                   m = p.type,
-                                  d = l + '-' + u + '-' + m + '-' + c;
+                                  d = i + '-' + u + '-' + m + '-' + c;
                                 return p.propertyOrder &&
                                   p.propertyOrder.length > 0
                                   ? M.createElement(
@@ -7787,17 +7821,17 @@
                               ee.Tabs,
                               {
                                 className: 'tabs-schema-box',
-                                defaultActiveKey: i.propertyOrder[0],
+                                defaultActiveKey: l.propertyOrder[0],
                                 centered: !0,
                                 hideAdd: !0,
                               },
-                              i.propertyOrder.map(function (t, o) {
+                              l.propertyOrder.map(function (t, o) {
                                 var r = o,
                                   s = t,
                                   c = t,
-                                  p = i.properties[c],
+                                  p = l.properties[c],
                                   m = p.type,
-                                  d = l + '-' + u + '-' + m + '-' + c;
+                                  d = i + '-' + u + '-' + m + '-' + c;
                                 return p.propertyOrder &&
                                   p.propertyOrder.length > 0
                                   ? M.createElement(
@@ -7834,7 +7868,7 @@
                             indexRoute: '',
                             keyRoute: '',
                             nodeKey: '',
-                            targetJsonSchema: i,
+                            targetJsonSchema: l,
                             schemaStore: n,
                             jsonStore: a,
                           }),
@@ -7853,7 +7887,7 @@
               t
             );
           })(M.PureComponent);
-        vt.propTypes = {
+        Et.propTypes = {
           viewStyle: W().any,
           wideScreen: W().any,
           onChange: W().func,
@@ -7864,12 +7898,12 @@
           dynamicDataList: W().any,
           options: W().any,
         };
-        var Et = (0, L.inject)(function (e) {
+        var vt = (0, L.inject)(function (e) {
           return {
             schemaStore: e.JSONSchemaStore,
             jsonStore: e.JSONEditorStore,
           };
-        })((0, L.observer)(vt));
+        })((0, L.observer)(Et));
         function wt(e, t) {
           if (
             (window &&
@@ -7882,7 +7916,7 @@
             '[json-editor]：注册渲染器失败，存在重名渲染器(' + e + ')。',
           );
         }
-        function Ct(e) {
+        function Ot(e) {
           if (
             window &&
             window.JSONEditorCustomRenderers &&
@@ -7893,7 +7927,7 @@
         __webpack_require__(4410),
           window.JSONEditorCustomRenderers &&
             Object.keys(window.JSONEditorCustomRenderers).forEach(function (e) {
-              if (le.Jd[e])
+              if (ie.Jd[e])
                 console.warn(
                   '[json-editor]：预注册渲染器失败，当前存在重名渲染器（' +
                     e +
@@ -7901,7 +7935,7 @@
                 );
               else {
                 var t = window.JSONEditorCustomRenderers[e];
-                t && (0, le.TS)({ type: e, component: t });
+                t && (0, ie.TS)({ type: e, component: t });
               }
             }),
           window.addEventListener(
@@ -7914,7 +7948,7 @@
                 e.data.jsonRenderer.type
               ) {
                 var t = curRenderer.type;
-                if (le.Jd[t])
+                if (ie.Jd[t])
                   console.warn(
                     '[json-editor]: 动态注册渲染器失败，当前存在重名渲染器（' +
                       t +
@@ -7922,14 +7956,14 @@
                   );
                 else {
                   console.info('[json-editor]: 响应动态注册渲染器事件：', t);
-                  var n = Ct(t);
-                  (0, le.TS)({ type: t, component: n });
+                  var n = Ot(t);
+                  (0, ie.TS)({ type: t, component: n });
                 }
               }
             },
             !1,
           );
-        var Ot = __webpack_require__(252),
+        var Ct = __webpack_require__(252),
           xt = (function (e) {
             function t(t) {
               var n;
@@ -7951,7 +7985,7 @@
                       JSONSchemaStore: t.JSONSchemaStore,
                       JSONEditorStore: t.JSONEditorStore,
                     },
-                    M.createElement(Et, this.props),
+                    M.createElement(vt, this.props),
                   );
                 return e ? (I().render(n, e), '') : n;
               }),

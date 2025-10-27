@@ -17,7 +17,12 @@ export const BASE_TYPE = [
 ];
 
 // 固有容器类型
-export const Fixed_CONTAINER_TYPE = ['datasource', 'event', 'dynamic-data'];
+export const Fixed_CONTAINER_TYPE = [
+  'datasource',
+  'event',
+  'dynamic-data',
+  'api',
+];
 
 // 当前容器类型
 export const CONTAINER_TYPE = ['object', ...Fixed_CONTAINER_TYPE];
@@ -59,6 +64,7 @@ export const OBJECT_TYPE = [
   'array',
   'box-style',
   'padding-margin',
+  'api',
 ];
 
 // 数组类型可用子项类型
@@ -121,4 +127,5 @@ export const TypeInfoList = {
   datasource: '静态数据源(旧版)',
   event: '事件(旧版)',
   'dynamic-data': '动态数据源(旧版)',
+  api: 'API 配置',
 };
