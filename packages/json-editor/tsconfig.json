@@ -1,0 +1,27 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "noEmit": true,
+    "paths": {
+      "@": ["./src"],
+      "$core": ["./src/core"],
+      "$components": ["./src/components"],
+      "$renderers": ["./src/renderers"],
+      "$customRenderers": ["./src/customRenderers"],
+      "$pages": ["./src/pages"],
+      "$plugins": ["./src/plugins"],
+      "$utils": ["./src/utils"],
+      "$assets": ["./src/assets"],
+      "$public": ["../../public"],
+      "$router": ["./src/router"],
+      "$store": ["./src/store"],
+      "$data": ["./src/data"],
+      "$config": ["./src/config"],
+      "$mixins": ["./src/mixins"]
+    },
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+

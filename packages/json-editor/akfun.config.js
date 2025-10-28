@@ -15,7 +15,7 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      extensions: ['.js', '.jsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
         $core: resolve('src/core'),
@@ -49,7 +49,7 @@ module.exports = {
   },
   dev: {
     entry: {
-      index: './src/demo.js',
+      index: './src/demo.ts',
     },
     NODE_ENV: 'development',
     port: 80,
@@ -71,7 +71,7 @@ module.exports = {
   },
   build2lib: {
     entry: {
-      index: './src/main.js',
+      index: './src/main.ts',
     },
     output: {
       filename: '[name].js',
@@ -91,7 +91,7 @@ module.exports = {
   build2lib2: {
     // 用于打包sdk文件
     entry: {
-      index: './src/main.js',
+      index: './src/main.ts',
     },
     output: {
       filename: 'index.js',

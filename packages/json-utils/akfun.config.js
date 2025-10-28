@@ -15,7 +15,7 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      extensions: ['.js', '.jsx', 'json'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
       alias: {
         '@': resolve('src'),
         $function: resolve('src/function'),
@@ -26,7 +26,7 @@ module.exports = {
   },
   build2lib: {
     entry: {
-      index: './src/main.js', // 构建lib的入口
+      index: './src/main.ts', // 构建lib的入口
     },
     output: {
       filename: '[name].js',
@@ -46,7 +46,7 @@ module.exports = {
   },
   build2esm: {
     type: 'js',
-    input: resolve('src/main.js'),
+    input: resolve('src/main.ts'),
     fileName: 'index',
   },
 };

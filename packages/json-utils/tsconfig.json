@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@": ["./src"],
+      "$function": ["./src/function"],
+      "$utils": ["./src/utils"],
+      "$data": ["./src/data"]
+    },
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
+
