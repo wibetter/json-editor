@@ -118,8 +118,8 @@
               s = e || this.props.keyRoute,
               c = (0, a.TA)(s + '-' + i);
             if (c) {
-              var u = o(c);
-              u || (u = r(c)), u && ((0, a.CP)(s + '-' + i), l(s, u));
+              var u = o(s);
+              null == u && (u = r(s)), null == u && l(s, c);
             }
           }
         },
@@ -412,14 +412,11 @@
             K8: function () {
               return i;
             },
-            CP: function () {
-              return d;
-            },
             or: function () {
               return y;
             },
             TA: function () {
-              return m;
+              return d;
             },
             GT: function () {
               return u;
@@ -432,6 +429,9 @@
             },
             bQ: function () {
               return s;
+            },
+            mq: function () {
+              return m;
             },
           });
           var a = n(5085),
@@ -473,11 +473,11 @@
               t
             );
           }
-          function m(e) {
-            return (0, l.Gz)(e, 'json-editor-formData');
+          function m(e, t) {
+            (0, l.PM)(e, t, 'json-editor-formData');
           }
           function d(e) {
-            (0, l.tU)(e, 'json-editor-formData');
+            return (0, l.Gz)(e, 'json-editor-formData');
           }
           function y(e) {
             var t = [],
@@ -581,24 +581,12 @@
             }
             return n;
           }
-          function r(e, t) {
-            if (
-              (void 0 === t && (t = 'json-editor-cache'), window.sessionStorage)
-            ) {
-              var n = {},
-                a = window.sessionStorage.getItem(t);
-              a && (n = JSON.parse(a)), e && (n[e] = void 0);
-            }
-          }
           n.d(t, {
             Gz: function () {
               return o;
             },
             PM: function () {
               return a;
-            },
-            tU: function () {
-              return r;
             },
           });
         },
@@ -1314,24 +1302,32 @@
                   return (0, Q.getJsonDataByKeyRoute)(e, n, !0);
                 }),
                 (t.updateFormValueData = function (e, t, n) {
-                  if ('' !== e) {
-                    var a,
-                      o = (0, Q.getParentKeyRoute_CurKey)(e),
-                      r = o[0],
-                      l = o[1],
-                      i = (0, Q.getJsonDataByKeyRoute)(r, this.jsonData);
-                    i
-                      ? (i[l] = t)
-                      : this.updateFormValueData(r, (((a = {})[l] = t), a));
+                  var a = null;
+                  if (
+                    (this.state.rootJSONStore.JSONSchemaStore &&
+                      (a =
+                        this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
+                          e,
+                        )),
+                    '' !== e &&
+                      t &&
+                      a &&
+                      a &&
+                      a.type &&
+                      (0, te.mq)(e + '-' + a.type, t),
+                    '' !== e)
+                  ) {
+                    var o,
+                      r = (0, Q.getParentKeyRoute_CurKey)(e),
+                      l = r[0],
+                      i = r[1],
+                      s = (0, Q.getJsonDataByKeyRoute)(l, this.jsonData);
+                    s
+                      ? (s[i] = t)
+                      : this.updateFormValueData(l, (((o = {})[i] = t), o));
                   } else this.jsonData = t;
-                  if (this.state.rootJSONStore.JSONSchemaStore) {
-                    var s =
-                      this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
-                        e,
-                      );
-                    s && s.isConditionProp && this.updateLastTime();
-                  }
-                  n || this.jsonDataChange();
+                  a && a.isConditionProp && this.updateLastTime(),
+                    n || this.jsonDataChange();
                 }),
                 (t.deleteArrayIndex = function (e, t) {
                   var n = (0, Q.getJsonDataByKeyRoute)(e, this.jsonData);
@@ -6721,15 +6717,15 @@
                   V().createElement(
                     'div',
                     { className: 'content-item', style: x },
-                    V().createElement(
-                      'div',
-                      {
-                        className: 'api-schema',
+                    V().createElement(ee.Input, {
+                      className: 'api-schema-input',
+                      value: R,
+                      placeholder: '点击右侧设置图标配置 API 接口',
+                      readOnly: !0,
+                      addonAfter: V().createElement(se.SettingOutlined, {
                         onClick: this.showModal,
-                        style: { cursor: 'pointer' },
-                      },
-                      R || '点击配置 API',
-                    ),
+                      }),
+                    }),
                   ),
                   V().createElement(
                     ee.Modal,

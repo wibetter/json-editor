@@ -7125,123 +7125,6 @@ function schema2json(jsonSchema, jsonData) {
 var schemaMetaList = TypeDataList;
 
 /**
- * dynamicDataAnalyzer: 根据当前的json，统计当前json里面用到的动态数据源情况
- * 【方法参数说明】
- * jsonData: json数据内容，必填项
- * 【返回数据格式说明】
- * dynamicDataAnalyzer:
- * {
-  widget1: [
-    {
-      dataName: 'api1',
-      body: {
-        param1: {
-          title: '参数名称',
-          scope: 'static',  // 固定参数
-          value: '111'  // 固定值
-        },
-        param2: {
-          title: '参数名称',
-          scope: 'window',
-          name: 'PARAM1',
-          value: '111' // 默认值
-        },
-        pageId: {
-          title: '页面id',
-          scope: 'hash',
-          name: 'pId',
-          value: '111' // 默认值
-        }
-      },
-    },
-    {
-      dataName: 'api1',
-      body: {
-        param1: {
-          title: '参数名称',
-          scope: 'static',  // 固定参数
-          value: '111'  // 固定值
-        },
-        param2: {
-          title: '参数名称',
-          scope: 'window',
-          name: 'PARAM1',
-          value: '111' // 默认值
-        },
-        pageId: {
-          title: '页面id',
-          scope: 'hash',
-          name: 'pId',
-          value: '111' // 默认值
-        }
-      }
-    }
-  ],
-  widget2: [
-    {
-      dataName: 'api1',
-      body: {
-        param1: {
-          title: '参数名称',
-          scope: 'static',  // 固定参数
-          value: '111'  // 固定值
-        },
-        param2: {
-          title: '参数名称',
-          scope: 'window',
-          name: 'PARAM1',
-          value: '111' // 默认值
-        }
-      }
-    }
-  ]
-}
- */
-function dynamicDataAnalyzer(curJsonData, analyzerResult) {
-  var curAnalyzerResult = analyzerResult || [];
-  // 根据当前schema数据分析使用到的元数据情况
-  if (curJsonData && JSON.stringify(curJsonData) !== '{}') {
-    if (isObject$1(curJsonData)) {
-      // const curJsonMap = Object.keys(curJsonData); // 动态数据类型的jsonData包含四个数值：type、config（dataName/body/filter）、data、localFilter
-      // 判断是否是动态数据类型
-      if (
-        curJsonData.type &&
-        curJsonData.type === 'remote' &&
-        curJsonData.config &&
-        isObject$1(curJsonData.config) &&
-        curJsonData.config.dataName &&
-        hasProperties(curJsonData.localFilter) &&
-        hasProperties(curJsonData.data)
-      ) {
-        var apiParams = curJsonData.config.body;
-        if (apiParams && !isObject$1(apiParams)) {
-          try {
-            apiParams = JSON.parse(apiParams);
-          } catch (e) {
-            apiParams = {};
-          }
-        }
-        curAnalyzerResult.push({
-          id: curJsonData.config.id,
-          dataName: curJsonData.config.dataName,
-          body: apiParams,
-        });
-      } else {
-        var curJsonDataList = Object.keys(curJsonData);
-        curJsonDataList.map(function (jsonKey) {
-          dynamicDataAnalyzer(curJsonData[jsonKey], curAnalyzerResult);
-        });
-      }
-    } else if (isArray(curJsonData)) {
-      curJsonData.map(function (jsonDataItem) {
-        dynamicDataAnalyzer(jsonDataItem, curAnalyzerResult);
-      });
-    }
-  }
-  return curAnalyzerResult;
-}
-
-/**
  * json2treeData: 根据当前的json数据，转换成treeData（供antd的TreeSelect使用）
  * 【方法参数说明】
  * mockData: json数据，必填项。
@@ -7428,7 +7311,6 @@ export {
   KeyWordList,
   TypeDataList,
   dataRoute2dataPath,
-  dynamicDataAnalyzer,
   evalExpression,
   getCurPosition,
   getDefaultOptionVal,

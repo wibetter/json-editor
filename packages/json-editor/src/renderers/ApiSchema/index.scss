@@ -1,19 +1,30 @@
-.api-schema {
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.api-schema-input {
   font-family: PingFangSC-Regular;
   font-size: 14px;
-  color: rgba(35, 35, 33, 0.8);
-  word-break: break-all;
-  min-height: 32px;
-  display: flex;
-  align-items: center;
 
-  &:hover {
-    background-color: rgba(24, 144, 255, 0.1);
-    color: #1890ff;
+  .ant-input {
+    cursor: default;
+  }
+
+  .ant-input-group-addon {
+    padding: 0;
+    border: none;
+    background: transparent;
+    width: 32px;
+    border: 1px solid #d9d9d9;
+
+    .anticon {
+      // padding: 0 8px;
+      transition: all 0.3s ease;
+      color: #5c5f66;
+      cursor: pointer;
+
+      &:hover,
+      &:active {
+        color: #40a9ff !important;
+        transform: scale(1.1);
+      }
+    }
   }
 }
 

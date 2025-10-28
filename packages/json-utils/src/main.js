@@ -11,10 +11,8 @@
  * json2schema: 根据json数据内容获取对应的schema数据
  * oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
  * schema2json: 根据schema数据内容生成一份对应的json数据
- * dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
  * schemaMetaList: 当前JSON数据可视化提供的元数据清单
  * metaElemAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的元数据情况
- * dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
  *
  * 【其他较小的json工具方法】
  *
@@ -67,7 +65,6 @@ export * from './function/metaElemAnalyzer';
 export * from './function/oldSchemaToNewSchema';
 export * from './function/schema2json';
 export * from './function/schemaMetaList';
-export * from './function/dynamicDataAnalyzer';
 export * from './function/json2treeData';
 export * from './function/getExpectType';
 export * from './function/schema2conditionValue';

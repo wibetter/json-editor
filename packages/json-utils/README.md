@@ -16,7 +16,7 @@
 - json2schema([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/json2schema.md)): 根据json数据内容生成对应的schema数据
 - schema2json([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/schema2json.md)): 根据schema结构数据生成一份对应的json数据内容
 - json2treeData([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/json2treeData.md)): 根据当前的json生成对应的treeData（供antd的TreeSelect等使用）
-- metaElemAnalyzer([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/metaElemAnalyzer.md)): 根据当前的json和对应的schema，统计当前json里面用到的各类元数据情况
+- metaElemAnalyzer([使用示例](https://github.com/wibetter/json-utils/blob/master/docs/metaElemAnalyzer.md)): 根据当前的json和对应的schema，统计当前json里面用到的各类元数据情况 [待废弃]
 
 ### json数据内容相关的操作方法
 - getParentKeyRoute: 获取父元素的key路径值
@@ -54,10 +54,9 @@
 
 ### 业务相关的json工具方法
 > 主要在JSON数据可视化组件中使用（[JSONSchema](https://github.com/wibetter/json-schema-editor)、[JSONEditor](https://github.com/wibetter/json-editor)）
-- isNewSchemaData: 判断是否是最新版的schema数据
-- oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema
-- schemaMetaList: 目前JSON数据可视化组件（JSONSchema、JSONEditor）提供的元数据类型清单
-- dynamicDataAnalyzer: 根据当前的json和对应的schema，统计当前json里面用到的动态数据源情况
+- isNewSchemaData: 判断是否是最新版的schema数据 [待废弃]
+- oldSchemaToNewSchema: 旧版jsonSchema转新版jsonSchema [待废弃]
+- schemaMetaList: 目前JSON数据可视化组件（JSONSchema、JSONEditor）提供的元数据类型清单 [待废弃]
 - isContainerSchema: 判断是否是容器类型元素，用于确认是否能添加子元素
 - isEmptySchema: 判断是否为空的Schema
 

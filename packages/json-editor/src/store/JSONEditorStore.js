@@ -6,7 +6,7 @@ import {
   getParentKeyRoute_CurKey,
   isEmptySchema,
 } from '@wibetter/json-utils';
-import { isEqual, objClone } from '$utils/index';
+import { isEqual, objClone, saveWebCacheData } from '$utils/index';
 import { isArray, isFunction, isObject } from '$utils/typeof';
 
 /**
@@ -189,6 +189,19 @@ export default class JSONEditorStore {
    * */
   @action.bound
   updateFormValueData(keyRoute, newVal, ignoreChange) {
+    let curElemSchema = null;
+    if (this.state.rootJSONStore.JSONSchemaStore) {
+      curElemSchema =
+        this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
+    }
+    // 保存缓存：在更新数据之前保存当前的keyRoute到缓存中
+    if (keyRoute !== '' && newVal && curElemSchema) {
+      if (curElemSchema && curElemSchema.type) {
+        // 缓存key格式：${keyRoute}-${type}，值：keyRoute
+        saveWebCacheData(`${keyRoute}-${curElemSchema.type}`, newVal);
+      }
+    }
+
     if (keyRoute !== '') {
       // 1. 获取父级key路径和最近的有一个key
       const parentKeyRoute_CurKey = getParentKeyRoute_CurKey(keyRoute);
@@ -212,15 +225,10 @@ export default class JSONEditorStore {
       this.jsonData = newVal;
     }
 
-    if (this.state.rootJSONStore.JSONSchemaStore) {
-      // 备注：数组类型通过keyRoute获取schema对象会有异常
-      const curElemSchema =
-        this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
-      if (curElemSchema && curElemSchema.isConditionProp) {
-        // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
-        this.updateLastTime();
-        // this.triggerChangeAction(); // 用于主动触发组件更新
-      }
+    if (curElemSchema && curElemSchema.isConditionProp) {
+      // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
+      this.updateLastTime();
+      // this.triggerChangeAction(); // 用于主动触发组件更新
     }
 
     if (!ignoreChange) {

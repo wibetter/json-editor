@@ -12,7 +12,11 @@ import {
   Button,
   Space,
 } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import {
+  MinusCircleOutlined,
+  PlusOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
 import { toJS } from 'mobx';
 import { buildStyle } from '../../utils/index';
 import './index.scss';
@@ -197,13 +201,13 @@ class ApiSchema extends React.PureComponent {
           </span>
         </div>
         <div className="content-item" style={contentStyle}>
-          <div
-            className="api-schema"
-            onClick={this.showModal}
-            style={{ cursor: 'pointer' }}
-          >
-            {summary || '点击配置 API'}
-          </div>
+          <Input
+            className="api-schema-input"
+            value={summary}
+            placeholder="点击右侧设置图标配置 API 接口"
+            readOnly
+            addonAfter={<SettingOutlined onClick={this.showModal} />}
+          />
         </div>
         <Modal
           title={targetJsonSchema.title || 'API 配置'}
