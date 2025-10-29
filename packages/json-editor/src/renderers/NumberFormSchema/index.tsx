@@ -10,14 +10,20 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, hasProperties, buildStyle } from '$utils/index';
 import './index.scss';
 
-class NumberFormSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
-  constructor(props) {
+interface NumberFormSchemaState {
+  renderTime: number;
+}
+
+class NumberFormSchema extends React.PureComponent<
+  BaseRendererProps,
+  NumberFormSchemaState
+> {
+  constructor(props: BaseRendererProps) {
     super(props);
 
     this.state = {
       renderTime: new Date().getTime(),
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
   }
@@ -27,7 +33,7 @@ interface Props extends BaseRendererProps {}
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -35,9 +41,9 @@ interface Props extends BaseRendererProps {}
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (newVal) => {
-    const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+  handleValueChange = (newVal: number | null) => {
+    const { keyRoute, jsonStore, targetJsonSchema } = this.props;
+    const { updateFormValueData } = jsonStore || {};
     const { targetJsonSchema } = this.props;
     if (newVal < targetJsonSchema.minimum) {
       message.warning(
@@ -50,10 +56,10 @@ interface Props extends BaseRendererProps {}
     } else {
       updateFormValueData(keyRoute, newVal); // 更新数值
     }
-  }
+  };
 
   /** 数值加减按钮事件处理器 */
-  numberChange = (type, curValue) => {
+  numberChange = (type: 'plus' | 'minus', curValue: number | undefined) => {
     const { keyRoute } = this.props;
     let curNum = 0;
     if (curValue) {
@@ -74,12 +80,12 @@ interface Props extends BaseRendererProps {}
       curInputDom.value = curNum;
       // curInputDom.style.color = "#f00";
     }
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { renderTime } = this.state;
     // 从jsonData中获取对应的数值
@@ -90,13 +96,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

@@ -17,8 +17,7 @@ import { buildStyle } from '$utils/index';
 import CodeIcon from '$assets/img/code.svg';
 import './index.scss';
 
-class DataSourceSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class DataSourceSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
 
@@ -26,7 +25,7 @@ interface Props extends BaseRendererProps {}
       isShowFilter: false, // 是否显示数据过滤器
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.switchFilterBtn = this.switchFilterBtn.bind(this);
   }
@@ -49,11 +48,11 @@ interface Props extends BaseRendererProps {}
     this.setState({
       isShowFilter: !isShowFilter,
     });
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore, renderChild } = this.props;
-    const { pageScreen } = schemaStore || {}
+    const { pageScreen } = schemaStore || {};
     const { keyRoute, jsonKey, nodeKey, indexRoute, targetJsonSchema } =
       this.props;
     const { jsonView, isClosed, isShowFilter } = this.state;
@@ -71,13 +70,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

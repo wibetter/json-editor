@@ -13,6 +13,7 @@ import {
   isEqualByIdT,
   isEqual,
 } from '@wibetter/json-utils';
+import { SchemaStore, JSONStore } from '$types/index';
 import './index.scss';
 
 interface JSONDataEditorProps {
@@ -29,9 +30,16 @@ interface JSONDataEditorProps {
   jsonStore?: any;
 }
 
-class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
+interface JSONDataEditorState {
+  jsonView: boolean;
+  viewStyle: 'fold' | 'tabs';
+}
 
-  constructor(props) {
+class JSONDataEditor extends React.PureComponent<
+  JSONDataEditorProps,
+  JSONDataEditorState
+> {
+  constructor(props: JSONDataEditorProps) {
     super(props);
 
     this.state = {
@@ -75,7 +83,7 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
   }
 
   /* 获取schema展示风格模式 */
-  catchViewStyle = (viewStyle) => {
+  catchViewStyle = (viewStyle: string) => {
     switch (viewStyle) {
       case 'fold':
         return 'fold';
@@ -86,7 +94,7 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
     }
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: JSONDataEditorProps) {
     const { JSONSchemaChange, setPageScreen } = this.props.schemaStore || {};
     const {
       JSONEditorObj,
@@ -106,13 +114,13 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
     // 读取code模式配置
     if (!isEqual(nextProps.jsonView, this.props.jsonView)) {
       this.setState({
-        jsonView: nextProps.jsonView,
+        jsonView: nextProps.jsonView ?? false,
       });
     }
     // 读取展示模式配置
     if (!isEqual(nextProps.viewStyle, this.props.viewStyle)) {
       this.setState({
-        viewStyle: nextProps.viewStyle,
+        viewStyle: this.catchViewStyle(nextProps.viewStyle),
       });
     }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
@@ -134,7 +142,7 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
   }
 
   /* schema一级字段Title显示 */
-  renderHeader = (format) => {
+  renderHeader = (format: string) => {
     switch (format) {
       case 'func':
         return '功能设置';
@@ -177,49 +185,51 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
                     expandIconPosition="right"
                     bordered={false}
                   >
-                    {jsonSchema.propertyOrder.map((key, index) => {
-                      /** 1. 获取当前元素的路径值 */
-                      const currentIndexRoute = index;
-                      const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
-                      /** 2. 获取当前元素的key值 */
-                      const currentJsonKey = key;
-                      /** 3. 获取当前元素的json结构对象 */
-                      const currentSchemaData =
-                        jsonSchema.properties[currentJsonKey];
-                      const curType = currentSchemaData.type;
+                    {jsonSchema.propertyOrder.map(
+                      (key: string, index: number) => {
+                        /** 1. 获取当前元素的路径值 */
+                        const currentIndexRoute = index;
+                        const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                        /** 2. 获取当前元素的key值 */
+                        const currentJsonKey = key;
+                        /** 3. 获取当前元素的json结构对象 */
+                        const currentSchemaData =
+                          jsonSchema.properties[currentJsonKey];
+                        const curType = currentSchemaData.type;
 
-                      /** 获取当前元素的id，用于做唯一标识 */
-                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
+                        /** 获取当前元素的id，用于做唯一标识 */
+                        const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
 
-                      if (
-                        currentSchemaData.propertyOrder &&
-                        currentSchemaData.propertyOrder.length > 0
-                      ) {
-                        return (
-                          <Panel
-                            header={
-                              currentSchemaData.title ||
-                              this.renderHeader(curType)
-                            }
-                            key={`${key}-${index}`}
-                            // key={currentJsonKey}
-                          >
-                            {MappingRender({
-                              parentType: curType,
-                              jsonKey: currentJsonKey,
-                              indexRoute: currentIndexRoute,
-                              keyRoute: currentKeyRoute,
-                              nodeKey,
-                              targetJsonSchema: currentSchemaData,
-                              isStructuredSchema: isStructured,
-                              schemaStore,
-                              jsonStore,
-                            })}
-                          </Panel>
-                        );
-                      }
-                      return '';
-                    })}
+                        if (
+                          currentSchemaData.propertyOrder &&
+                          currentSchemaData.propertyOrder.length > 0
+                        ) {
+                          return (
+                            <Panel
+                              header={
+                                currentSchemaData.title ||
+                                this.renderHeader(curType)
+                              }
+                              key={`${key}-${index}`}
+                              // key={currentJsonKey}
+                            >
+                              {MappingRender({
+                                parentType: curType,
+                                jsonKey: currentJsonKey,
+                                indexRoute: currentIndexRoute,
+                                keyRoute: currentKeyRoute,
+                                nodeKey,
+                                targetJsonSchema: currentSchemaData,
+                                isStructuredSchema: isStructured,
+                                schemaStore,
+                                jsonStore,
+                              })}
+                            </Panel>
+                          );
+                        }
+                        return '';
+                      },
+                    )}
                   </Collapse>
                 )}
                 {viewStyle === 'tabs' && (
@@ -229,51 +239,53 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
                     centered={true}
                     hideAdd={true}
                   >
-                    {jsonSchema.propertyOrder.map((key, index) => {
-                      /** 1. 获取当前元素的路径值 */
-                      const currentIndexRoute = index;
-                      const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
-                      /** 2. 获取当前元素的key值 */
-                      const currentJsonKey = key;
-                      /** 3. 获取当前元素的json结构对象 */
-                      const currentSchemaData =
-                        jsonSchema.properties[currentJsonKey];
-                      const curType = currentSchemaData.type;
+                    {jsonSchema.propertyOrder.map(
+                      (key: string, index: number) => {
+                        /** 1. 获取当前元素的路径值 */
+                        const currentIndexRoute = index;
+                        const currentKeyRoute = key; // key路径值，后续用于从jsonData中提取当前元素的数值
+                        /** 2. 获取当前元素的key值 */
+                        const currentJsonKey = key;
+                        /** 3. 获取当前元素的json结构对象 */
+                        const currentSchemaData =
+                          jsonSchema.properties[currentJsonKey];
+                        const curType = currentSchemaData.type;
 
-                      /** 5. 获取当前元素的id，用于做唯一标识 */
-                      const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
+                        /** 5. 获取当前元素的id，用于做唯一标识 */
+                        const nodeKey = `${lastUpdateTime}-${jsonLastUpdateTime}-${curType}-${currentJsonKey}`;
 
-                      if (
-                        currentSchemaData.propertyOrder &&
-                        currentSchemaData.propertyOrder.length > 0
-                      ) {
-                        return (
-                          <TabPane
-                            tab={
-                              currentSchemaData.title ||
-                              this.renderHeader(curType)
-                            }
-                            key={`${key}-${index}`}
-                            // key={currentJsonKey}
-                            closable={false}
-                            className={`tabs-schema-item`}
-                          >
-                            {MappingRender({
-                              parentType: curType,
-                              jsonKey: currentJsonKey,
-                              indexRoute: currentIndexRoute,
-                              keyRoute: currentKeyRoute,
-                              nodeKey,
-                              targetJsonSchema: currentSchemaData,
-                              isStructuredSchema: isStructured,
-                              schemaStore,
-                              jsonStore,
-                            })}
-                          </TabPane>
-                        );
-                      }
-                      return '';
-                    })}
+                        if (
+                          currentSchemaData.propertyOrder &&
+                          currentSchemaData.propertyOrder.length > 0
+                        ) {
+                          return (
+                            <TabPane
+                              tab={
+                                currentSchemaData.title ||
+                                this.renderHeader(curType)
+                              }
+                              key={`${key}-${index}`}
+                              // key={currentJsonKey}
+                              closable={false}
+                              className={`tabs-schema-item`}
+                            >
+                              {MappingRender({
+                                parentType: curType,
+                                jsonKey: currentJsonKey,
+                                indexRoute: currentIndexRoute,
+                                keyRoute: currentKeyRoute,
+                                nodeKey,
+                                targetJsonSchema: currentSchemaData,
+                                isStructuredSchema: isStructured,
+                                schemaStore,
+                                jsonStore,
+                              })}
+                            </TabPane>
+                          );
+                        }
+                        return '';
+                      },
+                    )}
                   </Tabs>
                 )}
               </>
@@ -309,7 +321,9 @@ class JSONDataEditor extends React.PureComponent<JSONDataEditorProps> {
   }
 }
 
-export default inject((stores) => ({
-  schemaStore: stores.JSONSchemaStore,
-  jsonStore: stores.JSONEditorStore,
-}))(observer(JSONDataEditor));
+export default inject(
+  (stores: { JSONSchemaStore: SchemaStore; JSONEditorStore: JSONStore }) => ({
+    schemaStore: stores.JSONSchemaStore,
+    jsonStore: stores.JSONEditorStore,
+  }),
+)(observer(JSONDataEditor));

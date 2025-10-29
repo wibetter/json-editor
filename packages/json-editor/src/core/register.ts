@@ -64,7 +64,7 @@ window.addEventListener(
       event.data.jsonRenderer &&
       event.data.jsonRenderer.type
     ) {
-      const curType = curRenderer.type;
+      const curType = event.data.jsonRenderer.type;
       if (renderersMap[curType]) {
         console.warn(
           `[json-editor]: 动态注册渲染器失败，当前存在重名渲染器（${curType}）。`,
@@ -72,21 +72,29 @@ window.addEventListener(
       } else {
         console.info('[json-editor]: 响应动态注册渲染器事件：', curType);
         const curRenderer = getJSONCustomRenderer(curType);
-        registerRenderer({
-          type: curType,
-          component: curRenderer,
-        });
+        if (curRenderer) {
+          registerRenderer({
+            type: curType,
+            component: curRenderer,
+          });
+        }
       }
     }
   },
   false,
 );
 
-export function AddJSONCustomRenderer(componentType, rendererComponent) {
+export function AddJSONCustomRenderer(
+  componentType: string,
+  rendererComponent: any,
+) {
   if (window && !window.JSONEditorCustomRenderers) {
     window.JSONEditorCustomRenderers = {};
   }
-  if (!window.JSONEditorCustomRenderers[componentType]) {
+  if (
+    window.JSONEditorCustomRenderers &&
+    !window.JSONEditorCustomRenderers[componentType]
+  ) {
     window.JSONEditorCustomRenderers[componentType] = rendererComponent;
     return componentType;
   } else {
@@ -97,7 +105,7 @@ export function AddJSONCustomRenderer(componentType, rendererComponent) {
   return undefined;
 }
 
-export function getJSONCustomRenderer(componentType) {
+export function getJSONCustomRenderer(componentType: string) {
   if (
     window &&
     window.JSONEditorCustomRenderers &&

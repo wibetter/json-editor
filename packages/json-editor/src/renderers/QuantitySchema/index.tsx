@@ -11,6 +11,8 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 
 interface Props extends BaseRendererProps {}
+
+class QuantitySchema extends React.PureComponent<BaseRendererProps> {
   componentWillMount() {
     // 从web缓存中获取数值
     catchJsonDataByWebCache.call(this);
@@ -26,20 +28,20 @@ interface Props extends BaseRendererProps {}
   /** 数值变动事件处理器 */
   handleInputChangeV1 = (event) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
     const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
     updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
-  }
+  };
 
   handleInputChange = (event) => {
     const { value } = event.target;
     this.handleValueChange(value);
-  }
+  };
 
   handleValueChange = (value) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
 
     if (this.props.onChange) {
@@ -48,11 +50,11 @@ interface Props extends BaseRendererProps {}
     } else {
       updateFormValueData(curKeyRoute, value); // 更新数值
     }
-  }
+  };
 
   handleUnitChange = (value) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const curKeyRoute = keyRoute ? `${keyRoute}-quantity` : 'quantity';
 
     if (this.props.onChange) {
@@ -60,7 +62,7 @@ interface Props extends BaseRendererProps {}
     } else {
       updateFormValueData(curKeyRoute, value);
     }
-  }
+  };
 
   // 单位切换
   getUnitSelect = () => {
@@ -92,12 +94,12 @@ interface Props extends BaseRendererProps {}
         })}
       </Select>
     );
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -110,7 +112,7 @@ interface Props extends BaseRendererProps {}
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
 
-    const editorOptions = _editorOptions || {}
+    const editorOptions = _editorOptions || {};
     let defaultOptions = [];
     if (editorOptions.GlobalOptions && isArray(editorOptions.GlobalOptions)) {
       defaultOptions = editorOptions.GlobalOptions;
@@ -119,13 +121,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

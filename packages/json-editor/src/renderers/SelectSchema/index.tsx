@@ -11,7 +11,7 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { isNeedTwoColWarpStyle, buildStyle, formatOptions } from '$utils/index';
 import './index.scss';
 
-interface SelectSchemaProps {
+interface SelectSchemaProps extends BaseRendererProps {
   parentType?: string;
   jsonKey?: string;
   indexRoute?: string;
@@ -26,11 +26,10 @@ interface SelectSchemaProps {
 /**
  * select下拉选择类型
  */
-class SelectSchema extends React.PureComponent<Props<SelectSchemaProps> {
+class SelectSchema extends React.PureComponent<SelectSchemaProps> {
+  optionValue: Record<string, any> = {}; // 记录options中对象类型的value
 
-  optionValue = {}; // 记录options中对象类型的value
-
-  constructor(props) {
+  constructor(props: SelectSchemaProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -41,7 +40,7 @@ class SelectSchema extends React.PureComponent<Props<SelectSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: SelectSchemaProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -49,9 +48,9 @@ class SelectSchema extends React.PureComponent<Props<SelectSchemaProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (value, option) => {
+  handleValueChange = (value: any, option?: any) => {
     const { keyRoute, jsonStore, targetJsonSchema } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     let curValue = value;
     const withLabel = targetJsonSchema.withLabel;
 
@@ -69,7 +68,7 @@ class SelectSchema extends React.PureComponent<Props<SelectSchemaProps> {
           curItem = {
             value: curItem,
             label: option[index].children || option[index].label,
-          }
+          };
         }
 
         valueArray.push(curItem);
@@ -82,17 +81,17 @@ class SelectSchema extends React.PureComponent<Props<SelectSchemaProps> {
         curValue = {
           value: curValue,
           label: option.children || option.label,
-        }
+        };
       }
     }
 
     updateFormValueData(keyRoute, curValue); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
@@ -123,13 +122,13 @@ class SelectSchema extends React.PureComponent<Props<SelectSchemaProps> {
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

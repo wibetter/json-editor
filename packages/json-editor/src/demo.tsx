@@ -11,8 +11,8 @@ import '../../../index.scss';
 /**
  * JSONEditor的测试Demo
  */
-class IndexDemo extends React.PureComponent {
-  constructor(props) {
+class IndexDemo extends React.PureComponent<any, any> {
+  constructor(props: any) {
     super(props);
     const urlParams = urlParse();
 

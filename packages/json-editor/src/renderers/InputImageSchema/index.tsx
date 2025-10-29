@@ -12,7 +12,7 @@ import { truncate, isArray, isString } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
-interface InputImageSchemaProps {
+interface InputImageSchemaProps extends BaseRendererProps {
   parentType?: any;
   jsonKey?: string;
   indexRoute?: any;
@@ -24,13 +24,12 @@ interface InputImageSchemaProps {
   jsonStore?: any;
 }
 
-class InputImageSchema extends React.PureComponent<Props<InputImageSchemaProps> {
-
+class InputImageSchema extends React.PureComponent<InputImageSchemaProps> {
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleDeleteChange = this.handleDeleteChange.bind(this);
@@ -53,7 +52,7 @@ class InputImageSchema extends React.PureComponent<Props<InputImageSchemaProps> 
 
   handleImageChange = (fileInfo) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     if (fileInfo.file.status === 'uploading') {
       this.setState({
         loading: true,
@@ -62,7 +61,7 @@ class InputImageSchema extends React.PureComponent<Props<InputImageSchemaProps> 
     }
 
     if (fileInfo.file.status === 'done') {
-      const responseData = fileInfo.file.response || {}
+      const responseData = fileInfo.file.response || {};
       if (responseData.url) {
         updateFormValueData(keyRoute, responseData.url);
       }
@@ -72,20 +71,20 @@ class InputImageSchema extends React.PureComponent<Props<InputImageSchemaProps> 
     this.setState({
       loading: false,
     });
-  }
+  };
 
   handleDeleteChange = () => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, '');
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute, options: _options } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute, options: _options } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
-    const options = _options || {}
+    const options = _options || {};
     const { loading } = this.state;
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
@@ -115,17 +114,17 @@ class InputImageSchema extends React.PureComponent<Props<InputImageSchemaProps> 
       },
       onChange: this.handleImageChange,
       onRemove: this.handleDeleteChange,
-    }
+    };
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

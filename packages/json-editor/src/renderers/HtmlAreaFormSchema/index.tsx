@@ -13,15 +13,14 @@ import { isObject } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
-class HtmlAreaFormSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     // 组件内部维护的数据
     this.state = {
       isShowWarn: false, // 用于判断是否显示错误信息
       warnText: '', // 错误内容
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
   }
@@ -41,14 +40,14 @@ interface Props extends BaseRendererProps {}
   /** 数值变动事件处理器 */
   handleValueChange = (newJsonData) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, newJsonData); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     const { isShowWarn, warnText } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -67,13 +66,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

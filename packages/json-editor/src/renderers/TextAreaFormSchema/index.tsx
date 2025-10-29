@@ -10,9 +10,8 @@ const { TextArea } = Input;
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
-class TextAreaFormSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
-  constructor(props) {
+class TextAreaFormSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -23,7 +22,7 @@ interface Props extends BaseRendererProps {}
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -31,17 +30,17 @@ interface Props extends BaseRendererProps {}
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
+  handleValueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
     updateFormValueData(keyRoute, value); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -50,13 +49,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

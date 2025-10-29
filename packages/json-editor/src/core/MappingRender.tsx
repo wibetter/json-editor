@@ -13,19 +13,25 @@ import '$renderers/index';
 import '$customRenderers/index';
 import { renderersMap } from '$core/factory';
 import InputFormSchema from '$renderers/InputFormSchema';
+import { BaseRendererProps } from '$types/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
-const MappingRender = (props) => {
-  const { getSchemaByKeyRoute } = props.schemaStore || {};
-  const { getJSONDataByKeyRoute, JSONEditorObj } = props.jsonStore || {};
-  const { nodeKey, jsonKey, keyRoute, targetJsonSchema, rendererType } = props;
+const MappingRender = (props: BaseRendererProps): React.ReactElement | null => {
+  const { schemaStore, jsonStore } = props;
+  const { getJSONDataByKeyRoute, JSONEditorObj } = jsonStore || {};
+  const { nodeKey, keyRoute, targetJsonSchema, rendererType } = props;
+
+  if (!targetJsonSchema) {
+    return null;
+  }
 
   // 支持显隐属性表达式
   const parentKeyRoute = keyRoute && getParentKeyRoute(keyRoute);
-  const parentData = parentKeyRoute
-    ? getJSONDataByKeyRoute(parentKeyRoute) || {}
-    : {}; // 获取当前父级数据域
-  const curData = Object.assign({}, JSONEditorObj, parentData);
+  const parentData =
+    parentKeyRoute && getJSONDataByKeyRoute
+      ? getJSONDataByKeyRoute(parentKeyRoute) || {}
+      : {}; // 获取当前父级数据域
+  const curData = Object.assign({}, JSONEditorObj || {}, parentData);
 
   if (
     hasProperties(targetJsonSchema.onShow) &&
@@ -35,7 +41,7 @@ const MappingRender = (props) => {
       (isString(targetJsonSchema.onShow) &&
         !evalExpression(targetJsonSchema.onShow, curData)))
   ) {
-    return;
+    return null;
   }
 
   const curType =
@@ -55,15 +61,15 @@ const MappingRender = (props) => {
   }
   */
 
-  const newProps = {
+  const newProps: BaseRendererProps = {
     ...props,
     nodeKey: curNodeKey,
     key: curNodeKey,
-    renderChild: (thisProps) =>
+    renderChild: (thisProps: BaseRendererProps) =>
       MappingRender({
         ...thisProps,
-        schemaStore: props.schemaStore,
-        jsonStore: props.jsonStore,
+        schemaStore,
+        jsonStore,
       }),
   };
 

@@ -9,8 +9,7 @@ import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
-class URLFormSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class URLFormSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
@@ -32,15 +31,15 @@ interface Props extends BaseRendererProps {}
   /** 数值变动事件处理器 */
   handleValueChange = (event) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
     updateFormValueData(keyRoute, value); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -49,13 +48,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

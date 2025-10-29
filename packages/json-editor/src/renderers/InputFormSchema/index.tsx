@@ -7,22 +7,27 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
+import {
+  BaseRendererProps,
+  JSONSchema,
+  SchemaStore,
+  JSONStore,
+} from '$types/index';
 
-interface InputFormSchemaProps {
-  parentType?: any;
+interface InputFormSchemaProps extends BaseRendererProps {
+  parentType?: string;
   jsonKey?: string;
-  indexRoute?: any;
-  keyRoute?: any;
+  indexRoute?: string | number;
+  keyRoute?: string;
   nodeKey?: string;
-  targetJsonSchema?: any;
-  onChange?: any;
-  schemaStore?: any;
-  jsonStore?: any;
+  targetJsonSchema?: JSONSchema;
+  onChange?: (value: any) => void;
+  schemaStore?: SchemaStore;
+  jsonStore?: JSONStore;
 }
 
-class InputFormSchema extends React.PureComponent<Props<InputFormSchemaProps> {
-
-  constructor(props) {
+class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
+  constructor(props: InputFormSchemaProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -33,28 +38,28 @@ class InputFormSchema extends React.PureComponent<Props<InputFormSchemaProps> {
   // static contextType = ThemeContext;
 
   /** 数值变动事件处理器 */
-  handleInputChange = (event) => {
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
     this.handleValueChange(value);
-  }
+  };
 
-  handleValueChange = (value) => {
+  handleValueChange = (value: any): void => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     if (this.props.onChange) {
       // 如果有监听数据变动函数则优先触发
       this.props.onChange(value);
     } else {
       updateFormValueData(keyRoute, value); // 更新数值
     }
-  }
+  };
 
   componentWillMount() {
     // 从web缓存中获取数值
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: InputFormSchemaProps): void {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -63,8 +68,8 @@ class InputFormSchema extends React.PureComponent<Props<InputFormSchemaProps> {
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
@@ -72,7 +77,7 @@ class InputFormSchema extends React.PureComponent<Props<InputFormSchemaProps> {
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
 
-    const editorOptions = _editorOptions || {}
+    const editorOptions = _editorOptions || {};
     let defaultOptions = [];
     if (editorOptions.GlobalOptions && isArray(editorOptions.GlobalOptions)) {
       defaultOptions = editorOptions.GlobalOptions;
@@ -81,13 +86,13 @@ class InputFormSchema extends React.PureComponent<Props<InputFormSchemaProps> {
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

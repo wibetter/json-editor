@@ -26,7 +26,7 @@ import './index.scss';
 
 const colorOptions = {
   theme: 'light', // 指定取色器样式主题，支持dark和light两种样式
-}
+};
 BraftEditor.use([ColorPicker(colorOptions)]);
 
 // 表格配置项
@@ -36,11 +36,10 @@ const tableOptions = {
   withDropdown: false, // 插入表格前是否弹出下拉菜单
   columnResizable: false, // 是否允许拖动调整列宽，默认false
   exportAttrString: 'border="1" style="border-collapse: collapse"', // 指定输出HTML时附加到table标签上的属性字符串
-}
+};
 BraftEditor.use(Table(tableOptions));
 
-class TextEditorSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,13 +82,13 @@ interface Props extends BaseRendererProps {}
         'fullscreen',
       ],
       baseControls: ['font-size', 'text-color', 'bold', 'italic', 'fullscreen'],
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleEditorChange = this.handleEditorChange.bind(this);
   }
 
   componentWillMount() {
-    const { pageScreen } = this.props.schemaStore || {}
+    const { pageScreen } = this.props.schemaStore || {};
     // 从web缓存中获取数值
     catchJsonDataByWebCache.call(this);
     if (pageScreen && pageScreen === 'wideScreen') {
@@ -122,14 +121,14 @@ interface Props extends BaseRendererProps {}
   /** 富文本内容变动事件处理器 */
   handleEditorChange = (editorState) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { isClosed } = this.state;
     const curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
@@ -139,13 +138,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

@@ -34,13 +34,20 @@ interface JSONEditorProps {
   element?: any;
 }
 
+interface JSONEditorState {
+  rootJSONStore: RootJSONStore;
+}
+
 /**
  * JSONEditor功能组件
  * @param props
  * @constructor
  */
-export default class JSONEditor extends React.PureComponent<JSONEditorProps> {
-  constructor(props) {
+export default class JSONEditor extends React.PureComponent<
+  JSONEditorProps,
+  JSONEditorState
+> {
+  constructor(props: JSONEditorProps) {
     super(props);
     this.state = {
       rootJSONStore: new RootJSONStore(), // 初始化一份rootJSONStore

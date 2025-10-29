@@ -34,7 +34,7 @@ export interface JSONStore {
 export interface BaseRendererProps {
   parentType?: string;
   jsonKey?: string;
-  indexRoute?: string;
+  indexRoute?: string | number;
   keyRoute?: string;
   nodeKey?: string;
   targetJsonSchema?: JSONSchema;
@@ -44,25 +44,28 @@ export interface BaseRendererProps {
   [key: string]: any;
 }
 
-declare module 'mobx' {
-  export function observable(target: any): any;
-  export function computed(target: any): any;
-  export function action(target: any): any;
-  export function toJS(target: any): any;
-  export class Provider extends React.Component<any> {}
-}
+// MobX 类型声明已在 node_modules/mobx/lib/mobx.d.ts 中定义
 
 declare module 'mobx-react' {
   export class Provider extends React.Component<any> {}
 }
 
-declare module 'lodash' {
-  export = _;
-  export as namespace _;
+// lodash 和 antd 的类型声明已在 node_modules 中提供
+
+// SVG 文件类型声明
+declare module '$assets/img/*.svg' {
+  const content: React.ComponentType<any>;
+  export default content;
 }
 
-declare module 'antd' {
-  export = Antd;
-  export as namespace Antd;
+declare module '*.svg' {
+  const content: React.ComponentType<any>;
+  export default content;
 }
 
+// Window 接口扩展
+declare global {
+  interface Window {
+    JSONEditorCustomRenderers?: Record<string, any>;
+  }
+}

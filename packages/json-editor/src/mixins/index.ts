@@ -5,7 +5,7 @@ import { getWebCacheData } from '$utils/index';
  * keyRoute、targetJsonSchema、updateFormValueData
  * getJSONDataByKeyRoute、getInitJsonDataByKeyRoute
  * */
-export function catchJsonDataByWebCache(curKeyRoute) {
+export function catchJsonDataByWebCache(curKeyRoute: string) {
   const { targetJsonSchema } = this.props;
   const {
     getJSONDataByKeyRoute,

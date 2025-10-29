@@ -14,10 +14,9 @@ const DateTypeList = {
   'date-time': 'YYYY-MM-DD HH:mm',
   date: 'YYYY-MM-DD',
   time: 'HH:mm',
-}
+};
 
-class DateTimeFormSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class DateTimeFormSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
@@ -39,14 +38,14 @@ interface Props extends BaseRendererProps {}
   /** 数值变动事件处理器 */
   handleValueChange = (event, dateString) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, dateString); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const curType = targetJsonSchema.type;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -59,13 +58,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

@@ -14,14 +14,13 @@ import './index.scss';
 /**
  * 新版color类型：颜色选择器
  */
-class ColorFormSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     this.state = {
       renderState: false, // 用于主动触发更新的状态数据
       displayColorPicker: false, // 是否展示颜色选择器
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
   }
@@ -41,7 +40,7 @@ interface Props extends BaseRendererProps {}
   /** 数值变动事件处理器 */
   handleValueChange = (color) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
 
     const { rgb } = color; // hex,
     const rgbaVal = `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`;
@@ -52,7 +51,7 @@ interface Props extends BaseRendererProps {}
     this.setState({
       renderState: !this.state.renderState,
     });
-  }
+  };
 
   /** color清除事件处理器 */
   deleteColor = () => {
@@ -63,12 +62,12 @@ interface Props extends BaseRendererProps {}
     this.setState({
       renderState: !this.state.renderState,
     });
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { renderState, displayColorPicker } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
@@ -78,13 +77,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     const SketchPickerContent = (
       <SketchPicker

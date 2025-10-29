@@ -13,17 +13,19 @@ import {
   saveJSONEditorCache,
   getJSONEditorCache,
   deleteJSONEditorCache,
-} from './webCache.ts';
+} from './webCache';
 
-export function buildStyle(style) {
-  const curStyle = {};
+export function buildStyle(
+  style: Record<string, any> | undefined,
+): Record<string, any> {
+  const curStyle: Record<string, any> = {};
   if (style) {
     Object.keys(style).forEach((styleKey) => {
       // 将属性短横线命名转换为驼峰命名，如 background-color => backgroundColor
       if (styleKey.indexOf('-') > 0) {
-        curStyle[camelCase(styleKey)] = style[styleKey];
+        curStyle[camelCase(styleKey)] = (style as any)[styleKey];
       } else {
-        curStyle[styleKey] = style[styleKey];
+        curStyle[styleKey] = (style as any)[styleKey];
       }
     });
   }
@@ -31,14 +33,14 @@ export function buildStyle(style) {
 }
 
 /** js对象数据深拷贝，避免数据联动 */
-export function objClone(targetObj) {
+export function objClone(targetObj: any) {
   // const newObj = JSON.stringify(targetObj);
   // return JSON.parse(newObj);
   return _objClone(targetObj);
 }
 
 /** 对比两个json数据是否相等 */
-export function isEqual(targetObj, nextTargetObj) {
+export function isEqual(targetObj: any, nextTargetObj: any) {
   // return JSON.stringify(targetObj) === JSON.stringify(nextTargetObj);
   return _isEqual(targetObj, nextTargetObj);
 }
@@ -47,7 +49,7 @@ export function isEqual(targetObj, nextTargetObj) {
  * 判断当前属性是否存在
  * 备注：要识别boolean类型的数值
  */
-export function hasProperties(targetPropertie) {
+export function hasProperties(targetPropertie: any): boolean {
   let hasProperties = false;
   if (targetPropertie !== undefined && targetPropertie !== null) {
     // targetPropertie 等于""、0、false时均认为是存在的属性
@@ -61,7 +63,7 @@ export function hasProperties(targetPropertie) {
  * 比如：boolean、date、date-time、time、number、color、quantity
  * 呈现：element-title 和 content-item 在同一行展示
  * */
-export function isNeedTwoColWarpStyle(format) {
+export function isNeedTwoColWarpStyle(format: string): boolean {
   let isNeedTwoColWarp = false;
   if (
     format === 'boolean' ||
@@ -82,7 +84,7 @@ export function isNeedTwoColWarpStyle(format) {
  *  基本类型元素：input、boolean、 date、date-time、 time、 url、
  *  textarea、number、 radio、 select、color、quantity
  * */
-export function isBaseSchemaElem(elemClassName) {
+export function isBaseSchemaElem(elemClassName: string): boolean {
   let isBaseSchema = false;
   if (
     elemClassName.indexOf('input-schema') >= 0 ||
@@ -108,7 +110,7 @@ export function isBaseSchemaElem(elemClassName) {
  *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
  *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
  * */
-export function isBoxSchemaElem(elemClassName) {
+export function isBoxSchemaElem(elemClassName: string): boolean {
   let isBoxSchema = false;
   if (
     elemClassName.indexOf('func-schema') >= 0 ||
@@ -124,7 +126,7 @@ export function isBoxSchemaElem(elemClassName) {
 /** 根据className判断是否是一级固定类型元素
  *  容器类型元素：func、style、data
  * */
-export function isFirstSchemaElem(elemClassName) {
+export function isFirstSchemaElem(elemClassName: string): boolean {
   let isFirstSchema = false;
   if (
     elemClassName.indexOf('func-schema') >= 0 ||
@@ -138,14 +140,14 @@ export function isFirstSchemaElem(elemClassName) {
 /**
  * 获取当前url中的所有参数
  */
-export function getParams() {
+export function getParams(): Record<string, string> {
   let params = window.location.search;
   if (!params) {
     const currentHref = window.location.href;
     const startIndex = currentHref.lastIndexOf('?');
     params = currentHref.substring(startIndex);
   }
-  const paramsObj = {};
+  const paramsObj: Record<string, string> = {};
   if (params) {
     const arr = params.substr(1).split('&');
     for (let i = 0, size = arr.length; i < size; i++) {
@@ -160,7 +162,7 @@ export function getParams() {
 /**
  * 获取当前url中的指定参数
  */
-export function getURLParam(key) {
+export function getURLParam(key: string): string {
   const params = window.location.search;
   if (params) {
     const arr = params.substr(1).split('&');
@@ -177,21 +179,21 @@ export function getURLParam(key) {
 /**
  *  将数据缓存到sessionStorage中
  */
-export function saveWebCacheData(valueKey, value) {
+export function saveWebCacheData(valueKey: string, value: any): void {
   saveJSONEditorCache(valueKey, value, 'json-editor-formData');
 }
 
 /**
  *  从sessionStorage中读取此前缓存的数据
  */
-export function getWebCacheData(valueKey) {
+export function getWebCacheData(valueKey: string): any {
   return getJSONEditorCache(valueKey, 'json-editor-formData');
 }
 
 /**
  *  从sessionStorage中删除此前缓存的数据
  */
-export function deleteWebCacheData(valueKey) {
+export function deleteWebCacheData(valueKey: string): void {
   deleteJSONEditorCache(valueKey, 'json-editor-formData');
 }
 
@@ -201,7 +203,11 @@ export function deleteWebCacheData(valueKey) {
  * xxxOn
  * xxxExpr
  */
-export function getExprProperties(schema, data, ignoreList = ['name']) {
+export function getExprProperties(
+  schema: any,
+  data: any,
+  ignoreList: string[] = ['name'],
+): any {
   Object.getOwnPropertyNames(schema).forEach((key) => {
     if (ignoreList && ~ignoreList.indexOf(key)) {
       return;
@@ -226,12 +232,15 @@ export function getExprProperties(schema, data, ignoreList = ['name']) {
 }
 
 // options 异常格式 处理，自动转成可用列表格式
-export function formatOptions(options) {
-  let curOptions = [];
-  let optionValue = {}; // 记录对象类型的value
+export function formatOptions(options: any): {
+  options: any[];
+  optionValue: Record<string, any>;
+} {
+  let curOptions: any[] = [];
+  let optionValue: Record<string, any> = {}; // 记录对象类型的value
   if (isArray(options)) {
     // curOptions = options;
-    options.forEach((option) => {
+    options.forEach((option: any) => {
       if (isObject(option.value)) {
         const valueStr = JSON.stringify(option.value);
         curOptions.push({
@@ -259,12 +268,15 @@ export function formatOptions(options) {
   };
 }
 
-export function formatOptions1(options) {
-  let curOptions = [];
-  let optionValue = {}; // 记录对象类型的value
+export function formatOptions1(options: any): {
+  options: any[];
+  optionValue: Record<string, any>;
+} {
+  let curOptions: any[] = [];
+  let optionValue: Record<string, any> = {}; // 记录对象类型的value
   if (isArray(options)) {
     // curOptions = options;
-    options.forEach((option) => {
+    options.forEach((option: any) => {
       if (isObject(option)) {
         if (isObject(option.value)) {
           let valueStr = JSON.stringify(option.value);
@@ -313,7 +325,7 @@ export function formatOptions1(options) {
   };
 }
 
-export function getObjectTitle(objItem) {
+export function getObjectTitle(objItem: any): string | any {
   if (objItem && isObject(objItem)) {
     let curObjectTitle =
       objItem.label || objItem.title || objItem.description || objItem.desc;
@@ -342,8 +354,8 @@ export function getObjectTitle(objItem) {
  * 将 options 列表中的普通 option 自动包裹一层：
  * 比如：[{label: 'xxLabel', value: 123}] => [{label: 'xxLabel', value: {label: 'xxLabel', value: 123}}]
  */
-export function getWrapOptions(options) {
-  let curOptions = [];
+export function getWrapOptions(options: any[]): any[] {
+  let curOptions: any[] = [];
   if (isArray(options)) {
     options.forEach((option) => {
       curOptions.push({

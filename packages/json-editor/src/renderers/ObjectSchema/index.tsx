@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 // import { inject, observer } from 'mobx-react';
 import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
@@ -17,15 +17,29 @@ import CodeIcon from '$assets/img/code.svg';
 import { buildStyle } from '$utils/index';
 import './index.scss';
 
-class ObjectSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
-  constructor(props) {
+interface ObjectSchemaProps extends BaseRendererProps {
+  isArrayItem?: boolean;
+  arrIndex?: number;
+  isStructuredSchema?: boolean;
+  renderChild?: (props: BaseRendererProps) => React.ReactElement;
+}
+
+interface ObjectSchemaState {
+  jsonView: boolean;
+  isClosed: boolean;
+}
+
+class ObjectSchema extends React.PureComponent<
+  ObjectSchemaProps,
+  ObjectSchemaState
+> {
+  constructor(props: ObjectSchemaProps) {
     super(props);
 
     this.state = {
       jsonView: false, // 是否显示code模式
       isClosed: false, // 是否为关闭状态，默认是开启状态
-    }
+    };
 
     this.collapseChange = this.collapseChange.bind(this);
   }
@@ -35,14 +49,14 @@ interface Props extends BaseRendererProps {}
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: ObjectSchemaProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
     }
   }
 
-  collapseChange(event) {
+  collapseChange(event: React.MouseEvent) {
     const { keyRoute } = this.props;
     const { isClosed } = this.state;
 
@@ -58,7 +72,7 @@ interface Props extends BaseRendererProps {}
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
+    const { pageScreen } = schemaStore || {};
 
     const {
       indexRoute,
@@ -88,13 +102,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

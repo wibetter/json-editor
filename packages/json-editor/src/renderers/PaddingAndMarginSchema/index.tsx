@@ -17,14 +17,13 @@ import { truncate, isNumber, isArray } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
 import './index.scss';
 
-class PaddingAndMarginSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     this.state = {
       type: 'all', // 设置类型，支持 自定义设值（custom）、统一设值（all）
       renderAction: false, // 用于主动触发render的临时变量
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.updateBoxStyleState = this.updateBoxStyleState.bind(this);
     this.initBoxStyle = this.initBoxStyle.bind(this);
@@ -59,12 +58,12 @@ interface Props extends BaseRendererProps {}
       left: '',
     },
     quantity: 'px',
-  }
+  };
 
   /** 初始化boxStyle的数值 */
   initBoxStyle = () => {
     const { jsonStore } = this.props;
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -111,7 +110,7 @@ interface Props extends BaseRendererProps {}
       paddingValueArr[3] || paddingValueArr[1],
       paddingValue,
     );
-  }
+  };
 
   // 处理用户输入的数值（支持默认值设置）
   getStyleValText = (valStr, defaultValue) => {
@@ -128,7 +127,7 @@ interface Props extends BaseRendererProps {}
       curValue = defaultValue;
     }
     return curValue;
-  }
+  };
 
   // 获取单位设置（含单位）
   getStyleVal = (valStr) => {
@@ -148,7 +147,7 @@ interface Props extends BaseRendererProps {}
       return curValue;
     }
     return `${curValue}${this.boxStyle.quantity}`;
-  }
+  };
 
   /** 设置布局容器的盒子模型数值 */
   setLayoutBoxStyle = (newVal, layoutStyleLock, styleKey, propKey) => {
@@ -163,7 +162,7 @@ interface Props extends BaseRendererProps {}
       }
       this.updateBoxStyleState();
     }
-  }
+  };
 
   /** 布局容器的盒子模型数值联动设值 */
   linkLayoutBoxStyle = (newVal, styleKey) => {
@@ -182,12 +181,12 @@ interface Props extends BaseRendererProps {}
     }
 
     this.updateBoxStyleState();
-  }
+  };
 
   /** 数值变动事件处理器: 更新到 jsonData 中 */
   updateBoxStyleState = () => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const { renderAction } = this.state;
 
     /** 获取布局容器的盒子模型数值 */
@@ -195,67 +194,67 @@ interface Props extends BaseRendererProps {}
       margin: this.getMarginValue(),
       padding: this.getPaddingValue(),
       quantity: this.boxStyle.quantity,
-    }
+    };
 
     updateFormValueData(keyRoute, curBoxValue); // 更新单位数值
 
     this.setState({
       renderAction: !renderAction,
     });
-  }
+  };
 
   // 固定单位
   getQuantity = (curJsonData) => {
     const { targetJsonSchema } = this.props;
     const quantitySchema = targetJsonSchema.properties['quantity'];
     return curJsonData.quantity || quantitySchema.default;
-  }
+  };
 
   getSelectAfter = (curJsonData) => {
     return <span>{this.getQuantity(curJsonData)}</span>;
-  }
+  };
 
   // 暂未使用
   quantityChange = (newVal) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const curBoxValue = {
       margin: this.getMarginValue(),
       padding: this.getPaddingValue(),
       quantity: newVal,
-    }
+    };
     updateFormValueData(keyRoute, curBoxValue);
-  }
+  };
 
   setType = (newVal) => {
     this.setState({
       type: newVal,
     });
-  }
+  };
 
   getMarginValue = () => {
     return `${this.getStyleVal(this.boxStyle.margin.top)} ${this.getStyleVal(this.boxStyle.margin.right)} ${this.getStyleVal(this.boxStyle.margin.bottom)} ${this.getStyleVal(this.boxStyle.margin.left)}`;
-  }
+  };
 
   getPaddingValue = () => {
     return `${this.getStyleVal(this.boxStyle.padding.top)} ${this.getStyleVal(this.boxStyle.padding.right)} ${this.getStyleVal(this.boxStyle.padding.bottom)} ${this.getStyleVal(this.boxStyle.padding.left)}`;
-  }
+  };
 
   render() {
     const { nodeKey, jsonKey, targetJsonSchema, keyRoute } = this.props;
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
     const { renderAction, type } = this.state;
     // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute) || {}
+    const curJsonData = getJSONDataByKeyRoute(keyRoute) || {};
 
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
     const curQuantity = this.getQuantity(curJsonData);
 
-    const editorOptions = _editorOptions || {}
+    const editorOptions = _editorOptions || {};
     let defaultOptions = [];
     if (editorOptions.GlobalOptions && isArray(editorOptions.GlobalOptions)) {
       defaultOptions = editorOptions.GlobalOptions;
@@ -264,13 +263,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

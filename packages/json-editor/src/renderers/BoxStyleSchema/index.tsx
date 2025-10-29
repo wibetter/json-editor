@@ -9,14 +9,13 @@ import { buildStyle } from '$utils/index';
 import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
-class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
-
+class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     this.state = {
       layoutStyleLock: false, // 是否锁住容器数值值的设置，默认为false，设置为true后4个数值同时联动
       renderAction: false, // 用于主动触发render的临时变量
-    }
+    };
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.updateBoxStyleState = this.updateBoxStyleState.bind(this);
     this.initBoxStyle = this.initBoxStyle.bind(this);
@@ -37,12 +36,12 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
     bottom: '',
     left: '',
     quantity: 'px',
-  }
+  };
 
   /** 初始化boxStyle的数值 */
   initBoxStyle = () => {
     const { jsonStore } = this.props;
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -56,7 +55,7 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
       bottom: '',
       left: '',
       quantity: quantity,
-    }
+    };
     // 设置盒子模型数值
     if (unitStr) {
       const unitArr = unitStr.split(' ');
@@ -95,7 +94,7 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
       this.layoutStyleObj.bottom = `auto`;
       this.layoutStyleObj.left = `auto`;
     }
-  }
+  };
 
   /** 设置布局容器的盒子模型数值 */
   setLayoutBoxStyle = (newVal, layoutStyleLock, propKey) => {
@@ -114,7 +113,7 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
       }
       this.updateBoxStyleState();
     }
-  }
+  };
 
   /** 布局容器的盒子模型数值联动设值 */
   linkLayoutBoxStyle = (newVal) => {
@@ -133,7 +132,7 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
     this.layoutStyleObj.bottom = curValue;
     this.layoutStyleObj.left = curValue;
     this.updateBoxStyleState();
-  }
+  };
 
   getStyleValNum = (valStr) => {
     if (valStr === 'auto') {
@@ -154,12 +153,12 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
       }
     }
     return 0;
-  }
+  };
 
   /** 数值变动事件处理器 */
   updateBoxStyleState = () => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     const { renderAction } = this.state;
     /** 获取布局容器的盒子模型数值 */
     const boxStyleUnit = `${this.layoutStyleObj.top} ${this.layoutStyleObj.right} ${this.layoutStyleObj.bottom} ${this.layoutStyleObj.left}`;
@@ -168,24 +167,24 @@ class BoxStyleSchema extends React.PureComponent<Props<BaseRendererProps> {
     this.setState({
       renderAction: !renderAction,
     });
-  }
+  };
 
   render() {
     const { nodeKey, jsonKey, targetJsonSchema } = this.props;
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
+    const { pageScreen } = schemaStore || {};
     const { renderAction, layoutStyleLock } = this.state;
     // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

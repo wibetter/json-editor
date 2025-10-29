@@ -15,6 +15,8 @@ export interface JSONSchema {
   contentStyle?: Record<string, any>;
   readOnly?: boolean;
   showKey?: boolean;
+  reset?: boolean;
+  lastUpdateTime?: number;
   [key: string]: any;
 }
 
@@ -43,26 +45,3 @@ export interface BaseRendererProps {
   onChange?: (value: any) => void;
   [key: string]: any;
 }
-
-declare module 'mobx' {
-  export function observable(target: any): any;
-  export function computed(target: any): any;
-  export function action(target: any): any;
-  export function toJS(target: any): any;
-  export class Provider extends React.Component<any> {}
-}
-
-declare module 'mobx-react' {
-  export class Provider extends React.Component<any> {}
-}
-
-declare module 'lodash' {
-  export = _;
-  export as namespace _;
-}
-
-declare module 'antd' {
-  export = Antd;
-  export as namespace Antd;
-}
-

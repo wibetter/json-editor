@@ -14,8 +14,8 @@ import './index.scss';
  * Cascader 级联选择
  * 文档地址：https://ant-design.antgroup.com/components/cascader-cn
  */
-class CascaderSchema extends React.PureComponent<Props {
-interface Props extends BaseRendererProps {}
+
+class CascaderSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
@@ -37,14 +37,14 @@ interface Props extends BaseRendererProps {}
   /** 数值变动事件处理器 */
   handleValueChange = (value) => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {}
+    const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, value); // 更新数值
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
-    const { getJSONDataByKeyRoute } = jsonStore || {}
+    const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
     const curJsonData = getJSONDataByKeyRoute(keyRoute);
@@ -54,13 +54,13 @@ interface Props extends BaseRendererProps {}
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     return (
       <div

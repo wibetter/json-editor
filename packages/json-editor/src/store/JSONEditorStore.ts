@@ -9,13 +9,31 @@ import {
 import { isEqual, objClone, saveWebCacheData } from '$utils/index';
 import { isArray, isFunction, isObject } from '$utils/typeof';
 
+interface RootJSONStore {
+  JSONSchemaStore?: {
+    jsonSchema?: any;
+    getSchemaByKeyRoute?: (keyRoute: string) => any;
+  };
+}
+
+interface DynamicData {
+  name: string;
+  [key: string]: any;
+}
+
+interface StoreState {
+  rootJSONStore: RootJSONStore;
+}
+
 /**
  * 用于管控JSON数据内容的全局store
  * */
 
 export default class JSONEditorStore {
+  state: StoreState;
+
   // 构造函数
-  constructor(rootJSONStore) {
+  constructor(rootJSONStore: RootJSONStore) {
     this.state = {
       rootJSONStore: rootJSONStore, // 初始化一份rootJSONStore
     };
@@ -23,7 +41,7 @@ export default class JSONEditorStore {
   /**
    * rootJSONStore: store根数据对象
    */
-  @observable rootJSONStore = {};
+  @observable rootJSONStore: RootJSONStore = {};
 
   /**
    * triggerChange: 用于强制触发更新事件
@@ -39,25 +57,25 @@ export default class JSONEditorStore {
    * jsonData: jsonData数据对象
    * 备注：没有多余数据的jsonData
    */
-  @observable jsonData = null;
+  @observable jsonData: any = null;
 
   /**
    * initJsonData: jsonData的初始数据对象
    * 备注：用于记录schema结构变动前的数据内容
    */
-  @observable initJsonData = {};
+  @observable initJsonData: Record<string, any> = {};
 
   /**
    * dynamicDataList: 动态数据源列表
    * 备注：主要在DynamicDataSchema的接口数据/数据源选择列表中使用
    */
-  @observable dynamicDataList = []; // 数据源的配置
-  @observable dynamicDataObj = {}; // 数据源的配置对象（主要用于方便取值）
+  @observable dynamicDataList: DynamicData[] = []; // 数据源的配置
+  @observable dynamicDataObj: Record<string, DynamicData> = {}; // 数据源的配置对象（主要用于方便取值）
 
   /**
    * 存放当前配置类对象数据
    */
-  @observable options = {};
+  @observable options: Record<string, any> = {};
 
   /**
    * DynamicData中支持的请求参数类型: 动态请求参数
@@ -82,7 +100,7 @@ export default class JSONEditorStore {
   /**
    * onChange: jsonData数据变动触发的onChange
    */
-  @observable onChange = () => {}; // 函数类型
+  @observable onChange: (data: any) => void = () => {}; // 函数类型
 
   /**
    * 更新lastUpdateTime
@@ -102,10 +120,10 @@ export default class JSONEditorStore {
 
   /** 初始化jsonData  */
   @action.bound
-  initJSONData(jsonData) {
+  initJSONData(jsonData: any) {
     // 避免相同的数据重复渲染(备注：自身数据的变动也会触发componentWillReceiveProps)
     const jsonSchema =
-      this.state.rootJSONStore.JSONSchemaStore.jsonSchema || {};
+      this.state.rootJSONStore.JSONSchemaStore?.jsonSchema || {};
     // 过滤jsonData内部数据变动时触发initJSONData的事件
     if (!isEqual(jsonData, this.JSONEditorObj)) {
       this.initJsonData = objClone(this.jsonData); // 备份过滤前的数据对象
@@ -123,19 +141,19 @@ export default class JSONEditorStore {
 
   /** 初始化jsonData  */
   @action.bound
-  initOnChange(newOnChangeFunc) {
+  initOnChange(newOnChangeFunc: ((data: any) => void) | null | undefined) {
     if (newOnChangeFunc || isFunction(newOnChangeFunc)) {
-      this.onChange = newOnChangeFunc;
+      this.onChange = newOnChangeFunc as (data: any) => void;
     }
   }
 
   /** 设置动态数据源列表  */
   @action.bound
-  setDynamicDataList(dynamicDataList) {
+  setDynamicDataList(dynamicDataList: DynamicData[]) {
     if (!isEqual(dynamicDataList, this.dynamicDataList)) {
       this.dynamicDataList = objClone(dynamicDataList);
       // 重新对 赋值
-      const dynamicDataObjTemp = {};
+      const dynamicDataObjTemp: Record<string, DynamicData> = {};
       dynamicDataList.map((dynamicData) => {
         dynamicDataObjTemp[dynamicData.name] = dynamicData;
       });
@@ -144,7 +162,7 @@ export default class JSONEditorStore {
   }
 
   @action.bound
-  setOptions(optionsData) {
+  setOptions(optionsData: Record<string, any> | null | undefined) {
     if (optionsData) {
       this.options = optionsData;
     }
@@ -157,19 +175,21 @@ export default class JSONEditorStore {
   /** 触发onChange  */
   @action.bound
   jsonDataChange() {
-    (this.jsonData.lastUpdateTime = new Date().getTime()), // 记录当前更新时间戳
-      this.onChange(this.JSONEditorObj);
+    if (this.jsonData) {
+      this.jsonData.lastUpdateTime = new Date().getTime(); // 记录当前更新时间戳
+    }
+    this.onChange(this.JSONEditorObj);
   }
 
   @action.bound
-  jsonChange(newJsonData) {
+  jsonChange(newJsonData: any) {
     this.jsonData = newJsonData;
     this.jsonDataChange();
   }
 
   /** 根据key索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
-  getJSONDataByKeyRoute(keyRoute, jsonDataParam) {
+  getJSONDataByKeyRoute(keyRoute: string, jsonDataParam?: any) {
     const curJsonData = jsonDataParam || this.jsonData;
     return getJsonDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
@@ -178,7 +198,7 @@ export default class JSONEditorStore {
    * 备注：从initJsonData获取数据
    * */
   @action.bound
-  getInitJsonDataByKeyRoute(keyRoute, jsonDataParam) {
+  getInitJsonDataByKeyRoute(keyRoute: string, jsonDataParam?: any) {
     const curJsonData = jsonDataParam || this.initJsonData;
     return getJsonDataByKeyRoute(keyRoute, curJsonData, true); // useObjClone: true 避免后续产生数据联动
   }
@@ -188,9 +208,9 @@ export default class JSONEditorStore {
    * 再根据最近的key值对当前数据进行编辑
    * */
   @action.bound
-  updateFormValueData(keyRoute, newVal, ignoreChange) {
+  updateFormValueData(keyRoute: string, newVal: any, ignoreChange?: boolean) {
     let curElemSchema = null;
-    if (this.state.rootJSONStore.JSONSchemaStore) {
+    if (this.state.rootJSONStore.JSONSchemaStore?.getSchemaByKeyRoute) {
       curElemSchema =
         this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
     }
@@ -241,7 +261,7 @@ export default class JSONEditorStore {
    * 根据key索引路径值(keyRoute)和数组值所在位置(arrayIndex)删除对应的数组元素
    * */
   @action.bound
-  deleteArrayIndex(keyRoute, arrayIndex) {
+  deleteArrayIndex(keyRoute: string, arrayIndex: number) {
     // 1. 获取数组数据对象
     const arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
     if (isArray(arrJsonData)) {
@@ -261,7 +281,7 @@ export default class JSONEditorStore {
    * 根据key索引路径值(keyRoute)在数组中新增数据项
    * */
   @action.bound
-  addArrayItem(keyRoute, curArrIndex) {
+  addArrayItem(keyRoute: string, curArrIndex?: number) {
     // 1. 获取数组数据对象
     let arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
     /*
@@ -302,7 +322,7 @@ export default class JSONEditorStore {
    * sortAction：
    * */
   @action.bound
-  sortArrayItem(keyRoute, curArrIndex, sortAction) {
+  sortArrayItem(keyRoute: string, curArrIndex: number, sortAction?: string) {
     // 1. 获取数组数据对象
     const arrJsonData = getJsonDataByKeyRoute(keyRoute, this.jsonData);
     // const _arrJsonData = toJS(arrJsonData);

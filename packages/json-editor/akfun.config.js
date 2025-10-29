@@ -17,7 +17,6 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
-        '@': resolve('src'),
         $core: resolve('src/core'),
         $components: resolve('src/components'),
         $renderers: resolve('src/renderers'),
@@ -32,6 +31,7 @@ module.exports = {
         $data: resolve('src/data'),
         $config: resolve('src/config'),
         $mixins: resolve('src/mixins'),
+        $types: resolve('src/types'),
       },
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件

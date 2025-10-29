@@ -2,12 +2,12 @@
  *  将数据缓存到sessionStorage中
  * */
 export function saveJSONEditorCache(
-  key,
-  value,
-  cacheMark = 'json-editor-cache',
-) {
+  key: string,
+  value: any,
+  cacheMark: string = 'json-editor-cache',
+): void {
   if (window.sessionStorage) {
-    let cacheData = {};
+    let cacheData: Record<string, any> = {};
     let cacheDataStr = window.sessionStorage.getItem(cacheMark);
     if (cacheDataStr) {
       cacheData = JSON.parse(cacheDataStr);
@@ -22,10 +22,13 @@ export function saveJSONEditorCache(
 /**
  *  从sessionStorage中读取此前缓存的数据
  * */
-export function getJSONEditorCache(valueKey, cacheMark = 'json-editor-cache') {
-  let curKeyValue;
+export function getJSONEditorCache(
+  valueKey: string,
+  cacheMark: string = 'json-editor-cache',
+): any {
+  let curKeyValue: any;
   if (window.sessionStorage) {
-    let cacheData = {};
+    let cacheData: Record<string, any> = {};
     let cacheDataStr = window.sessionStorage.getItem(cacheMark);
     if (cacheDataStr) {
       cacheData = JSON.parse(cacheDataStr);
@@ -41,11 +44,11 @@ export function getJSONEditorCache(valueKey, cacheMark = 'json-editor-cache') {
  *  从sessionStorage中删除此前缓存的数据
  * */
 export function deleteJSONEditorCache(
-  valueKey,
-  cacheMark = 'json-editor-cache',
-) {
+  valueKey: string,
+  cacheMark: string = 'json-editor-cache',
+): void {
   if (window.sessionStorage) {
-    let cacheData = {};
+    let cacheData: Record<string, any> = {};
     let cacheDataStr = window.sessionStorage.getItem(cacheMark);
     if (cacheDataStr) {
       cacheData = JSON.parse(cacheDataStr);

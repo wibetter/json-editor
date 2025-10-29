@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseRendererProps } from '$types/index';
-import { registerRenderer } from '../../core/factory';
+import { registerRenderer } from '$core/factory';
 import {
   Modal,
   Form,
@@ -18,12 +18,20 @@ import {
   SettingOutlined,
 } from '@ant-design/icons';
 import { toJS } from 'mobx';
-import { buildStyle } from '../../utils/index';
+import { buildStyle } from '$utils/index';
 import './index.scss';
 
 const { TabPane } = Tabs;
 
-interface Props extends BaseRendererProps {}
+interface ApiSchemaState {
+  visible: boolean;
+}
+
+class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
+  form: any;
+
+  constructor(props: BaseRendererProps) {
+    super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.showModal = this.showModal.bind(this);
     this.handleOk = this.handleOk.bind(this);
@@ -32,16 +40,16 @@ interface Props extends BaseRendererProps {}
 
   showModal = () => {
     this.setState({ visible: true });
-  }
+  };
 
   handleOk = () => {
-    this.form.validateFields().then((values) => {
+    this.form.validateFields().then((values: any) => {
       const { keyRoute, jsonStore } = this.props;
 
       // 处理 headers（如果存在）
       if (values.headers && Array.isArray(values.headers)) {
-        const headersObj = {}
-        values.headers.forEach((item) => {
+        const headersObj: Record<string, string> = {};
+        values.headers.forEach((item: any) => {
           if (item.key) {
             headersObj[item.key] = item.value || '';
           }
@@ -51,14 +59,14 @@ interface Props extends BaseRendererProps {}
         try {
           values.headers = JSON.parse(values.headers || '{}');
         } catch (e) {
-          values.headers = {}
+          values.headers = {};
         }
       }
 
       // 处理 data（如果存在）
       if (values.data && Array.isArray(values.data)) {
-        const dataObj = {}
-        values.data.forEach((item) => {
+        const dataObj: Record<string, any> = {};
+        values.data.forEach((item: any) => {
           if (item.key) {
             try {
               dataObj[item.key] = JSON.parse(item.value);
@@ -72,7 +80,7 @@ interface Props extends BaseRendererProps {}
         try {
           values.data = JSON.parse(values.data || '{}');
         } catch (e) {
-          values.data = {}
+          values.data = {};
         }
       }
 
@@ -102,49 +110,52 @@ interface Props extends BaseRendererProps {}
 
       this.setState({ visible: false });
     });
-  }
+  };
 
   handleCancel = () => {
     this.setState({ visible: false });
-  }
+  };
 
   render() {
     const { schemaStore, jsonStore } = this.props;
-    const { pageScreen } = schemaStore || {}
+    const { pageScreen } = schemaStore || {};
     const { keyRoute, targetJsonSchema, nodeKey } = this.props;
     const { visible } = this.state;
 
+    if (!targetJsonSchema) {
+      return null;
+    }
+
     // 从jsonData中获取对应的数值
-    const curJsonData = keyRoute
-      ? jsonStore.getJSONDataByKeyRoute(keyRoute)
-      : {}
-    const currentValue = curJsonData || {}
+    const curJsonData =
+      keyRoute && jsonStore ? jsonStore.getJSONDataByKeyRoute?.(keyRoute) : {};
+    const currentValue = curJsonData || {};
 
     // 从 schema 中获取各个字段的配置信息
-    const properties = targetJsonSchema.properties || {}
-    const urlSchema = properties.url || {}
-    const methodSchema = properties.method || {}
-    const headersSchema = properties.headers || {}
-    const dataSchema = properties.data || {}
-    const dataTypeSchema = properties.dataType || {}
-    const cacheSchema = properties.cache || {}
-    const cacheTimeSchema = properties.cacheTime || {}
+    const properties = targetJsonSchema.properties || {};
+    const urlSchema = properties.url || {};
+    const methodSchema = properties.method || {};
+    const headersSchema = properties.headers || {};
+    const dataSchema = properties.data || {};
+    const dataTypeSchema = properties.dataType || {};
+    const cacheSchema = properties.cache || {};
+    const cacheTimeSchema = properties.cacheTime || {};
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
-      : {}
+      : {};
     const titleStyle = targetJsonSchema.titleStyle
       ? buildStyle(toJS(targetJsonSchema.titleStyle))
-      : {}
+      : {};
     const contentStyle = targetJsonSchema.contentStyle
       ? buildStyle(toJS(targetJsonSchema.contentStyle))
-      : {}
+      : {};
 
     const methodUpper = currentValue.method?.toUpperCase() || 'GET';
     const summary = `${methodUpper !== 'GET' ? methodUpper + ': ' : ''}${currentValue.url || ''}`;
 
     // 将 headers 对象转换为数组格式用于表单编辑
-    const headersToArray = (headers) => {
+    const headersToArray = (headers: any) => {
       if (!headers || typeof headers !== 'object') return [];
       return Object.keys(headers).map((key) => ({
         key,
@@ -153,17 +164,17 @@ interface Props extends BaseRendererProps {}
             ? headers[key]
             : JSON.stringify(headers[key]),
       }));
-    }
+    };
 
     // 将 data 对象转换为数组格式用于表单编辑
-    const dataToArray = (data) => {
+    const dataToArray = (data: any) => {
       if (!data || typeof data !== 'object') return [];
       return Object.keys(data).map((key) => ({
         key,
         value:
           typeof data[key] === 'string' ? data[key] : JSON.stringify(data[key]),
       }));
-    }
+    };
 
     return (
       <div
@@ -261,11 +272,11 @@ interface Props extends BaseRendererProps {}
                   >
                     {({ getFieldValue }) => {
                       const dataType = getFieldValue('dataType') || 'json';
-                      const formatMap = {
+                      const formatMap: Record<string, string> = {
                         json: 'application/json',
                         'form-data': 'multipart/form-data',
                         form: 'application/x-www-form-urlencoded',
-                      }
+                      };
                       return (
                         <div
                           style={{
@@ -275,7 +286,7 @@ interface Props extends BaseRendererProps {}
                           }}
                         >
                           {dataTypeSchema.description ||
-                            `发送体格式为：${formatMap[dataType]}，当发送内容中存在文件时会自动使用 form-data 格式。`}
+                            `发送体格式为：${formatMap[dataType] || 'application/json'}，当发送内容中存在文件时会自动使用 form-data 格式。`}
                         </div>
                       );
                     }}
