@@ -30,6 +30,11 @@ export interface JSONStore {
   [key: string]: any;
 }
 
+export interface StoresInterface {
+  JSONSchemaStore: SchemaStore;
+  JSONEditorStore: JSONStore;
+}
+
 // 组件通用 Props
 export interface BaseRendererProps {
   parentType?: string;

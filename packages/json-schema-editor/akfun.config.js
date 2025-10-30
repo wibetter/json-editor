@@ -43,7 +43,7 @@ module.exports = {
   },
   dev: {
     entry: {
-      index: './src/demo.ts',
+      index: './src/demo.tsx',
     },
     NODE_ENV: 'development',
     port: 80,
@@ -55,7 +55,7 @@ module.exports = {
   },
   build2lib: {
     entry: {
-      index: './src/main.ts',
+      index: './src/main.tsx',
     },
     output: {
       filename: '[name].js',
@@ -75,7 +75,7 @@ module.exports = {
   build2lib2: {
     // 用于打包sdk文件
     entry: {
-      index: './src/main.ts',
+      index: './src/main.tsx',
     },
     output: {
       filename: 'index.js',

@@ -321,9 +321,7 @@ class JSONDataEditor extends React.PureComponent<
   }
 }
 
-export default inject(
-  (stores: { JSONSchemaStore: SchemaStore; JSONEditorStore: JSONStore }) => ({
-    schemaStore: stores.JSONSchemaStore,
-    jsonStore: stores.JSONEditorStore,
-  }),
-)(observer(JSONDataEditor));
+export default inject((stores: StoresInterface) => ({
+  schemaStore: stores.JSONSchemaStore,
+  jsonStore: stores.JSONEditorStore,
+}))(observer(JSONDataEditor));
