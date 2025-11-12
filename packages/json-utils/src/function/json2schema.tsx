@@ -27,7 +27,7 @@ import {
  * 备注：目前可转换Boolean、Number、URL、Date、DateTime、Time、color、json类型
  * 其中textarea、radio、codearea和htmlarea的数值不好和input区分，故均转换为input类型
  * */
-function baseJson2Schema(jsonData) {
+function baseJson2Schema(jsonData: any) {
   let curJsonSchema = '';
   if (isBoolean(jsonData)) {
     // 1、Boolean类型
@@ -79,8 +79,8 @@ function baseJson2Schema(jsonData) {
  * Object类型的jsonData转schema
  * 备注：目前可转换datasource、event、quantity、object四种对象类型
  * */
-function objectJson2Schema(jsonData) {
-  let curJsonSchema;
+function objectJson2Schema(jsonData: any) {
+  let curJsonSchema: any = {};
   if (isObject(jsonData)) {
     const properties = Object.keys(jsonData);
     if (jsonData.data && jsonData.filter && properties.length === 2) {
@@ -130,7 +130,7 @@ function objectJson2Schema(jsonData) {
  * Array类型的jsonData转schema
  * 备注：目前可转换select、array两种数组类型
  * */
-function arrayJson2Schema(jsonData) {
+function arrayJson2Schema(jsonData: any) {
   let curJsonSchema;
   // 判断是否是数组类型
   if (jsonData && isArray(jsonData)) {
@@ -150,7 +150,7 @@ function arrayJson2Schema(jsonData) {
     } else {
       curJsonSchema = objClone(TypeDataList['empty-array']); // 新建空数组对象schema
       // 根据第一个数组项获取items的schema对象
-      const arrItemObj = json2schema(jsonData[0]); // 正常情况下，Array的一级子对象是Object类型
+      const arrItemObj: any = json2schema(jsonData[0]); // 正常情况下，Array的一级子对象是Object类型
       curJsonSchema.items.properties = arrItemObj.properties;
     }
   }
@@ -160,7 +160,7 @@ function arrayJson2Schema(jsonData) {
 /**
  * 根据jsonData生成一份对应的jsonSchema
  * */
-export function json2schema(jsonData) {
+export function json2schema(jsonData: any) {
   let curJsonSchema = {};
   if (jsonData && isObject(jsonData)) {
     curJsonSchema = objectJson2Schema(jsonData);

@@ -3,7 +3,7 @@ import { getExpectType } from '$function/getExpectType';
 /**
  * 收集当前schema中的所有条件子字段，根据其数值拼接成对应的 conditionValue
  */
-export function schema2conditionValue(jsonSchema, jsonData) {
+export function schema2conditionValue(jsonSchema: any, jsonData: any) {
   let conditionValue = '';
   if (getExpectType(jsonSchema.type) === 'object' && jsonSchema.properties) {
     let curPropertyOrder = [];

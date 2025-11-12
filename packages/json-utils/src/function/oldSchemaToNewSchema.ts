@@ -12,7 +12,7 @@ import {
 } from '$data/TypeDataList';
 
 // 2020-07-29
-export function oldSchemaToNewSchemaV1(oldSchema) {
+export function oldSchemaToNewSchemaV1(oldSchema: any) {
   let newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
   // 1.根据原有的description值生成title值
   if (!newJSONSchema.title && newJSONSchema.description) {
@@ -122,7 +122,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
       newJSONSchema.propertyOrder = Object.keys(newJSONSchema.properties);
     }
     // 继续遍历properties属性进行转换
-    newJSONSchema.propertyOrder.map((jsonKey) => {
+    newJSONSchema.propertyOrder.map((jsonKey: string) => {
       newJSONSchema.properties[jsonKey] = oldSchemaToNewSchema(
         newJSONSchema.properties[jsonKey],
       );
@@ -137,7 +137,7 @@ export function oldSchemaToNewSchemaV1(oldSchema) {
 }
 
 // 2024-10-05 之前的旧版转新版schema
-export function oldSchemaToNewSchema(oldSchema) {
+export function oldSchemaToNewSchema(oldSchema: any) {
   let newJSONSchema = objClone(oldSchema); // 进行深拷贝，避免影响原有数据;
   // 删除不需要的属性
   if (!newJSONSchema.required) {
@@ -169,7 +169,7 @@ export function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.items.enumextra
     ) {
       newJSONSchema.options = [];
-      newJSONSchema.items.enum.forEach((option, optionIndex) => {
+      newJSONSchema.items.enum.forEach((option: any, optionIndex: number) => {
         newJSONSchema.options.push({
           label: newJSONSchema.items.enumextra[optionIndex] || option,
           value: option,
@@ -186,7 +186,7 @@ export function oldSchemaToNewSchema(oldSchema) {
       newJSONSchema.propertyOrder = Object.keys(newJSONSchema.properties);
     }
     // 继续遍历properties属性进行转换
-    newJSONSchema.propertyOrder.map((jsonKey) => {
+    newJSONSchema.propertyOrder.map((jsonKey: string) => {
       newJSONSchema.properties[jsonKey] = oldSchemaToNewSchema(
         newJSONSchema.properties[jsonKey],
       );

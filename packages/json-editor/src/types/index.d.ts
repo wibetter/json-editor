@@ -4,10 +4,10 @@ import * as React from 'react';
 
 // JSON Schema 相关类型
 export interface JSONSchema {
-  type?: string;
+  type: string;
   title?: string;
   description?: string;
-  properties?: Record<string, any>;
+  properties: Record<string, any>;
   items?: any;
   default?: any;
   style?: Record<string, any>;
@@ -25,8 +25,17 @@ export interface SchemaStore {
 }
 
 export interface JSONStore {
-  getJSONDataByKeyRoute?: (keyRoute: string) => any;
-  updateFormValueData?: (keyRoute: string, value: any) => void;
+  getJSONDataByKeyRoute: (keyRoute: string) => any;
+  updateFormValueData: (keyRoute: string, value: any) => void;
+  keyRoute: string;
+  jsonKey: string;
+  nodeKey: string;
+  onChange: (value: any) => void;
+  JSONEditorObj: any;
+  initJSONData: (jsonData: any) => void;
+  initOnChange: (onChange: any) => void;
+  setDynamicDataList: (dynamicDataList: any[]) => void;
+  setOptions: (options: any) => void;
   [key: string]: any;
 }
 
@@ -40,11 +49,11 @@ export interface BaseRendererProps {
   parentType?: string;
   jsonKey?: string;
   indexRoute?: string | number;
-  keyRoute?: string;
+  keyRoute: string;
   nodeKey?: string;
-  targetJsonSchema?: JSONSchema;
-  schemaStore?: SchemaStore;
-  jsonStore?: JSONStore;
+  targetJsonSchema: JSONSchema;
+  schemaStore: SchemaStore;
+  jsonStore: JSONStore;
   onChange?: (value: any) => void;
   [key: string]: any;
 }

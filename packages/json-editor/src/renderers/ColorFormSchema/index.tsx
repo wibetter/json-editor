@@ -11,11 +11,18 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
 import './index.scss';
 
+interface ColorFormSchemaState {
+  renderState: boolean;
+  displayColorPicker: boolean;
+}
 /**
  * 新版color类型：颜色选择器
  */
-class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+class ColorFormSchema extends React.PureComponent<
+  BaseRendererProps,
+  ColorFormSchemaState
+> {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
       renderState: false, // 用于主动触发更新的状态数据
@@ -30,7 +37,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -38,7 +45,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (color) => {
+  handleValueChange = (color: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
 
@@ -133,7 +140,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
               className={`color-btn-wrap color-item-form ${
                 displayColorPicker ? 'selected' : ''
               }`}
-              onClick={() => {
+              onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                 this.setState({
                   displayColorPicker: !displayColorPicker,
                 });
@@ -154,7 +161,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
               <Tooltip title={`点击移除当前颜色值`} placement="top">
                 <CloseOutlined
                   className="delete-bgColor-btn"
-                  onClick={() => {
+                  onClick={(event: React.MouseEvent) => {
                     this.deleteColor();
                   }}
                 />

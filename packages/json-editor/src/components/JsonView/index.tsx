@@ -79,7 +79,7 @@ class JsonView extends React.PureComponent<JsonViewProps, JsonViewState> {
             showLineNumbers: true,
             tabSize: 2,
           }}
-          onChange={(newJsonData) => {
+          onChange={(newJsonData: string) => {
             try {
               const newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
               // 更新jsonData
@@ -88,7 +88,7 @@ class JsonView extends React.PureComponent<JsonViewProps, JsonViewState> {
                 isShowWarn: false,
                 curJSONDataTemp: undefined, // 重置
               });
-            } catch (err) {
+            } catch (err: any) {
               // 更新jsonData
               this.setState({
                 curJSONDataTemp: newJsonData, // 记录当前格式不正确的json数据

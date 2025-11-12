@@ -44,12 +44,11 @@ class NumberFormSchema extends React.PureComponent<
   handleValueChange = (newVal: number | null) => {
     const { keyRoute, jsonStore, targetJsonSchema } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    const { targetJsonSchema } = this.props;
-    if (newVal < targetJsonSchema.minimum) {
+    if (newVal && newVal < targetJsonSchema.minimum) {
       message.warning(
         `小于设定的最小数值${targetJsonSchema.minimum}，请重新输入。`,
       );
-    } else if (newVal > targetJsonSchema.maximum) {
+    } else if (newVal && newVal > targetJsonSchema.maximum) {
       message.warning(
         `超过设定的最大数值${targetJsonSchema.maximum}，请重新输入。`,
       );
@@ -75,7 +74,7 @@ class NumberFormSchema extends React.PureComponent<
     this.setState({
       renderTime: new Date().getTime(),
     });
-    const curInputDom = document.getElementById(`inputNumber-${keyRoute}`);
+    const curInputDom: any = document.getElementById(`inputNumber-${keyRoute}`);
     if (curInputDom) {
       curInputDom.value = curNum;
       // curInputDom.style.color = "#f00";
@@ -143,7 +142,7 @@ class NumberFormSchema extends React.PureComponent<
               <div
                 className="number-btn minus"
                 title="点击减1"
-                onClick={() => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.numberChange(
                     'minus',
                     hasProperties(curJsonData)
@@ -178,7 +177,7 @@ class NumberFormSchema extends React.PureComponent<
               <div
                 className="number-btn plus"
                 title="点击加1"
-                onClick={() => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.numberChange(
                     'plus',
                     hasProperties(curJsonData)

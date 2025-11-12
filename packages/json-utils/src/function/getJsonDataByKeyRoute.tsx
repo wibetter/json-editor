@@ -7,9 +7,9 @@ import { objClone } from '$utils/index';
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
 export function getJsonDataByKeyRoute(
-  keyRoute,
-  targetJsonDataObj,
-  useObjClone,
+  keyRoute: string,
+  targetJsonDataObj: any,
+  useObjClone: boolean,
 ) {
   let curJsonDataObj = targetJsonDataObj;
   if (useObjClone) {

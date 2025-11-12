@@ -14,7 +14,7 @@ import './index.scss';
  * 旧版color类型：使用原生input(type=color)实现颜色选择器
  */
 class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -25,7 +25,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -33,7 +33,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
+  handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
 
@@ -114,7 +114,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
             <Tooltip title={`点击移除当前颜色值`} placement="top">
               <CloseOutlined
                 className="delete-bgColor-btn"
-                onClick={() => {
+                onClick={(event: React.MouseEvent) => {
                   this.deleteColor();
                 }}
               />

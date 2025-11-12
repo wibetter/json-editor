@@ -24,9 +24,15 @@ interface DynamicDataSchemaProps {
   renderChild?: any;
 }
 
-class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
+interface DynamicDataSchemaState {
+  isShowFilter: boolean;
+}
 
-  constructor(props) {
+class DynamicDataSchema extends React.PureComponent<
+  DynamicDataSchemaProps,
+  DynamicDataSchemaState
+> {
+  constructor(props: DynamicDataSchemaProps) {
     super(props);
 
     this.state = {
@@ -41,7 +47,7 @@ class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: DynamicDataSchemaProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -49,7 +55,7 @@ class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (curKeyRoute, value) => {
+  handleValueChange = (curKeyRoute: string, value: any) => {
     const { updateFormValueData } = this.props.jsonStore || {};
     updateFormValueData(curKeyRoute, value); // 更新数值
   };
@@ -63,7 +69,7 @@ class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
   };
 
   // 面板展示内容切换（本地数据/接口数据）
-  tabChange = (value) => {
+  tabChange = (value: string) => {
     const { keyRoute, jsonStore } = this.props;
     const { triggerChangeAction } = jsonStore || {};
     this.handleValueChange(`${keyRoute}-type`, value);
@@ -73,7 +79,7 @@ class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
   };
 
   // API 配置变更处理
-  handleApiConfigChange = (apiConfig) => {
+  handleApiConfigChange = (apiConfig: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { triggerChangeAction } = jsonStore || {};
     this.handleValueChange(`${keyRoute}-config`, apiConfig);
@@ -152,7 +158,7 @@ class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
                 className={`tab-radio ${
                   dataType === 'local' ? 'tab-radio-active' : ''
                 }`}
-                onClick={() => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.tabChange('local');
                 }}
               >
@@ -162,7 +168,7 @@ class DynamicDataSchema extends React.PureComponent<DynamicDataSchemaProps> {
                 className={`tab-radio ${
                   dataType === 'remote' ? 'tab-radio-active' : ''
                 }`}
-                onClick={() => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.tabChange('remote');
                 }}
               >

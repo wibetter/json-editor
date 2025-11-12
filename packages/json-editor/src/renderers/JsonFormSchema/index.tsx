@@ -14,7 +14,7 @@ import { isObject, isArray } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
 class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 组件内部维护的数据
     this.state = {
@@ -27,7 +27,7 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (newJsonData) => {
+  handleValueChange = (newJsonData: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     if (newJsonData) {
@@ -40,7 +40,7 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -133,7 +133,7 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
             minLines={5}
             maxLines={30}
             width={'100%'}
-            onChange={(newJsonData) => {
+            onChange={(newJsonData: string) => {
               try {
                 const newJsonDataTemp = JSON.parse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
@@ -142,7 +142,7 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
                   isShowWarn: false,
                   curJSONDataTemp: undefined, // 重置
                 });
-              } catch (err) {
+              } catch (err: any) {
                 // 更新jsonData
                 this.setState({
                   curJSONDataTemp: newJsonData, // 记录当前格式不正确的json数据

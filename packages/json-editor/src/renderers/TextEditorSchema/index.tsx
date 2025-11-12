@@ -40,7 +40,7 @@ const tableOptions = {
 BraftEditor.use(Table(tableOptions));
 
 class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
       isClosed: true, // 是否为关闭状态，默认是关闭状态
@@ -99,7 +99,7 @@ class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -119,7 +119,7 @@ class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 富文本内容变动事件处理器 */
-  handleEditorChange = (editorState) => {
+  handleEditorChange = (editorState: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
@@ -159,7 +159,7 @@ class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
       >
         <div
           className="element-title"
-          onClick={(event) => {
+          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
             this.setState({
               isClosed: !isClosed,
             });

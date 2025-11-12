@@ -7,9 +7,9 @@ import { objClone } from '$utils/index';
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
 export function getSchemaByIndexRoute(
-  indexRoute,
-  targetJsonSchemaObj,
-  useObjClone,
+  indexRoute: string,
+  targetJsonSchemaObj: any,
+  useObjClone: boolean,
 ) {
   let curJsonSchemaObj = targetJsonSchemaObj;
   if (useObjClone) {

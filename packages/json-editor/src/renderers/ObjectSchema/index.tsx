@@ -159,7 +159,7 @@ class ObjectSchema extends React.PureComponent<
               {showCodeViewBtn && (
                 <div
                   className="display-source-btn"
-                  onClick={(event) => {
+                  onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                     this.setState({
                       jsonView: !jsonView,
                     });
@@ -183,33 +183,35 @@ class ObjectSchema extends React.PureComponent<
           >
             {!jsonView &&
               targetJsonSchema.propertyOrder &&
-              targetJsonSchema.propertyOrder.map((key, index) => {
-                /** 1. 获取当前元素的路径值 */
-                const currentIndexRoute = indexRoute
-                  ? `${indexRoute}-${index}`
-                  : `${index}`;
-                const currentKeyRoute = keyRoute
-                  ? `${keyRoute}-${key}`
-                  : `${key}`; // key路径值，后续用于从jsonData中提取当前元素的数值
-                /** 2. 获取当前元素的key值 */
-                const currentJsonKey = key;
-                /** 3. 获取当前元素的json结构对象 */
-                const currentSchemaData =
-                  targetJsonSchema.properties[currentJsonKey];
-                /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
-                const curType = currentSchemaData.type;
-                /** 5. 获取当前元素的id，用于做唯一标识 */
-                const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
+              targetJsonSchema.propertyOrder.map(
+                (key: string, index: number) => {
+                  /** 1. 获取当前元素的路径值 */
+                  const currentIndexRoute = indexRoute
+                    ? `${indexRoute}-${index}`
+                    : `${index}`;
+                  const currentKeyRoute = keyRoute
+                    ? `${keyRoute}-${key}`
+                    : `${key}`; // key路径值，后续用于从jsonData中提取当前元素的数值
+                  /** 2. 获取当前元素的key值 */
+                  const currentJsonKey = key;
+                  /** 3. 获取当前元素的json结构对象 */
+                  const currentSchemaData =
+                    targetJsonSchema.properties[currentJsonKey];
+                  /** 4. 判断是否是容器类型元素，如果是则禁止选中 */
+                  const curType = currentSchemaData.type;
+                  /** 5. 获取当前元素的id，用于做唯一标识 */
+                  const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
-                return renderChild({
-                  parentType: curType,
-                  jsonKey: currentJsonKey,
-                  indexRoute: currentIndexRoute,
-                  keyRoute: currentKeyRoute,
-                  nodeKey: childNodeKey,
-                  targetJsonSchema: currentSchemaData,
-                });
-              })}
+                  return renderChild({
+                    parentType: curType,
+                    jsonKey: currentJsonKey,
+                    indexRoute: currentIndexRoute,
+                    keyRoute: currentKeyRoute,
+                    nodeKey: childNodeKey,
+                    targetJsonSchema: currentSchemaData,
+                  });
+                },
+              )}
             {jsonView && <JsonView {...this.props} maxLines={10} />}
           </div>
         </div>

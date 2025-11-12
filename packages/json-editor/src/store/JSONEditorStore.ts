@@ -154,7 +154,7 @@ export default class JSONEditorStore {
       this.dynamicDataList = objClone(dynamicDataList);
       // 重新对 赋值
       const dynamicDataObjTemp: Record<string, DynamicData> = {};
-      dynamicDataList.map((dynamicData) => {
+      dynamicDataList.map((dynamicData: DynamicData) => {
         dynamicDataObjTemp[dynamicData.name] = dynamicData;
       });
       this.dynamicDataObj = dynamicDataObjTemp;

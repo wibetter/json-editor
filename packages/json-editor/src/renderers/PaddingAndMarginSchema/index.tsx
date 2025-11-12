@@ -17,8 +17,16 @@ import { truncate, isNumber, isArray } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
 import './index.scss';
 
-class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+interface PaddingAndMarginSchemaState {
+  type: string;
+  renderAction: boolean;
+}
+
+class PaddingAndMarginSchema extends React.PureComponent<
+  BaseRendererProps,
+  PaddingAndMarginSchemaState
+> {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
       type: 'all', // 设置类型，支持 自定义设值（custom）、统一设值（all）
@@ -39,12 +47,12 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
     this.initBoxStyle();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     this.initBoxStyle();
   }
 
   // 记录box-style的数值（无需实时响应）
-  boxStyle = {
+  boxStyle: any = {
     margin: {
       top: '',
       right: '',
@@ -113,8 +121,8 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   // 处理用户输入的数值（支持默认值设置）
-  getStyleValText = (valStr, defaultValue) => {
-    let curValue = 'auto';
+  getStyleValText = (valStr: any, defaultValue?: any) => {
+    let curValue: any = 'auto';
     if (valStr === 'auto' || valStr === 0 || valStr === '' || valStr === '0') {
       curValue = valStr;
     } else if (/^\$/.test(valStr)) {
@@ -130,8 +138,8 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   // 获取单位设置（含单位）
-  getStyleVal = (valStr) => {
-    let curValue = '';
+  getStyleVal = (valStr: any) => {
+    let curValue: any = '';
     if (valStr === 'auto' || valStr === 0) {
       curValue = valStr;
     } else if (/^\$/.test(valStr)) {
@@ -150,11 +158,16 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   /** 设置布局容器的盒子模型数值 */
-  setLayoutBoxStyle = (newVal, layoutStyleLock, styleKey, propKey) => {
+  setLayoutBoxStyle = (
+    newVal: any,
+    layoutStyleLock: boolean,
+    styleKey: string,
+    propKey: string,
+  ) => {
     if (layoutStyleLock) {
       this.linkLayoutBoxStyle(newVal, styleKey);
     } else {
-      const curValue = this.getStyleValText(newVal);
+      const curValue: any = this.getStyleValText(newVal);
       if (curValue !== undefined) {
         this.boxStyle[styleKey][propKey] = curValue;
       } else {
@@ -165,7 +178,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   /** 布局容器的盒子模型数值联动设值 */
-  linkLayoutBoxStyle = (newVal, styleKey) => {
+  linkLayoutBoxStyle = (newVal: any, styleKey: string) => {
     const curValue = this.getStyleValText(newVal);
 
     if (curValue !== undefined) {
@@ -204,18 +217,18 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   // 固定单位
-  getQuantity = (curJsonData) => {
+  getQuantity = (curJsonData: any) => {
     const { targetJsonSchema } = this.props;
     const quantitySchema = targetJsonSchema.properties['quantity'];
     return curJsonData.quantity || quantitySchema.default;
   };
 
-  getSelectAfter = (curJsonData) => {
+  getSelectAfter = (curJsonData: any) => {
     return <span>{this.getQuantity(curJsonData)}</span>;
   };
 
   // 暂未使用
-  quantityChange = (newVal) => {
+  quantityChange = (newVal: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const curBoxValue = {
@@ -226,7 +239,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
     updateFormValueData(keyRoute, curBoxValue);
   };
 
-  setType = (newVal) => {
+  setType = (newVal: string) => {
     this.setState({
       type: newVal,
     });
@@ -312,13 +325,17 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                 className={`
                   Style-PaddingAndMargin-label-all
                   ${type === 'all' ? 'Style-PaddingAndMargin-label-all--active' : ''}`}
-                onClick={() => this.setType('all')}
+                onClick={(event: React.MouseEvent<HTMLDivElement>) =>
+                  this.setType('all')
+                }
               ></div>
               <div
                 className={`
                 Style-PaddingAndMargin-label-custom
                 ${type === 'custom' ? 'Style-PaddingAndMargin-label-custom--active' : ''}`}
-                onClick={() => this.setType('custom')}
+                onClick={(event: React.MouseEvent<HTMLDivElement>) =>
+                  this.setType('custom')
+                }
               >
                 <div></div>
                 <div></div>
@@ -335,8 +352,8 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                         options={options}
                         allowClear={true}
                         defaultValue={this.boxStyle['margin'].top}
-                        onChange={(value) => {
-                          this.setLayoutBoxStyle(value, true, 'margin');
+                        onChange={(value: any) => {
+                          this.linkLayoutBoxStyle(value, 'margin');
                         }}
                       />
                       <Select
@@ -355,9 +372,11 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                       className="layout-item-margin"
                       size="small"
                       defaultValue={this.boxStyle['margin'].top}
-                      onChange={(event) => {
+                      onChange={(
+                        event: React.ChangeEvent<HTMLInputElement>,
+                      ) => {
                         const newVal = event.target.value;
-                        this.setLayoutBoxStyle(newVal, true, 'margin');
+                        this.linkLayoutBoxStyle(newVal, 'margin');
                       }}
                     />
                   )}
@@ -374,8 +393,8 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                         options={options}
                         allowClear={true}
                         defaultValue={this.boxStyle['padding'].top}
-                        onChange={(value) => {
-                          this.setLayoutBoxStyle(value, true, 'padding');
+                        onChange={(value: any) => {
+                          this.linkLayoutBoxStyle(value, 'padding');
                         }}
                       />
                       <Select
@@ -394,9 +413,11 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                       className="layout-item-padding"
                       size="small"
                       defaultValue={this.boxStyle['padding'].top}
-                      onChange={(event) => {
+                      onChange={(
+                        event: React.ChangeEvent<HTMLInputElement>,
+                      ) => {
                         const newVal = event.target.value;
-                        this.setLayoutBoxStyle(newVal, true, 'padding');
+                        this.linkLayoutBoxStyle(newVal, 'padding');
                       }}
                     />
                   )}
@@ -421,7 +442,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['padding'].top}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -446,7 +467,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-padding"
                           size="small"
                           defaultValue={this.boxStyle['padding'].top}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -481,7 +504,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['padding'].right}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -506,7 +529,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-padding"
                           size="small"
                           defaultValue={this.boxStyle['padding'].right}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -541,7 +566,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['padding'].bottom}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -566,7 +591,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-padding"
                           size="small"
                           defaultValue={this.boxStyle['padding'].bottom}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -601,7 +628,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['padding'].left}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -626,7 +653,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-padding"
                           size="small"
                           defaultValue={this.boxStyle['padding'].left}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -661,7 +690,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['margin'].top}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -686,7 +715,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-margin"
                           size="small"
                           defaultValue={this.boxStyle['margin'].top}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -721,7 +752,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['margin'].right}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -746,7 +777,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-margin"
                           size="small"
                           defaultValue={this.boxStyle['margin'].right}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -781,7 +814,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['margin'].bottom}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -806,7 +839,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-margin"
                           size="small"
                           defaultValue={this.boxStyle['margin'].bottom}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,
@@ -841,7 +876,7 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                             options={options}
                             allowClear={true}
                             defaultValue={this.boxStyle['margin'].left}
-                            onChange={(value) => {
+                            onChange={(value: any) => {
                               this.setLayoutBoxStyle(
                                 value,
                                 false,
@@ -866,7 +901,9 @@ class PaddingAndMarginSchema extends React.PureComponent<BaseRendererProps> {
                           className="layout-item-margin"
                           size="small"
                           defaultValue={this.boxStyle['margin'].left}
-                          onChange={(event) => {
+                          onChange={(
+                            event: React.ChangeEvent<HTMLInputElement>,
+                          ) => {
                             const newVal = event.target.value;
                             this.setLayoutBoxStyle(
                               newVal,

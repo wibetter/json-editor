@@ -9,21 +9,23 @@ import { renderersMap, registerRenderer } from './factory';
 // 自动加载预先注册的自定义渲染器
 export function autoPreRegisterJSONEditorCustomRenderers() {
   if (window.JSONEditorCustomRenderers) {
-    Object.keys(window.JSONEditorCustomRenderers).forEach((rendererType) => {
-      if (renderersMap[rendererType]) {
-        console.warn(
-          `[json-editor]：预注册渲染器失败，当前存在重名渲染器（${rendererType}）。`,
-        );
-      } else {
-        const curRenderer = window.JSONEditorCustomRenderers[rendererType];
-        if (curRenderer) {
-          registerRenderer({
-            type: rendererType,
-            component: curRenderer,
-          });
+    Object.keys(window.JSONEditorCustomRenderers).forEach(
+      (rendererType: string) => {
+        if (renderersMap[rendererType]) {
+          console.warn(
+            `[json-editor]：预注册渲染器失败，当前存在重名渲染器（${rendererType}）。`,
+          );
+        } else {
+          const curRenderer = window.JSONEditorCustomRenderers[rendererType];
+          if (curRenderer) {
+            registerRenderer({
+              type: rendererType,
+              component: curRenderer,
+            });
+          }
         }
-      }
-    });
+      },
+    );
   }
 }
 
@@ -55,7 +57,7 @@ autoPreRegisterJSONEditorCustomRenderers();
 */
 window.addEventListener(
   'message',
-  (event) => {
+  (event: MessageEvent) => {
     if (!event.data) {
       return;
     }

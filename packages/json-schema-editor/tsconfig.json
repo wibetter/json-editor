@@ -5,16 +5,15 @@
     "noEmit": true,
     "paths": {
       "@": ["./src"],
-      "$components": ["./src/components"],
-      "$schemaRenderer": ["./src/schemaRenderer"],
-      "$utils": ["./src/utils"],
-      "$assets": ["./src/assets"],
-      "$public": ["../../public"],
-      "$store": ["./src/store"],
-      "$data": ["./src/data"]
+      "$components/*": ["./src/components/*"],
+      "$schemaRenderer/*": ["./src/schemaRenderer/*"],
+      "$utils/*": ["./src/utils/*"],
+      "$assets/*": ["./src/assets/*"],
+      "$public/*": ["../../public/*"],
+      "$store/*": ["./src/store/*"],
+      "$data/*": ["./src/data/*"]
     }
   },
   "include": ["src"],
   "exclude": ["node_modules"]
 }
-

@@ -4,7 +4,10 @@
  * indexRoute: index索引路径
  * targetJsonSchemaObj: schema数据对象
  * */
-export function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
+export function indexRoute2keyRoute(
+  indexRoute: string,
+  targetJsonSchemaObj: any,
+) {
   let curJsonSchemaObj = targetJsonSchemaObj;
   let curKeyRoute = '';
   const indexRouteArr = indexRoute.split('-');

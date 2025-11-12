@@ -5,16 +5,15 @@
  * jsonSchema: schema数据对象，主要根据此对象生成对应的json数据
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
-import { hasProperties } from '$utils/index';
+import { hasProperties, objClone } from '$utils/index';
 import { toJS } from 'mobx';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
-import { objClone } from '$utils';
 import { getDefaultOptionVal } from '$utils/jsonSchema';
 import { getExpectType } from '$function/getExpectType';
 
 // 用于区分 对象 和 数组 类型
-function isEqualByType(value1, value2) {
+function isEqualByType(value1: any, value2: any) {
   return (
     `${isObject(value1)}-${isArray(value1)}` ===
     `${isObject(value2)}-${isArray(value2)}`
@@ -26,8 +25,8 @@ function isEqualByType(value1, value2) {
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-function baseSchema2JsonData(jsonSchema, jsonData) {
-  let curJsonData = undefined;
+function baseSchema2JsonData(jsonSchema: any, jsonData: any) {
+  let curJsonData: any = undefined;
   let oldValue = jsonData;
 
   if (
@@ -63,7 +62,7 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
       break;
     case 'json':
       /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */
-      let curJsonItemData = ''; // 字符串类型的json数据
+      let curJsonItemData: any = ''; // 字符串类型的json数据
       // 判断当前jsonData是否是对象类型
       if (isObject(curValue) || isArray(curValue)) {
         curJsonItemData = curValue;
@@ -100,8 +99,8 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-function objectSchema2JsonData(jsonSchema, jsonData) {
-  let curJsonData = {};
+function objectSchema2JsonData(jsonSchema: any, jsonData: any) {
+  let curJsonData: any = {};
   const curType = jsonSchema.type;
   if (isObject(jsonSchema) && getExpectType(jsonSchema.type) === 'object') {
     const jsonItem = jsonSchema;
@@ -235,7 +234,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
         curPropertyOrder = Object.keys(jsonSchema.properties);
       }
       // 其他非固定格式的Object类型
-      curPropertyOrder.map((jsonKey) => {
+      curPropertyOrder.map((jsonKey: string) => {
         const curJsonItem = jsonSchema.properties[jsonKey];
         const curOldValue = jsonData && jsonData[jsonKey];
         switch (getExpectType(curJsonItem.type)) {
@@ -270,7 +269,7 @@ function objectSchema2JsonData(jsonSchema, jsonData) {
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-function arraySchema2JsonData(jsonSchema, jsonData) {
+function arraySchema2JsonData(jsonSchema: any, jsonData: any) {
   let curJsonData = [];
   // 判断是否是数组类型
   if (jsonSchema && getExpectType(jsonSchema.type) === 'array') {
@@ -290,7 +289,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
 
     if (getExpectType(jsonSchema.type) === 'array') {
       if (isArray(curValue)) {
-        curValue.map((arrItem) => {
+        curValue.map((arrItem: any) => {
           curJsonData.push(objectSchema2JsonData(jsonSchema.items, arrItem));
         });
       } else if (curValue) {
@@ -311,7 +310,7 @@ function arraySchema2JsonData(jsonSchema, jsonData) {
  * 根据jsonSchema和旧版的jsonData生成一份对应的jsonData
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
-export function schema2json(jsonSchema, jsonData) {
+export function schema2json(jsonSchema: any, jsonData: any) {
   let curJsonData = {};
   if (getExpectType(jsonSchema.type) === 'object') {
     curJsonData = objectSchema2JsonData(jsonSchema, jsonData);

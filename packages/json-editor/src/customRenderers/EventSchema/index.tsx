@@ -13,6 +13,7 @@ import { truncate } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
+// @ts-ignore
 import CodeIcon from '$assets/img/code.svg';
 
 interface EventSchemaProps {
@@ -28,8 +29,7 @@ interface EventSchemaProps {
 }
 
 class EventSchema extends React.PureComponent<EventSchemaProps> {
-
-  constructor(props) {
+  constructor(props: EventSchemaProps) {
     super(props);
 
     this.state = {
@@ -43,7 +43,7 @@ class EventSchema extends React.PureComponent<EventSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: EventSchemaProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -123,7 +123,7 @@ class EventSchema extends React.PureComponent<EventSchemaProps> {
         >
           <div
             className="element-title"
-            onClick={(event) => {
+            onClick={(event: React.MouseEvent<HTMLDivElement>) => {
               this.setState({
                 isClosed: !isClosed,
               });
@@ -141,7 +141,7 @@ class EventSchema extends React.PureComponent<EventSchemaProps> {
             {showCodeViewBtn && (
               <div
                 className="display-source-btn"
-                onClick={(event) => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.setState({
                     jsonView: !jsonView,
                   });

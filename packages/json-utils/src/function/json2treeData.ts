@@ -33,7 +33,7 @@ import { isObject, isArray } from '$utils/typeof';
 /**
  *  DataRoute转真实数据路径
  * */
-export function dataRoute2dataPath(dataRoute, baseDataPath) {
+export function dataRoute2dataPath(dataRoute: string, baseDataPath: string) {
   let dataPath = baseDataPath || 'data'; // 默认数据根路径值为data
   const dataRouteArr = dataRoute.split('-');
   dataRouteArr.map((path) => {
@@ -49,8 +49,8 @@ export function dataRoute2dataPath(dataRoute, baseDataPath) {
 /**
  *  mockData转treeData（供antd的TreeSelect使用）
  * */
-export function json2treeData(mockData, parentDataRoute) {
-  let treeData = [];
+export function json2treeData(mockData: any, parentDataRoute: string) {
+  let treeData: any[] = [];
   if (isObject(mockData)) {
     const mockDataProps = Object.keys(mockData);
     mockDataProps.map((propKey) => {
@@ -74,7 +74,7 @@ export function json2treeData(mockData, parentDataRoute) {
       }
     });
   } else if (isArray(mockData)) {
-    mockData.map((mockDataItem, index) => {
+    mockData.map((mockDataItem: any, index: number) => {
       const indexStr = index.toString();
       const curDataRoute = parentDataRoute
         ? `${parentDataRoute}-${index}`

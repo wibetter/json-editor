@@ -23,23 +23,23 @@ export function urlParse() {
  * @param {*} urlParams
  * 例如：{a1: 123} => a1=123
  */
-export function urlStringify(urlParams) {
+export function urlStringify(urlParams: any) {
   let urlStr = '';
-  if (url) {
+  if (urlParams) {
     urlStr = qs.stringify(urlParams);
   }
   return urlStr;
 }
 
 /** js对象数据深拷贝，避免数据联动 */
-export function objClone(targetObj) {
+export function objClone(targetObj: any) {
   // const newObj = JSON.stringify(targetObj);
   // return JSON.parse(newObj);
   return cloneDeep(targetObj);
 }
 
 /** 对比两个json数据是否相等 */
-export function isEqual(targetObj, nextTargetObj) {
+export function isEqual(targetObj: any, nextTargetObj: any) {
   if (
     (hasProperties(targetObj) && !hasProperties(nextTargetObj)) ||
     (!hasProperties(targetObj) && hasProperties(nextTargetObj)) ||
@@ -68,7 +68,7 @@ export function isEqual(targetObj, nextTargetObj) {
 }
 
 // 根据 id 或 lastUpdateTime 判断 数据是否相等
-export function isEqualByIdT(targetObj, nextTargetObj) {
+export function isEqualByIdT(targetObj: any, nextTargetObj: any) {
   if (
     (hasProperties(targetObj) && !hasProperties(nextTargetObj)) ||
     (!hasProperties(targetObj) && hasProperties(nextTargetObj)) ||
@@ -109,7 +109,7 @@ export function isEqualByIdT(targetObj, nextTargetObj) {
 
 /** 判断当前属性是否存在
  * 备注：要识别boolean类型的数值 */
-export function hasProperties(targetProperties) {
+export function hasProperties(targetProperties: any) {
   let hasProperties = false;
   if (targetProperties !== undefined && targetProperties !== null) {
     // targetProperties 等于""、0、false时均认为是存在的属性
@@ -120,7 +120,7 @@ export function hasProperties(targetProperties) {
 
 // 截断字符串，避免撑开元素
 // https://www.lodashjs.com/docs/lodash.truncate
-export function truncate(str, paramConfig) {
+export function truncate(str: string, paramConfig: any) {
   if (str) {
     return truncateStr(str, paramConfig);
   }
@@ -130,7 +130,7 @@ export function truncate(str, paramConfig) {
 /**
  * 支持属性表达式
  */
-export function evalExpression(expressionStr, data) {
+export function evalExpression(expressionStr: string, data: any) {
   const curData = data || {};
   if (!expressionStr) return false;
   const expressionFunc = new Function(

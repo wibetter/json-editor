@@ -18,11 +18,12 @@
  * }
  */
 import { isObject } from '$utils/typeof';
+import { getExpectType } from '$function/getExpectType';
 
 /**
  * Object类型的schema元数据分析
  * */
-function objectSchema2JsonData(jsonSchema, analyzerResult) {
+function objectSchema2JsonData(jsonSchema: any, analyzerResult: any) {
   let curAnalyzerResult = analyzerResult || {};
   if (
     isObject(jsonSchema) &&
@@ -44,7 +45,7 @@ function objectSchema2JsonData(jsonSchema, analyzerResult) {
 }
 
 /** 主方法 */
-export function metaElemAnalyzer(curJsonSchemaObj, analyzerResult) {
+export function metaElemAnalyzer(curJsonSchemaObj: any, analyzerResult: any) {
   // 根据analyzerResult是否为空，判断是否是最外层的调用
   const isFirstAnalyzer = !analyzerResult ? true : false;
   let curAnalyzerResult = analyzerResult || {};

@@ -10,7 +10,7 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
 class RadioSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -21,7 +21,7 @@ class RadioSchema extends React.PureComponent<BaseRendererProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -29,7 +29,7 @@ class RadioSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event) => {
+  handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
@@ -97,7 +97,7 @@ class RadioSchema extends React.PureComponent<BaseRendererProps> {
             >
               {options &&
                 options.length > 0 &&
-                options.map((item, optionIndex) => {
+                options.map((item: any, optionIndex: number) => {
                   const optionLabel = item.label || item.name;
                   // const optionNodeKey = `${nodeKey}-radio-${optionLabel}`;
                   const optionNodeKey = `radio-${optionIndex}-${optionLabel}`;

@@ -14,7 +14,7 @@ import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
 class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 组件内部维护的数据
     this.state = {
@@ -30,7 +30,7 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -38,7 +38,7 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (newJsonData) => {
+  handleValueChange = (newJsonData: string) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, newJsonData); // 更新数值
@@ -128,7 +128,7 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
             minLines={5}
             maxLines={30}
             width={'100%'}
-            onChange={(newJsonData) => {
+            onChange={(newJsonData: string) => {
               try {
                 // HtmlParse(newJsonData); // 进行格式化（主要用于检查是否是合格的json数据）
                 // 更新jsonData
@@ -136,7 +136,7 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
                 this.setState({
                   isShowWarn: false,
                 });
-              } catch (err) {
+              } catch (err: any) {
                 // 更新jsonData
                 this.handleValueChange(newJsonData);
                 this.setState({

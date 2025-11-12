@@ -1,5 +1,5 @@
 // 内置的期望类型值
-const valExpectType = {
+const valExpectType: Record<string, string> = {
   array: 'array',
   boolean: 'boolean',
   'box-style': 'object',
@@ -21,7 +21,6 @@ const valExpectType = {
   object: 'object',
   quantity: 'object',
   radio: 'string',
-  select: 'array',
   select: 'string',
   textarea: 'string',
   'text-editor': 'string',
@@ -30,12 +29,12 @@ const valExpectType = {
 };
 
 // 根据type获取对应元素的期望类型值
-export function getExpectType(type) {
+export function getExpectType(type: string) {
   return valExpectType[type] || type;
 }
 
 // 注册新的期望类型值
-export function registerExpectType(type, valType) {
+export function registerExpectType(type: string, valType: string) {
   if (valExpectType[type]) {
     console.warn(
       `当前已经存在${type}(${valExpectType[type]})，暂时不支持覆盖。`,

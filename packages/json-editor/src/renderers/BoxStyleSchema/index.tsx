@@ -9,8 +9,16 @@ import { buildStyle } from '$utils/index';
 import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
-class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
-  constructor(props) {
+interface BoxStyleSchemaState {
+  layoutStyleLock: boolean;
+  renderAction: boolean;
+}
+
+class BoxStyleSchema extends React.PureComponent<
+  BaseRendererProps,
+  BoxStyleSchemaState
+> {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
       layoutStyleLock: false, // 是否锁住容器数值值的设置，默认为false，设置为true后4个数值同时联动
@@ -25,12 +33,12 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
     this.initBoxStyle();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     this.initBoxStyle();
   }
 
   // 记录box-style的数值（无需实时响应）
-  layoutStyleObj = {
+  layoutStyleObj: any = {
     top: '',
     right: '',
     bottom: '',
@@ -97,7 +105,11 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   /** 设置布局容器的盒子模型数值 */
-  setLayoutBoxStyle = (newVal, layoutStyleLock, propKey) => {
+  setLayoutBoxStyle = (
+    newVal: any,
+    layoutStyleLock: boolean,
+    propKey: string,
+  ) => {
     if (layoutStyleLock) {
       this.linkLayoutBoxStyle(newVal);
     } else {
@@ -116,7 +128,7 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
   };
 
   /** 布局容器的盒子模型数值联动设值 */
-  linkLayoutBoxStyle = (newVal) => {
+  linkLayoutBoxStyle = (newVal: any) => {
     let curValue = newVal;
     if (newVal === 'auto') {
       curValue = 'auto';
@@ -134,7 +146,7 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
     this.updateBoxStyleState();
   };
 
-  getStyleValNum = (valStr) => {
+  getStyleValNum = (valStr: any) => {
     if (valStr === 'auto') {
       return '';
     } else if (
@@ -228,7 +240,7 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
             >
               <div
                 className={layoutStyleLock ? 'lock-icon' : 'lock-icon unlock'}
-                onClick={() => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.setState({
                     layoutStyleLock: !layoutStyleLock,
                   });
@@ -246,11 +258,11 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.top)}
-            onPressEnter={(event) => {
-              const newVal = event.target.value;
+            onPressEnter={(event: React.KeyboardEvent<HTMLInputElement>) => {
+              const newVal = (event.target as HTMLInputElement).value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'top');
             }}
-            onBlur={(event) => {
+            onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
               const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'top');
             }}
@@ -265,11 +277,11 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.right)}
-            onPressEnter={(event) => {
-              const newVal = event.target.value;
+            onPressEnter={(event: React.KeyboardEvent<HTMLInputElement>) => {
+              const newVal = (event.target as HTMLInputElement).value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'right');
             }}
-            onBlur={(event) => {
+            onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
               const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'right');
             }}
@@ -284,11 +296,11 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.bottom)}
-            onPressEnter={(event) => {
-              const newVal = event.target.value;
+            onPressEnter={(event: React.KeyboardEvent<HTMLInputElement>) => {
+              const newVal = (event.target as HTMLInputElement).value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'bottom');
             }}
-            onBlur={(event) => {
+            onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
               const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'bottom');
             }}
@@ -303,7 +315,7 @@ class BoxStyleSchema extends React.PureComponent<BaseRendererProps> {
             }-quantity-box`}
             size="small"
             value={this.getStyleValNum(this.layoutStyleObj.left)}
-            onPressEnter={(event) => {
+            onPressEnter={(event: any) => {
               const newVal = event.target.value;
               this.setLayoutBoxStyle(newVal, layoutStyleLock, 'left');
             }}

@@ -20,7 +20,7 @@ export function buildStyle(
 ): Record<string, any> {
   const curStyle: Record<string, any> = {};
   if (style) {
-    Object.keys(style).forEach((styleKey) => {
+    Object.keys(style).forEach((styleKey: string) => {
       // 将属性短横线命名转换为驼峰命名，如 background-color => backgroundColor
       if (styleKey.indexOf('-') > 0) {
         curStyle[camelCase(styleKey)] = (style as any)[styleKey];
@@ -208,7 +208,7 @@ export function getExprProperties(
   data: any,
   ignoreList: string[] = ['name'],
 ): any {
-  Object.getOwnPropertyNames(schema).forEach((key) => {
+  Object.getOwnPropertyNames(schema).forEach((key: string) => {
     if (ignoreList && ~ignoreList.indexOf(key)) {
       return;
     }
@@ -276,7 +276,7 @@ export function formatOptions1(options: any): {
   let optionValue: Record<string, any> = {}; // 记录对象类型的value
   if (isArray(options)) {
     // curOptions = options;
-    options.forEach((option: any) => {
+    options.forEach((option: any, index: number) => {
       if (isObject(option)) {
         if (isObject(option.value)) {
           let valueStr = JSON.stringify(option.value);
@@ -357,7 +357,7 @@ export function getObjectTitle(objItem: any): string | any {
 export function getWrapOptions(options: any[]): any[] {
   let curOptions: any[] = [];
   if (isArray(options)) {
-    options.forEach((option) => {
+    options.forEach((option: any) => {
       curOptions.push({
         label: getObjectTitle(option),
         value: option, // isObject(option.value) ? option.value : option,

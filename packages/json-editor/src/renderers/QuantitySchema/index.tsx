@@ -18,7 +18,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -26,7 +26,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleInputChangeV1 = (event) => {
+  handleInputChangeV1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
@@ -34,12 +34,12 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
   };
 
-  handleInputChange = (event) => {
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     this.handleValueChange(value);
   };
 
-  handleValueChange = (value) => {
+  handleValueChange = (value: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
@@ -52,7 +52,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     }
   };
 
-  handleUnitChange = (value) => {
+  handleUnitChange = (value: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const curKeyRoute = keyRoute ? `${keyRoute}-quantity` : 'quantity';
@@ -85,7 +85,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
         defaultValue={quantitySchema.default || 'px'}
         onChange={this.handleUnitChange}
       >
-        {options.map((option) => {
+        {options.map((option: any) => {
           return (
             <Option value={option.value} key={option.value}>
               {option.label}

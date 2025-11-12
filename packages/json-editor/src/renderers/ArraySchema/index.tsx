@@ -285,7 +285,7 @@ class ArraySchema extends React.PureComponent<
             {showCodeViewBtn && (
               <div
                 className="display-source-btn"
-                onClick={(event) => {
+                onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                   this.setState({
                     jsonView: !jsonView,
                   });
@@ -305,7 +305,7 @@ class ArraySchema extends React.PureComponent<
               <PlusOutlined
                 // src={addElemIcon}
                 className="array-add-child-btn"
-                onClick={(event) => {
+                onClick={(event: React.MouseEvent<HTMLElement>) => {
                   this.addArrayItem(keyRoute!, curJsonData, curJsonData.length);
                   event.preventDefault();
                   event.stopPropagation();
@@ -331,13 +331,17 @@ class ArraySchema extends React.PureComponent<
                   <div className="array-item" key={curKeyRoute}>
                     <div
                       className="array-item-header"
-                      onClick={(event) => {
+                      onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                         this.arrayCollapseChange(event, arrIndex);
                       }}
-                      onMouseMove={(event) => {
+                      onMouseMove={(
+                        event: React.MouseEvent<HTMLDivElement>,
+                      ) => {
                         this.elemHoverEnterEvent(event, arrIndex);
                       }}
-                      onMouseLeave={(event) => {
+                      onMouseLeave={(
+                        event: React.MouseEvent<HTMLDivElement>,
+                      ) => {
                         this.elemHoverLeaveEvent(event, arrIndex);
                       }}
                     >
@@ -360,11 +364,11 @@ class ArraySchema extends React.PureComponent<
                             title={`确定要删除${arrayItemsDataObj.title}/${
                               arrIndex + 1
                             }吗？`}
-                            onCancel={(event) => {
+                            onCancel={(event?: React.MouseEvent) => {
                               event?.preventDefault();
                               event?.stopPropagation();
                             }}
-                            onConfirm={(event) => {
+                            onConfirm={(event?: React.MouseEvent) => {
                               this.deleteArrItem(
                                 keyRoute!,
                                 arrIndex,
@@ -407,7 +411,9 @@ class ArraySchema extends React.PureComponent<
                           <Tooltip title={`向上移动`}>
                             <ArrowUpOutlined
                               className="array-operate-btn"
-                              onClick={(event) => {
+                              onClick={(
+                                event: React.MouseEvent<HTMLElement>,
+                              ) => {
                                 sortArrayItem(keyRoute!, arrIndex, 'up');
                                 event?.preventDefault();
                                 event?.stopPropagation();

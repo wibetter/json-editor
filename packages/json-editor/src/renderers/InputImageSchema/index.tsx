@@ -11,21 +11,17 @@ import {
 import { truncate, isArray, isString } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
+import { BaseRendererProps } from '$types/index';
 
-interface InputImageSchemaProps extends BaseRendererProps {
-  parentType?: any;
-  jsonKey?: string;
-  indexRoute?: any;
-  keyRoute?: any;
-  nodeKey?: string;
-  targetJsonSchema?: any;
-  onChange?: any;
-  schemaStore?: any;
-  jsonStore?: any;
+interface InputImageSchemaState {
+  loading: boolean;
 }
 
-class InputImageSchema extends React.PureComponent<InputImageSchemaProps> {
-  constructor(props) {
+class InputImageSchema extends React.PureComponent<
+  BaseRendererProps,
+  InputImageSchemaState
+> {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
       loading: false,
@@ -43,14 +39,14 @@ class InputImageSchema extends React.PureComponent<InputImageSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
     }
   }
 
-  handleImageChange = (fileInfo) => {
+  handleImageChange = (fileInfo: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     if (fileInfo.file.status === 'uploading') {

@@ -157,7 +157,7 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
     // 将 headers 对象转换为数组格式用于表单编辑
     const headersToArray = (headers: any) => {
       if (!headers || typeof headers !== 'object') return [];
-      return Object.keys(headers).map((key) => ({
+      return Object.keys(headers).map((key: string) => ({
         key,
         value:
           typeof headers[key] === 'string'
@@ -169,7 +169,7 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
     // 将 data 对象转换为数组格式用于表单编辑
     const dataToArray = (data: any) => {
       if (!data || typeof data !== 'object') return [];
-      return Object.keys(data).map((key) => ({
+      return Object.keys(data).map((key: string) => ({
         key,
         value:
           typeof data[key] === 'string' ? data[key] : JSON.stringify(data[key]),
@@ -266,11 +266,11 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
                   </Select>
                   <Form.Item
                     noStyle
-                    shouldUpdate={(prevValues, currentValues) =>
+                    shouldUpdate={(prevValues: any, currentValues: any) =>
                       prevValues.dataType !== currentValues.dataType
                     }
                   >
-                    {({ getFieldValue }) => {
+                    {({ getFieldValue }: any) => {
                       const dataType = getFieldValue('dataType') || 'json';
                       const formatMap: Record<string, string> = {
                         json: 'application/json',
@@ -303,11 +303,11 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
 
                 <Form.Item
                   noStyle
-                  shouldUpdate={(prevValues, currentValues) =>
+                  shouldUpdate={(prevValues: any, currentValues: any) =>
                     prevValues.cache !== currentValues.cache
                   }
                 >
-                  {({ getFieldValue }) =>
+                  {({ getFieldValue }: any) =>
                     getFieldValue('cache') ? (
                       <Form.Item
                         name="cacheTime"
@@ -343,9 +343,18 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
                     {headersSchema.title || '请求头 (Headers)'}
                   </h4>
                   <Form.List name="headers">
-                    {(fields, { add, remove }) => (
+                    {(
+                      fields: any[],
+                      {
+                        add,
+                        remove,
+                      }: {
+                        add: (defaultValue?: any) => void;
+                        remove: (index: number) => void;
+                      },
+                    ) => (
                       <>
-                        {fields.map(({ key, name, ...restField }) => (
+                        {fields.map(({ key, name, ...restField }: any) => (
                           <Space
                             key={key}
                             style={{ display: 'flex', marginBottom: 8 }}
@@ -366,13 +375,17 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
                             >
                               <Input placeholder="Value" />
                             </Form.Item>
-                            <MinusCircleOutlined onClick={() => remove(name)} />
+                            <MinusCircleOutlined
+                              onClick={(event: React.MouseEvent) =>
+                                remove(name)
+                              }
+                            />
                           </Space>
                         ))}
                         <Form.Item>
                           <Button
                             type="dashed"
-                            onClick={() => add()}
+                            onClick={(event: React.MouseEvent) => add()}
                             block
                             icon={<PlusOutlined />}
                           >
@@ -389,9 +402,18 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
                     {dataSchema.title || '发送数据 (Data)'}
                   </h4>
                   <Form.List name="data">
-                    {(fields, { add, remove }) => (
+                    {(
+                      fields: any[],
+                      {
+                        add,
+                        remove,
+                      }: {
+                        add: (defaultValue?: any) => void;
+                        remove: (index: number) => void;
+                      },
+                    ) => (
                       <>
-                        {fields.map(({ key, name, ...restField }) => (
+                        {fields.map(({ key, name, ...restField }: any) => (
                           <Space
                             key={key}
                             style={{ display: 'flex', marginBottom: 8 }}
@@ -412,13 +434,17 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
                             >
                               <Input placeholder="Value (支持JSON)" />
                             </Form.Item>
-                            <MinusCircleOutlined onClick={() => remove(name)} />
+                            <MinusCircleOutlined
+                              onClick={(event: React.MouseEvent) =>
+                                remove(name)
+                              }
+                            />
                           </Space>
                         ))}
                         <Form.Item>
                           <Button
                             type="dashed"
-                            onClick={() => add()}
+                            onClick={(event: React.MouseEvent) => add()}
                             block
                             icon={<PlusOutlined />}
                           >

@@ -23,7 +23,7 @@ interface BooleanFormSchemaProps extends BaseRendererProps {
 }
 
 class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
-  constructor(props) {
+  constructor(props: BooleanFormSchemaProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -34,7 +34,7 @@ class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BooleanFormSchemaProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -42,7 +42,7 @@ class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (checked) => {
+  handleValueChange = (checked: boolean) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     updateFormValueData(keyRoute, checked); // 更新数值

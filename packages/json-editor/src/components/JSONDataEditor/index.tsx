@@ -13,22 +13,13 @@ import {
   isEqualByIdT,
   isEqual,
 } from '@wibetter/json-utils';
-import { SchemaStore, JSONStore } from '$types/index';
+import {
+  SchemaStore,
+  JSONStore,
+  StoresInterface,
+  BaseRendererProps,
+} from '$types/index';
 import './index.scss';
-
-interface JSONDataEditorProps {
-  viewStyle?: any;
-  wideScreen?: any;
-  onChange?: (data: any) => void;
-  jsonView?: boolean;
-  jsonViewReadOnly?: boolean;
-  schemaData?: any;
-  jsonData?: any;
-  dynamicDataList?: any;
-  options?: any;
-  schemaStore?: any;
-  jsonStore?: any;
-}
 
 interface JSONDataEditorState {
   jsonView: boolean;
@@ -36,10 +27,10 @@ interface JSONDataEditorState {
 }
 
 class JSONDataEditor extends React.PureComponent<
-  JSONDataEditorProps,
+  BaseRendererProps,
   JSONDataEditorState
 > {
-  constructor(props: JSONDataEditorProps) {
+  constructor(props: BaseRendererProps) {
     super(props);
 
     this.state = {
@@ -94,7 +85,7 @@ class JSONDataEditor extends React.PureComponent<
     }
   };
 
-  componentWillReceiveProps(nextProps: JSONDataEditorProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     const { JSONSchemaChange, setPageScreen } = this.props.schemaStore || {};
     const {
       JSONEditorObj,

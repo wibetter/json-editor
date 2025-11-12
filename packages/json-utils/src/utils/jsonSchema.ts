@@ -6,7 +6,7 @@ import { getExpectType } from '$function/getExpectType';
 /** 判断是否为空的Schema
  * 包括 通用schema和组件配置专用的schema
  * */
-export function isEmptySchema(targetJsonSchema) {
+export function isEmptySchema(targetJsonSchema: any) {
   let isEmpty = true;
   if (!targetJsonSchema) {
     return isEmpty;
@@ -45,7 +45,7 @@ export function isEmptySchema(targetJsonSchema) {
  *  判断是否是最新版的schema数据
  *  备注：确保当前schema数据是通过@wibetter/json-schema-editor生成的
  * */
-export function isNewSchemaData(schemaData) {
+export function isNewSchemaData(schemaData: any) {
   let isNewVersion = false;
   const { lastUpdateTime } = schemaData;
   // 从那一刻开始就认为是新版JSONSchema
@@ -62,7 +62,7 @@ export function isNewSchemaData(schemaData) {
  *  主要用于判断当前元素点击新增时是添加子元素还是添加兄弟节点，容器类型点击新增时则添加子节点。
  *  备注：array类型字段只有固定的一个items属性，不能新增其他子元素。
  * */
-export function isContainerSchema(curSchema) {
+export function isContainerSchema(curSchema: any) {
   let isContainerElem = false;
   const valueType = getExpectType(curSchema.type);
   const isContainer =
@@ -76,7 +76,7 @@ export function isContainerSchema(curSchema) {
 /** 判断是否是结构化的schema数据，
  *  判定条件：一级schema为object类型，其所有二级schema也为object类型
  * */
-export function isStructuredSchema(jsonSchema) {
+export function isStructuredSchema(jsonSchema: any) {
   let isStructured = true;
   const currentType = jsonSchema.type;
   if (
@@ -86,7 +86,7 @@ export function isStructuredSchema(jsonSchema) {
   ) {
     isStructured = false;
   } else {
-    jsonSchema.propertyOrder.map((key) => {
+    jsonSchema.propertyOrder.map((key: string) => {
       /** 1. 获取当前schema对象 */
       const curSchemaData = jsonSchema.properties[key];
       /** 2. 判断是否是容器类型元素，如果是则禁止选中 */
@@ -107,7 +107,7 @@ export function isStructuredSchema(jsonSchema) {
  * 判断是否是同一个父元素
  * 备注：用于判断两个元素是否在同一个父级容器中
  */
-export function isSameParent(curIndex, targetIndex) {
+export function isSameParent(curIndex: string, targetIndex: string) {
   const curIndexArr = curIndex.split('-');
   const targetIndexArr = targetIndex.split('-');
   curIndexArr.pop();
@@ -121,7 +121,7 @@ export function isSameParent(curIndex, targetIndex) {
 /**
  * 判断当前元素在目标元素的位置 前 or 后（根据当前元素的位置和目标元素的位置）
  */
-export function getCurPosition(curIndex, targetIndex) {
+export function getCurPosition(curIndex: string, targetIndex: string) {
   const curIndexArr = curIndex.split('-');
   const targetIndexArr = targetIndex.split('-');
   let curPosition = 'before'; // 默认在目标元素的前面
@@ -141,7 +141,7 @@ export function getCurPosition(curIndex, targetIndex) {
 /**
  * 获取父元素的路径值
  */
-export function getParentIndexRoute(curIndexRoute) {
+export function getParentIndexRoute(curIndexRoute: string) {
   const curIndexArr = curIndexRoute.split('-');
   curIndexArr.pop();
   return curIndexArr.join('-');
@@ -150,7 +150,7 @@ export function getParentIndexRoute(curIndexRoute) {
 /**
  * 获取下一个兄弟元素的路径值
  */
-export function getNextIndexRoute(curIndexRoute) {
+export function getNextIndexRoute(curIndexRoute: string) {
   const curIndexArr = curIndexRoute.split('-');
   const lastIndex = curIndexArr.pop();
   const endIndex = Number(lastIndex) + 1;
@@ -161,7 +161,7 @@ export function getNextIndexRoute(curIndexRoute) {
 /**
  * 获取父元素的路径值和当前index
  */
-export function getParentIndexRoute_CurIndex(curIndexRoute) {
+export function getParentIndexRoute_CurIndex(curIndexRoute: string) {
   const curIndexArr = curIndexRoute.split('-');
   const curIndex = curIndexArr.pop();
   return [curIndexArr.join('-'), curIndex];
@@ -170,9 +170,9 @@ export function getParentIndexRoute_CurIndex(curIndexRoute) {
 /**
  * 将当前路径值向前移动一位
  */
-export function moveForward(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  const curIndex = curIndexArr.pop();
+export function moveForward(curIndexRoute: string) {
+  const curIndexArr: any = curIndexRoute.split('-');
+  const curIndex: any = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) - 1);
   return curIndexArr.join('-');
 }
@@ -180,8 +180,8 @@ export function moveForward(curIndexRoute) {
 /**
  * 将当前路径值向后移动一位
  */
-export function moveBackward(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
+export function moveBackward(curIndexRoute: string) {
+  const curIndexArr: any = curIndexRoute.split('-');
   const curIndex = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) + 1);
   return curIndexArr.join('-');
@@ -190,8 +190,8 @@ export function moveBackward(curIndexRoute) {
 /**
  * 获取第一个选项值
  */
-export function getDefaultOptionVal(jsonSchema, multiple) {
-  let defaultVal = '';
+export function getDefaultOptionVal(jsonSchema: any, multiple?: boolean) {
+  let defaultVal: any = '';
   let hasOptions = false;
   if (
     jsonSchema.defaultActiveFirstOption === false ||

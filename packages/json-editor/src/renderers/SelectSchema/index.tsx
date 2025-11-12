@@ -55,8 +55,8 @@ class SelectSchema extends React.PureComponent<SelectSchemaProps> {
     const withLabel = targetJsonSchema.withLabel;
 
     if (isArray(value)) {
-      const valueArray = [];
-      value.forEach((valItem, index) => {
+      const valueArray: any[] = [];
+      value.forEach((valItem: any, index: number) => {
         let valueStr = valItem;
         if (isObject(valueStr)) {
           valueStr = JSON.stringify(valItem);
@@ -104,8 +104,8 @@ class SelectSchema extends React.PureComponent<SelectSchemaProps> {
     this.optionValue = optionsFormat.optionValue;
 
     if (isArray(curJsonData)) {
-      const valueArray = [];
-      curJsonData.forEach((valItem) => {
+      const valueArray: any[] = [];
+      curJsonData.forEach((valItem: any) => {
         let valueStr = valItem;
         if (isObject(valueStr)) {
           valueStr = JSON.stringify(valItem);
@@ -179,7 +179,7 @@ class SelectSchema extends React.PureComponent<SelectSchemaProps> {
             >
               {options &&
                 options.length > 0 &&
-                options.map((item, optionIndex) => {
+                options.map((item: any, optionIndex: number) => {
                   const optionLabel = item.label || item.name;
                   const optionNodeKey = `${nodeKey}-select-${optionLabel}`;
                   return (
