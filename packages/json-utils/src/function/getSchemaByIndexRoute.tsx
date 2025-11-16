@@ -36,8 +36,10 @@ export function getSchemaByIndexRoute(
         if (curJsonSchemaObj.propertyOrder) {
           curKeyTemp = curJsonSchemaObj.propertyOrder[curIndex];
         } else if (curJsonSchemaObj.properties) {
-          const propertyOrder = Object.keys(curJsonSchemaObj.properties);
-          curKeyTemp = propertyOrder[curIndex];
+          const propertyOrder: Array<string> = Object.keys(
+            curJsonSchemaObj.properties,
+          );
+          curKeyTemp = propertyOrder[Number(curIndex)];
         }
         // 2、根据key值获取对应的json数据对象
         curJsonSchemaObj = curJsonSchemaObj.properties[curKeyTemp];

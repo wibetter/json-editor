@@ -9,15 +9,16 @@
     "allowJs": false /* 指定是否允许编译JS文件，默认false,即不编译JS文件. */,
     // "checkJs": true,                       /* 指定是否检查和报告JS文件中的错误，默认false */
     "jsx": "react" /* 指定jsx代码用于的开发环境:'preserve','react-native', or 'react'. */,
-    "declaration": false /* 指定是否在编译的时候生成相的d.ts声明文件 */,
+    // "declaration": false /* 指定是否在编译的时候生成相的d.ts声明文件 */,
+    // "declarationDir": "./dist",
+    "composite": false,                     /* 是否编译构建引用项目 */
     // "declarationMap": true,                /* 指定编译时是否生成.map文件 */
     // "sourceMap": true,                     /* 指定编译时是否生成.map文件 */
     // "outFile": "./",                       /* 指定输出文件合并为一个文件 */
     // "outDir": "amis-widget", /* 指定输出文件夹，值为一个文件夹路径字符串，输出的文件都将放置在这个文件夹*/
     // "rootDir": "src", /* 指定编译文件的根目录，编译器会在根目录查找入口文件 */
-    // "composite": true,                     /* 是否编译构建引用项目 */
     // "removeComments": true,                /* 指定是否将编译后的文件注释删掉，设为true的话即删除注释，默认为false */
-    "noEmit": false /* 不生成编译文件 */,
+    // "noEmit": false /* 不生成编译文件 */,
     "importHelpers": true /* 指定是否引入tslib里的复制工具函数，默认为false */,
     // "downlevelIteration": true,            /* 当target为"ES5"或"ES3"时，为"for-of" "spread"和"destructuring"中的迭代器提供完全支持 */
     "isolatedModules": false /* 指定是否将每个文件作为单独的模块，默认为true */,

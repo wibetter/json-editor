@@ -2,6 +2,11 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "typeRoots": [
+      "../../@types",
+      "./node_modules/@types",
+      "../../node_modules/@types"
+    ],
     "paths": {
       "$core/*": ["./src/core/*"],
       "$components/*": ["./src/components/*"],
@@ -18,6 +23,6 @@
       "$types/*": ["./src/types/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "../../@types"],
   "exclude": ["node_modules"]
 }

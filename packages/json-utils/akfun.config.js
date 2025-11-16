@@ -23,6 +23,7 @@ module.exports = {
         $data: resolve('src/data'),
       },
     },
+    createDeclaration: false, // 构建时是否创建声明文件
   },
   build2lib: {
     entry: {
@@ -45,8 +46,9 @@ module.exports = {
     bundleAnalyzerReport: false,
   },
   build2esm: {
-    type: 'js',
+    type: 'ts', // js、ts，当设置 ts 时会启动 @rollup/plugin-typescript
     input: resolve('src/main.ts'),
     fileName: 'index',
+    declaration: true, // 构建时是否创建声明文件
   },
 };

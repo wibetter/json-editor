@@ -36,7 +36,7 @@ function objectSchema2JsonData(jsonSchema: any, analyzerResult: any) {
     } else {
       curPropertyOrder = Object.keys(jsonSchema.properties);
     }
-    curPropertyOrder.map((jsonKey) => {
+    curPropertyOrder.map((jsonKey: string) => {
       const curSchema = jsonSchema.properties[jsonKey];
       curAnalyzerResult = metaElemAnalyzer(curSchema, curAnalyzerResult);
     });

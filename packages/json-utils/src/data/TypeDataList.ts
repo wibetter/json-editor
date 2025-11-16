@@ -37,7 +37,7 @@ import {
 } from '$data/index';
 
 // 类型数据清单
-export const TypeDataList = {
+export const TypeDataList: any = {
   jsonschema: initJSONSchemaData,
   input: initInputData,
   boolean: initBooleanData,

@@ -48,7 +48,6 @@ export const initDataSourceData = {
 
 // 默认是用于展示local本地数据源的，如果展示远程数据源使用initDataSourceDataV2
 export const initDataSourceDataV2 = {
-  type: 'object',
   type: 'datasource',
   title: '数据源',
   isContainer: false,

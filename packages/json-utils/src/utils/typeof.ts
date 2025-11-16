@@ -84,7 +84,7 @@ export function isObject(curObj: any) {
 export function isQuantity(val: string) {
   let isObject = false;
   // 获取当前计量单位元素可选的单位类型
-  const quantityList = TypeDataList.quantity.properties.quantity.enum;
+  const quantityList = TypeDataList.quantity.properties.quantity?.enum || [];
   if (quantityList.indexOf(val) >= 0) {
     isObject = true;
   }

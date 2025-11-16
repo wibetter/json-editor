@@ -6,7 +6,7 @@
  * jsonData: json数据对象，会优先使用此jsonData对应的数值
  * */
 import { hasProperties, objClone } from '$utils/index';
-import { toJS } from 'mobx';
+// import { toJS } from 'mobx';
 import { isArray, isObject, isFunction } from '$utils/typeof';
 import { EmptyDynamicDataCont } from '$data/index';
 import { getDefaultOptionVal } from '$utils/jsonSchema';

@@ -12,7 +12,7 @@ export function schema2conditionValue(jsonSchema: any, jsonData: any) {
     } else {
       curPropertyOrder = Object.keys(jsonSchema.properties);
     }
-    curPropertyOrder.map((jsonKey) => {
+    curPropertyOrder.map((jsonKey: string) => {
       const curJsonItem = jsonSchema.properties[jsonKey];
       let curConditionValue = jsonData[jsonKey];
       if (

@@ -30,7 +30,7 @@ export function indexRoute2keyRoute(
         curKey = curJsonSchemaObj.propertyOrder[curIndex];
       } else if (curJsonSchemaObj.properties) {
         const propertyOrder = Object.keys(curJsonSchemaObj.properties);
-        curKey = propertyOrder[curIndex];
+        curKey = propertyOrder[Number(curIndex)];
       }
       // 2、根据key值获取对应的json数据对象
       curJsonSchemaObj = curJsonSchemaObj.properties[curKey]; // 对象类型数据引用
