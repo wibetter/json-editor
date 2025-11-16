@@ -17,7 +17,6 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
       alias: {
-        '@': resolve('src'),
         $function: resolve('src/function'),
         $utils: resolve('src/utils'),
         $data: resolve('src/data'),
