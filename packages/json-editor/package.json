@@ -35,7 +35,6 @@
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "moment": "^2.27.0",
-    "prop-types": "^15.8.1",
     "react": "^16.8.6",
     "react-ace": "^12.0.0",
     "react-color": "^2.19.3",
@@ -44,7 +43,9 @@
   },
   "devDependencies": {
     "akfun": "^5.0.0",
-    "@wibetter/json-schema-editor": "^6.0.1"
+    "@wibetter/json-schema-editor": "^6.0.1",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.15"
   },
   "engines": {
     "node": ">= 10.13.0",

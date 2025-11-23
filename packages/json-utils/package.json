@@ -14,6 +14,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "types": "dist/main.d.ts",
   "scripts": {
     "build2lib": "akfun build2lib && npm run build2esm",
     "build2esm": "akfun build2esm -n=index"
@@ -33,6 +34,8 @@
     "qs": "^6.13.1"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.20",
+    "@types/qs": "^6.9.12",
     "akfun": "^5.0.1"
   },
   "engines": {

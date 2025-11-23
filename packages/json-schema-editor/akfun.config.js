@@ -16,7 +16,7 @@ module.exports = {
   webpack: {
     resolve: {
       // webpack的resolve配置
-      extensions: ['.js', '.jsx', '.umd.js', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.umd.js', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
         $components: resolve('src/components'),
@@ -26,6 +26,7 @@ module.exports = {
         $public: resolve('../../public'),
         $store: resolve('src/store'),
         $data: resolve('src/data'),
+        $types: resolve('src/types'),
       },
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
@@ -43,7 +44,7 @@ module.exports = {
   },
   dev: {
     entry: {
-      index: './src/demo.js',
+      index: './src/demo.tsx',
     },
     NODE_ENV: 'development',
     port: 80,
@@ -55,7 +56,7 @@ module.exports = {
   },
   build2lib: {
     entry: {
-      index: './src/main.js',
+      index: './src/main.tsx',
     },
     output: {
       filename: '[name].js',
@@ -75,7 +76,7 @@ module.exports = {
   build2lib2: {
     // 用于打包sdk文件
     entry: {
-      index: './src/main.js',
+      index: './src/main.tsx',
     },
     output: {
       filename: 'index.js',

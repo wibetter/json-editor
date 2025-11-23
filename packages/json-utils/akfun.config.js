@@ -15,7 +15,7 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      extensions: ['.js', '.jsx', 'json'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
       alias: {
         '@': resolve('src'),
         $function: resolve('src/function'),
@@ -23,10 +23,11 @@ module.exports = {
         $data: resolve('src/data'),
       },
     },
+    createDeclaration: false, // 构建时是否创建声明文件
   },
   build2lib: {
     entry: {
-      index: './src/main.js', // 构建lib的入口
+      index: './src/main.ts', // 构建lib的入口
     },
     output: {
       filename: '[name].js',
@@ -45,8 +46,9 @@ module.exports = {
     bundleAnalyzerReport: false,
   },
   build2esm: {
-    type: 'js',
-    input: resolve('src/main.js'),
+    type: 'ts', // js、ts，当设置 ts 时会启动 @rollup/plugin-typescript
+    input: resolve('src/main.ts'),
     fileName: 'index',
+    declaration: true, // 构建时是否创建声明文件
   },
 };

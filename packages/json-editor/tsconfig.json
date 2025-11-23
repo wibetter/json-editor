@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "typeRoots": [
+      "../../@types",
+      "./node_modules/@types",
+      "../../node_modules/@types"
+    ],
+    "paths": {
+      "$core/*": ["./src/core/*"],
+      "$components/*": ["./src/components/*"],
+      "$renderers/*": ["./src/renderers/*"],
+      "$customRenderers/*": ["./src/customRenderers/*"],
+      "$plugins/*": ["./src/plugins/*"],
+      "$utils/*": ["./src/utils/*"],
+      "$assets/*": ["./src/assets/*"],
+      "$public/*": ["../../public/*"],
+      "$store/*": ["./src/store/*"],
+      "$data/*": ["./src/data/*"],
+      "$config/*": ["./src/config/*"],
+      "$mixins/*": ["./src/mixins/*"],
+      "$types/*": ["./src/types/*"]
+    }
+  },
+  "include": ["src", "../../@types"],
+  "exclude": ["node_modules"]
+}
