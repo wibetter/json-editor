@@ -4,14 +4,7 @@ import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import { BaseRendererProps } from '$types/index';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import {
-  Input,
-  InputNumber,
-  Tooltip,
-  Popover,
-  Select,
-  AutoComplete,
-} from 'antd';
+import { Input, Tooltip, Popover, Select, AutoComplete } from 'antd';
 const { Option } = Select;
 import { truncate, isNumber, isArray } from '@wibetter/json-utils';
 import { buildStyle } from '$utils/index';
@@ -74,7 +67,8 @@ class PaddingAndMarginSchema extends React.PureComponent<
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const marginSchema = targetJsonSchema.properties['margin'];
     const paddingSchema = targetJsonSchema.properties['padding'];
     const quantitySchema = targetJsonSchema.properties['quantity'];
@@ -209,7 +203,9 @@ class PaddingAndMarginSchema extends React.PureComponent<
       quantity: this.boxStyle.quantity,
     };
 
-    updateFormValueData(keyRoute, curBoxValue); // 更新单位数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, curBoxValue); // 更新单位数值
 
     this.setState({
       renderAction: !renderAction,
@@ -236,7 +232,9 @@ class PaddingAndMarginSchema extends React.PureComponent<
       padding: this.getPaddingValue(),
       quantity: newVal,
     };
-    updateFormValueData(keyRoute, curBoxValue);
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, curBoxValue);
   };
 
   setType = (newVal: string) => {
@@ -305,7 +303,7 @@ class PaddingAndMarginSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

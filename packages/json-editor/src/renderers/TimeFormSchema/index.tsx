@@ -33,7 +33,9 @@ class TimeFormSchema extends React.PureComponent<BaseRendererProps> {
   handleValueChange = (event: any, dateString: string) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, dateString); // 更新数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, dateString); // 更新数值
   };
 
   render() {
@@ -42,7 +44,8 @@ class TimeFormSchema extends React.PureComponent<BaseRendererProps> {
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const defaultTime = curJsonData ?? targetJsonSchema.default;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
@@ -81,7 +84,7 @@ class TimeFormSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

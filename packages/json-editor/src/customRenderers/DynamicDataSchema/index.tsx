@@ -15,7 +15,7 @@ interface DynamicDataSchemaProps {
   indexRoute?: string;
   keyRoute?: string;
   nodeKey?: string;
-  targetJsonSchema?: any;
+  targetJsonSchema: any;
   dynamicDataList?: any[];
   dynamicDataObj?: any;
   dynamicDataApiScopeList?: any;
@@ -141,7 +141,7 @@ class DynamicDataSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

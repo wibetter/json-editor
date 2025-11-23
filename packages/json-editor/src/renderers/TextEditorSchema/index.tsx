@@ -13,11 +13,13 @@ import {
 } from '@ant-design/icons';
 import { buildStyle } from '$utils/index';
 // 引入编辑器组件
-import BraftEditor from 'braft-editor';
+import BraftEditor, { ControlType } from 'braft-editor';
 // 引入字体取色器样式
+// @ts-ignore
 import ColorPicker from 'braft-extensions/dist/color-picker';
 import 'braft-extensions/dist/color-picker.css';
 // 引入表格扩展（其他扩展：https://github.com/margox/braft-extensions）
+// @ts-ignore
 import Table from 'braft-extensions/dist/table';
 import 'braft-extensions/dist/table.css';
 // 引入编辑器样式
@@ -39,7 +41,16 @@ const tableOptions = {
 };
 BraftEditor.use(Table(tableOptions));
 
-class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
+interface TextEditorSchemaState {
+  isClosed: boolean;
+  allControls: ControlType[];
+  baseControls: ControlType[];
+}
+
+class TextEditorSchema extends React.PureComponent<
+  BaseRendererProps,
+  TextEditorSchemaState
+> {
   constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
@@ -122,7 +133,9 @@ class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
   handleEditorChange = (editorState: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, editorState.toHTML()); // 更新数值
   };
 
   render() {
@@ -131,7 +144,8 @@ class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const { isClosed } = this.state;
-    const curJsonData = getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute); // 从jsonData中获取对应的html内容
     const editorState = BraftEditor.createEditorState(curJsonData); // 将html字符串转换成editorState
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
@@ -177,7 +191,7 @@ class TextEditorSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

@@ -7,16 +7,19 @@ import { objClone } from '$utils/index';
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
 export function getSchemaByIndexRoute(
-  indexRoute: string,
+  indexRoute: string | number,
   targetJsonSchemaObj: any,
-  useObjClone: boolean,
+  useObjClone?: boolean,
 ) {
   let curJsonSchemaObj = targetJsonSchemaObj;
   if (useObjClone) {
     curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
   }
   if (indexRoute) {
-    const indexRouteArr = indexRoute.split('-');
+    const indexRouteArr =
+      typeof indexRoute === 'string'
+        ? indexRoute.split('-')
+        : [indexRoute.toString()];
     for (let index = 0, size = indexRouteArr.length; index < size; index++) {
       // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
       const curIndex = indexRouteArr[index];

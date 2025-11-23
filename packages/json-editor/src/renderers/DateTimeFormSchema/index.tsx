@@ -39,7 +39,9 @@ class DateTimeFormSchema extends React.PureComponent<BaseRendererProps> {
   handleValueChange = (event: any, dateString: string) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, dateString); // 更新数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, dateString); // 更新数值
   };
 
   render() {
@@ -52,7 +54,8 @@ class DateTimeFormSchema extends React.PureComponent<BaseRendererProps> {
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const timeFormat = DateTypeList[curType] || DateTypeList[0];
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const defaultTime = curJsonData ?? targetJsonSchema.default;
     const isNeedTwoCol = isNeedTwoColWarpStyle(curType); // 是否需要设置成两栏布局
 
@@ -89,7 +92,7 @@ class DateTimeFormSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

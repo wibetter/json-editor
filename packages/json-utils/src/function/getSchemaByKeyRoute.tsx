@@ -9,7 +9,7 @@ import { objClone } from '$utils/index';
 export function getSchemaByKeyRoute(
   keyRoute: string,
   targetJsonSchemaObj: any,
-  useObjClone: boolean,
+  useObjClone?: boolean,
 ) {
   let curJsonSchemaObj = targetJsonSchemaObj;
   if (useObjClone) {

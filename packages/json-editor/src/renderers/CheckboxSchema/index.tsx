@@ -32,7 +32,9 @@ class CheckboxSchema extends React.PureComponent<BaseRendererProps> {
   handleValueChange = (checkedValue: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, checkedValue); // 更新数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, checkedValue); // 更新数值
   };
 
   render() {
@@ -42,7 +44,8 @@ class CheckboxSchema extends React.PureComponent<BaseRendererProps> {
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
 
     const style = targetJsonSchema.style
@@ -76,7 +79,7 @@ class CheckboxSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

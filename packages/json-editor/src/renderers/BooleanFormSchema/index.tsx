@@ -8,22 +8,12 @@ import RcSwitch from 'rc-switch';
 import { truncate } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
+import { BaseRendererProps } from '$types/index';
 import 'rc-switch/assets/index.css';
 import './index.scss';
 
-interface BooleanFormSchemaProps extends BaseRendererProps {
-  parentType?: string;
-  jsonKey?: string;
-  indexRoute?: string;
-  keyRoute?: string;
-  nodeKey?: string;
-  targetJsonSchema?: any;
-  schemaStore?: any;
-  jsonStore?: any;
-}
-
-class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
-  constructor(props: BooleanFormSchemaProps) {
+class BooleanFormSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -34,7 +24,7 @@ class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps: BooleanFormSchemaProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -45,7 +35,7 @@ class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
   handleValueChange = (checked: boolean) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, checked); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, checked); // 更新数值
   };
 
   render() {
@@ -55,9 +45,9 @@ class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
 
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
-    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -92,7 +82,7 @@ class BooleanFormSchema extends React.PureComponent<BooleanFormSchemaProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

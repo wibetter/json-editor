@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
+// @ts-ignore
 import JSONEditor from '@wibetter/json-editor';
 import JSONSchemaEditor from './main';
 import '@wibetter/json-editor/lib/index.css';
@@ -9,8 +10,20 @@ import '../../../index.scss';
 /**
  * json-schema-editor的测试Demo：含json-editor
  */
-class IndexDemo extends React.PureComponent {
-  constructor(props) {
+interface IndexDemoState {
+  jsonSchema: any;
+  jsonData: any;
+  dynamicDataList: any[];
+  wideScreen: boolean;
+  jsonView: boolean;
+  schemaCodeView: boolean;
+  viewStyle: 'tabs' | 'fold';
+  curTypeList: any;
+  jsonViewReadOnly: boolean;
+}
+
+class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
+  constructor(props: {}) {
     super(props);
 
     this.state = {
@@ -264,7 +277,7 @@ class IndexDemo extends React.PureComponent {
               schemaData={jsonSchema}
               jsonData={jsonData}
               dynamicDataList={dynamicDataList}
-              onChange={(newJsonData) => {
+              onChange={(newJsonData: any) => {
                 this.setState({
                   jsonData: newJsonData,
                 });

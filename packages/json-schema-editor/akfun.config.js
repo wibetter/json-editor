@@ -26,6 +26,7 @@ module.exports = {
         $public: resolve('../../public'),
         $store: resolve('src/store'),
         $data: resolve('src/data'),
+        $types: resolve('src/types'),
       },
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件

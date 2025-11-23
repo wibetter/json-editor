@@ -29,11 +29,11 @@ class URLFormSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  handleValueChange = (event: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
-    updateFormValueData(keyRoute, value); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
@@ -42,7 +42,8 @@ class URLFormSchema extends React.PureComponent<BaseRendererProps> {
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
 
@@ -77,7 +78,7 @@ class URLFormSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

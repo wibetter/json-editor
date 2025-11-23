@@ -141,8 +141,11 @@ export function getCurPosition(curIndex: string, targetIndex: string) {
 /**
  * 获取父元素的路径值
  */
-export function getParentIndexRoute(curIndexRoute: string) {
-  const curIndexArr = curIndexRoute.split('-');
+export function getParentIndexRoute(curIndexRoute: string | number) {
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   curIndexArr.pop();
   return curIndexArr.join('-');
 }
@@ -150,8 +153,11 @@ export function getParentIndexRoute(curIndexRoute: string) {
 /**
  * 获取下一个兄弟元素的路径值
  */
-export function getNextIndexRoute(curIndexRoute: string) {
-  const curIndexArr = curIndexRoute.split('-');
+export function getNextIndexRoute(curIndexRoute: string | number) {
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   const lastIndex = curIndexArr.pop();
   const endIndex = Number(lastIndex) + 1;
   curIndexArr.push(`${endIndex}`);
@@ -161,17 +167,23 @@ export function getNextIndexRoute(curIndexRoute: string) {
 /**
  * 获取父元素的路径值和当前index
  */
-export function getParentIndexRoute_CurIndex(curIndexRoute: string) {
-  const curIndexArr = curIndexRoute.split('-');
-  const curIndex = curIndexArr.pop();
+export function getParentIndexRoute_CurIndex(curIndexRoute: string | number) {
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
+  const curIndex: string = curIndexArr.pop() || '';
   return [curIndexArr.join('-'), curIndex];
 }
 
 /**
  * 将当前路径值向前移动一位
  */
-export function moveForward(curIndexRoute: string) {
-  const curIndexArr: any = curIndexRoute.split('-');
+export function moveForward(curIndexRoute: string | number) {
+  const curIndexArr: any =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   const curIndex: any = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) - 1);
   return curIndexArr.join('-');
@@ -180,8 +192,11 @@ export function moveForward(curIndexRoute: string) {
 /**
  * 将当前路径值向后移动一位
  */
-export function moveBackward(curIndexRoute: string) {
-  const curIndexArr: any = curIndexRoute.split('-');
+export function moveBackward(curIndexRoute: string | number) {
+  const curIndexArr: any =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   const curIndex = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) + 1);
   return curIndexArr.join('-');

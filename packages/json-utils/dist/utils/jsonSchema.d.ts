@@ -38,25 +38,29 @@ export declare function getCurPosition(
 /**
  * 获取父元素的路径值
  */
-export declare function getParentIndexRoute(curIndexRoute: string): string;
+export declare function getParentIndexRoute(
+  curIndexRoute: string | number,
+): string;
 /**
  * 获取下一个兄弟元素的路径值
  */
-export declare function getNextIndexRoute(curIndexRoute: string): string;
+export declare function getNextIndexRoute(
+  curIndexRoute: string | number,
+): string;
 /**
  * 获取父元素的路径值和当前index
  */
 export declare function getParentIndexRoute_CurIndex(
-  curIndexRoute: string,
-): (string | undefined)[];
+  curIndexRoute: string | number,
+): string[];
 /**
  * 将当前路径值向前移动一位
  */
-export declare function moveForward(curIndexRoute: string): any;
+export declare function moveForward(curIndexRoute: string | number): any;
 /**
  * 将当前路径值向后移动一位
  */
-export declare function moveBackward(curIndexRoute: string): any;
+export declare function moveBackward(curIndexRoute: string | number): any;
 /**
  * 获取第一个选项值
  */

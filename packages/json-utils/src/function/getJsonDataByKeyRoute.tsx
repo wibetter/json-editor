@@ -9,7 +9,7 @@ import { objClone } from '$utils/index';
 export function getJsonDataByKeyRoute(
   keyRoute: string,
   targetJsonDataObj: any,
-  useObjClone: boolean,
+  useObjClone?: boolean,
 ) {
   let curJsonDataObj = targetJsonDataObj;
   if (useObjClone) {

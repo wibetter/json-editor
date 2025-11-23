@@ -6,7 +6,7 @@
  * useObjClone: 是否进行深拷贝，避免影响原有数据。（默认不进行深拷贝）
  */
 export declare function getSchemaByIndexRoute(
-  indexRoute: string,
+  indexRoute: string | number,
   targetJsonSchemaObj: any,
-  useObjClone: boolean,
+  useObjClone?: boolean,
 ): any;

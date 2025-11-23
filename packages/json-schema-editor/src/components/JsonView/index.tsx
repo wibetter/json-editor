@@ -2,12 +2,7 @@ import * as React from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/theme-solarized_light'; // ace-builds
-import {
-  isObject,
-  isArray,
-  isFunction,
-  hasProperties,
-} from '@wibetter/json-utils';
+import { isObject, isArray, isFunction } from '@wibetter/json-utils';
 import './index.scss';
 
 interface JsonViewProps {
@@ -17,9 +12,14 @@ interface JsonViewProps {
   onChange?: (data: any) => void;
 }
 
-class JsonView extends React.PureComponent<JsonViewProps> {
+interface JsonViewState {
+  isShowWarn: boolean;
+  warnText: string;
+  curJSONDataTemp?: any;
+}
 
-  constructor(props) {
+class JsonView extends React.PureComponent<JsonViewProps, JsonViewState> {
+  constructor(props: JsonViewProps) {
     super(props);
 
     this.state = {
@@ -31,7 +31,7 @@ class JsonView extends React.PureComponent<JsonViewProps> {
     this.handleValueChange = this.handleValueChange.bind(this);
   }
 
-  handleValueChange = (newJsonData) => {
+  handleValueChange = (newJsonData: any) => {
     if (this.props.onChange && isFunction(this.props.onChange)) {
       this.props.onChange(newJsonData);
     }
@@ -60,7 +60,7 @@ class JsonView extends React.PureComponent<JsonViewProps> {
           </div>
         )}
         <AceEditor
-          id="json_area_ace"
+          key="json_area_ace"
           defaultValue={curJsonData}
           // value={hasProperties(curJSONDataTemp) ? curJSONDataTemp : curJsonData}
           className="json-view-ace"

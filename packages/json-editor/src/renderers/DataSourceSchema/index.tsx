@@ -15,6 +15,7 @@ import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 // @ts-ignore
+// @ts-ignore
 import CodeIcon from '$assets/img/code.svg';
 import './index.scss';
 
@@ -67,7 +68,7 @@ class DataSourceSchema extends React.PureComponent<
       this.props;
     const { jsonView, isClosed, isShowFilter } = this.state;
     const curType = targetJsonSchema.type;
-    // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     // 获取DataSource中各类数据对象
     const typeDataObj = targetJsonSchema.properties.type || {}; // type中记录了数据源类型：local or remote
@@ -109,7 +110,7 @@ class DataSourceSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

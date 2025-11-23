@@ -14,12 +14,27 @@ import {
   isEqual,
 } from '@wibetter/json-utils';
 import {
-  SchemaStore,
-  JSONStore,
   StoresInterface,
   BaseRendererProps,
+  SchemaStore,
+  JSONStore,
 } from '$types/index';
 import './index.scss';
+
+interface JSONEditorProps {
+  viewStyle?: string;
+  wideScreen?: any;
+  onChange?: (data: any) => void;
+  jsonView?: any;
+  jsonViewReadOnly?: boolean;
+  schemaData?: any;
+  jsonData?: any;
+  dynamicDataList?: any[];
+  options?: any;
+  schemaStore: SchemaStore;
+  jsonStore: JSONStore;
+  [key: string]: any;
+}
 
 interface JSONDataEditorState {
   jsonView: boolean;
@@ -27,15 +42,15 @@ interface JSONDataEditorState {
 }
 
 class JSONDataEditor extends React.PureComponent<
-  BaseRendererProps,
+  JSONEditorProps,
   JSONDataEditorState
 > {
-  constructor(props: BaseRendererProps) {
+  constructor(props: JSONEditorProps) {
     super(props);
 
     this.state = {
       jsonView: props.jsonView || false, // 是否显示code模式，默认不显示code模式
-      viewStyle: this.catchViewStyle(props.viewStyle), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
+      viewStyle: this.catchViewStyle(props.viewStyle || 'fold'), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
     };
 
     const { initJSONSchemaData, setPageScreen } = this.props.schemaStore || {};

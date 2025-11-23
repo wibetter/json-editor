@@ -1344,7 +1344,10 @@ function getSchemaByIndexRoute(indexRoute, targetJsonSchemaObj, useObjClone) {
     curJsonSchemaObj = objClone(targetJsonSchemaObj); // 进行深拷贝，避免影响原有数据
   }
   if (indexRoute) {
-    const indexRouteArr = indexRoute.split('-');
+    const indexRouteArr =
+      typeof indexRoute === 'string'
+        ? indexRoute.split('-')
+        : [indexRoute.toString()];
     for (let index = 0, size = indexRouteArr.length; index < size; index++) {
       // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
       const curIndex = indexRouteArr[index];
@@ -1410,7 +1413,10 @@ function getSchemaByKeyRoute(keyRoute, targetJsonSchemaObj, useObjClone) {
 function indexRoute2keyRoute(indexRoute, targetJsonSchemaObj) {
   let curJsonSchemaObj = targetJsonSchemaObj;
   let curKeyRoute = '';
-  const indexRouteArr = indexRoute.split('-');
+  const indexRouteArr =
+    typeof indexRoute === 'string'
+      ? indexRoute.split('-')
+      : [indexRoute.toString()];
   for (let index = 0, size = indexRouteArr.length; index < size; index++) {
     // 获取指定路径的json数据对象，需要按以下步骤（备注：确保是符合规则的json格式数据）
     const curIndex = indexRouteArr[index];
@@ -2094,7 +2100,10 @@ function getCurPosition(curIndex, targetIndex) {
  * 获取父元素的路径值
  */
 function getParentIndexRoute(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   curIndexArr.pop();
   return curIndexArr.join('-');
 }
@@ -2102,7 +2111,10 @@ function getParentIndexRoute(curIndexRoute) {
  * 获取下一个兄弟元素的路径值
  */
 function getNextIndexRoute(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   const lastIndex = curIndexArr.pop();
   const endIndex = Number(lastIndex) + 1;
   curIndexArr.push(`${endIndex}`);
@@ -2112,15 +2124,21 @@ function getNextIndexRoute(curIndexRoute) {
  * 获取父元素的路径值和当前index
  */
 function getParentIndexRoute_CurIndex(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
-  const curIndex = curIndexArr.pop();
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
+  const curIndex = curIndexArr.pop() || '';
   return [curIndexArr.join('-'), curIndex];
 }
 /**
  * 将当前路径值向前移动一位
  */
 function moveForward(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   const curIndex = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) - 1);
   return curIndexArr.join('-');
@@ -2129,7 +2147,10 @@ function moveForward(curIndexRoute) {
  * 将当前路径值向后移动一位
  */
 function moveBackward(curIndexRoute) {
-  const curIndexArr = curIndexRoute.split('-');
+  const curIndexArr =
+    typeof curIndexRoute === 'string'
+      ? curIndexRoute.split('-')
+      : [curIndexRoute.toString()];
   const curIndex = curIndexArr.pop();
   curIndexArr.push(Number(curIndex) + 1);
   return curIndexArr.join('-');
@@ -2618,7 +2639,7 @@ function getParentKeyRoute(curKeyRoute) {
  */
 function getParentKeyRoute_CurKey(curKeyRoute) {
   const curKeyArr = curKeyRoute.split('-');
-  const curKey = curKeyArr.pop();
+  const curKey = curKeyArr.pop() || '';
   return [curKeyArr.join('-'), curKey];
 }
 

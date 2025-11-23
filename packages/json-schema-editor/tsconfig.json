@@ -2,7 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "noEmit": true,
     "paths": {
       "@": ["./src"],
       "$components/*": ["./src/components/*"],
@@ -11,9 +10,10 @@
       "$assets/*": ["./src/assets/*"],
       "$public/*": ["../../public/*"],
       "$store/*": ["./src/store/*"],
-      "$data/*": ["./src/data/*"]
+      "$data/*": ["./src/data/*"],
+      "$types/*": ["./src/types/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "src/types"],
   "exclude": ["node_modules"]
 }

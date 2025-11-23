@@ -7,41 +7,30 @@ import {
   getParentIndexRoute,
   EventTypeDataList,
 } from '@wibetter/json-utils';
+import { BaseRendererProps } from '$types/index';
 import './index.scss';
-
-interface SelectFormSchemaProps {
-  parentType?: string;
-  jsonKey?: string;
-  indexRoute?: string;
-  nodeKey?: string;
-  targetJsonSchema?: any;
-  typeSelectData?: any;
-  isFixed?: any;
-  schemaStore?: any;
-}
 
 /** 主要用于渲染typeSelect类型的元素
  * 备注：SelectFormSchema组件中只有default是可编辑的（提供选择列表） */
-class SelectFormSchema extends React.PureComponent<SelectFormSchemaProps> {
-
-  constructor(props) {
+class SelectFormSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.typeChange = this.typeChange.bind(this);
   }
 
   /** 数据源类型变动事件处理器 */
-  typeChange = (newType) => {
+  typeChange = (newType: string) => {
     const { editSchemaData, updateSchemaData } = this.props.schemaStore || {};
     const { indexRoute, jsonKey, targetJsonSchema, typeSelectData } =
       this.props;
     if (targetJsonSchema.default === newType) return; // default值未改变则直接跳出
-    editSchemaData(indexRoute, jsonKey, {
+    editSchemaData(indexRoute || '', jsonKey, {
       default: newType,
     });
 
     // 判断是否在type改变时进行特殊处理（比如dataSource类型中需要调整data的数据内容）
     if (typeSelectData) {
-      const newDataJSONObj = typeSelectData[newType];
+      const newDataJSONObj = (typeSelectData as any)[newType];
       if (newDataJSONObj && targetJsonSchema.title === '数据源类型') {
         // 根据indexRoute获取下一个子元素的路径值
         const nextIndexRoute = getNextIndexRoute(indexRoute);
@@ -51,7 +40,7 @@ class SelectFormSchema extends React.PureComponent<SelectFormSchemaProps> {
     }
     // event类型的特殊处理
     if (EventTypeDataList) {
-      const newEventJSONObj = EventTypeDataList[newType];
+      const newEventJSONObj = (EventTypeDataList as any)[newType];
       if (targetJsonSchema.title === '事件类型' && newEventJSONObj) {
         // 根据indexRoute获取下一个子元素的路径值
         const parentIndexRoute = getParentIndexRoute(indexRoute);
@@ -73,7 +62,7 @@ class SelectFormSchema extends React.PureComponent<SelectFormSchemaProps> {
             defaultValue={targetJsonSchema.default || 'local'}
             onChange={this.typeChange}
           >
-            {options.map((optionItem, optionIndex) => (
+            {options.map((optionItem: any, optionIndex: number) => (
               <Option key={optionIndex} value={optionItem.value}>
                 {optionItem.label || optionItem.name}
               </Option>
@@ -96,6 +85,6 @@ class SelectFormSchema extends React.PureComponent<SelectFormSchemaProps> {
   }
 }
 
-export default inject((stores) => ({
+export default inject((stores: any) => ({
   schemaStore: stores.schemaStore,
 }))(observer(SelectFormSchema));

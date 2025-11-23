@@ -7,27 +7,10 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
-import {
-  BaseRendererProps,
-  JSONSchema,
-  SchemaStore,
-  JSONStore,
-} from '$types/index';
+import { BaseRendererProps } from '$types/index';
 
-interface InputFormSchemaProps extends BaseRendererProps {
-  parentType?: string;
-  jsonKey?: string;
-  indexRoute?: string | number;
-  keyRoute?: string;
-  nodeKey?: string;
-  targetJsonSchema?: JSONSchema;
-  onChange?: (value: any) => void;
-  schemaStore?: SchemaStore;
-  jsonStore?: JSONStore;
-}
-
-class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
-  constructor(props: InputFormSchemaProps) {
+class InputFormSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -38,7 +21,7 @@ class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
   // static contextType = ThemeContext;
 
   /** 数值变动事件处理器 */
-  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  handleInputChange = (event: any): void => {
     const { value } = event.target;
     this.handleValueChange(value);
   };
@@ -59,7 +42,7 @@ class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps: InputFormSchemaProps): void {
+  componentWillReceiveProps(nextProps: BaseRendererProps): void {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -74,7 +57,7 @@ class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+    const isRequired: boolean = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
 
     const editorOptions = _editorOptions || {};
@@ -115,7 +98,7 @@ class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
@@ -133,7 +116,7 @@ class InputFormSchema extends React.PureComponent<InputFormSchemaProps> {
                 style={{ display: 'inline-block' }}
                 options={options}
                 disabled={readOnly}
-                required={isRequired}
+                // required={isRequired}
                 allowClear={true}
                 placeholder={
                   targetJsonSchema.placeholder ||

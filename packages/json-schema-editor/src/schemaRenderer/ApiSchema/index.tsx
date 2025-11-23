@@ -3,9 +3,10 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 
 import BaseFormSchema from '$components/BaseFormSchema/index';
+import { BaseRendererProps } from '$types/index';
 
 /** ApiSchema 类型渲染组件 */
-const ApiSchema = (props) => {
+const ApiSchema = (props: BaseRendererProps) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
   const curType = targetJsonSchema.type;
 
@@ -20,18 +21,19 @@ const ApiSchema = (props) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
+      // indexRoute={indexRoute}
+      // jsonKey={jsonKey}
       title={<BaseFormSchema {...props} />}
     >
       <TreeNode
         className={'api-url-item-schema schema-item-form'}
         id={`${nodeKey}-url`}
         key={`${nodeKey}-url`}
-        indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        jsonKey={'url'}
+        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        // jsonKey={'url'}
         title={
           <BaseFormSchema
+            {...props}
             indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
             jsonKey={'url'}
             targetJsonSchema={urlSchema}
@@ -47,10 +49,11 @@ const ApiSchema = (props) => {
         className={'api-method-item-schema schema-item-form'}
         id={`${nodeKey}-method`}
         key={`${nodeKey}-method`}
-        indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-        jsonKey={'method'}
+        // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+        //jsonKey={'method'}
         title={
           <BaseFormSchema
+            {...props}
             indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
             jsonKey={'method'}
             targetJsonSchema={methodSchema}
@@ -66,10 +69,11 @@ const ApiSchema = (props) => {
         className={'api-headers-item-schema schema-item-form'}
         id={`${nodeKey}-headers`}
         key={`${nodeKey}-headers`}
-        indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
-        jsonKey={'headers'}
+        // indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
+        // jsonKey={'headers'}
         title={
           <BaseFormSchema
+            {...props}
             indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
             jsonKey={'headers'}
             targetJsonSchema={headersSchema}
@@ -85,10 +89,11 @@ const ApiSchema = (props) => {
         className={'api-data-item-schema schema-item-form'}
         id={`${nodeKey}-data`}
         key={`${nodeKey}-data`}
-        indexRoute={indexRoute ? `${indexRoute}-3` : '3'}
-        jsonKey={'data'}
+        // indexRoute={indexRoute ? `${indexRoute}-3` : '3'}
+        // jsonKey={'data'}
         title={
           <BaseFormSchema
+            {...props}
             indexRoute={indexRoute ? `${indexRoute}-3` : '3'}
             jsonKey={'data'}
             targetJsonSchema={dataSchema}

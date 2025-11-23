@@ -19,25 +19,12 @@ import { isArray, isString, isURL, isColor, isObject } from '$utils/typeof';
 import { buildStyle } from '$utils/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import './index.scss';
+// @ts-ignore
 import DeleteIcon from '$assets/img/delete.svg';
+// @ts-ignore
 import AddElemIcon from '$assets/img/addElem.svg';
+// @ts-ignore
 import CodeIcon from '$assets/img/code.svg';
-
-interface ArraySchemaProps extends BaseRendererProps {
-  parentType?: string;
-  jsonKey?: string;
-  indexRoute?: string;
-  keyRoute?: string;
-  nodeKey?: string;
-  targetJsonSchema?: any;
-  schemaStore?: any;
-  jsonStore?: any;
-  renderChild?: any;
-  hoverIndex?: number;
-  isClosed?: boolean;
-  currentActiveArrIndex?: number;
-  jsonView?: boolean;
-}
 
 interface ArraySchemaState {
   currentActiveArrIndex: number;
@@ -52,10 +39,10 @@ interface ArraySchemaState {
  * 展示：以折叠面板形式展示
  */
 class ArraySchema extends React.PureComponent<
-  ArraySchemaProps,
+  BaseRendererProps,
   ArraySchemaState
 > {
-  constructor(props: ArraySchemaProps) {
+  constructor(props: BaseRendererProps) {
     super(props);
 
     this.state = {
@@ -78,7 +65,7 @@ class ArraySchema extends React.PureComponent<
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps: ArraySchemaProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
+// @ts-ignore
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
 import { urlParse } from '@wibetter/json-utils';
 import JSONEditor from './main';
@@ -14,7 +15,7 @@ import '../../../index.scss';
 class IndexDemo extends React.PureComponent<any, any> {
   constructor(props: any) {
     super(props);
-    const urlParams = urlParse();
+    const urlParams: any = urlParse();
 
     this.state = {
       jsonSchema: {
@@ -433,7 +434,7 @@ class IndexDemo extends React.PureComponent<any, any> {
               jsonViewReadOnly={schemaViewReadOnly}
               data={jsonSchema}
               typeList={curTypeList}
-              onChange={(newJsonSchema) => {
+              onChange={(newJsonSchema: any) => {
                 console.log('schemaDataChange', JSON.stringify(newJsonSchema));
                 this.setState({
                   jsonSchema: newJsonSchema,

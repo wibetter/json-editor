@@ -1,21 +1,16 @@
-import {
-  BASE_TYPE,
-  HIGH_TYPE,
-  ALL_TYPE,
-  CONTAINER_TYPE,
-} from '../data/TypeList';
+import { BASE_TYPE, CONTAINER_TYPE } from '../data/TypeList';
 
 /** 默认值（default）
  *  根据type判断是否显示默认配置项
  *  11种基础类型组件（input、boolean、 date、date-time、 time、 url、 textarea、number、color、radio、 select）
  *  3种特殊类型组件（Json、CodeArea、htmlArea）
  * */
-export function isNeedDefaultOption(curType) {
+export function isNeedDefaultOption(curType: string) {
   const supportedTypeList = [...BASE_TYPE, 'json', 'codearea', 'htmlarea'];
   return supportedTypeList.indexOf(curType) > -1;
 }
 
-export function hasOptions(curType) {
+export function hasOptions(curType: string) {
   const supportedTypeList = ['select', 'radio'];
   return supportedTypeList.indexOf(curType) > -1;
 }
@@ -24,7 +19,7 @@ export function hasOptions(curType) {
  *  根据 type 判断是否显示输入提示配置项
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
-export function isNeedPlaceholderOption(curType) {
+export function isNeedPlaceholderOption(curType: string) {
   const supportedTypeList = [
     'input',
     'url',
@@ -44,7 +39,7 @@ export function isNeedPlaceholderOption(curType) {
  *  根据type判断是否显示是否只读配置项
  *  radio、boolean、number、string等类型的数值可以设置为条件字段
  * */
-export function isNeedConditionOption(curType) {
+export function isNeedConditionOption(curType: string) {
   const supportedTypeList = [
     'boolean',
     'input',
@@ -65,7 +60,7 @@ export function isNeedConditionOption(curType) {
  *  根据format判断是否显示是否只读配置项
  *  input、number、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
-export function isNeedReadOnlyOption(curType) {
+export function isNeedReadOnlyOption(curType: string) {
   const supportedTypeList = [
     ...BASE_TYPE,
     'quantity',
@@ -81,7 +76,7 @@ export function isNeedReadOnlyOption(curType) {
  *  根据format判断是否显示是否只读配置项
  *  input、 date、date-time、 time、 url、 textarea、Json、CodeArea、htmlArea合计9种类型组件支持
  * */
-export function isNeedIsRequiredOption(curType) {
+export function isNeedIsRequiredOption(curType: string) {
   const supportedTypeList = [
     ...BASE_TYPE,
     'quantity',
@@ -95,7 +90,7 @@ export function isNeedIsRequiredOption(curType) {
 
 /** 用于显示控制 showCodeViewBtn
  * */
-export function isNeedCodeViewOption(curType) {
+export function isNeedCodeViewOption(curType: string) {
   const supportedTypeList = [...CONTAINER_TYPE, 'array'];
   return supportedTypeList.indexOf(curType) > -1;
 }

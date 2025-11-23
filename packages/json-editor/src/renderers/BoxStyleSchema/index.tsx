@@ -52,7 +52,8 @@ class BoxStyleSchema extends React.PureComponent<
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const unitJsonSchema = targetJsonSchema.properties['unit'];
     const quantity = curJsonData.quantity; // 获取数值单位
     const unitStr = curJsonData.unit || unitJsonSchema.default; // 获取数值
@@ -186,7 +187,7 @@ class BoxStyleSchema extends React.PureComponent<
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { renderAction, layoutStyleLock } = this.state;
-    // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -219,7 +220,7 @@ class BoxStyleSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

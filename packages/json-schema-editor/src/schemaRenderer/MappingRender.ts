@@ -7,9 +7,10 @@ import QuantitySchema from '$schemaRenderer/QuantitySchema/index';
 import SelectSchema from '$schemaRenderer/SelectSchema/index';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 import ApiSchema from '$schemaRenderer/ApiSchema/index';
+import { BaseRendererProps } from '$types/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
-const MappingRender = (props) => {
+const MappingRender = (props: BaseRendererProps) => {
   const { targetJsonSchema } = props;
   const curType = targetJsonSchema.type; // 获取当前元素类型（format）
 

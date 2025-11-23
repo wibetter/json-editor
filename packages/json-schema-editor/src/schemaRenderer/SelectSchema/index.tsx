@@ -3,15 +3,16 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import OptionSchema from '$components/OptionSchema/index';
+import { BaseRendererProps } from '$types/index';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
-const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
+const getTreeNodeTitleCont = (params: any) => <BaseFormSchema {...params} />;
 
 /** 渲染options中的元素 */
-const optionItemRender = (params) => <OptionSchema {...params} />;
+const optionItemRender = (params: any) => <OptionSchema {...params} />;
 
 /** Select类型渲染组件 */
-const SelectSchema = (props) => {
+const SelectSchema = (props: BaseRendererProps) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
   const curType = targetJsonSchema.type;
 
@@ -23,15 +24,15 @@ const SelectSchema = (props) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
+      // indexRoute={indexRoute || '0'}
+      // jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
     >
       {options &&
         options.length > 0 &&
-        options.map((optionItem, optionIndex) => {
+        options.map((optionItem: any, optionIndex: number) => {
           /** 1. 获取当前选项label和value */
           const optionLabel = optionItem.label || optionItem.name;
           const optionValue = optionItem.value;
@@ -43,7 +44,7 @@ const SelectSchema = (props) => {
               className="enum-item-schema schema-item-form"
               id={optionNodeKey}
               key={optionNodeKey}
-              indexRoute={curIndexRoute}
+              // indexRoute={curIndexRoute}
               disabled={true}
               title={optionItemRender({
                 indexRoute: curIndexRoute,

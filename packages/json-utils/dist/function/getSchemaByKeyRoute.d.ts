@@ -8,5 +8,5 @@
 export declare function getSchemaByKeyRoute(
   keyRoute: string,
   targetJsonSchemaObj: any,
-  useObjClone: boolean,
+  useObjClone?: boolean,
 ): any;

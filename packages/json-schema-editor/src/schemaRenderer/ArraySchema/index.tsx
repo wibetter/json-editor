@@ -4,16 +4,19 @@ const { TreeNode } = Tree;
 
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import MappingRender from '$schemaRenderer/MappingRender';
+import { BaseRendererProps } from '$types/index';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
-const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
+const getTreeNodeTitleCont = (params: BaseRendererProps) => (
+  <BaseFormSchema {...params} />
+);
 
 /** 渲染properties中的元素
  *  通过遍历propertyOrder有序的获取key值，
  *  再根据key值从properties中获取对应的json数据，
  *  parentIndexRoute用于拼接当前元素的完整索引路径。
  * */
-const propertiesRender = (params) => {
+const propertiesRender = (params: BaseRendererProps) => {
   const {
     propertyOrder,
     properties,
@@ -22,7 +25,7 @@ const propertiesRender = (params) => {
     parentType,
   } = params;
 
-  return propertyOrder.map((key, index) => {
+  return propertyOrder.map((key: string, index: number) => {
     /** 1. 获取当前元素的路径值 */
     const currentIndexRoute = parentIndexRoute
       ? `${parentIndexRoute}-${index}`
@@ -39,6 +42,7 @@ const propertiesRender = (params) => {
     }${curType}-${currentJsonKey}`;
 
     return MappingRender({
+      ...params,
       parentType,
       jsonKey: currentJsonKey,
       indexRoute: currentIndexRoute,
@@ -50,7 +54,7 @@ const propertiesRender = (params) => {
 };
 
 /** 渲染items中的元素 */
-const itemsRender = (props) => {
+const itemsRender = (props: BaseRendererProps) => {
   const { parentType, jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
 
   return (
@@ -58,10 +62,11 @@ const itemsRender = (props) => {
       className={'array-item-schema schema-item-form'}
       id={nodeKey}
       key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
+      //indexRoute={indexRoute}
+      // jsonKey={jsonKey}
       disabled={true}
       title={getTreeNodeTitleCont({
+        ...props,
         indexRoute,
         jsonKey,
         targetJsonSchema,
@@ -73,6 +78,7 @@ const itemsRender = (props) => {
     >
       {targetJsonSchema.type === 'object' &&
         propertiesRender({
+          ...props,
           propertyOrder: targetJsonSchema.propertyOrder,
           properties: targetJsonSchema.properties,
           parentIndexRoute: indexRoute,
@@ -84,7 +90,7 @@ const itemsRender = (props) => {
 };
 
 /** Array类型渲染组件 */
-const ArraySchema = (props) => {
+const ArraySchema = (props: BaseRendererProps) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
   const curType = targetJsonSchema.type;
 
@@ -101,13 +107,14 @@ const ArraySchema = (props) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
+      // indexRoute={indexRoute}
+      // jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
     >
       {itemsRender({
+        ...props,
         parentType: 'array',
         jsonKey: itemsJsonKey,
         indexRoute: currentIndexRoute,

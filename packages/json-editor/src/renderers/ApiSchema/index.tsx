@@ -120,7 +120,7 @@ class ApiSchema extends React.PureComponent<BaseRendererProps, ApiSchemaState> {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { keyRoute, targetJsonSchema, nodeKey } = this.props;
-    const { visible } = this.state;
+    const { visible } = this.state || {};
 
     if (!targetJsonSchema) {
       return null;

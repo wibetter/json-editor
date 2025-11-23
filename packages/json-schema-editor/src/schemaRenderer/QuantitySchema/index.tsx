@@ -3,15 +3,20 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import SelectFormSchema from '$components/SelectFormSchema/index';
+import { BaseRendererProps } from '$types/index';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */
-const getTreeNodeTitleCont = (params) => <BaseFormSchema {...params} />;
+const getTreeNodeTitleCont = (params: BaseRendererProps) => (
+  <BaseFormSchema {...params} />
+);
 
 /** 渲染dataSelect在的内容 */
-const getTypeSelectCont = (params) => <SelectFormSchema {...params} />;
+const getTypeSelectCont = (params: BaseRendererProps) => (
+  <SelectFormSchema {...params} />
+);
 
 /** Quantity类型渲染组件 */
-const QuantitySchema = (props) => {
+const QuantitySchema = (props: BaseRendererProps) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema } = props;
   const curType = targetJsonSchema.type;
 
@@ -24,8 +29,8 @@ const QuantitySchema = (props) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
+      // indexRoute={indexRoute}
+      // jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
@@ -34,10 +39,11 @@ const QuantitySchema = (props) => {
         className={'quantity-unit-item-schema schema-item-form'}
         id={`${nodeKey}-${unitJsonKey}`}
         key={`${nodeKey}-${unitJsonKey}`}
-        indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        jsonKey={unitJsonKey}
+        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        // jsonKey={unitJsonKey}
         disabled={true}
         title={getTreeNodeTitleCont({
+          ...props,
           indexRoute: indexRoute ? `${indexRoute}-0` : '0',
           jsonKey: unitJsonKey,
           targetJsonSchema: unitJsonData,
@@ -52,10 +58,11 @@ const QuantitySchema = (props) => {
         className={'quantity-typeSelect-item-schema schema-item-form'}
         id={`${nodeKey}-quantity`}
         key={`${nodeKey}-quantity`}
-        indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-        jsonKey={'quantity'}
+        // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+        // jsonKey={'quantity'}
         disabled={true}
         title={getTypeSelectCont({
+          ...props,
           indexRoute: indexRoute ? `${indexRoute}-1` : '1',
           jsonKey: 'quantity',
           targetJsonSchema: targetJsonSchema.properties.quantity,

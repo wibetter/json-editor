@@ -2,10 +2,11 @@ import React from 'react';
 import { Tree } from 'antd';
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import MappingRender from '$schemaRenderer/MappingRender';
+import { BaseRendererProps } from '$types/index';
 const { TreeNode } = Tree;
 
 /** 渲染当前字段的表单项（Tree的表单项内容） */
-const getTreeNodeTitleCont = (params) => {
+const getTreeNodeTitleCont = (params: BaseRendererProps) => {
   return <BaseFormSchema {...params} />;
 };
 
@@ -14,16 +15,18 @@ const getTreeNodeTitleCont = (params) => {
  *  再根据key值从properties中获取对应的json数据，
  *  parentIndexRoute用于拼接当前元素的完整索引路径。
  * */
-const propertiesRender = (params) => {
+const propertiesRender = (params: BaseRendererProps) => {
   const {
     propertyOrder,
     properties,
     parentIndexRoute,
     parentNodeKey,
     parentType,
+    isOnlyShowChild,
+    ...restProps
   } = params;
 
-  return propertyOrder.map((key, index) => {
+  return propertyOrder.map((key: string, index: number) => {
     /** 1. 获取当前元素的路径值 */
     const currentIndexRoute = parentIndexRoute
       ? `${parentIndexRoute}-${index}`
@@ -40,6 +43,7 @@ const propertiesRender = (params) => {
     }${curType}-${currentJsonKey}`; // 默认只使用当前format+jsonKey作为nodeKey
 
     return MappingRender({
+      ...restProps,
       parentType,
       jsonKey: currentJsonKey,
       indexRoute: currentIndexRoute,
@@ -53,7 +57,7 @@ const propertiesRender = (params) => {
 /** ObjectSchema
  *  Object类型元素渲染组件
  * */
-const ObjectSchema = (props) => {
+const ObjectSchema = (props: BaseRendererProps) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema, isOnlyShowChild } =
     props;
   const curType = targetJsonSchema.type;
@@ -61,6 +65,7 @@ const ObjectSchema = (props) => {
 
   /** 先获取当前节点的properties内容 */
   const propertiesContElem = propertiesRender({
+    ...props,
     propertyOrder: targetJsonSchema.propertyOrder,
     properties: targetJsonSchema.properties,
     parentIndexRoute: indexRoute,
@@ -75,8 +80,8 @@ const ObjectSchema = (props) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      indexRoute={indexRoute}
-      jsonKey={jsonKey}
+      // indexRoute={indexRoute}
+      // jsonKey={jsonKey}
       disabled={isFixed}
       title={getTreeNodeTitleCont({
         ...props,

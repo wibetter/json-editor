@@ -12,20 +12,11 @@ import {
   getCurPosition,
   moveForward,
 } from '@wibetter/json-utils';
+import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
-interface JSONSchemaProps {
-  onChange?: (data: any) => void;
-  data?: any;
-  typeList?: any;
-  jsonView?: any;
-  jsonViewReadOnly?: boolean;
-  schemaStore?: any;
-}
-
-class JSONSchema extends React.PureComponent<JSONSchemaProps> {
-
-  constructor(props) {
+class JSONSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
       this.props.schemaStore || {};
@@ -44,7 +35,7 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
       this.props.schemaStore || {};
     if (!isEqual(nextProps.data, this.props.data)) {
@@ -63,7 +54,7 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
   /**
    * 拖拽相关方法：开始拖动时触发的事件
    */
-  onDragStart = (eventData) => {
+  onDragStart = (eventData: any) => {
     const { getSchemaByIndexRoute } = this.props.schemaStore || {};
     const { node } = eventData;
     const curIndexRoute = node.indexRoute;
@@ -76,7 +67,7 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
   /**
    * 拖拽相关方法：拖动完成时触发的事件
    */
-  onDrop = (eventData) => {
+  onDrop = (eventData: any) => {
     /**
      * dragNode：拖动的元素
      * node：拖拽的目标位置上的元素
@@ -190,10 +181,10 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
   /**
    * 默认展开二级schema面板
    */
-  catchExpandedKeys = (jsonSchema) => {
-    const defaultExpandedKeys = [];
+  catchExpandedKeys = (jsonSchema: any) => {
+    const defaultExpandedKeys: string[] = [];
     if (jsonSchema && jsonSchema.propertyOrder && jsonSchema.properties) {
-      jsonSchema.propertyOrder.map((key, index) => {
+      jsonSchema.propertyOrder.map((key: string, index: number) => {
         /** 1. 获取当前元素的key值 */
         const currentJsonKey = key;
         /** 2. 获取当前元素的json数据对象 */
@@ -235,6 +226,7 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
             >
               {curType === 'object' &&
                 ObjectSchema({
+                  ...this.props,
                   parentType: '',
                   jsonKey: '',
                   indexRoute: '',
@@ -244,6 +236,7 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
                 })}
               {curType !== 'object' &&
                 MappingRender({
+                  ...this.props,
                   parentType: '',
                   jsonKey: '',
                   indexRoute: '',
@@ -271,6 +264,6 @@ class JSONSchema extends React.PureComponent<JSONSchemaProps> {
   }
 }
 
-export default inject((stores) => ({
+export default inject((stores: any) => ({
   schemaStore: stores.schemaStore,
 }))(observer(JSONSchema));

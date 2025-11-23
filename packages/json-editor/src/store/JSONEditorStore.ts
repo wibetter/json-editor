@@ -225,7 +225,7 @@ export default class JSONEditorStore {
     if (keyRoute !== '') {
       // 1. 获取父级key路径和最近的有一个key
       const parentKeyRoute_CurKey = getParentKeyRoute_CurKey(keyRoute);
-      const parentKeyRoute = parentKeyRoute_CurKey[0];
+      const parentKeyRoute: string = parentKeyRoute_CurKey[0];
       const curKey = parentKeyRoute_CurKey[1];
       // 2. 获取父级数据对象
       const parentJsonDataObj = getJsonDataByKeyRoute(

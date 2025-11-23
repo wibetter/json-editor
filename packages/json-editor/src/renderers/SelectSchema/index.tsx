@@ -11,25 +11,13 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { isNeedTwoColWarpStyle, buildStyle, formatOptions } from '$utils/index';
 import './index.scss';
 
-interface SelectSchemaProps extends BaseRendererProps {
-  parentType?: string;
-  jsonKey?: string;
-  indexRoute?: string;
-  keyRoute?: string;
-  nodeKey?: string;
-  targetJsonSchema?: any;
-  withLabel?: any; // 选择选项时是否带上label的数值
-  schemaStore?: any;
-  jsonStore?: any;
-}
-
 /**
  * select下拉选择类型
  */
-class SelectSchema extends React.PureComponent<SelectSchemaProps> {
+class SelectSchema extends React.PureComponent<BaseRendererProps> {
   optionValue: Record<string, any> = {}; // 记录options中对象类型的value
 
-  constructor(props: SelectSchemaProps) {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -40,7 +28,7 @@ class SelectSchema extends React.PureComponent<SelectSchemaProps> {
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps: SelectSchemaProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -85,7 +73,7 @@ class SelectSchema extends React.PureComponent<SelectSchemaProps> {
       }
     }
 
-    updateFormValueData(keyRoute, curValue); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, curValue); // 更新数值
   };
 
   render() {
@@ -153,7 +141,7 @@ class SelectSchema extends React.PureComponent<SelectSchemaProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

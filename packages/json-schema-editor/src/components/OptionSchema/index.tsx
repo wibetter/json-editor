@@ -4,20 +4,11 @@ import { Input, message, Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { PlusOutlined, CloseOutlined, CopyOutlined } from '@ant-design/icons';
 import { isArray, isObject, isString } from '@wibetter/json-utils';
+import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
-interface OptionSchemaProps {
-  indexRoute?: string;
-  optionIndex?: any;
-  optionLabel?: string;
-  optionValue?: string;
-  optionNodeKey?: string;
-  schemaStore?: any;
-}
-
-class OptionSchema extends React.PureComponent<OptionSchemaProps> {
-
-  constructor(props) {
+class OptionSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.onAddBtnEvent = this.onAddBtnEvent.bind(this);
@@ -28,7 +19,7 @@ class OptionSchema extends React.PureComponent<OptionSchemaProps> {
   }
 
   /** 选项Label变动事件处理器 */
-  handleLabelChange = (event) => {
+  handleLabelChange = (event: any) => {
     const { isExitOptionLabel, updateOptionLabel } =
       this.props.schemaStore || {};
     const { value } = event.target;
@@ -43,7 +34,7 @@ class OptionSchema extends React.PureComponent<OptionSchemaProps> {
   };
 
   /** 选项数值变动事件处理器 */
-  handleValueChange = (event) => {
+  handleValueChange = (event: any) => {
     const { updateOptionValue } = this.props.schemaStore || {};
     const { value } = event.target;
     const { indexRoute, optionIndex, optionValue } = this.props;
@@ -148,6 +139,6 @@ class OptionSchema extends React.PureComponent<OptionSchemaProps> {
   }
 }
 
-export default inject((stores) => ({
+export default inject((stores: any) => ({
   schemaStore: stores.schemaStore,
 }))(observer(OptionSchema));

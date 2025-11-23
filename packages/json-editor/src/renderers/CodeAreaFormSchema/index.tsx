@@ -48,7 +48,9 @@ class CodeAreaFormSchema extends React.PureComponent<
   handleValueChange = (newJsonData: string) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, newJsonData); // 更新数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, newJsonData); // 更新数值
   };
 
   render() {
@@ -109,7 +111,7 @@ class CodeAreaFormSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

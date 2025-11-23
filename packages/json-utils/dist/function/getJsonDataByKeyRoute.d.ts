@@ -8,5 +8,5 @@
 export declare function getJsonDataByKeyRoute(
   keyRoute: string,
   targetJsonDataObj: any,
-  useObjClone: boolean,
+  useObjClone?: boolean,
 ): any;

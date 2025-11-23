@@ -3,20 +3,11 @@ import { inject, observer } from 'mobx-react';
 import { Input, message, Select, Tooltip } from 'antd';
 const { Option } = Select;
 import { PlusOutlined, CloseOutlined, CopyOutlined } from '@ant-design/icons';
+import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
-interface EnumItemSchemaProps {
-  indexRoute?: string;
-  enumIndex?: any;
-  enumKey?: string;
-  enumText?: string;
-  enumNodeKey?: string;
-  schemaStore?: any;
-}
-
-class EnumItemSchema extends React.PureComponent<EnumItemSchemaProps> {
-
-  constructor(props) {
+class EnumItemSchema extends React.PureComponent<BaseRendererProps> {
+  constructor(props: BaseRendererProps) {
     super(props);
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.onAddBtnEvent = this.onAddBtnEvent.bind(this);
@@ -27,7 +18,7 @@ class EnumItemSchema extends React.PureComponent<EnumItemSchemaProps> {
   }
 
   /** jsonKey类型输入值变动事件处理器 */
-  handleEnumKeyChange = (event) => {
+  handleEnumKeyChange = (event: any) => {
     const { value } = event.target;
     const { indexRoute, enumIndex, enumKey } = this.props;
     const { isExitEnumKey, updateEnumKey } = this.props.schemaStore || {};
@@ -41,7 +32,7 @@ class EnumItemSchema extends React.PureComponent<EnumItemSchemaProps> {
   };
 
   /** enumText类型输入值变动事件处理器 */
-  handleEnumTextChange = (event) => {
+  handleEnumTextChange = (event: any) => {
     const { value } = event.target;
     const { indexRoute, enumIndex, enumText } = this.props;
     const { updateEnumText } = this.props.schemaStore || {};
@@ -128,6 +119,6 @@ class EnumItemSchema extends React.PureComponent<EnumItemSchemaProps> {
   }
 }
 
-export default inject((stores) => ({
+export default inject((stores: any) => ({
   schemaStore: stores.schemaStore,
 }))(observer(EnumItemSchema));

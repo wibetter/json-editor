@@ -3,14 +3,12 @@ import * as React from 'react';
 import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import { BaseRendererProps } from '$types/index';
-import { Input, InputNumber, Tooltip, AutoComplete, Select } from 'antd';
+import { InputNumber, Tooltip, AutoComplete, Select } from 'antd';
 const { Option } = Select;
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
-
-interface Props extends BaseRendererProps {}
 
 class QuantitySchema extends React.PureComponent<BaseRendererProps> {
   componentWillMount() {
@@ -34,7 +32,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
   };
 
-  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  handleInputChange = (event: any) => {
     const { value } = event.target;
     this.handleValueChange(value);
   };
@@ -102,7 +100,8 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     /** 获取quantity中的数值对象（默认第一个就是数值对象） */
     const unitJsonSchema = targetJsonSchema.properties['unit'];
@@ -152,7 +151,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

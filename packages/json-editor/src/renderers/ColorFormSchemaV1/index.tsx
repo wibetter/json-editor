@@ -38,14 +38,14 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
     const { updateFormValueData } = jsonStore || {};
 
     const { value } = event.target;
-    updateFormValueData(keyRoute, value); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, value); // 更新数值
   };
 
   /** color清除事件处理器 */
   deleteColor = () => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, 'initial'); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, 'initial'); // 更新数值
     message.success('已移除当前设置的颜色值');
   };
 
@@ -56,7 +56,8 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     const style = targetJsonSchema.style
@@ -92,7 +93,7 @@ class ColorFormSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

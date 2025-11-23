@@ -13,16 +13,10 @@ import { truncate } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { saveJSONEditorCache, getJSONEditorCache } from '$utils/webCache';
+// @ts-ignore
 import CodeIcon from '$assets/img/code.svg';
 import { buildStyle } from '$utils/index';
 import './index.scss';
-
-interface ObjectSchemaProps extends BaseRendererProps {
-  isArrayItem?: boolean;
-  arrIndex?: number;
-  isStructuredSchema?: boolean;
-  renderChild?: (props: BaseRendererProps) => React.ReactElement;
-}
 
 interface ObjectSchemaState {
   jsonView: boolean;
@@ -30,10 +24,10 @@ interface ObjectSchemaState {
 }
 
 class ObjectSchema extends React.PureComponent<
-  ObjectSchemaProps,
+  BaseRendererProps,
   ObjectSchemaState
 > {
-  constructor(props: ObjectSchemaProps) {
+  constructor(props: BaseRendererProps) {
     super(props);
 
     this.state = {
@@ -49,7 +43,7 @@ class ObjectSchema extends React.PureComponent<
     catchJsonDataByWebCache.call(this);
   }
 
-  componentWillReceiveProps(nextProps: ObjectSchemaProps) {
+  componentWillReceiveProps(nextProps: BaseRendererProps) {
     if (nextProps.keyRoute !== this.props.keyRoute) {
       /** 当key值路径发生变化时重新从web缓存中获取数值 */
       catchJsonDataByWebCache.call(this, nextProps.keyRoute);
@@ -71,7 +65,7 @@ class ObjectSchema extends React.PureComponent<
   }
 
   render() {
-    const { schemaStore, jsonStore } = this.props;
+    const { schemaStore } = this.props;
     const { pageScreen } = schemaStore || {};
 
     const {
@@ -81,7 +75,6 @@ class ObjectSchema extends React.PureComponent<
       keyRoute,
       targetJsonSchema,
       isArrayItem,
-      arrIndex,
       isStructuredSchema,
       renderChild,
     } = this.props;
@@ -132,7 +125,7 @@ class ObjectSchema extends React.PureComponent<
               <span className="title-text" title={targetJsonSchema.title}>
                 {targetJsonSchema.title}
                 {targetJsonSchema.showKey && (
-                  <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                  <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
                 )}
               </span>
             </Tooltip>
@@ -203,6 +196,7 @@ class ObjectSchema extends React.PureComponent<
                   const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
                   return renderChild({
+                    ...this.props,
                     parentType: curType,
                     jsonKey: currentJsonKey,
                     indexRoute: currentIndexRoute,

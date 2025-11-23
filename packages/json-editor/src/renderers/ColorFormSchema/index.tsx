@@ -4,6 +4,7 @@ import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import { BaseRendererProps } from '$types/index';
 import { Tooltip, message, Popover } from 'antd';
+// @ts-ignore
 import { SketchPicker } from 'react-color';
 import { CloseOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
@@ -52,8 +53,8 @@ class ColorFormSchema extends React.PureComponent<
     const { rgb } = color; // hex,
     const rgbaVal = `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`;
 
-    // updateFormValueData(keyRoute, hex); // 更新数值(#ffffff数据格式)
-    updateFormValueData(keyRoute, rgbaVal); // 更新数值: rgba(255,255,255,100)
+    // updateFormValueData && keyRoute && updateFormValueData(keyRoute, hex); // 更新数值(#ffffff数据格式)
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, rgbaVal); // 更新数值: rgba(255,255,255,100)
     // 主动触发更新的状态数据
     this.setState({
       renderState: !this.state.renderState,
@@ -63,7 +64,7 @@ class ColorFormSchema extends React.PureComponent<
   /** color清除事件处理器 */
   deleteColor = () => {
     const { keyRoute, updateFormValueData } = this.props;
-    updateFormValueData(keyRoute, 'initial'); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, 'initial'); // 更新数值
     message.success('已移除当前设置的颜色值');
     // 主动触发更新的状态数据
     this.setState({
@@ -79,7 +80,8 @@ class ColorFormSchema extends React.PureComponent<
     const { renderState, displayColorPicker } = this.state;
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
 
     const style = targetJsonSchema.style
@@ -124,7 +126,7 @@ class ColorFormSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

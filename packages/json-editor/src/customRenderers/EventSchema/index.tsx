@@ -7,7 +7,6 @@ import {
   DownOutlined,
   InfoCircleOutlined,
   RightOutlined,
-  FilterOutlined,
 } from '@ant-design/icons';
 import { truncate } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView/index';
@@ -28,7 +27,15 @@ interface EventSchemaProps {
   renderChild?: any;
 }
 
-class EventSchema extends React.PureComponent<EventSchemaProps> {
+interface EventSchemaState {
+  jsonView: boolean;
+  isClosed: boolean;
+}
+
+class EventSchema extends React.PureComponent<
+  EventSchemaProps,
+  EventSchemaState
+> {
   constructor(props: EventSchemaProps) {
     super(props);
 
@@ -107,7 +114,7 @@ class EventSchema extends React.PureComponent<EventSchemaProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

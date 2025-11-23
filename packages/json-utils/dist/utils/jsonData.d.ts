@@ -7,4 +7,4 @@ export declare function getParentKeyRoute(curKeyRoute: string): string;
  */
 export declare function getParentKeyRoute_CurKey(
   curKeyRoute: string,
-): (string | undefined)[];
+): [string, string];

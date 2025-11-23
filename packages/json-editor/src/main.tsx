@@ -29,8 +29,11 @@ interface JSONEditorProps {
   wideScreen?: any;
   onChange?: (data: any) => void;
   jsonView?: any;
+  jsonViewReadOnly?: boolean;
   schemaData?: any;
   jsonData?: any;
+  dynamicDataList?: any[];
+  options?: any;
   element?: any;
 }
 
@@ -63,6 +66,7 @@ export default class JSONEditor extends React.PureComponent<
         JSONSchemaStore={rootJSONStore.JSONSchemaStore}
         JSONEditorStore={rootJSONStore.JSONEditorStore}
       >
+        {/* @ts-ignore */}
         <JSONDataEditor {...this.props} />
       </Provider>
     );

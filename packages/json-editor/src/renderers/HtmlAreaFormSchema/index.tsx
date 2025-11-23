@@ -13,7 +13,15 @@ import { isObject } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { buildStyle } from '$utils/index';
 
-class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
+interface HtmlAreaFormSchemaState {
+  isShowWarn: boolean;
+  warnText: string;
+}
+
+class HtmlAreaFormSchema extends React.PureComponent<
+  BaseRendererProps,
+  HtmlAreaFormSchemaState
+> {
   constructor(props: BaseRendererProps) {
     super(props);
     // 组件内部维护的数据
@@ -41,7 +49,9 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
   handleValueChange = (newJsonData: string) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, newJsonData); // 更新数值
+    updateFormValueData &&
+      keyRoute &&
+      updateFormValueData(keyRoute, newJsonData); // 更新数值
   };
 
   render() {
@@ -53,7 +63,8 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     // 从jsonData中获取对应的数值
-    let curJsonData = getJSONDataByKeyRoute(keyRoute);
+    let curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     // 格式化JSON数据
     curJsonData =
       curJsonData !== undefined
@@ -95,7 +106,7 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
@@ -113,7 +124,6 @@ class HtmlAreaFormSchema extends React.PureComponent<BaseRendererProps> {
             </div>
           )}
           <AceEditor
-            id="code_area_ace"
             key={`${nodeKey}-ace`}
             className="code-area-item"
             value={curJsonData}

@@ -53,7 +53,7 @@ class NumberFormSchema extends React.PureComponent<
         `超过设定的最大数值${targetJsonSchema.maximum}，请重新输入。`,
       );
     } else {
-      updateFormValueData(keyRoute, newVal); // 更新数值
+      updateFormValueData && keyRoute && updateFormValueData(keyRoute, newVal); // 更新数值
     }
   };
 
@@ -85,10 +85,11 @@ class NumberFormSchema extends React.PureComponent<
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
-    const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
+    const { keyRoute, jsonKey, targetJsonSchema } = this.props;
     const { renderTime } = this.state;
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
@@ -126,7 +127,7 @@ class NumberFormSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

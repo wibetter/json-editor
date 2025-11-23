@@ -1,5 +1,3 @@
-// 全局类型声明
-
 import * as React from 'react';
 
 // JSON Schema 相关类型
@@ -47,40 +45,32 @@ export interface StoresInterface {
 
 // 组件通用 Props
 export interface BaseRendererProps {
-  parentType?: string;
+  parentType: string;
   jsonKey?: string;
-  indexRoute?: string | number;
+  indexRoute: string;
   keyRoute: string;
   nodeKey?: string;
   targetJsonSchema: JSONSchema;
   schemaStore: SchemaStore;
   jsonStore: JSONStore;
   onChange?: (value: any) => void;
+  typeSelectData?: any;
+  isFixed?: any;
   [key: string]: any;
 }
 
-// MobX 类型声明已在 node_modules/mobx/lib/mobx.d.ts 中定义
+declare module '@wibetter/json-editor' {
+  import { Component } from 'react';
 
-declare module 'mobx-react' {
-  export class Provider extends React.Component<any> {}
-}
-
-// lodash 和 antd 的类型声明已在 node_modules 中提供
-
-// SVG 文件类型声明
-declare module '$assets/img/*.svg' {
-  const content: React.ComponentType<any>;
-  export default content;
-}
-
-declare module '*.svg' {
-  const content: React.ComponentType<any>;
-  export default content;
-}
-
-// Window 接口扩展
-declare global {
-  interface Window {
-    JSONEditorCustomRenderers?: Record<string, any>;
+  interface JSONEditorProps {
+    viewStyle?: 'tabs' | 'fold';
+    jsonView?: boolean;
+    wideScreen?: boolean;
+    schemaData?: any;
+    jsonData?: any;
+    dynamicDataList?: any[];
+    onChange?: (newJsonData: any) => void;
   }
+
+  export default class JSONEditor extends Component<JSONEditorProps> {}
 }

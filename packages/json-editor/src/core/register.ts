@@ -1,5 +1,11 @@
 import { renderersMap, registerRenderer } from './factory';
 
+declare global {
+  interface Window {
+    JSONEditorCustomRenderers?: Record<string, any>;
+  }
+}
+
 /**
  * 提供两种特殊的注册渲染器的方式
  * 1、自动加载预先注册的自定义渲染器：自动加载并注册 window.JSONEditorCustomRenderers 中的渲染器
@@ -16,7 +22,7 @@ export function autoPreRegisterJSONEditorCustomRenderers() {
             `[json-editor]：预注册渲染器失败，当前存在重名渲染器（${rendererType}）。`,
           );
         } else {
-          const curRenderer = window.JSONEditorCustomRenderers[rendererType];
+          const curRenderer = window.JSONEditorCustomRenderers?.[rendererType];
           if (curRenderer) {
             registerRenderer({
               type: rendererType,

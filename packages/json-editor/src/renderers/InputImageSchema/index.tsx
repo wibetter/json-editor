@@ -59,7 +59,9 @@ class InputImageSchema extends React.PureComponent<
     if (fileInfo.file.status === 'done') {
       const responseData = fileInfo.file.response || {};
       if (responseData.url) {
-        updateFormValueData(keyRoute, responseData.url);
+        updateFormValueData &&
+          keyRoute &&
+          updateFormValueData(keyRoute, responseData.url);
       }
     } else if (fileInfo.file.status === 'error') {
       message.error(`${fileInfo.file.name} 图片上传失败。`);
@@ -72,7 +74,7 @@ class InputImageSchema extends React.PureComponent<
   handleDeleteChange = () => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    updateFormValueData(keyRoute, '');
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, '');
   };
 
   render() {
@@ -85,7 +87,7 @@ class InputImageSchema extends React.PureComponent<
     // 从jsonData中获取对应的数值
     const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
     const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
-    const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
+    // const isRequired = targetJsonSchema.isRequired || false; // 是否必填（默认非必填）
     let defaultFileList = [];
     if (curJsonData && isArray(curJsonData)) {
       defaultFileList = curJsonData;
@@ -143,7 +145,7 @@ class InputImageSchema extends React.PureComponent<
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

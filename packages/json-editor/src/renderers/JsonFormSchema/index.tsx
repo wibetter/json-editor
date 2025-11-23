@@ -13,7 +13,16 @@ import { hasProperties, buildStyle } from '$utils/index';
 import { isObject, isArray } from '$utils/typeof';
 import { catchJsonDataByWebCache } from '$mixins/index';
 
-class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
+interface JsonFormSchemaState {
+  isShowWarn: boolean;
+  warnText: string;
+  curJSONDataTemp: any;
+}
+
+class JsonFormSchema extends React.PureComponent<
+  BaseRendererProps,
+  JsonFormSchemaState
+> {
   constructor(props: BaseRendererProps) {
     super(props);
     // 组件内部维护的数据
@@ -31,7 +40,9 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     if (newJsonData) {
-      updateFormValueData(keyRoute, newJsonData); // 更新数值
+      updateFormValueData &&
+        keyRoute &&
+        updateFormValueData(keyRoute, newJsonData); // 更新数值
     }
   };
 
@@ -99,7 +110,7 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>
@@ -117,7 +128,7 @@ class JsonFormSchema extends React.PureComponent<BaseRendererProps> {
             </div>
           )}
           <AceEditor
-            id={`${nodeKey}-json_area_ace`}
+            key={`${nodeKey}-json_area_ace`}
             value={
               hasProperties(curJSONDataTemp) ? curJSONDataTemp : curJsonData
             }

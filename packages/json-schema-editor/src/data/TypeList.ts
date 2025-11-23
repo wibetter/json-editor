@@ -94,7 +94,6 @@ export const TypeList = {
   object: ALL_TYPE,
   array: ARRAY_ITEM_TYPE,
   radio: RADIO_TYPE,
-  select: RADIO_TYPE,
   select: SELECT_TYPE,
   all: ALL_TYPE,
 };

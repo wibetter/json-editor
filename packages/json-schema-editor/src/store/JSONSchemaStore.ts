@@ -32,17 +32,17 @@ export default class JSONSchemaStore {
   /**
    * jsonSchema: JSONSchema数据对象
    */
-  @observable jsonSchema = {};
+  @observable jsonSchema: any = {};
 
   /**
    * 可以添加的子项类型: SchemaTypeList（TypeList）
    */
-  @observable SchemaTypeList = TypeList;
+  @observable SchemaTypeList: any = TypeList;
 
   /**
    * onChange: jsonSchema数据变动触发的onChange
    */
-  @observable onChange = () => {}; // 函数类型
+  @observable onChange = (data?: any) => {}; // 函数类型
 
   /**
    * triggerChangeAction: 用于主动触发更新事件
@@ -54,7 +54,7 @@ export default class JSONSchemaStore {
 
   /** 根据配置数据初始化TypeList  */
   @action.bound
-  initSchemaTypeList(typeListOption) {
+  initSchemaTypeList(typeListOption: any) {
     if (!typeListOption || JSON.stringify(typeListOption) === '{}') {
       // 直接使用原有的TypeList数据
     } else if (!isEqual(typeListOption, this.SchemaTypeList)) {
@@ -68,7 +68,7 @@ export default class JSONSchemaStore {
 
   /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
   @action.bound
-  initJSONSchemaData(jsonSchemaData) {
+  initJSONSchemaData(jsonSchemaData: any) {
     if (!jsonSchemaData || JSON.stringify(jsonSchemaData) === '{}') {
       // 使用默认的jsonschema数据进行初始化
       this.jsonSchema = objClone(initJSONSchemaData);
@@ -91,21 +91,21 @@ export default class JSONSchemaStore {
 
   /** 初始化jsonData  */
   @action.bound
-  initOnChange(newOnChangeFunc) {
+  initOnChange(newOnChangeFunc: any) {
     if (newOnChangeFunc || isFunction(newOnChangeFunc)) {
       this.onChange = newOnChangeFunc;
     }
   }
 
   @action.bound
-  schemaChange(newSchemaData) {
+  schemaChange(newSchemaData: any) {
     this.jsonSchema = newSchemaData;
-    this.jsonSchemaChange();
+    this.jsonSchemaChange(false);
   }
 
   /** 触发onChange  */
   @action.bound
-  jsonSchemaChange(ignore) {
+  jsonSchemaChange(ignore?: boolean) {
     // 更新jsonSchema数据的更新时间
     this.jsonSchema.lastUpdateTime = new Date().getTime();
     // 如果ignore为true则跳过，避免重复触发onChange
@@ -116,36 +116,36 @@ export default class JSONSchemaStore {
 
   /** 根据索引路径获取对应的key值路径 */
   @action.bound
-  indexRoute2keyRoute(indexRoute) {
+  indexRoute2keyRoute(indexRoute: string) {
     return indexRoute2keyRoute(indexRoute, this.jsonSchema);
   }
 
   /** 根据key值路径获取对应的index索引路径 */
   @action.bound
-  keyRoute2indexRoute(keyRoute) {
+  keyRoute2indexRoute(keyRoute: string) {
     return keyRoute2indexRoute(keyRoute, this.jsonSchema);
   }
 
   /** 根据索引路径获取对应的schema数据[非联动式数据获取]  */
   @action.bound
-  getSchemaByIndexRoute(indexRoute) {
+  getSchemaByIndexRoute(indexRoute: string) {
     return getSchemaByIndexRoute(indexRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据key值路径获取对应的schema数据[非联动式数据获取]  */
   @action.bound
-  getSchemaByKeyRoute(keyRoute) {
+  getSchemaByKeyRoute(keyRoute: string) {
     return getSchemaByKeyRoute(keyRoute, this.jsonSchema, true); // useObjClone: true 避免后续产生数据联动
   }
 
   /** 根据parentJSONObj自动生成jsonKey */
   @action.bound
-  getNewJsonKeyIndex(parentJSONObj, prefix) {
+  getNewJsonKeyIndex(parentJSONObj: any, prefix?: string): string {
     let newJsonKeyIndex = `${prefix || 'field'}_${this.curJsonKeyIndex}`;
     if (parentJSONObj.propertyOrder.indexOf(newJsonKeyIndex) >= 0) {
       // 表示存在相同的jsonKey
       this.curJsonKeyIndex += 1;
-      newJsonKeyIndex = this.getNewJsonKeyIndex(parentJSONObj);
+      newJsonKeyIndex = this.getNewJsonKeyIndex(parentJSONObj, prefix);
     }
     this.curJsonKeyIndex += 1;
     return newJsonKeyIndex;
@@ -153,7 +153,7 @@ export default class JSONSchemaStore {
 
   /** 判断是否有重名key值 */
   @action.bound
-  isExitJsonKey(indexRoute, jsonKey) {
+  isExitJsonKey(indexRoute: string, jsonKey: string) {
     const parentIndexRoute = getParentIndexRoute(indexRoute);
     const parentJSONObj = this.getSchemaByIndexRoute(parentIndexRoute);
     if (
@@ -179,7 +179,7 @@ export default class JSONSchemaStore {
 
   /** 判断是否支持当前类型 */
   @action.bound
-  isSupportCurType(indexRoute, curType) {
+  isSupportCurType(indexRoute: string, curType: string) {
     const parentIndexRoute = getParentIndexRoute(indexRoute);
     const parentJSONObj = this.getSchemaByIndexRoute(parentIndexRoute);
     const parentTypeList = this.SchemaTypeList[parentJSONObj.type];
@@ -194,8 +194,12 @@ export default class JSONSchemaStore {
    *  备注：关键字(childKey)自动生成，json数据对象(childJson)默认使用initInputData
    */
   @action.bound
-  addChildJson(curIndexRoute, ignoreOnChange) {
-    const curSchema = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
+  addChildJson(curIndexRoute: string, ignoreOnChange?: boolean) {
+    const curSchema = getSchemaByIndexRoute(
+      curIndexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (isContainerSchema(curSchema)) {
       const childKey = this.getNewJsonKeyIndex(curSchema);
       curSchema.propertyOrder.push(childKey);
@@ -213,16 +217,17 @@ export default class JSONSchemaStore {
    * */
   @action.bound
   changeType(
-    curIndexRoute,
-    jsonKey,
-    newSchemaData,
-    targetJsonSchema,
-    ignoreOnChange,
+    curIndexRoute: string,
+    jsonKey: string,
+    newSchemaData: any,
+    targetJsonSchema: any,
+    ignoreOnChange?: boolean,
   ) {
     const parentIndexRoute = getParentIndexRoute(curIndexRoute);
     const parentSchemaData = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
+      false,
     );
     // 保留已有的配置数据（）
     const curNewSchemaData = Object.assign(
@@ -252,8 +257,16 @@ export default class JSONSchemaStore {
    *  备注：用于覆盖整个json对象
    * */
   @action.bound
-  updateSchemaData(curIndexRoute, newSchemaData, ignoreOnChange) {
-    const curJSONObj = getSchemaByIndexRoute(curIndexRoute, this.jsonSchema);
+  updateSchemaData(
+    curIndexRoute: string,
+    newSchemaData: any,
+    ignoreOnChange?: boolean,
+  ) {
+    const curJSONObj = getSchemaByIndexRoute(
+      curIndexRoute,
+      this.jsonSchema,
+      false,
+    );
     Object.assign(curJSONObj, objClone(newSchemaData));
     // 触发onChange事件
     this.jsonSchemaChange(ignoreOnChange);
@@ -263,11 +276,17 @@ export default class JSONSchemaStore {
    *  备注：用于编辑对应的属性值（type、title、description、placeholder、isRequired、default、readOnly）
    * */
   @action.bound
-  editSchemaData(curIndexRoute, jsonKey, newSchemaData, ignoreOnChange) {
+  editSchemaData(
+    curIndexRoute: string,
+    jsonKey: string,
+    newSchemaData: any,
+    ignoreOnChange?: boolean,
+  ) {
     const parentIndexRoute = getParentIndexRoute(curIndexRoute);
     const parentSchemaObj = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
+      false,
     );
     parentSchemaObj.properties[jsonKey] = {
       ...objClone(parentSchemaObj.properties[jsonKey]),
@@ -280,7 +299,11 @@ export default class JSONSchemaStore {
    *  备注：仅用于修改jsonKey值
    * */
   @action.bound
-  editJsonKey(curIndexRoute, newJsonKey, ignoreOnChange) {
+  editJsonKey(
+    curIndexRoute: string,
+    newJsonKey: string,
+    ignoreOnChange?: boolean,
+  ) {
     const curJSONObj = getSchemaByIndexRoute(
       curIndexRoute,
       this.jsonSchema,
@@ -298,33 +321,41 @@ export default class JSONSchemaStore {
    *  备注：关键字(childKey)自动生成，json数据对象默认使用initInputData
    * */
   @action.bound
-  addNextJsonData(curIndexRoute) {
+  addNextJsonData(curIndexRoute: string) {
     // 1.获取当前元素的父元素路径值和最后一个路径值，以便定位插入的位置
     const parentIndexRoute = getParentIndexRoute(curIndexRoute);
     // 2.生成新的jsonKey值
     const parentJSONObj = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
+      false,
     );
     /** 如果没有设置jsonKey，则自动生成一个新的jsonKey */
     const newJsonKey = this.getNewJsonKeyIndex(parentJSONObj);
-    this.insertJsonData(curIndexRoute, newJsonKey, initInputData); // 默认新增input类型字段
+    this.insertJsonData(curIndexRoute, newJsonKey, initInputData, '', false); // 默认新增input类型字段
   }
 
   /** 根据索引路径值(indexRoute)插入指定的json数据对象（jsonKey、curJSONObj）
    * position（非必填）: after（表示插入到指定位置后面，默认值）、before（表示插入到指定位置前面）
    * */
   @action.bound
-  insertJsonData(curIndexRoute, jsonKey, curJSONObj, position, ignoreOnChange) {
+  insertJsonData(
+    curIndexRoute: string,
+    jsonKey: string,
+    curJSONObj: any,
+    position?: string,
+    ignoreOnChange?: boolean,
+  ) {
     // 1.获取当前元素的父元素路径值和最后一个路径值，以便定位插入的位置
     const parentIndexRoute_CurIndex =
       getParentIndexRoute_CurIndex(curIndexRoute);
-    const parentIndexRoute = parentIndexRoute_CurIndex[0];
+    const parentIndexRoute = parentIndexRoute_CurIndex[0] || '';
     const curIndex = parentIndexRoute_CurIndex[1];
     // 2.获取父级元素
     const parentJSONObj = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
+      false,
     );
     // 3.插入新增的对象数据
     parentJSONObj.properties[jsonKey] = curJSONObj;
@@ -342,12 +373,17 @@ export default class JSONSchemaStore {
 
   /** 根据索引路径值(indexRoute)和关键字(childKey)删除对应的json数据对象 */
   @action.bound
-  deleteJsonByIndex_CurKey(indexRoute, curKey, ignoreOnChange) {
+  deleteJsonByIndex_CurKey(
+    indexRoute: string,
+    curKey: string,
+    ignoreOnChange?: boolean,
+  ) {
     // 1.获取当前元素的父元素路径值
     const parentIndexRoute = getParentIndexRoute(indexRoute);
     const parentJsonObj = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
+      false,
     );
     // 2.根据curKey删除在properties中删除对应的字段对象
     delete parentJsonObj.properties[curKey];
@@ -360,14 +396,15 @@ export default class JSONSchemaStore {
 
   /** 根据索引路径值(indexRoute)删除对应的json数据对象 */
   @action.bound
-  deleteJsonByIndex(indexRoute, ignoreOnChange) {
+  deleteJsonByIndex(indexRoute: string, ignoreOnChange?: boolean) {
     // 1.获取当前元素的父元素路径值和最后一个路径值，以便定位插入的位置
     const parentIndexRoute_CurIndex = getParentIndexRoute_CurIndex(indexRoute);
-    const parentIndexRoute = parentIndexRoute_CurIndex[0];
-    const curIndex = parentIndexRoute_CurIndex[1];
+    const parentIndexRoute = parentIndexRoute_CurIndex[0] || '';
+    const curIndex: string = parentIndexRoute_CurIndex[1];
     const parentJsonObj = getSchemaByIndexRoute(
       parentIndexRoute,
       this.jsonSchema,
+      false,
     );
     const curKey = parentJsonObj.propertyOrder[curIndex];
     // 2.根据curKey删除在properties中删除对应的字段对象
@@ -383,14 +420,18 @@ export default class JSONSchemaStore {
    * */
   @action.bound
   updateEnumItem(
-    indexRoute,
-    enumIndex,
-    newEnumKey,
-    newEnumText,
-    ignoreOnChange,
+    indexRoute: string,
+    enumIndex: number,
+    newEnumKey: string,
+    newEnumText: string,
+    ignoreOnChange?: boolean,
   ) {
     // 1.获取当前元素的父元素
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum && itemJSONObj.enumextra) {
       itemJSONObj.enum[enumIndex] = newEnumKey;
       itemJSONObj.enumextra[enumIndex] = newEnumText;
@@ -402,10 +443,14 @@ export default class JSONSchemaStore {
   /** 根据索引路径值(indexRoute)和枚举值所在位置(enumIndex)判断是否存在对应的key值
    * */
   @action.bound
-  isExitEnumKey(indexRoute, enumIndex, newEnumKey) {
+  isExitEnumKey(indexRoute: string, enumIndex: number, newEnumKey: string) {
     let isExit = false;
     // 1.获取当前元素的父元素
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum) {
       // 2.获取对应的key清单
       const enumKeys = objClone(itemJSONObj.enum);
@@ -430,9 +475,18 @@ export default class JSONSchemaStore {
   /** 根据索引路径值(indexRoute)和枚举值所在位置(enumIndex)更新对应的enum枚举元素的key值
    * */
   @action.bound
-  updateEnumKey(indexRoute, enumIndex, newEnumKey, ignoreOnChange) {
+  updateEnumKey(
+    indexRoute: string,
+    enumIndex: number,
+    newEnumKey: string,
+    ignoreOnChange?: boolean,
+  ) {
     // 1.获取当前元素的父元素
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum) {
       // 2.更新对应的key
       itemJSONObj.enum[enumIndex] = newEnumKey;
@@ -444,9 +498,18 @@ export default class JSONSchemaStore {
   /** 根据索引路径值(indexRoute)和枚举值所在位置(enumIndex)更新对应的enum枚举元素的text值
    * */
   @action.bound
-  updateEnumText(indexRoute, enumIndex, newEnumText, ignoreOnChange) {
+  updateEnumText(
+    indexRoute: string,
+    enumIndex: number,
+    newEnumText: string,
+    ignoreOnChange?: boolean,
+  ) {
     // 1.获取当前元素的父元素
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enumextra) {
       // 2.更新对应的text
       itemJSONObj.enumextra[enumIndex] = newEnumText;
@@ -458,8 +521,16 @@ export default class JSONSchemaStore {
   /** 根据索引路径值(indexRoute)和枚举值所在位置(enumIndex)删除对应的enum枚举元素
    * */
   @action.bound
-  deleteEnumItem(indexRoute, enumIndex, ignoreOnChange) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  deleteEnumItem(
+    indexRoute: string,
+    enumIndex: number,
+    ignoreOnChange?: boolean,
+  ) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum && itemJSONObj.enumextra) {
       itemJSONObj.enum.splice(enumIndex, 1);
       itemJSONObj.enumextra.splice(enumIndex, 1);
@@ -473,14 +544,18 @@ export default class JSONSchemaStore {
    * */
   @action.bound
   insertEnumItem(
-    indexRoute,
-    enumIndex,
-    newEnumKey,
-    newEnumText,
-    position,
-    ignoreOnChange,
+    indexRoute: string,
+    enumIndex: number,
+    newEnumKey: string,
+    newEnumText: string,
+    position?: string,
+    ignoreOnChange?: boolean,
   ) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum && itemJSONObj.enumextra) {
       const positionIndex =
         position === 'before' ? Number(enumIndex) : Number(enumIndex) + 1;
@@ -498,7 +573,7 @@ export default class JSONSchemaStore {
   }
 
   @action.bound
-  getNewEnumIndex(enumKeys, prefix) {
+  getNewEnumIndex(enumKeys: string[], prefix?: string): string {
     let newEnumKey = `${prefix || 'enum'}_${this.curJsonKeyIndex}`;
     if (enumKeys.indexOf(newEnumKey) >= 0) {
       // 表示存在相同的jsonKey
@@ -512,39 +587,65 @@ export default class JSONSchemaStore {
   /** 根据索引路径值(indexRoute)和枚举值所在位置(enumIndex)新增enum枚举值
    * */
   @action.bound
-  addEnumItem(indexRoute, enumIndex) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  addEnumItem(indexRoute: string, enumIndex: number) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum) {
       const newEnumKey = this.getNewEnumIndex(itemJSONObj.enum);
       const newEnumText = `选项${this.curJsonKeyIndex - 1}`;
-      this.insertEnumItem(indexRoute, enumIndex, newEnumKey, newEnumText); // 插入新的元素
+      this.insertEnumItem(
+        indexRoute,
+        enumIndex,
+        newEnumKey,
+        newEnumText,
+        '',
+        false,
+      ); // 插入新的元素
     }
   }
 
   /** 根据索引路径值(indexRoute)和枚举值所在位置(enumIndex)复制对应的enum枚举值
    * */
   @action.bound
-  copyEnumItem(indexRoute, enumIndex) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  copyEnumItem(indexRoute: string, enumIndex: number) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.enum) {
       const curEnumKey = itemJSONObj.enum[enumIndex];
       const curEnumText = itemJSONObj.enumextra[enumIndex];
       const newEnumKey = this.getNewEnumIndex(itemJSONObj.enum, curEnumKey);
       const newEnumText = `${curEnumText}_${this.curJsonKeyIndex - 1}`;
-      this.insertEnumItem(indexRoute, enumIndex, newEnumKey, newEnumText); // 插入copy的枚举元素
+      this.insertEnumItem(
+        indexRoute,
+        enumIndex,
+        newEnumKey,
+        newEnumText,
+        '',
+        false,
+      ); // 插入copy的枚举元素
     }
   }
 
   // 更新选项
   @action.bound
   updateOptionItem(
-    indexRoute,
-    optionIndex,
-    optionLabel,
-    optionValue,
-    ignoreOnChange,
+    indexRoute: string,
+    optionIndex: number,
+    optionLabel: string,
+    optionValue: string,
+    ignoreOnChange?: boolean,
   ) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
       itemJSONObj.options[optionIndex].label = optionLabel;
       itemJSONObj.options[optionIndex].value = optionValue;
@@ -555,13 +656,17 @@ export default class JSONSchemaStore {
 
   // 判断是否存在重复Label
   @action.bound
-  isExitOptionLabel(indexRoute, optionLabel) {
+  isExitOptionLabel(indexRoute: string, optionLabel: string) {
     let isExit = false;
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options) {
       if (
         itemJSONObj.options.find(
-          (item) => item.label === optionLabel, //  || item.name === optionLabel
+          (item: any) => item.label === optionLabel, //  || item.name === optionLabel
         )
       ) {
         isExit = true;
@@ -578,8 +683,17 @@ export default class JSONSchemaStore {
 
   // 更新选项Label
   @action.bound
-  updateOptionLabel(indexRoute, optionIndex, optionLabel, ignoreOnChange) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  updateOptionLabel(
+    indexRoute: string,
+    optionIndex: number,
+    optionLabel: string,
+    ignoreOnChange?: boolean,
+  ) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
       itemJSONObj.options[optionIndex].label = optionLabel;
     }
@@ -588,8 +702,17 @@ export default class JSONSchemaStore {
 
   // 更新选项数值
   @action.bound
-  updateOptionValue(indexRoute, optionIndex, optionValue, ignoreOnChange) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  updateOptionValue(
+    indexRoute: string,
+    optionIndex: number,
+    optionValue: string,
+    ignoreOnChange?: boolean,
+  ) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
       itemJSONObj.options[optionIndex].value = optionValue;
     }
@@ -598,8 +721,16 @@ export default class JSONSchemaStore {
 
   // 删除选项
   @action.bound
-  deleteOptionItem(indexRoute, optionIndex, ignoreOnChange) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  deleteOptionItem(
+    indexRoute: string,
+    optionIndex: number,
+    ignoreOnChange?: boolean,
+  ) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options && itemJSONObj.options[optionIndex]) {
       itemJSONObj.options.splice(optionIndex, 1);
     }
@@ -609,14 +740,18 @@ export default class JSONSchemaStore {
   // 在指定位置插入选项
   @action.bound
   insertOption(
-    indexRoute,
-    optionIndex,
-    newOptionLabel,
-    newOptionValue,
-    position,
-    ignoreOnChange,
+    indexRoute: string,
+    optionIndex: number,
+    newOptionLabel: string,
+    newOptionValue: string,
+    position?: string,
+    ignoreOnChange?: boolean,
   ) {
-    const curJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+    const curJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (curJSONObj.options) {
       const positionIndex =
         position === 'before' ? Number(optionIndex) : Number(optionIndex) + 1;
@@ -633,7 +768,7 @@ export default class JSONSchemaStore {
   }
 
   @action.bound
-  getNewOptionValue(options) {
+  getNewOptionValue(options: any[]) {
     if (options && options.length > 0) {
       return `${options[options.length - 1].value}_${options.length + 1}`;
     }
@@ -642,31 +777,57 @@ export default class JSONSchemaStore {
 
   // 添加选项
   @action.bound
-  addOptionItem(indexRoute, optionIndex) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  addOptionItem(indexRoute: string, optionIndex: number) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options) {
       const optionValue = this.getNewOptionValue(itemJSONObj.options);
       const optionLabel = `选项${itemJSONObj.options.length + 1}`;
-      this.insertOption(indexRoute, optionIndex, optionLabel, optionValue); // 插入新的元素
+      this.insertOption(
+        indexRoute,
+        optionIndex,
+        optionLabel,
+        optionValue,
+        '',
+        false,
+      ); // 插入新的元素
     }
   }
 
   // 复制选项
   @action.bound
-  copyOptionItem(indexRoute, optionIndex) {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  copyOptionItem(indexRoute: string, optionIndex: number) {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     if (itemJSONObj.options) {
       const curOption = itemJSONObj.options[optionIndex];
       const optionValue = this.getNewOptionValue(itemJSONObj.options);
-      const optionLabel = `${(curOption, label || curOption, name)}_copy`;
-      this.insertOption(indexRoute, optionIndex, optionLabel, optionValue);
+      const optionLabel = `${curOption.label || curOption.name}_copy`;
+      this.insertOption(
+        indexRoute,
+        optionIndex,
+        optionLabel,
+        optionValue,
+        '',
+        false,
+      );
     }
   }
 
   /** 数据项排序功能 */
   @action.bound
-  childElemSort = (indexRoute) => {
-    const itemJSONObj = getSchemaByIndexRoute(indexRoute, this.jsonSchema);
+  childElemSort = (indexRoute: string) => {
+    const itemJSONObj = getSchemaByIndexRoute(
+      indexRoute,
+      this.jsonSchema,
+      false,
+    );
     const curPropertyOrder = itemJSONObj.propertyOrder; // 待排序的key值数组
     const baseElemArr = []; // 基础类型：input、url
     const numberElemArr = []; // 数字类型：quantity、number
@@ -732,6 +893,6 @@ export default class JSONSchemaStore {
       ...funcElemArr,
     ];
     // 触发onChange事件
-    this.jsonSchemaChange();
+    this.jsonSchemaChange(false);
   };
 }

@@ -2,17 +2,15 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import {
   Input,
-  Switch,
   InputNumber,
   Checkbox,
   Radio,
   Tooltip,
-  Button,
   Select,
   message,
 } from 'antd';
+import type { RadioChangeEvent } from 'antd';
 const { TextArea } = Input;
-const { Option } = Select;
 import RcSwitch from 'rc-switch';
 import {
   isNeedDefaultOption,
@@ -23,7 +21,7 @@ import {
   isNeedCodeViewOption,
   hasOptions,
 } from '$utils/advanced.config';
-import { hasProperties, getExpectType, isArray } from '@wibetter/json-utils';
+import { getExpectType, isArray } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView';
 import 'rc-switch/assets/index.css';
 import './index.scss';
@@ -41,8 +39,7 @@ interface AdvanceConfigProps {
 }
 
 class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
-
-  constructor(props) {
+  constructor(props: AdvanceConfigProps) {
     super(props);
 
     // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
@@ -50,18 +47,22 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (curKey, newVal) => {
+  handleValueChange = (curKey: string, newVal: any) => {
     const { editSchemaData } = this.props.schemaStore || {};
     const { indexRoute, jsonKey, targetJsonSchema } = this.props;
     if (targetJsonSchema[curKey] === newVal) return; // title值未改变则直接跳出
-    const newSchemaData = {};
+    const newSchemaData: any = {};
     newSchemaData[curKey] = newVal;
     // jsonKey是当前字段项的key，curKey是当前字段对象的属性key
     editSchemaData(indexRoute, jsonKey, newSchemaData);
   };
 
   /** 根据当前类型显示对应的输入组件 */
-  renderDefaultContent = (curType, targetJsonSchema, nodeKey) => {
+  renderDefaultContent = (
+    curType: string,
+    targetJsonSchema: any,
+    nodeKey?: string,
+  ) => {
     if (curType === 'boolean') {
       return (
         <RcSwitch
@@ -89,7 +90,7 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
         >
           {options &&
             options.length > 0 &&
-            options.map((item, optionIndex) => {
+            options.map((item: any, optionIndex: number) => {
               const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
               return (
                 <Checkbox value={item.value} key={optionNodeKey}>
@@ -105,14 +106,14 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
         <Radio.Group
           style={{ display: 'inline-block' }}
           defaultValue={targetJsonSchema.default}
-          onChange={(event) => {
+          onChange={(event: RadioChangeEvent) => {
             const { value } = event.target;
             this.handleValueChange('default', value);
           }}
         >
           {options &&
             options.length > 0 &&
-            options.map((item, optionIndex) => {
+            options.map((item: any, optionIndex: number) => {
               /** 2. 获取当前元素的id，用于做唯一标识 */
               const optionNodeKey = `${nodeKey}-options-${optionIndex}`;
               return (
@@ -130,7 +131,7 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
           className="color-item-form"
           type="color"
           defaultValue={targetJsonSchema.default}
-          onChange={(event) => {
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
             const { value } = event.target;
             this.handleValueChange('default', value);
           }}
@@ -148,12 +149,12 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
           rows={4}
           placeholder={`请输入${targetJsonSchema.title}的默认值`}
           defaultValue={targetJsonSchema.default}
-          onPressEnter={(event) => {
-            const { value } = event.target;
+          onPressEnter={(event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+            const { value } = event.target as HTMLTextAreaElement;
             this.handleValueChange('default', value);
           }}
-          onBlur={(event) => {
-            const { value } = event.target;
+          onBlur={(event: React.FocusEvent<HTMLTextAreaElement>) => {
+            const { value } = event.target as HTMLTextAreaElement;
             this.handleValueChange('default', value);
           }}
         />
@@ -177,12 +178,12 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
         style={{ display: 'inline-block' }}
         placeholder={`请输入${targetJsonSchema.title}的默认值`}
         defaultValue={targetJsonSchema.default}
-        onPressEnter={(event) => {
-          const { value } = event.target;
+        onPressEnter={(event: React.KeyboardEvent<HTMLInputElement>) => {
+          const { value } = event.target as HTMLInputElement;
           this.handleValueChange('default', value);
         }}
-        onBlur={(event) => {
-          const { value } = event.target;
+        onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+          const { value } = event.target as HTMLInputElement;
           this.handleValueChange('default', value);
         }}
       />
@@ -190,11 +191,8 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
   };
 
   render() {
-    const { indexRoute2keyRoute } = this.props.schemaStore || {};
     const { nodeKey, indexRoute, targetJsonSchema } = this.props;
     const curType = targetJsonSchema.type;
-    // 获取对应的keyRoute
-    const curKeyRoute = indexRoute2keyRoute(indexRoute);
     // 判断当前是否是条件字段
     let isConditionProp = targetJsonSchema.isConditionProp;
 
@@ -439,12 +437,14 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
                 style={{ display: 'inline-block' }}
                 placeholder={`请输入${targetJsonSchema.title}的字段描述`}
                 defaultValue={targetJsonSchema.description}
-                onPressEnter={(event) => {
-                  const { value } = event.target;
+                onPressEnter={(
+                  event: React.KeyboardEvent<HTMLInputElement>,
+                ) => {
+                  const { value } = event.target as HTMLInputElement;
                   this.handleValueChange('description', value);
                 }}
-                onBlur={(event) => {
-                  const { value } = event.target;
+                onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                  const { value } = event.target as HTMLInputElement;
                   this.handleValueChange('description', value);
                 }}
               />
@@ -493,12 +493,14 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
                   style={{ display: 'inline-block' }}
                   placeholder={`请输入${targetJsonSchema.title}的输入提示`}
                   defaultValue={targetJsonSchema.placeholder}
-                  onPressEnter={(event) => {
-                    const { value } = event.target;
+                  onPressEnter={(
+                    event: React.KeyboardEvent<HTMLInputElement>,
+                  ) => {
+                    const { value } = event.target as HTMLInputElement;
                     this.handleValueChange('placeholder', value);
                   }}
-                  onBlur={(event) => {
-                    const { value } = event.target;
+                  onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                    const { value } = event.target as HTMLInputElement;
                     this.handleValueChange('placeholder', value);
                   }}
                 />
@@ -608,12 +610,14 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
                   <InputNumber
                     style={{ display: 'inline-block' }}
                     defaultValue={targetJsonSchema.minimum}
-                    onPressEnter={(event) => {
-                      const { value } = event.target;
+                    onPressEnter={(
+                      event: React.KeyboardEvent<HTMLInputElement>,
+                    ) => {
+                      const { value } = event.target as HTMLInputElement;
                       this.handleValueChange('minimum', value);
                     }}
-                    onBlur={(event) => {
-                      const { value } = event.target;
+                    onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                      const { value } = event.target as HTMLInputElement;
                       this.handleValueChange('minimum', value);
                     }}
                   />
@@ -637,12 +641,14 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
                   <InputNumber
                     style={{ display: 'inline-block' }}
                     defaultValue={targetJsonSchema.maximum}
-                    onPressEnter={(event) => {
-                      const { value } = event.target;
+                    onPressEnter={(
+                      event: React.KeyboardEvent<HTMLInputElement>,
+                    ) => {
+                      const { value } = event.target as HTMLInputElement;
                       this.handleValueChange('maximum', value);
                     }}
-                    onBlur={(event) => {
-                      const { value } = event.target;
+                    onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                      const { value } = event.target as HTMLInputElement;
                       this.handleValueChange('maximum', value);
                     }}
                   />
@@ -714,12 +720,14 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
                 style={{ display: 'inline-block' }}
                 placeholder={'请输入显隐表达式'}
                 defaultValue={targetJsonSchema.onShow}
-                onPressEnter={(event) => {
-                  const { value } = event.target;
+                onPressEnter={(
+                  event: React.KeyboardEvent<HTMLInputElement>,
+                ) => {
+                  const { value } = event.target as HTMLInputElement;
                   this.handleValueChange('onShow', value);
                 }}
-                onBlur={(event) => {
-                  const { value } = event.target;
+                onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                  const { value } = event.target as HTMLInputElement;
                   this.handleValueChange('onShow', value);
                 }}
               />
@@ -748,6 +756,6 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
   }
 }
 
-export default inject((stores) => ({
+export default inject((stores: any) => ({
   schemaStore: stores.schemaStore,
 }))(observer(AdvanceConfig));

@@ -126,7 +126,7 @@
           return R;
         },
         isFunction: function () {
-          return q;
+          return S;
         },
         isNewSchemaData: function () {
           return H;
@@ -201,16 +201,16 @@
           return F;
         },
         urlParse: function () {
-          return T;
+          return q;
         },
         urlStringify: function () {
-          return S;
+          return T;
         },
       }));
     var r = require('lodash'),
       i = require('qs'),
-      a = e.n(i),
-      n = {
+      n = e.n(i),
+      a = {
         type: 'event',
         title: '事件',
         isContainer: !1,
@@ -736,7 +736,7 @@
           propertyOrder: ['type', 'config', 'data', 'localFilter'],
         },
         datasource: o,
-        event: n,
+        event: a,
         api: {
           type: 'api',
           title: 'API 配置',
@@ -808,7 +808,7 @@
           },
           propertyOrder: ['type', 'register', 'actionFunc'],
         },
-        emit: n,
+        emit: a,
       },
       s = {
         local: o,
@@ -904,7 +904,7 @@
     function x(e) {
       return /^#[0-9a-f]{6}$/.test(e) || /^#[0-9a-f]{3}$/.test(e);
     }
-    function q(e) {
+    function S(e) {
       var t = !1;
       return (
         'Function' === Object.prototype.toString.call(e).slice(8, -1) &&
@@ -912,16 +912,16 @@
         t
       );
     }
-    function T() {
+    function q() {
       var e = {};
       return (
-        location.search && (e = a().parse(location.search.substring(1))),
+        location.search && (e = n().parse(location.search.substring(1))),
         e
       );
     }
-    function S(e) {
+    function T(e) {
       var t = '';
-      return (e && (t = a().stringify(e)), t);
+      return (e && (t = n().stringify(e)), t);
     }
     function k(e) {
       return (0, r.cloneDeep)(e);
@@ -973,19 +973,19 @@
       var r = t || {};
       if (!e) return !1;
       var i = new Function('data', 'with(data) { return (' + e + ');}'),
-        a = '';
+        n = '';
       try {
-        a = i(r);
+        n = i(r);
       } catch (t) {
-        return (console.warn('表达式运算出错: ' + e + '，报错信息：', t), a);
+        return (console.warn('表达式运算出错: ' + e + '，报错信息：', t), n);
       }
-      return a;
+      return n;
     }
     function P(e, t, r) {
       var i = t;
       if ((r && (i = k(t)), e))
-        for (var a = e.split('-'), n = 0, o = a.length; n < o; n++) {
-          var p = a[n];
+        for (var n = e.split('-'), a = 0, o = n.length; a < o; a++) {
+          var p = n[a];
           p && (i = i && i[p]);
         }
       return i;
@@ -993,8 +993,14 @@
     function C(e, t, r) {
       var i = t;
       if ((r && (i = k(t)), e))
-        for (var a = e.split('-'), n = 0, o = a.length; n < o; n++) {
-          var p = a[n];
+        for (
+          var n = 'string' == typeof e ? e.split('-') : [e.toString()],
+            a = 0,
+            o = n.length;
+          a < o;
+          a++
+        ) {
+          var p = n[a];
           if (
             '0' !== p ||
             ('array' !== i.type &&
@@ -1017,19 +1023,23 @@
     function w(e, t, r) {
       var i = t;
       if ((r && (i = k(t)), e && i))
-        for (var a = e.split('-'), n = 0, o = a.length; n < o; n++) {
-          var p = a[n];
+        for (var n = e.split('-'), a = 0, o = n.length; a < o; a++) {
+          var p = n[a];
           p && i.properties && (i = i.properties[p]);
         }
       return i;
     }
     function E(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
-        n < o;
-        n++
+        var r = t,
+          i = '',
+          n = 'string' == typeof e ? e.split('-') : [e.toString()],
+          a = 0,
+          o = n.length;
+        a < o;
+        a++
       ) {
-        var p = a[n];
+        var p = n[a];
         if ('0' === p && r.items)
           ((r = r.items), (i = i ? i + '-items' : 'items'));
         else if ('0' === p && r.options)
@@ -1047,11 +1057,11 @@
     }
     function A(e, t) {
       for (
-        var r = t, i = '', a = e.split('-'), n = 0, o = a.length;
-        n < o;
-        n++
+        var r = t, i = '', n = e.split('-'), a = 0, o = n.length;
+        a < o;
+        a++
       ) {
-        var p = a[n];
+        var p = n[a];
         if (p) {
           var l = -1;
           (r.propertyOrder
@@ -1101,8 +1111,8 @@
                       var r = t.items.enumextra.length,
                         i = e.length;
                       if (i > r)
-                        for (var a = r, n = i; a < n; a++)
-                          t.items.enumextra.push('选项' + e(a));
+                        for (var n = r, a = i; n < a; n++)
+                          t.items.enumextra.push('选项' + e(n));
                     } else {
                       t = k(l['empty-array']);
                       var o = L(e[0]);
@@ -1185,16 +1195,16 @@
       var r = !t,
         i = t || {};
       if (e && '{}' !== JSON.stringify(e)) {
-        var a = e.type;
-        'object' === a || 'func' === a || 'style' === a || 'data' === a
+        var n = e.type;
+        'object' === n || 'func' === n || 'style' === n || 'data' === n
           ? (!r && i.object ? (i.object += 1) : r || (i.object = 1),
             (i = B(e, i)))
-          : 'array' === a
+          : 'array' === n
             ? (!r && i.array ? (i.array += 1) : r || (i.array = 1),
               (i = B((e = e.items), i)))
-            : !r && i[a]
-              ? (i[a] += 1)
-              : r || (i[a] = 1);
+            : !r && i[n]
+              ? (i[n] += 1)
+              : r || (i[n] = 1);
       }
       return i;
     }
@@ -1226,16 +1236,16 @@
         var r = t.properties,
           i = k(l.quantity);
         if (r.quantity && j(r.quantity) && r.quantity.default) {
-          var a = r.quantity.default;
-          i.properties.quantity.default = 'percent' === a ? '%' : a;
+          var n = r.quantity.default;
+          i.properties.quantity.default = 'percent' === n ? '%' : n;
         }
         t = i;
       }
       if ('datasource' === t.type) {
-        var n = t.properties,
-          o = n.type && n.type.default,
-          p = n.data && n.data.default,
-          c = n.filter && n.filter.default;
+        var a = t.properties,
+          o = a.type && a.type.default,
+          p = a.data && a.data.default,
+          c = a.filter && a.filter.default;
         ('local' === o
           ? ((t = k(s.local)).properties.data.default = p ? k(p) : '{}')
           : ((t = k(s.remote)).properties.data.default = p
@@ -1356,37 +1366,37 @@
       for (
         var r = e.split('-'),
           i = t.split('-'),
-          a = 'before',
-          n = 0,
+          n = 'before',
+          a = 0,
           o = (r.length > i.length ? i : r).length;
-        n < o;
-        n += 1
+        a < o;
+        a += 1
       )
-        Number(r[n]) > Number(i[n]) && (a = 'after');
-      return a;
+        Number(r[a]) > Number(i[a]) && (n = 'after');
+      return n;
     }
     function Q(e) {
-      var t = e.split('-');
+      var t = 'string' == typeof e ? e.split('-') : [e.toString()];
       return (t.pop(), t.join('-'));
     }
     function X(e) {
-      var t = e.split('-'),
+      var t = 'string' == typeof e ? e.split('-') : [e.toString()],
         r = t.pop(),
         i = Number(r) + 1;
       return (t.push('' + i), t.join('-'));
     }
     function Y(e) {
-      var t = e.split('-'),
-        r = t.pop();
+      var t = 'string' == typeof e ? e.split('-') : [e.toString()],
+        r = t.pop() || '';
       return [t.join('-'), r];
     }
     function ee(e) {
-      var t = e.split('-'),
+      var t = 'string' == typeof e ? e.split('-') : [e.toString()],
         r = t.pop();
       return (t.push(Number(r) - 1), t.join('-'));
     }
     function te(e) {
-      var t = e.split('-'),
+      var t = 'string' == typeof e ? e.split('-') : [e.toString()],
         r = t.pop();
       return (t.push(Number(r) + 1), t.join('-'));
     }
@@ -1403,64 +1413,64 @@
     function ie(e, t) {
       var r,
         i,
-        a = void 0,
-        n = t;
-      N(n) &&
+        n = void 0,
+        a = t;
+      N(a) &&
         N(e.default) &&
-        (typeof n != typeof e.default ||
-          ((r = n), (i = e.default), j(r) + '-' + g(r) != j(i) + '-' + g(i))) &&
-        (n = void 0);
-      var o = N(n) ? n : e.default;
+        (typeof a != typeof e.default ||
+          ((r = a), (i = e.default), j(r) + '-' + g(r) != j(i) + '-' + g(i))) &&
+        (a = void 0);
+      var o = N(a) ? a : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          a = null != o ? o : re(e);
+          n = null != o ? o : re(e);
           break;
         case 'checkboxes':
-          a = null != o ? o : re(e, !0);
+          n = null != o ? o : re(e, !0);
           break;
         case 'color':
           (('#fff' !== o && '#FFF' !== o) || (o = '#ffffff'),
-            (a = N(o) ? o : '#ffffff'));
+            (n = N(o) ? o : '#ffffff'));
           break;
         case 'boolean':
-          a = !!N(o) && o;
+          n = !!N(o) && o;
           break;
         case 'number':
-          a = N(o) ? o : void 0;
+          n = N(o) ? o : void 0;
           break;
         case 'json':
           var p = '';
           if (j(o) || g(o)) p = o;
-          else if (q(o) || '' === o) p = {};
+          else if (S(o) || '' === o) p = {};
           else
             try {
               p = JSON.parse(o);
             } catch (e) {
               p = {};
             }
-          a = p;
+          n = p;
           break;
         default:
-          a =
+          n =
             'input' === e.type && '0' === e.default
               ? o || e.default
               : N(o)
                 ? o
                 : void 0;
       }
-      return a;
+      return n;
     }
-    function ae(e, t) {
+    function ne(e, t) {
       var r = {},
         i = e.type;
       if (j(e) && 'object' === I(e.type)) {
-        var a = e,
-          n = t;
-        N(n) &&
-          ((N(a.default) && typeof n != typeof e.default) || !j(n)) &&
-          (n = void 0);
-        var o = N(n) ? n : a.default;
+        var n = e,
+          a = t;
+        N(a) &&
+          ((N(n.default) && typeof a != typeof e.default) || !j(a)) &&
+          (a = void 0);
+        var o = N(a) ? a : n.default;
         'dynamic-data' === i
           ? ((r = k(p)),
             o &&
@@ -1468,10 +1478,10 @@
               '{}' !== JSON.stringify(o) &&
               (r = Object.assign(r, o)))
           : 'datasource' === i
-            ? a.properties &&
-              a.properties.type &&
-              a.properties.type.default &&
-              'local' === a.properties.type.default
+            ? n.properties &&
+              n.properties.type &&
+              n.properties.type.default &&
+              'local' === n.properties.type.default
               ? ((r = { data: '{}', filter: '() => {}' }),
                 o && o.data && (r.data = o.data),
                 o && o.filter && (r.filter = o.filter),
@@ -1481,10 +1491,10 @@
                 o && o.filter && (r.filter = o.filter),
                 '{}' === r.data && (r.data = 'http://xxx'))
             : 'event' === i
-              ? a.properties &&
-                a.properties.type &&
-                a.properties.type.default &&
-                'emit' === a.properties.type.default
+              ? n.properties &&
+                n.properties.type &&
+                n.properties.type.default &&
+                'emit' === n.properties.type.default
                 ? o && 'out' === o.type
                   ? (r = {
                       trigger: (o && o.filter) || 'eventName',
@@ -1503,56 +1513,56 @@
                     o && o.actionFunc && (r.actionFunc = o.actionFunc))
               : !1 === e.isContainer && o && j(o) && '{}' !== JSON.stringify(o)
                 ? (r = Object.assign(r, o))
-                : void 0 === n && a.default && j(a.default)
-                  ? (r = a.default)
+                : void 0 === a && n.default && j(n.default)
+                  ? (r = n.default)
                   : e.properties &&
                     (e.propertyOrder
                       ? e.propertyOrder
                       : Object.keys(e.properties)
                     ).map(function (i) {
-                      var a = e.properties[i],
-                        n = t && t[i];
-                      switch (I(a.type)) {
+                      var n = e.properties[i],
+                        a = t && t[i];
+                      switch (I(n.type)) {
                         case 'array':
-                          r[i] = ne(a, n);
+                          r[i] = ae(n, a);
                           break;
                         case 'object':
-                          r[i] = ae(a, n);
+                          r[i] = ne(n, a);
                           break;
                         default:
-                          r[i] = ie(a, n);
+                          r[i] = ie(n, a);
                       }
                     });
       }
       return r;
     }
-    function ne(e, t) {
+    function ae(e, t) {
       var r = [];
       if (e && 'array' === I(e.type)) {
         var i = t;
         N(i) &&
           ((N(e.default) && typeof i != typeof e.default) || !g(i)) &&
           (i = void 0);
-        var a = N(i) ? i : e.default;
+        var n = N(i) ? i : e.default;
         if ('array' === I(e.type))
-          if (g(a))
-            a.map(function (t) {
-              r.push(ae(e.items, t));
+          if (g(n))
+            n.map(function (t) {
+              r.push(ne(e.items, t));
             });
-          else if (a) r = a;
+          else if (n) r = n;
           else {
-            var n = ae(e.items, a);
-            r.push(n);
+            var a = ne(e.items, n);
+            r.push(a);
           }
-        else r = N(a) ? a : [];
+        else r = N(n) ? n : [];
       }
       return r;
     }
     function oe(e, t) {
       return 'object' === I(e.type)
-        ? ae(e, t)
+        ? ne(e, t)
         : 'array' === I(e.type)
-          ? ne(e, t)
+          ? ae(e, t)
           : ie(e, t);
     }
     var pe = l;
@@ -1570,19 +1580,19 @@
       return (
         j(e)
           ? Object.keys(e).map(function (i) {
-              var a = e[i],
-                n = t ? t + '-' + i : i;
-              j(a) || g(a)
-                ? r.push({ title: i, value: n, key: n, children: ue(a, n) })
-                : r.push({ title: i, value: n, key: n });
+              var n = e[i],
+                a = t ? t + '-' + i : i;
+              j(n) || g(n)
+                ? r.push({ title: i, value: a, key: a, children: ue(n, a) })
+                : r.push({ title: i, value: a, key: a });
             })
           : g(e) &&
             e.map(function (e, i) {
-              var a = i.toString(),
-                n = t ? t + '-' + i : a;
+              var n = i.toString(),
+                a = t ? t + '-' + i : n;
               j(e) || g(e)
-                ? r.push({ title: a, value: n, key: n, children: ue(e, n) })
-                : r.push({ title: a, value: n, key: n });
+                ? r.push({ title: n, value: a, key: a, children: ue(e, a) })
+                : r.push({ title: n, value: a, key: a });
             }),
         r
       );
@@ -1594,12 +1604,12 @@
           e.properties &&
           (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
             function (i) {
-              var a = e.properties[i],
-                n = t[i];
-              ('array' === I(a.type) && 'object' === I(a.type)) ||
-                (n &&
-                  a.isConditionProp &&
-                  (r.indexOf('-') > 0 ? (r += '-' + n) : (r = n)));
+              var n = e.properties[i],
+                a = t[i];
+              ('array' === I(n.type) && 'object' === I(n.type)) ||
+                (a &&
+                  n.isConditionProp &&
+                  (r.indexOf('-') > 0 ? (r += '-' + a) : (r = a)));
             },
           ),
         r
@@ -1611,7 +1621,7 @@
     }
     function de(e) {
       var t = e.split('-'),
-        r = t.pop();
+        r = t.pop() || '';
       return [t.join('-'), r];
     }
     var fe = [

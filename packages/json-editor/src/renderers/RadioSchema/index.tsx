@@ -29,11 +29,11 @@ class RadioSchema extends React.PureComponent<BaseRendererProps> {
   }
 
   /** 数值变动事件处理器 */
-  handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  handleValueChange = (event: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
     const { value } = event.target;
-    updateFormValueData(keyRoute, value); // 更新数值
+    updateFormValueData && keyRoute && updateFormValueData(keyRoute, value); // 更新数值
   };
 
   render() {
@@ -41,9 +41,10 @@ class RadioSchema extends React.PureComponent<BaseRendererProps> {
     const { pageScreen } = schemaStore || {};
     const { getJSONDataByKeyRoute } = jsonStore || {};
     const { nodeKey, jsonKey, keyRoute, targetJsonSchema } = this.props;
-    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
+    // const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
     // 从jsonData中获取对应的数值
-    const curJsonData = getJSONDataByKeyRoute(keyRoute);
+    const curJsonData =
+      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
     const options = targetJsonSchema.options;
 
     const style = targetJsonSchema.style
@@ -77,7 +78,7 @@ class RadioSchema extends React.PureComponent<BaseRendererProps> {
             <span className="title-text" title={targetJsonSchema.title}>
               {targetJsonSchema.title}
               {targetJsonSchema.showKey && (
-                <span>（{truncate(jsonKey, { length: 15 })}）</span>
+                <span>（{truncate(jsonKey || '', { length: 15 })}）</span>
               )}
             </span>
           </Tooltip>

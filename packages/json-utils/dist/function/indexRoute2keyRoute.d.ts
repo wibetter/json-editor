@@ -5,6 +5,6 @@
  * targetJsonSchemaObj: schema数据对象
  * */
 export declare function indexRoute2keyRoute(
-  indexRoute: string,
+  indexRoute: string | number,
   targetJsonSchemaObj: any,
 ): string;

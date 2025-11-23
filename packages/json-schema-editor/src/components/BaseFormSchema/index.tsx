@@ -22,6 +22,7 @@ import {
 } from '@wibetter/json-utils';
 import { objClone, saveWebCacheData } from '$utils/index';
 import { TypeInfoList } from '$data/TypeList';
+import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
 /**
@@ -31,25 +32,15 @@ import './index.scss';
  * 2）父元素 isContainer 为false 时，则当前元素不支持 新增、复制、删除和拖拽等操作，高级操作icon 显隐单独控制；
  */
 
-interface BaseFormSchemaProps {
-  parentType?: string;
-  jsonKey?: string;
-  indexRoute?: string;
-  nodeKey?: string;
-  targetJsonSchema?: any;
-  isFixed?: boolean;
-  hideOperaBtn?: boolean;
-  showAdvanceBtn?: boolean;
-  keyIsFixed?: boolean;
-  typeIsFixed?: boolean;
-  titleIsFixed?: boolean;
-  readOnly?: boolean;
-  schemaStore?: any;
+interface BaseFormSchemaState {
+  showAdvanceConfig: boolean;
 }
 
-class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
-
-  constructor(props) {
+class BaseFormSchema extends React.PureComponent<
+  BaseRendererProps,
+  BaseFormSchemaState
+> {
+  constructor(props: BaseRendererProps) {
     super(props);
     this.state = {
       showAdvanceConfig: false,
@@ -65,7 +56,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
   }
 
   /** select类型变动事件处理器 */
-  handleTypeChange = (newType) => {
+  handleTypeChange = (newType: string) => {
     const { changeType } = this.props.schemaStore || {};
     const { indexRoute, jsonKey, targetJsonSchema } = this.props;
     if (targetJsonSchema.type === newType) return; // format值未改变则直接跳出
@@ -76,7 +67,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
   };
 
   /** jsonKey类型输入值变动事件处理器 */
-  handleJsonKeyChange = (event) => {
+  handleJsonKeyChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { editJsonKey, isExitJsonKey } = this.props.schemaStore || {};
     const { value } = event.target;
     const { indexRoute, jsonKey } = this.props;
@@ -89,7 +80,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
   };
 
   /** title类型输入值变动事件处理器 */
-  handleTitleChange = (event) => {
+  handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { editSchemaData } = this.props.schemaStore || {};
     const { value } = event.target;
     const { indexRoute, jsonKey, targetJsonSchema } = this.props;
@@ -101,7 +92,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
 
   /** 获取当前字段的类型清单
    *  根据父元素的类型决定当前字段的类型可选择范围，如果父类型为空则默认使用全新的可选择类型 */
-  getCurrentTypeList = (parentType) => {
+  getCurrentTypeList = (parentType: string) => {
     const { SchemaTypeList } = this.props.schemaStore || {};
     const myParentType = parentType || 'all';
     let typeList = SchemaTypeList[myParentType];
@@ -160,7 +151,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
   };
 
   /** 拦截拖拽事件 */
-  ignoreDragEvent = (event) => {
+  ignoreDragEvent = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.stopPropagation();
   };
@@ -215,7 +206,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
               <Input
                 defaultValue={jsonKey || 'key值不存在'}
                 disabled={keyIsFixed}
-                onPressEnter={this.handleJsonKeyChange}
+                // onPressEnter={this.handleJsonKeyChange}
                 onBlur={this.handleJsonKeyChange}
               />
             </div>
@@ -230,19 +221,20 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
                 style={{ width: 150 }}
                 onChange={this.handleTypeChange}
                 disabled={typeIsFixed}
-                filterOption={(inputValue, option) => {
+                filterOption={(inputValue: string, option: any) => {
                   if (
-                    option.value.indexOf(inputValue) > -1 ||
+                    (option && option.value.indexOf(inputValue) > -1) ||
                     (option.children &&
                       option.children.indexOf(inputValue) > -1)
                   ) {
                     return true;
                   }
+                  return false;
                 }}
               >
-                {currentTypeList.map((item) => (
+                {currentTypeList.map((item: string) => (
                   <Option key={item} value={item}>
-                    {TypeInfoList[item] || item}
+                    {(TypeInfoList as any)[item] || item}
                   </Option>
                 ))}
               </Select>
@@ -255,7 +247,7 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
               <Input
                 defaultValue={targetJsonSchema.title}
                 disabled={titleIsFixed}
-                onPressEnter={this.handleTitleChange}
+                //onPressEnter={this.handleTitleChange}
                 onBlur={this.handleTitleChange}
               />
             </div>
@@ -359,6 +351,6 @@ class BaseFormSchema extends React.PureComponent<BaseFormSchemaProps> {
   }
 }
 
-export default inject((stores) => ({
+export default inject((stores: any) => ({
   schemaStore: stores.schemaStore,
 }))(observer(BaseFormSchema));
