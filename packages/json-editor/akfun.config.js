@@ -15,7 +15,7 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         $core: resolve('src/core'),
         $components: resolve('src/components'),

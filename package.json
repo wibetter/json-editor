@@ -44,15 +44,18 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "akfun": "^5.0.0",
+    "akfun": "^5.2.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.9",
     "prettier": "^3.3.3",
     "@jridgewell/gen-mapping": "0.3.5"
   },
+  "overrides": {
+    "@rollup/plugin-alias": "^5.1.1"
+  },
   "engines": {
-    "node": ">= 10.13.0",
-    "npm": ">= 6.4.1"
+    "node": ">= 16.0.0",
+    "npm": ">= 8.0.0"
   },
   "browserslist": [
     "> 1%",

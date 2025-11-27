@@ -42,7 +42,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "akfun": "^5.0.0",
+    "akfun": "^5.1.19",
     "@wibetter/json-schema-editor": "^6.0.1",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.15"

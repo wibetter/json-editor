@@ -15,7 +15,7 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx', 'json'],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
         '@': resolve('src'),
         $function: resolve('src/function'),

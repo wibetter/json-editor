@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Switch } from 'antd';
 // @ts-ignore
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
+// @ts-ignore
 import { urlParse } from '@wibetter/json-utils';
 import JSONEditor from './main';
 // import JSONEditor from '../lib/index';

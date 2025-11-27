@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/lodash": "^4.17.20",
     "@types/qs": "^6.9.12",
-    "akfun": "^5.0.1"
+    "akfun": "^5.1.19"
   },
   "engines": {
     "node": ">= 10.13.0",

@@ -15,7 +15,7 @@ module.exports = {
   },
   webpack: {
     resolve: {
-      extensions: ['.js', '.jsx', '.vue', 'json'], // 用于配置webpack在尝试过程中用到的后缀列表
+      extensions: ['.js', '.jsx', '.vue', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件
     ignoreNodeModules: false, // 打包时是否忽略 node_modules
@@ -27,7 +27,7 @@ module.exports = {
   },
   dev: {
     entry: {
-      index: './demo.js',
+      index: './demo.jsx',
     },
     NODE_ENV: 'development',
     port: 80,
@@ -35,11 +35,11 @@ module.exports = {
     assetsPublicPath: '/', // 设置静态资源的引用路径（根域名+路径）
     assetsSubDirectory: '',
     hostname: 'localhost',
-    cssSourceMap: false,
+    productionSourceMap: false,
   },
   build: {
     entry: {
-      index: './demo.js',
+      index: './demo.jsx',
     },
     NODE_ENV: 'production',
     assetsRoot: resolve('./online-demo/5.0.0'), // 打包后的文件绝对路径（物理路径）
