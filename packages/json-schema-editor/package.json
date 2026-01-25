@@ -37,7 +37,7 @@
     "react": "^16.8.6",
     "react-ace": "^12.0.0",
     "react-dom": "^16.8.6",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "akfun": "^5.1.19",
