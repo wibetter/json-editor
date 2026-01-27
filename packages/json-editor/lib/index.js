@@ -1142,7 +1142,8 @@
               (t.initJSONData = function (e) {
                 var t,
                   n =
-                    (null == (t = this.state.rootJSONStore.JSONSchemaStore)
+                    (null === (t = this.state.rootJSONStore.JSONSchemaStore) ||
+                    void 0 === t
                       ? void 0
                       : t.jsonSchema) || {};
                 if (
@@ -1191,7 +1192,8 @@
                 var a,
                   o = null;
                 if (
-                  (null != (a = this.state.rootJSONStore.JSONSchemaStore) &&
+                  (null !== (a = this.state.rootJSONStore.JSONSchemaStore) &&
+                    void 0 !== a &&
                     a.getSchemaByKeyRoute &&
                     (o =
                       this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(
@@ -1733,7 +1735,7 @@
                   R = x.isClosed,
                   j = x.currentActiveArrIndex,
                   T = b.type,
-                  P = null == (e = b.showCodeViewBtn) || e,
+                  P = null === (e = b.showCodeViewBtn) || void 0 === e || e,
                   J = u(h);
                 (J && 0 !== J.length && (0, g.cy)(J)) || (J = [{}]);
                 var M = b.items,
@@ -1743,7 +1745,8 @@
                 var I = j,
                   L = (0, C.Gz)(h + '-activeArrIndex');
                 void 0 !== L && (I = L);
-                var q = null != (n = b.boxTitle) ? n : '数据配置',
+                var q =
+                    null !== (n = b.boxTitle) && void 0 !== n ? n : '数据配置',
                   W = b.style ? (0, _.K8)((0, m.toJS)(b.style)) : {},
                   F = b.titleStyle ? (0, _.K8)((0, m.toJS)(b.titleStyle)) : {},
                   U = b.contentStyle
@@ -2047,11 +2050,12 @@
                 v = f.jsonView,
                 E = f.isClosed,
                 b = h,
-                O = null == (e = p.showCodeViewBtn) || e,
+                O = null === (e = p.showCodeViewBtn) || void 0 === e || e,
                 x = E,
                 k = (0, C.Gz)(u);
               void 0 !== k && (x = k);
-              var R = null != (n = p.boxTitle) ? n : '对象配置',
+              var R =
+                  null !== (n = p.boxTitle) && void 0 !== n ? n : '对象配置',
                 j = p.style ? (0, _.K8)((0, m.toJS)(p.style)) : {},
                 D = p.titleStyle ? (0, _.K8)((0, m.toJS)(p.titleStyle)) : {},
                 T = p.contentStyle
@@ -2235,7 +2239,7 @@
                 O = h.properties.data || {},
                 x = h.properties.filter || {},
                 k = C.default,
-                R = null == (e = h.showCodeViewBtn) || e,
+                R = null === (e = h.showCodeViewBtn) || void 0 === e || e,
                 j = h.style ? (0, _.K8)((0, m.toJS)(h.style)) : {},
                 D = h.titleStyle ? (0, _.K8)((0, m.toJS)(h.titleStyle)) : {},
                 T = h.contentStyle
@@ -4958,7 +4962,8 @@
                         l = e;
                       (0, d.isObject)(l) &&
                         (l = JSON.stringify(e)).replaceAll(' ', '');
-                      var r = null != (o = n.optionValue[l]) ? o : e;
+                      var r =
+                        null !== (o = n.optionValue[l]) && void 0 !== o ? o : e;
                       (c &&
                         t &&
                         (0, d.isArray)(t) &&
@@ -4968,7 +4973,8 @@
                       (s = u));
                   } else {
                     var p;
-                    ((s = null != (p = n.optionValue[e]) ? p : e),
+                    ((s =
+                      null !== (p = n.optionValue[e]) && void 0 !== p ? p : e),
                       c &&
                         t &&
                         (s = { value: s, label: t.children || t.label }));
@@ -5080,15 +5086,19 @@
                       o.createElement(
                         S.Select,
                         {
-                          showSearch: null == (e = h.showSearch) || e,
+                          showSearch:
+                            null === (e = h.showSearch) || void 0 === e || e,
                           mode: h.multiple ? 'multiple' : void 0,
                           defaultActiveFirstOption:
-                            null != (t = h.defaultActiveFirstOption) && t,
+                            null !== (t = h.defaultActiveFirstOption) &&
+                            void 0 !== t &&
+                            t,
                           style: { display: 'inline-block', minWidth: '120px' },
                           onChange: this.handleValueChange,
                           defaultValue: O,
                           disabled: g,
-                          allowClear: null == (n = h.allowClear) || n,
+                          allowClear:
+                            null === (n = h.allowClear) || void 0 === n || n,
                         },
                         v &&
                           v.length > 0 &&
@@ -5208,14 +5218,16 @@
                     'div',
                     { className: 'form-item-box select-box' },
                     o.createElement(S.Cascader, {
-                      showSearch: null == (e = h.showSearch) || e,
+                      showSearch:
+                        null === (e = h.showSearch) || void 0 === e || e,
                       style: { display: 'inline-block', minWidth: '120px' },
                       options: f,
                       onChange: this.handleValueChange,
                       defaultValue: null != g ? g : h.default,
                       disabled: h.readOnly,
-                      allowClear: null == (t = h.allowClear) || t,
-                      multiple: null != (n = h.multiple) && n,
+                      allowClear:
+                        null === (t = h.allowClear) || void 0 === t || t,
+                      multiple: null !== (n = h.multiple) && void 0 !== n && n,
                     }),
                   ),
                 ),
@@ -5292,7 +5304,10 @@
                   accept: g.accept || f.uploadAccept || '.jpeg,.jpg,.png',
                   maxCount: (g.multiple && g.maxCount) || 1,
                   defaultFileList: C,
-                  listType: null != (e = g.listType) ? e : 'picture-card',
+                  listType:
+                    null !== (e = g.listType) && void 0 !== e
+                      ? e
+                      : 'picture-card',
                   withCredentials: !0,
                   method: g.uploadMethod || f.uploadMethod || 'POST',
                   headers: {},
@@ -6284,69 +6299,71 @@
                 var e,
                   n,
                   a,
-                  o = this,
-                  r = this.props,
-                  i = r.schemaStore,
-                  s = r.jsonStore,
-                  c = (i || {}).pageScreen,
-                  u = this.props,
-                  p = u.keyRoute,
-                  d = u.targetJsonSchema,
-                  y = u.nodeKey,
-                  h = (this.state || {}).visible;
-                if (!d) return null;
-                var g,
-                  f,
-                  v =
-                    (p && s
-                      ? null == s.getJSONDataByKeyRoute
+                  o,
+                  r = this,
+                  i = this.props,
+                  s = i.schemaStore,
+                  c = i.jsonStore,
+                  u = (s || {}).pageScreen,
+                  p = this.props,
+                  d = p.keyRoute,
+                  y = p.targetJsonSchema,
+                  h = p.nodeKey,
+                  g = (this.state || {}).visible;
+                if (!y) return null;
+                var f,
+                  v,
+                  E =
+                    (d && c
+                      ? null === (e = c.getJSONDataByKeyRoute) || void 0 === e
                         ? void 0
-                        : s.getJSONDataByKeyRoute(p)
+                        : e.call(c, d)
                       : {}) || {},
-                  E = d.properties || {},
-                  b = E.url || {},
-                  C = E.method || {},
-                  O = E.headers || {},
-                  x = E.data || {},
-                  N = E.dataType || {},
-                  k = E.cache || {},
-                  R = E.cacheTime || {},
-                  j = d.style ? (0, _.K8)((0, m.toJS)(d.style)) : {},
-                  D = d.titleStyle ? (0, _.K8)((0, m.toJS)(d.titleStyle)) : {},
-                  T = d.contentStyle
-                    ? (0, _.K8)((0, m.toJS)(d.contentStyle))
+                  b = y.properties || {},
+                  C = b.url || {},
+                  O = b.method || {},
+                  x = b.headers || {},
+                  N = b.data || {},
+                  k = b.dataType || {},
+                  R = b.cache || {},
+                  j = b.cacheTime || {},
+                  D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
+                  T = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                  P = y.contentStyle
+                    ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                     : {},
-                  P =
-                    (null == (e = v.method) ? void 0 : e.toUpperCase()) ||
-                    'GET',
-                  K = ('GET' !== P ? P + ': ' : '') + (v.url || '');
+                  K =
+                    (null === (n = E.method) || void 0 === n
+                      ? void 0
+                      : n.toUpperCase()) || 'GET',
+                  J = ('GET' !== K ? K + ': ' : '') + (E.url || '');
                 return l().createElement(
                   'div',
                   {
                     className:
-                      'wideScreen' === c
+                      'wideScreen' === u
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
-                    id: y,
-                    style: j,
+                    id: h,
+                    style: D,
                   },
                   l().createElement(
                     'div',
-                    { className: 'element-title', style: D },
+                    { className: 'element-title', style: T },
                     l().createElement(
                       'span',
-                      { className: 'title-text', title: d.title },
-                      d.title,
-                      d.showKey &&
-                        l().createElement('span', null, '（', d.jsonKey, '）'),
+                      { className: 'title-text', title: y.title },
+                      y.title,
+                      y.showKey &&
+                        l().createElement('span', null, '（', y.jsonKey, '）'),
                     ),
                   ),
                   l().createElement(
                     'div',
-                    { className: 'content-item', style: T },
+                    { className: 'content-item', style: P },
                     l().createElement(S.Input, {
                       className: 'api-schema-input',
-                      value: K,
+                      value: J,
                       placeholder: '点击右侧设置图标配置 API 接口',
                       readOnly: !0,
                       addonAfter: l().createElement(w.SettingOutlined, {
@@ -6357,8 +6374,8 @@
                   l().createElement(
                     S.Modal,
                     {
-                      title: d.title || 'API 配置',
-                      visible: h,
+                      title: y.title || 'API 配置',
+                      visible: g,
                       onOk: this.handleOk,
                       onCancel: this.handleCancel,
                       width: 800,
@@ -6369,16 +6386,29 @@
                       S.Form,
                       {
                         ref: function (e) {
-                          return (o.form = e);
+                          return (r.form = e);
                         },
                         initialValues: {
-                          url: v.url || '',
-                          method: v.method || 'get',
-                          dataType: v.dataType || 'json',
-                          cache: !!v.cache,
-                          cacheTime: 'number' == typeof v.cache ? v.cache : 3e3,
+                          url: E.url || '',
+                          method: E.method || 'get',
+                          dataType: E.dataType || 'json',
+                          cache: !!E.cache,
+                          cacheTime: 'number' == typeof E.cache ? E.cache : 3e3,
                           headers:
-                            ((f = v.headers),
+                            ((v = E.headers),
+                            v && 'object' == typeof v
+                              ? Object.keys(v).map(function (e) {
+                                  return {
+                                    key: e,
+                                    value:
+                                      'string' == typeof v[e]
+                                        ? v[e]
+                                        : JSON.stringify(v[e]),
+                                  };
+                                })
+                              : []),
+                          data:
+                            ((f = E.data),
                             f && 'object' == typeof f
                               ? Object.keys(f).map(function (e) {
                                   return {
@@ -6387,19 +6417,6 @@
                                       'string' == typeof f[e]
                                         ? f[e]
                                         : JSON.stringify(f[e]),
-                                  };
-                                })
-                              : []),
-                          data:
-                            ((g = v.data),
-                            g && 'object' == typeof g
-                              ? Object.keys(g).map(function (e) {
-                                  return {
-                                    key: e,
-                                    value:
-                                      'string' == typeof g[e]
-                                        ? g[e]
-                                        : JSON.stringify(g[e]),
                                   };
                                 })
                               : []),
@@ -6413,16 +6430,17 @@
                           xe,
                           {
                             tab:
-                              (null == (n = d.tabTitles) ? void 0 : n.basic) ||
-                              '接口设置',
+                              (null === (a = y.tabTitles) || void 0 === a
+                                ? void 0
+                                : a.basic) || '接口设置',
                             key: '1',
                           },
                           l().createElement(
                             S.Form.Item,
                             {
                               name: 'method',
-                              label: C.title || '发送方式',
-                              rules: [{ required: !1 !== C.isRequired }],
+                              label: O.title || '发送方式',
+                              rules: [{ required: !1 !== O.isRequired }],
                             },
                             l().createElement(
                               S.Select,
@@ -6458,16 +6476,16 @@
                             S.Form.Item,
                             {
                               name: 'url',
-                              label: b.title || '接口地址',
-                              rules: [{ required: !1 !== b.isRequired }],
+                              label: C.title || '接口地址',
+                              rules: [{ required: !1 !== C.isRequired }],
                             },
                             l().createElement(S.Input, {
-                              placeholder: b.placeholder || 'http://',
+                              placeholder: C.placeholder || 'http://',
                             }),
                           ),
                           l().createElement(
                             S.Form.Item,
-                            { name: 'dataType', label: N.title || '数据格式' },
+                            { name: 'dataType', label: k.title || '数据格式' },
                             l().createElement(
                               S.Select,
                               null,
@@ -6507,7 +6525,7 @@
                                       marginTop: '4px',
                                     },
                                   },
-                                  N.description ||
+                                  k.description ||
                                     '发送体格式为：' +
                                       ({
                                         json: 'application/json',
@@ -6523,7 +6541,7 @@
                             S.Form.Item,
                             {
                               name: 'cache',
-                              label: k.title || '是否设置缓存',
+                              label: R.title || '是否设置缓存',
                               valuePropName: 'checked',
                             },
                             l().createElement(S.Switch, null),
@@ -6542,7 +6560,7 @@
                                     S.Form.Item,
                                     {
                                       name: 'cacheTime',
-                                      label: R.title || '缓存时间（ms）',
+                                      label: j.title || '缓存时间（ms）',
                                     },
                                     l().createElement(S.InputNumber, {
                                       min: 0,
@@ -6558,7 +6576,7 @@
                                           marginTop: '4px',
                                         },
                                       },
-                                      R.description ||
+                                      j.description ||
                                         '设置该请求缓存有效时间，单位 ms',
                                     ),
                                   )
@@ -6570,8 +6588,9 @@
                           xe,
                           {
                             tab:
-                              (null == (a = d.tabTitles) ? void 0 : a.http) ||
-                              'HTTP配置',
+                              (null === (o = y.tabTitles) || void 0 === o
+                                ? void 0
+                                : o.http) || 'HTTP配置',
                             key: '2',
                           },
                           l().createElement(
@@ -6580,7 +6599,7 @@
                             l().createElement(
                               'h4',
                               { style: { marginBottom: '12px' } },
-                              O.title || '请求头 (Headers)',
+                              x.title || '请求头 (Headers)',
                             ),
                             l().createElement(
                               S.Form.List,
@@ -6667,7 +6686,7 @@
                             l().createElement(
                               'h4',
                               { style: { marginBottom: '12px' } },
-                              x.title || '发送数据 (Data)',
+                              N.title || '发送数据 (Data)',
                             ),
                             l().createElement(
                               S.Form.List,
@@ -6744,7 +6763,7 @@
                                       '添加发送数据',
                                     ),
                                   ),
-                                  x.description &&
+                                  N.description &&
                                     l().createElement(
                                       'div',
                                       {
@@ -6754,7 +6773,7 @@
                                           marginTop: '8px',
                                         },
                                       },
-                                      x.description,
+                                      N.description,
                                     ),
                                 );
                               },
@@ -7041,7 +7060,7 @@
                 x = y.properties.trigger || {},
                 k = y.properties.eventData || {},
                 R = b.default,
-                j = null == (e = y.showCodeViewBtn) || e,
+                j = null === (e = y.showCodeViewBtn) || void 0 === e || e,
                 D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
                 T = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
                 P = y.contentStyle
@@ -7313,7 +7332,9 @@
                   a(e.schemaData),
                   (0, d.isEqual)(e.jsonData, r) || i(e.jsonData),
                   (0, d.isEqual)(e.jsonView, this.props.jsonView) ||
-                    this.setState({ jsonView: null != (t = e.jsonView) && t }),
+                    this.setState({
+                      jsonView: null !== (t = e.jsonView) && void 0 !== t && t,
+                    }),
                   (0, d.isEqual)(e.viewStyle, this.props.viewStyle) ||
                     this.setState({
                       viewStyle: this.catchViewStyle(e.viewStyle),
@@ -7513,7 +7534,8 @@
               else {
                 var t,
                   n =
-                    null == (t = window.JSONEditorCustomRenderers)
+                    null === (t = window.JSONEditorCustomRenderers) ||
+                    void 0 === t
                       ? void 0
                       : t[e];
                 n && (0, b.TS)({ type: e, component: n });

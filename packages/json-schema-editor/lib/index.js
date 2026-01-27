@@ -1373,7 +1373,8 @@
                           },
                           i.createElement(B(), {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (e = u.multiple) && e,
+                            defaultChecked:
+                              null !== (e = u.multiple) && void 0 !== e && e,
                             checkedChildren: '多选',
                             unCheckedChildren: '单选',
                             onChange: function (e) {
@@ -1420,7 +1421,9 @@
                           i.createElement(B(), {
                             style: { display: 'inline-block' },
                             defaultChecked:
-                              null != (t = u.defaultActiveFirstOption) && t,
+                              null !== (t = u.defaultActiveFirstOption) &&
+                              void 0 !== t &&
+                              t,
                             checkedChildren: '开启',
                             unCheckedChildren: '关闭',
                             onChange: function (e) {
@@ -1477,7 +1480,8 @@
                           { className: 'form-item-box' },
                           i.createElement(B(), {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (n = u.readOnly) && n,
+                            defaultChecked:
+                              null !== (n = u.readOnly) && void 0 !== n && n,
                             checkedChildren: 'true',
                             unCheckedChildren: 'false',
                             onChange: function (e) {
@@ -1531,7 +1535,8 @@
                           { className: 'form-item-box' },
                           i.createElement(B(), {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (a = u.isRequired) && a,
+                            defaultChecked:
+                              null !== (a = u.isRequired) && void 0 !== a && a,
                             checkedChildren: 'true',
                             unCheckedChildren: 'false',
                             onChange: function (e) {
@@ -1606,7 +1611,8 @@
                         { className: 'content-item' },
                         i.createElement(B(), {
                           style: { display: 'inline-block' },
-                          defaultChecked: null != (o = u.withLabel) && o,
+                          defaultChecked:
+                            null !== (o = u.withLabel) && void 0 !== o && o,
                           checkedChildren: '开启',
                           unCheckedChildren: '关闭',
                           onChange: function (e) {
@@ -1725,7 +1731,8 @@
                         { className: 'form-item-box' },
                         i.createElement(B(), {
                           style: { display: 'inline-block' },
-                          defaultChecked: null != (r = u.showKey) && r,
+                          defaultChecked:
+                            null !== (r = u.showKey) && void 0 !== r && r,
                           checkedChildren: 'true',
                           unCheckedChildren: 'false',
                           onChange: function (e) {
@@ -1830,7 +1837,10 @@
                           { className: 'form-item-box' },
                           i.createElement(B(), {
                             style: { display: 'inline-block' },
-                            defaultChecked: null != (s = u.autoComplete) && s,
+                            defaultChecked:
+                              null !== (s = u.autoComplete) &&
+                              void 0 !== s &&
+                              s,
                             checkedChildren: '开启',
                             unCheckedChildren: '关闭',
                             onChange: function (e) {
@@ -1906,7 +1916,9 @@
                           i.createElement(B(), {
                             style: { display: 'inline-block' },
                             defaultChecked:
-                              null == (l = u.showCodeViewBtn) || l,
+                              null === (l = u.showCodeViewBtn) ||
+                              void 0 === l ||
+                              l,
                             checkedChildren: 'true',
                             unCheckedChildren: 'false',
                             onChange: function (e) {
@@ -2280,7 +2292,7 @@
                   m = this.state.showAdvanceConfig,
                   u = s ? (0, g.getParentIndexRoute)(s) : '',
                   p = u ? a(u) : {},
-                  h = null == (e = p && p.isContainer) || e,
+                  h = null === (e = p && p.isContainer) || void 0 === e || e,
                   f = d.isFixed || this.props.isFixed || !1,
                   v =
                     (this.props.readOnly || d.readOnly,
@@ -2296,7 +2308,10 @@
                       ? this.props.titleIsFixed
                       : f,
                   S = this.props.hideOperaBtn || !h,
-                  b = null == (t = this.props.showAdvanceBtn) || t,
+                  b =
+                    null === (t = this.props.showAdvanceBtn) ||
+                    void 0 === t ||
+                    t,
                   C = this.getCurrentTypeList(r),
                   N = d.type,
                   j = (0, g.isContainerSchema)(d);

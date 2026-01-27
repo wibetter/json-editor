@@ -896,7 +896,9 @@
         r = !1;
       return (
         (
-          (null == (t = l.quantity.properties.quantity) ? void 0 : t.enum) || []
+          (null === (t = l.quantity.properties.quantity) || void 0 === t
+            ? void 0
+            : t.enum) || []
         ).indexOf(e) >= 0 && (r = !0),
         r
       );
