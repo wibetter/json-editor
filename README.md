@@ -4,7 +4,7 @@
 3. [JSONUtils](./packages/json-utils/README.md): 提供JSON相关的各类工具方法，比如schema转json、json转schema、json元数据分析等。
 
 ### 在线Demo
-1. [点击访问在线Demo 5.0.0](https://wibetter.github.io/json-editor/online-demo/5.0.0/index.html)  
+1. [点击访问在线Demo 6.0.0](https://wibetter.github.io/json-editor/online-demo/6.0.0/index.html)  
 
 ### JSONSchemaEditor效果图
 ![image](https://user-images.githubusercontent.com/11958920/104154681-78f5e680-5420-11eb-978f-6219acfa933d.png)

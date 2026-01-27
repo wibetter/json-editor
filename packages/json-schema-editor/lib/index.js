@@ -124,8 +124,8 @@
             if (p) {
               var o = l++;
               ((a = s || (s = f())),
-                (t = x.bind(null, a, o, !1)),
-                (n = x.bind(null, a, o, !0)));
+                (t = E.bind(null, a, o, !1)),
+                (n = E.bind(null, a, o, !0)));
             } else
               ((a = f()),
                 (t = S.bind(null, a)),
@@ -148,14 +148,14 @@
             );
           }
           var v,
-            E =
+            x =
               ((v = []),
               function (e, t) {
                 return ((v[e] = t), v.filter(Boolean).join('\n'));
               });
-          function x(e, t, n, a) {
+          function E(e, t, n, a) {
             var o = n ? '' : a.css;
-            if (e.styleSheet) e.styleSheet.cssText = E(t, o);
+            if (e.styleSheet) e.styleSheet.cssText = x(t, o);
             else {
               var r = document.createTextNode(o),
                 i = e.childNodes;
@@ -278,10 +278,10 @@
         function v(e) {
           return (0, g.objClone)(e);
         }
-        function E(e, t) {
+        function x(e, t) {
           return (0, g.isEqual)(e, t);
         }
-        function x(e, t) {
+        function E(e, t) {
           window.sessionStorage && window.sessionStorage.setItem(e, t);
         }
         var S = [
@@ -362,8 +362,8 @@
             api: 'API 配置',
           },
           k = g.TypeDataList.jsonschema,
-          I = g.TypeDataList.input,
-          w = (function () {
+          R = g.TypeDataList.input,
+          I = (function () {
             function e() {
               var e = this;
               ((this.curJsonKeyIndex = 1),
@@ -440,7 +440,7 @@
                 var t = this;
                 e &&
                   '{}' !== JSON.stringify(e) &&
-                  (E(e, this.SchemaTypeList) ||
+                  (x(e, this.SchemaTypeList) ||
                     (e &&
                       Object.keys(e).map(function (n) {
                         t.SchemaTypeList[n] = e[n];
@@ -448,7 +448,7 @@
               }),
               (n.initJSONSchemaData = function (e) {
                 if (e && '{}' !== JSON.stringify(e)) {
-                  if (!E(e, this.JSONSchemaObj))
+                  if (!x(e, this.JSONSchemaObj))
                     if (e && (0, g.isNewSchemaData)(e)) this.jsonSchema = e;
                     else {
                       var t = (0, g.oldSchemaToNewSchema)(e);
@@ -526,7 +526,7 @@
                 if ((0, g.isContainerSchema)(n)) {
                   var a = this.getNewJsonKeyIndex(n);
                   (n.propertyOrder.push(a),
-                    (n.properties[a] = I),
+                    (n.properties[a] = R),
                     this.jsonSchemaChange(t));
                 } else y.message.warning('非对象类型字段不允许插入子元素');
               }),
@@ -570,7 +570,7 @@
                 var t = (0, g.getParentIndexRoute)(e),
                   n = (0, g.getSchemaByIndexRoute)(t, this.jsonSchema, !1),
                   a = this.getNewJsonKeyIndex(n);
-                this.insertJsonData(e, a, I, '', !1);
+                this.insertJsonData(e, a, R, '', !1);
               }),
               (n.insertJsonData = function (e, t, n, a, o) {
                 var r = (0, g.getParentIndexRoute_CurIndex)(e),
@@ -766,253 +766,253 @@
           })();
         ((0, p.__decorate)(
           [h.observable],
-          w.prototype,
+          I.prototype,
           'triggerChange',
           void 0,
         ),
-          (0, p.__decorate)([h.observable], w.prototype, 'jsonSchema', void 0),
+          (0, p.__decorate)([h.observable], I.prototype, 'jsonSchema', void 0),
           (0, p.__decorate)(
             [h.observable],
-            w.prototype,
+            I.prototype,
             'SchemaTypeList',
             void 0,
           ),
-          (0, p.__decorate)([h.observable], w.prototype, 'onChange', void 0),
+          (0, p.__decorate)([h.observable], I.prototype, 'onChange', void 0),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'triggerChangeAction',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'initSchemaTypeList',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'initJSONSchemaData',
             null,
           ),
-          (0, p.__decorate)([h.computed], w.prototype, 'JSONSchemaObj', null),
+          (0, p.__decorate)([h.computed], I.prototype, 'JSONSchemaObj', null),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'initOnChange',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'schemaChange',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'jsonSchemaChange',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'indexRoute2keyRoute',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'keyRoute2indexRoute',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'getSchemaByIndexRoute',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'getSchemaByKeyRoute',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'getNewJsonKeyIndex',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'isExitJsonKey',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'isSupportCurType',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'addChildJson',
             null,
           ),
-          (0, p.__decorate)([h.action.bound], w.prototype, 'changeType', null),
+          (0, p.__decorate)([h.action.bound], I.prototype, 'changeType', null),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateSchemaData',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'editSchemaData',
             null,
           ),
-          (0, p.__decorate)([h.action.bound], w.prototype, 'editJsonKey', null),
+          (0, p.__decorate)([h.action.bound], I.prototype, 'editJsonKey', null),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'addNextJsonData',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'insertJsonData',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'deleteJsonByIndex_CurKey',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'deleteJsonByIndex',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateEnumItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'isExitEnumKey',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateEnumKey',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateEnumText',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'deleteEnumItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'insertEnumItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'getNewEnumIndex',
             null,
           ),
-          (0, p.__decorate)([h.action.bound], w.prototype, 'addEnumItem', null),
+          (0, p.__decorate)([h.action.bound], I.prototype, 'addEnumItem', null),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'copyEnumItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateOptionItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'isExitOptionLabel',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateOptionLabel',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'updateOptionValue',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'deleteOptionItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'insertOption',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'getNewOptionValue',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'addOptionItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'copyOptionItem',
             null,
           ),
           (0, p.__decorate)(
             [h.action.bound],
-            w.prototype,
+            I.prototype,
             'childElemSort',
             void 0,
           ));
-        var R = { schemaStore: w },
-          K = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
-          T = n.n(K),
+        var K = { schemaStore: I },
+          w = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
+          T = n.n(w),
           _ = require('@ant-design/icons'),
           J = require('rc-switch'),
           B = n.n(J),
@@ -2248,7 +2248,7 @@
                     m = (0, g.getParentIndexRoute)(t),
                     u = c(i(m), o),
                     p = a.type;
-                  (x(s(m) + '-' + u + '-' + p, s(t)), l(t, u, d));
+                  (E(s(m) + '-' + u + '-' + p, s(t)), l(t, u, d));
                 }),
                 (n.onDeleteBtnEvent = function () {
                   var e = n.props,
@@ -2300,11 +2300,11 @@
                     void 0 !== this.props.keyIsFixed
                       ? this.props.keyIsFixed
                       : !h || f),
-                  E =
+                  x =
                     void 0 !== this.props.typeIsFixed
                       ? this.props.typeIsFixed
                       : f,
-                  x =
+                  E =
                     void 0 !== this.props.titleIsFixed
                       ? this.props.titleIsFixed
                       : f,
@@ -2350,7 +2350,7 @@
                             defaultValue: N,
                             style: { width: 150 },
                             onChange: this.handleTypeChange,
-                            disabled: E,
+                            disabled: x,
                             filterOption: function (e, t) {
                               return !!(
                                 (t && t.value.indexOf(e) > -1) ||
@@ -2376,7 +2376,7 @@
                         },
                         i.createElement(y.Input, {
                           defaultValue: d.title,
-                          disabled: x,
+                          disabled: E,
                           onBlur: this.handleTitleChange,
                         }),
                       ),
@@ -2501,21 +2501,23 @@
             return s().createElement(W, t()({}, e));
           },
           z = function (e) {
-            e.jsonKey;
-            var n = e.indexRoute,
-              a = e.nodeKey,
-              o = e.targetJsonSchema,
-              r = o.type,
-              i = n ? n + '-0' : '0',
-              l = 'items',
-              c = a ? a + '-' + l : l,
-              d = o[l] || {};
+            var n = e.jsonKey,
+              a = e.indexRoute,
+              o = e.nodeKey,
+              r = e.targetJsonSchema,
+              i = r.type,
+              l = a ? a + '-0' : '0',
+              c = 'items',
+              d = o ? o + '-' + c : c,
+              m = r[c] || {};
             return s().createElement(
               G,
               {
-                className: r + '-schema schema-item-form',
-                id: a,
-                key: a,
+                className: i + '-schema schema-item-form',
+                id: o,
+                key: o,
+                'data-indexRoute': a,
+                'data-jsonKey': n,
                 title: U(t()({}, e)),
               },
               (function (e) {
@@ -2530,6 +2532,7 @@
                     className: 'array-item-schema schema-item-form',
                     id: r,
                     key: r,
+                    'data-jsonKey': a,
                     disabled: !0,
                     title: U(
                       t()({}, e, {
@@ -2580,10 +2583,10 @@
               })(
                 t()({}, e, {
                   parentType: 'array',
-                  jsonKey: l,
-                  indexRoute: i,
-                  nodeKey: c,
-                  targetJsonSchema: d,
+                  jsonKey: c,
+                  indexRoute: l,
+                  nodeKey: d,
+                  targetJsonSchema: m,
                 }),
               ),
             );
@@ -2876,49 +2879,55 @@
                 return z(e);
               case 'datasource':
                 return (function (e) {
-                  e.jsonKey;
                   var n,
-                    a = e.indexRoute,
-                    o = e.nodeKey,
-                    r = e.targetJsonSchema,
-                    i = r.type,
-                    l = r.properties.data || {};
+                    a = e.jsonKey,
+                    o = e.indexRoute,
+                    r = e.nodeKey,
+                    i = e.targetJsonSchema,
+                    l = i.type,
+                    c = i.properties.data || {};
                   return s().createElement(
                     Y,
                     {
-                      className: i + '-schema schema-item-form',
-                      id: o,
-                      key: o,
+                      className: l + '-schema schema-item-form',
+                      id: r,
+                      key: r,
+                      'data-indexRoute': o,
+                      'data-jsonKey': a,
                       title: Z(t()({}, e)),
                     },
                     s().createElement(Y, {
                       className: 'dataSource-type-item-schema schema-item-form',
-                      id: o + '-type',
-                      key: o + '-type',
+                      id: r + '-type',
+                      key: r + '-type',
+                      'data-indexRoute': o ? o + '-0' : '0',
+                      'data-jsonKey': 'type',
                       disabled: !0,
                       title:
                         ((n = t()({}, e, {
-                          indexRoute: a ? a + '-0' : '0',
+                          indexRoute: o ? o + '-0' : '0',
                           jsonKey: 'type',
-                          targetJsonSchema: r.properties.type,
-                          parentType: i,
-                          nodeKey: o + '-type',
+                          targetJsonSchema: i.properties.type,
+                          parentType: l,
+                          nodeKey: r + '-type',
                           typeSelectData: $,
                         })),
                         s().createElement(Q, t()({}, n))),
                     }),
                     s().createElement(Y, {
                       className: 'dataSource-data-item-schema schema-item-form',
-                      id: o + '-data-' + l.type,
-                      key: o + '-data-' + l.type,
+                      id: r + '-data-' + c.type,
+                      key: r + '-data-' + c.type,
+                      'data-indexRoute': o ? o + '-1' : '1',
+                      'data-jsonKey': 'data',
                       disabled: !0,
                       title: Z(
                         t()({}, e, {
-                          indexRoute: a ? a + '-1' : '1',
+                          indexRoute: o ? o + '-1' : '1',
                           jsonKey: 'data',
-                          targetJsonSchema: l,
-                          parentType: i,
-                          nodeKey: o + '-data-' + l.type,
+                          targetJsonSchema: c,
+                          parentType: l,
+                          nodeKey: r + '-data-' + c.type,
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -2928,16 +2937,18 @@
                     s().createElement(Y, {
                       className:
                         'dataSource-filter-item-schema schema-item-form',
-                      id: o + '-filter',
-                      key: o + '-filter',
+                      id: r + '-filter',
+                      key: r + '-filter',
+                      'data-indexRoute': o ? o + '-2' : '2',
+                      'data-jsonKey': 'filter',
                       disabled: !0,
                       title: Z(
                         t()({}, e, {
-                          indexRoute: a ? a + '-2' : '2',
+                          indexRoute: o ? o + '-2' : '2',
                           jsonKey: 'filter',
-                          targetJsonSchema: r.properties.filter,
-                          parentType: i,
-                          nodeKey: o + '-filter',
+                          targetJsonSchema: i.properties.filter,
+                          parentType: l,
+                          nodeKey: r + '-filter',
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -2948,50 +2959,56 @@
                 })(e);
               case 'dynamic-data':
                 return (function (e) {
-                  e.jsonKey;
                   var n,
-                    a = e.indexRoute,
-                    o = e.nodeKey,
-                    r = e.targetJsonSchema,
-                    i = r.type,
-                    l = r.properties.config || {},
-                    c = r.properties.data || {};
+                    a = e.jsonKey,
+                    o = e.indexRoute,
+                    r = e.nodeKey,
+                    i = e.targetJsonSchema,
+                    l = i.type,
+                    c = i.properties.config || {},
+                    d = i.properties.data || {};
                   return s().createElement(
                     ee,
                     {
-                      className: i + '-schema schema-item-form',
-                      id: o,
-                      key: o,
+                      className: l + '-schema schema-item-form',
+                      id: r,
+                      key: r,
+                      'data-indexRoute': o,
+                      'data-jsonKey': a,
                       title: te(t()({}, e)),
                     },
                     s().createElement(ee, {
                       className: 'dataSource-type-item-schema schema-item-form',
-                      id: o + '-type',
-                      key: o + '-type',
+                      id: r + '-type',
+                      key: r + '-type',
+                      'data-indexRoute': o ? o + '-0' : '0',
+                      'data-jsonKey': 'type',
                       disabled: !0,
                       title:
                         ((n = t()({}, e, {
-                          indexRoute: a ? a + '-0' : '0',
+                          indexRoute: o ? o + '-0' : '0',
                           jsonKey: 'type',
-                          targetJsonSchema: r.properties.type,
-                          parentType: i,
-                          nodeKey: o + '-type',
+                          targetJsonSchema: i.properties.type,
+                          parentType: l,
+                          nodeKey: r + '-type',
                         })),
                         s().createElement(Q, t()({}, n))),
                     }),
                     s().createElement(ee, {
                       className:
                         'dataSource-config-item-schema schema-item-form',
-                      id: o + '-config-' + c.type,
-                      key: o + '-config-' + c.type,
+                      id: r + '-config-' + d.type,
+                      key: r + '-config-' + d.type,
+                      'data-indexRoute': o ? o + '-1' : '1',
+                      'data-jsonKey': 'config',
                       disabled: !0,
                       title: te(
                         t()({}, e, {
-                          indexRoute: a ? a + '-1' : '1',
+                          indexRoute: o ? o + '-1' : '1',
                           jsonKey: 'config',
-                          targetJsonSchema: l,
-                          parentType: i,
-                          nodeKey: o + '-config-' + l.type,
+                          targetJsonSchema: c,
+                          parentType: l,
+                          nodeKey: r + '-config-' + c.type,
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -3000,16 +3017,18 @@
                     }),
                     s().createElement(ee, {
                       className: 'dataSource-data-item-schema schema-item-form',
-                      id: o + '-data-' + c.type,
-                      key: o + '-data-' + c.type,
+                      id: r + '-data-' + d.type,
+                      key: r + '-data-' + d.type,
+                      'data-indexRoute': o ? o + '-2' : '2',
+                      'data-jsonKey': 'data',
                       disabled: !0,
                       title: te(
                         t()({}, e, {
-                          indexRoute: a ? a + '-2' : '2',
+                          indexRoute: o ? o + '-2' : '2',
                           jsonKey: 'data',
-                          targetJsonSchema: c,
-                          parentType: i,
-                          nodeKey: o + '-data-' + c.type,
+                          targetJsonSchema: d,
+                          parentType: l,
+                          nodeKey: r + '-data-' + d.type,
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -3020,117 +3039,127 @@
                 })(e);
               case 'event':
                 return (function (e) {
-                  e.jsonKey;
                   var n,
-                    a = e.indexRoute,
-                    o = e.nodeKey,
-                    r = e.targetJsonSchema,
-                    i = r.type,
-                    l = r.properties.type || {},
-                    c = r.properties.register || {},
-                    d = r.properties.actionFunc || {},
-                    m = r.properties.trigger || {},
-                    u = r.properties.eventData || {};
+                    a = e.jsonKey,
+                    o = e.indexRoute,
+                    r = e.nodeKey,
+                    i = e.targetJsonSchema,
+                    l = i.type,
+                    c = i.properties.type || {},
+                    d = i.properties.register || {},
+                    m = i.properties.actionFunc || {},
+                    u = i.properties.trigger || {},
+                    p = i.properties.eventData || {};
                   return s().createElement(
                     ne,
                     {
-                      className: i + '-schema schema-item-form',
-                      id: o,
-                      key: o,
+                      className: l + '-schema schema-item-form',
+                      id: r,
+                      key: r,
+                      'data-jsonKey': a,
                       title: ae(t()({}, e)),
                     },
                     s().createElement(ne, {
                       className: 'event-type-item-schema schema-item-form',
-                      id: o + '-type',
-                      key: o + '-type',
+                      id: r + '-type',
+                      key: r + '-type',
+                      'data-indexRoute': o ? o + '-0' : '0',
+                      'data-jsonKey': 'type',
                       disabled: !0,
                       title:
                         ((n = t()({}, e, {
-                          indexRoute: a ? a + '-0' : '0',
+                          indexRoute: o ? o + '-0' : '0',
                           jsonKey: 'type',
-                          targetJsonSchema: l,
-                          parentType: i,
-                          nodeKey: o + '-type',
+                          targetJsonSchema: c,
+                          parentType: l,
+                          nodeKey: r + '-type',
                         })),
                         s().createElement(Q, t()({}, n))),
                     }),
-                    'on' === l.default &&
-                      c &&
-                      s().createElement(ne, {
-                        className:
-                          'event-register-item-schema schema-item-form',
-                        id: o + '-register-' + l.default,
-                        key: o + '-register-' + l.default,
-                        disabled: !0,
-                        title: ae(
-                          t()({}, e, {
-                            indexRoute: a ? a + '-1' : '1',
-                            jsonKey: 'register',
-                            targetJsonSchema: c,
-                            parentType: i,
-                            nodeKey: o + '-register-' + l.default,
-                            hideOperaBtn: !0,
-                            keyIsFixed: !0,
-                            typeIsFixed: !0,
-                          }),
-                        ),
-                      }),
-                    'on' === l.default &&
+                    'on' === c.default &&
                       d &&
                       s().createElement(ne, {
                         className:
-                          'event-actionFunc-item-schema schema-item-form',
-                        id: o + '-actionFunc-' + l.default,
-                        key: o + '-actionFunc-' + l.default,
+                          'event-register-item-schema schema-item-form',
+                        id: r + '-register-' + c.default,
+                        key: r + '-register-' + c.default,
+                        'data-indexRoute': o ? o + '-1' : '1',
+                        'data-jsonKey': 'register',
                         disabled: !0,
                         title: ae(
                           t()({}, e, {
-                            indexRoute: a ? a + '-2' : '2',
-                            jsonKey: 'actionFunc',
+                            indexRoute: o ? o + '-1' : '1',
+                            jsonKey: 'register',
                             targetJsonSchema: d,
-                            parentType: i,
-                            nodeKey: o + '-actionFunc-' + l.default,
+                            parentType: l,
+                            nodeKey: r + '-register-' + c.default,
                             hideOperaBtn: !0,
                             keyIsFixed: !0,
                             typeIsFixed: !0,
                           }),
                         ),
                       }),
-                    'emit' === l.default &&
+                    'on' === c.default &&
                       m &&
                       s().createElement(ne, {
-                        className: 'event-trigger-item-schema schema-item-form',
-                        id: o + '-trigger-' + l.default,
-                        key: o + '-trigger-' + l.default,
+                        className:
+                          'event-actionFunc-item-schema schema-item-form',
+                        id: r + '-actionFunc-' + c.default,
+                        key: r + '-actionFunc-' + c.default,
+                        'data-indexRoute': o ? o + '-2' : '2',
+                        'data-jsonKey': 'actionFunc',
                         disabled: !0,
                         title: ae(
                           t()({}, e, {
-                            indexRoute: a ? a + '-1' : '1',
-                            jsonKey: 'trigger',
+                            indexRoute: o ? o + '-2' : '2',
+                            jsonKey: 'actionFunc',
                             targetJsonSchema: m,
-                            parentType: i,
-                            nodeKey: o + '-trigger-' + l.default,
+                            parentType: l,
+                            nodeKey: r + '-actionFunc-' + c.default,
                             hideOperaBtn: !0,
                             keyIsFixed: !0,
                             typeIsFixed: !0,
                           }),
                         ),
                       }),
-                    'emit' === l.default &&
+                    'emit' === c.default &&
                       u &&
+                      s().createElement(ne, {
+                        className: 'event-trigger-item-schema schema-item-form',
+                        id: r + '-trigger-' + c.default,
+                        key: r + '-trigger-' + c.default,
+                        'data-indexRoute': o ? o + '-1' : '1',
+                        'data-jsonKey': 'trigger',
+                        disabled: !0,
+                        title: ae(
+                          t()({}, e, {
+                            indexRoute: o ? o + '-1' : '1',
+                            jsonKey: 'trigger',
+                            targetJsonSchema: u,
+                            parentType: l,
+                            nodeKey: r + '-trigger-' + c.default,
+                            hideOperaBtn: !0,
+                            keyIsFixed: !0,
+                            typeIsFixed: !0,
+                          }),
+                        ),
+                      }),
+                    'emit' === c.default &&
+                      p &&
                       s().createElement(ne, {
                         className:
                           'event-eventData-item-schema schema-item-form',
-                        id: o + '-eventData-' + l.default,
-                        key: o + '-eventData-' + l.default,
+                        id: r + '-eventData-' + c.default,
+                        key: r + '-eventData-' + c.default,
+                        'data-jsonKey': 'eventData',
                         disabled: !0,
                         title: ae(
                           t()({}, e, {
-                            indexRoute: a ? a + '-2' : '2',
+                            indexRoute: o ? o + '-2' : '2',
                             jsonKey: 'eventData',
-                            targetJsonSchema: u,
-                            parentType: i,
-                            nodeKey: o + '-eventData-' + l.default,
+                            targetJsonSchema: p,
+                            parentType: l,
+                            nodeKey: r + '-eventData-' + c.default,
                             hideOperaBtn: !0,
                             keyIsFixed: !0,
                             typeIsFixed: !0,
@@ -3142,34 +3171,38 @@
               case 'quantity':
               case 'box-style':
                 return (function (e) {
-                  e.jsonKey;
                   var n,
-                    a = e.indexRoute,
-                    o = e.nodeKey,
-                    r = e.targetJsonSchema,
-                    i = r.type,
-                    l = r.propertyOrder[0],
-                    c = r.properties[l];
+                    a = e.jsonKey,
+                    o = e.indexRoute,
+                    r = e.nodeKey,
+                    i = e.targetJsonSchema,
+                    l = i.type,
+                    c = i.propertyOrder[0],
+                    d = i.properties[c];
                   return s().createElement(
                     oe,
                     {
-                      className: i + '-schema schema-item-form',
-                      id: o,
-                      key: o,
+                      className: l + '-schema schema-item-form',
+                      id: r,
+                      key: r,
+                      'data-indexRoute': o,
+                      'data-jsonKey': a,
                       title: re(t()({}, e)),
                     },
                     s().createElement(oe, {
                       className: 'quantity-unit-item-schema schema-item-form',
-                      id: o + '-' + l,
-                      key: o + '-' + l,
+                      id: r + '-' + c,
+                      key: r + '-' + c,
+                      'data-indexRoute': o ? o + '-0' : '0',
+                      'data-jsonKey': c,
                       disabled: !0,
                       title: re(
                         t()({}, e, {
-                          indexRoute: a ? a + '-0' : '0',
-                          jsonKey: l,
-                          targetJsonSchema: c,
-                          parentType: i,
-                          nodeKey: o + '-' + l,
+                          indexRoute: o ? o + '-0' : '0',
+                          jsonKey: c,
+                          targetJsonSchema: d,
+                          parentType: l,
+                          nodeKey: r + '-' + c,
                           hideOperaBtn: !0,
                           showAdvanceBtn: !0,
                           typeIsFixed: !0,
@@ -3179,16 +3212,18 @@
                     s().createElement(oe, {
                       className:
                         'quantity-typeSelect-item-schema schema-item-form',
-                      id: o + '-quantity',
-                      key: o + '-quantity',
+                      id: r + '-quantity',
+                      key: r + '-quantity',
+                      'data-indexRoute': o ? o + '-1' : '1',
+                      'data-jsonKey': 'quantity',
                       disabled: !0,
                       title:
                         ((n = t()({}, e, {
-                          indexRoute: a ? a + '-1' : '1',
+                          indexRoute: o ? o + '-1' : '1',
                           jsonKey: 'quantity',
-                          targetJsonSchema: r.properties.quantity,
-                          parentType: i,
-                          nodeKey: o + '-quantity',
+                          targetJsonSchema: i.properties.quantity,
+                          parentType: l,
+                          nodeKey: r + '-quantity',
                         })),
                         s().createElement(Q, t()({}, n))),
                     }),
@@ -3198,40 +3233,43 @@
               case 'checkboxes':
               case 'select':
                 return (function (e) {
-                  e.jsonKey;
                   var n,
-                    a = e.indexRoute,
-                    o = e.nodeKey,
-                    r = e.targetJsonSchema,
-                    i = r.type,
-                    l = r.options,
-                    c = a || '0';
+                    a = e.jsonKey,
+                    o = e.indexRoute,
+                    r = e.nodeKey,
+                    i = e.targetJsonSchema,
+                    l = i.type,
+                    c = i.options,
+                    d = o || '0';
                   return s().createElement(
                     ce,
                     {
-                      className: i + '-schema schema-item-form',
-                      id: o,
-                      key: o,
+                      className: l + '-schema schema-item-form',
+                      id: r,
+                      key: r,
+                      'data-indexRoute': o || '0',
+                      'data-jsonKey': a,
                       title:
                         ((n = t()({}, e)), s().createElement(W, t()({}, n))),
                     },
-                    l &&
-                      l.length > 0 &&
-                      l.map(function (e, t) {
+                    c &&
+                      c.length > 0 &&
+                      c.map(function (e, t) {
                         var n = e.label || e.name,
                           a = e.value,
-                          r = '' + o + i + '-' + n;
+                          o = '' + r + l + '-' + n;
                         return s().createElement(ce, {
                           className: 'enum-item-schema schema-item-form',
-                          id: r,
-                          key: r,
+                          id: o,
+                          key: o,
+                          'data-indexRoute': d,
                           disabled: !0,
                           title: de({
-                            indexRoute: c,
+                            indexRoute: d,
                             optionIndex: t,
                             optionLabel: n,
                             optionValue: a,
-                            optionNodeKey: r,
+                            optionNodeKey: o,
                           }),
                         });
                       }),
@@ -3239,35 +3277,39 @@
                 })(e);
               case 'api':
                 return (function (e) {
-                  e.jsonKey;
-                  var n = e.indexRoute,
-                    a = e.nodeKey,
-                    o = e.targetJsonSchema,
-                    r = o.type,
-                    i = o.properties.url || {},
-                    l = o.properties.method || {},
-                    c = o.properties.headers || {},
-                    d = o.properties.data || {};
+                  var n = e.jsonKey,
+                    a = e.indexRoute,
+                    o = e.nodeKey,
+                    r = e.targetJsonSchema,
+                    i = r.type,
+                    l = r.properties.url || {},
+                    c = r.properties.method || {},
+                    d = r.properties.headers || {},
+                    m = r.properties.data || {};
                   return s().createElement(
                     pe,
                     {
-                      className: r + '-schema schema-item-form',
-                      id: a,
-                      key: a,
+                      className: i + '-schema schema-item-form',
+                      id: o,
+                      key: o,
+                      'data-indexRoute': a,
+                      'data-jsonKey': n,
                       title: s().createElement(W, t()({}, e)),
                     },
                     s().createElement(pe, {
                       className: 'api-url-item-schema schema-item-form',
-                      id: a + '-url',
-                      key: a + '-url',
+                      id: o + '-url',
+                      key: o + '-url',
+                      'data-indexRoute': a ? a + '-0' : '0',
+                      'data-jsonKey': 'url',
                       title: s().createElement(
                         W,
                         t()({}, e, {
-                          indexRoute: n ? n + '-0' : '0',
+                          indexRoute: a ? a + '-0' : '0',
                           jsonKey: 'url',
-                          targetJsonSchema: i,
-                          parentType: r,
-                          nodeKey: a + '-url',
+                          targetJsonSchema: l,
+                          parentType: i,
+                          nodeKey: o + '-url',
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -3276,16 +3318,17 @@
                     }),
                     s().createElement(pe, {
                       className: 'api-method-item-schema schema-item-form',
-                      id: a + '-method',
-                      key: a + '-method',
+                      id: o + '-method',
+                      key: o + '-method',
+                      'data-indexRoute': a ? a + '-1' : '1',
                       title: s().createElement(
                         W,
                         t()({}, e, {
-                          indexRoute: n ? n + '-1' : '1',
+                          indexRoute: a ? a + '-1' : '1',
                           jsonKey: 'method',
-                          targetJsonSchema: l,
-                          parentType: r,
-                          nodeKey: a + '-method',
+                          targetJsonSchema: c,
+                          parentType: i,
+                          nodeKey: o + '-method',
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -3294,16 +3337,18 @@
                     }),
                     s().createElement(pe, {
                       className: 'api-headers-item-schema schema-item-form',
-                      id: a + '-headers',
-                      key: a + '-headers',
+                      id: o + '-headers',
+                      key: o + '-headers',
+                      'data-indexRoute': a ? a + '-2' : '2',
+                      'data-jsonKey': 'headers',
                       title: s().createElement(
                         W,
                         t()({}, e, {
-                          indexRoute: n ? n + '-2' : '2',
+                          indexRoute: a ? a + '-2' : '2',
                           jsonKey: 'headers',
-                          targetJsonSchema: c,
-                          parentType: r,
-                          nodeKey: a + '-headers',
+                          targetJsonSchema: d,
+                          parentType: i,
+                          nodeKey: o + '-headers',
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -3312,16 +3357,18 @@
                     }),
                     s().createElement(pe, {
                       className: 'api-data-item-schema schema-item-form',
-                      id: a + '-data',
-                      key: a + '-data',
+                      id: o + '-data',
+                      key: o + '-data',
+                      'data-indexRoute': a ? a + '-3' : '3',
+                      'data-jsonKey': 'data',
                       title: s().createElement(
                         W,
                         t()({}, e, {
-                          indexRoute: n ? n + '-3' : '3',
+                          indexRoute: a ? a + '-3' : '3',
                           jsonKey: 'data',
-                          targetJsonSchema: d,
-                          parentType: r,
-                          nodeKey: a + '-data',
+                          targetJsonSchema: m,
+                          parentType: i,
+                          nodeKey: o + '-data',
                           hideOperaBtn: !0,
                           keyIsFixed: !0,
                           typeIsFixed: !0,
@@ -3332,13 +3379,16 @@
                 })(e);
               default:
                 return (function (e) {
-                  (e.jsonKey, e.indexRoute);
-                  var t = e.nodeKey,
-                    n = e.targetJsonSchema.type;
+                  var t = e.jsonKey,
+                    n = e.indexRoute,
+                    a = e.nodeKey,
+                    o = e.targetJsonSchema.type;
                   return s().createElement(me, {
-                    className: n + '-schema schema-item-form',
-                    id: t,
-                    key: t,
+                    className: o + '-schema schema-item-form',
+                    id: a,
+                    key: a,
+                    'data-indexRoute': n,
+                    'data-jsonKey': t,
                     title: ue(e),
                   });
                 })(e);
@@ -3357,7 +3407,6 @@
             return s().createElement(W, t()({}, e));
           },
           ve = function (e) {
-            e.jsonKey;
             var n,
               a,
               o,
@@ -3365,20 +3414,21 @@
               i,
               l,
               c,
-              d = e.indexRoute,
-              m = e.nodeKey,
-              u = e.targetJsonSchema,
-              p = e.isOnlyShowChild,
-              h = u.type,
-              y = u.isFixed,
-              f =
+              d = e.jsonKey,
+              m = e.indexRoute,
+              u = e.nodeKey,
+              p = e.targetJsonSchema,
+              h = e.isOnlyShowChild,
+              y = p.type,
+              f = p.isFixed,
+              g =
                 ((a = (n = t()({}, e, {
-                  propertyOrder: u.propertyOrder,
-                  properties: u.properties,
-                  parentIndexRoute: d,
-                  parentNodeKey: m,
-                  parentType: h,
-                  isOnlyShowChild: p,
+                  propertyOrder: p.propertyOrder,
+                  properties: p.properties,
+                  parentIndexRoute: m,
+                  parentNodeKey: u,
+                  parentType: y,
+                  isOnlyShowChild: h,
                 })).propertyOrder),
                 (o = n.properties),
                 (r = n.parentIndexRoute),
@@ -3403,28 +3453,31 @@
                     }),
                   );
                 })),
-              g = s().createElement(
+              v = s().createElement(
                 fe,
                 {
-                  className: h + '-schema schema-item-form',
-                  id: m,
-                  key: m,
-                  disabled: y,
+                  className: y + '-schema schema-item-form',
+                  id: u,
+                  key: u,
+                  'data-indexRoute': m,
+                  'data-jsonKey': d,
+                  disabled: f,
                   title: ge(t()({}, e)),
                 },
-                f,
+                g,
               );
-            return p ? f : g;
+            return h ? g : v;
           },
-          Ee =
+          xe =
             (n(23),
             (function (e) {
               function n(t) {
                 var n;
                 (((n = e.call(this, t) || this).onDragStart = function (e) {
-                  (0, (n.props.schemaStore || {}).getSchemaByIndexRoute)(
-                    e.node.indexRoute,
-                  ).isFixed && y.message.warning('当前元素不支持拖拽哦。');
+                  var t = (n.props.schemaStore || {}).getSchemaByIndexRoute,
+                    a = e.node;
+                  t(a.indexRoute || a['data-indexRoute']).isFixed &&
+                    y.message.warning('当前元素不支持拖拽哦。');
                 }),
                   (n.onDrop = function (e) {
                     var t = e.dragNode,
@@ -3436,11 +3489,11 @@
                       l = o.deleteJsonByIndex,
                       c = o.isExitJsonKey,
                       d = o.isSupportCurType,
-                      m = t.indexRoute,
-                      u = t.jsonKey,
+                      m = t.indexRoute || t['data-indexRoute'],
+                      u = t.jsonKey || t['data-jsonKey'],
                       p = r(m);
                     if (!p.isFixed) {
-                      var h = a.indexRoute,
+                      var h = a.indexRoute || a['data-indexRoute'],
                         f = (0, g.isSameParent)(m, h),
                         v = (0, g.getCurPosition)(m, h);
                       if (f)
@@ -3455,18 +3508,18 @@
                           return void y.message.warning(
                             '目标位置中有重名的元素',
                           );
-                        var E = p.type;
-                        if (!d(h, E))
+                        var x = p.type;
+                        if (!d(h, x))
                           return void y.message.warning(
-                            '目标位置不支持' + E + '类型元素',
+                            '目标位置不支持' + x + '类型元素',
                           );
                         var S = i(m),
                           b = (0, g.getParentIndexRoute)(h),
                           C = (function (e) {
                             if (window.sessionStorage)
                               return window.sessionStorage.getItem(e);
-                          })(S + '-' + E);
-                        (x(i(b) + '-' + u + '-' + E, C || S),
+                          })(S + '-' + x);
+                        (E(i(b) + '-' + u + '-' + x, C || S),
                           a.dragOverGapTop
                             ? 'after' === v
                               ? (l(m, !0), s(h, u, p, 'before'))
@@ -3511,9 +3564,9 @@
                     n = t.initJSONSchemaData,
                     a = t.initOnChange,
                     o = t.initSchemaTypeList;
-                  (E(e.data, this.props.data) || n(e.data),
-                    E(e.onChange, this.props.onChange) || a(e.onChange),
-                    E(e.typeList, this.props.typeList) || o(e.typeList));
+                  (x(e.data, this.props.data) || n(e.data),
+                    x(e.onChange, this.props.onChange) || a(e.onChange),
+                    x(e.typeList, this.props.typeList) || o(e.typeList));
                 }),
                 (a.render = function () {
                   var e = this.props,
@@ -3588,15 +3641,15 @@
                 n
               );
             })(i.PureComponent)),
-          xe = (0, d.inject)(function (e) {
+          Ee = (0, d.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, d.observer)(Ee)),
+          })((0, d.observer)(xe)),
           Se = (function (e) {
             function n(t) {
               var n;
               return (
                 ((n = e.call(this, t) || this).state = {
-                  schemaStore: new R.schemaStore(),
+                  schemaStore: new K.schemaStore(),
                 }),
                 n
               );
@@ -3609,7 +3662,7 @@
                   a = i.createElement(
                     d.Provider,
                     { schemaStore: n },
-                    i.createElement(xe, t()({}, this.props)),
+                    i.createElement(Ee, t()({}, this.props)),
                   );
                 return e ? (c().render(a, e), null) : a;
               }),
