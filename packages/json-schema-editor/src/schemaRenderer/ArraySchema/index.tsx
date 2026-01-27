@@ -63,7 +63,7 @@ const itemsRender = (props: BaseRendererProps) => {
       id={nodeKey}
       key={nodeKey}
       //indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-jsonKey={jsonKey}
       disabled={true}
       title={getTreeNodeTitleCont({
         ...props,
@@ -107,8 +107,8 @@ const ArraySchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}

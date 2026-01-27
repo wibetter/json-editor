@@ -57,7 +57,7 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
   onDragStart = (eventData: any) => {
     const { getSchemaByIndexRoute } = this.props.schemaStore || {};
     const { node } = eventData;
-    const curIndexRoute = node.indexRoute;
+    const curIndexRoute = node.indexRoute || node['data-indexRoute'];
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
     if (curJsonObj.isFixed) {
       message.warning('当前元素不支持拖拽哦。');
@@ -84,14 +84,14 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     } = this.props.schemaStore || {};
 
     // 拖动的元素key
-    const curIndexRoute = dragNode.indexRoute;
-    const curJsonKey = dragNode.jsonKey;
+    const curIndexRoute = dragNode.indexRoute || dragNode['data-indexRoute'];
+    const curJsonKey = dragNode.jsonKey || dragNode['data-jsonKey'];
     // 获取当前拖动的元素
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
     if (curJsonObj.isFixed) return; // 固定类型元素不允许拖拽
 
     // 放置的目标元素key
-    let targetIndexRoute = node.indexRoute;
+    let targetIndexRoute = node.indexRoute || node['data-indexRoute'];
 
     // 判断是否是同一个父级容器
     const isSameParentElem = isSameParent(curIndexRoute, targetIndexRoute);

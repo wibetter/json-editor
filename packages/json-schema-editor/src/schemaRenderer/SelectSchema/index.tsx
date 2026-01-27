@@ -24,8 +24,8 @@ const SelectSchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute || '0'}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute || '0'}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
@@ -44,7 +44,7 @@ const SelectSchema = (props: BaseRendererProps) => {
               className="enum-item-schema schema-item-form"
               id={optionNodeKey}
               key={optionNodeKey}
-              // indexRoute={curIndexRoute}
+              data-indexRoute={curIndexRoute}
               disabled={true}
               title={optionItemRender({
                 indexRoute: curIndexRoute,

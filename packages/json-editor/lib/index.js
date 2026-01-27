@@ -994,7 +994,8 @@
               ((this.state = void 0),
                 (this.pageScreen = 'mobileScreen'),
                 (this.jsonSchema = {}),
-                (this.state = { rootJSONStore: e }));
+                (this.state = { rootJSONStore: e }),
+                (0, m.makeObservable)(this));
             }
             var t = e.prototype;
             return (
@@ -1129,7 +1130,8 @@
                   input: '用户输入',
                 }),
                 (this.onChange = function () {}),
-                (this.state = { rootJSONStore: e }));
+                (this.state = { rootJSONStore: e }),
+                (0, m.makeObservable)(this));
             }
             var t = e.prototype;
             return (

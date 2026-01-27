@@ -29,8 +29,8 @@ const QuantitySchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
@@ -39,8 +39,8 @@ const QuantitySchema = (props: BaseRendererProps) => {
         className={'quantity-unit-item-schema schema-item-form'}
         id={`${nodeKey}-${unitJsonKey}`}
         key={`${nodeKey}-${unitJsonKey}`}
-        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        // jsonKey={unitJsonKey}
+        data-indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        data-jsonKey={unitJsonKey}
         disabled={true}
         title={getTreeNodeTitleCont({
           ...props,
@@ -58,8 +58,8 @@ const QuantitySchema = (props: BaseRendererProps) => {
         className={'quantity-typeSelect-item-schema schema-item-form'}
         id={`${nodeKey}-quantity`}
         key={`${nodeKey}-quantity`}
-        // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-        // jsonKey={'quantity'}
+        data-indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+        data-jsonKey={'quantity'}
         disabled={true}
         title={getTypeSelectCont({
           ...props,

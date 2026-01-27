@@ -22,8 +22,8 @@ const GeneralSchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont(props)}
     ></TreeNode>
   );

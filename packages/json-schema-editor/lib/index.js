@@ -428,7 +428,8 @@
                   }
                   ((n.propertyOrder = [].concat(o, r, i, s, c, l, d, m)),
                     e.jsonSchemaChange(!1));
-                }));
+                }),
+                (0, h.makeObservable)(this));
             }
             var n = e.prototype;
             return (

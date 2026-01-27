@@ -1,4 +1,4 @@
-import { observable, computed, action, toJS } from 'mobx';
+import { observable, computed, action, toJS, makeObservable } from 'mobx';
 import {
   schema2json,
   isNewSchemaData,
@@ -45,6 +45,8 @@ export default class JSONSchemaStore {
     this.state = {
       rootJSONStore: rootJSONStore, // 初始化一份rootJSONStore
     };
+    // MobX 6.x 要求：使用装饰器时需要在构造函数中调用 makeObservable
+    makeObservable(this);
   }
 
   /**

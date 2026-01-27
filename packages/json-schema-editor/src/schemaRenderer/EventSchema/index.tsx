@@ -34,7 +34,7 @@ const EventSchema = (props: BaseRendererProps) => {
       id={nodeKey}
       key={nodeKey}
       //indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
@@ -43,8 +43,8 @@ const EventSchema = (props: BaseRendererProps) => {
         className={'event-type-item-schema schema-item-form'}
         id={`${nodeKey}-type`}
         key={`${nodeKey}-type`}
-        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        // jsonKey={'type'}
+        data-indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        data-jsonKey={'type'}
         disabled={true}
         title={getTypeSelectCont({
           ...props,
@@ -60,8 +60,8 @@ const EventSchema = (props: BaseRendererProps) => {
           className={'event-register-item-schema schema-item-form'}
           id={`${nodeKey}-register-${typeJsonObj.default}`}
           key={`${nodeKey}-register-${typeJsonObj.default}`}
-          // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-          // jsonKey={'register'}
+          data-indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+          data-jsonKey={'register'}
           disabled={true}
           title={getTreeNodeTitleCont({
             ...props,
@@ -81,8 +81,8 @@ const EventSchema = (props: BaseRendererProps) => {
           className={'event-actionFunc-item-schema schema-item-form'}
           id={`${nodeKey}-actionFunc-${typeJsonObj.default}`}
           key={`${nodeKey}-actionFunc-${typeJsonObj.default}`}
-          // indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
-          // jsonKey={'actionFunc'}
+          data-indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
+          data-jsonKey={'actionFunc'}
           disabled={true}
           title={getTreeNodeTitleCont({
             ...props,
@@ -102,8 +102,8 @@ const EventSchema = (props: BaseRendererProps) => {
           className={'event-trigger-item-schema schema-item-form'}
           id={`${nodeKey}-trigger-${typeJsonObj.default}`}
           key={`${nodeKey}-trigger-${typeJsonObj.default}`}
-          // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-          // jsonKey={'trigger'}
+          data-indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+          data-jsonKey={'trigger'}
           disabled={true}
           title={getTreeNodeTitleCont({
             ...props,
@@ -124,7 +124,7 @@ const EventSchema = (props: BaseRendererProps) => {
           id={`${nodeKey}-eventData-${typeJsonObj.default}`}
           key={`${nodeKey}-eventData-${typeJsonObj.default}`}
           //indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
-          // jsonKey={'eventData'}
+          data-jsonKey={'eventData'}
           disabled={true}
           title={getTreeNodeTitleCont({
             ...props,

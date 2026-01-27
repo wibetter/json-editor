@@ -28,8 +28,8 @@ const DynamicDataSchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
@@ -38,8 +38,8 @@ const DynamicDataSchema = (props: BaseRendererProps) => {
         className={'dataSource-type-item-schema schema-item-form'}
         id={`${nodeKey}-type`}
         key={`${nodeKey}-type`}
-        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        // jsonKey={'type'}
+        data-indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        data-jsonKey={'type'}
         disabled={true}
         title={getTypeSelectCont({
           ...props,
@@ -54,8 +54,8 @@ const DynamicDataSchema = (props: BaseRendererProps) => {
         className={'dataSource-config-item-schema schema-item-form'}
         id={`${nodeKey}-config-${dataJsonObj.type}`}
         key={`${nodeKey}-config-${dataJsonObj.type}`}
-        // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-        // jsonKey={'config'}
+        data-indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+        data-jsonKey={'config'}
         disabled={true}
         title={getTreeNodeTitleCont({
           ...props,
@@ -73,8 +73,8 @@ const DynamicDataSchema = (props: BaseRendererProps) => {
         className={'dataSource-data-item-schema schema-item-form'}
         id={`${nodeKey}-data-${dataJsonObj.type}`}
         key={`${nodeKey}-data-${dataJsonObj.type}`}
-        // indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
-        // jsonKey={'data'}
+        data-indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
+        data-jsonKey={'data'}
         disabled={true}
         title={getTreeNodeTitleCont({
           ...props,

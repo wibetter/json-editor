@@ -21,16 +21,16 @@ const ApiSchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       title={<BaseFormSchema {...props} />}
     >
       <TreeNode
         className={'api-url-item-schema schema-item-form'}
         id={`${nodeKey}-url`}
         key={`${nodeKey}-url`}
-        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        // jsonKey={'url'}
+        data-indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        data-jsonKey={'url'}
         title={
           <BaseFormSchema
             {...props}
@@ -49,7 +49,7 @@ const ApiSchema = (props: BaseRendererProps) => {
         className={'api-method-item-schema schema-item-form'}
         id={`${nodeKey}-method`}
         key={`${nodeKey}-method`}
-        // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+        data-indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
         //jsonKey={'method'}
         title={
           <BaseFormSchema
@@ -69,8 +69,8 @@ const ApiSchema = (props: BaseRendererProps) => {
         className={'api-headers-item-schema schema-item-form'}
         id={`${nodeKey}-headers`}
         key={`${nodeKey}-headers`}
-        // indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
-        // jsonKey={'headers'}
+        data-indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
+        data-jsonKey={'headers'}
         title={
           <BaseFormSchema
             {...props}
@@ -89,8 +89,8 @@ const ApiSchema = (props: BaseRendererProps) => {
         className={'api-data-item-schema schema-item-form'}
         id={`${nodeKey}-data`}
         key={`${nodeKey}-data`}
-        // indexRoute={indexRoute ? `${indexRoute}-3` : '3'}
-        // jsonKey={'data'}
+        data-indexRoute={indexRoute ? `${indexRoute}-3` : '3'}
+        data-jsonKey={'data'}
         title={
           <BaseFormSchema
             {...props}

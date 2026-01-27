@@ -47,8 +47,8 @@ const DataSourceSchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       title={getTreeNodeTitleCont({
         ...props,
       })}
@@ -57,8 +57,8 @@ const DataSourceSchema = (props: BaseRendererProps) => {
         className={'dataSource-type-item-schema schema-item-form'}
         id={`${nodeKey}-type`}
         key={`${nodeKey}-type`}
-        // indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
-        // jsonKey={'type'}
+        data-indexRoute={indexRoute ? `${indexRoute}-0` : '0'}
+        data-jsonKey={'type'}
         disabled={true}
         title={getTypeSelectCont({
           ...props,
@@ -74,8 +74,8 @@ const DataSourceSchema = (props: BaseRendererProps) => {
         className={'dataSource-data-item-schema schema-item-form'}
         id={`${nodeKey}-data-${dataJsonObj.type}`}
         key={`${nodeKey}-data-${dataJsonObj.type}`}
-        // indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
-        // jsonKey={'data'}
+        data-indexRoute={indexRoute ? `${indexRoute}-1` : '1'}
+        data-jsonKey={'data'}
         disabled={true}
         title={getTreeNodeTitleCont({
           ...props,
@@ -93,8 +93,8 @@ const DataSourceSchema = (props: BaseRendererProps) => {
         className={'dataSource-filter-item-schema schema-item-form'}
         id={`${nodeKey}-filter`}
         key={`${nodeKey}-filter`}
-        // indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
-        // jsonKey={'filter'}
+        data-indexRoute={indexRoute ? `${indexRoute}-2` : '2'}
+        data-jsonKey={'filter'}
         disabled={true}
         title={getTreeNodeTitleCont({
           ...props,

@@ -80,8 +80,8 @@ const ObjectSchema = (props: BaseRendererProps) => {
       className={`${curType}-schema schema-item-form`}
       id={nodeKey}
       key={nodeKey}
-      // indexRoute={indexRoute}
-      // jsonKey={jsonKey}
+      data-indexRoute={indexRoute}
+      data-jsonKey={jsonKey}
       disabled={isFixed}
       title={getTreeNodeTitleCont({
         ...props,

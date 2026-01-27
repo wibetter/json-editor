@@ -1,4 +1,4 @@
-import { observable, computed, action, toJS } from 'mobx'; // mobx 5.0 写法
+import { observable, computed, action, toJS, makeObservable } from 'mobx'; // mobx 6.x 写法
 import { message } from 'antd';
 import { pick } from 'lodash';
 import { isEqual, objClone, isFunction } from '$utils/index';
@@ -23,6 +23,12 @@ const initInputData = TypeDataList.input;
 export default class JSONSchemaStore {
   /** 主要用于自动生成jsonKey中的index */
   curJsonKeyIndex = 1; // 非响应式
+
+  // 构造函数
+  constructor() {
+    // MobX 6.x 要求：使用装饰器时需要在构造函数中调用 makeObservable
+    makeObservable(this);
+  }
 
   /**
    * triggerChange: 用于强制触发更新事件
