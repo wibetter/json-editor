@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Collapse, Tabs } from 'antd';
+// import type { TabPosition, TabType } from 'antd';
 const { Panel } = Collapse;
 const { TabPane } = Tabs;
 import MappingRender from '$core/MappingRender'; // 普通模式
@@ -31,14 +32,16 @@ interface JSONEditorProps {
   jsonData?: any;
   dynamicDataList?: any[];
   options?: any;
+  // 标签栏位置，默认居中。viewStyle 设置成 tabs 时有效
+  tabPosition?: any; // 'top' | 'bottom' | 'left' | 'right' | 'center';
+  tabType?: any; // 'line' | 'card' | 'editable-card';
   schemaStore: SchemaStore;
   jsonStore: JSONStore;
   [key: string]: any;
 }
 
 interface JSONDataEditorState {
-  jsonView: boolean;
-  viewStyle: 'fold' | 'tabs';
+  // viewStyle: 'fold' | 'tabs';
 }
 
 class JSONDataEditor extends React.PureComponent<
@@ -47,11 +50,6 @@ class JSONDataEditor extends React.PureComponent<
 > {
   constructor(props: JSONEditorProps) {
     super(props);
-
-    this.state = {
-      jsonView: props.jsonView || false, // 是否显示code模式，默认不显示code模式
-      viewStyle: this.catchViewStyle(props.viewStyle || 'fold'), // 默认为fold（可折叠面板），可选：tabs:（tabs切换面板）
-    };
 
     const { initJSONSchemaData, setPageScreen } = this.props.schemaStore || {};
     const { initJSONData, initOnChange, setDynamicDataList, setOptions } =
@@ -89,7 +87,7 @@ class JSONDataEditor extends React.PureComponent<
   }
 
   /* 获取schema展示风格模式 */
-  catchViewStyle = (viewStyle: string) => {
+  catchViewStyle = (viewStyle?: string) => {
     switch (viewStyle) {
       case 'fold':
         return 'fold';
@@ -116,18 +114,6 @@ class JSONDataEditor extends React.PureComponent<
     /** 2. 初始化jsonData */
     if (!isEqual(nextProps.jsonData, JSONEditorObj)) {
       initJSONData(nextProps.jsonData);
-    }
-    // 读取code模式配置
-    if (!isEqual(nextProps.jsonView, this.props.jsonView)) {
-      this.setState({
-        jsonView: nextProps.jsonView ?? false,
-      });
-    }
-    // 读取展示模式配置
-    if (!isEqual(nextProps.viewStyle, this.props.viewStyle)) {
-      this.setState({
-        viewStyle: this.catchViewStyle(nextProps.viewStyle),
-      });
     }
     if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
       setPageScreen(nextProps.wideScreen);
@@ -162,14 +148,21 @@ class JSONDataEditor extends React.PureComponent<
   };
 
   render() {
-    const { schemaStore, jsonStore, jsonViewReadOnly } = this.props;
+    const {
+      schemaStore,
+      jsonStore,
+      jsonView,
+      jsonViewReadOnly,
+      tabPosition,
+      tabType,
+    } = this.props;
     const { jsonSchema, lastUpdateTime } = schemaStore || {};
     const {
       JSONEditorObj,
       lastUpdateTime: jsonLastUpdateTime,
       jsonChange,
     } = jsonStore || {};
-    const { jsonView, viewStyle } = this.state;
+    const viewStyle = this.catchViewStyle(this.props.viewStyle);
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isStructured = isStructuredSchema(jsonSchema); // 判断是否是结构化的schema数据
     /**
@@ -244,6 +237,8 @@ class JSONDataEditor extends React.PureComponent<
                     defaultActiveKey={jsonSchema.propertyOrder[0]}
                     centered={true}
                     hideAdd={true}
+                    tabPosition={tabPosition ?? 'center'}
+                    type={tabType ?? 'line'}
                   >
                     {jsonSchema.propertyOrder.map(
                       (key: string, index: number) => {

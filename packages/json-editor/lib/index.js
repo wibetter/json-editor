@@ -7291,10 +7291,6 @@
                     default:
                       return '属性设置';
                   }
-                }),
-                (n.state = {
-                  jsonView: t.jsonView || !1,
-                  viewStyle: n.catchViewStyle(t.viewStyle || 'fold'),
                 }));
               var a = n.props.schemaStore || {},
                 o = a.initJSONSchemaData,
@@ -7320,105 +7316,97 @@
             var n = t.prototype;
             return (
               (n.componentWillReceiveProps = function (e) {
-                var t,
-                  n = this.props.schemaStore || {},
-                  a = n.JSONSchemaChange,
-                  o = n.setPageScreen,
-                  l = this.props.jsonStore || {},
-                  r = l.JSONEditorObj,
-                  i = l.initJSONData,
-                  s = l.initOnChange,
-                  c = l.setDynamicDataList,
-                  u = l.setOptions;
+                var t = this.props.schemaStore || {},
+                  n = t.JSONSchemaChange,
+                  a = t.setPageScreen,
+                  o = this.props.jsonStore || {},
+                  l = o.JSONEditorObj,
+                  r = o.initJSONData,
+                  i = o.initOnChange,
+                  s = o.setDynamicDataList,
+                  c = o.setOptions;
                 ((0, d.isEqualByIdT)(e.schemaData, this.props.schemaData) ||
-                  a(e.schemaData),
-                  (0, d.isEqual)(e.jsonData, r) || i(e.jsonData),
-                  (0, d.isEqual)(e.jsonView, this.props.jsonView) ||
-                    this.setState({
-                      jsonView: null !== (t = e.jsonView) && void 0 !== t && t,
-                    }),
-                  (0, d.isEqual)(e.viewStyle, this.props.viewStyle) ||
-                    this.setState({
-                      viewStyle: this.catchViewStyle(e.viewStyle),
-                    }),
+                  n(e.schemaData),
+                  (0, d.isEqual)(e.jsonData, l) || r(e.jsonData),
                   (0, d.isEqual)(e.wideScreen, this.props.wideScreen) ||
-                    o(e.wideScreen),
+                    a(e.wideScreen),
                   (0, d.isEqual)(e.onChange, this.props.onChange) ||
-                    s(e.onChange),
+                    i(e.onChange),
                   (0, d.isEqual)(
                     e.dynamicDataList,
                     this.props.dynamicDataList,
-                  ) || c(e.dynamicDataList),
+                  ) || s(e.dynamicDataList),
                   (0, d.isEqual)(e.options, this.props.options) ||
-                    u(e.options));
+                    c(e.options));
               }),
               (n.render = function () {
                 var e = this,
                   t = this.props,
                   n = t.schemaStore,
                   a = t.jsonStore,
-                  l = t.jsonViewReadOnly,
-                  r = n || {},
-                  i = r.jsonSchema,
-                  s = r.lastUpdateTime,
-                  c = a || {},
-                  u = c.JSONEditorObj,
+                  l = t.jsonView,
+                  r = t.jsonViewReadOnly,
+                  i = t.tabPosition,
+                  s = t.tabType,
+                  c = n || {},
+                  u = c.jsonSchema,
                   p = c.lastUpdateTime,
-                  m = c.jsonChange,
-                  y = this.state,
-                  h = y.jsonView,
-                  _ = y.viewStyle,
-                  g = (0, d.isEmptySchema)(i),
-                  f = (0, d.isStructuredSchema)(i);
+                  m = a || {},
+                  y = m.JSONEditorObj,
+                  h = m.lastUpdateTime,
+                  _ = m.jsonChange,
+                  g = this.catchViewStyle(this.props.viewStyle),
+                  f = (0, d.isEmptySchema)(u),
+                  v = (0, d.isStructuredSchema)(u);
                 return o.createElement(
                   'div',
                   { className: 'json-editor-container' },
-                  g &&
+                  f &&
                     o.createElement(
                       'p',
                       { className: 'json-editor-empty' },
                       '当前jsonSchema没有数据内容',
                     ),
-                  !g &&
-                    !h &&
+                  !f &&
+                    !l &&
                     o.createElement(
                       o.Fragment,
                       null,
-                      f &&
+                      v &&
                         o.createElement(
                           o.Fragment,
                           null,
-                          'fold' === _ &&
+                          'fold' === g &&
                             o.createElement(
                               S.Collapse,
                               {
-                                defaultActiveKey: i.propertyOrder,
+                                defaultActiveKey: u.propertyOrder,
                                 expandIconPosition: 'right',
                                 bordered: !1,
                               },
-                              i.propertyOrder.map(function (t, l) {
+                              u.propertyOrder.map(function (t, l) {
                                 var r = l,
-                                  c = t,
-                                  u = t,
-                                  m = i.properties[u],
-                                  d = m.type,
-                                  y = s + '-' + p + '-' + d + '-' + u;
-                                return m.propertyOrder &&
-                                  m.propertyOrder.length > 0
+                                  i = t,
+                                  s = t,
+                                  c = u.properties[s],
+                                  m = c.type,
+                                  d = p + '-' + h + '-' + m + '-' + s;
+                                return c.propertyOrder &&
+                                  c.propertyOrder.length > 0
                                   ? o.createElement(
                                       Te,
                                       {
-                                        header: m.title || e.renderHeader(d),
+                                        header: c.title || e.renderHeader(m),
                                         key: t + '-' + l,
                                       },
                                       De({
-                                        parentType: d,
-                                        jsonKey: u,
+                                        parentType: m,
+                                        jsonKey: s,
                                         indexRoute: r,
-                                        keyRoute: c,
-                                        nodeKey: y,
-                                        targetJsonSchema: m,
-                                        isStructuredSchema: f,
+                                        keyRoute: i,
+                                        nodeKey: d,
+                                        targetJsonSchema: c,
+                                        isStructuredSchema: v,
                                         schemaStore: n,
                                         jsonStore: a,
                                       }),
@@ -7426,40 +7414,42 @@
                                   : '';
                               }),
                             ),
-                          'tabs' === _ &&
+                          'tabs' === g &&
                             o.createElement(
                               S.Tabs,
                               {
                                 className: 'tabs-schema-box',
-                                defaultActiveKey: i.propertyOrder[0],
+                                defaultActiveKey: u.propertyOrder[0],
                                 centered: !0,
                                 hideAdd: !0,
+                                tabPosition: null != i ? i : 'center',
+                                type: null != s ? s : 'line',
                               },
-                              i.propertyOrder.map(function (t, l) {
+                              u.propertyOrder.map(function (t, l) {
                                 var r = l,
-                                  c = t,
-                                  u = t,
-                                  m = i.properties[u],
-                                  d = m.type,
-                                  y = s + '-' + p + '-' + d + '-' + u;
-                                return m.propertyOrder &&
-                                  m.propertyOrder.length > 0
+                                  i = t,
+                                  s = t,
+                                  c = u.properties[s],
+                                  m = c.type,
+                                  d = p + '-' + h + '-' + m + '-' + s;
+                                return c.propertyOrder &&
+                                  c.propertyOrder.length > 0
                                   ? o.createElement(
                                       Pe,
                                       {
-                                        tab: m.title || e.renderHeader(d),
+                                        tab: c.title || e.renderHeader(m),
                                         key: t + '-' + l,
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
                                       De({
-                                        parentType: d,
-                                        jsonKey: u,
+                                        parentType: m,
+                                        jsonKey: s,
                                         indexRoute: r,
-                                        keyRoute: c,
-                                        nodeKey: y,
-                                        targetJsonSchema: m,
-                                        isStructuredSchema: f,
+                                        keyRoute: i,
+                                        nodeKey: d,
+                                        targetJsonSchema: c,
+                                        isStructuredSchema: v,
                                         schemaStore: n,
                                         jsonStore: a,
                                       }),
@@ -7468,7 +7458,7 @@
                               }),
                             ),
                         ),
-                      !f &&
+                      !v &&
                         o.createElement(
                           o.Fragment,
                           null,
@@ -7478,18 +7468,18 @@
                             indexRoute: '',
                             keyRoute: '',
                             nodeKey: '',
-                            targetJsonSchema: i,
+                            targetJsonSchema: u,
                             schemaStore: n,
                             jsonStore: a,
                           }),
                         ),
                     ),
-                  !g &&
-                    h &&
+                  !f &&
+                    l &&
                     o.createElement(N, {
-                      jsonData: u,
-                      readOnly: null == l || l,
-                      onChange: m,
+                      jsonData: y,
+                      readOnly: null == r || r,
+                      onChange: _,
                       maxLines: 30,
                     }),
                 );

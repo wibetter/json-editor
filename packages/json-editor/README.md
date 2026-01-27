@@ -76,6 +76,8 @@ class IndexDemo extends React.PureComponent {
 | name         | type     | default | desc                            |
 | ------------ | -------- | ------- | ------------------------------- |
 | `viewStyle`  | string   | fold    | 非必填，默认为fold（可折叠面板），可选：tabs:（tabs切换面板）|
+| `tabPosition`  | string   | center    | 非必填，标签栏位置，默认居中。viewStyle 设置成 tabs 时有效，可选：'top'、'bottom'、'left'、'right'、'center'。|
+| `tabType`  | string   | line    | 非必填，标签样式。viewStyle 设置成 tabs 时有效，可选：'line'、'card'、'editable-card'。|
 | `jsonView`   | boolean  | false   | 非必填，是否开启全局源码模式，默认不开启      |
 | `wideScreen` | boolean  | false   | 非必填，宽屏模式/小屏模式, 默认是小屏模式     |
 | `schemaData` | object   | {}      | 非必填，json的结构数据，备注：schemaData为空而jsonData不为空时，会自动通过jsonData生产一份应的schemaData                    |
