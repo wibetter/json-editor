@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { Switch } from 'antd';
+import { Switch, Select } from 'antd';
 import JSONSchemaEditor from './packages/json-schema-editor/lib/index';
 import JSONEditor from './packages/json-editor/lib/index';
 import './packages/json-schema-editor/lib/index.css';
@@ -523,6 +523,8 @@ class IndexDemo extends React.PureComponent {
       jsonView: false,
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
+      tabPosition: 'top', // 标签栏位置
+      tabType: 'line', // 标签样式
       curTypeList: {},
       jsonViewReadOnly: true,
     };
@@ -537,6 +539,8 @@ class IndexDemo extends React.PureComponent {
       jsonView,
       schemaCodeView,
       viewStyle,
+      tabPosition,
+      tabType,
       curTypeList,
       options,
       jsonViewReadOnly,
@@ -626,6 +630,40 @@ class IndexDemo extends React.PureComponent {
                   });
                 }}
               />
+              {viewStyle === 'tabs' && (
+                <>
+                  &nbsp;&nbsp;
+                  <b>标签位置</b>: &nbsp;&nbsp;
+                  <Select
+                    style={{ width: 100, display: 'inline-block' }}
+                    value={tabPosition}
+                    onChange={(value) => {
+                      this.setState({
+                        tabPosition: value,
+                      });
+                    }}
+                  >
+                    <Select.Option value="top">上</Select.Option>
+                    <Select.Option value="bottom">下</Select.Option>
+                    <Select.Option value="left">左</Select.Option>
+                    <Select.Option value="right">右</Select.Option>
+                  </Select>
+                  &nbsp;&nbsp;
+                  <b>标签样式</b>: &nbsp;&nbsp;
+                  <Select
+                    style={{ width: 120, display: 'inline-block' }}
+                    value={tabType}
+                    onChange={(value) => {
+                      this.setState({
+                        tabType: value,
+                      });
+                    }}
+                  >
+                    <Select.Option value="line">线条</Select.Option>
+                    <Select.Option value="card">卡片</Select.Option>
+                  </Select>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -655,6 +693,8 @@ class IndexDemo extends React.PureComponent {
               jsonData={jsonData}
               dynamicDataList={dynamicDataList}
               options={options}
+              tabPosition={tabPosition}
+              tabType={tabType}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
                 this.setState({
