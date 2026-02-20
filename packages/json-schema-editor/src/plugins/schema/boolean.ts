@@ -22,7 +22,6 @@ const booleanDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema(
-    'boolean 高级配置',
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,

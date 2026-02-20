@@ -162,14 +162,9 @@ class BaseFormSchema extends React.PureComponent<
     // 从 schemaRegistry 获取当前类型的描述
     const descriptor = curType ? schemaRegistry.get(curType) : undefined;
 
-    // 特殊属性优先级：props传入 > descriptor定义 > schema数据 > 默认值
-    const isFixed =
-      targetJsonSchema.isFixed ||
-      this.props.isFixed ||
-      descriptor?.isFixed ||
-      false;
+    const isFixed = descriptor?.isFixed || false;
 
-    const readOnly = this.props.readOnly || targetJsonSchema.readOnly || false;
+    const readOnly = descriptor?.readOnly || false;
 
     const keyIsFixed =
       this.props.keyIsFixed !== undefined

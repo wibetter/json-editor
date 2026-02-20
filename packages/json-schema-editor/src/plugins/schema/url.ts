@@ -23,7 +23,6 @@ const urlDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema(
-    'url 高级配置',
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,

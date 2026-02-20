@@ -3,9 +3,8 @@ import { schemaRegistry } from '$core/registry';
 import { buildPropsSchema, EDITABLE_PROPS } from '$core/schema';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 
-const datePropsSchema = (title: string) =>
+const datePropsSchema = () =>
   buildPropsSchema(
-    title,
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,
@@ -41,7 +40,7 @@ export const dateDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: datePropsSchema('date 高级配置'),
+  propsSchema: datePropsSchema(),
 };
 
 /**
@@ -61,7 +60,7 @@ export const dateTimeDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: datePropsSchema('date-time 高级配置'),
+  propsSchema: datePropsSchema(),
 };
 
 /**
@@ -81,7 +80,7 @@ export const timeDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: datePropsSchema('time 高级配置'),
+  propsSchema: datePropsSchema(),
 };
 
 schemaRegistry.registerAll([

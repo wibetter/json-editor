@@ -19,14 +19,11 @@ const datasourceDescriptor: SchemaDescriptor = {
     type: 'datasource',
     title: '静态数据源',
     description: '',
-    isContainer: false,
-    isFixed: true,
     properties: {},
     propertyOrder: [],
   },
 
   propsSchema: buildPropsSchema(
-    'datasource 高级配置',
     {
       showCodeViewBtn: {
         type: 'boolean',

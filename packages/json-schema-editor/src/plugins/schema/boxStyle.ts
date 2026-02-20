@@ -38,7 +38,7 @@ const boxStyleDescriptor: SchemaDescriptor = {
     propertyOrder: ['unit', 'quantity'],
   },
 
-  propsSchema: buildPropsSchema('box-style 高级配置', {}, []),
+  propsSchema: buildPropsSchema({}, []),
 
   renderer: QuantitySchema,
 };

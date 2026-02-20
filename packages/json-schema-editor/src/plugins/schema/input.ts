@@ -23,7 +23,6 @@ const inputDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema(
-    'input 高级配置',
     {
       ...EDITABLE_PROPS,
       isConditionProp: EDITABLE_PROPS.isConditionProp,

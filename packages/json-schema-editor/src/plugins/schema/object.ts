@@ -30,7 +30,6 @@ const objectDescriptor: SchemaDescriptor = {
   },
 
   propsSchema: buildPropsSchema(
-    'object 高级配置',
     {
       showCodeViewBtn: {
         type: 'boolean',

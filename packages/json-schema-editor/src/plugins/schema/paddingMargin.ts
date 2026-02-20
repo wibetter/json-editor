@@ -57,7 +57,6 @@ const paddingMarginDescriptor: SchemaDescriptor = {
   },
 
   propsSchema: buildPropsSchema(
-    'padding-margin 高级配置',
     {
       autoComplete: {
         type: 'boolean',

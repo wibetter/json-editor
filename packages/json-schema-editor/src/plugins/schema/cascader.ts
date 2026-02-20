@@ -46,7 +46,6 @@ const cascaderDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema(
-    'cascader 高级配置',
     {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,

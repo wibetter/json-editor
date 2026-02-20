@@ -34,7 +34,6 @@ const arrayDescriptor: SchemaDescriptor = {
   },
 
   propsSchema: buildPropsSchema(
-    'array 高级配置',
     {
       showCodeViewBtn: {
         type: 'boolean',

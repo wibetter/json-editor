@@ -23,7 +23,6 @@ const textEditorDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema(
-    'text-editor 高级配置',
     {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,

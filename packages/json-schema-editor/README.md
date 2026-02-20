@@ -71,3 +71,98 @@ class IndexDemo extends React.PureComponent {
 | `data`       | object   | {}      | 必填项，json schema（带结构的json数据）    |
 | `onChange`   | function | () => {}  | schemaData内容变动时会触发onChange |
 
+## 自定义 Schema
+
+从 v7.0.0 起，支持通过 `SchemaDescriptor` 描述文件注册自定义 Schema 类型。注册后，自定义类型会出现在类型选择下拉列表中，并在编辑区以自定义渲染器或通用渲染器呈现。
+
+### SchemaDescriptor 字段说明
+
+| 字段              | 类型                          | 必填 | 说明                                                 |
+| ----------------- | ----------------------------- | ---- | ---------------------------------------------------- |
+| `type`            | string                        | ✅   | 类型唯一标识，与 JSONSchema 中的 `type` 字段对应      |
+| `label`           | string                        | ✅   | 在类型选择下拉中展示的名称                            |
+| `isContainer`     | boolean                       | ✅   | 是否为容器类型（支持添加子元素）                      |
+| `defaultSchema`   | object                        | ✅   | 新建该类型时的初始 schema 数据                        |
+| `propsSchema`     | PropsSchema                   | ✅   | 高级配置面板的 schema，由 `buildPropsSchema` 构建     |
+| `renderer`        | (props: any) => ReactNode     | ❌   | 自定义渲染函数，不提供则降级使用通用渲染器             |
+| `isFixed`         | boolean                       | ❌   | 元素是否固定（不可复制/拖拽/删除）                    |
+| `keyIsFixed`      | boolean                       | ❌   | key 字段是否不可编辑                                  |
+| `typeIsFixed`     | boolean                       | ❌   | type 字段是否不可编辑                                 |
+| `readOnly`        | boolean                       | ❌   | 是否只读（不可编辑）                                  |
+| `hideOperaBtn`    | boolean                       | ❌   | 是否隐藏操作按钮（增删复制拖拽）                      |
+
+### 注册自定义 Schema 示例
+
+以下示例展示如何注册一个 `slider`（滑块）类型的自定义 Schema：
+
+**第一步：创建描述文件 `sliderPlugin.ts`**
+
+```ts
+import JSONSchemaEditor, { schemaRegistry, buildPropsSchema } from '@wibetter/json-schema-editor';
+
+// 定义 slider 类型描述文件
+const sliderDescriptor = {
+  type: 'slider',
+  label: '滑块',
+  isContainer: false,
+
+  // 新建该类型时的初始 schema
+  defaultSchema: {
+    type: 'slider',
+    title: '滑块',
+    description: '',
+    default: 0,
+    min: 0,
+    max: 100,
+    step: 1,
+  },
+
+  // 高级配置面板的 schema（由 buildPropsSchema 构建，会自动合并通用配置项）
+  propsSchema: buildPropsSchema(
+    'slider 高级配置',
+    {
+      min: {
+        type: 'number',
+        title: '最小值',
+        description: '滑块的最小值',
+      },
+      max: {
+        type: 'number',
+        title: '最大值',
+        description: '滑块的最大值',
+      },
+      step: {
+        type: 'number',
+        title: '步长',
+        description: '每次滑动的步长',
+      },
+    },
+    ['min', 'max', 'step'],
+  ),
+};
+
+// 注册到 JSONSchemaEditor
+registerSchema(sliderDescriptor);
+```
+
+**第二步：在入口文件中引入插件（确保注册在 `JSONSchemaEditor` 渲染前执行）**
+
+```js
+import './sliderPlugin'; // 引入即触发注册
+import JSONSchemaEditor from '@wibetter/json-schema-editor';
+```
+
+### 访问 schemaRegistry
+
+可通过 `schemaRegistry` 查询已注册的所有 Schema 类型：
+
+```ts
+import JSONSchemaEditor, { schemaRegistry } from '@wibetter/json-schema-editor';
+
+// 获取某个类型的描述文件
+const sliderDescriptor = schemaRegistry.get('slider');
+
+// 获取所有已注册类型
+const allTypes = Array.from(schemaRegistry.keys());
+```
+

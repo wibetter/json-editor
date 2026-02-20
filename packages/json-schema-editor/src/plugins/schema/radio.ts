@@ -27,7 +27,6 @@ const radioDescriptor: SchemaDescriptor = {
   renderer: SelectSchema,
 
   propsSchema: buildPropsSchema(
-    'radio 高级配置',
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,

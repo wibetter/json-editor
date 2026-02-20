@@ -3,9 +3,8 @@ import { schemaRegistry } from '$core/registry';
 import { buildPropsSchema, EDITABLE_PROPS } from '$core/schema';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 
-const jsonCodePropsSchema = (title: string) =>
+const jsonCodePropsSchema = () =>
   buildPropsSchema(
-    title,
     {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,
@@ -41,7 +40,7 @@ export const jsonDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: jsonCodePropsSchema('json 高级配置'),
+  propsSchema: jsonCodePropsSchema(),
 };
 
 /**
@@ -62,7 +61,7 @@ export const codeareaDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: jsonCodePropsSchema('codearea 高级配置'),
+  propsSchema: jsonCodePropsSchema(),
 };
 
 /**
@@ -83,7 +82,7 @@ export const htmlareaDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: jsonCodePropsSchema('htmlarea 高级配置'),
+  propsSchema: jsonCodePropsSchema(),
 };
 
 schemaRegistry.registerAll([

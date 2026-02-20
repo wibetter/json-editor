@@ -4,8 +4,6 @@ import { Provider } from 'mobx-react';
 import JSONStore from '$store/index';
 import JSONSchema from '$components/JSONSchemaEditor/index';
 import { BaseRendererProps } from '$types/index';
-import { schemaRegistry } from '$core/index';
-import type { SchemaDescriptor } from '$core/index';
 // 导入内置 Schema
 import '$plugins/index';
 
@@ -41,27 +39,6 @@ export default class JSONSchemaEditor extends React.PureComponent<
     };
   }
 
-  /**
-   * 注册自定义元素类型（全局注册，影响所有 JSONSchemaEditor 实例）
-   */
-  static registerElement(descriptor: SchemaDescriptor): void {
-    schemaRegistry.register(descriptor);
-  }
-
-  /**
-   * 批量注册自定义元素类型
-   */
-  static registerElements(descriptors: SchemaDescriptor[]): void {
-    schemaRegistry.registerAll(descriptors);
-  }
-
-  /**
-   * 获取元素注册表实例（用于高级自定义场景）
-   */
-  static getRegistry() {
-    return schemaRegistry;
-  }
-
   render() {
     const { element } = this.props;
     const { schemaStore } = this.state;
@@ -80,5 +57,7 @@ export default class JSONSchemaEditor extends React.PureComponent<
   }
 }
 
-export { schemaRegistry };
+import { schemaRegistry, registerSchema, buildPropsSchema } from '$core/index';
+import type { SchemaDescriptor } from '$core/index';
+export { schemaRegistry, registerSchema, buildPropsSchema };
 export type { SchemaDescriptor };

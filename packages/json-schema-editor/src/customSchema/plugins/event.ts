@@ -19,8 +19,6 @@ const eventDescriptor: SchemaDescriptor = {
     type: 'event',
     title: '事件',
     description: '',
-    isContainer: false,
-    isFixed: true,
     properties: {
       type: {
         type: 'select',
@@ -35,7 +33,7 @@ const eventDescriptor: SchemaDescriptor = {
     propertyOrder: ['type'],
   },
 
-  propsSchema: buildPropsSchema('event 高级配置', {}, []),
+  propsSchema: buildPropsSchema({}, []),
 
   renderer: EventSchema,
 };

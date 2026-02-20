@@ -19,14 +19,11 @@ const dynamicDataDescriptor: SchemaDescriptor = {
     type: 'dynamic-data',
     title: '动态数据源',
     description: '',
-    isContainer: false,
-    isFixed: true,
     properties: {},
     propertyOrder: [],
   },
 
   propsSchema: buildPropsSchema(
-    'dynamic-data 高级配置',
     {
       showCodeViewBtn: {
         type: 'boolean',

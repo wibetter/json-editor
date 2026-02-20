@@ -22,7 +22,6 @@ const colorDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema(
-    'color 高级配置',
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,

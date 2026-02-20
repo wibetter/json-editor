@@ -27,7 +27,6 @@ const checkboxesDescriptor: SchemaDescriptor = {
   renderer: SelectSchema,
 
   propsSchema: buildPropsSchema(
-    'checkboxes 高级配置',
     {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,

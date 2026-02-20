@@ -61,13 +61,11 @@ export const EDITABLE_PROPS = {
  * 构建完整的 propsSchema（合并类型专属字段与通用字段）
  */
 export function buildPropsSchema(
-  title: string,
   typeSpecificProperties: Record<string, any>,
   typeSpecificOrder: string[],
 ) {
   return {
     type: 'object' as const,
-    title,
     wrapWithPanel: false,
     properties: {
       ...typeSpecificProperties,

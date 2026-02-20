@@ -3,8 +3,8 @@ import { inject, observer } from 'mobx-react';
 import { Tree, message } from 'antd';
 import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
 import MappingRender from '$core/MappingRender';
-import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
 import JsonView from '$components/JsonView';
+import { schemaRegistry } from '$core/registry';
 import {
   getParentIndexRoute,
   isEmptySchema,
@@ -13,6 +13,7 @@ import {
   moveForward,
 } from '@wibetter/json-utils';
 import { BaseRendererProps } from '$types/index';
+import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
 import './index.scss';
 
 class JSONSchema extends React.PureComponent<BaseRendererProps> {
@@ -49,8 +50,10 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     const { node } = eventData;
     const curIndexRoute = node.indexRoute || node['data-indexRoute'];
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    if (curJsonObj.isFixed) {
+    const descriptor = schemaRegistry.get(curJsonObj.type);
+    if (descriptor?.isFixed) {
       message.warning('当前元素不支持拖拽哦。');
+      return;
     }
   };
 
@@ -77,7 +80,8 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     const curJsonKey = dragNode.jsonKey || dragNode['data-jsonKey'];
     // 获取当前拖动的元素
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    if (curJsonObj.isFixed) return; // 固定类型元素不允许拖拽
+    const descriptor = schemaRegistry.get(curJsonObj.type);
+    if (descriptor?.isFixed) return; // 固定类型元素不允许拖拽
 
     // 放置的目标元素key
     let targetIndexRoute = node.indexRoute || node['data-indexRoute'];

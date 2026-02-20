@@ -42,7 +42,6 @@ const quantityDescriptor: SchemaDescriptor = {
   renderer: QuantitySchema,
 
   propsSchema: buildPropsSchema(
-    'quantity 高级配置',
     {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,

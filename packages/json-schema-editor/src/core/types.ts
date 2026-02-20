@@ -33,6 +33,9 @@ export interface SchemaDescriptor {
   /** 特殊属性：元素是否固定（不可复制/拖拽/删除） */
   isFixed?: boolean;
 
+  /** 特殊属性：是否只读（不可编辑） */
+  readOnly?: boolean;
+
   /** 特殊属性：只渲染子元素，不渲染自身（用于一级 object） */
   isOnlyShowChild?: boolean;
 

@@ -26,7 +26,6 @@ const selectDescriptor: SchemaDescriptor = {
   renderer: SelectSchema,
 
   propsSchema: buildPropsSchema(
-    'select 高级配置',
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,

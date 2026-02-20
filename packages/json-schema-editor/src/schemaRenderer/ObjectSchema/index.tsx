@@ -2,6 +2,7 @@ import React from 'react';
 import { Tree } from 'antd';
 import BaseFormSchema from '$components/BaseFormSchema/index';
 import MappingRender from '$core/MappingRender';
+import { schemaRegistry } from '$core/registry';
 import { BaseRendererProps } from '$types/index';
 const { TreeNode } = Tree;
 
@@ -61,7 +62,8 @@ const ObjectSchema = (props: BaseRendererProps) => {
   const { jsonKey, indexRoute, nodeKey, targetJsonSchema, isOnlyShowChild } =
     props;
   const curType = targetJsonSchema.type;
-  const isFixed = targetJsonSchema.isFixed;
+  const descriptor = schemaRegistry.get(curType);
+  const isFixed = descriptor?.isFixed;
 
   /** 先获取当前节点的properties内容 */
   const propertiesContElem = propertiesRender({

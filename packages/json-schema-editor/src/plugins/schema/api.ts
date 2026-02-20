@@ -55,7 +55,6 @@ const apiDescriptor: SchemaDescriptor = {
   },
 
   propsSchema: buildPropsSchema(
-    'api 高级配置',
     {
       showCodeViewBtn: {
         type: 'boolean',
