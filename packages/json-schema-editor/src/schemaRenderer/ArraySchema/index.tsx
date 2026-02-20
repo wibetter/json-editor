@@ -3,7 +3,7 @@ import { Tree } from 'antd';
 const { TreeNode } = Tree;
 
 import BaseFormSchema from '$components/BaseFormSchema/index';
-import MappingRender from '$schemaRenderer/MappingRender';
+import MappingRender from '$core/MappingRender';
 import { BaseRendererProps } from '$types/index';
 
 /** 渲染当前字段的表单项（Tree的单项内容） */

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tree, message } from 'antd';
 import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
-import MappingRender from '$schemaRenderer/MappingRender';
+import MappingRender from '$core/MappingRender';
 import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
 import JsonView from '$components/JsonView';
 import {
@@ -18,8 +18,7 @@ import './index.scss';
 class JSONSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props: BaseRendererProps) {
     super(props);
-    const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
-      this.props.schemaStore || {};
+    const { initJSONSchemaData, initOnChange } = this.props.schemaStore || {};
 
     // 根据props.data对jsonSchema进行初始化
     if (props.data) {
@@ -29,25 +28,16 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     if (props.onChange) {
       initOnChange(props.onChange);
     }
-    // 重置TypeList
-    if (props.typeList) {
-      initSchemaTypeList(props.typeList);
-    }
   }
 
   componentWillReceiveProps(nextProps: BaseRendererProps) {
-    const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
-      this.props.schemaStore || {};
+    const { initJSONSchemaData, initOnChange } = this.props.schemaStore || {};
     if (!isEqual(nextProps.data, this.props.data)) {
       initJSONSchemaData(nextProps.data);
     }
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
       initOnChange(nextProps.onChange);
-    }
-    // 重置TypeList
-    if (!isEqual(nextProps.typeList, this.props.typeList)) {
-      initSchemaTypeList(nextProps.typeList);
     }
   }
 
@@ -80,7 +70,6 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
       insertJsonData,
       deleteJsonByIndex,
       isExitJsonKey,
-      isSupportCurType,
     } = this.props.schemaStore || {};
 
     // 拖动的元素key
@@ -129,11 +118,6 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
         return;
       }
       const curType = curJsonObj.type;
-      const isSupportCurType_ = isSupportCurType(targetIndexRoute, curType);
-      if (!isSupportCurType_) {
-        message.warning(`目标位置不支持${curType}类型元素`);
-        return;
-      }
 
       // 跨级拖动时
       const curKeyRoute = indexRoute2keyRoute(curIndexRoute);

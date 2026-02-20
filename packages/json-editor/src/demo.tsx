@@ -80,128 +80,6 @@ class IndexDemo extends React.PureComponent<any, any> {
         lastUpdateTime: '2024-10-13T02:08:03.551Z',
       },
       jsonData: {},
-      dynamicDataList: [
-        {
-          id: 1,
-          projectId: 88,
-          name: 'getAttrs',
-          type: '1',
-          desc: '获取属性列表',
-          url: 'http://yapi.com/mock/522/test',
-          method: 'GET',
-          title: '属性列表',
-          headers: '',
-          options: '',
-          body: {
-            param1: {
-              title: '参数名称',
-              scope: 'static',
-              value: '111',
-            },
-            param2: {
-              title: '参数名称',
-              scope: 'window',
-              name: 'PARAM1',
-              value: '111',
-            },
-            pageId: {
-              title: '页面id',
-              scope: 'hash',
-              name: 'pId',
-              value: '111',
-            },
-            param5: {
-              title: '参数名称',
-              scope: 'url',
-              name: 'pageId',
-              value: '111',
-            },
-            param7: {
-              title: '参数名称',
-              scope: 'dynamic',
-              dataName: 'api3',
-              body: {
-                param2: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '222',
-                },
-                param3: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '333',
-                },
-              },
-            },
-          },
-          respMock:
-            '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
-          creatorId: '2',
-          createdTime: null,
-          updatedTime: null,
-          deletedTime: null,
-        },
-        {
-          id: 2,
-          projectId: 89,
-          name: 'getAttrs2',
-          type: '1',
-          desc: '获取轮播图片列表',
-          url: 'http://yapi.com/mock/522/test2',
-          method: 'GET',
-          title: '轮播图列表',
-          headers: '',
-          options: '',
-          body: {
-            param1: {
-              title: '参数名称222',
-              scope: 'static',
-              value: '111',
-            },
-            param2: {
-              title: '参数名称22',
-              scope: 'window',
-              name: 'PARAM1',
-              value: '111',
-            },
-            pageId: {
-              title: '页面id22',
-              scope: 'hash',
-              name: 'pId',
-              value: '111',
-            },
-            param5: {
-              title: '参数名称22',
-              scope: 'url',
-              name: 'pageId',
-              value: '111',
-            },
-            param7: {
-              title: '参数名称22',
-              scope: 'dynamic',
-              dataName: 'api3',
-              body: {
-                param2: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '222',
-                },
-                param3: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '333',
-                },
-              },
-            },
-          },
-          respMock:
-            '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
-          creatorId: '2',
-          createdTime: null,
-          updatedTime: null,
-          deletedTime: null,
-        },
-      ],
       options: {
         widgetType: 'comp', // 组件类型 comp / page
         eventListenConfig: [
@@ -313,7 +191,6 @@ class IndexDemo extends React.PureComponent<any, any> {
     const {
       jsonSchema,
       jsonData,
-      dynamicDataList,
       wideScreen,
       jsonView,
       schemaCodeView,
@@ -453,7 +330,6 @@ class IndexDemo extends React.PureComponent<any, any> {
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
-              dynamicDataList={dynamicDataList}
               options={options}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));

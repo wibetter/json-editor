@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tree } from 'antd';
 import BaseFormSchema from '$components/BaseFormSchema/index';
-import MappingRender from '$schemaRenderer/MappingRender';
+import MappingRender from '$core/MappingRender';
 import { BaseRendererProps } from '$types/index';
 const { TreeNode } = Tree;
 

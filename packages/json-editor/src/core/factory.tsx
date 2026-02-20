@@ -5,7 +5,7 @@ import { BaseRendererProps } from '$types/index';
 
 // 存放 json-editor 渲染器
 export const renderersMap: {
-  [key: string]: React.ComponentType<BaseRendererProps>;
+  [type: string]: React.ComponentType<BaseRendererProps>;
 } = {};
 
 interface WidgetConfig {

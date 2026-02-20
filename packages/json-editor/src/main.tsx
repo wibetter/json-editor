@@ -32,7 +32,6 @@ interface JSONEditorProps {
   jsonViewReadOnly?: boolean;
   schemaData?: any;
   jsonData?: any;
-  dynamicDataList?: any[];
   options?: any;
   element?: any;
 }

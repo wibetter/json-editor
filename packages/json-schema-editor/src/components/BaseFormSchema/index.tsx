@@ -14,14 +14,10 @@ import {
   SettingOutlined,
   SortAscendingOutlined,
 } from '@ant-design/icons';
-import AdvanceConfig from '$components/AdvanceConfig/index'; // 高级配置内容
-import {
-  isContainerSchema,
-  getParentIndexRoute,
-  TypeDataList,
-} from '@wibetter/json-utils';
+import AdvanceConfig from '$components/AdvanceConfig/index';
+import { getParentIndexRoute } from '@wibetter/json-utils';
 import { objClone, saveWebCacheData } from '$utils/index';
-import { TypeInfoList } from '$data/TypeList';
+import { schemaRegistry } from '$core/index';
 import { BaseRendererProps } from '$types/index';
 import './index.scss';
 
@@ -45,7 +41,6 @@ class BaseFormSchema extends React.PureComponent<
     this.state = {
       showAdvanceConfig: false,
     };
-    // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
     this.onAddBtnEvent = this.onAddBtnEvent.bind(this);
     this.onCopyBtnEvent = this.onCopyBtnEvent.bind(this);
     this.onDeleteBtnEvent = this.onDeleteBtnEvent.bind(this);
@@ -59,10 +54,10 @@ class BaseFormSchema extends React.PureComponent<
   handleTypeChange = (newType: string) => {
     const { changeType } = this.props.schemaStore || {};
     const { indexRoute, jsonKey, targetJsonSchema } = this.props;
-    if (targetJsonSchema.type === newType) return; // format值未改变则直接跳出
+    if (targetJsonSchema.type === newType) return;
 
-    // 根据当前新的类型获取初始化的对象数据
-    const newTypeData = TypeDataList[newType];
+    // 优先从 schemaRegistry 获取新类型的默认 schema
+    const newTypeData = schemaRegistry.getDefaultSchema(newType);
     changeType(indexRoute, jsonKey, newTypeData, targetJsonSchema);
   };
 
@@ -71,7 +66,7 @@ class BaseFormSchema extends React.PureComponent<
     const { editJsonKey, isExitJsonKey } = this.props.schemaStore || {};
     const { value } = event.target;
     const { indexRoute, jsonKey } = this.props;
-    if (jsonKey === value) return; // jsonKey值未改变则直接跳出
+    if (jsonKey === value) return;
     if (isExitJsonKey(indexRoute, value)) {
       message.warning('当前key已存在，请换一个吧。');
       return;
@@ -84,41 +79,32 @@ class BaseFormSchema extends React.PureComponent<
     const { editSchemaData } = this.props.schemaStore || {};
     const { value } = event.target;
     const { indexRoute, jsonKey, targetJsonSchema } = this.props;
-    if (targetJsonSchema.title === value) return; // title值未改变则直接跳出
-    editSchemaData(indexRoute, jsonKey, {
-      title: value,
-    });
+    if (targetJsonSchema.title === value) return;
+    editSchemaData(indexRoute, jsonKey, { title: value });
   };
 
-  /** 获取当前字段的类型清单
-   *  根据父元素的类型决定当前字段的类型可选择范围，如果父类型为空则默认使用全新的可选择类型 */
-  getCurrentTypeList = (parentType: string) => {
-    const { SchemaTypeList } = this.props.schemaStore || {};
-    const myParentType = parentType || 'all';
-    let typeList = SchemaTypeList[myParentType];
-    if (!typeList || typeList.length === 0) {
-      typeList = SchemaTypeList.all; // 如果当前类型清单为空，则默认展示所有的字段类型
-    }
-    return typeList;
+  /** 获取所有可用类型列表（去掉嵌套限制，允许所有类型） */
+  getAllTypeList = (): string[] => {
+    return schemaRegistry.getAllTypes();
   };
 
-  /** 新增字段项
-   *  备注：如果当前字段是容器类型，则为其添加子字段项，如果是基本类型则为其添加兄弟节点字段项 */
+  /** 新增字段项 */
   onAddBtnEvent = () => {
     const { addChildJson, addNextJsonData } = this.props.schemaStore || {};
     const { indexRoute, targetJsonSchema } = this.props;
 
-    if (isContainerSchema(targetJsonSchema)) {
-      // 表示当前是容器类型字段
+    const curType = targetJsonSchema?.type;
+    // 从 schemaRegistry 获取当前类型的描述
+    const descriptor = curType ? schemaRegistry.get(curType) : undefined;
+
+    if (descriptor?.isContainer) {
       addChildJson(indexRoute);
     } else {
-      // 插入兄弟节点
       addNextJsonData(indexRoute);
     }
   };
 
-  /** 复制功能
-   *  备注：需要自动生成一个key值 */
+  /** 复制功能 */
   onCopyBtnEvent = () => {
     const { indexRoute, targetJsonSchema, jsonKey } = this.props;
     const {
@@ -128,18 +114,14 @@ class BaseFormSchema extends React.PureComponent<
       getNewJsonKeyIndex,
     } = this.props.schemaStore || {};
     const newJsonData = objClone(targetJsonSchema);
-    // 1.获取父元素
     const parentIndexRoute = getParentIndexRoute(indexRoute);
     const parentJSONObj = getSchemaByIndexRoute(parentIndexRoute);
-    // 2.生成一个新的key值
     const newJsonKey = getNewJsonKeyIndex(parentJSONObj, jsonKey);
-    // 3.复制时记录数据来源的路径值（备注：只保留最近的一次copy数值源）
     const curType = targetJsonSchema.type;
     saveWebCacheData(
       `${indexRoute2keyRoute(parentIndexRoute)}-${newJsonKey}-${curType}`,
       indexRoute2keyRoute(indexRoute),
     );
-    // 4.插入复制的json数据
     insertJsonData(indexRoute, newJsonKey, newJsonData);
   };
 
@@ -147,7 +129,7 @@ class BaseFormSchema extends React.PureComponent<
   onDeleteBtnEvent = () => {
     const { jsonKey, indexRoute } = this.props;
     const { deleteJsonByIndex_CurKey } = this.props.schemaStore || {};
-    deleteJsonByIndex_CurKey(indexRoute, jsonKey); // 删除对应的json数据对象
+    deleteJsonByIndex_CurKey(indexRoute, jsonKey);
   };
 
   /** 拦截拖拽事件 */
@@ -168,31 +150,67 @@ class BaseFormSchema extends React.PureComponent<
     const { parentType, indexRoute, jsonKey, nodeKey, targetJsonSchema } =
       this.props;
     const { showAdvanceConfig } = this.state;
-    // 获取父元素
     const parentIndexRoute = indexRoute ? getParentIndexRoute(indexRoute) : '';
     const parentSchemaObj = parentIndexRoute
       ? getSchemaByIndexRoute(parentIndexRoute)
       : {};
     const parentIsContainer =
-      (parentSchemaObj && parentSchemaObj.isContainer) ?? true; // 判断父级元素是否为容器元素（默认均为容器元素）
+      (parentSchemaObj && parentSchemaObj.isContainer) ?? true;
 
-    const isFixed = targetJsonSchema.isFixed || this.props.isFixed || false;
-    // readOnly: 是否为固有的属性（不可编辑、不可 // 是否不可编辑状态，默认为可编辑状态删除），用于控制json-editor端是否可编辑
+    const curType = targetJsonSchema?.type;
+
+    // 从 schemaRegistry 获取当前类型的描述
+    const descriptor = curType ? schemaRegistry.get(curType) : undefined;
+
+    // 特殊属性优先级：props传入 > descriptor定义 > schema数据 > 默认值
+    const isFixed =
+      targetJsonSchema.isFixed ||
+      this.props.isFixed ||
+      descriptor?.isFixed ||
+      false;
+
     const readOnly = this.props.readOnly || targetJsonSchema.readOnly || false;
+
     const keyIsFixed =
       this.props.keyIsFixed !== undefined
         ? this.props.keyIsFixed
-        : !parentIsContainer || isFixed; // key是否为不可编辑的属性
-    const typeIsFixed =
-      this.props.typeIsFixed !== undefined ? this.props.typeIsFixed : isFixed; // type是否为不可编辑的属性
-    const titleIsFixed =
-      this.props.titleIsFixed !== undefined ? this.props.titleIsFixed : isFixed; // title是否为不可编辑的属性
-    const hideOperaBtn = this.props.hideOperaBtn || !parentIsContainer; // 是否隐藏操作类按钮
+        : descriptor?.keyIsFixed !== undefined
+          ? descriptor.keyIsFixed
+          : !parentIsContainer || isFixed;
 
-    const showAdvanceBtn = this.props.showAdvanceBtn ?? true; // 用于单独控制高级配置按钮显隐（目前仅QuantitySchema需要）
-    const currentTypeList = this.getCurrentTypeList(parentType); // 根据父级元素类型获取可供使用的类型清单
-    const curType = targetJsonSchema.type;
-    const isContainerElem = isContainerSchema(targetJsonSchema); // 判断是否是容器类型元素
+    const typeIsFixed =
+      this.props.typeIsFixed !== undefined
+        ? this.props.typeIsFixed
+        : descriptor?.typeIsFixed !== undefined
+          ? descriptor.typeIsFixed
+          : isFixed;
+
+    const titleIsFixed =
+      this.props.titleIsFixed !== undefined
+        ? this.props.titleIsFixed
+        : descriptor?.titleIsFixed !== undefined
+          ? descriptor.titleIsFixed
+          : isFixed;
+
+    const hideOperaBtn =
+      this.props.hideOperaBtn !== undefined
+        ? this.props.hideOperaBtn
+        : descriptor?.hideOperaBtn !== undefined
+          ? descriptor.hideOperaBtn
+          : !parentIsContainer;
+
+    // showAdvanceBtn 优先读 props，其次 descriptor，默认 true
+    const showAdvanceBtn =
+      this.props.showAdvanceBtn !== undefined
+        ? this.props.showAdvanceBtn
+        : descriptor?.showAdvanceBtn !== undefined
+          ? descriptor.showAdvanceBtn
+          : true;
+
+    // 获取所有可用类型列表（无限制）
+    const currentTypeList = this.getAllTypeList();
+
+    const isContainerElem = descriptor?.isContainer ?? false;
 
     return (
       <>
@@ -206,7 +224,6 @@ class BaseFormSchema extends React.PureComponent<
               <Input
                 defaultValue={jsonKey || 'key值不存在'}
                 disabled={keyIsFixed}
-                // onPressEnter={this.handleJsonKeyChange}
                 onBlur={this.handleJsonKeyChange}
               />
             </div>
@@ -234,7 +251,7 @@ class BaseFormSchema extends React.PureComponent<
               >
                 {currentTypeList.map((item: string) => (
                   <Option key={item} value={item}>
-                    {(TypeInfoList as any)[item] || item}
+                    {schemaRegistry.get(item)?.label || item}
                   </Option>
                 ))}
               </Select>
@@ -247,7 +264,6 @@ class BaseFormSchema extends React.PureComponent<
               <Input
                 defaultValue={targetJsonSchema.title}
                 disabled={titleIsFixed}
-                //onPressEnter={this.handleTitleChange}
                 onBlur={this.handleTitleChange}
               />
             </div>
@@ -270,7 +286,6 @@ class BaseFormSchema extends React.PureComponent<
                       onClick={this.onAddBtnEvent}
                     />
                   </Tooltip>
-                  {/* 自动排序功能 */}
                   {isContainerElem && (
                     <Tooltip title={'数据项排序'}>
                       <SortAscendingOutlined
@@ -309,8 +324,9 @@ class BaseFormSchema extends React.PureComponent<
             </div>
             {showAdvanceConfig && (
               <Modal
-                visible={true}
+                open={true}
                 title={`高级设置 / 当前字段：${targetJsonSchema.title}(${jsonKey})`}
+                width={800}
                 onCancel={() => {
                   this.setState({
                     showAdvanceConfig: false,

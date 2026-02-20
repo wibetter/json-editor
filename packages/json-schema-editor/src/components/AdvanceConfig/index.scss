@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+.advance-config-empty {
+  padding: 24px;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+}
+
 .advance-config-model {
   position: relative;
   padding: 8px 10px;
@@ -12,7 +19,7 @@
     margin-bottom: 12px;
     line-height: 38px;
     box-sizing: border-box;
-    min-width: 280px;
+    min-width: 380px;
 
     .element-title {
       display: block;

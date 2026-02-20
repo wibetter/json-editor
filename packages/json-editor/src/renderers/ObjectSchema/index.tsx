@@ -79,10 +79,16 @@ class ObjectSchema extends React.PureComponent<
       renderChild,
     } = this.props;
     const { jsonView, isClosed: _isClosed } = this.state;
-    // 判断是否结构化Schema，如果是则不显示Title，避免重复的title
-    const isStructured = isStructuredSchema;
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
+
+    // 是否包装在面板中，默认包装在面板中
+    const wrapWithPanel = targetJsonSchema.wrapWithPanel ?? true;
+
+    /**
+     * 判断是否结构化Schema，如果是则不显示Title，避免重复的title
+     */
+    const isStructured = isStructuredSchema;
 
     // 获取前端缓存中的折叠数据
     let isClosed = _isClosed;
@@ -114,7 +120,7 @@ class ObjectSchema extends React.PureComponent<
         id={nodeKey}
         style={style}
       >
-        {!isStructured && !isArrayItem && (
+        {!isStructured && !isArrayItem && wrapWithPanel && (
           <div className="element-title" style={titleStyle}>
             <Tooltip
               title={
@@ -140,7 +146,7 @@ class ObjectSchema extends React.PureComponent<
           className="element-title-card-warp content-item"
           style={contentStyle}
         >
-          {!isStructured && !isArrayItem && (
+          {!isStructured && !isArrayItem && wrapWithPanel && (
             <div className="element-title" onClick={this.collapseChange}>
               <span className="title-text">{boxTitle}&nbsp;</span>
               {isClosed ? (
@@ -171,7 +177,9 @@ class ObjectSchema extends React.PureComponent<
           )}
           <div
             className={`content-item ${
-              !isStructured && !isArrayItem ? 'object-content' : ''
+              !isStructured && !isArrayItem && wrapWithPanel
+                ? 'object-content'
+                : ''
             } ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}
           >
             {!jsonView &&

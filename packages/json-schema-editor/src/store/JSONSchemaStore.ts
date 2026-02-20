@@ -2,7 +2,6 @@ import { observable, computed, action, toJS, makeObservable } from 'mobx'; // mo
 import { message } from 'antd';
 import { pick } from 'lodash';
 import { isEqual, objClone, isFunction } from '$utils/index';
-import { TypeList } from '$data/TypeList';
 import {
   isNewSchemaData,
   getParentIndexRoute,
@@ -16,9 +15,14 @@ import {
   KeyWordList,
   TypeDataList,
 } from '@wibetter/json-utils';
+import { schemaRegistry } from '$core/index';
 
 const initJSONSchemaData = TypeDataList.jsonschema;
-const initInputData = TypeDataList.input;
+
+/** 获取新增字段时的初始 schema（优先从插件注册表获取，兜底使用 TypeDataList） */
+function getInitInputData(): any {
+  return schemaRegistry.getDefaultSchema('input');
+}
 
 export default class JSONSchemaStore {
   /** 主要用于自动生成jsonKey中的index */
@@ -41,9 +45,10 @@ export default class JSONSchemaStore {
   @observable jsonSchema: any = {};
 
   /**
-   * 可以添加的子项类型: SchemaTypeList（TypeList）
+   * 可以添加的子项类型: SchemaTypeList（已废弃，保留仅用于向后兼容）
+   * v7.0.0 起不再使用，插件注册表 schemaRegistry 取代此功能
    */
-  @observable SchemaTypeList: any = TypeList;
+  @observable SchemaTypeList: any = {};
 
   /**
    * onChange: jsonSchema数据变动触发的onChange
@@ -58,18 +63,13 @@ export default class JSONSchemaStore {
     this.triggerChange = !this.triggerChange;
   }
 
-  /** 根据配置数据初始化TypeList  */
+  /**
+   * 初始化 TypeList（已废弃，v7.0.0 起此方法为空操作）
+   * 类型管理改由 schemaRegistry 负责
+   */
   @action.bound
-  initSchemaTypeList(typeListOption: any) {
-    if (!typeListOption || JSON.stringify(typeListOption) === '{}') {
-      // 直接使用原有的TypeList数据
-    } else if (!isEqual(typeListOption, this.SchemaTypeList)) {
-      if (typeListOption) {
-        Object.keys(typeListOption).map((key) => {
-          this.SchemaTypeList[key] = typeListOption[key];
-        });
-      }
-    }
+  initSchemaTypeList(_typeListOption?: any) {
+    // no-op: 由 schemaRegistry 管理，此方法保留仅用于向后兼容
   }
 
   /** 根据索引路径获取对应的json数据[非联动式数据获取]  */
@@ -183,19 +183,6 @@ export default class JSONSchemaStore {
     return false;
   }
 
-  /** 判断是否支持当前类型 */
-  @action.bound
-  isSupportCurType(indexRoute: string, curType: string) {
-    const parentIndexRoute = getParentIndexRoute(indexRoute);
-    const parentJSONObj = this.getSchemaByIndexRoute(parentIndexRoute);
-    const parentTypeList = this.SchemaTypeList[parentJSONObj.type];
-    if (parentTypeList && parentTypeList.indexOf(curType) >= 0) {
-      // 表示支持当前类型
-      return true;
-    }
-    return false;
-  }
-
   /** 根据索引路径值(indexRoute)插入新的子元素-json数据对象(childJson)
    *  备注：关键字(childKey)自动生成，json数据对象(childJson)默认使用initInputData
    */
@@ -209,7 +196,7 @@ export default class JSONSchemaStore {
     if (isContainerSchema(curSchema)) {
       const childKey = this.getNewJsonKeyIndex(curSchema);
       curSchema.propertyOrder.push(childKey);
-      curSchema.properties[childKey] = initInputData;
+      curSchema.properties[childKey] = getInitInputData();
       // 触发onChange事件
       this.jsonSchemaChange(ignoreOnChange);
     } else {
@@ -338,7 +325,13 @@ export default class JSONSchemaStore {
     );
     /** 如果没有设置jsonKey，则自动生成一个新的jsonKey */
     const newJsonKey = this.getNewJsonKeyIndex(parentJSONObj);
-    this.insertJsonData(curIndexRoute, newJsonKey, initInputData, '', false); // 默认新增input类型字段
+    this.insertJsonData(
+      curIndexRoute,
+      newJsonKey,
+      getInitInputData(),
+      '',
+      false,
+    ); // 默认新增input类型字段
   }
 
   /** 根据索引路径值(indexRoute)插入指定的json数据对象（jsonKey、curJSONObj）

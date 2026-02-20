@@ -590,6 +590,7 @@
             return { options: t, optionValue: n };
           }
         },
+        3219: function () {},
         3512: function (e, t, n) {
           var a = n(5465);
           (a.__esModule && (a = a.default),
@@ -694,6 +695,13 @@
           e.exports = require('@wibetter/json-utils');
         },
         5465: function () {},
+        5584: function (e, t, n) {
+          var a = n(3219);
+          (a.__esModule && (a = a.default),
+            'string' == typeof a && (a = [[e.id, a, '']]),
+            a.locals && (e.exports = a.locals),
+            (0, n(611).A)('8bb90504', a, !1, { sourceMap: !1 }));
+        },
         5670: function (e, t, n) {
           'use strict';
           function a(e, t, n) {
@@ -754,7 +762,6 @@
           'use strict';
           e.exports = require('mobx');
         },
-        7232: function () {},
         7258: function () {},
         7546: function (e, t, n) {
           var a = n(4505);
@@ -876,13 +883,6 @@
             'string' == typeof a && (a = [[e.id, a, '']]),
             a.locals && (e.exports = a.locals),
             (0, n(611).A)('aed4b9b0', a, !1, { sourceMap: !1 }));
-        },
-        8819: function (e, t, n) {
-          var a = n(7232);
-          (a.__esModule && (a = a.default),
-            'string' == typeof a && (a = [[e.id, a, '']]),
-            a.locals && (e.exports = a.locals),
-            (0, n(611).A)('1b6af5a2', a, !1, { sourceMap: !1 }));
         },
         8985: function () {},
         9346: function (e, t, n) {
@@ -1117,18 +1117,7 @@
                 (this.lastUpdateTime = new Date().getTime()),
                 (this.jsonData = null),
                 (this.initJsonData = {}),
-                (this.dynamicDataList = []),
-                (this.dynamicDataObj = {}),
                 (this.options = {}),
-                (this.dynamicDataApiScopeList = {
-                  static: '固定值',
-                  url: 'URL参数',
-                  hash: 'Hash参数',
-                  window: '环境变量',
-                  dynamic: '接口下发',
-                  page: '页面参数',
-                  input: '用户输入',
-                }),
                 (this.onChange = function () {}),
                 (this.state = { rootJSONStore: e }),
                 (0, m.makeObservable)(this));
@@ -1160,16 +1149,6 @@
               }),
               (t.initOnChange = function (e) {
                 (e || (0, g.Tn)(e)) && (this.onChange = e);
-              }),
-              (t.setDynamicDataList = function (e) {
-                if (!(0, _.n4)(e, this.dynamicDataList)) {
-                  this.dynamicDataList = (0, _.bQ)(e);
-                  var t = {};
-                  (e.map(function (e) {
-                    t[e.name] = e;
-                  }),
-                    (this.dynamicDataObj = t));
-                }
               }),
               (t.setOptions = function (e) {
                 e && (this.options = e);
@@ -1320,25 +1299,7 @@
             'initJsonData',
             void 0,
           ),
-          (0, p.__decorate)(
-            [m.observable],
-            f.prototype,
-            'dynamicDataList',
-            void 0,
-          ),
-          (0, p.__decorate)(
-            [m.observable],
-            f.prototype,
-            'dynamicDataObj',
-            void 0,
-          ),
           (0, p.__decorate)([m.observable], f.prototype, 'options', void 0),
-          (0, p.__decorate)(
-            [m.observable],
-            f.prototype,
-            'dynamicDataApiScopeList',
-            void 0,
-          ),
           (0, p.__decorate)([m.observable], f.prototype, 'onChange', void 0),
           (0, p.__decorate)(
             [m.action.bound],
@@ -1362,12 +1323,6 @@
             [m.action.bound],
             f.prototype,
             'initOnChange',
-            null,
-          ),
-          (0, p.__decorate)(
-            [m.action.bound],
-            f.prototype,
-            'setDynamicDataList',
             null,
           ),
           (0, p.__decorate)([m.action.bound], f.prototype, 'setOptions', null),
@@ -1552,7 +1507,7 @@
         }
         __webpack_require__(2595);
         var j,
-          D = function (e) {
+          T = function (e) {
             return o.createElement(
               'svg',
               R(
@@ -1567,9 +1522,9 @@
                 })),
             );
           };
-        function T() {
+        function D() {
           return (
-            (T = Object.assign
+            (D = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1579,14 +1534,14 @@
                   }
                   return e;
                 }),
-            T.apply(null, arguments)
+            D.apply(null, arguments)
           );
         }
         var P,
           K = function (e) {
             return o.createElement(
               'svg',
-              T(
+              D(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
@@ -1736,7 +1691,7 @@
                   k = x.jsonView,
                   R = x.isClosed,
                   j = x.currentActiveArrIndex,
-                  T = b.type,
+                  D = b.type,
                   P = null === (e = b.showCodeViewBtn) || void 0 === e || e,
                   J = u(h);
                 (J && 0 !== J.length && (0, g.cy)(J)) || (J = [{}]);
@@ -1745,9 +1700,9 @@
                   B = (0, C.Gz)(h);
                 void 0 !== B && (V = B);
                 var I = j,
-                  L = (0, C.Gz)(h + '-activeArrIndex');
-                void 0 !== L && (I = L);
-                var q =
+                  q = (0, C.Gz)(h + '-activeArrIndex');
+                void 0 !== q && (I = q);
+                var L =
                     null !== (n = b.boxTitle) && void 0 !== n ? n : '数据配置',
                   W = b.style ? (0, _.K8)((0, m.toJS)(b.style)) : {},
                   F = b.titleStyle ? (0, _.K8)((0, m.toJS)(b.titleStyle)) : {},
@@ -1809,7 +1764,7 @@
                       o.createElement(
                         'span',
                         { className: 'title-text' },
-                        q,
+                        L,
                         ' ',
                       ),
                       V
@@ -1926,7 +1881,7 @@
                                       okText: '确定',
                                       cancelText: '取消',
                                     },
-                                    o.createElement(D, {
+                                    o.createElement(T, {
                                       className:
                                         'delete-operate-btn array-operate-btn',
                                       onClick: function (e) {
@@ -1984,7 +1939,7 @@
                                   (I === t ? 'open' : 'closed'),
                               },
                               O({
-                                parentType: T,
+                                parentType: D,
                                 jsonKey: 'items',
                                 indexRoute: l,
                                 keyRoute: r,
@@ -2037,72 +1992,75 @@
             (l.render = function () {
               var e,
                 n,
-                a = this,
-                l = (this.props.schemaStore || {}).pageScreen,
-                r = this.props,
-                i = r.indexRoute,
-                s = r.jsonKey,
-                c = r.nodeKey,
-                u = r.keyRoute,
-                p = r.targetJsonSchema,
-                y = r.isArrayItem,
-                h = r.isStructuredSchema,
-                g = r.renderChild,
-                f = this.state,
-                v = f.jsonView,
-                E = f.isClosed,
-                b = h,
-                O = null === (e = p.showCodeViewBtn) || void 0 === e || e,
-                x = E,
-                k = (0, C.Gz)(u);
-              void 0 !== k && (x = k);
-              var R =
-                  null !== (n = p.boxTitle) && void 0 !== n ? n : '对象配置',
-                j = p.style ? (0, _.K8)((0, m.toJS)(p.style)) : {},
-                D = p.titleStyle ? (0, _.K8)((0, m.toJS)(p.titleStyle)) : {},
-                T = p.contentStyle
-                  ? (0, _.K8)((0, m.toJS)(p.contentStyle))
+                a,
+                l = this,
+                r = (this.props.schemaStore || {}).pageScreen,
+                i = this.props,
+                s = i.indexRoute,
+                c = i.jsonKey,
+                u = i.nodeKey,
+                p = i.keyRoute,
+                y = i.targetJsonSchema,
+                h = i.isArrayItem,
+                g = i.isStructuredSchema,
+                f = i.renderChild,
+                v = this.state,
+                E = v.jsonView,
+                b = v.isClosed,
+                O = null === (e = y.showCodeViewBtn) || void 0 === e || e,
+                x = null === (n = y.wrapWithPanel) || void 0 === n || n,
+                k = g,
+                R = b,
+                j = (0, C.Gz)(p);
+              void 0 !== j && (R = j);
+              var T =
+                  null !== (a = y.boxTitle) && void 0 !== a ? a : '对象配置',
+                D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
+                P = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                K = y.contentStyle
+                  ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                   : {};
               return o.createElement(
                 'div',
                 {
                   className:
-                    'wideScreen' === l
+                    'wideScreen' === r
                       ? 'object-schema-warp wide-screen-element-warp'
                       : 'object-schema-warp mobile-screen-element-warp',
-                  id: c,
-                  style: j,
+                  id: u,
+                  style: D,
                 },
-                !b &&
-                  !y &&
+                !k &&
+                  !h &&
+                  x &&
                   o.createElement(
                     'div',
-                    { className: 'element-title', style: D },
+                    { className: 'element-title', style: P },
                     o.createElement(
                       S.Tooltip,
                       {
-                        title: 'wideScreen' === l ? p.description : '',
+                        title: 'wideScreen' === r ? y.description : '',
                         placement: 'top',
                       },
                       o.createElement(
                         'span',
-                        { className: 'title-text', title: p.title },
-                        p.title,
-                        p.showKey &&
+                        { className: 'title-text', title: y.title },
+                        y.title,
+                        y.showKey &&
                           o.createElement(
                             'span',
                             null,
                             '（',
-                            (0, d.truncate)(s || '', { length: 15 }),
+                            (0, d.truncate)(c || '', { length: 15 }),
                             '）',
                           ),
                       ),
                     ),
-                    'mobileScreen' === l &&
-                      p.description &&
+                    'mobileScreen' === r &&
+                      y.description &&
                       o.createElement(
                         S.Tooltip,
-                        { title: p.description, placement: 'top' },
+                        { title: y.description, placement: 'top' },
                         o.createElement(w.InfoCircleOutlined, {
                           className: 'info-icon',
                         }),
@@ -2112,10 +2070,11 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: T,
+                    style: K,
                   },
-                  !b &&
-                    !y &&
+                  !k &&
+                    !h &&
+                    x &&
                     o.createElement(
                       'div',
                       {
@@ -2125,10 +2084,10 @@
                       o.createElement(
                         'span',
                         { className: 'title-text' },
-                        R,
+                        T,
                         ' ',
                       ),
-                      x
+                      R
                         ? o.createElement(w.RightOutlined, {
                             className: 'close-operate-btn',
                           })
@@ -2141,16 +2100,16 @@
                           {
                             className: 'display-source-btn',
                             onClick: function (e) {
-                              (a.setState({ jsonView: !v }),
+                              (l.setState({ jsonView: !E }),
                                 e.preventDefault(),
                                 e.stopPropagation());
                             },
                           },
                           o.createElement(
                             S.Tooltip,
-                            { title: v ? '关闭源码模式' : '开启源码模式' },
+                            { title: E ? '关闭源码模式' : '开启源码模式' },
                             o.createElement(A, {
-                              className: v ? 'info-icon active' : 'info-icon',
+                              className: E ? 'info-icon active' : 'info-icon',
                             }),
                           ),
                         ),
@@ -2160,33 +2119,33 @@
                     {
                       className:
                         'content-item ' +
-                        (b || y ? '' : 'object-content') +
+                        (k || h || !x ? '' : 'object-content') +
                         ' ' +
-                        (v ? 'json-view-array' : '') +
+                        (E ? 'json-view-array' : '') +
                         ' ' +
-                        (x ? 'closed' : ''),
+                        (R ? 'closed' : ''),
                     },
-                    !v &&
-                      p.propertyOrder &&
-                      p.propertyOrder.map(function (e, n) {
-                        var o = i ? i + '-' + n : '' + n,
-                          l = u ? u + '-' + e : '' + e,
+                    !E &&
+                      y.propertyOrder &&
+                      y.propertyOrder.map(function (e, n) {
+                        var a = s ? s + '-' + n : '' + n,
+                          o = p ? p + '-' + e : '' + e,
                           r = e,
-                          s = p.properties[r],
-                          m = s.type,
-                          d = c + '-' + m + '-' + r;
-                        return g(
-                          t()({}, a.props, {
-                            parentType: m,
+                          i = y.properties[r],
+                          c = i.type,
+                          m = u + '-' + c + '-' + r;
+                        return f(
+                          t()({}, l.props, {
+                            parentType: c,
                             jsonKey: r,
-                            indexRoute: o,
-                            keyRoute: l,
-                            nodeKey: d,
-                            targetJsonSchema: s,
+                            indexRoute: a,
+                            keyRoute: o,
+                            nodeKey: m,
+                            targetJsonSchema: i,
                           }),
                         );
                       }),
-                    v &&
+                    E &&
                       o.createElement(N, t()({}, this.props, { maxLines: 10 })),
                   ),
                 ),
@@ -2195,249 +2154,9 @@
             n
           );
         })(o.PureComponent);
-        ((0, b.TS)({ type: 'object', component: V }),
-          __webpack_require__(8819));
-        var B = (function (e) {
-          function n(t) {
-            var n;
-            return (
-              ((n = e.call(this, t) || this).switchFilterBtn = function () {
-                var e = n.state.isShowFilter;
-                n.setState({ isShowFilter: !e });
-              }),
-              (n.state = { isShowFilter: !1, jsonView: !1, isClosed: !1 }),
-              (n.switchFilterBtn = n.switchFilterBtn.bind(n)),
-              n
-            );
-          }
-          a()(n, e);
-          var l = n.prototype;
-          return (
-            (l.componentWillMount = function () {
-              k.x.call(this);
-            }),
-            (l.componentWillReceiveProps = function (e) {
-              e.keyRoute !== this.props.keyRoute && k.x.call(this, e.keyRoute);
-            }),
-            (l.render = function () {
-              var e,
-                n = this,
-                a = this.props,
-                l = a.schemaStore,
-                r = (a.jsonStore, a.renderChild),
-                i = (l || {}).pageScreen,
-                s = this.props,
-                c = s.keyRoute,
-                u = s.jsonKey,
-                p = s.nodeKey,
-                y = s.indexRoute,
-                h = s.targetJsonSchema,
-                g = this.state,
-                f = g.jsonView,
-                v = g.isClosed,
-                E = g.isShowFilter,
-                b = h.type,
-                C = (h.readOnly, h.properties.type || {}),
-                O = h.properties.data || {},
-                x = h.properties.filter || {},
-                k = C.default,
-                R = null === (e = h.showCodeViewBtn) || void 0 === e || e,
-                j = h.style ? (0, _.K8)((0, m.toJS)(h.style)) : {},
-                D = h.titleStyle ? (0, _.K8)((0, m.toJS)(h.titleStyle)) : {},
-                T = h.contentStyle
-                  ? (0, _.K8)((0, m.toJS)(h.contentStyle))
-                  : {};
-              return o.createElement(
-                'div',
-                {
-                  className:
-                    'wideScreen' === i
-                      ? 'wide-screen-element-warp'
-                      : 'mobile-screen-element-warp',
-                  id: p,
-                  style: j,
-                },
-                o.createElement(
-                  'div',
-                  { className: 'element-title', style: D },
-                  o.createElement(
-                    S.Tooltip,
-                    {
-                      title: 'wideScreen' === i ? h.description : '',
-                      placement: 'top',
-                    },
-                    o.createElement(
-                      'span',
-                      { className: 'title-text', title: h.title },
-                      h.title,
-                      h.showKey &&
-                        o.createElement(
-                          'span',
-                          null,
-                          '（',
-                          (0, d.truncate)(u || '', { length: 15 }),
-                          '）',
-                        ),
-                    ),
-                  ),
-                  'mobileScreen' === i &&
-                    h.description &&
-                    o.createElement(
-                      S.Tooltip,
-                      { title: h.description, placement: 'top' },
-                      o.createElement(w.InfoCircleOutlined, {
-                        className: 'info-icon',
-                      }),
-                    ),
-                ),
-                o.createElement(
-                  'div',
-                  {
-                    className: 'element-title-card-warp content-item',
-                    style: T,
-                  },
-                  o.createElement(
-                    'div',
-                    {
-                      className: 'element-title',
-                      onClick: function (e) {
-                        (n.setState({ isClosed: !v }),
-                          e.preventDefault(),
-                          e.stopPropagation());
-                      },
-                    },
-                    o.createElement(
-                      'span',
-                      { className: 'title-text' },
-                      '数据源配置',
-                    ),
-                    v
-                      ? o.createElement(w.RightOutlined, {
-                          className: 'close-operate-btn',
-                        })
-                      : o.createElement(w.DownOutlined, {
-                          className: 'close-operate-btn',
-                        }),
-                    R &&
-                      o.createElement(
-                        'div',
-                        {
-                          className: 'display-source-btn',
-                          onClick: function (e) {
-                            (n.setState({ jsonView: !f }),
-                              e.preventDefault(),
-                              e.stopPropagation());
-                          },
-                        },
-                        o.createElement(
-                          S.Tooltip,
-                          { title: f ? '关闭源码模式' : '开启源码模式' },
-                          o.createElement(A, {
-                            className: f ? 'info-icon active' : 'info-icon',
-                          }),
-                        ),
-                      ),
-                  ),
-                  o.createElement(
-                    'div',
-                    {
-                      className:
-                        'content-item object-content ' +
-                        (f ? 'json-view-array' : '') +
-                        ' ' +
-                        (v ? 'closed' : ''),
-                    },
-                    !f &&
-                      'local' === k &&
-                      o.createElement(
-                        o.Fragment,
-                        null,
-                        o.createElement(
-                          'div',
-                          { className: 'ace-editor-box code-area-item' },
-                          o.createElement(
-                            S.Tooltip,
-                            {
-                              title: E
-                                ? '点击隐藏数据过滤器'
-                                : '点击显示数据过滤器',
-                              placement: 'top',
-                            },
-                            o.createElement(w.FilterOutlined, {
-                              className: 'filter-btn',
-                              onClick: this.switchFilterBtn,
-                            }),
-                          ),
-                          r({
-                            rendererType: 'json',
-                            parentType: b,
-                            jsonKey: 'data',
-                            indexRoute: y ? y + '-1' : '1',
-                            keyRoute: c ? c + '-data' : 'data',
-                            nodeKey: p + '-data',
-                            targetJsonSchema: O,
-                            key: p + '-data',
-                          }),
-                        ),
-                        E &&
-                          r({
-                            rendererType: 'codearea',
-                            parentType: b,
-                            jsonKey: 'filter',
-                            indexRoute: y ? y + '-2' : '2',
-                            keyRoute: c ? c + '-filter' : 'filter',
-                            nodeKey: p + '-filter',
-                            targetJsonSchema: x,
-                          }),
-                      ),
-                    !f &&
-                      'remote' === k &&
-                      o.createElement(
-                        o.Fragment,
-                        null,
-                        o.createElement(
-                          'div',
-                          { className: 'url-editor-box' },
-                          r({
-                            rendererType: 'url',
-                            parentType: b,
-                            jsonKey: 'data',
-                            indexRoute: y ? y + '-1' : '1',
-                            keyRoute: c ? c + '-data' : 'data',
-                            nodeKey: p + '-data',
-                            targetJsonSchema: O,
-                          }),
-                          o.createElement(
-                            S.Tooltip,
-                            { title: '点击设置数据过滤器', placement: 'top' },
-                            o.createElement(w.FilterOutlined, {
-                              className: 'filter-url-btn',
-                              onClick: this.switchFilterBtn,
-                            }),
-                          ),
-                        ),
-                        E &&
-                          r({
-                            rendererType: 'codearea',
-                            parentType: b,
-                            jsonKey: 'filter',
-                            indexRoute: y ? y + '-2' : '2',
-                            keyRoute: c ? c + '-filter' : 'filter',
-                            nodeKey: p + '-filter',
-                            targetJsonSchema: x,
-                          }),
-                      ),
-                    f && o.createElement(N, t()({}, this.props)),
-                  ),
-                ),
-              );
-            }),
-            n
-          );
-        })(o.PureComponent);
-        (0, b.TS)({ type: 'datasource', component: B });
-        var I = S.Select.Option,
-          L = (function (e) {
+        (0, b.TS)({ type: 'object', component: V });
+        var B = S.Select.Option,
+          I = (function (e) {
             function t() {
               for (
                 var t, n = arguments.length, a = new Array(n), l = 0;
@@ -2488,7 +2207,7 @@
                       },
                       n.map(function (e) {
                         return o.createElement(
-                          I,
+                          B,
                           { value: e.value, key: e.value },
                           e.label,
                         );
@@ -2629,7 +2348,7 @@
               t
             );
           })(o.PureComponent);
-        ((0, b.TS)({ type: 'quantity', component: L }),
+        ((0, b.TS)({ type: 'quantity', component: I }),
           __webpack_require__(9928));
         var q = (function (e) {
           function t(t) {
@@ -2933,8 +2652,8 @@
         })(o.PureComponent);
         ((0, b.TS)({ type: 'box-style', component: q }),
           __webpack_require__(9346));
-        var W = S.Select.Option,
-          F = (function (e) {
+        var L = S.Select.Option,
+          W = (function (e) {
             function t(t) {
               var n;
               return (
@@ -3253,7 +2972,7 @@
                                     style: { display: 'inline-block' },
                                     defaultValue: C || 'px',
                                   },
-                                  o.createElement(W, { value: C }, C),
+                                  o.createElement(L, { value: C }, C),
                                 ),
                               ),
                             !b &&
@@ -3301,7 +3020,7 @@
                                     style: { display: 'inline-block' },
                                     defaultValue: C || 'px',
                                   },
-                                  o.createElement(W, { value: C }, C),
+                                  o.createElement(L, { value: C }, C),
                                 ),
                               ),
                             !b &&
@@ -3372,7 +3091,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3449,7 +3168,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3526,7 +3245,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3603,7 +3322,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3680,7 +3399,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3756,7 +3475,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3833,7 +3552,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3910,7 +3629,7 @@
                                         style: { display: 'inline-block' },
                                         defaultValue: C || 'px',
                                       },
-                                      o.createElement(W, { value: C }, C),
+                                      o.createElement(L, { value: C }, C),
                                     ),
                                   ),
                                 !b &&
@@ -3955,8 +3674,8 @@
               t
             );
           })(o.PureComponent);
-        (0, b.TS)({ type: 'padding-margin', component: F });
-        var U = (function (e) {
+        (0, b.TS)({ type: 'padding-margin', component: W });
+        var F = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4073,8 +3792,8 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'radio', component: U });
-        var z = (function (e) {
+        (0, b.TS)({ type: 'radio', component: F });
+        var U = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4191,8 +3910,8 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'checkboxes', component: z });
-        var G = (function (e) {
+        (0, b.TS)({ type: 'checkboxes', component: U });
+        var z = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4326,10 +4045,10 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'input', component: G });
-        var H = G,
-          $ = S.Input.TextArea,
-          Z = (function (e) {
+        (0, b.TS)({ type: 'input', component: z });
+        var G = z,
+          H = S.Input.TextArea,
+          $ = (function (e) {
             function t(t) {
               var n;
               return (
@@ -4424,7 +4143,7 @@
                     o.createElement(
                       'div',
                       { className: 'form-item-box' },
-                      o.createElement($, {
+                      o.createElement(H, {
                         style: { display: 'inline-block' },
                         rows: 4,
                         disabled: y,
@@ -4441,21 +4160,21 @@
               t
             );
           })(o.PureComponent);
-        (0, b.TS)({ type: 'textarea', component: Z });
-        var Q = require('braft-editor'),
-          Y = __webpack_require__.n(Q),
-          X = require('braft-extensions/dist/color-picker'),
-          ee = __webpack_require__.n(X),
-          te =
+        (0, b.TS)({ type: 'textarea', component: $ });
+        var Z = require('braft-editor'),
+          Y = __webpack_require__.n(Z),
+          Q = require('braft-extensions/dist/color-picker'),
+          X = __webpack_require__.n(Q),
+          ee =
             (require('braft-extensions/dist/color-picker.css'),
             require('braft-extensions/dist/table')),
-          ne = __webpack_require__.n(te);
+          te = __webpack_require__.n(ee);
         (require('braft-extensions/dist/table.css'),
           require('braft-editor/dist/index.css'),
           __webpack_require__(632),
-          Y().use([ee()({ theme: 'light' })]),
+          Y().use([X()({ theme: 'light' })]),
           Y().use(
-            ne()({
+            te()({
               defaultColumns: 3,
               defaultRows: 3,
               withDropdown: !1,
@@ -4463,7 +4182,7 @@
               exportAttrString: 'border="1" style="border-collapse: collapse"',
             }),
           ));
-        var ae = (function (e) {
+        var ne = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4656,9 +4375,9 @@
             t
           );
         })(o.PureComponent);
-        ((0, b.TS)({ type: 'text-editor', component: ae }),
+        ((0, b.TS)({ type: 'text-editor', component: ne }),
           __webpack_require__(9741));
-        var oe = (function (e) {
+        var ae = (function (e) {
           function t(t) {
             var n;
             return (
@@ -4824,10 +4543,10 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'number', component: oe });
-        var le = require('rc-switch'),
-          re = __webpack_require__.n(le),
-          ie =
+        (0, b.TS)({ type: 'number', component: ae });
+        var oe = require('rc-switch'),
+          le = __webpack_require__.n(oe),
+          re =
             (require('rc-switch/assets/index.css'),
             __webpack_require__(3512),
             (function (e) {
@@ -4926,7 +4645,7 @@
                       o.createElement(
                         'div',
                         { className: 'form-item-box' },
-                        o.createElement(re(), {
+                        o.createElement(le(), {
                           style: { display: 'inline-block' },
                           defaultChecked: void 0 !== p ? p : u.default,
                           checkedChildren: 'true',
@@ -4941,10 +4660,10 @@
                 t
               );
             })(o.PureComponent));
-        ((0, b.TS)({ type: 'boolean', component: ie }),
+        ((0, b.TS)({ type: 'boolean', component: re }),
           __webpack_require__(7546));
-        var se = S.Select.Option,
-          ce = (function (e) {
+        var ie = S.Select.Option,
+          se = (function (e) {
             function t(t) {
               var n;
               return (
@@ -5108,7 +4827,7 @@
                             var n = e.label || e.name,
                               a = u + '-select-' + n;
                             return o.createElement(
-                              se,
+                              ie,
                               { value: e.value, key: a },
                               n,
                             );
@@ -5121,9 +4840,9 @@
               t
             );
           })(o.PureComponent);
-        ((0, b.TS)({ type: 'select', component: ce }),
+        ((0, b.TS)({ type: 'select', component: se }),
           __webpack_require__(3794));
-        var ue = (function (e) {
+        var ce = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5238,8 +4957,8 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'cascader', component: ue });
-        var pe = (function (e) {
+        (0, b.TS)({ type: 'cascader', component: ce });
+        var ue = (function (e) {
           function n(t) {
             var n;
             return (
@@ -5400,15 +5119,15 @@
             n
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'input-image', component: pe });
-        var me = require('moment'),
-          de = __webpack_require__.n(me),
-          ye = {
+        (0, b.TS)({ type: 'input-image', component: ue });
+        var pe = require('moment'),
+          me = __webpack_require__.n(pe),
+          de = {
             'date-time': 'YYYY-MM-DD HH:mm',
             date: 'YYYY-MM-DD',
             time: 'HH:mm',
           },
-          he = (function (e) {
+          ye = (function (e) {
             function t(t) {
               var n;
               return (
@@ -5449,7 +5168,7 @@
                   p = u.type,
                   y = u.readOnly || !1,
                   h = u.isRequired || !1,
-                  g = ye[p] || ye[0],
+                  g = de[p] || de[0],
                   f = l && i && l(i),
                   v = null != f ? f : u.default,
                   E = (0, _.y8)(p),
@@ -5515,7 +5234,7 @@
                         showTime: 'date-time' === p,
                         format: g,
                         placeholder: u.placeholder || '请输入' + u.title,
-                        defaultValue: v && de()(v, g),
+                        defaultValue: v && me()(v, g),
                         onChange: this.handleValueChange,
                       }),
                     ),
@@ -5525,9 +5244,9 @@
               t
             );
           })(o.PureComponent);
-        ((0, b.TS)({ type: 'date', component: he }),
-          (0, b.TS)({ type: 'date-time', component: he }));
-        var Se = (function (e) {
+        ((0, b.TS)({ type: 'date', component: ye }),
+          (0, b.TS)({ type: 'date-time', component: ye }));
+        var he = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5629,7 +5348,7 @@
                       disabled: h,
                       required: g,
                       placeholder: u.placeholder || '请输入' + u.title,
-                      defaultValue: y && de()(y, 'HH:mm'),
+                      defaultValue: y && me()(y, 'HH:mm'),
                       onChange: this.handleValueChange,
                     }),
                   ),
@@ -5639,8 +5358,8 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'time', component: Se });
-        var _e = (function (e) {
+        (0, b.TS)({ type: 'time', component: he });
+        var Se = (function (e) {
           function t(t) {
             var n;
             return (
@@ -5748,9 +5467,9 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'url', component: _e });
-        var ge = require('react-color'),
-          fe =
+        (0, b.TS)({ type: 'url', component: Se });
+        var _e = require('react-color'),
+          ge =
             (__webpack_require__(6220),
             (function (e) {
               function t(t) {
@@ -5816,7 +5535,7 @@
                     O = p.contentStyle
                       ? (0, _.K8)((0, m.toJS)(p.contentStyle))
                       : {},
-                    x = o.createElement(ge.SketchPicker, {
+                    x = o.createElement(_e.SketchPicker, {
                       className: 'color-sketch-picker',
                       key: u + '-SketchPicker',
                       color: null != v ? v : p.default,
@@ -5932,8 +5651,8 @@
                 t
               );
             })(o.PureComponent));
-        (0, b.TS)({ type: 'color', component: fe });
-        var ve = (function (e) {
+        (0, b.TS)({ type: 'color', component: ge });
+        var fe = (function (e) {
           function t(t) {
             var n;
             return (
@@ -6083,11 +5802,11 @@
             t
           );
         })(o.PureComponent);
-        ((0, b.TS)({ type: 'json', component: ve }),
+        ((0, b.TS)({ type: 'json', component: fe }),
           __webpack_require__(697),
           require('ace-builds/src-noconflict/mode-html'),
           __webpack_require__(6953));
-        var Ee = (function (e) {
+        var ve = (function (e) {
           function t(t) {
             var n;
             return (
@@ -6224,13 +5943,13 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'htmlarea', component: Ee });
-        var be = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
-          we = __webpack_require__.n(be),
-          Ce = (__webpack_require__(4754), ['key', 'name']),
-          Oe = ['key', 'name'],
-          xe = S.Tabs.TabPane,
-          Ne = (function (e) {
+        (0, b.TS)({ type: 'htmlarea', component: ve });
+        var Ee = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
+          be = __webpack_require__.n(Ee),
+          we = (__webpack_require__(4754), ['key', 'name']),
+          Ce = ['key', 'name'],
+          Oe = S.Tabs.TabPane,
+          xe = (function (e) {
             function n(t) {
               var n;
               return (
@@ -6329,8 +6048,8 @@
                   k = b.dataType || {},
                   R = b.cache || {},
                   j = b.cacheTime || {},
-                  D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
-                  T = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                  T = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
+                  D = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
                   P = y.contentStyle
                     ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                     : {},
@@ -6347,11 +6066,11 @@
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
                     id: h,
-                    style: D,
+                    style: T,
                   },
                   l().createElement(
                     'div',
-                    { className: 'element-title', style: T },
+                    { className: 'element-title', style: D },
                     l().createElement(
                       'span',
                       { className: 'title-text', title: y.title },
@@ -6429,7 +6148,7 @@
                         S.Tabs,
                         { defaultActiveKey: '1' },
                         l().createElement(
-                          xe,
+                          Oe,
                           {
                             tab:
                               (null === (a = y.tabTitles) || void 0 === a
@@ -6587,7 +6306,7 @@
                           ),
                         ),
                         l().createElement(
-                          xe,
+                          Oe,
                           {
                             tab:
                               (null === (o = y.tabTitles) || void 0 === o
@@ -6615,7 +6334,7 @@
                                   e.map(function (e) {
                                     var n = e.key,
                                       a = e.name,
-                                      r = we()(e, Ce);
+                                      r = be()(e, we);
                                     return l().createElement(
                                       S.Space,
                                       {
@@ -6702,7 +6421,7 @@
                                   e.map(function (e) {
                                     var n = e.key,
                                       a = e.name,
-                                      r = we()(e, Oe);
+                                      r = be()(e, Ce);
                                     return l().createElement(
                                       S.Space,
                                       {
@@ -6790,8 +6509,8 @@
               n
             );
           })(l().PureComponent);
-        ((0, b.TS)({ type: 'api', component: Ne }), __webpack_require__(8678));
-        var ke = (function (e) {
+        ((0, b.TS)({ type: 'api', component: xe }), __webpack_require__(8678));
+        var Ne = (function (e) {
           function t(t) {
             var n;
             return (
@@ -7018,8 +6737,8 @@
             t
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'dynamic-data', component: ke });
-        var Re = (function (e) {
+        (0, b.TS)({ type: 'dynamic-data', component: Ne });
+        var ke = (function (e) {
           function n(t) {
             var n;
             return (
@@ -7063,8 +6782,8 @@
                 k = y.properties.eventData || {},
                 R = b.default,
                 j = null === (e = y.showCodeViewBtn) || void 0 === e || e,
-                D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
-                T = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                T = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
+                D = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
                 P = y.contentStyle
                   ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                   : {};
@@ -7076,11 +6795,11 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
                   id: u,
-                  style: D,
+                  style: T,
                 },
                 o.createElement(
                   'div',
-                  { className: 'element-title', style: T },
+                  { className: 'element-title', style: D },
                   o.createElement(
                     S.Tooltip,
                     {
@@ -7228,7 +6947,247 @@
             n
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'event', component: Re });
+        ((0, b.TS)({ type: 'event', component: ke }),
+          __webpack_require__(5584));
+        var Re = (function (e) {
+          function n(t) {
+            var n;
+            return (
+              ((n = e.call(this, t) || this).switchFilterBtn = function () {
+                var e = n.state.isShowFilter;
+                n.setState({ isShowFilter: !e });
+              }),
+              (n.state = { isShowFilter: !1, jsonView: !1, isClosed: !1 }),
+              (n.switchFilterBtn = n.switchFilterBtn.bind(n)),
+              n
+            );
+          }
+          a()(n, e);
+          var l = n.prototype;
+          return (
+            (l.componentWillMount = function () {
+              k.x.call(this);
+            }),
+            (l.componentWillReceiveProps = function (e) {
+              e.keyRoute !== this.props.keyRoute && k.x.call(this, e.keyRoute);
+            }),
+            (l.render = function () {
+              var e,
+                n = this,
+                a = this.props,
+                l = a.schemaStore,
+                r = (a.jsonStore, a.renderChild),
+                i = (l || {}).pageScreen,
+                s = this.props,
+                c = s.keyRoute,
+                u = s.jsonKey,
+                p = s.nodeKey,
+                y = s.indexRoute,
+                h = s.targetJsonSchema,
+                g = this.state,
+                f = g.jsonView,
+                v = g.isClosed,
+                E = g.isShowFilter,
+                b = h.type,
+                C = (h.readOnly, h.properties.type || {}),
+                O = h.properties.data || {},
+                x = h.properties.filter || {},
+                k = C.default,
+                R = null === (e = h.showCodeViewBtn) || void 0 === e || e,
+                j = h.style ? (0, _.K8)((0, m.toJS)(h.style)) : {},
+                T = h.titleStyle ? (0, _.K8)((0, m.toJS)(h.titleStyle)) : {},
+                D = h.contentStyle
+                  ? (0, _.K8)((0, m.toJS)(h.contentStyle))
+                  : {};
+              return o.createElement(
+                'div',
+                {
+                  className:
+                    'wideScreen' === i
+                      ? 'wide-screen-element-warp'
+                      : 'mobile-screen-element-warp',
+                  id: p,
+                  style: j,
+                },
+                o.createElement(
+                  'div',
+                  { className: 'element-title', style: T },
+                  o.createElement(
+                    S.Tooltip,
+                    {
+                      title: 'wideScreen' === i ? h.description : '',
+                      placement: 'top',
+                    },
+                    o.createElement(
+                      'span',
+                      { className: 'title-text', title: h.title },
+                      h.title,
+                      h.showKey &&
+                        o.createElement(
+                          'span',
+                          null,
+                          '（',
+                          (0, d.truncate)(u || '', { length: 15 }),
+                          '）',
+                        ),
+                    ),
+                  ),
+                  'mobileScreen' === i &&
+                    h.description &&
+                    o.createElement(
+                      S.Tooltip,
+                      { title: h.description, placement: 'top' },
+                      o.createElement(w.InfoCircleOutlined, {
+                        className: 'info-icon',
+                      }),
+                    ),
+                ),
+                o.createElement(
+                  'div',
+                  {
+                    className: 'element-title-card-warp content-item',
+                    style: D,
+                  },
+                  o.createElement(
+                    'div',
+                    {
+                      className: 'element-title',
+                      onClick: function (e) {
+                        (n.setState({ isClosed: !v }),
+                          e.preventDefault(),
+                          e.stopPropagation());
+                      },
+                    },
+                    o.createElement(
+                      'span',
+                      { className: 'title-text' },
+                      '数据源配置',
+                    ),
+                    v
+                      ? o.createElement(w.RightOutlined, {
+                          className: 'close-operate-btn',
+                        })
+                      : o.createElement(w.DownOutlined, {
+                          className: 'close-operate-btn',
+                        }),
+                    R &&
+                      o.createElement(
+                        'div',
+                        {
+                          className: 'display-source-btn',
+                          onClick: function (e) {
+                            (n.setState({ jsonView: !f }),
+                              e.preventDefault(),
+                              e.stopPropagation());
+                          },
+                        },
+                        o.createElement(
+                          S.Tooltip,
+                          { title: f ? '关闭源码模式' : '开启源码模式' },
+                          o.createElement(A, {
+                            className: f ? 'info-icon active' : 'info-icon',
+                          }),
+                        ),
+                      ),
+                  ),
+                  o.createElement(
+                    'div',
+                    {
+                      className:
+                        'content-item object-content ' +
+                        (f ? 'json-view-array' : '') +
+                        ' ' +
+                        (v ? 'closed' : ''),
+                    },
+                    !f &&
+                      'local' === k &&
+                      o.createElement(
+                        o.Fragment,
+                        null,
+                        o.createElement(
+                          'div',
+                          { className: 'ace-editor-box code-area-item' },
+                          o.createElement(
+                            S.Tooltip,
+                            {
+                              title: E
+                                ? '点击隐藏数据过滤器'
+                                : '点击显示数据过滤器',
+                              placement: 'top',
+                            },
+                            o.createElement(w.FilterOutlined, {
+                              className: 'filter-btn',
+                              onClick: this.switchFilterBtn,
+                            }),
+                          ),
+                          r({
+                            rendererType: 'json',
+                            parentType: b,
+                            jsonKey: 'data',
+                            indexRoute: y ? y + '-1' : '1',
+                            keyRoute: c ? c + '-data' : 'data',
+                            nodeKey: p + '-data',
+                            targetJsonSchema: O,
+                            key: p + '-data',
+                          }),
+                        ),
+                        E &&
+                          r({
+                            rendererType: 'codearea',
+                            parentType: b,
+                            jsonKey: 'filter',
+                            indexRoute: y ? y + '-2' : '2',
+                            keyRoute: c ? c + '-filter' : 'filter',
+                            nodeKey: p + '-filter',
+                            targetJsonSchema: x,
+                          }),
+                      ),
+                    !f &&
+                      'remote' === k &&
+                      o.createElement(
+                        o.Fragment,
+                        null,
+                        o.createElement(
+                          'div',
+                          { className: 'url-editor-box' },
+                          r({
+                            rendererType: 'url',
+                            parentType: b,
+                            jsonKey: 'data',
+                            indexRoute: y ? y + '-1' : '1',
+                            keyRoute: c ? c + '-data' : 'data',
+                            nodeKey: p + '-data',
+                            targetJsonSchema: O,
+                          }),
+                          o.createElement(
+                            S.Tooltip,
+                            { title: '点击设置数据过滤器', placement: 'top' },
+                            o.createElement(w.FilterOutlined, {
+                              className: 'filter-url-btn',
+                              onClick: this.switchFilterBtn,
+                            }),
+                          ),
+                        ),
+                        E &&
+                          r({
+                            rendererType: 'codearea',
+                            parentType: b,
+                            jsonKey: 'filter',
+                            indexRoute: y ? y + '-2' : '2',
+                            keyRoute: c ? c + '-filter' : 'filter',
+                            nodeKey: p + '-filter',
+                            targetJsonSchema: x,
+                          }),
+                      ),
+                    f && o.createElement(N, t()({}, this.props)),
+                  ),
+                ),
+              );
+            }),
+            n
+          );
+        })(o.PureComponent);
+        (0, b.TS)({ type: 'datasource', component: Re });
         var je = function (e) {
             var n = e.schemaStore,
               a = e.jsonStore,
@@ -7262,11 +7221,11 @@
                   return je(t()({}, e, { schemaStore: n, jsonStore: a }));
                 },
               }),
-              v = b.Jd[S] || H;
+              v = b.Jd[S] || G;
             return l().createElement(v, t()({}, f));
           },
-          De = je,
-          Te = (__webpack_require__(8104), S.Collapse.Panel),
+          Te = je,
+          De = (__webpack_require__(8104), S.Collapse.Panel),
           Pe = S.Tabs.TabPane,
           Ke = (function (e) {
             function t(t) {
@@ -7298,8 +7257,7 @@
                 r = n.props.jsonStore || {},
                 i = r.initJSONData,
                 s = r.initOnChange,
-                c = r.setDynamicDataList,
-                u = r.setOptions;
+                c = r.setOptions;
               return (
                 t.schemaData
                   ? (o(t.schemaData), i(t.jsonData))
@@ -7307,8 +7265,7 @@
                     (o((0, d.json2schema)(t.jsonData)), i(t.jsonData)),
                 t.wideScreen && l(t.wideScreen),
                 t.onChange && s(t.onChange),
-                t.dynamicDataList && c(t.dynamicDataList),
-                t.options && u(t.options),
+                t.options && c(t.options),
                 n
               );
             }
@@ -7323,8 +7280,7 @@
                   l = o.JSONEditorObj,
                   r = o.initJSONData,
                   i = o.initOnChange,
-                  s = o.setDynamicDataList,
-                  c = o.setOptions;
+                  s = o.setOptions;
                 ((0, d.isEqualByIdT)(e.schemaData, this.props.schemaData) ||
                   n(e.schemaData),
                   (0, d.isEqual)(e.jsonData, l) || r(e.jsonData),
@@ -7332,12 +7288,8 @@
                     a(e.wideScreen),
                   (0, d.isEqual)(e.onChange, this.props.onChange) ||
                     i(e.onChange),
-                  (0, d.isEqual)(
-                    e.dynamicDataList,
-                    this.props.dynamicDataList,
-                  ) || s(e.dynamicDataList),
                   (0, d.isEqual)(e.options, this.props.options) ||
-                    c(e.options));
+                    s(e.options));
               }),
               (n.render = function () {
                 var e = this,
@@ -7394,12 +7346,12 @@
                                 return c.propertyOrder &&
                                   c.propertyOrder.length > 0
                                   ? o.createElement(
-                                      Te,
+                                      De,
                                       {
                                         header: c.title || e.renderHeader(m),
                                         key: t + '-' + l,
                                       },
-                                      De({
+                                      Te({
                                         parentType: m,
                                         jsonKey: s,
                                         indexRoute: r,
@@ -7442,7 +7394,7 @@
                                         closable: !1,
                                         className: 'tabs-schema-item',
                                       },
-                                      De({
+                                      Te({
                                         parentType: m,
                                         jsonKey: s,
                                         indexRoute: r,
@@ -7462,7 +7414,7 @@
                         o.createElement(
                           o.Fragment,
                           null,
-                          De({
+                          Te({
                             parentType: '',
                             jsonKey: '',
                             indexRoute: '',
