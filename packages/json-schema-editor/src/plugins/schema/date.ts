@@ -3,14 +3,14 @@ import { schemaRegistry } from '$core/registry';
 import { buildPropsSchema, EDITABLE_PROPS } from '$core/schema';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 
-const datePropsSchema = () =>
+const datePropsSchema = (defaultSchemaType: string = 'date') =>
   buildPropsSchema(
     {
       isConditionProp: EDITABLE_PROPS.isConditionProp,
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,
       default: {
-        type: 'input',
+        type: defaultSchemaType,
         title: '默认值',
         placeholder: '请输入默认日期值',
       },
@@ -60,7 +60,7 @@ export const dateTimeDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: datePropsSchema(),
+  propsSchema: datePropsSchema('date-time'),
 };
 
 /**
@@ -80,7 +80,7 @@ export const timeDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: datePropsSchema(),
+  propsSchema: datePropsSchema('time'),
 };
 
 schemaRegistry.registerAll([

@@ -27,7 +27,7 @@ const textEditorDescriptor: SchemaDescriptor = {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,
       default: {
-        type: 'textarea',
+        type: 'text-editor',
         title: '默认值',
         placeholder: '请输入默认富文本内容',
       },

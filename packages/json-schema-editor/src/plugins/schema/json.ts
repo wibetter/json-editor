@@ -3,13 +3,13 @@ import { schemaRegistry } from '$core/registry';
 import { buildPropsSchema, EDITABLE_PROPS } from '$core/schema';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 
-const jsonCodePropsSchema = () =>
+const jsonCodePropsSchema = (defaultSchemaType: string = 'textarea') =>
   buildPropsSchema(
     {
       readOnly: EDITABLE_PROPS.readOnly,
       isRequired: EDITABLE_PROPS.isRequired,
       default: {
-        type: 'textarea',
+        type: defaultSchemaType,
         title: '默认值',
         placeholder: '请输入默认值',
       },
@@ -40,7 +40,7 @@ export const jsonDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: jsonCodePropsSchema(),
+  propsSchema: jsonCodePropsSchema('json'),
 };
 
 /**
@@ -61,7 +61,7 @@ export const codeareaDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: jsonCodePropsSchema(),
+  propsSchema: jsonCodePropsSchema('codearea'),
 };
 
 /**
@@ -82,7 +82,7 @@ export const htmlareaDescriptor: SchemaDescriptor = {
   },
 
   renderer: GeneralSchema,
-  propsSchema: jsonCodePropsSchema(),
+  propsSchema: jsonCodePropsSchema('htmlarea'),
 };
 
 schemaRegistry.registerAll([

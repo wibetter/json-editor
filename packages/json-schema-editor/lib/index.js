@@ -2016,7 +2016,7 @@
               readOnly: j.readOnly,
               isRequired: j.isRequired,
               default: {
-                type: 'textarea',
+                type: 'text-editor',
                 title: '默认值',
                 placeholder: '请输入默认富文本内容',
               },
@@ -2030,23 +2030,26 @@
           ),
         };
         C.register(se);
-        var le = function () {
-            return I(
-              {
-                readOnly: j.readOnly,
-                isRequired: j.isRequired,
-                default: {
-                  type: 'textarea',
-                  title: '默认值',
-                  placeholder: '请输入默认值',
+        var le = function (e) {
+            return (
+              void 0 === e && (e = 'textarea'),
+              I(
+                {
+                  readOnly: j.readOnly,
+                  isRequired: j.isRequired,
+                  default: {
+                    type: e,
+                    title: '默认值',
+                    placeholder: '请输入默认值',
+                  },
+                  placeholder: {
+                    type: 'input',
+                    title: '输入提示',
+                    placeholder: '请输入输入提示',
+                  },
                 },
-                placeholder: {
-                  type: 'input',
-                  title: '输入提示',
-                  placeholder: '请输入输入提示',
-                },
-              },
-              ['readOnly', 'isRequired', 'default', 'placeholder'],
+                ['readOnly', 'isRequired', 'default', 'placeholder'],
+              )
             );
           },
           de = {
@@ -2061,7 +2064,7 @@
               placeholder: '',
             },
             renderer: W,
-            propsSchema: le(),
+            propsSchema: le('json'),
           },
           pe = {
             type: 'codearea',
@@ -2075,7 +2078,7 @@
               placeholder: '请输入函数方法',
             },
             renderer: W,
-            propsSchema: le(),
+            propsSchema: le('codearea'),
           },
           ce = {
             type: 'htmlarea',
@@ -2089,33 +2092,36 @@
               placeholder: '请输入html代码片段',
             },
             renderer: W,
-            propsSchema: le(),
+            propsSchema: le('htmlarea'),
           };
         C.registerAll([de, pe, ce]);
-        var ue = function () {
-            return I(
-              {
-                isConditionProp: j.isConditionProp,
-                readOnly: j.readOnly,
-                isRequired: j.isRequired,
-                default: {
-                  type: 'input',
-                  title: '默认值',
-                  placeholder: '请输入默认日期值',
+        var ue = function (e) {
+            return (
+              void 0 === e && (e = 'date'),
+              I(
+                {
+                  isConditionProp: j.isConditionProp,
+                  readOnly: j.readOnly,
+                  isRequired: j.isRequired,
+                  default: {
+                    type: e,
+                    title: '默认值',
+                    placeholder: '请输入默认日期值',
+                  },
+                  placeholder: {
+                    type: 'input',
+                    title: '输入提示',
+                    placeholder: '请输入输入提示',
+                  },
                 },
-                placeholder: {
-                  type: 'input',
-                  title: '输入提示',
-                  placeholder: '请输入输入提示',
-                },
-              },
-              [
-                'isConditionProp',
-                'readOnly',
-                'isRequired',
-                'default',
-                'placeholder',
-              ],
+                [
+                  'isConditionProp',
+                  'readOnly',
+                  'isRequired',
+                  'default',
+                  'placeholder',
+                ],
+              )
             );
           },
           he = {
@@ -2144,7 +2150,7 @@
               placeholder: '',
             },
             renderer: W,
-            propsSchema: ue(),
+            propsSchema: ue('date-time'),
           },
           ye = {
             type: 'time',
@@ -2158,7 +2164,7 @@
               placeholder: '',
             },
             renderer: W,
-            propsSchema: ue(),
+            propsSchema: ue('time'),
           };
         C.registerAll([he, me, ye]);
         var fe = {
