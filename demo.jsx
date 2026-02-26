@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { Switch, Select } from 'antd';
+import { Switch, Select, Tag } from 'antd';
 import JSONSchemaEditor from './packages/json-schema-editor/lib/index';
 import JSONEditor from './packages/json-editor/lib/index';
 import './packages/json-schema-editor/lib/index.css';
@@ -32,22 +32,10 @@ class IndexDemo extends React.PureComponent {
                 "title": "图例位置",
                 "type": "select",
                 "options": [
-                  {
-                    "label": "上",
-                    "value": "top"
-                  },
-                  {
-                    "label": "右",
-                    "value": "right"
-                  },
-                  {
-                    "label": "下",
-                    "value": "bottom"
-                  },
-                  {
-                    "label": "左",
-                    "value": "left"
-                  }
+                  { "label": "上", "value": "top" },
+                  { "label": "右", "value": "right" },
+                  { "label": "下", "value": "bottom" },
+                  { "label": "左", "value": "left" }
                 ],
                 "description": "",
                 "default": "top"
@@ -60,10 +48,7 @@ class IndexDemo extends React.PureComponent {
                 "placeholder": ""
               }
             },
-            "propertyOrder": [
-              "legendAlign",
-              "legend"
-            ]
+            "propertyOrder": ["legendAlign", "legend"]
           },
           "style": {
             "type": "object",
@@ -86,30 +71,15 @@ class IndexDemo extends React.PureComponent {
                     "type": "select",
                     "default": "px",
                     "options": [
-                      {
-                        "label": "px",
-                        "value": "px"
-                      },
-                      {
-                        "label": "rem",
-                        "value": "rem"
-                      },
-                      {
-                        "label": "em",
-                        "value": "em"
-                      },
-                      {
-                        "label": "%",
-                        "value": "%"
-                      }
+                      { "label": "px", "value": "px" },
+                      { "label": "rem", "value": "rem" },
+                      { "label": "em", "value": "em" },
+                      { "label": "%", "value": "%" }
                     ],
                     "title": "单位类型"
                   }
                 },
-                "propertyOrder": [
-                  "unit",
-                  "quantity"
-                ]
+                "propertyOrder": ["unit", "quantity"]
               },
               "height": {
                 "type": "quantity",
@@ -127,30 +97,15 @@ class IndexDemo extends React.PureComponent {
                     "type": "select",
                     "default": "px",
                     "options": [
-                      {
-                        "label": "px",
-                        "value": "px"
-                      },
-                      {
-                        "label": "rem",
-                        "value": "rem"
-                      },
-                      {
-                        "label": "em",
-                        "value": "em"
-                      },
-                      {
-                        "label": "%",
-                        "value": "%"
-                      }
+                      { "label": "px", "value": "px" },
+                      { "label": "rem", "value": "rem" },
+                      { "label": "em", "value": "em" },
+                      { "label": "%", "value": "%" }
                     ],
                     "title": "单位类型"
                   }
                 },
-                "propertyOrder": [
-                  "unit",
-                  "quantity"
-                ]
+                "propertyOrder": ["unit", "quantity"]
               },
               "paddingMargin": {
                 "type": "padding-margin",
@@ -173,39 +128,19 @@ class IndexDemo extends React.PureComponent {
                     "type": "select",
                     "default": "px",
                     "options": [
-                      {
-                        "label": "px",
-                        "value": "px"
-                      },
-                      {
-                        "label": "rem",
-                        "value": "rem"
-                      },
-                      {
-                        "label": "em",
-                        "value": "em"
-                      },
-                      {
-                        "label": "%",
-                        "value": "%"
-                      }
+                      { "label": "px", "value": "px" },
+                      { "label": "rem", "value": "rem" },
+                      { "label": "em", "value": "em" },
+                      { "label": "%", "value": "%" }
                     ],
                     "title": "单位类型"
                   }
                 },
-                "propertyOrder": [
-                  "margin",
-                  "padding",
-                  "quantity"
-                ],
+                "propertyOrder": ["margin", "padding", "quantity"],
                 "description": ""
               }
             },
-            "propertyOrder": [
-              "width",
-              "height",
-              "paddingMargin"
-            ]
+            "propertyOrder": ["width", "height", "paddingMargin"]
           },
           "data": {
             "type": "object",
@@ -220,14 +155,8 @@ class IndexDemo extends React.PureComponent {
                     "default": "local",
                     "type": "select",
                     "options": [
-                      {
-                        "label": "本地数据",
-                        "value": "local"
-                      },
-                      {
-                        "label": "接口数据",
-                        "value": "remote"
-                      }
+                      { "label": "本地数据", "value": "local" },
+                      { "label": "接口数据", "value": "remote" }
                     ],
                     "title": "数据类型"
                   },
@@ -241,14 +170,8 @@ class IndexDemo extends React.PureComponent {
                         "default": "local",
                         "type": "select",
                         "options": [
-                          {
-                            "label": "本地数据",
-                            "value": "local"
-                          },
-                          {
-                            "label": "接口数据",
-                            "value": "remote"
-                          }
+                          { "label": "本地数据", "value": "local" },
+                          { "label": "接口数据", "value": "remote" }
                         ],
                         "title": "数据类型"
                       },
@@ -268,11 +191,7 @@ class IndexDemo extends React.PureComponent {
                         "isRequired": true
                       }
                     },
-                    "propertyOrder": [
-                      "dataName",
-                      "body",
-                      "filter"
-                    ]
+                    "propertyOrder": ["dataName", "body", "filter"]
                   },
                   "data": {
                     "title": "数据内容",
@@ -289,12 +208,7 @@ class IndexDemo extends React.PureComponent {
                     "isRequired": true
                   }
                 },
-                "propertyOrder": [
-                  "type",
-                  "config",
-                  "data",
-                  "localFilter"
-                ]
+                "propertyOrder": ["type", "config", "data", "localFilter"]
               },
               "xAxis": {
                 "title": "x轴字段",
@@ -311,18 +225,10 @@ class IndexDemo extends React.PureComponent {
                 "placeholder": ""
               }
             },
-            "propertyOrder": [
-              "chartDataList",
-              "xAxis",
-              "yAxis"
-            ]
+            "propertyOrder": ["chartDataList", "xAxis", "yAxis"]
           }
         },
-        "propertyOrder": [
-          "data",
-          "props",
-          "style"
-        ],
+        "propertyOrder": ["data", "props", "style"],
         "lastUpdateTime": 1746805475633
       },
       jsonData: {},
@@ -331,7 +237,7 @@ class IndexDemo extends React.PureComponent {
           { value: 'default0' },
           { value: 'default1' },
           { value: 'default2' },
-        ], // 用于设置默认的选项
+        ],
         wideScreen: false,
         jsonView: false,
         viewStyle: 'tabs',
@@ -339,7 +245,7 @@ class IndexDemo extends React.PureComponent {
         tabType: 'line',
         jsonViewReadOnly: true,
       },
-      schemaCodeView: false, // schema源码模式
+      schemaCodeView: false,
       curTypeList: {},
     };
   }
@@ -348,7 +254,6 @@ class IndexDemo extends React.PureComponent {
     const {
       jsonSchema,
       jsonData,
-      dynamicDataList,
       schemaCodeView,
       curTypeList,
       options,
@@ -356,175 +261,175 @@ class IndexDemo extends React.PureComponent {
     const { wideScreen, jsonView, viewStyle, tabPosition, tabType, jsonViewReadOnly } = options;
 
     return (
-      <>
-        <div className="title-container">
-          <div className="title1-box">
-            <p>
-              <b className="title-name">json-schema-editor</b>:
-              JSON数据可视化/JSONSchema，以表单的形式编辑 json
-              schema。可用于在线设计组件的配置面板。
-            </p>
-            <div>
-              <b>开启源码模式</b>: &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={schemaCodeView}
-                checkedChildren="code"
-                unCheckedChildren="view"
-                onChange={(checked) => {
-                  this.setState({
-                    schemaCodeView: checked,
-                  });
+      <div className="demo-layout">
+        {/* 全局顶部标题栏 */}
+        <header className="demo-header">
+          <h1 className="demo-header__title">JSON Editor Demo</h1>
+          <p className="demo-header__subtitle">可视化 JSON Schema 设计 &amp; JSON 数据编辑工具</p>
+        </header>
+
+        {/* 左右分屏主体 */}
+        <div className="demo-split">
+
+          {/* 左侧：JSONSchemaEditor */}
+          <div className="demo-panel demo-panel--left">
+            <div className="demo-panel__header">
+              <div className="demo-panel__title-row">
+                <span className="demo-panel__badge demo-panel__badge--schema">SchemaEditor</span>
+                <span className="demo-panel__name">json-schema-editor</span>
+              </div>
+              <p className="demo-panel__desc">
+                以表单形式编辑 JSON Schema，可用于在线设计组件配置面板。
+              </p>
+              <div className="demo-panel__controls">
+                <label className="demo-control-label">源码模式</label>
+                <Switch
+                  size="small"
+                  defaultChecked={schemaCodeView}
+                  checkedChildren="code"
+                  unCheckedChildren="view"
+                  onChange={(checked) => {
+                    this.setState({ schemaCodeView: checked });
+                  }}
+                />
+                {schemaCodeView && (
+                  <>
+                    <label className="demo-control-label">编辑模式</label>
+                    <Switch
+                      size="small"
+                      defaultChecked={!jsonViewReadOnly}
+                      checkedChildren="开"
+                      unCheckedChildren="关"
+                      onChange={(checked) => {
+                        this.setState((prev) => ({
+                          options: { ...prev.options, jsonViewReadOnly: !checked },
+                        }));
+                      }}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="demo-panel__body">
+              <JSONSchemaEditor
+                jsonView={schemaCodeView}
+                jsonViewReadOnly={jsonViewReadOnly}
+                data={jsonSchema}
+                typeList={curTypeList}
+                onChange={(newJsonSchema) => {
+                  console.log('newJsonSchema', newJsonSchema);
+                  this.setState({ jsonSchema: newJsonSchema });
                 }}
               />
-              {schemaCodeView && (
-                <>
-                  &nbsp;&nbsp;
-                  <b>开启编辑模式</b>: &nbsp;&nbsp;
-                  <Switch
-                    style={{ display: 'inline-block' }}
-                    defaultChecked={!jsonViewReadOnly}
-                    checkedChildren="false"
-                    unCheckedChildren="true"
-                    onChange={(checked) => {
-                      this.setState((prev) => ({
-                        options: {
-                          ...prev.options,
-                          jsonViewReadOnly: !checked,
-                        },
-                      }));
-                    }}
-                  />
-                </>
-              )}
             </div>
           </div>
-          <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
-            <p>
-              <b className="title-name">json-editor</b>:
-              JSON数据可视化/JSONEditor，以表单的形式编辑 json
-              数据。可用于支持组件或页面可视化配置。
-            </p>
-            <div>
-              <b>开启源码模式</b>: &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={wideScreen}
-                checkedChildren="大屏"
-                unCheckedChildren="小屏"
-                onChange={(checked) => {
-                  this.setState((prev) => ({
-                    options: { ...prev.options, wideScreen: checked },
-                  }));
+
+          {/* 分割线 */}
+          <div className="demo-divider" />
+
+          {/* 右侧：JSONEditor */}
+          <div className={`demo-panel demo-panel--right${!wideScreen ? ' demo-panel--mobile' : ''}`}>
+            <div className="demo-panel__header">
+              <div className="demo-panel__title-row">
+                <span className="demo-panel__badge demo-panel__badge--editor">JSONEditor</span>
+                <span className="demo-panel__name">json-editor</span>
+              </div>
+              <p className="demo-panel__desc">
+                以表单形式编辑 JSON 数据，可用于支持组件或页面可视化配置。
+              </p>
+              <div className="demo-panel__controls">
+                <label className="demo-control-label">宽屏</label>
+                <Switch
+                  size="small"
+                  defaultChecked={wideScreen}
+                  checkedChildren="大"
+                  unCheckedChildren="小"
+                  onChange={(checked) => {
+                    this.setState((prev) => ({
+                      options: { ...prev.options, wideScreen: checked },
+                    }));
+                  }}
+                />
+                <label className="demo-control-label">视图</label>
+                <Switch
+                  size="small"
+                  defaultChecked={viewStyle === 'tabs'}
+                  checkedChildren="tabs"
+                  unCheckedChildren="fold"
+                  onChange={(checked) => {
+                    this.setState((prev) => ({
+                      options: { ...prev.options, viewStyle: checked ? 'tabs' : 'fold' },
+                    }));
+                  }}
+                />
+                <label className="demo-control-label">源码</label>
+                <Switch
+                  size="small"
+                  defaultChecked={jsonView}
+                  checkedChildren="code"
+                  unCheckedChildren="view"
+                  onChange={(checked) => {
+                    this.setState((prev) => ({
+                      options: { ...prev.options, jsonView: checked },
+                    }));
+                  }}
+                />
+                {viewStyle === 'tabs' && (
+                  <>
+                    <label className="demo-control-label">标签位置</label>
+                    <Select
+                      size="small"
+                      style={{ width: 72 }}
+                      value={tabPosition}
+                      onChange={(value) => {
+                        this.setState((prev) => ({
+                          options: { ...prev.options, tabPosition: value },
+                        }));
+                      }}
+                    >
+                      <Select.Option value="top">上</Select.Option>
+                      <Select.Option value="bottom">下</Select.Option>
+                      <Select.Option value="left">左</Select.Option>
+                      <Select.Option value="right">右</Select.Option>
+                    </Select>
+                    <label className="demo-control-label">标签样式</label>
+                    <Select
+                      size="small"
+                      style={{ width: 72 }}
+                      value={tabType}
+                      onChange={(value) => {
+                        this.setState((prev) => ({
+                          options: { ...prev.options, tabType: value },
+                        }));
+                      }}
+                    >
+                      <Select.Option value="line">线条</Select.Option>
+                      <Select.Option value="card">卡片</Select.Option>
+                    </Select>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="demo-panel__body">
+              <JSONEditor
+                schemaData={jsonSchema}
+                jsonData={jsonData}
+                options={options}
+                onChange={(newJsonData) => {
+                  console.log('jsonDataChange', JSON.stringify(newJsonData));
+                  this.setState({ jsonData: newJsonData });
                 }}
               />
-              &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={viewStyle === 'tabs'}
-                checkedChildren="tabs"
-                unCheckedChildren="fold"
-                onChange={(checked) => {
-                  this.setState((prev) => ({
-                    options: {
-                      ...prev.options,
-                      viewStyle: checked ? 'tabs' : 'fold',
-                    },
-                  }));
-                }}
-              />
-              &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={jsonView}
-                checkedChildren="code"
-                unCheckedChildren="view"
-                onChange={(checked) => {
-                  this.setState((prev) => ({
-                    options: { ...prev.options, jsonView: checked },
-                  }));
-                }}
-              />
-              {viewStyle === 'tabs' && (
-                <>
-                  &nbsp;&nbsp;
-                  <b>标签位置</b>: &nbsp;&nbsp;
-                  <Select
-                    style={{ width: 100, display: 'inline-block' }}
-                    value={tabPosition}
-                    onChange={(value) => {
-                      this.setState((prev) => ({
-                        options: { ...prev.options, tabPosition: value },
-                      }));
-                    }}
-                  >
-                    <Select.Option value="top">上</Select.Option>
-                    <Select.Option value="bottom">下</Select.Option>
-                    <Select.Option value="left">左</Select.Option>
-                    <Select.Option value="right">右</Select.Option>
-                  </Select>
-                  &nbsp;&nbsp;
-                  <b>标签样式</b>: &nbsp;&nbsp;
-                  <Select
-                    style={{ width: 120, display: 'inline-block' }}
-                    value={tabType}
-                    onChange={(value) => {
-                      this.setState((prev) => ({
-                        options: { ...prev.options, tabType: value },
-                      }));
-                    }}
-                  >
-                    <Select.Option value="line">线条</Select.Option>
-                    <Select.Option value="card">卡片</Select.Option>
-                  </Select>
-                </>
-              )}
             </div>
           </div>
+
         </div>
-        <div className="json-action-container">
-          <div className="json-schema-box">
-            <JSONSchemaEditor
-              jsonView={schemaCodeView}
-              jsonViewReadOnly={jsonViewReadOnly}
-              data={jsonSchema}
-              typeList={curTypeList}
-              onChange={(newJsonSchema) => {
-                console.log('newJsonSchema', newJsonSchema);
-                this.setState({
-                  jsonSchema: newJsonSchema,
-                });
-              }}
-            />
-          </div>
-          <div
-            className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
-          >
-            <JSONEditor
-              schemaData={jsonSchema}
-              jsonData={jsonData}
-              options={options}
-              onChange={(newJsonData) => {
-                console.log('jsonDataChange', JSON.stringify(newJsonData));
-                this.setState({
-                  jsonData: newJsonData,
-                });
-              }}
-            />
-          </div>
-        </div>
-      </>
+      </div>
     );
   }
 }
 
 ReactDOM.render(
-  <div>
-    <h1 className="page-title">JSON数据可视化/JSONEditor Demo</h1>
-
-    <br />
-
-    <IndexDemo />
-  </div>,
+  <IndexDemo />,
   document.getElementById('root'),
 );

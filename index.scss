@@ -1,99 +1,210 @@
 @charset "utf-8";
 
-body {
-  padding: 20px 10px;
+/* =====================
+   全局重置
+   ===================== */
+* {
+  box-sizing: border-box;
 }
 
-.page-title {
-  text-align: center;
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #f0f2f5;
 }
 
-.title-container {
+/* =====================
+   整体布局容器
+   ===================== */
+.demo-layout {
+  max-width: 1600px;
   margin: 0 auto;
-  max-width: 1200px;
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
 
-  .title-name {
-    font-size: 22px;
+/* =====================
+   顶部标题栏
+   ===================== */
+.demo-header {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #1677ff 0%, #0958d9 100%);
+  color: #fff;
+  padding: 14px 32px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &__title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: #fff;
   }
 
-  .title1-box {
-    flex: 1 1 600px;
-    padding: 8px 4px;
-    box-sizing: border-box;
+  &__subtitle {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.82;
+    color: #fff;
+  }
+}
+
+/* =====================
+   左右分屏容器
+   ===================== */
+.demo-split {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* =====================
+   面板通用样式
+   ===================== */
+.demo-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  min-width: 0;
+
+  /* 左侧面板 */
+  &--left {
+    flex: 1 1 50%;
+  }
+
+  /* 右侧面板 */
+  &--right {
+    flex: 1 1 50%;
+  }
+
+  /* 右侧小屏模式 */
+  &--mobile {
+    flex: 0 0 380px;
+  }
+
+  /* 面板头部 */
+  &__header {
+    flex-shrink: 0;
+    padding: 14px 20px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fafafa;
+    min-height: 150px;
+  }
+
+  &__title-row {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
   }
 
-  .title2-box {
-    flex: 1 1 600px;
-    box-sizing: border-box;
-    padding: 8px 4px;
+  &__badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    // text-transform: uppercase;
+
+    &--schema {
+      background: #e6f4ff;
+      color: #1677ff;
+      border: 1px solid #91caff;
+    }
+
+    &--editor {
+      background: #f6ffed;
+      color: #52c41a;
+      border: 1px solid #b7eb8f;
+    }
   }
 
-  .title2-box.mobile-view {
-    flex: 0 1 320px;
+  &__name {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1d1d1f;
+  }
+
+  &__desc {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* 面板内容区域（可滚动） */
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 12px 16px;
   }
 }
 
-.json-action-container {
-  margin: 0 auto;
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
+/* =====================
+   控件标签
+   ===================== */
+.demo-control-label {
+  font-size: 12px;
+  color: #555;
+  margin-left: 6px;
+  margin-right: 2px;
+  white-space: nowrap;
 
-  .json-schema-box {
-    flex: 1 1 600px;
-    padding: 8px 10px;
-    box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .json-editor-box {
-    flex: 1 1 600px;
-    box-sizing: border-box;
-    padding: 8px 10px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .json-editor-box.mobile-view {
-    flex: 0 1 380px;
-  }
-
-  .json-view-box {
-    position: relative;
-
-    .json-view-ace {
-      width: 100%;
-    }
-
-    .readOnly-btn {
-      position: absolute;
-      top: 0;
-      right: 8px;
-      color: #ad6800;
-      z-index: 100;
-    }
+  &:first-child {
+    margin-left: 0;
   }
 }
 
-/* 设置滚动条的样式 */
+/* =====================
+   分割线
+   ===================== */
+.demo-divider {
+  flex-shrink: 0;
+  width: 1px;
+  background: #e8e8e8;
+}
+
+/* =====================
+   滚动条美化
+   ===================== */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
-/* 外层轨道 */
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: rgba(255, 0, 0, 0.3);
 
-  background: rgba(255, 255, 255, 0.1);
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
 }
-/* 滚动条滑块 */
+
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.18);
 }
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.12);
 }

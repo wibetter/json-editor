@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { Switch } from 'antd';
+import { Switch, Select } from 'antd';
 // @ts-ignore
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
 // @ts-ignore
@@ -33,14 +33,8 @@ class IndexDemo extends React.PureComponent<any, any> {
                 type: 'select',
                 title: '内容排列方向',
                 options: [
-                  {
-                    label: '竖排(默认)',
-                    value: 'column',
-                  },
-                  {
-                    label: '横排',
-                    value: 'row',
-                  },
+                  { label: '竖排(默认)', value: 'column' },
+                  { label: '横排', value: 'row' },
                 ],
                 description:
                   'flex-direction属性：决定主轴的方向（即列级容器内部元素的排列方向）',
@@ -85,7 +79,7 @@ class IndexDemo extends React.PureComponent<any, any> {
           { value: 'default0' },
           { value: 'default1' },
           { value: 'default2' },
-        ], // 用于设置默认的选项
+        ],
         wideScreen: false,
         jsonView: urlParams['jsonView'] === 'true',
         viewStyle: urlParams['viewStyle'] ?? 'tabs',
@@ -93,9 +87,9 @@ class IndexDemo extends React.PureComponent<any, any> {
         tabPosition: 'top',
         tabType: 'line',
       },
-      schemaCodeView: false, // schema源码模式
+      schemaCodeView: false,
       curTypeList: {},
-      schemaViewReadOnly: true, // schema数据是否只读
+      schemaViewReadOnly: true,
     };
   }
 
@@ -108,161 +102,211 @@ class IndexDemo extends React.PureComponent<any, any> {
       options,
       schemaViewReadOnly,
     } = this.state;
-    const { wideScreen, jsonView, viewStyle, jsonViewReadOnly } = options;
+    const {
+      wideScreen,
+      jsonView,
+      viewStyle,
+      jsonViewReadOnly,
+      tabPosition,
+      tabType,
+    } = options;
 
     return (
-      <>
-        <div className="title-container">
-          <div className="title1-box">
-            <p>
-              <b className="title-name">json-schema-editor</b>:
-              JSON数据可视化/JSONSchema，以表单的形式编辑 json
-              schema。可用于在线设计组件的配置面板。
-            </p>
-            <div>
-              <b>开启源码模式</b>: &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={schemaCodeView}
-                checkedChildren="code"
-                unCheckedChildren="view"
-                onChange={(checked) => {
-                  this.setState({
-                    schemaCodeView: checked,
-                  });
+      <div className="demo-layout">
+        {/* 顶部标题栏 */}
+        <header className="demo-header">
+          <h1 className="demo-header__title">JSON Editor Demo</h1>
+          <p className="demo-header__subtitle">
+            可视化 JSON Schema 设计 &amp; JSON 数据编辑工具
+          </p>
+        </header>
+
+        {/* 左右分屏主体 */}
+        <div className="demo-split">
+          {/* 左侧：JSONSchemaEditor */}
+          <div className="demo-panel demo-panel--left">
+            <div className="demo-panel__header">
+              <div className="demo-panel__title-row">
+                <span className="demo-panel__badge demo-panel__badge--schema">
+                  SchemaEditor
+                </span>
+                <span className="demo-panel__name">json-schema-editor</span>
+              </div>
+              <p className="demo-panel__desc">
+                以表单形式编辑 JSON Schema，可用于在线设计组件配置面板。
+              </p>
+              <div className="demo-panel__controls">
+                <label className="demo-control-label">源码模式</label>
+                <Switch
+                  size="small"
+                  defaultChecked={schemaCodeView}
+                  checkedChildren="code"
+                  unCheckedChildren="view"
+                  onChange={(checked) => {
+                    this.setState({ schemaCodeView: checked });
+                  }}
+                />
+                {schemaCodeView && (
+                  <>
+                    <label className="demo-control-label">编辑模式</label>
+                    <Switch
+                      size="small"
+                      defaultChecked={!schemaViewReadOnly}
+                      checkedChildren="开"
+                      unCheckedChildren="关"
+                      onChange={(checked) => {
+                        this.setState({ schemaViewReadOnly: !checked });
+                      }}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="demo-panel__body">
+              <JSONSchemaEditor
+                jsonView={schemaCodeView}
+                jsonViewReadOnly={schemaViewReadOnly}
+                data={jsonSchema}
+                typeList={curTypeList}
+                onChange={(newJsonSchema: any) => {
+                  console.log(
+                    'schemaDataChange',
+                    JSON.stringify(newJsonSchema),
+                  );
+                  this.setState({ jsonSchema: newJsonSchema });
                 }}
               />
-              {schemaCodeView && (
-                <>
-                  &nbsp;&nbsp;
-                  <b>开启编辑模式</b>: &nbsp;&nbsp;
-                  <Switch
-                    style={{ display: 'inline-block' }}
-                    defaultChecked={!schemaViewReadOnly}
-                    checkedChildren="false"
-                    unCheckedChildren="true"
-                    onChange={(checked) => {
-                      this.setState({
-                        schemaViewReadOnly: !checked,
-                      });
-                    }}
-                  />
-                </>
-              )}
             </div>
           </div>
-          <div className={`title2-box ${!wideScreen ? 'mobile-view' : ''}`}>
-            <p>
-              <b className="title-name">json-editor</b>:
-              JSON数据可视化/JSONEditor，以表单的形式编辑 json
-              数据。可用于支持组件或页面可视化配置。
-            </p>
-            <div>
-              <b>开启源码模式</b>: &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={wideScreen}
-                checkedChildren="大屏"
-                unCheckedChildren="小屏"
-                onChange={(checked) => {
-                  this.setState((prev) => ({
-                    options: { ...prev.options, wideScreen: checked },
-                  }));
-                }}
-              />
-              &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={viewStyle === 'tabs'}
-                checkedChildren="tabs"
-                unCheckedChildren="fold"
-                onChange={(checked) => {
-                  this.setState((prev) => ({
-                    options: {
-                      ...prev.options,
-                      viewStyle: checked ? 'tabs' : 'fold',
-                    },
-                  }));
-                }}
-              />
-              &nbsp;&nbsp;
-              <Switch
-                style={{ display: 'inline-block' }}
-                defaultChecked={jsonView}
-                checkedChildren="code"
-                unCheckedChildren="view"
-                onChange={(checked) => {
-                  this.setState((prev) => ({
-                    options: { ...prev.options, jsonView: checked },
-                  }));
-                }}
-              />
-              {jsonView && (
-                <>
-                  &nbsp;&nbsp;
-                  <b>开启编辑模式</b>: &nbsp;&nbsp;
-                  <Switch
-                    style={{ display: 'inline-block' }}
-                    defaultChecked={!jsonViewReadOnly}
-                    checkedChildren="false"
-                    unCheckedChildren="true"
-                    onChange={(checked) => {
-                      this.setState((prev) => ({
-                        options: {
-                          ...prev.options,
-                          jsonViewReadOnly: !checked,
-                        },
-                      }));
-                    }}
-                  />
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="json-action-container">
-          <div className="json-schema-box">
-            <JSONSchemaEditor
-              jsonView={schemaCodeView}
-              jsonViewReadOnly={schemaViewReadOnly}
-              data={jsonSchema}
-              typeList={curTypeList}
-              onChange={(newJsonSchema: any) => {
-                console.log('schemaDataChange', JSON.stringify(newJsonSchema));
-                this.setState({
-                  jsonSchema: newJsonSchema,
-                });
-              }}
-            />
-          </div>
+
+          {/* 分割线 */}
+          <div className="demo-divider" />
+
+          {/* 右侧：JSONEditor */}
           <div
-            className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
+            className={`demo-panel demo-panel--right${!wideScreen ? ' demo-panel--mobile' : ''}`}
           >
-            <JSONEditor
-              schemaData={jsonSchema}
-              jsonData={jsonData}
-              options={options}
-              onChange={(newJsonData) => {
-                console.log('jsonDataChange', JSON.stringify(newJsonData));
-                this.setState({
-                  jsonData: newJsonData,
-                });
-              }}
-            />
+            <div className="demo-panel__header">
+              <div className="demo-panel__title-row">
+                <span className="demo-panel__badge demo-panel__badge--editor">
+                  JSONEditor
+                </span>
+                <span className="demo-panel__name">json-editor</span>
+              </div>
+              <p className="demo-panel__desc">
+                以表单形式编辑 JSON 数据，可用于支持组件或页面可视化配置。
+              </p>
+              <div className="demo-panel__controls">
+                <label className="demo-control-label">宽屏</label>
+                <Switch
+                  size="small"
+                  defaultChecked={wideScreen}
+                  checkedChildren="大"
+                  unCheckedChildren="小"
+                  onChange={(checked) => {
+                    this.setState((prev: any) => ({
+                      options: { ...prev.options, wideScreen: checked },
+                    }));
+                  }}
+                />
+                <label className="demo-control-label">视图</label>
+                <Switch
+                  size="small"
+                  defaultChecked={viewStyle === 'tabs'}
+                  checkedChildren="tabs"
+                  unCheckedChildren="fold"
+                  onChange={(checked) => {
+                    this.setState((prev: any) => ({
+                      options: {
+                        ...prev.options,
+                        viewStyle: checked ? 'tabs' : 'fold',
+                      },
+                    }));
+                  }}
+                />
+                <label className="demo-control-label">源码</label>
+                <Switch
+                  size="small"
+                  defaultChecked={jsonView}
+                  checkedChildren="code"
+                  unCheckedChildren="view"
+                  onChange={(checked) => {
+                    this.setState((prev: any) => ({
+                      options: { ...prev.options, jsonView: checked },
+                    }));
+                  }}
+                />
+                {jsonView && (
+                  <>
+                    <label className="demo-control-label">编辑模式</label>
+                    <Switch
+                      size="small"
+                      defaultChecked={!jsonViewReadOnly}
+                      checkedChildren="开"
+                      unCheckedChildren="关"
+                      onChange={(checked) => {
+                        this.setState((prev: any) => ({
+                          options: {
+                            ...prev.options,
+                            jsonViewReadOnly: !checked,
+                          },
+                        }));
+                      }}
+                    />
+                  </>
+                )}
+                {viewStyle === 'tabs' && (
+                  <>
+                    <label className="demo-control-label">标签位置</label>
+                    <Select
+                      size="small"
+                      style={{ width: 72 }}
+                      value={tabPosition}
+                      onChange={(value: string) => {
+                        this.setState((prev: any) => ({
+                          options: { ...prev.options, tabPosition: value },
+                        }));
+                      }}
+                    >
+                      <Select.Option value="top">上</Select.Option>
+                      <Select.Option value="bottom">下</Select.Option>
+                      <Select.Option value="left">左</Select.Option>
+                      <Select.Option value="right">右</Select.Option>
+                    </Select>
+                    <label className="demo-control-label">标签样式</label>
+                    <Select
+                      size="small"
+                      style={{ width: 72 }}
+                      value={tabType}
+                      onChange={(value: string) => {
+                        this.setState((prev: any) => ({
+                          options: { ...prev.options, tabType: value },
+                        }));
+                      }}
+                    >
+                      <Select.Option value="line">线条</Select.Option>
+                      <Select.Option value="card">卡片</Select.Option>
+                    </Select>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="demo-panel__body">
+              <JSONEditor
+                schemaData={jsonSchema}
+                jsonData={jsonData}
+                options={options}
+                onChange={(newJsonData: any) => {
+                  console.log('jsonDataChange', JSON.stringify(newJsonData));
+                  this.setState({ jsonData: newJsonData });
+                }}
+              />
+            </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
 
-ReactDOM.render(
-  <div>
-    <h1 className="page-title">JSON数据可视化/JSONEditor Demo</h1>
-
-    <br />
-
-    <IndexDemo />
-  </div>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<IndexDemo />, document.getElementById('root'));
