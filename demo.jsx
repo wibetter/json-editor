@@ -1,15 +1,15 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Select, Tag } from 'antd';
-import JSONSchemaEditor, { registerSchema, buildPropsSchema } from './packages/json-schema-editor/lib/index';
+import JSONSchemaEditor, { registerSchema, buildPropsSchema } from './packages/json-schema-editor/lib/index'; // 正式环境请使用 '@wibetter/json-schema-editor'
 import JSONEditor, { registerRenderer } from './packages/json-editor/lib/index'; // 正式环境请使用 '@wibetter/json-editor'
 import './packages/json-schema-editor/lib/index.css';
 import './packages/json-editor/lib/index.css';
 import './index.scss';
 
-/**
- * 添加自定义配置项
- */ 
+/*
+说明：以下代码为添加自定义配置项的示例
+// 添加自定义配置项
 class ColorPickerRenderer extends React.Component {
   render() {
     const { targetJsonSchema, jsonStore, keyRoute } = this.props;
@@ -60,6 +60,8 @@ const ColorPickerDescriptor = {
 
 // 注册成 json-schema-editor 可用配置项
 registerSchema(ColorPickerDescriptor);
+
+*/
 
 /**
  * JSONSchemaEditor 和 JSONEditor 示例
