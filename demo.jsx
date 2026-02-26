@@ -1,14 +1,68 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Select, Tag } from 'antd';
-import JSONSchemaEditor from './packages/json-schema-editor/lib/index';
-import JSONEditor from './packages/json-editor/lib/index';
+import JSONSchemaEditor, { registerSchema, buildPropsSchema } from './packages/json-schema-editor/lib/index';
+import JSONEditor, { registerRenderer } from './packages/json-editor/lib/index'; // 正式环境请使用 '@wibetter/json-editor'
 import './packages/json-schema-editor/lib/index.css';
 import './packages/json-editor/lib/index.css';
 import './index.scss';
 
 /**
- * JSONSchemaEditor和JSONEditor的测试Demo
+ * 添加自定义配置项
+ */ 
+class ColorPickerRenderer extends React.Component {
+  render() {
+    const { targetJsonSchema, jsonStore, keyRoute } = this.props;
+    const { title, description } = targetJsonSchema;
+    const currentValue = jsonStore.getJSONDataByKeyRoute(keyRoute) ?? '#ffffff';
+
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', padding: '4px 0' }}>
+        <span style={{ marginRight: 8 }}>{title}</span>
+        <input
+          type="color"
+          value={currentValue}
+          title={description}
+          onChange={(e) => {
+            jsonStore.updateFormValueData(keyRoute, e.target.value);
+          }}
+        />
+        <span style={{ marginLeft: 8 }}>{currentValue}</span>
+      </div>
+    );
+  }
+}
+
+// 注册成json-editor配置项
+registerRenderer({
+  type: 'color-picker',
+  component: ColorPickerRenderer
+});
+
+// 定义 ColorPicker 类型描述文件
+const ColorPickerDescriptor = {
+  type: 'color-picker',
+  label: '颜色选择器',
+  isContainer: false,
+
+  // 新建该类型时的初始 schema
+  defaultSchema: {
+    type: 'color-picker',
+    title: '颜色选择器'
+  },
+
+  // 高级配置面板的 schema（由 buildPropsSchema 构建，会自动合并通用配置项）
+  propsSchema: buildPropsSchema(
+    {},
+    [],
+  ),
+};
+
+// 注册成 json-schema-editor 可用配置项
+registerSchema(ColorPickerDescriptor);
+
+/**
+ * JSONSchemaEditor 和 JSONEditor 示例
  * 备注：构建产物调试模式
  */
 class IndexDemo extends React.PureComponent {
@@ -138,9 +192,14 @@ class IndexDemo extends React.PureComponent {
                 },
                 "propertyOrder": ["margin", "padding", "quantity"],
                 "description": ""
-              }
+              },
+              "bgColor": {
+                type: 'color-picker',  // 对应自定义渲染器的 type
+                title: '背景颜色',
+                default: '#ffffff',
+              },
             },
-            "propertyOrder": ["width", "height", "paddingMargin"]
+            "propertyOrder": ["width", "height", "paddingMargin", "bgColor"]
           },
           "data": {
             "type": "object",
