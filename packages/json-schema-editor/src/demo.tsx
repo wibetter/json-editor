@@ -7,18 +7,19 @@ import JSONSchemaEditor from './main';
 import '@wibetter/json-editor/lib/index.css';
 import '../../../index.scss';
 
+// 导入自定义 Schema
+// import './custom';
+
 /**
  * json-schema-editor的测试Demo：含json-editor
  */
 interface IndexDemoState {
   jsonSchema: any;
   jsonData: any;
-  dynamicDataList: any[];
   wideScreen: boolean;
   jsonView: boolean;
   schemaCodeView: boolean;
   viewStyle: 'tabs' | 'fold';
-  curTypeList: any;
   jsonViewReadOnly: boolean;
 }
 
@@ -88,69 +89,10 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
         lastUpdateTime: '2024-10-13T02:08:03.551Z',
       },
       jsonData: {},
-      dynamicDataList: [
-        {
-          id: 3,
-          projectId: 97,
-          type: '1',
-          title: '获取项目数据源接口列表',
-          name: 'getProjectDataSource',
-          desc: '获取项目数据源接口列表数组',
-          url: 'http://dev.com:4000/project_datasource',
-          method: 'GET',
-          headers:
-            '{"user-agent":"UA/chrome","content-type":"application/json"}',
-          options:
-            '{"cache":"no-cache","credentials":"*","mode":"cors","redirect":"follow"}',
-          reqParams:
-            '{"param1":{"title":"参数名称","scope":"static","value":"111"},"param2":{"title":"参数名称","scope":"window","name":"PARAM1","value":"111"},"pageId":{"title":"页面id","scope":"hash","name":"pId","value":"111"}}',
-          dynamicParams:
-            '{"param5":{"title":"参数名称","scope":"url","name":"pageId","value":"111"},"param7":{"title":"参数名称","scope":"dynamic","dataName":"api3","body":{"param2":{"title":"参数名称","scope":"static","value":"222"},"param3":{"title":"参数名称","scope":"static","value":"333"}}}}',
-          respMock:
-            '{"code":0,"data":[{"id":3,"projectId":89,"type":"1","title":"获取项目数据源","name":"getProjectDataSource","desc":"获取项目数据源","url":"http://dev.com:4000/project_datasource","method":"GET","headers":"{\\"user-agent\\":\\"chrome\\",\\"content-type\\":\\"application/json\\"}","options":"{\\"cache\\":\\"no-cache\\",\\"credentials\\":\\"same-origin\\",\\"mode\\":\\"cors\\",\\"redirect\\":\\"follow\\"}","reqParams":"{\\"param1\\":{\\"title\\":\\"参数名称\\",\\"scope\\":\\"static\\",\\"value\\":\\"111\\"},\\"param2\\":{\\"title\\":\\"参数名称\\",\\"scope\\":\\"window\\",\\"name\\":\\"PARAM1\\",\\"value\\":\\"111\\"},\\"pageId\\":{\\"title\\":\\"页面id\\",\\"scope\\":\\"hash\\",\\"name\\":\\"pId\\",\\"value\\":\\"111\\"}}","dynamicParams":"{\\"param5\\":{\\"title\\":\\"参数名称\\",\\"scope\\":\\"url\\",\\"name\\":\\"pageId\\",\\"value\\":\\"111\\"},\\"param7\\":{\\"title\\":\\"参数名称\\",\\"scope\\":\\"dynamic\\",\\"dataName\\":\\"api3\\",\\"body\\":{\\"param2\\":{\\"title\\":\\"参数名称\\",\\"scope\\":\\"static\\",\\"value\\":\\"222\\"},\\"param3\\":{\\"title\\":\\"参数名称\\",\\"scope\\":\\"static\\",\\"value\\":\\"333\\"}}}}","respMock":"{}","creatorId":2,"createdAt":"2020-08-20T03:09:29.000Z","updatedAt":"2020-08-20T03:09:29.000Z","deletedAt":null,"creator":{"id":2,"erp":"wangjianhui16"},"dataName":"getProjectDataSource","body":{"param1":{"title":"参数名称","scope":"static","value":"111"},"param2":{"title":"参数名称","scope":"window","name":"PARAM1","value":"111"},"pageId":{"title":"页面id","scope":"hash","name":"pId","value":"111"},"param5":{"title":"参数名称","scope":"url","name":"pageId","value":"111"},"param7":{"title":"参数名称","scope":"dynamic","dataName":"api3","body":{"param2":{"title":"参数名称","scope":"static","value":"222"},"param3":{"title":"参数名称","scope":"static","value":"333"}}}}}]}',
-          creatorId: 2,
-          createdAt: '2020-08-20T03:09:29.000Z',
-          updatedAt: '2020-08-20T12:40:19.000Z',
-          deletedAt: null,
-          creator: {
-            id: 2,
-            erp: 'wangjianhui16',
-          },
-          dataName: 'getProjectDataSource',
-          body: '{"param1":{"title":"参数名称","scope":"static","value":"111"},"param2":{"title":"参数名称","scope":"window","name":"PARAM1","value":"111"},"pageId":{"title":"页面id","scope":"hash","name":"pId","value":"111"},"param5":{"title":"参数名称","scope":"url","name":"pageId","value":"111"},"param7":{"title":"参数名称","scope":"dynamic","dataName":"api3","body":{"param2":{"title":"参数名称","scope":"static","value":"222"},"param3":{"title":"参数名称","scope":"static","value":"333"}}}}',
-        },
-        {
-          id: 4,
-          projectId: 97,
-          type: '1',
-          title: 'getAttr2',
-          name: 'getAttr2',
-          desc: 'getAttr2',
-          url: 'http://getAttr2',
-          method: 'POST',
-          headers: null,
-          options: null,
-          reqParams: null,
-          dynamicParams:
-            '{\n          "param1": {\n            "title": "参数名称",\n            "scope": "static",\n            "value": "111"\n          },\n          "param2": {\n            "title": "参数名称",\n            "scope": "window",\n            "name": "PARAM1",\n            "value": "111"\n          },\n          "pageId": {\n            "title": "页面id",\n            "scope": "hash",\n            "name": "pId",\n            "value": "111"\n          }\n        }\n',
-          respMock: null,
-          creatorId: 2,
-          createdAt: '2020-08-20T14:54:17.000Z',
-          updatedAt: '2020-08-20T14:54:17.000Z',
-          deletedAt: null,
-          creator: {
-            id: 2,
-            erp: 'wangjianhui16',
-          },
-          dataName: 'getAttr2',
-          body: '{"param1":{"title":"参数名称","scope":"static","value":"111"},"param2":{"title":"参数名称","scope":"window","name":"PARAM1","value":"111"},"pageId":{"title":"页面id","scope":"hash","name":"pId","value":"111"}}',
-        },
-      ],
       wideScreen: false,
       jsonView: false,
       schemaCodeView: false, // schema源码模式
       viewStyle: 'tabs', // 默认折叠模式
-      curTypeList: {},
       jsonViewReadOnly: true,
     };
   }
@@ -159,12 +101,10 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
     const {
       jsonSchema,
       jsonData,
-      dynamicDataList,
       wideScreen,
       schemaCodeView,
       jsonView,
       viewStyle,
-      curTypeList,
       jsonViewReadOnly,
     } = this.state;
     return (
@@ -257,7 +197,6 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
           <div className="json-schema-box">
             <JSONSchemaEditor
               data={jsonSchema}
-              typeList={curTypeList}
               jsonView={schemaCodeView}
               jsonViewReadOnly={jsonViewReadOnly}
               onChange={(newJsonSchema) => {
@@ -276,7 +215,8 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
               wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
-              dynamicDataList={dynamicDataList}
+              tabPosition="top"
+              tabType="line"
               onChange={(newJsonData: any) => {
                 this.setState({
                   jsonData: newJsonData,

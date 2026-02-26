@@ -30,7 +30,6 @@ interface JSONEditorProps {
   jsonViewReadOnly?: boolean;
   schemaData?: any;
   jsonData?: any;
-  dynamicDataList?: any[];
   options?: any;
   // 标签栏位置，默认居中。viewStyle 设置成 tabs 时有效
   tabPosition?: any; // 'top' | 'bottom' | 'left' | 'right' | 'center';
@@ -52,7 +51,7 @@ class JSONDataEditor extends React.PureComponent<
     super(props);
 
     const { initJSONSchemaData, setPageScreen } = this.props.schemaStore || {};
-    const { initJSONData, initOnChange, setDynamicDataList, setOptions } =
+    const { initJSONData, initOnChange, setOptions } =
       this.props.jsonStore || {};
 
     // 根据props.schemaData对jsonSchema进行初始化
@@ -75,11 +74,6 @@ class JSONDataEditor extends React.PureComponent<
     if (props.onChange) {
       initOnChange(props.onChange);
     }
-
-    // 获取dynamicDataList（动态数据源）
-    if (props.dynamicDataList) {
-      setDynamicDataList(props.dynamicDataList);
-    }
     // 配置类数据
     if (props.options) {
       setOptions(props.options);
@@ -100,13 +94,8 @@ class JSONDataEditor extends React.PureComponent<
 
   componentWillReceiveProps(nextProps: BaseRendererProps) {
     const { JSONSchemaChange, setPageScreen } = this.props.schemaStore || {};
-    const {
-      JSONEditorObj,
-      initJSONData,
-      initOnChange,
-      setDynamicDataList,
-      setOptions,
-    } = this.props.jsonStore || {};
+    const { JSONEditorObj, initJSONData, initOnChange, setOptions } =
+      this.props.jsonStore || {};
     /** 1. 先初始化schemaData，如果jsonData和schemaData的格式不一致，则以schemaData为准 */
     if (!isEqualByIdT(nextProps.schemaData, this.props.schemaData)) {
       JSONSchemaChange(nextProps.schemaData);
@@ -121,11 +110,6 @@ class JSONDataEditor extends React.PureComponent<
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
       initOnChange(nextProps.onChange);
-    }
-
-    // 获取dynamicDataList（动态数据源）
-    if (!isEqual(nextProps.dynamicDataList, this.props.dynamicDataList)) {
-      setDynamicDataList(nextProps.dynamicDataList);
     }
 
     if (!isEqual(nextProps.options, this.props.options)) {

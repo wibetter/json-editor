@@ -1,0 +1,24 @@
+// 导入所有内置 schema 文件，触发各自的自注册副作用
+import './schema/input';
+import './schema/boolean';
+import './schema/number';
+import './schema/color';
+import './schema/url';
+import './schema/textarea';
+import './schema/textEditor';
+import './schema/json';
+import './schema/date';
+import './schema/inputImage';
+import './schema/radio';
+import './schema/select';
+import './schema/cascader';
+import './schema/checkboxes';
+import './schema/quantity';
+import './schema/boxStyle';
+import './schema/paddingMargin';
+import './schema/object';
+import './schema/array';
+// import './schema/datasource';
+// import './schema/event';
+// import './schema/dynamicData';
+import './schema/api';

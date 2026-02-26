@@ -34,7 +34,6 @@ export interface JSONStore {
   JSONEditorObj: any;
   initJSONData: (jsonData: any) => void;
   initOnChange: (onChange: any) => void;
-  setDynamicDataList: (dynamicDataList: any[]) => void;
   options: Record<string, any>;
   setOptions: (options: any) => void;
   [key: string]: any;

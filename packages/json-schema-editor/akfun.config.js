@@ -19,14 +19,16 @@ module.exports = {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.umd.js', '.vue', '.json'], // 用于配置webpack在尝试过程中用到的后缀列表
       alias: {
         '@': resolve('src'),
+        $core: resolve('src/core'),
         $components: resolve('src/components'),
         $schemaRenderer: resolve('src/schemaRenderer'),
         $utils: resolve('src/utils'),
         $assets: resolve('src/assets'),
         $public: resolve('../../public'),
         $store: resolve('src/store'),
-        $data: resolve('src/data'),
         $types: resolve('src/types'),
+        $plugins: resolve('src/plugins'),
+        $customSchema: resolve('src/customSchema'),
       },
     },
     // createDeclaration: true, // 打包时是否创建ts声明文件

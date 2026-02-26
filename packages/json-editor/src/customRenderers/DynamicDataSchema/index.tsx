@@ -16,7 +16,6 @@ interface DynamicDataSchemaProps {
   keyRoute?: string;
   nodeKey?: string;
   targetJsonSchema: any;
-  dynamicDataList?: any[];
   dynamicDataObj?: any;
   dynamicDataApiScopeList?: any;
   schemaStore?: any;

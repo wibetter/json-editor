@@ -1,7 +1,6 @@
 // 内置的渲染器
 import '$renderers/ArraySchema/index';
 import '$renderers/ObjectSchema/index';
-import '$renderers/DataSourceSchema/index';
 import '$renderers/QuantitySchema/index';
 import '$renderers/BoxStyleSchema/index';
 import '$renderers/PaddingAndMarginSchema/index';

@@ -4,11 +4,14 @@ import { Provider } from 'mobx-react';
 import JSONStore from '$store/index';
 import JSONSchema from '$components/JSONSchemaEditor/index';
 import { BaseRendererProps } from '$types/index';
+// 导入内置 Schema
+import '$plugins/index';
 
 interface JSONSchemaEditorProps {
   wideScreen?: any;
   onChange?: (data: any) => void;
   data?: any;
+  /** @deprecated v7.0.0 起已废弃，改由 JSONSchemaEditor.registerElement() 管理类型 */
   typeList?: any;
   element?: any;
   jsonView?: any;
@@ -32,7 +35,7 @@ export default class JSONSchemaEditor extends React.PureComponent<
     super(props);
 
     this.state = {
-      schemaStore: new (JSONStore.schemaStore as any)(), // 初始化一份schemaStore
+      schemaStore: new (JSONStore.schemaStore as any)(),
     };
   }
 
@@ -47,9 +50,14 @@ export default class JSONSchemaEditor extends React.PureComponent<
     );
 
     if (element) {
-      ReactDOM.render(renderContent, element); // 挂载到指定位置
+      ReactDOM.render(renderContent, element);
       return null;
     }
-    return renderContent; // 直接输出dom元素
+    return renderContent;
   }
 }
+
+import { schemaRegistry, registerSchema, buildPropsSchema } from '$core/index';
+import type { SchemaDescriptor } from '$core/index';
+export { schemaRegistry, registerSchema, buildPropsSchema };
+export type { SchemaDescriptor };

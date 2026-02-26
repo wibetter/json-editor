@@ -2,9 +2,9 @@ import * as React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Tree, message } from 'antd';
 import ObjectSchema from '$schemaRenderer/ObjectSchema/index';
-import MappingRender from '$schemaRenderer/MappingRender';
-import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
+import MappingRender from '$core/MappingRender';
 import JsonView from '$components/JsonView';
+import { schemaRegistry } from '$core/registry';
 import {
   getParentIndexRoute,
   isEmptySchema,
@@ -13,13 +13,13 @@ import {
   moveForward,
 } from '@wibetter/json-utils';
 import { BaseRendererProps } from '$types/index';
+import { isEqual, saveWebCacheData, getWebCacheData } from '$utils/index';
 import './index.scss';
 
 class JSONSchema extends React.PureComponent<BaseRendererProps> {
   constructor(props: BaseRendererProps) {
     super(props);
-    const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
-      this.props.schemaStore || {};
+    const { initJSONSchemaData, initOnChange } = this.props.schemaStore || {};
 
     // 根据props.data对jsonSchema进行初始化
     if (props.data) {
@@ -29,25 +29,16 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     if (props.onChange) {
       initOnChange(props.onChange);
     }
-    // 重置TypeList
-    if (props.typeList) {
-      initSchemaTypeList(props.typeList);
-    }
   }
 
   componentWillReceiveProps(nextProps: BaseRendererProps) {
-    const { initJSONSchemaData, initOnChange, initSchemaTypeList } =
-      this.props.schemaStore || {};
+    const { initJSONSchemaData, initOnChange } = this.props.schemaStore || {};
     if (!isEqual(nextProps.data, this.props.data)) {
       initJSONSchemaData(nextProps.data);
     }
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
       initOnChange(nextProps.onChange);
-    }
-    // 重置TypeList
-    if (!isEqual(nextProps.typeList, this.props.typeList)) {
-      initSchemaTypeList(nextProps.typeList);
     }
   }
 
@@ -59,8 +50,10 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     const { node } = eventData;
     const curIndexRoute = node.indexRoute || node['data-indexRoute'];
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    if (curJsonObj.isFixed) {
+    const descriptor = schemaRegistry.get(curJsonObj.type);
+    if (descriptor?.isFixed) {
       message.warning('当前元素不支持拖拽哦。');
+      return;
     }
   };
 
@@ -80,7 +73,6 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
       insertJsonData,
       deleteJsonByIndex,
       isExitJsonKey,
-      isSupportCurType,
     } = this.props.schemaStore || {};
 
     // 拖动的元素key
@@ -88,7 +80,8 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
     const curJsonKey = dragNode.jsonKey || dragNode['data-jsonKey'];
     // 获取当前拖动的元素
     const curJsonObj = getSchemaByIndexRoute(curIndexRoute);
-    if (curJsonObj.isFixed) return; // 固定类型元素不允许拖拽
+    const descriptor = schemaRegistry.get(curJsonObj.type);
+    if (descriptor?.isFixed) return; // 固定类型元素不允许拖拽
 
     // 放置的目标元素key
     let targetIndexRoute = node.indexRoute || node['data-indexRoute'];
@@ -129,11 +122,6 @@ class JSONSchema extends React.PureComponent<BaseRendererProps> {
         return;
       }
       const curType = curJsonObj.type;
-      const isSupportCurType_ = isSupportCurType(targetIndexRoute, curType);
-      if (!isSupportCurType_) {
-        message.warning(`目标位置不支持${curType}类型元素`);
-        return;
-      }
 
       // 跨级拖动时
       const curKeyRoute = indexRoute2keyRoute(curIndexRoute);

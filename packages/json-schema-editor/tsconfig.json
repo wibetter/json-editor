@@ -4,14 +4,17 @@
     "baseUrl": "./",
     "paths": {
       "@": ["./src"],
+      "$core/*": ["./src/core/*"],
       "$components/*": ["./src/components/*"],
       "$schemaRenderer/*": ["./src/schemaRenderer/*"],
+      "$store/*": ["./src/store/*"],
+      "$plugins/*": ["./src/plugins/*"],
+      "$plugins": ["./src/plugins/index.ts"],
+      "$types/*": ["./src/types/*"],
       "$utils/*": ["./src/utils/*"],
       "$assets/*": ["./src/assets/*"],
       "$public/*": ["../../public/*"],
-      "$store/*": ["./src/store/*"],
-      "$data/*": ["./src/data/*"],
-      "$types/*": ["./src/types/*"]
+      "$customSchema/*": ["./src/customSchema/*"]
     }
   },
   "include": ["src", "src/types"],

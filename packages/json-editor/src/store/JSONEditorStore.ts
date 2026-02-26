@@ -16,11 +16,6 @@ interface RootJSONStore {
   };
 }
 
-interface DynamicData {
-  name: string;
-  [key: string]: any;
-}
-
 interface StoreState {
   rootJSONStore: RootJSONStore;
 }
@@ -68,36 +63,9 @@ export default class JSONEditorStore {
   @observable initJsonData: Record<string, any> = {};
 
   /**
-   * dynamicDataList: 动态数据源列表
-   * 备注：主要在DynamicDataSchema的接口数据/数据源选择列表中使用
-   */
-  @observable dynamicDataList: DynamicData[] = []; // 数据源的配置
-  @observable dynamicDataObj: Record<string, DynamicData> = {}; // 数据源的配置对象（主要用于方便取值）
-
-  /**
    * 存放当前配置类对象数据
    */
   @observable options: Record<string, any> = {};
-
-  /**
-   * DynamicData中支持的请求参数类型: 动态请求参数
-   * 固定值参数（scope: static）： eg: 写死固定参数 => framework=1
-   * URL 参数（scope: url）： eg: pages?projectId=xxx => projectId=xxx
-   * Hash 参数（scope: hash）： eg: /pages/:pageId => pageId=xxx
-   * 环境变量（scope: window）： eg: 代码上下文里的变量 => env=dev
-   * 接口下发（scope: dynamic）： eg: 另一个接口返回结果字段 =>
-   * 页面参数（scope: page）： eg: 事件流设置参数
-   * 需要用户输入的参数（scope: input）： eg: 事件流设置参数
-   */
-  @observable dynamicDataApiScopeList = {
-    static: '固定值',
-    url: 'URL参数',
-    hash: 'Hash参数',
-    window: '环境变量',
-    dynamic: '接口下发',
-    page: '页面参数',
-    input: '用户输入',
-  };
 
   /**
    * onChange: jsonData数据变动触发的onChange
@@ -146,20 +114,6 @@ export default class JSONEditorStore {
   initOnChange(newOnChangeFunc: ((data: any) => void) | null | undefined) {
     if (newOnChangeFunc || isFunction(newOnChangeFunc)) {
       this.onChange = newOnChangeFunc as (data: any) => void;
-    }
-  }
-
-  /** 设置动态数据源列表  */
-  @action.bound
-  setDynamicDataList(dynamicDataList: DynamicData[]) {
-    if (!isEqual(dynamicDataList, this.dynamicDataList)) {
-      this.dynamicDataList = objClone(dynamicDataList);
-      // 重新对 赋值
-      const dynamicDataObjTemp: Record<string, DynamicData> = {};
-      dynamicDataList.map((dynamicData: DynamicData) => {
-        dynamicDataObjTemp[dynamicData.name] = dynamicData;
-      });
-      this.dynamicDataObj = dynamicDataObjTemp;
     }
   }
 
