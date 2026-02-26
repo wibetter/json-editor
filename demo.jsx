@@ -316,217 +316,31 @@ class IndexDemo extends React.PureComponent {
               "xAxis",
               "yAxis"
             ]
-          },
-          "event": {
-            "type": "object",
-            "title": "事件",
-            "isFixed": true,
-            "properties": {},
-            "propertyOrder": []
           }
         },
         "propertyOrder": [
           "data",
           "props",
-          "style",
-          "event"
+          "style"
         ],
         "lastUpdateTime": 1746805475633
       },
       jsonData: {},
-      dynamicDataList: [
-        {
-          id: 1,
-          projectId: 88,
-          name: 'getAttrs',
-          type: '1',
-          desc: '获取属性列表',
-          url: 'http://yapi.com/mock/522/test',
-          method: 'GET',
-          title: '属性列表',
-          headers: '',
-          options: '',
-          body: {
-            param1: {
-              title: '参数名称',
-              scope: 'static',
-              value: '111',
-            },
-            param2: {
-              title: '参数名称',
-              scope: 'window',
-              name: 'PARAM1',
-              value: '111',
-            },
-            pageId: {
-              title: '页面id',
-              scope: 'hash',
-              name: 'pId',
-              value: '111',
-            },
-            param5: {
-              title: '参数名称',
-              scope: 'url',
-              name: 'pageId',
-              value: '111',
-            },
-            param7: {
-              title: '参数名称',
-              scope: 'dynamic',
-              dataName: 'api3',
-              body: {
-                param2: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '222',
-                },
-                param3: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '333',
-                },
-              },
-            },
-          },
-          respMock:
-            '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
-          creatorId: '2',
-          createdTime: null,
-          updatedTime: null,
-          deletedTime: null,
-        },
-        {
-          id: 2,
-          projectId: 89,
-          name: 'getAttrs2',
-          type: '1',
-          desc: '获取轮播图片列表',
-          url: 'http://yapi.com/mock/522/test2',
-          method: 'GET',
-          title: '轮播图列表',
-          headers: '',
-          options: '',
-          body: {
-            param1: {
-              title: '参数名称222',
-              scope: 'static',
-              value: '111',
-            },
-            param2: {
-              title: '参数名称22',
-              scope: 'window',
-              name: 'PARAM1',
-              value: '111',
-            },
-            pageId: {
-              title: '页面id22',
-              scope: 'hash',
-              name: 'pId',
-              value: '111',
-            },
-            param5: {
-              title: '参数名称22',
-              scope: 'url',
-              name: 'pageId',
-              value: '111',
-            },
-            param7: {
-              title: '参数名称22',
-              scope: 'dynamic',
-              dataName: 'api3',
-              body: {
-                param2: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '222',
-                },
-                param3: {
-                  title: '参数名称',
-                  scope: 'static',
-                  value: '333',
-                },
-              },
-            },
-          },
-          respMock:
-            '{ "code": 0, "data": [ { "attrId": 1, "attrName": "名称1" }, { "attrId": 2, "attrName": "名称2" } ] }',
-          creatorId: '2',
-          createdTime: null,
-          updatedTime: null,
-          deletedTime: null,
-        },
-      ],
       options: {
-        widgetType: 'page', // 组件类型 comp / page
-        eventListenConfig: [
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换',
-            code: 'TPLTabMenu_1720691304950_tabChange',
-            listenName: 'TPLTabMenu_1720691304950',
-          },
-        ],
-        eventEmitConfig: [
-          {
-            name: 'click',
-            desc: '点击事件',
-            code: 'CompTest1_1720691304953_click',
-            compCode: 'CompTest1_1720691304953',
-          },
-        ], // 组件触发事件
-        allEmitEventList: [
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换',
-            code: 'TPLTabMenu_1720691304950_tabChange',
-            compCode: 'TPLTabMenu_1720691304950',
-          },
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换2',
-            code: 'TPLTabMenu_1720691304952_tabChange',
-            compCode: 'TPLTabMenu_1720691304952',
-          },
-          {
-            name: 'click',
-            desc: '点击事件',
-            code: 'CompTest1_1720691304953_click',
-            compCode: 'CompTest1_1720691304953',
-          },
-        ], // 全局可用事件列表
-        metaContentKeyList: [
-          {
-            label: '全部内容',
-            value: 'ALLCONTENT',
-          },
-          {
-            label: 'title',
-            value: 'title',
-          },
-          {
-            label: 'id',
-            value: 'id',
-          },
-          {
-            label: 'newsMeta',
-            value: 'newsMeta',
-          },
-        ],
-        globalMetaConfig: [],
         GlobalOptions: [
-          { value: '$Spacing-112' },
-          { value: '$Spacing-23' },
-          { value: '$Spacing-3' },
-        ]
+          { value: 'default0' },
+          { value: 'default1' },
+          { value: 'default2' },
+        ], // 用于设置默认的选项
+        wideScreen: false,
+        jsonView: false,
+        viewStyle: 'tabs',
+        tabPosition: 'top',
+        tabType: 'line',
+        jsonViewReadOnly: true,
       },
-      wideScreen: false,
-      jsonView: false,
       schemaCodeView: false, // schema源码模式
-      viewStyle: 'tabs', // 默认折叠模式
-      tabPosition: 'top', // 标签栏位置
-      tabType: 'line', // 标签样式
       curTypeList: {},
-      jsonViewReadOnly: true,
     };
   }
 
@@ -535,16 +349,11 @@ class IndexDemo extends React.PureComponent {
       jsonSchema,
       jsonData,
       dynamicDataList,
-      wideScreen,
-      jsonView,
       schemaCodeView,
-      viewStyle,
-      tabPosition,
-      tabType,
       curTypeList,
       options,
-      jsonViewReadOnly,
     } = this.state;
+    const { wideScreen, jsonView, viewStyle, tabPosition, tabType, jsonViewReadOnly } = options;
 
     return (
       <>
@@ -578,9 +387,12 @@ class IndexDemo extends React.PureComponent {
                     checkedChildren="false"
                     unCheckedChildren="true"
                     onChange={(checked) => {
-                      this.setState({
-                        jsonViewReadOnly: !checked,
-                      });
+                      this.setState((prev) => ({
+                        options: {
+                          ...prev.options,
+                          jsonViewReadOnly: !checked,
+                        },
+                      }));
                     }}
                   />
                 </>
@@ -601,21 +413,24 @@ class IndexDemo extends React.PureComponent {
                 checkedChildren="大屏"
                 unCheckedChildren="小屏"
                 onChange={(checked) => {
-                  this.setState({
-                    wideScreen: checked,
-                  });
+                  this.setState((prev) => ({
+                    options: { ...prev.options, wideScreen: checked },
+                  }));
                 }}
               />
               &nbsp;&nbsp;
               <Switch
                 style={{ display: 'inline-block' }}
-                defaultChecked={viewStyle === 'tabs' ? true : false}
+                defaultChecked={viewStyle === 'tabs'}
                 checkedChildren="tabs"
                 unCheckedChildren="fold"
                 onChange={(checked) => {
-                  this.setState({
-                    viewStyle: checked ? 'tabs' : 'fold',
-                  });
+                  this.setState((prev) => ({
+                    options: {
+                      ...prev.options,
+                      viewStyle: checked ? 'tabs' : 'fold',
+                    },
+                  }));
                 }}
               />
               &nbsp;&nbsp;
@@ -625,9 +440,9 @@ class IndexDemo extends React.PureComponent {
                 checkedChildren="code"
                 unCheckedChildren="view"
                 onChange={(checked) => {
-                  this.setState({
-                    jsonView: checked,
-                  });
+                  this.setState((prev) => ({
+                    options: { ...prev.options, jsonView: checked },
+                  }));
                 }}
               />
               {viewStyle === 'tabs' && (
@@ -638,9 +453,9 @@ class IndexDemo extends React.PureComponent {
                     style={{ width: 100, display: 'inline-block' }}
                     value={tabPosition}
                     onChange={(value) => {
-                      this.setState({
-                        tabPosition: value,
-                      });
+                      this.setState((prev) => ({
+                        options: { ...prev.options, tabPosition: value },
+                      }));
                     }}
                   >
                     <Select.Option value="top">上</Select.Option>
@@ -654,9 +469,9 @@ class IndexDemo extends React.PureComponent {
                     style={{ width: 120, display: 'inline-block' }}
                     value={tabType}
                     onChange={(value) => {
-                      this.setState({
-                        tabType: value,
-                      });
+                      this.setState((prev) => ({
+                        options: { ...prev.options, tabType: value },
+                      }));
                     }}
                   >
                     <Select.Option value="line">线条</Select.Option>
@@ -686,15 +501,9 @@ class IndexDemo extends React.PureComponent {
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
           >
             <JSONEditor
-              viewStyle={viewStyle}
-              jsonView={jsonView} // code模式
-              wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
-              dynamicDataList={dynamicDataList}
               options={options}
-              tabPosition={tabPosition}
-              tabType={tabType}
               onChange={(newJsonData) => {
                 console.log('jsonDataChange', JSON.stringify(newJsonData));
                 this.setState({

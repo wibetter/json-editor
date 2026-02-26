@@ -12,14 +12,20 @@ import '$renderers/index';
 // 导入自定义渲染器
 import '$customRenderers/index';
 import { renderersMap } from '$core/factory';
-import InputFormSchema from '$renderers/InputFormSchema';
+import InputFormSchema from '$renderers/InputForm';
 import { BaseRendererProps } from '$types/index';
 
 /** 根据当前类型选择对应的组件进行渲染 */
 const MappingRender = (props: BaseRendererProps): React.ReactElement | null => {
-  const { schemaStore, jsonStore } = props;
+  const {
+    schemaStore,
+    jsonStore,
+    nodeKey,
+    keyRoute,
+    targetJsonSchema,
+    rendererType,
+  } = props;
   const { getJSONDataByKeyRoute, JSONEditorObj } = jsonStore || {};
-  const { nodeKey, keyRoute, targetJsonSchema, rendererType } = props;
 
   if (!targetJsonSchema) {
     return null;
@@ -50,16 +56,6 @@ const MappingRender = (props: BaseRendererProps): React.ReactElement | null => {
       ? evalExpression(targetJsonSchema.typeOn, curData)
       : targetJsonSchema.type);
   let curNodeKey = nodeKey;
-
-  // 收集当前所有条件子字段
-  /*
-  const curData = getJSONDataByKeyRoute(keyRoute) || {};
-  const curConditionValue = schema2conditionValue(targetJsonSchema, curData);
-  // 将条件字段的数值作为key的一部分
-  if (curConditionValue) {
-    curNodeKey = `${nodeKey}-${curConditionValue}`;
-  }
-  */
 
   const newProps: BaseRendererProps = {
     ...props,

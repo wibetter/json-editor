@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { omit } from 'lodash';
 // import { inject, observer } from 'mobx-react';
 import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
@@ -9,6 +10,7 @@ import {
   InfoCircleOutlined,
   RightOutlined,
 } from '@ant-design/icons';
+// @ts-ignore
 import { truncate } from '@wibetter/json-utils';
 import JsonView from '$components/JsonView/index';
 import { catchJsonDataByWebCache } from '$mixins/index';
@@ -65,8 +67,9 @@ class ObjectSchema extends React.PureComponent<
   }
 
   render() {
-    const { schemaStore } = this.props;
+    const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
+    const { getJSONDataByKeyRoute } = jsonStore || {};
 
     const {
       indexRoute,
@@ -75,20 +78,16 @@ class ObjectSchema extends React.PureComponent<
       keyRoute,
       targetJsonSchema,
       isArrayItem,
-      isStructuredSchema,
       renderChild,
     } = this.props;
     const { jsonView, isClosed: _isClosed } = this.state;
+
     // 是否显示源码切换按钮
     const showCodeViewBtn = targetJsonSchema.showCodeViewBtn ?? true;
 
     // 是否包装在面板中，默认包装在面板中
-    const wrapWithPanel = targetJsonSchema.wrapWithPanel ?? true;
-
-    /**
-     * 判断是否结构化Schema，如果是则不显示Title，避免重复的title
-     */
-    const isStructured = isStructuredSchema;
+    const wrapWithPanel =
+      this.props.wrapWithPanel ?? targetJsonSchema.wrapWithPanel ?? true;
 
     // 获取前端缓存中的折叠数据
     let isClosed = _isClosed;
@@ -98,6 +97,8 @@ class ObjectSchema extends React.PureComponent<
     }
 
     const boxTitle = targetJsonSchema.boxTitle ?? '对象配置';
+
+    const curJsonData = keyRoute && getJSONDataByKeyRoute(keyRoute);
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -120,7 +121,7 @@ class ObjectSchema extends React.PureComponent<
         id={nodeKey}
         style={style}
       >
-        {!isStructured && !isArrayItem && wrapWithPanel && (
+        {!isArrayItem && wrapWithPanel && (
           <div className="element-title" style={titleStyle}>
             <Tooltip
               title={
@@ -146,7 +147,7 @@ class ObjectSchema extends React.PureComponent<
           className="element-title-card-warp content-item"
           style={contentStyle}
         >
-          {!isStructured && !isArrayItem && wrapWithPanel && (
+          {!isArrayItem && wrapWithPanel && (
             <div className="element-title" onClick={this.collapseChange}>
               <span className="title-text">{boxTitle}&nbsp;</span>
               {isClosed ? (
@@ -177,9 +178,7 @@ class ObjectSchema extends React.PureComponent<
           )}
           <div
             className={`content-item ${
-              !isStructured && !isArrayItem && wrapWithPanel
-                ? 'object-content'
-                : ''
+              !isArrayItem && wrapWithPanel ? 'object-content' : ''
             } ${jsonView ? 'json-view-array' : ''} ${isClosed ? 'closed' : ''}`}
           >
             {!jsonView &&
@@ -204,7 +203,7 @@ class ObjectSchema extends React.PureComponent<
                   const childNodeKey = `${nodeKey}-${curType}-${currentJsonKey}`;
 
                   return renderChild({
-                    ...this.props,
+                    ...omit(this.props, ['wrapWithPanel']),
                     parentType: curType,
                     jsonKey: currentJsonKey,
                     indexRoute: currentIndexRoute,
@@ -214,7 +213,9 @@ class ObjectSchema extends React.PureComponent<
                   });
                 },
               )}
-            {jsonView && <JsonView {...this.props} maxLines={10} />}
+            {jsonView && (
+              <JsonView {...this.props} jsonData={curJsonData} maxLines={10} />
+            )}
           </div>
         </div>
       </div>

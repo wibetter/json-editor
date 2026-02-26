@@ -86,17 +86,16 @@ class IndexDemo extends React.PureComponent<any, any> {
           { value: 'default1' },
           { value: 'default2' },
         ], // 用于设置默认的选项
-        uploadAction: 'https://mp.sohuno.com/commons/upload/file', // 用于调整图片上传的请求地址
-        uploadAccept: '.jpeg,.jpg,.png', // 用于调整图片上传的文件类型
-        uploadMethod: 'POST', // 用于调整图片上传的请求方法
+        wideScreen: false,
+        jsonView: urlParams['jsonView'] === 'true',
+        viewStyle: urlParams['viewStyle'] ?? 'tabs',
+        jsonViewReadOnly: true,
+        tabPosition: 'top',
+        tabType: 'line',
       },
-      wideScreen: false,
-      jsonView: urlParams['jsonView'] === 'true',
       schemaCodeView: false, // schema源码模式
-      viewStyle: urlParams['viewStyle'] ?? 'tabs', // 默认折叠模式
       curTypeList: {},
       schemaViewReadOnly: true, // schema数据是否只读
-      jsonViewReadOnly: true, // json数据是否只读
     };
   }
 
@@ -104,15 +103,12 @@ class IndexDemo extends React.PureComponent<any, any> {
     const {
       jsonSchema,
       jsonData,
-      wideScreen,
-      jsonView,
       schemaCodeView,
-      viewStyle,
       curTypeList,
       options,
       schemaViewReadOnly,
-      jsonViewReadOnly,
     } = this.state;
+    const { wideScreen, jsonView, viewStyle, jsonViewReadOnly } = options;
 
     return (
       <>
@@ -169,21 +165,24 @@ class IndexDemo extends React.PureComponent<any, any> {
                 checkedChildren="大屏"
                 unCheckedChildren="小屏"
                 onChange={(checked) => {
-                  this.setState({
-                    wideScreen: checked,
-                  });
+                  this.setState((prev) => ({
+                    options: { ...prev.options, wideScreen: checked },
+                  }));
                 }}
               />
               &nbsp;&nbsp;
               <Switch
                 style={{ display: 'inline-block' }}
-                defaultChecked={viewStyle === 'tabs' ? true : false}
+                defaultChecked={viewStyle === 'tabs'}
                 checkedChildren="tabs"
                 unCheckedChildren="fold"
                 onChange={(checked) => {
-                  this.setState({
-                    viewStyle: checked ? 'tabs' : 'fold',
-                  });
+                  this.setState((prev) => ({
+                    options: {
+                      ...prev.options,
+                      viewStyle: checked ? 'tabs' : 'fold',
+                    },
+                  }));
                 }}
               />
               &nbsp;&nbsp;
@@ -193,9 +192,9 @@ class IndexDemo extends React.PureComponent<any, any> {
                 checkedChildren="code"
                 unCheckedChildren="view"
                 onChange={(checked) => {
-                  this.setState({
-                    jsonView: checked,
-                  });
+                  this.setState((prev) => ({
+                    options: { ...prev.options, jsonView: checked },
+                  }));
                 }}
               />
               {jsonView && (
@@ -208,9 +207,12 @@ class IndexDemo extends React.PureComponent<any, any> {
                     checkedChildren="false"
                     unCheckedChildren="true"
                     onChange={(checked) => {
-                      this.setState({
-                        jsonViewReadOnly: !checked,
-                      });
+                      this.setState((prev) => ({
+                        options: {
+                          ...prev.options,
+                          jsonViewReadOnly: !checked,
+                        },
+                      }));
                     }}
                   />
                 </>
@@ -237,10 +239,6 @@ class IndexDemo extends React.PureComponent<any, any> {
             className={`json-editor-box ${!wideScreen ? 'mobile-view' : ''}`}
           >
             <JSONEditor
-              viewStyle={viewStyle}
-              jsonView={jsonView} // code模式
-              jsonViewReadOnly={jsonViewReadOnly}
-              wideScreen={wideScreen} // 宽屏和小屏的配置项
               schemaData={jsonSchema}
               jsonData={jsonData}
               options={options}

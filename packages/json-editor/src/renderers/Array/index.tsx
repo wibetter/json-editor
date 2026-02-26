@@ -156,7 +156,7 @@ class ArraySchema extends React.PureComponent<
     event.stopPropagation();
 
     // 缓存当前折叠状态
-    saveJSONEditorCache(keyRoute!, String(!isClosed));
+    saveJSONEditorCache(keyRoute!, !isClosed);
   }
 
   arrayCollapseChange(event: React.MouseEvent, arrIndex: number) {
@@ -445,7 +445,7 @@ class ArraySchema extends React.PureComponent<
                   </div>
                 );
               })}
-            {jsonView && <JsonView {...this.props} />}
+            {jsonView && <JsonView {...this.props} jsonData={curJsonData} />}
           </div>
         </div>
       </div>

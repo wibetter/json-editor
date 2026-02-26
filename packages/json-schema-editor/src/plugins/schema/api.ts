@@ -54,16 +54,7 @@ const apiDescriptor: SchemaDescriptor = {
     propertyOrder: ['url', 'method', 'headers', 'data'],
   },
 
-  propsSchema: buildPropsSchema(
-    {
-      showCodeViewBtn: {
-        type: 'boolean',
-        title: '源码模式',
-        description: '用于控制是否显示源码模式切换按钮',
-      },
-    },
-    ['showCodeViewBtn'],
-  ),
+  propsSchema: buildPropsSchema({}, []),
 
   renderer: ApiSchema,
 };

@@ -10,7 +10,7 @@ import DynamicDataSchema from '$customSchema/renderers/DynamicDataSchema/index';
 const dynamicDataDescriptor: SchemaDescriptor = {
   type: 'dynamic-data',
   label: '动态数据源(旧版)',
-  isContainer: true,
+  isContainer: false,
   isFixed: true,
   keyIsFixed: true,
   typeIsFixed: true,

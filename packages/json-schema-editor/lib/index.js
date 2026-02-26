@@ -537,11 +537,13 @@
               );
             }),
             (n.addChildJson = function (e, t) {
-              var n = (0, g.getSchemaByIndexRoute)(e, this.jsonSchema, !1);
-              if ((0, g.isContainerSchema)(n)) {
-                var a = this.getNewJsonKeyIndex(n);
-                (n.propertyOrder.push(a),
-                  (n.properties[a] = K()),
+              var n = (0, g.getSchemaByIndexRoute)(e, this.jsonSchema, !1),
+                a = null == n ? void 0 : n.type,
+                o = a ? C.get(a) : void 0;
+              if (null != o && o.isContainer) {
+                var r = this.getNewJsonKeyIndex(n);
+                (n.propertyOrder.push(r),
+                  (n.properties[r] = K()),
                   this.jsonSchemaChange(t));
               } else y.message.warning('非对象类型字段不允许插入子元素');
             }),
@@ -2875,7 +2877,7 @@
           Ae = {
             type: 'array',
             label: '数组(Array)',
-            isContainer: !0,
+            isContainer: !1,
             defaultSchema: {
               type: 'array',
               title: '数组Array',
@@ -3055,16 +3057,7 @@
               },
               propertyOrder: ['url', 'method', 'headers', 'data'],
             },
-            propsSchema: I(
-              {
-                showCodeViewBtn: {
-                  type: 'boolean',
-                  title: '源码模式',
-                  description: '用于控制是否显示源码模式切换按钮',
-                },
-              },
-              ['showCodeViewBtn'],
-            ),
+            propsSchema: I({}, []),
             renderer: function (e) {
               var n = e.jsonKey,
                 a = e.indexRoute,

@@ -10,7 +10,7 @@ import ArraySchema from '$schemaRenderer/ArraySchema/index';
 const arrayDescriptor: SchemaDescriptor = {
   type: 'array',
   label: '数组(Array)',
-  isContainer: true,
+  isContainer: false,
 
   defaultSchema: {
     type: 'array',

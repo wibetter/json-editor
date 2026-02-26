@@ -10,7 +10,7 @@ import DataSourceSchema from '$customSchema/renderers/DataSourceSchema/index';
 const datasourceDescriptor: SchemaDescriptor = {
   type: 'datasource',
   label: '静态数据源(旧版)',
-  isContainer: true,
+  isContainer: false,
   isFixed: true,
   keyIsFixed: true,
   typeIsFixed: true,

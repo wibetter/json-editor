@@ -23,17 +23,19 @@ import {
 import './index.scss';
 
 interface JSONEditorProps {
-  viewStyle?: string;
-  wideScreen?: any;
   onChange?: (data: any) => void;
-  jsonView?: any;
-  jsonViewReadOnly?: boolean;
   schemaData?: any;
   jsonData?: any;
-  options?: any;
-  // 标签栏位置，默认居中。viewStyle 设置成 tabs 时有效
-  tabPosition?: any; // 'top' | 'bottom' | 'left' | 'right' | 'center';
-  tabType?: any; // 'line' | 'card' | 'editable-card';
+  options?: {
+    viewStyle?: string;
+    wideScreen?: any;
+    jsonView?: any;
+    jsonViewReadOnly?: boolean;
+    // 标签栏位置，默认居中。viewStyle 设置成 tabs 时有效
+    tabPosition?: any; // 'top' | 'bottom' | 'left' | 'right' | 'center'
+    tabType?: any; // 'line' | 'card' | 'editable-card'
+    [key: string]: any;
+  };
   schemaStore: SchemaStore;
   jsonStore: JSONStore;
   [key: string]: any;
@@ -67,8 +69,8 @@ class JSONDataEditor extends React.PureComponent<
       initJSONData(props.jsonData);
     }
     // 读取宽屏和小屏的配置
-    if (props.wideScreen) {
-      setPageScreen(props.wideScreen);
+    if (props.options?.wideScreen) {
+      setPageScreen(props.options.wideScreen);
     }
     // 记录onChange事件
     if (props.onChange) {
@@ -104,8 +106,10 @@ class JSONDataEditor extends React.PureComponent<
     if (!isEqual(nextProps.jsonData, JSONEditorObj)) {
       initJSONData(nextProps.jsonData);
     }
-    if (!isEqual(nextProps.wideScreen, this.props.wideScreen)) {
-      setPageScreen(nextProps.wideScreen);
+    if (
+      !isEqual(nextProps.options?.wideScreen, this.props.options?.wideScreen)
+    ) {
+      setPageScreen(nextProps.options?.wideScreen);
     }
     // 记录onChange事件
     if (!isEqual(nextProps.onChange, this.props.onChange)) {
@@ -132,21 +136,21 @@ class JSONDataEditor extends React.PureComponent<
   };
 
   render() {
+    const { schemaStore, jsonStore, options = {} } = this.props;
     const {
-      schemaStore,
-      jsonStore,
       jsonView,
       jsonViewReadOnly,
       tabPosition,
       tabType,
-    } = this.props;
+      viewStyle: optViewStyle,
+    } = options;
     const { jsonSchema, lastUpdateTime } = schemaStore || {};
     const {
       JSONEditorObj,
       lastUpdateTime: jsonLastUpdateTime,
       jsonChange,
     } = jsonStore || {};
-    const viewStyle = this.catchViewStyle(this.props.viewStyle);
+    const viewStyle = this.catchViewStyle(optViewStyle);
     const isEmpty = isEmptySchema(jsonSchema); // 判断是否是空的schema
     const isStructured = isStructuredSchema(jsonSchema); // 判断是否是结构化的schema数据
     /**
@@ -203,7 +207,7 @@ class JSONDataEditor extends React.PureComponent<
                                 keyRoute: currentKeyRoute,
                                 nodeKey,
                                 targetJsonSchema: currentSchemaData,
-                                isStructuredSchema: isStructured,
+                                wrapWithPanel: false,
                                 schemaStore,
                                 jsonStore,
                               })}
@@ -261,7 +265,7 @@ class JSONDataEditor extends React.PureComponent<
                                 keyRoute: currentKeyRoute,
                                 nodeKey,
                                 targetJsonSchema: currentSchemaData,
-                                isStructuredSchema: isStructured,
+                                wrapWithPanel: false,
                                 schemaStore,
                                 jsonStore,
                               })}

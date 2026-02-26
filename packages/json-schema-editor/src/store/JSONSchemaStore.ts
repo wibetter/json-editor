@@ -9,7 +9,6 @@ import {
   getSchemaByIndexRoute,
   getSchemaByKeyRoute,
   oldSchemaToNewSchema,
-  isContainerSchema,
   indexRoute2keyRoute,
   keyRoute2indexRoute,
   KeyWordList,
@@ -193,7 +192,10 @@ export default class JSONSchemaStore {
       this.jsonSchema,
       false,
     );
-    if (isContainerSchema(curSchema)) {
+    const curType = curSchema?.type;
+    // 从 schemaRegistry 获取当前类型的描述
+    const descriptor = curType ? schemaRegistry.get(curType) : undefined;
+    if (descriptor?.isContainer) {
       const childKey = this.getNewJsonKeyIndex(curSchema);
       curSchema.propertyOrder.push(childKey);
       curSchema.properties[childKey] = getInitInputData();

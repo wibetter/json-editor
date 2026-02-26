@@ -10,7 +10,7 @@ import EventSchema from '$customSchema/renderers/EventSchema/index';
 const eventDescriptor: SchemaDescriptor = {
   type: 'event',
   label: '事件(旧版)',
-  isContainer: true,
+  isContainer: false,
   isFixed: true,
   keyIsFixed: true,
   typeIsFixed: true,

@@ -25,14 +25,16 @@ export {
 };
 
 interface JSONEditorProps {
-  viewStyle?: string;
-  wideScreen?: any;
+  options?: {
+    viewStyle?: string;
+    wideScreen?: any;
+    jsonView?: any;
+    jsonViewReadOnly?: boolean;
+    [key: string]: any;
+  };
   onChange?: (data: any) => void;
-  jsonView?: any;
-  jsonViewReadOnly?: boolean;
   schemaData?: any;
   jsonData?: any;
-  options?: any;
   element?: any;
 }
 
