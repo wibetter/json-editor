@@ -177,7 +177,7 @@ class ColorPickerRenderer extends React.Component {
   }
 }
 
-// 注册一个颜色选择器类型
+// 注册成json-editor配置项
 registerRenderer({
   type: 'color-picker',
   component: ColorPickerRenderer
