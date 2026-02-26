@@ -93,56 +93,34 @@ class IndexDemo extends React.PureComponent {
 
 ### 注册自定义 Schema 示例
 
-以下示例展示如何注册一个 `slider`（滑块）类型的自定义 Schema：
+以下示例展示如何注册一个 `colorPicker`（颜色选择器）类型的自定义 Schema：
 
-**第一步：创建描述文件 `sliderPlugin.ts`**
+**第一步：创建描述文件 `colorPickerPlugin.ts`**
 
 ```ts
-import JSONSchemaEditor, { schemaRegistry, buildPropsSchema } from '@wibetter/json-schema-editor';
+import JSONSchemaEditor, { registerSchema, buildPropsSchema } from '@wibetter/json-schema-editor';
 
-// 定义 slider 类型描述文件
-const sliderDescriptor = {
-  type: 'slider',
-  label: '滑块',
+// 定义 ColorPicker 类型描述文件
+const colorPickerDescriptor = {
+  type: 'color-picker',
+  label: '颜色选择器',
   isContainer: false,
 
   // 新建该类型时的初始 schema
   defaultSchema: {
-    type: 'slider',
-    title: '滑块',
-    description: '',
-    default: 0,
-    min: 0,
-    max: 100,
-    step: 1,
+    type: 'color-picker',
+    title: '颜色选择器'
   },
 
   // 高级配置面板的 schema（由 buildPropsSchema 构建，会自动合并通用配置项）
   propsSchema: buildPropsSchema(
-    'slider 高级配置',
-    {
-      min: {
-        type: 'number',
-        title: '最小值',
-        description: '滑块的最小值',
-      },
-      max: {
-        type: 'number',
-        title: '最大值',
-        description: '滑块的最大值',
-      },
-      step: {
-        type: 'number',
-        title: '步长',
-        description: '每次滑动的步长',
-      },
-    },
-    ['min', 'max', 'step'],
+    {},
+    [],
   ),
 };
 
-// 注册到 JSONSchemaEditor
-registerSchema(sliderDescriptor);
+// 注册成 json-schema-editor 可用配置项
+registerSchema(colorPickerDescriptor);
 ```
 
 **第二步：在入口文件中引入插件（确保注册在 `JSONSchemaEditor` 渲染前执行）**
@@ -160,7 +138,7 @@ import JSONSchemaEditor from '@wibetter/json-schema-editor';
 import JSONSchemaEditor, { schemaRegistry } from '@wibetter/json-schema-editor';
 
 // 获取某个类型的描述文件
-const sliderDescriptor = schemaRegistry.get('slider');
+const colorPickerDescriptor = schemaRegistry.get('color-picker');
 
 // 获取所有已注册类型
 const allTypes = Array.from(schemaRegistry.keys());

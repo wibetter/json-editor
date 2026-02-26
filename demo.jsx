@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Select, Tag } from 'antd';
-import JSONSchemaEditor from './packages/json-schema-editor/lib/index';
+import JSONSchemaEditor, { registerSchema, buildPropsSchema } from './packages/json-schema-editor/lib/index';
 import JSONEditor, { registerRenderer } from './packages/json-editor/lib/index'; // 正式环境请使用 '@wibetter/json-editor'
 import './packages/json-schema-editor/lib/index.css';
 import './packages/json-editor/lib/index.css';
@@ -38,6 +38,28 @@ registerRenderer({
   type: 'color-picker',
   component: ColorPickerRenderer
 });
+
+// 定义 ColorPicker 类型描述文件
+const ColorPickerDescriptor = {
+  type: 'color-picker',
+  label: '颜色选择器',
+  isContainer: false,
+
+  // 新建该类型时的初始 schema
+  defaultSchema: {
+    type: 'color-picker',
+    title: '颜色选择器'
+  },
+
+  // 高级配置面板的 schema（由 buildPropsSchema 构建，会自动合并通用配置项）
+  propsSchema: buildPropsSchema(
+    {},
+    [],
+  ),
+};
+
+// 注册成 json-schema-editor 可用配置项
+registerSchema(ColorPickerDescriptor);
 
 /**
  * JSONSchemaEditor 和 JSONEditor 示例
