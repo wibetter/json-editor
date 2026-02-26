@@ -81,101 +81,14 @@ class IndexDemo extends React.PureComponent<any, any> {
       },
       jsonData: {},
       options: {
-        widgetType: 'comp', // 组件类型 comp / page
-        eventListenConfig: [
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换',
-            code: 'TPLTabMenu_1720691304950_tabChange',
-            listenName: 'TPLTabMenu_1720691304950',
-          },
-        ],
-        eventEmitConfig: [
-          {
-            name: 'click',
-            desc: '点击事件',
-            code: 'CompTest1_1720691304953_click',
-            compCode: 'CompTest1_1720691304953',
-          },
-        ], // 组件触发事件
-        allEmitEventList: [
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换',
-            code: 'TPLTabMenu_1720691304950_tabChange',
-            compCode: 'TPLTabMenu_1720691304950',
-          },
-          {
-            name: 'changeTab',
-            desc: 'TabMenu菜单切换2',
-            code: 'TPLTabMenu_1720691304952_tabChange',
-            compCode: 'TPLTabMenu_1720691304952',
-          },
-          {
-            name: 'click',
-            desc: '点击事件',
-            code: 'CompTest1_1720691304953_click',
-            compCode: 'CompTest1_1720691304953',
-          },
-        ], // 全局可用事件列表
-        metaContentKeyList: [
-          {
-            label: '全部内容',
-            value: 'ALLCONTENT',
-          },
-          {
-            label: 'title',
-            value: 'title',
-          },
-          {
-            label: 'id',
-            value: 'id',
-          },
-          {
-            label: 'newsMeta',
-            value: 'newsMeta',
-          },
-        ],
-        globalMetaConfig: [
-          {
-            value: 'zhejiang',
-            label: 'Zhejiang',
-            children: [
-              {
-                value: 'hangzhou',
-                label: 'Hangzhou',
-                children: [
-                  {
-                    value: 'xihu',
-                    label: 'West Lake',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            value: 'jiangsu',
-            label: 'Jiangsu',
-            children: [
-              {
-                value: 'nanjing',
-                label: 'Nanjing',
-                children: [
-                  {
-                    value: 'zhonghuamen',
-                    label: 'Zhong Hua Men',
-                  },
-                ],
-              },
-            ],
-          },
-        ],
         GlobalOptions: [
-          { value: '$Spacing-112' },
-          { value: '$Spacing-23' },
-          { value: '$Spacing-3' },
-        ],
-        uploadAction: 'https://mp.sohuno.com/commons/upload/file',
+          { value: 'default0' },
+          { value: 'default1' },
+          { value: 'default2' },
+        ], // 用于设置默认的选项
+        uploadAction: 'https://mp.sohuno.com/commons/upload/file', // 用于调整图片上传的请求地址
+        uploadAccept: '.jpeg,.jpg,.png', // 用于调整图片上传的文件类型
+        uploadMethod: 'POST', // 用于调整图片上传的请求方法
       },
       wideScreen: false,
       jsonView: urlParams['jsonView'] === 'true',
