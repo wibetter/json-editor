@@ -56,16 +56,13 @@ const paddingMarginDescriptor: SchemaDescriptor = {
     propertyOrder: ['margin', 'padding', 'quantity'],
   },
 
-  propsSchema: buildPropsSchema(
-    {
-      autoComplete: {
-        type: 'boolean',
-        title: '开启可选项',
-        description: '开启后支持添加可选项，并支持 autoComplete',
-      },
+  propsSchema: buildPropsSchema({
+    autoComplete: {
+      type: 'boolean',
+      title: '开启可选项',
+      description: '开启后支持添加可选项，并支持 autoComplete',
     },
-    ['autoComplete'],
-  ),
+  }),
 
   renderer: ObjectSchema,
 };

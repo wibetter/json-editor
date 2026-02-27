@@ -28,12 +28,9 @@ export const COMMON_PROPS_SCHEMA_PROPERTIES = {
   },
 };
 
-export const COMMON_PROPS_SCHEMA_ORDER = [
-  'description',
-  'showKey',
-  'onShow',
-  'titleStyle',
-];
+export const COMMON_PROPS_SCHEMA_ORDER = Object.keys(
+  COMMON_PROPS_SCHEMA_PROPERTIES,
+);
 
 /**
  * 带只读/必填/条件字段的通用可编辑属性
@@ -61,9 +58,10 @@ export const EDITABLE_PROPS = {
  * 构建完整的 propsSchema（合并类型专属字段与通用字段）
  */
 export function buildPropsSchema(
-  typeSpecificProperties: Record<string, any>,
-  typeSpecificOrder: string[],
+  typeSpecificProperties: Record<string, any> = {},
 ) {
+  const typeSpecificOrder = Object.keys(typeSpecificProperties);
+
   return {
     type: 'object' as const,
     wrapWithPanel: false,

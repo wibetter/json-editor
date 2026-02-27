@@ -41,24 +41,21 @@ const quantityDescriptor: SchemaDescriptor = {
 
   renderer: QuantitySchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      autoComplete: {
-        type: 'boolean',
-        title: '开启可选项',
-        description: '开启后支持添加可选项，并支持 autoComplete',
-      },
-      options: {
-        type: 'json',
-        title: '可选项',
-        description: '可选项数据列表（数组格式）',
-        onShow: 'autoComplete === true',
-      },
+  propsSchema: buildPropsSchema({
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    autoComplete: {
+      type: 'boolean',
+      title: '开启可选项',
+      description: '开启后支持添加可选项，并支持 autoComplete',
     },
-    ['readOnly', 'isRequired', 'autoComplete', 'options'],
-  ),
+    options: {
+      type: 'json',
+      title: '可选项',
+      description: '可选项数据列表（数组格式）',
+      onShow: 'autoComplete === true',
+    },
+  }),
 };
 
 schemaRegistry.register(quantityDescriptor);

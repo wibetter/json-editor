@@ -45,28 +45,25 @@ const cascaderDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      multiple: {
-        type: 'boolean',
-        title: '支持多选',
-        description: '开启多选后，级联选择支持选择多个选项',
-      },
-      options: {
-        type: 'json',
-        title: 'options 配置',
-        description: '用于添加级联选择组件的 options 数据',
-      },
-      default: {
-        type: 'input',
-        title: '默认值',
-        placeholder: '请输入默认值',
-      },
+  propsSchema: buildPropsSchema({
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    multiple: {
+      type: 'boolean',
+      title: '支持多选',
+      description: '开启多选后，级联选择支持选择多个选项',
     },
-    ['readOnly', 'isRequired', 'multiple', 'options', 'default'],
-  ),
+    options: {
+      type: 'json',
+      title: 'options 配置',
+      description: '用于添加级联选择组件的 options 数据',
+    },
+    default: {
+      type: 'input',
+      title: '默认值',
+      placeholder: '请输入默认值',
+    },
+  }),
 };
 
 schemaRegistry.register(cascaderDescriptor);

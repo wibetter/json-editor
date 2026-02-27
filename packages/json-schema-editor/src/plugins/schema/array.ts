@@ -33,26 +33,23 @@ const arrayDescriptor: SchemaDescriptor = {
     },
   },
 
-  propsSchema: buildPropsSchema(
-    {
-      showCodeViewBtn: {
-        type: 'boolean',
-        title: '源码模式',
-        description: '用于控制是否显示源码模式切换按钮，默认显示',
-      },
-      'minimum-child': {
-        type: 'number',
-        title: '最小数据项',
-        description: '用于限制数据项最小个数',
-      },
-      'maximum-child': {
-        type: 'number',
-        title: '最多数据项',
-        description: '用于限制数据项最多个数',
-      },
+  propsSchema: buildPropsSchema({
+    showCodeViewBtn: {
+      type: 'boolean',
+      title: '源码模式',
+      description: '用于控制是否显示源码模式切换按钮，默认显示',
     },
-    ['showCodeViewBtn', 'minimum-child', 'maximum-child'],
-  ),
+    'minimum-child': {
+      type: 'number',
+      title: '最小数据项',
+      description: '用于限制数据项最小个数',
+    },
+    'maximum-child': {
+      type: 'number',
+      title: '最多数据项',
+      description: '用于限制数据项最多个数',
+    },
+  }),
 
   renderer: ArraySchema,
 };

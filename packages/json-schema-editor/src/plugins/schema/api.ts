@@ -54,7 +54,7 @@ const apiDescriptor: SchemaDescriptor = {
     propertyOrder: ['url', 'method', 'headers', 'data'],
   },
 
-  propsSchema: buildPropsSchema({}, []),
+  propsSchema: buildPropsSchema(),
 
   renderer: ApiSchema,
 };

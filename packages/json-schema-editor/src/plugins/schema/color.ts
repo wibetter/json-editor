@@ -21,18 +21,15 @@ const colorDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'color',
-        title: '默认颜色值',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'color',
+      title: '默认颜色值',
     },
-    ['isConditionProp', 'readOnly', 'isRequired', 'default'],
-  ),
+  }),
 };
 
 schemaRegistry.register(colorDescriptor);

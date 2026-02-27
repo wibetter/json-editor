@@ -4,23 +4,20 @@ import { buildPropsSchema, EDITABLE_PROPS } from '$core/schema';
 import GeneralSchema from '$schemaRenderer/GeneralSchema/index';
 
 const jsonCodePropsSchema = (defaultSchemaType: string = 'textarea') =>
-  buildPropsSchema(
-    {
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: defaultSchemaType,
-        title: '默认值',
-        placeholder: '请输入默认值',
-      },
-      placeholder: {
-        type: 'input',
-        title: '输入提示',
-        placeholder: '请输入输入提示',
-      },
+  buildPropsSchema({
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: defaultSchemaType,
+      title: '默认值',
+      placeholder: '请输入默认值',
     },
-    ['readOnly', 'isRequired', 'default', 'placeholder'],
-  );
+    placeholder: {
+      type: 'input',
+      title: '输入提示',
+      placeholder: '请输入输入提示',
+    },
+  });
 
 /**
  * json 元素描述文件

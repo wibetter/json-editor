@@ -22,43 +22,32 @@ const inputDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      ...EDITABLE_PROPS,
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      default: {
-        type: 'input',
-        title: '默认值',
-        placeholder: '请输入默认值',
-      },
-      placeholder: {
-        type: 'input',
-        title: '输入提示',
-        description: '输入提示内容将作为输入区域的提示信息展示给用户',
-        placeholder: '请输入输入提示',
-      },
-      autoComplete: {
-        type: 'boolean',
-        title: '开启可选项',
-        description: '开启后支持添加可选项，并支持 autoComplete',
-      },
-      options: {
-        type: 'json',
-        title: '可选项',
-        description: '开启可选项后，可在此设置可选数据列表（数组格式）',
-        onShow: 'autoComplete === true',
-      },
+  propsSchema: buildPropsSchema({
+    ...EDITABLE_PROPS,
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    default: {
+      type: 'input',
+      title: '默认值',
+      placeholder: '请输入默认值',
     },
-    [
-      'isConditionProp',
-      'readOnly',
-      'isRequired',
-      'default',
-      'placeholder',
-      'autoComplete',
-      'options',
-    ],
-  ),
+    placeholder: {
+      type: 'input',
+      title: '输入提示',
+      description: '输入提示内容将作为输入区域的提示信息展示给用户',
+      placeholder: '请输入输入提示',
+    },
+    autoComplete: {
+      type: 'boolean',
+      title: '开启可选项',
+      description: '开启后支持添加可选项，并支持 autoComplete',
+    },
+    options: {
+      type: 'json',
+      title: '可选项',
+      description: '开启可选项后，可在此设置可选数据列表（数组格式）',
+      onShow: 'autoComplete === true',
+    },
+  }),
 };
 
 schemaRegistry.register(inputDescriptor);

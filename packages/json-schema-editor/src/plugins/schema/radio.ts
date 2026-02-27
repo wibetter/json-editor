@@ -26,30 +26,21 @@ const radioDescriptor: SchemaDescriptor = {
 
   renderer: SelectSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      defaultActiveFirstOption: {
-        type: 'boolean',
-        title: '选中第一项',
-        description: '是否默认高亮第一个选项',
-      },
-      default: {
-        type: 'input',
-        title: '默认值',
-        placeholder: '请输入默认选中项的 value 值',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    defaultActiveFirstOption: {
+      type: 'boolean',
+      title: '选中第一项',
+      description: '是否默认高亮第一个选项',
     },
-    [
-      'isConditionProp',
-      'readOnly',
-      'isRequired',
-      'defaultActiveFirstOption',
-      'default',
-    ],
-  ),
+    default: {
+      type: 'input',
+      title: '默认值',
+      placeholder: '请输入默认选中项的 value 值',
+    },
+  }),
 };
 
 schemaRegistry.register(radioDescriptor);

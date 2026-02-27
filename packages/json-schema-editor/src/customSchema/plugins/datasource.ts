@@ -23,16 +23,13 @@ const datasourceDescriptor: SchemaDescriptor = {
     propertyOrder: [],
   },
 
-  propsSchema: buildPropsSchema(
-    {
-      showCodeViewBtn: {
-        type: 'boolean',
-        title: '源码模式',
-        description: '用于控制是否显示源码模式切换按钮',
-      },
+  propsSchema: buildPropsSchema({
+    showCodeViewBtn: {
+      type: 'boolean',
+      title: '源码模式',
+      description: '用于控制是否显示源码模式切换按钮',
     },
-    ['showCodeViewBtn'],
-  ),
+  }),
 
   renderer: DataSourceSchema,
 };

@@ -38,7 +38,7 @@ const boxStyleDescriptor: SchemaDescriptor = {
     propertyOrder: ['unit', 'quantity'],
   },
 
-  propsSchema: buildPropsSchema({}, []),
+  propsSchema: buildPropsSchema(),
 
   renderer: QuantitySchema,
 };

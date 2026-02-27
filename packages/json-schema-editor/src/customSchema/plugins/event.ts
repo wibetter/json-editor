@@ -33,7 +33,7 @@ const eventDescriptor: SchemaDescriptor = {
     propertyOrder: ['type'],
   },
 
-  propsSchema: buildPropsSchema({}, []),
+  propsSchema: buildPropsSchema(),
 
   renderer: EventSchema,
 };

@@ -26,18 +26,15 @@ const checkboxesDescriptor: SchemaDescriptor = {
 
   renderer: SelectSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'json',
-        title: '默认值',
-        description: '默认选中的选项值数组，格式为 ["value1", "value2"]',
-      },
+  propsSchema: buildPropsSchema({
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'json',
+      title: '默认值',
+      description: '默认选中的选项值数组，格式为 ["value1", "value2"]',
     },
-    ['readOnly', 'isRequired', 'default'],
-  ),
+  }),
 };
 
 schemaRegistry.register(checkboxesDescriptor);

@@ -21,19 +21,16 @@ const inputImageDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'input',
-        title: '默认图片URL',
-        placeholder: '请输入默认图片地址',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'input',
+      title: '默认图片URL',
+      placeholder: '请输入默认图片地址',
     },
-    ['isConditionProp', 'readOnly', 'isRequired', 'default'],
-  ),
+  }),
 };
 
 schemaRegistry.register(inputImageDescriptor);

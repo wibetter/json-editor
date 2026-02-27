@@ -113,10 +113,7 @@ const colorPickerDescriptor = {
   },
 
   // 高级配置面板的 schema（由 buildPropsSchema 构建，会自动合并通用配置项）
-  propsSchema: buildPropsSchema(
-    {},
-    [],
-  ),
+  propsSchema: buildPropsSchema(),
 };
 
 // 注册成 json-schema-editor 可用配置项

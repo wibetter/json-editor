@@ -21,18 +21,15 @@ const booleanDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'boolean',
-        title: '默认值',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'boolean',
+      title: '默认值',
     },
-    ['isConditionProp', 'readOnly', 'isRequired', 'default'],
-  ),
+  }),
 };
 
 schemaRegistry.register(booleanDescriptor);

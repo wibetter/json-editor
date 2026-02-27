@@ -22,23 +22,20 @@ const textareaDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'textarea',
-        title: '默认值',
-        placeholder: '请输入默认值',
-      },
-      placeholder: {
-        type: 'input',
-        title: '输入提示',
-        placeholder: '请输入输入提示',
-      },
+  propsSchema: buildPropsSchema({
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'textarea',
+      title: '默认值',
+      placeholder: '请输入默认值',
     },
-    ['readOnly', 'isRequired', 'default', 'placeholder'],
-  ),
+    placeholder: {
+      type: 'input',
+      title: '输入提示',
+      placeholder: '请输入输入提示',
+    },
+  }),
 };
 
 schemaRegistry.register(textareaDescriptor);

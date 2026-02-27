@@ -22,42 +22,31 @@ const numberDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'number',
-        title: '默认值',
-        placeholder: '请输入默认数值',
-      },
-      placeholder: {
-        type: 'input',
-        title: '输入提示',
-        placeholder: '请输入输入提示',
-      },
-      minimum: {
-        type: 'number',
-        title: '最小值',
-        description: '设置最小值后，用户输入的数值必须大于当前最小值',
-      },
-      maximum: {
-        type: 'number',
-        title: '最大值',
-        description: '设置最大值后，用户输入的数值必须小于当前最大值',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'number',
+      title: '默认值',
+      placeholder: '请输入默认数值',
     },
-    [
-      'isConditionProp',
-      'readOnly',
-      'isRequired',
-      'default',
-      'placeholder',
-      'minimum',
-      'maximum',
-    ],
-  ),
+    placeholder: {
+      type: 'input',
+      title: '输入提示',
+      placeholder: '请输入输入提示',
+    },
+    minimum: {
+      type: 'number',
+      title: '最小值',
+      description: '设置最小值后，用户输入的数值必须大于当前最小值',
+    },
+    maximum: {
+      type: 'number',
+      title: '最大值',
+      description: '设置最大值后，用户输入的数值必须小于当前最大值',
+    },
+  }),
 };
 
 schemaRegistry.register(numberDescriptor);

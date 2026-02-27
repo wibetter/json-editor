@@ -25,42 +25,31 @@ const selectDescriptor: SchemaDescriptor = {
 
   renderer: SelectSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      multiple: {
-        type: 'boolean',
-        title: '支持多选',
-        description: '开启多选后，select 下拉列表支持选择多个选项',
-      },
-      defaultActiveFirstOption: {
-        type: 'boolean',
-        title: '选中第一项',
-        description: '是否默认高亮第一个选项',
-      },
-      withLabel: {
-        type: 'boolean',
-        title: '附带label数值',
-        description: '开启后，选中选项时，其数值会带上当前选项的 label 数值',
-      },
-      default: {
-        type: 'input',
-        title: '默认值',
-        placeholder: '请输入默认选中项的 value 值',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    multiple: {
+      type: 'boolean',
+      title: '支持多选',
+      description: '开启多选后，select 下拉列表支持选择多个选项',
     },
-    [
-      'isConditionProp',
-      'readOnly',
-      'isRequired',
-      'multiple',
-      'defaultActiveFirstOption',
-      'withLabel',
-      'default',
-    ],
-  ),
+    defaultActiveFirstOption: {
+      type: 'boolean',
+      title: '选中第一项',
+      description: '是否默认高亮第一个选项',
+    },
+    withLabel: {
+      type: 'boolean',
+      title: '附带label数值',
+      description: '开启后，选中选项时，其数值会带上当前选项的 label 数值',
+    },
+    default: {
+      type: 'input',
+      title: '默认值',
+      placeholder: '请输入默认选中项的 value 值',
+    },
+  }),
 };
 
 schemaRegistry.register(selectDescriptor);

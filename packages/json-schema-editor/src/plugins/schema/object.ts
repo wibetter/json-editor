@@ -29,16 +29,13 @@ const objectDescriptor: SchemaDescriptor = {
     propertyOrder: ['a'],
   },
 
-  propsSchema: buildPropsSchema(
-    {
-      showCodeViewBtn: {
-        type: 'boolean',
-        title: '源码模式',
-        description: '用于控制是否显示源码模式切换按钮，默认显示',
-      },
+  propsSchema: buildPropsSchema({
+    showCodeViewBtn: {
+      type: 'boolean',
+      title: '源码模式',
+      description: '用于控制是否显示源码模式切换按钮，默认显示',
     },
-    ['showCodeViewBtn'],
-  ),
+  }),
 
   renderer: ObjectSchema,
 };

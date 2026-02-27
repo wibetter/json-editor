@@ -22,24 +22,21 @@ const urlDescriptor: SchemaDescriptor = {
 
   renderer: GeneralSchema,
 
-  propsSchema: buildPropsSchema(
-    {
-      isConditionProp: EDITABLE_PROPS.isConditionProp,
-      readOnly: EDITABLE_PROPS.readOnly,
-      isRequired: EDITABLE_PROPS.isRequired,
-      default: {
-        type: 'input',
-        title: '默认值',
-        placeholder: '请输入默认 URL',
-      },
-      placeholder: {
-        type: 'input',
-        title: '输入提示',
-        placeholder: '请输入输入提示',
-      },
+  propsSchema: buildPropsSchema({
+    isConditionProp: EDITABLE_PROPS.isConditionProp,
+    readOnly: EDITABLE_PROPS.readOnly,
+    isRequired: EDITABLE_PROPS.isRequired,
+    default: {
+      type: 'input',
+      title: '默认值',
+      placeholder: '请输入默认 URL',
     },
-    ['isConditionProp', 'readOnly', 'isRequired', 'default', 'placeholder'],
-  ),
+    placeholder: {
+      type: 'input',
+      title: '输入提示',
+      placeholder: '请输入输入提示',
+    },
+  }),
 };
 
 schemaRegistry.register(urlDescriptor);
