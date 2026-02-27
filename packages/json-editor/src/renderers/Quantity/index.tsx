@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { inject, observer } from 'mobx-react';
 import { registerRenderer } from '$core/factory';
 import { toJS } from 'mobx';
 import { BaseRendererProps } from '$types/index';
@@ -9,6 +8,36 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import { truncate, isArray } from '@wibetter/json-utils';
 import { catchJsonDataByWebCache } from '$mixins/index';
 import { isNeedTwoColWarpStyle, buildStyle } from '$utils/index';
+
+/**
+ * 将数量值拆分为数值部分和单位部分，兼容以下两种格式：
+ *   - 字符串格式（新）：`"10px"` / `"1.5rem"` / `"100%"` / `"-5px"`
+ *   - 对象格式（旧）：`{ unit: 10, quantity: 'px' }`
+ * 若解析失败则数值原样返回，单位使用 defaultUnit。
+ */
+const parseQuantityString = (
+  str: any,
+  defaultUnit: string = 'px',
+): { num: string; unit: string } => {
+  // 兼容旧版对象格式 { unit: 数值, quantity: 单位 }
+  if (str !== null && typeof str === 'object') {
+    const num =
+      str.unit !== undefined && str.unit !== null ? String(str.unit) : '';
+    const unit =
+      str.quantity !== undefined && str.quantity !== null
+        ? String(str.quantity)
+        : defaultUnit;
+    return { num, unit };
+  }
+  if (str === undefined || str === null || str === '') {
+    return { num: '', unit: defaultUnit };
+  }
+  const match = String(str).match(/^(-?\d*\.?\d+)([a-zA-Z%]*)$/);
+  if (match) {
+    return { num: match[1], unit: match[2] || defaultUnit };
+  }
+  return { num: String(str), unit: defaultUnit };
+};
 
 class QuantitySchema extends React.PureComponent<BaseRendererProps> {
   componentWillMount() {
@@ -23,13 +52,19 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     }
   }
 
-  /** 数值变动事件处理器 */
-  handleInputChangeV1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+  getDefaultUnit = (): string => {
+    const { targetJsonSchema } = this.props;
+    const quantitySchema = targetJsonSchema.properties['quantity'];
+    return (quantitySchema && quantitySchema.default) || 'px';
+  };
+
+  getCurQuantityString = (): string => {
     const { keyRoute, jsonStore } = this.props;
-    const { updateFormValueData } = jsonStore || {};
-    const { value } = event.target;
-    const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
-    updateFormValueData(curKeyRoute, Number(value)); // 更新单位数值
+    const { getJSONDataByKeyRoute } = jsonStore || {};
+    return (
+      (getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute)) ||
+      ''
+    );
   };
 
   handleInputChange = (event: any) => {
@@ -37,42 +72,48 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
     this.handleValueChange(value);
   };
 
-  handleValueChange = (value: any) => {
+  // 数值变动：保留当前单位，合并成字符串写入 keyRoute
+  handleValueChange = (newNum: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    const curKeyRoute = keyRoute ? `${keyRoute}-unit` : 'unit';
+    const { unit } = parseQuantityString(
+      this.getCurQuantityString(),
+      this.getDefaultUnit(),
+    );
+    const combinedValue = `${newNum}${unit}`;
 
     if (this.props.onChange) {
-      // 如果有监听数据变动函数则优先触发
-      this.props.onChange(value);
+      this.props.onChange(combinedValue);
     } else {
-      updateFormValueData(curKeyRoute, value); // 更新数值
+      updateFormValueData(keyRoute, combinedValue);
     }
   };
 
-  handleUnitChange = (value: any) => {
+  // 单位变动：保留当前数值，合并成字符串写入 keyRoute
+  handleUnitChange = (newUnit: any) => {
     const { keyRoute, jsonStore } = this.props;
     const { updateFormValueData } = jsonStore || {};
-    const curKeyRoute = keyRoute ? `${keyRoute}-quantity` : 'quantity';
+    const { num } = parseQuantityString(
+      this.getCurQuantityString(),
+      this.getDefaultUnit(),
+    );
+    const combinedValue = `${num}${newUnit}`;
 
     if (this.props.onChange) {
-      this.props.onChange(value);
+      this.props.onChange(combinedValue);
     } else {
-      updateFormValueData(curKeyRoute, value);
+      updateFormValueData(keyRoute, combinedValue);
     }
   };
 
-  // 单位切换
-  getUnitSelect = () => {
+  // 展示单位切换（受控组件，value 由外部字符串解析得出）
+  getUnitSelect = (currentUnit: string) => {
     const { targetJsonSchema } = this.props;
     const quantitySchema = targetJsonSchema.properties['quantity'];
-    let options = [
-      {
-        label: 'px',
-        value: 'px',
-      },
+    let options: { label: string; value: string }[] = [
+      { label: 'px', value: 'px' },
     ];
-    if (quantitySchema.options) {
+    if (quantitySchema && quantitySchema.options) {
       options = quantitySchema.options;
     }
 
@@ -80,16 +121,14 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
       <Select
         className="autoComplete-unit-suffix"
         style={{ display: 'inline-block' }}
-        defaultValue={quantitySchema.default || 'px'}
+        value={currentUnit}
         onChange={this.handleUnitChange}
       >
-        {options.map((option: any) => {
-          return (
-            <Option value={option.value} key={option.value}>
-              {option.label}
-            </Option>
-          );
-        })}
+        {options.map((option: any) => (
+          <Option value={option.value} key={option.value}>
+            {option.label}
+          </Option>
+        ))}
       </Select>
     );
   };
@@ -97,26 +136,29 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
   render() {
     const { schemaStore, jsonStore } = this.props;
     const { pageScreen } = schemaStore || {};
-    const { options: _editorOptions, getJSONDataByKeyRoute } = jsonStore || {};
+    const { options: _editorOptions } = jsonStore || {};
     const { keyRoute, jsonKey, nodeKey, targetJsonSchema } = this.props;
-    // 从jsonData中获取对应的数值
-    const curJsonData =
-      getJSONDataByKeyRoute && keyRoute && getJSONDataByKeyRoute(keyRoute);
-    const readOnly = targetJsonSchema.readOnly || false; // 是否只读（默认可编辑）
-    /** 获取quantity中的数值对象（默认第一个就是数值对象） */
+
+    const readOnly = targetJsonSchema.readOnly || false;
     const unitJsonSchema = targetJsonSchema.properties['unit'];
-    // const curQuantity = curJsonData.quantity;
-    // const unit = curQuantity === 'percent' ? '%' : curQuantity;
-    // const unitSuffix = <span>{unit}</span>;
-    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type); // 是否需要设置成两栏布局
-    const autoComplete = targetJsonSchema.autoComplete || false; // 是否支持可选项
+    const defaultUnit = this.getDefaultUnit();
+
+    // 从字符串中解析当前数值和单位
+    const curQuantityStr = this.getCurQuantityString();
+    const { num: curNum, unit: curUnit } = parseQuantityString(
+      curQuantityStr,
+      defaultUnit,
+    );
+
+    const isNeedTwoCol = isNeedTwoColWarpStyle(targetJsonSchema.type);
+    const autoComplete = targetJsonSchema.autoComplete || false;
 
     const editorOptions = _editorOptions || {};
-    let defaultOptions = [];
+    let defaultOptions: any[] = [];
     if (editorOptions.GlobalOptions && isArray(editorOptions.GlobalOptions)) {
       defaultOptions = editorOptions.GlobalOptions;
     }
-    const options = targetJsonSchema.options || defaultOptions; // 是否支持可选项
+    const options = targetJsonSchema.options || defaultOptions;
 
     const style = targetJsonSchema.style
       ? buildStyle(toJS(targetJsonSchema.style))
@@ -133,11 +175,8 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
         className={
           pageScreen === 'wideScreen'
             ? 'wide-screen-element-warp'
-            : `mobile-screen-element-warp ${
-                isNeedTwoCol ? 'two-col-element-warp' : ''
-              }`
+            : `mobile-screen-element-warp ${isNeedTwoCol ? 'two-col-element-warp' : ''}`
         }
-        // key={nodeKey}
         id={nodeKey}
         style={style}
       >
@@ -177,16 +216,16 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
                     `请输入${unitJsonSchema.title}` ||
                     `请输入${targetJsonSchema.title}`
                   }
-                  defaultValue={curJsonData.unit || unitJsonSchema.default}
+                  value={curNum || unitJsonSchema.default}
                   onChange={this.handleValueChange}
                 />
-                {this.getUnitSelect()}
+                {this.getUnitSelect(curUnit)}
               </>
             )}
             {!autoComplete && (
               <InputNumber
                 style={{ display: 'inline-block', width: '120px' }}
-                addonAfter={this.getUnitSelect()}
+                addonAfter={this.getUnitSelect(curUnit)}
                 disabled={readOnly}
                 placeholder={
                   unitJsonSchema.placeholder ||
@@ -194,7 +233,7 @@ class QuantitySchema extends React.PureComponent<BaseRendererProps> {
                   `请输入${unitJsonSchema.title}` ||
                   `请输入${targetJsonSchema.title}`
                 }
-                defaultValue={curJsonData.unit || unitJsonSchema.default}
+                value={curNum !== '' ? Number(curNum) : undefined}
                 onPressEnter={this.handleInputChange}
                 onBlur={this.handleInputChange}
               />

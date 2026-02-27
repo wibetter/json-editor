@@ -20,6 +20,7 @@ interface RootJSONStore {
   JSONEditorStore?: {
     jsonData?: any;
     initJsonData?: Record<string, any>;
+    JSONEditorObj?: any;
   };
 }
 
@@ -105,7 +106,7 @@ export default class JSONSchemaStore {
       this.jsonSchema = newJSONSchema;
     }
     const JSONEditorStore = this.state.rootJSONStore.JSONEditorStore;
-    const curJsonData = JSONEditorStore?.jsonData;
+    const curJsonData = JSONEditorStore?.JSONEditorObj;
     let newJsonData: Record<string, any> = {};
     /** 根据jsonSchema生成对应的最新jsonData */
     if (this.jsonSchema.reset) {

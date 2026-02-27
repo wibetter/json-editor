@@ -13,8 +13,7 @@ React/Mobx/Ant Design
 2. 支持字段联动
 3. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
  textarea、number、color、radio、 checkboxes、select、cascader、input-image）
-4. 支持12个特殊类型组件（object、array、json、datasource、dynamic-data、event、
-codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style、padding-margin）
+4. 支持8种特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、padding-margin）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 6. 支持通过表达式设置数据联动（支持两种数据域：全局数据域、当前局部数据域）
 7. 支持源码模式切换（开启源码模式后可以开启编辑模式）

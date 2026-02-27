@@ -2,7 +2,6 @@
 import '$renderers/Array/index';
 import '$renderers/Object/index';
 import '$renderers/Quantity/index';
-import '$renderers/BoxStyle/index';
 import '$renderers/PaddingAndMargin/index';
 import '$renderers/Radio/index';
 import '$renderers/Checkbox/index';

@@ -8,7 +8,7 @@ React/Mobx/Ant Design
 ### 特点
 1. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
  textarea、number、color、radio、 checkboxes、select、cascader、input-image）
-2. 支持9个特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、box-style、padding-margin）
+2. 支持8种特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、padding-margin）
 3. 支持拖拽排序
 4. 支持删除、复制、高级配置等功能
 5. 支持无限嵌套

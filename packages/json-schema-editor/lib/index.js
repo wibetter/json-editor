@@ -251,7 +251,7 @@
               return I;
             },
             default: function () {
-              return Ve;
+              return Le;
             },
             registerSchema: function () {
               return O;
@@ -2573,65 +2573,7 @@
           we = function (e) {
             return s().createElement(F, t()({}, e));
           },
-          Je = function (e) {
-            var n,
-              a = e.jsonKey,
-              o = e.indexRoute,
-              r = e.nodeKey,
-              i = e.targetJsonSchema,
-              l = i.type,
-              d = i.propertyOrder[0],
-              p = i.properties[d];
-            return s().createElement(
-              Ke,
-              {
-                className: l + '-schema schema-item-form',
-                id: r,
-                key: r,
-                'data-indexRoute': o,
-                'data-jsonKey': a,
-                title: we(t()({}, e)),
-              },
-              s().createElement(Ke, {
-                className: 'quantity-unit-item-schema schema-item-form',
-                id: r + '-' + d,
-                key: r + '-' + d,
-                'data-indexRoute': o ? o + '-0' : '0',
-                'data-jsonKey': d,
-                disabled: !0,
-                title: we(
-                  t()({}, e, {
-                    indexRoute: o ? o + '-0' : '0',
-                    jsonKey: d,
-                    targetJsonSchema: p,
-                    parentType: l,
-                    nodeKey: r + '-' + d,
-                    hideOperaBtn: !0,
-                    showAdvanceBtn: !0,
-                    typeIsFixed: !0,
-                  }),
-                ),
-              }),
-              s().createElement(Ke, {
-                className: 'quantity-typeSelect-item-schema schema-item-form',
-                id: r + '-quantity',
-                key: r + '-quantity',
-                'data-indexRoute': o ? o + '-1' : '1',
-                'data-jsonKey': 'quantity',
-                disabled: !0,
-                title:
-                  ((n = t()({}, e, {
-                    indexRoute: o ? o + '-1' : '1',
-                    jsonKey: 'quantity',
-                    targetJsonSchema: i.properties.quantity,
-                    parentType: l,
-                    nodeKey: r + '-quantity',
-                  })),
-                  s().createElement(_e, t()({}, n))),
-              }),
-            );
-          },
-          Be = {
+          Je = {
             type: 'quantity',
             label: '数值单位设置',
             isContainer: !1,
@@ -2656,7 +2598,64 @@
               propertyOrder: ['unit', 'quantity'],
             },
             showAdvanceBtn: !1,
-            renderer: Je,
+            renderer: function (e) {
+              var n,
+                a = e.jsonKey,
+                o = e.indexRoute,
+                r = e.nodeKey,
+                i = e.targetJsonSchema,
+                l = i.type,
+                d = i.propertyOrder[0],
+                p = i.properties[d];
+              return s().createElement(
+                Ke,
+                {
+                  className: l + '-schema schema-item-form',
+                  id: r,
+                  key: r,
+                  'data-indexRoute': o,
+                  'data-jsonKey': a,
+                  title: we(t()({}, e)),
+                },
+                s().createElement(Ke, {
+                  className: 'quantity-unit-item-schema schema-item-form',
+                  id: r + '-' + d,
+                  key: r + '-' + d,
+                  'data-indexRoute': o ? o + '-0' : '0',
+                  'data-jsonKey': d,
+                  disabled: !0,
+                  title: we(
+                    t()({}, e, {
+                      indexRoute: o ? o + '-0' : '0',
+                      jsonKey: d,
+                      targetJsonSchema: p,
+                      parentType: l,
+                      nodeKey: r + '-' + d,
+                      hideOperaBtn: !0,
+                      showAdvanceBtn: !0,
+                      typeIsFixed: !0,
+                    }),
+                  ),
+                }),
+                s().createElement(Ke, {
+                  className: 'quantity-typeSelect-item-schema schema-item-form',
+                  id: r + '-quantity',
+                  key: r + '-quantity',
+                  'data-indexRoute': o ? o + '-1' : '1',
+                  'data-jsonKey': 'quantity',
+                  disabled: !0,
+                  title:
+                    ((n = t()({}, e, {
+                      indexRoute: o ? o + '-1' : '1',
+                      jsonKey: 'quantity',
+                      targetJsonSchema: i.properties.quantity,
+                      parentType: l,
+                      nodeKey: r + '-quantity',
+                    })),
+                    s().createElement(_e, t()({}, n))),
+                }),
+              );
+            },
             propsSchema: I({
               readOnly: R.readOnly,
               isRequired: R.isRequired,
@@ -2673,41 +2672,8 @@
               },
             }),
           };
-        C.register(Be);
-        var Te = {
-          type: 'box-style',
-          label: '盒子模型/边距设置',
-          isContainer: !1,
-          defaultSchema: {
-            type: 'box-style',
-            title: '盒子模型',
-            description: '',
-            properties: {
-              unit: {
-                title: '单位数值',
-                type: 'input',
-                default: '0',
-                description: '',
-              },
-              quantity: {
-                type: 'select',
-                title: '单位类型',
-                options: [
-                  { label: 'px', value: 'px' },
-                  { label: 'rem', value: 'rem' },
-                  { label: 'em', value: 'em' },
-                  { label: '%', value: '%' },
-                ],
-                default: 'px',
-              },
-            },
-            propertyOrder: ['unit', 'quantity'],
-          },
-          propsSchema: I(),
-          renderer: Je,
-        };
-        C.register(Te);
-        var ke = {
+        C.register(Je);
+        var Be = {
           type: 'padding-margin',
           label: '边距设置',
           isContainer: !1,
@@ -2751,8 +2717,8 @@
           }),
           renderer: Z,
         };
-        C.register(ke);
-        var qe = {
+        C.register(Be);
+        var Te = {
           type: 'object',
           label: '对象(Object)',
           isContainer: !0,
@@ -2781,12 +2747,12 @@
           }),
           renderer: Z,
         };
-        C.register(qe);
-        var De = y.Tree.TreeNode,
-          Pe = function (e) {
+        C.register(Te);
+        var ke = y.Tree.TreeNode,
+          qe = function (e) {
             return s().createElement(F, t()({}, e));
           },
-          Ae = {
+          De = {
             type: 'array',
             label: '数组(Array)',
             isContainer: !1,
@@ -2838,14 +2804,14 @@
                 p = o ? o + '-' + d : d,
                 c = r[d] || {};
               return s().createElement(
-                De,
+                ke,
                 {
                   className: i + '-schema schema-item-form',
                   id: o,
                   key: o,
                   'data-indexRoute': a,
                   'data-jsonKey': n,
-                  title: Pe(t()({}, e)),
+                  title: qe(t()({}, e)),
                 },
                 (function (e) {
                   var n = e.parentType,
@@ -2854,14 +2820,14 @@
                     r = e.nodeKey,
                     i = e.targetJsonSchema;
                   return s().createElement(
-                    De,
+                    ke,
                     {
                       className: 'array-item-schema schema-item-form',
                       id: r,
                       key: r,
                       'data-jsonKey': a,
                       disabled: !0,
-                      title: Pe(
+                      title: qe(
                         t()({}, e, {
                           indexRoute: o,
                           jsonKey: a,
@@ -2919,9 +2885,9 @@
               );
             },
           };
-        C.register(Ae);
-        var Le = y.Tree.TreeNode,
-          Fe = {
+        C.register(De);
+        var Pe = y.Tree.TreeNode,
+          Ae = {
             type: 'api',
             label: 'API 配置',
             isContainer: !1,
@@ -2978,7 +2944,7 @@
                 p = r.properties.headers || {},
                 c = r.properties.data || {};
               return s().createElement(
-                Le,
+                Pe,
                 {
                   className: i + '-schema schema-item-form',
                   id: o,
@@ -2987,7 +2953,7 @@
                   'data-jsonKey': n,
                   title: s().createElement(F, t()({}, e)),
                 },
-                s().createElement(Le, {
+                s().createElement(Pe, {
                   className: 'api-url-item-schema schema-item-form',
                   id: o + '-url',
                   key: o + '-url',
@@ -3007,7 +2973,7 @@
                     }),
                   ),
                 }),
-                s().createElement(Le, {
+                s().createElement(Pe, {
                   className: 'api-method-item-schema schema-item-form',
                   id: o + '-method',
                   key: o + '-method',
@@ -3026,7 +2992,7 @@
                     }),
                   ),
                 }),
-                s().createElement(Le, {
+                s().createElement(Pe, {
                   className: 'api-headers-item-schema schema-item-form',
                   id: o + '-headers',
                   key: o + '-headers',
@@ -3046,7 +3012,7 @@
                     }),
                   ),
                 }),
-                s().createElement(Le, {
+                s().createElement(Pe, {
                   className: 'api-data-item-schema schema-item-form',
                   id: o + '-data',
                   key: o + '-data',
@@ -3069,8 +3035,8 @@
               );
             },
           };
-        C.register(Fe);
-        var Ve = (function (e) {
+        C.register(Ae);
+        var Le = (function (e) {
           function n(t) {
             var n;
             return (

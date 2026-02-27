@@ -1749,15 +1749,11 @@ function json2schema(jsonData) {
 var valExpectType = {
   array: 'array',
   boolean: 'boolean',
-  'box-style': 'object',
   'padding-margin': 'object',
   codearea: 'string',
   color: 'string',
-  datasource: 'object',
   date: 'string',
   'date-time': 'string',
-  'dynamic-data': 'object',
-  event: 'object',
   'func-body': 'string',
   htmlarea: 'string',
   image: 'string',
@@ -1766,13 +1762,17 @@ var valExpectType = {
   number: 'number',
   'input-image': 'string',
   object: 'object',
-  quantity: 'object',
+  quantity: 'string',
   radio: 'string',
   select: 'string',
   textarea: 'string',
   'text-editor': 'string',
   time: 'string',
   url: 'string',
+  'box-style': 'object',
+  datasource: 'object',
+  'dynamic-data': 'object',
+  event: 'object',
 };
 // 根据type获取对应元素的期望类型值
 function getExpectType(type) {
@@ -2309,6 +2309,7 @@ function isEqualByType(value1, value2) {
  * 备注：使用旧版数据，以便进行新旧数据融合
  * */
 function baseSchema2JsonData(jsonSchema, jsonData) {
+  var _jsonSchema$propertie, _jsonSchema$propertie2, _jsonSchema$propertie3;
   var curJsonData = undefined;
   var oldValue = jsonData;
   if (
@@ -2347,6 +2348,30 @@ function baseSchema2JsonData(jsonSchema, jsonData) {
       break;
     case 'number':
       curJsonData = hasProperties(curValue) ? curValue : undefined;
+      break;
+    case 'quantity':
+      var defaultUnit =
+        ((_jsonSchema$propertie = jsonSchema.properties) === null ||
+        _jsonSchema$propertie === void 0 ||
+        (_jsonSchema$propertie = _jsonSchema$propertie.quantity) === null ||
+        _jsonSchema$propertie === void 0
+          ? void 0
+          : _jsonSchema$propertie.default) || 'px';
+      // 根据 schema 的默认值生成初始字符串
+      var defaultNum =
+        (_jsonSchema$propertie2 =
+          (_jsonSchema$propertie3 = jsonSchema.properties) === null ||
+          _jsonSchema$propertie3 === void 0 ||
+          (_jsonSchema$propertie3 = _jsonSchema$propertie3.unit) === null ||
+          _jsonSchema$propertie3 === void 0
+            ? void 0
+            : _jsonSchema$propertie3.default) !== null &&
+        _jsonSchema$propertie2 !== void 0
+          ? _jsonSchema$propertie2
+          : '';
+      curJsonData = hasProperties(curValue)
+        ? curValue
+        : '' + defaultNum + defaultUnit;
       break;
     case 'json':
       /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */

@@ -1145,15 +1145,11 @@
     var J = {
       array: 'array',
       boolean: 'boolean',
-      'box-style': 'object',
       'padding-margin': 'object',
       codearea: 'string',
       color: 'string',
-      datasource: 'object',
       date: 'string',
       'date-time': 'string',
-      'dynamic-data': 'object',
-      event: 'object',
       'func-body': 'string',
       htmlarea: 'string',
       image: 'string',
@@ -1162,13 +1158,17 @@
       number: 'number',
       'input-image': 'string',
       object: 'object',
-      quantity: 'object',
+      quantity: 'string',
       radio: 'string',
       select: 'string',
       textarea: 'string',
       'text-editor': 'string',
       time: 'string',
       url: 'string',
+      'box-style': 'object',
+      datasource: 'object',
+      'dynamic-data': 'object',
+      event: 'object',
     };
     function I(e) {
       return J[e] || e;
@@ -1415,53 +1415,77 @@
     function ie(e, t) {
       var r,
         i,
-        n = void 0,
-        a = t;
-      N(a) &&
+        n,
+        a,
+        o,
+        p = void 0,
+        l = t;
+      N(l) &&
         N(e.default) &&
-        (typeof a != typeof e.default ||
-          ((r = a), (i = e.default), j(r) + '-' + g(r) != j(i) + '-' + g(i))) &&
-        (a = void 0);
-      var o = N(a) ? a : e.default;
+        (typeof l != typeof e.default ||
+          ((a = l), (o = e.default), j(a) + '-' + g(a) != j(o) + '-' + g(o))) &&
+        (l = void 0);
+      var u = N(l) ? l : e.default;
       switch (e.type) {
         case 'select':
         case 'radio':
-          n = null != o ? o : re(e);
+          p = null != u ? u : re(e);
           break;
         case 'checkboxes':
-          n = null != o ? o : re(e, !0);
+          p = null != u ? u : re(e, !0);
           break;
         case 'color':
-          (('#fff' !== o && '#FFF' !== o) || (o = '#ffffff'),
-            (n = N(o) ? o : '#ffffff'));
+          (('#fff' !== u && '#FFF' !== u) || (u = '#ffffff'),
+            (p = N(u) ? u : '#ffffff'));
           break;
         case 'boolean':
-          n = !!N(o) && o;
+          p = !!N(u) && u;
           break;
         case 'number':
-          n = N(o) ? o : void 0;
+          p = N(u) ? u : void 0;
+          break;
+        case 'quantity':
+          var s =
+              (null === (r = e.properties) ||
+              void 0 === r ||
+              null === (r = r.quantity) ||
+              void 0 === r
+                ? void 0
+                : r.default) || 'px',
+            c =
+              null !==
+                (i =
+                  null === (n = e.properties) ||
+                  void 0 === n ||
+                  null === (n = n.unit) ||
+                  void 0 === n
+                    ? void 0
+                    : n.default) && void 0 !== i
+                ? i
+                : '';
+          p = N(u) ? u : '' + c + s;
           break;
         case 'json':
-          var p = '';
-          if (j(o) || g(o)) p = o;
-          else if (S(o) || '' === o) p = {};
+          var d = '';
+          if (j(u) || g(u)) d = u;
+          else if (S(u) || '' === u) d = {};
           else
             try {
-              p = JSON.parse(o);
+              d = JSON.parse(u);
             } catch (e) {
-              p = {};
+              d = {};
             }
-          n = p;
+          p = d;
           break;
         default:
-          n =
+          p =
             'input' === e.type && '0' === e.default
-              ? o || e.default
-              : N(o)
-                ? o
+              ? u || e.default
+              : N(u)
+                ? u
                 : void 0;
       }
-      return n;
+      return p;
     }
     function ne(e, t) {
       var r = {},

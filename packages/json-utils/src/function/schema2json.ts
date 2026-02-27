@@ -60,6 +60,14 @@ function baseSchema2JsonData(jsonSchema: any, jsonData: any) {
     case 'number':
       curJsonData = hasProperties(curValue) ? curValue : undefined;
       break;
+    case 'quantity':
+      const defaultUnit = jsonSchema.properties?.quantity?.default || 'px';
+      // 根据 schema 的默认值生成初始字符串
+      const defaultNum = jsonSchema.properties?.unit?.default ?? '';
+      curJsonData = hasProperties(curValue)
+        ? curValue
+        : `${defaultNum}${defaultUnit}`;
+      break;
     case 'json':
       /* 转成json类型进行特殊处理，需要保证json类型的数值是json对象 */
       let curJsonItemData: any = ''; // 字符串类型的json数据
