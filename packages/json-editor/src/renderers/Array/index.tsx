@@ -123,6 +123,7 @@ class ArraySchema extends React.PureComponent<
 
   /**
    * 获取当前数组项的Title：数组项默认使用其第一个非空子项的数值作为title
+   * 备注：已废弃。
    */
   getArrItemTitle = (arrItem: any) => {
     if (arrItem && isObject(arrItem)) {
@@ -313,7 +314,9 @@ class ArraySchema extends React.PureComponent<
                 const curKeyRoute = keyRoute
                   ? `${keyRoute}-${arrIndex}`
                   : `${arrIndex}`;
-                const arrTitle = this.getArrItemTitle(arrItem); // 获取数组项第一个非空元素的值
+
+                // const arrTitle = this.getArrItemTitle(arrItem); // 获取数组项第一个非空元素的值
+
                 return (
                   <div className="array-item" key={curKeyRoute}>
                     <div
@@ -333,9 +336,7 @@ class ArraySchema extends React.PureComponent<
                       }}
                     >
                       <div className="array-title-text">
-                        {arrTitle
-                          ? arrTitle
-                          : `${arrayItemsDataObj.title}/${arrIndex + 1}`}
+                        {arrayItemsDataObj.title}/{arrIndex + 1}
                       </div>
                       <div className="array-operate-box">
                         {currentActiveArrIndex !== arrIndex ? (

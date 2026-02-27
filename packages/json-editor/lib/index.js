@@ -1820,8 +1820,7 @@
                         J.map(function (e, t) {
                           var n = v + '-array-items-' + J.length + '-' + t,
                             l = E ? E + '-0' : '0',
-                            r = h ? h + '-' + t : '' + t,
-                            i = a.getArrItemTitle(e);
+                            r = h ? h + '-' + t : '' + t;
                           return o.createElement(
                             'div',
                             { className: 'array-item', key: r },
@@ -1842,7 +1841,9 @@
                               o.createElement(
                                 'div',
                                 { className: 'array-title-text' },
-                                i || M.title + '/' + (t + 1),
+                                M.title,
+                                '/',
+                                t + 1,
                               ),
                               o.createElement(
                                 'div',

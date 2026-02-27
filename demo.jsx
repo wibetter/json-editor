@@ -304,7 +304,7 @@ class IndexDemo extends React.PureComponent {
         jsonViewReadOnly: true,
       },
       schemaCodeView: false,
-      curTypeList: {},
+      schemaViewReadOnly: true,
     };
   }
 
@@ -313,7 +313,7 @@ class IndexDemo extends React.PureComponent {
       jsonSchema,
       jsonData,
       schemaCodeView,
-      curTypeList,
+      schemaViewReadOnly,
       options,
     } = this.state;
     const { wideScreen, jsonView, viewStyle, tabPosition, tabType, jsonViewReadOnly } = options;
@@ -359,9 +359,7 @@ class IndexDemo extends React.PureComponent {
                       checkedChildren="开"
                       unCheckedChildren="关"
                       onChange={(checked) => {
-                        this.setState((prev) => ({
-                          options: { ...prev.options, jsonViewReadOnly: !checked },
-                        }));
+                        this.setState({ schemaViewReadOnly: !checked });
                       }}
                     />
                   </>
@@ -371,9 +369,8 @@ class IndexDemo extends React.PureComponent {
             <div className="demo-panel__body">
               <JSONSchemaEditor
                 jsonView={schemaCodeView}
-                jsonViewReadOnly={jsonViewReadOnly}
+                jsonViewReadOnly={schemaViewReadOnly}
                 data={jsonSchema}
-                typeList={curTypeList}
                 onChange={(newJsonSchema) => {
                   console.log('newJsonSchema', newJsonSchema);
                   this.setState({ jsonSchema: newJsonSchema });
@@ -432,6 +429,22 @@ class IndexDemo extends React.PureComponent {
                     }));
                   }}
                 />
+                {jsonView && (
+                  <>
+                    <label className="demo-control-label">编辑模式</label>
+                    <Switch
+                      size="small"
+                      defaultChecked={!jsonViewReadOnly}
+                      checkedChildren="开"
+                      unCheckedChildren="关"
+                      onChange={(checked) => {
+                        this.setState((prev) => ({
+                          options: { ...prev.options, jsonViewReadOnly: !checked },
+                        }));
+                      }}
+                    />
+                  </>
+                )}
                 {viewStyle === 'tabs' && (
                   <>
                     <label className="demo-control-label">标签位置</label>

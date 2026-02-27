@@ -18,6 +18,8 @@ const inputDescriptor: SchemaDescriptor = {
     default: '',
     description: '',
     placeholder: '',
+    autoComplete: false,
+    options: [],
   },
 
   renderer: GeneralSchema,

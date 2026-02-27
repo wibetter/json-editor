@@ -361,8 +361,8 @@
               description: '可用于设置标题展示样式',
             },
           },
-          R = ['description', 'showKey', 'onShow', 'titleStyle'],
-          j = {
+          j = Object.keys(E),
+          R = {
             readOnly: {
               type: 'boolean',
               title: '是否只读',
@@ -381,19 +381,21 @@
                 '设置为条件字段后，其他字段可根据其数值变化进行实时联动',
             },
           };
-        function I(e, n) {
+        function I(e) {
+          void 0 === e && (e = {});
+          var n = Object.keys(e);
           return {
             type: 'object',
             wrapWithPanel: !1,
             properties: t()({}, e, E),
-            propertyOrder: [].concat(n, R),
+            propertyOrder: [].concat(n, j),
           };
         }
         var N = g.TypeDataList.jsonschema;
-        function K() {
+        function _() {
           return C.getDefaultSchema('input');
         }
-        var _ = (function () {
+        var K = (function () {
           function e() {
             var e = this;
             ((this.curJsonKeyIndex = 1),
@@ -543,7 +545,7 @@
               if (null != o && o.isContainer) {
                 var r = this.getNewJsonKeyIndex(n);
                 (n.propertyOrder.push(r),
-                  (n.properties[r] = K()),
+                  (n.properties[r] = _()),
                   this.jsonSchemaChange(t));
               } else y.message.warning('非对象类型字段不允许插入子元素');
             }),
@@ -587,7 +589,7 @@
               var t = (0, g.getParentIndexRoute)(e),
                 n = (0, g.getSchemaByIndexRoute)(t, this.jsonSchema, !1),
                 a = this.getNewJsonKeyIndex(n);
-              this.insertJsonData(e, a, K(), '', !1);
+              this.insertJsonData(e, a, _(), '', !1);
             }),
             (n.insertJsonData = function (e, t, n, a, o) {
               var r = (0, g.getParentIndexRoute_CurIndex)(e),
@@ -781,251 +783,251 @@
         })();
         ((0, h.__decorate)(
           [m.observable],
-          _.prototype,
+          K.prototype,
           'triggerChange',
           void 0,
         ),
-          (0, h.__decorate)([m.observable], _.prototype, 'jsonSchema', void 0),
+          (0, h.__decorate)([m.observable], K.prototype, 'jsonSchema', void 0),
           (0, h.__decorate)(
             [m.observable],
-            _.prototype,
+            K.prototype,
             'SchemaTypeList',
             void 0,
           ),
-          (0, h.__decorate)([m.observable], _.prototype, 'onChange', void 0),
+          (0, h.__decorate)([m.observable], K.prototype, 'onChange', void 0),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'triggerChangeAction',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'initSchemaTypeList',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'initJSONSchemaData',
             null,
           ),
-          (0, h.__decorate)([m.computed], _.prototype, 'JSONSchemaObj', null),
+          (0, h.__decorate)([m.computed], K.prototype, 'JSONSchemaObj', null),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'initOnChange',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'schemaChange',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'jsonSchemaChange',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'indexRoute2keyRoute',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'keyRoute2indexRoute',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'getSchemaByIndexRoute',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'getSchemaByKeyRoute',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'getNewJsonKeyIndex',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'isExitJsonKey',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'addChildJson',
             null,
           ),
-          (0, h.__decorate)([m.action.bound], _.prototype, 'changeType', null),
+          (0, h.__decorate)([m.action.bound], K.prototype, 'changeType', null),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateSchemaData',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'editSchemaData',
             null,
           ),
-          (0, h.__decorate)([m.action.bound], _.prototype, 'editJsonKey', null),
+          (0, h.__decorate)([m.action.bound], K.prototype, 'editJsonKey', null),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'addNextJsonData',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'insertJsonData',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'deleteJsonByIndex_CurKey',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'deleteJsonByIndex',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateEnumItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'isExitEnumKey',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateEnumKey',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateEnumText',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'deleteEnumItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'insertEnumItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'getNewEnumIndex',
             null,
           ),
-          (0, h.__decorate)([m.action.bound], _.prototype, 'addEnumItem', null),
+          (0, h.__decorate)([m.action.bound], K.prototype, 'addEnumItem', null),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'copyEnumItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateOptionItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'isExitOptionLabel',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateOptionLabel',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'updateOptionValue',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'deleteOptionItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'insertOption',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'getNewOptionValue',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'addOptionItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'copyOptionItem',
             null,
           ),
           (0, h.__decorate)(
             [m.action.bound],
-            _.prototype,
+            K.prototype,
             'childElemSort',
             void 0,
           ));
-        var w = { schemaStore: _ },
-          B = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
-          J = n.n(B),
+        var w = { schemaStore: K },
+          J = require('@babel/runtime/helpers/objectWithoutPropertiesLoose'),
+          B = n.n(J),
           T = require('@ant-design/icons'),
-          q = require('@wibetter/json-editor'),
-          k = n.n(q),
-          P = (function (e) {
+          k = require('@wibetter/json-editor'),
+          q = n.n(k),
+          D = (function (e) {
             function t() {
               return e.apply(this, arguments) || this;
             }
@@ -1050,7 +1052,7 @@
                   ? i.createElement(
                       'div',
                       { className: 'advance-config-model' },
-                      i.createElement(k(), {
+                      i.createElement(q(), {
                         wideScreen: !0,
                         schemaData: l,
                         jsonData: a,
@@ -1076,9 +1078,9 @@
               t
             );
           })(i.PureComponent),
-          D = (0, p.inject)(function (e) {
+          P = (0, p.inject)(function (e) {
             return { schemaStore: e.schemaStore };
-          })((0, p.observer)(P)),
+          })((0, p.observer)(D)),
           A = (n(915), y.Select.Option),
           L = (function (e) {
             function t(t) {
@@ -1218,8 +1220,8 @@
                       ? this.props.showAdvanceBtn
                       : void 0 === (null == f ? void 0 : f.showAdvanceBtn) ||
                         f.showAdvanceBtn,
-                  R = this.getAllTypeList(),
-                  j =
+                  j = this.getAllTypeList(),
+                  R =
                     null !== (t = null == f ? void 0 : f.isContainer) &&
                     void 0 !== t &&
                     t;
@@ -1265,7 +1267,7 @@
                               );
                             },
                           },
-                          R.map(function (e) {
+                          j.map(function (e) {
                             var t;
                             return i.createElement(
                               A,
@@ -1308,13 +1310,13 @@
                               ),
                             i.createElement(
                               y.Tooltip,
-                              { title: j ? '新增子元素' : '新增同级元素' },
+                              { title: R ? '新增子元素' : '新增同级元素' },
                               i.createElement(T.PlusOutlined, {
                                 className: 'operate-btn',
                                 onClick: this.onAddBtnEvent,
                               }),
                             ),
-                            j &&
+                            R &&
                               i.createElement(
                                 y.Tooltip,
                                 { title: '数据项排序' },
@@ -1381,7 +1383,7 @@
                               ),
                             ],
                           },
-                          i.createElement(D, {
+                          i.createElement(P, {
                             indexRoute: r,
                             jsonKey: s,
                             targetJsonSchema: d,
@@ -1477,7 +1479,7 @@
                 (i = n.parentNodeKey),
                 (l = n.parentType),
                 n.isOnlyShowChild,
-                (d = J()(n, z)),
+                (d = B()(n, z)),
                 a.map(function (e, n) {
                   var a = r ? r + '-' + n : '' + n,
                     s = e,
@@ -1797,11 +1799,13 @@
               default: '',
               description: '',
               placeholder: '',
+              autoComplete: !1,
+              options: [],
             },
             renderer: W,
             propsSchema: I(
-              t()({}, j, {
-                isConditionProp: j.isConditionProp,
+              t()({}, R, {
+                isConditionProp: R.isConditionProp,
                 default: {
                   type: 'input',
                   title: '默认值',
@@ -1826,15 +1830,6 @@
                   onShow: 'autoComplete === true',
                 },
               }),
-              [
-                'isConditionProp',
-                'readOnly',
-                'isRequired',
-                'default',
-                'placeholder',
-                'autoComplete',
-                'options',
-              ],
             ),
           };
         C.register(te);
@@ -1849,15 +1844,12 @@
             description: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              isConditionProp: j.isConditionProp,
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: { type: 'boolean', title: '默认值' },
-            },
-            ['isConditionProp', 'readOnly', 'isRequired', 'default'],
-          ),
+          propsSchema: I({
+            isConditionProp: R.isConditionProp,
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: { type: 'boolean', title: '默认值' },
+          }),
         };
         C.register(ne);
         var ae = {
@@ -1872,42 +1864,31 @@
             placeholder: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              isConditionProp: j.isConditionProp,
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: {
-                type: 'number',
-                title: '默认值',
-                placeholder: '请输入默认数值',
-              },
-              placeholder: {
-                type: 'input',
-                title: '输入提示',
-                placeholder: '请输入输入提示',
-              },
-              minimum: {
-                type: 'number',
-                title: '最小值',
-                description: '设置最小值后，用户输入的数值必须大于当前最小值',
-              },
-              maximum: {
-                type: 'number',
-                title: '最大值',
-                description: '设置最大值后，用户输入的数值必须小于当前最大值',
-              },
+          propsSchema: I({
+            isConditionProp: R.isConditionProp,
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'number',
+              title: '默认值',
+              placeholder: '请输入默认数值',
             },
-            [
-              'isConditionProp',
-              'readOnly',
-              'isRequired',
-              'default',
-              'placeholder',
-              'minimum',
-              'maximum',
-            ],
-          ),
+            placeholder: {
+              type: 'input',
+              title: '输入提示',
+              placeholder: '请输入输入提示',
+            },
+            minimum: {
+              type: 'number',
+              title: '最小值',
+              description: '设置最小值后，用户输入的数值必须大于当前最小值',
+            },
+            maximum: {
+              type: 'number',
+              title: '最大值',
+              description: '设置最大值后，用户输入的数值必须小于当前最大值',
+            },
+          }),
         };
         C.register(ae);
         var oe = {
@@ -1921,15 +1902,12 @@
             description: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              isConditionProp: j.isConditionProp,
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: { type: 'color', title: '默认颜色值' },
-            },
-            ['isConditionProp', 'readOnly', 'isRequired', 'default'],
-          ),
+          propsSchema: I({
+            isConditionProp: R.isConditionProp,
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: { type: 'color', title: '默认颜色值' },
+          }),
         };
         C.register(oe);
         var re = {
@@ -1944,30 +1922,21 @@
             placeholder: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              isConditionProp: j.isConditionProp,
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: {
-                type: 'input',
-                title: '默认值',
-                placeholder: '请输入默认 URL',
-              },
-              placeholder: {
-                type: 'input',
-                title: '输入提示',
-                placeholder: '请输入输入提示',
-              },
+          propsSchema: I({
+            isConditionProp: R.isConditionProp,
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'input',
+              title: '默认值',
+              placeholder: '请输入默认 URL',
             },
-            [
-              'isConditionProp',
-              'readOnly',
-              'isRequired',
-              'default',
-              'placeholder',
-            ],
-          ),
+            placeholder: {
+              type: 'input',
+              title: '输入提示',
+              placeholder: '请输入输入提示',
+            },
+          }),
         };
         C.register(re);
         var ie = {
@@ -1982,23 +1951,20 @@
             placeholder: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: {
-                type: 'textarea',
-                title: '默认值',
-                placeholder: '请输入默认值',
-              },
-              placeholder: {
-                type: 'input',
-                title: '输入提示',
-                placeholder: '请输入输入提示',
-              },
+          propsSchema: I({
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'textarea',
+              title: '默认值',
+              placeholder: '请输入默认值',
             },
-            ['readOnly', 'isRequired', 'default', 'placeholder'],
-          ),
+            placeholder: {
+              type: 'input',
+              title: '输入提示',
+              placeholder: '请输入输入提示',
+            },
+          }),
         };
         C.register(ie);
         var se = {
@@ -2013,45 +1979,39 @@
             placeholder: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: {
-                type: 'text-editor',
-                title: '默认值',
-                placeholder: '请输入默认富文本内容',
-              },
-              placeholder: {
-                type: 'input',
-                title: '输入提示',
-                placeholder: '请输入输入提示',
-              },
+          propsSchema: I({
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'text-editor',
+              title: '默认值',
+              placeholder: '请输入默认富文本内容',
             },
-            ['readOnly', 'isRequired', 'default', 'placeholder'],
-          ),
+            placeholder: {
+              type: 'input',
+              title: '输入提示',
+              placeholder: '请输入输入提示',
+            },
+          }),
         };
         C.register(se);
         var le = function (e) {
             return (
               void 0 === e && (e = 'textarea'),
-              I(
-                {
-                  readOnly: j.readOnly,
-                  isRequired: j.isRequired,
-                  default: {
-                    type: e,
-                    title: '默认值',
-                    placeholder: '请输入默认值',
-                  },
-                  placeholder: {
-                    type: 'input',
-                    title: '输入提示',
-                    placeholder: '请输入输入提示',
-                  },
+              I({
+                readOnly: R.readOnly,
+                isRequired: R.isRequired,
+                default: {
+                  type: e,
+                  title: '默认值',
+                  placeholder: '请输入默认值',
                 },
-                ['readOnly', 'isRequired', 'default', 'placeholder'],
-              )
+                placeholder: {
+                  type: 'input',
+                  title: '输入提示',
+                  placeholder: '请输入输入提示',
+                },
+              })
             );
           },
           de = {
@@ -2100,30 +2060,21 @@
         var ue = function (e) {
             return (
               void 0 === e && (e = 'date'),
-              I(
-                {
-                  isConditionProp: j.isConditionProp,
-                  readOnly: j.readOnly,
-                  isRequired: j.isRequired,
-                  default: {
-                    type: e,
-                    title: '默认值',
-                    placeholder: '请输入默认日期值',
-                  },
-                  placeholder: {
-                    type: 'input',
-                    title: '输入提示',
-                    placeholder: '请输入输入提示',
-                  },
+              I({
+                isConditionProp: R.isConditionProp,
+                readOnly: R.readOnly,
+                isRequired: R.isRequired,
+                default: {
+                  type: e,
+                  title: '默认值',
+                  placeholder: '请输入默认日期值',
                 },
-                [
-                  'isConditionProp',
-                  'readOnly',
-                  'isRequired',
-                  'default',
-                  'placeholder',
-                ],
-              )
+                placeholder: {
+                  type: 'input',
+                  title: '输入提示',
+                  placeholder: '请输入输入提示',
+                },
+              })
             );
           },
           he = {
@@ -2180,19 +2131,16 @@
             description: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              isConditionProp: j.isConditionProp,
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: {
-                type: 'input',
-                title: '默认图片URL',
-                placeholder: '请输入默认图片地址',
-              },
+          propsSchema: I({
+            isConditionProp: R.isConditionProp,
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'input',
+              title: '默认图片URL',
+              placeholder: '请输入默认图片地址',
             },
-            ['isConditionProp', 'readOnly', 'isRequired', 'default'],
-          ),
+          }),
         };
         (C.register(fe), n(617));
         var ge = y.Select.Option,
@@ -2402,30 +2350,21 @@
               description: '',
             },
             renderer: Ce,
-            propsSchema: I(
-              {
-                isConditionProp: j.isConditionProp,
-                readOnly: j.readOnly,
-                isRequired: j.isRequired,
-                defaultActiveFirstOption: {
-                  type: 'boolean',
-                  title: '选中第一项',
-                  description: '是否默认高亮第一个选项',
-                },
-                default: {
-                  type: 'input',
-                  title: '默认值',
-                  placeholder: '请输入默认选中项的 value 值',
-                },
+            propsSchema: I({
+              isConditionProp: R.isConditionProp,
+              readOnly: R.readOnly,
+              isRequired: R.isRequired,
+              defaultActiveFirstOption: {
+                type: 'boolean',
+                title: '选中第一项',
+                description: '是否默认高亮第一个选项',
               },
-              [
-                'isConditionProp',
-                'readOnly',
-                'isRequired',
-                'defaultActiveFirstOption',
-                'default',
-              ],
-            ),
+              default: {
+                type: 'input',
+                title: '默认值',
+                placeholder: '请输入默认选中项的 value 值',
+              },
+            }),
           };
         C.register(Oe);
         var Ee = {
@@ -2443,46 +2382,35 @@
             description: '',
           },
           renderer: Ce,
-          propsSchema: I(
-            {
-              isConditionProp: j.isConditionProp,
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              multiple: {
-                type: 'boolean',
-                title: '支持多选',
-                description: '开启多选后，select 下拉列表支持选择多个选项',
-              },
-              defaultActiveFirstOption: {
-                type: 'boolean',
-                title: '选中第一项',
-                description: '是否默认高亮第一个选项',
-              },
-              withLabel: {
-                type: 'boolean',
-                title: '附带label数值',
-                description:
-                  '开启后，选中选项时，其数值会带上当前选项的 label 数值',
-              },
-              default: {
-                type: 'input',
-                title: '默认值',
-                placeholder: '请输入默认选中项的 value 值',
-              },
+          propsSchema: I({
+            isConditionProp: R.isConditionProp,
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            multiple: {
+              type: 'boolean',
+              title: '支持多选',
+              description: '开启多选后，select 下拉列表支持选择多个选项',
             },
-            [
-              'isConditionProp',
-              'readOnly',
-              'isRequired',
-              'multiple',
-              'defaultActiveFirstOption',
-              'withLabel',
-              'default',
-            ],
-          ),
+            defaultActiveFirstOption: {
+              type: 'boolean',
+              title: '选中第一项',
+              description: '是否默认高亮第一个选项',
+            },
+            withLabel: {
+              type: 'boolean',
+              title: '附带label数值',
+              description:
+                '开启后，选中选项时，其数值会带上当前选项的 label 数值',
+            },
+            default: {
+              type: 'input',
+              title: '默认值',
+              placeholder: '请输入默认选中项的 value 值',
+            },
+          }),
         };
         C.register(Ee);
-        var Re = {
+        var je = {
           type: 'cascader',
           label: '级联选择',
           isContainer: !1,
@@ -2519,31 +2447,28 @@
             description: '',
           },
           renderer: W,
-          propsSchema: I(
-            {
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              multiple: {
-                type: 'boolean',
-                title: '支持多选',
-                description: '开启多选后，级联选择支持选择多个选项',
-              },
-              options: {
-                type: 'json',
-                title: 'options 配置',
-                description: '用于添加级联选择组件的 options 数据',
-              },
-              default: {
-                type: 'input',
-                title: '默认值',
-                placeholder: '请输入默认值',
-              },
+          propsSchema: I({
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            multiple: {
+              type: 'boolean',
+              title: '支持多选',
+              description: '开启多选后，级联选择支持选择多个选项',
             },
-            ['readOnly', 'isRequired', 'multiple', 'options', 'default'],
-          ),
+            options: {
+              type: 'json',
+              title: 'options 配置',
+              description: '用于添加级联选择组件的 options 数据',
+            },
+            default: {
+              type: 'input',
+              title: '默认值',
+              placeholder: '请输入默认值',
+            },
+          }),
         };
-        C.register(Re);
-        var je = {
+        C.register(je);
+        var Re = {
           type: 'checkboxes',
           label: '多选框',
           isContainer: !1,
@@ -2559,21 +2484,17 @@
             description: '',
           },
           renderer: Ce,
-          propsSchema: I(
-            {
-              readOnly: j.readOnly,
-              isRequired: j.isRequired,
-              default: {
-                type: 'json',
-                title: '默认值',
-                description:
-                  '默认选中的选项值数组，格式为 ["value1", "value2"]',
-              },
+          propsSchema: I({
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'json',
+              title: '默认值',
+              description: '默认选中的选项值数组，格式为 ["value1", "value2"]',
             },
-            ['readOnly', 'isRequired', 'default'],
-          ),
+          }),
         };
-        (C.register(je), n(790));
+        (C.register(Re), n(790));
         var Ie = y.Select.Option,
           Ne = (function (e) {
             function t(t) {
@@ -2645,14 +2566,14 @@
               t
             );
           })(i.PureComponent),
-          Ke = (0, p.inject)(function (e) {
+          _e = (0, p.inject)(function (e) {
             return { schemaStore: e.schemaStore };
           })((0, p.observer)(Ne)),
-          _e = y.Tree.TreeNode,
+          Ke = y.Tree.TreeNode,
           we = function (e) {
             return s().createElement(F, t()({}, e));
           },
-          Be = function (e) {
+          Je = function (e) {
             var n,
               a = e.jsonKey,
               o = e.indexRoute,
@@ -2662,7 +2583,7 @@
               d = i.propertyOrder[0],
               p = i.properties[d];
             return s().createElement(
-              _e,
+              Ke,
               {
                 className: l + '-schema schema-item-form',
                 id: r,
@@ -2671,7 +2592,7 @@
                 'data-jsonKey': a,
                 title: we(t()({}, e)),
               },
-              s().createElement(_e, {
+              s().createElement(Ke, {
                 className: 'quantity-unit-item-schema schema-item-form',
                 id: r + '-' + d,
                 key: r + '-' + d,
@@ -2691,7 +2612,7 @@
                   }),
                 ),
               }),
-              s().createElement(_e, {
+              s().createElement(Ke, {
                 className: 'quantity-typeSelect-item-schema schema-item-form',
                 id: r + '-quantity',
                 key: r + '-quantity',
@@ -2706,11 +2627,11 @@
                     parentType: l,
                     nodeKey: r + '-quantity',
                   })),
-                  s().createElement(Ke, t()({}, n))),
+                  s().createElement(_e, t()({}, n))),
               }),
             );
           },
-          Je = {
+          Be = {
             type: 'quantity',
             label: '数值单位设置',
             isContainer: !1,
@@ -2735,27 +2656,24 @@
               propertyOrder: ['unit', 'quantity'],
             },
             showAdvanceBtn: !1,
-            renderer: Be,
-            propsSchema: I(
-              {
-                readOnly: j.readOnly,
-                isRequired: j.isRequired,
-                autoComplete: {
-                  type: 'boolean',
-                  title: '开启可选项',
-                  description: '开启后支持添加可选项，并支持 autoComplete',
-                },
-                options: {
-                  type: 'json',
-                  title: '可选项',
-                  description: '可选项数据列表（数组格式）',
-                  onShow: 'autoComplete === true',
-                },
+            renderer: Je,
+            propsSchema: I({
+              readOnly: R.readOnly,
+              isRequired: R.isRequired,
+              autoComplete: {
+                type: 'boolean',
+                title: '开启可选项',
+                description: '开启后支持添加可选项，并支持 autoComplete',
               },
-              ['readOnly', 'isRequired', 'autoComplete', 'options'],
-            ),
+              options: {
+                type: 'json',
+                title: '可选项',
+                description: '可选项数据列表（数组格式）',
+                onShow: 'autoComplete === true',
+              },
+            }),
           };
-        C.register(Je);
+        C.register(Be);
         var Te = {
           type: 'box-style',
           label: '盒子模型/边距设置',
@@ -2785,11 +2703,11 @@
             },
             propertyOrder: ['unit', 'quantity'],
           },
-          propsSchema: I({}, []),
-          renderer: Be,
+          propsSchema: I(),
+          renderer: Je,
         };
         C.register(Te);
-        var qe = {
+        var ke = {
           type: 'padding-margin',
           label: '边距设置',
           isContainer: !1,
@@ -2824,20 +2742,17 @@
             },
             propertyOrder: ['margin', 'padding', 'quantity'],
           },
-          propsSchema: I(
-            {
-              autoComplete: {
-                type: 'boolean',
-                title: '开启可选项',
-                description: '开启后支持添加可选项，并支持 autoComplete',
-              },
+          propsSchema: I({
+            autoComplete: {
+              type: 'boolean',
+              title: '开启可选项',
+              description: '开启后支持添加可选项，并支持 autoComplete',
             },
-            ['autoComplete'],
-          ),
+          }),
           renderer: Z,
         };
-        C.register(qe);
-        var ke = {
+        C.register(ke);
+        var qe = {
           type: 'object',
           label: '对象(Object)',
           isContainer: !0,
@@ -2857,21 +2772,18 @@
             },
             propertyOrder: ['a'],
           },
-          propsSchema: I(
-            {
-              showCodeViewBtn: {
-                type: 'boolean',
-                title: '源码模式',
-                description: '用于控制是否显示源码模式切换按钮，默认显示',
-              },
+          propsSchema: I({
+            showCodeViewBtn: {
+              type: 'boolean',
+              title: '源码模式',
+              description: '用于控制是否显示源码模式切换按钮，默认显示',
             },
-            ['showCodeViewBtn'],
-          ),
+          }),
           renderer: Z,
         };
-        C.register(ke);
-        var Pe = y.Tree.TreeNode,
-          De = function (e) {
+        C.register(qe);
+        var De = y.Tree.TreeNode,
+          Pe = function (e) {
             return s().createElement(F, t()({}, e));
           },
           Ae = {
@@ -2898,26 +2810,23 @@
                 propertyOrder: ['name'],
               },
             },
-            propsSchema: I(
-              {
-                showCodeViewBtn: {
-                  type: 'boolean',
-                  title: '源码模式',
-                  description: '用于控制是否显示源码模式切换按钮，默认显示',
-                },
-                'minimum-child': {
-                  type: 'number',
-                  title: '最小数据项',
-                  description: '用于限制数据项最小个数',
-                },
-                'maximum-child': {
-                  type: 'number',
-                  title: '最多数据项',
-                  description: '用于限制数据项最多个数',
-                },
+            propsSchema: I({
+              showCodeViewBtn: {
+                type: 'boolean',
+                title: '源码模式',
+                description: '用于控制是否显示源码模式切换按钮，默认显示',
               },
-              ['showCodeViewBtn', 'minimum-child', 'maximum-child'],
-            ),
+              'minimum-child': {
+                type: 'number',
+                title: '最小数据项',
+                description: '用于限制数据项最小个数',
+              },
+              'maximum-child': {
+                type: 'number',
+                title: '最多数据项',
+                description: '用于限制数据项最多个数',
+              },
+            }),
             renderer: function (e) {
               var n = e.jsonKey,
                 a = e.indexRoute,
@@ -2929,14 +2838,14 @@
                 p = o ? o + '-' + d : d,
                 c = r[d] || {};
               return s().createElement(
-                Pe,
+                De,
                 {
                   className: i + '-schema schema-item-form',
                   id: o,
                   key: o,
                   'data-indexRoute': a,
                   'data-jsonKey': n,
-                  title: De(t()({}, e)),
+                  title: Pe(t()({}, e)),
                 },
                 (function (e) {
                   var n = e.parentType,
@@ -2945,14 +2854,14 @@
                     r = e.nodeKey,
                     i = e.targetJsonSchema;
                   return s().createElement(
-                    Pe,
+                    De,
                     {
                       className: 'array-item-schema schema-item-form',
                       id: r,
                       key: r,
                       'data-jsonKey': a,
                       disabled: !0,
-                      title: De(
+                      title: Pe(
                         t()({}, e, {
                           indexRoute: o,
                           jsonKey: a,
@@ -3057,7 +2966,7 @@
               },
               propertyOrder: ['url', 'method', 'headers', 'data'],
             },
-            propsSchema: I({}, []),
+            propsSchema: I(),
             renderer: function (e) {
               var n = e.jsonKey,
                 a = e.indexRoute,

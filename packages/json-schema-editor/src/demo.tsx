@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { Switch } from 'antd';
+import { Switch, Select } from 'antd';
 // @ts-ignore
 import JSONEditor from '@wibetter/json-editor';
 import JSONSchemaEditor from './main';
@@ -10,17 +10,25 @@ import '../../../index.scss';
 // 导入自定义 Schema
 // import './custom';
 
+/** JSONEditor 的 options 配置 */
+interface EditorOptions {
+  viewStyle: 'tabs' | 'fold';
+  wideScreen: boolean;
+  tabPosition: 'top' | 'bottom' | 'left' | 'right';
+  tabType: 'line' | 'card';
+  jsonView: boolean;
+  jsonViewReadOnly: boolean;
+}
+
 /**
  * json-schema-editor的测试Demo：含json-editor
  */
 interface IndexDemoState {
   jsonSchema: any;
   jsonData: any;
-  wideScreen: boolean;
-  jsonView: boolean;
+  options: EditorOptions;
   schemaCodeView: boolean;
-  viewStyle: 'tabs' | 'fold';
-  jsonViewReadOnly: boolean;
+  schemaViewReadOnly: boolean;
 }
 
 class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
@@ -83,11 +91,16 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
         lastUpdateTime: '2024-10-13T02:08:03.551Z',
       },
       jsonData: {},
-      wideScreen: false,
-      jsonView: false,
+      options: {
+        viewStyle: 'tabs',
+        wideScreen: false,
+        tabPosition: 'top',
+        tabType: 'line',
+        jsonView: false,
+        jsonViewReadOnly: true,
+      },
       schemaCodeView: false,
-      viewStyle: 'tabs',
-      jsonViewReadOnly: true,
+      schemaViewReadOnly: true,
     };
   }
 
@@ -95,12 +108,18 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
     const {
       jsonSchema,
       jsonData,
-      wideScreen,
+      options,
       schemaCodeView,
+      schemaViewReadOnly,
+    } = this.state;
+    const {
+      wideScreen,
       jsonView,
       viewStyle,
+      tabPosition,
+      tabType,
       jsonViewReadOnly,
-    } = this.state;
+    } = options;
 
     return (
       <div className="demo-layout">
@@ -142,11 +161,11 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
                     <label className="demo-control-label">编辑模式</label>
                     <Switch
                       size="small"
-                      defaultChecked={!jsonViewReadOnly}
+                      defaultChecked={!schemaViewReadOnly}
                       checkedChildren="开"
                       unCheckedChildren="关"
                       onChange={(checked) => {
-                        this.setState({ jsonViewReadOnly: !checked });
+                        this.setState({ schemaViewReadOnly: !checked });
                       }}
                     />
                   </>
@@ -157,7 +176,7 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
               <JSONSchemaEditor
                 data={jsonSchema}
                 jsonView={schemaCodeView}
-                jsonViewReadOnly={jsonViewReadOnly}
+                jsonViewReadOnly={schemaViewReadOnly}
                 onChange={(newJsonSchema: any) => {
                   this.setState({ jsonSchema: newJsonSchema });
                 }}
@@ -190,7 +209,9 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
                   checkedChildren="大"
                   unCheckedChildren="小"
                   onChange={(checked) => {
-                    this.setState({ wideScreen: checked });
+                    this.setState((prev) => ({
+                      options: { ...prev.options, wideScreen: checked },
+                    }));
                   }}
                 />
                 <label className="demo-control-label">视图</label>
@@ -200,7 +221,12 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
                   checkedChildren="tabs"
                   unCheckedChildren="fold"
                   onChange={(checked) => {
-                    this.setState({ viewStyle: checked ? 'tabs' : 'fold' });
+                    this.setState((prev) => ({
+                      options: {
+                        ...prev.options,
+                        viewStyle: checked ? 'tabs' : 'fold',
+                      },
+                    }));
                   }}
                 />
                 <label className="demo-control-label">源码</label>
@@ -210,20 +236,71 @@ class IndexDemo extends React.PureComponent<{}, IndexDemoState> {
                   checkedChildren="code"
                   unCheckedChildren="view"
                   onChange={(checked) => {
-                    this.setState({ jsonView: checked });
+                    this.setState((prev) => ({
+                      options: { ...prev.options, jsonView: checked },
+                    }));
                   }}
                 />
+                {jsonView && (
+                  <>
+                    <label className="demo-control-label">编辑模式</label>
+                    <Switch
+                      size="small"
+                      defaultChecked={!jsonViewReadOnly}
+                      checkedChildren="开"
+                      unCheckedChildren="关"
+                      onChange={(checked) => {
+                        this.setState((prev) => ({
+                          options: {
+                            ...prev.options,
+                            jsonViewReadOnly: !checked,
+                          },
+                        }));
+                      }}
+                    />
+                  </>
+                )}
+                {viewStyle === 'tabs' && (
+                  <>
+                    <label className="demo-control-label">标签位置</label>
+                    <Select
+                      size="small"
+                      style={{ width: 72 }}
+                      value={tabPosition}
+                      onChange={(value: EditorOptions['tabPosition']) => {
+                        this.setState((prev) => ({
+                          options: { ...prev.options, tabPosition: value },
+                        }));
+                      }}
+                    >
+                      <Select.Option value="top">上</Select.Option>
+                      <Select.Option value="bottom">下</Select.Option>
+                      <Select.Option value="left">左</Select.Option>
+                      <Select.Option value="right">右</Select.Option>
+                    </Select>
+                    <label className="demo-control-label">标签样式</label>
+                    <Select
+                      size="small"
+                      style={{ width: 72 }}
+                      value={tabType}
+                      onChange={(value: EditorOptions['tabType']) => {
+                        this.setState((prev) => ({
+                          options: { ...prev.options, tabType: value },
+                        }));
+                      }}
+                    >
+                      <Select.Option value="line">线条</Select.Option>
+                      <Select.Option value="card">卡片</Select.Option>
+                    </Select>
+                  </>
+                )}
               </div>
             </div>
             <div className="demo-panel__body">
               <JSONEditor
-                viewStyle={viewStyle}
-                jsonView={jsonView}
-                wideScreen={wideScreen}
                 schemaData={jsonSchema}
                 jsonData={jsonData}
-                tabPosition="top"
-                tabType="line"
+                options={options}
                 onChange={(newJsonData: any) => {
                   this.setState({ jsonData: newJsonData });
                 }}

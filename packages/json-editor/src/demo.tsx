@@ -88,7 +88,6 @@ class IndexDemo extends React.PureComponent<any, any> {
         tabType: 'line',
       },
       schemaCodeView: false,
-      curTypeList: {},
       schemaViewReadOnly: true,
     };
   }
@@ -98,7 +97,6 @@ class IndexDemo extends React.PureComponent<any, any> {
       jsonSchema,
       jsonData,
       schemaCodeView,
-      curTypeList,
       options,
       schemaViewReadOnly,
     } = this.state;
@@ -167,7 +165,6 @@ class IndexDemo extends React.PureComponent<any, any> {
                 jsonView={schemaCodeView}
                 jsonViewReadOnly={schemaViewReadOnly}
                 data={jsonSchema}
-                typeList={curTypeList}
                 onChange={(newJsonSchema: any) => {
                   console.log(
                     'schemaDataChange',
