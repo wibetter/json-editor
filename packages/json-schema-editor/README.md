@@ -1,6 +1,6 @@
 # json-schema-editor
 
-> JSON数据可视化/JSONSchema，以表单的形式编辑 json schema，可用于在线设计组件的配置面板。
+> JSON数据可视化/SchemaEditor，以表单的形式编辑 schema 数据，可用于在线设计页面/组件的配置面板。
 
 ### 技术栈
 React/Mobx/Ant Design
@@ -9,15 +9,14 @@ React/Mobx/Ant Design
 1. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
  textarea、number、color、radio、 checkboxes、select、cascader、input-image）
 2. 支持8种特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、padding-margin）
-3. 支持拖拽排序
-4. 支持删除、复制、高级配置等功能
-5. 支持无限嵌套
-6. 支持通过表达式进行配置联动
-7. 支持源码模式切换（开启源码模式后可以开启编辑模式）
-8. 支持添加自定义 Schema
+3. 支持拖拽排序、删除、复制、高级配置等功能
+4. 支持无限嵌套
+5. 支持通过表达式进行配置联动
+6. 支持源码模式切换（开启源码模式后可以开启编辑模式）
+7. 支持添加自定义类型
 
 ### 特别说明
-JSONSchema仅用于生成结构化的json数据，需要配合JSONEditor（[git地址](https://github.com/wibetter/json-editor)）渲染其内容。
+SchemaEditor仅用于生成结构化的json数据，还需要配合JSONEditor（[git地址](https://github.com/wibetter/json-editor)）渲染其内容。
 
 
 ## 安装
@@ -71,7 +70,7 @@ class IndexDemo extends React.PureComponent {
 | `data`       | object   | {}      | 必填项，json schema（带结构的json数据）    |
 | `onChange`   | function | () => {}  | schemaData内容变动时会触发onChange |
 
-## 自定义 Schema
+## 如何添加自定义类型？
 
 从 v7.0.0 起，支持通过 `SchemaDescriptor` 描述文件注册自定义 Schema 类型。注册后，自定义类型会出现在类型选择下拉列表中，并在编辑区以自定义渲染器或通用渲染器呈现。
 
@@ -91,9 +90,9 @@ class IndexDemo extends React.PureComponent {
 | `readOnly`        | boolean                       | ❌   | 是否只读（不可编辑）                                  |
 | `hideOperaBtn`    | boolean                       | ❌   | 是否隐藏操作按钮（增删复制拖拽）                      |
 
-### 注册自定义 Schema 示例
+### 注册自定义类型 示例
 
-以下示例展示如何注册一个 `colorPicker`（颜色选择器）类型的自定义 Schema：
+以下示例展示如何注册一个 `color-picker`（颜色选择器）类型的自定义类型：
 
 **第一步：创建描述文件 `colorPickerPlugin.ts`**
 
@@ -123,7 +122,7 @@ registerSchema(colorPickerDescriptor);
 **第二步：在入口文件中引入插件（确保注册在 `JSONSchemaEditor` 渲染前执行）**
 
 ```js
-import './sliderPlugin'; // 引入即触发注册
+import './colorPickerPlugin'; // 引入即触发注册
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
 ```
 

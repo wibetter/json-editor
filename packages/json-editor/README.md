@@ -17,6 +17,7 @@ React/Mobx/Ant Design
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 6. 支持通过表达式设置数据联动（支持两种数据域：全局数据域、当前局部数据域）
 7. 支持源码模式切换（开启源码模式后可以开启编辑模式）
+8. 支持添加自定义类型组件
 
 ***
 
@@ -97,9 +98,9 @@ class IndexDemo extends React.PureComponent {
 | `wideScreen`      | boolean | false   | 宽屏模式/小屏模式，默认是小屏模式 |
 | `GlobalOptions`   | array   | []      | 全局默认选项，用于 select/radio/checkbox 等字段的默认备选项，格式：`[{ label?: string, value: string }]` |
 
-## 自定义渲染器
+## 自定义类型组件
 
-JSONEditor 支持通过注册自定义渲染器来扩展字段类型，可以针对特定的 `type` 值渲染自定义表单组件。
+JSONEditor 支持通过注册自定义渲染器来扩展字段类型，可以针对特定的 `type` 值渲染自定义类型组件。
 
 ### 注册方式
 
@@ -146,7 +147,7 @@ registerRenderer({
 | `renderChild`     | func   | 渲染子字段的方法，用于嵌套结构场景            |
 | `parentType`      | string | 父级字段的 type 值                          |
 
-### 完整自定义渲染器示例
+### 完整自定义类型组件示例
 
 ```js
 import * as React from 'react';
