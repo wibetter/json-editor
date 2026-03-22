@@ -18,3 +18,4 @@ import './schema/paddingMargin';
 import './schema/object';
 import './schema/array';
 import './schema/api';
+import './schema/buttonGroupSelect';

@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+.button-group-select-box {
+  &.vertical {
+    .ant-radio-group {
+      display: inline-flex;
+      flex-direction: column;
+
+      .ant-radio-button-wrapper {
+        width: 100%;
+        border-radius: 0 !important;
+        border-left-width: 1px;
+        border-top-width: 0;
+        text-align: center;
+
+        // 垂直时将水平方向的左侧竖线分隔符重置，改为顶部横线分隔符
+        &::before {
+          width: 100% !important;
+          height: 1px !important;
+          top: -1px !important;
+          left: 0 !important;
+          right: auto !important;
+        }
+
+        &:first-child {
+          border-radius: 6px 6px 0 0 !important;
+          border-top-width: 1px;
+        }
+
+        &:last-child {
+          border-radius: 0 0 6px 6px !important;
+        }
+      }
+    }
+  }
+}

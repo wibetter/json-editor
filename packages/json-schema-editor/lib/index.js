@@ -251,7 +251,7 @@
               return I;
             },
             default: function () {
-              return Fe;
+              return Pe;
             },
             registerSchema: function () {
               return E;
@@ -3020,7 +3020,45 @@
             },
           };
         O.register(Le);
-        var Fe = (function (e) {
+        var Fe = {
+          type: 'button-group-select',
+          label: '按钮组单选',
+          isContainer: !1,
+          defaultSchema: {
+            type: 'button-group-select',
+            title: '按钮组单选',
+            options: [
+              { label: '选项a', value: 'a' },
+              { label: '选项b', value: 'b' },
+              { label: '选项c', value: 'c' },
+            ],
+            default: '',
+            description: '',
+          },
+          renderer: Oe,
+          propsSchema: I({
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            vertical: {
+              type: 'boolean',
+              title: '垂直模式',
+              description:
+                '开启后，按钮组以垂直方向排列展示（默认为平铺/水平模式）',
+            },
+            defaultActiveFirstOption: {
+              type: 'boolean',
+              title: '选中第一项',
+              description: '是否默认高亮第一个选项',
+            },
+            default: {
+              type: 'input',
+              title: '默认值',
+              placeholder: '请输入默认选中项的 value 值',
+            },
+          }),
+        };
+        O.register(Fe);
+        var Pe = (function (e) {
           function n(t) {
             var n;
             return (

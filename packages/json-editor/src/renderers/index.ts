@@ -4,6 +4,7 @@ import '$renderers/Object/index';
 import '$renderers/Quantity/index';
 import '$renderers/PaddingAndMargin/index';
 import '$renderers/Radio/index';
+import '$renderers/ButtonGroupSelect/index';
 import '$renderers/Checkbox/index';
 import '$renderers/InputForm/index';
 import '$renderers/TextAreaForm/index';

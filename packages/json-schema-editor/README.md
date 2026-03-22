@@ -6,8 +6,8 @@
 React/Mobx/Ant Design
 
 ### 特点
-1. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
- textarea、number、color、radio、 checkboxes、select、cascader、input-image）
+1. 支持15种基础类型组件（input、boolean、 date、date-time、 time、 url、
+ textarea、number、color、radio、 checkboxes、select、cascader、input-image、button-group-select）
 2. 支持8种特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、padding-margin）
 3. 支持拖拽排序、删除、复制、高级配置等功能
 4. 支持无限嵌套
@@ -125,6 +125,72 @@ registerSchema(colorPickerDescriptor);
 import './colorPickerPlugin'; // 引入即触发注册
 import JSONSchemaEditor from '@wibetter/json-schema-editor';
 ```
+
+## button-group-select 类型说明
+
+`button-group-select` 是按钮组单选类型，在 JSONEditor 中以按钮切换形式进行单击选中，交互体验类似 [amis button-group-select](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/button-group-select)。
+
+### schema 结构
+
+`button-group-select` 的 schema 结构与 `radio`（单选）类型完全一致，支持 `options` 选项列表：
+
+```json
+{
+  "type": "button-group-select",
+  "title": "布局方向",
+  "options": [
+    { "label": "水平", "value": "horizontal" },
+    { "label": "垂直", "value": "vertical" },
+    { "label": "自适应", "value": "auto" }
+  ],
+  "default": "horizontal",
+  "description": "请选择布局方向"
+}
+```
+
+### 高级配置项
+
+| 配置项                    | 类型      | 默认值  | 说明                                   |
+| ------------------------- | --------- | ------- | -------------------------------------- |
+| `vertical`                | boolean   | false   | 垂直模式，开启后按钮组垂直方向排列      |
+| `readOnly`                | boolean   | false   | 只读模式                               |
+| `isRequired`              | boolean   | false   | 是否必填                               |
+| `defaultActiveFirstOption`| boolean   | false   | 是否默认高亮第一个选项                  |
+| `default`                 | string    | ''      | 默认选中项的 value 值                  |
+
+### 使用示例
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "direction": {
+      "type": "button-group-select",
+      "title": "排列方向",
+      "options": [
+        { "label": "水平", "value": "horizontal" },
+        { "label": "垂直", "value": "vertical" }
+      ],
+      "default": "horizontal",
+      "vertical": false
+    },
+    "align": {
+      "type": "button-group-select",
+      "title": "对齐方式（垂直）",
+      "options": [
+        { "label": "左对齐", "value": "left" },
+        { "label": "居中", "value": "center" },
+        { "label": "右对齐", "value": "right" }
+      ],
+      "default": "left",
+      "vertical": true
+    }
+  },
+  "propertyOrder": ["direction", "align"]
+}
+```
+
+***
 
 ### 访问 schemaRegistry
 

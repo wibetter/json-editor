@@ -11,8 +11,8 @@ React/Mobx/Ant Design
 ### 特点
 1. 弹性布局，提供大屏和小屏两种展示模式
 2. 支持字段联动
-3. 支持14种基础类型组件（input、boolean、 date、date-time、 time、 url、
- textarea、number、color、radio、 checkboxes、select、cascader、input-image）
+3. 支持15种基础类型组件（input、boolean、 date、date-time、 time、 url、
+ textarea、number、color、radio、 checkboxes、select、cascader、input-image、button-group-select）
 4. 支持8种特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、padding-margin）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 6. 支持通过表达式设置数据联动（支持两种数据域：全局数据域、当前局部数据域）
@@ -97,6 +97,83 @@ class IndexDemo extends React.PureComponent {
 | `jsonViewReadOnly`| boolean | true    | 源码模式下是否只读，`jsonView` 为 `true` 时有效 |
 | `wideScreen`      | boolean | false   | 宽屏模式/小屏模式，默认是小屏模式 |
 | `GlobalOptions`   | array   | []      | 全局默认选项，用于 select/radio/checkbox 等字段的默认备选项，格式：`[{ label?: string, value: string }]` |
+
+## button-group-select 类型说明
+
+`button-group-select` 是内置的按钮组单选类型，在表单中以按钮切换形式进行单击选中，交互体验类似 [amis button-group-select](https://aisuda.bce.baidu.com/amis/zh-CN/components/form/button-group-select)。
+
+### schema 结构
+
+schema 结构与 `radio`（单选）类型完全一致：
+
+```json
+{
+  "type": "button-group-select",
+  "title": "布局方向",
+  "options": [
+    { "label": "水平", "value": "horizontal" },
+    { "label": "垂直", "value": "vertical" },
+    { "label": "自适应", "value": "auto" }
+  ],
+  "default": "horizontal",
+  "description": "请选择布局方向"
+}
+```
+
+### 配置项
+
+| 字段        | 类型    | 默认值 | 说明                                      |
+| ----------- | ------- | ------ | ----------------------------------------- |
+| `options`   | array   | []     | 选项列表，格式：`[{ label, value }]`       |
+| `default`   | string  | ''     | 默认选中项的 value 值                      |
+| `vertical`  | boolean | false  | 垂直模式，开启后按钮组以垂直方向排列        |
+| `readOnly`  | boolean | false  | 只读模式，禁止用户切换                     |
+
+### 使用示例
+
+**平铺模式（默认）：**
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "direction": {
+      "type": "button-group-select",
+      "title": "排列方向",
+      "options": [
+        { "label": "水平", "value": "horizontal" },
+        { "label": "垂直", "value": "vertical" }
+      ],
+      "default": "horizontal"
+    }
+  },
+  "propertyOrder": ["direction"]
+}
+```
+
+**垂直模式：**
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "align": {
+      "type": "button-group-select",
+      "title": "对齐方式",
+      "options": [
+        { "label": "左对齐", "value": "left" },
+        { "label": "居中对齐", "value": "center" },
+        { "label": "右对齐", "value": "right" }
+      ],
+      "default": "left",
+      "vertical": true
+    }
+  },
+  "propertyOrder": ["align"]
+}
+```
+
+***
 
 ## 自定义类型组件
 
