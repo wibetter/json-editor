@@ -11,8 +11,8 @@ React/Mobx/Ant Design
 ### 特点
 1. 弹性布局，提供大屏和小屏两种展示模式
 2. 支持字段联动
-3. 支持15种基础类型组件（input、boolean、 date、date-time、 time、 url、
- textarea、number、color、radio、 checkboxes、select、cascader、input-image、button-group-select）
+3. 支持16种基础类型组件（input、boolean、 date、date-time、 time、 url、
+ textarea、number、color、radio、 checkboxes、select、cascader、input-image、button-group-select、input-rate）
 4. 支持8种特殊类型组件（object、array、json、codearea、htmlarea、text-editor([使用说明](https://github.com/wibetter/json-editor/blob/master/docs/TextEditor.md))、quantity、padding-margin）
 5. 支持json转schema能力，当schemaData为空而jsonData不为空时，自动通过json转换一个对应的schemaData
 6. 支持通过表达式设置数据联动（支持两种数据域：全局数据域、当前局部数据域）
@@ -170,6 +170,80 @@ schema 结构与 `radio`（单选）类型完全一致：
     }
   },
   "propertyOrder": ["align"]
+}
+```
+
+***
+
+## input-rate 类型说明
+
+`input-rate` 是内置的评分类型，在表单中以星星评分形式进行交互，底层使用 [Ant Design Rate](https://ant.design/components/rate-cn) 组件。
+
+### schema 结构
+
+```json
+{
+  "type": "input-rate",
+  "title": "评分",
+  "default": 3,
+  "description": "请对该内容进行评分",
+  "count": 5,
+  "allowHalf": false,
+  "allowClear": true,
+  "size": "default",
+  "tooltips": "差,较差,一般,良好,优秀"
+}
+```
+
+### 配置项
+
+| 字段          | 类型    | 默认值      | 说明                                                           |
+| ----------- | ------- | ----------- | -------------------------------------------------------------- |
+| `default`   | number  | 0           | 默认评分值                                                     |
+| `count`     | number  | 5           | star 总数                                                      |
+| `allowHalf` | boolean | false       | 是否允许选择半星                                               |
+| `allowClear`| boolean | true        | 是否允许再次点击后清除评分                                     |
+| `size`      | string  | `'default'` | 评分组件尺寸，可选：`'small'`、`'default'`、`'large'`         |
+| `tooltips`  | string  | -           | 自定义每项的提示信息，多个值用英文逗号分隔，如：`差,较差,一般,良好,优秀` |
+| `readOnly`  | boolean | false       | 只读模式，禁止用户交互                                         |
+
+### 使用示例
+
+**基础用法：**
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "score": {
+      "type": "input-rate",
+      "title": "满意度评分",
+      "default": 3,
+      "description": "请对本次服务进行评分"
+    }
+  },
+  "propertyOrder": ["score"]
+}
+```
+
+**半星 + 提示文案：**
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "rating": {
+      "type": "input-rate",
+      "title": "内容质量",
+      "default": 2.5,
+      "count": 5,
+      "allowHalf": true,
+      "allowClear": true,
+      "size": "large",
+      "tooltips": "差,较差,一般,良好,优秀"
+    }
+  },
+  "propertyOrder": ["rating"]
 }
 ```
 

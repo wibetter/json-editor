@@ -251,10 +251,10 @@
               return I;
             },
             default: function () {
-              return Pe;
+              return Ve;
             },
             registerSchema: function () {
-              return E;
+              return C;
             },
             schemaRegistry: function () {
               return O;
@@ -326,7 +326,7 @@
         })();
         x.instance = void 0;
         var O = x.getInstance(),
-          E = function (e, t) {
+          C = function (e, t) {
             (void 0 === t && (t = !1),
               !O.has(e.type) || t
                 ? O.register(e)
@@ -335,7 +335,7 @@
                     e,
                   ));
           },
-          C = {
+          E = {
             description: {
               type: 'input',
               title: '字段描述',
@@ -361,7 +361,7 @@
               description: '可用于设置标题展示样式',
             },
           },
-          j = Object.keys(C),
+          j = Object.keys(E),
           R = {
             readOnly: {
               type: 'boolean',
@@ -381,7 +381,7 @@
           return {
             type: 'object',
             wrapWithPanel: !1,
-            properties: t()({}, e, C),
+            properties: t()({}, e, E),
             propertyOrder: [].concat(n, j),
           };
         }
@@ -1202,13 +1202,13 @@
                       : void 0 !== (null == f ? void 0 : f.titleIsFixed)
                         ? f.titleIsFixed
                         : v,
-                  E =
+                  C =
                     void 0 !== this.props.hideOperaBtn
                       ? this.props.hideOperaBtn
                       : void 0 !== (null == f ? void 0 : f.hideOperaBtn)
                         ? f.hideOperaBtn
                         : !h,
-                  C =
+                  E =
                     void 0 !== this.props.showAdvanceBtn
                       ? this.props.showAdvanceBtn
                       : void 0 === (null == f ? void 0 : f.showAdvanceBtn) ||
@@ -1288,7 +1288,7 @@
                       i.createElement(
                         'div',
                         { className: 'operate-item' },
-                        !E &&
+                        !C &&
                           i.createElement(
                             i.Fragment,
                             null,
@@ -1339,7 +1339,7 @@
                                 ),
                               ),
                           ),
-                        C &&
+                        E &&
                           i.createElement(
                             y.Tooltip,
                             { title: '高级设置' },
@@ -1660,12 +1660,12 @@
                           );
                         var S = u.type,
                           x = i(c),
-                          E = (0, g.getParentIndexRoute)(m),
-                          C = (function (e) {
+                          C = (0, g.getParentIndexRoute)(m),
+                          E = (function (e) {
                             if (window.sessionStorage)
                               return window.sessionStorage.getItem(e);
                           })(x + '-' + S);
-                        (b(i(E) + '-' + p + '-' + S, C || x),
+                        (b(i(C) + '-' + p + '-' + S, E || x),
                           a.dragOverGapTop
                             ? 'after' === v
                               ? (l(c, !0), s(m, p, u, 'before'))
@@ -2320,7 +2320,7 @@
                 }),
             );
           },
-          Ee = {
+          Ce = {
             type: 'radio',
             label: '单选',
             isContainer: !1,
@@ -2351,8 +2351,8 @@
               },
             }),
           };
-        O.register(Ee);
-        var Ce = {
+        O.register(Ce);
+        var Ee = {
           type: 'select',
           label: '下拉选择/多选',
           isContainer: !1,
@@ -2393,7 +2393,7 @@
             },
           }),
         };
-        O.register(Ce);
+        O.register(Ee);
         var je = {
           type: 'cascader',
           label: '级联选择',
@@ -3058,7 +3058,68 @@
           }),
         };
         O.register(Fe);
-        var Pe = (function (e) {
+        var Pe = {
+          type: 'input-rate',
+          label: '评分',
+          isContainer: !1,
+          defaultSchema: {
+            type: 'input-rate',
+            title: '评分',
+            default: 0,
+            description: '',
+            count: 5,
+            allowHalf: !1,
+            allowClear: !0,
+            size: 'default',
+          },
+          renderer: W,
+          propsSchema: I({
+            readOnly: R.readOnly,
+            isRequired: R.isRequired,
+            default: {
+              type: 'number',
+              title: '默认值',
+              description: '评分的默认数值',
+              minimum: 0,
+            },
+            count: {
+              type: 'number',
+              title: 'star 总数',
+              description: '评分 star 的总数量，默认为 5',
+              minimum: 1,
+            },
+            allowHalf: {
+              type: 'boolean',
+              title: '允许半选',
+              description: '是否允许选择半星',
+            },
+            allowClear: {
+              type: 'boolean',
+              title: '允许清除',
+              description: '是否允许再次点击后清除评分',
+            },
+            size: {
+              type: 'button-group-select',
+              title: '尺寸',
+              description: '评分组件的尺寸大小',
+              options: [
+                { label: '小', value: 'small' },
+                { label: '默认', value: 'default' },
+                { label: '大', value: 'large' },
+              ],
+              default: 'default',
+            },
+            tooltips: {
+              type: 'input',
+              title: '提示文案',
+              description:
+                '自定义每项的提示信息，多个值用英文逗号分隔，如：差,较差,一般,良好,优秀',
+              placeholder: '差,较差,一般,良好,优秀',
+            },
+          }),
+        };
+        O.register(Pe);
+        var Ve = (function (e) {
           function n(t) {
             var n;
             return (

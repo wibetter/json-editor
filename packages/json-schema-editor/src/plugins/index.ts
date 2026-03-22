@@ -19,3 +19,4 @@ import './schema/object';
 import './schema/array';
 import './schema/api';
 import './schema/buttonGroupSelect';
+import './schema/rate';

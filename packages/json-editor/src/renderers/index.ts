@@ -22,3 +22,4 @@ import '$renderers/JsonForm/index';
 import '$renderers/CodeAreaForm/index';
 import '$renderers/HtmlAreaForm/index';
 import '$renderers/Api/index';
+import '$renderers/RateForm/index';

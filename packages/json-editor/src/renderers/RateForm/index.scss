@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+.rate-form-item {
+  .rate-form-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 32px;
+    padding: 2px 0;
+
+    .rate-value-text {
+      font-size: 13px;
+      color: #888;
+      line-height: 1;
+    }
+
+    // 小尺寸
+    .rate-size-small {
+      .ant-rate-star {
+        font-size: 16px;
+      }
+    }
+
+    // 默认尺寸
+    .rate-size-default {
+      .ant-rate-star {
+        font-size: 20px;
+      }
+    }
+
+    // 大尺寸
+    .rate-size-large {
+      .ant-rate-star {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .required-mark {
+    color: #ff4d4f;
+    margin-left: 2px;
+  }
+}

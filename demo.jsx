@@ -99,9 +99,20 @@ class IndexDemo extends React.PureComponent {
                 "default": "type",
                 "description": "",
                 "placeholder": ""
+              },
+              "rating": {
+                "title": "图表评分",
+                "type": "input-rate",
+                "default": 3,
+                "description": "对该图表进行评分",
+                "count": 5,
+                "allowHalf": true,
+                "allowClear": true,
+                "size": "default",
+                "tooltips": "差,较差,一般,良好,优秀"
               }
             },
-            "propertyOrder": ["legendAlign", "legend"]
+            "propertyOrder": ["legendAlign", "legend", "rating"]
           },
           "style": {
             "type": "object",
@@ -193,7 +204,7 @@ class IndexDemo extends React.PureComponent {
                 "description": ""
               },
               "bgColor": {
-                type: 'color-picker',  // 对应自定义渲染器的 type
+                type: 'color',  // 对应自定义渲染器的 type
                 title: '背景颜色',
                 default: '#ffffff',
               },

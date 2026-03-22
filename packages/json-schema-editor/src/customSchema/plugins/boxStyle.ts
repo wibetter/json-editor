@@ -1,5 +1,5 @@
 import { SchemaDescriptor } from '$core/types';
-import { schemaRegistry } from '$core/registry';
+import { registerSchema } from '$core/registry';
 import { buildPropsSchema } from '$core/schema';
 import QuantitySchema from '$schemaRenderer/QuantitySchema/index';
 
@@ -43,6 +43,6 @@ const boxStyleDescriptor: SchemaDescriptor = {
   renderer: QuantitySchema,
 };
 
-schemaRegistry.register(boxStyleDescriptor);
+registerSchema(boxStyleDescriptor);
 
 export default boxStyleDescriptor;
