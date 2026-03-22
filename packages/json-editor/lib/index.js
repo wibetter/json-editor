@@ -187,16 +187,24 @@
           function o(e) {
             var t = this.props.targetJsonSchema,
               n = this.props.jsonStore || {},
-              o = n.getJSONDataByKeyRoute,
-              l = n.getInitJsonDataByKeyRoute,
-              r = n.updateFormValueData,
-              i = t.type,
-              s = e || this.props.keyRoute,
-              c = (0, a.TA)(s + '-' + i);
-            if (c) {
-              var u = o(s);
-              (null == u && (u = l(s)), null == u && r(s, c));
-            }
+              o = n.editorKey,
+              l = void 0 === o ? 'json-editor' : o,
+              r = n.lastUpdateTime,
+              i = void 0 === r ? 0 : r,
+              s = n.getJSONDataByKeyRoute,
+              c = n.getInitJsonDataByKeyRoute,
+              u = n.updateFormValueData,
+              p = t.type,
+              m = e || this.props.keyRoute,
+              d = (0, a.TA)(l + '-' + m + '-' + p);
+            if (d && void 0 !== d.value && null !== d.value)
+              if (d.timestamp > i) {
+                var y = s(m);
+                JSON.stringify(y) !== JSON.stringify(d.value) && u(m, d.value);
+              } else {
+                var h = s(m);
+                (null == h && (h = c(m)), null == h && u(m, d.value));
+              }
           }
         },
         978: function (e, t, n) {
@@ -1129,6 +1137,7 @@
             function e(e) {
               ((this.state = void 0),
                 (this.rootJSONStore = {}),
+                (this.editorKey = 'json-editor'),
                 (this.triggerChange = !1),
                 (this.lastUpdateTime = new Date().getTime()),
                 (this.jsonData = null),
@@ -1140,8 +1149,11 @@
             }
             var t = e.prototype;
             return (
-              (t.updateLastTime = function () {
-                this.lastUpdateTime = new Date().getTime();
+              (t.initEditorKey = function (e) {
+                this.editorKey = e ? 'json-editor-' + e : 'json-editor';
+              }),
+              (t.updateLastTime = function (e) {
+                this.lastUpdateTime = e || new Date().getTime();
               }),
               (t.triggerChangeAction = function () {
                 this.triggerChange = !this.triggerChange;
@@ -1160,7 +1172,7 @@
                 ) {
                   var a = (0, d.schema2json)(n, e || {});
                   ((this.jsonData = Object.assign({}, e, a)),
-                    this.updateLastTime());
+                    this.updateLastTime(this.jsonData.lastUpdateTime));
                 }
               }),
               (t.initOnChange = function (e) {
@@ -1201,7 +1213,10 @@
                     o &&
                     o &&
                     o.type &&
-                    (0, _.mq)(e + '-' + o.type, t),
+                    (0, _.mq)(this.editorKey + '-' + e + '-' + o.type, {
+                      value: t,
+                      timestamp: Date.now(),
+                    }),
                   '' !== e)
                 ) {
                   var l,
@@ -1316,6 +1331,12 @@
           ),
           (0, p.__decorate)([m.observable], f.prototype, 'options', void 0),
           (0, p.__decorate)([m.observable], f.prototype, 'onChange', void 0),
+          (0, p.__decorate)(
+            [m.action.bound],
+            f.prototype,
+            'initEditorKey',
+            null,
+          ),
           (0, p.__decorate)(
             [m.action.bound],
             f.prototype,
@@ -1537,9 +1558,9 @@
                 })),
             );
           };
-        function D() {
+        function K() {
           return (
-            (D = Object.assign
+            (K = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1549,14 +1570,14 @@
                   }
                   return e;
                 }),
-            D.apply(null, arguments)
+            K.apply(null, arguments)
           );
         }
-        var K,
+        var D,
           P = function (e) {
             return o.createElement(
               'svg',
-              D(
+              K(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
@@ -1593,8 +1614,8 @@
                 },
                 e,
               ),
-              K ||
-                (K = o.createElement('path', {
+              D ||
+                (D = o.createElement('path', {
                   d: 'M293.069 755.2c-12.083 0-24.269-4.25-33.997-12.902L0 512l273.46-243.098c21.094-18.688 53.452-16.896 72.242 4.25 18.79 21.146 16.896 53.504-4.25 72.294L154.113 512l172.954 153.702c21.145 18.79 23.04 51.15 4.25 72.295-10.087 11.417-24.167 17.203-38.247 17.203zm457.984-.102L1024.512 512 765.44 281.702c-21.146-18.79-53.504-16.896-72.243 4.25-18.79 21.146-16.896 53.504 4.25 72.294L870.4 512 683.06 678.502c-21.146 18.79-23.04 51.15-4.25 72.295C688.896 762.214 702.976 768 717.056 768c12.083 0 24.269-4.25 33.997-12.902zm-239.514 72.55 102.4-614.4c4.66-27.904-14.182-54.272-42.086-58.931-28.007-4.71-54.323 14.182-58.88 42.086l-102.4 614.4c-4.66 27.904 14.182 54.272 42.086 58.931a52.65 52.65 0 0 0 8.448.666c24.576 0 46.285-17.766 50.432-42.752z',
                   fill: 'currentColor',
                 })),
@@ -1706,8 +1727,8 @@
                   k = O.jsonView,
                   R = O.isClosed,
                   j = O.currentActiveArrIndex,
-                  D = b.type,
-                  K = null === (e = b.showCodeViewBtn) || void 0 === e || e,
+                  K = b.type,
+                  D = null === (e = b.showCodeViewBtn) || void 0 === e || e,
                   J = u(h);
                 (J && 0 !== J.length && (0, g.cy)(J)) || (J = [{}]);
                 var M = b.items,
@@ -1789,7 +1810,7 @@
                         : o.createElement(w.DownOutlined, {
                             className: 'close-operate-btn',
                           }),
-                      K &&
+                      D &&
                         o.createElement(
                           'div',
                           {
@@ -1955,7 +1976,7 @@
                                   (I === t ? 'open' : 'closed'),
                               },
                               x({
-                                parentType: D,
+                                parentType: K,
                                 jsonKey: 'items',
                                 indexRoute: l,
                                 keyRoute: r,
@@ -2045,9 +2066,9 @@
                             : E.wrapWithPanel) ||
                       void 0 === n ||
                       n,
-                    D = R,
-                    K = (0, C.Gz)(v);
-                  void 0 !== K && (D = K);
+                    K = R,
+                    D = (0, C.Gz)(v);
+                  void 0 !== D && (K = D);
                   var P =
                       null !== (l = E.boxTitle) && void 0 !== l
                         ? l
@@ -2125,7 +2146,7 @@
                             P,
                             ' ',
                           ),
-                          D
+                          K
                             ? o.createElement(w.RightOutlined, {
                                 className: 'close-operate-btn',
                               })
@@ -2163,7 +2184,7 @@
                             ' ' +
                             (k ? 'json-view-array' : '') +
                             ' ' +
-                            (D ? 'closed' : ''),
+                            (K ? 'closed' : ''),
                         },
                         !k &&
                           E.propertyOrder &&
@@ -5947,8 +5968,8 @@
                   R = b.cache || {},
                   j = b.cacheTime || {},
                   T = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
-                  D = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
-                  K = y.contentStyle
+                  K = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                  D = y.contentStyle
                     ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                     : {},
                   P =
@@ -5968,7 +5989,7 @@
                   },
                   l().createElement(
                     'div',
-                    { className: 'element-title', style: D },
+                    { className: 'element-title', style: K },
                     l().createElement(
                       'span',
                       { className: 'title-text', title: y.title },
@@ -5979,7 +6000,7 @@
                   ),
                   l().createElement(
                     'div',
-                    { className: 'content-item', style: K },
+                    { className: 'content-item', style: D },
                     l().createElement(S.Input, {
                       className: 'api-schema-input',
                       value: J,
@@ -7075,7 +7096,7 @@
           );
         })(o.PureComponent);
         (0, b.TS)({ type: 'dynamic-data', component: Te });
-        var De = (function (e) {
+        var Ke = (function (e) {
           function n(t) {
             var n;
             return (
@@ -7120,8 +7141,8 @@
                 R = b.default,
                 j = null === (e = y.showCodeViewBtn) || void 0 === e || e,
                 T = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
-                D = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
-                K = y.contentStyle
+                K = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                D = y.contentStyle
                   ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                   : {};
               return o.createElement(
@@ -7136,7 +7157,7 @@
                 },
                 o.createElement(
                   'div',
-                  { className: 'element-title', style: D },
+                  { className: 'element-title', style: K },
                   o.createElement(
                     S.Tooltip,
                     {
@@ -7171,7 +7192,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: K,
+                    style: D,
                   },
                   o.createElement(
                     'div',
@@ -7284,9 +7305,9 @@
             n
           );
         })(o.PureComponent);
-        ((0, b.TS)({ type: 'event', component: De }),
+        ((0, b.TS)({ type: 'event', component: Ke }),
           __webpack_require__(5584));
-        var Ke = (function (e) {
+        var De = (function (e) {
           function n(t) {
             var n;
             return (
@@ -7333,7 +7354,7 @@
                 R = null === (e = h.showCodeViewBtn) || void 0 === e || e,
                 j = h.style ? (0, _.K8)((0, m.toJS)(h.style)) : {},
                 T = h.titleStyle ? (0, _.K8)((0, m.toJS)(h.titleStyle)) : {},
-                D = h.contentStyle
+                K = h.contentStyle
                   ? (0, _.K8)((0, m.toJS)(h.contentStyle))
                   : {};
               return o.createElement(
@@ -7383,7 +7404,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: D,
+                    style: K,
                   },
                   o.createElement(
                     'div',
@@ -7524,7 +7545,7 @@
             n
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'datasource', component: Ke });
+        (0, b.TS)({ type: 'datasource', component: De });
         var Pe = function (e) {
             var n = e.schemaStore,
               a = e.jsonStore,
@@ -7594,7 +7615,8 @@
                 i = a.props.jsonStore || {},
                 s = i.initJSONData,
                 c = i.initOnChange,
-                u = i.setOptions;
+                u = i.setOptions,
+                p = i.initEditorKey;
               return (
                 t.schemaData
                   ? (l(t.schemaData), s(t.jsonData))
@@ -7606,6 +7628,7 @@
                   r(t.options.wideScreen),
                 t.onChange && c(t.onChange),
                 t.options && u(t.options),
+                p(t.editorKey),
                 a
               );
             }

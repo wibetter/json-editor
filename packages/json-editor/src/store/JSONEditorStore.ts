@@ -41,6 +41,12 @@ export default class JSONEditorStore {
   @observable rootJSONStore: RootJSONStore = {};
 
   /**
+   * editorKey: 当前 JSONEditor 实例的缓存命名空间标识
+   * 默认值为 'json-editor'，设置后为 'json-editor-${key}'
+   */
+  editorKey: string = 'json-editor';
+
+  /**
    * triggerChange: 用于强制触发更新事件
    */
   @observable triggerChange = false;
@@ -73,11 +79,20 @@ export default class JSONEditorStore {
   @observable onChange: (data: any) => void = () => {}; // 函数类型
 
   /**
+   * 初始化 editorKey
+   * 未传 key 时使用默认值 'json-editor'，传入 key 时使用 'json-editor-${key}'
+   */
+  @action.bound
+  initEditorKey(key?: string) {
+    this.editorKey = key ? `json-editor-${key}` : 'json-editor';
+  }
+
+  /**
    * 更新lastUpdateTime
    */
   @action.bound
-  updateLastTime() {
-    this.lastUpdateTime = new Date().getTime();
+  updateLastTime(currentTimestamp?: number) {
+    this.lastUpdateTime = currentTimestamp || new Date().getTime();
   }
 
   /**
@@ -103,7 +118,7 @@ export default class JSONEditorStore {
         this.jsonData = Object.assign({}, jsonData, newJsonData);
         // this.jsonData = newJsonData;
         // 记录当前初始化的时间
-        this.updateLastTime();
+        this.updateLastTime(this.jsonData.lastUpdateTime);
       }
     }
     // console.info('[json-editor]initJSONData:', toJS(this.jsonData));
@@ -170,11 +185,17 @@ export default class JSONEditorStore {
       curElemSchema =
         this.state.rootJSONStore.JSONSchemaStore.getSchemaByKeyRoute(keyRoute);
     }
-    // 保存缓存：在更新数据之前保存当前的keyRoute到缓存中
+    // 保存缓存：将当前数值连同时间戳一起存入缓存，用于后续与 jsonData 时间戳对比
     if (keyRoute !== '' && newVal && curElemSchema) {
       if (curElemSchema && curElemSchema.type) {
-        // 缓存key格式：${keyRoute}-${type}，值：keyRoute
-        saveWebCacheData(`${keyRoute}-${curElemSchema.type}`, newVal);
+        // 缓存结构：{ value, timestamp }，通过 editorKey 隔离不同实例的缓存
+        saveWebCacheData(
+          `${this.editorKey}-${keyRoute}-${curElemSchema.type}`,
+          {
+            value: newVal,
+            timestamp: Date.now(),
+          },
+        );
       }
     }
 

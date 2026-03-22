@@ -37,9 +37,12 @@ class AdvanceConfig extends React.PureComponent<AdvanceConfigProps> {
       return <div className="advance-config-empty">当前类型暂无高级配置</div>;
     }
 
+    const instanceKey = `${indexRoute}-${jsonKey}-${curType}`;
+
     return (
       <div className="advance-config-model">
         <JSONEditor
+          editorKey={instanceKey}
           wideScreen={true}
           schemaData={propsSchema}
           jsonData={targetJsonSchema}

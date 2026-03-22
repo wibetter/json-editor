@@ -300,7 +300,7 @@ class IndexDemo extends React.PureComponent {
         "propertyOrder": ["data", "props", "style"],
         "lastUpdateTime": 1746805475633
       },
-      jsonData: {},
+      jsonData: {"data":{"chartDataList":{"type":"local","config":{"url":"","method":"get","headers":{},"data":{},"dataType":"json"},"data":"{}","localFilter":"return data;"},"xAxis":"x","yAxis":"y"},"props":{"legendAlign":"top","legend":"type123","rating":3},"style":{"width":"220px","height":"220px","paddingMargin":{"margin":"0","padding":"0","quantity":"px"},"bgColor":"#ffffff"},"lastUpdateTime":1774195689062},
       options: {
         GlobalOptions: [
           { value: 'default0' },

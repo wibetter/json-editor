@@ -53,7 +53,7 @@ class JSONDataEditor extends React.PureComponent<
     super(props);
 
     const { initJSONSchemaData, setPageScreen } = this.props.schemaStore || {};
-    const { initJSONData, initOnChange, setOptions } =
+    const { initJSONData, initOnChange, setOptions, initEditorKey } =
       this.props.jsonStore || {};
 
     // 根据props.schemaData对jsonSchema进行初始化
@@ -80,6 +80,8 @@ class JSONDataEditor extends React.PureComponent<
     if (props.options) {
       setOptions(props.options);
     }
+    // 初始化editorKey
+    initEditorKey(props.editorKey);
   }
 
   /* 获取schema展示风格模式 */

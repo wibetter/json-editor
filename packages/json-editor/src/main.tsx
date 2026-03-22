@@ -36,6 +36,11 @@ interface JSONEditorProps {
   schemaData?: any;
   jsonData?: any;
   element?: any;
+  /** 实例唯一标识，用于隔离多个 JSONEditor 实例的前端缓存。
+   *  未设置时 editorKey 默认为 'json-editor'，
+   *  设置后 editorKey 为 'json-editor-${editorKey}'。
+   */
+  editorKey?: string;
 }
 
 interface JSONEditorState {
