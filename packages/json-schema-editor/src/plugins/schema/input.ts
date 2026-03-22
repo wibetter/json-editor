@@ -26,7 +26,6 @@ const inputDescriptor: SchemaDescriptor = {
 
   propsSchema: buildPropsSchema({
     ...EDITABLE_PROPS,
-    isConditionProp: EDITABLE_PROPS.isConditionProp,
     default: {
       type: 'input',
       title: '默认值',

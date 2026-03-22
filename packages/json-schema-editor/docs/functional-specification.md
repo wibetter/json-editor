@@ -368,7 +368,6 @@ propsSchema 是一个标准的 JSON Schema（`type: 'object'`），其 `properti
 
 ```json
 {
-  "isConditionProp": { "type": "boolean", "title": "条件字段" },
   "readOnly": { "type": "boolean", "title": "是否只读" },
   "isRequired": { "type": "boolean", "title": "是否必填项" },
   "default": { "type": "input", "title": "默认值" },
@@ -395,7 +394,6 @@ propsSchema 是一个标准的 JSON Schema（`type: 'object'`），其 `properti
 | `hideOperaBtn` | boolean | 隐藏增删复制拖拽等操作按钮 |
 | `showAdvanceBtn` | boolean | 显示/隐藏高级设置按钮（默认 true） |
 | `readOnly` | boolean | 在 JSONEditor 端只读（不可编辑） |
-| `isConditionProp` | boolean | 标记为条件字段（供其他字段联动使用） |
 
 ---
 

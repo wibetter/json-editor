@@ -23,7 +23,6 @@ const numberDescriptor: SchemaDescriptor = {
   renderer: GeneralSchema,
 
   propsSchema: buildPropsSchema({
-    isConditionProp: EDITABLE_PROPS.isConditionProp,
     readOnly: EDITABLE_PROPS.readOnly,
     isRequired: EDITABLE_PROPS.isRequired,
     default: {

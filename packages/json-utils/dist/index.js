@@ -48,7 +48,7 @@
           return u;
         },
         KeyWordList: function () {
-          return fe;
+          return de;
         },
         TypeDataList: function () {
           return l;
@@ -60,7 +60,7 @@
           return U;
         },
         getCurPosition: function () {
-          return G;
+          return V;
         },
         getDefaultOptionVal: function () {
           return re;
@@ -81,16 +81,16 @@
           return Y;
         },
         getParentKeyRoute: function () {
-          return ce;
+          return se;
         },
         getParentKeyRoute_CurKey: function () {
-          return de;
+          return ce;
         },
         getSchemaByIndexRoute: function () {
-          return C;
+          return w;
         },
         getSchemaByKeyRoute: function () {
-          return w;
+          return C;
         },
         hasProperties: function () {
           return N;
@@ -108,7 +108,7 @@
           return x;
         },
         isContainerSchema: function () {
-          return V;
+          return W;
         },
         isDateStr: function () {
           return m;
@@ -141,7 +141,7 @@
           return O;
         },
         isSameParent: function () {
-          return Z;
+          return G;
         },
         isSelect: function () {
           return h;
@@ -150,7 +150,7 @@
           return d;
         },
         isStructuredSchema: function () {
-          return W;
+          return Z;
         },
         isTimeStr: function () {
           return b;
@@ -187,9 +187,6 @@
         },
         registerExpectType: function () {
           return $;
-        },
-        schema2conditionValue: function () {
-          return se;
         },
         schema2json: function () {
           return oe;
@@ -992,7 +989,7 @@
         }
       return i;
     }
-    function C(e, t, r) {
+    function w(e, t, r) {
       var i = t;
       if ((r && (i = k(t)), e))
         for (
@@ -1022,7 +1019,7 @@
         }
       return i;
     }
-    function w(e, t, r) {
+    function C(e, t, r) {
       var i = t;
       if ((r && (i = k(t)), e && i))
         for (var n = e.split('-'), a = 0, o = n.length; a < o; a++) {
@@ -1340,13 +1337,13 @@
         i = new Date('2024-10-05T00:01:00.691Z').getTime();
       return (r && new Date(r).getTime() >= i && (t = !0), t);
     }
-    function V(e) {
+    function W(e) {
       var t = !1,
         r = I(e.type),
         i = void 0 === e.isContainer || e.isContainer;
       return ('object' === r && i && (t = !0), t);
     }
-    function W(e) {
+    function Z(e) {
       var t = !0;
       return (
         'object' === e.type && e.propertyOrder && e.properties
@@ -1359,12 +1356,12 @@
         t
       );
     }
-    function Z(e, t) {
+    function G(e, t) {
       var r = e.split('-'),
         i = t.split('-');
       return (r.pop(), i.pop(), r.join('-') === i.join('-'));
     }
-    function G(e, t) {
+    function V(e, t) {
       for (
         var r = e.split('-'),
           i = t.split('-'),
@@ -1623,34 +1620,16 @@
         r
       );
     }
-    function se(e, t) {
-      var r = '';
-      return (
-        'object' === I(e.type) &&
-          e.properties &&
-          (e.propertyOrder ? e.propertyOrder : Object.keys(e.properties)).map(
-            function (i) {
-              var n = e.properties[i],
-                a = t[i];
-              ('array' === I(n.type) && 'object' === I(n.type)) ||
-                (a &&
-                  n.isConditionProp &&
-                  (r.indexOf('-') > 0 ? (r += '-' + a) : (r = a)));
-            },
-          ),
-        r
-      );
-    }
-    function ce(e) {
+    function se(e) {
       var t = e.split('-');
       return (t.pop(), t.join('-'));
     }
-    function de(e) {
+    function ce(e) {
       var t = e.split('-'),
         r = t.pop() || '';
       return [t.join('-'), r];
     }
-    var fe = [
+    var de = [
       'key',
       'enum',
       'enumextra',

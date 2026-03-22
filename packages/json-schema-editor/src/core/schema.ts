@@ -33,7 +33,7 @@ export const COMMON_PROPS_SCHEMA_ORDER = Object.keys(
 );
 
 /**
- * 带只读/必填/条件字段的通用可编辑属性
+ * 带只读/必填的通用可编辑属性
  */
 export const EDITABLE_PROPS = {
   readOnly: {
@@ -46,11 +46,6 @@ export const EDITABLE_PROPS = {
     title: '是否必填项',
     description:
       '当前属性设置为必填项后，如果用户没有给其设置数值，则会进行标红提示',
-  },
-  isConditionProp: {
-    type: 'boolean',
-    title: '条件字段',
-    description: '设置为条件字段后，其他字段可根据其数值变化进行实时联动',
   },
 };
 

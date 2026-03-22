@@ -27,7 +27,6 @@ const radioDescriptor: SchemaDescriptor = {
   renderer: SelectSchema,
 
   propsSchema: buildPropsSchema({
-    isConditionProp: EDITABLE_PROPS.isConditionProp,
     readOnly: EDITABLE_PROPS.readOnly,
     isRequired: EDITABLE_PROPS.isRequired,
     defaultActiveFirstOption: {

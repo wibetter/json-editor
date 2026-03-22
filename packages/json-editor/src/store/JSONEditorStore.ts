@@ -201,12 +201,6 @@ export default class JSONEditorStore {
       this.jsonData = newVal;
     }
 
-    if (curElemSchema && curElemSchema.isConditionProp) {
-      // 判断条件字段的快捷通道：如果是条件字段则更新LastInitTime
-      this.updateLastTime();
-      // this.triggerChangeAction(); // 用于主动触发组件更新
-    }
-
     if (!ignoreChange) {
       // 4. 触发onChange事件
       this.jsonDataChange();

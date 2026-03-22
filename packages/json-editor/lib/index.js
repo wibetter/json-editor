@@ -1197,8 +1197,7 @@
                     ? (c[s] = t)
                     : this.updateFormValueData(i, (((l = {})[s] = t), l));
                 } else this.jsonData = t;
-                (o && o.isConditionProp && this.updateLastTime(),
-                  n || this.jsonDataChange());
+                n || this.jsonDataChange();
               }),
               (t.deleteArrayIndex = function (e, t) {
                 var n = (0, d.getJsonDataByKeyRoute)(e, this.jsonData);
@@ -1507,7 +1506,7 @@
         }
         __webpack_require__(800);
         var j,
-          T = function (e) {
+          D = function (e) {
             return o.createElement(
               'svg',
               R(
@@ -1522,9 +1521,9 @@
                 })),
             );
           };
-        function D() {
+        function T() {
           return (
-            (D = Object.assign
+            (T = Object.assign
               ? Object.assign.bind()
               : function (e) {
                   for (var t = 1; t < arguments.length; t++) {
@@ -1534,14 +1533,14 @@
                   }
                   return e;
                 }),
-            D.apply(null, arguments)
+            T.apply(null, arguments)
           );
         }
         var P,
           K = function (e) {
             return o.createElement(
               'svg',
-              D(
+              T(
                 { width: 16, height: 16, xmlns: 'http://www.w3.org/2000/svg' },
                 e,
               ),
@@ -1691,7 +1690,7 @@
                   k = x.jsonView,
                   R = x.isClosed,
                   j = x.currentActiveArrIndex,
-                  D = b.type,
+                  T = b.type,
                   P = null === (e = b.showCodeViewBtn) || void 0 === e || e,
                   J = u(h);
                 (J && 0 !== J.length && (0, g.cy)(J)) || (J = [{}]);
@@ -1882,7 +1881,7 @@
                                       okText: '确定',
                                       cancelText: '取消',
                                     },
-                                    o.createElement(T, {
+                                    o.createElement(D, {
                                       className:
                                         'delete-operate-btn array-operate-btn',
                                       onClick: function (e) {
@@ -1940,7 +1939,7 @@
                                   (I === t ? 'open' : 'closed'),
                               },
                               O({
-                                parentType: D,
+                                parentType: T,
                                 jsonKey: 'items',
                                 indexRoute: l,
                                 keyRoute: r,
@@ -2021,7 +2020,7 @@
                     k = x.jsonView,
                     R = x.isClosed,
                     j = null === (e = E.showCodeViewBtn) || void 0 === e || e,
-                    T =
+                    D =
                       null ===
                         (n =
                           null !== (a = this.props.wrapWithPanel) &&
@@ -2030,9 +2029,9 @@
                             : E.wrapWithPanel) ||
                       void 0 === n ||
                       n,
-                    D = R,
+                    T = R,
                     P = (0, C.Gz)(v);
-                  void 0 !== P && (D = P);
+                  void 0 !== P && (T = P);
                   var K =
                       null !== (l = E.boxTitle) && void 0 !== l
                         ? l
@@ -2056,7 +2055,7 @@
                       style: M,
                     },
                     !b &&
-                      T &&
+                      D &&
                       o.createElement(
                         'div',
                         { className: 'element-title', style: B },
@@ -2097,7 +2096,7 @@
                         style: I,
                       },
                       !b &&
-                        T &&
+                        D &&
                         o.createElement(
                           'div',
                           {
@@ -2110,7 +2109,7 @@
                             K,
                             ' ',
                           ),
-                          D
+                          T
                             ? o.createElement(w.RightOutlined, {
                                 className: 'close-operate-btn',
                               })
@@ -2144,11 +2143,11 @@
                         {
                           className:
                             'content-item ' +
-                            (!b && T ? 'object-content' : '') +
+                            (!b && D ? 'object-content' : '') +
                             ' ' +
                             (k ? 'json-view-array' : '') +
                             ' ' +
-                            (D ? 'closed' : ''),
+                            (T ? 'closed' : ''),
                         },
                         !k &&
                           E.propertyOrder &&
@@ -5801,8 +5800,8 @@
                   k = b.dataType || {},
                   R = b.cache || {},
                   j = b.cacheTime || {},
-                  T = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
-                  D = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                  D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
+                  T = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
                   P = y.contentStyle
                     ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                     : {},
@@ -5819,11 +5818,11 @@
                         ? 'wide-screen-element-warp'
                         : 'mobile-screen-element-warp',
                     id: h,
-                    style: T,
+                    style: D,
                   },
                   l().createElement(
                     'div',
-                    { className: 'element-title', style: D },
+                    { className: 'element-title', style: T },
                     l().createElement(
                       'span',
                       { className: 'title-text', title: y.title },
@@ -6837,8 +6836,8 @@
                 k = y.properties.eventData || {},
                 R = b.default,
                 j = null === (e = y.showCodeViewBtn) || void 0 === e || e,
-                T = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
-                D = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
+                D = y.style ? (0, _.K8)((0, m.toJS)(y.style)) : {},
+                T = y.titleStyle ? (0, _.K8)((0, m.toJS)(y.titleStyle)) : {},
                 P = y.contentStyle
                   ? (0, _.K8)((0, m.toJS)(y.contentStyle))
                   : {};
@@ -6850,11 +6849,11 @@
                       ? 'wide-screen-element-warp'
                       : 'mobile-screen-element-warp',
                   id: u,
-                  style: T,
+                  style: D,
                 },
                 o.createElement(
                   'div',
-                  { className: 'element-title', style: D },
+                  { className: 'element-title', style: T },
                   o.createElement(
                     S.Tooltip,
                     {
@@ -7004,7 +7003,7 @@
         })(o.PureComponent);
         ((0, b.TS)({ type: 'event', component: je }),
           __webpack_require__(5584));
-        var Te = (function (e) {
+        var De = (function (e) {
           function n(t) {
             var n;
             return (
@@ -7050,8 +7049,8 @@
                 k = C.default,
                 R = null === (e = h.showCodeViewBtn) || void 0 === e || e,
                 j = h.style ? (0, _.K8)((0, m.toJS)(h.style)) : {},
-                T = h.titleStyle ? (0, _.K8)((0, m.toJS)(h.titleStyle)) : {},
-                D = h.contentStyle
+                D = h.titleStyle ? (0, _.K8)((0, m.toJS)(h.titleStyle)) : {},
+                T = h.contentStyle
                   ? (0, _.K8)((0, m.toJS)(h.contentStyle))
                   : {};
               return o.createElement(
@@ -7066,7 +7065,7 @@
                 },
                 o.createElement(
                   'div',
-                  { className: 'element-title', style: T },
+                  { className: 'element-title', style: D },
                   o.createElement(
                     S.Tooltip,
                     {
@@ -7101,7 +7100,7 @@
                   'div',
                   {
                     className: 'element-title-card-warp content-item',
-                    style: D,
+                    style: T,
                   },
                   o.createElement(
                     'div',
@@ -7242,8 +7241,8 @@
             n
           );
         })(o.PureComponent);
-        (0, b.TS)({ type: 'datasource', component: Te });
-        var De = function (e) {
+        (0, b.TS)({ type: 'datasource', component: De });
+        var Te = function (e) {
             var n = e.schemaStore,
               a = e.jsonStore,
               o = e.nodeKey,
@@ -7273,13 +7272,13 @@
                 nodeKey: g,
                 key: g,
                 renderChild: function (e) {
-                  return De(t()({}, e, { schemaStore: n, jsonStore: a }));
+                  return Te(t()({}, e, { schemaStore: n, jsonStore: a }));
                 },
               }),
               v = b.Jd[S] || H;
             return l().createElement(v, t()({}, f));
           },
-          Pe = De,
+          Pe = Te,
           Ke = (__webpack_require__(8104), S.Collapse.Panel),
           Je = S.Tabs.TabPane,
           Ae = (function (e) {

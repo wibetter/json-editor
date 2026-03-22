@@ -231,7 +231,6 @@ export default class JSONSchemaStore {
       pick(targetJsonSchema, [
         'title',
         'description',
-        'isConditionProp',
         'showKey',
         'showCodeViewBtn',
         'onShow',

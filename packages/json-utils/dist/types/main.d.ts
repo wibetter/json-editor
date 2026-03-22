@@ -65,7 +65,6 @@ export * from './function/schema2json';
 export * from './function/schemaMetaList';
 export * from './function/json2treeData';
 export * from './function/getExpectType';
-export * from './function/schema2conditionValue';
 export * from './utils/index';
 export * from './utils/jsonData';
 export * from './utils/jsonSchema';
