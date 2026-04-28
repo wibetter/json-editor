@@ -5,7 +5,7 @@
     "packages/json-editor",
     "packages/json-utils"
   ],
-  "description": "JSON可视化工具，含json-schema-editor、json-editor和json-utils。",
+  "description": "提供 JSON 与 JSON Schema 的可视化编辑能力，内置 JSONEditor、SchemaEditor，可通过表单化界面维护 schema 和 json 数据，可用于支持组件与页面的配置可视化。",
   "keywords": [
     "jsonEditor",
     "schemaEditor",
@@ -40,6 +40,9 @@
   },
   "bugs": {
     "url": "https://github.com/wibetter/json-editor/issues"
+  },
+  "publishConfig": {
+    "registry": "https://www.npmjs.com/package/@wibetter/json-editor"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
