@@ -9,11 +9,6 @@
 1. [点击访问在线Demo 7.x](https://wibetter.github.io/json-editor/online-demo/7.0.0/index.html) 
 2. [点击访问在线Demo 6.x](https://wibetter.github.io/json-editor/online-demo/6.0.0/index.html)  
 
-### SchemaEditor效果图
-![image](https://user-images.githubusercontent.com/11958920/104154681-78f5e680-5420-11eb-978f-6219acfa933d.png)
-
-### JSONEditor效果图
-![image](https://user-images.githubusercontent.com/11958920/104156633-7eedc680-5424-11eb-9972-2e8613bd5460.png)
 
 ### 使用说明
 1. [json-schema-editor](./packages/json-schema-editor/README.md);

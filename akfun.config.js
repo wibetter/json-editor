@@ -27,7 +27,7 @@ module.exports = {
   },
   dev: {
     entry: {
-      index: './demo.jsx',
+      index: './demo/index.jsx',
     },
     NODE_ENV: 'development',
     port: 80,
@@ -39,7 +39,7 @@ module.exports = {
   },
   build: {
     entry: {
-      index: './demo.jsx',
+      index: './demo/index.jsx',
     },
     NODE_ENV: 'production',
     assetsRoot: resolve('./online-demo/7.0.0'), // 打包后的文件绝对路径（物理路径）

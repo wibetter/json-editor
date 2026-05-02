@@ -1,11 +1,11 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Select, Tag } from 'antd';
-import JSONSchemaEditor, { registerSchema, buildPropsSchema } from './packages/json-schema-editor/lib/index'; // 正式环境请使用 '@wibetter/json-schema-editor'
-import JSONEditor, { registerRenderer } from './packages/json-editor/lib/index'; // 正式环境请使用 '@wibetter/json-editor'
-import './packages/json-schema-editor/lib/index.css';
-import './packages/json-editor/lib/index.css';
-import './index.scss';
+import JSONSchemaEditor, { registerSchema, buildPropsSchema } from '../packages/json-schema-editor/lib/index'; // 正式环境请使用 '@wibetter/json-schema-editor'
+import JSONEditor, { registerRenderer } from '../packages/json-editor/lib/index'; // 正式环境请使用 '@wibetter/json-editor'
+import '../packages/json-schema-editor/lib/index.css';
+import '../packages/json-editor/lib/index.css';
+import './index-v1.scss';
 
 /*
 说明：以下代码为添加自定义配置项的示例
