@@ -23,7 +23,7 @@ module.exports = {
     externals: [],
     projectDir: ['.'],
     plugins: [], // 用于配置自定义plugins
-    template: resolve('./index.html'), // 默认html模板
+    template: resolve('./public/template.html'), // 自定义html模板
   },
   dev: {
     entry: {
